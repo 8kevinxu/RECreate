@@ -227,7 +227,7 @@ const CENTERS = [
       wed: [[t(16), t(18)]],
       thu: [[t(16), t(19, 30)]],
       fri: [[t(12, 30), t(15)]],
-      sat: [[t(12, 30), t(15)], [t(15), t(18)]],
+      sat: [[t(12, 30), t(15)], [t(15), t(18), true]], // 3–6pm = wheelchair
     }),
     notes: 'Open gym for pickup basketball; Sat afternoon includes wheelchair basketball.',
   },
@@ -342,7 +342,11 @@ function parseGymBasketball(html) {
       // Exclude structured programs — keep only show-up-and-play sessions.
       if (/league|class|clinic|camp|academy|practice|training|tournament/i.test(activity)) return;
       const range = parseRange($(item).find('.time').text());
-      if (range) week[day].push(range);
+      if (range) {
+        // Tag wheelchair-basketball blocks (rendered with an asterisk in-app).
+        if (/wheelchair/i.test(activity)) range.push(true);
+        week[day].push(range);
+      }
     });
   });
 

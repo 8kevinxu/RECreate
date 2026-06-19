@@ -416,6 +416,9 @@ function CourtDetail({ court, history, myVote, now, onVote, onClose }) {
             </Text>
           </View>
         ))}
+        {week.some((d) => d.hasWheelchair) && (
+          <Text style={styles.wheelchairNote}>* wheelchair basketball</Text>
+        )}
 
         {!!court.notes && <Text style={styles.notes}>{court.notes}</Text>}
         <Text style={styles.disclaimer}>
@@ -637,6 +640,7 @@ const styles = StyleSheet.create({
   weekTimes: { fontSize: 13, color: '#2a3a4a', flex: 1, textAlign: 'right' },
   weekClosed: { color: '#aab4bd' },
   weekTodayText: { color: '#e8730c', fontWeight: '700' },
+  wheelchairNote: { fontSize: 11, color: '#6f8298', marginTop: 6, fontStyle: 'italic' },
 
   notes: { fontSize: 13, color: '#5b6b7b', marginTop: 8, lineHeight: 18 },
   disclaimer: {

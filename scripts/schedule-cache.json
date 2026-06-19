@@ -30,7 +30,7 @@
       ]
     ],
     "season": "Mission Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-19T04:53:30.227Z"
+    "scrapedAt": "2026-06-19T20:08:44.134Z"
   },
   "Moscone-Rec-Center-101": {
     "basketball": [
@@ -72,7 +72,7 @@
       ]
     ],
     "season": "Moscone Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-19T04:53:30.598Z"
+    "scrapedAt": "2026-06-19T20:08:44.466Z"
   },
   "St-Marys-Rec-Center-109": {
     "basketball": [
@@ -100,7 +100,7 @@
       ]
     ],
     "season": "St. Mary's Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-19T04:53:31.002Z"
+    "scrapedAt": "2026-06-19T20:08:44.922Z"
   },
   "Upper-Noe-Rec-Center-112": {
     "basketball": [
@@ -118,7 +118,7 @@
       ]
     ],
     "season": "Upper Noe Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-19T04:53:31.399Z"
+    "scrapedAt": "2026-06-19T20:08:45.357Z"
   },
   "Hamilton-Rec-Center-93": {
     "basketball": [
@@ -156,7 +156,7 @@
       ]
     ],
     "season": "Hamilton Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-19T04:53:31.736Z"
+    "scrapedAt": "2026-06-19T20:08:45.722Z"
   },
   "Eureka-Valley-Rec-Center-86": {
     "basketball": [
@@ -183,7 +183,7 @@
       []
     ],
     "season": "Eureka Valley Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-19T04:53:32.100Z"
+    "scrapedAt": "2026-06-19T20:08:46.070Z"
   },
   "Richmond-Rec-Center-105": {
     "basketball": [
@@ -221,7 +221,7 @@
       ]
     ],
     "season": "Richmond Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-19T04:53:32.826Z"
+    "scrapedAt": "2026-06-19T20:08:46.737Z"
   },
   "Sunset-Rec-Center-110": {
     "basketball": [
@@ -244,7 +244,7 @@
       []
     ],
     "season": "Sunset Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-19T04:53:33.165Z"
+    "scrapedAt": "2026-06-19T20:08:47.220Z"
   },
   "Palega-Rec-Center-103": {
     "basketball": [
@@ -294,7 +294,7 @@
       ]
     ],
     "season": "Palega Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-19T04:53:33.513Z"
+    "scrapedAt": "2026-06-19T20:08:47.632Z"
   },
   "Joseph-Lee-Rec-Center-95": {
     "basketball": [
@@ -336,7 +336,7 @@
       ]
     ],
     "season": "Joseph Lee Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-19T04:53:33.948Z"
+    "scrapedAt": "2026-06-19T20:08:48.084Z"
   },
   "Minnie-Love-Ward-Rec-Center-97": {
     "basketball": [
@@ -373,7 +373,7 @@
       ]
     ],
     "season": "Minnie & Lovie Ward Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-19T04:53:34.355Z"
+    "scrapedAt": "2026-06-19T20:08:48.487Z"
   },
   "Bernal-Heights-Rec-Center-83": {
     "basketball": [
@@ -415,7 +415,7 @@
       ]
     ],
     "season": "Bernal Heights Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-19T04:53:34.700Z"
+    "scrapedAt": "2026-06-19T20:08:48.895Z"
   },
   "Betty-Ann-Ong-Recreation-Center-84": {
     "basketball": [
@@ -453,7 +453,7 @@
       ]
     ],
     "season": "Betty Ann Ong Chinese Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-19T04:53:35.012Z"
+    "scrapedAt": "2026-06-19T20:08:49.307Z"
   },
   "Glen-Canyon-Park-Recreation-Center-89": {
     "basketball": [
@@ -490,12 +490,13 @@
         ],
         [
           900,
-          1080
+          1080,
+          true
         ]
       ]
     ],
     "season": "Glen Canyon Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-19T04:53:35.488Z"
+    "scrapedAt": "2026-06-19T20:08:49.714Z"
   },
   "Herz-Recreation-Center-471": {
     "basketball": [
@@ -533,7 +534,7 @@
       ]
     ],
     "season": "Herz Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-19T04:53:35.892Z"
+    "scrapedAt": "2026-06-19T20:08:50.085Z"
   },
   "Potrero-Hill-Rec-Center-275": {
     "basketball": [
@@ -571,6 +572,6 @@
       ]
     ],
     "season": "Potrero Hill Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-19T04:53:36.217Z"
+    "scrapedAt": "2026-06-19T20:08:50.480Z"
   }
 }
