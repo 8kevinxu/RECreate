@@ -101,8 +101,6 @@ curated data.
 
 ## Ideas for next
 
-- **Freshness UI:** show "Updated <date>" in the app using the `generatedAt` in
-  `courts.json` (already fetched, just not displayed).
 - **Distance sort:** rank courts by distance from the user.
 - **Live availability:** let players check in ("I'm here / how crowded").
 - **Outdoor courts / more sports:** the data model has room (`indoor`, `source`

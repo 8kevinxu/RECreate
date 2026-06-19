@@ -18,6 +18,20 @@ import {
   getBasketballWeek,
 } from './lib/hours';
 
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+// ISO timestamp → "today" / "yesterday" / "Jun 18, 2026".
+function formatUpdated(iso) {
+  const d = new Date(iso);
+  if (isNaN(d)) return '';
+  const today = new Date();
+  const days = Math.floor((today.setHours(0, 0, 0, 0) - new Date(d).setHours(0, 0, 0, 0)) / 86400000);
+  if (days === 0) return 'today';
+  if (days === 1) return 'yesterday';
+  return `${MONTHS[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+}
+
 export default function App() {
   const mapRef = useRef(null);
   const [openOnly, setOpenOnly] = useState(false);
@@ -55,7 +69,7 @@ export default function App() {
   }, []);
 
   // Court data: bundled → cached → freshly fetched (see useCourts).
-  const { courts: courtData } = useCourts();
+  const { courts: courtData, generatedAt } = useCourts();
 
   // Annotated with facility status + basketball open-gym status.
   const courts = useMemo(() => {
@@ -110,6 +124,9 @@ export default function App() {
             ? `${visibleCourts.length} with open gym right now`
             : `${visibleCourts.length} indoor courts · SF Rec & Parks`}
         </Text>
+        {!!generatedAt && (
+          <Text style={styles.updated}>Updated {formatUpdated(generatedAt)}</Text>
+        )}
       </View>
 
       <View style={styles.filterBar}>
@@ -226,6 +243,7 @@ const styles = StyleSheet.create({
   header: { paddingHorizontal: 16, paddingTop: 8, paddingBottom: 4 },
   title: { color: '#fff', fontSize: 24, fontWeight: '800' },
   subtitle: { color: '#9db4cc', fontSize: 13, marginTop: 2 },
+  updated: { color: '#6f8298', fontSize: 11, marginTop: 2 },
 
   filterBar: {
     flexDirection: 'row',

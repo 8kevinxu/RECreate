@@ -7,7 +7,6 @@ import React, {
 } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { WebView } from 'react-native-webview';
-import { USER_ICON_URI } from '../assets/stephCurryIcon';
 
 // San Francisco center, used as the initial map view.
 const SF_CENTER = { lat: 37.7749, lng: -122.4194 };
@@ -25,16 +24,6 @@ const html = `
   <style>
     html, body, #map { height: 100%; margin: 0; padding: 0; }
     .leaflet-container { background: #aadaf0; }
-    .user-pin {
-      width: 54px;
-      height: 54px;
-      border-radius: 50%;
-      border: 3px solid #ffffff;
-      box-shadow: 0 0 0 2px #0a84ff, 0 2px 6px rgba(0,0,0,0.4);
-      background-size: cover;
-      background-position: center top;
-      background-repeat: no-repeat;
-    }
     .bball {
       width: 100%;
       height: 100%;
@@ -97,16 +86,15 @@ const html = `
       });
     };
 
-    window.setUser = function (lat, lng, iconUrl) {
+    window.setUser = function (lat, lng) {
       if (userMarker) { map.removeLayer(userMarker); }
-      var size = 54;
-      var icon = L.divIcon({
-        className: '',
-        html: '<div class="user-pin" style="background-image:url(' + iconUrl + ')"></div>',
-        iconSize: [size, size],
-        iconAnchor: [size / 2, size / 2]
-      });
-      userMarker = L.marker([lat, lng], { icon: icon, zIndexOffset: 1000 }).addTo(map);
+      userMarker = L.circleMarker([lat, lng], {
+        radius: 7,
+        color: '#ffffff',
+        weight: 3,
+        fillColor: '#0a84ff',
+        fillOpacity: 1
+      }).addTo(map);
       userMarker.bindTooltip('You', { permanent: false });
     };
 
@@ -143,7 +131,7 @@ const CourtMap = forwardRef(function CourtMap(
     inject(`window.setCourts(${JSON.stringify(courts)});`);
     if (userLocation) {
       inject(
-        `window.setUser(${userLocation.lat}, ${userLocation.lng}, ${JSON.stringify(USER_ICON_URI)});`
+        `window.setUser(${userLocation.lat}, ${userLocation.lng});`
       );
     }
   }, [inject, courts, userLocation]);
