@@ -10,6 +10,9 @@
   command = "npx expo export --platform web"
   publish = "dist"
 
+[build.environment]
+  NODE_VERSION = "20"
+
 # Single-page app: serve index.html for any path.
 [[redirects]]
   from = "/*"
