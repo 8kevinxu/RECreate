@@ -17,6 +17,18 @@ import {
   getBasketballStatus,
   getBasketballWeek,
 } from './lib/hours';
+import {
+  loadCrowd,
+  checkIn as recordCheckIn,
+  subscribe as subscribeCrowd,
+  mergeCheckIn,
+  currentLevel,
+  countWithin,
+  latest,
+  timeAgo,
+  LEVELS,
+  LEVEL_META,
+} from './lib/crowd';
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -39,6 +51,25 @@ export default function App() {
   const [userLocation, setUserLocation] = useState(null);
   const [locating, setLocating] = useState(true);
   const [now, setNow] = useState(new Date());
+  const [crowd, setCrowd] = useState({}); // { courtId: { level, ts } }
+
+  // Load check-ins on mount, and (when shared/Supabase) live-update by merging
+  // each new check-in incrementally — no full refetch per event.
+  useEffect(() => {
+    loadCrowd().then(setCrowd);
+    const unsubscribe = subscribeCrowd((rec) =>
+      setCrowd((prev) => mergeCheckIn(prev, rec))
+    );
+    return unsubscribe;
+  }, []);
+
+  // Records the vote, merges it in optimistically, and returns the result so
+  // the card can show feedback (success or a rate-limit message).
+  const handleCheckIn = async (courtId, level) => {
+    const res = await recordCheckIn(courtId, level);
+    if (res && res.id) setCrowd((prev) => mergeCheckIn(prev, res));
+    return res;
+  };
 
   // Refresh "open now" status every minute.
   useEffect(() => {
@@ -85,7 +116,9 @@ export default function App() {
     return courts.filter((c) => !openOnly || c.bball.open);
   }, [courts, openOnly]);
 
-  // Map markers fade when there's no open-gym basketball right now.
+  // Map markers fade when there's no open-gym basketball right now, and animate
+  // by the latest *fresh* crowd check-in.
+  const nowMs = now.getTime();
   const mapCourts = useMemo(
     () =>
       visibleCourts.map((c) => ({
@@ -94,8 +127,9 @@ export default function App() {
         lng: c.lng,
         indoor: c.indoor,
         open: c.bball.open,
+        crowd: currentLevel(crowd[c.id], nowMs),
       })),
-    [visibleCourts]
+    [visibleCourts, crowd, nowMs]
   );
 
   const selected = useMemo(
@@ -168,15 +202,45 @@ export default function App() {
       </View>
 
       {selected && (
-        <CourtDetail court={selected} onClose={() => setSelectedId(null)} />
+        <CourtDetail
+          court={selected}
+          history={crowd[selected.id] || []}
+          now={nowMs}
+          onCheckIn={handleCheckIn}
+          onClose={() => setSelectedId(null)}
+        />
       )}
     </SafeAreaView>
   );
 }
 
-function CourtDetail({ court, onClose }) {
+function CourtDetail({ court, history, now, onCheckIn, onClose }) {
   const { status, bball } = court;
   const week = getBasketballWeek(court);
+  const level = currentLevel(history, now);
+  const last = latest(history);
+  const lastHour = countWithin(history, 60 * 60 * 1000, now);
+  const recent = history.slice(0, 4);
+
+  const [note, setNote] = useState(null);
+  useEffect(() => setNote(null), [court.id]); // reset when switching courts
+  useEffect(() => {
+    if (!note) return;
+    const t = setTimeout(() => setNote(null), 4000);
+    return () => clearTimeout(t);
+  }, [note]);
+
+  const doCheckIn = async (lv) => {
+    const res = await onCheckIn(court.id, lv);
+    if (res && res.rateLimited) {
+      setNote(`You just checked in — try again in ${Math.ceil(res.retryMs / 1000)}s.`);
+    } else if (res && res.id) {
+      setNote('✓ Thanks — check-in recorded!');
+    } else {
+      setNote('Couldn’t record check-in. Try again.');
+    }
+  };
+
   return (
     <View style={styles.card}>
       <View style={styles.cardHeader}>
@@ -204,6 +268,59 @@ function CourtDetail({ court, onClose }) {
         >
           <Text style={styles.badgeText}>Facility {status.open ? 'open' : 'closed'}</Text>
         </View>
+      </View>
+
+      <View style={styles.crowdBox}>
+        <View style={styles.crowdStatusRow}>
+          <Text style={styles.sectionLabel}>How crowded right now?</Text>
+          {level ? (
+            <Text style={[styles.crowdStatus, { color: LEVEL_META[level].color }]}>
+              {LEVEL_META[level].dot} {LEVEL_META[level].label} · {timeAgo(last.ts, now)}
+            </Text>
+          ) : (
+            <Text style={styles.crowdStatusMuted}>
+              {last ? `last report ${timeAgo(last.ts, now)}` : 'No recent check-ins'}
+            </Text>
+          )}
+        </View>
+        <View style={styles.crowdButtons}>
+          {LEVELS.map((lv) => {
+            const meta = LEVEL_META[lv];
+            const active = level === lv;
+            return (
+              <Pressable
+                key={lv}
+                onPress={() => doCheckIn(lv)}
+                style={[
+                  styles.crowdBtn,
+                  active && { backgroundColor: meta.color, borderColor: meta.color },
+                ]}
+              >
+                <Text style={[styles.crowdBtnText, active && styles.crowdBtnTextActive]}>
+                  {meta.label}
+                </Text>
+              </Pressable>
+            );
+          })}
+        </View>
+
+        {!!note && <Text style={styles.checkinNote}>{note}</Text>}
+
+        {recent.length > 0 && (
+          <View style={styles.history}>
+            <Text style={styles.historyHead}>
+              👥 {lastHour} check-in{lastHour === 1 ? '' : 's'} in the last hour
+            </Text>
+            {recent.map((e, i) => (
+              <View key={e.ts + '-' + i} style={styles.historyRow}>
+                <Text style={[styles.historyLevel, { color: LEVEL_META[e.level].color }]}>
+                  {LEVEL_META[e.level].dot} {LEVEL_META[e.level].label}
+                </Text>
+                <Text style={styles.historyAgo}>{timeAgo(e.ts, now)}</Text>
+              </View>
+            ))}
+          </View>
+        )}
       </View>
 
       <ScrollView style={{ maxHeight: 168 }}>
@@ -339,6 +456,43 @@ const styles = StyleSheet.create({
   badgeFacOpen: { backgroundColor: '#e3eefb' },
   badgeFacClosed: { backgroundColor: '#eceff2' },
   badgeText: { fontSize: 12, fontWeight: '700', color: '#2a3a4a' },
+
+  crowdBox: {
+    backgroundColor: '#f4f6f8',
+    borderRadius: 12,
+    padding: 10,
+    marginBottom: 10,
+  },
+  crowdStatusRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  crowdStatus: { fontSize: 12, fontWeight: '700' },
+  crowdStatusMuted: { fontSize: 12, color: '#9aa7b4', fontStyle: 'italic' },
+  crowdButtons: { flexDirection: 'row', gap: 8 },
+  crowdBtn: {
+    flex: 1,
+    paddingVertical: 9,
+    borderRadius: 9,
+    borderWidth: 1.5,
+    borderColor: '#d4dbe2',
+    alignItems: 'center',
+  },
+  crowdBtnText: { fontSize: 13, fontWeight: '700', color: '#5b6b7b' },
+  crowdBtnTextActive: { color: '#ffffff' },
+  checkinNote: { fontSize: 12, color: '#46586a', marginTop: 8, fontWeight: '600' },
+
+  history: { marginTop: 10, borderTopWidth: 1, borderTopColor: '#e3e8ec', paddingTop: 8 },
+  historyHead: { fontSize: 12, fontWeight: '700', color: '#46586a', marginBottom: 5 },
+  historyRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingVertical: 2,
+  },
+  historyLevel: { fontSize: 12, fontWeight: '600' },
+  historyAgo: { fontSize: 12, color: '#9aa7b4' },
 
   sectionLabel: {
     fontSize: 12,

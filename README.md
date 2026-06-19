@@ -33,6 +33,7 @@ stays centered on San Francisco — everything else still works.
 | `.github/workflows/refresh-schedules.yml` | Weekly cron that re-scrapes + commits |
 | `lib/useCourts.js` | Fetches/caches court data at launch (bundled→cached→remote) |
 | `lib/hours.js` | Open-now + basketball open-gym logic from per-weekday schedules |
+| `lib/crowd.js` | Crowd check-in store (levels, freshness, "voted X ago") |
 
 ## Court data (SF Rec & Parks indoor gyms)
 
@@ -99,9 +100,57 @@ program — verify on [sfrecpark.org](https://sfrecpark.org). **Gene Friend** ha
 no open-gym blocks (facility page offline, likely renovation) and falls back to
 curated data.
 
+## Live crowd check-ins
+
+Tap a court → **"How crowded right now?"** → vote **Empty / Moderate / Packed**.
+The latest check-in shows as e.g. "🔴 Packed · voted 12 min ago", plus a short
+**history** ("👥 4 check-ins in the last hour" and the recent votes), and animates
+the map marker:
+
+- **Empty** → sleepy `z z z` drifting off the basketball
+- **Moderate** → no animation
+- **Packed** → pulsing glow + a flickering 🔥
+
+Check-ins expire after `FRESH_WINDOW_MS` (2h) — after that the gym's current
+state is "unknown" again (no animation), though the last report time still shows.
+
+**Storage is pluggable** (`lib/crowd.js`): it uses **Supabase** (shared across
+all users + real-time) when configured, and falls back to **on-device storage**
+otherwise. No UI changes between the two.
+
+### Enable shared / real-time check-ins (Supabase)
+
+1. Create a free project at [supabase.com](https://supabase.com).
+2. **SQL Editor → New query →** paste [`supabase/schema.sql`](supabase/schema.sql)
+   → **Run** (creates the `check_ins` table, public read/insert policies, and
+   turns on real-time).
+3. **Project Settings → API →** copy the **Project URL** and **anon public key**.
+4. Add them to `.env`:
+   ```
+   EXPO_PUBLIC_SUPABASE_URL=https://<project>.supabase.co
+   EXPO_PUBLIC_SUPABASE_ANON_KEY=<anon public key>
+   ```
+5. Restart with a cache clear: `npx expo start -c`.
+
+Now check-ins write to Supabase, everyone sees the same counts, and a real-time
+subscription pushes other users' check-ins to the map live. Until the env vars
+are set, the app uses local on-device check-ins (you see only your own).
+
+**Real-time is incremental:** each new check-in is merged into state by `id`
+(`mergeCheckIn`) rather than refetching the whole table — so cost scales with
+*check-ins*, not *users × check-ins*.
+
+**Rate limiting:** check-ins are throttled per device — at most one per court per
+minute (`COURT_COOLDOWN_MS`) and ≥4s between any two (`GLOBAL_GAP_MS`), persisted
+in AsyncStorage. This is a *soft* guard (cleared by reinstalling). For real abuse
+protection before a public launch, also enforce it server-side (a Supabase
+policy / edge function keyed on IP or a device token).
+
 ## Ideas for next
 
 - **Distance sort:** rank courts by distance from the user.
+- **Server-side rate limit:** complement the per-device cooldown with a Supabase
+  policy/edge function so it can't be bypassed by clearing app storage.
 - **Live availability:** let players check in ("I'm here / how crowded").
 - **Outdoor courts / more sports:** the data model has room (`indoor`, `source`
   fields) to bring back outdoor courts or add other sports later.

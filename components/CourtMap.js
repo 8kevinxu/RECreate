@@ -24,10 +24,45 @@ const html = `
   <style>
     html, body, #map { height: 100%; margin: 0; padding: 0; }
     .leaflet-container { background: #aadaf0; }
+    .ballwrap { position: relative; width: 26px; height: 26px; }
     .bball {
       width: 100%;
       height: 100%;
       filter: drop-shadow(0 1px 2px rgba(0,0,0,0.45));
+    }
+
+    /* Empty → sleepy "z z z" drifting up from the ball. */
+    .zzz {
+      position: absolute; top: -12px; right: -10px;
+      font: 700 11px/1 -apple-system, sans-serif; color: #4a5a6a;
+    }
+    .zzz span { position: absolute; opacity: 0; animation: drift 2.4s ease-in infinite; }
+    .zzz span:nth-child(1) { font-size: 9px;  right: 12px; animation-delay: 0s; }
+    .zzz span:nth-child(2) { font-size: 11px; right: 6px;  animation-delay: 0.8s; }
+    .zzz span:nth-child(3) { font-size: 13px; right: 0;    animation-delay: 1.6s; }
+    @keyframes drift {
+      0%   { opacity: 0; transform: translate(0, 4px); }
+      25%  { opacity: 1; }
+      100% { opacity: 0; transform: translate(6px, -14px); }
+    }
+
+    /* Packed → hot! pulsing glow + a flickering flame above the ball. */
+    .flameglow {
+      position: absolute; inset: -3px; border-radius: 50%;
+      animation: glow 0.9s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      from { box-shadow: 0 0 6px 1px rgba(255,140,0,0.65); }
+      to   { box-shadow: 0 0 14px 5px rgba(255,40,0,0.95); }
+    }
+    .flame {
+      position: absolute; top: -13px; left: 50%; margin-left: -7px;
+      font-size: 13px; transform-origin: 50% 100%;
+      animation: flicker 0.5s ease-in-out infinite alternate;
+    }
+    @keyframes flicker {
+      from { transform: scale(0.9) rotate(-4deg); opacity: 0.85; }
+      to   { transform: scale(1.12) rotate(4deg); opacity: 1; }
     }
   </style>
 </head>
@@ -68,14 +103,26 @@ const html = `
       '<path d="M80,11 C60,33 60,67 80,89"/>' +
       '</g></svg>';
 
+    // Decoration based on the latest fresh crowd check-in.
+    function crowdDecoration(level) {
+      if (level === 'empty') {
+        return '<div class="zzz"><span>z</span><span>z</span><span>z</span></div>';
+      }
+      if (level === 'packed') {
+        return '<div class="flameglow"></div><div class="flame">🔥</div>';
+      }
+      return ''; // moderate / none → no animation
+    }
+
     window.setCourts = function (courts) {
       courtLayer.clearLayers();
       markersById = {};
       courts.forEach(function (c) {
         var size = 26;
+        var ball = '<div class="bball" style="opacity:' + (c.open ? 1 : 0.45) + '">' + BBALL_SVG + '</div>';
         var icon = L.divIcon({
           className: '',
-          html: '<div class="bball" style="opacity:' + (c.open ? 1 : 0.45) + '">' + BBALL_SVG + '</div>',
+          html: '<div class="ballwrap">' + crowdDecoration(c.crowd) + ball + '</div>',
           iconSize: [size, size],
           iconAnchor: [size / 2, size / 2]
         });
