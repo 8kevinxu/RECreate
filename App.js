@@ -259,7 +259,11 @@ function CourtDetail({ court, history, myVote, now, onVote, onClose }) {
   const myLevel = myVote && now - myVote.ts <= FRESH_WINDOW_MS ? myVote.level : null;
 
   const [note, setNote] = useState(null);
-  useEffect(() => setNote(null), [court.id]); // reset when switching courts
+  const [expanded, setExpanded] = useState(false); // peek by default
+  useEffect(() => {
+    setNote(null);
+    setExpanded(false); // each court opens compact
+  }, [court.id]);
   useEffect(() => {
     if (!note) return;
     const t = setTimeout(() => setNote(null), 4000);
@@ -377,7 +381,7 @@ function CourtDetail({ court, history, myVote, now, onVote, onClose }) {
           <Text style={styles.checkinHint}>Tap your choice again to remove it.</Text>
         ) : null}
 
-        {recent.length > 0 && (
+        {expanded && recent.length > 0 && (
           <View style={styles.history}>
             <Text style={styles.historyHead}>
               👥 {lastHour} check-in{lastHour === 1 ? '' : 's'} in the last hour
@@ -394,6 +398,13 @@ function CourtDetail({ court, history, myVote, now, onVote, onClose }) {
         )}
       </View>
 
+      <Pressable style={styles.expandToggle} onPress={() => setExpanded((v) => !v)}>
+        <Text style={styles.expandToggleText}>
+          {expanded ? '⌃  Hide details' : '⌄  Schedule & reviews'}
+        </Text>
+      </Pressable>
+
+      {expanded && (
       <ScrollView style={styles.cardScroll} keyboardShouldPersistTaps="handled">
         <Text style={styles.sectionLabel}>Open-gym basketball</Text>
         {week.map((d) => (
@@ -442,7 +453,9 @@ function CourtDetail({ court, history, myVote, now, onVote, onClose }) {
           ))
         )}
       </ScrollView>
+      )}
 
+      {expanded && (
       <View style={styles.reviewForm}>
         <TextInput
           style={styles.reviewNameInput}
@@ -474,6 +487,7 @@ function CourtDetail({ court, history, myVote, now, onVote, onClose }) {
           </Pressable>
         </View>
       </View>
+      )}
     </View>
   );
 }
@@ -609,6 +623,9 @@ const styles = StyleSheet.create({
   crowdBtnTextActive: { color: '#ffffff' },
   checkinNote: { fontSize: 12, color: '#46586a', marginTop: 8, fontWeight: '600' },
   checkinHint: { fontSize: 11, color: '#9aa7b4', marginTop: 8, fontStyle: 'italic' },
+
+  expandToggle: { paddingVertical: 10, alignItems: 'center' },
+  expandToggleText: { fontSize: 13, fontWeight: '700', color: '#2f74d6' },
 
   history: { marginTop: 10, borderTopWidth: 1, borderTopColor: '#e3e8ec', paddingTop: 8 },
   historyHead: { fontSize: 12, fontWeight: '700', color: '#46586a', marginBottom: 5 },
