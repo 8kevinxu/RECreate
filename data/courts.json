@@ -1,0 +1,1177 @@
+{
+  "generatedAt": "2026-06-19T01:48:16.168Z",
+  "season": "Summer",
+  "courts": [
+    {
+      "id": "bernal-heights-recreation-center",
+      "name": "Bernal Heights Recreation Center",
+      "address": "500 Moultrie St",
+      "neighborhood": "Bernal Heights",
+      "lat": 37.738248,
+      "lng": -122.416115,
+      "indoor": true,
+      "hoops": 2,
+      "lights": true,
+      "schedule": [
+        null,
+        null,
+        [
+          600,
+          1200
+        ],
+        [
+          600,
+          1200
+        ],
+        [
+          600,
+          1200
+        ],
+        [
+          600,
+          1200
+        ],
+        [
+          540,
+          1020
+        ]
+      ],
+      "basketball": [
+        [],
+        [],
+        [
+          [
+            780,
+            1185
+          ]
+        ],
+        [
+          [
+            1080,
+            1200
+          ],
+          [
+            600,
+            1080
+          ]
+        ],
+        [
+          [
+            780,
+            1185
+          ]
+        ],
+        [
+          [
+            600,
+            1185
+          ]
+        ],
+        [
+          [
+            615,
+            1005
+          ]
+        ]
+      ],
+      "scheduleSource": "live",
+      "source": "sfrecpark",
+      "notes": "Clubhouse and gym with basketball. Closes 2–5pm daily for after-school programs."
+    },
+    {
+      "id": "betty-ann-ong-recreation-center",
+      "name": "Betty Ann Ong Recreation Center",
+      "address": "1101 Washington St",
+      "neighborhood": "Nob Hill",
+      "lat": 37.794222,
+      "lng": -122.411653,
+      "indoor": true,
+      "hoops": 2,
+      "lights": true,
+      "schedule": [
+        null,
+        [
+          840,
+          1080
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          540,
+          1020
+        ]
+      ],
+      "basketball": [
+        [],
+        [],
+        [
+          [
+            600,
+            930
+          ]
+        ],
+        [
+          [
+            600,
+            840
+          ]
+        ],
+        [
+          [
+            600,
+            1230
+          ]
+        ],
+        [
+          [
+            960,
+            1230
+          ]
+        ],
+        [
+          [
+            540,
+            780
+          ]
+        ]
+      ],
+      "scheduleSource": "live",
+      "source": "sfrecpark",
+      "notes": "Gymnasium with basketball open gym."
+    },
+    {
+      "id": "eureka-valley-recreation-center",
+      "name": "Eureka Valley Recreation Center",
+      "address": "100 Collingwood St",
+      "neighborhood": "Castro/Upper Market",
+      "lat": 37.760261,
+      "lng": -122.436438,
+      "indoor": true,
+      "hoops": 2,
+      "lights": true,
+      "schedule": [
+        null,
+        null,
+        [
+          540,
+          1200
+        ],
+        [
+          540,
+          1200
+        ],
+        [
+          540,
+          1200
+        ],
+        [
+          540,
+          1200
+        ],
+        [
+          540,
+          1020
+        ]
+      ],
+      "basketball": [
+        [],
+        [],
+        [
+          [
+            540,
+            660
+          ],
+          [
+            1080,
+            1200
+          ]
+        ],
+        [],
+        [
+          [
+            540,
+            660
+          ]
+        ],
+        [],
+        []
+      ],
+      "scheduleSource": "live",
+      "source": "sfrecpark",
+      "notes": "Play a game of basketball inside; gym with drop-in hours."
+    },
+    {
+      "id": "gene-friend-recreation-center",
+      "name": "Gene Friend Recreation Center",
+      "address": "270 6th St",
+      "neighborhood": "South of Market",
+      "lat": 37.77881,
+      "lng": -122.406382,
+      "indoor": true,
+      "hoops": 2,
+      "lights": true,
+      "schedule": [
+        null,
+        null,
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          540,
+          1020
+        ]
+      ],
+      "basketball": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "scheduleSource": "curated",
+      "source": "sfrecpark",
+      "notes": "Gymnasium with basketball. Facility page is offline (renovation) — verify hours and open gym at sfrecpark.org."
+    },
+    {
+      "id": "glen-park-recreation-center",
+      "name": "Glen Park Recreation Center",
+      "address": "70 Elk St",
+      "neighborhood": "Glen Park, West of Twin Peaks",
+      "lat": 37.737086,
+      "lng": -122.4408,
+      "indoor": true,
+      "hoops": 2,
+      "lights": true,
+      "schedule": [
+        null,
+        null,
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          540,
+          1020
+        ]
+      ],
+      "basketball": [
+        [],
+        [],
+        [
+          [
+            690,
+            1080
+          ]
+        ],
+        [
+          [
+            960,
+            1080
+          ]
+        ],
+        [
+          [
+            960,
+            1170
+          ]
+        ],
+        [
+          [
+            750,
+            960
+          ]
+        ],
+        [
+          [
+            750,
+            900
+          ],
+          [
+            900,
+            1080
+          ]
+        ]
+      ],
+      "scheduleSource": "live",
+      "source": "sfrecpark",
+      "notes": "Open gym for pickup basketball; Sat afternoon includes wheelchair basketball."
+    },
+    {
+      "id": "hamilton-recreation-center",
+      "name": "Hamilton Recreation Center",
+      "address": "1900 Geary Blvd",
+      "neighborhood": "Japantown",
+      "lat": 37.784573,
+      "lng": -122.435261,
+      "indoor": true,
+      "hoops": 2,
+      "lights": true,
+      "schedule": [
+        null,
+        null,
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          540,
+          1020
+        ]
+      ],
+      "basketball": [
+        [],
+        [],
+        [
+          [
+            930,
+            1230
+          ]
+        ],
+        [
+          [
+            930,
+            1230
+          ]
+        ],
+        [
+          [
+            930,
+            1230
+          ]
+        ],
+        [
+          [
+            930,
+            1230
+          ]
+        ],
+        [
+          [
+            570,
+            990
+          ]
+        ]
+      ],
+      "scheduleSource": "live",
+      "source": "sfrecpark",
+      "notes": "Gymnasium with basketball open gym for all ages."
+    },
+    {
+      "id": "herz-recreation-center",
+      "name": "Herz Recreation Center",
+      "address": "1701 Visitacion Ave",
+      "neighborhood": "McLaren Park, Visitacion Valley",
+      "lat": 37.712774,
+      "lng": -122.416148,
+      "indoor": true,
+      "hoops": 2,
+      "lights": true,
+      "schedule": [
+        null,
+        [
+          840,
+          1080
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          540,
+          1020
+        ]
+      ],
+      "basketball": [
+        [],
+        [],
+        [
+          [
+            870,
+            1185
+          ]
+        ],
+        [
+          [
+            870,
+            1245
+          ]
+        ],
+        [
+          [
+            870,
+            1245
+          ]
+        ],
+        [
+          [
+            870,
+            1245
+          ]
+        ],
+        [
+          [
+            540,
+            990
+          ]
+        ]
+      ],
+      "scheduleSource": "live",
+      "source": "sfrecpark",
+      "notes": "New full-size indoor gym (bleacher seating for 200)."
+    },
+    {
+      "id": "joseph-lee-recreation-center",
+      "name": "Joseph Lee Recreation Center",
+      "address": "1551 Newcomb Ave",
+      "neighborhood": "Bayview Hunters Point",
+      "lat": 37.734818,
+      "lng": -122.389629,
+      "indoor": true,
+      "hoops": 2,
+      "lights": true,
+      "schedule": [
+        null,
+        null,
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          540,
+          1020
+        ]
+      ],
+      "basketball": [
+        [],
+        [],
+        [
+          [
+            600,
+            1020
+          ]
+        ],
+        [
+          [
+            600,
+            1080
+          ],
+          [
+            1080,
+            1200
+          ]
+        ],
+        [
+          [
+            600,
+            1020
+          ]
+        ],
+        [
+          [
+            600,
+            1200
+          ]
+        ],
+        [
+          [
+            840,
+            990
+          ]
+        ]
+      ],
+      "scheduleSource": "live",
+      "source": "sfrecpark",
+      "notes": "Gymnasium — play basketball, ping-pong, tetherball or air hockey."
+    },
+    {
+      "id": "minnie-lovie-ward-recreation-center",
+      "name": "Minnie & Lovie Ward Recreation Center",
+      "address": "650 Capitol Ave",
+      "neighborhood": "Oceanview/Merced/Ingleside",
+      "lat": 37.716305,
+      "lng": -122.45744,
+      "indoor": true,
+      "hoops": 2,
+      "lights": true,
+      "schedule": [
+        null,
+        null,
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          540,
+          1020
+        ]
+      ],
+      "basketball": [
+        [],
+        [],
+        [],
+        [
+          [
+            1125,
+            1245
+          ]
+        ],
+        [
+          [
+            960,
+            1095
+          ]
+        ],
+        [
+          [
+            960,
+            1245
+          ]
+        ],
+        [
+          [
+            630,
+            750
+          ],
+          [
+            765,
+            1005
+          ]
+        ]
+      ],
+      "scheduleSource": "live",
+      "source": "sfrecpark",
+      "notes": "Gymnasium, auditorium, multipurpose rooms; basketball drop-in."
+    },
+    {
+      "id": "mission-recreation-center",
+      "name": "Mission Recreation Center",
+      "address": "2450 Harrison St",
+      "neighborhood": "Mission",
+      "lat": 37.758203,
+      "lng": -122.412819,
+      "indoor": true,
+      "hoops": 2,
+      "lights": true,
+      "schedule": [
+        null,
+        null,
+        [
+          540,
+          1260
+        ],
+        [
+          540,
+          1260
+        ],
+        [
+          540,
+          1260
+        ],
+        [
+          540,
+          1260
+        ],
+        [
+          540,
+          1020
+        ]
+      ],
+      "basketball": [
+        [],
+        [],
+        [
+          [
+            540,
+            1020
+          ]
+        ],
+        [
+          [
+            540,
+            1020
+          ]
+        ],
+        [],
+        [
+          [
+            540,
+            1020
+          ]
+        ],
+        [
+          [
+            540,
+            1020
+          ]
+        ]
+      ],
+      "scheduleSource": "live",
+      "source": "sfrecpark",
+      "notes": "Indoor gymnasium for basketball, volleyball, or indoor soccer. Open-gym schedule unavailable online — check sfrecpark.org."
+    },
+    {
+      "id": "moscone-recreation-center",
+      "name": "Moscone Recreation Center",
+      "address": "1800 Chestnut St",
+      "neighborhood": "Marina",
+      "lat": 37.801473,
+      "lng": -122.43302,
+      "indoor": true,
+      "hoops": 2,
+      "lights": true,
+      "schedule": [
+        null,
+        null,
+        [
+          600,
+          1200
+        ],
+        [
+          600,
+          1200
+        ],
+        [
+          600,
+          1200
+        ],
+        [
+          600,
+          1200
+        ],
+        [
+          540,
+          1020
+        ]
+      ],
+      "basketball": [
+        [],
+        [],
+        [
+          [
+            930,
+            1020
+          ]
+        ],
+        [
+          [
+            780,
+            840
+          ]
+        ],
+        [
+          [
+            930,
+            1020
+          ],
+          [
+            1020,
+            1170
+          ]
+        ],
+        [
+          [
+            780,
+            840
+          ]
+        ],
+        [
+          [
+            780,
+            990
+          ]
+        ]
+      ],
+      "scheduleSource": "live",
+      "source": "sfrecpark",
+      "notes": "Locals shoot hoops in the indoor basketball gym."
+    },
+    {
+      "id": "palega-recreation-center",
+      "name": "Palega Recreation Center",
+      "address": "500 Felton St",
+      "neighborhood": "Portola",
+      "lat": 37.729091,
+      "lng": -122.409724,
+      "indoor": true,
+      "hoops": 2,
+      "lights": true,
+      "schedule": [
+        null,
+        null,
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          540,
+          1020
+        ]
+      ],
+      "basketball": [
+        [],
+        [],
+        [
+          [
+            600,
+            960
+          ]
+        ],
+        [
+          [
+            600,
+            960
+          ]
+        ],
+        [
+          [
+            600,
+            960
+          ],
+          [
+            720,
+            930
+          ]
+        ],
+        [
+          [
+            600,
+            960
+          ]
+        ],
+        [
+          [
+            540,
+            600
+          ],
+          [
+            600,
+            660
+          ],
+          [
+            690,
+            750
+          ]
+        ]
+      ],
+      "scheduleSource": "live",
+      "source": "sfrecpark",
+      "notes": "Indoor gymnasium (also has outdoor courts)."
+    },
+    {
+      "id": "potrero-hill-recreation-center",
+      "name": "Potrero Hill Recreation Center",
+      "address": "801 Arkansas St",
+      "neighborhood": "Potrero Hill",
+      "lat": 37.756166,
+      "lng": -122.397223,
+      "indoor": true,
+      "hoops": 2,
+      "lights": true,
+      "schedule": [
+        null,
+        null,
+        [
+          600,
+          1200
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          540,
+          1020
+        ]
+      ],
+      "basketball": [
+        [],
+        [],
+        [
+          [
+            600,
+            1170
+          ]
+        ],
+        [
+          [
+            600,
+            1020
+          ]
+        ],
+        [
+          [
+            600,
+            1020
+          ]
+        ],
+        [
+          [
+            600,
+            1170
+          ]
+        ],
+        [
+          [
+            540,
+            990
+          ]
+        ]
+      ],
+      "scheduleSource": "live",
+      "source": "sfrecpark",
+      "notes": "Full-size indoor basketball court with bleacher seating for 200."
+    },
+    {
+      "id": "richmond-recreation-center",
+      "name": "Richmond Recreation Center",
+      "address": "251 18th Ave",
+      "neighborhood": "Outer Richmond",
+      "lat": 37.783292,
+      "lng": -122.478107,
+      "indoor": true,
+      "hoops": 2,
+      "lights": true,
+      "schedule": [
+        null,
+        null,
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          540,
+          1020
+        ]
+      ],
+      "basketball": [
+        [],
+        [],
+        [
+          [
+            1080,
+            1425
+          ]
+        ],
+        [
+          [
+            885,
+            1245
+          ]
+        ],
+        [
+          [
+            825,
+            1050
+          ]
+        ],
+        [
+          [
+            885,
+            1245
+          ]
+        ],
+        [
+          [
+            825,
+            990
+          ]
+        ]
+      ],
+      "scheduleSource": "live",
+      "source": "sfrecpark",
+      "notes": "Gymnasium with basketball open gym."
+    },
+    {
+      "id": "st-mary-s-recreation-center",
+      "name": "St. Mary's Recreation Center",
+      "address": "95 Justin Dr",
+      "neighborhood": "Bernal Heights",
+      "lat": 37.734168,
+      "lng": -122.4217,
+      "indoor": true,
+      "hoops": 2,
+      "lights": true,
+      "schedule": [
+        null,
+        null,
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          540,
+          1020
+        ]
+      ],
+      "basketball": [
+        [],
+        [],
+        [
+          [
+            1050,
+            1290
+          ]
+        ],
+        [],
+        [],
+        [
+          [
+            1050,
+            1290
+          ]
+        ],
+        [
+          [
+            540,
+            1020
+          ]
+        ]
+      ],
+      "scheduleSource": "live",
+      "source": "sfrecpark",
+      "notes": "Gymnasium with indoor basketball."
+    },
+    {
+      "id": "sunset-recreation-center",
+      "name": "Sunset Recreation Center",
+      "address": "2201 Lawton St",
+      "neighborhood": "Sunset/Parkside",
+      "lat": 37.757083,
+      "lng": -122.486769,
+      "indoor": true,
+      "hoops": 2,
+      "lights": true,
+      "schedule": [
+        null,
+        null,
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          600,
+          1260
+        ],
+        [
+          540,
+          1020
+        ]
+      ],
+      "basketball": [
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            1050,
+            1260
+          ]
+        ],
+        [
+          [
+            1050,
+            1260
+          ]
+        ],
+        []
+      ],
+      "scheduleSource": "live",
+      "source": "sfrecpark",
+      "notes": "Gymnasium with basketball."
+    },
+    {
+      "id": "upper-noe-recreation-center",
+      "name": "Upper Noe Recreation Center",
+      "address": "295 Day St",
+      "neighborhood": "Noe Valley",
+      "lat": 37.742353,
+      "lng": -122.428356,
+      "indoor": true,
+      "hoops": 2,
+      "lights": true,
+      "schedule": [
+        null,
+        null,
+        [
+          540,
+          1260
+        ],
+        [
+          540,
+          1260
+        ],
+        [
+          540,
+          1260
+        ],
+        [
+          540,
+          1260
+        ],
+        [
+          540,
+          1020
+        ]
+      ],
+      "basketball": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            540,
+            720
+          ]
+        ]
+      ],
+      "scheduleSource": "live",
+      "source": "sfrecpark",
+      "notes": "Full-size indoor gym."
+    }
+  ]
+}

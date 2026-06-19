@@ -11,7 +11,7 @@ import {
   View,
 } from 'react-native';
 import CourtMap from './components/CourtMap';
-import COURTS from './data/courts';
+import { useCourts } from './lib/useCourts';
 import {
   getOpenStatus,
   getBasketballStatus,
@@ -54,14 +54,17 @@ export default function App() {
     })();
   }, []);
 
-  // Courts annotated with facility status + basketball open-gym status.
+  // Court data: bundled → cached → freshly fetched (see useCourts).
+  const { courts: courtData } = useCourts();
+
+  // Annotated with facility status + basketball open-gym status.
   const courts = useMemo(() => {
-    return COURTS.map((c) => ({
+    return courtData.map((c) => ({
       ...c,
       status: getOpenStatus(c, now),
       bball: getBasketballStatus(c, now),
     }));
-  }, [now]);
+  }, [courtData, now]);
 
   // "Open now" = drop-in basketball is happening right now.
   const visibleCourts = useMemo(() => {

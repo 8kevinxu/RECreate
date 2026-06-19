@@ -3,20 +3,30 @@
  * Build data/courts.js — SF Recreation & Parks recreation centers that have an
  * INDOOR basketball gym. Run with:  npm run build:courts
  *
- * Two authoritative sources are combined:
- *   1. Which rec centers have an indoor basketball gym + their hours — verified
- *      from SF Rec & Park facility descriptions (sfrecpark.org / sf-parks.com)
- *      and recorded in the CENTERS table below.
- *   2. Exact coordinates / address / neighborhood — pulled live from DataSF's
- *      "Recreation and Parks Facilities" dataset (ib5c-xgwu) by property name.
+ * Sources combined:
+ *   1. Which rec centers have an indoor gym, facility hours, and the curated
+ *      fallback open-gym blocks — the CENTERS table below.
+ *   2. Exact coordinates / address / neighborhood — DataSF "Recreation and Parks
+ *      Facilities" dataset (ib5c-xgwu), by property name.
+ *   3. LIVE basketball open-gym schedules — scraped each run from the Gymnasium
+ *      row of each center's sfrecpark.org facility page (see FID map + parser).
  *
- * This replaces the earlier outdoor/OSM hybrid pipeline. Hours are the facility
- * operating hours; actual basketball OPEN-GYM times vary seasonally — verify on
- * sfrecpark.org.
+ * Resilience: each center falls back live-scrape -> last-good cache -> curated
+ * blocks. A validation gate aborts the whole run (keeping the existing
+ * data/courts.js) if too few centers scrape successfully, so a site redesign
+ * can't silently publish empty schedules.
  */
 
 const fs = require('fs');
 const path = require('path');
+const cheerio = require('cheerio');
+
+const CACHE_FILE = path.join(__dirname, 'schedule-cache.json');
+const BROWSER_UA =
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
+
+// Abort (keep last-good courts.js) if fewer than this many centers scrape live.
+const MIN_LIVE_OK = 10;
 
 const DATASF =
   'https://data.sfgov.org/resource/ib5c-xgwu.json?' +
@@ -253,6 +263,110 @@ function slug(name) {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 }
 
+// sfrecpark.org facility-page slugs (…/Facilities/Facility/Details/<slug>), keyed
+// by center name. Used to scrape the live Gymnasium open-gym schedule.
+const FID = {
+  'Mission Recreation Center': 'Mission-Rec-Center-100',
+  'Moscone Recreation Center': 'Moscone-Rec-Center-101',
+  "St. Mary's Recreation Center": 'St-Marys-Rec-Center-109',
+  'Upper Noe Recreation Center': 'Upper-Noe-Rec-Center-112',
+  'Hamilton Recreation Center': 'Hamilton-Rec-Center-93',
+  'Eureka Valley Recreation Center': 'Eureka-Valley-Rec-Center-86',
+  'Gene Friend Recreation Center': 'Gene-Friend-Rec-Center-88',
+  'Richmond Recreation Center': 'Richmond-Rec-Center-105',
+  'Sunset Recreation Center': 'Sunset-Rec-Center-110',
+  'Palega Recreation Center': 'Palega-Rec-Center-103',
+  'Joseph Lee Recreation Center': 'Joseph-Lee-Rec-Center-95',
+  'Minnie & Lovie Ward Recreation Center': 'Minnie-Love-Ward-Rec-Center-97',
+  'Bernal Heights Recreation Center': 'Bernal-Heights-Rec-Center-83',
+  'Betty Ann Ong Recreation Center': 'Betty-Ann-Ong-Recreation-Center-84',
+  'Glen Park Recreation Center': 'Glen-Canyon-Park-Recreation-Center-89',
+  'Herz Recreation Center': 'Herz-Recreation-Center-471',
+  'Potrero Hill Recreation Center': 'Potrero-Hill-Rec-Center-275',
+};
+
+// ---- live schedule scraper -------------------------------------------------
+
+// "10 a.m." | "11:30 a.m." | "4 p.m." | "12" (meridiem may be omitted on start)
+function parseClock(s) {
+  const m = String(s).trim().match(/^(\d{1,2})(?::(\d{2}))?\s*(a\.?m\.?|p\.?m\.?)?$/i);
+  if (!m) return null;
+  return {
+    h: +m[1],
+    min: m[2] ? +m[2] : 0,
+    mer: m[3] ? m[3].replace(/\./g, '').toLowerCase() : null,
+  };
+}
+function toMin(c, mer) {
+  let h = c.h % 12;
+  if ((c.mer || mer) === 'pm') h += 12;
+  return h * 60 + c.min;
+}
+// "12–3:30 p.m." -> [720, 930]; start inherits the end's a.m./p.m. when missing.
+function parseRange(text) {
+  const [a, b] = String(text).split(/[–—-]/).map((x) => x && x.trim());
+  const A = parseClock(a || ''), B = parseClock(b || '');
+  if (!A || !B) return null;
+  const mer = B.mer || A.mer;
+  const range = [toMin(A, mer), toMin(B, mer)];
+  // Sanity: ordered and within a sane day window.
+  if (range[0] >= range[1] || range[0] < 5 * 60 || range[1] > 24 * 60) return null;
+  return range;
+}
+
+// Parse the Gymnasium row's basketball blocks from a facility page's HTML.
+// Returns { season, basketball: [7][ [start,end], ... ] } (0=Sun..6=Sat).
+function parseGymBasketball(html) {
+  const $ = cheerio.load(html);
+  const season = $('.schedule-title').first().text().trim();
+
+  const table = $('table')
+    .filter((_, el) => $(el).find('th[scope="col"]').length > 0)
+    .first();
+  const cols = table.find('th[scope="col"]').map((_, th) => $(th).text().trim()).get();
+  const colDay = cols.map((name) => DAY_INDEX[name.slice(0, 3).toLowerCase()]);
+
+  const week = [[], [], [], [], [], [], []];
+  const gymRow = table
+    .find('th[scope="row"]')
+    .filter((_, th) => /gymnasium/i.test($(th).text()))
+    .first()
+    .closest('tr');
+
+  gymRow.find('td').each((i, td) => {
+    const day = colDay[i + 1]; // cols[0] is "Facility / Room"; cells start at Monday
+    if (day == null) return;
+    $(td).find('.item').each((_, item) => {
+      const activity = $(item).find('.activity').text();
+      if (!/basketball/i.test(activity)) return;
+      // Exclude structured programs — keep only show-up-and-play sessions.
+      if (/league|class|clinic|camp|academy|practice|training|tournament/i.test(activity)) return;
+      const range = parseRange($(item).find('.time').text());
+      if (range) week[day].push(range);
+    });
+  });
+
+  const count = week.reduce((n, d) => n + d.length, 0);
+  return { season, basketball: week, count };
+}
+
+async function scrapeSchedule(fid) {
+  const url = `https://sfrecpark.org/Facilities/Facility/Details/${fid}`;
+  const res = await fetch(url, { headers: { 'User-Agent': BROWSER_UA } });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const parsed = parseGymBasketball(await res.text());
+  if (parsed.count === 0) throw new Error('no gym basketball blocks found');
+  return parsed;
+}
+
+function loadCache() {
+  try {
+    return JSON.parse(fs.readFileSync(CACHE_FILE, 'utf8'));
+  } catch {
+    return {};
+  }
+}
+
 async function main() {
   console.log('Fetching rec-center coordinates from DataSF…');
   const rows = await (await fetch(DATASF, {
@@ -269,6 +383,45 @@ async function main() {
     }
   }
 
+  // Scrape each center's live open-gym schedule (sequential = polite to the site).
+  const cache = loadCache();
+  const stats = { live: 0, cache: 0, curated: 0 };
+  const seasons = new Set();
+  console.log('Scraping live open-gym schedules from sfrecpark.org…');
+
+  for (const c of CENTERS) {
+    const fid = FID[c.name];
+    let chosen = { basketball: c.bball, source: 'curated' };
+    if (fid) {
+      try {
+        const live = await scrapeSchedule(fid);
+        cache[fid] = { basketball: live.basketball, season: live.season, scrapedAt: new Date().toISOString() };
+        chosen = { basketball: live.basketball, source: 'live' };
+        const s = (live.season.match(/spring|summer|fall|autumn|winter/i) || [])[0];
+        if (s) seasons.add(s[0].toUpperCase() + s.slice(1).toLowerCase());
+        console.log(`  ✓ ${c.name} — ${live.count} blocks (live)`);
+      } catch (e) {
+        if (cache[fid]) {
+          chosen = { basketball: cache[fid].basketball, source: 'cache' };
+          console.log(`  ↺ ${c.name} — scrape failed (${e.message}); using cached`);
+        } else {
+          console.log(`  ⚠ ${c.name} — scrape failed (${e.message}); using curated fallback`);
+        }
+      }
+    }
+    stats[chosen.source]++;
+    c._bball = chosen.basketball;
+    c._scheduleSource = chosen.source;
+  }
+
+  // Validation gate: refuse to publish a mostly-empty scrape (e.g. site redesign).
+  if (stats.live < MIN_LIVE_OK) {
+    throw new Error(
+      `Only ${stats.live}/${CENTERS.length} centers scraped live (min ${MIN_LIVE_OK}). ` +
+        `Site markup may have changed — data/courts.js left unchanged.`
+    );
+  }
+
   const courts = CENTERS.map((c) => {
     const row = byProp[c.prop];
     if (!row) throw new Error(`No DataSF coordinates found for "${c.prop}"`);
@@ -283,20 +436,33 @@ async function main() {
       hoops: 2,
       lights: true,
       schedule: c.sched,
-      basketball: c.bball,
+      basketball: c._bball,
+      scheduleSource: c._scheduleSource,
       source: 'sfrecpark',
       notes: c.notes,
     };
   }).sort((a, b) => a.name.localeCompare(b.name));
 
-  fs.writeFileSync(
-    path.join(__dirname, '..', 'data', 'courts.js'),
-    render(courts)
+  fs.writeFileSync(CACHE_FILE, JSON.stringify(cache, null, 2) + '\n');
+  const season = [...seasons].join(' / ') || 'unknown';
+  const dataDir = path.join(__dirname, '..', 'data');
+
+  // Bundled module (offline fallback baked into the app).
+  fs.writeFileSync(path.join(dataDir, 'courts.js'), render(courts, season));
+
+  // Hostable JSON the app fetches at launch (committed + served via raw GitHub
+  // / Pages; the cron keeps it fresh). Wrapped with metadata for a freshness UI.
+  const payload = { generatedAt: new Date().toISOString(), season, courts };
+  fs.writeFileSync(path.join(dataDir, 'courts.json'), JSON.stringify(payload, null, 2) + '\n');
+
+  console.log(
+    `\n✅ Wrote ${courts.length} courts to data/courts.js + data/courts.json` +
+      `\n   open-gym schedules: ${stats.live} live, ${stats.cache} cached, ${stats.curated} curated fallback` +
+      `\n   season: ${season}`
   );
-  console.log(`\n✅ Wrote ${courts.length} indoor SF Rec & Park courts to data/courts.js`);
 }
 
-function render(courts) {
+function render(courts, season) {
   const body = courts
     .map(
       (c) => `  {
@@ -311,6 +477,7 @@ function render(courts) {
     lights: true,
     schedule: ${JSON.stringify(c.schedule)},
     basketball: ${JSON.stringify(c.basketball)},
+    scheduleSource: ${JSON.stringify(c.scheduleSource)},
     source: "sfrecpark",
     notes: ${JSON.stringify(c.notes)},
   },`
@@ -320,17 +487,17 @@ function render(courts) {
   return `// AUTO-GENERATED by scripts/build-indoor-courts.js — do not edit by hand.
 // Regenerate with: npm run build:courts
 // Generated: ${new Date().toISOString()}
+// Schedule season (from sfrecpark.org): ${season}
 //
 // SF Recreation & Parks recreation centers with an INDOOR basketball gym.
-// Indoor-basketball determination + hours: verified from SF Rec & Park facility
-// descriptions (sfrecpark.org / sf-parks.com). Coordinates, addresses and
-// neighborhoods: DataSF "Recreation and Parks Facilities" dataset (ib5c-xgwu).
+// Indoor-gym determination + facility hours: curated in the build script.
+// Coordinates/address/neighborhood: DataSF dataset ib5c-xgwu.
+// Open-gym basketball times: scraped live from each center's sfrecpark.org page.
 //
-// schedule[]  = FACILITY hours, indexed 0=Sun..6=Sat; [openMin,closeMin] or null.
+// schedule[]   = FACILITY hours, indexed 0=Sun..6=Sat; [openMin,closeMin] or null.
 // basketball[] = drop-in OPEN-GYM basketball blocks, same day index; each day is
 //   an array of [startMin,closeMin] blocks (empty when no basketball that day).
-//   Scraped from each center's sfrecpark.org facility page (summer 2026) and
-//   subject to seasonal change — verify on sfrecpark.org.
+// scheduleSource = "live" (scraped this run) | "cache" (last good) | "curated".
 
 export const COURTS = [
 ${body}

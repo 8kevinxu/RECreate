@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
+    "@react-native-async-storage/async-storage": "2.2.0",
     "expo": "^54.0.35",
     "expo-location": "~19.0.8",
     "expo-status-bar": "~3.0.9",
@@ -17,5 +18,8 @@
     "web": "expo start --web",
     "build:courts": "node scripts/build-indoor-courts.js"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "cheerio": "^1.2.0"
+  }
 }
