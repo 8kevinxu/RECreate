@@ -395,3 +395,55 @@ begin
     alter publication supabase_realtime add table public.friendships;
   end if;
 end $$;
+
+-- ===========================================================================
+-- Social: "down to hoop" signals — location-less availability pings to friends.
+-- A signal with no starts_at means "right now"; with starts_at it's "at a time,
+-- no place yet". Friends-only (RLS), and auto-expiring. Builds on friendships.
+-- ===========================================================================
+
+create table if not exists public.hoop_signals (
+  id          uuid        primary key default gen_random_uuid(),
+  user_id     uuid        not null references public.profiles (id) on delete cascade,
+  starts_at   timestamptz,                                   -- null = "right now"
+  note        text        check (note is null or char_length(note) <= 200),
+  created_at  timestamptz not null default now(),
+  expires_at  timestamptz not null                           -- set by the client
+);
+
+create index if not exists hoop_signals_expires_idx on public.hoop_signals (expires_at);
+create index if not exists hoop_signals_user_idx on public.hoop_signals (user_id);
+
+alter table public.hoop_signals enable row level security;
+
+-- You can see your own signals and those of accepted friends.
+create policy "see your own and friends' signals"
+  on public.hoop_signals for select
+  using (
+    user_id = auth.uid()
+    or exists (
+      select 1 from public.friendships f
+      where f.status = 'accepted'
+        and (
+          (f.requester = auth.uid() and f.addressee = hoop_signals.user_id)
+          or (f.addressee = auth.uid() and f.requester = hoop_signals.user_id)
+        )
+    )
+  );
+
+create policy "post your own signal"
+  on public.hoop_signals for insert with check (user_id = auth.uid());
+
+create policy "cancel your own signal"
+  on public.hoop_signals for delete using (user_id = auth.uid());
+
+-- Real-time so friends' signals appear live (the in-app "notification").
+do $$
+begin
+  if not exists (
+    select 1 from pg_publication_tables
+    where pubname = 'supabase_realtime' and schemaname = 'public' and tablename = 'hoop_signals'
+  ) then
+    alter publication supabase_realtime add table public.hoop_signals;
+  end if;
+end $$;

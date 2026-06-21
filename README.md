@@ -41,7 +41,9 @@ stays centered on San Francisco — everything else still works.
 | `components/AuthModal.js` | Sign in / create account / account sheet |
 | `components/RunModal.js` | "Plan a run" form (day/time + note) |
 | `lib/friends.js` | Friends graph (codes, add/accept/remove) |
-| `components/FriendsModal.js` | Friends sheet (your code, add by code, requests) |
+| `components/FriendsModal.js` | Friends sheet (your code, add by code, requests, signals) |
+| `lib/signals.js` | "Down to hoop" availability signals (friends-only, realtime) |
+| `components/SignalModal.js` | "Down to hoop" composer (now / at a time + note) |
 
 ## Court data (SF Rec & Parks indoor gyms)
 
@@ -236,13 +238,27 @@ Setup: run the **friends graph** section of [`supabase/schema.sql`](supabase/sch
 once — it adds the `friend_code` column (+ generator/backfill) and the
 `friendships` table, policies, and real-time.
 
+## Down to hoop
+
+A location-less availability ping to friends: in the **👥 Friends** sheet tap
+**🏀 I'm down** → **Right now** or **At a time** (+ optional note). Friends see it
+live in their "Down to hoop" feed, and the Friends button shows a **badge** with
+the count of friends currently down — the in-app "notification". Signals are
+**friends-only** (RLS) and **auto-expire** 2h after they start. Code lives in
+`lib/signals.js` + `components/SignalModal.js`.
+
+Setup: run the **"down to hoop" signals** section of
+[`supabase/schema.sql`](supabase/schema.sql) once.
+
+> **Note:** this is in-app/real-time only. True push (buzz the phone when the app
+> is closed) is the `expo-notifications` item below and needs a native dev build.
+
 ## Ideas for next
 
+- **Push notifications:** `expo-notifications` so runs / signals reach people who
+  don't have the app open (needs a dev build). Turns the in-app feed into real pings.
 - **Friends + runs:** scope run visibility to `friends` and add a feed of friends'
   upcoming runs (the `hoop_runs.visibility` column is ready for this).
-- **Push notifications:** `expo-notifications` so a "run planned" / "I'm in" pings
-  reach people who don't have the app open (needs a dev build).
-- **"Down to hoop" presence:** one-tap "available now" status, surfaced to friends.
 - **Invite links:** wrap a friend code in a deep link to add with one tap.
 - **Distance sort:** rank courts by distance from the user.
 - **Outdoor courts / more sports:** the data model has room (`indoor`, `source`

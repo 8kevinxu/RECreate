@@ -19,6 +19,7 @@ import FriendsModal from './components/FriendsModal';
 import { useAuth } from './lib/auth';
 import { useCourts } from './lib/useCourts';
 import { fmtClock, startOfDay, viewLabel, dayChipLabel } from './lib/datetime';
+import { loadSignals, subscribeSignals } from './lib/signals';
 import {
   loadRuns,
   joinRun,
@@ -77,6 +78,7 @@ export default function App() {
   const { enabled: authEnabled, user, displayName } = useAuth();
   const [authOpen, setAuthOpen] = useState(false);
   const [friendsOpen, setFriendsOpen] = useState(false);
+  const [signalCount, setSignalCount] = useState(0); // active friend "down to hoop" signals
 
   // Load check-ins + my votes on mount; (when shared) live-update by merging
   // new check-ins incrementally and refetching on deletes.
@@ -125,6 +127,25 @@ export default function App() {
     const t = setInterval(() => setNow(new Date()), 60 * 1000);
     return () => clearInterval(t);
   }, []);
+
+  // Badge: live count of friends' active "down to hoop" signals (not your own).
+  useEffect(() => {
+    if (!authEnabled || !user) {
+      setSignalCount(0);
+      return;
+    }
+    let alive = true;
+    const refresh = () =>
+      loadSignals().then((list) => {
+        if (alive) setSignalCount(list.filter((s) => !s.mine).length);
+      });
+    refresh();
+    const unsub = subscribeSignals(refresh);
+    return () => {
+      alive = false;
+      unsub();
+    };
+  }, [authEnabled, user?.id]);
 
   // Ask for location once on mount; fall back silently to the SF-wide view.
   useEffect(() => {
@@ -264,6 +285,11 @@ export default function App() {
             {user && (
               <Pressable style={styles.account} onPress={() => setFriendsOpen(true)}>
                 <Text style={styles.accountText}>👥 Friends</Text>
+                {signalCount > 0 && (
+                  <View style={styles.badge}>
+                    <Text style={styles.badgeText}>{signalCount}</Text>
+                  </View>
+                )}
               </Pressable>
             )}
             <Pressable style={styles.account} onPress={() => setAuthOpen(true)}>
@@ -802,6 +828,19 @@ const styles = StyleSheet.create({
     maxWidth: 150,
   },
   accountText: { color: '#cfe0f0', fontWeight: '700', fontSize: 13 },
+  badge: {
+    position: 'absolute',
+    top: -5,
+    right: -5,
+    minWidth: 18,
+    height: 18,
+    borderRadius: 9,
+    backgroundColor: '#e8730c',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 4,
+  },
+  badgeText: { color: '#fff', fontSize: 11, fontWeight: '800' },
   title: { color: '#fff', fontSize: 24, fontWeight: '800' },
   subtitle: { color: '#9db4cc', fontSize: 13, marginTop: 2 },
   updated: { color: '#6f8298', fontSize: 11, marginTop: 2 },

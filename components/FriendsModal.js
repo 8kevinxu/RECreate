@@ -20,25 +20,32 @@ import {
   acceptRequest,
   removeFriendship,
 } from '../lib/friends';
+import { loadSignals, cancelSignal, subscribeSignals } from '../lib/signals';
+import { viewLabel } from '../lib/datetime';
+import SignalModal from './SignalModal';
 
 export default function FriendsModal({ visible, onClose }) {
   const [code, setCode] = useState(null);
   const [friends, setFriends] = useState([]);
   const [incoming, setIncoming] = useState([]);
+  const [signals, setSignals] = useState([]);
+  const [signalOpen, setSignalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [addInput, setAddInput] = useState('');
   const [busy, setBusy] = useState(false);
   const [msg, setMsg] = useState(null); // { kind: 'ok' | 'err', text }
 
   const refresh = async () => {
-    const [c, f, i] = await Promise.all([
+    const [c, f, i, s] = await Promise.all([
       getMyCode(),
       listFriends(),
       listIncomingRequests(),
+      loadSignals(),
     ]);
     setCode(c);
     setFriends(f);
     setIncoming(i);
+    setSignals(s);
   };
 
   useEffect(() => {
@@ -47,6 +54,9 @@ export default function FriendsModal({ visible, onClose }) {
     setMsg(null);
     setAddInput('');
     refresh().finally(() => setLoading(false));
+    // Live-update the "down to hoop" feed while the sheet is open.
+    const unsub = subscribeSignals(() => loadSignals().then(setSignals));
+    return unsub;
   }, [visible]);
 
   const onAdd = async () => {
@@ -80,6 +90,12 @@ export default function FriendsModal({ visible, onClose }) {
     await refresh();
     setBusy(false);
   };
+  const onCancelSignal = async (id) => {
+    setBusy(true);
+    await cancelSignal(id);
+    await refresh();
+    setBusy(false);
+  };
 
   const shareCode = async () => {
     if (!code) return;
@@ -109,8 +125,40 @@ export default function FriendsModal({ visible, onClose }) {
             </View>
           ) : (
             <ScrollView keyboardShouldPersistTaps="handled">
+              {/* Down to hoop feed */}
+              <View style={styles.feedHead}>
+                <Text style={styles.label}>Down to hoop</Text>
+                <Pressable style={styles.dthBtn} onPress={() => setSignalOpen(true)}>
+                  <Text style={styles.dthBtnText}>🏀 I’m down</Text>
+                </Pressable>
+              </View>
+              {signals.length === 0 ? (
+                <Text style={styles.muted}>
+                  No one’s down right now — tap “I’m down” to ping your friends.
+                </Text>
+              ) : (
+                signals.map((s) => (
+                  <View key={s.id} style={styles.row}>
+                    <View style={{ flex: 1 }}>
+                      <Text style={styles.rowName}>
+                        {s.mine ? 'You' : `👤 ${s.name}`} ·{' '}
+                        <Text style={styles.when}>
+                          {s.isNow ? 'right now' : viewLabel(s.startsAt)}
+                        </Text>
+                      </Text>
+                      {!!s.note && <Text style={styles.signalNote}>{s.note}</Text>}
+                    </View>
+                    {s.mine && (
+                      <Pressable hitSlop={8} disabled={busy} onPress={() => onCancelSignal(s.id)}>
+                        <Text style={styles.removeText}>Cancel</Text>
+                      </Pressable>
+                    )}
+                  </View>
+                ))
+              )}
+
               {/* Your code */}
-              <Text style={styles.label}>Your friend code</Text>
+              <Text style={[styles.label, styles.sectionGap]}>Your friend code</Text>
               <View style={styles.codeRow}>
                 <Text selectable style={styles.code}>
                   {code || '—'}
@@ -202,6 +250,12 @@ export default function FriendsModal({ visible, onClose }) {
               )}
             </ScrollView>
           )}
+
+          <SignalModal
+            visible={signalOpen}
+            onClose={() => setSignalOpen(false)}
+            onPosted={refresh}
+          />
         </Pressable>
       </Pressable>
     </Modal>
@@ -237,6 +291,22 @@ const styles = StyleSheet.create({
     marginBottom: 6,
   },
   sectionGap: { marginTop: 18 },
+
+  feedHead: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 6,
+  },
+  dthBtn: {
+    backgroundColor: '#1f9d55',
+    borderRadius: 8,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+  },
+  dthBtnText: { color: '#fff', fontWeight: '800', fontSize: 13 },
+  when: { color: '#1f9d55', fontWeight: '700' },
+  signalNote: { fontSize: 13, color: '#5b6b7b', marginTop: 1 },
 
   codeRow: { flexDirection: 'row', alignItems: 'center', gap: 10 },
   code: {
