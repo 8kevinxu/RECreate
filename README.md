@@ -47,6 +47,7 @@ stays centered on San Francisco — everything else still works.
 | `components/SignalModal.js` | "Down to hoop" composer (now / at a time + note) |
 | `components/SessionModal.js` | Session sheet (join, suggest a time, host confirms) |
 | `lib/distance.js` | Haversine distance + formatting (miles) |
+| `lib/push.js` | Expo push-token registration + notification-tap handling |
 | `components/NearbyList.js` | Nearby courts ranked by distance, with a min-open filter |
 
 ## Court data (SF Rec & Parks indoor gyms)
@@ -284,13 +285,48 @@ Setup: run the **"down to hoop" signals** section, the **joinable sessions**
 section, and the small **sessions can carry a place** column add at the bottom of
 [`supabase/schema.sql`](supabase/schema.sql) once.
 
-> **Note:** this is in-app/real-time only. True push (buzz the phone when the app
-> is closed) is the `expo-notifications` item below and needs a native dev build.
+> **Note:** the in-app feed is real-time. To also **buzz the phone when the app
+> is closed**, see *Push notifications* below.
+
+## Push notifications
+
+Real pushes (`expo-notifications`) for the social moments that matter, so they
+land even when the app is closed:
+
+| Event | Who gets it |
+| --- | --- |
+| A friend posts **"down to hoop"** | their friends |
+| A friend **plans a run** | their friends |
+| Someone **joins** your run / session | the host |
+| A session's **court + time is confirmed** | the other participants |
+| Your **friend request is accepted** | the requester |
+
+**How it works.** On sign-in the app registers the device's **Expo push token**
+in a `device_tokens` table (`lib/push.js`). Postgres triggers on `hoop_signals`,
+`hoop_runs`, the participant tables, and `friendships` call a `send_push()`
+helper that POSTs to **Expo's push API straight from the database via `pg_net`**
+— no Edge Function or server to run. Tapping a push deep-links into the app (the
+court for a run, the Friends sheet for signals/sessions/friend events).
+
+**Setup (one-time):**
+
+1. **EAS project** — `getExpoPushTokenAsync` needs a project id. Run `eas init`
+   (it writes `extra.eas.projectId` into `app.json`). Without it, registration
+   no-ops and nothing else breaks.
+2. **Dev build** — remote push doesn't work in Expo Go (SDK 53+) or on web/
+   simulators. Make a development build: `npx expo run:ios` / `npx expo run:android`
+   (or an EAS build) and run it on a **physical device**.
+3. **Database** — run the **Push notifications** section at the bottom of
+   [`supabase/schema.sql`](supabase/schema.sql) once. It enables `pg_net`, adds
+   `device_tokens` (+ RLS) and the trigger functions. (`pg_net` may need enabling
+   under **Database → Extensions** in the Supabase dashboard first.)
+
+**Limitations (v1):** pushes are fire-and-forget — Expo delivery receipts aren't
+checked, and tokens aren't pruned when a device unregisters at the OS level
+(`DeviceNotRegistered`). Both are easy follow-ups (a receipts poller / cleanup).
 
 ## Ideas for next
 
-- **Push notifications:** `expo-notifications` so runs / signals reach people who
-  don't have the app open (needs a dev build). Turns the in-app feed into real pings.
 - **Invite links:** wrap a friend code in a deep link to add with one tap.
 - **Outdoor courts / more sports:** the data model has room (`indoor`, `source`
   fields) to bring back outdoor courts or add other sports later.

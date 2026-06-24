@@ -10,7 +10,8 @@
       "supportsTablet": true,
       "infoPlist": {
         "NSLocationWhenInUseUsageDescription": "HoopMap uses your location to show basketball courts near you."
-      }
+      },
+      "bundleIdentifier": "com.8kevinxu.hoopmap"
     },
     "android": {
       "adaptiveIcon": {
@@ -18,7 +19,11 @@
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
-      }
+      },
+      "permissions": [
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -29,7 +34,19 @@
         {
           "locationWhenInUsePermission": "HoopMap uses your location to show basketball courts near you."
         }
+      ],
+      [
+        "expo-notifications",
+        {
+          "defaultChannel": "default"
+        }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "8c3d7361-c50c-493e-ab13-5712cffedbd7"
+      }
+    },
+    "owner": "8kevinxu"
   }
 }

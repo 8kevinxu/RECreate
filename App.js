@@ -22,6 +22,7 @@ import { useCourts } from './lib/useCourts';
 import { fmtClock, startOfDay, viewLabel, dayChipLabel, fmtDuration } from './lib/datetime';
 import { haversineMiles, formatDistance } from './lib/distance';
 import { loadSignals, subscribeSignals } from './lib/signals';
+import { registerForPush, onNotificationTap } from './lib/push';
 import {
   getOpenStatus,
   getBasketballStatus,
@@ -145,6 +146,22 @@ export default function App() {
       unsub();
     };
   }, [authEnabled, user?.id]);
+
+  // Register this device for push when signed in (no-ops on web/simulator/Expo
+  // Go or without an EAS projectId). Sign-out unregisters via lib/auth.
+  useEffect(() => {
+    if (!authEnabled || !user) return;
+    registerForPush(user.id);
+  }, [authEnabled, user?.id]);
+
+  // Tapping a push deep-links: run/run-join → open that court; signal/session/
+  // friend events → open the Friends sheet.
+  useEffect(() => {
+    return onNotificationTap((data) => {
+      if (data.courtId) setSelectedId(data.courtId);
+      else if (data.type) setFriendsOpen(true);
+    });
+  }, []);
 
   // Ask for location (on mount, and again if the user taps "enable location").
   const requestLocation = useCallback(async () => {

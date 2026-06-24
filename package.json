@@ -7,7 +7,10 @@
     "@react-native-async-storage/async-storage": "2.2.0",
     "@supabase/supabase-js": "^2.108.2",
     "expo": "^54.0.35",
+    "expo-constants": "~18.0.13",
+    "expo-device": "~8.0.10",
     "expo-location": "~19.0.8",
+    "expo-notifications": "~0.32.17",
     "expo-status-bar": "~3.0.9",
     "leaflet": "^1.9.4",
     "react": "19.1.0",
@@ -19,8 +22,8 @@
   },
   "scripts": {
     "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
     "web": "expo start --web",
     "build:courts": "node scripts/build-indoor-courts.js"
   },
