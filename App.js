@@ -496,6 +496,7 @@ export default function App() {
       <RunModal
         visible={runOpen}
         courts={courtData}
+        userLocation={userLocation}
         defaultTime={isPicked ? viewTime : null}
         onClose={() => setRunOpen(false)}
       />

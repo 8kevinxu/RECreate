@@ -16,6 +16,7 @@ import {
 import { createRun, MAX_NOTE } from '../lib/runs';
 import { startOfDay, dayChipLabel, fmtClock } from '../lib/datetime';
 import { basketballWeekdays, openGymSlots } from '../lib/hours';
+import { haversineMiles, formatDistance } from '../lib/distance';
 
 const minutesOf = (d) => d.getHours() * 60 + d.getMinutes();
 // Does this court run open-gym basketball at the exact picked day+time? Slots are
@@ -23,7 +24,14 @@ const minutesOf = (d) => d.getHours() * 60 + d.getMinutes();
 const courtOpenAt = (court, when) =>
   !when || openGymSlots(court, when.getDay()).includes(minutesOf(when));
 
-export default function RunModal({ visible, courts = [], defaultTime, onClose, onCreated }) {
+export default function RunModal({
+  visible,
+  courts = [],
+  userLocation,
+  defaultTime,
+  onClose,
+  onCreated,
+}) {
   const days = useMemo(() => {
     const base = startOfDay(new Date());
     return Array.from({ length: 7 }, (_, i) => {
@@ -118,13 +126,24 @@ export default function RunModal({ visible, courts = [], defaultTime, onClose, o
     else setPicked(null);
   };
 
-  // Court rows: once a time is picked, courts open then float to the top and the
-  // rest are disabled; with no time yet, every court is selectable.
+  // Court rows: ranked by proximity to the user (closest first) when location is
+  // available, else left in the data's default (alphabetical) order. Once a time
+  // is picked, courts open then float above the rest (which are disabled), with
+  // proximity/default order breaking ties within each group.
   const courtRows = useMemo(() => {
-    const rows = courts.map((c) => ({ c, open: courtOpenAt(c, picked) }));
-    if (!picked) return rows;
-    return rows.sort((a, b) => (a.open === b.open ? 0 : a.open ? -1 : 1));
-  }, [courts, picked]);
+    const rows = courts.map((c) => ({
+      c,
+      open: courtOpenAt(c, picked),
+      dist: userLocation
+        ? haversineMiles(userLocation.lat, userLocation.lng, c.lat, c.lng)
+        : null,
+    }));
+    return rows.sort((a, b) => {
+      if (picked && a.open !== b.open) return a.open ? -1 : 1;
+      if (a.dist != null && b.dist != null) return a.dist - b.dist;
+      return 0; // no location → keep default (alphabetical) order
+    });
+  }, [courts, picked, userLocation]);
 
   const submit = async () => {
     if (!courtId) {
@@ -172,9 +191,12 @@ export default function RunModal({ visible, courts = [], defaultTime, onClose, o
             )}
           </View>
           <ScrollView style={styles.courtList} nestedScrollEnabled>
-            {courtRows.map(({ c, open }) => {
+            {courtRows.map(({ c, open, dist }) => {
               const active = c.id === courtId;
               const disabled = !!picked && !open;
+              const sub = [c.neighborhood, dist != null ? formatDistance(dist) : null]
+                .filter(Boolean)
+                .join(' · ');
               return (
                 <Pressable
                   key={c.id}
@@ -193,12 +215,12 @@ export default function RunModal({ visible, courts = [], defaultTime, onClose, o
                     >
                       {c.name}
                     </Text>
-                    {!!c.neighborhood && (
+                    {!!sub && (
                       <Text
                         style={[styles.courtRowSub, active && styles.courtRowSubActive]}
                         numberOfLines={1}
                       >
-                        {c.neighborhood}
+                        {sub}
                       </Text>
                     )}
                   </View>
