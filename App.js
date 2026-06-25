@@ -4,6 +4,8 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
   ActivityIndicator,
   Dimensions,
+  Linking,
+  Platform,
   Pressable,
   SafeAreaView,
   ScrollView,
@@ -570,6 +572,17 @@ export default function App() {
         defaultTime={isPicked ? viewTime : null}
         onClose={() => setRunOpen(false)}
       />
+
+      {Platform.OS === 'web' && (
+        <Pressable
+          style={styles.watermark}
+          onPress={() => Linking.openURL('https://github.com/8kevinxu/hoopmap')}
+          accessibilityRole="link"
+          accessibilityLabel="View hoopmap source on GitHub"
+        >
+          <Text style={styles.watermarkText}>★ github.com/8kevinxu/hoopmap</Text>
+        </Pressable>
+      )}
     </SafeAreaView>
   );
 }
@@ -849,6 +862,24 @@ function CourtDetail({
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: '#0d1b2a' },
+
+  // Web-only "built by" watermark, pinned to the bottom-right corner.
+  watermark: {
+    position: 'fixed',
+    bottom: 10,
+    right: 12,
+    backgroundColor: 'rgba(13, 27, 42, 0.72)',
+    borderRadius: 14,
+    paddingHorizontal: 11,
+    paddingVertical: 6,
+    zIndex: 1000,
+  },
+  watermarkText: {
+    color: '#cdd8e4',
+    fontSize: 11,
+    fontWeight: '600',
+    letterSpacing: 0.2,
+  },
   header: {
     flexDirection: 'row',
     alignItems: 'flex-start',
