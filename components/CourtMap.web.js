@@ -79,6 +79,9 @@ const CourtMap = forwardRef(function CourtMap(
   useEffect(() => {
     ensureStyles();
     const map = L.map(elRef.current, { zoomControl: true }).setView(SF, 12);
+    // Drop Leaflet's default "🇺🇦 Leaflet" attribution prefix (the flag in the
+    // bottom-right); the tile data credit below is kept to satisfy OSM/CARTO terms.
+    map.attributionControl.setPrefix(false);
     L.tileLayer(
       'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
       {
