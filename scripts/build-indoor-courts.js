@@ -314,9 +314,19 @@ function parseRange(text) {
   return range;
 }
 
-// Parse the Gymnasium row's basketball blocks from a facility page's HTML.
-// Returns { season, basketball: [7][ [start,end], ... ] } (0=Sun..6=Sat).
-function parseGymBasketball(html) {
+// Drop-in sports we pull from the Gymnasium row, in priority order (an item is
+// matched to the first sport it mentions). Keep these in sync with lib/sports.js.
+const SPORTS = [
+  { id: 'basketball', match: /basketball/i },
+  { id: 'volleyball', match: /volleyball/i },
+];
+const emptyWeek = () => [[], [], [], [], [], [], []];
+const emptyDropins = () => Object.fromEntries(SPORTS.map((s) => [s.id, emptyWeek()]));
+
+// Parse the Gymnasium row's drop-in blocks for every tracked sport from a
+// facility page's HTML. Returns { season, dropins: { sportId: [7][[s,e],...] },
+// bballCount } (day index 0=Sun..6=Sat).
+function parseGymDropins(html) {
   const $ = cheerio.load(html);
   const season = $('.schedule-title').first().text().trim();
 
@@ -326,7 +336,7 @@ function parseGymBasketball(html) {
   const cols = table.find('th[scope="col"]').map((_, th) => $(th).text().trim()).get();
   const colDay = cols.map((name) => DAY_INDEX[name.slice(0, 3).toLowerCase()]);
 
-  const week = [[], [], [], [], [], [], []];
+  const dropins = emptyDropins();
   const gymRow = table
     .find('th[scope="row"]')
     .filter((_, th) => /gymnasium/i.test($(th).text()))
@@ -338,28 +348,30 @@ function parseGymBasketball(html) {
     if (day == null) return;
     $(td).find('.item').each((_, item) => {
       const activity = $(item).find('.activity').text();
-      if (!/basketball/i.test(activity)) return;
       // Exclude structured programs — keep only show-up-and-play sessions.
       if (/league|class|clinic|camp|academy|practice|training|tournament/i.test(activity)) return;
+      const sport = SPORTS.find((s) => s.match.test(activity));
+      if (!sport) return;
       const range = parseRange($(item).find('.time').text());
       if (range) {
-        // Tag wheelchair-basketball blocks (rendered with an asterisk in-app).
+        // Tag wheelchair blocks (rendered with an asterisk in-app).
         if (/wheelchair/i.test(activity)) range.push(true);
-        week[day].push(range);
+        dropins[sport.id][day].push(range);
       }
     });
   });
 
-  const count = week.reduce((n, d) => n + d.length, 0);
-  return { season, basketball: week, count };
+  const bballCount = dropins.basketball.reduce((n, d) => n + d.length, 0);
+  return { season, dropins, bballCount };
 }
 
 async function scrapeSchedule(fid) {
   const url = `https://sfrecpark.org/Facilities/Facility/Details/${fid}`;
   const res = await fetch(url, { headers: { 'User-Agent': BROWSER_UA } });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  const parsed = parseGymBasketball(await res.text());
-  if (parsed.count === 0) throw new Error('no gym basketball blocks found');
+  const parsed = parseGymDropins(await res.text());
+  // Gate on basketball (broad coverage); volleyball/etc. are legitimately sparse.
+  if (parsed.bballCount === 0) throw new Error('no gym basketball blocks found');
   return parsed;
 }
 
@@ -395,18 +407,24 @@ async function main() {
 
   for (const c of CENTERS) {
     const fid = FID[c.name];
-    let chosen = { basketball: c.bball, source: 'curated' };
+    // Curated fallback covers basketball only (hand-maintained); other sports
+    // have no curated source, so they start empty unless scraped.
+    let chosen = { dropins: { ...emptyDropins(), basketball: c.bball }, source: 'curated' };
     if (fid) {
       try {
         const live = await scrapeSchedule(fid);
-        cache[fid] = { basketball: live.basketball, season: live.season, scrapedAt: new Date().toISOString() };
-        chosen = { basketball: live.basketball, source: 'live' };
+        cache[fid] = { dropins: live.dropins, season: live.season, scrapedAt: new Date().toISOString() };
+        chosen = { dropins: live.dropins, source: 'live' };
         const s = (live.season.match(/spring|summer|fall|autumn|winter/i) || [])[0];
         if (s) seasons.add(s[0].toUpperCase() + s.slice(1).toLowerCase());
-        console.log(`  ✓ ${c.name} — ${live.count} blocks (live)`);
+        const counts = SPORTS.map((sp) => `${live.dropins[sp.id].reduce((n, d) => n + d.length, 0)} ${sp.id}`);
+        console.log(`  ✓ ${c.name} — ${counts.join(', ')} (live)`);
       } catch (e) {
-        if (cache[fid]) {
-          chosen = { basketball: cache[fid].basketball, source: 'cache' };
+        // Old caches stored a bare `basketball` week; wrap it into dropins shape.
+        const cached = cache[fid] && (cache[fid].dropins ||
+          (cache[fid].basketball && { ...emptyDropins(), basketball: cache[fid].basketball }));
+        if (cached) {
+          chosen = { dropins: cached, source: 'cache' };
           console.log(`  ↺ ${c.name} — scrape failed (${e.message}); using cached`);
         } else {
           console.log(`  ⚠ ${c.name} — scrape failed (${e.message}); using curated fallback`);
@@ -414,7 +432,7 @@ async function main() {
       }
     }
     stats[chosen.source]++;
-    c._bball = chosen.basketball;
+    c._dropins = chosen.dropins;
     c._scheduleSource = chosen.source;
   }
 
@@ -440,7 +458,7 @@ async function main() {
       hoops: 2,
       lights: true,
       schedule: c.sched,
-      basketball: c._bball,
+      dropins: c._dropins,
       scheduleSource: c._scheduleSource,
       source: 'sfrecpark',
       notes: c.notes,
@@ -481,7 +499,7 @@ function render(courts, season, generatedAt) {
     hoops: ${c.hoops},
     lights: true,
     schedule: ${JSON.stringify(c.schedule)},
-    basketball: ${JSON.stringify(c.basketball)},
+    dropins: ${JSON.stringify(c.dropins)},
     scheduleSource: ${JSON.stringify(c.scheduleSource)},
     source: "sfrecpark",
     notes: ${JSON.stringify(c.notes)},
@@ -500,8 +518,9 @@ function render(courts, season, generatedAt) {
 // Open-gym basketball times: scraped live from each center's sfrecpark.org page.
 //
 // schedule[]   = FACILITY hours, indexed 0=Sun..6=Sat; [openMin,closeMin] or null.
-// basketball[] = drop-in OPEN-GYM basketball blocks, same day index; each day is
-//   an array of [startMin,closeMin] blocks (empty when no basketball that day).
+// dropins      = { sportId: week } drop-in OPEN-GYM blocks per sport; each week is
+//   indexed 0=Sun..6=Sat and each day is an array of [startMin,closeMin] blocks
+//   (empty when none that day). Sports: basketball, volleyball.
 // scheduleSource = "live" (scraped this run) | "cache" (last good) | "curated".
 
 export const GENERATED_AT = ${JSON.stringify(generatedAt)};

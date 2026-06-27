@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-22T18:43:47.360Z",
+  "generatedAt": "2026-06-27T13:27:22.385Z",
   "season": "Summer",
   "courts": [
     {
@@ -36,44 +36,55 @@
           1020
         ]
       ],
-      "basketball": [
-        [],
-        [],
-        [
+      "dropins": {
+        "basketball": [
+          [],
+          [],
           [
-            780,
-            1185
-          ]
-        ],
-        [
-          [
-            1080,
-            1200
+            [
+              780,
+              1185
+            ]
           ],
           [
-            600,
-            1080
+            [
+              1080,
+              1200
+            ],
+            [
+              600,
+              1080
+            ]
+          ],
+          [
+            [
+              780,
+              1185
+            ]
+          ],
+          [
+            [
+              600,
+              1185
+            ]
+          ],
+          [
+            [
+              615,
+              1005
+            ]
           ]
         ],
-        [
-          [
-            780,
-            1185
-          ]
-        ],
-        [
-          [
-            600,
-            1185
-          ]
-        ],
-        [
-          [
-            615,
-            1005
-          ]
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
-      ],
+      },
       "scheduleSource": "live",
       "source": "sfrecpark",
       "notes": "Clubhouse and gym with basketball. Closes 2–5pm daily for after-school programs."
@@ -115,40 +126,61 @@
           1020
         ]
       ],
-      "basketball": [
-        [],
-        [],
-        [
+      "dropins": {
+        "basketball": [
+          [],
+          [],
           [
-            600,
-            930
+            [
+              600,
+              930
+            ]
+          ],
+          [
+            [
+              600,
+              840
+            ]
+          ],
+          [
+            [
+              600,
+              1230
+            ]
+          ],
+          [
+            [
+              960,
+              1230
+            ]
+          ],
+          [
+            [
+              540,
+              780
+            ]
           ]
         ],
-        [
+        "volleyball": [
+          [],
+          [],
+          [],
           [
-            600,
-            840
-          ]
-        ],
-        [
+            [
+              900,
+              1230
+            ]
+          ],
+          [],
+          [],
           [
-            600,
-            1230
-          ]
-        ],
-        [
-          [
-            960,
-            1230
-          ]
-        ],
-        [
-          [
-            540,
-            780
+            [
+              810,
+              990
+            ]
           ]
         ]
-      ],
+      },
       "scheduleSource": "live",
       "source": "sfrecpark",
       "notes": "Gymnasium with basketball open gym."
@@ -187,29 +219,54 @@
           1020
         ]
       ],
-      "basketball": [
-        [],
-        [],
-        [
+      "dropins": {
+        "basketball": [
+          [],
+          [],
           [
-            540,
-            660
+            [
+              540,
+              660
+            ],
+            [
+              1080,
+              1200
+            ]
           ],
+          [],
           [
-            1080,
-            1200
-          ]
+            [
+              540,
+              660
+            ]
+          ],
+          [],
+          []
         ],
-        [],
-        [
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
           [
-            540,
-            660
+            [
+              1035,
+              1200
+            ],
+            [
+              540,
+              780
+            ]
+          ],
+          [],
+          [
+            [
+              540,
+              780
+            ]
           ]
-        ],
-        [],
-        []
-      ],
+        ]
+      },
       "scheduleSource": "live",
       "source": "sfrecpark",
       "notes": "Play a game of basketball inside; gym with drop-in hours."
@@ -248,15 +305,26 @@
           1020
         ]
       ],
-      "basketball": [
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
-      ],
+      "dropins": {
+        "basketball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
       "scheduleSource": "curated",
       "source": "sfrecpark",
       "notes": "Gymnasium with basketball. Facility page is offline (renovation) — verify hours and open gym at sfrecpark.org."
@@ -295,45 +363,66 @@
           1020
         ]
       ],
-      "basketball": [
-        [],
-        [],
-        [
+      "dropins": {
+        "basketball": [
+          [],
+          [],
           [
-            690,
-            1080
-          ]
-        ],
-        [
-          [
-            960,
-            1080
-          ]
-        ],
-        [
-          [
-            960,
-            1170
-          ]
-        ],
-        [
-          [
-            750,
-            960
-          ]
-        ],
-        [
-          [
-            750,
-            900
+            [
+              690,
+              1080
+            ]
           ],
           [
-            900,
-            1080,
-            true
+            [
+              960,
+              1080
+            ]
+          ],
+          [
+            [
+              960,
+              1170
+            ]
+          ],
+          [
+            [
+              750,
+              960
+            ]
+          ],
+          [
+            [
+              750,
+              900
+            ],
+            [
+              900,
+              1080,
+              true
+            ]
           ]
+        ],
+        "volleyball": [
+          [],
+          [],
+          [
+            [
+              1110,
+              1200
+            ]
+          ],
+          [
+            [
+              1080,
+              1200
+            ]
+          ],
+          [],
+          [],
+          []
         ]
-      ],
+      },
       "scheduleSource": "live",
       "source": "sfrecpark",
       "notes": "Open gym for pickup basketball; Sat afternoon includes wheelchair basketball."
@@ -372,40 +461,51 @@
           1020
         ]
       ],
-      "basketball": [
-        [],
-        [],
-        [
+      "dropins": {
+        "basketball": [
+          [],
+          [],
           [
-            930,
-            1230
+            [
+              930,
+              1230
+            ]
+          ],
+          [
+            [
+              930,
+              1230
+            ]
+          ],
+          [
+            [
+              930,
+              1230
+            ]
+          ],
+          [
+            [
+              930,
+              1230
+            ]
+          ],
+          [
+            [
+              570,
+              990
+            ]
           ]
         ],
-        [
-          [
-            930,
-            1230
-          ]
-        ],
-        [
-          [
-            930,
-            1230
-          ]
-        ],
-        [
-          [
-            930,
-            1230
-          ]
-        ],
-        [
-          [
-            570,
-            990
-          ]
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
-      ],
+      },
       "scheduleSource": "live",
       "source": "sfrecpark",
       "notes": "Gymnasium with basketball open gym for all ages."
@@ -447,40 +547,51 @@
           1020
         ]
       ],
-      "basketball": [
-        [],
-        [],
-        [
+      "dropins": {
+        "basketball": [
+          [],
+          [],
           [
-            870,
-            1185
+            [
+              870,
+              1185
+            ]
+          ],
+          [
+            [
+              870,
+              1245
+            ]
+          ],
+          [
+            [
+              870,
+              1245
+            ]
+          ],
+          [
+            [
+              870,
+              1245
+            ]
+          ],
+          [
+            [
+              540,
+              990
+            ]
           ]
         ],
-        [
-          [
-            870,
-            1245
-          ]
-        ],
-        [
-          [
-            870,
-            1245
-          ]
-        ],
-        [
-          [
-            870,
-            1245
-          ]
-        ],
-        [
-          [
-            540,
-            990
-          ]
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
-      ],
+      },
       "scheduleSource": "live",
       "source": "sfrecpark",
       "notes": "New full-size indoor gym (bleacher seating for 200)."
@@ -519,44 +630,55 @@
           1020
         ]
       ],
-      "basketball": [
-        [],
-        [],
-        [
+      "dropins": {
+        "basketball": [
+          [],
+          [],
           [
-            600,
-            1020
-          ]
-        ],
-        [
-          [
-            600,
-            1080
+            [
+              600,
+              1020
+            ]
           ],
           [
-            1080,
-            1200
+            [
+              600,
+              1080
+            ],
+            [
+              1080,
+              1200
+            ]
+          ],
+          [
+            [
+              600,
+              1020
+            ]
+          ],
+          [
+            [
+              600,
+              1200
+            ]
+          ],
+          [
+            [
+              840,
+              990
+            ]
           ]
         ],
-        [
-          [
-            600,
-            1020
-          ]
-        ],
-        [
-          [
-            600,
-            1200
-          ]
-        ],
-        [
-          [
-            840,
-            990
-          ]
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
-      ],
+      },
       "scheduleSource": "live",
       "source": "sfrecpark",
       "notes": "Gymnasium — play basketball, ping-pong, tetherball or air hockey."
@@ -595,39 +717,50 @@
           1020
         ]
       ],
-      "basketball": [
-        [],
-        [],
-        [],
-        [
+      "dropins": {
+        "basketball": [
+          [],
+          [],
+          [],
           [
-            1125,
-            1245
-          ]
-        ],
-        [
-          [
-            960,
-            1095
-          ]
-        ],
-        [
-          [
-            960,
-            1245
-          ]
-        ],
-        [
-          [
-            630,
-            750
+            [
+              1125,
+              1245
+            ]
           ],
           [
-            765,
-            1005
+            [
+              960,
+              1095
+            ]
+          ],
+          [
+            [
+              960,
+              1245
+            ]
+          ],
+          [
+            [
+              630,
+              750
+            ],
+            [
+              765,
+              1005
+            ]
           ]
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
-      ],
+      },
       "scheduleSource": "live",
       "source": "sfrecpark",
       "notes": "Gymnasium, auditorium, multipurpose rooms; basketball drop-in."
@@ -666,35 +799,46 @@
           1020
         ]
       ],
-      "basketball": [
-        [],
-        [],
-        [
+      "dropins": {
+        "basketball": [
+          [],
+          [],
           [
-            540,
-            1020
+            [
+              540,
+              1020
+            ]
+          ],
+          [
+            [
+              540,
+              1020
+            ]
+          ],
+          [],
+          [
+            [
+              540,
+              1020
+            ]
+          ],
+          [
+            [
+              540,
+              1020
+            ]
           ]
         ],
-        [
-          [
-            540,
-            1020
-          ]
-        ],
-        [],
-        [
-          [
-            540,
-            1020
-          ]
-        ],
-        [
-          [
-            540,
-            1020
-          ]
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
-      ],
+      },
       "scheduleSource": "live",
       "source": "sfrecpark",
       "notes": "Indoor gymnasium for basketball, volleyball, or indoor soccer. Open-gym schedule unavailable online — check sfrecpark.org."
@@ -733,44 +877,55 @@
           1020
         ]
       ],
-      "basketball": [
-        [],
-        [],
-        [
+      "dropins": {
+        "basketball": [
+          [],
+          [],
           [
-            930,
-            1020
-          ]
-        ],
-        [
-          [
-            780,
-            840
-          ]
-        ],
-        [
-          [
-            930,
-            1020
+            [
+              930,
+              1020
+            ]
           ],
           [
-            1020,
-            1170
+            [
+              780,
+              840
+            ]
+          ],
+          [
+            [
+              930,
+              1020
+            ],
+            [
+              1020,
+              1170
+            ]
+          ],
+          [
+            [
+              780,
+              840
+            ]
+          ],
+          [
+            [
+              780,
+              990
+            ]
           ]
         ],
-        [
-          [
-            780,
-            840
-          ]
-        ],
-        [
-          [
-            780,
-            990
-          ]
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
-      ],
+      },
       "scheduleSource": "live",
       "source": "sfrecpark",
       "notes": "Locals shoot hoops in the indoor basketball gym."
@@ -809,52 +964,73 @@
           1020
         ]
       ],
-      "basketball": [
-        [],
-        [],
-        [
+      "dropins": {
+        "basketball": [
+          [],
+          [],
           [
-            600,
-            960
-          ]
-        ],
-        [
-          [
-            600,
-            960
-          ]
-        ],
-        [
-          [
-            600,
-            960
+            [
+              600,
+              960
+            ]
           ],
           [
-            720,
-            930
-          ]
-        ],
-        [
-          [
-            600,
-            960
-          ]
-        ],
-        [
-          [
-            540,
-            600
+            [
+              600,
+              960
+            ]
           ],
           [
-            600,
-            660
+            [
+              600,
+              960
+            ],
+            [
+              720,
+              930
+            ]
           ],
           [
-            690,
-            750
+            [
+              600,
+              960
+            ]
+          ],
+          [
+            [
+              540,
+              600
+            ],
+            [
+              600,
+              660
+            ],
+            [
+              690,
+              750
+            ]
+          ]
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [
+            [
+              990,
+              1230
+            ]
+          ],
+          [
+            [
+              840,
+              990
+            ]
           ]
         ]
-      ],
+      },
       "scheduleSource": "live",
       "source": "sfrecpark",
       "notes": "Indoor gymnasium (also has outdoor courts)."
@@ -893,40 +1069,56 @@
           1020
         ]
       ],
-      "basketball": [
-        [],
-        [],
-        [
+      "dropins": {
+        "basketball": [
+          [],
+          [],
           [
-            600,
-            1170
+            [
+              600,
+              1170
+            ]
+          ],
+          [
+            [
+              600,
+              1020
+            ]
+          ],
+          [
+            [
+              600,
+              1020
+            ]
+          ],
+          [
+            [
+              600,
+              1170
+            ]
+          ],
+          [
+            [
+              540,
+              990
+            ]
           ]
         ],
-        [
+        "volleyball": [
+          [],
+          [],
+          [],
           [
-            600,
-            1020
-          ]
-        ],
-        [
-          [
-            600,
-            1020
-          ]
-        ],
-        [
-          [
-            600,
-            1170
-          ]
-        ],
-        [
-          [
-            540,
-            990
-          ]
+            [
+              1050,
+              1170
+            ]
+          ],
+          [],
+          [],
+          []
         ]
-      ],
+      },
       "scheduleSource": "live",
       "source": "sfrecpark",
       "notes": "Full-size indoor basketball court with bleacher seating for 200."
@@ -965,40 +1157,56 @@
           1020
         ]
       ],
-      "basketball": [
-        [],
-        [],
-        [
+      "dropins": {
+        "basketball": [
+          [],
+          [],
           [
-            1080,
-            1425
+            [
+              1080,
+              1425
+            ]
+          ],
+          [
+            [
+              885,
+              1245
+            ]
+          ],
+          [
+            [
+              825,
+              1050
+            ]
+          ],
+          [
+            [
+              885,
+              1245
+            ]
+          ],
+          [
+            [
+              825,
+              990
+            ]
           ]
         ],
-        [
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
           [
-            885,
-            1245
-          ]
-        ],
-        [
-          [
-            825,
-            1050
-          ]
-        ],
-        [
-          [
-            885,
-            1245
-          ]
-        ],
-        [
-          [
-            825,
-            990
-          ]
+            [
+              1080,
+              1245
+            ]
+          ],
+          [],
+          []
         ]
-      ],
+      },
       "scheduleSource": "live",
       "source": "sfrecpark",
       "notes": "Gymnasium with basketball open gym."
@@ -1037,30 +1245,41 @@
           1020
         ]
       ],
-      "basketball": [
-        [],
-        [],
-        [
+      "dropins": {
+        "basketball": [
+          [],
+          [],
           [
-            1050,
-            1290
+            [
+              1050,
+              1290
+            ]
+          ],
+          [],
+          [],
+          [
+            [
+              1050,
+              1290
+            ]
+          ],
+          [
+            [
+              540,
+              1020
+            ]
           ]
         ],
-        [],
-        [],
-        [
-          [
-            1050,
-            1290
-          ]
-        ],
-        [
-          [
-            540,
-            1020
-          ]
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
-      ],
+      },
       "scheduleSource": "live",
       "source": "sfrecpark",
       "notes": "Gymnasium with indoor basketball."
@@ -1099,25 +1318,36 @@
           1020
         ]
       ],
-      "basketball": [
-        [],
-        [],
-        [],
-        [],
-        [
+      "dropins": {
+        "basketball": [
+          [],
+          [],
+          [],
+          [],
           [
-            1050,
-            1260
-          ]
-        ],
-        [
+            [
+              1050,
+              1260
+            ]
+          ],
           [
-            1050,
-            1260
-          ]
+            [
+              1050,
+              1260
+            ]
+          ],
+          []
         ],
-        []
-      ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
       "scheduleSource": "live",
       "source": "sfrecpark",
       "notes": "Gymnasium with basketball."
@@ -1156,20 +1386,31 @@
           1020
         ]
       ],
-      "basketball": [
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [
+      "dropins": {
+        "basketball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
           [
-            540,
-            720
+            [
+              540,
+              720
+            ]
           ]
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
-      ],
+      },
       "scheduleSource": "live",
       "source": "sfrecpark",
       "notes": "Full-size indoor gym."

@@ -15,18 +15,19 @@ import {
 } from 'react-native';
 import { createRun, MAX_NOTE } from '../lib/runs';
 import { startOfDay, dayChipLabel, fmtClock } from '../lib/datetime';
-import { basketballWeekdays, openGymSlots } from '../lib/hours';
+import { dropinWeekdays, openGymSlots } from '../lib/hours';
 import { haversineMiles, formatDistance } from '../lib/distance';
 
 const minutesOf = (d) => d.getHours() * 60 + d.getMinutes();
-// Does this court run open-gym basketball at the exact picked day+time? Slots are
+// Does this court run the sport's open gym at the exact picked day+time? Slots are
 // 30-min aligned, same as the time chips, so this is an exact membership check.
-const courtOpenAt = (court, when) =>
-  !when || openGymSlots(court, when.getDay()).includes(minutesOf(when));
+const courtOpenAt = (court, sport, when) =>
+  !when || openGymSlots(court, sport, when.getDay()).includes(minutesOf(when));
 
 export default function RunModal({
   visible,
   courts = [],
+  sport = 'basketball',
   userLocation,
   defaultTime,
   onClose,
@@ -57,14 +58,14 @@ export default function RunModal({
   const candidates = useMemo(() => (court ? [court] : courts), [court, courts]);
   const daysWithHoops = useMemo(() => {
     const set = new Set();
-    for (const c of candidates) for (const wd of basketballWeekdays(c)) set.add(wd);
+    for (const c of candidates) for (const wd of dropinWeekdays(c, sport)) set.add(wd);
     return set;
-  }, [candidates]);
+  }, [candidates, sport]);
   const slotsForDay = (when) => {
     if (!when) return [];
     const wd = when.getDay();
     const set = new Set();
-    for (const c of candidates) for (const m of openGymSlots(c, wd)) set.add(m);
+    for (const c of candidates) for (const m of openGymSlots(c, sport, wd)) set.add(m);
     return [...set].sort((a, b) => a - b);
   };
   const firstOpenDay = useMemo(
@@ -91,7 +92,7 @@ export default function RunModal({
   const selMin = picked ? minutesOf(picked) : null;
   const daySlots = slotsForDay(selDay);
   const blocksForSelDay =
-    court && selDay ? court.basketball?.[selDay.getDay()] || [] : [];
+    court && selDay ? court.dropins?.[sport]?.[selDay.getDay()] || [] : [];
 
   const pickAt = (dayDate, min) => {
     const d = new Date(dayDate);
@@ -115,14 +116,14 @@ export default function RunModal({
       return;
     }
     setCourtId(c.id);
-    if (!picked || courtOpenAt(c, picked)) return;
-    const sameDay = openGymSlots(c, picked.getDay());
+    if (!picked || courtOpenAt(c, sport, picked)) return;
+    const sameDay = openGymSlots(c, sport, picked.getDay());
     if (sameDay.length) {
       pickAt(startOfDay(picked), sameDay[0]);
       return;
     }
-    const d = days.find((dd) => openGymSlots(c, dd.getDay()).length);
-    if (d) pickAt(d, openGymSlots(c, d.getDay())[0]);
+    const d = days.find((dd) => openGymSlots(c, sport, dd.getDay()).length);
+    if (d) pickAt(d, openGymSlots(c, sport, d.getDay())[0]);
     else setPicked(null);
   };
 
@@ -133,7 +134,7 @@ export default function RunModal({
   const courtRows = useMemo(() => {
     const rows = courts.map((c) => ({
       c,
-      open: courtOpenAt(c, picked),
+      open: courtOpenAt(c, sport, picked),
       dist: userLocation
         ? haversineMiles(userLocation.lat, userLocation.lng, c.lat, c.lng)
         : null,
@@ -143,7 +144,7 @@ export default function RunModal({
       if (a.dist != null && b.dist != null) return a.dist - b.dist;
       return 0; // no location → keep default (alphabetical) order
     });
-  }, [courts, picked, userLocation]);
+  }, [courts, sport, picked, userLocation]);
 
   const submit = async () => {
     if (!courtId) {

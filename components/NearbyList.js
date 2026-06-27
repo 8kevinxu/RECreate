@@ -33,7 +33,7 @@ export default function NearbyList({
   const rows = useMemo(() => {
     const filtered = courts.filter((c) => (minOpen ? c.remaining >= minOpen : true));
     return filtered.sort((a, b) => {
-      if (a.bball.open !== b.bball.open) return a.bball.open ? -1 : 1; // open first
+      if (a.dropin.open !== b.dropin.open) return a.dropin.open ? -1 : 1; // open first
       if (hasLocation) return (a.distanceMi ?? 1e9) - (b.distanceMi ?? 1e9);
       return 0;
     });
@@ -91,7 +91,7 @@ export default function NearbyList({
                     </Text>
                   </View>
                   <View style={styles.statusCol}>
-                    {c.bball.open ? (
+                    {c.dropin.open ? (
                       <Text
                         style={[
                           styles.open,
@@ -105,7 +105,7 @@ export default function NearbyList({
                           : 'open'}
                       </Text>
                     ) : (
-                      <Text style={styles.closed}>{c.bball.label}</Text>
+                      <Text style={styles.closed}>{c.dropin.label}</Text>
                     )}
                   </View>
                 </Pressable>

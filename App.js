@@ -31,10 +31,11 @@ import { listIncomingRequests } from './lib/friends';
 import { registerForPush, onNotificationTap } from './lib/push';
 import {
   getOpenStatus,
-  getBasketballStatus,
-  getBasketballWeek,
-  getBasketballRemaining,
+  getDropinStatus,
+  getDropinWeek,
+  getDropinRemaining,
 } from './lib/hours';
+import { SPORTS, DEFAULT_SPORT, sportMeta } from './lib/sports';
 import {
   loadCrowd,
   checkIn as recordCheckIn,
@@ -71,6 +72,7 @@ export default function App() {
   const mapRef = useRef(null);
   const didCenterRef = useRef(false); // auto-center on the user only once
   const [openOnly, setOpenOnly] = useState(false);
+  const [sport, setSport] = useState(DEFAULT_SPORT); // which drop-in sport to show
   const [selectedId, setSelectedId] = useState(null);
   const [userLocation, setUserLocation] = useState(null);
   const [locating, setLocating] = useState(true);
@@ -259,21 +261,21 @@ export default function App() {
     for (let m = 9 * 60; m <= 22 * 60; m += 30) out.push(m);
     return out;
   }, []);
-  // Weekdays (0=Sun..6=Sat) that have open-gym basketball at any court. Days with
-  // none (currently Sun + Mon) are greyed out in the picker. Derived from data so
-  // it self-adjusts if the seasonal schedule changes.
-  const bballDays = useMemo(() => {
+  // Weekdays (0=Sun..6=Sat) that have open-gym time for the selected sport at any
+  // court. Days with none are greyed out in the picker. Derived from data so it
+  // self-adjusts to the schedule (and to the chosen sport).
+  const sportDays = useMemo(() => {
     const set = new Set();
     for (const c of courtData) {
-      (c.basketball || []).forEach((blocks, d) => {
+      (c.dropins?.[sport] || []).forEach((blocks, d) => {
         if (blocks && blocks.length) set.add(d);
       });
     }
     return set;
-  }, [courtData]);
+  }, [courtData, sport]);
   const firstOpenDay = useMemo(
-    () => days.find((d) => bballDays.has(d.getDay())) || days[0],
-    [days, bballDays]
+    () => days.find((d) => sportDays.has(d.getDay())) || days[0],
+    [days, sportDays]
   );
   const selDayTs = pickedTime ? startOfDay(pickedTime).getTime() : null;
   const selMin = pickedTime ? pickedTime.getHours() * 60 + pickedTime.getMinutes() : null;
@@ -289,27 +291,31 @@ export default function App() {
     [courtData]
   );
 
-  // Annotated with facility status, basketball open-gym status, minutes of
-  // open-gym left, and distance from the user (when location is available).
+  // Annotated with facility status, the selected sport's open-gym status, minutes
+  // of open-gym left, and distance from the user (when location is available).
   const courts = useMemo(() => {
     return courtData.map((c) => ({
       ...c,
       status: getOpenStatus(c, viewTime),
-      bball: getBasketballStatus(c, viewTime),
-      remaining: getBasketballRemaining(c, viewTime),
+      dropin: getDropinStatus(c, sport, viewTime),
+      remaining: getDropinRemaining(c, sport, viewTime),
+      // Does this court ever run the selected sport? (any block any day.) Courts
+      // that never do are hidden entirely in that sport — no marker, no listing.
+      offersSport: (c.dropins?.[sport] || []).some((day) => day && day.length),
       distanceMi: userLocation
         ? haversineMiles(userLocation.lat, userLocation.lng, c.lat, c.lng)
         : null,
     }));
-  }, [courtData, viewTime, userLocation]);
+  }, [courtData, sport, viewTime, userLocation]);
 
-  // "Open now" = drop-in basketball is happening right now.
+  // Only courts that actually offer the sport; then "Open now" narrows to ones
+  // whose drop-in gym is running right now.
   const visibleCourts = useMemo(() => {
-    return courts.filter((c) => !openOnly || c.bball.open);
+    return courts.filter((c) => c.offersSport && (!openOnly || c.dropin.open));
   }, [courts, openOnly]);
 
-  // Map markers fade when there's no open-gym basketball right now, and animate
-  // by the latest *fresh* crowd check-in.
+  // Map markers fade when there's no open gym right now, and animate by the latest
+  // *fresh* crowd check-in.
   const nowMs = now.getTime();
   const mapCourts = useMemo(
     () =>
@@ -318,7 +324,7 @@ export default function App() {
         lat: c.lat,
         lng: c.lng,
         indoor: c.indoor,
-        open: c.bball.open,
+        open: c.dropin.open,
         // Crowd is a live signal; hide it when viewing a future time.
         crowd: isPicked ? null : currentLevel(crowd[c.id], nowMs),
       })),
@@ -350,7 +356,7 @@ export default function App() {
           <Text style={styles.subtitle}>
             {openOnly
               ? `${visibleCourts.length} with open gym ${isPicked ? viewLabel(viewTime) : 'right now'}`
-              : `${visibleCourts.length} indoor courts · SF Rec & Parks`}
+              : `${visibleCourts.length} indoor ${sportMeta(sport).label.toLowerCase()} courts`}
           </Text>
           {!!generatedAt && (
             <Text style={styles.updated}>Updated {formatUpdated(generatedAt)}</Text>
@@ -388,6 +394,23 @@ export default function App() {
       </View>
 
       <View style={styles.controls}>
+        <View style={styles.sportRow}>
+          {SPORTS.map((s) => {
+            const active = s.id === sport;
+            return (
+              <Pressable
+                key={s.id}
+                onPress={() => setSport(s.id)}
+                style={[styles.sportChip, active && styles.sportChipActive]}
+              >
+                <Text style={[styles.sportChipText, active && styles.sportChipTextActive]}>
+                  {s.emoji} {s.label}
+                </Text>
+              </Pressable>
+            );
+          })}
+        </View>
+
         <View style={styles.filterRow}>
           <Pressable
             onPress={() => setOpenOnly((v) => !v)}
@@ -446,7 +469,7 @@ export default function App() {
               contentContainerStyle={styles.chipRow}
             >
               {days.map((d) => {
-                const open = bballDays.has(d.getDay());
+                const open = sportDays.has(d.getDay());
                 const active = d.getTime() === selDayTs;
                 return (
                   <Pressable
@@ -502,6 +525,7 @@ export default function App() {
         <CourtMap
           ref={mapRef}
           courts={mapCourts}
+          sport={sport}
           userLocation={userLocation}
           onSelectCourt={handleSelect}
         />
@@ -527,6 +551,7 @@ export default function App() {
       {selected && (
         <CourtDetail
           court={selected}
+          sport={sport}
           history={crowd[selected.id] || []}
           myVote={myVotes[selected.id]}
           now={nowMs}
@@ -546,6 +571,7 @@ export default function App() {
           onClose={closeFeed}
           courtsById={courtsById}
           courts={courtData}
+          sport={sport}
           userLocation={userLocation}
         />
       )}
@@ -568,6 +594,7 @@ export default function App() {
       <RunModal
         visible={runOpen}
         courts={courtData}
+        sport={sport}
         userLocation={userLocation}
         defaultTime={isPicked ? viewTime : null}
         onClose={() => setRunOpen(false)}
@@ -589,6 +616,7 @@ export default function App() {
 
 function CourtDetail({
   court,
+  sport,
   history,
   myVote,
   now,
@@ -597,8 +625,9 @@ function CourtDetail({
   onVote,
   onClose,
 }) {
-  const { status, bball } = court;
-  const week = getBasketballWeek(court, viewTime);
+  const { status, dropin } = court;
+  const meta = sportMeta(sport);
+  const week = getDropinWeek(court, sport, viewTime);
   const level = currentLevel(history, now); // community's latest
   const last = latest(history);
   const lastHour = countWithin(history, 60 * 60 * 1000, now);
@@ -679,9 +708,9 @@ function CourtDetail({
 
       <View style={styles.badgeRow}>
         <View
-          style={[styles.badge, bball.open ? styles.badgeOpen : styles.badgeClosed]}
+          style={[styles.badge, dropin.open ? styles.badgeOpen : styles.badgeClosed]}
         >
-          <Text style={styles.badgeText}>🏀 {bball.label}</Text>
+          <Text style={styles.badgeText}>{meta.emoji} {dropin.label}</Text>
         </View>
         <View
           style={[styles.badge, status.open ? styles.badgeFacOpen : styles.badgeFacClosed]}
@@ -690,11 +719,11 @@ function CourtDetail({
         </View>
       </View>
 
-      {(court.distanceMi != null || (bball.open && court.remaining > 0)) && (
+      {(court.distanceMi != null || (dropin.open && court.remaining > 0)) && (
         <Text style={styles.metaLine}>
           {[
             court.distanceMi != null ? `📍 ${formatDistance(court.distanceMi)} away` : null,
-            bball.open && court.remaining > 0 ? `⏳ ${fmtDuration(court.remaining)} left` : null,
+            dropin.open && court.remaining > 0 ? `⏳ ${fmtDuration(court.remaining)} left` : null,
           ]
             .filter(Boolean)
             .join('  ·  ')}
@@ -774,7 +803,7 @@ function CourtDetail({
 
       {expanded && (
       <ScrollView style={styles.cardScroll} keyboardShouldPersistTaps="handled">
-        <Text style={styles.sectionLabel}>Open-gym basketball</Text>
+        <Text style={styles.sectionLabel}>Open-gym {meta.label.toLowerCase()}</Text>
         {week.map((d) => (
           <View
             key={d.day}
@@ -787,7 +816,7 @@ function CourtDetail({
             <Text
               style={[
                 styles.weekTimes,
-                !d.hasBball && styles.weekClosed,
+                !d.hasDropin && styles.weekClosed,
                 d.isToday && styles.weekTodayText,
               ]}
             >
@@ -795,7 +824,7 @@ function CourtDetail({
             </Text>
           </View>
         ))}
-        {week.some((d) => d.hasWheelchair) && (
+        {week.some((d) => d.hasFlagged) && (
           <Text style={styles.wheelchairNote}>* wheelchair basketball</Text>
         )}
 
@@ -957,6 +986,18 @@ const styles = StyleSheet.create({
   openToggleTextActive: { color: '#fff' },
 
   controls: { paddingHorizontal: 16, paddingTop: 10, paddingBottom: 4 },
+  sportRow: { flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 10 },
+  sportChip: {
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    borderRadius: 999,
+    backgroundColor: '#1b2b3d',
+    borderWidth: 1,
+    borderColor: '#26384d',
+  },
+  sportChipActive: { backgroundColor: '#e8732c', borderColor: '#e8732c' },
+  sportChipText: { color: '#9db4cc', fontWeight: '700', fontSize: 13 },
+  sportChipTextActive: { color: '#fff' },
   filterRow: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', gap: 10 },
 
   timePill: {

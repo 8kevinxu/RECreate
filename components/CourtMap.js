@@ -110,6 +110,20 @@ const html = `
       '<path d="M80,11 C60,33 60,67 80,89"/>' +
       '</g></svg>';
 
+    // A blue/white volleyball with curved seams.
+    var VBALL_SVG =
+      '<svg viewBox="0 0 100 100" width="100%" height="100%">' +
+      '<circle cx="50" cy="50" r="46" fill="#f4f6f8" stroke="#1f5fae" stroke-width="3"/>' +
+      '<g fill="none" stroke="#1f5fae" stroke-width="3">' +
+      '<path d="M50,5 C34,30 28,55 12,79"/>' +
+      '<path d="M50,5 C61,34 71,55 92,69"/>' +
+      '<path d="M8,54 C36,55 64,69 79,92"/>' +
+      '</g></svg>';
+
+    var currentSport = 'basketball';
+    function ballSvg() { return currentSport === 'volleyball' ? VBALL_SVG : BBALL_SVG; }
+    window.setSport = function (s) { currentSport = s; };
+
     // Decoration based on the latest fresh crowd check-in.
     function crowdDecoration(level) {
       if (level === 'empty') {
@@ -126,7 +140,7 @@ const html = `
       markersById = {};
       courts.forEach(function (c) {
         var size = 26;
-        var ball = '<div class="bball" style="opacity:' + (c.open ? 1 : 0.45) + '">' + BBALL_SVG + '</div>';
+        var ball = '<div class="bball" style="opacity:' + (c.open ? 1 : 0.45) + '">' + ballSvg() + '</div>';
         var bounce = (c.crowd === 'moderate' || c.crowd === 'packed') ? ' bounce' : '';
         var icon = L.divIcon({
           className: '',
@@ -171,7 +185,7 @@ const html = `
 `;
 
 const CourtMap = forwardRef(function CourtMap(
-  { courts, userLocation, onSelectCourt },
+  { courts, sport = 'basketball', userLocation, onSelectCourt },
   ref
 ) {
   const webRef = useRef(null);
@@ -182,14 +196,15 @@ const CourtMap = forwardRef(function CourtMap(
   }, []);
 
   // Push courts + user location whenever they change (once the map is ready).
+  // Set the sport first so markers rebuild with the right ball glyph.
   const pushState = useCallback(() => {
-    inject(`window.setCourts(${JSON.stringify(courts)});`);
+    inject(`window.setSport(${JSON.stringify(sport)}); window.setCourts(${JSON.stringify(courts)});`);
     if (userLocation) {
       inject(
         `window.setUser(${userLocation.lat}, ${userLocation.lng});`
       );
     }
-  }, [inject, courts, userLocation]);
+  }, [inject, courts, sport, userLocation]);
 
   React.useEffect(() => {
     if (ready) pushState();

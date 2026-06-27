@@ -196,8 +196,9 @@ function render(court, generatedAt, scheduleSource) {
 // from the city's public "Gymnasium Schedule" Google Sheet each run.
 //
 // schedule[]   = FACILITY hours, indexed 0=Sun..6=Sat; [openMin,closeMin] or null.
-// basketball[] = drop-in OPEN-GYM basketball blocks, same day index; each day is
-//   an array of [startMin,closeMin] blocks (empty when no basketball that day).
+// dropins      = { sportId: week } drop-in OPEN-GYM blocks per sport; each week is
+//   indexed 0=Sun..6=Sat and each day is an array of [startMin,closeMin] blocks.
+//   Only basketball is populated for now (volleyball deferred — see build script).
 // scheduleSource = "live" (parsed this run) | "cache" (last good).
 
 export const GENERATED_AT = ${JSON.stringify(generatedAt)};
@@ -214,7 +215,7 @@ export const SANBRUNO_COURTS = [
     hoops: ${court.hoops},
     lights: true,
     schedule: ${JSON.stringify(court.schedule)},
-    basketball: ${JSON.stringify(court.basketball)},
+    dropins: ${JSON.stringify(court.dropins)},
     scheduleSource: ${JSON.stringify(scheduleSource)},
     source: "sanbruno",
     notes: ${JSON.stringify(court.notes)},
@@ -250,7 +251,11 @@ async function main() {
     console.log(`  ↺ parse failed (${e.message}); using last-good cache from ${cache.scrapedAt || 'unknown'}`);
   }
 
-  const court = { ...SAN_BRUNO, basketball };
+  // The sheet also carries volleyball/pickleball; only basketball is surfaced for
+  // now (scope: SF Rec & Park volleyball first). To enable, parse those sports in
+  // parseSchedule and populate them here alongside basketball.
+  const dropins = { basketball, volleyball: [[], [], [], [], [], [], []] };
+  const court = { ...SAN_BRUNO, dropins };
   const generatedAt = new Date().toISOString();
   fs.writeFileSync(OUT_FILE, render(court, generatedAt, scheduleSource));
   console.log(`\n✅ Wrote data/sanbruno-court.js (${scheduleSource})`);

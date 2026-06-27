@@ -64,12 +64,17 @@ sources:
    `CENTERS` table in the build script (rarely changes).
 2. **Coordinates, addresses, neighborhoods** — DataSF "Recreation and Parks
    Facilities" dataset (`ib5c-xgwu`), fetched by property name.
-3. **Open-gym basketball times** — **scraped live each build** from the
-   *Gymnasium* row of each center's sfrecpark.org facility page.
+3. **Open-gym drop-in times (per sport)** — **scraped live each build** from the
+   *Gymnasium* row of each center's sfrecpark.org facility page. League/class/camp
+   sessions are excluded — only show-up-and-play blocks are kept.
 
 Each court carries:
 - `schedule[]` — facility operating hours (one block per day)
-- `basketball[]` — drop-in open-gym blocks (can be several per day)
+- `dropins` — a `{ sportId: week }` map of drop-in open-gym blocks per sport, where
+  each `week` is indexed `0=Sun..6=Sat` and each day is an array of `[startMin,
+  endMin]` blocks. Tracked sports live in `lib/sports.js` (**basketball**,
+  **volleyball**); the app shows one at a time via the sport toggle. Basketball has
+  broad coverage; volleyball is published at ~6 centers.
 - `scheduleSource` — `"live"` (scraped this run) · `"cache"` (last-good) · `"curated"`
 
 Regenerate anytime:

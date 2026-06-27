@@ -25,6 +25,7 @@ export default function FeedModal({
   onClose,
   courtsById = {},
   courts = [],
+  sport = 'basketball',
   userLocation = null,
 }) {
   const [items, setItems] = useState([]);
@@ -154,6 +155,7 @@ export default function FeedModal({
           <RunModal
             visible={runOpen}
             courts={courts}
+            sport={sport}
             userLocation={userLocation}
             onClose={() => setRunOpen(false)}
             onCreated={refresh}
@@ -162,6 +164,7 @@ export default function FeedModal({
             visible={!!selectedSignalObj}
             signal={selectedSignalObj}
             courts={courts}
+            sport={sport}
             onClose={() => setSelectedSignal(null)}
             onChanged={refresh}
           />

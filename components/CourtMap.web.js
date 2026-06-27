@@ -21,6 +21,17 @@ const BBALL_SVG =
   '<path d="M80,11 C60,33 60,67 80,89"/>' +
   '</g></svg>';
 
+const VBALL_SVG =
+  '<svg viewBox="0 0 100 100" width="100%" height="100%">' +
+  '<circle cx="50" cy="50" r="46" fill="#f4f6f8" stroke="#1f5fae" stroke-width="3"/>' +
+  '<g fill="none" stroke="#1f5fae" stroke-width="3">' +
+  '<path d="M50,5 C34,30 28,55 12,79"/>' +
+  '<path d="M50,5 C61,34 71,55 92,69"/>' +
+  '<path d="M8,54 C36,55 64,69 79,92"/>' +
+  '</g></svg>';
+
+const ballSvg = (sport) => (sport === 'volleyball' ? VBALL_SVG : BBALL_SVG);
+
 function crowdDecoration(level) {
   if (level === 'empty') {
     return '<div class="zzz"><span>z</span><span>z</span><span>z</span></div>';
@@ -65,7 +76,7 @@ function ensureStyles() {
 }
 
 const CourtMap = forwardRef(function CourtMap(
-  { courts, userLocation, onSelectCourt },
+  { courts, sport = 'basketball', userLocation, onSelectCourt },
   ref
 ) {
   const elRef = useRef(null);
@@ -109,7 +120,7 @@ const CourtMap = forwardRef(function CourtMap(
     markersRef.current = {};
     courts.forEach((c) => {
       const ball =
-        '<div class="bball" style="opacity:' + (c.open ? 1 : 0.45) + '">' + BBALL_SVG + '</div>';
+        '<div class="bball" style="opacity:' + (c.open ? 1 : 0.45) + '">' + ballSvg(sport) + '</div>';
       const bounce = c.crowd === 'moderate' || c.crowd === 'packed' ? ' bounce' : '';
       const icon = L.divIcon({
         className: '',
@@ -121,7 +132,7 @@ const CourtMap = forwardRef(function CourtMap(
       m.on('click', () => onSelectRef.current && onSelectRef.current(c.id));
       markersRef.current[c.id] = m;
     });
-  }, [courts]);
+  }, [courts, sport]);
 
   // User location dot.
   useEffect(() => {

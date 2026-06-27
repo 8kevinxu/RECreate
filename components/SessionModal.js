@@ -17,9 +17,9 @@ import {
   cancelSignal,
 } from '../lib/signals';
 import { startOfDay, dayChipLabel, fmtClock, viewLabel } from '../lib/datetime';
-import { basketballWeekdays, openGymSlots } from '../lib/hours';
+import { dropinWeekdays, openGymSlots } from '../lib/hours';
 
-export default function SessionModal({ visible, signal, courts = [], onClose, onChanged }) {
+export default function SessionModal({ visible, signal, courts = [], sport = 'basketball', onClose, onChanged }) {
   const days = useMemo(() => {
     const base = startOfDay(new Date());
     return Array.from({ length: 7 }, (_, i) => {
@@ -29,8 +29,8 @@ export default function SessionModal({ visible, signal, courts = [], onClose, on
     });
   }, []);
   const courtsWithBball = useMemo(
-    () => courts.filter((c) => basketballWeekdays(c).size > 0),
-    [courts]
+    () => courts.filter((c) => dropinWeekdays(c, sport).size > 0),
+    [courts, sport]
   );
   const nameById = useMemo(
     () => Object.fromEntries(courts.map((c) => [c.id, c.name])),
@@ -43,8 +43,8 @@ export default function SessionModal({ visible, signal, courts = [], onClose, on
 
   const selectedCourt = courts.find((c) => c.id === courtId) || null;
   const bballDays = useMemo(
-    () => (selectedCourt ? basketballWeekdays(selectedCourt) : new Set()),
-    [selectedCourt]
+    () => (selectedCourt ? dropinWeekdays(selectedCourt, sport) : new Set()),
+    [selectedCourt, sport]
   );
   const firstOpenDay = useMemo(
     () => days.find((d) => bballDays.has(d.getDay())) || days[0],
@@ -53,7 +53,7 @@ export default function SessionModal({ visible, signal, courts = [], onClose, on
   const selDayTs = picked ? startOfDay(picked).getTime() : null;
   const selMin = picked ? picked.getHours() * 60 + picked.getMinutes() : null;
   const selDay = picked ? startOfDay(picked) : null;
-  const daySlots = selectedCourt && selDay ? openGymSlots(selectedCourt, selDay.getDay()) : [];
+  const daySlots = selectedCourt && selDay ? openGymSlots(selectedCourt, sport, selDay.getDay()) : [];
 
   // Seed court + time from the confirmed plan, your suggestion, or defaults.
   useEffect(() => {
@@ -72,7 +72,7 @@ export default function SessionModal({ visible, signal, courts = [], onClose, on
 
   // Snap to a valid open-gym slot for the given court/day.
   const snap = (court, dayDate, minPref) => {
-    const slots = openGymSlots(court, dayDate.getDay());
+    const slots = openGymSlots(court, sport, dayDate.getDay());
     if (!slots.length) return null;
     const min = minPref != null && slots.includes(minPref) ? minPref : slots[0];
     const d = new Date(dayDate);
@@ -82,7 +82,7 @@ export default function SessionModal({ visible, signal, courts = [], onClose, on
   const selectCourt = (cid) => {
     const court = courts.find((c) => c.id === cid);
     setCourtId(cid);
-    const fday = days.find((d) => basketballWeekdays(court).has(d.getDay())) || days[0];
+    const fday = days.find((d) => dropinWeekdays(court, sport).has(d.getDay())) || days[0];
     setPicked(snap(court, fday, selMin));
   };
   const pickDay = (d) => setPicked(snap(selectedCourt, d, selMin));
