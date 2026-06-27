@@ -25,7 +25,9 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
-    "build:courts": "node scripts/build-indoor-courts.js"
+    "build:courts": "node scripts/build-indoor-courts.js",
+    "build:sanbruno": "node scripts/build-sanbruno-court.js",
+    "build:data": "npm run build:courts && npm run build:sanbruno"
   },
   "private": true,
   "devDependencies": {

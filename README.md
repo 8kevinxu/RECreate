@@ -29,8 +29,10 @@ stays centered on San Francisco — everything else still works.
 | `assets/stephCurryIcon.js` | User-location marker image (data URI) |
 | `data/courts.js` | **Generated** bundled court list (offline fallback) |
 | `data/courts.json` | **Generated** hostable court data the app fetches at launch |
-| `data/manual-courts.js` | **Hand-curated** courts from non-sfrecpark sources; merged in at runtime, never regenerated |
-| `scripts/build-indoor-courts.js` | Builds the data files; scrapes live schedules |
+| `data/manual-courts.js` | **Hand-curated** fully-static courts; merged in at runtime, never regenerated |
+| `data/sanbruno-court.js` | **Generated** San Bruno RAC court (drop-in hours from a city Google Sheet) |
+| `scripts/build-indoor-courts.js` | Builds the SF data files; scrapes live schedules |
+| `scripts/build-sanbruno-court.js` | Builds the San Bruno court; parses the city gym Google Sheet |
 | `scripts/schedule-cache.json` | Last-good scraped schedule per facility (fallback) |
 | `.github/workflows/refresh-schedules.yml` | Weekly cron that re-scrapes + commits |
 | `lib/useCourts.js` | Fetches/caches court data at launch (bundled→cached→remote) |
@@ -78,12 +80,22 @@ npm run build:courts
 
 ### Courts from other sources
 
-Not every gym is an SF Rec & Parks center. Courts from other sources (e.g. the
-San Bruno Recreation & Aquatic Center, whose drop-in hours come from a city
-Google Sheet) live in **`data/manual-courts.js`** — same schema, hand-authored.
-`lib/useCourts.js` merges them into whatever the SF pipeline produced (bundled,
-cached, or remote), deduped by `id`, so `npm run build:courts` never touches
-them. An optional `disclaimer` field overrides the default "verify on
+Not every gym is an SF Rec & Parks center. `lib/useCourts.js` merges non-sfrecpark
+courts into whatever the SF pipeline produced (bundled, cached, or remote), deduped
+by `id`, so `npm run build:courts` never touches them. Two flavors:
+
+- **Fully static** courts (no upstream schedule to refresh) are hand-authored in
+  **`data/manual-courts.js`**.
+- **Refreshable** courts get their own build script + generated file. The **San
+  Bruno Recreation & Aquatic Center** is the first: `scripts/build-sanbruno-court.js`
+  pulls the city's public *Gymnasium Schedule* Google Sheet (CSV export), parses the
+  two-side gym grid into drop-in basketball blocks, and writes
+  **`data/sanbruno-court.js`**. Run it with `npm run build:sanbruno`, or
+  `npm run build:data` to rebuild SF + San Bruno together. It mirrors the SF build's
+  resilience — last-good cache (`scripts/sanbruno-cache.json`) plus a validation gate
+  that keeps the old data if the sheet won't parse.
+
+An optional `disclaimer` field on a court overrides the default "verify on
 sfrecpark.org" footnote on the court detail screen.
 
 ### Auto-refresh (keeping schedules current)

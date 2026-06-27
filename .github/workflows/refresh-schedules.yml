@@ -1,9 +1,10 @@
 name: Refresh open-gym schedules
 
-# Re-scrapes the live SF Rec & Park open-gym basketball schedules and commits the
-# refreshed data/courts.js. Schedules are seasonal, so weekly is plenty; the run
-# also self-alerts — if too few centers scrape (e.g. a site redesign), the build
-# script's validation gate fails the job and GitHub notifies you.
+# Re-scrapes the live SF Rec & Park open-gym schedules (sfrecpark.org) and the San
+# Bruno RAC gym schedule (Google Sheet), then commits the refreshed data. Schedules
+# are seasonal/weekly, so weekly is plenty; the run also self-alerts — if too few
+# centers scrape or the San Bruno sheet won't parse, a build script's validation
+# gate fails the job and GitHub notifies you.
 
 on:
   schedule:
@@ -27,11 +28,11 @@ jobs:
       - run: npm ci
 
       - name: Scrape + rebuild court data
-        run: npm run build:courts
+        run: npm run build:data
 
       - name: Commit refreshed data if it changed
         run: |
-          FILES="data/courts.js data/courts.json scripts/schedule-cache.json"
+          FILES="data/courts.js data/courts.json scripts/schedule-cache.json data/sanbruno-court.js scripts/sanbruno-cache.json"
           if git diff --quiet -- $FILES; then
             echo "No schedule changes."
           else
