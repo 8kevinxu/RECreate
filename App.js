@@ -824,9 +824,6 @@ function CourtDetail({
             </Text>
           </View>
         ))}
-        {week.some((d) => d.hasFlagged) && (
-          <Text style={styles.wheelchairNote}>* wheelchair basketball</Text>
-        )}
 
         {!!court.notes && <Text style={styles.notes}>{court.notes}</Text>}
         <Text style={styles.disclaimer}>

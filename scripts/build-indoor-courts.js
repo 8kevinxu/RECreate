@@ -227,7 +227,7 @@ const CENTERS = [
       wed: [[t(16), t(18)]],
       thu: [[t(16), t(19, 30)]],
       fri: [[t(12, 30), t(15)]],
-      sat: [[t(12, 30), t(15)], [t(15), t(18), true]], // 3–6pm = wheelchair
+      sat: [[t(12, 30), t(15)], [t(15), t(18), 'wheelchair']], // 3–6pm = wheelchair
     }),
     notes: 'Open gym for pickup basketball; Sat afternoon includes wheelchair basketball.',
   },
@@ -323,6 +323,16 @@ const SPORTS = [
 const emptyWeek = () => [[], [], [], [], [], [], []];
 const emptyDropins = () => Object.fromEntries(SPORTS.map((s) => [s.id, emptyWeek()]));
 
+// Restricted drop-in sessions carved out of general open gym. Returned as a
+// block's optional third element (a tag string) and labeled in-app. Order
+// matters — first match wins. Keep tag ids in sync with lib/hours.js.
+function blockTag(activity) {
+  if (/wheelchair/i.test(activity)) return 'wheelchair';
+  if (/women|woman|ladies/i.test(activity)) return 'women';
+  if (/55\s*(&|and|\+)|senior/i.test(activity)) return '55+';
+  return null;
+}
+
 // Parse the Gymnasium row's drop-in blocks for every tracked sport from a
 // facility page's HTML. Returns { season, dropins: { sportId: [7][[s,e],...] },
 // bballCount } (day index 0=Sun..6=Sat).
@@ -354,8 +364,9 @@ function parseGymDropins(html) {
       if (!sport) return;
       const range = parseRange($(item).find('.time').text());
       if (range) {
-        // Tag wheelchair blocks (rendered with an asterisk in-app).
-        if (/wheelchair/i.test(activity)) range.push(true);
+        // Tag restricted sessions (wheelchair / women's / 55+) for in-app labeling.
+        const tag = blockTag(activity);
+        if (tag) range.push(tag);
         dropins[sport.id][day].push(range);
       }
     });
