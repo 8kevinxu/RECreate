@@ -41,7 +41,7 @@
       ]
     },
     "season": "Mission Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T14:52:26.345Z"
+    "scrapedAt": "2026-06-27T15:04:59.789Z"
   },
   "Moscone-Rec-Center-101": {
     "dropins": {
@@ -95,7 +95,7 @@
       ]
     },
     "season": "Moscone Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T14:52:26.800Z"
+    "scrapedAt": "2026-06-27T15:05:00.201Z"
   },
   "St-Marys-Rec-Center-109": {
     "dropins": {
@@ -134,7 +134,7 @@
       ]
     },
     "season": "St. Mary's Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T14:52:27.201Z"
+    "scrapedAt": "2026-06-27T15:05:00.778Z"
   },
   "Upper-Noe-Rec-Center-112": {
     "dropins": {
@@ -163,7 +163,7 @@
       ]
     },
     "season": "Upper Noe Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T14:52:27.577Z"
+    "scrapedAt": "2026-06-27T15:05:01.372Z"
   },
   "Hamilton-Rec-Center-93": {
     "dropins": {
@@ -212,7 +212,7 @@
       ]
     },
     "season": "Hamilton Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T14:52:27.921Z"
+    "scrapedAt": "2026-06-27T15:05:01.968Z"
   },
   "Eureka-Valley-Rec-Center-86": {
     "dropins": {
@@ -249,12 +249,12 @@
         [],
         [
           [
-            1035,
-            1200
-          ],
-          [
             540,
             780
+          ],
+          [
+            1035,
+            1200
           ]
         ],
         [],
@@ -267,7 +267,7 @@
       ]
     },
     "season": "Eureka Valley Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T14:52:28.269Z"
+    "scrapedAt": "2026-06-27T15:05:02.403Z"
   },
   "Richmond-Rec-Center-105": {
     "dropins": {
@@ -321,7 +321,7 @@
       ]
     },
     "season": "Richmond Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T14:52:29.090Z"
+    "scrapedAt": "2026-06-27T15:05:03.161Z"
   },
   "Sunset-Rec-Center-110": {
     "dropins": {
@@ -355,7 +355,7 @@
       ]
     },
     "season": "Sunset Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T14:52:29.449Z"
+    "scrapedAt": "2026-06-27T15:05:03.534Z"
   },
   "Palega-Rec-Center-103": {
     "dropins": {
@@ -378,10 +378,6 @@
           [
             600,
             960
-          ],
-          [
-            720,
-            930
           ]
         ],
         [
@@ -393,14 +389,6 @@
         [
           [
             540,
-            600
-          ],
-          [
-            600,
-            660
-          ],
-          [
-            690,
             750
           ]
         ]
@@ -426,7 +414,7 @@
       ]
     },
     "season": "Palega Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T14:52:29.815Z"
+    "scrapedAt": "2026-06-27T15:05:03.930Z"
   },
   "Joseph-Lee-Rec-Center-95": {
     "dropins": {
@@ -480,7 +468,7 @@
       ]
     },
     "season": "Joseph Lee Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T14:52:30.143Z"
+    "scrapedAt": "2026-06-27T15:05:04.461Z"
   },
   "Minnie-Love-Ward-Rec-Center-97": {
     "dropins": {
@@ -529,7 +517,7 @@
       ]
     },
     "season": "Minnie & Lovie Ward Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T14:52:30.528Z"
+    "scrapedAt": "2026-06-27T15:05:05.051Z"
   },
   "Bernal-Heights-Rec-Center-83": {
     "dropins": {
@@ -544,13 +532,13 @@
         ],
         [
           [
+            600,
+            1080
+          ],
+          [
             1080,
             1200,
             "55+"
-          ],
-          [
-            600,
-            1080
           ]
         ],
         [
@@ -583,7 +571,7 @@
       ]
     },
     "season": "Bernal Heights Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T14:52:30.880Z"
+    "scrapedAt": "2026-06-27T15:05:05.432Z"
   },
   "Betty-Ann-Ong-Recreation-Center-84": {
     "dropins": {
@@ -642,7 +630,7 @@
       ]
     },
     "season": "Betty Ann Ong Chinese Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T14:52:31.317Z"
+    "scrapedAt": "2026-06-27T15:05:05.740Z"
   },
   "Glen-Canyon-Park-Recreation-Center-89": {
     "dropins": {
@@ -706,7 +694,7 @@
       ]
     },
     "season": "Glen Canyon Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T14:52:31.707Z"
+    "scrapedAt": "2026-06-27T15:05:06.071Z"
   },
   "Herz-Recreation-Center-471": {
     "dropins": {
@@ -755,7 +743,7 @@
       ]
     },
     "season": "Herz Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T14:52:32.078Z"
+    "scrapedAt": "2026-06-27T15:05:06.504Z"
   },
   "Potrero-Hill-Rec-Center-275": {
     "dropins": {
@@ -810,6 +798,6 @@
       ]
     },
     "season": "Potrero Hill Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T14:52:32.561Z"
+    "scrapedAt": "2026-06-27T15:05:06.910Z"
   }
 }

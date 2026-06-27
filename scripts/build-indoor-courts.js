@@ -333,6 +333,27 @@ function blockTag(activity) {
   return null;
 }
 
+// Facility pages often list one continuous open gym as hourly rows (9–10, 10–11,
+// …), sometimes with a short reset gap. Coalesce blocks into a single span when
+// they're within this many minutes of each other — but only when they share the
+// same tag, so a women's/wheelchair/55+ session never gets absorbed into general
+// open gym.
+const MERGE_GAP_MIN = 30;
+function mergeBlocks(blocks) {
+  const sorted = blocks.slice().sort((a, b) => a[0] - b[0]);
+  const out = [];
+  for (const b of sorted) {
+    const tag = b[2] || null;
+    const prev = out[out.length - 1];
+    if (prev && (prev[2] || null) === tag && b[0] - prev[1] <= MERGE_GAP_MIN) {
+      prev[1] = Math.max(prev[1], b[1]);
+    } else {
+      out.push(tag ? [b[0], b[1], tag] : [b[0], b[1]]);
+    }
+  }
+  return out;
+}
+
 // Parse the Gymnasium row's drop-in blocks for every tracked sport from a
 // facility page's HTML. Returns { season, dropins: { sportId: [7][[s,e],...] },
 // bballCount } (day index 0=Sun..6=Sat).
@@ -371,6 +392,11 @@ function parseGymDropins(html) {
       }
     });
   });
+
+  // Coalesce each day's hourly listing rows into continuous spans.
+  for (const s of SPORTS) {
+    for (let d = 0; d < 7; d++) dropins[s.id][d] = mergeBlocks(dropins[s.id][d]);
+  }
 
   const bballCount = dropins.basketball.reduce((n, d) => n + d.length, 0);
   return { season, dropins, bballCount };
