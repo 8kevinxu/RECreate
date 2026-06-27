@@ -15,6 +15,7 @@ import {
 import { loadFeed } from '../lib/feed';
 import { subscribeSignals } from '../lib/signals';
 import { joinRun, leaveRun, cancelRun, formatRunTime, subscribeRuns } from '../lib/runs';
+import { sportMeta } from '../lib/sports';
 import { viewLabel } from '../lib/datetime';
 import SignalModal from './SignalModal';
 import SessionModal from './SessionModal';
@@ -99,7 +100,9 @@ export default function FeedModal({
   const renderRun = (run) => (
     <View key={`run:${run.id}`} style={styles.row}>
       <View style={{ flex: 1 }}>
-        <Text style={styles.rowName}>📅 {courtsById[run.courtId] || 'A court'}</Text>
+        <Text style={styles.rowName}>
+          📅 {sportMeta(run.sport).emoji} {courtsById[run.courtId] || 'A court'}
+        </Text>
         <Text style={styles.note}>
           {formatRunTime(run.startsAt)} · {run.mine ? 'You' : run.hostName} · {run.count} going
           {run.note ? ` · ${run.note}` : ''}

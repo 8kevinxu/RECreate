@@ -16,6 +16,7 @@ import {
 import { createRun, MAX_NOTE } from '../lib/runs';
 import { startOfDay, dayChipLabel, fmtClock } from '../lib/datetime';
 import { dropinWeekdays, openGymSlots } from '../lib/hours';
+import { SPORTS } from '../lib/sports';
 import { haversineMiles, formatDistance } from '../lib/distance';
 
 const minutesOf = (d) => d.getHours() * 60 + d.getMinutes();
@@ -27,12 +28,15 @@ const courtOpenAt = (court, sport, when) =>
 export default function RunModal({
   visible,
   courts = [],
-  sport = 'basketball',
+  sport: sportProp = 'basketball',
   userLocation,
   defaultTime,
   onClose,
   onCreated,
 }) {
+  // Seeded from the map's current sport, but switchable here so you can plan a
+  // run for either sport regardless of what the map is showing.
+  const [sport, setSport] = useState(sportProp);
   const days = useMemo(() => {
     const base = startOfDay(new Date());
     return Array.from({ length: 7 }, (_, i) => {
@@ -53,9 +57,14 @@ export default function RunModal({
     () => courts.find((c) => c.id === courtId) || null,
     [courts, courtId]
   );
-  // Day/time options are constrained to the chosen court, or to all courts when
-  // none is chosen yet (so you can pick a time first, then a court open then).
-  const candidates = useMemo(() => (court ? [court] : courts), [court, courts]);
+  // Only courts that actually run the selected sport are offerable.
+  const sportCourts = useMemo(
+    () => courts.filter((c) => (c.dropins?.[sport] || []).some((d) => d && d.length)),
+    [courts, sport]
+  );
+  // Day/time options are constrained to the chosen court, or to all sport courts
+  // when none is chosen yet (so you can pick a time first, then a court open then).
+  const candidates = useMemo(() => (court ? [court] : sportCourts), [court, sportCourts]);
   const daysWithHoops = useMemo(() => {
     const set = new Set();
     for (const c of candidates) for (const wd of dropinWeekdays(c, sport)) set.add(wd);
@@ -82,10 +91,18 @@ export default function RunModal({
     setNote('');
     setVisibility('friends');
     setBusy(false);
+    setSport(sportProp);
     setCourtId(null);
     setPicked(defaultTime ? new Date(defaultTime) : null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible]);
+
+  // Switching sport restarts the court/time choice for that sport's availability.
+  const changeSport = (s) => {
+    setSport(s);
+    setCourtId(null);
+    setPicked(null);
+  };
 
   const selDay = picked ? startOfDay(picked) : firstOpenDay;
   const selDayTs = selDay ? selDay.getTime() : null;
@@ -132,7 +149,7 @@ export default function RunModal({
   // is picked, courts open then float above the rest (which are disabled), with
   // proximity/default order breaking ties within each group.
   const courtRows = useMemo(() => {
-    const rows = courts.map((c) => ({
+    const rows = sportCourts.map((c) => ({
       c,
       open: courtOpenAt(c, sport, picked),
       dist: userLocation
@@ -144,7 +161,7 @@ export default function RunModal({
       if (a.dist != null && b.dist != null) return a.dist - b.dist;
       return 0; // no location → keep default (alphabetical) order
     });
-  }, [courts, sport, picked, userLocation]);
+  }, [sportCourts, sport, picked, userLocation]);
 
   const submit = async () => {
     if (!courtId) {
@@ -160,6 +177,7 @@ export default function RunModal({
     const { error } = await createRun({
       courtId,
       startsAt: picked.toISOString(),
+      sport,
       note,
       visibility,
     });
@@ -181,6 +199,23 @@ export default function RunModal({
             <Pressable hitSlop={10} onPress={onClose}>
               <Text style={styles.close}>✕</Text>
             </Pressable>
+          </View>
+
+          <View style={styles.sportRow}>
+            {SPORTS.map((s) => {
+              const active = s.id === sport;
+              return (
+                <Pressable
+                  key={s.id}
+                  onPress={() => changeSport(s.id)}
+                  style={[styles.sportChip, active && styles.sportChipActive]}
+                >
+                  <Text style={[styles.sportChipText, active && styles.sportChipTextActive]}>
+                    {s.emoji} {s.label}
+                  </Text>
+                </Pressable>
+              );
+            })}
           </View>
 
           <View style={styles.labelRow}>
@@ -396,6 +431,19 @@ const styles = StyleSheet.create({
   },
   title: { fontSize: 18, fontWeight: '800', color: '#0d1b2a' },
   close: { fontSize: 18, color: '#90a0b0' },
+
+  sportRow: { flexDirection: 'row', gap: 8, marginBottom: 14 },
+  sportChip: {
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    borderRadius: 999,
+    backgroundColor: '#eef2f6',
+    borderWidth: 1,
+    borderColor: '#dce3ea',
+  },
+  sportChipActive: { backgroundColor: '#e8732c', borderColor: '#e8732c' },
+  sportChipText: { color: '#5b6b7b', fontWeight: '700', fontSize: 13 },
+  sportChipTextActive: { color: '#fff' },
 
   labelRow: {
     flexDirection: 'row',

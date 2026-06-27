@@ -218,11 +218,17 @@ create table if not exists public.hoop_runs (
   host        uuid        not null references public.profiles (id) on delete cascade,
   court_id    text        not null,
   starts_at   timestamptz not null,
+  sport       text        not null default 'basketball' check (sport in ('basketball', 'volleyball')),
   note        text        check (note is null or char_length(note) <= 200),
   visibility  text        not null default 'public' check (visibility in ('public', 'friends')),
   status      text        not null default 'open'   check (status in ('open', 'cancelled')),
   created_at  timestamptz not null default now()
 );
+
+-- Backfill for databases created before runs carried a sport (idempotent).
+alter table public.hoop_runs
+  add column if not exists sport text not null default 'basketball'
+  check (sport in ('basketball', 'volleyball'));
 
 create index if not exists hoop_runs_court_time_idx
   on public.hoop_runs (court_id, starts_at);
@@ -663,14 +669,15 @@ create trigger hoop_signals_notify after insert on public.hoop_signals
 -- public runs are visible to friends too).
 create or replace function public.notify_run()
 returns trigger language plpgsql security definer set search_path = public as $$
-declare host_name text; recipients uuid[];
+declare host_name text; recipients uuid[]; sport_emoji text;
 begin
   select display_name into host_name from public.profiles where id = new.host;
   select array_agg(fid) into recipients
   from public.accepted_friend_ids(new.host) as fid;
+  sport_emoji := case new.sport when 'volleyball' then '🏐' else '🏀' end;
   perform public.send_push(
     recipients,
-    coalesce(host_name, 'A friend') || ' planned a run 🏀',
+    coalesce(host_name, 'A friend') || ' planned a run ' || sport_emoji,
     coalesce(nullif(new.note, ''), 'Tap to see the run and join'),
     jsonb_build_object('type', 'run', 'runId', new.id, 'courtId', new.court_id)
   );
