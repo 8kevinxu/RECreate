@@ -524,7 +524,7 @@ export default function App() {
               style={styles.planRunBtn}
               onPress={() => (user ? setRunOpen(true) : setAuthOpen(true))}
             >
-              <Text style={styles.planRunBtnText}>＋ Plan a run</Text>
+              <Text style={styles.planRunBtnText}>＋ Plan</Text>
             </Pressable>
           )}
         </View>

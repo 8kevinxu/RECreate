@@ -1,7 +1,7 @@
 // Activity sheet: the social front door. One stream of friends' "down to hoop"
-// signals (tap to open the session) and upcoming planned runs (join / leave /
-// cancel), with quick "I'm down" + "Plan a run" composers up top. Opened from
-// the header; the header badge counts unread items (see lib/feed.js).
+// signals (tap to open the session) and upcoming planned games (join / leave /
+// cancel), with quick "I'm down" + "Plan" composers up top. Opened from the
+// header; the header badge counts unread items (see lib/feed.js).
 import React, { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
@@ -136,7 +136,7 @@ export default function FeedModal({
               <Text style={styles.composeText}>🏀 I’m down</Text>
             </Pressable>
             <Pressable style={[styles.composeBtn, styles.composeAlt]} onPress={() => setRunOpen(true)}>
-              <Text style={styles.composeText}>＋ Plan a run</Text>
+              <Text style={styles.composeText}>＋ Plan</Text>
             </Pressable>
           </View>
 
@@ -146,7 +146,7 @@ export default function FeedModal({
             </View>
           ) : items.length === 0 ? (
             <Text style={styles.muted}>
-              Nothing going on yet — tap “I’m down” or “Plan a run” to get your friends moving.
+              Nothing going on yet — tap “I’m down” or “Plan” to get your friends moving.
             </Text>
           ) : (
             <ScrollView keyboardShouldPersistTaps="handled">

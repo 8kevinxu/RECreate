@@ -106,8 +106,8 @@ drop trigger if exists hoop_signals_notify on public.hoop_signals;
 create trigger hoop_signals_notify after insert on public.hoop_signals
   for each row execute function public.notify_signal();
 
--- A friend plans a run → notify their accepted friends (public + friends-only;
--- public runs are visible to friends too).
+-- A friend plans a game → notify their accepted friends (public + friends-only;
+-- public plans are visible to friends too).
 create or replace function public.notify_run()
 returns trigger language plpgsql security definer set search_path = public as $$
 declare host_name text; recipients uuid[]; sport_emoji text;
@@ -115,11 +115,16 @@ begin
   select display_name into host_name from public.profiles where id = new.host;
   select array_agg(fid) into recipients
   from public.accepted_friend_ids(new.host) as fid;
-  sport_emoji := case new.sport when 'volleyball' then '🏐' else '🏀' end;
+  sport_emoji := case new.sport
+    when 'volleyball' then '🏐'
+    when 'pingpong'   then '🏓'
+    when 'pickleball' then '🥒'
+    when 'tennis'     then '🎾'
+    else '🏀' end;
   perform public.send_push(
     recipients,
-    coalesce(host_name, 'A friend') || ' planned a run ' || sport_emoji,
-    coalesce(nullif(new.note, ''), 'Tap to see the run and join'),
+    coalesce(host_name, 'A friend') || ' planned a game ' || sport_emoji,
+    coalesce(nullif(new.note, ''), 'Tap to see the plan and join'),
     jsonb_build_object('type', 'run', 'runId', new.id, 'courtId', new.court_id)
   );
   return new;

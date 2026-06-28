@@ -1,4 +1,4 @@
-// "Plan a run": pick a court and a day+time, in either order. Choosing a court
+// "Plan a game": pick a court and a day+time, in either order. Choosing a court
 // limits the time chips to that court's open-gym blocks; picking a time first
 // flags which courts run open gym then (others are disabled). Reuses the map's
 // time-picker chips and the shared date helpers in lib/datetime.
@@ -195,7 +195,7 @@ export default function RunModal({
       <Pressable style={styles.backdrop} onPress={onClose}>
         <Pressable style={styles.sheet} onPress={() => {}}>
           <View style={styles.header}>
-            <Text style={styles.title}>Plan a run</Text>
+            <Text style={styles.title}>Plan a game</Text>
             <Pressable hitSlop={10} onPress={onClose}>
               <Text style={styles.close}>✕</Text>
             </Pressable>
@@ -384,7 +384,7 @@ export default function RunModal({
 
           <TextInput
             style={styles.note}
-            placeholder="Add a note (optional) — e.g. “full court 5s”"
+            placeholder="Add a note (optional) — e.g. “casual, all levels”"
             placeholderTextColor="#9aa7b4"
             value={note}
             onChangeText={setNote}
@@ -402,7 +402,7 @@ export default function RunModal({
             {busy ? (
               <ActivityIndicator color="#fff" />
             ) : (
-              <Text style={styles.submitText}>Post run</Text>
+              <Text style={styles.submitText}>Post plan</Text>
             )}
           </Pressable>
         </Pressable>

@@ -48,5 +48,6 @@ new:
 
 | Migration | Brings in |
 |-----------|-----------|
-| `001_add_run_sport.sql` | `hoop_runs.sport` + sport-aware run push |
+| `001_add_run_sport.sql` | `hoop_runs.sport` + sport-aware planning push |
 | `002_add_player_profiles.sql` | `profiles.age/bio/favorite_sports` + `player_check_ins` |
+| `003_generalize_run_sports.sql` | Widen `hoop_runs.sport` to all sports + per-sport push emoji |

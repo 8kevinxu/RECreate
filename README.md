@@ -304,25 +304,28 @@ via Supabase realtime on both the signal and run tables. Code lives in
 The **👥 Friends** sheet is now just friend management (code, add, requests,
 list), and its badge counts pending **friend requests**.
 
-## Pickup runs ("plan a run")
+## Plan a game (pickup games)
 
-Signed-in users **plan a run** from the **＋ Plan a run** button next to the
-map's time picker (no longer buried in each court's card). The form lets you
-start from **either end**: pick a **court** and its open-gym days/times light up,
-or pick a **day/time** and the court list flags which gyms run open gym then
-(others are disabled). Choose **who can see it** (**Friends**, the default, or
-**Anyone**) and an optional note. If the map's time picker is set, the form opens
-seeded to that time. Others who can see the run tap **I'm in** to join (from the
-**Activity** feed); the host sees a roster count and can **Cancel**.
-Code lives in `lib/runs.js` + `components/RunModal.js`.
+Signed-in users **plan a game** from the **＋ Plan** button next to the map's time
+picker (no longer buried in each court's card). The form lets you start from
+**either end**: pick a **court** and its open-gym days/times light up, or pick a
+**day/time** and the court list flags which gyms run open gym then (others are
+disabled). Pick the **sport** (any tracked sport), **who can see it** (**Friends**,
+the default, or **Anyone**), and an optional note. If the map's time picker is set,
+the form opens seeded to that time. Others who can see it tap **I'm in** to join
+(from the **Activity** feed); the host sees a roster count and can **Cancel**.
+Code lives in `lib/runs.js` + `components/RunModal.js` (internally still the
+`hoop_runs` table — only the user-facing wording is "plan / game").
 
 Visibility is enforced by RLS via the `visibility` column (`public` | `friends`):
-public runs are readable by all, friends-only runs only by the host and accepted
+public games are readable by all, friends-only ones only by the host and accepted
 friends (`loadUpcomingRuns` powers the Activity feed across all courts).
 Setup: run [`supabase/schema/04_runs.sql`](supabase/schema/04_runs.sql) — it adds
 `hoop_runs` / `hoop_run_participants`, policies, real-time, and the host auto-join
-trigger. The friends-only run visibility policy lives in
+trigger. The friends-only visibility policy lives in
 [`05_friends.sql`](supabase/schema/05_friends.sql) (it needs the friendships table).
+On an **existing** DB, apply [`supabase/migrations/003_generalize_run_sports.sql`](supabase/migrations/003_generalize_run_sports.sql)
+to allow all sports (the original constraint only permitted basketball/volleyball).
 
 ## Friends
 

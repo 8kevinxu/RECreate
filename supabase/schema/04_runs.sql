@@ -8,7 +8,8 @@ create table if not exists public.hoop_runs (
   host        uuid        not null references public.profiles (id) on delete cascade,
   court_id    text        not null,
   starts_at   timestamptz not null,
-  sport       text        not null default 'basketball' check (sport in ('basketball', 'volleyball')),
+  sport       text        not null default 'basketball'
+                          check (sport in ('basketball', 'volleyball', 'pingpong', 'pickleball', 'tennis')),
   note        text        check (note is null or char_length(note) <= 200),
   visibility  text        not null default 'public' check (visibility in ('public', 'friends')),
   status      text        not null default 'open'   check (status in ('open', 'cancelled')),
