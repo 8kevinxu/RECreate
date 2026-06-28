@@ -261,13 +261,23 @@ persists across launches. Profiles live in a `profiles` table (`id → auth.user
 `display_name`), auto-created on signup by a DB trigger and **public-readable** so
 names can show in social features.
 
+The **Account** sheet doubles as the player's **profile**: editable display name,
+**age**, **bio**, and **favorite sports** (multi-select of the tracked sports), plus
+a **check-ins** summary — a per-sport visit counter and your **favorite (most-
+visited) park**. Visits are logged to a `player_check_ins` table (`user_id, court_id,
+sport`) whenever a signed-in user reports a court's crowd level *or* taps the
+court's **"I played here"** button; a 3-hour per-court/sport window dedupes the two
+paths so one session counts once. Stats are aggregated client-side (`lib/playerCheckins.js`).
+
 Setup (on top of the Supabase steps under *Live crowd check-ins*):
 
 1. Run the **Accounts** section at the bottom of
    [`supabase/schema.sql`](supabase/schema.sql) (the `profiles` table, its
-   policies, and the signup trigger). The file's earlier sections use plain
-   `create policy`, so don't re-run the whole file wholesale on an existing
-   project — just run the new section once.
+   policies, the signup trigger, and `player_check_ins`). The file's earlier
+   sections use plain `create policy`, so don't re-run the whole file wholesale on
+   an existing project — just run the new section once. On an **existing** DB,
+   apply [`supabase/migrations/add_player_profiles.sql`](supabase/migrations/add_player_profiles.sql)
+   instead (it's idempotent and adds the new columns + table).
 2. **Authentication → Providers → Email** is enabled by default. For frictionless
    testing, turn **off "Confirm email"** there; keep it **on** for production
    (sign-up then asks the user to confirm via email before first login).

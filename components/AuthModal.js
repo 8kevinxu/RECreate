@@ -1,19 +1,23 @@
-// Sign in / create account sheet, plus a signed-in account panel.
-// One modal handles both states (the header button opens it either way).
-import React, { useState } from 'react';
+// Sign in / create account sheet, plus a signed-in account panel that doubles as
+// the player's profile: editable name / age / bio / favorite sports, plus their
+// check-in stats (per-sport counters + most-visited "favorite" park).
+import React, { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
   Modal,
   Pressable,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
   View,
 } from 'react-native';
 import { useAuth } from '../lib/auth';
+import { SPORTS } from '../lib/sports';
+import { loadMyStats } from '../lib/playerCheckins';
 
-export default function AuthModal({ visible, onClose }) {
-  const { user, displayName, signIn, signUp, signOut } = useAuth();
+export default function AuthModal({ visible, onClose, courtsById = {} }) {
+  const { user, displayName, profile, signIn, signUp, signOut, updateProfile } = useAuth();
   const [mode, setMode] = useState('signin'); // 'signin' | 'signup'
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -21,6 +25,39 @@ export default function AuthModal({ visible, onClose }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(null);
   const [info, setInfo] = useState(null);
+
+  // Profile editor state (signed-in panel), seeded from the loaded profile.
+  const [pName, setPName] = useState('');
+  const [pAge, setPAge] = useState('');
+  const [pBio, setPBio] = useState('');
+  const [pSports, setPSports] = useState([]);
+  const [savedNote, setSavedNote] = useState(null); // { err, text }
+  const [stats, setStats] = useState(null);
+
+  // Seed the editor whenever the panel opens or the profile changes.
+  useEffect(() => {
+    if (!visible || !user) return;
+    setPName(profile?.display_name || '');
+    setPAge(profile?.age != null ? String(profile.age) : '');
+    setPBio(profile?.bio || '');
+    setPSports(profile?.favorite_sports || []);
+    setSavedNote(null);
+  }, [visible, user, profile]);
+
+  // Load check-in stats when the panel opens.
+  useEffect(() => {
+    if (!visible || !user) {
+      setStats(null);
+      return;
+    }
+    let alive = true;
+    loadMyStats(user.id).then((s) => {
+      if (alive) setStats(s);
+    });
+    return () => {
+      alive = false;
+    };
+  }, [visible, user]);
 
   const reset = () => {
     setError(null);
@@ -70,6 +107,29 @@ export default function AuthModal({ visible, onClose }) {
     close();
   };
 
+  const toggleSport = (id) =>
+    setPSports((cur) => (cur.includes(id) ? cur.filter((s) => s !== id) : [...cur, id]));
+
+  const saveProfile = async () => {
+    setSavedNote(null);
+    const ageNum = pAge.trim() ? parseInt(pAge, 10) : null;
+    if (ageNum != null && (Number.isNaN(ageNum) || ageNum < 13 || ageNum > 120)) {
+      setSavedNote({ err: true, text: 'Age must be a number between 13 and 120.' });
+      return;
+    }
+    setBusy(true);
+    const { error: err } = await updateProfile({
+      display_name: pName,
+      age: ageNum,
+      bio: pBio,
+      favorite_sports: pSports,
+    });
+    setBusy(false);
+    setSavedNote(err ? { err: true, text: err.message } : { err: false, text: '✓ Profile saved.' });
+  };
+
+  const favCourt = stats?.favoriteCourtId ? courtsById[stats.favoriteCourtId] : null;
+
   return (
     <Modal visible={visible} transparent animationType="fade" onRequestClose={close}>
       <Pressable style={styles.backdrop} onPress={close}>
@@ -84,12 +144,97 @@ export default function AuthModal({ visible, onClose }) {
           </View>
 
           {user ? (
-            <>
+            <ScrollView style={styles.accountScroll} keyboardShouldPersistTaps="handled">
               <Text style={styles.signedInAs}>
                 Signed in as{' '}
                 <Text style={styles.signedInName}>{displayName || user.email}</Text>
               </Text>
-              {!!displayName && <Text style={styles.signedInEmail}>{user.email}</Text>}
+              <Text style={styles.signedInEmail}>{user.email}</Text>
+
+              <Text style={styles.sectionLabel}>Profile</Text>
+              <TextInput
+                style={styles.input}
+                placeholder="Display name"
+                placeholderTextColor="#9aa7b4"
+                value={pName}
+                onChangeText={setPName}
+                maxLength={50}
+                autoCapitalize="words"
+              />
+              <TextInput
+                style={styles.input}
+                placeholder="Age"
+                placeholderTextColor="#9aa7b4"
+                value={pAge}
+                onChangeText={(t) => setPAge(t.replace(/[^0-9]/g, ''))}
+                keyboardType="number-pad"
+                maxLength={3}
+              />
+              <TextInput
+                style={[styles.input, styles.inputMultiline]}
+                placeholder="Bio — your game, when you play, who to look for…"
+                placeholderTextColor="#9aa7b4"
+                value={pBio}
+                onChangeText={setPBio}
+                maxLength={280}
+                multiline
+              />
+
+              <Text style={styles.fieldLabel}>Favorite sports</Text>
+              <View style={styles.sportWrap}>
+                {SPORTS.map((s) => {
+                  const active = pSports.includes(s.id);
+                  return (
+                    <Pressable
+                      key={s.id}
+                      onPress={() => toggleSport(s.id)}
+                      style={[styles.sportChip, active && styles.sportChipActive]}
+                    >
+                      <Text style={[styles.sportChipText, active && styles.sportChipTextActive]}>
+                        {s.emoji} {s.label}
+                      </Text>
+                    </Pressable>
+                  );
+                })}
+              </View>
+
+              <Pressable
+                style={[styles.submit, busy && styles.submitDisabled]}
+                disabled={busy}
+                onPress={saveProfile}
+              >
+                <Text style={styles.submitText}>Save profile</Text>
+              </Pressable>
+              {!!savedNote && (
+                <Text style={savedNote.err ? styles.error : styles.info}>{savedNote.text}</Text>
+              )}
+
+              <Text style={styles.sectionLabel}>Your check-ins</Text>
+              {stats && stats.total > 0 ? (
+                <>
+                  <View style={styles.statWrap}>
+                    {SPORTS.filter((s) => stats.perSport[s.id]).map((s) => (
+                      <View key={s.id} style={styles.statChip}>
+                        <Text style={styles.statChipText}>
+                          {s.emoji} {stats.perSport[s.id]}
+                        </Text>
+                      </View>
+                    ))}
+                  </View>
+                  {!!favCourt && (
+                    <Text style={styles.favLine}>
+                      ⭐ Favorite park: <Text style={styles.favName}>{favCourt.name}</Text> (
+                      {stats.favoriteCount} {stats.favoriteCount === 1 ? 'visit' : 'visits'})
+                    </Text>
+                  )}
+                  <Text style={styles.totalLine}>{stats.total} total check-ins</Text>
+                </>
+              ) : (
+                <Text style={styles.muted}>
+                  No check-ins yet — open a court and tap “I played here.”
+                </Text>
+              )}
+
               <Pressable
                 style={[styles.submit, styles.signOutBtn, busy && styles.submitDisabled]}
                 disabled={busy}
@@ -101,7 +246,7 @@ export default function AuthModal({ visible, onClose }) {
                   <Text style={styles.submitText}>Sign out</Text>
                 )}
               </Pressable>
-            </>
+            </ScrollView>
           ) : (
             <>
               {mode === 'signup' && (
@@ -183,12 +328,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 16,
     padding: 18,
+    maxHeight: '85%',
     shadowColor: '#000',
     shadowOpacity: 0.25,
     shadowRadius: 16,
     shadowOffset: { width: 0, height: 6 },
     elevation: 10,
   },
+  accountScroll: { flexGrow: 0 },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -207,6 +354,7 @@ const styles = StyleSheet.create({
     paddingVertical: 11,
     marginBottom: 10,
   },
+  inputMultiline: { minHeight: 70, textAlignVertical: 'top' },
   error: { color: '#c0392b', fontSize: 13, marginBottom: 8, fontWeight: '600' },
   info: { color: '#1f6f43', fontSize: 13, marginBottom: 8, fontWeight: '600' },
 
@@ -219,7 +367,7 @@ const styles = StyleSheet.create({
   },
   submitDisabled: { opacity: 0.6 },
   submitText: { color: '#fff', fontWeight: '800', fontSize: 15 },
-  signOutBtn: { backgroundColor: '#c0392b', marginTop: 6 },
+  signOutBtn: { backgroundColor: '#c0392b', marginTop: 16 },
 
   switch: {
     textAlign: 'center',
@@ -229,7 +377,44 @@ const styles = StyleSheet.create({
     marginTop: 14,
   },
 
-  signedInAs: { fontSize: 15, color: '#2a3a4a', marginBottom: 2 },
+  signedInAs: { fontSize: 15, color: '#2a3a4a' },
   signedInName: { fontWeight: '800', color: '#0d1b2a' },
   signedInEmail: { fontSize: 13, color: '#7a8a9a', marginBottom: 6 },
+
+  sectionLabel: {
+    fontSize: 13,
+    fontWeight: '800',
+    color: '#0d1b2a',
+    marginTop: 16,
+    marginBottom: 8,
+    textTransform: 'uppercase',
+    letterSpacing: 0.4,
+  },
+  fieldLabel: { fontSize: 13, color: '#5b6b7b', fontWeight: '700', marginBottom: 6 },
+
+  sportWrap: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginBottom: 12 },
+  sportChip: {
+    paddingHorizontal: 12,
+    paddingVertical: 7,
+    borderRadius: 999,
+    backgroundColor: '#eef1f4',
+    borderWidth: 1,
+    borderColor: '#e0e5ea',
+  },
+  sportChipActive: { backgroundColor: '#e8732c', borderColor: '#e8732c' },
+  sportChipText: { color: '#46586a', fontWeight: '700', fontSize: 13 },
+  sportChipTextActive: { color: '#fff' },
+
+  statWrap: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginBottom: 10 },
+  statChip: {
+    paddingHorizontal: 12,
+    paddingVertical: 7,
+    borderRadius: 999,
+    backgroundColor: '#eaf3ee',
+  },
+  statChipText: { color: '#1f6f43', fontWeight: '800', fontSize: 14 },
+  favLine: { fontSize: 14, color: '#2a3a4a', marginBottom: 4 },
+  favName: { fontWeight: '800', color: '#0d1b2a' },
+  totalLine: { fontSize: 13, color: '#7a8a9a', fontWeight: '600' },
+  muted: { fontSize: 13, color: '#9aa7b4', fontStyle: 'italic' },
 });

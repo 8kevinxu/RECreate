@@ -169,9 +169,12 @@ create trigger reviews_rate_limit_trg
 -- ===========================================================================
 
 create table if not exists public.profiles (
-  id           uuid        primary key references auth.users (id) on delete cascade,
-  display_name text        check (display_name is null or char_length(display_name) between 1 and 50),
-  created_at   timestamptz not null default now()
+  id              uuid        primary key references auth.users (id) on delete cascade,
+  display_name    text        check (display_name is null or char_length(display_name) between 1 and 50),
+  age             int         check (age is null or age between 13 and 120),
+  bio             text        check (bio is null or char_length(bio) <= 280),
+  favorite_sports text[],     -- sport ids from lib/sports.js
+  created_at      timestamptz not null default now()
 );
 
 alter table public.profiles enable row level security;
@@ -206,6 +209,32 @@ drop trigger if exists on_auth_user_created on auth.users;
 create trigger on_auth_user_created
   after insert on auth.users
   for each row execute function public.handle_new_user();
+
+-- Personal "I played here" check-in log: one row per logged visit (court + sport).
+-- Powers the account screen's per-sport counters and most-visited ("favorite")
+-- park. Distinct from public.check_ins (anonymous crowd-level reports).
+create table if not exists public.player_check_ins (
+  id         bigint      generated always as identity primary key,
+  user_id    uuid        not null references public.profiles (id) on delete cascade,
+  court_id   text        not null,
+  sport      text        not null,
+  created_at timestamptz not null default now()
+);
+
+create index if not exists player_check_ins_user_idx
+  on public.player_check_ins (user_id, created_at desc);
+
+alter table public.player_check_ins enable row level security;
+
+-- Public read (profiles are public); users write only their own rows.
+create policy "player check-ins are readable by everyone"
+  on public.player_check_ins for select using (true);
+
+create policy "users log their own check-ins"
+  on public.player_check_ins for insert with check (auth.uid() = user_id);
+
+create policy "users delete their own check-ins"
+  on public.player_check_ins for delete using (auth.uid() = user_id);
 
 -- ===========================================================================
 -- Social: "plan a run" — scheduled pickup games at a court.

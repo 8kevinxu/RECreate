@@ -53,6 +53,7 @@ import {
   LEVEL_META,
 } from './lib/crowd';
 import { loadReviews, addReview, MAX_BODY, MAX_NAME } from './lib/reviews';
+import { logVisit } from './lib/playerCheckins';
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -136,10 +137,16 @@ export default function App() {
       if (mine) await removeCheckIn(courtId, mine.id); // replace previous vote
       persistMyVote(courtId, { id: res.id, level, ts: Date.now() });
       setCrowd(await loadCrowd());
+      // A signed-in crowd report also logs a personal visit for the selected
+      // sport (deduped server-side window) — feeds the account check-in stats.
+      if (user) logVisit(user.id, courtId, sport);
       return res;
     }
     return res;
   };
+
+  // Dedicated "I played here" check-in for the selected sport (court detail).
+  const handleLogVisit = async (courtId) => logVisit(user?.id, courtId, sport);
 
   // Refresh "open now" status every minute.
   useEffect(() => {
@@ -619,12 +626,18 @@ export default function App() {
           viewTime={viewTime}
           isPicked={isPicked}
           onVote={handleVote}
+          onLogVisit={handleLogVisit}
+          canLogVisit={!!user}
           onClose={() => setSelectedId(null)}
         />
       )}
 
       {authEnabled && (
-        <AuthModal visible={authOpen} onClose={() => setAuthOpen(false)} />
+        <AuthModal
+          visible={authOpen}
+          onClose={() => setAuthOpen(false)}
+          courtsById={courtsById}
+        />
       )}
       {authEnabled && user && (
         <FeedModal
@@ -684,6 +697,8 @@ function CourtDetail({
   viewTime,
   isPicked,
   onVote,
+  onLogVisit,
+  canLogVisit,
   onClose,
 }) {
   const { status, dropin } = court;
@@ -717,6 +732,17 @@ function CourtDetail({
       setNote('✓ Thanks — check-in recorded!');
     } else {
       setNote('Couldn’t update check-in. Try again.');
+    }
+  };
+
+  const doLogVisit = async () => {
+    const res = await onLogVisit(court.id);
+    if (res && res.logged) {
+      setNote(`✓ Checked in — ${meta.label.toLowerCase()} visit logged!`);
+    } else if (res && res.skipped) {
+      setNote('Already checked in here recently.');
+    } else {
+      setNote('Couldn’t check in. Try again.');
     }
   };
 
@@ -794,6 +820,14 @@ function CourtDetail({
             .filter(Boolean)
             .join('  ·  ')}
         </Text>
+      )}
+
+      {canLogVisit && !isPicked && (
+        <Pressable style={styles.checkInBtn} onPress={doLogVisit}>
+          <Text style={styles.checkInBtnText}>
+            {meta.emoji} I played {meta.label.toLowerCase()} here — check in
+          </Text>
+        </Pressable>
       )}
 
       {isPicked ? (
@@ -1202,6 +1236,14 @@ const styles = StyleSheet.create({
   badgeFacOpen: { backgroundColor: '#e3eefb' },
   badgeFacClosed: { backgroundColor: '#eceff2' },
   badgePlace: { backgroundColor: '#e7efe2' },
+  checkInBtn: {
+    backgroundColor: '#1f9d55',
+    borderRadius: 10,
+    paddingVertical: 11,
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  checkInBtnText: { color: '#fff', fontWeight: '800', fontSize: 14 },
   badgeText: { fontSize: 12, fontWeight: '700', color: '#2a3a4a' },
 
   crowdBox: {
