@@ -148,10 +148,21 @@ export default function RunModal({
   // available, else left in the data's default (alphabetical) order. Once a time
   // is picked, courts open then float above the rest (which are disabled), with
   // proximity/default order breaking ties within each group.
+  // rec.us "% booked" for the picked day+time (recurring weekly, keyed dow-minute);
+  // with no time picked yet, fall back to the court's overall booked%.
+  const slotKey = picked ? `${picked.getDay()}-${minutesOf(picked)}` : null;
+  const bookedFor = (c) => {
+    const res = c.reserved?.[sport];
+    if (!res) return null;
+    if (slotKey) return res.slots?.[slotKey] ?? null;
+    return res.pct ?? null;
+  };
+
   const courtRows = useMemo(() => {
     const rows = sportCourts.map((c) => ({
       c,
       open: courtOpenAt(c, sport, picked),
+      booked: bookedFor(c),
       dist: userLocation
         ? haversineMiles(userLocation.lat, userLocation.lng, c.lat, c.lng)
         : null,
@@ -227,7 +238,7 @@ export default function RunModal({
             )}
           </View>
           <ScrollView style={styles.courtList} nestedScrollEnabled>
-            {courtRows.map(({ c, open, dist }) => {
+            {courtRows.map(({ c, open, dist, booked }) => {
               const active = c.id === courtId;
               const disabled = !!picked && !open;
               const sub = [c.neighborhood, dist != null ? formatDistance(dist) : null]
@@ -260,11 +271,23 @@ export default function RunModal({
                       </Text>
                     )}
                   </View>
-                  {active ? (
-                    <Text style={styles.courtRowCheck}>✓</Text>
-                  ) : disabled ? (
-                    <Text style={styles.courtRowClosed}>no hoops then</Text>
-                  ) : null}
+                  <View style={styles.courtRowRight}>
+                    {booked != null && (
+                      <View
+                        style={[
+                          styles.bookedPill,
+                          booked >= 70 ? styles.bookedPillHi : styles.bookedPillLo,
+                        ]}
+                      >
+                        <Text style={styles.bookedPillText}>{booked}% booked</Text>
+                      </View>
+                    )}
+                    {active ? (
+                      <Text style={styles.courtRowCheck}>✓</Text>
+                    ) : disabled ? (
+                      <Text style={styles.courtRowClosed}>no hoops then</Text>
+                    ) : null}
+                  </View>
                 </Pressable>
               );
             })}
@@ -483,8 +506,13 @@ const styles = StyleSheet.create({
   courtRowNameActive: { color: '#fff' },
   courtRowSub: { fontSize: 12, color: '#7c8a98', marginTop: 1 },
   courtRowSubActive: { color: '#d6e4f5' },
-  courtRowCheck: { fontSize: 16, fontWeight: '800', color: '#fff', marginLeft: 8 },
-  courtRowClosed: { fontSize: 11, color: '#aab4bd', fontStyle: 'italic', marginLeft: 8 },
+  courtRowCheck: { fontSize: 16, fontWeight: '800', color: '#fff' },
+  courtRowClosed: { fontSize: 11, color: '#aab4bd', fontStyle: 'italic' },
+  courtRowRight: { flexDirection: 'row', alignItems: 'center', gap: 8, marginLeft: 8 },
+  bookedPill: { paddingHorizontal: 8, paddingVertical: 3, borderRadius: 999 },
+  bookedPillHi: { backgroundColor: '#f7e0cf' },
+  bookedPillLo: { backgroundColor: '#fdf1d6' },
+  bookedPillText: { fontSize: 11, fontWeight: '800', color: '#7a5a3a' },
 
   toggle: {
     flexDirection: 'row',

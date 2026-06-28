@@ -120,36 +120,45 @@ function windowDays() {
   return out;
 }
 
-// Per-court booked%: total bookable 30-min starts over the window vs free ones.
-function courtBooked(court, win) {
+// Per-court bookable 30-min starts over the window, as { dow, minute, free }.
+// The window covers 7 consecutive days, so each weekday (dow) appears exactly
+// once — we treat the result as a recurring weekly pattern keyed by dow+minute.
+function courtSlots(court, win) {
   const free = new Set((court.availableSlots || []).map((s) => String(s).slice(0, 16)));
-  let total = 0, available = 0;
+  const out = [];
   for (const { date, dow } of win) {
     for (const sl of court.slots || []) {
       if (sl.dayOfWeek !== dow) continue;
       for (const hhmm of gridStarts(sl.openFrom, sl.openTo)) {
-        total++;
-        if (free.has(`${date} ${hhmm}`)) available++;
+        const minute = parseInt(hhmm.slice(0, 2), 10) * 60 + parseInt(hhmm.slice(3, 5), 10);
+        out.push({ dow, minute, free: free.has(`${date} ${hhmm}`) });
       }
     }
   }
-  return { total, reserved: Math.max(0, total - available) };
+  return out;
 }
 
-// Aggregate a location's courts into { sport: { total, reserved, courts } }. A
-// court lined for multiple sports counts toward each.
+// Aggregate a location's courts into { sport: { total, reserved, courts, slots } }
+// where slots maps "dow-minute" -> { total, booked } across the location's courts
+// lined for that sport (so % booked at a given day+time = booked/total). A court
+// lined for multiple sports counts toward each.
 function locationBookedBySport(location, win, sportMap) {
   const bySport = {};
   for (const court of location.courts || []) {
     const sports = courtSports(court, sportMap);
     if (!sports.length) continue;
-    const { total, reserved } = courtBooked(court, win);
-    if (total === 0) continue;
+    const slots = courtSlots(court, win);
+    if (!slots.length) continue;
     for (const sport of sports) {
-      const acc = (bySport[sport] ||= { total: 0, reserved: 0, courts: 0 });
-      acc.total += total;
-      acc.reserved += reserved;
+      const acc = (bySport[sport] ||= { total: 0, reserved: 0, courts: 0, slots: {} });
       acc.courts += 1;
+      for (const { dow, minute, free } of slots) {
+        acc.total += 1;
+        if (!free) acc.reserved += 1;
+        const s = (acc.slots[`${dow}-${minute}`] ||= { total: 0, booked: 0 });
+        s.total += 1;
+        if (!free) s.booked += 1;
+      }
     }
   }
   return bySport;
@@ -232,7 +241,14 @@ async function main() {
         const prev = out[best.id]?.[sport];
         if (prev && prev._ft <= bestFt) continue;
         const pct = Math.round((agg.reserved / agg.total) * 100);
-        (out[best.id] ||= {})[sport] = { pct, courts: agg.courts, _ft: Math.round(bestFt), _from: loc.name };
+        // Per-slot booked% (dow-minute -> pct), for the planner's time-specific badge.
+        const slots = {};
+        for (const [key, s] of Object.entries(agg.slots)) {
+          slots[key] = Math.round((s.booked / s.total) * 100);
+        }
+        (out[best.id] ||= {})[sport] = {
+          pct, courts: agg.courts, slots, _ft: Math.round(bestFt), _from: loc.name,
+        };
         console.log(`  ✓ ${loc.name} ${sport} → ${pct}% booked → ${best.name}`);
       }
     }
@@ -278,10 +294,13 @@ function render(reservations, generatedAt, windowDays) {
 // Generated: ${generatedAt}
 //
 // How booked-out each reservable outdoor court is, from rec.us (SF Rec & Park's
-// reservation platform). Map of our court id -> { sport: { pct, courts } }, where
-// pct is the share of bookable slots already reserved over the next ${windowDays} days
-// ("% booked"). Merged onto courts at runtime by lib/useCourts.js and shown as a
-// badge on the court detail card. A snapshot — refresh by re-running the build.
+// reservation platform). Map of our court id -> { sport: { pct, courts, slots } }:
+//   pct    share of bookable slots already reserved over the next ${windowDays} days ("% booked")
+//   courts number of reservable sub-courts at the location
+//   slots  per-time booked%, keyed "dayOfWeek-minuteOfDay" (e.g. "2-1080" = Tue 18:00)
+// Merged onto courts at runtime by lib/useCourts.js: shown as a badge on the court
+// detail card (overall pct) and next to each court when planning a game (slot pct).
+// A snapshot — refresh by re-running the build.
 
 export const GENERATED_AT = ${JSON.stringify(generatedAt)};
 
