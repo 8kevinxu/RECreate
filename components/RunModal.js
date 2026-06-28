@@ -148,9 +148,14 @@ export default function RunModal({
   // available, else left in the data's default (alphabetical) order. Once a time
   // is picked, courts open then float above the rest (which are disabled), with
   // proximity/default order breaking ties within each group.
-  // rec.us "% booked" for the picked day+time (recurring weekly, keyed dow-minute);
-  // with no time picked yet, fall back to the court's overall booked%.
-  const slotKey = picked ? `${picked.getDay()}-${minutesOf(picked)}` : null;
+  // rec.us "% booked" for the picked day+time (keyed "YYYY-MM-DD HH:MM", SF-local);
+  // with no time picked yet, fall back to the court's window-average booked%.
+  const pad2 = (n) => String(n).padStart(2, '0');
+  const slotKey = picked
+    ? `${picked.getFullYear()}-${pad2(picked.getMonth() + 1)}-${pad2(picked.getDate())} ${pad2(
+        picked.getHours()
+      )}:${pad2(picked.getMinutes())}`
+    : null;
   const bookedFor = (c) => {
     const res = c.reserved?.[sport];
     if (!res) return null;

@@ -86,6 +86,22 @@ function netsLabel(nets) {
   return null;
 }
 
+// rec.us reservation slots are keyed "YYYY-MM-DD HH:MM" (SF-local, 30-min grid).
+const pad2 = (n) => String(n).padStart(2, '0');
+const slotKeyOf = (d) =>
+  `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())} ${pad2(d.getHours())}:${
+    d.getMinutes() < 30 ? '00' : '30'
+  }`;
+// "% booked right now": the current 30-min slot if the court is open now, else the
+// next upcoming slot in the snapshot window. null once the snapshot has gone stale.
+function liveBooked(res) {
+  if (!res || !res.slots) return null;
+  const nowKey = slotKeyOf(new Date());
+  if (res.slots[nowKey] != null) return { pct: res.slots[nowKey], now: true };
+  const next = Object.keys(res.slots).sort().find((k) => k >= nowKey);
+  return next ? { pct: res.slots[next], at: next } : null;
+}
+
 // Secondary indoor/outdoor filter, shown only for sports that have both (e.g.
 // pickleball). Matched against a court's `indoor` flag in visibleCourts.
 const PLACE_OPTS = [
@@ -731,8 +747,10 @@ function CourtDetail({
 }) {
   const { status, dropin } = court;
   const meta = sportMeta(sport);
-  // rec.us "% booked" snapshot for this sport, if this court is reservable.
+  // rec.us reservations for this sport, if this court is reservable, plus the live
+  // "% booked right now" reading derived from the point-in-time slot map.
   const booked = court.reserved?.[sport];
+  const live = liveBooked(booked);
   // SF Rec & Park directory facts (court count, lights, restrooms, nets) for this sport.
   const dir = court.directory?.[sport];
   const week = getDropinWeek(court, sport, viewTime);
@@ -841,14 +859,16 @@ function CourtDetail({
             {court.indoor === false ? '🌳 Outdoor' : '🏠 Indoor'}
           </Text>
         </View>
-        {booked != null && (
+        {live != null && (
           <View
             style={[
               styles.badge,
-              booked.pct >= 70 ? styles.badgeBookedHi : styles.badgeBookedLo,
+              live.pct >= 70 ? styles.badgeBookedHi : styles.badgeBookedLo,
             ]}
           >
-            <Text style={styles.badgeText}>📅 {booked.pct}% booked</Text>
+            <Text style={styles.badgeText}>
+              📅 {live.pct}% booked{live.now ? ' now' : ''}
+            </Text>
           </View>
         )}
       </View>
@@ -879,8 +899,17 @@ function CourtDetail({
       {booked != null && (
         <>
           <Text style={styles.bookedNote}>
-            Reservations on rec.us — {booked.pct}% of this week’s bookable slots are taken
-            {booked.courts ? ` across ${booked.courts} court${booked.courts > 1 ? 's' : ''}` : ''}.
+            {live && live.now
+              ? `${live.pct}% of courts reserved right now on rec.us${
+                  booked.courts ? ` (${booked.courts} courts)` : ''
+                }.`
+              : live
+              ? `Closed right now — ${live.pct}% booked at ${viewLabel(
+                  new Date(live.at.replace(' ', 'T'))
+                )} on rec.us.`
+              : `Reservations on rec.us${
+                  booked.courts ? ` · ${booked.courts} courts` : ''
+                }.`}
           </Text>
           <Pressable
             style={styles.bookBtn}

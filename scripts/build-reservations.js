@@ -107,31 +107,46 @@ function gridStarts(openFrom, openTo) {
   return out;
 }
 
-// The next WINDOW_DAYS calendar days (skip today to avoid partial-day skew),
-// as { date 'YYYY-MM-DD', dow 0..6 }.
+// rec.us datetimes are SF-local wall-clock. Read a Date's SF-local fields by
+// reinterpreting it in America/Los_Angeles (works regardless of the build host tz).
+const TZ = 'America/Los_Angeles';
+const sfDate = (d = new Date()) => new Date(d.toLocaleString('en-US', { timeZone: TZ }));
+const ymd = (d) =>
+  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+// The current 30-min slot key "YYYY-MM-DD HH:MM" in SF time; slots before it are past.
+function nowSlotKey() {
+  const n = sfDate();
+  const hh = String(n.getHours()).padStart(2, '0');
+  return `${ymd(n)} ${hh}:${n.getMinutes() < 30 ? '00' : '30'}`;
+}
+
+// The next WINDOW_DAYS calendar days starting today (SF), as { date 'YYYY-MM-DD', dow }.
 function windowDays() {
   const out = [];
-  const base = new Date();
-  for (let i = 1; i <= WINDOW_DAYS; i++) {
+  const base = sfDate();
+  base.setHours(0, 0, 0, 0);
+  for (let i = 0; i < WINDOW_DAYS; i++) {
     const d = new Date(base);
     d.setDate(d.getDate() + i);
-    out.push({ date: d.toISOString().slice(0, 10), dow: d.getDay() });
+    out.push({ date: ymd(d), dow: d.getDay() });
   }
   return out;
 }
 
-// Per-court bookable 30-min starts over the window, as { dow, minute, free }.
-// The window covers 7 consecutive days, so each weekday (dow) appears exactly
-// once — we treat the result as a recurring weekly pattern keyed by dow+minute.
-function courtSlots(court, win) {
+// Per-court bookable 30-min starts over the window, as { key 'YYYY-MM-DD HH:MM', free }.
+// Reservations are date-specific (not weekly), so we key by the actual date+time.
+// Past slots (earlier today) are dropped — they can't be booked and would read as
+// falsely "booked" since rec.us only lists future-free times in availableSlots.
+function courtSlots(court, win, nowKey) {
   const free = new Set((court.availableSlots || []).map((s) => String(s).slice(0, 16)));
   const out = [];
   for (const { date, dow } of win) {
     for (const sl of court.slots || []) {
       if (sl.dayOfWeek !== dow) continue;
       for (const hhmm of gridStarts(sl.openFrom, sl.openTo)) {
-        const minute = parseInt(hhmm.slice(0, 2), 10) * 60 + parseInt(hhmm.slice(3, 5), 10);
-        out.push({ dow, minute, free: free.has(`${date} ${hhmm}`) });
+        const key = `${date} ${hhmm}`;
+        if (key < nowKey) continue; // already in the past
+        out.push({ key, free: free.has(key) });
       }
     }
   }
@@ -139,23 +154,23 @@ function courtSlots(court, win) {
 }
 
 // Aggregate a location's courts into { sport: { total, reserved, courts, slots } }
-// where slots maps "dow-minute" -> { total, booked } across the location's courts
-// lined for that sport (so % booked at a given day+time = booked/total). A court
+// where slots maps "YYYY-MM-DD HH:MM" -> { total, booked } across the location's
+// courts lined for that sport (so % booked at a given time = booked/total). A court
 // lined for multiple sports counts toward each.
-function locationBookedBySport(location, win, sportMap) {
+function locationBookedBySport(location, win, sportMap, nowKey) {
   const bySport = {};
   for (const court of location.courts || []) {
     const sports = courtSports(court, sportMap);
     if (!sports.length) continue;
-    const slots = courtSlots(court, win);
+    const slots = courtSlots(court, win, nowKey);
     if (!slots.length) continue;
     for (const sport of sports) {
       const acc = (bySport[sport] ||= { total: 0, reserved: 0, courts: 0, slots: {} });
       acc.courts += 1;
-      for (const { dow, minute, free } of slots) {
+      for (const { key, free } of slots) {
         acc.total += 1;
         if (!free) acc.reserved += 1;
-        const s = (acc.slots[`${dow}-${minute}`] ||= { total: 0, booked: 0 });
+        const s = (acc.slots[key] ||= { total: 0, booked: 0 });
         s.total += 1;
         if (!free) s.booked += 1;
       }
@@ -206,6 +221,7 @@ async function fetchSfLocations() {
 async function main() {
   console.log('Fetching reservable court availability from rec.us…');
   const win = windowDays();
+  const nowKey = nowSlotKey();
   const courts = ourCourts();
 
   let reservations;
@@ -226,7 +242,7 @@ async function main() {
         continue;
       }
       await sleep(120);
-      const bySport = locationBookedBySport(detail, win, sportMap);
+      const bySport = locationBookedBySport(detail, win, sportMap, nowKey);
       for (const [sport, agg] of Object.entries(bySport)) {
         // Attach to the nearest of our courts that offers this sport. If another
         // rec.us location already claimed that court+sport, keep the closer one
@@ -297,9 +313,11 @@ function render(reservations, generatedAt, windowDays) {
 //
 // How booked-out each reservable outdoor court is, from rec.us (SF Rec & Park's
 // reservation platform). Map of our court id -> { sport: { pct, courts, slots, url } }:
-//   pct    share of bookable slots already reserved over the next ${windowDays} days ("% booked")
+//   pct    share of bookable slots reserved over the next ${windowDays} days (window average)
 //   courts number of reservable sub-courts at the location
-//   slots  per-time booked%, keyed "dayOfWeek-minuteOfDay" (e.g. "2-1080" = Tue 18:00)
+//   slots  point-in-time booked%, keyed "YYYY-MM-DD HH:MM" SF-local (e.g. "2026-06-28 09:00").
+//          The app looks up the current slot for a live "% booked right now" reading; covers
+//          today onward, so it goes stale after the window (refresh weekly via the cron).
 //   url    the rec.us reservation page for this location (where users book)
 // Merged onto courts at runtime by lib/useCourts.js: shown as a badge on the court
 // detail card (overall pct) and next to each court when planning a game (slot pct).

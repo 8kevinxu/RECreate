@@ -120,15 +120,19 @@ by `id`, so `npm run build:courts` never touches them. Two flavors:
   `scripts/build-reservations.js`, which reads SF Rec & Park's reservation platform
   (rec.us, via its public `api.rec.us` per-location endpoint). For each reservable
   court it compares the open-hours schedule against the still-free slots over the
-  next 7 days to get the share already booked, geo-matches each rec.us location to one
-  of our courts by proximity + sport (closest wins), and writes a court id →
-  `{ sport: { pct, courts, slots, url } }` map (`data/reservations.js`, `npm run build:reservations`),
-  where `slots` is per-time booked% keyed by day-of-week + minute and `url` is the court's
-  rec.us reservation page. `lib/useCourts.js` merges it onto courts as `reserved`: the court
-  detail card shows the overall "% booked" badge plus a **Reserve this court** button (deep-links
-  to that court's rec.us page) and a how-to-book link, and the "Plan a game" sheet shows each
-  tennis/pickleball court's booked% for the picked day+time. It's a build-time snapshot — re-run
-  the build (or the cron) to refresh — with the same last-good cache + gate resilience
+  next 7 days (rec.us only lists future-free times, so this captures who's reserved
+  when), geo-matches each rec.us location to one of our courts by proximity + sport
+  (closest wins), and writes a court id → `{ sport: { pct, courts, slots, url } }` map
+  (`data/reservations.js`, `npm run build:reservations`). `slots` is **point-in-time**
+  booked% keyed by actual SF-local datetime (`"YYYY-MM-DD HH:MM"`) — the fraction of the
+  location's courts reserved at that 30-min slot — `pct` is the window average, and `url`
+  is the court's rec.us page. `lib/useCourts.js` merges it onto courts as `reserved`: the
+  court detail card shows a live **"% booked right now"** badge (looking up the current
+  slot, e.g. "100% booked now" when every court is taken) plus a **Reserve this court**
+  button (deep-links to that court's rec.us page) and a how-to-book link, and the "Plan a
+  game" sheet shows each court's booked% for the picked day+time. Because the slots are
+  date-keyed they cover today through the window end, then go stale — so the **weekly cron
+  refresh matters** to keep "right now" accurate. Same last-good cache + gate resilience
   (`scripts/reservations-cache.json`).
 - **Court directory facts** (court counts, lights, restrooms, nets) for tennis + pickleball
   come from `scripts/build-court-directory.js`, which scrapes SF Rec & Park's public
