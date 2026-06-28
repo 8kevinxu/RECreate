@@ -247,7 +247,9 @@ async function main() {
           slots[key] = Math.round((s.booked / s.total) * 100);
         }
         (out[best.id] ||= {})[sport] = {
-          pct, courts: agg.courts, slots, _ft: Math.round(bestFt), _from: loc.name,
+          pct, courts: agg.courts, slots,
+          url: `https://www.rec.us/locations/${loc.id}`,
+          _ft: Math.round(bestFt), _from: loc.name,
         };
         console.log(`  ✓ ${loc.name} ${sport} → ${pct}% booked → ${best.name}`);
       }
@@ -294,10 +296,11 @@ function render(reservations, generatedAt, windowDays) {
 // Generated: ${generatedAt}
 //
 // How booked-out each reservable outdoor court is, from rec.us (SF Rec & Park's
-// reservation platform). Map of our court id -> { sport: { pct, courts, slots } }:
+// reservation platform). Map of our court id -> { sport: { pct, courts, slots, url } }:
 //   pct    share of bookable slots already reserved over the next ${windowDays} days ("% booked")
 //   courts number of reservable sub-courts at the location
 //   slots  per-time booked%, keyed "dayOfWeek-minuteOfDay" (e.g. "2-1080" = Tue 18:00)
+//   url    the rec.us reservation page for this location (where users book)
 // Merged onto courts at runtime by lib/useCourts.js: shown as a badge on the court
 // detail card (overall pct) and next to each court when planning a game (slot pct).
 // A snapshot — refresh by re-running the build.

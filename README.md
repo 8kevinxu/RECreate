@@ -122,12 +122,14 @@ by `id`, so `npm run build:courts` never touches them. Two flavors:
   court it compares the open-hours schedule against the still-free slots over the
   next 7 days to get the share already booked, geo-matches each rec.us location to one
   of our courts by proximity + sport (closest wins), and writes a court id →
-  `{ sport: { pct, courts, slots } }` map (`data/reservations.js`, `npm run build:reservations`),
-  where `slots` is per-time booked% keyed by day-of-week + minute. `lib/useCourts.js`
-  merges it onto courts as `reserved`: the court detail card shows the overall "% booked"
-  badge, and the "Plan a game" sheet shows each tennis/pickleball court's booked% for the
-  picked day+time. It's a build-time snapshot — re-run the build (or the cron) to refresh —
-  with the same last-good cache + gate resilience (`scripts/reservations-cache.json`).
+  `{ sport: { pct, courts, slots, url } }` map (`data/reservations.js`, `npm run build:reservations`),
+  where `slots` is per-time booked% keyed by day-of-week + minute and `url` is the court's
+  rec.us reservation page. `lib/useCourts.js` merges it onto courts as `reserved`: the court
+  detail card shows the overall "% booked" badge plus a **Reserve this court** button (deep-links
+  to that court's rec.us page) and a how-to-book link, and the "Plan a game" sheet shows each
+  tennis/pickleball court's booked% for the picked day+time. It's a build-time snapshot — re-run
+  the build (or the cron) to refresh — with the same last-good cache + gate resilience
+  (`scripts/reservations-cache.json`).
 
 An optional `disclaimer` field on a court overrides the default "verify on
 sfrecpark.org" footnote on the court detail screen.

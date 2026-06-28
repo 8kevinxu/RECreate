@@ -180,7 +180,8 @@
           "5-420": 100,
           "6-420": 100,
           "0-420": 100
-        }
+        },
+        "url": "https://www.rec.us/locations/81cd2b08-8ea6-40ee-8c89-aeba92506576"
       }
     },
     "balboa-park-outdoor": {
@@ -345,7 +346,7 @@
           "6-1110": 100,
           "6-1140": 100,
           "0-810": 0,
-          "0-840": 75,
+          "0-840": 0,
           "0-870": 75,
           "0-900": 67,
           "0-930": 67,
@@ -366,7 +367,8 @@
           "6-420": 0,
           "0-420": 0,
           "0-1170": 100
-        }
+        },
+        "url": "https://www.rec.us/locations/d4958fa0-fa8a-48dd-8aa9-c5ecc2a2a612"
       }
     },
     "buena-vista-park-outdoor": {
@@ -542,7 +544,8 @@
           "0-1080": 0,
           "0-1110": 0,
           "0-1140": 0
-        }
+        },
+        "url": "https://www.rec.us/locations/3f842b1e-13f9-447d-ab12-62b62d954d3e"
       },
       "pickleball": {
         "pct": 55,
@@ -716,7 +719,8 @@
           "0-1080": 0,
           "0-1110": 0,
           "0-1140": 0
-        }
+        },
+        "url": "https://www.rec.us/locations/3f842b1e-13f9-447d-ab12-62b62d954d3e"
       }
     },
     "crocker-amazon-playground-outdoor": {
@@ -920,7 +924,8 @@
           "5-420": 50,
           "6-420": 50,
           "0-420": 50
-        }
+        },
+        "url": "https://www.rec.us/locations/779905bd-4c2b-45b3-abd0-48140998bca1"
       },
       "pickleball": {
         "pct": 38,
@@ -1122,7 +1127,8 @@
           "0-1170": 50,
           "0-1200": 50,
           "0-1230": 50
-        }
+        },
+        "url": "https://www.rec.us/locations/779905bd-4c2b-45b3-abd0-48140998bca1"
       }
     },
     "mission-dolores-park-outdoor": {
@@ -1148,9 +1154,9 @@
           "1-900": 67,
           "1-930": 67,
           "1-960": 100,
-          "1-990": 100,
-          "1-1020": 100,
-          "1-1050": 100,
+          "1-990": 67,
+          "1-1020": 67,
+          "1-1050": 67,
           "1-1080": 100,
           "1-1110": 100,
           "1-1140": 100,
@@ -1326,7 +1332,8 @@
           "5-420": 100,
           "6-420": 100,
           "0-420": 100
-        }
+        },
+        "url": "https://www.rec.us/locations/95745483-6b38-4e99-8ba2-a3e23cda8587"
       }
     },
     "dupont-tennis-courts-outdoor": {
@@ -1509,7 +1516,8 @@
           "5-420": 100,
           "6-420": 100,
           "0-420": 100
-        }
+        },
+        "url": "https://www.rec.us/locations/d3fc78ce-0617-40dc-b7f7-d41ba95f09ef"
       }
     },
     "fulton-playground-outdoor": {
@@ -1685,7 +1693,8 @@
           "0-1080": 100,
           "0-1110": 100,
           "0-1140": 100
-        }
+        },
+        "url": "https://www.rec.us/locations/070037ab-f407-486a-9f88-989905be1039"
       }
     },
     "glen-canyon-park-outdoor": {
@@ -1889,7 +1898,8 @@
           "0-1170": 0,
           "0-1200": 0,
           "0-1230": 0
-        }
+        },
+        "url": "https://www.rec.us/locations/16fdf80f-4e50-452a-843f-63d159c798e2"
       }
     },
     "hamilton-rec-center-outdoor": {
@@ -2086,7 +2096,8 @@
           "0-1170": 50,
           "0-1200": 50,
           "0-1230": 50
-        }
+        },
+        "url": "https://www.rec.us/locations/8c3b9b04-a149-4080-b648-e3ff8365bbee"
       }
     },
     "helen-wills-playground-outdoor": {
@@ -2262,7 +2273,8 @@
           "0-1080": 100,
           "0-1110": 100,
           "0-1140": 100
-        }
+        },
+        "url": "https://www.rec.us/locations/3552b6f7-e7bd-4334-9e4a-731b015447e0"
       }
     },
     "jackson-playground-outdoor": {
@@ -2459,7 +2471,8 @@
           "0-1170": 100,
           "0-1200": 100,
           "0-1230": 100
-        }
+        },
+        "url": "https://www.rec.us/locations/360736ab-a655-478d-aab5-4e54fea0c140"
       },
       "tennis": {
         "pct": 83,
@@ -2654,7 +2667,8 @@
           "0-1170": 100,
           "0-1200": 100,
           "0-1230": 100
-        }
+        },
+        "url": "https://www.rec.us/locations/360736ab-a655-478d-aab5-4e54fea0c140"
       }
     },
     "joe-dimaggio-playground-outdoor": {
@@ -2851,7 +2865,8 @@
           "0-1170": 0,
           "0-1200": 0,
           "0-1230": 0
-        }
+        },
+        "url": "https://www.rec.us/locations/8f8e510f-e0d8-4364-8531-a9a0d0d6b2b8"
       }
     },
     "j-p-murphy-playground-outdoor": {
@@ -3027,7 +3042,8 @@
           "0-1080": 33,
           "0-1110": 33,
           "0-1140": 33
-        }
+        },
+        "url": "https://www.rec.us/locations/7a8ef25a-dc20-4046-8aab-7212a9a41d20"
       }
     },
     "lafayette-park-outdoor": {
@@ -3210,7 +3226,8 @@
           "5-1140": 100,
           "6-1140": 0,
           "0-1140": 100
-        }
+        },
+        "url": "https://www.rec.us/locations/c4fc2b3e-d1bc-47d9-b920-76d00d32b20b"
       }
     },
     "angelo-j-rossi-playground-outdoor": {
@@ -3386,7 +3403,8 @@
           "0-1080": 0,
           "0-1110": 0,
           "0-1140": 0
-        }
+        },
+        "url": "https://www.rec.us/locations/ad9e28e1-2d02-4fb5-b31d-b75f63841814"
       },
       "pickleball": {
         "pct": 63,
@@ -3560,7 +3578,8 @@
           "0-1080": 0,
           "0-1110": 0,
           "0-1140": 0
-        }
+        },
+        "url": "https://www.rec.us/locations/ad9e28e1-2d02-4fb5-b31d-b75f63841814"
       }
     },
     "minnie-and-lovie-rec-center-outdoor": {
@@ -3736,7 +3755,8 @@
           "0-1080": 50,
           "0-1110": 50,
           "0-1140": 50
-        }
+        },
+        "url": "https://www.rec.us/locations/bb6254d3-0ef0-475d-8de9-ac7d6b0323f4"
       }
     },
     "miraloma-playground-outdoor": {
@@ -3912,12 +3932,13 @@
           "0-1080": 100,
           "0-1110": 100,
           "0-1140": 100
-        }
+        },
+        "url": "https://www.rec.us/locations/5a52a5e8-2e9f-4976-8a5c-0bc53d51afe9"
       }
     },
     "moscone-rec-center-outdoor": {
       "tennis": {
-        "pct": 58,
+        "pct": 59,
         "courts": 4,
         "slots": {
           "1-450": 100,
@@ -4025,9 +4046,9 @@
           "4-1080": 100,
           "4-1110": 100,
           "4-1140": 100,
-          "4-1170": 50,
-          "4-1200": 50,
-          "4-1230": 50,
+          "4-1170": 75,
+          "4-1200": 75,
+          "4-1230": 75,
           "5-450": 50,
           "5-480": 50,
           "5-510": 50,
@@ -4109,7 +4130,8 @@
           "0-1170": 25,
           "0-1200": 25,
           "0-1230": 25
-        }
+        },
+        "url": "https://www.rec.us/locations/fb0d16b1-5f9f-465f-8ebf-fccf5d400c47"
       },
       "pickleball": {
         "pct": 82,
@@ -4203,7 +4225,8 @@
           "0-1170": 100,
           "0-1200": 100,
           "0-1230": 100
-        }
+        },
+        "url": "https://www.rec.us/locations/fb0d16b1-5f9f-465f-8ebf-fccf5d400c47"
       }
     },
     "mountain-lake-park-outdoor": {
@@ -4386,7 +4409,8 @@
           "5-1140": 33,
           "6-1140": 0,
           "0-1140": 0
-        }
+        },
+        "url": "https://www.rec.us/locations/af2cd971-0c10-479d-a12e-ca63d55f71be"
       }
     },
     "parkside-square-outdoor": {
@@ -4569,7 +4593,8 @@
           "5-420": 100,
           "6-420": 100,
           "0-420": 100
-        }
+        },
+        "url": "https://www.rec.us/locations/5a0b8fa6-11db-433e-9314-bafb956d8622"
       },
       "tennis": {
         "pct": 56,
@@ -4750,7 +4775,8 @@
           "5-1140": 33,
           "6-1140": 67,
           "0-1140": 33
-        }
+        },
+        "url": "https://www.rec.us/locations/5a0b8fa6-11db-433e-9314-bafb956d8622"
       }
     },
     "potrero-hill-rec-center-outdoor": {
@@ -4954,7 +4980,8 @@
           "5-420": 100,
           "6-420": 100,
           "0-420": 100
-        }
+        },
+        "url": "https://www.rec.us/locations/032e605f-6065-4794-9675-b1bbebe18159"
       }
     },
     "presidio-wall-playground-outdoor": {
@@ -5130,7 +5157,8 @@
           "0-1080": 50,
           "0-1110": 50,
           "0-1140": 50
-        }
+        },
+        "url": "https://www.rec.us/locations/c2f20478-83d8-48c9-af3d-065d7ba22d60"
       },
       "pickleball": {
         "pct": 64,
@@ -5276,7 +5304,8 @@
           "0-1050": 67,
           "0-1080": 0,
           "0-1110": 0
-        }
+        },
+        "url": "https://www.rec.us/locations/c2f20478-83d8-48c9-af3d-065d7ba22d60"
       }
     },
     "richmond-playground-outdoor": {
@@ -5336,7 +5365,8 @@
           "0-720": 50,
           "0-750": 100,
           "0-780": 100
-        }
+        },
+        "url": "https://www.rec.us/locations/95f7e887-5096-463b-834a-09d67889557e"
       },
       "tennis": {
         "pct": 78,
@@ -5453,7 +5483,8 @@
           "0-1080": 100,
           "0-1110": 100,
           "0-1140": 100
-        }
+        },
+        "url": "https://www.rec.us/locations/95f7e887-5096-463b-834a-09d67889557e"
       }
     },
     "sigmund-stern-recreation-grove-outdoor": {
@@ -5629,7 +5660,8 @@
           "0-1080": 0,
           "0-1110": 0,
           "0-1140": 0
-        }
+        },
+        "url": "https://www.rec.us/locations/1a5a0d4b-ef5d-44ab-a8ab-a13f39dcdc7d"
       },
       "tennis": {
         "pct": 40,
@@ -5803,7 +5835,8 @@
           "0-1080": 0,
           "0-1110": 0,
           "0-1140": 0
-        }
+        },
+        "url": "https://www.rec.us/locations/1a5a0d4b-ef5d-44ab-a8ab-a13f39dcdc7d"
       }
     },
     "st-mary-s-rec-center-outdoor": {
@@ -5979,7 +6012,8 @@
           "0-1080": 0,
           "0-1110": 0,
           "0-1140": 0
-        }
+        },
+        "url": "https://www.rec.us/locations/25eafd72-ca31-4df7-8850-79c05edf3796"
       }
     },
     "sunset-rec-center-outdoor": {
@@ -6155,7 +6189,8 @@
           "0-1080": 0,
           "0-1110": 0,
           "0-1140": 0
-        }
+        },
+        "url": "https://www.rec.us/locations/fe61cfdb-abf7-4f52-8ce4-45feb58f10b7"
       }
     },
     "upper-noe-rec-center-outdoor": {
@@ -6205,7 +6240,8 @@
           "0-720": 100,
           "0-750": 100,
           "0-780": 100
-        }
+        },
+        "url": "https://www.rec.us/locations/2a18ef67-333c-4d9c-a86c-e0709f07f5c3"
       },
       "tennis": {
         "pct": 86,
@@ -6400,9 +6436,10 @@
           "0-1170": 100,
           "0-1200": 100,
           "0-1230": 100
-        }
+        },
+        "url": "https://www.rec.us/locations/2a18ef67-333c-4d9c-a86c-e0709f07f5c3"
       }
     }
   },
-  "fetchedAt": "2026-06-28T20:58:38.656Z"
+  "fetchedAt": "2026-06-28T21:12:28.424Z"
 }

@@ -58,6 +58,14 @@ import { logVisit } from './lib/playerCheckins';
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
+// SF Rec & Park reservation links, shown on reservable (tennis/pickleball) courts.
+// Each court deep-links to its own rec.us reservation page (court.reserved[sport].url);
+// this is the fallback (the org's full locations list) when that's missing. The PDF
+// is SF Rec & Park's step-by-step how-to guide.
+const BOOK_URL = 'https://www.rec.us/organizations/san-francisco-rec-park?tab=locations';
+const BOOK_HOWTO_URL =
+  'https://sfrecpark.org/DocumentCenter/View/23655/SF_Rec_How-To_4-11-24?bidId=';
+
 // Secondary indoor/outdoor filter, shown only for sports that have both (e.g.
 // pickleball). Matched against a court's `indoor` flag in visibleCourts.
 const PLACE_OPTS = [
@@ -824,10 +832,21 @@ function CourtDetail({
       </View>
 
       {booked != null && (
-        <Text style={styles.bookedNote}>
-          Reservations on rec.us — {booked.pct}% of this week’s bookable slots are taken
-          {booked.courts ? ` across ${booked.courts} court${booked.courts > 1 ? 's' : ''}` : ''}.
-        </Text>
+        <>
+          <Text style={styles.bookedNote}>
+            Reservations on rec.us — {booked.pct}% of this week’s bookable slots are taken
+            {booked.courts ? ` across ${booked.courts} court${booked.courts > 1 ? 's' : ''}` : ''}.
+          </Text>
+          <Pressable
+            style={styles.bookBtn}
+            onPress={() => Linking.openURL(booked.url || BOOK_URL)}
+          >
+            <Text style={styles.bookBtnText}>📅 Reserve this court</Text>
+          </Pressable>
+          <Pressable hitSlop={6} onPress={() => Linking.openURL(BOOK_HOWTO_URL)}>
+            <Text style={styles.bookHowto}>How to book (SF Rec & Park guide) ›</Text>
+          </Pressable>
+        </>
       )}
 
       {(court.distanceMi != null || (dropin.open && court.remaining > 0)) && (
@@ -1258,6 +1277,15 @@ const styles = StyleSheet.create({
   badgeBookedHi: { backgroundColor: '#f7e0cf' },
   badgeBookedLo: { backgroundColor: '#fdf1d6' },
   bookedNote: { fontSize: 12, color: '#7a6a55', marginBottom: 8, lineHeight: 16 },
+  bookBtn: {
+    backgroundColor: '#e8732c',
+    borderRadius: 10,
+    paddingVertical: 11,
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  bookBtnText: { color: '#fff', fontWeight: '800', fontSize: 14 },
+  bookHowto: { fontSize: 12, color: '#2f74d6', fontWeight: '700', marginBottom: 10 },
   checkInBtn: {
     backgroundColor: '#1f9d55',
     borderRadius: 10,
