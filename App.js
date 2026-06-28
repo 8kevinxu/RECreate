@@ -66,6 +66,26 @@ const BOOK_URL = 'https://www.rec.us/organizations/san-francisco-rec-park?tab=lo
 const BOOK_HOWTO_URL =
   'https://sfrecpark.org/DocumentCenter/View/23655/SF_Rec_How-To_4-11-24?bidId=';
 
+// Directory facts → short card labels. courtCountLabel summarizes how many courts
+// and their reservable/walk-up split; netsLabel shortens the free-text nets column.
+function courtCountLabel(d) {
+  const n = d.total || 0;
+  const unit = `court${n === 1 ? '' : 's'}`;
+  if (d.walkup === 0 && d.reservable > 0) return `${n} ${unit} · all reservable`;
+  if (d.reservable === 0 && d.walkup > 0) return `${n} ${unit} · all walk-up`;
+  const parts = [];
+  if (d.reservable) parts.push(`${d.reservable} reservable`);
+  if (d.walkup) parts.push(`${d.walkup} walk-up`);
+  return parts.length ? `${n} ${unit} · ${parts.join(', ')}` : `${n} ${unit}`;
+}
+function netsLabel(nets) {
+  if (!nets) return null;
+  if (/bring your own/i.test(nets)) return 'Bring your own net';
+  if (/borrow/i.test(nets)) return 'Nets to borrow';
+  if (/provided/i.test(nets)) return 'Nets provided';
+  return null;
+}
+
 // Secondary indoor/outdoor filter, shown only for sports that have both (e.g.
 // pickleball). Matched against a court's `indoor` flag in visibleCourts.
 const PLACE_OPTS = [
@@ -713,6 +733,8 @@ function CourtDetail({
   const meta = sportMeta(sport);
   // rec.us "% booked" snapshot for this sport, if this court is reservable.
   const booked = court.reserved?.[sport];
+  // SF Rec & Park directory facts (court count, lights, restrooms, nets) for this sport.
+  const dir = court.directory?.[sport];
   const week = getDropinWeek(court, sport, viewTime);
   const level = currentLevel(history, now); // community's latest
   const last = latest(history);
@@ -830,6 +852,29 @@ function CourtDetail({
           </View>
         )}
       </View>
+
+      {dir && (
+        <View style={styles.facRow}>
+          <View style={styles.facChip}>
+            <Text style={styles.facText}>{meta.emoji} {courtCountLabel(dir)}</Text>
+          </View>
+          {dir.lights && (
+            <View style={styles.facChip}>
+              <Text style={styles.facText}>🌙 Lights</Text>
+            </View>
+          )}
+          {dir.restrooms && (
+            <View style={styles.facChip}>
+              <Text style={styles.facText}>🚻 Restrooms</Text>
+            </View>
+          )}
+          {netsLabel(dir.nets) && (
+            <View style={styles.facChip}>
+              <Text style={styles.facText}>🥅 {netsLabel(dir.nets)}</Text>
+            </View>
+          )}
+        </View>
+      )}
 
       {booked != null && (
         <>
@@ -1276,6 +1321,14 @@ const styles = StyleSheet.create({
   badgePlace: { backgroundColor: '#e7efe2' },
   badgeBookedHi: { backgroundColor: '#f7e0cf' },
   badgeBookedLo: { backgroundColor: '#fdf1d6' },
+  facRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginBottom: 8 },
+  facChip: {
+    backgroundColor: '#eef2f6',
+    borderRadius: 8,
+    paddingHorizontal: 9,
+    paddingVertical: 4,
+  },
+  facText: { fontSize: 12, fontWeight: '600', color: '#46586a' },
   bookedNote: { fontSize: 12, color: '#7a6a55', marginBottom: 8, lineHeight: 16 },
   bookBtn: {
     backgroundColor: '#e8732c',

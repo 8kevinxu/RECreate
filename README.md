@@ -130,6 +130,16 @@ by `id`, so `npm run build:courts` never touches them. Two flavors:
   tennis/pickleball court's booked% for the picked day+time. It's a build-time snapshot — re-run
   the build (or the cron) to refresh — with the same last-good cache + gate resilience
   (`scripts/reservations-cache.json`).
+- **Court directory facts** (court counts, lights, restrooms, nets) for tennis + pickleball
+  come from `scripts/build-court-directory.js`, which scrapes SF Rec & Park's public
+  [tennis](https://sfrecpark.org/1446/Tennis-Court-Directory) and
+  [pickleball](https://sfrecpark.org/1772/Pickleball-Court-Directory) directories (single
+  HTML tables, parsed with cheerio), matches each facility to one of our courts by name
+  (sport-gated, with a few manual aliases), and writes a court id →
+  `{ sport: { total, reservable, walkup, lights, restrooms, nets } }` map
+  (`data/court-directory.js`, `npm run build:directory`). `lib/useCourts.js` merges it onto
+  courts as `directory`, shown as facility chips on the detail card. Same last-good cache +
+  gate resilience (`scripts/directory-cache.json`).
 
 An optional `disclaimer` field on a court overrides the default "verify on
 sfrecpark.org" footnote on the court detail screen.

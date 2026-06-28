@@ -32,7 +32,7 @@ jobs:
 
       - name: Commit refreshed data if it changed
         run: |
-          FILES="data/courts.js data/courts.json scripts/schedule-cache.json data/sanbruno-court.js scripts/sanbruno-cache.json data/outdoor-courts.js scripts/outdoor-courts-cache.json data/reservations.js scripts/reservations-cache.json"
+          FILES="data/courts.js data/courts.json scripts/schedule-cache.json data/sanbruno-court.js scripts/sanbruno-cache.json data/outdoor-courts.js scripts/outdoor-courts-cache.json data/reservations.js scripts/reservations-cache.json data/court-directory.js scripts/directory-cache.json"
           if git diff --quiet -- $FILES; then
             echo "No schedule changes."
           else

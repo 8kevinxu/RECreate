@@ -1,0 +1,671 @@
+{
+  "directory": {
+    "alamo-square-outdoor": {
+      "tennis": {
+        "total": 1,
+        "reservable": 0,
+        "walkup": 1,
+        "lights": false,
+        "restrooms": true
+      }
+    },
+    "alice-chalmers-playground-outdoor": {
+      "tennis": {
+        "total": 1,
+        "reservable": 0,
+        "walkup": 1,
+        "lights": false,
+        "restrooms": true
+      }
+    },
+    "alice-marble-tennis-courts-outdoor": {
+      "tennis": {
+        "total": 4,
+        "reservable": 4,
+        "walkup": 0,
+        "lights": false,
+        "restrooms": false
+      }
+    },
+    "alta-plaza-park-outdoor": {
+      "tennis": {
+        "total": 3,
+        "reservable": 0,
+        "walkup": 3,
+        "lights": false,
+        "restrooms": false
+      }
+    },
+    "aptos-playground-outdoor": {
+      "tennis": {
+        "total": 1,
+        "reservable": 0,
+        "walkup": 1,
+        "lights": false,
+        "restrooms": false
+      }
+    },
+    "argonne-playground-outdoor": {
+      "tennis": {
+        "total": 1,
+        "reservable": 0,
+        "walkup": 1,
+        "lights": false,
+        "restrooms": true
+      }
+    },
+    "balboa-park-outdoor": {
+      "tennis": {
+        "total": 4,
+        "reservable": 4,
+        "walkup": 0,
+        "lights": false,
+        "restrooms": true
+      }
+    },
+    "buena-vista-park-outdoor": {
+      "tennis": {
+        "total": 2,
+        "reservable": 1,
+        "walkup": 1,
+        "lights": false,
+        "restrooms": false
+      },
+      "pickleball": {
+        "total": 4,
+        "reservable": 4,
+        "walkup": 0,
+        "lights": false,
+        "restrooms": false,
+        "nets": "Bring your own"
+      }
+    },
+    "cabrillo-playground-outdoor": {
+      "tennis": {
+        "total": 1,
+        "reservable": 0,
+        "walkup": 1,
+        "lights": false,
+        "restrooms": true
+      }
+    },
+    "cayuga-playground-outdoor": {
+      "tennis": {
+        "total": 1,
+        "reservable": 0,
+        "walkup": 1,
+        "lights": true,
+        "restrooms": true
+      }
+    },
+    "jose-coronado-playground-outdoor": {
+      "tennis": {
+        "total": 1,
+        "reservable": 0,
+        "walkup": 1,
+        "lights": true,
+        "restrooms": true
+      }
+    },
+    "crocker-amazon-playground-outdoor": {
+      "tennis": {
+        "total": 3,
+        "reservable": 3,
+        "walkup": 0,
+        "lights": true,
+        "restrooms": true
+      },
+      "pickleball": {
+        "total": 4,
+        "reservable": 4,
+        "walkup": 0,
+        "lights": true,
+        "restrooms": true,
+        "nets": "Provided"
+      }
+    },
+    "mission-dolores-park-outdoor": {
+      "tennis": {
+        "total": 6,
+        "reservable": 3,
+        "walkup": 3,
+        "lights": true,
+        "restrooms": true
+      }
+    },
+    "douglass-playground-outdoor": {
+      "tennis": {
+        "total": 1,
+        "reservable": 0,
+        "walkup": 1,
+        "lights": false,
+        "restrooms": true
+      }
+    },
+    "dupont-tennis-courts-outdoor": {
+      "tennis": {
+        "total": 4,
+        "reservable": 4,
+        "walkup": 0,
+        "lights": false,
+        "restrooms": false
+      }
+    },
+    "eureka-valley-rec-center-outdoor": {
+      "tennis": {
+        "total": 1,
+        "reservable": 0,
+        "walkup": 1,
+        "lights": false,
+        "restrooms": true
+      }
+    },
+    "excelsior-playground-outdoor": {
+      "tennis": {
+        "total": 1,
+        "reservable": 0,
+        "walkup": 1,
+        "lights": true,
+        "restrooms": true
+      }
+    },
+    "fulton-playground-outdoor": {
+      "tennis": {
+        "total": 1,
+        "reservable": 1,
+        "walkup": 0,
+        "lights": false,
+        "restrooms": true
+      }
+    },
+    "george-christopher-playground-outdoor": {
+      "tennis": {
+        "total": 1,
+        "reservable": 0,
+        "walkup": 1,
+        "lights": true,
+        "restrooms": true
+      },
+      "pickleball": {
+        "total": 2,
+        "reservable": 0,
+        "walkup": 2,
+        "lights": true,
+        "restrooms": true,
+        "nets": "Bring your own"
+      }
+    },
+    "glen-canyon-park-outdoor": {
+      "tennis": {
+        "total": 2,
+        "reservable": 1,
+        "walkup": 1,
+        "lights": true,
+        "restrooms": true
+      }
+    },
+    "golden-gate-heights-park-outdoor": {
+      "tennis": {
+        "total": 2,
+        "reservable": 0,
+        "walkup": 2,
+        "lights": false,
+        "restrooms": false
+      }
+    },
+    "grattan-playground-outdoor": {
+      "tennis": {
+        "total": 1,
+        "reservable": 0,
+        "walkup": 1,
+        "lights": false,
+        "restrooms": true
+      }
+    },
+    "hamilton-rec-center-outdoor": {
+      "tennis": {
+        "total": 2,
+        "reservable": 2,
+        "walkup": 0,
+        "lights": true,
+        "restrooms": true
+      }
+    },
+    "hayes-valley-playground-outdoor": {
+      "tennis": {
+        "total": 1,
+        "reservable": 0,
+        "walkup": 1,
+        "lights": true,
+        "restrooms": true
+      }
+    },
+    "helen-wills-playground-outdoor": {
+      "tennis": {
+        "total": 1,
+        "reservable": 1,
+        "walkup": 0,
+        "lights": false,
+        "restrooms": true
+      }
+    },
+    "holly-park-outdoor": {
+      "tennis": {
+        "total": 1,
+        "reservable": 0,
+        "walkup": 1,
+        "lights": false,
+        "restrooms": true
+      }
+    },
+    "j-p-murphy-playground-outdoor": {
+      "tennis": {
+        "total": 3,
+        "reservable": 3,
+        "walkup": 0,
+        "lights": false,
+        "restrooms": true
+      }
+    },
+    "jackson-playground-outdoor": {
+      "tennis": {
+        "total": 1,
+        "reservable": 1,
+        "walkup": 0,
+        "lights": true,
+        "restrooms": false
+      },
+      "pickleball": {
+        "total": 2,
+        "reservable": 2,
+        "walkup": 0,
+        "lights": true,
+        "restrooms": false,
+        "nets": "Bring your own"
+      }
+    },
+    "james-rolph-jr-playground-outdoor": {
+      "tennis": {
+        "total": 2,
+        "reservable": 0,
+        "walkup": 2,
+        "lights": true,
+        "restrooms": true
+      }
+    },
+    "joe-dimaggio-playground-outdoor": {
+      "tennis": {
+        "total": 3,
+        "reservable": 1,
+        "walkup": 2,
+        "lights": true,
+        "restrooms": true
+      }
+    },
+    "junipero-serra-playground-outdoor": {
+      "tennis": {
+        "total": 1,
+        "reservable": 0,
+        "walkup": 1,
+        "lights": false,
+        "restrooms": false
+      }
+    },
+    "lafayette-park-outdoor": {
+      "tennis": {
+        "total": 2,
+        "reservable": 2,
+        "walkup": 0,
+        "lights": false,
+        "restrooms": true
+      }
+    },
+    "laurel-hill-playground-outdoor": {
+      "tennis": {
+        "total": 1,
+        "reservable": 0,
+        "walkup": 1,
+        "lights": false,
+        "restrooms": true
+      }
+    },
+    "margaret-s-hayward-playground-outdoor": {
+      "tennis": {
+        "total": 2,
+        "reservable": 0,
+        "walkup": 2,
+        "lights": true,
+        "restrooms": true
+      }
+    },
+    "mccoppin-square-outdoor": {
+      "tennis": {
+        "total": 1,
+        "reservable": 0,
+        "walkup": 1,
+        "lights": false,
+        "restrooms": true
+      }
+    },
+    "john-mclaren-park-outdoor": {
+      "tennis": {
+        "total": 6,
+        "reservable": 6,
+        "walkup": 0,
+        "lights": false,
+        "restrooms": true
+      }
+    },
+    "merced-heights-playground-outdoor": {
+      "tennis": {
+        "total": 2,
+        "reservable": 0,
+        "walkup": 2,
+        "lights": true,
+        "restrooms": true
+      }
+    },
+    "minnie-and-lovie-rec-center-outdoor": {
+      "tennis": {
+        "total": 2,
+        "reservable": 2,
+        "walkup": 0,
+        "lights": false,
+        "restrooms": true
+      }
+    },
+    "miraloma-playground-outdoor": {
+      "tennis": {
+        "total": 1,
+        "reservable": 1,
+        "walkup": 0,
+        "lights": false,
+        "restrooms": true
+      }
+    },
+    "mission-playground-outdoor": {
+      "tennis": {
+        "total": 2,
+        "reservable": 0,
+        "walkup": 2,
+        "lights": true,
+        "restrooms": true
+      }
+    },
+    "mission-creek-park-outdoor": {
+      "tennis": {
+        "total": 1,
+        "reservable": 0,
+        "walkup": 1,
+        "lights": true,
+        "restrooms": true
+      }
+    },
+    "moscone-rec-center-outdoor": {
+      "tennis": {
+        "total": 4,
+        "reservable": 4,
+        "walkup": 0,
+        "lights": true,
+        "restrooms": true
+      },
+      "pickleball": {
+        "total": 6,
+        "reservable": 4,
+        "walkup": 0,
+        "lights": true,
+        "restrooms": true,
+        "nets": "Provided (4 rolling nets)"
+      }
+    },
+    "mountain-lake-park-outdoor": {
+      "tennis": {
+        "total": 4,
+        "reservable": 4,
+        "walkup": 0,
+        "lights": false,
+        "restrooms": true
+      }
+    },
+    "noe-valley-courts-outdoor": {
+      "tennis": {
+        "total": 1,
+        "reservable": 0,
+        "walkup": 1,
+        "lights": false,
+        "restrooms": false
+      }
+    },
+    "palega-playground-outdoor": {
+      "tennis": {
+        "total": 2,
+        "reservable": 0,
+        "walkup": 2,
+        "lights": true,
+        "restrooms": true
+      }
+    },
+    "parkside-square-outdoor": {
+      "tennis": {
+        "total": 4,
+        "reservable": 4,
+        "walkup": 0,
+        "lights": false,
+        "restrooms": true
+      },
+      "pickleball": {
+        "total": 8,
+        "reservable": 8,
+        "walkup": 0,
+        "lights": false,
+        "restrooms": true,
+        "nets": "Bring your own"
+      }
+    },
+    "peixotto-playground-outdoor": {
+      "tennis": {
+        "total": 2,
+        "reservable": 0,
+        "walkup": 2,
+        "lights": false,
+        "restrooms": false
+      }
+    },
+    "potrero-hill-rec-center-outdoor": {
+      "tennis": {
+        "total": 2,
+        "reservable": 2,
+        "walkup": 0,
+        "lights": true,
+        "restrooms": true
+      }
+    },
+    "presidio-wall-playground-outdoor": {
+      "tennis": {
+        "total": 4,
+        "reservable": 4,
+        "walkup": 0,
+        "lights": false,
+        "restrooms": true
+      },
+      "pickleball": {
+        "total": 6,
+        "reservable": 3,
+        "walkup": 0,
+        "lights": false,
+        "restrooms": true,
+        "nets": "Provided (storage box)"
+      }
+    },
+    "richmond-playground-outdoor": {
+      "tennis": {
+        "total": 1,
+        "reservable": 1,
+        "walkup": 0,
+        "lights": false,
+        "restrooms": true
+      },
+      "pickleball": {
+        "total": 2,
+        "reservable": 2,
+        "walkup": 0,
+        "lights": false,
+        "restrooms": true,
+        "nets": "Provided (2 rolling nets)"
+      }
+    },
+    "rochambeau-playground-outdoor": {
+      "tennis": {
+        "total": 1,
+        "reservable": 0,
+        "walkup": 1,
+        "lights": false,
+        "restrooms": true
+      }
+    },
+    "angelo-j-rossi-playground-outdoor": {
+      "tennis": {
+        "total": 3,
+        "reservable": 3,
+        "walkup": 0,
+        "lights": false,
+        "restrooms": true
+      },
+      "pickleball": {
+        "total": 9,
+        "reservable": 5,
+        "walkup": 4,
+        "lights": false,
+        "restrooms": true,
+        "nets": "Provided (4 rolling nets); Court E has a permanent net"
+      }
+    },
+    "silver-terrace-playground-outdoor": {
+      "tennis": {
+        "total": 1,
+        "reservable": 0,
+        "walkup": 1,
+        "lights": true,
+        "restrooms": true
+      }
+    },
+    "south-sunset-playground-outdoor": {
+      "tennis": {
+        "total": 2,
+        "reservable": 2,
+        "walkup": 0,
+        "lights": false,
+        "restrooms": true
+      }
+    },
+    "st-mary-s-rec-center-outdoor": {
+      "tennis": {
+        "total": 2,
+        "reservable": 2,
+        "walkup": 0,
+        "lights": false,
+        "restrooms": true
+      }
+    },
+    "states-street-playground-outdoor": {
+      "tennis": {
+        "total": 2,
+        "reservable": 0,
+        "walkup": 2,
+        "lights": false,
+        "restrooms": false
+      }
+    },
+    "sigmund-stern-recreation-grove-outdoor": {
+      "tennis": {
+        "total": 2,
+        "reservable": 2,
+        "walkup": 0,
+        "lights": false,
+        "restrooms": true
+      },
+      "pickleball": {
+        "total": 6,
+        "reservable": 4,
+        "walkup": 0,
+        "lights": false,
+        "restrooms": true,
+        "nets": "Provided (4 rolling nets)"
+      }
+    },
+    "sunnyside-playground-outdoor": {
+      "tennis": {
+        "total": 1,
+        "reservable": 0,
+        "walkup": 1,
+        "lights": false,
+        "restrooms": true
+      }
+    },
+    "upper-noe-rec-center-outdoor": {
+      "tennis": {
+        "total": 1,
+        "reservable": 1,
+        "walkup": 0,
+        "lights": true,
+        "restrooms": true
+      },
+      "pickleball": {
+        "total": 2,
+        "reservable": 2,
+        "walkup": 0,
+        "lights": true,
+        "restrooms": true,
+        "nets": "Pickleball net, paddles and balls available to borrow Tuesday to Friday, 10 a.m. to 7 p.m., and Saturday, 9 a.m. to 4 p.m."
+      }
+    },
+    "west-portal-playground-outdoor": {
+      "tennis": {
+        "total": 1,
+        "reservable": 0,
+        "walkup": 1,
+        "lights": false,
+        "restrooms": true
+      }
+    },
+    "west-sunset-playground-outdoor": {
+      "tennis": {
+        "total": 2,
+        "reservable": 0,
+        "walkup": 2,
+        "lights": true,
+        "restrooms": true
+      }
+    },
+    "youngblood-coleman-playground-outdoor": {
+      "tennis": {
+        "total": 2,
+        "reservable": 0,
+        "walkup": 2,
+        "lights": true,
+        "restrooms": true
+      }
+    },
+    "carl-larsen-park-outdoor": {
+      "pickleball": {
+        "total": 8,
+        "reservable": 0,
+        "walkup": 0,
+        "lights": false,
+        "restrooms": true,
+        "nets": "Provided"
+      }
+    },
+    "louis-sutter-playground-outdoor": {
+      "pickleball": {
+        "total": 6,
+        "reservable": 0,
+        "walkup": 0,
+        "lights": false,
+        "restrooms": true,
+        "nets": "Provided"
+      }
+    }
+  },
+  "fetchedAt": "2026-06-28T21:22:07.184Z"
+}
