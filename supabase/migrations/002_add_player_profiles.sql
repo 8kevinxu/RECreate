@@ -1,6 +1,6 @@
 -- HoopMap — richer player profiles + a personal "I played here" check-in log.
 -- Apply once to an existing HoopMap database: Dashboard → SQL Editor → paste → Run.
--- (A fresh setup gets all of this from supabase/schema.sql.) Idempotent.
+-- (A fresh setup gets all of this from schema/03_profiles.sql.) Idempotent.
 
 -- 1) Extend profiles with age, bio, and favorite sports.
 alter table public.profiles

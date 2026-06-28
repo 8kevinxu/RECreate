@@ -1,0 +1,52 @@
+# Supabase setup
+
+The backend for HoopMap's shared/social features (crowd check-ins, reviews,
+accounts, runs, friends, "down to hoop" signals, and push). Everything is
+optional — the app runs fully signed-out without any of this; configure it only
+to enable the shared + social features.
+
+## Layout
+
+```
+schema/      Canonical, current-state DDL — split by domain, numbered for run order.
+migrations/  Ordered deltas to bring an EXISTING database up to the latest schema.
+```
+
+## Fresh project
+
+In the Supabase dashboard → **SQL Editor**, run the `schema/` files **in numeric
+order** (01 → 07). Order matters: later domains reference earlier tables
+(e.g. runs/friends/signals depend on profiles; push depends on all of them).
+
+| File | What it adds | Depends on |
+|------|--------------|------------|
+| `01_crowd_check_ins.sql` | Anonymous crowd-level check-ins + rate limit | — |
+| `02_reviews.sql` | Per-court text reviews + rate limit | — |
+| `03_profiles.sql` | Accounts: profiles, friend codes, personal check-ins | auth |
+| `04_runs.sql` | "Plan a run" scheduled games | 03 |
+| `05_friends.sql` | Friend requests + friends-only run visibility | 03, 04 |
+| `06_signals.sql` | "Down to hoop" availability signals | 03, 05 |
+| `07_push.sql` | Expo push tokens + notification triggers | all above |
+
+To run them all at once, concatenate in order:
+
+```bash
+cat supabase/schema/*.sql | pbcopy   # paste into the SQL editor
+```
+
+The files use plain `create policy` (not idempotent), so run each **once** on a
+fresh project. `create table`/`index` and realtime additions are guarded.
+
+Then enable email auth: **Authentication → Providers → Email** (on by default).
+Turn **off "Confirm email"** for local testing; keep it **on** in production.
+
+## Existing database
+
+Don't re-run the `schema/` files on a project that already has the older schema.
+Instead apply the `migrations/` in order — each is idempotent and only adds what's
+new:
+
+| Migration | Brings in |
+|-----------|-----------|
+| `001_add_run_sport.sql` | `hoop_runs.sport` + sport-aware run push |
+| `002_add_player_profiles.sql` | `profiles.age/bio/favorite_sports` + `player_check_ins` |

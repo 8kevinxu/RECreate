@@ -1,6 +1,6 @@
 -- Migration: give planned runs a sport (basketball | volleyball).
 -- Apply once to an existing database by pasting into the Supabase SQL editor.
--- Idempotent — safe to re-run. New databases get this from schema.sql directly.
+-- Idempotent — safe to re-run. New databases get this from schema/04_runs.sql.
 
 -- 1) Add the column. Existing rows backfill to 'basketball'.
 alter table public.hoop_runs

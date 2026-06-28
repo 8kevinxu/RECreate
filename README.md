@@ -203,10 +203,11 @@ otherwise. No UI changes between the two.
 ### Enable shared / real-time check-ins (Supabase)
 
 1. Create a free project at [supabase.com](https://supabase.com).
-2. **SQL Editor → New query →** paste [`supabase/schema.sql`](supabase/schema.sql)
+2. **SQL Editor → New query →** paste [`supabase/schema/01_crowd_check_ins.sql`](supabase/schema/01_crowd_check_ins.sql)
    → **Run** (creates the `check_ins` table, public read/insert/delete policies,
-   and turns on real-time). *Already ran an older version? Re-run just the new
-   `... for delete ...` policy so the tap-to-undo works.*
+   and turns on real-time). The other features each have their own numbered
+   `schema/` file — run them in order as you enable each; see
+   [`supabase/README.md`](supabase/README.md) for the full layout.
 3. **Project Settings → API →** copy the **Project URL** and **anon public key**.
 4. Add them to `.env`:
    ```
@@ -228,7 +229,7 @@ are set, the app uses local on-device check-ins (you see only your own).
    it, tapping your pick again removes it), so taps can't inflate the count and
    misclicks are instantly fixable.
 2. *Server* — a Supabase `BEFORE INSERT` trigger caps check-ins per client IP
-   (default 30 / 60s; tune in `supabase/schema.sql`). Unlike the client guard,
+   (default 30 / 60s; tune in `supabase/schema/01_crowd_check_ins.sql`). Unlike the client guard,
    it can't be bypassed by clearing app storage.
 
 Both are pragmatic backstops, not airtight: the anonymous model means shared
@@ -271,13 +272,11 @@ paths so one session counts once. Stats are aggregated client-side (`lib/playerC
 
 Setup (on top of the Supabase steps under *Live crowd check-ins*):
 
-1. Run the **Accounts** section at the bottom of
-   [`supabase/schema.sql`](supabase/schema.sql) (the `profiles` table, its
-   policies, the signup trigger, and `player_check_ins`). The file's earlier
-   sections use plain `create policy`, so don't re-run the whole file wholesale on
-   an existing project — just run the new section once. On an **existing** DB,
-   apply [`supabase/migrations/add_player_profiles.sql`](supabase/migrations/add_player_profiles.sql)
-   instead (it's idempotent and adds the new columns + table).
+1. Run [`supabase/schema/03_profiles.sql`](supabase/schema/03_profiles.sql) (the
+   `profiles` table, its policies, the signup trigger, friend codes, and
+   `player_check_ins`). On an **existing** DB that predates these profile fields,
+   apply [`supabase/migrations/002_add_player_profiles.sql`](supabase/migrations/002_add_player_profiles.sql)
+   instead (idempotent — adds the new columns + table only).
 2. **Authentication → Providers → Email** is enabled by default. For frictionless
    testing, turn **off "Confirm email"** there; keep it **on** for production
    (sign-up then asks the user to confirm via email before first login).
@@ -318,10 +317,10 @@ Code lives in `lib/runs.js` + `components/RunModal.js`.
 Visibility is enforced by RLS via the `visibility` column (`public` | `friends`):
 public runs are readable by all, friends-only runs only by the host and accepted
 friends (`loadUpcomingRuns` powers the Activity feed across all courts).
-Setup: run the **Social / "plan a run"** section of
-[`supabase/schema.sql`](supabase/schema.sql) and the later **Friends + runs**
-policy once — they add `hoop_runs` / `hoop_run_participants`, policies, real-time,
-and the host auto-join trigger (the realtime adds are guarded, so safe to re-run).
+Setup: run [`supabase/schema/04_runs.sql`](supabase/schema/04_runs.sql) — it adds
+`hoop_runs` / `hoop_run_participants`, policies, real-time, and the host auto-join
+trigger. The friends-only run visibility policy lives in
+[`05_friends.sql`](supabase/schema/05_friends.sql) (it needs the friendships table).
 
 ## Friends
 
@@ -333,9 +332,9 @@ Each profile gets a unique 6-char code (no ambiguous characters) via a DB trigge
 (Friends' runs and signals show in the **📣 Activity** feed, not here.) Code lives
 in `lib/friends.js` + `components/FriendsModal.js`.
 
-Setup: run the **friends graph** section of [`supabase/schema.sql`](supabase/schema.sql)
-once — it adds the `friend_code` column (+ generator/backfill) and the
-`friendships` table, policies, and real-time.
+Setup: run [`supabase/schema/05_friends.sql`](supabase/schema/05_friends.sql) — the
+`friendships` table, policies, and real-time. (The `friend_code` column + generator
+live in [`03_profiles.sql`](supabase/schema/03_profiles.sql).)
 
 ## Down to hoop
 
@@ -354,9 +353,9 @@ court + time show to everyone and extend the session's expiry. Code lives in
 `lib/signals.js`, `components/SignalModal.js` (composer), and
 `components/SessionModal.js` (session).
 
-Setup: run the **"down to hoop" signals** section, the **joinable sessions**
-section, and the small **sessions can carry a place** column add at the bottom of
-[`supabase/schema.sql`](supabase/schema.sql) once.
+Setup: run [`supabase/schema/06_signals.sql`](supabase/schema/06_signals.sql) — it
+adds `hoop_signals` + `hoop_signal_participants` (with the suggested/confirmed court
++ time columns), policies, the auto-join trigger, and real-time.
 
 > **Note:** the in-app feed is real-time. To also **buzz the phone when the app
 > is closed**, see *Push notifications* below.
@@ -390,10 +389,10 @@ friend accept).
 2. **Dev build** — remote push doesn't work in Expo Go (SDK 53+) or on web/
    simulators. Make a development build: `npx expo run:ios` / `npx expo run:android`
    (or an EAS build) and run it on a **physical device**.
-3. **Database** — run the **Push notifications** section at the bottom of
-   [`supabase/schema.sql`](supabase/schema.sql) once. It enables `pg_net`, adds
-   `device_tokens` (+ RLS) and the trigger functions. (`pg_net` may need enabling
-   under **Database → Extensions** in the Supabase dashboard first.)
+3. **Database** — run [`supabase/schema/07_push.sql`](supabase/schema/07_push.sql)
+   once. It enables `pg_net`, adds `device_tokens` (+ RLS) and the trigger
+   functions. (`pg_net` may need enabling under **Database → Extensions** in the
+   Supabase dashboard first.)
 
 **Testing status.** The **backend is verified end to end**: with `pg_net`,
 `device_tokens`, and the trigger functions applied, `send_push()` POSTs a
