@@ -46,6 +46,7 @@ const SPORTS = [
   { id: 'basketball', match: /basketball/i },
   { id: 'volleyball', match: /volleyball/i },
   { id: 'pingpong', match: /table tennis|ping[\s-]?pong/i },
+  { id: 'pickleball', match: /pickleball/i },
 ];
 const emptyWeek = () => [[], [], [], [], [], [], []];
 

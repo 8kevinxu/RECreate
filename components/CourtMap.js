@@ -128,7 +128,16 @@ const html = `
       '<circle cx="78" cy="72" r="10" fill="#f4f6f8" stroke="#7a3b06" stroke-width="3"/>' +
       '</svg>';
 
-    var SPORT_SVG = { basketball: BBALL_SVG, volleyball: VBALL_SVG, pingpong: PPONG_SVG };
+    // A teal pickleball paddle with a yellow holed ball.
+    var PICKLE_SVG =
+      '<svg viewBox="0 0 100 100" width="100%" height="100%">' +
+      '<rect x="14" y="8" width="56" height="60" rx="14" fill="#1f9e8a" stroke="#0c5a4e" stroke-width="3"/>' +
+      '<rect x="34" y="64" width="14" height="28" rx="4" fill="#9c6b3b" stroke="#5e3d1d" stroke-width="3"/>' +
+      '<circle cx="78" cy="74" r="11" fill="#f4d11e" stroke="#7a6a06" stroke-width="3"/>' +
+      '<g fill="#7a6a06"><circle cx="74" cy="70" r="1.6"/><circle cx="82" cy="71" r="1.6"/><circle cx="78" cy="78" r="1.6"/></g>' +
+      '</svg>';
+
+    var SPORT_SVG = { basketball: BBALL_SVG, volleyball: VBALL_SVG, pingpong: PPONG_SVG, pickleball: PICKLE_SVG };
     var currentSport = 'basketball';
     function ballSvg() { return SPORT_SVG[currentSport] || BBALL_SVG; }
     window.setSport = function (s) { currentSport = s; };

@@ -73,9 +73,10 @@ Each court carries:
 - `dropins` — a `{ sportId: week }` map of drop-in open-gym blocks per sport, where
   each `week` is indexed `0=Sun..6=Sat` and each day is an array of `[startMin,
   endMin]` blocks. Tracked sports live in `lib/sports.js` (**basketball**,
-  **volleyball**, **ping pong**); the app shows one at a time via the sport toggle.
-  Basketball has broad coverage; volleyball runs at ~6 centers; ping pong (scraped
-  from the multipurpose-room / auditorium rows, not just the gym) at ~10.
+  **volleyball**, **ping pong**, **pickleball**); the app shows one at a time via
+  the sport toggle. Basketball has broad coverage; volleyball runs at ~6 centers;
+  ping pong (scraped from the multipurpose-room / auditorium rows, not just the
+  gym) at ~10; pickleball at ~5 centers plus San Bruno.
 - `scheduleSource` — `"live"` (scraped this run) · `"cache"` (last-good) · `"curated"`
 
 Regenerate anytime:

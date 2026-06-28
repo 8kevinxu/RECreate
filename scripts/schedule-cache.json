@@ -72,10 +72,19 @@
             1260
           ]
         ]
+      ],
+      "pickleball": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     "season": "Mission Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T18:39:58.792Z"
+    "scrapedAt": "2026-06-28T05:22:52.875Z"
   },
   "Moscone-Rec-Center-101": {
     "dropins": {
@@ -135,10 +144,34 @@
         [],
         [],
         []
+      ],
+      "pickleball": [
+        [],
+        [],
+        [
+          [
+            780,
+            900
+          ]
+        ],
+        [],
+        [
+          [
+            780,
+            900
+          ]
+        ],
+        [],
+        [
+          [
+            570,
+            750
+          ]
+        ]
       ]
     },
     "season": "Moscone Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T18:39:59.134Z"
+    "scrapedAt": "2026-06-28T05:22:53.272Z"
   },
   "St-Marys-Rec-Center-109": {
     "dropins": {
@@ -193,10 +226,19 @@
             1260
           ]
         ]
+      ],
+      "pickleball": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     "season": "St. Mary's Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T18:39:59.492Z"
+    "scrapedAt": "2026-06-28T05:22:53.679Z"
   },
   "Upper-Noe-Rec-Center-112": {
     "dropins": {
@@ -251,10 +293,19 @@
           ]
         ],
         []
+      ],
+      "pickleball": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     "season": "Upper Noe Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T18:39:59.834Z"
+    "scrapedAt": "2026-06-28T05:22:54.135Z"
   },
   "Hamilton-Rec-Center-93": {
     "dropins": {
@@ -324,10 +375,19 @@
             960
           ]
         ]
+      ],
+      "pickleball": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     "season": "Hamilton Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T18:40:00.178Z"
+    "scrapedAt": "2026-06-28T05:22:54.499Z"
   },
   "Eureka-Valley-Rec-Center-86": {
     "dropins": {
@@ -388,10 +448,33 @@
         [],
         [],
         []
+      ],
+      "pickleball": [
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            720,
+            930
+          ]
+        ],
+        [
+          [
+            720,
+            930
+          ],
+          [
+            1020,
+            1200
+          ]
+        ],
+        []
       ]
     },
     "season": "Eureka Valley Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T18:40:00.528Z"
+    "scrapedAt": "2026-06-28T05:22:54.854Z"
   },
   "Richmond-Rec-Center-105": {
     "dropins": {
@@ -476,10 +559,29 @@
             1005
           ]
         ]
+      ],
+      "pickleball": [
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            630,
+            810
+          ]
+        ],
+        [],
+        [
+          [
+            555,
+            810
+          ]
+        ]
       ]
     },
     "season": "Richmond Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T18:40:01.233Z"
+    "scrapedAt": "2026-06-28T05:22:55.610Z"
   },
   "Sunset-Rec-Center-110": {
     "dropins": {
@@ -544,10 +646,19 @@
             1260
           ]
         ]
+      ],
+      "pickleball": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     "season": "Sunset Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T18:40:01.568Z"
+    "scrapedAt": "2026-06-28T05:22:55.964Z"
   },
   "Palega-Rec-Center-103": {
     "dropins": {
@@ -612,10 +723,19 @@
         [],
         [],
         []
+      ],
+      "pickleball": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     "season": "Palega Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T18:40:01.926Z"
+    "scrapedAt": "2026-06-28T05:22:56.308Z"
   },
   "Joseph-Lee-Rec-Center-95": {
     "dropins": {
@@ -675,10 +795,19 @@
         [],
         [],
         []
+      ],
+      "pickleball": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     "season": "Joseph Lee Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T18:40:02.270Z"
+    "scrapedAt": "2026-06-28T05:22:56.739Z"
   },
   "Minnie-Love-Ward-Rec-Center-97": {
     "dropins": {
@@ -758,10 +887,24 @@
             990
           ]
         ]
+      ],
+      "pickleball": [
+        [],
+        [],
+        [],
+        [
+          [
+            960,
+            1110
+          ]
+        ],
+        [],
+        [],
+        []
       ]
     },
     "season": "Minnie & Lovie Ward Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T18:40:02.619Z"
+    "scrapedAt": "2026-06-28T05:22:57.075Z"
   },
   "Bernal-Heights-Rec-Center-83": {
     "dropins": {
@@ -821,10 +964,19 @@
         [],
         [],
         []
+      ],
+      "pickleball": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     "season": "Bernal Heights Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T18:40:02.961Z"
+    "scrapedAt": "2026-06-28T05:22:57.525Z"
   },
   "Betty-Ann-Ong-Recreation-Center-84": {
     "dropins": {
@@ -914,10 +1066,19 @@
             960
           ]
         ]
+      ],
+      "pickleball": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     "season": "Betty Ann Ong Chinese Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T18:40:03.315Z"
+    "scrapedAt": "2026-06-28T05:22:57.885Z"
   },
   "Glen-Canyon-Park-Recreation-Center-89": {
     "dropins": {
@@ -1024,10 +1185,34 @@
             1020
           ]
         ]
+      ],
+      "pickleball": [
+        [],
+        [],
+        [],
+        [
+          [
+            750,
+            870
+          ]
+        ],
+        [
+          [
+            750,
+            870
+          ]
+        ],
+        [
+          [
+            990,
+            1170
+          ]
+        ],
+        []
       ]
     },
     "season": "Glen Canyon Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T18:40:03.686Z"
+    "scrapedAt": "2026-06-28T05:22:58.377Z"
   },
   "Herz-Recreation-Center-471": {
     "dropins": {
@@ -1082,10 +1267,19 @@
         [],
         [],
         []
+      ],
+      "pickleball": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     "season": "Herz Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T18:40:04.038Z"
+    "scrapedAt": "2026-06-28T05:22:58.783Z"
   },
   "Potrero-Hill-Rec-Center-275": {
     "dropins": {
@@ -1171,9 +1365,18 @@
             990
           ]
         ]
+      ],
+      "pickleball": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     "season": "Potrero Hill Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-27T18:40:04.388Z"
+    "scrapedAt": "2026-06-28T05:22:59.200Z"
   }
 }
