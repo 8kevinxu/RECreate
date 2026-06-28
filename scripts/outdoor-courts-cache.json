@@ -1,6 +1,129 @@
 {
   "courts": [
     {
+      "id": "adam-rodgers-park-outdoor",
+      "name": "Adam Rodgers Park",
+      "address": "1215 Quesada Ave",
+      "neighborhood": "Bayview Hunters Point",
+      "lat": 37.730847,
+      "lng": -122.383984,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
       "id": "alamo-square-outdoor",
       "name": "Alamo Square",
       "address": "1081 Fulton St",
@@ -128,8 +251,8 @@
       "name": "Alice Chalmers Playground",
       "address": "670 Brunswick St",
       "neighborhood": "Excelsior",
-      "lat": 37.709873,
-      "lng": -122.446952,
+      "lat": 37.709802,
+      "lng": -122.447162,
       "indoor": false,
       "schedule": [
         [
@@ -163,13 +286,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -244,15 +402,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "alice-marble-tennis-courts-outdoor",
       "name": "Alice Marble Tennis Courts",
       "address": "1200 Greenwich St",
       "neighborhood": "Russian Hill",
-      "lat": 37.801561,
-      "lng": -122.420114,
+      "lat": 37.801291,
+      "lng": -122.420134,
       "indoor": false,
       "schedule": [
         [
@@ -286,13 +444,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -367,7 +560,7 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "alta-plaza-park-outdoor",
@@ -497,8 +690,8 @@
       "name": "Angelo J. Rossi Playground",
       "address": "600 Arguello Blvd",
       "neighborhood": "Lone Mountain/USF",
-      "lat": 37.779293,
-      "lng": -122.457233,
+      "lat": 37.77923,
+      "lng": -122.457396,
       "indoor": false,
       "schedule": [
         [
@@ -532,13 +725,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -648,7 +876,7 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis & pickleball courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & pickleball courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "aptos-playground-outdoor",
@@ -778,8 +1006,8 @@
       "name": "Argonne Playground",
       "address": "455 18th Ave",
       "neighborhood": "Outer Richmond",
-      "lat": 37.779396,
-      "lng": -122.477397,
+      "lat": 37.779294,
+      "lng": -122.47795,
       "indoor": false,
       "schedule": [
         [
@@ -813,13 +1041,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -894,15 +1157,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "balboa-park-outdoor",
       "name": "Balboa Park",
       "address": "51 Havelock St",
       "neighborhood": "Outer Mission",
-      "lat": 37.725476,
-      "lng": -122.443368,
+      "lat": 37.726054,
+      "lng": -122.443226,
       "indoor": false,
       "schedule": [
         [
@@ -936,13 +1199,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -1017,7 +1315,376 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
+      "id": "bernal-heights-rec-center-outdoor",
+      "name": "Bernal Heights Rec Center",
+      "address": "500 Moultrie St",
+      "neighborhood": "Bernal Heights",
+      "lat": 37.738253,
+      "lng": -122.416348,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
+      "id": "betty-ann-ong-chinese-rec-center-outdoor",
+      "name": "Betty Ann Ong Chinese Rec Center",
+      "address": "1101 Washington St",
+      "neighborhood": "Nob Hill",
+      "lat": 37.794123,
+      "lng": -122.412056,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
+      "id": "buchanan-street-mall-outdoor",
+      "name": "Buchanan Street Mall",
+      "address": "1151 Buchanan St",
+      "neighborhood": "Western Addition, Hayes Valley",
+      "lat": 37.779621,
+      "lng": -122.428624,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "buena-vista-park-outdoor",
@@ -1182,8 +1849,8 @@
       "name": "Cabrillo Playground",
       "address": "851 38th Ave",
       "neighborhood": "Outer Richmond",
-      "lat": 37.772805,
-      "lng": -122.499035,
+      "lat": 37.772778,
+      "lng": -122.498736,
       "indoor": false,
       "schedule": [
         [
@@ -1217,13 +1884,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -1298,7 +2000,7 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "camp-mather-outdoor",
@@ -1551,8 +2253,8 @@
       "name": "Cayuga Playground",
       "address": "301 Naglee Ave",
       "neighborhood": "Outer Mission",
-      "lat": 37.714208,
-      "lng": -122.450289,
+      "lat": 37.714418,
+      "lng": -122.450018,
       "indoor": false,
       "schedule": [
         [
@@ -1586,13 +2288,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -1667,15 +2404,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "crocker-amazon-playground-outdoor",
       "name": "Crocker Amazon Playground",
-      "address": "",
+      "address": "799 Moscow St",
       "neighborhood": "Excelsior, McLaren Park",
-      "lat": 37.714062,
-      "lng": -122.432393,
+      "lat": 37.71462,
+      "lng": -122.431766,
       "indoor": false,
       "schedule": [
         [
@@ -1709,13 +2446,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -1825,15 +2597,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis & pickleball courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & pickleball courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "douglass-playground-outdoor",
       "name": "Douglass Playground",
       "address": "1098 Douglass St",
       "neighborhood": "Noe Valley",
-      "lat": 37.748296,
-      "lng": -122.438691,
+      "lat": 37.748304,
+      "lng": -122.438497,
       "indoor": false,
       "schedule": [
         [
@@ -1867,13 +2639,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -1948,7 +2755,130 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
+      "id": "duboce-park-outdoor",
+      "name": "Duboce Park",
+      "address": "50 Scott St",
+      "neighborhood": "Haight Ashbury",
+      "lat": 37.769438,
+      "lng": -122.434219,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "dupont-tennis-courts-outdoor",
@@ -2072,6 +3002,129 @@
       },
       "source": "sfrecpark-outdoor",
       "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
+      "id": "eugene-friend-rec-center-outdoor",
+      "name": "Eugene Friend Rec Center",
+      "address": "270 6th St",
+      "neighborhood": "South of Market",
+      "lat": 37.778721,
+      "lng": -122.406659,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "eureka-valley-rec-center-outdoor",
@@ -2201,8 +3254,8 @@
       "name": "Excelsior Playground",
       "address": "579 Madrid St",
       "neighborhood": "Excelsior",
-      "lat": 37.72011,
-      "lng": -122.433259,
+      "lat": 37.719946,
+      "lng": -122.433332,
       "indoor": false,
       "schedule": [
         [
@@ -2236,13 +3289,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -2317,15 +3405,138 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
+      "id": "father-alfred-e-boeddeker-park-outdoor",
+      "name": "Father Alfred E. Boeddeker Park",
+      "address": "246 Eddy St",
+      "neighborhood": "Tenderloin",
+      "lat": 37.78436,
+      "lng": -122.412286,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "fulton-playground-outdoor",
       "name": "Fulton Playground",
       "address": "855 27th Ave",
       "neighborhood": "Outer Richmond",
-      "lat": 37.773342,
-      "lng": -122.487233,
+      "lat": 37.773307,
+      "lng": -122.486715,
       "indoor": false,
       "schedule": [
         [
@@ -2359,13 +3570,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -2440,7 +3686,130 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
+      "id": "garfield-square-outdoor",
+      "name": "Garfield Square",
+      "address": "",
+      "neighborhood": "Mission",
+      "lat": 37.749915,
+      "lng": -122.412478,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "george-christopher-playground-outdoor",
@@ -2599,6 +3968,129 @@
       },
       "source": "sfrecpark-outdoor",
       "notes": "Outdoor tennis & pickleball courts — first-come, open during park hours (no posted drop-in schedule). Pickleball shares the tennis courts (lined for both)."
+    },
+    {
+      "id": "gilman-playground-outdoor",
+      "name": "Gilman Playground",
+      "address": "993 Gilman Ave",
+      "neighborhood": "Bayview Hunters Point",
+      "lat": 37.716978,
+      "lng": -122.388583,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "glen-canyon-park-outdoor",
@@ -2847,6 +4339,129 @@
       "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
+      "id": "golden-gate-park-section-1-outdoor",
+      "name": "Golden Gate Park - Section 1",
+      "address": "501 Stanyan St",
+      "neighborhood": "Golden Gate Park",
+      "lat": 37.772289,
+      "lng": -122.448461,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
       "id": "golden-gate-park-section-7-outdoor",
       "name": "Golden Gate Park - Section 7",
       "address": "501 Stanyan St",
@@ -2974,8 +4589,8 @@
       "name": "Grattan Playground",
       "address": "1180 Stanyan St",
       "neighborhood": "Haight Ashbury",
-      "lat": 37.762433,
-      "lng": -122.451941,
+      "lat": 37.762463,
+      "lng": -122.451531,
       "indoor": false,
       "schedule": [
         [
@@ -3009,13 +4624,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -3090,15 +4740,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "hamilton-rec-center-outdoor",
       "name": "Hamilton Rec Center",
       "address": "1900 Geary Blvd",
       "neighborhood": "Japantown",
-      "lat": 37.784481,
-      "lng": -122.43598,
+      "lat": 37.784505,
+      "lng": -122.436334,
       "indoor": false,
       "schedule": [
         [
@@ -3132,13 +4782,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -3213,15 +4898,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "hayes-valley-playground-outdoor",
       "name": "Hayes Valley Playground",
       "address": "689 Hayes St",
       "neighborhood": "Hayes Valley",
-      "lat": 37.776074,
-      "lng": -122.427298,
+      "lat": 37.7761,
+      "lng": -122.427106,
       "indoor": false,
       "schedule": [
         [
@@ -3255,13 +4940,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -3336,15 +5056,138 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
+      "id": "head-brotherood-mini-park-outdoor",
+      "name": "Head & Brotherood Mini Park",
+      "address": "300 Head St",
+      "neighborhood": "Oceanview/Merced/Ingleside",
+      "lat": 37.71263,
+      "lng": -122.464189,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "helen-wills-playground-outdoor",
       "name": "Helen Wills Playground",
       "address": "1401 Broadway",
       "neighborhood": "Russian Hill",
-      "lat": 37.79575,
-      "lng": -122.421038,
+      "lat": 37.795826,
+      "lng": -122.420335,
       "indoor": false,
       "schedule": [
         [
@@ -3378,13 +5221,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -3459,15 +5337,138 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
+      "id": "herz-playground-outdoor",
+      "name": "Herz Playground",
+      "address": "1701 Visitacion Ave",
+      "neighborhood": "McLaren Park, Visitacion Valley",
+      "lat": 37.714306,
+      "lng": -122.416483,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "holly-park-outdoor",
       "name": "Holly Park",
       "address": "",
       "neighborhood": "Bernal Heights",
-      "lat": 37.736859,
-      "lng": -122.420482,
+      "lat": 37.736989,
+      "lng": -122.420399,
       "indoor": false,
       "schedule": [
         [
@@ -3501,13 +5502,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -3582,15 +5618,138 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
+      "id": "india-basin-shoreline-park-outdoor",
+      "name": "India Basin - Shoreline Park",
+      "address": "915 Hudson Ave",
+      "neighborhood": "Bayview Hunters Point",
+      "lat": 37.733451,
+      "lng": -122.376214,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "j-p-murphy-playground-outdoor",
       "name": "J.P. Murphy Playground",
       "address": "1960 9th Ave",
       "neighborhood": "Inner Sunset",
-      "lat": 37.75194,
-      "lng": -122.465037,
+      "lat": 37.751699,
+      "lng": -122.464943,
       "indoor": false,
       "schedule": [
         [
@@ -3624,13 +5783,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -3705,15 +5899,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "jackson-playground-outdoor",
       "name": "Jackson Playground",
       "address": "1645 17th St",
       "neighborhood": "Potrero Hill",
-      "lat": 37.763834,
-      "lng": -122.400191,
+      "lat": 37.763856,
+      "lng": -122.399774,
       "indoor": false,
       "schedule": [
         [
@@ -3747,13 +5941,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -3863,15 +6092,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis & pickleball courts — first-come, open during park hours (no posted drop-in schedule). Pickleball shares the tennis courts (lined for both)."
+      "notes": "Outdoor basketball & tennis & pickleball courts — first-come, open during park hours (no posted drop-in schedule). Pickleball shares the tennis courts (lined for both)."
     },
     {
       "id": "james-rolph-jr-playground-outdoor",
       "name": "James Rolph Jr. Playground",
       "address": "1451 Hampshire St",
       "neighborhood": "Mission",
-      "lat": 37.750192,
-      "lng": -122.406222,
+      "lat": 37.750084,
+      "lng": -122.406538,
       "indoor": false,
       "schedule": [
         [
@@ -3905,13 +6134,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -3986,15 +6250,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "joe-dimaggio-playground-outdoor",
       "name": "Joe DiMaggio Playground",
       "address": "651 Lombard Street",
       "neighborhood": "North Beach",
-      "lat": 37.802254,
-      "lng": -122.412251,
+      "lat": 37.802635,
+      "lng": -122.4117,
       "indoor": false,
       "schedule": [
         [
@@ -4028,13 +6292,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -4109,15 +6408,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "john-mclaren-park-outdoor",
       "name": "John McLaren Park",
       "address": "",
       "neighborhood": "McLaren Park, Visitacion Valley, Excelsior, Portola",
-      "lat": 37.719062,
-      "lng": -122.412959,
+      "lat": 37.723599,
+      "lng": -122.423272,
       "indoor": false,
       "schedule": [
         [
@@ -4151,13 +6450,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -4232,15 +6566,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "jose-coronado-playground-outdoor",
       "name": "Jose Coronado Playground",
       "address": "2498 Folsom St",
       "neighborhood": "Mission",
-      "lat": 37.757499,
-      "lng": -122.415466,
+      "lat": 37.757511,
+      "lng": -122.415272,
       "indoor": false,
       "schedule": [
         [
@@ -4274,13 +6608,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -4355,15 +6724,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "junipero-serra-playground-outdoor",
       "name": "Junipero Serra Playground",
       "address": "300 Stonecrest Dr",
       "neighborhood": "West of Twin Peaks",
-      "lat": 37.725061,
-      "lng": -122.473619,
+      "lat": 37.725059,
+      "lng": -122.473808,
       "indoor": false,
       "schedule": [
         [
@@ -4397,13 +6766,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -4478,7 +6882,253 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
+      "id": "kelloch-velasco-mini-park-outdoor",
+      "name": "Kelloch & Velasco Mini Park",
+      "address": "199 Kelloch Ave",
+      "neighborhood": "Visitacion Valley",
+      "lat": 37.708449,
+      "lng": -122.412828,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
+      "id": "koshland-park-outdoor",
+      "name": "Koshland Park",
+      "address": "363 Page St",
+      "neighborhood": "Hayes Valley",
+      "lat": 37.773283,
+      "lng": -122.427003,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "lafayette-park-outdoor",
@@ -4608,8 +7258,8 @@
       "name": "Laurel Hill Playground",
       "address": "251 Euclid Ave",
       "neighborhood": "Presidio Heights",
-      "lat": 37.783886,
-      "lng": -122.451511,
+      "lat": 37.783949,
+      "lng": -122.451341,
       "indoor": false,
       "schedule": [
         [
@@ -4643,13 +7293,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -4724,15 +7409,138 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
+      "id": "little-hollywood-park-outdoor",
+      "name": "Little Hollywood Park",
+      "address": "",
+      "neighborhood": "Bayview Hunters Point",
+      "lat": 37.710079,
+      "lng": -122.397818,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "louis-sutter-playground-outdoor",
       "name": "Louis Sutter Playground",
       "address": "599 Yale St",
       "neighborhood": "McLaren Park",
-      "lat": 37.722324,
-      "lng": -122.413342,
+      "lat": 37.72229,
+      "lng": -122.413618,
       "indoor": false,
       "schedule": [
         [
@@ -4766,13 +7574,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -4847,15 +7690,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor pickleball courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & pickleball courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "margaret-s-hayward-playground-outdoor",
       "name": "Margaret S.Hayward Playground",
       "address": "1016 Laguna St",
       "neighborhood": "Western Addition",
-      "lat": 37.780925,
-      "lng": -122.426829,
+      "lat": 37.780527,
+      "lng": -122.426763,
       "indoor": false,
       "schedule": [
         [
@@ -4889,13 +7732,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -4970,15 +7848,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "mccoppin-square-outdoor",
       "name": "McCoppin Square",
       "address": "2354 24th Ave",
       "neighborhood": "Sunset/Parkside",
-      "lat": 37.743281,
-      "lng": -122.480609,
+      "lat": 37.743205,
+      "lng": -122.480411,
       "indoor": false,
       "schedule": [
         [
@@ -5012,13 +7890,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -5093,15 +8006,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "merced-heights-playground-outdoor",
       "name": "Merced Heights Playground",
       "address": "801 Shields St",
       "neighborhood": "Oceanview/Merced/Ingleside",
-      "lat": 37.71744,
-      "lng": -122.470266,
+      "lat": 37.717338,
+      "lng": -122.470054,
       "indoor": false,
       "schedule": [
         [
@@ -5135,13 +8048,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -5216,15 +8164,261 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
+      "id": "michelangelo-playground-outdoor",
+      "name": "Michelangelo Playground",
+      "address": "1055 Greenwich St",
+      "neighborhood": "Russian Hill",
+      "lat": 37.801022,
+      "lng": -122.416762,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
+      "id": "midtown-terrace-playground-outdoor",
+      "name": "Midtown Terrace Playground",
+      "address": "210 Olympia Way",
+      "neighborhood": "Twin Peaks",
+      "lat": 37.751683,
+      "lng": -122.454811,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "minnie-and-lovie-rec-center-outdoor",
       "name": "Minnie and Lovie Rec Center",
       "address": "650 Capitol Ave",
       "neighborhood": "Oceanview/Merced/Ingleside",
-      "lat": 37.716284,
-      "lng": -122.456451,
+      "lat": 37.716339,
+      "lng": -122.456721,
       "indoor": false,
       "schedule": [
         [
@@ -5258,13 +8452,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -5339,15 +8568,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "miraloma-playground-outdoor",
       "name": "Miraloma Playground",
       "address": "25 Omar Way",
       "neighborhood": "West of Twin Peaks",
-      "lat": 37.739,
-      "lng": -122.448957,
+      "lat": 37.739056,
+      "lng": -122.449145,
       "indoor": false,
       "schedule": [
         [
@@ -5381,13 +8610,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -5462,15 +8726,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "mission-creek-park-outdoor",
       "name": "Mission Creek Park",
       "address": "290 Channel St",
       "neighborhood": "Mission Bay",
-      "lat": 37.771129,
-      "lng": -122.399031,
+      "lat": 37.771747,
+      "lng": -122.398067,
       "indoor": false,
       "schedule": [
         [
@@ -5504,13 +8768,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -5585,15 +8884,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "mission-dolores-park-outdoor",
       "name": "Mission Dolores Park",
       "address": "646 Dolores St",
       "neighborhood": "Castro/Upper Market",
-      "lat": 37.761058,
-      "lng": -122.426902,
+      "lat": 37.761094,
+      "lng": -122.42767,
       "indoor": false,
       "schedule": [
         [
@@ -5627,13 +8926,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -5708,15 +9042,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "mission-playground-outdoor",
       "name": "Mission Playground",
       "address": "3555 19th St",
       "neighborhood": "Mission",
-      "lat": 37.759003,
-      "lng": -122.422545,
+      "lat": 37.759249,
+      "lng": -122.422588,
       "indoor": false,
       "schedule": [
         [
@@ -5750,13 +9084,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -5831,15 +9200,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "moscone-rec-center-outdoor",
       "name": "Moscone Rec Center",
       "address": "1800 Chestnut St",
       "neighborhood": "Marina",
-      "lat": 37.801844,
-      "lng": -122.431725,
+      "lat": 37.802093,
+      "lng": -122.433178,
       "indoor": false,
       "schedule": [
         [
@@ -5873,13 +9242,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -5989,15 +9393,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis & pickleball courts — first-come, open during park hours (no posted drop-in schedule). Pickleball shares the tennis courts (lined for both)."
+      "notes": "Outdoor basketball & tennis & pickleball courts — first-come, open during park hours (no posted drop-in schedule). Pickleball shares the tennis courts (lined for both)."
     },
     {
       "id": "mountain-lake-park-outdoor",
       "name": "Mountain Lake Park",
       "address": "1 11th Ave",
       "neighborhood": "Inner Richmond, Presidio",
-      "lat": 37.786991,
-      "lng": -122.470798,
+      "lat": 37.787457,
+      "lng": -122.469447,
       "indoor": false,
       "schedule": [
         [
@@ -6031,13 +9435,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -6112,15 +9551,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "noe-valley-courts-outdoor",
       "name": "Noe Valley Courts",
       "address": "780 Douglass St",
       "neighborhood": "Noe Valley",
-      "lat": 37.75127,
-      "lng": -122.439089,
+      "lat": 37.751566,
+      "lng": -122.43903,
       "indoor": false,
       "schedule": [
         [
@@ -6154,13 +9593,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -6235,15 +9709,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "palega-playground-outdoor",
       "name": "Palega Playground",
       "address": "500 Felton St",
       "neighborhood": "Portola",
-      "lat": 37.728817,
-      "lng": -122.410313,
+      "lat": 37.729098,
+      "lng": -122.410453,
       "indoor": false,
       "schedule": [
         [
@@ -6277,13 +9751,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -6358,15 +9867,138 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
+      "id": "palou-phelps-park-outdoor",
+      "name": "Palou & Phelps Park",
+      "address": "1801 Palou Ave",
+      "neighborhood": "Bayview Hunters Point",
+      "lat": 37.735923,
+      "lng": -122.394851,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "parkside-square-outdoor",
       "name": "Parkside Square",
       "address": "2680 28th Ave",
       "neighborhood": "Sunset/Parkside",
-      "lat": 37.73835,
-      "lng": -122.483365,
+      "lat": 37.738765,
+      "lng": -122.483443,
       "indoor": false,
       "schedule": [
         [
@@ -6400,13 +10032,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -6516,7 +10183,7 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis & pickleball courts — first-come, open during park hours (no posted drop-in schedule). Pickleball shares the tennis courts (lined for both)."
+      "notes": "Outdoor basketball & tennis & pickleball courts — first-come, open during park hours (no posted drop-in schedule). Pickleball shares the tennis courts (lined for both)."
     },
     {
       "id": "peixotto-playground-outdoor",
@@ -6646,8 +10313,8 @@
       "name": "Potrero Hill Rec Center",
       "address": "801 Arkansas St",
       "neighborhood": "Potrero Hill",
-      "lat": 37.756927,
-      "lng": -122.396898,
+      "lat": 37.75692,
+      "lng": -122.397217,
       "indoor": false,
       "schedule": [
         [
@@ -6681,13 +10348,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -6762,15 +10464,138 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
+      "id": "presidio-heights-playground-outdoor",
+      "name": "Presidio Heights Playground",
+      "address": "3437 Clay St",
+      "neighborhood": "Presidio Heights",
+      "lat": 37.788558,
+      "lng": -122.44957,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "presidio-wall-playground-outdoor",
       "name": "Presidio Wall Playground",
       "address": "3550 Pacific Ave",
       "neighborhood": "Presidio, Presidio Heights",
-      "lat": 37.790985,
-      "lng": -122.454259,
+      "lat": 37.791222,
+      "lng": -122.454337,
       "indoor": false,
       "schedule": [
         [
@@ -6804,13 +10629,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -6920,15 +10780,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis & pickleball courts — first-come, open during park hours (no posted drop-in schedule). Pickleball shares the tennis courts (lined for both)."
+      "notes": "Outdoor basketball & tennis & pickleball courts — first-come, open during park hours (no posted drop-in schedule). Pickleball shares the tennis courts (lined for both)."
     },
     {
       "id": "richmond-playground-outdoor",
       "name": "Richmond Playground",
       "address": "149 18th Ave",
       "neighborhood": "Outer Richmond",
-      "lat": 37.785086,
-      "lng": -122.47843,
+      "lat": 37.785067,
+      "lng": -122.478108,
       "indoor": false,
       "schedule": [
         [
@@ -6962,13 +10822,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -7078,15 +10973,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis & pickleball courts — first-come, open during park hours (no posted drop-in schedule). Pickleball shares the tennis courts (lined for both)."
+      "notes": "Outdoor basketball & tennis & pickleball courts — first-come, open during park hours (no posted drop-in schedule). Pickleball shares the tennis courts (lined for both)."
     },
     {
       "id": "rochambeau-playground-outdoor",
       "name": "Rochambeau Playground",
       "address": "250 25th Ave",
       "neighborhood": "Outer Richmond",
-      "lat": 37.784793,
-      "lng": -122.484881,
+      "lat": 37.784787,
+      "lng": -122.484595,
       "indoor": false,
       "schedule": [
         [
@@ -7120,13 +11015,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -7201,7 +11131,130 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
+      "id": "selby-palou-mini-park-outdoor",
+      "name": "Selby & Palou Mini Park",
+      "address": "1321 Selby St",
+      "neighborhood": "Bayview Hunters Point",
+      "lat": 37.739006,
+      "lng": -122.400218,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "sigmund-stern-recreation-grove-outdoor",
@@ -7366,8 +11419,8 @@
       "name": "Silver Terrace Playground",
       "address": "1700 Silver Ave",
       "neighborhood": "Bayview Hunters Point",
-      "lat": 37.732623,
-      "lng": -122.402714,
+      "lat": 37.732756,
+      "lng": -122.402326,
       "indoor": false,
       "schedule": [
         [
@@ -7401,13 +11454,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -7482,15 +11570,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "south-sunset-playground-outdoor",
       "name": "South Sunset Playground",
       "address": "2601 40th Ave",
       "neighborhood": "Sunset/Parkside",
-      "lat": 37.737825,
-      "lng": -122.498836,
+      "lat": 37.737816,
+      "lng": -122.498526,
       "indoor": false,
       "schedule": [
         [
@@ -7524,13 +11612,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -7605,15 +11728,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "st-mary-s-rec-center-outdoor",
       "name": "St. Mary's Rec Center",
       "address": "95 Justin Dr",
       "neighborhood": "Bernal Heights",
-      "lat": 37.733383,
-      "lng": -122.420788,
+      "lat": 37.733393,
+      "lng": -122.421076,
       "indoor": false,
       "schedule": [
         [
@@ -7647,13 +11770,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -7728,15 +11886,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "states-street-playground-outdoor",
       "name": "States Street Playground",
       "address": "122 States St",
       "neighborhood": "Castro/Upper Market",
-      "lat": 37.764382,
-      "lng": -122.437154,
+      "lat": 37.763707,
+      "lng": -122.438152,
       "indoor": false,
       "schedule": [
         [
@@ -7770,13 +11928,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -7851,15 +12044,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "sunnyside-playground-outdoor",
       "name": "Sunnyside Playground",
       "address": "233 Melrose Avenue",
       "neighborhood": "West of Twin Peaks",
-      "lat": 37.733708,
-      "lng": -122.447548,
+      "lat": 37.733795,
+      "lng": -122.447211,
       "indoor": false,
       "schedule": [
         [
@@ -7893,13 +12086,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -7974,15 +12202,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "sunset-rec-center-outdoor",
       "name": "Sunset Rec Center",
       "address": "2201 Lawton St",
       "neighborhood": "Sunset/Parkside",
-      "lat": 37.756695,
-      "lng": -122.487098,
+      "lat": 37.756688,
+      "lng": -122.486569,
       "indoor": false,
       "schedule": [
         [
@@ -8016,13 +12244,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -8097,15 +12360,138 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
+      "id": "tenderloin-recreation-center-outdoor",
+      "name": "Tenderloin Recreation Center",
+      "address": "570 Ellis St",
+      "neighborhood": "Tenderloin",
+      "lat": 37.784928,
+      "lng": -122.415423,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "upper-noe-rec-center-outdoor",
       "name": "Upper Noe Rec Center",
       "address": "295 Day St",
       "neighborhood": "Noe Valley",
-      "lat": 37.742563,
-      "lng": -122.427995,
+      "lat": 37.742268,
+      "lng": -122.427964,
       "indoor": false,
       "schedule": [
         [
@@ -8139,13 +12525,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -8255,7 +12676,253 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis & pickleball courts — first-come, open during park hours (no posted drop-in schedule). Pickleball shares the tennis courts (lined for both)."
+      "notes": "Outdoor basketball & tennis & pickleball courts — first-come, open during park hours (no posted drop-in schedule). Pickleball shares the tennis courts (lined for both)."
+    },
+    {
+      "id": "victoria-manalo-draves-park-outdoor",
+      "name": "Victoria Manalo Draves Park",
+      "address": "55 Sherman St",
+      "neighborhood": "South of Market",
+      "lat": 37.777391,
+      "lng": -122.40662,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
+      "id": "walter-haas-playground-outdoor",
+      "name": "Walter Haas Playground",
+      "address": "300 Addison St",
+      "neighborhood": "Glen Park",
+      "lat": 37.740437,
+      "lng": -122.434821,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "west-portal-playground-outdoor",
@@ -8385,8 +13052,8 @@
       "name": "West Sunset Playground",
       "address": "3223 Ortega St",
       "neighborhood": "Sunset/Parkside",
-      "lat": 37.750242,
-      "lng": -122.498217,
+      "lat": 37.750259,
+      "lng": -122.497789,
       "indoor": false,
       "schedule": [
         [
@@ -8420,13 +13087,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -8501,15 +13203,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "willie-woo-woo-wong-playground-outdoor",
       "name": "Willie Woo Woo Wong Playground",
       "address": "850 Sacramento St",
       "neighborhood": "Chinatown",
-      "lat": 37.793607,
-      "lng": -122.406914,
+      "lat": 37.793721,
+      "lng": -122.40732,
       "indoor": false,
       "schedule": [
         [
@@ -8543,13 +13245,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -8624,15 +13361,15 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "youngblood-coleman-playground-outdoor",
       "name": "Youngblood-Coleman Playground",
       "address": "1398 Hudson Ave",
       "neighborhood": "Bayview Hunters Point",
-      "lat": 37.738363,
-      "lng": -122.383458,
+      "lat": 37.738173,
+      "lng": -122.383815,
       "indoor": false,
       "schedule": [
         [
@@ -8666,13 +13403,48 @@
       ],
       "dropins": {
         "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ],
         "volleyball": [
           [],
@@ -8747,8 +13519,8 @@
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
     }
   ],
-  "fetchedAt": "2026-06-28T05:35:18.804Z"
+  "fetchedAt": "2026-06-28T07:28:55.606Z"
 }

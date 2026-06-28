@@ -74,11 +74,13 @@ Each court carries:
   each `week` is indexed `0=Sun..6=Sat` and each day is an array of `[startMin,
   endMin]` blocks. Tracked sports live in `lib/sports.js` (**basketball**,
   **volleyball**, **ping pong**, **pickleball**, **tennis**); the app shows one at
-  a time via the (scrollable) sport toggle. Basketball has broad indoor coverage;
-  volleyball runs at ~6 centers; ping pong (scraped from the multipurpose-room /
-  auditorium rows, not just the gym) at ~10. **Pickleball** and **tennis** also add
-  outdoor public courts from DataSF (see below): pickleball is both indoor (~6
-  centers) and outdoor (~13 parks); tennis is outdoor-only (~66 parks).
+  a time via the (scrollable) sport toggle. Indoor coverage comes from rec-center
+  gyms (basketball broad; volleyball ~6 centers; ping pong ~10, scraped from the
+  multipurpose-room / auditorium rows, not just the gym). **Basketball**,
+  **pickleball**, and **tennis** also add outdoor public courts from DataSF (see
+  below): basketball ~76 parks, tennis ~66, pickleball ~13. So basketball and
+  pickleball are **both** indoor and outdoor (the app shows an Indoor/Outdoor
+  sub-filter for them); tennis is outdoor-only.
 - `indoor` — `true` for gyms, `false` for outdoor courts; surfaced as an
   Indoor/Outdoor badge and in the header count.
 - `scheduleSource` — `"live"` (scraped this run) · `"cache"` (last-good) ·
@@ -106,11 +108,11 @@ by `id`, so `npm run build:courts` never touches them. Two flavors:
   `npm run build:data` to rebuild every source together. It mirrors the SF build's
   resilience — last-good cache (`scripts/sanbruno-cache.json`) plus a validation gate
   that keeps the old data if the sheet won't parse.
-- **Outdoor racquet courts** (tennis + pickleball) come from
+- **Outdoor courts** (basketball + tennis + pickleball) come from
   `scripts/build-outdoor-courts.js`, which queries the DataSF facilities dataset
-  (`ib5c-xgwu`) for the `Tennis Court`, `Pickleball Courts`, and `Tennis/Pickleball
-  Court` types, maps each to its sport(s), and groups records by park into one pin
-  each (`data/outdoor-courts.js`, `npm run build:outdoor`). These are first-come
+  (`ib5c-xgwu`) for the `Basketball Court`, `Tennis Court`, `Pickleball Courts`, and
+  `Tennis/Pickleball Court` types, maps each to its sport(s), and groups records by
+  park into one pin each (`data/outdoor-courts.js`, `npm run build:outdoor`). These are first-come
   public courts with no posted schedule, so each is modeled as open a fixed daily
   park-hours window (8 AM–8 PM) with its sport(s) available across all of it. Same
   cache + gate resilience as the others (`scripts/outdoor-courts-cache.json`).
@@ -411,7 +413,7 @@ checked, and tokens aren't pruned when a device unregisters at the OS level
 ## Ideas for next
 
 - **Invite links:** wrap a friend code in a deep link to add with one tap.
-- **More outdoor sports:** the DataSF facilities dataset also has basketball,
-  volleyball, and other court types — the outdoor pipeline can fold them in next.
+- **More outdoor sports:** the DataSF facilities dataset also has volleyball,
+  skatepark, and other court types — the outdoor pipeline can fold them in next.
 - **Per-court hours for outdoor courts:** today they use a fixed park-hours window;
   some SF courts publish real hours / reservation windows worth scraping.
