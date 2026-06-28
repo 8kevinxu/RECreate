@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { formatDistance } from '../lib/distance';
 import { fmtDuration } from '../lib/datetime';
+import { isFullyBooked } from '../lib/reservations';
 
 const MIN_OPTIONS = [
   { label: 'Any', value: 0 },
@@ -23,6 +24,7 @@ const CLOSING_SOON = 30; // minutes — highlight courts closing within this
 export default function NearbyList({
   visible,
   courts,
+  sport = 'basketball',
   hasLocation,
   onSelect,
   onRequestLocation,
@@ -80,10 +82,15 @@ export default function NearbyList({
             {rows.length === 0 ? (
               <Text style={styles.muted}>No courts match — try a smaller "open for".</Text>
             ) : (
-              rows.map((c) => (
+              rows.map((c) => {
+                const full = isFullyBooked(c.reserved?.[sport]);
+                return (
                 <Pressable key={c.id} style={styles.row} onPress={() => onSelect(c.id)}>
                   <View style={{ flex: 1 }}>
-                    <Text style={styles.name}>{c.name}</Text>
+                    <Text style={styles.name}>
+                      {c.name}
+                      {full && <Text style={styles.fullTag}>  🔴 Fully booked</Text>}
+                    </Text>
                     <Text style={styles.sub}>
                       {[
                         c.indoor === false ? 'Outdoor' : 'Indoor',
@@ -113,7 +120,8 @@ export default function NearbyList({
                     )}
                   </View>
                 </Pressable>
-              ))
+                );
+              })
             )}
           </ScrollView>
         </Pressable>
@@ -166,6 +174,7 @@ const styles = StyleSheet.create({
     borderTopColor: '#eef1f4',
   },
   name: { fontSize: 15, color: '#0d1b2a', fontWeight: '700' },
+  fullTag: { fontSize: 12, color: '#c0392b', fontWeight: '700' },
   sub: { fontSize: 12, color: '#7a8a9a', marginTop: 1 },
   statusCol: { alignItems: 'flex-end', paddingLeft: 10 },
   open: { fontSize: 13, color: '#1f9d55', fontWeight: '700' },

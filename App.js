@@ -53,6 +53,7 @@ import {
   LEVEL_META,
 } from './lib/crowd';
 import { loadReviews, addReview, MAX_BODY, MAX_NAME } from './lib/reviews';
+import { liveBooked } from './lib/reservations';
 import { logVisit } from './lib/playerCheckins';
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -86,21 +87,6 @@ function netsLabel(nets) {
   return null;
 }
 
-// rec.us reservation slots are keyed "YYYY-MM-DD HH:MM" (SF-local, 30-min grid).
-const pad2 = (n) => String(n).padStart(2, '0');
-const slotKeyOf = (d) =>
-  `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())} ${pad2(d.getHours())}:${
-    d.getMinutes() < 30 ? '00' : '30'
-  }`;
-// "% booked right now": the current 30-min slot if the court is open now, else the
-// next upcoming slot in the snapshot window. null once the snapshot has gone stale.
-function liveBooked(res) {
-  if (!res || !res.slots) return null;
-  const nowKey = slotKeyOf(new Date());
-  if (res.slots[nowKey] != null) return { pct: res.slots[nowKey], now: true };
-  const next = Object.keys(res.slots).sort().find((k) => k >= nowKey);
-  return next ? { pct: res.slots[next], at: next } : null;
-}
 
 // Secondary indoor/outdoor filter, shown only for sports that have both (e.g.
 // pickleball). Matched against a court's `indoor` flag in visibleCourts.
@@ -108,6 +94,24 @@ const PLACE_OPTS = [
   { id: 'all', label: 'All' },
   { id: 'indoor', label: '🏠 Indoor' },
   { id: 'outdoor', label: '🌳 Outdoor' },
+];
+
+// Amenity filters from the tennis/pickleball directory + reservation data
+// (multi-select). Each chip only appears for a sport when at least one of its
+// courts qualifies, so e.g. "Nets provided" shows for pickleball but not tennis.
+const AMENITIES = [
+  {
+    id: 'bookable',
+    label: '📅 Bookable',
+    test: (c, s) => !!c.reserved?.[s] || (c.directory?.[s]?.reservable || 0) > 0,
+  },
+  { id: 'lights', label: '🌙 Lights', test: (c, s) => c.directory?.[s]?.lights === true },
+  { id: 'restrooms', label: '🚻 Restrooms', test: (c, s) => c.directory?.[s]?.restrooms === true },
+  {
+    id: 'nets',
+    label: '🥅 Nets provided',
+    test: (c, s) => /provided/i.test(c.directory?.[s]?.nets || ''),
+  },
 ];
 
 // ISO timestamp → "today" / "yesterday" / "Jun 18, 2026".
@@ -127,6 +131,7 @@ export default function App() {
   const [openOnly, setOpenOnly] = useState(false);
   const [sport, setSport] = useState(DEFAULT_SPORT); // which drop-in sport to show
   const [placeFilter, setPlaceFilter] = useState('all'); // indoor/outdoor sub-filter
+  const [amenities, setAmenities] = useState([]); // active amenity filter ids (multi-select)
   const [selectedId, setSelectedId] = useState(null);
   const [userLocation, setUserLocation] = useState(null);
   const [locating, setLocating] = useState(true);
@@ -379,17 +384,28 @@ export default function App() {
   }, [courts]);
   const showPlaceToggle = sportPlaces.indoor && sportPlaces.outdoor;
 
+  // Which amenity chips to offer for this sport: only those at least one of the
+  // sport's courts satisfies (so irrelevant chips, like nets for tennis, hide).
+  const amenityOpts = useMemo(() => {
+    const offered = courts.filter((c) => c.offersSport);
+    return AMENITIES.filter((a) => offered.some((c) => a.test(c, sport)));
+  }, [courts, sport]);
+  // Drop any active amenity that no longer applies (e.g. after switching sport).
+  const activeAmenities = amenities.filter((id) => amenityOpts.some((a) => a.id === id));
+
   // Only courts that actually offer the sport; then the Indoor/Outdoor sub-filter
-  // (when shown) and "Open now" narrow further.
+  // (when shown), the amenity filters, and "Open now" narrow further.
   const visibleCourts = useMemo(() => {
     const place = showPlaceToggle ? placeFilter : 'all';
+    const active = AMENITIES.filter((a) => activeAmenities.includes(a.id));
     return courts.filter(
       (c) =>
         c.offersSport &&
         (!openOnly || c.dropin.open) &&
-        (place === 'all' || (place === 'outdoor' ? c.indoor === false : c.indoor !== false))
+        (place === 'all' || (place === 'outdoor' ? c.indoor === false : c.indoor !== false)) &&
+        active.every((a) => a.test(c, sport))
     );
-  }, [courts, openOnly, placeFilter, showPlaceToggle]);
+  }, [courts, sport, openOnly, placeFilter, showPlaceToggle, activeAmenities.join(',')]);
 
   // "indoor"/"outdoor" qualifier for the header — only when the sport's courts are
   // uniformly one or the other (e.g. tennis = all outdoor); blank when mixed.
@@ -493,6 +509,7 @@ export default function App() {
                 onPress={() => {
                   setSport(s.id);
                   setPlaceFilter('all'); // reset the indoor/outdoor sub-filter
+                  setAmenities([]); // reset amenity filters
                 }}
                 style={[styles.sportChip, active && styles.sportChipActive]}
               >
@@ -521,6 +538,36 @@ export default function App() {
               );
             })}
           </View>
+        )}
+
+        {amenityOpts.length > 0 && (
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.amenityRow}
+          >
+            {amenityOpts.map((a) => {
+              const active = activeAmenities.includes(a.id);
+              return (
+                <Pressable
+                  key={a.id}
+                  onPress={() =>
+                    setAmenities((prev) =>
+                      prev.includes(a.id) ? prev.filter((x) => x !== a.id) : [...prev, a.id]
+                    )
+                  }
+                  style={[styles.amenityChip, active && styles.amenityChipActive]}
+                >
+                  <Text
+                    style={[styles.amenityChipText, active && styles.amenityChipTextActive]}
+                  >
+                    {active ? '✓ ' : ''}
+                    {a.label}
+                  </Text>
+                </Pressable>
+              );
+            })}
+          </ScrollView>
         )}
 
         <View style={styles.filterRow}>
@@ -700,6 +747,7 @@ export default function App() {
       <NearbyList
         visible={nearbyOpen}
         courts={visibleCourts}
+        sport={sport}
         hasLocation={!!userLocation}
         onSelect={(id) => {
           setNearbyOpen(false);
@@ -751,6 +799,7 @@ function CourtDetail({
   // "% booked right now" reading derived from the point-in-time slot map.
   const booked = court.reserved?.[sport];
   const live = liveBooked(booked);
+  const fullyBooked = !!live && live.now && live.pct === 100;
   // SF Rec & Park directory facts (court count, lights, restrooms, nets) for this sport.
   const dir = court.directory?.[sport];
   const week = getDropinWeek(court, sport, viewTime);
@@ -863,11 +912,17 @@ function CourtDetail({
           <View
             style={[
               styles.badge,
-              live.pct >= 70 ? styles.badgeBookedHi : styles.badgeBookedLo,
+              fullyBooked
+                ? styles.badgeBookedFull
+                : live.pct >= 70
+                ? styles.badgeBookedHi
+                : styles.badgeBookedLo,
             ]}
           >
-            <Text style={styles.badgeText}>
-              📅 {live.pct}% booked{live.now ? ' now' : ''}
+            <Text style={[styles.badgeText, fullyBooked && styles.badgeTextFull]}>
+              {fullyBooked
+                ? '🔴 Fully booked now'
+                : `📅 ${live.pct}% booked${live.now ? ' now' : ''}`}
             </Text>
           </View>
         )}
@@ -898,8 +953,10 @@ function CourtDetail({
 
       {booked != null && (
         <>
-          <Text style={styles.bookedNote}>
-            {live && live.now
+          <Text style={[styles.bookedNote, fullyBooked && styles.bookedNoteFull]}>
+            {fullyBooked
+              ? `All ${booked.courts ? `${booked.courts} ` : ''}courts are reserved right now — try later, or book ahead on rec.us.`
+              : live && live.now
               ? `${live.pct}% of courts reserved right now on rec.us${
                   booked.courts ? ` (${booked.courts} courts)` : ''
                 }.`
@@ -1219,6 +1276,18 @@ const styles = StyleSheet.create({
   placeChipActive: { backgroundColor: '#2f4b66', borderColor: '#3f6286' },
   placeChipText: { color: '#7e96ad', fontWeight: '700', fontSize: 12 },
   placeChipTextActive: { color: '#fff' },
+  amenityRow: { gap: 6, paddingRight: 12, marginTop: -2, marginBottom: 10 },
+  amenityChip: {
+    paddingHorizontal: 12,
+    paddingVertical: 5,
+    borderRadius: 999,
+    backgroundColor: '#16242f',
+    borderWidth: 1,
+    borderColor: '#26384d',
+  },
+  amenityChipActive: { backgroundColor: '#2f4b66', borderColor: '#3f6286' },
+  amenityChipText: { color: '#7e96ad', fontWeight: '700', fontSize: 12 },
+  amenityChipTextActive: { color: '#fff' },
   filterRow: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', gap: 10 },
 
   timePill: {
@@ -1350,6 +1419,8 @@ const styles = StyleSheet.create({
   badgePlace: { backgroundColor: '#e7efe2' },
   badgeBookedHi: { backgroundColor: '#f7e0cf' },
   badgeBookedLo: { backgroundColor: '#fdf1d6' },
+  badgeBookedFull: { backgroundColor: '#e74c3c' },
+  badgeTextFull: { color: '#fff' },
   facRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginBottom: 8 },
   facChip: {
     backgroundColor: '#eef2f6',
@@ -1359,6 +1430,7 @@ const styles = StyleSheet.create({
   },
   facText: { fontSize: 12, fontWeight: '600', color: '#46586a' },
   bookedNote: { fontSize: 12, color: '#7a6a55', marginBottom: 8, lineHeight: 16 },
+  bookedNoteFull: { color: '#c0392b', fontWeight: '700' },
   bookBtn: {
     backgroundColor: '#e8732c',
     borderRadius: 10,

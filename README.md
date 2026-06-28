@@ -127,10 +127,13 @@ by `id`, so `npm run build:courts` never touches them. Two flavors:
   booked% keyed by actual SF-local datetime (`"YYYY-MM-DD HH:MM"`) — the fraction of the
   location's courts reserved at that 30-min slot — `pct` is the window average, and `url`
   is the court's rec.us page. `lib/useCourts.js` merges it onto courts as `reserved`: the
-  court detail card shows a live **"% booked right now"** badge (looking up the current
-  slot, e.g. "100% booked now" when every court is taken) plus a **Reserve this court**
-  button (deep-links to that court's rec.us page) and a how-to-book link, and the "Plan a
-  game" sheet shows each court's booked% for the picked day+time. Because the slots are
+  court detail card shows a live **"% booked right now"** badge — a red **"Fully booked
+  now"** when every court is reserved (also tagged in the Nearby list) — plus a **Reserve
+  this court** button (deep-links to that court's rec.us page) and a how-to-book link, and
+  the "Plan a game" sheet shows each court's booked% for the picked day+time. The main
+  screen also offers multi-select **amenity filters** (Bookable / Lights / Restrooms /
+  Nets provided) for tennis + pickleball, each shown only when some court qualifies
+  (see `AMENITIES` in `App.js`, fed by the directory + reservation data). Because the slots are
   date-keyed they cover today through the window end, then go stale — so the **weekly cron
   refresh matters** to keep "right now" accurate. Same last-good cache + gate resilience
   (`scripts/reservations-cache.json`).
