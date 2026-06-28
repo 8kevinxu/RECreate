@@ -57,6 +57,14 @@ import { loadReviews, addReview, MAX_BODY, MAX_NAME } from './lib/reviews';
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
+// Secondary indoor/outdoor filter, shown only for sports that have both (e.g.
+// pickleball). Matched against a court's `indoor` flag in visibleCourts.
+const PLACE_OPTS = [
+  { id: 'all', label: 'All' },
+  { id: 'indoor', label: '🏠 Indoor' },
+  { id: 'outdoor', label: '🌳 Outdoor' },
+];
+
 // ISO timestamp → "today" / "yesterday" / "Jun 18, 2026".
 function formatUpdated(iso) {
   const d = new Date(iso);
@@ -73,6 +81,7 @@ export default function App() {
   const didCenterRef = useRef(false); // auto-center on the user only once
   const [openOnly, setOpenOnly] = useState(false);
   const [sport, setSport] = useState(DEFAULT_SPORT); // which drop-in sport to show
+  const [placeFilter, setPlaceFilter] = useState('all'); // indoor/outdoor sub-filter
   const [selectedId, setSelectedId] = useState(null);
   const [userLocation, setUserLocation] = useState(null);
   const [locating, setLocating] = useState(true);
@@ -308,11 +317,37 @@ export default function App() {
     }));
   }, [courtData, sport, viewTime, userLocation]);
 
-  // Only courts that actually offer the sport; then "Open now" narrows to ones
-  // whose drop-in gym is running right now.
+  // Does the selected sport have both indoor and outdoor courts? If so, offer the
+  // secondary Indoor/Outdoor toggle (today that's pickleball).
+  const sportPlaces = useMemo(() => {
+    const offered = courts.filter((c) => c.offersSport);
+    return {
+      indoor: offered.some((c) => c.indoor !== false),
+      outdoor: offered.some((c) => c.indoor === false),
+    };
+  }, [courts]);
+  const showPlaceToggle = sportPlaces.indoor && sportPlaces.outdoor;
+
+  // Only courts that actually offer the sport; then the Indoor/Outdoor sub-filter
+  // (when shown) and "Open now" narrow further.
   const visibleCourts = useMemo(() => {
-    return courts.filter((c) => c.offersSport && (!openOnly || c.dropin.open));
-  }, [courts, openOnly]);
+    const place = showPlaceToggle ? placeFilter : 'all';
+    return courts.filter(
+      (c) =>
+        c.offersSport &&
+        (!openOnly || c.dropin.open) &&
+        (place === 'all' || (place === 'outdoor' ? c.indoor === false : c.indoor !== false))
+    );
+  }, [courts, openOnly, placeFilter, showPlaceToggle]);
+
+  // "indoor"/"outdoor" qualifier for the header — only when the sport's courts are
+  // uniformly one or the other (e.g. tennis = all outdoor); blank when mixed.
+  const placeWord = useMemo(() => {
+    if (!visibleCourts.length) return '';
+    if (visibleCourts.every((c) => c.indoor === false)) return 'outdoor ';
+    if (visibleCourts.every((c) => c.indoor !== false)) return 'indoor ';
+    return '';
+  }, [visibleCourts]);
 
   // Map markers fade when there's no open gym right now, and animate by the latest
   // *fresh* crowd check-in.
@@ -356,7 +391,7 @@ export default function App() {
           <Text style={styles.subtitle}>
             {openOnly
               ? `${visibleCourts.length} with open gym ${isPicked ? viewLabel(viewTime) : 'right now'}`
-              : `${visibleCourts.length} indoor ${sportMeta(sport).label.toLowerCase()} courts`}
+              : `${visibleCourts.length} ${placeWord}${sportMeta(sport).label.toLowerCase()} courts`}
           </Text>
           {!!generatedAt && (
             <Text style={styles.updated}>Updated {formatUpdated(generatedAt)}</Text>
@@ -394,13 +429,20 @@ export default function App() {
       </View>
 
       <View style={styles.controls}>
-        <View style={styles.sportRow}>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.sportRow}
+        >
           {SPORTS.map((s) => {
             const active = s.id === sport;
             return (
               <Pressable
                 key={s.id}
-                onPress={() => setSport(s.id)}
+                onPress={() => {
+                  setSport(s.id);
+                  setPlaceFilter('all'); // reset the indoor/outdoor sub-filter
+                }}
                 style={[styles.sportChip, active && styles.sportChipActive]}
               >
                 <Text style={[styles.sportChipText, active && styles.sportChipTextActive]}>
@@ -409,7 +451,26 @@ export default function App() {
               </Pressable>
             );
           })}
-        </View>
+        </ScrollView>
+
+        {showPlaceToggle && (
+          <View style={styles.placeRow}>
+            {PLACE_OPTS.map((o) => {
+              const active = placeFilter === o.id;
+              return (
+                <Pressable
+                  key={o.id}
+                  onPress={() => setPlaceFilter(o.id)}
+                  style={[styles.placeChip, active && styles.placeChipActive]}
+                >
+                  <Text style={[styles.placeChipText, active && styles.placeChipTextActive]}>
+                    {o.label}
+                  </Text>
+                </Pressable>
+              );
+            })}
+          </View>
+        )}
 
         <View style={styles.filterRow}>
           <Pressable
@@ -717,6 +778,11 @@ function CourtDetail({
         >
           <Text style={styles.badgeText}>Facility {status.open ? 'open' : 'closed'}</Text>
         </View>
+        <View style={[styles.badge, styles.badgePlace]}>
+          <Text style={styles.badgeText}>
+            {court.indoor === false ? '🌳 Outdoor' : '🏠 Indoor'}
+          </Text>
+        </View>
       </View>
 
       {(court.distanceMi != null || (dropin.open && court.remaining > 0)) && (
@@ -995,6 +1061,18 @@ const styles = StyleSheet.create({
   sportChipActive: { backgroundColor: '#e8732c', borderColor: '#e8732c' },
   sportChipText: { color: '#9db4cc', fontWeight: '700', fontSize: 13 },
   sportChipTextActive: { color: '#fff' },
+  placeRow: { flexDirection: 'row', gap: 6, marginTop: -2, marginBottom: 10 },
+  placeChip: {
+    paddingHorizontal: 12,
+    paddingVertical: 5,
+    borderRadius: 999,
+    backgroundColor: '#16242f',
+    borderWidth: 1,
+    borderColor: '#26384d',
+  },
+  placeChipActive: { backgroundColor: '#2f4b66', borderColor: '#3f6286' },
+  placeChipText: { color: '#7e96ad', fontWeight: '700', fontSize: 12 },
+  placeChipTextActive: { color: '#fff' },
   filterRow: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', gap: 10 },
 
   timePill: {
@@ -1116,13 +1194,14 @@ const styles = StyleSheet.create({
   cardSub: { fontSize: 13, color: '#5b6b7b', marginTop: 2 },
   close: { fontSize: 18, color: '#90a0b0', paddingLeft: 8 },
 
-  badgeRow: { flexDirection: 'row', gap: 8, marginTop: 12, marginBottom: 6 },
+  badgeRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 12, marginBottom: 6 },
   metaLine: { fontSize: 13, color: '#46586a', fontWeight: '600', marginBottom: 8 },
   badge: { paddingHorizontal: 10, paddingVertical: 5, borderRadius: 8 },
   badgeOpen: { backgroundColor: '#d4f3df' },
   badgeClosed: { backgroundColor: '#f3d9d9' },
   badgeFacOpen: { backgroundColor: '#e3eefb' },
   badgeFacClosed: { backgroundColor: '#eceff2' },
+  badgePlace: { backgroundColor: '#e7efe2' },
   badgeText: { fontSize: 12, fontWeight: '700', color: '#2a3a4a' },
 
   crowdBox: {

@@ -1,0 +1,211 @@
+#!/usr/bin/env node
+/*
+ * Build data/outdoor-courts.js — SF Recreation & Parks OUTDOOR racquet courts
+ * (tennis + pickleball). Run with:  npm run build:outdoor
+ *
+ * Source: the DataSF "Recreation and Parks Facilities" dataset (ib5c-xgwu) — the
+ * same one build-indoor-courts.js uses for coordinates. We pull the racquet-court
+ * facility types and map each to the sport(s) it offers:
+ *   Tennis Court            -> tennis
+ *   Pickleball Courts       -> pickleball
+ *   Tennis/Pickleball Court -> tennis + pickleball (one surface lined for both)
+ *
+ * Outdoor courts have no posted drop-in schedule — they're first-come during park
+ * hours — so each is modeled as open a fixed daily window (PARK_HOURS) with its
+ * sport(s) available across all of it. Records are grouped by park, so a park with
+ * several court records becomes one pin offering the union of its sports.
+ *
+ * Resilience mirrors the other builds: live fetch -> last-good cache
+ * (outdoor-courts-cache.json), with a gate that aborts (keeping the existing data
+ * file) if too few courts come back.
+ */
+
+const fs = require('fs');
+const path = require('path');
+
+const CACHE_FILE = path.join(__dirname, 'outdoor-courts-cache.json');
+const OUT_FILE = path.join(__dirname, '..', 'data', 'outdoor-courts.js');
+
+const DATASF =
+  'https://data.sfgov.org/resource/ib5c-xgwu.json?' +
+  '$select=property_name,facility_type,address,analysis_neighborhood,latitude,longitude&' +
+  "$where=facility_type in('Tennis Court','Tennis/Pickleball Court','Pickleball Courts')&$limit=500";
+
+// Abort (keep last-good data) if fewer than this many courts come back.
+const MIN_COURTS_OK = 20;
+
+const time = (h, m = 0) => h * 60 + m;
+
+// First-come outdoor courts have no posted schedule; treat them as open a fixed
+// daily daytime window (approx. park hours) every day of the week.
+const PARK_HOURS = [time(8), time(20)]; // 8 AM – 8 PM
+const parkSchedule = () => Array.from({ length: 7 }, () => [...PARK_HOURS]);
+// One drop-in block per open day spanning the window — "available all open hours".
+const allOpenHoursWeek = (sched) => sched.map((h) => (h ? [[h[0], h[1]]] : []));
+
+// All tracked sports (keep in sync with lib/sports.js); every court carries a week
+// for each so the dropins shape is uniform (outdoor courts only fill racquet ones).
+const ALL_SPORTS = ['basketball', 'volleyball', 'pingpong', 'pickleball', 'tennis'];
+const emptyWeek = () => [[], [], [], [], [], [], []];
+
+// Which sport(s) each racquet-court facility type offers.
+const TYPE_SPORTS = {
+  'Tennis Court': ['tennis'],
+  'Pickleball Courts': ['pickleball'],
+  'Tennis/Pickleball Court': ['tennis', 'pickleball'],
+};
+
+const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+
+// Order a park's sports tennis-first for readable notes/labels.
+const ORDER = ['tennis', 'pickleball'];
+const ordered = (sports) => ORDER.filter((s) => sports.includes(s));
+
+function noteFor(sports, sharedTennis) {
+  const list = ordered(sports).join(' & ');
+  let n = `Outdoor ${list} courts — first-come, open during park hours (no posted drop-in schedule).`;
+  if (sharedTennis && sports.includes('pickleball') && sports.includes('tennis')) {
+    n += ' Pickleball shares the tennis courts (lined for both).';
+  } else if (sharedTennis && sports.includes('pickleball')) {
+    n += ' Played on tennis courts lined for pickleball.';
+  }
+  return n;
+}
+
+// Group DataSF records by park; union the sports across that park's court records.
+function buildCourts(rows) {
+  const byPark = new Map();
+  for (const r of rows) {
+    const sports = TYPE_SPORTS[r.facility_type];
+    if (!sports || !r.latitude || !r.longitude) continue;
+    let p = byPark.get(r.property_name);
+    if (!p) {
+      p = {
+        name: r.property_name,
+        address: r.address || '',
+        neighborhood: r.analysis_neighborhood || '',
+        lat: Number(Number(r.latitude).toFixed(6)),
+        lng: Number(Number(r.longitude).toFixed(6)),
+        sports: new Set(),
+        sharedTennis: false,
+      };
+      byPark.set(r.property_name, p);
+    }
+    sports.forEach((s) => p.sports.add(s));
+    if (r.facility_type === 'Tennis/Pickleball Court') p.sharedTennis = true;
+  }
+
+  const sched = parkSchedule();
+  return [...byPark.values()]
+    .map((p) => {
+      const offered = [...p.sports];
+      const dropins = Object.fromEntries(ALL_SPORTS.map((s) => [s, emptyWeek()]));
+      for (const s of offered) dropins[s] = allOpenHoursWeek(sched);
+      return {
+        id: `${slug(p.name)}-outdoor`,
+        name: p.name,
+        address: p.address,
+        neighborhood: p.neighborhood,
+        lat: p.lat,
+        lng: p.lng,
+        indoor: false,
+        schedule: sched,
+        dropins,
+        source: 'sfrecpark-outdoor',
+        notes: noteFor(offered, p.sharedTennis),
+      };
+    })
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+function loadCache() {
+  try {
+    return JSON.parse(fs.readFileSync(CACHE_FILE, 'utf8'));
+  } catch {
+    return null;
+  }
+}
+
+function render(courts, generatedAt, scheduleSource) {
+  const body = courts
+    .map(
+      (c) => `  {
+    id: ${JSON.stringify(c.id)},
+    name: ${JSON.stringify(c.name)},
+    address: ${JSON.stringify(c.address)},
+    neighborhood: ${JSON.stringify(c.neighborhood)},
+    lat: ${c.lat},
+    lng: ${c.lng},
+    indoor: false,
+    schedule: ${JSON.stringify(c.schedule)},
+    dropins: ${JSON.stringify(c.dropins)},
+    scheduleSource: ${JSON.stringify(scheduleSource)},
+    source: "sfrecpark-outdoor",
+    notes: ${JSON.stringify(c.notes)},
+    disclaimer: "Outdoor public courts — first-come; verify on sfrecpark.org.",
+  },`
+    )
+    .join('\n');
+
+  return `// AUTO-GENERATED by scripts/build-outdoor-courts.js — do not edit by hand.
+// Regenerate with: npm run build:outdoor
+// Generated: ${generatedAt}
+//
+// SF Recreation & Parks OUTDOOR racquet courts (tennis + pickleball), from the
+// DataSF facilities dataset (ib5c-xgwu). One pin per park, offering the union of
+// the racquet sports its court records list. These are first-come public courts
+// with no posted drop-in schedule, so each is modeled as open a fixed daily park-
+// hours window with its sport(s) available across all of it.
+//
+// schedule[]   = approx. park hours, indexed 0=Sun..6=Sat; [openMin,closeMin].
+// dropins      = { sportId: week }; racquet sports span the open window, others
+//   are empty so the court only appears under its sport(s)' toggle.
+// scheduleSource = "datasf" (fetched this run) | "cache" (last good).
+
+export const GENERATED_AT = ${JSON.stringify(generatedAt)};
+
+export const OUTDOOR_COURTS = [
+${body}
+];
+
+export default OUTDOOR_COURTS;
+`;
+}
+
+async function main() {
+  console.log('Fetching outdoor racquet courts from DataSF…');
+  let courts;
+  let scheduleSource;
+
+  try {
+    const res = await fetch(DATASF, { headers: { 'User-Agent': 'HoopMapSF/1.0', Accept: '*/*' } });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const rows = await res.json();
+    courts = buildCourts(rows);
+    if (courts.length < MIN_COURTS_OK) {
+      throw new Error(`only ${courts.length} courts (min ${MIN_COURTS_OK}) — dataset may have changed`);
+    }
+    scheduleSource = 'datasf';
+    fs.writeFileSync(CACHE_FILE, JSON.stringify({ courts, fetchedAt: new Date().toISOString() }, null, 2) + '\n');
+    const tn = courts.filter((c) => c.dropins.tennis.some((d) => d.length)).length;
+    const pb = courts.filter((c) => c.dropins.pickleball.some((d) => d.length)).length;
+    console.log(`  ✓ ${courts.length} parks — ${tn} with tennis, ${pb} with pickleball (live)`);
+  } catch (e) {
+    const cache = loadCache();
+    if (!cache || !Array.isArray(cache.courts)) {
+      throw new Error(`fetch failed (${e.message}) and no cache available — data/outdoor-courts.js left unchanged`);
+    }
+    courts = cache.courts;
+    scheduleSource = 'cache';
+    console.log(`  ↺ fetch failed (${e.message}); using cache from ${cache.fetchedAt || 'unknown'}`);
+  }
+
+  const generatedAt = new Date().toISOString();
+  fs.writeFileSync(OUT_FILE, render(courts, generatedAt, scheduleSource));
+  console.log(`\n✅ Wrote ${courts.length} outdoor courts to data/outdoor-courts.js (${scheduleSource})`);
+}
+
+main().catch((e) => {
+  console.error('\n❌ Failed:', e.message);
+  process.exit(1);
+});

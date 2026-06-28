@@ -45,7 +45,15 @@ const PICKLE_SVG =
   '<g fill="#7a6a06"><circle cx="74" cy="70" r="1.6"/><circle cx="82" cy="71" r="1.6"/><circle cx="78" cy="78" r="1.6"/></g>' +
   '</svg>';
 
-const SPORT_SVG = { basketball: BBALL_SVG, volleyball: VBALL_SVG, pingpong: PPONG_SVG, pickleball: PICKLE_SVG };
+const TENNIS_SVG =
+  '<svg viewBox="0 0 100 100" width="100%" height="100%">' +
+  '<circle cx="50" cy="50" r="46" fill="#c6e94b" stroke="#5a7d14" stroke-width="3"/>' +
+  '<g fill="none" stroke="#f4f6f8" stroke-width="4">' +
+  '<path d="M16,18 C42,34 42,66 16,82"/>' +
+  '<path d="M84,18 C58,34 58,66 84,82"/>' +
+  '</g></svg>';
+
+const SPORT_SVG = { basketball: BBALL_SVG, volleyball: VBALL_SVG, pingpong: PPONG_SVG, pickleball: PICKLE_SVG, tennis: TENNIS_SVG };
 const ballSvg = (sport) => SPORT_SVG[sport] || BBALL_SVG;
 
 function crowdDecoration(level) {

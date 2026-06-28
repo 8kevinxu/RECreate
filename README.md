@@ -73,11 +73,16 @@ Each court carries:
 - `dropins` — a `{ sportId: week }` map of drop-in open-gym blocks per sport, where
   each `week` is indexed `0=Sun..6=Sat` and each day is an array of `[startMin,
   endMin]` blocks. Tracked sports live in `lib/sports.js` (**basketball**,
-  **volleyball**, **ping pong**, **pickleball**); the app shows one at a time via
-  the sport toggle. Basketball has broad coverage; volleyball runs at ~6 centers;
-  ping pong (scraped from the multipurpose-room / auditorium rows, not just the
-  gym) at ~10; pickleball at ~5 centers plus San Bruno.
-- `scheduleSource` — `"live"` (scraped this run) · `"cache"` (last-good) · `"curated"`
+  **volleyball**, **ping pong**, **pickleball**, **tennis**); the app shows one at
+  a time via the (scrollable) sport toggle. Basketball has broad indoor coverage;
+  volleyball runs at ~6 centers; ping pong (scraped from the multipurpose-room /
+  auditorium rows, not just the gym) at ~10. **Pickleball** and **tennis** also add
+  outdoor public courts from DataSF (see below): pickleball is both indoor (~6
+  centers) and outdoor (~13 parks); tennis is outdoor-only (~66 parks).
+- `indoor` — `true` for gyms, `false` for outdoor courts; surfaced as an
+  Indoor/Outdoor badge and in the header count.
+- `scheduleSource` — `"live"` (scraped this run) · `"cache"` (last-good) ·
+  `"curated"` · `"datasf"` (outdoor courts)
 
 Regenerate anytime:
 
@@ -98,9 +103,17 @@ by `id`, so `npm run build:courts` never touches them. Two flavors:
   pulls the city's public *Gymnasium Schedule* Google Sheet (CSV export), parses the
   two-side gym grid into per-sport drop-in blocks (basketball + volleyball), and
   writes **`data/sanbruno-court.js`**. Run it with `npm run build:sanbruno`, or
-  `npm run build:data` to rebuild SF + San Bruno together. It mirrors the SF build's
+  `npm run build:data` to rebuild every source together. It mirrors the SF build's
   resilience — last-good cache (`scripts/sanbruno-cache.json`) plus a validation gate
   that keeps the old data if the sheet won't parse.
+- **Outdoor racquet courts** (tennis + pickleball) come from
+  `scripts/build-outdoor-courts.js`, which queries the DataSF facilities dataset
+  (`ib5c-xgwu`) for the `Tennis Court`, `Pickleball Courts`, and `Tennis/Pickleball
+  Court` types, maps each to its sport(s), and groups records by park into one pin
+  each (`data/outdoor-courts.js`, `npm run build:outdoor`). These are first-come
+  public courts with no posted schedule, so each is modeled as open a fixed daily
+  park-hours window (8 AM–8 PM) with its sport(s) available across all of it. Same
+  cache + gate resilience as the others (`scripts/outdoor-courts-cache.json`).
 
 An optional `disclaimer` field on a court overrides the default "verify on
 sfrecpark.org" footnote on the court detail screen.
@@ -389,5 +402,7 @@ checked, and tokens aren't pruned when a device unregisters at the OS level
 ## Ideas for next
 
 - **Invite links:** wrap a friend code in a deep link to add with one tap.
-- **Outdoor courts / more sports:** the data model has room (`indoor`, `source`
-  fields) to bring back outdoor courts or add other sports later.
+- **More outdoor sports:** the DataSF facilities dataset also has basketball,
+  volleyball, and other court types — the outdoor pipeline can fold them in next.
+- **Per-court hours for outdoor courts:** today they use a fixed park-hours window;
+  some SF courts publish real hours / reservation windows worth scraping.

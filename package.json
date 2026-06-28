@@ -27,7 +27,8 @@
     "web": "expo start --web",
     "build:courts": "node scripts/build-indoor-courts.js",
     "build:sanbruno": "node scripts/build-sanbruno-court.js",
-    "build:data": "npm run build:courts && npm run build:sanbruno"
+    "build:outdoor": "node scripts/build-outdoor-courts.js",
+    "build:data": "npm run build:courts && npm run build:sanbruno && npm run build:outdoor"
   },
   "private": true,
   "devDependencies": {

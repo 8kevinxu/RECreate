@@ -85,7 +85,11 @@ export default function NearbyList({
                   <View style={{ flex: 1 }}>
                     <Text style={styles.name}>{c.name}</Text>
                     <Text style={styles.sub}>
-                      {[c.neighborhood, hasLocation && formatDistance(c.distanceMi)]
+                      {[
+                        c.indoor === false ? 'Outdoor' : 'Indoor',
+                        c.neighborhood,
+                        hasLocation && formatDistance(c.distanceMi),
+                      ]
                         .filter(Boolean)
                         .join(' · ')}
                     </Text>
