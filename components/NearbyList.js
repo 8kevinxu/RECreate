@@ -25,6 +25,8 @@ export default function NearbyList({
   visible,
   courts,
   sport = 'basketball',
+  viewTime = null,
+  isPicked = false,
   hasLocation,
   onSelect,
   onRequestLocation,
@@ -83,7 +85,7 @@ export default function NearbyList({
               <Text style={styles.muted}>No courts match — try a smaller "open for".</Text>
             ) : (
               rows.map((c) => {
-                const full = isFullyBooked(c.reserved?.[sport]);
+                const full = isFullyBooked(c.reserved?.[sport], isPicked ? viewTime : null);
                 return (
                 <Pressable key={c.id} style={styles.row} onPress={() => onSelect(c.id)}>
                   <View style={{ flex: 1 }}>

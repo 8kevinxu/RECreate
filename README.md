@@ -130,10 +130,13 @@ by `id`, so `npm run build:courts` never touches them. Two flavors:
   court detail card shows a live **"% booked right now"** badge — a red **"Fully booked
   now"** when every court is reserved (also tagged in the Nearby list) — plus a **Reserve
   this court** button (deep-links to that court's rec.us page) and a how-to-book link, and
-  the "Plan a game" sheet shows each court's booked% for the picked day+time. On the map,
-  each reservable court's glyph gets an **occupancy halo** keyed to how booked it is right
-  now — green (free) → light green → yellow → orange → red, and a fully-booked court
-  flashes red and hops (see `bookLevel` in `components/CourtMap*.js`). The main screen also
+  the "Plan a game" sheet shows each court's booked% for the picked day+time. When you pick
+  a time on the main screen, the card, the Nearby tag, and the map all switch from "right
+  now" to that exact date+time (e.g. "0% booked at 6 PM"), each court recomputed for the
+  picked slot via `bookedAt`. On the map, each reservable court's glyph gets an **occupancy
+  halo** keyed to how booked it is at the viewed time — green (free) → light green → yellow
+  → orange → red, and a fully-booked court flashes red and hops (see `bookLevel` in
+  `components/CourtMap*.js`). The main screen also
   offers multi-select **amenity filters** (Bookable / Lights / Restrooms / Nets provided)
   for tennis + pickleball, each shown only when some court qualifies (see `AMENITIES` in
   `App.js`, fed by the directory + reservation data). Because the slots are

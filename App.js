@@ -53,7 +53,7 @@ import {
   LEVEL_META,
 } from './lib/crowd';
 import { loadReviews, addReview, MAX_BODY, MAX_NAME } from './lib/reviews';
-import { liveBooked } from './lib/reservations';
+import { liveBooked, bookedAt } from './lib/reservations';
 import { logVisit } from './lib/playerCheckins';
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -422,21 +422,28 @@ export default function App() {
   const mapCourts = useMemo(
     () =>
       visibleCourts.map((c) => {
-        // "% booked right now" for reservable (tennis/pickleball) courts, used to
-        // tint the marker; null when not reservable or outside bookable hours.
-        const lb = liveBooked(c.reserved?.[sport]);
+        // Booked% used to tint the marker: at the picked date+time when one is set,
+        // otherwise "right now". Null when not reservable or no slot at that time.
+        const res = c.reserved?.[sport];
+        let booked;
+        if (isPicked) {
+          booked = bookedAt(res, viewTime);
+        } else {
+          const lb = liveBooked(res);
+          booked = lb && lb.now ? lb.pct : null;
+        }
         return {
           id: c.id,
           lat: c.lat,
           lng: c.lng,
           indoor: c.indoor,
           open: c.dropin.open,
-          booked: lb && lb.now ? lb.pct : null,
+          booked,
           // Crowd is a live signal; hide it when viewing a future time.
           crowd: isPicked ? null : currentLevel(crowd[c.id], nowMs),
         };
       }),
-    [visibleCourts, sport, crowd, nowMs, isPicked]
+    [visibleCourts, sport, crowd, nowMs, isPicked, viewTime]
   );
 
   const selected = useMemo(
@@ -754,6 +761,8 @@ export default function App() {
         visible={nearbyOpen}
         courts={visibleCourts}
         sport={sport}
+        viewTime={viewTime}
+        isPicked={isPicked}
         hasLocation={!!userLocation}
         onSelect={(id) => {
           setNearbyOpen(false);
@@ -804,8 +813,16 @@ function CourtDetail({
   // rec.us reservations for this sport, if this court is reservable, plus the live
   // "% booked right now" reading derived from the point-in-time slot map.
   const booked = court.reserved?.[sport];
-  const live = liveBooked(booked);
-  const fullyBooked = !!live && live.now && live.pct === 100;
+  // Booked reading shown on the card: at the picked date+time when one is set
+  // (e.g. "0% booked at 6 PM"), otherwise the live "right now" reading.
+  const atLabel = isPicked ? fmtClock(viewTime.getHours(), viewTime.getMinutes()) : null;
+  const live = isPicked
+    ? (() => {
+        const pct = bookedAt(booked, viewTime);
+        return pct == null ? null : { pct, picked: true };
+      })()
+    : liveBooked(booked);
+  const fullyBooked = !!live && live.pct === 100 && (live.now || live.picked);
   // SF Rec & Park directory facts (court count, lights, restrooms, nets) for this sport.
   const dir = court.directory?.[sport];
   const week = getDropinWeek(court, sport, viewTime);
@@ -927,8 +944,8 @@ function CourtDetail({
           >
             <Text style={[styles.badgeText, fullyBooked && styles.badgeTextFull]}>
               {fullyBooked
-                ? '🔴 Fully booked now'
-                : `📅 ${live.pct}% booked${live.now ? ' now' : ''}`}
+                ? `🔴 Fully booked${atLabel ? ' at ' + atLabel : live.now ? ' now' : ''}`
+                : `📅 ${live.pct}% booked${atLabel ? ' at ' + atLabel : live.now ? ' now' : ''}`}
             </Text>
           </View>
         )}
@@ -961,15 +978,19 @@ function CourtDetail({
         <>
           <Text style={[styles.bookedNote, fullyBooked && styles.bookedNoteFull]}>
             {fullyBooked
-              ? `All ${booked.courts ? `${booked.courts} ` : ''}courts are reserved right now — try later, or book ahead on rec.us.`
-              : live && live.now
-              ? `${live.pct}% of courts reserved right now on rec.us${
-                  booked.courts ? ` (${booked.courts} courts)` : ''
-                }.`
+              ? `All ${booked.courts ? `${booked.courts} ` : ''}courts are reserved ${
+                  isPicked ? viewLabel(viewTime) : 'right now'
+                } — try ${isPicked ? 'another time' : 'later'}, or book ahead on rec.us.`
+              : live && (live.now || live.picked)
+              ? `${live.pct}% of courts reserved ${
+                  isPicked ? viewLabel(viewTime) : 'right now'
+                } on rec.us${booked.courts ? ` (${booked.courts} courts)` : ''}.`
               : live
               ? `Closed right now — ${live.pct}% booked at ${viewLabel(
                   new Date(live.at.replace(' ', 'T'))
                 )} on rec.us.`
+              : isPicked
+              ? `No rec.us booking slot at ${viewLabel(viewTime)}.`
               : `Reservations on rec.us${
                   booked.courts ? ` · ${booked.courts} courts` : ''
                 }.`}
