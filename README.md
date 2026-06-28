@@ -116,6 +116,16 @@ by `id`, so `npm run build:courts` never touches them. Two flavors:
   public courts with no posted schedule, so each is modeled as open a fixed daily
   park-hours window (8 AM–8 PM) with its sport(s) available across all of it. Same
   cache + gate resilience as the others (`scripts/outdoor-courts-cache.json`).
+- **Reservation occupancy** ("% booked") for tennis + pickleball comes from
+  `scripts/build-reservations.js`, which reads SF Rec & Park's reservation platform
+  (rec.us, via its public `api.rec.us` per-location endpoint). For each reservable
+  court it compares the open-hours schedule against the still-free slots over the
+  next 7 days to get the share already booked, geo-matches each rec.us location to one
+  of our courts by proximity + sport (closest wins), and writes a court id →
+  `{ sport: { pct, courts } }` map (`data/reservations.js`, `npm run build:reservations`).
+  `lib/useCourts.js` merges it onto courts as `reserved`, shown as a "% booked" badge
+  on the detail card. It's a build-time snapshot — re-run the build (or the cron) to
+  refresh — with the same last-good cache + gate resilience (`scripts/reservations-cache.json`).
 
 An optional `disclaimer` field on a court overrides the default "verify on
 sfrecpark.org" footnote on the court detail screen.

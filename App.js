@@ -703,6 +703,8 @@ function CourtDetail({
 }) {
   const { status, dropin } = court;
   const meta = sportMeta(sport);
+  // rec.us "% booked" snapshot for this sport, if this court is reservable.
+  const booked = court.reserved?.[sport];
   const week = getDropinWeek(court, sport, viewTime);
   const level = currentLevel(history, now); // community's latest
   const last = latest(history);
@@ -809,7 +811,24 @@ function CourtDetail({
             {court.indoor === false ? '🌳 Outdoor' : '🏠 Indoor'}
           </Text>
         </View>
+        {booked != null && (
+          <View
+            style={[
+              styles.badge,
+              booked.pct >= 70 ? styles.badgeBookedHi : styles.badgeBookedLo,
+            ]}
+          >
+            <Text style={styles.badgeText}>📅 {booked.pct}% booked</Text>
+          </View>
+        )}
       </View>
+
+      {booked != null && (
+        <Text style={styles.bookedNote}>
+          Reservations on rec.us — {booked.pct}% of this week’s bookable slots are taken
+          {booked.courts ? ` across ${booked.courts} court${booked.courts > 1 ? 's' : ''}` : ''}.
+        </Text>
+      )}
 
       {(court.distanceMi != null || (dropin.open && court.remaining > 0)) && (
         <Text style={styles.metaLine}>
@@ -1236,6 +1255,9 @@ const styles = StyleSheet.create({
   badgeFacOpen: { backgroundColor: '#e3eefb' },
   badgeFacClosed: { backgroundColor: '#eceff2' },
   badgePlace: { backgroundColor: '#e7efe2' },
+  badgeBookedHi: { backgroundColor: '#f7e0cf' },
+  badgeBookedLo: { backgroundColor: '#fdf1d6' },
+  bookedNote: { fontSize: 12, color: '#7a6a55', marginBottom: 8, lineHeight: 16 },
   checkInBtn: {
     backgroundColor: '#1f9d55',
     borderRadius: 10,

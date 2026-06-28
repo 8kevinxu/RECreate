@@ -1,0 +1,207 @@
+{
+  "reservations": {
+    "alice-marble-tennis-courts-outdoor": {
+      "tennis": {
+        "pct": 42,
+        "courts": 4
+      }
+    },
+    "balboa-park-outdoor": {
+      "tennis": {
+        "pct": 16,
+        "courts": 4
+      }
+    },
+    "buena-vista-park-outdoor": {
+      "tennis": {
+        "pct": 73,
+        "courts": 1
+      },
+      "pickleball": {
+        "pct": 55,
+        "courts": 4
+      }
+    },
+    "crocker-amazon-playground-outdoor": {
+      "tennis": {
+        "pct": 36,
+        "courts": 3
+      },
+      "pickleball": {
+        "pct": 38,
+        "courts": 4
+      }
+    },
+    "mission-dolores-park-outdoor": {
+      "tennis": {
+        "pct": 73,
+        "courts": 3
+      }
+    },
+    "dupont-tennis-courts-outdoor": {
+      "tennis": {
+        "pct": 34,
+        "courts": 4
+      }
+    },
+    "fulton-playground-outdoor": {
+      "tennis": {
+        "pct": 82,
+        "courts": 1
+      }
+    },
+    "glen-canyon-park-outdoor": {
+      "tennis": {
+        "pct": 61,
+        "courts": 1
+      }
+    },
+    "hamilton-rec-center-outdoor": {
+      "tennis": {
+        "pct": 71,
+        "courts": 2
+      }
+    },
+    "helen-wills-playground-outdoor": {
+      "tennis": {
+        "pct": 85,
+        "courts": 1
+      }
+    },
+    "jackson-playground-outdoor": {
+      "pickleball": {
+        "pct": 82,
+        "courts": 2
+      },
+      "tennis": {
+        "pct": 83,
+        "courts": 1
+      }
+    },
+    "joe-dimaggio-playground-outdoor": {
+      "tennis": {
+        "pct": 65,
+        "courts": 1
+      }
+    },
+    "j-p-murphy-playground-outdoor": {
+      "tennis": {
+        "pct": 48,
+        "courts": 3
+      }
+    },
+    "lafayette-park-outdoor": {
+      "tennis": {
+        "pct": 87,
+        "courts": 2
+      }
+    },
+    "angelo-j-rossi-playground-outdoor": {
+      "tennis": {
+        "pct": 69,
+        "courts": 3
+      },
+      "pickleball": {
+        "pct": 63,
+        "courts": 5
+      }
+    },
+    "minnie-and-lovie-rec-center-outdoor": {
+      "tennis": {
+        "pct": 41,
+        "courts": 2
+      }
+    },
+    "miraloma-playground-outdoor": {
+      "tennis": {
+        "pct": 79,
+        "courts": 1
+      }
+    },
+    "moscone-rec-center-outdoor": {
+      "tennis": {
+        "pct": 58,
+        "courts": 4
+      },
+      "pickleball": {
+        "pct": 82,
+        "courts": 4
+      }
+    },
+    "mountain-lake-park-outdoor": {
+      "tennis": {
+        "pct": 46,
+        "courts": 4
+      }
+    },
+    "parkside-square-outdoor": {
+      "pickleball": {
+        "pct": 56,
+        "courts": 8
+      },
+      "tennis": {
+        "pct": 56,
+        "courts": 4
+      }
+    },
+    "potrero-hill-rec-center-outdoor": {
+      "tennis": {
+        "pct": 64,
+        "courts": 2
+      }
+    },
+    "presidio-wall-playground-outdoor": {
+      "tennis": {
+        "pct": 57,
+        "courts": 4
+      },
+      "pickleball": {
+        "pct": 64,
+        "courts": 3
+      }
+    },
+    "richmond-playground-outdoor": {
+      "pickleball": {
+        "pct": 77,
+        "courts": 2
+      },
+      "tennis": {
+        "pct": 78,
+        "courts": 1
+      }
+    },
+    "sigmund-stern-recreation-grove-outdoor": {
+      "pickleball": {
+        "pct": 30,
+        "courts": 4
+      },
+      "tennis": {
+        "pct": 40,
+        "courts": 2
+      }
+    },
+    "st-mary-s-rec-center-outdoor": {
+      "tennis": {
+        "pct": 8,
+        "courts": 2
+      }
+    },
+    "sunset-rec-center-outdoor": {
+      "tennis": {
+        "pct": 25,
+        "courts": 2
+      }
+    },
+    "upper-noe-rec-center-outdoor": {
+      "pickleball": {
+        "pct": 93,
+        "courts": 2
+      },
+      "tennis": {
+        "pct": 86,
+        "courts": 1
+      }
+    }
+  },
+  "fetchedAt": "2026-06-28T20:47:25.200Z"
+}

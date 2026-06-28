@@ -28,7 +28,8 @@
     "build:courts": "node scripts/build-indoor-courts.js",
     "build:sanbruno": "node scripts/build-sanbruno-court.js",
     "build:outdoor": "node scripts/build-outdoor-courts.js",
-    "build:data": "npm run build:courts && npm run build:sanbruno && npm run build:outdoor"
+    "build:reservations": "node scripts/build-reservations.js",
+    "build:data": "npm run build:courts && npm run build:sanbruno && npm run build:outdoor && npm run build:reservations"
   },
   "private": true,
   "devDependencies": {
