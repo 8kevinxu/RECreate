@@ -66,6 +66,16 @@ function crowdDecoration(level) {
   return '';
 }
 
+// Reservation occupancy → halo class. null = not reservable / closed now.
+function bookLevel(pct) {
+  if (pct == null) return null;
+  if (pct >= 100) return 'full';
+  if (pct >= 75) return 'mostly';
+  if (pct >= 40) return 'half';
+  if (pct > 0) return 'slight';
+  return 'none';
+}
+
 // Inject Leaflet's CSS + our marker animations once.
 function ensureStyles() {
   if (typeof document === 'undefined') return;
@@ -81,7 +91,16 @@ function ensureStyles() {
     style.id = 'hoopmap-marker-css';
     style.textContent = `
       .ballwrap { position: relative; width: 26px; height: 26px; }
-      .bball { width: 100%; height: 100%; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.45)); }
+      .bball { position: relative; z-index: 1; width: 100%; height: 100%; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.45)); }
+      .bookring { position: absolute; inset: -3px; border-radius: 50%; z-index: 0; }
+      .bk-none   { box-shadow: 0 0 6px 2px rgba(46,204,113,0.95); }
+      .bk-slight { box-shadow: 0 0 6px 2px rgba(150,200,70,0.95); }
+      .bk-half   { box-shadow: 0 0 7px 2px rgba(241,196,15,0.98); }
+      .bk-mostly { box-shadow: 0 0 8px 3px rgba(230,126,34,0.98); }
+      .bk-full   { box-shadow: 0 0 9px 3px rgba(231,76,60,1); animation: bookflash 0.7s ease-in-out infinite alternate; }
+      @keyframes bookflash { from { box-shadow: 0 0 5px 2px rgba(231,76,60,0.45); } to { box-shadow: 0 0 15px 6px rgba(231,76,60,1); } }
+      .jump { animation: jump 0.8s ease-in-out infinite; }
+      @keyframes jump { 0%, 100% { transform: translateY(0); } 40% { transform: translateY(-4px); } }
       .zzz { position: absolute; top: -12px; right: -10px; font: 700 11px/1 -apple-system, sans-serif; color: #4a5a6a; }
       .zzz span { position: absolute; opacity: 0; animation: drift 2.4s ease-in infinite; }
       .zzz span:nth-child(1) { font-size: 9px;  right: 12px; animation-delay: 0s; }
@@ -145,10 +164,17 @@ const CourtMap = forwardRef(function CourtMap(
     courts.forEach((c) => {
       const ball =
         '<div class="bball" style="opacity:' + (c.open ? 1 : 0.45) + '">' + ballSvg(sport) + '</div>';
-      const bounce = c.crowd === 'moderate' || c.crowd === 'packed' ? ' bounce' : '';
+      const level = bookLevel(c.booked);
+      const ring = level ? '<div class="bookring bk-' + level + '"></div>' : '';
+      const anim =
+        level === 'full'
+          ? ' jump'
+          : c.crowd === 'moderate' || c.crowd === 'packed'
+          ? ' bounce'
+          : '';
       const icon = L.divIcon({
         className: '',
-        html: '<div class="ballwrap' + bounce + '">' + crowdDecoration(c.crowd) + ball + '</div>',
+        html: '<div class="ballwrap' + anim + '">' + crowdDecoration(c.crowd) + ring + ball + '</div>',
         iconSize: [26, 26],
         iconAnchor: [13, 13],
       });

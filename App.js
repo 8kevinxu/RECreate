@@ -421,16 +421,22 @@ export default function App() {
   const nowMs = now.getTime();
   const mapCourts = useMemo(
     () =>
-      visibleCourts.map((c) => ({
-        id: c.id,
-        lat: c.lat,
-        lng: c.lng,
-        indoor: c.indoor,
-        open: c.dropin.open,
-        // Crowd is a live signal; hide it when viewing a future time.
-        crowd: isPicked ? null : currentLevel(crowd[c.id], nowMs),
-      })),
-    [visibleCourts, crowd, nowMs, isPicked]
+      visibleCourts.map((c) => {
+        // "% booked right now" for reservable (tennis/pickleball) courts, used to
+        // tint the marker; null when not reservable or outside bookable hours.
+        const lb = liveBooked(c.reserved?.[sport]);
+        return {
+          id: c.id,
+          lat: c.lat,
+          lng: c.lng,
+          indoor: c.indoor,
+          open: c.dropin.open,
+          booked: lb && lb.now ? lb.pct : null,
+          // Crowd is a live signal; hide it when viewing a future time.
+          crowd: isPicked ? null : currentLevel(crowd[c.id], nowMs),
+        };
+      }),
+    [visibleCourts, sport, crowd, nowMs, isPicked]
   );
 
   const selected = useMemo(

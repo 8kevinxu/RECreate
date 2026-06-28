@@ -26,9 +26,30 @@ const html = `
     .leaflet-container { background: #aadaf0; }
     .ballwrap { position: relative; width: 26px; height: 26px; }
     .bball {
+      position: relative;
+      z-index: 1;
       width: 100%;
       height: 100%;
       filter: drop-shadow(0 1px 2px rgba(0,0,0,0.45));
+    }
+
+    /* Reservation occupancy halo, green (free) → red (full). Behind the ball. */
+    .bookring { position: absolute; inset: -3px; border-radius: 50%; z-index: 0; }
+    .bk-none   { box-shadow: 0 0 6px 2px rgba(46,204,113,0.95); }
+    .bk-slight { box-shadow: 0 0 6px 2px rgba(150,200,70,0.95); }
+    .bk-half   { box-shadow: 0 0 7px 2px rgba(241,196,15,0.98); }
+    .bk-mostly { box-shadow: 0 0 8px 3px rgba(230,126,34,0.98); }
+    .bk-full   { box-shadow: 0 0 9px 3px rgba(231,76,60,1); animation: bookflash 0.7s ease-in-out infinite alternate; }
+    @keyframes bookflash {
+      from { box-shadow: 0 0 5px 2px rgba(231,76,60,0.45); }
+      to   { box-shadow: 0 0 15px 6px rgba(231,76,60,1); }
+    }
+
+    /* Fully booked → the ball hops in place. */
+    .jump { animation: jump 0.8s ease-in-out infinite; }
+    @keyframes jump {
+      0%, 100% { transform: translateY(0); }
+      40%      { transform: translateY(-4px); }
     }
 
     /* Empty → sleepy "z z z" drifting up from the ball. */
@@ -151,6 +172,16 @@ const html = `
     function ballSvg() { return SPORT_SVG[currentSport] || BBALL_SVG; }
     window.setSport = function (s) { currentSport = s; };
 
+    // Reservation occupancy → halo class. null = not reservable / closed now.
+    function bookLevel(pct) {
+      if (pct == null) return null;
+      if (pct >= 100) return 'full';
+      if (pct >= 75) return 'mostly';
+      if (pct >= 40) return 'half';
+      if (pct > 0) return 'slight';
+      return 'none';
+    }
+
     // Decoration based on the latest fresh crowd check-in.
     function crowdDecoration(level) {
       if (level === 'empty') {
@@ -168,10 +199,14 @@ const html = `
       courts.forEach(function (c) {
         var size = 26;
         var ball = '<div class="bball" style="opacity:' + (c.open ? 1 : 0.45) + '">' + ballSvg() + '</div>';
-        var bounce = (c.crowd === 'moderate' || c.crowd === 'packed') ? ' bounce' : '';
+        var level = bookLevel(c.booked);
+        var ring = level ? '<div class="bookring bk-' + level + '"></div>' : '';
+        // Fully booked hops; otherwise an active crowd bounces.
+        var anim = level === 'full' ? ' jump'
+          : (c.crowd === 'moderate' || c.crowd === 'packed') ? ' bounce' : '';
         var icon = L.divIcon({
           className: '',
-          html: '<div class="ballwrap' + bounce + '">' + crowdDecoration(c.crowd) + ball + '</div>',
+          html: '<div class="ballwrap' + anim + '">' + crowdDecoration(c.crowd) + ring + ball + '</div>',
           iconSize: [size, size],
           iconAnchor: [size / 2, size / 2]
         });
