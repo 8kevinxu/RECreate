@@ -87,6 +87,47 @@ function netsLabel(nets) {
   return null;
 }
 
+// Minimal inline markdown → RN <Text> spans: **bold**, *emphasis*, and [text](url)
+// links (recursive so a link nested inside bold still renders). Enough for the
+// rec.us location guidelines; anything else passes through as plain text.
+function renderInline(text, kp) {
+  const nodes = [];
+  const re = /\*\*([\s\S]+?)\*\*|\*([\s\S]+?)\*|\[([^\]]+)\]\(([^)]+)\)/g;
+  let last = 0;
+  let m;
+  let k = 0;
+  while ((m = re.exec(text))) {
+    if (m.index > last) nodes.push(text.slice(last, m.index));
+    const key = `${kp}-${k++}`;
+    if (m[1] != null) nodes.push(<Text key={key} style={styles.guideBold}>{renderInline(m[1], key)}</Text>);
+    else if (m[2] != null) nodes.push(<Text key={key} style={styles.guideBold}>{renderInline(m[2], key)}</Text>);
+    else nodes.push(
+      <Text key={key} style={styles.bookHelpLink} onPress={() => Linking.openURL(m[4])}>{m[3]}</Text>
+    );
+    last = re.lastIndex;
+  }
+  if (last < text.length) nodes.push(text.slice(last));
+  return nodes;
+}
+
+// Render a markdown guidelines blob line-by-line (paragraphs, "- " bullets).
+function GuidelineMarkdown({ text }) {
+  return String(text)
+    .split('\n')
+    .map((line, i) => {
+      const t = line.trim();
+      if (!t) return <View key={i} style={{ height: 5 }} />;
+      const bullet = /^[-*]\s+/.test(t);
+      const body = bullet ? t.replace(/^[-*]\s+/, '') : t;
+      return (
+        <Text key={i} style={[styles.guideText, bullet && styles.guideBulletText]}>
+          {bullet ? '•  ' : ''}
+          {renderInline(body, `l${i}`)}
+        </Text>
+      );
+    });
+}
+
 
 // Secondary indoor/outdoor filter, shown only for sports that have both (e.g.
 // pickleball). Matched against a court's `indoor` flag in visibleCourts.
@@ -427,7 +468,7 @@ export default function App() {
         const res = c.reserved?.[sport];
         let booked;
         if (isPicked) {
-          booked = bookedAt(res, viewTime);
+          booked = bookedAt(res, viewTime)?.pct ?? null;
         } else {
           const lb = liveBooked(res);
           booked = lb && lb.now ? lb.pct : null;
@@ -818,13 +859,29 @@ function CourtDetail({
   const atLabel = isPicked ? fmtClock(viewTime.getHours(), viewTime.getMinutes()) : null;
   const live = isPicked
     ? (() => {
-        const pct = bookedAt(booked, viewTime);
-        return pct == null ? null : { pct, picked: true };
+        const b = bookedAt(booked, viewTime);
+        return b ? { ...b, picked: true } : null;
       })()
     : liveBooked(booked);
   const fullyBooked = !!live && live.pct === 100 && (live.now || live.picked);
+  // "X of Y courts open for booking" when fewer courts are released for this time,
+  // plus when the rest open (e.g. "2 more open ~7/2") if we can date it.
+  const partialOpen =
+    live && live.open != null && live.total != null && live.open < live.total;
+  const moreOpen = partialOpen ? live.total - live.open : 0;
+  const releaseClause =
+    partialOpen && live.releasesAt
+      ? ` · ${moreOpen} more open ~${live.releasesAt.getMonth() + 1}/${live.releasesAt.getDate()}`
+      : '';
+  const courtsClause = !live || live.total == null
+    ? null
+    : partialOpen
+    ? `${live.open} of ${live.total} courts open for booking${releaseClause}`
+    : `${live.total} court${live.total === 1 ? '' : 's'}`;
   // SF Rec & Park directory facts (court count, lights, restrooms, nets) for this sport.
   const dir = court.directory?.[sport];
+  // The location's rec.us booking guidelines (markdown), shared across its sports.
+  const guidelines = court.reserved?.guidelines;
   const week = getDropinWeek(court, sport, viewTime);
   const level = currentLevel(history, now); // community's latest
   const last = latest(history);
@@ -836,9 +893,11 @@ function CourtDetail({
 
   const [note, setNote] = useState(null);
   const [expanded, setExpanded] = useState(false); // peek by default
+  const [bookingHelp, setBookingHelp] = useState(false); // "how booking works" explainer
   useEffect(() => {
     setNote(null);
     setExpanded(false); // each court opens compact
+    setBookingHelp(false);
   }, [court.id]);
   useEffect(() => {
     if (!note) return;
@@ -978,13 +1037,13 @@ function CourtDetail({
         <>
           <Text style={[styles.bookedNote, fullyBooked && styles.bookedNoteFull]}>
             {fullyBooked
-              ? `All ${booked.courts ? `${booked.courts} ` : ''}courts are reserved ${
-                  isPicked ? viewLabel(viewTime) : 'right now'
+              ? `Fully booked ${isPicked ? viewLabel(viewTime) : 'right now'}${
+                  partialOpen ? ` (all ${live.open} of ${live.total} bookable courts)${releaseClause}` : ''
                 } — try ${isPicked ? 'another time' : 'later'}, or book ahead on rec.us.`
               : live && (live.now || live.picked)
-              ? `${live.pct}% of courts reserved ${
-                  isPicked ? viewLabel(viewTime) : 'right now'
-                } on rec.us${booked.courts ? ` (${booked.courts} courts)` : ''}.`
+              ? `${live.pct}% booked ${isPicked ? viewLabel(viewTime) : 'right now'}${
+                  courtsClause ? ` · ${courtsClause}` : ''
+                } on rec.us.`
               : live
               ? `Closed right now — ${live.pct}% booked at ${viewLabel(
                   new Date(live.at.replace(' ', 'T'))
@@ -1001,9 +1060,32 @@ function CourtDetail({
           >
             <Text style={styles.bookBtnText}>📅 Reserve this court</Text>
           </Pressable>
-          <Pressable hitSlop={6} onPress={() => Linking.openURL(BOOK_HOWTO_URL)}>
-            <Text style={styles.bookHowto}>How to book (SF Rec & Park guide) ›</Text>
+          <Pressable hitSlop={6} onPress={() => setBookingHelp((v) => !v)}>
+            <Text style={styles.bookHelpToggle}>
+              {bookingHelp ? '▾' : '▸'} How booking works
+            </Text>
           </Pressable>
+          {bookingHelp && (
+            <View style={styles.bookHelpBody}>
+              {guidelines ? (
+                <GuidelineMarkdown text={guidelines} />
+              ) : (
+                <Text style={styles.bookHelpText}>
+                  Courts are reserved on rec.us in fixed timeslots. Most courts book in
+                  90-minute slots up to 7 days ahead (released 8 AM); some book in 60-minute
+                  slots up to 2 days ahead (released noon). That’s why on a future date not
+                  every court is open for booking yet — the shorter-window courts haven’t been
+                  released. Courts with lights add evening slots.
+                </Text>
+              )}
+              <Text
+                style={[styles.bookHelpLink, { marginTop: 8 }]}
+                onPress={() => Linking.openURL(BOOK_HOWTO_URL)}
+              >
+                SF Rec &amp; Park how-to guide ›
+              </Text>
+            </View>
+          )}
         </>
       )}
 
@@ -1467,6 +1549,13 @@ const styles = StyleSheet.create({
   },
   bookBtnText: { color: '#fff', fontWeight: '800', fontSize: 14 },
   bookHowto: { fontSize: 12, color: '#2f74d6', fontWeight: '700', marginBottom: 10 },
+  bookHelpToggle: { fontSize: 12, color: '#2f74d6', fontWeight: '700', marginBottom: 6 },
+  bookHelpBody: { marginBottom: 10 },
+  bookHelpText: { fontSize: 12, color: '#5b6b7b', lineHeight: 17 },
+  bookHelpLink: { color: '#2f74d6', fontWeight: '700' },
+  guideText: { fontSize: 12, color: '#5b6b7b', lineHeight: 17 },
+  guideBulletText: { paddingLeft: 8 },
+  guideBold: { fontWeight: '800', color: '#3a4a5a' },
   checkInBtn: {
     backgroundColor: '#1f9d55',
     borderRadius: 10,

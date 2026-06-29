@@ -110,14 +110,33 @@ function gridStarts(openFrom, openTo) {
 // rec.us datetimes are SF-local wall-clock. Read a Date's SF-local fields by
 // reinterpreting it in America/Los_Angeles (works regardless of the build host tz).
 const TZ = 'America/Los_Angeles';
+const pad2 = (n) => String(n).padStart(2, '0');
 const sfDate = (d = new Date()) => new Date(d.toLocaleString('en-US', { timeZone: TZ }));
-const ymd = (d) =>
-  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+const ymd = (d) => `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
+const keyOf = (d) => `${ymd(d)} ${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
 // The current 30-min slot key "YYYY-MM-DD HH:MM" in SF time; slots before it are past.
 function nowSlotKey() {
   const n = sfDate();
-  const hh = String(n.getHours()).padStart(2, '0');
-  return `${ymd(n)} ${hh}:${n.getMinutes() < 30 ? '00' : '30'}`;
+  return `${ymd(n)} ${pad2(n.getHours())}:${n.getMinutes() < 30 ? '00' : '30'}`;
+}
+
+// rec.us per-location booking guidelines (markdown). Keep only real content (some
+// locations have a placeholder like "TBD"); collapse excess blank lines.
+function cleanGuide(s) {
+  if (!s) return null;
+  const t = String(s).replace(/\r/g, '').replace(/\n{3,}/g, '\n\n').trim();
+  return t.length < 30 || /^tbd\.?$/i.test(t) ? null : t;
+}
+
+// How far ahead a court takes bookings, in hours. rec.us releases slots only within
+// this window, so a date beyond it shows zero availability NOT because it's booked
+// but because it isn't open for reservation yet — those slots must be excluded.
+function courtWindowHours(court, locDefaultDays) {
+  const w = court.reservationWindows?.[0]?.maxHours;
+  if (Number.isFinite(w)) return w;
+  if (Number.isFinite(court.defaultReservationWindowDays)) return court.defaultReservationWindowDays * 24;
+  if (Number.isFinite(locDefaultDays)) return locDefaultDays * 24;
+  return WINDOW_DAYS * 24;
 }
 
 // The next WINDOW_DAYS calendar days starting today (SF), as { date 'YYYY-MM-DD', dow }.
@@ -133,11 +152,13 @@ function windowDays() {
   return out;
 }
 
-// Per-court bookable 30-min starts over the window, as { key 'YYYY-MM-DD HH:MM', free }.
-// Reservations are date-specific (not weekly), so we key by the actual date+time.
-// Past slots (earlier today) are dropped — they can't be booked and would read as
-// falsely "booked" since rec.us only lists future-free times in availableSlots.
-function courtSlots(court, win, nowKey) {
+// Per-court bookable 30-min starts the court is OPEN for over the window, as
+// { key 'YYYY-MM-DD HH:MM', free, released }. Reservations are date-specific, so we
+// key by the actual date+time. Earlier-today slots are dropped (can't be booked).
+// `released` = the slot is within this court's reservation window (so its absence
+// from availableSlots means "booked"); when false the slot is open per the court's
+// hours but not yet released for booking, so it isn't booked — just not bookable yet.
+function courtSlots(court, win, nowKey, horizonKey) {
   const free = new Set((court.availableSlots || []).map((s) => String(s).slice(0, 16)));
   const out = [];
   for (const { date, dow } of win) {
@@ -146,33 +167,44 @@ function courtSlots(court, win, nowKey) {
       for (const hhmm of gridStarts(sl.openFrom, sl.openTo)) {
         const key = `${date} ${hhmm}`;
         if (key < nowKey) continue; // already in the past
-        out.push({ key, free: free.has(key) });
+        out.push({ key, free: free.has(key), released: key <= horizonKey });
       }
     }
   }
   return out;
 }
 
-// Aggregate a location's courts into { sport: { total, reserved, courts, slots } }
-// where slots maps "YYYY-MM-DD HH:MM" -> { total, booked } across the location's
-// courts lined for that sport (so % booked at a given time = booked/total). A court
+// Aggregate a location's courts into { sport: { reserved, total, courts, slots, windows } }.
+// slots maps "YYYY-MM-DD HH:MM" -> { open, rel, booked }, counting the location's courts
+// lined for that sport that are OPEN at that time (open), of those how many are released
+// for booking (rel), and how many of the released are reserved (booked). So booked% =
+// booked/rel among bookable courts, and "rel of open courts are open for booking". A court
 // lined for multiple sports counts toward each.
-function locationBookedBySport(location, win, sportMap, nowKey) {
+function locationBookedBySport(location, win, sportMap, nowKey, now) {
   const bySport = {};
+  const locDefaultDays = location.defaultReservationWindow;
   for (const court of location.courts || []) {
     const sports = courtSports(court, sportMap);
     if (!sports.length) continue;
-    const slots = courtSlots(court, win, nowKey);
+    const hours = courtWindowHours(court, locDefaultDays);
+    const horizonKey = keyOf(new Date(now.getTime() + hours * 3600 * 1000));
+    const slots = courtSlots(court, win, nowKey, horizonKey);
     if (!slots.length) continue;
     for (const sport of sports) {
-      const acc = (bySport[sport] ||= { total: 0, reserved: 0, courts: 0, slots: {} });
+      const acc = (bySport[sport] ||= { total: 0, reserved: 0, courts: 0, slots: {}, windows: new Set() });
       acc.courts += 1;
-      for (const { key, free } of slots) {
-        acc.total += 1;
-        if (!free) acc.reserved += 1;
-        const s = (acc.slots[key] ||= { total: 0, booked: 0 });
-        s.total += 1;
-        if (!free) s.booked += 1;
+      acc.windows.add(hours);
+      for (const { key, free, released } of slots) {
+        const s = (acc.slots[key] ||= { open: 0, rel: 0, booked: 0 });
+        s.open += 1;
+        if (released) {
+          s.rel += 1;
+          acc.total += 1;
+          if (!free) {
+            s.booked += 1;
+            acc.reserved += 1;
+          }
+        }
       }
     }
   }
@@ -221,6 +253,7 @@ async function fetchSfLocations() {
 async function main() {
   console.log('Fetching reservable court availability from rec.us…');
   const win = windowDays();
+  const now = sfDate();
   const nowKey = nowSlotKey();
   const courts = ourCourts();
 
@@ -242,7 +275,7 @@ async function main() {
         continue;
       }
       await sleep(120);
-      const bySport = locationBookedBySport(detail, win, sportMap, nowKey);
+      const bySport = locationBookedBySport(detail, win, sportMap, nowKey, now);
       for (const [sport, agg] of Object.entries(bySport)) {
         // Attach to the nearest of our courts that offers this sport. If another
         // rec.us location already claimed that court+sport, keep the closer one
@@ -256,25 +289,51 @@ async function main() {
         if (!best || bestFt > MATCH_MAX_FEET) continue;
         const prev = out[best.id]?.[sport];
         if (prev && prev._ft <= bestFt) continue;
-        const pct = Math.round((agg.reserved / agg.total) * 100);
-        // Per-slot booked% (dow-minute -> pct), for the planner's time-specific badge.
+        const pct = agg.total ? Math.round((agg.reserved / agg.total) * 100) : 0;
+        // Per-slot booked% (datetime key -> pct), among the courts bookable at that
+        // time. `open` and `released` are sparse counts: `open` = courts open at that
+        // hour (when fewer than the location total), `released` = of those, how many
+        // are open for booking now (when fewer than open). Together → "X of Y courts
+        // open for booking" with Y reflecting only courts actually open at that hour.
         const slots = {};
+        const open = {};
+        const released = {};
         for (const [key, s] of Object.entries(agg.slots)) {
-          slots[key] = Math.round((s.booked / s.total) * 100);
+          if (s.rel === 0) continue; // nothing bookable at this time → no % to show
+          slots[key] = Math.round((s.booked / s.rel) * 100);
+          if (s.open < agg.courts) open[key] = s.open;
+          if (s.rel < s.open) released[key] = s.rel;
         }
+        // Distinct reservation-window lengths (hours) among this location's courts;
+        // only when they differ, so the app can say when the later-window courts open.
+        const windows = [...agg.windows].sort((a, b) => a - b);
         (out[best.id] ||= {})[sport] = {
           pct, courts: agg.courts, slots,
+          ...(Object.keys(open).length ? { open } : {}),
+          ...(Object.keys(released).length ? { released } : {}),
+          ...(windows.length > 1 ? { windows } : {}),
           url: `https://www.rec.us/locations/${loc.id}`,
           _ft: Math.round(bestFt), _from: loc.name,
         };
+        // The location's own booking guidelines (markdown), shared by all its sports.
+        // Use the same closest-wins rule as the data so a nearby different park (e.g.
+        // Lincoln Park sitting ~570ft from Rossi) can't leak its guidelines in.
+        const guide = cleanGuide(detail.playGuidelines);
+        if (guide && (out[best.id]._guideFt == null || bestFt < out[best.id]._guideFt)) {
+          out[best.id].guidelines = guide;
+          out[best.id]._guideFt = bestFt;
+        }
         console.log(`  ✓ ${loc.name} ${sport} → ${pct}% booked → ${best.name}`);
       }
     }
 
-    // Drop match-bookkeeping fields; count final readings.
+    // Drop match-bookkeeping fields; count final readings (skip the court-level
+    // `guidelines` string, which sits alongside the per-sport objects).
     let readings = 0;
     for (const courtId of Object.keys(out)) {
+      delete out[courtId]._guideFt; // closest-match bookkeeping for guidelines
       for (const sport of Object.keys(out[courtId])) {
+        if (sport === 'guidelines') continue;
         delete out[courtId][sport]._ft;
         delete out[courtId][sport]._from;
         readings++;
@@ -312,14 +371,24 @@ function render(reservations, generatedAt, windowDays) {
 // Generated: ${generatedAt}
 //
 // How booked-out each reservable outdoor court is, from rec.us (SF Rec & Park's
-// reservation platform). Map of our court id -> { sport: { pct, courts, slots, url } }:
-//   pct    share of bookable slots reserved over the next ${windowDays} days (window average)
-//   courts number of reservable sub-courts at the location
-//   slots  point-in-time booked%, keyed "YYYY-MM-DD HH:MM" SF-local (e.g. "2026-06-28 09:00").
-//          The app looks up the current slot for a live "% booked right now" reading; covers
-//          today onward, so it goes stale after the window (refresh weekly via the cron).
-//   url    the rec.us reservation page for this location (where users book)
-// Merged onto courts at runtime by lib/useCourts.js: shown as a badge on the court
+// reservation platform). Map of court id -> { sport: { pct, courts, slots, released?, url } }:
+//   pct      share of bookable slots reserved over the next ${windowDays} days (window average)
+//   courts   number of reservable sub-courts at the location
+//   slots    point-in-time booked%, keyed "YYYY-MM-DD HH:MM" SF-local (e.g. "2026-06-28 09:00").
+//            The app looks up the current slot for a live "% booked right now" reading; covers
+//            today onward, so it goes stale after the window (refresh weekly via the cron).
+//   open     sparse map (same keys) of how many courts are OPEN at that hour, present only
+//            when fewer than the location total (some courts have shorter hours / fewer days).
+//   released sparse map (same keys) of how many of the open courts are open for booking now,
+//            present only when fewer than open (shorter reservation windows release fewer on
+//            far-out dates) -> "X of Y courts open for booking" (Y = courts open at that hour).
+//   windows  distinct reservation-window lengths (hours) among the courts, present only
+//            when they differ (e.g. [48, 168]); lets the app compute when the later-window
+//            courts open for booking -> "N more open ~7/2".
+//   url      the rec.us reservation page for this location (where users book)
+// Plus a court-level guidelines string (markdown) — the location's own booking rules
+// (per-court windows/durations, policies, features), shown in the card's "How booking
+// works" section. Merged onto courts at runtime by lib/useCourts.js: shown as a badge on the court
 // detail card (overall pct) and next to each court when planning a game (slot pct).
 // A snapshot — refresh by re-running the build.
 
