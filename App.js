@@ -174,6 +174,7 @@ export default function App() {
   const [sport, setSport] = useState(DEFAULT_SPORT); // which drop-in sport to show
   const [placeFilter, setPlaceFilter] = useState('all'); // indoor/outdoor sub-filter
   const [amenities, setAmenities] = useState([]); // active amenity filter ids (multi-select)
+  const [filtersOpen, setFiltersOpen] = useState(false); // place/amenity filters panel (⚙)
   const [selectedId, setSelectedId] = useState(null);
   const [userLocation, setUserLocation] = useState(null);
   const [locating, setLocating] = useState(true);
@@ -457,6 +458,11 @@ export default function App() {
   }, [courts, sport]);
   // Drop any active amenity that no longer applies (e.g. after switching sport).
   const activeAmenities = amenities.filter((id) => amenityOpts.some((a) => a.id === id));
+  // Secondary filters live behind a ⚙ button; show it only when there's something to
+  // filter, with a badge counting what's active.
+  const hasFilters = showPlaceToggle || amenityOpts.length > 0;
+  const activeFilterCount =
+    (showPlaceToggle && placeFilter !== 'all' ? 1 : 0) + activeAmenities.length;
 
   // Only courts that actually offer the sport; then the Indoor/Outdoor sub-filter
   // (when shown), the amenity filters, and "Open now" narrow further.
@@ -573,7 +579,8 @@ export default function App() {
         )}
       </View>
 
-      <View style={styles.controls}>
+      <View style={styles.body}>
+        <View style={styles.controls}>
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -588,6 +595,7 @@ export default function App() {
                   setSport(s.id);
                   setPlaceFilter('all'); // reset the indoor/outdoor sub-filter
                   setAmenities([]); // reset amenity filters
+                  setFiltersOpen(false);
                 }}
                 style={[styles.sportChip, active && styles.sportChipActive]}
               >
@@ -598,55 +606,6 @@ export default function App() {
             );
           })}
         </ScrollView>
-
-        {showPlaceToggle && (
-          <View style={styles.placeRow}>
-            {PLACE_OPTS.map((o) => {
-              const active = placeFilter === o.id;
-              return (
-                <Pressable
-                  key={o.id}
-                  onPress={() => setPlaceFilter(o.id)}
-                  style={[styles.placeChip, active && styles.placeChipActive]}
-                >
-                  <Text style={[styles.placeChipText, active && styles.placeChipTextActive]}>
-                    {o.label}
-                  </Text>
-                </Pressable>
-              );
-            })}
-          </View>
-        )}
-
-        {amenityOpts.length > 0 && (
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.amenityRow}
-          >
-            {amenityOpts.map((a) => {
-              const active = activeAmenities.includes(a.id);
-              return (
-                <Pressable
-                  key={a.id}
-                  onPress={() =>
-                    setAmenities((prev) =>
-                      prev.includes(a.id) ? prev.filter((x) => x !== a.id) : [...prev, a.id]
-                    )
-                  }
-                  style={[styles.amenityChip, active && styles.amenityChipActive]}
-                >
-                  <Text
-                    style={[styles.amenityChipText, active && styles.amenityChipTextActive]}
-                  >
-                    {active ? '✓ ' : ''}
-                    {a.label}
-                  </Text>
-                </Pressable>
-              );
-            })}
-          </ScrollView>
-        )}
 
         <View style={styles.filterRow}>
           <Pressable
@@ -688,6 +647,22 @@ export default function App() {
             </Pressable>
           )}
 
+          {hasFilters && (
+            <Pressable
+              onPress={() => setFiltersOpen((v) => !v)}
+              style={[styles.filtersBtn, (filtersOpen || activeFilterCount > 0) && styles.filtersBtnActive]}
+            >
+              <Text
+                style={[
+                  styles.filtersBtnText,
+                  (filtersOpen || activeFilterCount > 0) && styles.filtersBtnTextActive,
+                ]}
+              >
+                ⚙ Filters{activeFilterCount > 0 ? ` · ${activeFilterCount}` : ''}
+              </Text>
+            </Pressable>
+          )}
+
           {authEnabled && (
             <Pressable
               style={styles.planRunBtn}
@@ -697,6 +672,58 @@ export default function App() {
             </Pressable>
           )}
         </View>
+
+        {filtersOpen && hasFilters && (
+          <View style={styles.filtersPanel}>
+            {showPlaceToggle && (
+              <View style={styles.placeRow}>
+                {PLACE_OPTS.map((o) => {
+                  const active = placeFilter === o.id;
+                  return (
+                    <Pressable
+                      key={o.id}
+                      onPress={() => setPlaceFilter(o.id)}
+                      style={[styles.placeChip, active && styles.placeChipActive]}
+                    >
+                      <Text style={[styles.placeChipText, active && styles.placeChipTextActive]}>
+                        {o.label}
+                      </Text>
+                    </Pressable>
+                  );
+                })}
+              </View>
+            )}
+            {amenityOpts.length > 0 && (
+              <ScrollView
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={styles.amenityRow}
+              >
+                {amenityOpts.map((a) => {
+                  const active = activeAmenities.includes(a.id);
+                  return (
+                    <Pressable
+                      key={a.id}
+                      onPress={() =>
+                        setAmenities((prev) =>
+                          prev.includes(a.id) ? prev.filter((x) => x !== a.id) : [...prev, a.id]
+                        )
+                      }
+                      style={[styles.amenityChip, active && styles.amenityChipActive]}
+                    >
+                      <Text
+                        style={[styles.amenityChipText, active && styles.amenityChipTextActive]}
+                      >
+                        {active ? '✓ ' : ''}
+                        {a.label}
+                      </Text>
+                    </Pressable>
+                  );
+                })}
+              </ScrollView>
+            )}
+          </View>
+        )}
 
         {pickerOpen && (
           <View style={styles.pickerPanel}>
@@ -774,6 +801,7 @@ export default function App() {
         <Pressable style={styles.nearbyBtn} onPress={() => setNearbyOpen(true)}>
           <Text style={styles.nearbyBtnText}>📍 Nearby</Text>
         </Pressable>
+      </View>
       </View>
 
       {selected && (
@@ -1375,7 +1403,19 @@ const styles = StyleSheet.create({
   openToggleText: { color: '#9db4cc', fontWeight: '700', fontSize: 13 },
   openToggleTextActive: { color: '#fff' },
 
-  controls: { paddingHorizontal: 16, paddingTop: 10, paddingBottom: 4 },
+  // Controls float over the top of the map so it can fill the screen.
+  body: { flex: 1, position: 'relative' },
+  controls: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 20,
+    paddingHorizontal: 12,
+    paddingTop: 8,
+    paddingBottom: 10,
+    backgroundColor: 'rgba(13,27,42,0.82)',
+  },
   sportRow: { flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 10 },
   sportChip: {
     paddingHorizontal: 14,
@@ -1388,7 +1428,7 @@ const styles = StyleSheet.create({
   sportChipActive: { backgroundColor: '#e8732c', borderColor: '#e8732c' },
   sportChipText: { color: '#9db4cc', fontWeight: '700', fontSize: 13 },
   sportChipTextActive: { color: '#fff' },
-  placeRow: { flexDirection: 'row', gap: 6, marginTop: -2, marginBottom: 10 },
+  placeRow: { flexDirection: 'row', gap: 6 },
   placeChip: {
     paddingHorizontal: 12,
     paddingVertical: 5,
@@ -1400,7 +1440,7 @@ const styles = StyleSheet.create({
   placeChipActive: { backgroundColor: '#2f4b66', borderColor: '#3f6286' },
   placeChipText: { color: '#7e96ad', fontWeight: '700', fontSize: 12 },
   placeChipTextActive: { color: '#fff' },
-  amenityRow: { gap: 6, paddingRight: 12, marginTop: -2, marginBottom: 10 },
+  amenityRow: { gap: 6, paddingRight: 12 },
   amenityChip: {
     paddingHorizontal: 12,
     paddingVertical: 5,
@@ -1412,7 +1452,19 @@ const styles = StyleSheet.create({
   amenityChipActive: { backgroundColor: '#2f4b66', borderColor: '#3f6286' },
   amenityChipText: { color: '#7e96ad', fontWeight: '700', fontSize: 12 },
   amenityChipTextActive: { color: '#fff' },
-  filterRow: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', gap: 10 },
+  filterRow: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', gap: 8 },
+  filtersBtn: {
+    paddingHorizontal: 12,
+    paddingVertical: 9,
+    borderRadius: 10,
+    backgroundColor: '#1b2b3d',
+    borderWidth: 1,
+    borderColor: '#26384d',
+  },
+  filtersBtnActive: { backgroundColor: '#2f4b66', borderColor: '#3f6286' },
+  filtersBtnText: { color: '#9db4cc', fontWeight: '700', fontSize: 13 },
+  filtersBtnTextActive: { color: '#fff' },
+  filtersPanel: { marginTop: 10, gap: 8 },
 
   timePill: {
     paddingHorizontal: 14,
@@ -1457,7 +1509,7 @@ const styles = StyleSheet.create({
   },
   futureText: { fontSize: 12, color: '#3b5573', fontWeight: '600', lineHeight: 17 },
 
-  mapWrap: { flex: 1, margin: 12, borderRadius: 16, overflow: 'hidden' },
+  mapWrap: { flex: 1, overflow: 'hidden' },
 
   locating: {
     position: 'absolute',

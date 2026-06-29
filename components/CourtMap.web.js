@@ -39,10 +39,10 @@ const PPONG_SVG =
 
 const PICKLE_SVG =
   '<svg viewBox="0 0 100 100" width="100%" height="100%">' +
-  '<rect x="14" y="8" width="56" height="60" rx="14" fill="#1f9e8a" stroke="#0c5a4e" stroke-width="3"/>' +
-  '<rect x="34" y="64" width="14" height="28" rx="4" fill="#9c6b3b" stroke="#5e3d1d" stroke-width="3"/>' +
-  '<circle cx="78" cy="74" r="11" fill="#f4d11e" stroke="#7a6a06" stroke-width="3"/>' +
-  '<g fill="#7a6a06"><circle cx="74" cy="70" r="1.6"/><circle cx="82" cy="71" r="1.6"/><circle cx="78" cy="78" r="1.6"/></g>' +
+  '<rect x="12" y="6" width="54" height="62" rx="20" fill="#1c1c1c" stroke="#000000" stroke-width="3"/>' +
+  '<rect x="31" y="62" width="16" height="30" rx="5" fill="#1c1c1c" stroke="#000000" stroke-width="3"/>' +
+  '<circle cx="78" cy="74" r="13" fill="#a3e635" stroke="#3f6212" stroke-width="2.5"/>' +
+  '<g fill="#3f6212"><circle cx="73" cy="70" r="1.8"/><circle cx="82" cy="71" r="1.8"/><circle cx="76" cy="79" r="1.8"/><circle cx="84" cy="77" r="1.6"/></g>' +
   '</svg>';
 
 const TENNIS_SVG =
@@ -162,6 +162,8 @@ const CourtMap = forwardRef(function CourtMap(
     layer.clearLayers();
     markersRef.current = {};
     courts.forEach((c) => {
+      // Outdoor courts are dense, so render them a bit smaller than indoor gyms.
+      const size = c.indoor === false ? 21 : 26;
       const ball =
         '<div class="bball" style="opacity:' + (c.open ? 1 : 0.45) + '">' + ballSvg(sport) + '</div>';
       const level = bookLevel(c.booked);
@@ -174,9 +176,11 @@ const CourtMap = forwardRef(function CourtMap(
           : '';
       const icon = L.divIcon({
         className: '',
-        html: '<div class="ballwrap' + anim + '">' + crowdDecoration(c.crowd) + ring + ball + '</div>',
-        iconSize: [26, 26],
-        iconAnchor: [13, 13],
+        html:
+          '<div class="ballwrap' + anim + '" style="width:' + size + 'px;height:' + size + 'px">' +
+          crowdDecoration(c.crowd) + ring + ball + '</div>',
+        iconSize: [size, size],
+        iconAnchor: [size / 2, size / 2],
       });
       const m = L.marker([c.lat, c.lng], { icon }).addTo(layer);
       m.on('click', () => onSelectRef.current && onSelectRef.current(c.id));
