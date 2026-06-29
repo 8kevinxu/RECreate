@@ -916,6 +916,21 @@
       "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/film-photography-for-teens/43244?locale=en-US"
     },
     {
+      "id": "anc-43203",
+      "name": "Art Expression for Seniors",
+      "category": "music",
+      "location": "Joe Dimaggio Playground",
+      "when": "Thu · 11:30 AM - 1:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "55 yrs +",
+      "minAge": 55,
+      "spots": 12,
+      "lat": 37.802635,
+      "lng": -122.4117,
+      "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/art-expression-for-seniors/43203?locale=en-US"
+    },
+    {
       "id": "anc-43535",
       "name": "Chinese Music Appreciation",
       "category": "music",
@@ -944,6 +959,162 @@
       "lat": 37.729098,
       "lng": -122.410453,
       "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/sing-along/43543?locale=en-US"
+    },
+    {
+      "id": "anc-43364",
+      "name": "Beginning/ Intermediate Knitting for Youth",
+      "category": "music",
+      "location": "Randall Museum",
+      "when": "Sat · 10:00 AM - Noon",
+      "dropIn": false,
+      "cost": "View fee details",
+      "ages": "Age at least 11 yrs but less than 15 yrs",
+      "minAge": 11,
+      "spots": 8,
+      "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/beginning-intermediate-knitting-for-youth/43364?locale=en-US"
+    },
+    {
+      "id": "anc-43365",
+      "name": "Ceramics - Randall Clay Club",
+      "category": "music",
+      "location": "Randall Museum",
+      "when": "Sat · 10:00 AM - 11:30 AM",
+      "dropIn": false,
+      "cost": "View fee details",
+      "ages": "Age at least 9 yrs but less than 12 yrs",
+      "minAge": 9,
+      "spots": 8,
+      "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/ceramics---randall-clay-club/43365?locale=en-US"
+    },
+    {
+      "id": "anc-43366",
+      "name": "Ceramics - Randall Clay Club",
+      "category": "music",
+      "location": "Randall Museum",
+      "when": "Sat · 11:30 AM - 1:00 PM",
+      "dropIn": false,
+      "cost": "View fee details",
+      "ages": "Age at least 12 yrs but less than 15 yrs",
+      "minAge": 12,
+      "spots": 8,
+      "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/ceramics---randall-clay-club/43366?locale=en-US"
+    },
+    {
+      "id": "anc-43298",
+      "name": "Acrylic Painting",
+      "category": "music",
+      "location": "Sharon Art Studio",
+      "when": "Thu · 2:00 PM - 5:00 PM",
+      "dropIn": false,
+      "cost": "View fee details",
+      "ages": "18 yrs +",
+      "minAge": 18,
+      "spots": 12,
+      "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/acrylic-painting/43298?locale=en-US"
+    },
+    {
+      "id": "anc-43332",
+      "name": "Advanced Figure Drawing: Space to Play",
+      "category": "music",
+      "location": "Sharon Art Studio",
+      "when": "Mon · 6:30 PM - 9:00 PM",
+      "dropIn": false,
+      "cost": "View fee details",
+      "ages": "18 yrs +",
+      "minAge": 18,
+      "spots": 13,
+      "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/advanced-figure-drawing-space-to-play/43332?locale=en-US"
+    },
+    {
+      "id": "anc-43299",
+      "name": "Advanced Glass",
+      "category": "music",
+      "location": "Sharon Art Studio",
+      "when": "Fri · 10:00 AM - 1:00 PM",
+      "dropIn": false,
+      "cost": "View fee details",
+      "ages": "18 yrs +",
+      "minAge": 18,
+      "spots": 16,
+      "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/advanced-glass/43299?locale=en-US"
+    },
+    {
+      "id": "anc-43300",
+      "name": "Beginner Jewelry",
+      "category": "music",
+      "location": "Sharon Art Studio",
+      "when": "Wed · 6:30 PM - 9:30 PM",
+      "dropIn": false,
+      "cost": "View fee details",
+      "ages": "18 yrs +",
+      "minAge": 18,
+      "spots": 11,
+      "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/beginner-jewelry/43300?locale=en-US"
+    },
+    {
+      "id": "anc-43301",
+      "name": "Beginner Jewelry",
+      "category": "music",
+      "location": "Sharon Art Studio",
+      "when": "Fri · 11:00 AM - 2:00 PM",
+      "dropIn": false,
+      "cost": "View fee details",
+      "ages": "18 yrs +",
+      "minAge": 18,
+      "spots": 11,
+      "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/beginner-jewelry/43301?locale=en-US"
+    },
+    {
+      "id": "anc-43302",
+      "name": "Beginning Watercolor",
+      "category": "music",
+      "location": "Sharon Art Studio",
+      "when": "Thu · 6:30 PM - 9:30 PM",
+      "dropIn": false,
+      "cost": "View fee details",
+      "ages": "18 yrs +",
+      "minAge": 18,
+      "spots": 14,
+      "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/beginning-watercolor/43302?locale=en-US"
+    },
+    {
+      "id": "anc-43342",
+      "name": "Block Printing in Layers",
+      "category": "music",
+      "location": "Sharon Art Studio",
+      "when": "Fri · 3:00 PM - 6:00 PM",
+      "dropIn": false,
+      "cost": "View fee details",
+      "ages": "18 yrs +",
+      "minAge": 18,
+      "spots": 12,
+      "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/block-printing-in-layers/43342?locale=en-US"
+    },
+    {
+      "id": "anc-43340",
+      "name": "Casting in Bronze",
+      "category": "music",
+      "location": "Sharon Art Studio",
+      "when": "Sat · 11:00 AM - 2:00 PM",
+      "dropIn": false,
+      "cost": "View fee details",
+      "ages": "18 yrs +",
+      "minAge": 18,
+      "spots": 10,
+      "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/casting-in-bronze/43340?locale=en-US"
+    },
+    {
+      "id": "anc-43303",
+      "name": "Ceramics - Sharon Art Studio",
+      "category": "music",
+      "location": "Sharon Art Studio",
+      "when": "Mon · 1:00 PM - 4:00 PM",
+      "dropIn": false,
+      "cost": "View fee details",
+      "ages": "18 yrs +",
+      "minAge": 18,
+      "spots": 14,
+      "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/ceramics---sharon-art-studio/43303?locale=en-US"
     },
     {
       "id": "anc-43155",
@@ -1126,5 +1297,5 @@
       "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/drop-in-ballroom-dance/43169?locale=en-US"
     }
   ],
-  "fetchedAt": "2026-06-29T08:24:58.846Z"
+  "fetchedAt": "2026-06-29T17:32:46.499Z"
 }
