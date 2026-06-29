@@ -43,6 +43,38 @@ const MUSIC_RE =
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+// Match a rec-center name to coordinates from our existing court data (ActiveNet gives
+// only a name, no lat/lng). Keys strip common suffixes so "Glen Canyon Rec Center"
+// matches our "Glen Canyon Park".
+function buildCoords() {
+  const strip = (s) =>
+    String(s || '')
+      .toLowerCase()
+      .replace(/&/g, ' and ')
+      .replace(/[^a-z0-9 ]/g, ' ')
+      .replace(/\b(rec(reation)? center|playgrounds?|park|plgd|center|clubhouse|pool|square|mini)\b/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+  const map = {};
+  const sources = [];
+  for (const f of ['../data/outdoor-courts.js', '../data/courts.js', '../data/manual-courts.js']) {
+    try {
+      const m = require(f);
+      const arr = m.default || m;
+      if (Array.isArray(arr)) sources.push(...arr);
+    } catch {
+      // optional source
+    }
+  }
+  for (const c of sources) {
+    if (c && c.name && Number.isFinite(c.lat) && Number.isFinite(c.lng)) {
+      const k = strip(c.name);
+      if (k && !map[k]) map[k] = { lat: c.lat, lng: c.lng };
+    }
+  }
+  return { coordsFor: (label) => map[strip(label)] || null };
+}
+
 // Title-case an ALL-CAPS location label and expand a couple of abbreviations.
 function cleanLoc(s) {
   if (!s) return '';
@@ -124,11 +156,13 @@ async function fetchCategory(session, catIds) {
 }
 
 // ActiveNet item -> our class row, or null to drop it.
-function toClass(item, category) {
+function toClass(item, category, coords) {
   const name = dehtml(item.name);
   const location = cleanLoc(item.location?.label);
   if (!name || !location || /^n\/?a$/i.test(item.location?.label || '')) return null; // multi-site / TBD
   const when = [cleanDays(item.days_of_week), item.time_range].filter(Boolean).join(' · ');
+  const c = coords.coordsFor(item.location?.label);
+  const minAge = Number(item.age_min_year) || 0;
   return {
     id: `anc-${item.id}`,
     name,
@@ -138,16 +172,20 @@ function toClass(item, category) {
     dropIn: /drop-?in/i.test(name) || item.item_type === 7,
     cost: cleanFee(item.fee),
     ages: dehtml(item.age_description || '').replace(/,\s*$/, '') || 'All ages',
+    minAge,
+    spots: Number.isFinite(item.total_open) ? item.total_open : null,
+    ...(c ? { lat: c.lat, lng: c.lng } : {}),
     url: item.detail_url || `${BASE}/activity/search?locale=en-US`,
   };
 }
 
 async function scrape() {
   const session = await getSession();
+  const coords = buildCoords();
   const rows = [];
   const seen = new Set();
   const add = (item, cat) => {
-    const c = toClass(item, cat);
+    const c = toClass(item, cat, coords);
     if (c && !seen.has(c.id)) {
       seen.add(c.id);
       rows.push(c);
@@ -190,7 +228,10 @@ function render(classes, generatedAt) {
 // Generated: ${generatedAt}
 //
 // SF Rec & Park drop-in classes & programs (non-court), from their ActiveNet catalog.
-// Each class: { id, name, category, location, when, dropIn, cost, ages, url }.
+// Each class: { id, name, category, location, when, dropIn, cost, ages, minAge, spots,
+// lat?, lng?, url }. lat/lng are present when the rec center matched our court data
+// (for distance filtering); spots is open seats (null if unknown); minAge drives the
+// 18+/55+ filters.
 
 export const CLASS_CATEGORIES = ${JSON.stringify(cats, null, 2)
     .replace(/\n/g, '\n')};

@@ -817,7 +817,7 @@ export default function App() {
           </>
         )}
 
-        {tab === 'classes' && <ClassesScreen />}
+        {tab === 'classes' && <ClassesScreen userLocation={userLocation} />}
 
         {tab === 'social' && (
           <FeedModal

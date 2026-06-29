@@ -14,24 +14,58 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { CLASSES, CLASS_CATEGORIES } from '../data/classes';
+import { haversineMiles, formatDistance } from '../lib/distance';
 
 const catMeta = (id) => CLASS_CATEGORIES.find((c) => c.id === id) || {};
 // Short chip label: "Fitness & Wellness" -> "Fitness", "Social & Games" -> "Social".
 const shortLabel = (label) => label.split(' & ')[0];
+const ageBand = (m) => (m >= 55 ? '55' : m >= 18 ? '18' : 'all');
+const hasSpots = (c) => c.dropIn || (c.spots ?? 0) > 0;
 
-export default function ClassesScreen() {
+function FilterChip({ label, on, onPress }) {
+  return (
+    <Pressable onPress={onPress} style={[styles.fchip, on && styles.fchipOn]}>
+      <Text style={[styles.fchipText, on && styles.fchipTextOn]}>
+        {on ? '✓ ' : ''}
+        {label}
+      </Text>
+    </Pressable>
+  );
+}
+
+export default function ClassesScreen({ userLocation = null }) {
   const insets = useSafeAreaInsets();
   const [cat, setCat] = useState('all');
   const [query, setQuery] = useState('');
+  const [age, setAge] = useState(null); // '18' | '55' | null
+  const [radius, setRadius] = useState(null); // 5 | 10 | 15 | null (miles)
+  const [freeOnly, setFreeOnly] = useState(false);
+  const [openOnly, setOpenOnly] = useState(false);
+
+  const distOf = (c) =>
+    userLocation && c.lat != null
+      ? haversineMiles(userLocation.lat, userLocation.lng, c.lat, c.lng)
+      : null;
 
   const list = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return CLASSES.filter(
-      (c) =>
-        (cat === 'all' || c.category === cat) &&
-        (!q || c.name.toLowerCase().includes(q) || c.location.toLowerCase().includes(q))
-    );
-  }, [cat, query]);
+    return CLASSES.filter((c) => {
+      if (cat !== 'all' && c.category !== cat) return false;
+      if (q && !c.name.toLowerCase().includes(q) && !c.location.toLowerCase().includes(q)) return false;
+      if (age) {
+        const b = ageBand(c.minAge || 0);
+        if (b !== age && b !== 'all') return false;
+      }
+      if (freeOnly && c.cost !== 'Free') return false;
+      if (openOnly && !hasSpots(c)) return false;
+      if (radius) {
+        const d = distOf(c);
+        if (d == null || d > radius) return false;
+      }
+      return true;
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cat, query, age, radius, freeOnly, openOnly, userLocation]);
 
   return (
     <View style={[styles.page, { paddingTop: insets.top + 14 }]}>
@@ -69,15 +103,33 @@ export default function ClassesScreen() {
         })}
       </View>
 
+      <View style={styles.filterRow}>
+        <FilterChip label="18+" on={age === '18'} onPress={() => setAge(age === '18' ? null : '18')} />
+        <FilterChip label="55+" on={age === '55'} onPress={() => setAge(age === '55' ? null : '55')} />
+        <FilterChip label="Free" on={freeOnly} onPress={() => setFreeOnly((v) => !v)} />
+        <FilterChip label="Open spots" on={openOnly} onPress={() => setOpenOnly((v) => !v)} />
+        {!!userLocation &&
+          [5, 10, 15].map((r) => (
+            <FilterChip
+              key={r}
+              label={`≤${r} mi`}
+              on={radius === r}
+              onPress={() => setRadius(radius === r ? null : r)}
+            />
+          ))}
+      </View>
+
       <ScrollView
         style={styles.list}
         contentContainerStyle={{ paddingBottom: insets.bottom + 96 }}
         showsVerticalScrollIndicator={false}
       >
         {list.length === 0 && (
-          <Text style={styles.empty}>No classes match — try a different search or category.</Text>
+          <Text style={styles.empty}>No classes match — try a different search or filters.</Text>
         )}
-        {list.map((c) => (
+        {list.map((c) => {
+          const d = distOf(c);
+          return (
           <Pressable key={c.id} style={styles.card} onPress={() => Linking.openURL(c.url)}>
             <View style={styles.cardTop}>
               <Text style={styles.cardName}>
@@ -90,12 +142,16 @@ export default function ClassesScreen() {
               </View>
             </View>
             <Text style={styles.when}>🕒 {c.when}</Text>
-            <Text style={styles.loc}>📍 {c.location}</Text>
+            <Text style={styles.loc}>
+              📍 {c.location}
+              {d != null ? ` · ${formatDistance(d)}` : ''}
+            </Text>
             <Text style={styles.meta}>
               {c.cost} · {c.ages}
             </Text>
           </Pressable>
-        ))}
+          );
+        })}
 
         <Text style={styles.disclaimer}>
           From SF Rec & Park (ActiveNet) — verify times and registration on sfrecpark.org
@@ -144,6 +200,20 @@ const styles = StyleSheet.create({
   catChipActive: { backgroundColor: '#2f74d6', borderColor: '#2f74d6' },
   catChipText: { color: '#46586a', fontWeight: '700', fontSize: 12 },
   catChipTextActive: { color: '#fff' },
+
+  filterRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginBottom: 12 },
+  fchip: {
+    alignSelf: 'flex-start',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 8,
+    backgroundColor: '#fff',
+    borderWidth: 1,
+    borderColor: '#dde3ea',
+  },
+  fchipOn: { backgroundColor: '#e7f0fc', borderColor: '#2f74d6' },
+  fchipText: { color: '#5b6b7b', fontWeight: '700', fontSize: 12 },
+  fchipTextOn: { color: '#2f74d6' },
   empty: { fontSize: 13, color: '#9aa7b4', fontStyle: 'italic', paddingVertical: 16 },
 
   list: { flex: 1 },
