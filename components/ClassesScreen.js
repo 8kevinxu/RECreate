@@ -19,7 +19,7 @@ import { haversineMiles, formatDistance } from '../lib/distance';
 const catMeta = (id) => CLASS_CATEGORIES.find((c) => c.id === id) || {};
 // Short chip label: "Fitness & Wellness" -> "Fitness", "Social & Games" -> "Social".
 const shortLabel = (label) => label.split(' & ')[0];
-const ageBand = (m) => (m >= 55 ? '55' : m >= 18 ? '18' : 'all');
+const ageBand = (m) => (m >= 55 ? '55' : m >= 18 ? '18' : m >= 11 ? 'teen' : 'all');
 const hasSpots = (c) => c.dropIn || (c.spots ?? 0) > 0;
 
 function FilterChip({ label, on, onPress }) {
@@ -104,15 +104,16 @@ export default function ClassesScreen({ userLocation = null }) {
       </View>
 
       <View style={styles.filterRow}>
+        <FilterChip label="Teen" on={age === 'teen'} onPress={() => setAge(age === 'teen' ? null : 'teen')} />
         <FilterChip label="18+" on={age === '18'} onPress={() => setAge(age === '18' ? null : '18')} />
         <FilterChip label="55+" on={age === '55'} onPress={() => setAge(age === '55' ? null : '55')} />
         <FilterChip label="Free" on={freeOnly} onPress={() => setFreeOnly((v) => !v)} />
         <FilterChip label="Open spots" on={openOnly} onPress={() => setOpenOnly((v) => !v)} />
         {!!userLocation &&
-          [5, 10, 15].map((r) => (
+          [1, 3, 5].map((r) => (
             <FilterChip
               key={r}
-              label={`≤${r} mi`}
+              label={`< ${r} mi`}
               on={radius === r}
               onPress={() => setRadius(radius === r ? null : r)}
             />

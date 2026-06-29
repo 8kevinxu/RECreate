@@ -55,6 +55,20 @@ function buildCoords() {
       .replace(/\b(rec(reation)? center|playgrounds?|park|plgd|center|clubhouse|pool|square|mini)\b/g, '')
       .replace(/\s+/g, ' ')
       .trim();
+  const norm = (s) =>
+    String(s || '')
+      .toLowerCase()
+      .replace(/\bplgd\b/g, 'playground')
+      .replace(/[^a-z0-9 ]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  // Rec/senior centers whose names don't match our court data (coords from DataSF
+  // ib5c-xgwu). Keyed by the normalized ActiveNet location label.
+  const MANUAL = {
+    'golden gate park senior center': { lat: 37.77154, lng: -122.49702 },
+    'civic center plaza': { lat: 37.77952, lng: -122.41758 },
+    'harvey milk photo center': { lat: 37.76958, lng: -122.43456 },
+  };
   const map = {};
   const sources = [];
   for (const f of ['../data/outdoor-courts.js', '../data/courts.js', '../data/manual-courts.js']) {
@@ -72,7 +86,7 @@ function buildCoords() {
       if (k && !map[k]) map[k] = { lat: c.lat, lng: c.lng };
     }
   }
-  return { coordsFor: (label) => map[strip(label)] || null };
+  return { coordsFor: (label) => MANUAL[norm(label)] || map[strip(label)] || null };
 }
 
 // Title-case an ALL-CAPS location label and expand a couple of abbreviations.
