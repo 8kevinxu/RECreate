@@ -177,17 +177,25 @@ function toClass(item, category, coords) {
   const when = [cleanDays(item.days_of_week), item.time_range].filter(Boolean).join(' · ');
   const c = coords.coordsFor(item.location?.label);
   const minAge = Number(item.age_min_year) || 0;
+  // Availability: `openings` is the *actual* number of open spots — "0" when full,
+  // or "Unlimited" for no-cap drop-ins. (total_open is capacity, NOT openings, so a
+  // full class can still report total_open=4 with openings="0" — that was the bug.)
+  const openingsRaw = String(item.openings ?? '');
+  const unlimited = /unlimited/i.test(openingsRaw);
+  const parsed = parseInt(openingsRaw, 10);
+  const spots = unlimited ? null : Number.isFinite(parsed) ? parsed : null;
   return {
     id: `anc-${item.id}`,
     name,
     category,
     location,
     when,
-    dropIn: /drop-?in/i.test(name) || item.item_type === 7,
+    dropIn: /drop-?in/i.test(name) || unlimited,
     cost: cleanFee(item.fee),
     ages: dehtml(item.age_description || '').replace(/,\s*$/, '') || 'All ages',
     minAge,
-    spots: Number.isFinite(item.total_open) ? item.total_open : null,
+    spots, // open spots remaining (null when unlimited/unknown)
+    unlimited, // true = no registration cap
     ...(c ? { lat: c.lat, lng: c.lng } : {}),
     url: item.detail_url || `${BASE}/activity/search?locale=en-US`,
   };
@@ -243,9 +251,10 @@ function render(classes, generatedAt) {
 //
 // SF Rec & Park drop-in classes & programs (non-court), from their ActiveNet catalog.
 // Each class: { id, name, category, location, when, dropIn, cost, ages, minAge, spots,
-// lat?, lng?, url }. lat/lng are present when the rec center matched our court data
-// (for distance filtering); spots is open seats (null if unknown); minAge drives the
-// 18+/55+ filters.
+// unlimited, lat?, lng?, url }. lat/lng are present when the rec center matched our
+// court data (for distance filtering); spots is the actual open-spot count from
+// ActiveNet openings (0 = full, null = unknown), unlimited = no-cap drop-in;
+// minAge drives the age filters.
 
 export const CLASS_CATEGORIES = ${JSON.stringify(cats, null, 2)
     .replace(/\n/g, '\n')};

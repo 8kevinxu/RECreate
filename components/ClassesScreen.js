@@ -2,11 +2,12 @@
 // social games) that aren't court sports. Browse by category; filters live behind
 // a button (grouped Age / Cost / Distance). Each card shows the schedule, a
 // color-coded price badge, and how many spots are open.
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import {
   Linking,
   Modal,
   Pressable,
+  RefreshControl,
   ScrollView,
   StyleSheet,
   Text,
@@ -18,6 +19,17 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { CLASSES, CLASS_CATEGORIES } from '../data/classes';
 import { haversineMiles, formatDistance } from '../lib/distance';
 import { openDirections } from '../lib/maps';
+import { fetchLiveAvailability } from '../lib/classesLive';
+
+// "updated 8s ago" style relative time for the live-availability stamp.
+function agoLabel(ts) {
+  if (!ts) return '';
+  const s = Math.round((Date.now() - ts) / 1000);
+  if (s < 10) return 'just now';
+  if (s < 60) return `${s}s ago`;
+  const m = Math.round(s / 60);
+  return m < 60 ? `${m}m ago` : `${Math.round(m / 60)}h ago`;
+}
 
 const catMeta = (id) => CLASS_CATEGORIES.find((c) => c.id === id) || {};
 // Short chip label: "Fitness & Wellness" -> "Fitness", "Social & Games" -> "Social".
@@ -35,14 +47,13 @@ function priceTone(cost) {
   return v <= PRICE_YELLOW_MAX ? 'mid' : 'high';
 }
 
-// Open-spots indicator: exact count when known, qualitative when it's a lot or a
-// no-cap drop-in. ActiveNet uses -1 (and drop-ins generally) to mean "no cap".
-// Returns null when we have no signal to show.
+// Open-spots indicator from ActiveNet's real `openings` count. Exact when known,
+// qualitative when it's a lot or a no-cap drop-in. Returns null when unknown.
 function spaceInfo(c) {
+  if (c.unlimited) return { text: 'Lots of spots', tone: 'good' };
   const n = c.spots;
-  if (c.dropIn || (n != null && n < 0)) return { text: 'Lots of spots', tone: 'good' };
-  if (n == null) return null;
-  if (n === 0) return { text: 'Full', tone: 'bad' };
+  if (n == null) return c.dropIn ? { text: 'Lots of spots', tone: 'good' } : null;
+  if (n <= 0) return { text: 'Full', tone: 'bad' };
   if (n <= 5) return { text: `${n} left`, tone: 'warn' };
   if (n >= 20) return { text: 'Lots of spots', tone: 'good' };
   return { text: `${n} openings`, tone: 'good' };
@@ -67,6 +78,34 @@ export default function ClassesScreen({ userLocation = null }) {
   const [radius, setRadius] = useState(null); // 1 | 3 | 5 | null (miles)
   const [freeOnly, setFreeOnly] = useState(false);
   const [filtersOpen, setFiltersOpen] = useState(false);
+
+  // Live availability overlay (openings "right now"), fetched from ActiveNet.
+  const [live, setLive] = useState(null); // { 'anc-<id>': { spots, unlimited } }
+  const [liveStatus, setLiveStatus] = useState('loading'); // 'loading' | 'ok' | 'fail'
+  const [liveAt, setLiveAt] = useState(null);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const refreshLive = async (isPull) => {
+    if (isPull) setRefreshing(true);
+    else setLiveStatus((s) => (s === 'ok' ? 'ok' : 'loading'));
+    const res = await fetchLiveAvailability(isPull); // pull-to-refresh forces past the cache
+    if (res) {
+      setLive(res.map);
+      setLiveStatus('ok');
+      setLiveAt(res.at);
+    } else {
+      setLiveStatus((s) => (s === 'ok' ? 'ok' : 'fail')); // keep prior live data if any
+    }
+    if (isPull) setRefreshing(false);
+  };
+
+  useEffect(() => {
+    refreshLive(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Overlay live openings onto a class when we have them.
+  const withLive = (c) => (live && live[c.id] ? { ...c, ...live[c.id] } : c);
 
   const activeCount = (age ? 1 : 0) + (freeOnly ? 1 : 0) + (radius ? 1 : 0);
 
@@ -156,10 +195,34 @@ export default function ClassesScreen({ userLocation = null }) {
         </Text>
       </View>
 
+      <View style={styles.liveRow}>
+        <View
+          style={[
+            styles.liveDot,
+            liveStatus === 'ok' && styles.liveDotOk,
+            liveStatus === 'fail' && styles.liveDotFail,
+          ]}
+        />
+        <Text style={styles.liveText}>
+          {liveStatus === 'loading'
+            ? 'Checking live availability…'
+            : liveStatus === 'ok'
+            ? `Live availability · updated ${agoLabel(liveAt)}`
+            : 'Showing saved availability — pull to refresh'}
+        </Text>
+      </View>
+
       <ScrollView
         style={styles.list}
         contentContainerStyle={{ paddingBottom: insets.bottom + 96 }}
         showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={() => refreshLive(true)}
+            tintColor="#2f74d6"
+          />
+        }
       >
         {list.length === 0 && (
           <Text style={styles.empty}>No classes match — try a different search or filters.</Text>
@@ -167,7 +230,7 @@ export default function ClassesScreen({ userLocation = null }) {
         {list.map((c) => {
           const d = distOf(c);
           const pt = priceTone(c.cost);
-          const sp = spaceInfo(c);
+          const sp = spaceInfo(withLive(c));
           return (
             <Pressable key={c.id} style={styles.card} onPress={() => Linking.openURL(c.url)}>
               <View style={styles.cardTop}>
@@ -355,6 +418,12 @@ const styles = StyleSheet.create({
   },
   filterCountText: { color: '#fff', fontSize: 11, fontWeight: '800' },
   resultCount: { fontSize: 13, color: '#8a99a8', fontWeight: '600' },
+
+  liveRow: { flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 10 },
+  liveDot: { width: 8, height: 8, borderRadius: 4, backgroundColor: '#e0a800' },
+  liveDotOk: { backgroundColor: '#1f9d55' },
+  liveDotFail: { backgroundColor: '#9aa7b4' },
+  liveText: { fontSize: 12, color: '#6b7a8a', fontWeight: '600' },
 
   fchip: {
     alignSelf: 'flex-start',

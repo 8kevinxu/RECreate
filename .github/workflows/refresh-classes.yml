@@ -1,0 +1,43 @@
+name: Refresh class availability
+
+# Class openings change far faster than court schedules (people enroll daily), so
+# the ActiveNet class catalog is re-scraped on its own frequent cadence — separate
+# from the weekly full data refresh — committing only the classes data when it
+# changes. build:classes self-gates (keeps last-good on a bad/short scrape).
+
+on:
+  schedule:
+    - cron: '0 */6 * * *' # every 6 hours
+  workflow_dispatch: {} # allow manual runs from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Re-scrape class availability
+        run: npm run build:classes
+
+      - name: Commit refreshed classes if they changed
+        run: |
+          FILES="data/classes.js scripts/classes-cache.json"
+          if git diff --quiet -- $FILES; then
+            echo "No class changes."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add $FILES
+            git commit -m "chore: refresh class availability"
+            git push
+          fi
