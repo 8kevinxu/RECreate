@@ -6,7 +6,6 @@ import {
   Dimensions,
   Linking,
   Pressable,
-  SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
@@ -14,6 +13,7 @@ import {
   View,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import CourtMap from './components/CourtMap';
 import AuthModal from './components/AuthModal';
 import FriendsModal from './components/FriendsModal';
@@ -185,6 +185,10 @@ export default function App() {
   const [pickedTime, setPickedTime] = useState(null); // null = live "now"
   const [pickerOpen, setPickerOpen] = useState(false);
   const { enabled: authEnabled, user, displayName } = useAuth();
+  const insets = useSafeAreaInsets(); // device notch / home-indicator insets (edge-to-edge)
+  // The map fills the whole screen with the nav floating over it; this is how far up
+  // map overlays (zoom, recenter, Nearby, court card) must sit to clear the nav pill.
+  const navClearance = insets.bottom + 86;
   const [tab, setTab] = useState('home'); // home | social | profile (bottom nav)
   const [friendsOpen, setFriendsOpen] = useState(false);
   const [nearbyOpen, setNearbyOpen] = useState(false);
@@ -528,7 +532,7 @@ export default function App() {
   };
 
   return (
-    <SafeAreaView style={styles.safe}>
+    <View style={styles.safe}>
       <StatusBar style="dark" />
 
       <View style={styles.pageWrap}>
@@ -536,13 +540,18 @@ export default function App() {
           <>
       <View style={styles.body}>
         {!!generatedAt && (
-          <View style={styles.updatedPill}>
+          <View style={[styles.updatedPill, { top: insets.top + 10 }]}>
             <View style={styles.updatedDot} />
             <Text style={styles.updatedPillText}>Updated {formatUpdated(generatedAt)}</Text>
           </View>
         )}
         <Pressable
-          style={[styles.fab, styles.filterFab, controlsVisible && styles.filterFabActive]}
+          style={[
+            styles.fab,
+            styles.filterFab,
+            { top: insets.top + 8 },
+            controlsVisible && styles.filterFabActive,
+          ]}
           onPress={() => setControlsVisible((v) => !v)}
         >
           <Ionicons
@@ -553,7 +562,7 @@ export default function App() {
         </Pressable>
 
         {controlsVisible && (
-        <View style={styles.controls}>
+        <View style={[styles.controls, { top: insets.top + 56 }]}>
         <View style={styles.filterRow}>
           <Pressable
             onPress={() => setMenuOpen((v) => !v)}
@@ -748,23 +757,27 @@ export default function App() {
           courts={mapCourts}
           sport={sport}
           userLocation={userLocation}
+          bottomInset={navClearance}
           onSelectCourt={handleSelect}
         />
 
         {locating && (
-          <View style={styles.locating}>
+          <View style={[styles.locating, { top: insets.top + 56 }]}>
             <ActivityIndicator color="#fff" />
             <Text style={styles.locatingText}>Finding you…</Text>
           </View>
         )}
 
         {userLocation && (
-          <Pressable style={styles.recenterBtn} onPress={recenter}>
+          <Pressable style={[styles.recenterBtn, { bottom: navClearance + 72 }]} onPress={recenter}>
             <Text style={styles.recenterIcon}>◎</Text>
           </Pressable>
         )}
 
-        <Pressable style={styles.nearbyBtn} onPress={() => setNearbyOpen(true)}>
+        <Pressable
+          style={[styles.nearbyBtn, { bottom: navClearance }]}
+          onPress={() => setNearbyOpen(true)}
+        >
           <Text style={styles.nearbyBtnText}>📍 Nearby</Text>
         </Pressable>
       </View>
@@ -779,6 +792,7 @@ export default function App() {
           now={nowMs}
           viewTime={viewTime}
           isPicked={isPicked}
+          bottomInset={navClearance}
           onVote={handleVote}
           onLogVisit={handleLogVisit}
           canLogVisit={!!user}
@@ -830,8 +844,16 @@ export default function App() {
         <FriendsModal visible={friendsOpen} onClose={() => setFriendsOpen(false)} />
       )}
 
-      <BottomNav tab={tab} onChange={goTab} socialBadge={unread} profileBadge={requestCount} />
-    </SafeAreaView>
+      <View style={styles.navWrap} pointerEvents="box-none">
+        <BottomNav
+          tab={tab}
+          onChange={goTab}
+          socialBadge={unread}
+          profileBadge={requestCount}
+          bottomInset={insets.bottom}
+        />
+      </View>
+    </View>
   );
 }
 
@@ -843,6 +865,7 @@ function CourtDetail({
   now,
   viewTime,
   isPicked,
+  bottomInset = 16,
   onVote,
   onLogVisit,
   canLogVisit,
@@ -958,7 +981,7 @@ function CourtDetail({
   };
 
   return (
-    <View style={styles.card}>
+    <View style={[styles.card, { bottom: bottomInset }]}>
       <View style={styles.cardHeader}>
         <View style={{ flex: 1 }}>
           <Text style={styles.cardTitle}>{court.name}</Text>
@@ -1346,6 +1369,9 @@ const styles = StyleSheet.create({
 
   // Active tab page fills the space above the bottom nav; overlays anchor to it.
   pageWrap: { flex: 1, position: 'relative' },
+  // The nav floats over the bottom of the full-screen content (box-none lets taps
+  // on the transparent area around the pill pass through to the map).
+  navWrap: { position: 'absolute', left: 0, right: 0, bottom: 0, zIndex: 50 },
   // Controls float over the top of the map so it can fill the screen.
   body: { flex: 1, position: 'relative' },
   controls: {

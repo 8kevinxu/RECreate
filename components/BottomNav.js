@@ -14,9 +14,15 @@ const TABS = [
   { id: 'profile', label: 'Profile', on: 'person', off: 'person-outline' },
 ];
 
-export default function BottomNav({ tab, onChange, socialBadge = 0, profileBadge = 0 }) {
+export default function BottomNav({
+  tab,
+  onChange,
+  socialBadge = 0,
+  profileBadge = 0,
+  bottomInset = 0,
+}) {
   return (
-    <View style={styles.bar}>
+    <View style={[styles.bar, { marginBottom: Math.max(bottomInset, 8) }]}>
       {TABS.map((t) => {
         const active = t.id === tab;
         const badge = t.id === 'social' ? socialBadge : t.id === 'profile' ? profileBadge : 0;
@@ -40,24 +46,26 @@ export default function BottomNav({ tab, onChange, socialBadge = 0, profileBadge
 }
 
 const styles = StyleSheet.create({
+  // Detached floating pill: fully rounded, side margins, thin border, soft shadow.
   bar: {
     flexDirection: 'row',
     backgroundColor: '#fff',
-    borderTopLeftRadius: 22,
-    borderTopRightRadius: 22,
-    paddingTop: 10,
-    paddingBottom: 12,
-    paddingHorizontal: 8,
-    borderTopWidth: 1,
-    borderColor: '#eef1f4',
+    borderRadius: 34,
+    marginHorizontal: 14,
+    marginBottom: 8,
+    marginTop: 4,
+    paddingVertical: 12,
+    paddingHorizontal: 6,
+    borderWidth: 1,
+    borderColor: '#e6e9ee',
     shadowColor: '#0d1b2a',
-    shadowOpacity: 0.08,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: -3 },
+    shadowOpacity: 0.1,
+    shadowRadius: 16,
+    shadowOffset: { width: 0, height: 6 },
     elevation: 12,
   },
-  item: { flex: 1, alignItems: 'center', gap: 3, paddingVertical: 2 },
-  label: { fontSize: 11, fontWeight: '700' },
+  item: { flex: 1, alignItems: 'center', gap: 4, paddingVertical: 2 },
+  label: { fontSize: 12, fontWeight: '700' },
   badge: {
     position: 'absolute',
     top: -5,

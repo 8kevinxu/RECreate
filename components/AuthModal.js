@@ -12,6 +12,7 @@ import {
   TextInput,
   View,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAuth } from '../lib/auth';
 import { SPORTS } from '../lib/sports';
 import { loadMyStats } from '../lib/playerCheckins';
@@ -24,6 +25,7 @@ export default function AuthModal({
   courtsById = {},
 }) {
   const { user, displayName, profile, signIn, signUp, signOut, updateProfile } = useAuth();
+  const insets = useSafeAreaInsets();
   const [mode, setMode] = useState('signin'); // 'signin' | 'signup'
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -138,7 +140,11 @@ export default function AuthModal({
 
   const wrap = (inner) =>
     asPage ? (
-      <View style={styles.page}>{inner}</View>
+      <View
+        style={[styles.page, { paddingTop: insets.top + 14, paddingBottom: insets.bottom + 84 }]}
+      >
+        {inner}
+      </View>
     ) : (
       <Modal visible={visible} transparent animationType="fade" onRequestClose={close}>
         <Pressable style={styles.backdrop} onPress={close}>

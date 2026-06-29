@@ -12,6 +12,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { loadFeed } from '../lib/feed';
 import { subscribeSignals } from '../lib/signals';
 import { joinRun, leaveRun, cancelRun, formatRunTime, subscribeRuns } from '../lib/runs';
@@ -30,6 +31,7 @@ export default function FeedModal({
   sport = 'basketball',
   userLocation = null,
 }) {
+  const insets = useSafeAreaInsets();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [runBusy, setRunBusy] = useState(null);
@@ -175,7 +177,12 @@ export default function FeedModal({
     </>
   );
 
-  if (asPage) return <View style={styles.page}>{content}</View>;
+  if (asPage)
+    return (
+      <View style={[styles.page, { paddingTop: insets.top + 14, paddingBottom: insets.bottom + 84 }]}>
+        {content}
+      </View>
+    );
 
   return (
     <Modal visible={visible} transparent animationType="slide" onRequestClose={onClose}>

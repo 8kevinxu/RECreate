@@ -236,6 +236,12 @@ const html = `
       userMarker.bindTooltip('You', { permanent: false });
     };
 
+    // Lift the bottom-right zoom control above the floating bottom nav.
+    window.setControlInset = function (px) {
+      var els = document.querySelectorAll('.leaflet-bottom');
+      for (var i = 0; i < els.length; i++) { els[i].style.bottom = px + 'px'; }
+    };
+
     window.focusCourt = function (id, lat, lng) {
       map.setView([lat, lng], 15, { animate: true });
       var m = markersById[id];
@@ -254,7 +260,7 @@ const html = `
 `;
 
 const CourtMap = forwardRef(function CourtMap(
-  { courts, sport = 'basketball', userLocation, onSelectCourt },
+  { courts, sport = 'basketball', userLocation, bottomInset = 0, onSelectCourt },
   ref
 ) {
   const webRef = useRef(null);
@@ -263,6 +269,11 @@ const CourtMap = forwardRef(function CourtMap(
   const inject = useCallback((js) => {
     webRef.current?.injectJavaScript(js + ' true;');
   }, []);
+
+  // Keep the zoom control clear of the floating bottom nav.
+  React.useEffect(() => {
+    if (ready) inject(`window.setControlInset(${Math.round(bottomInset)});`);
+  }, [ready, bottomInset, inject]);
 
   // Push courts + user location whenever they change (once the map is ready).
   // Set the sport first so markers rebuild with the right ball glyph.

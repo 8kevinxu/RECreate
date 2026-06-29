@@ -119,7 +119,7 @@ function ensureStyles() {
 }
 
 const CourtMap = forwardRef(function CourtMap(
-  { courts, sport = 'basketball', userLocation, onSelectCourt },
+  { courts, sport = 'basketball', userLocation, bottomInset = 0, onSelectCourt },
   ref
 ) {
   const elRef = useRef(null);
@@ -194,6 +194,15 @@ const CourtMap = forwardRef(function CourtMap(
       markersRef.current[c.id] = m;
     });
   }, [courts, sport]);
+
+  // Keep the zoom control clear of the floating bottom nav.
+  useEffect(() => {
+    const el = elRef.current;
+    if (!el) return;
+    el.querySelectorAll('.leaflet-bottom').forEach((c) => {
+      c.style.bottom = `${Math.round(bottomInset)}px`;
+    });
+  }, [bottomInset]);
 
   // User location dot.
   useEffect(() => {
