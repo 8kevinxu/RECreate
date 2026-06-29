@@ -69,7 +69,8 @@ export default function ClassesScreen() {
         ))}
 
         <Text style={styles.disclaimer}>
-          Sample schedules — verify times and registration on sfrecpark.org before heading out.
+          From SF Rec & Park (ActiveNet) — verify times and registration on sfrecpark.org
+          before heading out. Tap a class for details.
         </Text>
       </ScrollView>
     </View>
