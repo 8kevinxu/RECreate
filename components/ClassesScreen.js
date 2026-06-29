@@ -2,25 +2,55 @@
 // social games) that aren't court sports. Browse by category; each card shows the
 // weekly schedule, location, and whether it's free drop-in or registration.
 import React, { useMemo, useState } from 'react';
-import { Linking, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import {
+  Linking,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { CLASSES, CLASS_CATEGORIES } from '../data/classes';
 
 const catMeta = (id) => CLASS_CATEGORIES.find((c) => c.id === id) || {};
+// Short chip label: "Fitness & Wellness" -> "Fitness", "Social & Games" -> "Social".
+const shortLabel = (label) => label.split(' & ')[0];
 
 export default function ClassesScreen() {
   const insets = useSafeAreaInsets();
   const [cat, setCat] = useState('all');
+  const [query, setQuery] = useState('');
 
-  const list = useMemo(
-    () => (cat === 'all' ? CLASSES : CLASSES.filter((c) => c.category === cat)),
-    [cat]
-  );
+  const list = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return CLASSES.filter(
+      (c) =>
+        (cat === 'all' || c.category === cat) &&
+        (!q || c.name.toLowerCase().includes(q) || c.location.toLowerCase().includes(q))
+    );
+  }, [cat, query]);
 
   return (
     <View style={[styles.page, { paddingTop: insets.top + 14 }]}>
       <Text style={styles.title}>Classes & Activities</Text>
       <Text style={styles.sub}>Drop-in programs at SF rec centers</Text>
+
+      <View style={styles.search}>
+        <Ionicons name="search" size={16} color="#8a99a8" />
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Search classes or rec centers"
+          placeholderTextColor="#9aa7b4"
+          value={query}
+          onChangeText={setQuery}
+          returnKeyType="search"
+          clearButtonMode="while-editing"
+          autoCorrect={false}
+        />
+      </View>
 
       <ScrollView
         horizontal
@@ -36,7 +66,7 @@ export default function ClassesScreen() {
               style={[styles.catChip, active && styles.catChipActive]}
             >
               <Text style={[styles.catChipText, active && styles.catChipTextActive]}>
-                {c.emoji} {c.label}
+                {c.emoji} {shortLabel(c.label)}
               </Text>
             </Pressable>
           );
@@ -48,6 +78,9 @@ export default function ClassesScreen() {
         contentContainerStyle={{ paddingBottom: insets.bottom + 96 }}
         showsVerticalScrollIndicator={false}
       >
+        {list.length === 0 && (
+          <Text style={styles.empty}>No classes match — try a different search or category.</Text>
+        )}
         {list.map((c) => (
           <Pressable key={c.id} style={styles.card} onPress={() => Linking.openURL(c.url)}>
             <View style={styles.cardTop}>
@@ -80,20 +113,35 @@ export default function ClassesScreen() {
 const styles = StyleSheet.create({
   page: { flex: 1, backgroundColor: '#eef1f5', paddingHorizontal: 16 },
   title: { fontSize: 24, fontWeight: '800', color: '#0d1b2a' },
-  sub: { fontSize: 13, color: '#6b7a8a', marginTop: 2, marginBottom: 12 },
+  sub: { fontSize: 13, color: '#6b7a8a', marginTop: 2, marginBottom: 10 },
 
-  catRow: { gap: 8, paddingRight: 16, paddingBottom: 12 },
+  search: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 7,
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#dde3ea',
+    paddingHorizontal: 11,
+    height: 40,
+    marginBottom: 10,
+  },
+  searchInput: { flex: 1, fontSize: 14, color: '#0d1b2a', paddingVertical: 0 },
+
+  catRow: { gap: 6, paddingRight: 16, paddingBottom: 12 },
   catChip: {
-    paddingHorizontal: 13,
-    paddingVertical: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
     borderRadius: 999,
     backgroundColor: '#fff',
     borderWidth: 1,
     borderColor: '#dde3ea',
   },
   catChipActive: { backgroundColor: '#2f74d6', borderColor: '#2f74d6' },
-  catChipText: { color: '#46586a', fontWeight: '700', fontSize: 13 },
+  catChipText: { color: '#46586a', fontWeight: '700', fontSize: 12 },
   catChipTextActive: { color: '#fff' },
+  empty: { fontSize: 13, color: '#9aa7b4', fontStyle: 'italic', paddingVertical: 16 },
 
   list: { flex: 1 },
   card: {
