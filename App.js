@@ -391,6 +391,29 @@ export default function App() {
     setPickedTime(d);
   };
 
+  // The current 30-min slot (3:51 → 3:30) and today's start, for the time picker.
+  const nowSlot = Math.floor((now.getHours() * 60 + now.getMinutes()) / 30) * 30;
+  const todayTs = startOfDay(now).getTime();
+  // Time options for a day: today hides slots already past; other days show the full range.
+  const timesForDayTs = (ts) => (ts === todayTs ? times.filter((m) => m >= nowSlot) : times);
+  // Opening the picker pre-selects today at the current slot (or the next open day at
+  // the start of the range if today is closed / past the last slot).
+  const toggleTimePicker = () => {
+    if (pickerOpen) {
+      setPickerOpen(false);
+      return;
+    }
+    setPickerOpen(true);
+    if (pickedTime) return;
+    const todayTimes = timesForDayTs(todayTs);
+    if (sportDays.has(now.getDay()) && todayTimes.length) {
+      pickTime(startOfDay(now), todayTimes[0]);
+    } else {
+      const d = days.find((x) => x.getTime() !== todayTs && sportDays.has(x.getDay())) || firstOpenDay;
+      pickTime(d, times[0]);
+    }
+  };
+
   // Court id → name, for labeling runs in the Friends feed.
   const courtsById = useMemo(
     () => Object.fromEntries(courtData.map((c) => [c.id, c.name])),
@@ -641,7 +664,7 @@ export default function App() {
           </Pressable>
 
           <Pressable
-            onPress={() => setPickerOpen((v) => !v)}
+            onPress={toggleTimePicker}
             style={[styles.timePill, (pickerOpen || isPicked) && styles.timePillActive]}
           >
             <Text
@@ -688,7 +711,12 @@ export default function App() {
                   <Pressable
                     key={d.getTime()}
                     disabled={!open}
-                    onPress={() => pickTime(d, selMin ?? 18 * 60)}
+                    onPress={() => {
+                      const dayTimes = timesForDayTs(d.getTime());
+                      const target =
+                        selMin != null && dayTimes.includes(selMin) ? selMin : dayTimes[0] ?? times[0];
+                      pickTime(d, target);
+                    }}
                     style={[
                       styles.chip,
                       active && styles.chipActive,
@@ -714,7 +742,7 @@ export default function App() {
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={styles.chipRow}
             >
-              {times.map((m) => {
+              {timesForDayTs(selDayTs ?? todayTs).map((m) => {
                 const active = m === selMin;
                 const dayDate = days.find((x) => x.getTime() === selDayTs) || firstOpenDay;
                 return (
