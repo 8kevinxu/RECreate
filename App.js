@@ -20,6 +20,7 @@ import RunModal from './components/RunModal';
 import FriendsModal from './components/FriendsModal';
 import FeedModal from './components/FeedModal';
 import NearbyList from './components/NearbyList';
+import TimeSlider from './components/TimeSlider';
 import { useAuth } from './lib/auth';
 import { useCourts } from './lib/useCourts';
 import { fmtClock, startOfDay, viewLabel, dayChipLabel, fmtDuration } from './lib/datetime';
@@ -737,27 +738,13 @@ export default function App() {
                 );
               })}
             </ScrollView>
-            <ScrollView
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              contentContainerStyle={styles.chipRow}
-            >
-              {timesForDayTs(selDayTs ?? todayTs).map((m) => {
-                const active = m === selMin;
-                const dayDate = days.find((x) => x.getTime() === selDayTs) || firstOpenDay;
-                return (
-                  <Pressable
-                    key={m}
-                    onPress={() => pickTime(dayDate, m)}
-                    style={[styles.chip, active && styles.chipActive]}
-                  >
-                    <Text style={[styles.chipText, active && styles.chipTextActive]}>
-                      {fmtClock(Math.floor(m / 60), m % 60)}
-                    </Text>
-                  </Pressable>
-                );
-              })}
-            </ScrollView>
+            <TimeSlider
+              times={timesForDayTs(selDayTs ?? todayTs)}
+              value={selMin}
+              onChange={(m) =>
+                pickTime(days.find((x) => x.getTime() === selDayTs) || firstOpenDay, m)
+              }
+            />
           </View>
         )}
       </View>
