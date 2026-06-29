@@ -757,7 +757,6 @@ export default function App() {
           courts={mapCourts}
           sport={sport}
           userLocation={userLocation}
-          bottomInset={navClearance}
           onSelectCourt={handleSelect}
         />
 
@@ -769,7 +768,7 @@ export default function App() {
         )}
 
         {userLocation && (
-          <Pressable style={[styles.recenterBtn, { bottom: navClearance + 72 }]} onPress={recenter}>
+          <Pressable style={[styles.recenterBtn, { bottom: navClearance }]} onPress={recenter}>
             <Text style={styles.recenterIcon}>◎</Text>
           </Pressable>
         )}

@@ -119,7 +119,7 @@ function ensureStyles() {
 }
 
 const CourtMap = forwardRef(function CourtMap(
-  { courts, sport = 'basketball', userLocation, bottomInset = 0, onSelectCourt },
+  { courts, sport = 'basketball', userLocation, onSelectCourt },
   ref
 ) {
   const elRef = useRef(null);
@@ -132,9 +132,8 @@ const CourtMap = forwardRef(function CourtMap(
 
   useEffect(() => {
     ensureStyles();
-    // zoomSnap 0 = continuous zoom (no snapping to whole levels); smaller zoomDelta
-    // gives the +/- buttons finer steps and a gentler wheel feel. Move the zoom
-    // control to bottom-right so the floating top controls don't cover it.
+    // No +/- buttons (pinch/scroll to zoom). zoomSnap 0 keeps zoom continuous;
+    // attribution control hidden for a clean map.
     const map = L.map(elRef.current, {
       zoomControl: false,
       attributionControl: false,
@@ -142,7 +141,6 @@ const CourtMap = forwardRef(function CourtMap(
       zoomDelta: 0.4,
       wheelPxPerZoomLevel: 90,
     }).setView(SF, 12);
-    L.control.zoom({ position: 'bottomright' }).addTo(map);
     L.tileLayer(
       'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
       {
@@ -194,15 +192,6 @@ const CourtMap = forwardRef(function CourtMap(
       markersRef.current[c.id] = m;
     });
   }, [courts, sport]);
-
-  // Keep the zoom control clear of the floating bottom nav.
-  useEffect(() => {
-    const el = elRef.current;
-    if (!el) return;
-    el.querySelectorAll('.leaflet-bottom').forEach((c) => {
-      c.style.bottom = `${Math.round(bottomInset)}px`;
-    });
-  }, [bottomInset]);
 
   // User location dot.
   useEffect(() => {

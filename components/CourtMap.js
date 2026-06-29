@@ -103,12 +103,10 @@ const html = `
       }
     };
 
-    // zoomSnap 0 = continuous (no snapping to whole zoom levels) so pinch/scroll
-    // zoom is smooth; zoomDelta gives the +/- buttons finer steps. The default
-    // top-left zoom control sits under the floating controls, so place it bottom-right.
+    // No +/- buttons (pinch to zoom, like Google/Apple Maps). zoomSnap 0 keeps
+    // pinch/scroll zoom continuous; attribution control hidden for a clean map.
     var map = L.map('map', { zoomControl: false, attributionControl: false, zoomSnap: 0, zoomDelta: 0.4, wheelPxPerZoomLevel: 90 })
       .setView([${SF_CENTER.lat}, ${SF_CENTER.lng}], 12);
-    L.control.zoom({ position: 'bottomright' }).addTo(map);
 
     // CARTO Voyager: colorful but clean basemap (green parks, blue water, soft
     // roads) with no mountain/peak symbols. Free, no API key. detectRetina
@@ -236,12 +234,6 @@ const html = `
       userMarker.bindTooltip('You', { permanent: false });
     };
 
-    // Lift the bottom-right zoom control above the floating bottom nav.
-    window.setControlInset = function (px) {
-      var els = document.querySelectorAll('.leaflet-bottom');
-      for (var i = 0; i < els.length; i++) { els[i].style.bottom = px + 'px'; }
-    };
-
     window.focusCourt = function (id, lat, lng) {
       map.setView([lat, lng], 15, { animate: true });
       var m = markersById[id];
@@ -260,7 +252,7 @@ const html = `
 `;
 
 const CourtMap = forwardRef(function CourtMap(
-  { courts, sport = 'basketball', userLocation, bottomInset = 0, onSelectCourt },
+  { courts, sport = 'basketball', userLocation, onSelectCourt },
   ref
 ) {
   const webRef = useRef(null);
@@ -269,11 +261,6 @@ const CourtMap = forwardRef(function CourtMap(
   const inject = useCallback((js) => {
     webRef.current?.injectJavaScript(js + ' true;');
   }, []);
-
-  // Keep the zoom control clear of the floating bottom nav.
-  React.useEffect(() => {
-    if (ready) inject(`window.setControlInset(${Math.round(bottomInset)});`);
-  }, [ready, bottomInset, inject]);
 
   // Push courts + user location whenever they change (once the map is ready).
   // Set the sport first so markers rebuild with the right ball glyph.
