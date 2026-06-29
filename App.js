@@ -178,6 +178,7 @@ export default function App() {
   const [amenities, setAmenities] = useState([]); // active amenity filter ids (multi-select)
   const [menuOpen, setMenuOpen] = useState(false); // sport + filters dropdown menu
   const [controlsVisible, setControlsVisible] = useState(false); // filter bar shown via the FAB
+  const [sportPickerOpen, setSportPickerOpen] = useState(false); // sport speed-dial off the sport FAB
   const [selectedId, setSelectedId] = useState(null);
   const [userLocation, setUserLocation] = useState(null);
   const [locating, setLocating] = useState(true);
@@ -464,6 +465,9 @@ export default function App() {
   // Count of active filters, shown as a badge on the sport/menu button.
   const activeFilterCount =
     (showPlaceToggle && placeFilter !== 'all' ? 1 : 0) + activeAmenities.length;
+  // Sport is now switched from the FAB speed-dial; the menu only holds the
+  // indoor/outdoor + amenity filters, so hide it when this sport has neither.
+  const hasMoreFilters = showPlaceToggle || amenityOpts.length > 0;
 
   // Only courts that actually offer the sport; then the Indoor/Outdoor sub-filter
   // (when shown), the amenity filters, and "Open now" narrow further.
@@ -547,35 +551,84 @@ export default function App() {
             <Text style={styles.updatedPillText}>Updated {formatUpdated(generatedAt)}</Text>
           </View>
         )}
+        {/* Sport FAB: tap to reveal all sports as icons; pick one to switch. */}
         <Pressable
           style={[
             styles.fab,
             styles.filterFab,
             { top: insets.top + 8 },
-            controlsVisible && styles.filterFabActive,
+            sportPickerOpen && styles.filterFabActive,
           ]}
-          onPress={() => setControlsVisible((v) => !v)}
+          onPress={() => {
+            setSportPickerOpen((v) => !v);
+            setControlsVisible(false);
+          }}
         >
           <Text style={styles.filterFabSport}>{sportMeta(sport).emoji}</Text>
         </Pressable>
 
+        {/* Filter FAB: the open-now / time / place / amenity controls bar. */}
+        <Pressable
+          style={[
+            styles.fab,
+            styles.filterFab2,
+            { top: insets.top + 8 },
+            controlsVisible && styles.filterFabActive,
+          ]}
+          onPress={() => {
+            setControlsVisible((v) => !v);
+            setSportPickerOpen(false);
+          }}
+        >
+          <Ionicons name="options-outline" size={21} color={controlsVisible ? '#fff' : '#2f74d6'} />
+        </Pressable>
+
+        {sportPickerOpen && (
+          <View style={[styles.sportDial, { top: insets.top + 8 + 52 }]}>
+            {SPORTS.map((s) => {
+              const active = s.id === sport;
+              return (
+                <Pressable
+                  key={s.id}
+                  style={styles.sportDialItem}
+                  onPress={() => {
+                    setSport(s.id);
+                    setPlaceFilter('all'); // reset indoor/outdoor sub-filter
+                    setAmenities([]); // reset amenity filters
+                    setSportPickerOpen(false);
+                  }}
+                >
+                  <View style={styles.sportDialLabel}>
+                    <Text style={styles.sportDialLabelText}>{s.label}</Text>
+                  </View>
+                  <View style={[styles.fab, active && styles.filterFabActive]}>
+                    <Text style={styles.filterFabSport}>{s.emoji}</Text>
+                  </View>
+                </Pressable>
+              );
+            })}
+          </View>
+        )}
+
         {controlsVisible && (
         <View style={[styles.controls, { top: insets.top + 56 }]}>
         <View style={styles.filterRow}>
-          <Pressable
-            onPress={() => setMenuOpen((v) => !v)}
-            style={[styles.menuBtn, (menuOpen || activeFilterCount > 0) && styles.menuBtnActive]}
-          >
-            <Text
-              style={[
-                styles.menuBtnText,
-                (menuOpen || activeFilterCount > 0) && styles.menuBtnTextActive,
-              ]}
+          {hasMoreFilters && (
+            <Pressable
+              onPress={() => setMenuOpen((v) => !v)}
+              style={[styles.menuBtn, (menuOpen || activeFilterCount > 0) && styles.menuBtnActive]}
             >
-              {sportMeta(sport).emoji} {sportMeta(sport).label}
-              {activeFilterCount > 0 ? ` · ${activeFilterCount}` : ''} {menuOpen ? '▴' : '▾'}
-            </Text>
-          </Pressable>
+              <Text
+                style={[
+                  styles.menuBtnText,
+                  (menuOpen || activeFilterCount > 0) && styles.menuBtnTextActive,
+                ]}
+              >
+                Filters
+                {activeFilterCount > 0 ? ` · ${activeFilterCount}` : ''} {menuOpen ? '▴' : '▾'}
+              </Text>
+            </Pressable>
+          )}
 
           <Pressable
             onPress={() => setOpenOnly((v) => !v)}
@@ -621,32 +674,8 @@ export default function App() {
 
         </View>
 
-        {menuOpen && (
+        {menuOpen && hasMoreFilters && (
           <View style={styles.filtersPanel}>
-            <ScrollView
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              contentContainerStyle={styles.sportRow}
-            >
-              {SPORTS.map((s) => {
-                const active = s.id === sport;
-                return (
-                  <Pressable
-                    key={s.id}
-                    onPress={() => {
-                      setSport(s.id);
-                      setPlaceFilter('all'); // reset the indoor/outdoor sub-filter
-                      setAmenities([]); // reset amenity filters
-                    }}
-                    style={[styles.sportChip, active && styles.sportChipActive]}
-                  >
-                    <Text style={[styles.sportChipText, active && styles.sportChipTextActive]}>
-                      {s.emoji} {s.label}
-                    </Text>
-                  </Pressable>
-                );
-              })}
-            </ScrollView>
             {showPlaceToggle && (
               <View style={styles.placeRow}>
                 {PLACE_OPTS.map((o) => {
@@ -1434,8 +1463,22 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   filterFab: { position: 'absolute', top: 10, right: 14, zIndex: 25 },
+  filterFab2: { position: 'absolute', top: 10, right: 70, zIndex: 25 },
   filterFabActive: { backgroundColor: '#2f74d6' },
   filterFabSport: { fontSize: 24 },
+  sportDial: { position: 'absolute', right: 14, zIndex: 26, alignItems: 'flex-end', gap: 8 },
+  sportDialItem: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  sportDialLabel: {
+    backgroundColor: '#fff',
+    paddingHorizontal: 12,
+    paddingVertical: 7,
+    borderRadius: 999,
+    shadowColor: '#000',
+    shadowOpacity: 0.18,
+    shadowRadius: 4,
+    shadowOffset: { width: 0, height: 2 },
+  },
+  sportDialLabelText: { color: '#1f2a37', fontWeight: '700', fontSize: 13 },
   sportRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   sportChip: {
     paddingHorizontal: 14,
