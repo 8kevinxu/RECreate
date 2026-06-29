@@ -1057,6 +1057,16 @@ function CourtDetail({
         </View>
       )}
 
+      {/* SF Rec & Park publishes lights for tennis/pickleball courts but not basketball,
+          so be honest about it rather than imply anything. */}
+      {sport === 'basketball' && court.indoor === false && (
+        <View style={styles.facRow}>
+          <View style={styles.facChip}>
+            <Text style={styles.facTextMuted}>🌙 Lights: unknown</Text>
+          </View>
+        </View>
+      )}
+
       {booked != null && (
         <>
           <Text style={[styles.bookedNote, fullyBooked && styles.bookedNoteFull]}>
@@ -1615,6 +1625,7 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
   },
   facText: { fontSize: 12, fontWeight: '600', color: '#46586a' },
+  facTextMuted: { fontSize: 12, fontWeight: '600', color: '#9aa7b4', fontStyle: 'italic' },
   bookedNote: { fontSize: 12, color: '#7a6a55', marginBottom: 8, lineHeight: 16 },
   bookedNoteFull: { color: '#c0392b', fontWeight: '700' },
   bookBtn: {
