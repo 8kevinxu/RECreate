@@ -15,6 +15,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { CLASSES, CLASS_CATEGORIES } from '../data/classes';
 import { haversineMiles, formatDistance } from '../lib/distance';
+import { openDirections } from '../lib/maps';
 
 const catMeta = (id) => CLASS_CATEGORIES.find((c) => c.id === id) || {};
 // Short chip label: "Fitness & Wellness" -> "Fitness", "Social & Games" -> "Social".
@@ -147,9 +148,20 @@ export default function ClassesScreen({ userLocation = null }) {
               📍 {c.location}
               {d != null ? ` · ${formatDistance(d)}` : ''}
             </Text>
-            <Text style={styles.meta}>
-              {c.cost} · {c.ages}
-            </Text>
+            <View style={styles.cardBottom}>
+              <Text style={styles.meta}>
+                {c.cost} · {c.ages}
+              </Text>
+              {c.lat != null && (
+                <Pressable
+                  style={styles.dirBtn}
+                  onPress={() => openDirections(c.lat, c.lng, c.location)}
+                >
+                  <Ionicons name="navigate" size={12} color="#2f74d6" />
+                  <Text style={styles.dirBtnText}>Directions</Text>
+                </Pressable>
+              )}
+            </View>
           </Pressable>
           );
         })}
@@ -236,7 +248,23 @@ const styles = StyleSheet.create({
   tagRegText: { color: '#2f74d6' },
   when: { fontSize: 13, color: '#46586a', fontWeight: '600', marginTop: 8 },
   loc: { fontSize: 13, color: '#46586a', marginTop: 3 },
-  meta: { fontSize: 12, color: '#8a99a8', marginTop: 6, fontWeight: '600' },
+  cardBottom: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: 8,
+  },
+  meta: { fontSize: 12, color: '#8a99a8', fontWeight: '600', flex: 1 },
+  dirBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    borderRadius: 999,
+    backgroundColor: '#e7f0fc',
+  },
+  dirBtnText: { color: '#2f74d6', fontWeight: '800', fontSize: 12 },
 
   disclaimer: { fontSize: 11, color: '#9aa7b4', fontStyle: 'italic', marginTop: 6, lineHeight: 16 },
 });

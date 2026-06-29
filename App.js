@@ -56,6 +56,7 @@ import {
 } from './lib/crowd';
 import { loadReviews, addReview, MAX_BODY, MAX_NAME } from './lib/reviews';
 import { liveBooked, bookedAt } from './lib/reservations';
+import { openDirections } from './lib/maps';
 import { logVisit } from './lib/playerCheckins';
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -992,6 +993,15 @@ function CourtDetail({
               {[court.neighborhood, court.address].filter(Boolean).join(' · ')}
             </Text>
           )}
+          {court.lat != null && (
+            <Pressable
+              style={styles.dirBtn}
+              onPress={() => openDirections(court.lat, court.lng, court.name)}
+            >
+              <Ionicons name="navigate" size={13} color="#2f74d6" />
+              <Text style={styles.dirBtnText}>Directions</Text>
+            </Pressable>
+          )}
         </View>
         <Pressable hitSlop={10} onPress={onClose}>
           <Text style={styles.close}>✕</Text>
@@ -1603,6 +1613,18 @@ const styles = StyleSheet.create({
   cardHeader: { flexDirection: 'row', alignItems: 'flex-start' },
   cardTitle: { fontSize: 18, fontWeight: '800', color: '#0d1b2a' },
   cardSub: { fontSize: 13, color: '#5b6b7b', marginTop: 2 },
+  dirBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    alignSelf: 'flex-start',
+    marginTop: 8,
+    paddingVertical: 6,
+    paddingHorizontal: 11,
+    borderRadius: 999,
+    backgroundColor: '#e7f0fc',
+  },
+  dirBtnText: { color: '#2f74d6', fontWeight: '800', fontSize: 13 },
   close: { fontSize: 18, color: '#90a0b0', paddingLeft: 8 },
 
   badgeRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 12, marginBottom: 6 },
