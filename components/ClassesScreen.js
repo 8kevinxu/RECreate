@@ -1,9 +1,11 @@
 // Classes & Activities tab: SF Rec & Park drop-in programs (fitness, dance, music,
-// social games) that aren't court sports. Browse by category; each card shows the
-// weekly schedule, location, and whether it's free drop-in or registration.
+// social games) that aren't court sports. Browse by category; filters live behind
+// a button (grouped Age / Cost / Distance). Each card shows the schedule, a
+// color-coded price badge, and how many spots are open.
 import React, { useMemo, useState } from 'react';
 import {
   Linking,
+  Modal,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -21,7 +23,30 @@ const catMeta = (id) => CLASS_CATEGORIES.find((c) => c.id === id) || {};
 // Short chip label: "Fitness & Wellness" -> "Fitness", "Social & Games" -> "Social".
 const shortLabel = (label) => label.split(' & ')[0];
 const ageBand = (m) => (m >= 55 ? '55' : m >= 18 ? '18' : m >= 11 ? 'teen' : 'all');
-const hasSpots = (c) => c.dropIn || (c.spots ?? 0) > 0;
+
+// Price tier for the color-coded badge: free = green, cheap = yellow, pricier = red.
+const PRICE_YELLOW_MAX = 10; // dollars; at or below is yellow, above is red
+function priceTone(cost) {
+  if (/free/i.test(cost)) return 'free';
+  const m = String(cost).match(/(\d+(?:\.\d+)?)/);
+  if (!m) return 'unknown'; // "See site", "—"
+  const v = Number(m[1]);
+  if (v === 0) return 'free';
+  return v <= PRICE_YELLOW_MAX ? 'mid' : 'high';
+}
+
+// Open-spots indicator: exact count when known, qualitative when it's a lot or a
+// no-cap drop-in. ActiveNet uses -1 (and drop-ins generally) to mean "no cap".
+// Returns null when we have no signal to show.
+function spaceInfo(c) {
+  const n = c.spots;
+  if (c.dropIn || (n != null && n < 0)) return { text: 'Lots of spots', tone: 'good' };
+  if (n == null) return null;
+  if (n === 0) return { text: 'Full', tone: 'bad' };
+  if (n <= 5) return { text: `${n} left`, tone: 'warn' };
+  if (n >= 20) return { text: 'Lots of spots', tone: 'good' };
+  return { text: `${n} openings`, tone: 'good' };
+}
 
 function FilterChip({ label, on, onPress }) {
   return (
@@ -38,10 +63,12 @@ export default function ClassesScreen({ userLocation = null }) {
   const insets = useSafeAreaInsets();
   const [cat, setCat] = useState('all');
   const [query, setQuery] = useState('');
-  const [age, setAge] = useState(null); // '18' | '55' | null
-  const [radius, setRadius] = useState(null); // 5 | 10 | 15 | null (miles)
+  const [age, setAge] = useState(null); // 'teen' | '18' | '55' | null
+  const [radius, setRadius] = useState(null); // 1 | 3 | 5 | null (miles)
   const [freeOnly, setFreeOnly] = useState(false);
-  const [openOnly, setOpenOnly] = useState(false);
+  const [filtersOpen, setFiltersOpen] = useState(false);
+
+  const activeCount = (age ? 1 : 0) + (freeOnly ? 1 : 0) + (radius ? 1 : 0);
 
   const distOf = (c) =>
     userLocation && c.lat != null
@@ -58,7 +85,6 @@ export default function ClassesScreen({ userLocation = null }) {
         if (b !== age && b !== 'all') return false;
       }
       if (freeOnly && c.cost !== 'Free') return false;
-      if (openOnly && !hasSpots(c)) return false;
       if (radius) {
         const d = distOf(c);
         if (d == null || d > radius) return false;
@@ -66,7 +92,13 @@ export default function ClassesScreen({ userLocation = null }) {
       return true;
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cat, query, age, radius, freeOnly, openOnly, userLocation]);
+  }, [cat, query, age, radius, freeOnly, userLocation]);
+
+  const clearAll = () => {
+    setAge(null);
+    setFreeOnly(false);
+    setRadius(null);
+  };
 
   return (
     <View style={[styles.page, { paddingTop: insets.top + 14 }]}>
@@ -104,21 +136,24 @@ export default function ClassesScreen({ userLocation = null }) {
         })}
       </View>
 
-      <View style={styles.filterRow}>
-        <FilterChip label="Teen" on={age === 'teen'} onPress={() => setAge(age === 'teen' ? null : 'teen')} />
-        <FilterChip label="18+" on={age === '18'} onPress={() => setAge(age === '18' ? null : '18')} />
-        <FilterChip label="55+" on={age === '55'} onPress={() => setAge(age === '55' ? null : '55')} />
-        <FilterChip label="Free" on={freeOnly} onPress={() => setFreeOnly((v) => !v)} />
-        <FilterChip label="Open spots" on={openOnly} onPress={() => setOpenOnly((v) => !v)} />
-        {!!userLocation &&
-          [1, 3, 5].map((r) => (
-            <FilterChip
-              key={r}
-              label={`< ${r} mi`}
-              on={radius === r}
-              onPress={() => setRadius(radius === r ? null : r)}
-            />
-          ))}
+      <View style={styles.toolRow}>
+        <Pressable
+          style={[styles.filterBtn, activeCount > 0 && styles.filterBtnActive]}
+          onPress={() => setFiltersOpen(true)}
+        >
+          <Ionicons name="options-outline" size={16} color={activeCount > 0 ? '#2f74d6' : '#46586a'} />
+          <Text style={[styles.filterBtnText, activeCount > 0 && styles.filterBtnTextActive]}>
+            Filters
+          </Text>
+          {activeCount > 0 && (
+            <View style={styles.filterCount}>
+              <Text style={styles.filterCountText}>{activeCount}</Text>
+            </View>
+          )}
+        </Pressable>
+        <Text style={styles.resultCount}>
+          {list.length} {list.length === 1 ? 'class' : 'classes'}
+        </Text>
       </View>
 
       <ScrollView
@@ -131,38 +166,45 @@ export default function ClassesScreen({ userLocation = null }) {
         )}
         {list.map((c) => {
           const d = distOf(c);
+          const pt = priceTone(c.cost);
+          const sp = spaceInfo(c);
           return (
-          <Pressable key={c.id} style={styles.card} onPress={() => Linking.openURL(c.url)}>
-            <View style={styles.cardTop}>
-              <Text style={styles.cardName}>
-                {catMeta(c.category).emoji} {c.name}
-              </Text>
-              <View style={[styles.tag, c.dropIn ? styles.tagDropIn : styles.tagReg]}>
-                <Text style={[styles.tagText, c.dropIn ? styles.tagDropInText : styles.tagRegText]}>
-                  {c.dropIn ? 'Drop-in' : 'Register'}
+            <Pressable key={c.id} style={styles.card} onPress={() => Linking.openURL(c.url)}>
+              <View style={styles.cardTop}>
+                <Text style={styles.cardName}>
+                  {catMeta(c.category).emoji} {c.name}
                 </Text>
+                <View style={[styles.tag, c.dropIn ? styles.tagDropIn : styles.tagReg]}>
+                  <Text style={[styles.tagText, c.dropIn ? styles.tagDropInText : styles.tagRegText]}>
+                    {c.dropIn ? 'Drop-in' : 'Register'}
+                  </Text>
+                </View>
               </View>
-            </View>
-            <Text style={styles.when}>🕒 {c.when}</Text>
-            <Text style={styles.loc}>
-              📍 {c.location}
-              {d != null ? ` · ${formatDistance(d)}` : ''}
-            </Text>
-            <View style={styles.cardBottom}>
-              <Text style={styles.meta}>
-                {c.cost} · {c.ages}
+              <Text style={styles.when}>🕒 {c.when}</Text>
+              <Text style={styles.loc}>
+                📍 {c.location}
+                {d != null ? ` · ${formatDistance(d)}` : ''}
               </Text>
-              {c.lat != null && (
-                <Pressable
-                  style={styles.dirBtn}
-                  onPress={() => openDirections(c.lat, c.lng, c.location)}
-                >
-                  <Ionicons name="navigate" size={12} color="#2f74d6" />
-                  <Text style={styles.dirBtnText}>Directions</Text>
-                </Pressable>
-              )}
-            </View>
-          </Pressable>
+
+              <View style={styles.pillRow}>
+                <View style={[styles.pricePill, priceStyles[pt].pill]}>
+                  <Text style={[styles.priceText, priceStyles[pt].text]}>{c.cost}</Text>
+                </View>
+                {sp && (
+                  <View style={[styles.spacePill, spaceStyles[sp.tone].pill]}>
+                    <Text style={[styles.spaceText, spaceStyles[sp.tone].text]}>{sp.text}</Text>
+                  </View>
+                )}
+                <View style={{ flex: 1 }} />
+                {c.lat != null && (
+                  <Pressable style={styles.dirBtn} onPress={() => openDirections(c.lat, c.lng, c.location)}>
+                    <Ionicons name="navigate" size={12} color="#2f74d6" />
+                    <Text style={styles.dirBtnText}>Directions</Text>
+                  </Pressable>
+                )}
+              </View>
+              <Text style={styles.ages}>{c.ages}</Text>
+            </Pressable>
           );
         })}
 
@@ -171,9 +213,77 @@ export default function ClassesScreen({ userLocation = null }) {
           before heading out. Tap a class for details.
         </Text>
       </ScrollView>
+
+      <Modal
+        visible={filtersOpen}
+        transparent
+        animationType="slide"
+        onRequestClose={() => setFiltersOpen(false)}
+      >
+        <Pressable style={styles.backdrop} onPress={() => setFiltersOpen(false)}>
+          <Pressable style={[styles.sheet, { paddingBottom: insets.bottom + 16 }]} onPress={() => {}}>
+            <View style={styles.sheetHandle} />
+            <View style={styles.sheetHeader}>
+              <Text style={styles.sheetTitle}>Filters</Text>
+              {activeCount > 0 && (
+                <Pressable onPress={clearAll} hitSlop={8}>
+                  <Text style={styles.clearAll}>Clear all</Text>
+                </Pressable>
+              )}
+            </View>
+
+            <Text style={styles.groupLabel}>Age</Text>
+            <View style={styles.groupChips}>
+              <FilterChip label="Teen" on={age === 'teen'} onPress={() => setAge(age === 'teen' ? null : 'teen')} />
+              <FilterChip label="18+" on={age === '18'} onPress={() => setAge(age === '18' ? null : '18')} />
+              <FilterChip label="55+" on={age === '55'} onPress={() => setAge(age === '55' ? null : '55')} />
+            </View>
+
+            <Text style={styles.groupLabel}>Cost</Text>
+            <View style={styles.groupChips}>
+              <FilterChip label="Free only" on={freeOnly} onPress={() => setFreeOnly((v) => !v)} />
+            </View>
+
+            {!!userLocation && (
+              <>
+                <Text style={styles.groupLabel}>Distance</Text>
+                <View style={styles.groupChips}>
+                  {[1, 3, 5].map((r) => (
+                    <FilterChip
+                      key={r}
+                      label={`< ${r} mi`}
+                      on={radius === r}
+                      onPress={() => setRadius(radius === r ? null : r)}
+                    />
+                  ))}
+                </View>
+              </>
+            )}
+
+            <Pressable style={styles.doneBtn} onPress={() => setFiltersOpen(false)}>
+              <Text style={styles.doneText}>
+                Show {list.length} {list.length === 1 ? 'class' : 'classes'}
+              </Text>
+            </Pressable>
+          </Pressable>
+        </Pressable>
+      </Modal>
     </View>
   );
 }
+
+// Price badge palettes (circular bordered pill around the cost).
+const priceStyles = {
+  free: { pill: { borderColor: '#1f9d55', backgroundColor: '#e7f5ec' }, text: { color: '#1f8a4c' } },
+  mid: { pill: { borderColor: '#e0a800', backgroundColor: '#fdf6e0' }, text: { color: '#9a7400' } },
+  high: { pill: { borderColor: '#e5484d', backgroundColor: '#fdeaea' }, text: { color: '#c23b3b' } },
+  unknown: { pill: { borderColor: '#c8d2dc', backgroundColor: '#f1f4f7' }, text: { color: '#6b7a8a' } },
+};
+const spaceStyles = {
+  good: { pill: { backgroundColor: '#e7f5ec' }, text: { color: '#1f8a4c' } },
+  warn: { pill: { backgroundColor: '#fdf0e0' }, text: { color: '#b56a14' } },
+  bad: { pill: { backgroundColor: '#fdeaea' }, text: { color: '#c23b3b' } },
+};
 
 const styles = StyleSheet.create({
   page: { flex: 1, backgroundColor: '#eef1f5', paddingHorizontal: 16 },
@@ -199,7 +309,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     alignItems: 'flex-start',
     gap: 6,
-    marginBottom: 12,
+    marginBottom: 10,
   },
   catChip: {
     alignSelf: 'flex-start',
@@ -214,18 +324,49 @@ const styles = StyleSheet.create({
   catChipText: { color: '#46586a', fontWeight: '700', fontSize: 12 },
   catChipTextActive: { color: '#fff' },
 
-  filterRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginBottom: 12 },
+  toolRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 12,
+  },
+  filterBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 999,
+    backgroundColor: '#fff',
+    borderWidth: 1,
+    borderColor: '#dde3ea',
+  },
+  filterBtnActive: { borderColor: '#2f74d6', backgroundColor: '#e7f0fc' },
+  filterBtnText: { color: '#46586a', fontWeight: '700', fontSize: 13 },
+  filterBtnTextActive: { color: '#2f74d6' },
+  filterCount: {
+    minWidth: 18,
+    height: 18,
+    borderRadius: 9,
+    backgroundColor: '#2f74d6',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 5,
+  },
+  filterCountText: { color: '#fff', fontSize: 11, fontWeight: '800' },
+  resultCount: { fontSize: 13, color: '#8a99a8', fontWeight: '600' },
+
   fchip: {
     alignSelf: 'flex-start',
-    paddingHorizontal: 10,
-    paddingVertical: 5,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
     borderRadius: 8,
     backgroundColor: '#fff',
     borderWidth: 1,
     borderColor: '#dde3ea',
   },
   fchipOn: { backgroundColor: '#e7f0fc', borderColor: '#2f74d6' },
-  fchipText: { color: '#5b6b7b', fontWeight: '700', fontSize: 12 },
+  fchipText: { color: '#5b6b7b', fontWeight: '700', fontSize: 13 },
   fchipTextOn: { color: '#2f74d6' },
   empty: { fontSize: 13, color: '#9aa7b4', fontStyle: 'italic', paddingVertical: 16 },
 
@@ -248,13 +389,17 @@ const styles = StyleSheet.create({
   tagRegText: { color: '#2f74d6' },
   when: { fontSize: 13, color: '#46586a', fontWeight: '600', marginTop: 8 },
   loc: { fontSize: 13, color: '#46586a', marginTop: 3 },
-  cardBottom: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginTop: 8,
+
+  pillRow: { flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 10 },
+  pricePill: {
+    paddingHorizontal: 11,
+    paddingVertical: 4,
+    borderRadius: 999,
+    borderWidth: 1.5,
   },
-  meta: { fontSize: 12, color: '#8a99a8', fontWeight: '600', flex: 1 },
+  priceText: { fontSize: 13, fontWeight: '800' },
+  spacePill: { paddingHorizontal: 10, paddingVertical: 4, borderRadius: 999 },
+  spaceText: { fontSize: 12, fontWeight: '700' },
   dirBtn: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -265,6 +410,50 @@ const styles = StyleSheet.create({
     backgroundColor: '#e7f0fc',
   },
   dirBtnText: { color: '#2f74d6', fontWeight: '800', fontSize: 12 },
+  ages: { fontSize: 12, color: '#8a99a8', fontWeight: '600', marginTop: 8 },
 
   disclaimer: { fontSize: 11, color: '#9aa7b4', fontStyle: 'italic', marginTop: 6, lineHeight: 16 },
+
+  backdrop: { flex: 1, backgroundColor: 'rgba(13,27,42,0.45)', justifyContent: 'flex-end' },
+  sheet: {
+    backgroundColor: '#fff',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    paddingHorizontal: 20,
+    paddingTop: 10,
+  },
+  sheetHandle: {
+    alignSelf: 'center',
+    width: 40,
+    height: 4,
+    borderRadius: 2,
+    backgroundColor: '#d7dee6',
+    marginBottom: 12,
+  },
+  sheetHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 8,
+  },
+  sheetTitle: { fontSize: 18, fontWeight: '800', color: '#0d1b2a' },
+  clearAll: { fontSize: 14, color: '#2f74d6', fontWeight: '700' },
+  groupLabel: {
+    fontSize: 12,
+    fontWeight: '800',
+    color: '#6b7a8a',
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+    marginTop: 14,
+    marginBottom: 8,
+  },
+  groupChips: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
+  doneBtn: {
+    backgroundColor: '#2f74d6',
+    borderRadius: 12,
+    paddingVertical: 14,
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  doneText: { color: '#fff', fontWeight: '800', fontSize: 15 },
 });
