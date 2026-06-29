@@ -133,16 +133,16 @@ const CourtMap = forwardRef(function CourtMap(
   useEffect(() => {
     ensureStyles();
     // zoomSnap 0 = continuous zoom (no snapping to whole levels); smaller zoomDelta
-    // gives the +/- buttons finer steps and a gentler wheel feel.
+    // gives the +/- buttons finer steps and a gentler wheel feel. Move the zoom
+    // control to bottom-right so the floating top controls don't cover it.
     const map = L.map(elRef.current, {
-      zoomControl: true,
+      zoomControl: false,
+      attributionControl: false,
       zoomSnap: 0,
       zoomDelta: 0.4,
       wheelPxPerZoomLevel: 90,
     }).setView(SF, 12);
-    // Drop Leaflet's default "🇺🇦 Leaflet" attribution prefix (the flag in the
-    // bottom-right); the tile data credit below is kept to satisfy OSM/CARTO terms.
-    map.attributionControl.setPrefix(false);
+    L.control.zoom({ position: 'bottomright' }).addTo(map);
     L.tileLayer(
       'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
       {

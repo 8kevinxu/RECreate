@@ -104,9 +104,11 @@ const html = `
     };
 
     // zoomSnap 0 = continuous (no snapping to whole zoom levels) so pinch/scroll
-    // zoom is smooth; zoomDelta gives the +/- buttons finer steps.
-    var map = L.map('map', { zoomControl: true, zoomSnap: 0, zoomDelta: 0.4, wheelPxPerZoomLevel: 90 })
+    // zoom is smooth; zoomDelta gives the +/- buttons finer steps. The default
+    // top-left zoom control sits under the floating controls, so place it bottom-right.
+    var map = L.map('map', { zoomControl: false, attributionControl: false, zoomSnap: 0, zoomDelta: 0.4, wheelPxPerZoomLevel: 90 })
       .setView([${SF_CENTER.lat}, ${SF_CENTER.lng}], 12);
+    L.control.zoom({ position: 'bottomright' }).addTo(map);
 
     // CARTO Voyager: colorful but clean basemap (green parks, blue water, soft
     // roads) with no mountain/peak symbols. Free, no API key. detectRetina

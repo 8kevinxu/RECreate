@@ -5,7 +5,6 @@ import {
   ActivityIndicator,
   Dimensions,
   Linking,
-  Platform,
   Pressable,
   SafeAreaView,
   ScrollView,
@@ -174,7 +173,7 @@ export default function App() {
   const [sport, setSport] = useState(DEFAULT_SPORT); // which drop-in sport to show
   const [placeFilter, setPlaceFilter] = useState('all'); // indoor/outdoor sub-filter
   const [amenities, setAmenities] = useState([]); // active amenity filter ids (multi-select)
-  const [filtersOpen, setFiltersOpen] = useState(false); // place/amenity filters panel (⚙)
+  const [menuOpen, setMenuOpen] = useState(false); // sport + filters dropdown menu
   const [selectedId, setSelectedId] = useState(null);
   const [userLocation, setUserLocation] = useState(null);
   const [locating, setLocating] = useState(true);
@@ -454,9 +453,7 @@ export default function App() {
   }, [courts, sport]);
   // Drop any active amenity that no longer applies (e.g. after switching sport).
   const activeAmenities = amenities.filter((id) => amenityOpts.some((a) => a.id === id));
-  // Secondary filters live behind a ⚙ button; show it only when there's something to
-  // filter, with a badge counting what's active.
-  const hasFilters = showPlaceToggle || amenityOpts.length > 0;
+  // Count of active filters, shown as a badge on the sport/menu button.
   const activeFilterCount =
     (showPlaceToggle && placeFilter !== 'all' ? 1 : 0) + activeAmenities.length;
 
@@ -549,34 +546,27 @@ export default function App() {
       </View>
 
       <View style={styles.body}>
+        {(menuOpen || pickerOpen) && (
+          <Pressable
+            style={styles.menuBackdrop}
+            onPress={() => {
+              setMenuOpen(false);
+              setPickerOpen(false);
+            }}
+          />
+        )}
         <View style={styles.controls}>
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.sportRow}
-        >
-          {SPORTS.map((s) => {
-            const active = s.id === sport;
-            return (
-              <Pressable
-                key={s.id}
-                onPress={() => {
-                  setSport(s.id);
-                  setPlaceFilter('all'); // reset the indoor/outdoor sub-filter
-                  setAmenities([]); // reset amenity filters
-                  setFiltersOpen(false);
-                }}
-                style={[styles.sportChip, active && styles.sportChipActive]}
-              >
-                <Text style={[styles.sportChipText, active && styles.sportChipTextActive]}>
-                  {s.emoji} {s.label}
-                </Text>
-              </Pressable>
-            );
-          })}
-        </ScrollView>
-
         <View style={styles.filterRow}>
+          <Pressable
+            onPress={() => setMenuOpen((v) => !v)}
+            style={[styles.menuBtn, (menuOpen || activeFilterCount > 0) && styles.menuBtnActive]}
+          >
+            <Text style={styles.menuBtnText}>
+              {sportMeta(sport).emoji} {sportMeta(sport).label}
+              {activeFilterCount > 0 ? ` · ${activeFilterCount}` : ''} {menuOpen ? '▴' : '▾'}
+            </Text>
+          </Pressable>
+
           <Pressable
             onPress={() => setOpenOnly((v) => !v)}
             style={[styles.openToggle, openOnly && styles.openToggleActive]}
@@ -609,33 +599,44 @@ export default function App() {
           {isPicked && (
             <Pressable
               hitSlop={8}
-              onPress={() => setPickedTime(null)}
+              onPress={() => {
+                setPickedTime(null); // back to live "now"
+                setPickerOpen(false); // collapse the day chips + time slider
+              }}
               style={styles.timeReset}
             >
               <Text style={styles.timeResetText}>✕</Text>
             </Pressable>
           )}
 
-          {hasFilters && (
-            <Pressable
-              onPress={() => setFiltersOpen((v) => !v)}
-              style={[styles.filtersBtn, (filtersOpen || activeFilterCount > 0) && styles.filtersBtnActive]}
-            >
-              <Text
-                style={[
-                  styles.filtersBtnText,
-                  (filtersOpen || activeFilterCount > 0) && styles.filtersBtnTextActive,
-                ]}
-              >
-                ⚙ Filters{activeFilterCount > 0 ? ` · ${activeFilterCount}` : ''}
-              </Text>
-            </Pressable>
-          )}
-
         </View>
 
-        {filtersOpen && hasFilters && (
+        {menuOpen && (
           <View style={styles.filtersPanel}>
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={styles.sportRow}
+            >
+              {SPORTS.map((s) => {
+                const active = s.id === sport;
+                return (
+                  <Pressable
+                    key={s.id}
+                    onPress={() => {
+                      setSport(s.id);
+                      setPlaceFilter('all'); // reset the indoor/outdoor sub-filter
+                      setAmenities([]); // reset amenity filters
+                    }}
+                    style={[styles.sportChip, active && styles.sportChipActive]}
+                  >
+                    <Text style={[styles.sportChipText, active && styles.sportChipTextActive]}>
+                      {s.emoji} {s.label}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            </ScrollView>
             {showPlaceToggle && (
               <View style={styles.placeRow}>
                 {PLACE_OPTS.map((o) => {
@@ -826,17 +827,6 @@ export default function App() {
       )}
 
       <BottomNav tab={tab} onChange={goTab} socialBadge={unread} profileBadge={requestCount} />
-
-      {Platform.OS === 'web' && (
-        <Pressable
-          style={styles.watermark}
-          onPress={() => Linking.openURL('https://github.com/8kevinxu/hoopmap')}
-          accessibilityRole="link"
-          accessibilityLabel="View hoopmap source on GitHub"
-        >
-          <Text style={styles.watermarkText}>★ github.com/8kevinxu/hoopmap</Text>
-        </Pressable>
-      )}
     </SafeAreaView>
   );
 }
@@ -1273,23 +1263,6 @@ function CourtDetail({
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: '#0d1b2a' },
 
-  // Web-only "built by" watermark, pinned to the bottom-right corner.
-  watermark: {
-    position: 'fixed',
-    bottom: 10,
-    right: 12,
-    backgroundColor: 'rgba(13, 27, 42, 0.72)',
-    borderRadius: 14,
-    paddingHorizontal: 11,
-    paddingVertical: 6,
-    zIndex: 1000,
-  },
-  watermarkText: {
-    color: '#cdd8e4',
-    fontSize: 11,
-    fontWeight: '600',
-    letterSpacing: 0.2,
-  },
   header: {
     flexDirection: 'row',
     alignItems: 'flex-start',
@@ -1380,7 +1353,8 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     backgroundColor: 'rgba(13,27,42,0.82)',
   },
-  sportRow: { flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 10 },
+  sportRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  menuBackdrop: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 15 },
   sportChip: {
     paddingHorizontal: 14,
     paddingVertical: 8,
@@ -1417,17 +1391,16 @@ const styles = StyleSheet.create({
   amenityChipText: { color: '#7e96ad', fontWeight: '700', fontSize: 12 },
   amenityChipTextActive: { color: '#fff' },
   filterRow: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', gap: 8 },
-  filtersBtn: {
-    paddingHorizontal: 12,
+  menuBtn: {
+    paddingHorizontal: 14,
     paddingVertical: 9,
     borderRadius: 10,
     backgroundColor: '#1b2b3d',
     borderWidth: 1,
     borderColor: '#26384d',
   },
-  filtersBtnActive: { backgroundColor: '#2f4b66', borderColor: '#3f6286' },
-  filtersBtnText: { color: '#9db4cc', fontWeight: '700', fontSize: 13 },
-  filtersBtnTextActive: { color: '#fff' },
+  menuBtnActive: { backgroundColor: '#e8732c', borderColor: '#e8732c' },
+  menuBtnText: { color: '#fff', fontWeight: '800', fontSize: 13 },
   filtersPanel: { marginTop: 10, gap: 8 },
 
   timePill: {
@@ -1493,7 +1466,7 @@ const styles = StyleSheet.create({
   recenterBtn: {
     position: 'absolute',
     right: 14,
-    bottom: 14,
+    bottom: 92, // clear of the map's bottom-right zoom control
     width: 44,
     height: 44,
     borderRadius: 22,
