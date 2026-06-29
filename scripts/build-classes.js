@@ -24,22 +24,38 @@ const CACHE_FILE = path.join(__dirname, 'classes-cache.json');
 const OUT_FILE = path.join(__dirname, '..', 'data', 'classes.js');
 const MIN_OK = 30; // abort (keep last-good) if fewer than this many classes parse
 
-// Our categories, and which ActiveNet category ids feed each directly (arts/crafts
-// go under Music & Arts). Two ActiveNet categories are mixed and split by keyword:
-//   26 Dance / Music / Performing Arts  -> music vs dance
-//   33 Social Activities (bingo, mahjong, sing-along, music appreciation) -> music vs social
+// Our categories. ActiveNet's own categories lump very different things together
+// (its "Music & Arts" mixes ukulele with oil painting and darkroom photography), so
+// we pull each ActiveNet category and re-bucket every item by keyword into clearer
+// app categories. ActiveNet category ids we query:
+//   29 Fitness & Wellness        -> fitness
+//   50/25/24 Music & Arts        -> music / arts / photo (by keyword)
+//   26 Dance / Music / Perf Arts -> dance (default) / music / arts / photo
+//   33 Social Activities         -> social (default) / music
 const CATEGORIES = [
-  { id: 'fitness', label: 'Fitness & Wellness', emoji: '🧘', anc: ['29'] },
-  { id: 'dance', label: 'Dance', emoji: '💃', anc: [] },
-  { id: 'music', label: 'Music & Arts', emoji: '🎵', anc: ['50', '25', '24'] },
-  { id: 'social', label: 'Social & Games', emoji: '🎲', anc: [] },
+  { id: 'fitness', label: 'Fitness & Wellness', emoji: '🧘' },
+  { id: 'dance', label: 'Dance', emoji: '💃' },
+  { id: 'music', label: 'Music', emoji: '🎵' },
+  { id: 'arts', label: 'Arts & Crafts', emoji: '🎨' },
+  { id: 'photo', label: 'Photography', emoji: '📷' },
+  { id: 'social', label: 'Social & Games', emoji: '🎲' },
 ];
-const SPLITS = [
-  { ids: ['26'], music: 'music', other: 'dance' },
-  { ids: ['33'], music: 'music', other: 'social' },
-];
+
+// Keyword classifiers, checked photo -> arts -> music; the caller supplies the
+// fallback for items that match none (the ActiveNet category's dominant theme).
+const PHOTO_RE =
+  /photo|lightroom|darkroom|\bfilm\b|camera|cyanotype|photoshop|collage|negative|develop/i;
+const ARTS_RE =
+  /paint|brush|sketch|draw|jewel|knit|crochet|bead|paper|ceramic|pottery|clay|\bsew\b|quilt|origami|craft|callig/i;
 const MUSIC_RE =
   /music|sing|choir|ukulele|guitar|piano|drum|instrument|karaoke|\bband\b|orchestra|appreciation/i;
+
+function classify(name, fallback) {
+  if (PHOTO_RE.test(name)) return 'photo';
+  if (ARTS_RE.test(name)) return 'arts';
+  if (MUSIC_RE.test(name)) return 'music';
+  return fallback;
+}
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -214,19 +230,18 @@ async function scrape() {
     }
   };
 
-  // Direct-mapped categories.
-  for (const cat of CATEGORIES) {
-    if (!cat.anc.length) continue;
-    const items = await fetchCategory(session, cat.anc);
-    for (const it of items) add(it, cat.id);
-    console.log(`  ${cat.id}: ${items.length} from ANC ${cat.anc.join(',')}`);
-  }
-
-  // Mixed categories split by keyword (music vs dance/social).
-  for (const sp of SPLITS) {
-    const items = await fetchCategory(session, sp.ids);
-    for (const it of items) add(it, MUSIC_RE.test(dehtml(it.name)) ? sp.music : sp.other);
-    console.log(`  split ANC ${sp.ids.join(',')}: ${items.length}`);
+  // Each ActiveNet category, re-bucketed by keyword. The second arg is the fallback
+  // category for items matching no keyword (the source category's dominant theme).
+  const groups = [
+    { ids: ['29'], fallback: 'fitness' },
+    { ids: ['50', '25', '24'], fallback: 'arts' }, // Music & Arts
+    { ids: ['26'], fallback: 'dance' }, // Dance / Music / Performing Arts
+    { ids: ['33'], fallback: 'social' }, // Social Activities
+  ];
+  for (const g of groups) {
+    const items = await fetchCategory(session, g.ids);
+    for (const it of items) add(it, classify(dehtml(it.name), g.fallback));
+    console.log(`  ANC ${g.ids.join(',')}: ${items.length}`);
   }
 
   return rows;

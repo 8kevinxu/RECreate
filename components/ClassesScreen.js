@@ -77,6 +77,7 @@ export default function ClassesScreen({ userLocation = null }) {
   const [age, setAge] = useState(null); // 'teen' | '18' | '55' | null
   const [radius, setRadius] = useState(null); // 1 | 3 | 5 | null (miles)
   const [freeOnly, setFreeOnly] = useState(false);
+  const [hasSpots, setHasSpots] = useState(false); // hide classes that are full
   const [filtersOpen, setFiltersOpen] = useState(false);
 
   // Live availability overlay (openings "right now"), fetched from ActiveNet.
@@ -107,7 +108,7 @@ export default function ClassesScreen({ userLocation = null }) {
   // Overlay live openings onto a class when we have them.
   const withLive = (c) => (live && live[c.id] ? { ...c, ...live[c.id] } : c);
 
-  const activeCount = (age ? 1 : 0) + (freeOnly ? 1 : 0) + (radius ? 1 : 0);
+  const activeCount = (age ? 1 : 0) + (freeOnly ? 1 : 0) + (radius ? 1 : 0) + (hasSpots ? 1 : 0);
 
   const distOf = (c) =>
     userLocation && c.lat != null
@@ -124,6 +125,11 @@ export default function ClassesScreen({ userLocation = null }) {
         if (b !== age && b !== 'all') return false;
       }
       if (freeOnly && c.cost !== 'Free') return false;
+      if (hasSpots) {
+        // Drop only classes we *know* are full (uses the live overlay when present).
+        const sp = spaceInfo(live && live[c.id] ? { ...c, ...live[c.id] } : c);
+        if (sp && sp.tone === 'bad') return false;
+      }
       if (radius) {
         const d = distOf(c);
         if (d == null || d > radius) return false;
@@ -131,12 +137,13 @@ export default function ClassesScreen({ userLocation = null }) {
       return true;
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cat, query, age, radius, freeOnly, userLocation]);
+  }, [cat, query, age, radius, freeOnly, hasSpots, live, userLocation]);
 
   const clearAll = () => {
     setAge(null);
     setFreeOnly(false);
     setRadius(null);
+    setHasSpots(false);
   };
 
   return (
@@ -300,6 +307,11 @@ export default function ClassesScreen({ userLocation = null }) {
               <FilterChip label="Teen" on={age === 'teen'} onPress={() => setAge(age === 'teen' ? null : 'teen')} />
               <FilterChip label="18+" on={age === '18'} onPress={() => setAge(age === '18' ? null : '18')} />
               <FilterChip label="55+" on={age === '55'} onPress={() => setAge(age === '55' ? null : '55')} />
+            </View>
+
+            <Text style={styles.groupLabel}>Availability</Text>
+            <View style={styles.groupChips}>
+              <FilterChip label="Has spots" on={hasSpots} onPress={() => setHasSpots((v) => !v)} />
             </View>
 
             <Text style={styles.groupLabel}>Cost</Text>

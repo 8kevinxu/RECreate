@@ -641,7 +641,7 @@ export default function App() {
               ]}
             >
               {openOnly ? '✓ ' : ''}
-              {isPicked ? 'Open then' : 'Open now'}
+              Open
             </Text>
           </Pressable>
 
