@@ -1,9 +1,13 @@
 // Sign in / create account sheet, plus a signed-in account panel that doubles as
-// the player's profile: editable name / age / bio / favorite sports, plus their
-// check-in stats (per-sport counters + most-visited "favorite" park).
+// the player's profile. The profile shows read-only (name, age, neighborhood,
+// bio, favorite sports) with an "Edit profile" button that flips into a form
+// (Save / Cancel, with a discard prompt if you back out with unsaved changes).
+// Below it: check-in stats — per-sport counters, most-played court+sport, and
+// most-visited "favorite" park.
 import React, { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
+  Alert,
   Modal,
   Pressable,
   ScrollView,
@@ -34,22 +38,31 @@ export default function AuthModal({
   const [error, setError] = useState(null);
   const [info, setInfo] = useState(null);
 
+  // Profile is read-only by default; "Edit profile" flips into the form.
+  const [editing, setEditing] = useState(false);
   // Profile editor state (signed-in panel), seeded from the loaded profile.
   const [pName, setPName] = useState('');
   const [pAge, setPAge] = useState('');
   const [pBio, setPBio] = useState('');
+  const [pNeighborhood, setPNeighborhood] = useState('');
   const [pSports, setPSports] = useState([]);
   const [savedNote, setSavedNote] = useState(null); // { err, text }
   const [stats, setStats] = useState(null);
 
-  // Seed the editor whenever the panel opens or the profile changes.
-  useEffect(() => {
-    if (!visible || !user) return;
+  const seedFromProfile = () => {
     setPName(profile?.display_name || '');
     setPAge(profile?.age != null ? String(profile.age) : '');
     setPBio(profile?.bio || '');
+    setPNeighborhood(profile?.neighborhood || '');
     setPSports(profile?.favorite_sports || []);
+  };
+
+  // Seed the editor whenever the panel opens or the profile changes.
+  useEffect(() => {
+    if (!visible || !user) return;
+    seedFromProfile();
     setSavedNote(null);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible, user, profile]);
 
   // Load check-in stats when the panel opens.
@@ -118,6 +131,40 @@ export default function AuthModal({
   const toggleSport = (id) =>
     setPSports((cur) => (cur.includes(id) ? cur.filter((s) => s !== id) : [...cur, id]));
 
+  // Has the editor diverged from the saved profile? Drives the discard prompt.
+  const norm = (v) => (v ?? '').toString().trim();
+  const isDirty = () =>
+    norm(pName) !== norm(profile?.display_name) ||
+    norm(pAge) !== (profile?.age != null ? String(profile.age) : '') ||
+    norm(pNeighborhood) !== norm(profile?.neighborhood) ||
+    norm(pBio) !== norm(profile?.bio) ||
+    JSON.stringify([...pSports].sort()) !==
+      JSON.stringify([...(profile?.favorite_sports || [])].sort());
+
+  const startEdit = () => {
+    seedFromProfile();
+    setSavedNote(null);
+    setEditing(true);
+  };
+
+  const cancelEdit = () => {
+    if (isDirty()) {
+      Alert.alert('Discard changes?', 'Leave without saving your changes?', [
+        { text: 'Keep editing', style: 'cancel' },
+        {
+          text: 'Discard',
+          style: 'destructive',
+          onPress: () => {
+            seedFromProfile();
+            setEditing(false);
+          },
+        },
+      ]);
+    } else {
+      setEditing(false);
+    }
+  };
+
   const saveProfile = async () => {
     setSavedNote(null);
     const ageNum = pAge.trim() ? parseInt(pAge, 10) : null;
@@ -130,13 +177,24 @@ export default function AuthModal({
       display_name: pName,
       age: ageNum,
       bio: pBio,
+      neighborhood: pNeighborhood,
       favorite_sports: pSports,
     });
     setBusy(false);
-    setSavedNote(err ? { err: true, text: err.message } : { err: false, text: '✓ Profile saved.' });
+    if (err) {
+      setSavedNote({ err: true, text: err.message });
+      return;
+    }
+    setSavedNote({ err: false, text: '✓ Profile saved.' });
+    setEditing(false);
   };
 
   const favCourt = stats?.favoriteCourtId ? courtsById[stats.favoriteCourtId] : null;
+  const favSportsList = SPORTS.filter((s) => (profile?.favorite_sports || []).includes(s.id));
+  // "Most check-ins at X for Y sport"
+  const tcs = stats?.topCourtSport;
+  const tcsCourt = tcs ? courtsById[tcs.courtId]?.name : null;
+  const tcsSport = tcs ? SPORTS.find((s) => s.id === tcs.sport) : null;
 
   const wrap = (inner) =>
     asPage ? (
@@ -179,91 +237,149 @@ export default function AuthModal({
               </Text>
               <Text style={styles.signedInEmail}>{user.email}</Text>
 
-              <Text style={styles.sectionLabel}>Profile</Text>
-              <TextInput
-                style={styles.input}
-                placeholder="Display name"
-                placeholderTextColor="#9aa7b4"
-                value={pName}
-                onChangeText={setPName}
-                maxLength={50}
-                autoCapitalize="words"
-              />
-              <TextInput
-                style={styles.input}
-                placeholder="Age"
-                placeholderTextColor="#9aa7b4"
-                value={pAge}
-                onChangeText={(t) => setPAge(t.replace(/[^0-9]/g, ''))}
-                keyboardType="number-pad"
-                maxLength={3}
-              />
-              <TextInput
-                style={[styles.input, styles.inputMultiline]}
-                placeholder="Bio — your game, when you play, who to look for…"
-                placeholderTextColor="#9aa7b4"
-                value={pBio}
-                onChangeText={setPBio}
-                maxLength={280}
-                multiline
-              />
-
-              <Text style={styles.fieldLabel}>Favorite sports</Text>
-              <View style={styles.sportWrap}>
-                {SPORTS.map((s) => {
-                  const active = pSports.includes(s.id);
-                  return (
-                    <Pressable
-                      key={s.id}
-                      onPress={() => toggleSport(s.id)}
-                      style={[styles.sportChip, active && styles.sportChipActive]}
-                    >
-                      <Text style={[styles.sportChipText, active && styles.sportChipTextActive]}>
-                        {s.emoji} {s.label}
-                      </Text>
-                    </Pressable>
-                  );
-                })}
-              </View>
-
-              <Pressable
-                style={[styles.submit, busy && styles.submitDisabled]}
-                disabled={busy}
-                onPress={saveProfile}
-              >
-                <Text style={styles.submitText}>Save profile</Text>
-              </Pressable>
-              {!!savedNote && (
-                <Text style={savedNote.err ? styles.error : styles.info}>{savedNote.text}</Text>
-              )}
-
-              <Text style={styles.sectionLabel}>Your check-ins</Text>
-              {stats && stats.total > 0 ? (
+              {editing ? (
                 <>
-                  <View style={styles.statWrap}>
-                    {SPORTS.filter((s) => stats.perSport[s.id]).map((s) => (
-                      <View key={s.id} style={styles.statChip}>
-                        <Text style={styles.statChipText}>
-                          {s.emoji} {stats.perSport[s.id]}
-                        </Text>
-                      </View>
-                    ))}
+                  <Text style={styles.sectionLabel}>Edit profile</Text>
+                  <TextInput
+                    style={styles.input}
+                    placeholder="Display name"
+                    placeholderTextColor="#9aa7b4"
+                    value={pName}
+                    onChangeText={setPName}
+                    maxLength={50}
+                    autoCapitalize="words"
+                  />
+                  <TextInput
+                    style={styles.input}
+                    placeholder="Age"
+                    placeholderTextColor="#9aa7b4"
+                    value={pAge}
+                    onChangeText={(t) => setPAge(t.replace(/[^0-9]/g, ''))}
+                    keyboardType="number-pad"
+                    maxLength={3}
+                  />
+                  <TextInput
+                    style={styles.input}
+                    placeholder="Neighborhood — e.g. Mission, Sunset, Richmond"
+                    placeholderTextColor="#9aa7b4"
+                    value={pNeighborhood}
+                    onChangeText={setPNeighborhood}
+                    maxLength={60}
+                    autoCapitalize="words"
+                  />
+                  <TextInput
+                    style={[styles.input, styles.inputMultiline]}
+                    placeholder="Bio — your game, when you play, who to look for…"
+                    placeholderTextColor="#9aa7b4"
+                    value={pBio}
+                    onChangeText={setPBio}
+                    maxLength={280}
+                    multiline
+                  />
+
+                  <Text style={styles.fieldLabel}>Favorite sports</Text>
+                  <View style={styles.sportWrap}>
+                    {SPORTS.map((s) => {
+                      const active = pSports.includes(s.id);
+                      return (
+                        <Pressable
+                          key={s.id}
+                          onPress={() => toggleSport(s.id)}
+                          style={[styles.sportChip, active && styles.sportChipActive]}
+                        >
+                          <Text style={[styles.sportChipText, active && styles.sportChipTextActive]}>
+                            {s.emoji} {s.label}
+                          </Text>
+                        </Pressable>
+                      );
+                    })}
                   </View>
-                  {!!favCourt && (
-                    <Text style={styles.favLine}>
-                      ⭐ Favorite park: <Text style={styles.favName}>{favCourt.name}</Text> (
-                      {stats.favoriteCount} {stats.favoriteCount === 1 ? 'visit' : 'visits'})
-                    </Text>
-                  )}
-                  <Text style={styles.totalLine}>{stats.total} total check-ins</Text>
+
+                  {!!savedNote && savedNote.err && <Text style={styles.error}>{savedNote.text}</Text>}
+                  <View style={styles.editBtnRow}>
+                    <Pressable style={[styles.submit, styles.cancelBtn]} onPress={cancelEdit}>
+                      <Text style={styles.cancelText}>Cancel</Text>
+                    </Pressable>
+                    <Pressable
+                      style={[styles.submit, styles.saveBtn, busy && styles.submitDisabled]}
+                      disabled={busy}
+                      onPress={saveProfile}
+                    >
+                      {busy ? (
+                        <ActivityIndicator color="#fff" />
+                      ) : (
+                        <Text style={styles.submitText}>Save</Text>
+                      )}
+                    </Pressable>
+                  </View>
                 </>
               ) : (
-                <Text style={styles.muted}>
-                  No check-ins yet — open a court and tap “I played here.”
-                </Text>
+                <>
+                  <View style={styles.profileCard}>
+                    <Text style={styles.profileName}>
+                      {profile?.display_name || displayName || 'Your name'}
+                    </Text>
+                    {(profile?.age != null || !!profile?.neighborhood) && (
+                      <Text style={styles.profileMeta}>
+                        {[profile?.age != null ? `Age ${profile.age}` : null, profile?.neighborhood]
+                          .filter(Boolean)
+                          .join('  ·  ')}
+                      </Text>
+                    )}
+                    {!!profile?.bio && <Text style={styles.profileBio}>{profile.bio}</Text>}
+                    {favSportsList.length > 0 && (
+                      <View style={styles.viewSportWrap}>
+                        {favSportsList.map((s) => (
+                          <View key={s.id} style={styles.viewSportChip}>
+                            <Text style={styles.viewSportText}>
+                              {s.emoji} {s.label}
+                            </Text>
+                          </View>
+                        ))}
+                      </View>
+                    )}
+                  </View>
+                  <Pressable style={[styles.submit, styles.editBtn]} onPress={startEdit}>
+                    <Text style={styles.submitText}>Edit profile</Text>
+                  </Pressable>
+                  {!!savedNote && !savedNote.err && <Text style={styles.info}>{savedNote.text}</Text>}
+
+                  <Text style={styles.sectionLabel}>Your check-ins</Text>
+                  {stats && stats.total > 0 ? (
+                    <>
+                      <View style={styles.statWrap}>
+                        {SPORTS.filter((s) => stats.perSport[s.id]).map((s) => (
+                          <View key={s.id} style={styles.statChip}>
+                            <Text style={styles.statChipText}>
+                              {s.emoji} {stats.perSport[s.id]}
+                            </Text>
+                          </View>
+                        ))}
+                      </View>
+                      {!!(tcs && tcsCourt && tcsSport) && (
+                        <Text style={styles.favLine}>
+                          🔥 Most-played: <Text style={styles.favName}>{tcsSport.label}</Text> at{' '}
+                          <Text style={styles.favName}>{tcsCourt}</Text> ({tcs.count}{' '}
+                          {tcs.count === 1 ? 'check-in' : 'check-ins'})
+                        </Text>
+                      )}
+                      {!!favCourt && (
+                        <Text style={styles.favLine}>
+                          ⭐ Favorite park: <Text style={styles.favName}>{favCourt.name}</Text> (
+                          {stats.favoriteCount} {stats.favoriteCount === 1 ? 'visit' : 'visits'})
+                        </Text>
+                      )}
+                      <Text style={styles.totalLine}>{stats.total} total check-ins</Text>
+                    </>
+                  ) : (
+                    <Text style={styles.muted}>
+                      No check-ins yet — open a court and tap “I played here.”
+                    </Text>
+                  )}
+                </>
               )}
 
-              {onFriends && (
+              {!editing && onFriends && (
                 <Pressable
                   style={[styles.submit, styles.friendsBtn]}
                   onPress={onFriends}
@@ -272,17 +388,19 @@ export default function AuthModal({
                 </Pressable>
               )}
 
-              <Pressable
-                style={[styles.submit, styles.signOutBtn, busy && styles.submitDisabled]}
-                disabled={busy}
-                onPress={doSignOut}
-              >
-                {busy ? (
-                  <ActivityIndicator color="#fff" />
-                ) : (
-                  <Text style={styles.submitText}>Sign out</Text>
-                )}
-              </Pressable>
+              {!editing && (
+                <Pressable
+                  style={[styles.submit, styles.signOutBtn, busy && styles.submitDisabled]}
+                  disabled={busy}
+                  onPress={doSignOut}
+                >
+                  {busy ? (
+                    <ActivityIndicator color="#fff" />
+                  ) : (
+                    <Text style={styles.submitText}>Sign out</Text>
+                  )}
+                </Pressable>
+              )}
             </ScrollView>
           ) : (
             <>
@@ -406,6 +524,25 @@ const styles = StyleSheet.create({
   submitText: { color: '#fff', fontWeight: '800', fontSize: 15 },
   friendsBtn: { backgroundColor: '#2f74d6', marginTop: 16 },
   signOutBtn: { backgroundColor: '#c0392b', marginTop: 10 },
+
+  editBtn: { backgroundColor: '#2f74d6', marginTop: 12 },
+  editBtnRow: { flexDirection: 'row', gap: 10, marginTop: 4 },
+  saveBtn: { flex: 1 },
+  cancelBtn: { flex: 1, backgroundColor: '#eef1f4' },
+  cancelText: { color: '#46586a', fontWeight: '800', fontSize: 15 },
+
+  profileCard: { backgroundColor: '#f4f6f8', borderRadius: 14, padding: 16, marginTop: 8 },
+  profileName: { fontSize: 20, fontWeight: '800', color: '#0d1b2a' },
+  profileMeta: { fontSize: 14, color: '#5b6b7b', marginTop: 3, fontWeight: '600' },
+  profileBio: { fontSize: 14, color: '#2a3a4a', marginTop: 8, lineHeight: 20 },
+  viewSportWrap: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 12 },
+  viewSportChip: {
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 999,
+    backgroundColor: '#fdece1',
+  },
+  viewSportText: { color: '#c2571a', fontWeight: '700', fontSize: 13 },
 
   switch: {
     textAlign: 'center',
