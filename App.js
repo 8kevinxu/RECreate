@@ -21,6 +21,7 @@ import FeedModal from './components/FeedModal';
 import NearbyList from './components/NearbyList';
 import TimeSlider from './components/TimeSlider';
 import BottomNav from './components/BottomNav';
+import ClassesScreen from './components/ClassesScreen';
 import { useAuth } from './lib/auth';
 import { useCourts } from './lib/useCourts';
 import { fmtClock, startOfDay, viewLabel, dayChipLabel, fmtDuration } from './lib/datetime';
@@ -815,6 +816,8 @@ export default function App() {
       />
           </>
         )}
+
+        {tab === 'classes' && <ClassesScreen />}
 
         {tab === 'social' && (
           <FeedModal
