@@ -556,11 +556,7 @@ export default function App() {
           ]}
           onPress={() => setControlsVisible((v) => !v)}
         >
-          <Ionicons
-            name="options-outline"
-            size={22}
-            color={controlsVisible ? '#fff' : '#2f74d6'}
-          />
+          <Text style={styles.filterFabSport}>{sportMeta(sport).emoji}</Text>
         </Pressable>
 
         {controlsVisible && (
@@ -1442,6 +1438,7 @@ const styles = StyleSheet.create({
   },
   filterFab: { position: 'absolute', top: 10, right: 14, zIndex: 25 },
   filterFabActive: { backgroundColor: '#2f74d6' },
+  filterFabSport: { fontSize: 24 },
   sportRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   sportChip: {
     paddingHorizontal: 14,
