@@ -13,6 +13,7 @@ import {
   TextInput,
   View,
 } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import CourtMap from './components/CourtMap';
 import AuthModal from './components/AuthModal';
 import FriendsModal from './components/FriendsModal';
@@ -174,6 +175,7 @@ export default function App() {
   const [placeFilter, setPlaceFilter] = useState('all'); // indoor/outdoor sub-filter
   const [amenities, setAmenities] = useState([]); // active amenity filter ids (multi-select)
   const [menuOpen, setMenuOpen] = useState(false); // sport + filters dropdown menu
+  const [controlsVisible, setControlsVisible] = useState(false); // filter bar shown via the FAB
   const [selectedId, setSelectedId] = useState(null);
   const [userLocation, setUserLocation] = useState(null);
   const [locating, setLocating] = useState(true);
@@ -527,41 +529,42 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.safe}>
-      <StatusBar style="light" />
+      <StatusBar style="dark" />
 
       <View style={styles.pageWrap}>
         {tab === 'home' && (
           <>
-      <View style={styles.header}>
-        <View style={styles.headerText}>
-          <Text style={styles.subtitle}>
-            {openOnly
-              ? `${visibleCourts.length} with open gym ${isPicked ? viewLabel(viewTime) : 'right now'}`
-              : `${visibleCourts.length} ${placeWord}${sportMeta(sport).label.toLowerCase()} courts`}
-          </Text>
-          {!!generatedAt && (
-            <Text style={styles.updated}>Updated {formatUpdated(generatedAt)}</Text>
-          )}
-        </View>
-      </View>
-
       <View style={styles.body}>
-        {(menuOpen || pickerOpen) && (
-          <Pressable
-            style={styles.menuBackdrop}
-            onPress={() => {
-              setMenuOpen(false);
-              setPickerOpen(false);
-            }}
-          />
+        {!!generatedAt && (
+          <View style={styles.updatedPill}>
+            <View style={styles.updatedDot} />
+            <Text style={styles.updatedPillText}>Updated {formatUpdated(generatedAt)}</Text>
+          </View>
         )}
+        <Pressable
+          style={[styles.fab, styles.filterFab, controlsVisible && styles.filterFabActive]}
+          onPress={() => setControlsVisible((v) => !v)}
+        >
+          <Ionicons
+            name="options-outline"
+            size={22}
+            color={controlsVisible ? '#fff' : '#2f74d6'}
+          />
+        </Pressable>
+
+        {controlsVisible && (
         <View style={styles.controls}>
         <View style={styles.filterRow}>
           <Pressable
             onPress={() => setMenuOpen((v) => !v)}
             style={[styles.menuBtn, (menuOpen || activeFilterCount > 0) && styles.menuBtnActive]}
           >
-            <Text style={styles.menuBtnText}>
+            <Text
+              style={[
+                styles.menuBtnText,
+                (menuOpen || activeFilterCount > 0) && styles.menuBtnTextActive,
+              ]}
+            >
               {sportMeta(sport).emoji} {sportMeta(sport).label}
               {activeFilterCount > 0 ? ` · ${activeFilterCount}` : ''} {menuOpen ? '▴' : '▾'}
             </Text>
@@ -737,6 +740,7 @@ export default function App() {
           </View>
         )}
       </View>
+        )}
 
       <View style={styles.mapWrap}>
         <CourtMap
@@ -1261,7 +1265,7 @@ function CourtDetail({
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: '#0d1b2a' },
+  safe: { flex: 1, backgroundColor: '#eef1f5' },
 
   header: {
     flexDirection: 'row',
@@ -1286,7 +1290,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     maxWidth: 150,
   },
-  accountText: { color: '#cfe0f0', fontWeight: '700', fontSize: 13 },
+  accountText: { color: '#1f2a37', fontWeight: '700', fontSize: 13 },
   badge: {
     position: 'absolute',
     top: -5,
@@ -1300,9 +1304,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 4,
   },
   badgeText: { color: '#fff', fontSize: 11, fontWeight: '800' },
-  title: { color: '#fff', fontSize: 24, fontWeight: '800' },
-  subtitle: { color: '#cfe0f0', fontSize: 15, fontWeight: '700' },
-  updated: { color: '#6f8298', fontSize: 11, marginTop: 2 },
+  title: { color: '#0d1b2a', fontSize: 24, fontWeight: '800' },
+  subtitle: { color: '#1f2a37', fontSize: 15, fontWeight: '700' },
+  updated: { color: '#8a99a8', fontSize: 11, marginTop: 2 },
 
   filterBar: {
     flexDirection: 'row',
@@ -1332,10 +1336,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 14,
     paddingVertical: 9,
     borderRadius: 10,
-    backgroundColor: '#1b2b3d',
+    backgroundColor: '#fff',
+    borderWidth: 1,
+    borderColor: '#dde3ea',
   },
-  openToggleActive: { backgroundColor: '#1f9d55' },
-  openToggleText: { color: '#9db4cc', fontWeight: '700', fontSize: 13 },
+  openToggleActive: { backgroundColor: '#1f9d55', borderColor: '#1f9d55' },
+  openToggleText: { color: '#46586a', fontWeight: '700', fontSize: 13 },
   openToggleTextActive: { color: '#fff' },
 
   // Active tab page fills the space above the bottom nav; overlays anchor to it.
@@ -1344,76 +1350,113 @@ const styles = StyleSheet.create({
   body: { flex: 1, position: 'relative' },
   controls: {
     position: 'absolute',
-    top: 0,
+    top: 58,
     left: 0,
     right: 0,
     zIndex: 20,
     paddingHorizontal: 12,
     paddingTop: 8,
     paddingBottom: 10,
-    backgroundColor: 'rgba(13,27,42,0.82)',
+    backgroundColor: 'rgba(238,241,245,0.92)',
   },
+  updatedPill: {
+    position: 'absolute',
+    top: 14,
+    left: 14,
+    zIndex: 25,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    backgroundColor: '#fff',
+    borderRadius: 999,
+    paddingHorizontal: 11,
+    paddingVertical: 7,
+    shadowColor: '#0d1b2a',
+    shadowOpacity: 0.12,
+    shadowRadius: 5,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 3,
+  },
+  updatedDot: { width: 8, height: 8, borderRadius: 4, backgroundColor: '#1f9d55' },
+  updatedPillText: { fontSize: 12, fontWeight: '700', color: '#46586a' },
+  fab: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 4,
+  },
+  filterFab: { position: 'absolute', top: 10, right: 14, zIndex: 25 },
+  filterFabActive: { backgroundColor: '#2f74d6' },
   sportRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  menuBackdrop: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 15 },
   sportChip: {
     paddingHorizontal: 14,
     paddingVertical: 8,
     borderRadius: 999,
-    backgroundColor: '#1b2b3d',
+    backgroundColor: '#fff',
     borderWidth: 1,
-    borderColor: '#26384d',
+    borderColor: '#dde3ea',
   },
   sportChipActive: { backgroundColor: '#e8732c', borderColor: '#e8732c' },
-  sportChipText: { color: '#9db4cc', fontWeight: '700', fontSize: 13 },
+  sportChipText: { color: '#46586a', fontWeight: '700', fontSize: 13 },
   sportChipTextActive: { color: '#fff' },
   placeRow: { flexDirection: 'row', gap: 6 },
   placeChip: {
     paddingHorizontal: 12,
-    paddingVertical: 5,
+    paddingVertical: 6,
     borderRadius: 999,
-    backgroundColor: '#16242f',
+    backgroundColor: '#fff',
     borderWidth: 1,
-    borderColor: '#26384d',
+    borderColor: '#dde3ea',
   },
-  placeChipActive: { backgroundColor: '#2f4b66', borderColor: '#3f6286' },
-  placeChipText: { color: '#7e96ad', fontWeight: '700', fontSize: 12 },
-  placeChipTextActive: { color: '#fff' },
+  placeChipActive: { backgroundColor: '#e7f0fc', borderColor: '#2f74d6' },
+  placeChipText: { color: '#5b6b7b', fontWeight: '700', fontSize: 12 },
+  placeChipTextActive: { color: '#2f74d6' },
   amenityRow: { gap: 6, paddingRight: 12 },
   amenityChip: {
     paddingHorizontal: 12,
-    paddingVertical: 5,
+    paddingVertical: 6,
     borderRadius: 999,
-    backgroundColor: '#16242f',
+    backgroundColor: '#fff',
     borderWidth: 1,
-    borderColor: '#26384d',
+    borderColor: '#dde3ea',
   },
-  amenityChipActive: { backgroundColor: '#2f4b66', borderColor: '#3f6286' },
-  amenityChipText: { color: '#7e96ad', fontWeight: '700', fontSize: 12 },
-  amenityChipTextActive: { color: '#fff' },
+  amenityChipActive: { backgroundColor: '#e7f0fc', borderColor: '#2f74d6' },
+  amenityChipText: { color: '#5b6b7b', fontWeight: '700', fontSize: 12 },
+  amenityChipTextActive: { color: '#2f74d6' },
   filterRow: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', gap: 8 },
   menuBtn: {
     paddingHorizontal: 14,
     paddingVertical: 9,
     borderRadius: 10,
-    backgroundColor: '#1b2b3d',
+    backgroundColor: '#fff',
     borderWidth: 1,
-    borderColor: '#26384d',
+    borderColor: '#dde3ea',
   },
   menuBtnActive: { backgroundColor: '#e8732c', borderColor: '#e8732c' },
-  menuBtnText: { color: '#fff', fontWeight: '800', fontSize: 13 },
+  menuBtnText: { color: '#1f2a37', fontWeight: '800', fontSize: 13 },
+  menuBtnTextActive: { color: '#fff' },
   filtersPanel: { marginTop: 10, gap: 8 },
 
   timePill: {
     paddingHorizontal: 14,
     paddingVertical: 9,
     borderRadius: 10,
-    backgroundColor: '#1b2b3d',
+    backgroundColor: '#fff',
+    borderWidth: 1,
+    borderColor: '#dde3ea',
   },
-  timePillActive: { backgroundColor: '#2f74d6' },
-  timePillText: { color: '#9db4cc', fontWeight: '700', fontSize: 13 },
+  timePillActive: { backgroundColor: '#2f74d6', borderColor: '#2f74d6' },
+  timePillText: { color: '#46586a', fontWeight: '700', fontSize: 13 },
   timePillTextActive: { color: '#fff' },
   timeReset: { paddingHorizontal: 6, paddingVertical: 9 },
-  timeResetText: { color: '#9db4cc', fontWeight: '700', fontSize: 14 },
+  timeResetText: { color: '#8a99a8', fontWeight: '700', fontSize: 14 },
 
   planRunBtn: {
     marginLeft: 'auto',
@@ -1430,13 +1473,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 7,
     borderRadius: 16,
-    backgroundColor: '#1b2b3d',
+    backgroundColor: '#fff',
+    borderWidth: 1,
+    borderColor: '#dde3ea',
   },
-  chipActive: { backgroundColor: '#e8730c' },
-  chipDisabled: { backgroundColor: '#13202e', opacity: 0.6 },
-  chipText: { color: '#9db4cc', fontWeight: '600', fontSize: 13 },
+  chipActive: { backgroundColor: '#e8730c', borderColor: '#e8730c' },
+  chipDisabled: { backgroundColor: '#eef1f4', borderColor: '#eef1f4', opacity: 0.7 },
+  chipText: { color: '#46586a', fontWeight: '600', fontSize: 13 },
   chipTextActive: { color: '#fff' },
-  chipTextDisabled: { color: '#5a6b7d', fontWeight: '500' },
+  chipTextDisabled: { color: '#aab4bd', fontWeight: '500' },
 
   futureBox: {
     backgroundColor: '#eef3fb',

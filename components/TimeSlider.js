@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     top: 14,
     height: 4,
     borderRadius: 2,
-    backgroundColor: '#26384d',
+    backgroundColor: '#dde3ea',
   },
   fill: {
     position: 'absolute',
@@ -138,5 +138,5 @@ const styles = StyleSheet.create({
     borderColor: '#2f74d6',
   },
   endRow: { flexDirection: 'row', justifyContent: 'space-between', marginTop: 1 },
-  endLabel: { color: '#9db4cc', fontSize: 11, fontWeight: '600' },
+  endLabel: { color: '#7a8a99', fontSize: 11, fontWeight: '600' },
 });
