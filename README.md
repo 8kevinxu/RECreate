@@ -153,6 +153,14 @@ by `id`, so `npm run build:courts` never touches them. Two flavors:
   (`data/court-directory.js`, `npm run build:directory`). `lib/useCourts.js` merges it onto
   courts as `directory`, shown as facility chips on the detail card. Same last-good cache +
   gate resilience (`scripts/directory-cache.json`).
+- **Classes & activities** (non-court programs: fitness, dance, music/arts, social games)
+  for the **Classes tab** come from `scripts/build-classes.js`, which scrapes SF Rec &
+  Park's **ActiveNet** catalog (`anc.apm.activecommunities.com/sfrecpark`). It does the
+  ActiveNet CSRF + session handshake, pages the activity-search API per category, maps
+  ActiveNet categories to our four buckets (splitting "Dance/Music/Performing Arts" and
+  "Social Activities" by keyword into dance/music/social), and writes
+  `data/classes.js` — each class `{ name, category, location, when, dropIn, cost, ages, url }`.
+  `npm run build:classes`, same last-good cache + gate resilience (`scripts/classes-cache.json`).
 
 An optional `disclaimer` field on a court overrides the default "verify on
 sfrecpark.org" footnote on the court detail screen.
