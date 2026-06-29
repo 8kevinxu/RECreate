@@ -585,28 +585,25 @@ export default function App() {
 
         {sportPickerOpen && (
           <View style={[styles.sportDial, { top: insets.top + 8 + 52 }]}>
-            {SPORTS.map((s) => {
-              const active = s.id === sport;
-              return (
-                <Pressable
-                  key={s.id}
-                  style={styles.sportDialItem}
-                  onPress={() => {
-                    setSport(s.id);
-                    setPlaceFilter('all'); // reset indoor/outdoor sub-filter
-                    setAmenities([]); // reset amenity filters
-                    setSportPickerOpen(false);
-                  }}
-                >
-                  <View style={styles.sportDialLabel}>
-                    <Text style={styles.sportDialLabelText}>{s.label}</Text>
-                  </View>
-                  <View style={[styles.fab, active && styles.filterFabActive]}>
-                    <Text style={styles.filterFabSport}>{s.emoji}</Text>
-                  </View>
-                </Pressable>
-              );
-            })}
+            {SPORTS.filter((s) => s.id !== sport).map((s) => (
+              <Pressable
+                key={s.id}
+                style={styles.sportDialItem}
+                onPress={() => {
+                  setSport(s.id);
+                  setPlaceFilter('all'); // reset indoor/outdoor sub-filter
+                  setAmenities([]); // reset amenity filters
+                  setSportPickerOpen(false);
+                }}
+              >
+                <View style={styles.sportDialLabel}>
+                  <Text style={styles.sportDialLabelText}>{s.label}</Text>
+                </View>
+                <View style={styles.fab}>
+                  <Text style={styles.filterFabSport}>{s.emoji}</Text>
+                </View>
+              </Pressable>
+            ))}
           </View>
         )}
 
