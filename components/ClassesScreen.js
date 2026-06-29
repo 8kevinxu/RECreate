@@ -52,11 +52,7 @@ export default function ClassesScreen() {
         />
       </View>
 
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.catRow}
-      >
+      <View style={styles.catRow}>
         {[{ id: 'all', label: 'All', emoji: '✨' }, ...CLASS_CATEGORIES].map((c) => {
           const active = cat === c.id;
           return (
@@ -71,7 +67,7 @@ export default function ClassesScreen() {
             </Pressable>
           );
         })}
-      </ScrollView>
+      </View>
 
       <ScrollView
         style={styles.list}
@@ -129,10 +125,17 @@ const styles = StyleSheet.create({
   },
   searchInput: { flex: 1, fontSize: 14, color: '#0d1b2a', paddingVertical: 0 },
 
-  catRow: { gap: 6, paddingRight: 16, paddingBottom: 12 },
+  catRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'flex-start',
+    gap: 6,
+    marginBottom: 12,
+  },
   catChip: {
-    paddingHorizontal: 10,
-    paddingVertical: 5,
+    alignSelf: 'flex-start',
+    paddingHorizontal: 11,
+    paddingVertical: 6,
     borderRadius: 999,
     backgroundColor: '#fff',
     borderWidth: 1,
