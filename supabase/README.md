@@ -27,6 +27,7 @@ order** (01 → 07). Order matters: later domains reference earlier tables
 | `05_friends.sql` | Friend requests + friends-only run visibility | 03, 04 |
 | `06_signals.sql` | "Down to hoop" availability signals | 03, 05 |
 | `07_push.sql` | Expo push tokens + notification triggers | all above |
+| `08_chat.sql` | Chat: run/signal group chats + 1:1 friend DMs | 03, 04, 05, 06 |
 
 To run them all at once, concatenate in order:
 

@@ -17,7 +17,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import CourtMap from './components/CourtMap';
 import AuthModal from './components/AuthModal';
 import FriendsModal from './components/FriendsModal';
-import FeedModal from './components/FeedModal';
+import SocialScreen from './components/SocialScreen';
 import NearbyList from './components/NearbyList';
 import TimeSlider from './components/TimeSlider';
 import BottomNav from './components/BottomNav';
@@ -817,10 +817,7 @@ export default function App() {
         {tab === 'classes' && <ClassesScreen userLocation={userLocation} />}
 
         {tab === 'social' && (
-          <FeedModal
-            asPage
-            visible
-            onClose={() => {}}
+          <SocialScreen
             courtsById={courtsById}
             courts={courtData}
             sport={sport}

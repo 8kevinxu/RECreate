@@ -1,0 +1,76 @@
+// Social tab shell: a segmented toggle between the Activity feed and Chats.
+// Keeps both mounted-on-demand; each manages its own data/subscriptions.
+import React, { useState } from 'react';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import FeedModal from './FeedModal';
+import ChatsScreen from './ChatsScreen';
+
+export default function SocialScreen({
+  courtsById = {},
+  courts = [],
+  sport = 'basketball',
+  userLocation = null,
+}) {
+  const insets = useSafeAreaInsets();
+  const [seg, setSeg] = useState('activity'); // 'activity' | 'chats'
+
+  return (
+    <View style={[styles.page, { paddingTop: insets.top + 12 }]}>
+      <View style={styles.segment}>
+        {[
+          { id: 'activity', label: 'Activity' },
+          { id: 'chats', label: 'Chats' },
+        ].map((s) => {
+          const on = seg === s.id;
+          return (
+            <Pressable
+              key={s.id}
+              style={[styles.segBtn, on && styles.segBtnOn]}
+              onPress={() => setSeg(s.id)}
+            >
+              <Text style={[styles.segText, on && styles.segTextOn]}>{s.label}</Text>
+            </Pressable>
+          );
+        })}
+      </View>
+
+      <View style={styles.body}>
+        {seg === 'activity' ? (
+          <FeedModal
+            asPage
+            embedded
+            visible
+            onClose={() => {}}
+            courtsById={courtsById}
+            courts={courts}
+            sport={sport}
+            userLocation={userLocation}
+          />
+        ) : (
+          <View style={styles.chatsWrap}>
+            <ChatsScreen courtsById={courtsById} />
+          </View>
+        )}
+      </View>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  page: { flex: 1, backgroundColor: '#fff' },
+  segment: {
+    flexDirection: 'row',
+    backgroundColor: '#eef1f5',
+    borderRadius: 10,
+    padding: 3,
+    marginHorizontal: 18,
+    marginBottom: 6,
+  },
+  segBtn: { flex: 1, paddingVertical: 8, borderRadius: 8, alignItems: 'center' },
+  segBtnOn: { backgroundColor: '#fff' },
+  segText: { fontSize: 14, fontWeight: '700', color: '#6b7a8a' },
+  segTextOn: { color: '#0d1b2a' },
+  body: { flex: 1 },
+  chatsWrap: { flex: 1, paddingHorizontal: 18 },
+});
