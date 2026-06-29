@@ -132,7 +132,14 @@ const CourtMap = forwardRef(function CourtMap(
 
   useEffect(() => {
     ensureStyles();
-    const map = L.map(elRef.current, { zoomControl: true }).setView(SF, 12);
+    // zoomSnap 0 = continuous zoom (no snapping to whole levels); smaller zoomDelta
+    // gives the +/- buttons finer steps and a gentler wheel feel.
+    const map = L.map(elRef.current, {
+      zoomControl: true,
+      zoomSnap: 0,
+      zoomDelta: 0.4,
+      wheelPxPerZoomLevel: 90,
+    }).setView(SF, 12);
     // Drop Leaflet's default "🇺🇦 Leaflet" attribution prefix (the flag in the
     // bottom-right); the tile data credit below is kept to satisfy OSM/CARTO terms.
     map.attributionControl.setPrefix(false);

@@ -16,11 +16,11 @@ import {
 } from 'react-native';
 import CourtMap from './components/CourtMap';
 import AuthModal from './components/AuthModal';
-import RunModal from './components/RunModal';
 import FriendsModal from './components/FriendsModal';
 import FeedModal from './components/FeedModal';
 import NearbyList from './components/NearbyList';
 import TimeSlider from './components/TimeSlider';
+import BottomNav from './components/BottomNav';
 import { useAuth } from './lib/auth';
 import { useCourts } from './lib/useCourts';
 import { fmtClock, startOfDay, viewLabel, dayChipLabel, fmtDuration } from './lib/datetime';
@@ -184,11 +184,9 @@ export default function App() {
   const [pickedTime, setPickedTime] = useState(null); // null = live "now"
   const [pickerOpen, setPickerOpen] = useState(false);
   const { enabled: authEnabled, user, displayName } = useAuth();
-  const [authOpen, setAuthOpen] = useState(false);
+  const [tab, setTab] = useState('home'); // home | social | profile (bottom nav)
   const [friendsOpen, setFriendsOpen] = useState(false);
-  const [feedOpen, setFeedOpen] = useState(false);
   const [nearbyOpen, setNearbyOpen] = useState(false);
-  const [runOpen, setRunOpen] = useState(false);
   const [unread, setUnread] = useState(0); // unread activity-feed items (badge)
   const [requestCount, setRequestCount] = useState(0); // incoming friend requests (badge)
 
@@ -287,14 +285,10 @@ export default function App() {
     };
   }, [authEnabled, user?.id, friendsOpen]);
 
-  // Opening/closing the Activity sheet marks the feed as seen and clears the badge.
-  const openFeed = useCallback(() => {
-    setFeedOpen(true);
-    markFeedSeen().then(() => setUnread(0));
-  }, []);
-  const closeFeed = useCallback(() => {
-    setFeedOpen(false);
-    markFeedSeen().then(() => setUnread(0));
+  // Switching tabs; entering Social marks the feed as seen and clears the badge.
+  const goTab = useCallback((t) => {
+    setTab(t);
+    if (t === 'social') markFeedSeen().then(() => setUnread(0));
   }, []);
 
   // Register this device for push when signed in (no-ops on web/simulator/Expo
@@ -308,11 +302,13 @@ export default function App() {
   // the Friends sheet; signals/sessions → the Activity feed.
   useEffect(() => {
     return onNotificationTap((data) => {
-      if (data.courtId) setSelectedId(data.courtId);
-      else if (data.type === 'friend') setFriendsOpen(true);
-      else if (data.type) openFeed();
+      if (data.courtId) {
+        setTab('home');
+        setSelectedId(data.courtId);
+      } else if (data.type === 'friend') setFriendsOpen(true);
+      else if (data.type) goTab('social');
     });
-  }, [openFeed]);
+  }, [goTab]);
 
   // Ask for location (on mount, and again if the user taps "enable location").
   const requestLocation = useCallback(async () => {
@@ -536,9 +532,11 @@ export default function App() {
     <SafeAreaView style={styles.safe}>
       <StatusBar style="light" />
 
+      <View style={styles.pageWrap}>
+        {tab === 'home' && (
+          <>
       <View style={styles.header}>
         <View style={styles.headerText}>
-          <Text style={styles.title}>🏀 HoopMap SF</Text>
           <Text style={styles.subtitle}>
             {openOnly
               ? `${visibleCourts.length} with open gym ${isPicked ? viewLabel(viewTime) : 'right now'}`
@@ -548,35 +546,6 @@ export default function App() {
             <Text style={styles.updated}>Updated {formatUpdated(generatedAt)}</Text>
           )}
         </View>
-        {authEnabled && (
-          <View style={styles.headerBtns}>
-            {user && (
-              <Pressable style={styles.account} onPress={openFeed}>
-                <Text style={styles.accountText}>📣 Activity</Text>
-                {unread > 0 && (
-                  <View style={styles.badge}>
-                    <Text style={styles.badgeText}>{unread}</Text>
-                  </View>
-                )}
-              </Pressable>
-            )}
-            {user && (
-              <Pressable style={styles.account} onPress={() => setFriendsOpen(true)}>
-                <Text style={styles.accountText}>👥 Friends</Text>
-                {requestCount > 0 && (
-                  <View style={styles.badge}>
-                    <Text style={styles.badgeText}>{requestCount}</Text>
-                  </View>
-                )}
-              </Pressable>
-            )}
-            <Pressable style={styles.account} onPress={() => setAuthOpen(true)}>
-              <Text style={styles.accountText} numberOfLines={1}>
-                {user ? `👤 ${displayName || 'Account'}` : 'Sign in'}
-              </Text>
-            </Pressable>
-          </View>
-        )}
       </View>
 
       <View style={styles.body}>
@@ -663,14 +632,6 @@ export default function App() {
             </Pressable>
           )}
 
-          {authEnabled && (
-            <Pressable
-              style={styles.planRunBtn}
-              onPress={() => (user ? setRunOpen(true) : setAuthOpen(true))}
-            >
-              <Text style={styles.planRunBtnText}>＋ Plan</Text>
-            </Pressable>
-          )}
         </View>
 
         {filtersOpen && hasFilters && (
@@ -820,27 +781,6 @@ export default function App() {
         />
       )}
 
-      {authEnabled && (
-        <AuthModal
-          visible={authOpen}
-          onClose={() => setAuthOpen(false)}
-          courtsById={courtsById}
-        />
-      )}
-      {authEnabled && user && (
-        <FeedModal
-          visible={feedOpen}
-          onClose={closeFeed}
-          courtsById={courtsById}
-          courts={courtData}
-          sport={sport}
-          userLocation={userLocation}
-        />
-      )}
-      {authEnabled && user && (
-        <FriendsModal visible={friendsOpen} onClose={() => setFriendsOpen(false)} />
-      )}
-
       <NearbyList
         visible={nearbyOpen}
         courts={visibleCourts}
@@ -855,15 +795,37 @@ export default function App() {
         onRequestLocation={requestLocation}
         onClose={() => setNearbyOpen(false)}
       />
+          </>
+        )}
 
-      <RunModal
-        visible={runOpen}
-        courts={courtData}
-        sport={sport}
-        userLocation={userLocation}
-        defaultTime={isPicked ? viewTime : null}
-        onClose={() => setRunOpen(false)}
-      />
+        {tab === 'social' && (
+          <FeedModal
+            asPage
+            visible
+            onClose={() => {}}
+            courtsById={courtsById}
+            courts={courtData}
+            sport={sport}
+            userLocation={userLocation}
+          />
+        )}
+
+        {tab === 'profile' && (
+          <AuthModal
+            asPage
+            visible
+            onClose={() => {}}
+            courtsById={courtsById}
+            onFriends={user ? () => setFriendsOpen(true) : undefined}
+          />
+        )}
+      </View>
+
+      {authEnabled && user && (
+        <FriendsModal visible={friendsOpen} onClose={() => setFriendsOpen(false)} />
+      )}
+
+      <BottomNav tab={tab} onChange={goTab} socialBadge={unread} profileBadge={requestCount} />
 
       {Platform.OS === 'web' && (
         <Pressable
@@ -1366,7 +1328,7 @@ const styles = StyleSheet.create({
   },
   badgeText: { color: '#fff', fontSize: 11, fontWeight: '800' },
   title: { color: '#fff', fontSize: 24, fontWeight: '800' },
-  subtitle: { color: '#9db4cc', fontSize: 13, marginTop: 2 },
+  subtitle: { color: '#cfe0f0', fontSize: 15, fontWeight: '700' },
   updated: { color: '#6f8298', fontSize: 11, marginTop: 2 },
 
   filterBar: {
@@ -1403,6 +1365,8 @@ const styles = StyleSheet.create({
   openToggleText: { color: '#9db4cc', fontWeight: '700', fontSize: 13 },
   openToggleTextActive: { color: '#fff' },
 
+  // Active tab page fills the space above the bottom nav; overlays anchor to it.
+  pageWrap: { flex: 1, position: 'relative' },
   // Controls float over the top of the map so it can fill the screen.
   body: { flex: 1, position: 'relative' },
   controls: {

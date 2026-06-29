@@ -16,7 +16,13 @@ import { useAuth } from '../lib/auth';
 import { SPORTS } from '../lib/sports';
 import { loadMyStats } from '../lib/playerCheckins';
 
-export default function AuthModal({ visible, onClose, courtsById = {} }) {
+export default function AuthModal({
+  visible,
+  onClose,
+  asPage = false, // render inline as the Profile tab page instead of a modal
+  onFriends, // open the Friends sheet (shown in the signed-in panel)
+  courtsById = {},
+}) {
   const { user, displayName, profile, signIn, signUp, signOut, updateProfile } = useAuth();
   const [mode, setMode] = useState('signin'); // 'signin' | 'signup'
   const [email, setEmail] = useState('');
@@ -130,21 +136,37 @@ export default function AuthModal({ visible, onClose, courtsById = {} }) {
 
   const favCourt = stats?.favoriteCourtId ? courtsById[stats.favoriteCourtId] : null;
 
-  return (
-    <Modal visible={visible} transparent animationType="fade" onRequestClose={close}>
-      <Pressable style={styles.backdrop} onPress={close}>
-        <Pressable style={styles.sheet} onPress={() => {}}>
+  const wrap = (inner) =>
+    asPage ? (
+      <View style={styles.page}>{inner}</View>
+    ) : (
+      <Modal visible={visible} transparent animationType="fade" onRequestClose={close}>
+        <Pressable style={styles.backdrop} onPress={close}>
+          <Pressable style={styles.sheet} onPress={() => {}}>
+            {inner}
+          </Pressable>
+        </Pressable>
+      </Modal>
+    );
+
+  return wrap(
+    <>
           <View style={styles.header}>
             <Text style={styles.title}>
               {user ? 'Account' : mode === 'signin' ? 'Sign in' : 'Create account'}
             </Text>
-            <Pressable hitSlop={10} onPress={close}>
-              <Text style={styles.close}>✕</Text>
-            </Pressable>
+            {!asPage && (
+              <Pressable hitSlop={10} onPress={close}>
+                <Text style={styles.close}>✕</Text>
+              </Pressable>
+            )}
           </View>
 
           {user ? (
-            <ScrollView style={styles.accountScroll} keyboardShouldPersistTaps="handled">
+            <ScrollView
+              style={[styles.accountScroll, asPage && styles.pageScroll]}
+              keyboardShouldPersistTaps="handled"
+            >
               <Text style={styles.signedInAs}>
                 Signed in as{' '}
                 <Text style={styles.signedInName}>{displayName || user.email}</Text>
@@ -235,6 +257,15 @@ export default function AuthModal({ visible, onClose, courtsById = {} }) {
                 </Text>
               )}
 
+              {onFriends && (
+                <Pressable
+                  style={[styles.submit, styles.friendsBtn]}
+                  onPress={onFriends}
+                >
+                  <Text style={styles.submitText}>👥 Friends</Text>
+                </Pressable>
+              )}
+
               <Pressable
                 style={[styles.submit, styles.signOutBtn, busy && styles.submitDisabled]}
                 disabled={busy}
@@ -311,13 +342,12 @@ export default function AuthModal({ visible, onClose, courtsById = {} }) {
               </Pressable>
             </>
           )}
-        </Pressable>
-      </Pressable>
-    </Modal>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
+  page: { flex: 1, backgroundColor: '#fff', paddingHorizontal: 18, paddingTop: 14 },
   backdrop: {
     flex: 1,
     backgroundColor: 'rgba(13,27,42,0.6)',
@@ -336,6 +366,7 @@ const styles = StyleSheet.create({
     elevation: 10,
   },
   accountScroll: { flexGrow: 0 },
+  pageScroll: { flexGrow: 1 },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -367,7 +398,8 @@ const styles = StyleSheet.create({
   },
   submitDisabled: { opacity: 0.6 },
   submitText: { color: '#fff', fontWeight: '800', fontSize: 15 },
-  signOutBtn: { backgroundColor: '#c0392b', marginTop: 16 },
+  friendsBtn: { backgroundColor: '#2f74d6', marginTop: 16 },
+  signOutBtn: { backgroundColor: '#c0392b', marginTop: 10 },
 
   switch: {
     textAlign: 'center',

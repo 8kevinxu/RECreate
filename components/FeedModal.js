@@ -24,6 +24,7 @@ import RunModal from './RunModal';
 export default function FeedModal({
   visible,
   onClose,
+  asPage = false, // render inline as the Social tab page instead of a slide-up sheet
   courtsById = {},
   courts = [],
   sport = 'basketball',
@@ -120,57 +121,67 @@ export default function FeedModal({
     </View>
   );
 
+  const content = (
+    <>
+      <View style={styles.header}>
+        <Text style={styles.title}>Activity</Text>
+        {!asPage && (
+          <Pressable hitSlop={10} onPress={onClose}>
+            <Text style={styles.close}>✕</Text>
+          </Pressable>
+        )}
+      </View>
+
+      <View style={styles.composeRow}>
+        <Pressable style={styles.composeBtn} onPress={() => setSignalOpen(true)}>
+          <Text style={styles.composeText}>🏀 I’m down</Text>
+        </Pressable>
+        <Pressable style={[styles.composeBtn, styles.composeAlt]} onPress={() => setRunOpen(true)}>
+          <Text style={styles.composeText}>＋ Plan</Text>
+        </Pressable>
+      </View>
+
+      {loading ? (
+        <View style={styles.loading}>
+          <ActivityIndicator color="#2f74d6" />
+        </View>
+      ) : items.length === 0 ? (
+        <Text style={styles.muted}>
+          Nothing going on yet — tap “I’m down” or “Plan” to get your friends moving.
+        </Text>
+      ) : (
+        <ScrollView style={asPage && styles.pageList} keyboardShouldPersistTaps="handled">
+          {items.map((it) => (it.kind === 'signal' ? renderSignal(it.signal) : renderRun(it.run)))}
+        </ScrollView>
+      )}
+
+      <SignalModal visible={signalOpen} onClose={() => setSignalOpen(false)} onPosted={refresh} />
+      <RunModal
+        visible={runOpen}
+        courts={courts}
+        sport={sport}
+        userLocation={userLocation}
+        onClose={() => setRunOpen(false)}
+        onCreated={refresh}
+      />
+      <SessionModal
+        visible={!!selectedSignalObj}
+        signal={selectedSignalObj}
+        courts={courts}
+        sport={sport}
+        onClose={() => setSelectedSignal(null)}
+        onChanged={refresh}
+      />
+    </>
+  );
+
+  if (asPage) return <View style={styles.page}>{content}</View>;
+
   return (
     <Modal visible={visible} transparent animationType="slide" onRequestClose={onClose}>
       <Pressable style={styles.backdrop} onPress={onClose}>
         <Pressable style={styles.sheet} onPress={() => {}}>
-          <View style={styles.header}>
-            <Text style={styles.title}>Activity</Text>
-            <Pressable hitSlop={10} onPress={onClose}>
-              <Text style={styles.close}>✕</Text>
-            </Pressable>
-          </View>
-
-          <View style={styles.composeRow}>
-            <Pressable style={styles.composeBtn} onPress={() => setSignalOpen(true)}>
-              <Text style={styles.composeText}>🏀 I’m down</Text>
-            </Pressable>
-            <Pressable style={[styles.composeBtn, styles.composeAlt]} onPress={() => setRunOpen(true)}>
-              <Text style={styles.composeText}>＋ Plan</Text>
-            </Pressable>
-          </View>
-
-          {loading ? (
-            <View style={styles.loading}>
-              <ActivityIndicator color="#2f74d6" />
-            </View>
-          ) : items.length === 0 ? (
-            <Text style={styles.muted}>
-              Nothing going on yet — tap “I’m down” or “Plan” to get your friends moving.
-            </Text>
-          ) : (
-            <ScrollView keyboardShouldPersistTaps="handled">
-              {items.map((it) => (it.kind === 'signal' ? renderSignal(it.signal) : renderRun(it.run)))}
-            </ScrollView>
-          )}
-
-          <SignalModal visible={signalOpen} onClose={() => setSignalOpen(false)} onPosted={refresh} />
-          <RunModal
-            visible={runOpen}
-            courts={courts}
-            sport={sport}
-            userLocation={userLocation}
-            onClose={() => setRunOpen(false)}
-            onCreated={refresh}
-          />
-          <SessionModal
-            visible={!!selectedSignalObj}
-            signal={selectedSignalObj}
-            courts={courts}
-            sport={sport}
-            onClose={() => setSelectedSignal(null)}
-            onChanged={refresh}
-          />
+          {content}
         </Pressable>
       </Pressable>
     </Modal>
@@ -178,6 +189,8 @@ export default function FeedModal({
 }
 
 const styles = StyleSheet.create({
+  page: { flex: 1, backgroundColor: '#fff', paddingHorizontal: 18, paddingTop: 14 },
+  pageList: { flex: 1 },
   backdrop: { flex: 1, backgroundColor: 'rgba(13,27,42,0.6)', justifyContent: 'flex-end' },
   sheet: {
     backgroundColor: '#fff',

@@ -103,7 +103,9 @@ const html = `
       }
     };
 
-    var map = L.map('map', { zoomControl: true })
+    // zoomSnap 0 = continuous (no snapping to whole zoom levels) so pinch/scroll
+    // zoom is smooth; zoomDelta gives the +/- buttons finer steps.
+    var map = L.map('map', { zoomControl: true, zoomSnap: 0, zoomDelta: 0.4, wheelPxPerZoomLevel: 90 })
       .setView([${SF_CENTER.lat}, ${SF_CENTER.lng}], 12);
 
     // CARTO Voyager: colorful but clean basemap (green parks, blue water, soft
