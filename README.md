@@ -77,6 +77,7 @@ stays centered on San Francisco — everything else still works.
 | `components/SettingsScreen.js` | Settings sheet — language switch (en/zh/es) + delete account |
 | `components/SocialScreen.js` · `ChatsScreen.js` · `ChatThread.js` | Social tab shell + 1:1 / group chat |
 | `lib/chat.js` | Chat data layer (run / signal / direct threads) |
+| `lib/blocks.js` · `lib/reports.js` | Trust & safety: block users (filtered into every social loader) + file content reports |
 | `lib/sports.js` | The tracked sports table (id, label, emoji) |
 | `lib/favorites.js` | On-device court→sport favorites (`useFavorites`) behind the ⭐ Favorites map view |
 | `lib/playerCheckins.js` | Per-user visit stats (per-sport counts, favorite park) |
@@ -463,6 +464,19 @@ bubbles, and a rounded composer. Swipe a row to hide a chat (restore it from the
 read state + hidden threads are tracked locally (`AsyncStorage`). Code lives in
 `lib/chat.js`, `components/ChatsScreen.js` (list), and `components/ChatThread.js`
 (conversation). Setup: run [`supabase/schema/08_chat.sql`](supabase/schema/08_chat.sql).
+
+## Trust & safety (report / block)
+
+Because the app carries user-generated content (chat, reviews, signals) — which
+the App Store requires apps to moderate — users can **report** objectionable
+content and **block** abusive accounts. **Long-press a chat message** to report it
+or block the sender; **reviews** have a **Report** link (reviews are anonymous, so
+no block). Blocking is stored in `blocked_users` (syncs across your devices) and
+filtered into every social loader (`signals`, `chat`, `feed`, `friends`), so a
+blocked user's content disappears everywhere; manage/undo from **Settings →
+Blocked users**. Reports land in `content_reports` for out-of-band review. Account
+creation also requires agreeing to the **Terms (EULA)** and **Privacy Policy**.
+Setup: run [`supabase/schema/10_moderation.sql`](supabase/schema/10_moderation.sql).
 
 ## Push notifications
 

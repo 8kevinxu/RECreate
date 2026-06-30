@@ -3,6 +3,7 @@ import * as Location from 'expo-location';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   ActivityIndicator,
+  Alert,
   Dimensions,
   Linking,
   Pressable,
@@ -57,7 +58,8 @@ import {
   LEVELS,
   LEVEL_META,
 } from './lib/crowd';
-import { loadReviews, addReview, MAX_BODY, MAX_NAME } from './lib/reviews';
+import { loadReviews, addReview, MAX_BODY, MAX_NAME, isShared as reviewsShared } from './lib/reviews';
+import { reportContent } from './lib/reports';
 import { liveBooked, bookedAt } from './lib/reservations';
 import { openDirections } from './lib/maps';
 import { logVisit } from './lib/playerCheckins';
@@ -1069,6 +1071,22 @@ function CourtDetail({
     };
   }, [court.id]);
 
+  // Report an objectionable review (App Store UGC requirement). Reviews carry no
+  // user id (free-text author), so this is a content report, not a user block.
+  const reportReview = (r) => {
+    Alert.alert(t('mod.reportTitle'), t('mod.reportBody'), [
+      { text: t('cancel'), style: 'cancel' },
+      {
+        text: t('mod.report'),
+        style: 'destructive',
+        onPress: async () => {
+          const { error } = await reportContent({ kind: 'review', refId: r.id });
+          Alert.alert(error ? t('mod.fail') : t('mod.reported'));
+        },
+      },
+    ]);
+  };
+
   const submitReview = async () => {
     const body = reviewBody.trim();
     if (!body || posting) return;
@@ -1423,6 +1441,11 @@ function CourtDetail({
                 <Text style={styles.reviewAgo}>{timeAgo(r.ts, now)}</Text>
               </View>
               <Text style={styles.reviewBody}>{r.body}</Text>
+              {reviewsShared && (
+                <Pressable hitSlop={6} onPress={() => reportReview(r)}>
+                  <Text style={styles.reviewReport}>{t('mod.report')}</Text>
+                </Pressable>
+              )}
             </View>
           ))
         )}
@@ -1948,6 +1971,7 @@ const styles = StyleSheet.create({
   reviewHead: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 2 },
   reviewAuthor: { fontSize: 13, fontWeight: '700', color: '#2a3a4a' },
   reviewAgo: { fontSize: 11, color: '#9aa7b4' },
+  reviewReport: { fontSize: 11, color: '#9aa7b4', fontWeight: '700', marginTop: 4 },
   reviewBody: { fontSize: 13, color: '#46586a', lineHeight: 18 },
 
   reviewForm: { marginTop: 10, borderTopWidth: 1, borderTopColor: '#e3e8ec', paddingTop: 10 },

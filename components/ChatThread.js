@@ -4,6 +4,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
   ActivityIndicator,
+  Alert,
   KeyboardAvoidingView,
   Modal,
   Platform,
@@ -17,10 +18,12 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { loadMessages, sendMessage, subscribeChat, markThreadRead } from '../lib/chat';
+import { reportContent } from '../lib/reports';
+import { blockUser } from '../lib/blocks';
 import { fmtClock } from '../lib/datetime';
 import { useI18n } from '../lib/i18n';
 
-const KIND_EMOJI = { run: '📅', signal: '🏀', direct: '💬' };
+const KIND_EMOJI = { run: '📅', signal: '🤙', direct: '💬' };
 const AVATAR_COLORS = ['#2f74d6', '#1f9d55', '#e8730c', '#6b3fa0', '#b03a73', '#1f8a86', '#c2410c'];
 const LOCALE = { en: 'en-US', zh: 'zh-CN', es: 'es-ES' };
 
@@ -101,6 +104,37 @@ export default function ChatThread({ visible, thread, onClose, onActivity }) {
     setSending(false);
   };
 
+  // Long-press someone else's message → report it or block the sender (required
+  // for App Store UGC moderation). Blocking hides their messages on refresh.
+  const moderate = (m) => {
+    if (m.mine) return;
+    Alert.alert(m.name, undefined, [
+      { text: t('mod.reportMessage'), onPress: () => doReport(m) },
+      { text: t('mod.blockUser', { name: m.name }), style: 'destructive', onPress: () => confirmBlock(m) },
+      { text: t('cancel'), style: 'cancel' },
+    ]);
+  };
+  const doReport = async (m) => {
+    const { error } = await reportContent({ kind: 'message', refId: m.id, reportedUser: m.userId });
+    Alert.alert(error ? t('mod.fail') : t('mod.reported'));
+  };
+  const confirmBlock = (m) => {
+    Alert.alert(t('mod.blockTitle', { name: m.name }), t('mod.blockBody'), [
+      { text: t('cancel'), style: 'cancel' },
+      {
+        text: t('mod.block'),
+        style: 'destructive',
+        onPress: async () => {
+          const { error } = await blockUser(m.userId);
+          if (error) return Alert.alert(t('mod.fail'));
+          await refresh();
+          onActivity && onActivity();
+          if (thread.kind === 'direct') onClose();
+        },
+      },
+    ]);
+  };
+
   const dividerLabel = (iso) => {
     const now = new Date();
     const y = new Date(now);
@@ -176,7 +210,9 @@ export default function ChatThread({ visible, thread, onClose, onActivity }) {
                         </View>
                       )}
                       <View style={[styles.col, m.mine ? styles.colMine : styles.colTheirs]}>
-                        <View
+                        <Pressable
+                          onLongPress={!m.mine ? () => moderate(m) : undefined}
+                          delayLongPress={350}
                           style={[
                             styles.bubble,
                             m.mine ? styles.bubbleMine : styles.bubbleTheirs,
@@ -187,7 +223,7 @@ export default function ChatThread({ visible, thread, onClose, onActivity }) {
                         >
                           {showName && <Text style={styles.sender}>{m.name}</Text>}
                           <Text style={m.mine ? styles.bodyMine : styles.bodyTheirs}>{m.body}</Text>
-                        </View>
+                        </Pressable>
                         {lastOfGroup && (
                           <Text style={[styles.time, m.mine ? styles.timeMine : styles.timeTheirs]}>
                             {fmtTime(m.createdAt)}

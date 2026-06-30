@@ -16,6 +16,7 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAuth } from '../lib/auth';
+import { listBlockedUsers, unblockUser } from '../lib/blocks';
 import { useI18n, LANGUAGES } from '../lib/i18n';
 
 // The literal a user must type to confirm deletion (kept across languages).
@@ -30,6 +31,19 @@ export default function SettingsScreen({ visible, onClose, onEditProfile }) {
   const [confirm, setConfirm] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(null);
+
+  // Blocked-users sub-screen (App Store UGC: a manageable, reversible block list).
+  const [blockedOpen, setBlockedOpen] = useState(false);
+  const [blocked, setBlocked] = useState(null); // null = loading
+  const openBlocked = () => {
+    setBlockedOpen(true);
+    setBlocked(null);
+    listBlockedUsers().then(setBlocked);
+  };
+  const doUnblock = async (id) => {
+    await unblockUser(id);
+    setBlocked((prev) => (prev || []).filter((b) => b.id !== id));
+  };
 
   const canDelete = confirm.trim().toUpperCase() === CONFIRM_CODE && !busy;
 
@@ -81,13 +95,21 @@ export default function SettingsScreen({ visible, onClose, onEditProfile }) {
           contentContainerStyle={{ paddingBottom: insets.bottom + 32 }}
           keyboardShouldPersistTaps="handled"
         >
-          {user && onEditProfile && (
+          {user && (
             <>
               <Text style={styles.sectionLabel}>{t('account')}</Text>
-              <Pressable style={styles.row} onPress={onEditProfile}>
-                <Text style={styles.rowText}>{t('auth.editProfile')}</Text>
-                <Text style={styles.rowChevron}>›</Text>
-              </Pressable>
+              <View style={styles.rowGroup}>
+                {onEditProfile && (
+                  <Pressable style={styles.row} onPress={onEditProfile}>
+                    <Text style={styles.rowText}>{t('auth.editProfile')}</Text>
+                    <Text style={styles.rowChevron}>›</Text>
+                  </Pressable>
+                )}
+                <Pressable style={styles.row} onPress={openBlocked}>
+                  <Text style={styles.rowText}>{t('mod.blockedUsers')}</Text>
+                  <Text style={styles.rowChevron}>›</Text>
+                </Pressable>
+              </View>
             </>
           )}
 
@@ -164,6 +186,39 @@ export default function SettingsScreen({ visible, onClose, onEditProfile }) {
           </Pressable>
         </Pressable>
       </Modal>
+
+      {/* Blocked users: review + unblock. */}
+      <Modal visible={blockedOpen} animationType="slide" onRequestClose={() => setBlockedOpen(false)}>
+        <View style={[styles.page, { paddingTop: insets.top + 12 }]}>
+          <View style={styles.header}>
+            <Text style={styles.title}>{t('mod.blockedUsers')}</Text>
+            <Pressable hitSlop={10} onPress={() => setBlockedOpen(false)}>
+              <Text style={styles.close}>✕</Text>
+            </Pressable>
+          </View>
+          <ScrollView
+            style={styles.scroll}
+            contentContainerStyle={{ paddingBottom: insets.bottom + 32, paddingTop: 8 }}
+          >
+            {blocked == null ? (
+              <ActivityIndicator color="#2f74d6" style={{ marginTop: 24 }} />
+            ) : blocked.length === 0 ? (
+              <Text style={styles.signedOut}>{t('mod.noBlocked')}</Text>
+            ) : (
+              <View style={styles.rowGroup}>
+                {blocked.map((b) => (
+                  <View key={b.id} style={styles.row}>
+                    <Text style={styles.rowText}>{b.name}</Text>
+                    <Pressable style={styles.unblockBtn} onPress={() => doUnblock(b.id)}>
+                      <Text style={styles.unblockText}>{t('mod.unblock')}</Text>
+                    </Pressable>
+                  </View>
+                ))}
+              </View>
+            )}
+          </ScrollView>
+        </View>
+      </Modal>
     </Modal>
   );
 }
@@ -203,6 +258,15 @@ const styles = StyleSheet.create({
   },
   rowText: { fontSize: 15, fontWeight: '700', color: '#0d1b2a' },
   rowChevron: { marginLeft: 'auto', fontSize: 20, color: '#9aa7b4', fontWeight: '700' },
+  rowGroup: { gap: 8 },
+  unblockBtn: {
+    marginLeft: 'auto',
+    backgroundColor: '#eaf1fb',
+    borderRadius: 8,
+    paddingHorizontal: 12,
+    paddingVertical: 7,
+  },
+  unblockText: { color: '#2f74d6', fontWeight: '800', fontSize: 13 },
 
   langWrap: { gap: 8 },
   langRow: {

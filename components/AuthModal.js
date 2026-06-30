@@ -8,6 +8,7 @@ import React, { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
   Alert,
+  Linking,
   Modal,
   Pressable,
   ScrollView,
@@ -18,6 +19,11 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAuth } from '../lib/auth';
+
+// Account creation requires agreeing to a EULA (App Store rule for UGC apps). The
+// Terms link points at Apple's standard EULA; swap PRIVACY_URL for your hosted page.
+const TERMS_URL = 'https://www.apple.com/legal/internet-services/itunes/dev/stdeula/';
+const PRIVACY_URL = 'https://hoopmap-one.vercel.app/privacy';
 import { SPORTS } from '../lib/sports';
 import { loadMyStats } from '../lib/playerCheckins';
 import { useI18n, sportLabel } from '../lib/i18n';
@@ -37,6 +43,7 @@ export default function AuthModal({
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+  const [agreed, setAgreed] = useState(false); // EULA/privacy acceptance (signup)
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(null);
   const [info, setInfo] = useState(null);
@@ -103,6 +110,10 @@ export default function AuthModal({
     }
     if (mode === 'signup' && password.length < 6) {
       setError(t('auth.errPwLen'));
+      return;
+    }
+    if (mode === 'signup' && !agreed) {
+      setError(t('terms.required'));
       return;
     }
     setBusy(true);
@@ -457,12 +468,35 @@ export default function AuthModal({
                 secureTextEntry
               />
 
+              {mode === 'signup' && (
+                <>
+                  <Pressable style={styles.termsRow} onPress={() => setAgreed((v) => !v)}>
+                    <View style={[styles.checkbox, agreed && styles.checkboxOn]}>
+                      {agreed && <Text style={styles.checkboxTick}>✓</Text>}
+                    </View>
+                    <Text style={styles.termsText}>{t('terms.agree')}</Text>
+                  </Pressable>
+                  <View style={styles.termsLinks}>
+                    <Pressable onPress={() => Linking.openURL(TERMS_URL)}>
+                      <Text style={styles.termsLink}>{t('terms.viewTerms')}</Text>
+                    </Pressable>
+                    <Text style={styles.termsDot}>·</Text>
+                    <Pressable onPress={() => Linking.openURL(PRIVACY_URL)}>
+                      <Text style={styles.termsLink}>{t('terms.viewPrivacy')}</Text>
+                    </Pressable>
+                  </View>
+                </>
+              )}
+
               {!!error && <Text style={styles.error}>{error}</Text>}
               {!!info && <Text style={styles.info}>{info}</Text>}
 
               <Pressable
-                style={[styles.submit, busy && styles.submitDisabled]}
-                disabled={busy}
+                style={[
+                  styles.submit,
+                  (busy || (mode === 'signup' && !agreed)) && styles.submitDisabled,
+                ]}
+                disabled={busy || (mode === 'signup' && !agreed)}
                 onPress={submit}
               >
                 {busy ? (
@@ -477,6 +511,7 @@ export default function AuthModal({
               <Pressable
                 onPress={() => {
                   reset();
+                  setAgreed(false);
                   setMode(mode === 'signin' ? 'signup' : 'signin');
                 }}
               >
@@ -571,6 +606,23 @@ const styles = StyleSheet.create({
     fontSize: 13,
     marginTop: 14,
   },
+
+  termsRow: { flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 4 },
+  checkbox: {
+    width: 22,
+    height: 22,
+    borderRadius: 6,
+    borderWidth: 2,
+    borderColor: '#c2cdd8',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  checkboxOn: { backgroundColor: '#2f74d6', borderColor: '#2f74d6' },
+  checkboxTick: { color: '#fff', fontSize: 14, fontWeight: '900' },
+  termsText: { flex: 1, fontSize: 13, color: '#46586a', lineHeight: 18 },
+  termsLinks: { flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 6, marginLeft: 32 },
+  termsLink: { fontSize: 13, color: '#2f74d6', fontWeight: '700' },
+  termsDot: { color: '#9aa7b4' },
 
   signedInAs: { fontSize: 15, color: '#2a3a4a' },
   signedInName: { fontWeight: '800', color: '#0d1b2a' },

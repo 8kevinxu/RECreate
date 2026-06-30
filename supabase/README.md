@@ -15,7 +15,7 @@ migrations/  Ordered deltas to bring an EXISTING database up to the latest schem
 ## Fresh project
 
 In the Supabase dashboard → **SQL Editor**, run the `schema/` files **in numeric
-order** (01 → 07). Order matters: later domains reference earlier tables
+order** (01 → 10). Order matters: later domains reference earlier tables
 (e.g. runs/friends/signals depend on profiles; push depends on all of them).
 
 | File | What it adds | Depends on |
@@ -28,6 +28,8 @@ order** (01 → 07). Order matters: later domains reference earlier tables
 | `06_signals.sql` | "Down to hoop" availability signals | 03, 05 |
 | `07_push.sql` | Expo push tokens + notification triggers | all above |
 | `08_chat.sql` | Chat: run/signal group chats + 1:1 friend DMs | 03, 04, 05, 06 |
+| `09_account_deletion.sql` | `delete_account()` RPC (Settings → Delete account) | 03 |
+| `10_moderation.sql` | Trust & safety: user blocking + content reports | 03 |
 
 To run them all at once, concatenate in order:
 
@@ -52,3 +54,7 @@ new:
 | `001_add_run_sport.sql` | `hoop_runs.sport` + sport-aware planning push |
 | `002_add_player_profiles.sql` | `profiles.age/bio/favorite_sports` + `player_check_ins` |
 | `003_generalize_run_sports.sql` | Widen `hoop_runs.sport` to all sports + per-sport push emoji |
+| `004_add_neighborhood.sql` | `profiles.neighborhood` |
+| `005_account_deletion.sql` | `delete_account()` RPC |
+| `006_signal_sport.sql` | `hoop_signals.sport` |
+| `007_moderation.sql` | `blocked_users` + `content_reports` (block / report) |
