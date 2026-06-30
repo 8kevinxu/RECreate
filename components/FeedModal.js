@@ -19,19 +19,20 @@ import { subscribeCheckins } from '../lib/playerCheckins';
 import { joinRun, leaveRun, cancelRun, formatRunTime, subscribeRuns } from '../lib/runs';
 import { sportMeta } from '../lib/sports';
 import { viewLabel } from '../lib/datetime';
+import { useI18n, tg } from '../lib/i18n';
 import SignalModal from './SignalModal';
 import SessionModal from './SessionModal';
 import RunModal from './RunModal';
 import ChatThread from './ChatThread';
 
-// Compact relative time for check-in rows: "just now", "5m ago", "2h ago".
+// Compact relative time for check-in rows. Shares the app's localized time keys.
 function timeAgo(iso) {
   const m = Math.round((Date.now() - new Date(iso).getTime()) / 60000);
-  if (m < 1) return 'just now';
-  if (m < 60) return `${m}m ago`;
+  if (m < 1) return tg('time.justNow');
+  if (m < 60) return tg('time.minAgo', { n: m });
   const h = Math.round(m / 60);
-  if (h < 24) return `${h}h ago`;
-  return `${Math.round(h / 24)}d ago`;
+  if (h < 24) return tg('time.hrAgo', { n: h });
+  return tg('time.dayAgo', { n: Math.round(h / 24) });
 }
 
 export default function FeedModal({
@@ -44,6 +45,7 @@ export default function FeedModal({
   sport = 'basketball',
   userLocation = null,
 }) {
+  const { t } = useI18n();
   const insets = useSafeAreaInsets();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -58,7 +60,7 @@ export default function FeedModal({
       key: `run:${run.id}`,
       kind: 'run',
       runId: run.id,
-      title: courtsById[run.courtId] || 'Pickup run',
+      title: courtsById[run.courtId] || t('feed.pickupRun'),
       subtitle: formatRunTime(run.startsAt),
     });
 
@@ -67,8 +69,12 @@ export default function FeedModal({
       key: `signal:${s.id}`,
       kind: 'signal',
       signalId: s.id,
-      title: s.mine ? 'Your hoop' : `${s.name}’s hoop`,
-      subtitle: s.plannedAt ? 'Session' : s.isNow ? 'Down now' : 'Scheduled',
+      title: s.mine ? t('feed.yourHoop') : t('feed.theirHoop', { name: s.name }),
+      subtitle: s.plannedAt
+        ? t('feed.subSession')
+        : s.isNow
+        ? t('feed.subDownNow')
+        : t('feed.subScheduled'),
     });
 
   const refresh = () => loadFeed().then(setItems);
@@ -107,10 +113,10 @@ export default function FeedModal({
   const renderSignal = (s) => {
     const when = s.plannedAt
       ? `${viewLabel(s.plannedAt)}${
-          s.plannedCourtId ? ` @ ${courtsById[s.plannedCourtId] || 'court'}` : ''
+          s.plannedCourtId ? ` @ ${courtsById[s.plannedCourtId] || t('feed.aCourt')}` : ''
         }`
       : s.isNow
-      ? 'now'
+      ? t('feed.nowWhen')
       : viewLabel(s.startsAt);
     // A confirmed session (court + time locked in) gets a ✅ to stand out.
     const lead = s.plannedAt ? '✅' : '🏀';
@@ -122,11 +128,12 @@ export default function FeedModal({
       >
         <View style={{ flex: 1 }}>
           <Text style={styles.rowName}>
-            {lead} {s.mine ? 'You' : s.name} · <Text style={styles.when}>{when}</Text>
+            {lead} {s.mine ? t('feed.you') : s.name} · <Text style={styles.when}>{when}</Text>
           </Text>
           <Text style={styles.note}>
-            {s.count} in{s.note ? ` · ${s.note}` : ''}
-            {s.plannedAt ? '' : ' · tap to plan'}
+            {t('feed.countIn', { n: s.count })}
+            {s.note ? ` · ${s.note}` : ''}
+            {s.plannedAt ? '' : t('feed.tapToPlan')}
           </Text>
         </View>
         {(s.mine || s.joined) && (
@@ -143,10 +150,11 @@ export default function FeedModal({
     <View key={`run:${run.id}`} style={styles.row}>
       <View style={{ flex: 1 }}>
         <Text style={styles.rowName}>
-          📅 {sportMeta(run.sport).emoji} {courtsById[run.courtId] || 'A court'}
+          📅 {sportMeta(run.sport).emoji} {courtsById[run.courtId] || t('feed.aCourtCap')}
         </Text>
         <Text style={styles.note}>
-          {formatRunTime(run.startsAt)} · {run.mine ? 'You' : run.hostName} · {run.count} going
+          {formatRunTime(run.startsAt)} · {run.mine ? t('feed.you') : run.hostName} ·{' '}
+          {t('feed.going', { n: run.count })}
           {run.note ? ` · ${run.note}` : ''}
         </Text>
       </View>
@@ -161,7 +169,13 @@ export default function FeedModal({
         onPress={() => onToggleRun(run)}
       >
         <Text style={run.mine || run.joined ? styles.declineText : styles.acceptText}>
-          {runBusy === run.id ? '…' : run.mine ? 'Cancel' : run.joined ? 'Leave' : 'I’m in'}
+          {runBusy === run.id
+            ? '…'
+            : run.mine
+            ? t('cancel')
+            : run.joined
+            ? t('session.leave')
+            : t('session.imIn')}
         </Text>
       </Pressable>
     </View>
@@ -171,8 +185,11 @@ export default function FeedModal({
     <View key={`checkin:${c.id}`} style={styles.row}>
       <View style={{ flex: 1 }}>
         <Text style={styles.rowName}>
-          {sportMeta(c.sport).emoji} {c.mine ? 'You' : c.name} checked into{' '}
-          {courtsById[c.courtId] || 'a court'}
+          {sportMeta(c.sport).emoji}{' '}
+          {t('feed.checkedInto', {
+            who: c.mine ? t('feed.you') : c.name,
+            court: courtsById[c.courtId] || t('feed.aCourt'),
+          })}
         </Text>
         <Text style={styles.note}>{timeAgo(c.createdAt)}</Text>
       </View>
@@ -183,7 +200,7 @@ export default function FeedModal({
     <>
       {!embedded && (
         <View style={styles.header}>
-          <Text style={styles.title}>Activity</Text>
+          <Text style={styles.title}>{t('social.activity')}</Text>
           {!asPage && (
             <Pressable hitSlop={10} onPress={onClose}>
               <Text style={styles.close}>✕</Text>
@@ -194,10 +211,10 @@ export default function FeedModal({
 
       <View style={styles.composeRow}>
         <Pressable style={styles.composeBtn} onPress={() => setSignalOpen(true)}>
-          <Text style={styles.composeText}>🏀 I’m down</Text>
+          <Text style={styles.composeText}>{t('feed.imDown')}</Text>
         </Pressable>
         <Pressable style={[styles.composeBtn, styles.composeAlt]} onPress={() => setRunOpen(true)}>
-          <Text style={styles.composeText}>＋ Plan</Text>
+          <Text style={styles.composeText}>{t('feed.plan')}</Text>
         </Pressable>
       </View>
 
@@ -206,9 +223,7 @@ export default function FeedModal({
           <ActivityIndicator color="#2f74d6" />
         </View>
       ) : items.length === 0 ? (
-        <Text style={styles.muted}>
-          Nothing going on yet — tap “I’m down” or “Plan” to get your friends moving.
-        </Text>
+        <Text style={styles.muted}>{t('feed.empty')}</Text>
       ) : (
         <ScrollView style={asPage && styles.pageList} keyboardShouldPersistTaps="handled">
           {items.map((it) =>

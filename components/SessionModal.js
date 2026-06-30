@@ -18,8 +18,10 @@ import {
 } from '../lib/signals';
 import { startOfDay, dayChipLabel, fmtClock, viewLabel } from '../lib/datetime';
 import { dropinWeekdays, openGymSlots } from '../lib/hours';
+import { useI18n } from '../lib/i18n';
 
 export default function SessionModal({ visible, signal, courts = [], sport = 'basketball', onClose, onChanged }) {
+  const { t } = useI18n();
   const days = useMemo(() => {
     const base = startOfDay(new Date());
     return Array.from({ length: 7 }, (_, i) => {
@@ -69,6 +71,8 @@ export default function SessionModal({ visible, signal, courts = [], sport = 'ba
   if (!signal) return null;
 
   const { mine, joined, plannedAt, plannedCourtId, participants } = signal;
+  // " @ Court name" suffix for a confirmed/suggested court (blank when none).
+  const courtAt = (id) => (id ? ` @ ${nameById[id] || t('session.aCourt')}` : '');
 
   // Snap to a valid open-gym slot for the given court/day.
   const snap = (court, dayDate, minPref) => {
@@ -106,40 +110,45 @@ export default function SessionModal({ visible, signal, courts = [], sport = 'ba
       <Pressable style={styles.backdrop} onPress={onClose}>
         <Pressable style={styles.sheet} onPress={() => {}}>
           <View style={styles.header}>
-            <Text style={styles.title}>{mine ? 'Your session' : `${signal.name}’s session`}</Text>
+            <Text style={styles.title}>
+              {mine ? t('session.yourSession') : t('session.theirSession', { name: signal.name })}
+            </Text>
             <Pressable hitSlop={10} onPress={onClose}>
               <Text style={styles.close}>✕</Text>
             </Pressable>
           </View>
 
           <Text style={styles.sub}>
-            {signal.isNow ? 'Down to hoop right now' : `Down to hoop · ${viewLabel(signal.startsAt)}`}
+            {signal.isNow
+              ? t('session.downNow')
+              : t('session.downAt', { when: viewLabel(signal.startsAt) })}
             {signal.note ? ` · ${signal.note}` : ''}
           </Text>
 
           <View style={[styles.banner, plannedAt ? styles.bannerOn : styles.bannerOff]}>
             <Text style={plannedAt ? styles.bannerOnText : styles.bannerOffText}>
               {plannedAt
-                ? `🏀 Confirmed: ${viewLabel(plannedAt)}${
-                    plannedCourtId ? ` @ ${nameById[plannedCourtId] || 'a court'}` : ''
-                  }`
-                : 'No time confirmed yet'}
+                ? t('session.confirmed', {
+                    when: viewLabel(plannedAt),
+                    court: courtAt(plannedCourtId),
+                  })
+                : t('session.noTimeYet')}
             </Text>
           </View>
 
           <ScrollView style={styles.body} keyboardShouldPersistTaps="handled">
-            <Text style={styles.label}>Who’s in ({participants.length})</Text>
+            <Text style={styles.label}>{t('session.whosIn', { n: participants.length })}</Text>
             {participants.map((p) => (
               <View key={p.userId} style={styles.pRow}>
                 <Text style={styles.pName}>
                   👤 {p.name}
-                  {p.userId === signal.userId ? ' · host' : ''}
+                  {p.userId === signal.userId ? ` · ${t('session.host')}` : ''}
                 </Text>
                 {p.proposedAt ? (
                   <View style={styles.pRight}>
                     <Text style={styles.pSuggest}>
                       {viewLabel(p.proposedAt)}
-                      {p.proposedCourtId ? ` @ ${nameById[p.proposedCourtId] || 'a court'}` : ''}
+                      {courtAt(p.proposedCourtId)}
                     </Text>
                     {mine && (
                       <Pressable
@@ -149,7 +158,7 @@ export default function SessionModal({ visible, signal, courts = [], sport = 'ba
                           run(() => confirmSignalTime(signal.id, p.proposedAt, p.proposedCourtId))
                         }
                       >
-                        <Text style={styles.confirmText}>Confirm</Text>
+                        <Text style={styles.confirmText}>{t('session.confirm')}</Text>
                       </Pressable>
                     )}
                   </View>
@@ -160,7 +169,7 @@ export default function SessionModal({ visible, signal, courts = [], sport = 'ba
             {joined && (
               <>
                 <Text style={[styles.label, { marginTop: 16 }]}>
-                  {mine ? 'Set a court & time' : 'Suggest a court & time'}
+                  {mine ? t('session.setCourtTime') : t('session.suggestCourtTime')}
                 </Text>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chipRow}>
                   {courtsWithBball.map((c) => {
@@ -180,7 +189,7 @@ export default function SessionModal({ visible, signal, courts = [], sport = 'ba
                 </ScrollView>
 
                 {!courtId ? (
-                  <Text style={styles.hint}>Pick a court to choose an open-gym time.</Text>
+                  <Text style={styles.hint}>{t('session.pickCourtHint')}</Text>
                 ) : (
                   <>
                     <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chipRow}>
@@ -202,7 +211,7 @@ export default function SessionModal({ visible, signal, courts = [], sport = 'ba
                               ]}
                             >
                               {dayChipLabel(d)}
-                              {open ? '' : ' · no hoops'}
+                              {open ? '' : ` · ${t('home.noHoops')}`}
                             </Text>
                           </Pressable>
                         );
@@ -237,7 +246,7 @@ export default function SessionModal({ visible, signal, courts = [], sport = 'ba
                 disabled={busy}
                 onPress={() => run(() => joinSignal(signal.id))}
               >
-                {busy ? <ActivityIndicator color="#fff" /> : <Text style={styles.primaryText}>I’m in</Text>}
+                {busy ? <ActivityIndicator color="#fff" /> : <Text style={styles.primaryText}>{t('session.imIn')}</Text>}
               </Pressable>
             ) : mine ? (
               <Pressable
@@ -245,7 +254,7 @@ export default function SessionModal({ visible, signal, courts = [], sport = 'ba
                 disabled={busy || !canSuggest}
                 onPress={() => run(() => confirmSignalTime(signal.id, picked, courtId))}
               >
-                {busy ? <ActivityIndicator color="#fff" /> : <Text style={styles.primaryText}>Confirm time</Text>}
+                {busy ? <ActivityIndicator color="#fff" /> : <Text style={styles.primaryText}>{t('session.confirmTime')}</Text>}
               </Pressable>
             ) : (
               <Pressable
@@ -253,7 +262,7 @@ export default function SessionModal({ visible, signal, courts = [], sport = 'ba
                 disabled={busy || !canSuggest}
                 onPress={() => run(() => joinSignal(signal.id, picked, courtId))}
               >
-                {busy ? <ActivityIndicator color="#fff" /> : <Text style={styles.primaryText}>Suggest time</Text>}
+                {busy ? <ActivityIndicator color="#fff" /> : <Text style={styles.primaryText}>{t('session.suggestTime')}</Text>}
               </Pressable>
             )}
 
@@ -264,7 +273,7 @@ export default function SessionModal({ visible, signal, courts = [], sport = 'ba
                   disabled={busy}
                   onPress={() => run(() => cancelSignal(signal.id)).then(onClose)}
                 >
-                  <Text style={styles.cancelText}>Cancel session</Text>
+                  <Text style={styles.cancelText}>{t('session.cancelSession')}</Text>
                 </Pressable>
               ) : (
                 <Pressable
@@ -272,7 +281,7 @@ export default function SessionModal({ visible, signal, courts = [], sport = 'ba
                   disabled={busy}
                   onPress={() => run(() => leaveSignal(signal.id))}
                 >
-                  <Text style={styles.cancelText}>Leave</Text>
+                  <Text style={styles.cancelText}>{t('session.leave')}</Text>
                 </Pressable>
               ))}
           </View>
