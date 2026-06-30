@@ -13,8 +13,10 @@ import {
 } from 'react-native';
 import { createSignal } from '../lib/signals';
 import { startOfDay, dayChipLabel, fmtClock } from '../lib/datetime';
+import { useI18n } from '../lib/i18n';
 
 export default function SignalModal({ visible, onClose, onPosted }) {
+  const { t } = useI18n();
   const [mode, setMode] = useState('now'); // 'now' | 'time'
   const [picked, setPicked] = useState(null);
   const [note, setNote] = useState('');
@@ -76,7 +78,7 @@ export default function SignalModal({ visible, onClose, onPosted }) {
       <Pressable style={styles.backdrop} onPress={onClose}>
         <Pressable style={styles.sheet} onPress={() => {}}>
           <View style={styles.header}>
-            <Text style={styles.title}>Down to hoop</Text>
+            <Text style={styles.title}>{t('signal.title')}</Text>
             <Pressable hitSlop={10} onPress={onClose}>
               <Text style={styles.close}>✕</Text>
             </Pressable>
@@ -88,7 +90,7 @@ export default function SignalModal({ visible, onClose, onPosted }) {
               onPress={() => setMode('now')}
             >
               <Text style={[styles.toggleText, mode === 'now' && styles.toggleTextActive]}>
-                Right now
+                {t('signal.rightNow')}
               </Text>
             </Pressable>
             <Pressable
@@ -96,14 +98,14 @@ export default function SignalModal({ visible, onClose, onPosted }) {
               onPress={() => setMode('time')}
             >
               <Text style={[styles.toggleText, mode === 'time' && styles.toggleTextActive]}>
-                At a time
+                {t('signal.atTime')}
               </Text>
             </Pressable>
           </View>
 
           {mode === 'time' && (
             <>
-              <Text style={styles.label}>Day</Text>
+              <Text style={styles.label}>{t('label.day')}</Text>
               <ScrollView
                 horizontal
                 showsHorizontalScrollIndicator={false}
@@ -124,7 +126,7 @@ export default function SignalModal({ visible, onClose, onPosted }) {
                   );
                 })}
               </ScrollView>
-              <Text style={styles.label}>Time</Text>
+              <Text style={styles.label}>{t('label.time')}</Text>
               <ScrollView
                 horizontal
                 showsHorizontalScrollIndicator={false}
@@ -151,7 +153,7 @@ export default function SignalModal({ visible, onClose, onPosted }) {
 
           <TextInput
             style={styles.note}
-            placeholder="Add a note (optional) — e.g. “anyone near the Mission?”"
+            placeholder={t('signal.notePh')}
             placeholderTextColor="#9aa7b4"
             value={note}
             onChangeText={setNote}
@@ -170,7 +172,7 @@ export default function SignalModal({ visible, onClose, onPosted }) {
               <ActivityIndicator color="#fff" />
             ) : (
               <Text style={styles.submitText}>
-                {mode === 'now' ? 'Tell friends I’m down' : 'Post'}
+                {mode === 'now' ? t('signal.tellFriends') : t('court.post')}
               </Text>
             )}
           </Pressable>

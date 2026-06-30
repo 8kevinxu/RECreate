@@ -21,8 +21,10 @@ import {
   acceptRequest,
   removeFriendship,
 } from '../lib/friends';
+import { useI18n } from '../lib/i18n';
 
 export default function FriendsModal({ visible, onClose }) {
+  const { t } = useI18n();
   const [code, setCode] = useState(null);
   const [friends, setFriends] = useState([]);
   const [incoming, setIncoming] = useState([]);
@@ -60,11 +62,12 @@ export default function FriendsModal({ visible, onClose }) {
       return;
     }
     setAddInput('');
+    const name = res.name || t('friends.them');
     setMsg({
       kind: 'ok',
       text: res.accepted
-        ? `You’re now friends with ${res.name || 'them'}.`
-        : `Request sent to ${res.name || 'them'}.`,
+        ? t('friends.nowFriends', { name })
+        : t('friends.requestSent', { name }),
     });
     await refresh();
   };
@@ -86,7 +89,7 @@ export default function FriendsModal({ visible, onClose }) {
     if (!code) return;
     try {
       await Share.share({
-        message: `Add me on HoopMap — my friend code is ${code}`,
+        message: t('friends.shareMsg', { code }),
       });
     } catch (e) {
       // Sharing unavailable (e.g. web) — the code is shown to copy manually.
@@ -98,7 +101,7 @@ export default function FriendsModal({ visible, onClose }) {
       <Pressable style={styles.backdrop} onPress={onClose}>
         <Pressable style={styles.sheet} onPress={() => {}}>
           <View style={styles.header}>
-            <Text style={styles.title}>Friends</Text>
+            <Text style={styles.title}>{t('friends.title')}</Text>
             <Pressable hitSlop={10} onPress={onClose}>
               <Text style={styles.close}>✕</Text>
             </Pressable>
@@ -111,25 +114,23 @@ export default function FriendsModal({ visible, onClose }) {
           ) : (
             <ScrollView keyboardShouldPersistTaps="handled">
               {/* Your code */}
-              <Text style={styles.label}>Your friend code</Text>
+              <Text style={styles.label}>{t('friends.yourCode')}</Text>
               <View style={styles.codeRow}>
                 <Text selectable style={styles.code}>
                   {code || '—'}
                 </Text>
                 <Pressable style={styles.shareBtn} onPress={shareCode}>
-                  <Text style={styles.shareBtnText}>Share</Text>
+                  <Text style={styles.shareBtnText}>{t('friends.share')}</Text>
                 </Pressable>
               </View>
-              <Text style={styles.codeHint}>
-                Share this code so friends can add you.
-              </Text>
+              <Text style={styles.codeHint}>{t('friends.codeHint')}</Text>
 
               {/* Add by code */}
-              <Text style={[styles.label, styles.sectionGap]}>Add a friend</Text>
+              <Text style={[styles.label, styles.sectionGap]}>{t('friends.addFriend')}</Text>
               <View style={styles.addRow}>
                 <TextInput
                   style={styles.addInput}
-                  placeholder="Enter friend code"
+                  placeholder={t('friends.enterCode')}
                   placeholderTextColor="#9aa7b4"
                   value={addInput}
                   onChangeText={setAddInput}
@@ -142,7 +143,7 @@ export default function FriendsModal({ visible, onClose }) {
                   disabled={busy || !addInput.trim()}
                   onPress={onAdd}
                 >
-                  <Text style={styles.addBtnText}>Add</Text>
+                  <Text style={styles.addBtnText}>{t('friends.add')}</Text>
                 </Pressable>
               </View>
               {!!msg && (
@@ -153,7 +154,7 @@ export default function FriendsModal({ visible, onClose }) {
               {incoming.length > 0 && (
                 <>
                   <Text style={[styles.label, styles.sectionGap]}>
-                    Requests ({incoming.length})
+                    {t('friends.requests', { n: incoming.length })}
                   </Text>
                   {incoming.map((r) => (
                     <View key={r.friendshipId} style={styles.row}>
@@ -164,14 +165,14 @@ export default function FriendsModal({ visible, onClose }) {
                           disabled={busy}
                           onPress={() => onAccept(r.friendshipId)}
                         >
-                          <Text style={styles.acceptText}>Accept</Text>
+                          <Text style={styles.acceptText}>{t('friends.accept')}</Text>
                         </Pressable>
                         <Pressable
                           style={[styles.smallBtn, styles.declineBtn]}
                           disabled={busy}
                           onPress={() => onRemove(r.friendshipId)}
                         >
-                          <Text style={styles.declineText}>Decline</Text>
+                          <Text style={styles.declineText}>{t('friends.decline')}</Text>
                         </Pressable>
                       </View>
                     </View>
@@ -181,12 +182,10 @@ export default function FriendsModal({ visible, onClose }) {
 
               {/* Friends */}
               <Text style={[styles.label, styles.sectionGap]}>
-                Your friends ({friends.length})
+                {t('friends.yourFriends', { n: friends.length })}
               </Text>
               {friends.length === 0 ? (
-                <Text style={styles.muted}>
-                  No friends yet — share your code or add someone above.
-                </Text>
+                <Text style={styles.muted}>{t('friends.noFriends')}</Text>
               ) : (
                 friends.map((f) => (
                   <View key={f.friendshipId} style={styles.row}>
@@ -196,7 +195,7 @@ export default function FriendsModal({ visible, onClose }) {
                       disabled={busy}
                       onPress={() => onRemove(f.friendshipId)}
                     >
-                      <Text style={styles.removeText}>Remove</Text>
+                      <Text style={styles.removeText}>{t('friends.remove')}</Text>
                     </Pressable>
                   </View>
                 ))
