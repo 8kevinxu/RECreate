@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useI18n } from '../lib/i18n';
 import FeedModal from './FeedModal';
 import ChatsScreen from './ChatsScreen';
 
@@ -13,14 +14,15 @@ export default function SocialScreen({
   userLocation = null,
 }) {
   const insets = useSafeAreaInsets();
+  const { t } = useI18n();
   const [seg, setSeg] = useState('activity'); // 'activity' | 'chats'
 
   return (
     <View style={[styles.page, { paddingTop: insets.top + 12 }]}>
       <View style={styles.segment}>
         {[
-          { id: 'activity', label: 'Activity' },
-          { id: 'chats', label: 'Chats' },
+          { id: 'activity', label: t('social.activity') },
+          { id: 'chats', label: t('social.chats') },
         ].map((s) => {
           const on = seg === s.id;
           return (

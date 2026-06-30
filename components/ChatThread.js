@@ -16,9 +16,11 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { loadMessages, sendMessage, subscribeChat, markThreadRead } from '../lib/chat';
+import { useI18n } from '../lib/i18n';
 
 export default function ChatThread({ visible, thread, onClose, onActivity }) {
   const insets = useSafeAreaInsets();
+  const { t } = useI18n();
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [draft, setDraft] = useState('');
@@ -59,7 +61,7 @@ export default function ChatThread({ visible, thread, onClose, onActivity }) {
       <View style={[styles.screen, { paddingTop: insets.top + 8 }]}>
         <View style={styles.header}>
           <Pressable hitSlop={10} onPress={onClose}>
-            <Text style={styles.back}>‹ Chats</Text>
+            <Text style={styles.back}>{t('chat.backChats')}</Text>
           </Pressable>
           <View style={styles.titleWrap}>
             <Text style={styles.title} numberOfLines={1}>
@@ -89,7 +91,7 @@ export default function ChatThread({ visible, thread, onClose, onActivity }) {
             >
               {messages.length === 0 && (
                 <Text style={styles.empty}>
-                  No messages yet — say hi{thread.kind !== 'direct' ? ' to the group' : ''}.
+                  {t(thread.kind !== 'direct' ? 'chat.noMessagesGroup' : 'chat.noMessagesDirect')}
                 </Text>
               )}
               {messages.map((m, i) => {
@@ -113,7 +115,7 @@ export default function ChatThread({ visible, thread, onClose, onActivity }) {
           <View style={[styles.composer, { paddingBottom: Math.max(insets.bottom, 10) }]}>
             <TextInput
               style={styles.input}
-              placeholder="Message"
+              placeholder={t('chat.messagePh')}
               placeholderTextColor="#9aa7b4"
               value={draft}
               onChangeText={setDraft}
@@ -125,7 +127,7 @@ export default function ChatThread({ visible, thread, onClose, onActivity }) {
               onPress={onSend}
               disabled={!draft.trim() || sending}
             >
-              <Text style={styles.sendText}>{sending ? '…' : 'Send'}</Text>
+              <Text style={styles.sendText}>{sending ? '…' : t('chat.send')}</Text>
             </Pressable>
           </View>
         </KeyboardAvoidingView>

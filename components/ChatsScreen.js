@@ -6,19 +6,21 @@ import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { loadThreads, subscribeChat, directThreadWith, setThreadDeleted } from '../lib/chat';
 import { listFriends } from '../lib/friends';
+import { useI18n } from '../lib/i18n';
 import ChatThread from './ChatThread';
 import SwipeRow from './SwipeRow';
 
 const KIND_ICON = { run: '📅', signal: '🏀', direct: '💬' };
 
-function timeAgo(iso) {
+// `tr` is the i18n translator (passed in because this file uses `t` for threads).
+function timeAgo(tr, iso) {
   if (!iso) return '';
   const m = Math.round((Date.now() - new Date(iso).getTime()) / 60000);
-  if (m < 1) return 'now';
-  if (m < 60) return `${m}m`;
+  if (m < 1) return tr('chat.now');
+  if (m < 60) return tr('chat.minShort', { n: m });
   const h = Math.round(m / 60);
-  if (h < 24) return `${h}h`;
-  return `${Math.round(h / 24)}d`;
+  if (h < 24) return tr('chat.hourShort', { n: h });
+  return tr('chat.dayShort', { n: Math.round(h / 24) });
 }
 
 function initials(name) {
@@ -31,6 +33,7 @@ function initials(name) {
 }
 
 export default function ChatsScreen({ courtsById = {} }) {
+  const { t: tr } = useI18n();
   const [threads, setThreads] = useState([]);
   const [friends, setFriends] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -72,10 +75,12 @@ export default function ChatsScreen({ courtsById = {} }) {
           <Text style={styles.rowTitle} numberOfLines={1}>
             {t.title}
           </Text>
-          {!!t.lastAt && <Text style={styles.rowTime}>{timeAgo(t.lastAt)}</Text>}
+          {!!t.lastAt && <Text style={styles.rowTime}>{timeAgo(tr, t.lastAt)}</Text>}
         </View>
         <Text style={styles.rowPreview} numberOfLines={1}>
-          {t.lastMessage ? `${t.lastSender === 'You' ? 'You: ' : ''}${t.lastMessage}` : t.subtitle}
+          {t.lastMessage
+            ? `${t.lastSender === 'You' ? tr('chat.youPrefix') : ''}${t.lastMessage}`
+            : t.subtitle}
         </Text>
       </View>
       {t.unread > 0 && (
@@ -103,11 +108,11 @@ export default function ChatsScreen({ courtsById = {} }) {
     return (
       <View style={styles.wrap}>
         <Pressable style={styles.backRow} onPress={() => setShowDeleted(false)} hitSlop={8}>
-          <Text style={styles.backText}>‹ Chats</Text>
+          <Text style={styles.backText}>{tr('chat.backChats')}</Text>
         </Pressable>
-        <Text style={styles.deletedTitle}>Deleted chats</Text>
+        <Text style={styles.deletedTitle}>{tr('chat.deletedTitle')}</Text>
         {deleted.length === 0 ? (
-          <Text style={styles.empty}>No deleted chats.</Text>
+          <Text style={styles.empty}>{tr('chat.noDeleted')}</Text>
         ) : (
           <ScrollView style={styles.list} contentContainerStyle={{ paddingBottom: 24 }}>
             {deleted.map((t) => (
@@ -116,7 +121,7 @@ export default function ChatsScreen({ courtsById = {} }) {
                   {threadContent(t)}
                 </Pressable>
                 <Pressable style={styles.restoreBtn} onPress={() => onRestore(t.key)}>
-                  <Text style={styles.restoreText}>Restore</Text>
+                  <Text style={styles.restoreText}>{tr('chat.restore')}</Text>
                 </Pressable>
               </View>
             ))}
@@ -131,7 +136,7 @@ export default function ChatsScreen({ courtsById = {} }) {
     <View style={styles.wrap}>
       {friends.length > 0 && (
         <View>
-          <Text style={styles.sectionLabel}>Message a friend</Text>
+          <Text style={styles.sectionLabel}>{tr('chat.messageFriend')}</Text>
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
@@ -156,14 +161,11 @@ export default function ChatsScreen({ courtsById = {} }) {
           <ActivityIndicator color="#2f74d6" />
         </View>
       ) : active.length === 0 && deleted.length === 0 ? (
-        <Text style={styles.empty}>
-          No chats yet. Join a run or “down to hoop” to land in its group chat, or message a friend
-          above.
-        </Text>
+        <Text style={styles.empty}>{tr('chat.empty')}</Text>
       ) : (
         <ScrollView style={styles.list} contentContainerStyle={{ paddingBottom: 24 }}>
           {active.map((t) => (
-            <SwipeRow key={t.key} actionLabel="Delete" actionColor="#e5484d" onAction={() => onDelete(t.key)}>
+            <SwipeRow key={t.key} actionLabel={tr('delete')} actionColor="#e5484d" onAction={() => onDelete(t.key)}>
               <Pressable style={styles.row} onPress={() => setOpen(t)}>
                 {threadContent(t)}
               </Pressable>
@@ -171,7 +173,7 @@ export default function ChatsScreen({ courtsById = {} }) {
           ))}
           {deleted.length > 0 && (
             <Pressable style={styles.deletedEntry} onPress={() => setShowDeleted(true)}>
-              <Text style={styles.deletedEntryText}>🗑  Deleted ({deleted.length})</Text>
+              <Text style={styles.deletedEntryText}>{tr('chat.deletedCount', { n: deleted.length })}</Text>
             </Pressable>
           )}
         </ScrollView>
