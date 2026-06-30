@@ -18,6 +18,7 @@ import { startOfDay, dayChipLabel, fmtClock } from '../lib/datetime';
 import { dropinWeekdays, openGymSlots } from '../lib/hours';
 import { SPORTS } from '../lib/sports';
 import { haversineMiles, formatDistance } from '../lib/distance';
+import { useI18n, sportLabel } from '../lib/i18n';
 
 const minutesOf = (d) => d.getHours() * 60 + d.getMinutes();
 // Does this court run the sport's open gym at the exact picked day+time? Slots are
@@ -34,6 +35,7 @@ export default function RunModal({
   onClose,
   onCreated,
 }) {
+  const { t } = useI18n();
   // Seeded from the map's current sport, but switchable here so you can plan a
   // run for either sport regardless of what the map is showing.
   const [sport, setSport] = useState(sportProp);
@@ -181,11 +183,11 @@ export default function RunModal({
 
   const submit = async () => {
     if (!courtId) {
-      setError('Pick a court.');
+      setError(t('run.errCourt'));
       return;
     }
     if (!picked) {
-      setError('Pick a day and time.');
+      setError(t('run.errTime'));
       return;
     }
     setBusy(true);
@@ -211,7 +213,7 @@ export default function RunModal({
       <Pressable style={styles.backdrop} onPress={onClose}>
         <Pressable style={styles.sheet} onPress={() => {}}>
           <View style={styles.header}>
-            <Text style={styles.title}>Plan a game</Text>
+            <Text style={styles.title}>{t('run.title')}</Text>
             <Pressable hitSlop={10} onPress={onClose}>
               <Text style={styles.close}>✕</Text>
             </Pressable>
@@ -227,7 +229,7 @@ export default function RunModal({
                   style={[styles.sportChip, active && styles.sportChipActive]}
                 >
                   <Text style={[styles.sportChipText, active && styles.sportChipTextActive]}>
-                    {s.emoji} {s.label}
+                    {s.emoji} {sportLabel(t, s.id)}
                   </Text>
                 </Pressable>
               );
@@ -235,10 +237,13 @@ export default function RunModal({
           </View>
 
           <View style={styles.labelRow}>
-            <Text style={styles.label}>Court</Text>
+            <Text style={styles.label}>{t('run.court')}</Text>
             {picked && (
               <Text style={styles.labelHint}>
-                open gym {dayChipLabel(picked)} {fmtClock(Math.floor(selMin / 60), selMin % 60)}
+                {t('run.openGymAt', {
+                  day: dayChipLabel(picked),
+                  time: fmtClock(Math.floor(selMin / 60), selMin % 60),
+                })}
               </Text>
             )}
           </View>
@@ -284,13 +289,13 @@ export default function RunModal({
                           booked >= 70 ? styles.bookedPillHi : styles.bookedPillLo,
                         ]}
                       >
-                        <Text style={styles.bookedPillText}>{booked}% booked</Text>
+                        <Text style={styles.bookedPillText}>{t('run.pctBooked', { n: booked })}</Text>
                       </View>
                     )}
                     {active ? (
                       <Text style={styles.courtRowCheck}>✓</Text>
                     ) : disabled ? (
-                      <Text style={styles.courtRowClosed}>no hoops then</Text>
+                      <Text style={styles.courtRowClosed}>{t('run.noHoopsThen')}</Text>
                     ) : null}
                   </View>
                 </Pressable>
@@ -298,7 +303,7 @@ export default function RunModal({
             })}
           </ScrollView>
 
-          <Text style={styles.label}>Day</Text>
+          <Text style={styles.label}>{t('label.day')}</Text>
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
@@ -326,7 +331,7 @@ export default function RunModal({
                     ]}
                   >
                     {dayChipLabel(d)}
-                    {open ? '' : ' · no hoops'}
+                    {open ? '' : ` · ${t('home.noHoops')}`}
                   </Text>
                 </Pressable>
               );
@@ -334,29 +339,30 @@ export default function RunModal({
           </ScrollView>
 
           <View style={styles.labelRow}>
-            <Text style={styles.label}>Time</Text>
+            <Text style={styles.label}>{t('label.time')}</Text>
             {!!picked && (
               <Pressable hitSlop={8} onPress={() => setPicked(null)}>
-                <Text style={styles.clearTime}>✕ Clear</Text>
+                <Text style={styles.clearTime}>{t('run.clear')}</Text>
               </Pressable>
             )}
           </View>
           {blocksForSelDay.length > 0 && (
             <Text style={styles.hint}>
-              Open gym:{' '}
-              {blocksForSelDay
-                .map(
-                  ([s, e]) =>
-                    `${fmtClock(Math.floor(s / 60), s % 60)}–${fmtClock(
-                      Math.floor(e / 60),
-                      e % 60
-                    )}`
-                )
-                .join(', ')}
+              {t('run.openGymRanges', {
+                ranges: blocksForSelDay
+                  .map(
+                    ([s, e]) =>
+                      `${fmtClock(Math.floor(s / 60), s % 60)}–${fmtClock(
+                        Math.floor(e / 60),
+                        e % 60
+                      )}`
+                  )
+                  .join(', '),
+              })}
             </Text>
           )}
           {daySlots.length === 0 ? (
-            <Text style={styles.hint}>Pick a day to see open-gym times.</Text>
+            <Text style={styles.hint}>{t('run.pickDayHint')}</Text>
           ) : (
             <ScrollView
               horizontal
@@ -380,7 +386,7 @@ export default function RunModal({
             </ScrollView>
           )}
 
-          <Text style={styles.label}>Who can see it</Text>
+          <Text style={styles.label}>{t('run.whoCanSee')}</Text>
           <View style={styles.toggle}>
             <Pressable
               style={[styles.toggleItem, visibility === 'friends' && styles.toggleActive]}
@@ -392,7 +398,7 @@ export default function RunModal({
                   visibility === 'friends' && styles.toggleTextActive,
                 ]}
               >
-                Friends
+                {t('run.visFriends')}
               </Text>
             </Pressable>
             <Pressable
@@ -405,14 +411,14 @@ export default function RunModal({
                   visibility === 'public' && styles.toggleTextActive,
                 ]}
               >
-                Anyone
+                {t('run.visAnyone')}
               </Text>
             </Pressable>
           </View>
 
           <TextInput
             style={styles.note}
-            placeholder="Add a note (optional) — e.g. “casual, all levels”"
+            placeholder={t('run.notePh')}
             placeholderTextColor="#9aa7b4"
             value={note}
             onChangeText={setNote}
@@ -430,7 +436,7 @@ export default function RunModal({
             {busy ? (
               <ActivityIndicator color="#fff" />
             ) : (
-              <Text style={styles.submitText}>Post plan</Text>
+              <Text style={styles.submitText}>{t('run.postPlan')}</Text>
             )}
           </Pressable>
         </Pressable>
