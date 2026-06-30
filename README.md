@@ -420,26 +420,43 @@ live in [`03_profiles.sql`](supabase/schema/03_profiles.sql).)
 ## Down to hoop
 
 A location-less availability ping to friends: in the **📣 Activity** sheet tap
-**🏀 I'm down** → **Right now** or **At a time** (+ optional note). Friends see it
-live in their Activity feed, and the Activity button shows an **unread badge** —
-the in-app "notification". Signals are **friends-only** (RLS) and **auto-expire**
-2h after they start.
+**🏀 I'm down** → pick a **sport** and **Right now** or **At a time** (+ optional
+note). Friends see it live in their Activity feed, and the Activity button shows an
+**unread badge** — the in-app "notification". Signals are **friends-only** (RLS) and
+**auto-expire** 2h after they start. The chosen sport rides along on the feed row and
+the session sheet, and scopes which courts/times you can suggest.
 
 Each signal is a **joinable session**: tap it to open the session sheet, **join**
 (**I'm in**), **suggest a court + time**, and — as the host — **confirm** one
 (either a participant's suggestion or your own). Suggestions pick a **rec center**
 and a time **limited to that court's open-gym blocks** (shared with the run form
-via `basketballWeekdays` / `openGymSlots` in `lib/hours.js`). The confirmed
-court + time show to everyone and extend the session's expiry. Code lives in
+via `dropinWeekdays` / `openGymSlots` in `lib/hours.js`). Joining or suggesting
+**drops you into the signal's group chat** and posts an announcement there ("I'm in!"
+/ "Suggested {court} · {when}"), so everyone sees who's in and what they proposed. The
+confirmed court + time show to everyone and extend the session's expiry. Code lives in
 `lib/signals.js`, `components/SignalModal.js` (composer), and
 `components/SessionModal.js` (session).
 
 Setup: run [`supabase/schema/06_signals.sql`](supabase/schema/06_signals.sql) — it
-adds `hoop_signals` + `hoop_signal_participants` (with the suggested/confirmed court
-+ time columns), policies, the auto-join trigger, and real-time.
+adds `hoop_signals` + `hoop_signal_participants` (with the sport + suggested/confirmed
+court + time columns), policies, the auto-join trigger, and real-time. On an
+**existing** DB, apply [`supabase/migrations/006_signal_sport.sql`](supabase/migrations/006_signal_sport.sql)
+to add the `sport` column.
 
 > **Note:** the in-app feed is real-time. To also **buzz the phone when the app
 > is closed**, see *Push notifications* below.
+
+## Chat
+
+The **Social → Chats** tab lists every conversation you're in: **group chats** for
+runs and "down to hoop" sessions (you're added when you join) and **1:1 direct
+chats** with friends, plus a row of friends to start a new direct chat. A thread
+opens a messaging view with colored avatars, **date dividers**, timestamped message
+bubbles, and a rounded composer. Swipe a row to hide a chat (restore it from the
+**Deleted** view). All three kinds share one `chat_messages` table, scoped by RLS;
+read state + hidden threads are tracked locally (`AsyncStorage`). Code lives in
+`lib/chat.js`, `components/ChatsScreen.js` (list), and `components/ChatThread.js`
+(conversation). Setup: run [`supabase/schema/08_chat.sql`](supabase/schema/08_chat.sql).
 
 ## Push notifications
 
