@@ -13,6 +13,7 @@ import {
 import { formatDistance } from '../lib/distance';
 import { fmtDuration } from '../lib/datetime';
 import { isFullyBooked } from '../lib/reservations';
+import { useI18n } from '../lib/i18n';
 
 const MIN_OPTIONS = [
   { label: 'Any', value: 0 },
@@ -32,6 +33,7 @@ export default function NearbyList({
   onRequestLocation,
   onClose,
 }) {
+  const { t } = useI18n();
   const [minOpen, setMinOpen] = useState(0);
 
   const rows = useMemo(() => {
@@ -48,7 +50,7 @@ export default function NearbyList({
       <Pressable style={styles.backdrop} onPress={onClose}>
         <Pressable style={styles.sheet} onPress={() => {}}>
           <View style={styles.header}>
-            <Text style={styles.title}>Nearby courts</Text>
+            <Text style={styles.title}>{t('nearby.title')}</Text>
             <Pressable hitSlop={10} onPress={onClose}>
               <Text style={styles.close}>✕</Text>
             </Pressable>
@@ -56,14 +58,12 @@ export default function NearbyList({
 
           {!hasLocation && (
             <Pressable style={styles.enableLoc} onPress={onRequestLocation}>
-              <Text style={styles.enableLocText}>
-                📍 Enable location to sort by distance
-              </Text>
+              <Text style={styles.enableLocText}>{t('nearby.enableLoc')}</Text>
             </Pressable>
           )}
 
           <View style={styles.filterRow}>
-            <Text style={styles.filterLabel}>Open for</Text>
+            <Text style={styles.filterLabel}>{t('nearby.openFor')}</Text>
             {MIN_OPTIONS.map((o) => {
               const active = minOpen === o.value;
               return (
@@ -73,7 +73,7 @@ export default function NearbyList({
                   style={[styles.chip, active && styles.chipActive]}
                 >
                   <Text style={[styles.chipText, active && styles.chipTextActive]}>
-                    {o.label}
+                    {o.value === 0 ? t('nearby.any') : o.label}
                   </Text>
                 </Pressable>
               );
@@ -82,7 +82,7 @@ export default function NearbyList({
 
           <ScrollView style={styles.list}>
             {rows.length === 0 ? (
-              <Text style={styles.muted}>No courts match — try a smaller "open for".</Text>
+              <Text style={styles.muted}>{t('nearby.noMatch')}</Text>
             ) : (
               rows.map((c) => {
                 const full = isFullyBooked(c.reserved?.[sport], isPicked ? viewTime : null);
@@ -91,11 +91,11 @@ export default function NearbyList({
                   <View style={{ flex: 1 }}>
                     <Text style={styles.name}>
                       {c.name}
-                      {full && <Text style={styles.fullTag}>  🔴 Fully booked</Text>}
+                      {full && <Text style={styles.fullTag}>  {t('court.fullyBooked')}</Text>}
                     </Text>
                     <Text style={styles.sub}>
                       {[
-                        c.indoor === false ? 'Outdoor' : 'Indoor',
+                        c.indoor === false ? t('nearby.outdoor') : t('nearby.indoor'),
                         c.neighborhood,
                         hasLocation && formatDistance(c.distanceMi),
                       ]
@@ -112,10 +112,10 @@ export default function NearbyList({
                         ]}
                       >
                         {c.remaining > 0
-                          ? `${c.remaining <= CLOSING_SOON ? 'closing · ' : 'open · '}${fmtDuration(
-                              c.remaining
-                            )} left`
-                          : 'open'}
+                          ? t(c.remaining <= CLOSING_SOON ? 'nearby.closingLeft' : 'nearby.openLeft', {
+                              d: fmtDuration(c.remaining),
+                            })
+                          : t('nearby.open')}
                       </Text>
                     ) : (
                       <Text style={styles.closed}>{c.dropin.label}</Text>
