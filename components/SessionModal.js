@@ -1,4 +1,4 @@
-// "Down to hoop" session detail: see who's in, suggest a court + open-gym time,
+// "Down to play" session detail: see who's in, suggest a court + open-gym time,
 // and (as host) confirm one. Opened by tapping a signal in the Friends feed.
 import React, { useEffect, useMemo, useState } from 'react';
 import {
@@ -18,7 +18,7 @@ import {
 } from '../lib/signals';
 import { startOfDay, dayChipLabel, fmtClock, viewLabel } from '../lib/datetime';
 import { dropinWeekdays, openGymSlots } from '../lib/hours';
-import { sportMeta } from '../lib/sports';
+import { sportMeta, ANY_SPORT, DEFAULT_SPORT } from '../lib/sports';
 import { sportLabel, useI18n } from '../lib/i18n';
 
 export default function SessionModal({
@@ -31,8 +31,10 @@ export default function SessionModal({
   onJoinedChat,
 }) {
   const { t } = useI18n();
-  // Court suggestions + open-gym times follow the signal's own sport.
-  const sport = signal?.sport || sportProp;
+  // The signal's own sport drives the header; an "Anything" (just-rec) signal has no
+  // schedules of its own, so court + open-gym suggestions fall back to a real sport.
+  const displaySport = signal?.sport || sportProp;
+  const sport = displaySport === ANY_SPORT ? DEFAULT_SPORT : displaySport;
   const days = useMemo(() => {
     const base = startOfDay(new Date());
     return Array.from({ length: 7 }, (_, i) => {
@@ -149,7 +151,7 @@ export default function SessionModal({
           </View>
 
           <Text style={styles.sub}>
-            {sportMeta(sport).emoji} {sportLabel(t, sport)} ·{' '}
+            {sportMeta(displaySport).emoji} {sportLabel(t, displaySport)} ·{' '}
             {signal.isNow
               ? t('session.downNow')
               : t('session.downAt', { when: viewLabel(signal.startsAt) })}

@@ -1,4 +1,4 @@
-// Activity sheet: the social front door. One stream of friends' "down to hoop"
+// Activity sheet: the social front door. One stream of friends' "down to play"
 // signals (tap to open the session) and upcoming planned games (join / leave /
 // cancel), with quick "I'm down" + "Plan" composers up top. Opened from the
 // header; the header badge counts unread items (see lib/feed.js).

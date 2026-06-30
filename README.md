@@ -16,7 +16,7 @@ recreation** across five tabs:
   photography, social games) with live openings.
 - **🏊 Pools** — the 9 public swimming pools with parsed weekly swim schedules
   (lap / family / senior / lessons …), fees, and "open now".
-- **👥 Social** — accounts, friends, "down to hoop" signals, planned pickup games,
+- **👥 Social** — accounts, friends, "down to play" signals, planned pickup games,
   an activity feed, and chat.
 - **👤 Profile** — your profile/stats, plus **Settings** (language + account).
 
@@ -62,8 +62,8 @@ stays centered on San Francisco — everything else still works.
 | `components/FriendsModal.js` | Friends sheet (your code, add by code, requests, friends list) |
 | `lib/feed.js` | Activity feed: merges signals + runs into one stream; unread tracking |
 | `components/FeedModal.js` | Activity sheet — friends' signals + upcoming runs, with composers |
-| `lib/signals.js` | "Down to hoop" signals + joinable sessions (friends-only, realtime) |
-| `components/SignalModal.js` | "Down to hoop" composer (now / at a time + note) |
+| `lib/signals.js` | "Down to play" signals + joinable sessions (friends-only, realtime) |
+| `components/SignalModal.js` | "Down to play" composer (now / at a time + note) |
 | `components/SessionModal.js` | Session sheet (join, suggest a time, host confirms) |
 | `lib/distance.js` | Haversine distance + formatting (miles) |
 | `lib/push.js` | Expo push-token registration + notification-tap handling |
@@ -368,10 +368,10 @@ When Supabase isn't configured, the account button is simply hidden.
 ## Activity feed
 
 The social front door. The header **📣 Activity** button opens one stream that
-merges everything happening with your friends — their **"down to hoop"** signals
+merges everything happening with your friends — their **"down to play"** signals
 (tap to open the session), **confirmed sessions** (court + time locked in, marked
 ✅), and **upcoming runs** (with **I'm in** / **Leave** / **Cancel**) — sorted
-soonest-first. Up top are quick **🏀 I'm down** and **＋ Plan a run** composers, so
+soonest-first. Up top are quick **🤙 I’m down** and **＋ Plan a run** composers, so
 the feed is both where you see activity and where you start it.
 
 The Activity button carries an **unread badge**: a count of feed items posted
@@ -421,14 +421,16 @@ Setup: run [`supabase/schema/05_friends.sql`](supabase/schema/05_friends.sql) �
 `friendships` table, policies, and real-time. (The `friend_code` column + generator
 live in [`03_profiles.sql`](supabase/schema/03_profiles.sql).)
 
-## Down to hoop
+## Down to play
 
 A location-less availability ping to friends: in the **📣 Activity** sheet tap
-**🏀 I'm down** → pick a **sport** and **Right now** or **At a time** (+ optional
-note). Friends see it live in their Activity feed, and the Activity button shows an
+**🤙 I’m down** → optionally pick a **sport** (or leave it **🤸 Anything** — just
+down for some recreation) and **Right now** or **At a time** (+ optional note).
+Friends see it live in their Activity feed, and the Activity button shows an
 **unread badge** — the in-app "notification". Signals are **friends-only** (RLS) and
 **auto-expire** 2h after they start. The chosen sport rides along on the feed row and
-the session sheet, and scopes which courts/times you can suggest.
+the session sheet, and scopes which courts/times you can suggest (an **Anything**
+signal falls back to a default sport for those suggestions).
 
 Each signal is a **joinable session**: tap it to open the session sheet, **join**
 (**I'm in**), **suggest a court + time**, and — as the host — **confirm** one
@@ -453,7 +455,7 @@ to add the `sport` column.
 ## Chat
 
 The **Social → Chats** tab lists every conversation you're in: **group chats** for
-runs and "down to hoop" sessions (you're added when you join) and **1:1 direct
+runs and "down to play" sessions (you're added when you join) and **1:1 direct
 chats** with friends, plus a row of friends to start a new direct chat. A thread
 opens a messaging view with colored avatars, **date dividers**, timestamped message
 bubbles, and a rounded composer. Swipe a row to hide a chat (restore it from the
@@ -469,7 +471,7 @@ land even when the app is closed:
 
 | Event | Who gets it |
 | --- | --- |
-| A friend posts **"down to hoop"** | their friends |
+| A friend posts **"down to play"** | their friends |
 | A friend **plans a run** | their friends |
 | Someone **joins** your run / session | the host |
 | A session's **court + time is confirmed** | the other participants |

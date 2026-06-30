@@ -1,5 +1,5 @@
-// "Down to hoop" composer: choose Now or a day/time (no location), add an
-// optional note, and broadcast to friends.
+// "Down to play" composer: choose Now or a day/time (no location), optionally pick
+// a sport (or leave it "Anything" — just down for rec), add a note, broadcast.
 import React, { useEffect, useMemo, useState } from 'react';
 import {
   ActivityIndicator,
@@ -13,14 +13,17 @@ import {
 } from 'react-native';
 import { createSignal } from '../lib/signals';
 import { startOfDay, dayChipLabel, fmtClock } from '../lib/datetime';
-import { SPORTS, DEFAULT_SPORT } from '../lib/sports';
+import { SPORTS, ANY_SPORT, sportMeta } from '../lib/sports';
 import { sportLabel, useI18n } from '../lib/i18n';
+
+// "Anything" (just down for rec) first, then the specific sports.
+const SPORT_OPTS = [{ id: ANY_SPORT, emoji: sportMeta(ANY_SPORT).emoji }, ...SPORTS];
 
 export default function SignalModal({ visible, onClose, onPosted }) {
   const { t } = useI18n();
   const [mode, setMode] = useState('now'); // 'now' | 'time'
   const [picked, setPicked] = useState(null);
-  const [sport, setSport] = useState(DEFAULT_SPORT);
+  const [sport, setSport] = useState(ANY_SPORT);
   const [note, setNote] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(null);
@@ -42,7 +45,7 @@ export default function SignalModal({ visible, onClose, onPosted }) {
   useEffect(() => {
     if (!visible) return;
     setMode('now');
-    setSport(DEFAULT_SPORT);
+    setSport(ANY_SPORT);
     setNote('');
     setError(null);
     setBusy(false);
@@ -113,7 +116,7 @@ export default function SignalModal({ visible, onClose, onPosted }) {
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={styles.chipRow}
           >
-            {SPORTS.map((s) => {
+            {SPORT_OPTS.map((s) => {
               const active = s.id === sport;
               return (
                 <Pressable

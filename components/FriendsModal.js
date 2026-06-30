@@ -1,6 +1,6 @@
 // Friends sheet: share your code, add friends by code, and accept/decline
 // incoming requests. Opened from the header when signed in. (The activity feed —
-// "down to hoop" signals and planned runs — lives in the Activity sheet now.)
+// "down to play" signals and planned runs — lives in the Activity sheet now.)
 import React, { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
