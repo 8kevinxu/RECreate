@@ -39,7 +39,12 @@ import {
   getDropinRemaining,
 } from './lib/hours';
 import { SPORTS, DEFAULT_SPORT, sportMeta } from './lib/sports';
+import { useFavorites } from './lib/favorites';
 import { useI18n, sportLabel, tg } from './lib/i18n';
+
+// All tracked sport ids, used by the ⭐ Favorites view to aggregate a court's
+// open/closed status across every sport it offers (not just the selected one).
+const SPORT_IDS = SPORTS.map((s) => s.id);
 import {
   loadCrowd,
   checkIn as recordCheckIn,
@@ -179,12 +184,24 @@ function formatUpdated(iso) {
   return `${MONTHS[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
 }
 
+// Roll a court up across every tracked sport for the Favorites view: the sports it
+// runs and which of those are open at `viewTime`. `anyOpen` drives the map marker.
+function favStatus(court, viewTime) {
+  const sports = SPORT_IDS.filter((sp) =>
+    (court.dropins?.[sp] || []).some((day) => day && day.length)
+  );
+  const openSports = sports.filter((sp) => getDropinStatus(court, sp, viewTime).open);
+  return { sports, openSports, anyOpen: openSports.length > 0 };
+}
+
 export default function App() {
   const { t } = useI18n();
   const mapRef = useRef(null);
   const didCenterRef = useRef(false); // auto-center on the user only once
   const [openOnly, setOpenOnly] = useState(false);
   const [sport, setSport] = useState(DEFAULT_SPORT); // which drop-in sport to show
+  const [favoritesMode, setFavoritesMode] = useState(false); // ⭐ personal favorites map
+  const { isFavorite, toggle: toggleFavorite } = useFavorites();
   const [placeFilter, setPlaceFilter] = useState('all'); // indoor/outdoor sub-filter
   const [amenities, setAmenities] = useState([]); // active amenity filter ids (multi-select)
   const [menuOpen, setMenuOpen] = useState(false); // sport + filters dropdown menu
@@ -448,6 +465,10 @@ export default function App() {
       // Does this court ever run the selected sport? (any block any day.) Courts
       // that never do are hidden entirely in that sport — no marker, no listing.
       offersSport: (c.dropins?.[sport] || []).some((day) => day && day.length),
+      // Cross-sport rollup for the ⭐ Favorites view: which sports this court runs
+      // and which of them have open gym right now (so the marker/card can show a
+      // favorite as "open" if any of its sports is on).
+      fav: favStatus(c, viewTime),
       distanceMi: userLocation
         ? haversineMiles(userLocation.lat, userLocation.lng, c.lat, c.lng)
         : null,
@@ -483,6 +504,11 @@ export default function App() {
   // Only courts that actually offer the sport; then the Indoor/Outdoor sub-filter
   // (when shown), the amenity filters, and "Open now" narrow further.
   const visibleCourts = useMemo(() => {
+    // Favorites view: just the user's starred courts, judged open across any sport
+    // they run (the indoor/outdoor + amenity filters are sport-specific, so skip).
+    if (favoritesMode) {
+      return courts.filter((c) => isFavorite(c.id) && (!openOnly || c.fav.anyOpen));
+    }
     const place = showPlaceToggle ? placeFilter : 'all';
     const active = AMENITIES.filter((a) => activeAmenities.includes(a.id));
     return courts.filter(
@@ -492,7 +518,7 @@ export default function App() {
         (place === 'all' || (place === 'outdoor' ? c.indoor === false : c.indoor !== false)) &&
         active.every((a) => a.test(c, sport))
     );
-  }, [courts, sport, openOnly, placeFilter, showPlaceToggle, activeAmenities.join(',')]);
+  }, [courts, sport, favoritesMode, isFavorite, openOnly, placeFilter, showPlaceToggle, activeAmenities.join(',')]);
 
   // "indoor"/"outdoor" qualifier for the header — only when the sport's courts are
   // uniformly one or the other (e.g. tennis = all outdoor); blank when mixed.
@@ -524,19 +550,28 @@ export default function App() {
           lat: c.lat,
           lng: c.lng,
           indoor: c.indoor,
-          open: c.dropin.open,
-          booked,
+          // In the Favorites view a court counts as open if any of its sports is on.
+          open: favoritesMode ? c.fav.anyOpen : c.dropin.open,
+          booked: favoritesMode ? null : booked,
           // Crowd is a live signal; hide it when viewing a future time.
           crowd: isPicked ? null : currentLevel(crowd[c.id], nowMs),
         };
       }),
-    [visibleCourts, sport, crowd, nowMs, isPicked, viewTime]
+    [visibleCourts, sport, favoritesMode, crowd, nowMs, isPicked, viewTime]
   );
 
   const selected = useMemo(
     () => courts.find((c) => c.id === selectedId) || null,
     [courts, selectedId]
   );
+
+  // In the Favorites view a court may not run the currently-selected sport, so the
+  // detail card defaults to that sport when offered, else the court's first sport.
+  const detailSport = useMemo(() => {
+    if (!selected || !favoritesMode) return sport;
+    if (selected.offersSport) return sport;
+    return selected.fav.sports[0] || sport;
+  }, [selected, favoritesMode, sport]);
 
   const handleSelect = (id) => {
     setSelectedId(id);
@@ -577,7 +612,7 @@ export default function App() {
             setControlsVisible(false);
           }}
         >
-          <Text style={styles.filterFabSport}>{sportMeta(sport).emoji}</Text>
+          <Text style={styles.filterFabSport}>{favoritesMode ? '⭐' : sportMeta(sport).emoji}</Text>
         </Pressable>
 
         {/* Filter FAB: the open-now / time / place / amenity controls bar. */}
@@ -598,12 +633,31 @@ export default function App() {
 
         {sportPickerOpen && (
           <View style={[styles.sportDial, { top: insets.top + 8 + 52 }]}>
-            {SPORTS.filter((s) => s.id !== sport).map((s) => (
+            {/* ⭐ Favorites: a personal map of just your starred courts, open in any
+                sport. Hidden while already in the Favorites view. */}
+            {!favoritesMode && (
+              <Pressable
+                style={styles.sportDialItem}
+                onPress={() => {
+                  setFavoritesMode(true);
+                  setSportPickerOpen(false);
+                }}
+              >
+                <View style={styles.sportDialLabel}>
+                  <Text style={styles.sportDialLabelText}>{t('sport.favorites')}</Text>
+                </View>
+                <View style={styles.fab}>
+                  <Text style={styles.filterFabSport}>⭐</Text>
+                </View>
+              </Pressable>
+            )}
+            {SPORTS.filter((s) => favoritesMode || s.id !== sport).map((s) => (
               <Pressable
                 key={s.id}
                 style={styles.sportDialItem}
                 onPress={() => {
                   setSport(s.id);
+                  setFavoritesMode(false); // leave the Favorites view
                   setPlaceFilter('all'); // reset indoor/outdoor sub-filter
                   setAmenities([]); // reset amenity filters
                   setSportPickerOpen(false);
@@ -623,7 +677,7 @@ export default function App() {
         {controlsVisible && (
         <View style={[styles.controls, { top: insets.top + 56 }]}>
         <View style={styles.filterRow}>
-          {hasMoreFilters && (
+          {hasMoreFilters && !favoritesMode && (
             <Pressable
               onPress={() => setMenuOpen((v) => !v)}
               style={[styles.menuBtn, (menuOpen || activeFilterCount > 0) && styles.menuBtnActive]}
@@ -684,7 +738,7 @@ export default function App() {
 
         </View>
 
-        {menuOpen && hasMoreFilters && (
+        {menuOpen && hasMoreFilters && !favoritesMode && (
           <View style={styles.filtersPanel}>
             {showPlaceToggle && (
               <View style={styles.placeRow}>
@@ -804,6 +858,13 @@ export default function App() {
           </View>
         )}
 
+        {favoritesMode && visibleCourts.length === 0 && !selected && (
+          <View style={styles.favEmpty} pointerEvents="none">
+            <Text style={styles.favEmptyStar}>☆</Text>
+            <Text style={styles.favEmptyText}>{t('fav.empty')}</Text>
+          </View>
+        )}
+
         {userLocation && (
           <Pressable style={[styles.recenterBtn, { bottom: navClearance }]} onPress={recenter}>
             <Text style={styles.recenterIcon}>◎</Text>
@@ -822,7 +883,10 @@ export default function App() {
       {selected && (
         <CourtDetail
           court={selected}
-          sport={sport}
+          sport={detailSport}
+          favoritesMode={favoritesMode}
+          isFav={isFavorite(selected.id)}
+          onToggleFav={() => toggleFavorite(selected.id)}
           history={crowd[selected.id] || []}
           myVote={myVotes[selected.id]}
           now={nowMs}
@@ -897,6 +961,9 @@ export default function App() {
 function CourtDetail({
   court,
   sport,
+  favoritesMode = false,
+  isFav = false,
+  onToggleFav,
   history,
   myVote,
   now,
@@ -909,12 +976,18 @@ function CourtDetail({
   onClose,
 }) {
   const { t } = useI18n();
-  const { status, dropin } = court;
-  const meta = sportMeta(sport);
-  const sportName = sportLabel(t, sport);
+  const { status } = court;
+  // The sport whose schedule/reservations the card shows. In the Favorites view a
+  // court can run several sports, so this is switchable via the chip row below;
+  // elsewhere it's just the map's selected sport. Resets when the court changes.
+  const [vSport, setVSport] = useState(sport);
+  useEffect(() => setVSport(sport), [court.id, sport]);
+  const dropin = getDropinStatus(court, vSport, viewTime);
+  const meta = sportMeta(vSport);
+  const sportName = sportLabel(t, vSport);
   // rec.us reservations for this sport, if this court is reservable, plus the live
   // "% booked right now" reading derived from the point-in-time slot map.
-  const booked = court.reserved?.[sport];
+  const booked = court.reserved?.[vSport];
   // Booked reading shown on the card: at the picked date+time when one is set
   // (e.g. "0% booked at 6 PM"), otherwise the live "right now" reading.
   const atLabel = isPicked ? fmtClock(viewTime.getHours(), viewTime.getMinutes()) : null;
@@ -943,10 +1016,10 @@ function CourtDetail({
     ? tg('court.openForBooking', { open: live.open, total: live.total }) + releaseClause
     : tg(live.total === 1 ? 'court.courtsCountOne' : 'court.courtsCountMany', { n: live.total });
   // SF Rec & Park directory facts (court count, lights, restrooms, nets) for this sport.
-  const dir = court.directory?.[sport];
+  const dir = court.directory?.[vSport];
   // The location's rec.us booking guidelines (markdown), shared across its sports.
   const guidelines = court.reserved?.guidelines;
-  const week = getDropinWeek(court, sport, viewTime);
+  const week = getDropinWeek(court, vSport, viewTime);
   const level = currentLevel(history, now); // community's latest
   const last = latest(history);
   const lastHour = countWithin(history, 60 * 60 * 1000, now);
@@ -1069,10 +1142,55 @@ function CourtDetail({
             </View>
           )}
         </View>
-        <Pressable hitSlop={10} onPress={onClose}>
-          <Text style={styles.close}>✕</Text>
-        </Pressable>
+        <View style={styles.cardHeadActions}>
+          {onToggleFav && (
+            <Pressable
+              hitSlop={10}
+              onPress={onToggleFav}
+              accessibilityLabel={isFav ? t('fav.remove') : t('fav.add')}
+            >
+              <Ionicons
+                name={isFav ? 'star' : 'star-outline'}
+                size={22}
+                color={isFav ? '#f5a623' : '#9aa7b4'}
+              />
+            </Pressable>
+          )}
+          <Pressable hitSlop={10} onPress={onClose}>
+            <Text style={styles.close}>✕</Text>
+          </Pressable>
+        </View>
       </View>
+
+      {/* Favorites view: which sports this court runs and which are open now — tap to
+          switch the schedule below. Shown only for favorites that run >1 sport. */}
+      {favoritesMode && court.fav?.sports?.length > 1 && (
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.favSportRow}
+        >
+          {court.fav.sports.map((sp) => {
+            const open = court.fav.openSports.includes(sp);
+            const active = sp === vSport;
+            return (
+              <Pressable
+                key={sp}
+                onPress={() => setVSport(sp)}
+                style={[
+                  styles.favSportChip,
+                  open && styles.favSportChipOpen,
+                  active && styles.favSportChipActive,
+                ]}
+              >
+                <Text style={[styles.favSportChipText, active && styles.favSportChipTextActive]}>
+                  {sportMeta(sp).emoji} {sportLabel(t, sp)}
+                </Text>
+              </Pressable>
+            );
+          })}
+        </ScrollView>
+      )}
 
       <View style={styles.badgeRow}>
         <View
@@ -1140,7 +1258,7 @@ function CourtDetail({
 
       {/* SF Rec & Park publishes lights for tennis/pickleball courts but not basketball,
           so be honest about it rather than imply anything. */}
-      {sport === 'basketball' && court.indoor === false && (
+      {vSport === 'basketball' && court.indoor === false && (
         <View style={styles.facRow}>
           <View style={styles.facChip}>
             <Text style={styles.facTextMuted}>{t('court.lightsUnknown')}</Text>
@@ -1724,6 +1842,37 @@ const styles = StyleSheet.create({
   },
   etaText: { color: '#46586a', fontWeight: '800', fontSize: 13 },
   close: { fontSize: 18, color: '#90a0b0', paddingLeft: 8 },
+  cardHeadActions: { flexDirection: 'row', alignItems: 'center', gap: 10, paddingLeft: 4 },
+
+  favSportRow: { flexDirection: 'row', gap: 8, marginTop: 12 },
+  favSportChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    borderRadius: 16,
+    backgroundColor: '#eef1f4',
+    borderWidth: 1.5,
+    borderColor: 'transparent',
+  },
+  favSportChipOpen: { backgroundColor: '#e3f3e6' },
+  favSportChipActive: { borderColor: '#2f74d6' },
+  favSportChipText: { fontSize: 13, fontWeight: '700', color: '#46586a' },
+  favSportChipTextActive: { color: '#0d1b2a' },
+
+  favEmpty: { position: 'absolute', left: 32, right: 32, top: '40%', alignItems: 'center' },
+  favEmptyStar: { fontSize: 44, color: '#f5a623', marginBottom: 10 },
+  favEmptyText: {
+    fontSize: 15,
+    fontWeight: '600',
+    color: '#46586a',
+    textAlign: 'center',
+    backgroundColor: 'rgba(255,255,255,0.9)',
+    paddingVertical: 8,
+    paddingHorizontal: 14,
+    borderRadius: 12,
+    overflow: 'hidden',
+  },
 
   badgeRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 12, marginBottom: 6 },
   metaLine: { fontSize: 13, color: '#46586a', fontWeight: '600', marginBottom: 8 },
