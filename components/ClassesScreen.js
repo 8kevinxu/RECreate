@@ -20,20 +20,19 @@ import { CLASSES, CLASS_CATEGORIES } from '../data/classes';
 import { haversineMiles, formatDistance } from '../lib/distance';
 import { openDirections } from '../lib/maps';
 import { fetchLiveAvailability } from '../lib/classesLive';
+import { useI18n } from '../lib/i18n';
 
 // "updated 8s ago" style relative time for the live-availability stamp.
-function agoLabel(ts) {
+function agoLabel(t, ts) {
   if (!ts) return '';
   const s = Math.round((Date.now() - ts) / 1000);
-  if (s < 10) return 'just now';
-  if (s < 60) return `${s}s ago`;
+  if (s < 10) return t('ago.justNow');
+  if (s < 60) return t('ago.sec', { n: s });
   const m = Math.round(s / 60);
-  return m < 60 ? `${m}m ago` : `${Math.round(m / 60)}h ago`;
+  return m < 60 ? t('ago.min', { n: m }) : t('ago.hour', { n: Math.round(m / 60) });
 }
 
 const catMeta = (id) => CLASS_CATEGORIES.find((c) => c.id === id) || {};
-// Short chip label: "Fitness & Wellness" -> "Fitness", "Social & Games" -> "Social".
-const shortLabel = (label) => label.split(' & ')[0];
 const ageBand = (m) => (m >= 55 ? '55' : m >= 18 ? '18' : m >= 11 ? 'teen' : 'all');
 
 // Price tier for the color-coded badge: free = green, cheap = yellow, pricier = red.
@@ -49,14 +48,15 @@ function priceTone(cost) {
 
 // Open-spots indicator from ActiveNet's real `openings` count. Exact when known,
 // qualitative when it's a lot or a no-cap drop-in. Returns null when unknown.
+// Returns an i18n key (+ count) so the caller renders it in the current language.
 function spaceInfo(c) {
-  if (c.unlimited) return { text: 'Lots of spots', tone: 'good' };
+  if (c.unlimited) return { key: 'classes.lotsSpots', tone: 'good' };
   const n = c.spots;
-  if (n == null) return c.dropIn ? { text: 'Lots of spots', tone: 'good' } : null;
-  if (n <= 0) return { text: 'Full', tone: 'bad' };
-  if (n <= 5) return { text: `${n} left`, tone: 'warn' };
-  if (n >= 20) return { text: 'Lots of spots', tone: 'good' };
-  return { text: `${n} openings`, tone: 'good' };
+  if (n == null) return c.dropIn ? { key: 'classes.lotsSpots', tone: 'good' } : null;
+  if (n <= 0) return { key: 'classes.full', tone: 'bad' };
+  if (n <= 5) return { key: 'classes.left', n, tone: 'warn' };
+  if (n >= 20) return { key: 'classes.lotsSpots', tone: 'good' };
+  return { key: 'classes.openings', n, tone: 'good' };
 }
 
 function FilterChip({ label, on, onPress }) {
@@ -72,6 +72,7 @@ function FilterChip({ label, on, onPress }) {
 
 export default function ClassesScreen({ userLocation = null }) {
   const insets = useSafeAreaInsets();
+  const { t } = useI18n();
   const [cat, setCat] = useState('all');
   const [query, setQuery] = useState('');
   const [age, setAge] = useState(null); // 'teen' | '18' | '55' | null
@@ -148,14 +149,14 @@ export default function ClassesScreen({ userLocation = null }) {
 
   return (
     <View style={[styles.page, { paddingTop: insets.top + 14 }]}>
-      <Text style={styles.title}>Classes & Activities</Text>
-      <Text style={styles.sub}>Drop-in programs at SF rec centers</Text>
+      <Text style={styles.title}>{t('classes.title')}</Text>
+      <Text style={styles.sub}>{t('classes.sub')}</Text>
 
       <View style={styles.search}>
         <Ionicons name="search" size={16} color="#8a99a8" />
         <TextInput
           style={styles.searchInput}
-          placeholder="Search classes or rec centers"
+          placeholder={t('classes.searchPh')}
           placeholderTextColor="#9aa7b4"
           value={query}
           onChangeText={setQuery}
@@ -166,7 +167,7 @@ export default function ClassesScreen({ userLocation = null }) {
       </View>
 
       <View style={styles.catRow}>
-        {[{ id: 'all', label: 'All', emoji: '✨' }, ...CLASS_CATEGORIES].map((c) => {
+        {[{ id: 'all', emoji: '✨' }, ...CLASS_CATEGORIES].map((c) => {
           const active = cat === c.id;
           return (
             <Pressable
@@ -175,7 +176,7 @@ export default function ClassesScreen({ userLocation = null }) {
               style={[styles.catChip, active && styles.catChipActive]}
             >
               <Text style={[styles.catChipText, active && styles.catChipTextActive]}>
-                {c.emoji} {shortLabel(c.label)}
+                {c.emoji} {t('cat.' + c.id)}
               </Text>
             </Pressable>
           );
@@ -189,7 +190,7 @@ export default function ClassesScreen({ userLocation = null }) {
         >
           <Ionicons name="options-outline" size={16} color={activeCount > 0 ? '#2f74d6' : '#46586a'} />
           <Text style={[styles.filterBtnText, activeCount > 0 && styles.filterBtnTextActive]}>
-            Filters
+            {t('filters')}
           </Text>
           {activeCount > 0 && (
             <View style={styles.filterCount}>
@@ -198,7 +199,7 @@ export default function ClassesScreen({ userLocation = null }) {
           )}
         </Pressable>
         <Text style={styles.resultCount}>
-          {list.length} {list.length === 1 ? 'class' : 'classes'}
+          {list.length} {t(list.length === 1 ? 'classes.classOne' : 'classes.classMany')}
         </Text>
       </View>
 
@@ -212,10 +213,10 @@ export default function ClassesScreen({ userLocation = null }) {
         />
         <Text style={styles.liveText}>
           {liveStatus === 'loading'
-            ? 'Checking live availability…'
+            ? t('classes.liveLoading')
             : liveStatus === 'ok'
-            ? `Live availability · updated ${agoLabel(liveAt)}`
-            : 'Showing saved availability — pull to refresh'}
+            ? t('classes.liveOk', { ago: agoLabel(t, liveAt) })
+            : t('classes.liveFail')}
         </Text>
       </View>
 
@@ -231,9 +232,7 @@ export default function ClassesScreen({ userLocation = null }) {
           />
         }
       >
-        {list.length === 0 && (
-          <Text style={styles.empty}>No classes match — try a different search or filters.</Text>
-        )}
+        {list.length === 0 && <Text style={styles.empty}>{t('classes.empty')}</Text>}
         {list.map((c) => {
           const d = distOf(c);
           const pt = priceTone(c.cost);
@@ -246,7 +245,7 @@ export default function ClassesScreen({ userLocation = null }) {
                 </Text>
                 <View style={[styles.tag, c.dropIn ? styles.tagDropIn : styles.tagReg]}>
                   <Text style={[styles.tagText, c.dropIn ? styles.tagDropInText : styles.tagRegText]}>
-                    {c.dropIn ? 'Drop-in' : 'Register'}
+                    {c.dropIn ? t('classes.dropIn') : t('classes.register')}
                   </Text>
                 </View>
               </View>
@@ -262,14 +261,16 @@ export default function ClassesScreen({ userLocation = null }) {
                 </View>
                 {sp && (
                   <View style={[styles.spacePill, spaceStyles[sp.tone].pill]}>
-                    <Text style={[styles.spaceText, spaceStyles[sp.tone].text]}>{sp.text}</Text>
+                    <Text style={[styles.spaceText, spaceStyles[sp.tone].text]}>
+                      {t(sp.key, sp.n != null ? { n: sp.n } : undefined)}
+                    </Text>
                   </View>
                 )}
                 <View style={{ flex: 1 }} />
                 {c.lat != null && (
                   <Pressable style={styles.dirBtn} onPress={() => openDirections(c.lat, c.lng, c.location)}>
                     <Ionicons name="navigate" size={12} color="#2f74d6" />
-                    <Text style={styles.dirBtnText}>Directions</Text>
+                    <Text style={styles.dirBtnText}>{t('directions')}</Text>
                   </Pressable>
                 )}
               </View>
@@ -278,10 +279,7 @@ export default function ClassesScreen({ userLocation = null }) {
           );
         })}
 
-        <Text style={styles.disclaimer}>
-          From SF Rec & Park (ActiveNet) — verify times and registration on sfrecpark.org
-          before heading out. Tap a class for details.
-        </Text>
+        <Text style={styles.disclaimer}>{t('classes.disclaimer')}</Text>
       </ScrollView>
 
       <Modal
@@ -294,39 +292,39 @@ export default function ClassesScreen({ userLocation = null }) {
           <Pressable style={[styles.sheet, { paddingBottom: insets.bottom + 16 }]} onPress={() => {}}>
             <View style={styles.sheetHandle} />
             <View style={styles.sheetHeader}>
-              <Text style={styles.sheetTitle}>Filters</Text>
+              <Text style={styles.sheetTitle}>{t('filters')}</Text>
               {activeCount > 0 && (
                 <Pressable onPress={clearAll} hitSlop={8}>
-                  <Text style={styles.clearAll}>Clear all</Text>
+                  <Text style={styles.clearAll}>{t('clearAll')}</Text>
                 </Pressable>
               )}
             </View>
 
-            <Text style={styles.groupLabel}>Age</Text>
+            <Text style={styles.groupLabel}>{t('filter.age')}</Text>
             <View style={styles.groupChips}>
-              <FilterChip label="Teen" on={age === 'teen'} onPress={() => setAge(age === 'teen' ? null : 'teen')} />
+              <FilterChip label={t('filter.teen')} on={age === 'teen'} onPress={() => setAge(age === 'teen' ? null : 'teen')} />
               <FilterChip label="18+" on={age === '18'} onPress={() => setAge(age === '18' ? null : '18')} />
               <FilterChip label="55+" on={age === '55'} onPress={() => setAge(age === '55' ? null : '55')} />
             </View>
 
-            <Text style={styles.groupLabel}>Availability</Text>
+            <Text style={styles.groupLabel}>{t('filter.availability')}</Text>
             <View style={styles.groupChips}>
-              <FilterChip label="Has spots" on={hasSpots} onPress={() => setHasSpots((v) => !v)} />
+              <FilterChip label={t('filter.hasSpots')} on={hasSpots} onPress={() => setHasSpots((v) => !v)} />
             </View>
 
-            <Text style={styles.groupLabel}>Cost</Text>
+            <Text style={styles.groupLabel}>{t('filter.cost')}</Text>
             <View style={styles.groupChips}>
-              <FilterChip label="Free only" on={freeOnly} onPress={() => setFreeOnly((v) => !v)} />
+              <FilterChip label={t('filter.freeOnly')} on={freeOnly} onPress={() => setFreeOnly((v) => !v)} />
             </View>
 
             {!!userLocation && (
               <>
-                <Text style={styles.groupLabel}>Distance</Text>
+                <Text style={styles.groupLabel}>{t('filter.distance')}</Text>
                 <View style={styles.groupChips}>
                   {[1, 3, 5].map((r) => (
                     <FilterChip
                       key={r}
-                      label={`< ${r} mi`}
+                      label={t('filter.distChip', { r })}
                       on={radius === r}
                       onPress={() => setRadius(radius === r ? null : r)}
                     />
@@ -337,7 +335,8 @@ export default function ClassesScreen({ userLocation = null }) {
 
             <Pressable style={styles.doneBtn} onPress={() => setFiltersOpen(false)}>
               <Text style={styles.doneText}>
-                Show {list.length} {list.length === 1 ? 'class' : 'classes'}
+                {t('classes.show')} {list.length}{' '}
+                {t(list.length === 1 ? 'classes.classOne' : 'classes.classMany')}
               </Text>
             </Pressable>
           </Pressable>
