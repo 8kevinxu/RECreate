@@ -21,6 +21,7 @@ const UA =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
 const BASE = 'https://anc.apm.activecommunities.com/sfrecpark';
 const CACHE_FILE = path.join(__dirname, 'classes-cache.json');
+const I18N_CACHE_FILE = path.join(__dirname, 'classes-i18n-cache.json');
 const OUT_FILE = path.join(__dirname, '..', 'data', 'classes.js');
 const MIN_OK = 30; // abort (keep last-good) if fewer than this many classes parse
 
@@ -255,6 +256,88 @@ function loadCache() {
   }
 }
 
+// --- Class-name localization ---------------------------------------------
+// Class titles are scraped English; the app UI is translated (en/zh/es). We
+// pre-translate the *distinct* titles once and bundle name_zh/name_es onto each
+// row, so the app stays instant/offline and never calls an API. Translations are
+// cached by title in classes-i18n-cache.json, so each weekly refresh only spends
+// tokens on titles it hasn't seen — usually zero. Degrades gracefully: with no
+// ANTHROPIC_API_KEY (or on any API error) we keep the English names and move on.
+
+function loadI18nCache() {
+  try {
+    return JSON.parse(fs.readFileSync(I18N_CACHE_FILE, 'utf8'));
+  } catch {
+    return {};
+  }
+}
+
+// Translate one chunk of titles via Claude Haiku. Returns { title: { zh, es } }.
+async function translateChunk(names) {
+  const list = names.map((n, i) => `${i + 1}. ${n}`).join('\n');
+  const prompt =
+    `Translate these ${names.length} San Francisco Rec & Park drop-in class titles ` +
+    `into Simplified Chinese and Spanish. They are recreational classes (fitness, ` +
+    `dance, art, music, social games). Keep translations natural and concise and ` +
+    `preserve level markers like "Intermediate"/"Beginner". Reply with ONLY a JSON ` +
+    `array of exactly ${names.length} objects, same order, each {"zh":"…","es":"…"} ` +
+    `— no prose, no code fences.\n\n${list}`;
+  const res = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'x-api-key': process.env.ANTHROPIC_API_KEY,
+      'anthropic-version': '2023-06-01',
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: 8192,
+      messages: [{ role: 'user', content: prompt }],
+    }),
+  });
+  if (!res.ok) throw new Error(`Anthropic HTTP ${res.status}`);
+  const data = await res.json();
+  const text = data.content?.[0]?.text || '';
+  const arr = JSON.parse(text.slice(text.indexOf('['), text.lastIndexOf(']') + 1));
+  const out = {};
+  names.forEach((n, i) => {
+    const t = arr[i];
+    if (t && t.zh && t.es) out[n] = { zh: String(t.zh), es: String(t.es) };
+  });
+  return out;
+}
+
+// Add name_zh/name_es to each class from cache, translating any new titles first.
+async function applyTranslations(classes) {
+  const cache = loadI18nCache();
+  const distinct = [...new Set(classes.map((c) => c.name))];
+  const missing = distinct.filter((n) => !cache[n]);
+
+  if (missing.length) {
+    if (!process.env.ANTHROPIC_API_KEY) {
+      console.log(`  ⚠ ANTHROPIC_API_KEY not set — ${missing.length} title(s) stay English-only`);
+    } else {
+      console.log(`  Translating ${missing.length} new class title(s) via Claude Haiku…`);
+      try {
+        for (let i = 0; i < missing.length; i += 40) {
+          Object.assign(cache, await translateChunk(missing.slice(i, i + 40)));
+        }
+        fs.writeFileSync(I18N_CACHE_FILE, JSON.stringify(cache, null, 2) + '\n');
+      } catch (e) {
+        console.log(`  ⚠ translation skipped (${e.message}) — keeping English titles`);
+      }
+    }
+  }
+
+  for (const c of classes) {
+    const t = cache[c.name];
+    if (t) {
+      c.name_zh = t.zh;
+      c.name_es = t.es;
+    }
+  }
+}
+
 function render(classes, generatedAt) {
   const body = classes
     .map((c) => `  ${JSON.stringify(c)},`)
@@ -266,8 +349,9 @@ function render(classes, generatedAt) {
 //
 // SF Rec & Park drop-in classes & programs (non-court), from their ActiveNet catalog.
 // Each class: { id, name, category, location, when, dropIn, cost, ages, minAge, spots,
-// unlimited, lat?, lng?, url }. lat/lng are present when the rec center matched our
-// court data (for distance filtering); spots is the actual open-spot count from
+// unlimited, lat?, lng?, url, name_zh?, name_es? }. lat/lng are present when the rec
+// center matched our court data (for distance filtering); name_zh/name_es are bundled
+// translations of the title (absent if untranslated); spots is the open-spot count from
 // ActiveNet openings (0 = full, null = unknown), unlimited = no-cap drop-in;
 // minAge drives the age filters.
 
@@ -303,6 +387,8 @@ async function main() {
     source = 'cache';
     console.log(`  ↺ ${e.message}; using cache from ${cache.fetchedAt || 'unknown'}`);
   }
+
+  await applyTranslations(classes);
 
   fs.writeFileSync(OUT_FILE, render(classes, new Date().toISOString()));
   console.log(`\n✅ Wrote ${classes.length} classes to data/classes.js (${source})`);

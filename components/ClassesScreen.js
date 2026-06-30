@@ -72,7 +72,9 @@ function FilterChip({ label, on, onPress }) {
 
 export default function ClassesScreen({ userLocation = null }) {
   const insets = useSafeAreaInsets();
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
+  // Bundled title translation (build-classes.js); falls back to the English name.
+  const className = (c) => c['name_' + lang] || c.name;
   const [cat, setCat] = useState('all');
   const [query, setQuery] = useState('');
   const [age, setAge] = useState(null); // 'teen' | '18' | '55' | null
@@ -120,7 +122,13 @@ export default function ClassesScreen({ userLocation = null }) {
     const q = query.trim().toLowerCase();
     return CLASSES.filter((c) => {
       if (cat !== 'all' && c.category !== cat) return false;
-      if (q && !c.name.toLowerCase().includes(q) && !c.location.toLowerCase().includes(q)) return false;
+      if (
+        q &&
+        !c.name.toLowerCase().includes(q) &&
+        !className(c).toLowerCase().includes(q) &&
+        !c.location.toLowerCase().includes(q)
+      )
+        return false;
       if (age) {
         const b = ageBand(c.minAge || 0);
         if (b !== age && b !== 'all') return false;
@@ -138,7 +146,7 @@ export default function ClassesScreen({ userLocation = null }) {
       return true;
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cat, query, age, radius, freeOnly, hasSpots, live, userLocation]);
+  }, [cat, query, age, radius, freeOnly, hasSpots, live, userLocation, lang]);
 
   const clearAll = () => {
     setAge(null);
@@ -241,7 +249,7 @@ export default function ClassesScreen({ userLocation = null }) {
             <Pressable key={c.id} style={styles.card} onPress={() => Linking.openURL(c.url)}>
               <View style={styles.cardTop}>
                 <Text style={styles.cardName}>
-                  {catMeta(c.category).emoji} {c.name}
+                  {catMeta(c.category).emoji} {className(c)}
                 </Text>
                 <View style={[styles.tag, c.dropIn ? styles.tagDropIn : styles.tagReg]}>
                   <Text style={[styles.tagText, c.dropIn ? styles.tagDropInText : styles.tagRegText]}>

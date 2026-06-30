@@ -28,16 +28,23 @@ jobs:
 
       - name: Re-scrape class availability
         run: npm run build:classes
+        env:
+          # Optional: pre-translates any *new* class titles to zh/es (Claude Haiku).
+          # Absent → build still succeeds, titles stay English. Cache keeps cost ~0.
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
       - name: Commit refreshed classes if they changed
         run: |
-          FILES="data/classes.js scripts/classes-cache.json"
-          if git diff --quiet -- $FILES; then
+          # i18n cache only exists once a key-enabled run has translated something,
+          # so stage just the files that are present; staging catches new files too.
+          for f in data/classes.js scripts/classes-cache.json scripts/classes-i18n-cache.json; do
+            [ -e "$f" ] && git add "$f"
+          done
+          if git diff --cached --quiet; then
             echo "No class changes."
           else
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add $FILES
             git commit -m "chore: refresh class availability"
             git push
           fi
