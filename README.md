@@ -1,14 +1,25 @@
 # 🏀 HoopMap SF
 https://hoopmap.netlify.app/
 
-Find an **indoor basketball court** to play at right now in San Francisco. The
-app maps every **SF Recreation & Parks recreation center with an indoor gym** —
-tap a pin for the weekly **open-gym basketball schedule**, facility hours, and
-address. **"Open now"** filters to centers running drop-in basketball *right now*
-(map pins fade when open gym isn't currently happening).
+Find somewhere to play **right now** in San Francisco. HoopMap started as an
+indoor-basketball finder and has grown into a map of SF Rec & Parks **drop-in
+recreation** across five tabs:
 
-Built with **Expo / React Native**. The map is **Leaflet + OpenStreetMap**
-rendered inside a `WebView` (no API key, no billing).
+- **🏀 Map** — every rec-center gym and outdoor court, across **5 sports**
+  (basketball, volleyball, ping pong, pickleball, tennis), with weekly **open-gym
+  schedules**, **"open now"** filtering, live **crowd check-ins**, and tennis/
+  pickleball **reservation occupancy** ("% booked right now").
+- **📅 Classes** — SF Rec & Park drop-in programs (fitness, dance, music/arts,
+  photography, social games) with live openings.
+- **🏊 Pools** — the 9 public swimming pools with parsed weekly swim schedules
+  (lap / family / senior / lessons …), fees, and "open now".
+- **👥 Social** — accounts, friends, "down to hoop" signals, planned pickup games,
+  an activity feed, and chat.
+- **👤 Profile** — your profile/stats, plus **Settings** (language + account).
+
+The whole UI is **localized in English / 中文 / Español**. Built with **Expo /
+React Native** (also shipped to the **web** as a static export). The map is
+**Leaflet + OpenStreetMap** rendered inside a `WebView` (no API key, no billing).
 
 ## Run it
 
@@ -54,6 +65,19 @@ stays centered on San Francisco — everything else still works.
 | `lib/distance.js` | Haversine distance + formatting (miles) |
 | `lib/push.js` | Expo push-token registration + notification-tap handling |
 | `components/NearbyList.js` | Nearby courts ranked by distance, with a min-open filter |
+| `components/BottomNav.js` | Five-tab bottom bar (Home / Classes / Pools / Social / Profile) |
+| `components/ClassesScreen.js` | **Classes tab** — browse drop-in programs by category, with filters + live openings |
+| `data/classes.js` · `scripts/build-classes.js` | **Generated** classes catalog + its ActiveNet scraper (with build-time title translation) |
+| `lib/classesLive.js` | Runtime ActiveNet fetch for "right now" class openings (native only; CORS-blocked on web) |
+| `components/PoolsScreen.js` | **Pools tab** — swimming pools, today's sessions, open-now, fees, schedule PDFs |
+| `data/pools.js` · `scripts/build-pools.js` | **Generated** pools + schedules parsed from seasonal PDFs (`pdfjs-dist`) |
+| `components/SettingsScreen.js` | Settings sheet — language switch (en/zh/es) + delete account |
+| `components/SocialScreen.js` · `ChatsScreen.js` · `ChatThread.js` | Social tab shell + 1:1 / group chat |
+| `lib/chat.js` | Chat data layer (run / signal / direct threads) |
+| `lib/sports.js` | The tracked sports table (id, label, emoji) |
+| `lib/playerCheckins.js` | Per-user visit stats (per-sport counts, favorite park) |
+| `lib/i18n.js` | i18n: `STRINGS` dict (en/zh/es), `I18nProvider`, `useI18n()`, and `tg()` for non-React modules |
+| `vercel.json` · `netlify.toml` | Web static-export deploy config (build → `dist` → SPA rewrite) |
 
 ## Court data (SF Rec & Parks indoor gyms)
 
@@ -153,14 +177,21 @@ by `id`, so `npm run build:courts` never touches them. Two flavors:
   (`data/court-directory.js`, `npm run build:directory`). `lib/useCourts.js` merges it onto
   courts as `directory`, shown as facility chips on the detail card. Same last-good cache +
   gate resilience (`scripts/directory-cache.json`).
-- **Classes & activities** (non-court programs: fitness, dance, music/arts, social games)
-  for the **Classes tab** come from `scripts/build-classes.js`, which scrapes SF Rec &
-  Park's **ActiveNet** catalog (`anc.apm.activecommunities.com/sfrecpark`). It does the
-  ActiveNet CSRF + session handshake, pages the activity-search API per category, maps
-  ActiveNet categories to our four buckets (splitting "Dance/Music/Performing Arts" and
-  "Social Activities" by keyword into dance/music/social), and writes
-  `data/classes.js` — each class `{ name, category, location, when, dropIn, cost, ages, url }`.
+- **Classes & activities** (non-court programs) for the **Classes tab** come from
+  `scripts/build-classes.js`, which scrapes SF Rec & Park's **ActiveNet** catalog
+  (`anc.apm.activecommunities.com/sfrecpark`). It does the ActiveNet CSRF + session
+  handshake, pages the activity-search API per category, and re-buckets every item by
+  keyword into **six** app categories (fitness, dance, music, arts/crafts, photography,
+  social games), writing `data/classes.js` — each class
+  `{ name, category, location, when, dropIn, cost, ages, url, name_zh?, name_es? }`.
   `npm run build:classes`, same last-good cache + gate resilience (`scripts/classes-cache.json`).
+  Class **titles are scraped English**, so the build optionally pre-translates each
+  distinct title to zh/es via the Anthropic API (Claude Haiku) when `ANTHROPIC_API_KEY`
+  is set — cached by title in `scripts/classes-i18n-cache.json` so each run only spends
+  tokens on new titles, and degrading gracefully to English without a key. Live "right
+  now" openings are refreshed in-app by `lib/classesLive.js` (a second, more frequent
+  ActiveNet fetch; native only — browsers block it via CORS, so web shows the bundled
+  baseline).
 
 An optional `disclaimer` field on a court overrides the default "verify on
 sfrecpark.org" footnote on the court detail screen.
@@ -457,6 +488,62 @@ device/emulator (free) or a paid Apple account.
 **Limitations (v1):** pushes are fire-and-forget — Expo delivery receipts aren't
 checked, and tokens aren't pruned when a device unregisters at the OS level
 (`DeviceNotRegistered`). Both are easy follow-ups (a receipts poller / cleanup).
+
+## 🏊 Swimming pools
+
+The **Pools** tab maps SF's **9 public swimming pools** with their weekly swim
+schedules. Each pool only posts its schedule as a **seasonal PDF**, so
+`scripts/build-pools.js` discovers each pool's current schedule-PDF link live,
+downloads it, extracts the text with **`pdfjs-dist`**, and reconstructs the weekly
+grid (merge text fragments → map cells to day columns by x-position → pair each
+activity label with the time below it → classify into a session **kind**). Output is
+`sessions[dow] = [{ kind, start, end }]` — minutes-from-midnight, `0=Sun..6=Sat`,
+same convention as courts.
+
+Session kinds (**lap / family / senior / lessons / adult lessons / parent-child /
+water exercise / camps / rentals**) render as color-coded, localized pills. Each
+pool card shows **open now / next up**, today's sessions, an expandable **full
+week**, a **session-type filter**, distance, phone, and a link to the **official
+PDF** (the source of truth). A shared **fees** sheet shows the city-wide aquatics
+price schedule. Pool coordinates, addresses, phones, season labels, fees, and
+holiday closures are **curated** in the build script (the facility pages have no
+lat/lng, and fees change ~annually). `npm run build:pools`, same cache + gate
+resilience (`scripts/pools-cache.json`). `pdfjs-dist` is a **build-only** dependency
+— it isn't bundled into the app.
+
+> The schedules are machine-parsed from PDFs, so dense multi-lane grids can miss the
+> odd concurrent session — the card always links the official PDF to confirm.
+
+## 🌐 Languages (i18n)
+
+The entire UI is localized in **English, 中文, and Español** — switch in **Profile →
+⚙️ Settings** (the choice persists in `AsyncStorage`). React components read
+`const { t, lang } = useI18n()`; plain non-React modules (date helpers, crowd "X ago",
+court/pool hours, data-layer error messages) translate through a module-level
+`tg()` that mirrors the active language into a global, so they localize without React
+context. All strings live in one `STRINGS` dictionary in `lib/i18n.js`, kept at **full
+key parity** across the three languages. External data stays in its source language
+(court/pool names, addresses, scraped schedules) — the one exception is scraped **class
+titles**, pre-translated at build time (see *Classes & activities* above).
+
+## Settings & account deletion
+
+**Profile → ⚙️ Settings** opens a sheet with the language switch and a **Delete my
+account** action. Deletion asks the user to type a confirmation word, then calls a
+`delete_account()` **SECURITY DEFINER** Postgres RPC that deletes their `auth.users`
+row; FK `ON DELETE CASCADE` then clears all of their app data (profile, check-ins,
+runs, signals, friendships, chats, push tokens). Setup: run
+[`supabase/schema/09_account_deletion.sql`](supabase/schema/09_account_deletion.sql)
+(or [`supabase/migrations/005_account_deletion.sql`](supabase/migrations/005_account_deletion.sql)
+on an existing DB).
+
+## Deploy (web)
+
+The web build is a **static SPA export** — `npx expo export --platform web` → `dist/`.
+`vercel.json` and `netlify.toml` both configure the same thing (that build command,
+`dist` as the publish dir, and an SPA rewrite of all routes to `index.html`); set the
+three `EXPO_PUBLIC_*` vars in the host's dashboard since a CI build has no local `.env`.
+Don't run both hosts as primary auto-deploys at once.
 
 ## Ideas for next
 
