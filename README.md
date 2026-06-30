@@ -1,5 +1,5 @@
 # 🏀 HoopMap SF
-https://hoopmap.netlify.app/
+https://hoopmap-one.vercel.app/
 
 Find somewhere to play **right now** in San Francisco. HoopMap started as an
 indoor-basketball finder and has grown into a map of SF Rec & Parks **drop-in
