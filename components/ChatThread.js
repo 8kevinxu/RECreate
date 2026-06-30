@@ -14,13 +14,60 @@ import {
   TextInput,
   View,
 } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { loadMessages, sendMessage, subscribeChat, markThreadRead } from '../lib/chat';
+import { fmtClock } from '../lib/datetime';
 import { useI18n } from '../lib/i18n';
+
+const KIND_EMOJI = { run: '📅', signal: '🏀', direct: '💬' };
+const AVATAR_COLORS = ['#2f74d6', '#1f9d55', '#e8730c', '#6b3fa0', '#b03a73', '#1f8a86', '#c2410c'];
+const LOCALE = { en: 'en-US', zh: 'zh-CN', es: 'es-ES' };
+
+function initials(name) {
+  return (name || '?')
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((w) => w[0])
+    .join('')
+    .toUpperCase();
+}
+function colorFor(s) {
+  let h = 0;
+  for (let i = 0; i < (s || '').length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
+  return AVATAR_COLORS[h % AVATAR_COLORS.length];
+}
+const sameDay = (a, b) => {
+  const x = new Date(a);
+  const y = new Date(b);
+  return x.getFullYear() === y.getFullYear() && x.getMonth() === y.getMonth() && x.getDate() === y.getDate();
+};
+const fmtTime = (iso) => {
+  const d = new Date(iso);
+  return fmtClock(d.getHours(), d.getMinutes());
+};
+
+function Avatar({ name, kind, size = 30 }) {
+  const isGroup = kind && kind !== 'direct';
+  return (
+    <View
+      style={[
+        styles.avatar,
+        { width: size, height: size, borderRadius: size / 2, backgroundColor: isGroup ? '#eef1f5' : colorFor(name) },
+      ]}
+    >
+      {isGroup ? (
+        <Text style={{ fontSize: size * 0.5 }}>{KIND_EMOJI[kind]}</Text>
+      ) : (
+        <Text style={[styles.avatarText, { fontSize: size * 0.4 }]}>{initials(name)}</Text>
+      )}
+    </View>
+  );
+}
 
 export default function ChatThread({ visible, thread, onClose, onActivity }) {
   const insets = useSafeAreaInsets();
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [draft, setDraft] = useState('');
@@ -54,28 +101,41 @@ export default function ChatThread({ visible, thread, onClose, onActivity }) {
     setSending(false);
   };
 
+  const dividerLabel = (iso) => {
+    const now = new Date();
+    const y = new Date(now);
+    y.setDate(now.getDate() - 1);
+    if (sameDay(iso, now)) return t('date.today');
+    if (sameDay(iso, y)) return t('chat.yesterday');
+    return new Date(iso).toLocaleDateString(LOCALE[lang] || 'en-US', { month: 'long', day: 'numeric' });
+  };
+
   if (!thread) return null;
 
   return (
     <Modal visible={visible} animationType="slide" onRequestClose={onClose}>
-      <View style={[styles.screen, { paddingTop: insets.top + 8 }]}>
+      <View style={[styles.screen, { paddingTop: insets.top + 6 }]}>
         <View style={styles.header}>
-          <Pressable hitSlop={10} onPress={onClose}>
-            <Text style={styles.back}>{t('chat.backChats')}</Text>
+          <Pressable hitSlop={10} onPress={onClose} style={styles.backBtn}>
+            <Ionicons name="chevron-back" size={26} color="#2f74d6" />
           </Pressable>
+          <Avatar name={thread.title} kind={thread.kind} size={38} />
           <View style={styles.titleWrap}>
             <Text style={styles.title} numberOfLines={1}>
               {thread.title}
             </Text>
-            {!!thread.subtitle && <Text style={styles.subtitle}>{thread.subtitle}</Text>}
+            {!!thread.subtitle && (
+              <Text style={styles.subtitle} numberOfLines={1}>
+                {thread.subtitle}
+              </Text>
+            )}
           </View>
-          <View style={{ width: 56 }} />
         </View>
 
         <KeyboardAvoidingView
           style={{ flex: 1 }}
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-          keyboardVerticalOffset={insets.top + 8}
+          keyboardVerticalOffset={insets.top + 6}
         >
           {loading ? (
             <View style={styles.loading}>
@@ -96,38 +156,73 @@ export default function ChatThread({ visible, thread, onClose, onActivity }) {
               )}
               {messages.map((m, i) => {
                 const prev = messages[i - 1];
-                const showName = !m.mine && (!prev || prev.userId !== m.userId);
+                const next = messages[i + 1];
+                const newDay = !prev || !sameDay(prev.createdAt, m.createdAt);
+                const showName =
+                  !m.mine && thread.kind !== 'direct' && (newDay || !prev || prev.userId !== m.userId);
+                const lastOfGroup =
+                  !next || next.mine !== m.mine || next.userId !== m.userId || !sameDay(next.createdAt, m.createdAt);
                 return (
-                  <View
-                    key={m.id}
-                    style={[styles.bubbleRow, m.mine ? styles.rowMine : styles.rowTheirs]}
-                  >
-                    <View style={[styles.bubble, m.mine ? styles.bubbleMine : styles.bubbleTheirs]}>
-                      {showName && <Text style={styles.sender}>{m.name}</Text>}
-                      <Text style={m.mine ? styles.bodyMine : styles.bodyTheirs}>{m.body}</Text>
+                  <React.Fragment key={m.id}>
+                    {newDay && (
+                      <View style={styles.divider}>
+                        <Text style={styles.dividerText}>{dividerLabel(m.createdAt)}</Text>
+                      </View>
+                    )}
+                    <View style={[styles.row, m.mine ? styles.rowMine : styles.rowTheirs]}>
+                      {!m.mine && (
+                        <View style={styles.avatarSlot}>
+                          {lastOfGroup && <Avatar name={m.name} kind={thread.kind} size={28} />}
+                        </View>
+                      )}
+                      <View style={[styles.col, m.mine ? styles.colMine : styles.colTheirs]}>
+                        <View
+                          style={[
+                            styles.bubble,
+                            m.mine ? styles.bubbleMine : styles.bubbleTheirs,
+                            m.mine
+                              ? lastOfGroup && styles.bubbleMineTail
+                              : lastOfGroup && styles.bubbleTheirsTail,
+                          ]}
+                        >
+                          {showName && <Text style={styles.sender}>{m.name}</Text>}
+                          <Text style={m.mine ? styles.bodyMine : styles.bodyTheirs}>{m.body}</Text>
+                        </View>
+                        {lastOfGroup && (
+                          <Text style={[styles.time, m.mine ? styles.timeMine : styles.timeTheirs]}>
+                            {fmtTime(m.createdAt)}
+                          </Text>
+                        )}
+                      </View>
                     </View>
-                  </View>
+                  </React.Fragment>
                 );
               })}
             </ScrollView>
           )}
 
           <View style={[styles.composer, { paddingBottom: Math.max(insets.bottom, 10) }]}>
-            <TextInput
-              style={styles.input}
-              placeholder={t('chat.messagePh')}
-              placeholderTextColor="#9aa7b4"
-              value={draft}
-              onChangeText={setDraft}
-              multiline
-              maxLength={1000}
-            />
+            <View style={styles.inputPill}>
+              <TextInput
+                style={styles.input}
+                placeholder={t('chat.messagePh')}
+                placeholderTextColor="#9aa7b4"
+                value={draft}
+                onChangeText={setDraft}
+                multiline
+                maxLength={1000}
+              />
+            </View>
             <Pressable
               style={[styles.sendBtn, (!draft.trim() || sending) && styles.sendBtnOff]}
               onPress={onSend}
               disabled={!draft.trim() || sending}
             >
-              <Text style={styles.sendText}>{sending ? '…' : t('chat.send')}</Text>
+              {sending ? (
+                <ActivityIndicator color="#fff" size="small" />
+              ) : (
+                <Ionicons name="send" size={18} color="#fff" style={{ marginLeft: 2 }} />
+              )}
             </Pressable>
           </View>
         </KeyboardAvoidingView>
@@ -137,35 +232,61 @@ export default function ChatThread({ visible, thread, onClose, onActivity }) {
 }
 
 const styles = StyleSheet.create({
-  screen: { flex: 1, backgroundColor: '#eef1f5' },
+  screen: { flex: 1, backgroundColor: '#f4f6f8' },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 14,
+    gap: 10,
+    paddingHorizontal: 10,
     paddingBottom: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#e6e9ee',
     backgroundColor: '#fff',
   },
-  back: { fontSize: 16, color: '#2f74d6', fontWeight: '700', width: 56 },
-  titleWrap: { flex: 1, alignItems: 'center' },
+  backBtn: { padding: 2 },
+  titleWrap: { flex: 1 },
   title: { fontSize: 16, fontWeight: '800', color: '#0d1b2a' },
   subtitle: { fontSize: 12, color: '#6b7a8a', marginTop: 1 },
   loading: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+
+  avatar: { alignItems: 'center', justifyContent: 'center' },
+  avatarText: { color: '#fff', fontWeight: '800' },
 
   list: { flex: 1 },
   listContent: { padding: 12, paddingBottom: 16 },
   empty: { textAlign: 'center', color: '#9aa7b4', fontStyle: 'italic', marginTop: 24, fontSize: 14 },
 
-  bubbleRow: { flexDirection: 'row', marginVertical: 3 },
+  divider: { alignItems: 'center', marginVertical: 12 },
+  dividerText: {
+    fontSize: 12,
+    color: '#7a8896',
+    fontWeight: '700',
+    backgroundColor: '#e9edf1',
+    paddingHorizontal: 12,
+    paddingVertical: 4,
+    borderRadius: 12,
+    overflow: 'hidden',
+  },
+
+  row: { flexDirection: 'row', alignItems: 'flex-end', marginVertical: 2 },
   rowMine: { justifyContent: 'flex-end' },
   rowTheirs: { justifyContent: 'flex-start' },
-  bubble: { maxWidth: '78%', borderRadius: 16, paddingVertical: 8, paddingHorizontal: 12 },
-  bubbleMine: { backgroundColor: '#2f74d6', borderBottomRightRadius: 5 },
-  bubbleTheirs: { backgroundColor: '#fff', borderWidth: 1, borderColor: '#e6e9ee', borderBottomLeftRadius: 5 },
+  avatarSlot: { width: 28, marginRight: 8, alignItems: 'center' },
+  col: { maxWidth: '76%' },
+  colMine: { alignItems: 'flex-end' },
+  colTheirs: { alignItems: 'flex-start' },
+
+  bubble: { borderRadius: 18, paddingVertical: 9, paddingHorizontal: 13 },
+  bubbleMine: { backgroundColor: '#2f74d6' },
+  bubbleMineTail: { borderBottomRightRadius: 5 },
+  bubbleTheirs: { backgroundColor: '#fff', borderWidth: 1, borderColor: '#e6e9ee' },
+  bubbleTheirsTail: { borderBottomLeftRadius: 5 },
   sender: { fontSize: 11, fontWeight: '800', color: '#2f74d6', marginBottom: 2 },
   bodyMine: { color: '#fff', fontSize: 15, lineHeight: 20 },
   bodyTheirs: { color: '#1f2a37', fontSize: 15, lineHeight: 20 },
+  time: { fontSize: 11, color: '#9aa7b4', marginTop: 3 },
+  timeMine: { marginRight: 4 },
+  timeTheirs: { marginLeft: 4 },
 
   composer: {
     flexDirection: 'row',
@@ -177,23 +298,22 @@ const styles = StyleSheet.create({
     borderTopColor: '#e6e9ee',
     backgroundColor: '#fff',
   },
-  input: {
+  inputPill: {
     flex: 1,
-    maxHeight: 110,
     backgroundColor: '#eef1f5',
-    borderRadius: 18,
-    paddingHorizontal: 14,
-    paddingTop: 9,
-    paddingBottom: 9,
-    fontSize: 15,
-    color: '#0d1b2a',
-  },
-  sendBtn: {
-    backgroundColor: '#2f74d6',
-    borderRadius: 18,
+    borderRadius: 22,
     paddingHorizontal: 16,
-    paddingVertical: 10,
+    justifyContent: 'center',
+    minHeight: 44,
+  },
+  input: { maxHeight: 110, paddingVertical: 10, fontSize: 15, color: '#0d1b2a' },
+  sendBtn: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: '#2f74d6',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   sendBtnOff: { backgroundColor: '#b8c6d4' },
-  sendText: { color: '#fff', fontWeight: '800', fontSize: 14 },
 });
