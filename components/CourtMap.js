@@ -235,7 +235,13 @@ const html = `
     };
 
     window.focusCourt = function (id, lat, lng) {
-      map.setView([lat, lng], 15, { animate: true });
+      // Center the marker in the visible area *above* the court detail card
+      // (which slides up over the bottom of the screen) by shifting the map
+      // center below the marker, so the pin sits higher on screen.
+      var z = 15;
+      var offsetY = Math.round(map.getSize().y * 0.25);
+      var center = map.unproject(map.project([lat, lng], z).add([0, offsetY]), z);
+      map.setView(center, z, { animate: true });
       var m = markersById[id];
       if (m) { m.bringToFront(); }
     };

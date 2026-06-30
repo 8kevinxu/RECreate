@@ -214,7 +214,14 @@ const CourtMap = forwardRef(function CourtMap(
 
   useImperativeHandle(ref, () => ({
     focusCourt(court) {
-      mapRef.current && mapRef.current.setView([court.lat, court.lng], 15, { animate: true });
+      const map = mapRef.current;
+      if (!map) return;
+      // Shift the map center below the marker so the pin sits in the visible
+      // area above the court detail card (which covers the bottom of the screen).
+      const z = 15;
+      const offsetY = Math.round(map.getSize().y * 0.25);
+      const center = map.unproject(map.project([court.lat, court.lng], z).add([0, offsetY]), z);
+      map.setView(center, z, { animate: true });
     },
     recenter(loc) {
       mapRef.current && mapRef.current.setView([loc.lat, loc.lng], 14, { animate: true });
