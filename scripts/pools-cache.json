@@ -1,0 +1,1956 @@
+{
+  "pools": [
+    {
+      "id": "pool-balboa",
+      "name": "Balboa Pool",
+      "address": "San Jose Ave & Havelock St, San Francisco, CA 94112",
+      "lat": 37.726134,
+      "lng": -122.443381,
+      "phone": "(415) 831-6805",
+      "season": "Jun 9 – Aug 15",
+      "programs": [
+        "lap",
+        "family",
+        "senior",
+        "lessons",
+        "exercise",
+        "camp",
+        "rental"
+      ],
+      "scheduleUrls": [
+        {
+          "label": "Balboa Summer 26 June 3_Aug 16",
+          "url": "https://sfrecpark.org/DocumentCenter/View/29562"
+        }
+      ],
+      "sessions": [
+        [],
+        [],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 480
+          },
+          {
+            "kind": "lessons",
+            "start": 510,
+            "end": 600
+          },
+          {
+            "kind": "senior",
+            "start": 630,
+            "end": 720
+          },
+          {
+            "kind": "lap",
+            "start": 750,
+            "end": 810
+          },
+          {
+            "kind": "family",
+            "start": 840,
+            "end": 930
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1050
+          },
+          {
+            "kind": "rental",
+            "start": 1050,
+            "end": 1170
+          }
+        ],
+        [
+          {
+            "kind": "lessons",
+            "start": 510,
+            "end": 600
+          },
+          {
+            "kind": "senior",
+            "start": 630,
+            "end": 720
+          },
+          {
+            "kind": "lap",
+            "start": 750,
+            "end": 810
+          },
+          {
+            "kind": "family",
+            "start": 840,
+            "end": 930
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1050
+          },
+          {
+            "kind": "rental",
+            "start": 1050,
+            "end": 1170
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 480
+          },
+          {
+            "kind": "lessons",
+            "start": 510,
+            "end": 600
+          },
+          {
+            "kind": "senior",
+            "start": 630,
+            "end": 720
+          },
+          {
+            "kind": "camp",
+            "start": 750,
+            "end": 840
+          },
+          {
+            "kind": "lap",
+            "start": 870,
+            "end": 930
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1050
+          },
+          {
+            "kind": "family",
+            "start": 1080,
+            "end": 1170
+          }
+        ],
+        [
+          {
+            "kind": "lessons",
+            "start": 510,
+            "end": 600
+          },
+          {
+            "kind": "lap",
+            "start": 630,
+            "end": 750
+          },
+          {
+            "kind": "exercise",
+            "start": 780,
+            "end": 840
+          },
+          {
+            "kind": "family",
+            "start": 840,
+            "end": 930
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1050
+          },
+          {
+            "kind": "rental",
+            "start": 1080,
+            "end": 1170
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 540,
+            "end": 630
+          },
+          {
+            "kind": "lessons",
+            "start": 540,
+            "end": 660
+          },
+          {
+            "kind": "family",
+            "start": 750,
+            "end": 840
+          },
+          {
+            "kind": "family",
+            "start": 870,
+            "end": 930
+          },
+          {
+            "kind": "lap",
+            "start": 960,
+            "end": 1020
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pool-coffman",
+      "name": "Coffman Pool",
+      "address": "1701 Visitacion Ave, San Francisco, CA 94134",
+      "lat": 37.713221,
+      "lng": -122.4158,
+      "phone": null,
+      "season": "Jun 9 – Aug 15",
+      "programs": [
+        "lap",
+        "family",
+        "senior",
+        "lessons",
+        "adult_lessons",
+        "parent_child",
+        "exercise",
+        "camp",
+        "rental"
+      ],
+      "scheduleUrls": [
+        {
+          "label": "Coffman Pool SUMMER 2026_June_9_Aug_15",
+          "url": "https://sfrecpark.org/DocumentCenter/View/29563"
+        }
+      ],
+      "sessions": [
+        [],
+        [],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 495
+          },
+          {
+            "kind": "lessons",
+            "start": 510,
+            "end": 600
+          },
+          {
+            "kind": "exercise",
+            "start": 630,
+            "end": 735
+          },
+          {
+            "kind": "camp",
+            "start": 765,
+            "end": 795
+          },
+          {
+            "kind": "family",
+            "start": 810,
+            "end": 900
+          },
+          {
+            "kind": "lessons",
+            "start": 930,
+            "end": 1020
+          },
+          {
+            "kind": "adult_lessons",
+            "start": 975,
+            "end": 1020
+          },
+          {
+            "kind": "rental",
+            "start": 1020,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lessons",
+            "start": 510,
+            "end": 600
+          },
+          {
+            "kind": "lap",
+            "start": 630,
+            "end": 735
+          },
+          {
+            "kind": "camp",
+            "start": 765,
+            "end": 795
+          },
+          {
+            "kind": "family",
+            "start": 810,
+            "end": 900
+          },
+          {
+            "kind": "lessons",
+            "start": 930,
+            "end": 1020
+          },
+          {
+            "kind": "family",
+            "start": 1050,
+            "end": 1140
+          },
+          {
+            "kind": "lap",
+            "start": 1050,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 495
+          },
+          {
+            "kind": "lessons",
+            "start": 510,
+            "end": 600
+          },
+          {
+            "kind": "exercise",
+            "start": 630,
+            "end": 735
+          },
+          {
+            "kind": "camp",
+            "start": 765,
+            "end": 795
+          },
+          {
+            "kind": "family",
+            "start": 810,
+            "end": 900
+          },
+          {
+            "kind": "lessons",
+            "start": 930,
+            "end": 1020
+          }
+        ],
+        [
+          {
+            "kind": "lessons",
+            "start": 510,
+            "end": 600
+          },
+          {
+            "kind": "lap",
+            "start": 630,
+            "end": 735
+          },
+          {
+            "kind": "camp",
+            "start": 765,
+            "end": 795
+          },
+          {
+            "kind": "family",
+            "start": 810,
+            "end": 900
+          },
+          {
+            "kind": "lessons",
+            "start": 930,
+            "end": 1020
+          },
+          {
+            "kind": "rental",
+            "start": 1050,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lessons",
+            "start": 540,
+            "end": 660
+          },
+          {
+            "kind": "senior",
+            "start": 705,
+            "end": 765
+          },
+          {
+            "kind": "family",
+            "start": 780,
+            "end": 840
+          },
+          {
+            "kind": "parent_child",
+            "start": 780,
+            "end": 840
+          },
+          {
+            "kind": "family",
+            "start": 870,
+            "end": 945
+          },
+          {
+            "kind": "lap",
+            "start": 960,
+            "end": 1020
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pool-garfield",
+      "name": "Garfield Pool",
+      "address": "1271 Treat Ave, San Francisco, CA 94110",
+      "lat": 37.750098,
+      "lng": -122.412027,
+      "phone": "(628) 652-7221",
+      "season": "Jun 7 – Aug 13",
+      "programs": [
+        "lap",
+        "family",
+        "senior",
+        "lessons",
+        "exercise",
+        "rental"
+      ],
+      "scheduleUrls": [
+        {
+          "label": "Garfield Pool_Summer 26_June 7 to Aug 13",
+          "url": "https://sfrecpark.org/DocumentCenter/View/29564"
+        }
+      ],
+      "sessions": [
+        [
+          {
+            "kind": "lap",
+            "start": 510,
+            "end": 630
+          },
+          {
+            "kind": "lessons",
+            "start": 540,
+            "end": 660
+          },
+          {
+            "kind": "family",
+            "start": 750,
+            "end": 840
+          },
+          {
+            "kind": "lap",
+            "start": 750,
+            "end": 840
+          },
+          {
+            "kind": "family",
+            "start": 870,
+            "end": 990
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 510
+          },
+          {
+            "kind": "lessons",
+            "start": 540,
+            "end": 660
+          },
+          {
+            "kind": "exercise",
+            "start": 690,
+            "end": 750
+          },
+          {
+            "kind": "senior",
+            "start": 690,
+            "end": 765
+          },
+          {
+            "kind": "family",
+            "start": 795,
+            "end": 915
+          },
+          {
+            "kind": "lessons",
+            "start": 945,
+            "end": 1035
+          },
+          {
+            "kind": "family",
+            "start": 1050,
+            "end": 1140
+          },
+          {
+            "kind": "lap",
+            "start": 1050,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lessons",
+            "start": 540,
+            "end": 660
+          },
+          {
+            "kind": "senior",
+            "start": 690,
+            "end": 765
+          },
+          {
+            "kind": "family",
+            "start": 795,
+            "end": 915
+          },
+          {
+            "kind": "rental",
+            "start": 1050,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lessons",
+            "start": 540,
+            "end": 660
+          },
+          {
+            "kind": "family",
+            "start": 795,
+            "end": 915
+          },
+          {
+            "kind": "family",
+            "start": 1050,
+            "end": 1140
+          },
+          {
+            "kind": "lap",
+            "start": 1050,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lessons",
+            "start": 540,
+            "end": 660
+          },
+          {
+            "kind": "exercise",
+            "start": 690,
+            "end": 750
+          }
+        ],
+        [],
+        []
+      ]
+    },
+    {
+      "id": "pool-hamilton",
+      "name": "Hamilton Pool",
+      "address": "1900 Geary Blvd, San Francisco, CA 94115",
+      "lat": 37.784566,
+      "lng": -122.435086,
+      "phone": null,
+      "season": "Jun 9 – Aug 15",
+      "programs": [
+        "lap",
+        "family",
+        "lessons",
+        "parent_child",
+        "exercise",
+        "camp",
+        "rental"
+      ],
+      "scheduleUrls": [
+        {
+          "label": "Hamilton Pool _ Summer 2026 _ June 9 to Aug 15",
+          "url": "https://sfrecpark.org/DocumentCenter/View/29565"
+        }
+      ],
+      "sessions": [
+        [],
+        [],
+        [
+          {
+            "kind": "lessons",
+            "start": 510,
+            "end": 675
+          },
+          {
+            "kind": "exercise",
+            "start": 690,
+            "end": 795
+          },
+          {
+            "kind": "lap",
+            "start": 690,
+            "end": 795
+          },
+          {
+            "kind": "camp",
+            "start": 810,
+            "end": 840
+          },
+          {
+            "kind": "family",
+            "start": 840,
+            "end": 930
+          },
+          {
+            "kind": "rental",
+            "start": 960,
+            "end": 1080
+          },
+          {
+            "kind": "lessons",
+            "start": 975,
+            "end": 1050
+          },
+          {
+            "kind": "rental",
+            "start": 1110,
+            "end": 1200
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 390,
+            "end": 480
+          },
+          {
+            "kind": "lessons",
+            "start": 510,
+            "end": 675
+          },
+          {
+            "kind": "lap",
+            "start": 690,
+            "end": 795
+          },
+          {
+            "kind": "camp",
+            "start": 810,
+            "end": 840
+          },
+          {
+            "kind": "family",
+            "start": 840,
+            "end": 930
+          },
+          {
+            "kind": "rental",
+            "start": 960,
+            "end": 1080
+          },
+          {
+            "kind": "lap",
+            "start": 1110,
+            "end": 1200
+          },
+          {
+            "kind": "parent_child",
+            "start": 1110,
+            "end": 1200
+          }
+        ],
+        [
+          {
+            "kind": "rental",
+            "start": 405,
+            "end": 495
+          },
+          {
+            "kind": "lessons",
+            "start": 510,
+            "end": 675
+          },
+          {
+            "kind": "lap",
+            "start": 690,
+            "end": 795
+          },
+          {
+            "kind": "camp",
+            "start": 810,
+            "end": 840
+          },
+          {
+            "kind": "family",
+            "start": 840,
+            "end": 930
+          },
+          {
+            "kind": "rental",
+            "start": 960,
+            "end": 1080
+          },
+          {
+            "kind": "lessons",
+            "start": 975,
+            "end": 1050
+          },
+          {
+            "kind": "rental",
+            "start": 1110,
+            "end": 1200
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 390,
+            "end": 480
+          },
+          {
+            "kind": "lessons",
+            "start": 510,
+            "end": 675
+          },
+          {
+            "kind": "lap",
+            "start": 690,
+            "end": 795
+          },
+          {
+            "kind": "camp",
+            "start": 810,
+            "end": 840
+          },
+          {
+            "kind": "family",
+            "start": 840,
+            "end": 930
+          },
+          {
+            "kind": "rental",
+            "start": 960,
+            "end": 1080
+          },
+          {
+            "kind": "family",
+            "start": 1110,
+            "end": 1200
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 540,
+            "end": 630
+          },
+          {
+            "kind": "lessons",
+            "start": 540,
+            "end": 630
+          },
+          {
+            "kind": "lessons",
+            "start": 630,
+            "end": 720
+          },
+          {
+            "kind": "family",
+            "start": 810,
+            "end": 930
+          },
+          {
+            "kind": "lap",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "parent_child",
+            "start": 1110,
+            "end": 1200
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pool-mlk",
+      "name": "Martin Luther King Jr. Pool",
+      "address": "5701 3rd St, San Francisco, CA 94124",
+      "lat": 37.725545,
+      "lng": -122.393722,
+      "phone": "(415) 288-2807",
+      "season": "Jun 9 – Aug 15",
+      "programs": [
+        "lap",
+        "family",
+        "senior",
+        "lessons",
+        "exercise",
+        "rental",
+        "other"
+      ],
+      "scheduleUrls": [
+        {
+          "label": "MLK Pool_ Summer 2026 _Jun9_ Aug15th",
+          "url": "https://sfrecpark.org/DocumentCenter/View/29578"
+        }
+      ],
+      "sessions": [
+        [],
+        [],
+        [
+          {
+            "kind": "lap",
+            "start": 450,
+            "end": 540
+          },
+          {
+            "kind": "lap",
+            "start": 540,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "start": 540,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "start": 540,
+            "end": 720
+          },
+          {
+            "kind": "senior",
+            "start": 540,
+            "end": 660
+          },
+          {
+            "kind": "family",
+            "start": 750,
+            "end": 930
+          },
+          {
+            "kind": "lap",
+            "start": 750,
+            "end": 930
+          },
+          {
+            "kind": "other",
+            "start": 750,
+            "end": 930
+          },
+          {
+            "kind": "lap",
+            "start": 930,
+            "end": 1050
+          },
+          {
+            "kind": "other",
+            "start": 930,
+            "end": 1050
+          },
+          {
+            "kind": "lessons",
+            "start": 945,
+            "end": 1065
+          },
+          {
+            "kind": "other",
+            "start": 945,
+            "end": 1065
+          },
+          {
+            "kind": "exercise",
+            "start": 1080,
+            "end": 1140
+          },
+          {
+            "kind": "lap",
+            "start": 1080,
+            "end": 1140
+          },
+          {
+            "kind": "other",
+            "start": 1140,
+            "end": 1230
+          },
+          {
+            "kind": "rental",
+            "start": 1140,
+            "end": 1230
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 630,
+            "end": 750
+          },
+          {
+            "kind": "lessons",
+            "start": 630,
+            "end": 750
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 450,
+            "end": 540
+          },
+          {
+            "kind": "exercise",
+            "start": 1080,
+            "end": 1140
+          },
+          {
+            "kind": "lap",
+            "start": 1080,
+            "end": 1140
+          },
+          {
+            "kind": "lessons",
+            "start": 1080,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 630,
+            "end": 750
+          },
+          {
+            "kind": "lessons",
+            "start": 630,
+            "end": 750
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 510
+          },
+          {
+            "kind": "lessons",
+            "start": 540,
+            "end": 720
+          },
+          {
+            "kind": "family",
+            "start": 810,
+            "end": 900
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pool-mission",
+      "name": "Mission Community Pool",
+      "address": "1 Linda St, San Francisco, CA 94110",
+      "lat": 37.759653,
+      "lng": -122.422606,
+      "phone": null,
+      "season": "Jun 9 – Aug 15",
+      "programs": [
+        "lap",
+        "family",
+        "senior",
+        "lessons",
+        "parent_child",
+        "other"
+      ],
+      "scheduleUrls": [
+        {
+          "label": "Mission Summer 2026_June 9_Aug 15",
+          "url": "https://sfrecpark.org/DocumentCenter/View/29566"
+        }
+      ],
+      "sessions": [
+        [],
+        [],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 510
+          },
+          {
+            "kind": "other",
+            "start": 540,
+            "end": 630
+          },
+          {
+            "kind": "parent_child",
+            "start": 540,
+            "end": 630
+          },
+          {
+            "kind": "lap",
+            "start": 645,
+            "end": 750
+          },
+          {
+            "kind": "senior",
+            "start": 765,
+            "end": 825
+          },
+          {
+            "kind": "family",
+            "start": 840,
+            "end": 900
+          },
+          {
+            "kind": "lessons",
+            "start": 915,
+            "end": 1035
+          },
+          {
+            "kind": "lap",
+            "start": 1065,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "senior",
+            "start": 540,
+            "end": 630
+          },
+          {
+            "kind": "lap",
+            "start": 645,
+            "end": 750
+          },
+          {
+            "kind": "family",
+            "start": 840,
+            "end": 960
+          },
+          {
+            "kind": "lap",
+            "start": 990,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 510
+          },
+          {
+            "kind": "other",
+            "start": 540,
+            "end": 630
+          },
+          {
+            "kind": "parent_child",
+            "start": 540,
+            "end": 630
+          },
+          {
+            "kind": "lap",
+            "start": 645,
+            "end": 750
+          },
+          {
+            "kind": "family",
+            "start": 840,
+            "end": 900
+          },
+          {
+            "kind": "lessons",
+            "start": 915,
+            "end": 1035
+          },
+          {
+            "kind": "lap",
+            "start": 1065,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "senior",
+            "start": 540,
+            "end": 630
+          },
+          {
+            "kind": "family",
+            "start": 660,
+            "end": 780
+          },
+          {
+            "kind": "lap",
+            "start": 810,
+            "end": 990
+          },
+          {
+            "kind": "family",
+            "start": 1020,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lessons",
+            "start": 540,
+            "end": 615
+          },
+          {
+            "kind": "family",
+            "start": 645,
+            "end": 750
+          },
+          {
+            "kind": "family",
+            "start": 840,
+            "end": 915
+          },
+          {
+            "kind": "lap",
+            "start": 930,
+            "end": 1020
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pool-northbeach",
+      "name": "North Beach Pool",
+      "address": "661 Lombard St, San Francisco, CA 94133",
+      "lat": 37.802705,
+      "lng": -122.412437,
+      "phone": null,
+      "season": "Jun 6 – Aug 10",
+      "note": "Two pools: a warm pool and a cool pool. Schedules below are combined.",
+      "programs": [
+        "lap",
+        "family",
+        "senior",
+        "lessons",
+        "adult_lessons",
+        "parent_child",
+        "exercise",
+        "other"
+      ],
+      "scheduleUrls": [
+        {
+          "label": "North Beach SUMMER 2026 June 9_Aug 10 Cool Pool",
+          "url": "https://sfrecpark.org/DocumentCenter/View/29568"
+        },
+        {
+          "label": "North Beach SUMMER 2026 June9_Aug10 Warm Pool",
+          "url": "https://sfrecpark.org/DocumentCenter/View/29569"
+        }
+      ],
+      "sessions": [
+        [],
+        [],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 480
+          },
+          {
+            "kind": "senior",
+            "start": 420,
+            "end": 480
+          },
+          {
+            "kind": "lessons",
+            "start": 510,
+            "end": 585
+          },
+          {
+            "kind": "family",
+            "start": 615,
+            "end": 705
+          },
+          {
+            "kind": "senior",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "family",
+            "start": 810,
+            "end": 930
+          },
+          {
+            "kind": "lap",
+            "start": 810,
+            "end": 945
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1035
+          },
+          {
+            "kind": "lap",
+            "start": 1050,
+            "end": 1110
+          },
+          {
+            "kind": "senior",
+            "start": 1050,
+            "end": 1110
+          },
+          {
+            "kind": "lap",
+            "start": 1335,
+            "end": 780
+          }
+        ],
+        [
+          {
+            "kind": "lessons",
+            "start": 510,
+            "end": 585
+          },
+          {
+            "kind": "lap",
+            "start": 615,
+            "end": 750
+          },
+          {
+            "kind": "senior",
+            "start": 615,
+            "end": 1395
+          },
+          {
+            "kind": "family",
+            "start": 780,
+            "end": 930
+          },
+          {
+            "kind": "lap",
+            "start": 780,
+            "end": 945
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1035
+          },
+          {
+            "kind": "lap",
+            "start": 1050,
+            "end": 1140
+          },
+          {
+            "kind": "exercise",
+            "start": 1410,
+            "end": 750
+          },
+          {
+            "kind": "senior",
+            "start": 1410,
+            "end": 750
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 480
+          },
+          {
+            "kind": "senior",
+            "start": 420,
+            "end": 480
+          },
+          {
+            "kind": "lessons",
+            "start": 510,
+            "end": 585
+          },
+          {
+            "kind": "lap",
+            "start": 615,
+            "end": 780
+          },
+          {
+            "kind": "family",
+            "start": 630,
+            "end": 705
+          },
+          {
+            "kind": "senior",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "family",
+            "start": 810,
+            "end": 915
+          },
+          {
+            "kind": "lap",
+            "start": 810,
+            "end": 945
+          },
+          {
+            "kind": "adult_lessons",
+            "start": 920,
+            "end": 950
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1035
+          },
+          {
+            "kind": "exercise",
+            "start": 1050,
+            "end": 1110
+          },
+          {
+            "kind": "lap",
+            "start": 1050,
+            "end": 1110
+          }
+        ],
+        [
+          {
+            "kind": "lessons",
+            "start": 510,
+            "end": 585
+          },
+          {
+            "kind": "lap",
+            "start": 615,
+            "end": 750
+          },
+          {
+            "kind": "senior",
+            "start": 615,
+            "end": 1395
+          },
+          {
+            "kind": "family",
+            "start": 780,
+            "end": 930
+          },
+          {
+            "kind": "lap",
+            "start": 780,
+            "end": 945
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1035
+          },
+          {
+            "kind": "family",
+            "start": 1050,
+            "end": 1140
+          },
+          {
+            "kind": "lap",
+            "start": 1050,
+            "end": 1170
+          },
+          {
+            "kind": "exercise",
+            "start": 1410,
+            "end": 750
+          },
+          {
+            "kind": "senior",
+            "start": 1410,
+            "end": 750
+          }
+        ],
+        [
+          {
+            "kind": "lessons",
+            "start": 540,
+            "end": 570
+          },
+          {
+            "kind": "parent_child",
+            "start": 540,
+            "end": 600
+          },
+          {
+            "kind": "parent_child",
+            "start": 615,
+            "end": 675
+          },
+          {
+            "kind": "lessons",
+            "start": 630,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "start": 630,
+            "end": 660
+          },
+          {
+            "kind": "family",
+            "start": 720,
+            "end": 795
+          },
+          {
+            "kind": "lap",
+            "start": 720,
+            "end": 900
+          },
+          {
+            "kind": "senior",
+            "start": 825,
+            "end": 900
+          },
+          {
+            "kind": "family",
+            "start": 930,
+            "end": 1020
+          },
+          {
+            "kind": "lap",
+            "start": 930,
+            "end": 990
+          },
+          {
+            "kind": "adult_lessons",
+            "start": 990,
+            "end": 1020
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pool-rossi",
+      "name": "Rossi Pool",
+      "address": "600 Arguello Blvd, San Francisco, CA 94118",
+      "lat": 37.779065,
+      "lng": -122.45828,
+      "phone": "(628) 652-7230",
+      "season": "Jun 7 – Aug 13",
+      "programs": [
+        "lap",
+        "family",
+        "senior",
+        "lessons",
+        "adult_lessons",
+        "parent_child",
+        "exercise",
+        "rental"
+      ],
+      "scheduleUrls": [
+        {
+          "label": "RossiPool__Summer2026_June7_Aug13",
+          "url": "https://sfrecpark.org/DocumentCenter/View/29570"
+        }
+      ],
+      "sessions": [
+        [
+          {
+            "kind": "lap",
+            "start": 450,
+            "end": 510
+          },
+          {
+            "kind": "lessons",
+            "start": 540,
+            "end": 660
+          },
+          {
+            "kind": "adult_lessons",
+            "start": 630,
+            "end": 660
+          },
+          {
+            "kind": "parent_child",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "family",
+            "start": 750,
+            "end": 840
+          },
+          {
+            "kind": "family",
+            "start": 870,
+            "end": 930
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 495
+          },
+          {
+            "kind": "lessons",
+            "start": 510,
+            "end": 630
+          },
+          {
+            "kind": "family",
+            "start": 660,
+            "end": 810
+          },
+          {
+            "kind": "lap",
+            "start": 840,
+            "end": 945
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1080
+          },
+          {
+            "kind": "rental",
+            "start": 960,
+            "end": 1080
+          },
+          {
+            "kind": "adult_lessons",
+            "start": 1050,
+            "end": 1080
+          },
+          {
+            "kind": "lap",
+            "start": 1095,
+            "end": 1170
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 495
+          },
+          {
+            "kind": "lessons",
+            "start": 510,
+            "end": 630
+          },
+          {
+            "kind": "senior",
+            "start": 660,
+            "end": 750
+          },
+          {
+            "kind": "lap",
+            "start": 765,
+            "end": 825
+          },
+          {
+            "kind": "family",
+            "start": 840,
+            "end": 930
+          },
+          {
+            "kind": "rental",
+            "start": 960,
+            "end": 1080
+          },
+          {
+            "kind": "family",
+            "start": 1095,
+            "end": 1170
+          },
+          {
+            "kind": "lap",
+            "start": 1095,
+            "end": 1170
+          }
+        ],
+        [
+          {
+            "kind": "lessons",
+            "start": 510,
+            "end": 630
+          },
+          {
+            "kind": "family",
+            "start": 660,
+            "end": 810
+          },
+          {
+            "kind": "lap",
+            "start": 840,
+            "end": 945
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1080
+          },
+          {
+            "kind": "rental",
+            "start": 960,
+            "end": 1080
+          },
+          {
+            "kind": "adult_lessons",
+            "start": 1050,
+            "end": 1080
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 495
+          },
+          {
+            "kind": "lessons",
+            "start": 510,
+            "end": 630
+          },
+          {
+            "kind": "senior",
+            "start": 660,
+            "end": 750
+          },
+          {
+            "kind": "lap",
+            "start": 765,
+            "end": 825
+          },
+          {
+            "kind": "family",
+            "start": 840,
+            "end": 930
+          },
+          {
+            "kind": "rental",
+            "start": 960,
+            "end": 1080
+          },
+          {
+            "kind": "family",
+            "start": 1095,
+            "end": 1170
+          },
+          {
+            "kind": "lap",
+            "start": 1095,
+            "end": 1170
+          },
+          {
+            "kind": "exercise",
+            "start": 1410,
+            "end": 750
+          }
+        ],
+        [],
+        []
+      ]
+    },
+    {
+      "id": "pool-sava",
+      "name": "Sava Pool",
+      "address": "1149 Wawona St (19th Ave), San Francisco, CA 94116",
+      "lat": 37.737803,
+      "lng": -122.475897,
+      "phone": null,
+      "season": "Jun 30 – Aug 15",
+      "programs": [
+        "lap",
+        "family",
+        "senior",
+        "lessons",
+        "adult_lessons",
+        "rental",
+        "other"
+      ],
+      "scheduleUrls": [
+        {
+          "label": "Sava Summer2 2026 June30-aug15new (3)",
+          "url": "https://sfrecpark.org/DocumentCenter/View/29571"
+        }
+      ],
+      "sessions": [
+        [],
+        [],
+        [
+          {
+            "kind": "lap",
+            "start": 390,
+            "end": 480
+          },
+          {
+            "kind": "lessons",
+            "start": 510,
+            "end": 630
+          },
+          {
+            "kind": "other",
+            "start": 510,
+            "end": 630
+          },
+          {
+            "kind": "other",
+            "start": 660,
+            "end": 30
+          },
+          {
+            "kind": "senior",
+            "start": 660,
+            "end": 30
+          },
+          {
+            "kind": "family",
+            "start": 780,
+            "end": 930
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1080
+          },
+          {
+            "kind": "adult_lessons",
+            "start": 1050,
+            "end": 1080
+          },
+          {
+            "kind": "lessons",
+            "start": 1050,
+            "end": 1140
+          },
+          {
+            "kind": "other",
+            "start": 1050,
+            "end": 1080
+          },
+          {
+            "kind": "lessons",
+            "start": 1140,
+            "end": 1260
+          }
+        ],
+        [
+          {
+            "kind": "family",
+            "start": 780,
+            "end": 900
+          },
+          {
+            "kind": "lessons",
+            "start": 780,
+            "end": 900
+          },
+          {
+            "kind": "lap",
+            "start": 930,
+            "end": 1020
+          },
+          {
+            "kind": "other",
+            "start": 930,
+            "end": 1020
+          },
+          {
+            "kind": "lap",
+            "start": 1140,
+            "end": 1230
+          },
+          {
+            "kind": "rental",
+            "start": 1140,
+            "end": 1230
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 390,
+            "end": 480
+          },
+          {
+            "kind": "family",
+            "start": 780,
+            "end": 930
+          },
+          {
+            "kind": "lessons",
+            "start": 780,
+            "end": 930
+          },
+          {
+            "kind": "adult_lessons",
+            "start": 1050,
+            "end": 1080
+          },
+          {
+            "kind": "lessons",
+            "start": 1050,
+            "end": 1080
+          },
+          {
+            "kind": "lessons",
+            "start": 1050,
+            "end": 1140
+          },
+          {
+            "kind": "other",
+            "start": 1050,
+            "end": 1080
+          }
+        ],
+        [
+          {
+            "kind": "family",
+            "start": 780,
+            "end": 900
+          },
+          {
+            "kind": "lessons",
+            "start": 780,
+            "end": 900
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 540,
+            "end": 660
+          },
+          {
+            "kind": "lessons",
+            "start": 540,
+            "end": 660
+          },
+          {
+            "kind": "family",
+            "start": 810,
+            "end": 900
+          }
+        ]
+      ]
+    }
+  ],
+  "fees": {
+    "effective": "2026-07-01",
+    "source": "https://sfrecpark.org/DocumentCenter/View/29318",
+    "note": "FY26-27 CPI +2.18%",
+    "groups": [
+      {
+        "id": "child",
+        "label": "Children (0–17)",
+        "dropIn": 2,
+        "passes": [
+          [
+            "Monthly (no lessons)",
+            27
+          ],
+          [
+            "Summer pass",
+            34
+          ],
+          [
+            "Yearly swim pass",
+            285
+          ]
+        ]
+      },
+      {
+        "id": "adult",
+        "label": "Adults (18–64)",
+        "dropIn": 8,
+        "passes": [
+          [
+            "Rec swim – 10 visits",
+            76
+          ],
+          [
+            "Water exercise drop-in",
+            12
+          ],
+          [
+            "Water exercise – 10 visits",
+            101
+          ],
+          [
+            "Monthly (no lessons)",
+            111
+          ],
+          [
+            "Yearly swim pass",
+            1007
+          ]
+        ]
+      },
+      {
+        "id": "senior",
+        "label": "Seniors (65+)",
+        "dropIn": 7,
+        "passes": [
+          [
+            "Rec swim – 10 visits",
+            35
+          ],
+          [
+            "Water exercise drop-in",
+            12
+          ],
+          [
+            "Water exercise – 10 visits",
+            52
+          ],
+          [
+            "Monthly (no lessons)",
+            59
+          ],
+          [
+            "Yearly swim pass",
+            672
+          ]
+        ]
+      },
+      {
+        "id": "medical",
+        "label": "Economic need (Medi-Cal)",
+        "dropIn": 7,
+        "passes": [
+          [
+            "Rec swim – 10 visits",
+            35
+          ],
+          [
+            "Water exercise drop-in",
+            12
+          ],
+          [
+            "Water exercise – 10 visits",
+            52
+          ],
+          [
+            "Monthly (no lessons)",
+            62
+          ],
+          [
+            "Yearly swim pass",
+            672
+          ]
+        ]
+      }
+    ]
+  },
+  "closures": [
+    {
+      "date": "2026-06-19",
+      "label": "Juneteenth"
+    },
+    {
+      "date": "2026-07-04",
+      "label": "Independence Day"
+    }
+  ],
+  "fetchedAt": "2026-06-30T08:41:20.950Z"
+}

@@ -33,13 +33,15 @@
     "build:reservations": "node scripts/build-reservations.js",
     "build:directory": "node scripts/build-court-directory.js",
     "build:classes": "node scripts/build-classes.js",
-    "build:data": "npm run build:courts && npm run build:sanbruno && npm run build:outdoor && npm run build:reservations && npm run build:directory && npm run build:classes"
+    "build:pools": "node scripts/build-pools.js",
+    "build:data": "npm run build:courts && npm run build:sanbruno && npm run build:outdoor && npm run build:reservations && npm run build:directory && npm run build:classes && npm run build:pools"
   },
   "private": true,
   "engines": {
     "node": "20.x"
   },
   "devDependencies": {
-    "cheerio": "^1.2.0"
+    "cheerio": "^1.2.0",
+    "pdfjs-dist": "^4.10.38"
   }
 }
