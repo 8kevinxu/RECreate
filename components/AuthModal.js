@@ -20,6 +20,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAuth } from '../lib/auth';
 import { SPORTS } from '../lib/sports';
 import { loadMyStats } from '../lib/playerCheckins';
+import { useI18n, sportLabel } from '../lib/i18n';
+import SettingsScreen from './SettingsScreen';
 
 export default function AuthModal({
   visible,
@@ -29,6 +31,7 @@ export default function AuthModal({
   courtsById = {},
 }) {
   const { user, displayName, profile, signIn, signUp, signOut, updateProfile } = useAuth();
+  const { t } = useI18n();
   const insets = useSafeAreaInsets();
   const [mode, setMode] = useState('signin'); // 'signin' | 'signup'
   const [email, setEmail] = useState('');
@@ -48,6 +51,7 @@ export default function AuthModal({
   const [pSports, setPSports] = useState([]);
   const [savedNote, setSavedNote] = useState(null); // { err, text }
   const [stats, setStats] = useState(null);
+  const [settingsOpen, setSettingsOpen] = useState(false);
 
   const seedFromProfile = () => {
     setPName(profile?.display_name || '');
@@ -94,11 +98,11 @@ export default function AuthModal({
     reset();
     const e = email.trim();
     if (!e || !password) {
-      setError('Email and password are required.');
+      setError(t('auth.errCreds'));
       return;
     }
     if (mode === 'signup' && password.length < 6) {
-      setError('Password must be at least 6 characters.');
+      setError(t('auth.errPwLen'));
       return;
     }
     setBusy(true);
@@ -113,7 +117,7 @@ export default function AuthModal({
     }
     // If email confirmation is on, sign-up returns no session yet.
     if (mode === 'signup' && !res.data?.session) {
-      setInfo('Check your email to confirm your account, then sign in.');
+      setInfo(t('auth.infoConfirm'));
       setMode('signin');
       setPassword('');
       return;
@@ -149,10 +153,10 @@ export default function AuthModal({
 
   const cancelEdit = () => {
     if (isDirty()) {
-      Alert.alert('Discard changes?', 'Leave without saving your changes?', [
-        { text: 'Keep editing', style: 'cancel' },
+      Alert.alert(t('auth.discardTitle'), t('auth.discardBody'), [
+        { text: t('auth.keepEditing'), style: 'cancel' },
         {
-          text: 'Discard',
+          text: t('auth.discard'),
           style: 'destructive',
           onPress: () => {
             seedFromProfile();
@@ -169,7 +173,7 @@ export default function AuthModal({
     setSavedNote(null);
     const ageNum = pAge.trim() ? parseInt(pAge, 10) : null;
     if (ageNum != null && (Number.isNaN(ageNum) || ageNum < 13 || ageNum > 120)) {
-      setSavedNote({ err: true, text: 'Age must be a number between 13 and 120.' });
+      setSavedNote({ err: true, text: t('auth.errAge') });
       return;
     }
     setBusy(true);
@@ -185,7 +189,7 @@ export default function AuthModal({
       setSavedNote({ err: true, text: err.message });
       return;
     }
-    setSavedNote({ err: false, text: '✓ Profile saved.' });
+    setSavedNote({ err: false, text: t('auth.saved') });
     setEditing(false);
   };
 
@@ -215,11 +219,20 @@ export default function AuthModal({
 
   return wrap(
     <>
+          <SettingsScreen visible={settingsOpen} onClose={() => setSettingsOpen(false)} />
           <View style={styles.header}>
             <Text style={styles.title}>
-              {user ? 'Account' : mode === 'signin' ? 'Sign in' : 'Create account'}
+              {user
+                ? t('auth.account')
+                : mode === 'signin'
+                ? t('auth.signIn')
+                : t('auth.createAccount')}
             </Text>
-            {!asPage && (
+            {asPage ? (
+              <Pressable hitSlop={10} onPress={() => setSettingsOpen(true)}>
+                <Text style={styles.gear}>⚙️</Text>
+              </Pressable>
+            ) : (
               <Pressable hitSlop={10} onPress={close}>
                 <Text style={styles.close}>✕</Text>
               </Pressable>
@@ -232,17 +245,17 @@ export default function AuthModal({
               keyboardShouldPersistTaps="handled"
             >
               <Text style={styles.signedInAs}>
-                Signed in as{' '}
+                {t('auth.signedInAs')}{' '}
                 <Text style={styles.signedInName}>{displayName || user.email}</Text>
               </Text>
               <Text style={styles.signedInEmail}>{user.email}</Text>
 
               {editing ? (
                 <>
-                  <Text style={styles.sectionLabel}>Edit profile</Text>
+                  <Text style={styles.sectionLabel}>{t('auth.editProfile')}</Text>
                   <TextInput
                     style={styles.input}
-                    placeholder="Display name"
+                    placeholder={t('auth.displayName')}
                     placeholderTextColor="#9aa7b4"
                     value={pName}
                     onChangeText={setPName}
@@ -251,16 +264,16 @@ export default function AuthModal({
                   />
                   <TextInput
                     style={styles.input}
-                    placeholder="Age"
+                    placeholder={t('auth.age')}
                     placeholderTextColor="#9aa7b4"
                     value={pAge}
-                    onChangeText={(t) => setPAge(t.replace(/[^0-9]/g, ''))}
+                    onChangeText={(v) => setPAge(v.replace(/[^0-9]/g, ''))}
                     keyboardType="number-pad"
                     maxLength={3}
                   />
                   <TextInput
                     style={styles.input}
-                    placeholder="Neighborhood — e.g. Mission, Sunset, Richmond"
+                    placeholder={t('auth.neighborhoodPh')}
                     placeholderTextColor="#9aa7b4"
                     value={pNeighborhood}
                     onChangeText={setPNeighborhood}
@@ -269,7 +282,7 @@ export default function AuthModal({
                   />
                   <TextInput
                     style={[styles.input, styles.inputMultiline]}
-                    placeholder="Bio — your game, when you play, who to look for…"
+                    placeholder={t('auth.bioPh')}
                     placeholderTextColor="#9aa7b4"
                     value={pBio}
                     onChangeText={setPBio}
@@ -277,7 +290,7 @@ export default function AuthModal({
                     multiline
                   />
 
-                  <Text style={styles.fieldLabel}>Favorite sports</Text>
+                  <Text style={styles.fieldLabel}>{t('auth.favoriteSports')}</Text>
                   <View style={styles.sportWrap}>
                     {SPORTS.map((s) => {
                       const active = pSports.includes(s.id);
@@ -288,7 +301,7 @@ export default function AuthModal({
                           style={[styles.sportChip, active && styles.sportChipActive]}
                         >
                           <Text style={[styles.sportChipText, active && styles.sportChipTextActive]}>
-                            {s.emoji} {s.label}
+                            {s.emoji} {sportLabel(t, s.id)}
                           </Text>
                         </Pressable>
                       );
@@ -298,7 +311,7 @@ export default function AuthModal({
                   {!!savedNote && savedNote.err && <Text style={styles.error}>{savedNote.text}</Text>}
                   <View style={styles.editBtnRow}>
                     <Pressable style={[styles.submit, styles.cancelBtn]} onPress={cancelEdit}>
-                      <Text style={styles.cancelText}>Cancel</Text>
+                      <Text style={styles.cancelText}>{t('cancel')}</Text>
                     </Pressable>
                     <Pressable
                       style={[styles.submit, styles.saveBtn, busy && styles.submitDisabled]}
@@ -308,7 +321,7 @@ export default function AuthModal({
                       {busy ? (
                         <ActivityIndicator color="#fff" />
                       ) : (
-                        <Text style={styles.submitText}>Save</Text>
+                        <Text style={styles.submitText}>{t('auth.save')}</Text>
                       )}
                     </Pressable>
                   </View>
@@ -317,11 +330,14 @@ export default function AuthModal({
                 <>
                   <View style={styles.profileCard}>
                     <Text style={styles.profileName}>
-                      {profile?.display_name || displayName || 'Your name'}
+                      {profile?.display_name || displayName || t('auth.yourName')}
                     </Text>
                     {(profile?.age != null || !!profile?.neighborhood) && (
                       <Text style={styles.profileMeta}>
-                        {[profile?.age != null ? `Age ${profile.age}` : null, profile?.neighborhood]
+                        {[
+                          profile?.age != null ? t('auth.ageMeta', { age: profile.age }) : null,
+                          profile?.neighborhood,
+                        ]
                           .filter(Boolean)
                           .join('  ·  ')}
                       </Text>
@@ -332,7 +348,7 @@ export default function AuthModal({
                         {favSportsList.map((s) => (
                           <View key={s.id} style={styles.viewSportChip}>
                             <Text style={styles.viewSportText}>
-                              {s.emoji} {s.label}
+                              {s.emoji} {sportLabel(t, s.id)}
                             </Text>
                           </View>
                         ))}
@@ -340,11 +356,11 @@ export default function AuthModal({
                     )}
                   </View>
                   <Pressable style={[styles.submit, styles.editBtn]} onPress={startEdit}>
-                    <Text style={styles.submitText}>Edit profile</Text>
+                    <Text style={styles.submitText}>{t('auth.editProfile')}</Text>
                   </Pressable>
                   {!!savedNote && !savedNote.err && <Text style={styles.info}>{savedNote.text}</Text>}
 
-                  <Text style={styles.sectionLabel}>Your check-ins</Text>
+                  <Text style={styles.sectionLabel}>{t('auth.yourCheckins')}</Text>
                   {stats && stats.total > 0 ? (
                     <>
                       <View style={styles.statWrap}>
@@ -358,23 +374,25 @@ export default function AuthModal({
                       </View>
                       {!!(tcs && tcsCourt && tcsSport) && (
                         <Text style={styles.favLine}>
-                          🔥 Most-played: <Text style={styles.favName}>{tcsSport.label}</Text> at{' '}
-                          <Text style={styles.favName}>{tcsCourt}</Text> ({tcs.count}{' '}
-                          {tcs.count === 1 ? 'check-in' : 'check-ins'})
+                          {t('auth.mostPlayedPre')}{' '}
+                          <Text style={styles.favName}>{sportLabel(t, tcsSport.id)}</Text>{' '}
+                          {t('auth.at')} <Text style={styles.favName}>{tcsCourt}</Text> ({tcs.count}{' '}
+                          {t(tcs.count === 1 ? 'auth.checkin' : 'auth.checkins')})
                         </Text>
                       )}
                       {!!favCourt && (
                         <Text style={styles.favLine}>
-                          ⭐ Favorite park: <Text style={styles.favName}>{favCourt.name}</Text> (
-                          {stats.favoriteCount} {stats.favoriteCount === 1 ? 'visit' : 'visits'})
+                          {t('auth.favoritePark')}{' '}
+                          <Text style={styles.favName}>{favCourt.name}</Text> ({stats.favoriteCount}{' '}
+                          {t(stats.favoriteCount === 1 ? 'auth.visit' : 'auth.visits')})
                         </Text>
                       )}
-                      <Text style={styles.totalLine}>{stats.total} total check-ins</Text>
+                      <Text style={styles.totalLine}>
+                        {t('auth.totalCheckins', { count: stats.total })}
+                      </Text>
                     </>
                   ) : (
-                    <Text style={styles.muted}>
-                      No check-ins yet — open a court and tap “I played here.”
-                    </Text>
+                    <Text style={styles.muted}>{t('auth.noCheckins')}</Text>
                   )}
                 </>
               )}
@@ -384,7 +402,7 @@ export default function AuthModal({
                   style={[styles.submit, styles.friendsBtn]}
                   onPress={onFriends}
                 >
-                  <Text style={styles.submitText}>👥 Friends</Text>
+                  <Text style={styles.submitText}>{t('auth.friends')}</Text>
                 </Pressable>
               )}
 
@@ -397,7 +415,7 @@ export default function AuthModal({
                   {busy ? (
                     <ActivityIndicator color="#fff" />
                   ) : (
-                    <Text style={styles.submitText}>Sign out</Text>
+                    <Text style={styles.submitText}>{t('auth.signOut')}</Text>
                   )}
                 </Pressable>
               )}
@@ -407,7 +425,7 @@ export default function AuthModal({
               {mode === 'signup' && (
                 <TextInput
                   style={styles.input}
-                  placeholder="Display name"
+                  placeholder={t('auth.displayName')}
                   placeholderTextColor="#9aa7b4"
                   value={name}
                   onChangeText={setName}
@@ -417,7 +435,7 @@ export default function AuthModal({
               )}
               <TextInput
                 style={styles.input}
-                placeholder="Email"
+                placeholder={t('auth.email')}
                 placeholderTextColor="#9aa7b4"
                 value={email}
                 onChangeText={setEmail}
@@ -428,7 +446,7 @@ export default function AuthModal({
               />
               <TextInput
                 style={styles.input}
-                placeholder="Password"
+                placeholder={t('auth.password')}
                 placeholderTextColor="#9aa7b4"
                 value={password}
                 onChangeText={setPassword}
@@ -447,7 +465,7 @@ export default function AuthModal({
                   <ActivityIndicator color="#fff" />
                 ) : (
                   <Text style={styles.submitText}>
-                    {mode === 'signin' ? 'Sign in' : 'Create account'}
+                    {mode === 'signin' ? t('auth.signIn') : t('auth.createAccount')}
                   </Text>
                 )}
               </Pressable>
@@ -459,9 +477,7 @@ export default function AuthModal({
                 }}
               >
                 <Text style={styles.switch}>
-                  {mode === 'signin'
-                    ? "No account? Create one"
-                    : 'Have an account? Sign in'}
+                  {mode === 'signin' ? t('auth.noAccount') : t('auth.haveAccount')}
                 </Text>
               </Pressable>
             </>
@@ -499,6 +515,7 @@ const styles = StyleSheet.create({
   },
   title: { fontSize: 18, fontWeight: '800', color: '#0d1b2a' },
   close: { fontSize: 18, color: '#90a0b0' },
+  gear: { fontSize: 20 },
 
   input: {
     fontSize: 15,

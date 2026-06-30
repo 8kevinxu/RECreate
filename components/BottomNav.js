@@ -4,15 +4,16 @@
 import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useI18n } from '../lib/i18n';
 
 const ACTIVE = '#2f74d6';
 const INACTIVE = '#1f2a37';
 
 const TABS = [
-  { id: 'home', label: 'Home', on: 'home', off: 'home-outline' },
-  { id: 'classes', label: 'Classes', on: 'calendar', off: 'calendar-outline' },
-  { id: 'social', label: 'Social', on: 'people', off: 'people-outline' },
-  { id: 'profile', label: 'Profile', on: 'person', off: 'person-outline' },
+  { id: 'home', on: 'home', off: 'home-outline' },
+  { id: 'classes', on: 'calendar', off: 'calendar-outline' },
+  { id: 'social', on: 'people', off: 'people-outline' },
+  { id: 'profile', on: 'person', off: 'person-outline' },
 ];
 
 export default function BottomNav({
@@ -22,23 +23,30 @@ export default function BottomNav({
   profileBadge = 0,
   bottomInset = 0,
 }) {
+  const { t } = useI18n();
   return (
     <View style={[styles.bar, { marginBottom: Math.max(bottomInset, 8) }]}>
-      {TABS.map((t) => {
-        const active = t.id === tab;
-        const badge = t.id === 'social' ? socialBadge : t.id === 'profile' ? profileBadge : 0;
+      {TABS.map((item) => {
+        const active = item.id === tab;
+        const badge =
+          item.id === 'social' ? socialBadge : item.id === 'profile' ? profileBadge : 0;
         const color = active ? ACTIVE : INACTIVE;
         return (
-          <Pressable key={t.id} style={styles.item} onPress={() => onChange(t.id)} hitSlop={6}>
+          <Pressable
+            key={item.id}
+            style={styles.item}
+            onPress={() => onChange(item.id)}
+            hitSlop={6}
+          >
             <View>
-              <Ionicons name={active ? t.on : t.off} size={25} color={color} />
+              <Ionicons name={active ? item.on : item.off} size={25} color={color} />
               {badge > 0 && (
                 <View style={styles.badge}>
                   <Text style={styles.badgeText}>{badge > 9 ? '9+' : badge}</Text>
                 </View>
               )}
             </View>
-            <Text style={[styles.label, { color }]}>{t.label}</Text>
+            <Text style={[styles.label, { color }]}>{t('nav.' + item.id)}</Text>
           </Pressable>
         );
       })}
