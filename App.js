@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
   ActivityIndicator,
   Alert,
+  AppState,
   Dimensions,
   Linking,
   Pressable,
@@ -33,6 +34,7 @@ import { subscribeRuns } from './lib/runs';
 import { loadFeed, getFeedSeenAt, markFeedSeen, unreadCount } from './lib/feed';
 import { listIncomingRequests } from './lib/friends';
 import { registerForPush, onNotificationTap } from './lib/push';
+import { syncInterestNotifications } from './lib/localNotify';
 import {
   getOpenStatus,
   getDropinStatus,
@@ -183,7 +185,7 @@ function formatUpdated(iso) {
 }
 
 export default function App() {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const mapRef = useRef(null);
   const didCenterRef = useRef(false); // auto-center on the user only once
   const [openOnly, setOpenOnly] = useState(false);
@@ -203,7 +205,7 @@ export default function App() {
   const [myVotes, setMyVotes] = useState({}); // { courtId: { id, level, ts } }
   const [pickedTime, setPickedTime] = useState(null); // null = live "now"
   const [pickerOpen, setPickerOpen] = useState(false);
-  const { enabled: authEnabled, user, displayName } = useAuth();
+  const { enabled: authEnabled, user, displayName, profile } = useAuth();
   const insets = useSafeAreaInsets(); // device notch / home-indicator insets (edge-to-edge)
   // The map fills the whole screen with the nav floating over it; this is how far up
   // map overlays (zoom, recenter, Nearby, court card) must sit to clear the nav pill.
@@ -329,6 +331,8 @@ export default function App() {
       if (data.courtId) {
         setTab('home');
         setSelectedId(data.courtId);
+      } else if (data.url) {
+        Linking.openURL(data.url).catch(() => {});
       } else if (data.type === 'friend') setFriendsOpen(true);
       else if (data.type) goTab('social');
     });
@@ -366,6 +370,23 @@ export default function App() {
 
   // Court data: bundled → cached → freshly fetched (see useCourts).
   const { courts: courtData, generatedAt } = useCourts();
+
+  // Interest-based local notifications: schedule reminders for today's matching
+  // games + classes when the app opens and each time it returns to the foreground
+  // (no-ops on web/simulator, without interests, or without notification permission).
+  useEffect(() => {
+    if (!user) return undefined;
+    const sports = profile?.favorite_sports || [];
+    const categories = profile?.favorite_categories || [];
+    if (!sports.length && !categories.length) return undefined;
+    const sync = () =>
+      syncInterestNotifications({ courts: courtData, sports, categories, lang });
+    sync();
+    const sub = AppState.addEventListener('change', (s) => {
+      if (s === 'active') sync();
+    });
+    return () => sub.remove();
+  }, [user?.id, courtData, profile?.favorite_sports, profile?.favorite_categories, lang]);
 
   // "View time": all schedule / open-gym logic runs against this. It tracks the
   // live clock by default; picking a future day+time freezes it so the map shows

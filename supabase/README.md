@@ -59,3 +59,4 @@ new:
 | `006_signal_sport.sql` | `hoop_signals.sport` |
 | `007_moderation.sql` | `blocked_users` + `content_reports` (block / report) |
 | `008_add_interests.sql` | `profiles.favorite_categories` (class-category interests) |
+| `009_signal_proposed_sport.sql` | `hoop_signal_participants.proposed_sport` (suggest an activity) |

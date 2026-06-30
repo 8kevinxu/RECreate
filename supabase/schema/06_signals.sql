@@ -51,6 +51,7 @@ create table if not exists public.hoop_signal_participants (
   user_id           uuid        not null references public.profiles (id) on delete cascade,
   proposed_at       timestamptz,                                  -- optional "I suggest this time"
   proposed_court_id text,                                         -- optional "I suggest this court"
+  proposed_sport    text,                                         -- optional "I suggest this sport/activity"
   created_at        timestamptz not null default now(),
   primary key (signal_id, user_id)
 );

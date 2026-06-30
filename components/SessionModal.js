@@ -18,7 +18,7 @@ import {
 } from '../lib/signals';
 import { startOfDay, dayChipLabel, fmtClock, viewLabel } from '../lib/datetime';
 import { dropinWeekdays, openGymSlots } from '../lib/hours';
-import { sportMeta, ANY_SPORT, DEFAULT_SPORT } from '../lib/sports';
+import { SPORTS, sportMeta, ANY_SPORT, DEFAULT_SPORT } from '../lib/sports';
 import { sportLabel, useI18n } from '../lib/i18n';
 
 export default function SessionModal({
@@ -31,10 +31,11 @@ export default function SessionModal({
   onJoinedChat,
 }) {
   const { t } = useI18n();
-  // The signal's own sport drives the header; an "Anything" (just-rec) signal has no
-  // schedules of its own, so court + open-gym suggestions fall back to a real sport.
+  // The signal's declared activity drives the header. When suggesting, the responder
+  // picks the sport/activity (`selSport`) — essential for an "Anything" signal — and
+  // that scopes the court + open-gym time options below.
   const displaySport = signal?.sport || sportProp;
-  const sport = displaySport === ANY_SPORT ? DEFAULT_SPORT : displaySport;
+  const [selSport, setSelSport] = useState(DEFAULT_SPORT);
   const days = useMemo(() => {
     const base = startOfDay(new Date());
     return Array.from({ length: 7 }, (_, i) => {
@@ -44,8 +45,8 @@ export default function SessionModal({
     });
   }, []);
   const courtsWithBball = useMemo(
-    () => courts.filter((c) => dropinWeekdays(c, sport).size > 0),
-    [courts, sport]
+    () => courts.filter((c) => dropinWeekdays(c, selSport).size > 0),
+    [courts, selSport]
   );
   const nameById = useMemo(
     () => Object.fromEntries(courts.map((c) => [c.id, c.name])),
@@ -58,8 +59,8 @@ export default function SessionModal({
 
   const selectedCourt = courts.find((c) => c.id === courtId) || null;
   const bballDays = useMemo(
-    () => (selectedCourt ? dropinWeekdays(selectedCourt, sport) : new Set()),
-    [selectedCourt, sport]
+    () => (selectedCourt ? dropinWeekdays(selectedCourt, selSport) : new Set()),
+    [selectedCourt, selSport]
   );
   const firstOpenDay = useMemo(
     () => days.find((d) => bballDays.has(d.getDay())) || days[0],
@@ -68,7 +69,7 @@ export default function SessionModal({
   const selDayTs = picked ? startOfDay(picked).getTime() : null;
   const selMin = picked ? picked.getHours() * 60 + picked.getMinutes() : null;
   const selDay = picked ? startOfDay(picked) : null;
-  const daySlots = selectedCourt && selDay ? openGymSlots(selectedCourt, sport, selDay.getDay()) : [];
+  const daySlots = selectedCourt && selDay ? openGymSlots(selectedCourt, selSport, selDay.getDay()) : [];
 
   // Seed court + time from the confirmed plan, your suggestion, or defaults.
   useEffect(() => {
@@ -78,6 +79,13 @@ export default function SessionModal({
     setCourtId(cid);
     const seed = signal.plannedAt || signal.myProposedAt;
     setPicked(seed ? new Date(seed) : null);
+    // Default the activity to the signal's sport (if concrete), else your prior
+    // suggestion, else basketball.
+    setSelSport(
+      signal.sport && signal.sport !== ANY_SPORT
+        ? signal.sport
+        : signal.myProposedSport || DEFAULT_SPORT
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible, signal?.id]);
 
@@ -89,17 +97,23 @@ export default function SessionModal({
 
   // Snap to a valid open-gym slot for the given court/day.
   const snap = (court, dayDate, minPref) => {
-    const slots = openGymSlots(court, sport, dayDate.getDay());
+    const slots = openGymSlots(court, selSport, dayDate.getDay());
     if (!slots.length) return null;
     const min = minPref != null && slots.includes(minPref) ? minPref : slots[0];
     const d = new Date(dayDate);
     d.setHours(Math.floor(min / 60), min % 60, 0, 0);
     return d;
   };
+  // Picking a different activity invalidates the chosen court + time.
+  const selectSport = (sp) => {
+    setSelSport(sp);
+    setCourtId(null);
+    setPicked(null);
+  };
   const selectCourt = (cid) => {
     const court = courts.find((c) => c.id === cid);
     setCourtId(cid);
-    const fday = days.find((d) => dropinWeekdays(court, sport).has(d.getDay())) || days[0];
+    const fday = days.find((d) => dropinWeekdays(court, selSport).has(d.getDay())) || days[0];
     setPicked(snap(court, fday, selMin));
   };
   const pickDay = (d) => setPicked(snap(selectedCourt, d, selMin));
@@ -123,13 +137,14 @@ export default function SessionModal({
   const joinThenChat = async (withSuggestion) => {
     setBusy(true);
     const { error } = withSuggestion
-      ? await joinSignal(signal.id, picked, courtId)
+      ? await joinSignal(signal.id, picked, courtId, selSport)
       : await joinSignal(signal.id);
     await onChanged?.();
     setBusy(false);
     if (error) return;
     const body = withSuggestion
       ? t('signal.chatSuggested', {
+          sport: sportLabel(t, selSport),
           court: nameById[courtId] || t('session.aCourt'),
           when: viewLabel(picked),
         })
@@ -180,6 +195,7 @@ export default function SessionModal({
                 {p.proposedAt ? (
                   <View style={styles.pRight}>
                     <Text style={styles.pSuggest}>
+                      {p.proposedSport ? `${sportMeta(p.proposedSport).emoji} ` : ''}
                       {viewLabel(p.proposedAt)}
                       {courtAt(p.proposedCourtId)}
                     </Text>
@@ -188,7 +204,14 @@ export default function SessionModal({
                         style={styles.confirmBtn}
                         disabled={busy}
                         onPress={() =>
-                          run(() => confirmSignalTime(signal.id, p.proposedAt, p.proposedCourtId))
+                          run(() =>
+                            confirmSignalTime(
+                              signal.id,
+                              p.proposedAt,
+                              p.proposedCourtId,
+                              p.proposedSport
+                            )
+                          )
                         }
                       >
                         <Text style={styles.confirmText}>{t('session.confirm')}</Text>
@@ -204,6 +227,23 @@ export default function SessionModal({
                 <Text style={[styles.label, { marginTop: 16 }]}>
                   {mine ? t('session.setCourtTime') : t('session.suggestCourtTime')}
                 </Text>
+                {/* Activity → place → time. Pick the sport first (it scopes the courts). */}
+                <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chipRow}>
+                  {SPORTS.map((s) => {
+                    const active = s.id === selSport;
+                    return (
+                      <Pressable
+                        key={s.id}
+                        onPress={() => selectSport(s.id)}
+                        style={[styles.chip, active && styles.chipActive]}
+                      >
+                        <Text style={[styles.chipText, active && styles.chipTextActive]}>
+                          {s.emoji} {sportLabel(t, s.id)}
+                        </Text>
+                      </Pressable>
+                    );
+                  })}
+                </ScrollView>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chipRow}>
                   {courtsWithBball.map((c) => {
                     const active = c.id === courtId;
@@ -285,7 +325,7 @@ export default function SessionModal({
               <Pressable
                 style={[styles.primary, (busy || !canSuggest) && styles.disabled]}
                 disabled={busy || !canSuggest}
-                onPress={() => run(() => confirmSignalTime(signal.id, picked, courtId))}
+                onPress={() => run(() => confirmSignalTime(signal.id, picked, courtId, selSport))}
               >
                 {busy ? <ActivityIndicator color="#fff" /> : <Text style={styles.primaryText}>{t('session.confirmTime')}</Text>}
               </Pressable>

@@ -435,12 +435,15 @@ the session sheet, and scopes which courts/times you can suggest (an **Anything*
 signal falls back to a default sport for those suggestions).
 
 Each signal is a **joinable session**: tap it to open the session sheet, **join**
-(**I'm in**), **suggest a court + time**, and — as the host — **confirm** one
-(either a participant's suggestion or your own). Suggestions pick a **rec center**
-and a time **limited to that court's open-gym blocks** (shared with the run form
-via `dropinWeekdays` / `openGymSlots` in `lib/hours.js`). Joining or suggesting
+(**I'm in**), **suggest an activity → place → time**, and — as the host — **confirm**
+one (either a participant's suggestion or your own). You pick the **sport/activity**
+first (essential for an *Anything* signal — it has none yet), which scopes the **rec
+center** options and a time **limited to that court's open-gym blocks** (shared with
+the run form via `dropinWeekdays` / `openGymSlots` in `lib/hours.js`); the host
+confirming a suggestion promotes its sport onto the signal. Joining or suggesting
 **drops you into the signal's group chat** and posts an announcement there ("I'm in!"
-/ "Suggested {court} · {when}"), so everyone sees who's in and what they proposed. The
+/ "Suggested {sport} · {court} · {when}"), so everyone sees who's in and what they
+proposed. The
 confirmed court + time show to everyone and extend the session's expiry. Code lives in
 `lib/signals.js`, `components/SignalModal.js` (composer), and
 `components/SessionModal.js` (session).
@@ -478,6 +481,12 @@ interests set it recommends across everything. All computed on-device from the
 bundled court + class data (`lib/recommend.js`, `components/RecommendPane.js`); set
 interests are stored in `profiles.favorite_categories` (run
 [`supabase/migrations/008_add_interests.sql`](supabase/migrations/008_add_interests.sql)).
+
+The same matches drive **interest-based local notifications** (`lib/localNotify.js`):
+when you open the app, it schedules on-device reminders ~30 min before today's
+matching games and classes, so you get a nudge even if the app is closed (deduped
+per day; needs interests + notification permission). Server push for events while
+the app has never been opened is a deliberate later addition.
 
 ## Trust & safety (report / block)
 
