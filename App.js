@@ -75,19 +75,19 @@ const BOOK_HOWTO_URL =
 // and their reservable/walk-up split; netsLabel shortens the free-text nets column.
 function courtCountLabel(d) {
   const n = d.total || 0;
-  const unit = `court${n === 1 ? '' : 's'}`;
-  if (d.walkup === 0 && d.reservable > 0) return `${n} ${unit} · all reservable`;
-  if (d.reservable === 0 && d.walkup > 0) return `${n} ${unit} · all walk-up`;
+  const unit = n === 1 ? tg('unit.court') : tg('unit.courts');
+  if (d.walkup === 0 && d.reservable > 0) return `${n} ${unit} · ${tg('court.allReservable')}`;
+  if (d.reservable === 0 && d.walkup > 0) return `${n} ${unit} · ${tg('court.allWalkup')}`;
   const parts = [];
-  if (d.reservable) parts.push(`${d.reservable} reservable`);
-  if (d.walkup) parts.push(`${d.walkup} walk-up`);
+  if (d.reservable) parts.push(tg('court.nReservable', { n: d.reservable }));
+  if (d.walkup) parts.push(tg('court.nWalkup', { n: d.walkup }));
   return parts.length ? `${n} ${unit} · ${parts.join(', ')}` : `${n} ${unit}`;
 }
 function netsLabel(nets) {
   if (!nets) return null;
-  if (/bring your own/i.test(nets)) return 'Bring your own net';
-  if (/borrow/i.test(nets)) return 'Nets to borrow';
-  if (/provided/i.test(nets)) return 'Nets provided';
+  if (/bring your own/i.test(nets)) return tg('nets.byo');
+  if (/borrow/i.test(nets)) return tg('nets.borrow');
+  if (/provided/i.test(nets)) return tg('nets.provided');
   return null;
 }
 
@@ -905,8 +905,10 @@ function CourtDetail({
   canLogVisit,
   onClose,
 }) {
+  const { t } = useI18n();
   const { status, dropin } = court;
   const meta = sportMeta(sport);
+  const sportName = sportLabel(t, sport);
   // rec.us reservations for this sport, if this court is reservable, plus the live
   // "% booked right now" reading derived from the point-in-time slot map.
   const booked = court.reserved?.[sport];
@@ -927,13 +929,16 @@ function CourtDetail({
   const moreOpen = partialOpen ? live.total - live.open : 0;
   const releaseClause =
     partialOpen && live.releasesAt
-      ? ` · ${moreOpen} more open ~${live.releasesAt.getMonth() + 1}/${live.releasesAt.getDate()}`
+      ? tg('court.moreOpen', {
+          n: moreOpen,
+          date: `${live.releasesAt.getMonth() + 1}/${live.releasesAt.getDate()}`,
+        })
       : '';
   const courtsClause = !live || live.total == null
     ? null
     : partialOpen
-    ? `${live.open} of ${live.total} courts open for booking${releaseClause}`
-    : `${live.total} court${live.total === 1 ? '' : 's'}`;
+    ? tg('court.openForBooking', { open: live.open, total: live.total }) + releaseClause
+    : tg(live.total === 1 ? 'court.courtsCountOne' : 'court.courtsCountMany', { n: live.total });
   // SF Rec & Park directory facts (court count, lights, restrooms, nets) for this sport.
   const dir = court.directory?.[sport];
   // The location's rec.us booking guidelines (markdown), shared across its sports.
@@ -957,29 +962,29 @@ function CourtDetail({
   }, [court.id]);
   useEffect(() => {
     if (!note) return;
-    const t = setTimeout(() => setNote(null), 4000);
-    return () => clearTimeout(t);
+    const id = setTimeout(() => setNote(null), 4000);
+    return () => clearTimeout(id);
   }, [note]);
 
   const doVote = async (lv) => {
     const res = await onVote(court.id, lv);
     if (res && res.removed) {
-      setNote('Check-in removed.');
+      setNote(t('court.checkinRemoved'));
     } else if (res && res.id) {
-      setNote('✓ Thanks — check-in recorded!');
+      setNote(t('court.checkinThanks'));
     } else {
-      setNote('Couldn’t update check-in. Try again.');
+      setNote(t('court.checkinFail'));
     }
   };
 
   const doLogVisit = async () => {
     const res = await onLogVisit(court.id);
     if (res && res.logged) {
-      setNote(`✓ Checked in — ${meta.label.toLowerCase()} visit logged!`);
+      setNote(t('court.visitLogged', { sport: sportName }));
     } else if (res && res.skipped) {
-      setNote('Already checked in here recently.');
+      setNote(t('court.visitDup'));
     } else {
-      setNote('Couldn’t check in. Try again.');
+      setNote(t('court.visitFail'));
     }
   };
 
@@ -1010,7 +1015,7 @@ function CourtDetail({
       setReviews((prev) => [rec, ...(prev || [])]);
       setReviewBody('');
     } else {
-      setNote('Couldn’t post review. Try again.');
+      setNote(t('court.reviewFail'));
     }
   };
 
@@ -1031,7 +1036,7 @@ function CourtDetail({
                 onPress={() => openDirections(court.lat, court.lng, court.name)}
               >
                 <Ionicons name="navigate" size={13} color="#2f74d6" />
-                <Text style={styles.dirBtnText}>Directions</Text>
+                <Text style={styles.dirBtnText}>{t('directions')}</Text>
               </Pressable>
               {(() => {
                 const eta = travelEta(court.distanceMi);
@@ -1040,18 +1045,18 @@ function CourtDetail({
                   <>
                     <View style={styles.etaChip}>
                       <Ionicons name="car" size={13} color="#46586a" />
-                      <Text style={styles.etaText}>{eta.drive} min</Text>
+                      <Text style={styles.etaText}>{eta.drive} {t('unit.min')}</Text>
                     </View>
                     <View style={styles.etaChip}>
                       {eta.bus != null ? (
                         <>
                           <Ionicons name="bus" size={13} color="#46586a" />
-                          <Text style={styles.etaText}>{eta.bus} min</Text>
+                          <Text style={styles.etaText}>{eta.bus} {t('unit.min')}</Text>
                         </>
                       ) : (
                         <>
                           <Ionicons name="walk" size={14} color="#46586a" />
-                          <Text style={styles.etaText}>{eta.walk} min</Text>
+                          <Text style={styles.etaText}>{eta.walk} {t('unit.min')}</Text>
                         </>
                       )}
                     </View>
@@ -1075,11 +1080,13 @@ function CourtDetail({
         <View
           style={[styles.badge, status.open ? styles.badgeFacOpen : styles.badgeFacClosed]}
         >
-          <Text style={styles.badgeText}>Facility {status.open ? 'open' : 'closed'}</Text>
+          <Text style={styles.badgeText}>
+            {status.open ? t('court.facilityOpen') : t('court.facilityClosed')}
+          </Text>
         </View>
         <View style={[styles.badge, styles.badgePlace]}>
           <Text style={styles.badgeText}>
-            {court.indoor === false ? '🌳 Outdoor' : '🏠 Indoor'}
+            {court.indoor === false ? t('place.outdoor') : t('place.indoor')}
           </Text>
         </View>
         {live != null && (
@@ -1094,9 +1101,12 @@ function CourtDetail({
             ]}
           >
             <Text style={[styles.badgeText, fullyBooked && styles.badgeTextFull]}>
-              {fullyBooked
-                ? `🔴 Fully booked${atLabel ? ' at ' + atLabel : live.now ? ' now' : ''}`
-                : `📅 ${live.pct}% booked${atLabel ? ' at ' + atLabel : live.now ? ' now' : ''}`}
+              {(fullyBooked ? t('court.fullyBooked') : t('court.pctBooked', { pct: live.pct })) +
+                (atLabel
+                  ? ' ' + t('court.bookedAt', { t: atLabel })
+                  : live.now
+                  ? ' ' + t('court.bookedNowWord')
+                  : '')}
             </Text>
           </View>
         )}
@@ -1109,12 +1119,12 @@ function CourtDetail({
           </View>
           {dir.lights && (
             <View style={styles.facChip}>
-              <Text style={styles.facText}>🌙 Lights</Text>
+              <Text style={styles.facText}>{t('amenity.lights')}</Text>
             </View>
           )}
           {dir.restrooms && (
             <View style={styles.facChip}>
-              <Text style={styles.facText}>🚻 Restrooms</Text>
+              <Text style={styles.facText}>{t('amenity.restrooms')}</Text>
             </View>
           )}
           {netsLabel(dir.nets) && (
@@ -1130,7 +1140,7 @@ function CourtDetail({
       {sport === 'basketball' && court.indoor === false && (
         <View style={styles.facRow}>
           <View style={styles.facChip}>
-            <Text style={styles.facTextMuted}>🌙 Lights: unknown</Text>
+            <Text style={styles.facTextMuted}>{t('court.lightsUnknown')}</Text>
           </View>
         </View>
       )}
@@ -1139,32 +1149,45 @@ function CourtDetail({
         <>
           <Text style={[styles.bookedNote, fullyBooked && styles.bookedNoteFull]}>
             {fullyBooked
-              ? `Fully booked ${isPicked ? viewLabel(viewTime) : 'right now'}${
-                  partialOpen ? ` (all ${live.open} of ${live.total} bookable courts)${releaseClause}` : ''
-                } — try ${isPicked ? 'another time' : 'later'}, or book ahead on rec.us.`
+              ? t('court.fullyBookedLine', {
+                  when: isPicked ? viewLabel(viewTime) : t('court.rightNow'),
+                  extra: partialOpen
+                    ? t('court.partialAll', {
+                        open: live.open,
+                        total: live.total,
+                        release: releaseClause,
+                      })
+                    : '',
+                  alt: isPicked ? t('court.anotherTime') : t('court.later'),
+                })
               : live && (live.now || live.picked)
-              ? `${live.pct}% booked ${isPicked ? viewLabel(viewTime) : 'right now'}${
-                  courtsClause ? ` · ${courtsClause}` : ''
-                } on rec.us.`
+              ? t('court.pctBookedLine', {
+                  pct: live.pct,
+                  when: isPicked ? viewLabel(viewTime) : t('court.rightNow'),
+                  courts: courtsClause ? ` · ${courtsClause}` : '',
+                })
               : live
-              ? `Closed right now — ${live.pct}% booked at ${viewLabel(
-                  new Date(live.at.replace(' ', 'T'))
-                )} on rec.us.`
+              ? t('court.closedBookedLine', {
+                  pct: live.pct,
+                  when: viewLabel(new Date(live.at.replace(' ', 'T'))),
+                })
               : isPicked
-              ? `No rec.us booking slot at ${viewLabel(viewTime)}.`
-              : `Reservations on rec.us${
-                  booked.courts ? ` · ${booked.courts} courts` : ''
-                }.`}
+              ? t('court.noSlotLine', { when: viewLabel(viewTime) })
+              : t('court.reservationsLine', {
+                  courts: booked.courts
+                    ? ` · ${t(booked.courts === 1 ? 'court.courtsCountOne' : 'court.courtsCountMany', { n: booked.courts })}`
+                    : '',
+                })}
           </Text>
           <Pressable
             style={styles.bookBtn}
             onPress={() => Linking.openURL(booked.url || BOOK_URL)}
           >
-            <Text style={styles.bookBtnText}>📅 Reserve this court</Text>
+            <Text style={styles.bookBtnText}>{t('court.reserveBtn')}</Text>
           </Pressable>
           <Pressable hitSlop={6} onPress={() => setBookingHelp((v) => !v)}>
             <Text style={styles.bookHelpToggle}>
-              {bookingHelp ? '▾' : '▸'} How booking works
+              {bookingHelp ? '▾' : '▸'} {t('court.howBooking')}
             </Text>
           </Pressable>
           {bookingHelp && (
@@ -1172,19 +1195,13 @@ function CourtDetail({
               {guidelines ? (
                 <GuidelineMarkdown text={guidelines} />
               ) : (
-                <Text style={styles.bookHelpText}>
-                  Courts are reserved on rec.us in fixed timeslots. Most courts book in
-                  90-minute slots up to 7 days ahead (released 8 AM); some book in 60-minute
-                  slots up to 2 days ahead (released noon). That’s why on a future date not
-                  every court is open for booking yet — the shorter-window courts haven’t been
-                  released. Courts with lights add evening slots.
-                </Text>
+                <Text style={styles.bookHelpText}>{t('court.bookingHelp')}</Text>
               )}
               <Text
                 style={[styles.bookHelpLink, { marginTop: 8 }]}
                 onPress={() => Linking.openURL(BOOK_HOWTO_URL)}
               >
-                SF Rec &amp; Park how-to guide ›
+                {t('court.howToGuide')}
               </Text>
             </View>
           )}
@@ -1194,8 +1211,12 @@ function CourtDetail({
       {(court.distanceMi != null || (dropin.open && court.remaining > 0)) && (
         <Text style={styles.metaLine}>
           {[
-            court.distanceMi != null ? `📍 ${formatDistance(court.distanceMi)} away` : null,
-            dropin.open && court.remaining > 0 ? `⏳ ${fmtDuration(court.remaining)} left` : null,
+            court.distanceMi != null
+              ? t('court.away', { d: formatDistance(court.distanceMi) })
+              : null,
+            dropin.open && court.remaining > 0
+              ? t('court.left', { d: fmtDuration(court.remaining) })
+              : null,
           ]
             .filter(Boolean)
             .join('  ·  ')}
@@ -1205,7 +1226,7 @@ function CourtDetail({
       {canLogVisit && !isPicked && (
         <Pressable style={styles.checkInBtn} onPress={doLogVisit}>
           <Text style={styles.checkInBtnText}>
-            {meta.emoji} I'm here
+            {meta.emoji} {t('court.imHere')}
           </Text>
         </Pressable>
       )}
@@ -1213,20 +1234,20 @@ function CourtDetail({
       {isPicked ? (
         <View style={styles.futureBox}>
           <Text style={styles.futureText}>
-            🕒 Showing {viewLabel(viewTime)} — live crowd check-ins are hidden.
+            {t('court.future', { when: viewLabel(viewTime) })}
           </Text>
         </View>
       ) : (
       <View style={styles.crowdBox}>
         <View style={styles.crowdStatusRow}>
-          <Text style={styles.sectionLabel}>How crowded right now?</Text>
+          <Text style={styles.sectionLabel}>{t('court.howCrowded')}</Text>
           {level ? (
             <Text style={[styles.crowdStatus, { color: LEVEL_META[level].color }]}>
-              {LEVEL_META[level].dot} {LEVEL_META[level].label} · {timeAgo(last.ts, now)}
+              {LEVEL_META[level].dot} {t('crowd.' + level)} · {timeAgo(last.ts, now)}
             </Text>
           ) : (
             <Text style={styles.crowdStatusMuted}>
-              {last ? `last report ${timeAgo(last.ts, now)}` : 'No recent check-ins'}
+              {last ? t('court.lastReport', { t: timeAgo(last.ts, now) }) : t('court.noRecent')}
             </Text>
           )}
         </View>
@@ -1244,7 +1265,7 @@ function CourtDetail({
                 ]}
               >
                 <Text style={[styles.crowdBtnText, active && styles.crowdBtnTextActive]}>
-                  {meta.label}
+                  {t('crowd.' + lv)}
                 </Text>
               </Pressable>
             );
@@ -1254,18 +1275,18 @@ function CourtDetail({
         {note ? (
           <Text style={styles.checkinNote}>{note}</Text>
         ) : myLevel ? (
-          <Text style={styles.checkinHint}>Tap your choice again to remove it.</Text>
+          <Text style={styles.checkinHint}>{t('court.tapAgain')}</Text>
         ) : null}
 
         {expanded && recent.length > 0 && (
           <View style={styles.history}>
             <Text style={styles.historyHead}>
-              👥 {lastHour} check-in{lastHour === 1 ? '' : 's'} in the last hour
+              {t(lastHour === 1 ? 'court.historyHeadOne' : 'court.historyHeadMany', { n: lastHour })}
             </Text>
             {recent.map((e, i) => (
               <View key={e.ts + '-' + i} style={styles.historyRow}>
                 <Text style={[styles.historyLevel, { color: LEVEL_META[e.level].color }]}>
-                  {LEVEL_META[e.level].dot} {LEVEL_META[e.level].label}
+                  {LEVEL_META[e.level].dot} {t('crowd.' + e.level)}
                 </Text>
                 <Text style={styles.historyAgo}>{timeAgo(e.ts, now)}</Text>
               </View>
@@ -1277,13 +1298,13 @@ function CourtDetail({
 
       <Pressable style={styles.expandToggle} onPress={() => setExpanded((v) => !v)}>
         <Text style={styles.expandToggleText}>
-          {expanded ? '⌃  Hide details' : '⌄  Schedule & reviews'}
+          {expanded ? t('court.hideDetails') : t('court.scheduleReviews')}
         </Text>
       </Pressable>
 
       {expanded && (
       <ScrollView style={styles.cardScroll} keyboardShouldPersistTaps="handled">
-        <Text style={styles.sectionLabel}>Open-gym {meta.label.toLowerCase()}</Text>
+        <Text style={styles.sectionLabel}>{t('court.openGymSport', { sport: sportName })}</Text>
         {week.map((d) => (
           <View
             key={d.day}
@@ -1307,20 +1328,19 @@ function CourtDetail({
 
         {!!court.notes && <Text style={styles.notes}>{court.notes}</Text>}
         <Text style={styles.disclaimer}>
-          {court.disclaimer ||
-            'Open-gym times (summer) vary seasonally — verify on sfrecpark.org.'}
+          {court.disclaimer || t('court.disclaimerDefault')}
         </Text>
 
-        <Text style={[styles.sectionLabel, styles.reviewsLabel]}>Reviews</Text>
+        <Text style={[styles.sectionLabel, styles.reviewsLabel]}>{t('court.reviews')}</Text>
         {reviews === null ? (
-          <Text style={styles.reviewsMuted}>Loading…</Text>
+          <Text style={styles.reviewsMuted}>{t('court.loading')}</Text>
         ) : reviews.length === 0 ? (
-          <Text style={styles.reviewsMuted}>No reviews yet — be the first.</Text>
+          <Text style={styles.reviewsMuted}>{t('court.noReviews')}</Text>
         ) : (
           reviews.map((r) => (
             <View key={r.id} style={styles.review}>
               <View style={styles.reviewHead}>
-                <Text style={styles.reviewAuthor}>{r.author || 'Anonymous'}</Text>
+                <Text style={styles.reviewAuthor}>{r.author || t('court.anonymous')}</Text>
                 <Text style={styles.reviewAgo}>{timeAgo(r.ts, now)}</Text>
               </View>
               <Text style={styles.reviewBody}>{r.body}</Text>
@@ -1334,7 +1354,7 @@ function CourtDetail({
       <View style={styles.reviewForm}>
         <TextInput
           style={styles.reviewNameInput}
-          placeholder="Name (optional)"
+          placeholder={t('court.namePh')}
           placeholderTextColor="#9aa7b4"
           value={reviewName}
           onChangeText={setReviewName}
@@ -1343,7 +1363,7 @@ function CourtDetail({
         <View style={styles.reviewInputRow}>
           <TextInput
             style={styles.reviewBodyInput}
-            placeholder="Add a review…"
+            placeholder={t('court.reviewPh')}
             placeholderTextColor="#9aa7b4"
             value={reviewBody}
             onChangeText={setReviewBody}
@@ -1358,7 +1378,7 @@ function CourtDetail({
               (!reviewBody.trim() || posting) && styles.reviewPostDisabled,
             ]}
           >
-            <Text style={styles.reviewPostText}>{posting ? '…' : 'Post'}</Text>
+            <Text style={styles.reviewPostText}>{posting ? '…' : t('court.post')}</Text>
           </Pressable>
         </View>
       </View>
