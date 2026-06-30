@@ -169,8 +169,10 @@ const CourtMap = forwardRef(function CourtMap(
     courts.forEach((c) => {
       // Outdoor courts are dense, so render them a bit smaller than indoor gyms.
       const size = c.indoor === false ? 21 : 26;
+      // A court may carry its own sport (Favorites view glyphs each pin by the sport
+      // it was favorited for); otherwise fall back to the map-wide sport.
       const ball =
-        '<div class="bball" style="opacity:' + (c.open ? 1 : 0.45) + '">' + ballSvg(sport) + '</div>';
+        '<div class="bball" style="opacity:' + (c.open ? 1 : 0.45) + '">' + ballSvg(c.sport || sport) + '</div>';
       const level = bookLevel(c.booked);
       const ring = level ? '<div class="bookring bk-' + level + '"></div>' : '';
       const anim =

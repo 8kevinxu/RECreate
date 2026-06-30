@@ -537,7 +537,9 @@ export default function App() {
           lat: c.lat,
           lng: c.lng,
           indoor: c.indoor,
-          // In the Favorites view, judge open by the sport the court was favorited for.
+          // In the Favorites view each pin shows the sport it was favorited for (its
+          // glyph + open status); elsewhere the map-wide sport is used.
+          sport: favoritesMode ? favoriteSport(c.id) : sport,
           open: favoritesMode
             ? getDropinStatus(c, favoriteSport(c.id), viewTime).open
             : c.dropin.open,

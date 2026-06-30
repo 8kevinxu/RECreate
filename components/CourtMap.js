@@ -171,7 +171,9 @@ const html = `
 
     var SPORT_SVG = { basketball: BBALL_SVG, volleyball: VBALL_SVG, pingpong: PPONG_SVG, pickleball: PICKLE_SVG, tennis: TENNIS_SVG };
     var currentSport = 'basketball';
-    function ballSvg() { return SPORT_SVG[currentSport] || BBALL_SVG; }
+    // A court may carry its own sport (the Favorites view glyphs each pin by the
+    // sport it was favorited for); otherwise fall back to the map-wide sport.
+    function ballSvg(s) { return SPORT_SVG[s || currentSport] || BBALL_SVG; }
     window.setSport = function (s) { currentSport = s; };
 
     // Reservation occupancy → halo class. null = not reservable / closed now.
@@ -202,7 +204,7 @@ const html = `
         // Outdoor courts (basketball/tennis/pickleball) are dense, so render them a
         // bit smaller than indoor gyms to cut map clutter.
         var size = c.indoor === false ? 21 : 26;
-        var ball = '<div class="bball" style="opacity:' + (c.open ? 1 : 0.45) + '">' + ballSvg() + '</div>';
+        var ball = '<div class="bball" style="opacity:' + (c.open ? 1 : 0.45) + '">' + ballSvg(c.sport) + '</div>';
         var level = bookLevel(c.booked);
         var ring = level ? '<div class="bookring bk-' + level + '"></div>' : '';
         // Fully booked hops; otherwise an active crowd bounces.
