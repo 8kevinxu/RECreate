@@ -159,6 +159,20 @@ const AMENITIES = [
 ];
 
 // ISO timestamp → "today" / "yesterday" / "Jun 18, 2026".
+// Rough travel time (minutes) from straight-line miles — drive ~ city streets with a
+// road-vs-crow-flies factor, walk ~ 3 mph, bus ~ transit speed + stop/wait overhead.
+// Estimates only; Directions has the real ETA. For long trips (walk > 30 min) we show
+// the bus estimate instead of an impractical walk.
+function travelEta(miles) {
+  if (miles == null) return null;
+  const walk = Math.max(1, Math.round(miles * 20));
+  return {
+    drive: Math.max(1, Math.round(miles * 4)),
+    walk,
+    bus: walk > 30 ? Math.max(10, Math.round(miles * 8 + 6)) : null,
+  };
+}
+
 function formatUpdated(iso) {
   const d = new Date(iso);
   if (isNaN(d)) return '';
@@ -1013,13 +1027,40 @@ function CourtDetail({
             </Text>
           )}
           {court.lat != null && (
-            <Pressable
-              style={styles.dirBtn}
-              onPress={() => openDirections(court.lat, court.lng, court.name)}
-            >
-              <Ionicons name="navigate" size={13} color="#2f74d6" />
-              <Text style={styles.dirBtnText}>Directions</Text>
-            </Pressable>
+            <View style={styles.travelRow}>
+              <Pressable
+                style={styles.dirBtn}
+                onPress={() => openDirections(court.lat, court.lng, court.name)}
+              >
+                <Ionicons name="navigate" size={13} color="#2f74d6" />
+                <Text style={styles.dirBtnText}>Directions</Text>
+              </Pressable>
+              {(() => {
+                const eta = travelEta(court.distanceMi);
+                if (!eta) return null;
+                return (
+                  <>
+                    <View style={styles.etaChip}>
+                      <Ionicons name="car" size={13} color="#46586a" />
+                      <Text style={styles.etaText}>{eta.drive} min</Text>
+                    </View>
+                    <View style={styles.etaChip}>
+                      {eta.bus != null ? (
+                        <>
+                          <Ionicons name="bus" size={13} color="#46586a" />
+                          <Text style={styles.etaText}>{eta.bus} min</Text>
+                        </>
+                      ) : (
+                        <>
+                          <Ionicons name="walk" size={14} color="#46586a" />
+                          <Text style={styles.etaText}>{eta.walk} min</Text>
+                        </>
+                      )}
+                    </View>
+                  </>
+                );
+              })()}
+            </View>
           )}
         </View>
         <Pressable hitSlop={10} onPress={onClose}>
@@ -1166,7 +1207,7 @@ function CourtDetail({
       {canLogVisit && !isPicked && (
         <Pressable style={styles.checkInBtn} onPress={doLogVisit}>
           <Text style={styles.checkInBtnText}>
-            {meta.emoji} I played {meta.label.toLowerCase()} here — check in
+            {meta.emoji} I'm here
           </Text>
         </Pressable>
       )}
@@ -1434,15 +1475,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 6,
-    backgroundColor: '#fff',
-    borderRadius: 999,
-    paddingHorizontal: 11,
+    paddingHorizontal: 4,
     paddingVertical: 7,
-    shadowColor: '#0d1b2a',
-    shadowOpacity: 0.12,
-    shadowRadius: 5,
-    shadowOffset: { width: 0, height: 2 },
-    elevation: 3,
   },
   updatedDot: { width: 8, height: 8, borderRadius: 4, backgroundColor: '#1f9d55' },
   updatedPillText: { fontSize: 12, fontWeight: '700', color: '#46586a' },
@@ -1651,14 +1685,23 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 4,
-    alignSelf: 'flex-start',
-    marginTop: 8,
     paddingVertical: 6,
     paddingHorizontal: 11,
     borderRadius: 999,
     backgroundColor: '#e7f0fc',
   },
   dirBtnText: { color: '#2f74d6', fontWeight: '800', fontSize: 13 },
+  travelRow: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', gap: 8, marginTop: 8 },
+  etaChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    paddingVertical: 6,
+    paddingHorizontal: 10,
+    borderRadius: 999,
+    backgroundColor: '#eef2f6',
+  },
+  etaText: { color: '#46586a', fontWeight: '800', fontSize: 13 },
   close: { fontSize: 18, color: '#90a0b0', paddingLeft: 8 },
 
   badgeRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 12, marginBottom: 6 },
