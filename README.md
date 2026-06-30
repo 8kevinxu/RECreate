@@ -8,9 +8,10 @@ recreation** across five tabs:
 - **🏀 Map** — every rec-center gym and outdoor court, across **5 sports**
   (basketball, volleyball, ping pong, pickleball, tennis), with weekly **open-gym
   schedules**, **"open now"** filtering, live **crowd check-ins**, and tennis/
-  pickleball **reservation occupancy** ("% booked right now"). Star any court and
-  the sport dial's **⭐ Favorites** view becomes a personal map of just your spots,
-  each shown open if **any** of its sports is on right now.
+  pickleball **reservation occupancy** ("% booked right now"). Star a court for the
+  sport you're viewing (Parkside for pickleball, Palega for basketball) and the sport
+  dial's **⭐ Favorites** view becomes a personal map of just your spots, each shown
+  open or closed for the sport you favorited it for.
 - **📅 Classes** — SF Rec & Park drop-in programs (fitness, dance, music/arts,
   photography, social games) with live openings.
 - **🏊 Pools** — the 9 public swimming pools with parsed weekly swim schedules
@@ -77,7 +78,7 @@ stays centered on San Francisco — everything else still works.
 | `components/SocialScreen.js` · `ChatsScreen.js` · `ChatThread.js` | Social tab shell + 1:1 / group chat |
 | `lib/chat.js` | Chat data layer (run / signal / direct threads) |
 | `lib/sports.js` | The tracked sports table (id, label, emoji) |
-| `lib/favorites.js` | On-device starred-court ids (`useFavorites`) behind the ⭐ Favorites map view |
+| `lib/favorites.js` | On-device court→sport favorites (`useFavorites`) behind the ⭐ Favorites map view |
 | `lib/playerCheckins.js` | Per-user visit stats (per-sport counts, favorite park) |
 | `lib/i18n.js` | i18n: `STRINGS` dict (en/zh/es), `I18nProvider`, `useI18n()`, and `tg()` for non-React modules |
 | `vercel.json` · `netlify.toml` | Web static-export deploy config (build → `dist` → SPA rewrite) |
