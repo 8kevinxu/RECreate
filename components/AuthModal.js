@@ -23,7 +23,7 @@ import { useAuth } from '../lib/auth';
 // Account creation requires agreeing to a EULA (App Store rule for UGC apps). The
 // Terms link points at Apple's standard EULA; swap PRIVACY_URL for your hosted page.
 const TERMS_URL = 'https://www.apple.com/legal/internet-services/itunes/dev/stdeula/';
-const PRIVACY_URL = 'https://hoopmap-one.vercel.app/privacy';
+const PRIVACY_URL = 'https://hoopmap-one.vercel.app/privacy.html';
 import { SPORTS } from '../lib/sports';
 import { loadMyStats } from '../lib/playerCheckins';
 import { useI18n, sportLabel } from '../lib/i18n';
