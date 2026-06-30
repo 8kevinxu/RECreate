@@ -1,5 +1,5 @@
 # 🏀 RECreate SF
-https://hoopmap-one.vercel.app/
+https://recreate-sf.vercel.app/
 
 Find somewhere to play **right now** in San Francisco. RECreate started as an
 indoor-basketball finder and has grown into a map of SF Rec & Parks **drop-in
@@ -249,7 +249,7 @@ bundled data (instant, offline)  →  cached copy (last good)  →  remote fetch
 1. The weekly cron commits `data/courts.json`.
 2. Point the app at that file's hosted URL via an env var (no code change):
    ```
-   EXPO_PUBLIC_COURTS_URL=https://raw.githubusercontent.com/<user>/hoopmap/main/data/courts.json
+   EXPO_PUBLIC_COURTS_URL=https://raw.githubusercontent.com/<user>/RECreate/main/data/courts.json
    ```
    (Put it in a `.env` file or your EAS build env. Needs a **public** repo for the
    raw URL; or host `courts.json` on GitHub Pages / any CDN.)
