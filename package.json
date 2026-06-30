@@ -36,6 +36,9 @@
     "build:data": "npm run build:courts && npm run build:sanbruno && npm run build:outdoor && npm run build:reservations && npm run build:directory && npm run build:classes"
   },
   "private": true,
+  "engines": {
+    "node": "20.x"
+  },
   "devDependencies": {
     "cheerio": "^1.2.0"
   }
