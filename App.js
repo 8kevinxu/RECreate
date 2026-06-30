@@ -329,6 +329,10 @@ export default function App() {
   useEffect(() => {
     return onNotificationTap((data) => {
       if (data.courtId) {
+        if (data.sport) {
+          setSport(data.sport);
+          setFavoritesMode(false);
+        }
         setTab('home');
         setSelectedId(data.courtId);
       } else if (data.url) {
@@ -938,7 +942,13 @@ export default function App() {
             courts={courtData}
             sport={sport}
             userLocation={userLocation}
-            onPickCourt={(id) => {
+            onPickCourt={(id, pickSport) => {
+              // A recommendation carries the sport it was for — switch the map to it
+              // (and leave Favorites view) so the court card opens on the right sport.
+              if (pickSport) {
+                setSport(pickSport);
+                setFavoritesMode(false);
+              }
               setSelectedId(id);
               goTab('home');
               const court = courtData.find((c) => c.id === id);

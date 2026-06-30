@@ -5,13 +5,14 @@
 // Openings"). Tapping a game opens that court; a class opens its registration page.
 // Hidden when there's nothing to recommend. Data comes from lib/recommend.
 import React, { useEffect, useMemo, useState } from 'react';
-import { Linking, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { buildRecommendations } from '../lib/recommend';
-import { CLASS_CATEGORIES } from '../data/classes';
+import { CLASS_CATEGORIES, CLASSES } from '../data/classes';
 import { sportMeta } from '../lib/sports';
 import { fmtClock } from '../lib/datetime';
 import { useI18n, sportLabel } from '../lib/i18n';
+import ClassDetail from './ClassDetail';
 
 const CAT_EMOJI = Object.fromEntries(CLASS_CATEGORIES.map((c) => [c.id, c.emoji]));
 const ROTATE_MS = 4500;
@@ -29,6 +30,7 @@ export default function RecommendPane({
     [courts, userLocation, sports.join(','), categories.join(',')]
   );
   const [idx, setIdx] = useState(0);
+  const [detail, setDetail] = useState(null); // full class object when a class is tapped
 
   useEffect(() => setIdx(0), [recs.length]);
   useEffect(() => {
@@ -42,9 +44,9 @@ export default function RecommendPane({
 
   const onPress = () => {
     if (r.kind === 'class') {
-      if (r.url) Linking.openURL(r.url).catch(() => {});
+      setDetail(CLASSES.find((c) => c.id === r.id) || null);
     } else {
-      onPickCourt?.(r.courtId);
+      onPickCourt?.(r.courtId, r.sport);
     }
   };
 
@@ -65,6 +67,7 @@ export default function RecommendPane({
   }
 
   return (
+    <>
     <Pressable style={styles.card} onPress={onPress}>
       <View style={styles.headRow}>
         <Text style={styles.head}>{t('rec.title')}</Text>
@@ -92,6 +95,8 @@ export default function RecommendPane({
         <Ionicons name="chevron-forward" size={18} color="#b8c6d4" />
       </View>
     </Pressable>
+    {detail && <ClassDetail item={detail} onClose={() => setDetail(null)} />}
+    </>
   );
 }
 

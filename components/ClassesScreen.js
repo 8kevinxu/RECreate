@@ -4,7 +4,6 @@
 // color-coded price badge, and how many spots are open.
 import React, { useEffect, useMemo, useState } from 'react';
 import {
-  Linking,
   Modal,
   Pressable,
   RefreshControl,
@@ -21,6 +20,7 @@ import { haversineMiles, formatDistance } from '../lib/distance';
 import { openDirections } from '../lib/maps';
 import { fetchLiveAvailability } from '../lib/classesLive';
 import { useI18n } from '../lib/i18n';
+import ClassDetail from './ClassDetail';
 
 // "updated 8s ago" style relative time for the live-availability stamp.
 function agoLabel(t, ts) {
@@ -82,6 +82,7 @@ export default function ClassesScreen({ userLocation = null }) {
   const [freeOnly, setFreeOnly] = useState(false);
   const [hasSpots, setHasSpots] = useState(false); // hide classes that are full
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const [detail, setDetail] = useState(null); // class tapped open for its detail sheet
 
   // Live availability overlay (openings "right now"), fetched from ActiveNet.
   const [live, setLive] = useState(null); // { 'anc-<id>': { spots, unlimited } }
@@ -246,7 +247,7 @@ export default function ClassesScreen({ userLocation = null }) {
           const pt = priceTone(c.cost);
           const sp = spaceInfo(withLive(c));
           return (
-            <Pressable key={c.id} style={styles.card} onPress={() => Linking.openURL(c.url)}>
+            <Pressable key={c.id} style={styles.card} onPress={() => setDetail(withLive(c))}>
               <View style={styles.cardTop}>
                 <Text style={styles.cardName}>
                   {catMeta(c.category).emoji} {className(c)}
@@ -350,6 +351,8 @@ export default function ClassesScreen({ userLocation = null }) {
           </Pressable>
         </Pressable>
       </Modal>
+
+      {detail && <ClassDetail item={detail} onClose={() => setDetail(null)} />}
     </View>
   );
 }
