@@ -1,6 +1,34 @@
 {
   "classes": [
     {
+      "id": "anc-44929",
+      "name": "Drop-in: Senior Art",
+      "category": "arts",
+      "location": "Ella Hill Hutch Community Center",
+      "when": "Mon · 11:00 AM - 1:00 PM",
+      "dropIn": true,
+      "cost": "Free",
+      "ages": "55 yrs +",
+      "minAge": 55,
+      "spots": 0,
+      "unlimited": false,
+      "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/drop-in-senior-art/44929?locale=en-US"
+    },
+    {
+      "id": "anc-44938",
+      "name": "Drop-in: The Art of Paper",
+      "category": "arts",
+      "location": "Ella Hill Hutch Community Center",
+      "when": "Fri · 1:00 PM - 2:30 PM",
+      "dropIn": true,
+      "cost": "Free",
+      "ages": "All ages",
+      "minAge": 0,
+      "spots": 0,
+      "unlimited": false,
+      "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/drop-in-the-art-of-paper/44938?locale=en-US"
+    },
+    {
       "id": "anc-43034",
       "name": "Art & Painting (No Model)",
       "category": "arts",
@@ -545,6 +573,48 @@
       "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/zumba---drop-in/43097?locale=en-US"
     },
     {
+      "id": "anc-44932",
+      "name": "Drop-in: Hatha Yoga for Seniors",
+      "category": "fitness",
+      "location": "Ella Hill Hutch Community Center",
+      "when": "Tue · 1:00 PM - 2:00 PM",
+      "dropIn": true,
+      "cost": "Free",
+      "ages": "55 yrs +",
+      "minAge": 55,
+      "spots": 0,
+      "unlimited": false,
+      "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/drop-in-hatha-yoga-for-seniors/44932?locale=en-US"
+    },
+    {
+      "id": "anc-44934",
+      "name": "Drop-in: Zumba",
+      "category": "fitness",
+      "location": "Ella Hill Hutch Community Center",
+      "when": "Thu · 5:15 PM - 6:15 PM",
+      "dropIn": true,
+      "cost": "Free",
+      "ages": "18 yrs +",
+      "minAge": 18,
+      "spots": 0,
+      "unlimited": false,
+      "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/drop-in-zumba/44934?locale=en-US"
+    },
+    {
+      "id": "anc-44936",
+      "name": "Drop-in: Tai Chi",
+      "category": "fitness",
+      "location": "Ella Hill Hutch Community Center",
+      "when": "Fri · 3:30 PM - 4:30 PM",
+      "dropIn": true,
+      "cost": "Free",
+      "ages": "18 yrs +",
+      "minAge": 18,
+      "spots": 0,
+      "unlimited": false,
+      "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/drop-in-tai-chi/44936?locale=en-US"
+    },
+    {
       "id": "anc-43068",
       "name": "Flexion Free Pilates",
       "category": "fitness",
@@ -687,54 +757,6 @@
       "lat": 37.736651,
       "lng": -122.440197,
       "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/drop-in-medical-qi-gong-tai-chi/43286?locale=en-US"
-    },
-    {
-      "id": "anc-43073",
-      "name": "Nuture Your Well-Being",
-      "category": "fitness",
-      "location": "Glen Canyon Rec Center",
-      "when": "Tue · 4:00 PM - 5:00 PM",
-      "dropIn": false,
-      "cost": "$56",
-      "ages": "18 yrs +",
-      "minAge": 18,
-      "spots": 0,
-      "unlimited": false,
-      "lat": 37.736651,
-      "lng": -122.440197,
-      "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/nuture-your-well-being/43073?locale=en-US"
-    },
-    {
-      "id": "anc-43221",
-      "name": "Physical Conditioning for Active Seniors",
-      "category": "fitness",
-      "location": "Glen Canyon Rec Center",
-      "when": "Tue · 10:00 AM - 11:00 AM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "55 yrs +",
-      "minAge": 55,
-      "spots": 0,
-      "unlimited": false,
-      "lat": 37.736651,
-      "lng": -122.440197,
-      "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/physical-conditioning-for-active-seniors/43221?locale=en-US"
-    },
-    {
-      "id": "anc-43076",
-      "name": "Pilates - All Levels",
-      "category": "fitness",
-      "location": "Glen Canyon Rec Center",
-      "when": "Thu · Noon - 1:00 PM",
-      "dropIn": false,
-      "cost": "$128",
-      "ages": "18 yrs +",
-      "minAge": 18,
-      "spots": 0,
-      "unlimited": false,
-      "lat": 37.736651,
-      "lng": -122.440197,
-      "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/pilates---all-levels/43076?locale=en-US"
     },
     {
       "id": "anc-43062",
@@ -977,38 +999,6 @@
       "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/digital-collage-with-photoshop/43277?locale=en-US"
     },
     {
-      "id": "anc-43243",
-      "name": "Film Camera Basics",
-      "category": "photo",
-      "location": "Harvey Milk Photo Center",
-      "when": "Tue · 6:00 PM - 8:30 PM",
-      "dropIn": false,
-      "cost": "$50",
-      "ages": "18 yrs +",
-      "minAge": 18,
-      "spots": 0,
-      "unlimited": false,
-      "lat": 37.76958,
-      "lng": -122.43456,
-      "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/film-camera-basics/43243?locale=en-US"
-    },
-    {
-      "id": "anc-43244",
-      "name": "Film Photography for Teens",
-      "category": "photo",
-      "location": "Harvey Milk Photo Center",
-      "when": "Wed · 4:00 PM - 6:00 PM",
-      "dropIn": false,
-      "cost": "$130",
-      "ages": "Age at least 13 yrs but less than 19 yrs",
-      "minAge": 13,
-      "spots": 2,
-      "unlimited": false,
-      "lat": 37.76958,
-      "lng": -122.43456,
-      "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/film-photography-for-teens/43244?locale=en-US"
-    },
-    {
       "id": "anc-43155",
       "name": "Drop-in: Mah-jong",
       "category": "social",
@@ -1023,6 +1013,48 @@
       "lat": 37.794123,
       "lng": -122.412056,
       "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/drop-in-mah-jong/43155?locale=en-US"
+    },
+    {
+      "id": "anc-44930",
+      "name": "Drop-in: Teen Time",
+      "category": "social",
+      "location": "Ella Hill Hutch Community Center",
+      "when": "Mon & Tue & Wed & Thu & Fri · Noon - 8:00 PM",
+      "dropIn": true,
+      "cost": "Free",
+      "ages": "Age at least 13 yrs but less than 18 yrs",
+      "minAge": 13,
+      "spots": 0,
+      "unlimited": false,
+      "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/drop-in-teen-time/44930?locale=en-US"
+    },
+    {
+      "id": "anc-44931",
+      "name": "Drop-in: Tot Play Time",
+      "category": "social",
+      "location": "Ella Hill Hutch Community Center",
+      "when": "Tue & Thu · 10:00 AM - 11:30 AM",
+      "dropIn": true,
+      "cost": "Free",
+      "ages": "Age less than 6 yrs",
+      "minAge": 0,
+      "spots": 0,
+      "unlimited": false,
+      "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/drop-in-tot-play-time/44931?locale=en-US"
+    },
+    {
+      "id": "anc-44935",
+      "name": "Drop-in: Bingo",
+      "category": "social",
+      "location": "Ella Hill Hutch Community Center",
+      "when": "Fri · 10:00 AM - 1:00 PM",
+      "dropIn": true,
+      "cost": "Free",
+      "ages": "55 yrs +",
+      "minAge": 55,
+      "spots": 0,
+      "unlimited": false,
+      "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/drop-in-bingo/44935?locale=en-US"
     },
     {
       "id": "anc-43285",
@@ -1201,5 +1233,5 @@
       "url": "https://apm.activecommunities.com/sfrecpark/Activity_Search/drop-in-ballroom-dance/43169?locale=en-US"
     }
   ],
-  "fetchedAt": "2026-06-30T14:14:49.608Z"
+  "fetchedAt": "2026-06-30T19:53:02.242Z"
 }
