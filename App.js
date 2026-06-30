@@ -38,6 +38,7 @@ import {
   getDropinRemaining,
 } from './lib/hours';
 import { SPORTS, DEFAULT_SPORT, sportMeta } from './lib/sports';
+import { useI18n, sportLabel, tg } from './lib/i18n';
 import {
   loadCrowd,
   checkIn as recordCheckIn,
@@ -134,11 +135,7 @@ function GuidelineMarkdown({ text }) {
 
 // Secondary indoor/outdoor filter, shown only for sports that have both (e.g.
 // pickleball). Matched against a court's `indoor` flag in visibleCourts.
-const PLACE_OPTS = [
-  { id: 'all', label: 'All' },
-  { id: 'indoor', label: '🏠 Indoor' },
-  { id: 'outdoor', label: '🌳 Outdoor' },
-];
+const PLACE_OPTS = [{ id: 'all' }, { id: 'indoor' }, { id: 'outdoor' }];
 
 // Amenity filters from the tennis/pickleball directory + reservation data
 // (multi-select). Each chip only appears for a sport when at least one of its
@@ -146,14 +143,12 @@ const PLACE_OPTS = [
 const AMENITIES = [
   {
     id: 'bookable',
-    label: '📅 Bookable',
     test: (c, s) => !!c.reserved?.[s] || (c.directory?.[s]?.reservable || 0) > 0,
   },
-  { id: 'lights', label: '🌙 Lights', test: (c, s) => c.directory?.[s]?.lights === true },
-  { id: 'restrooms', label: '🚻 Restrooms', test: (c, s) => c.directory?.[s]?.restrooms === true },
+  { id: 'lights', test: (c, s) => c.directory?.[s]?.lights === true },
+  { id: 'restrooms', test: (c, s) => c.directory?.[s]?.restrooms === true },
   {
     id: 'nets',
-    label: '🥅 Nets provided',
     test: (c, s) => /provided/i.test(c.directory?.[s]?.nets || ''),
   },
 ];
@@ -178,12 +173,13 @@ function formatUpdated(iso) {
   if (isNaN(d)) return '';
   const today = new Date();
   const days = Math.floor((today.setHours(0, 0, 0, 0) - new Date(d).setHours(0, 0, 0, 0)) / 86400000);
-  if (days === 0) return 'today';
-  if (days === 1) return 'yesterday';
+  if (days === 0) return tg('date.todayLc');
+  if (days === 1) return tg('date.yesterdayLc');
   return `${MONTHS[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
 }
 
 export default function App() {
+  const { t } = useI18n();
   const mapRef = useRef(null);
   const didCenterRef = useRef(false); // auto-center on the user only once
   const [openOnly, setOpenOnly] = useState(false);
@@ -262,8 +258,8 @@ export default function App() {
 
   // Refresh "open now" status every minute.
   useEffect(() => {
-    const t = setInterval(() => setNow(new Date()), 60 * 1000);
-    return () => clearInterval(t);
+    const id = setInterval(() => setNow(new Date()), 60 * 1000);
+    return () => clearInterval(id);
   }, []);
 
   // Activity badge: count of feed items (friends' signals + runs) newer than the
@@ -308,9 +304,9 @@ export default function App() {
   }, [authEnabled, user?.id, friendsOpen]);
 
   // Switching tabs; entering Social marks the feed as seen and clears the badge.
-  const goTab = useCallback((t) => {
-    setTab(t);
-    if (t === 'social') markFeedSeen().then(() => setUnread(0));
+  const goTab = useCallback((nextTab) => {
+    setTab(nextTab);
+    if (nextTab === 'social') markFeedSeen().then(() => setUnread(0));
   }, []);
 
   // Register this device for push when signed in (no-ops on web/simulator/Expo
@@ -562,7 +558,9 @@ export default function App() {
         {!!generatedAt && (
           <View style={[styles.updatedPill, { top: insets.top + 10 }]}>
             <View style={styles.updatedDot} />
-            <Text style={styles.updatedPillText}>Updated {formatUpdated(generatedAt)}</Text>
+            <Text style={styles.updatedPillText}>
+              {t('home.updated', { when: formatUpdated(generatedAt) })}
+            </Text>
           </View>
         )}
         {/* Sport FAB: tap to reveal all sports as icons; pick one to switch. */}
@@ -611,7 +609,7 @@ export default function App() {
                 }}
               >
                 <View style={styles.sportDialLabel}>
-                  <Text style={styles.sportDialLabelText}>{s.label}</Text>
+                  <Text style={styles.sportDialLabelText}>{sportLabel(t, s.id)}</Text>
                 </View>
                 <View style={styles.fab}>
                   <Text style={styles.filterFabSport}>{s.emoji}</Text>
@@ -635,7 +633,7 @@ export default function App() {
                   (menuOpen || activeFilterCount > 0) && styles.menuBtnTextActive,
                 ]}
               >
-                Filters
+                {t('filters')}
                 {activeFilterCount > 0 ? ` · ${activeFilterCount}` : ''} {menuOpen ? '▴' : '▾'}
               </Text>
             </Pressable>
@@ -652,7 +650,7 @@ export default function App() {
               ]}
             >
               {openOnly ? '✓ ' : ''}
-              Open
+              {t('home.open')}
             </Text>
           </Pressable>
 
@@ -666,7 +664,7 @@ export default function App() {
                 (pickerOpen || isPicked) && styles.timePillTextActive,
               ]}
             >
-              🕒 {isPicked ? viewLabel(viewTime) : 'Pick a time'}
+              🕒 {isPicked ? viewLabel(viewTime) : t('home.pickTime')}
             </Text>
           </Pressable>
 
@@ -698,7 +696,7 @@ export default function App() {
                       style={[styles.placeChip, active && styles.placeChipActive]}
                     >
                       <Text style={[styles.placeChipText, active && styles.placeChipTextActive]}>
-                        {o.label}
+                        {t('place.' + o.id)}
                       </Text>
                     </Pressable>
                   );
@@ -727,7 +725,7 @@ export default function App() {
                         style={[styles.amenityChipText, active && styles.amenityChipTextActive]}
                       >
                         {active ? '✓ ' : ''}
-                        {a.label}
+                        {t('amenity.' + a.id)}
                       </Text>
                     </Pressable>
                   );
@@ -771,7 +769,7 @@ export default function App() {
                       ]}
                     >
                       {dayChipLabel(d)}
-                      {open ? '' : ' · no hoops'}
+                      {open ? '' : ` · ${t('home.noHoops')}`}
                     </Text>
                   </Pressable>
                 );
@@ -801,7 +799,7 @@ export default function App() {
         {locating && (
           <View style={[styles.locating, { top: insets.top + 56 }]}>
             <ActivityIndicator color="#fff" />
-            <Text style={styles.locatingText}>Finding you…</Text>
+            <Text style={styles.locatingText}>{t('home.finding')}</Text>
           </View>
         )}
 
@@ -815,7 +813,7 @@ export default function App() {
           style={[styles.nearbyBtn, { bottom: navClearance }]}
           onPress={() => setNearbyOpen(true)}
         >
-          <Text style={styles.nearbyBtnText}>📍 Nearby</Text>
+          <Text style={styles.nearbyBtnText}>{t('home.nearby')}</Text>
         </Pressable>
       </View>
       </View>
