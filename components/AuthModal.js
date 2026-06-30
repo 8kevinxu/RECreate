@@ -219,7 +219,14 @@ export default function AuthModal({
 
   return wrap(
     <>
-          <SettingsScreen visible={settingsOpen} onClose={() => setSettingsOpen(false)} />
+          <SettingsScreen
+            visible={settingsOpen}
+            onClose={() => setSettingsOpen(false)}
+            onEditProfile={() => {
+              setSettingsOpen(false);
+              startEdit();
+            }}
+          />
           <View style={styles.header}>
             <Text style={styles.title}>
               {user
@@ -355,9 +362,6 @@ export default function AuthModal({
                       </View>
                     )}
                   </View>
-                  <Pressable style={[styles.submit, styles.editBtn]} onPress={startEdit}>
-                    <Text style={styles.submitText}>{t('auth.editProfile')}</Text>
-                  </Pressable>
                   {!!savedNote && !savedNote.err && <Text style={styles.info}>{savedNote.text}</Text>}
 
                   <Text style={styles.sectionLabel}>{t('auth.yourCheckins')}</Text>
@@ -542,7 +546,6 @@ const styles = StyleSheet.create({
   friendsBtn: { backgroundColor: '#2f74d6', marginTop: 16 },
   signOutBtn: { backgroundColor: '#c0392b', marginTop: 10 },
 
-  editBtn: { backgroundColor: '#2f74d6', marginTop: 12 },
   editBtnRow: { flexDirection: 'row', gap: 10, marginTop: 4 },
   saveBtn: { flex: 1 },
   cancelBtn: { flex: 1, backgroundColor: '#eef1f4' },

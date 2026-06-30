@@ -1,7 +1,8 @@
-// Settings page, opened from the gear in the Profile header. Two sections:
+// Settings page, opened from the gear in the Profile header. Sections:
+//   • Account — Edit profile (signed-in only; flips the Profile page into its form).
 //   • Language — switch between English / 中文 / Español (persisted via i18n).
 //   • Danger zone — delete the account, gated behind typing a confirmation code.
-// Language works signed-out; the delete section only shows when signed in.
+// Language works signed-out; the account + delete sections only show when signed in.
 import React, { useState } from 'react';
 import {
   ActivityIndicator,
@@ -20,7 +21,7 @@ import { useI18n, LANGUAGES } from '../lib/i18n';
 // The literal a user must type to confirm deletion (kept across languages).
 const CONFIRM_CODE = 'DELETE';
 
-export default function SettingsScreen({ visible, onClose }) {
+export default function SettingsScreen({ visible, onClose, onEditProfile }) {
   const insets = useSafeAreaInsets();
   const { t, lang, setLang } = useI18n();
   const { user, deleteAccount } = useAuth();
@@ -80,6 +81,16 @@ export default function SettingsScreen({ visible, onClose }) {
           contentContainerStyle={{ paddingBottom: insets.bottom + 32 }}
           keyboardShouldPersistTaps="handled"
         >
+          {user && onEditProfile && (
+            <>
+              <Text style={styles.sectionLabel}>{t('account')}</Text>
+              <Pressable style={styles.row} onPress={onEditProfile}>
+                <Text style={styles.rowText}>{t('auth.editProfile')}</Text>
+                <Text style={styles.rowChevron}>›</Text>
+              </Pressable>
+            </>
+          )}
+
           <Text style={styles.sectionLabel}>{t('language')}</Text>
           <Text style={styles.hint}>{t('languageHint')}</Text>
           <View style={styles.langWrap}>
@@ -179,6 +190,19 @@ const styles = StyleSheet.create({
     letterSpacing: 0.4,
   },
   hint: { fontSize: 13, color: '#7a8a9a', marginBottom: 10 },
+
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#f4f6f8',
+    borderRadius: 12,
+    paddingHorizontal: 14,
+    paddingVertical: 14,
+    borderWidth: 1,
+    borderColor: '#eef1f4',
+  },
+  rowText: { fontSize: 15, fontWeight: '700', color: '#0d1b2a' },
+  rowChevron: { marginLeft: 'auto', fontSize: 20, color: '#9aa7b4', fontWeight: '700' },
 
   langWrap: { gap: 8 },
   langRow: {
