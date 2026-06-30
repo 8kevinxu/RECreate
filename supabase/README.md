@@ -58,3 +58,4 @@ new:
 | `005_account_deletion.sql` | `delete_account()` RPC |
 | `006_signal_sport.sql` | `hoop_signals.sport` |
 | `007_moderation.sql` | `blocked_users` + `content_reports` (block / report) |
+| `008_add_interests.sql` | `profiles.favorite_categories` (class-category interests) |

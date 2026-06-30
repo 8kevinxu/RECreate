@@ -25,6 +25,7 @@ import { useAuth } from '../lib/auth';
 const TERMS_URL = 'https://www.apple.com/legal/internet-services/itunes/dev/stdeula/';
 const PRIVACY_URL = 'https://hoopmap-one.vercel.app/privacy.html';
 import { SPORTS } from '../lib/sports';
+import { CLASS_CATEGORIES } from '../data/classes';
 import { loadMyStats } from '../lib/playerCheckins';
 import { useI18n, sportLabel } from '../lib/i18n';
 import SettingsScreen from './SettingsScreen';
@@ -56,6 +57,7 @@ export default function AuthModal({
   const [pBio, setPBio] = useState('');
   const [pNeighborhood, setPNeighborhood] = useState('');
   const [pSports, setPSports] = useState([]);
+  const [pCategories, setPCategories] = useState([]); // class-category interests
   const [savedNote, setSavedNote] = useState(null); // { err, text }
   const [stats, setStats] = useState(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -66,6 +68,7 @@ export default function AuthModal({
     setPBio(profile?.bio || '');
     setPNeighborhood(profile?.neighborhood || '');
     setPSports(profile?.favorite_sports || []);
+    setPCategories(profile?.favorite_categories || []);
   };
 
   // Seed the editor whenever the panel opens or the profile changes.
@@ -145,6 +148,8 @@ export default function AuthModal({
 
   const toggleSport = (id) =>
     setPSports((cur) => (cur.includes(id) ? cur.filter((s) => s !== id) : [...cur, id]));
+  const toggleCategory = (id) =>
+    setPCategories((cur) => (cur.includes(id) ? cur.filter((c) => c !== id) : [...cur, id]));
 
   // Has the editor diverged from the saved profile? Drives the discard prompt.
   const norm = (v) => (v ?? '').toString().trim();
@@ -154,7 +159,9 @@ export default function AuthModal({
     norm(pNeighborhood) !== norm(profile?.neighborhood) ||
     norm(pBio) !== norm(profile?.bio) ||
     JSON.stringify([...pSports].sort()) !==
-      JSON.stringify([...(profile?.favorite_sports || [])].sort());
+      JSON.stringify([...(profile?.favorite_sports || [])].sort()) ||
+    JSON.stringify([...pCategories].sort()) !==
+      JSON.stringify([...(profile?.favorite_categories || [])].sort());
 
   const startEdit = () => {
     seedFromProfile();
@@ -194,6 +201,7 @@ export default function AuthModal({
       bio: pBio,
       neighborhood: pNeighborhood,
       favorite_sports: pSports,
+      favorite_categories: pCategories,
     });
     setBusy(false);
     if (err) {
@@ -320,6 +328,25 @@ export default function AuthModal({
                         >
                           <Text style={[styles.sportChipText, active && styles.sportChipTextActive]}>
                             {s.emoji} {sportLabel(t, s.id)}
+                          </Text>
+                        </Pressable>
+                      );
+                    })}
+                  </View>
+
+                  <Text style={styles.fieldLabel}>{t('auth.interests')}</Text>
+                  <Text style={styles.fieldHint}>{t('auth.interestsHint')}</Text>
+                  <View style={styles.sportWrap}>
+                    {CLASS_CATEGORIES.map((c) => {
+                      const active = pCategories.includes(c.id);
+                      return (
+                        <Pressable
+                          key={c.id}
+                          onPress={() => toggleCategory(c.id)}
+                          style={[styles.sportChip, active && styles.sportChipActive]}
+                        >
+                          <Text style={[styles.sportChipText, active && styles.sportChipTextActive]}>
+                            {c.emoji} {t('cat.' + c.id)}
                           </Text>
                         </Pressable>
                       );
@@ -638,6 +665,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.4,
   },
   fieldLabel: { fontSize: 13, color: '#5b6b7b', fontWeight: '700', marginBottom: 6 },
+  fieldHint: { fontSize: 12, color: '#9aa7b4', marginTop: -2, marginBottom: 8 },
 
   sportWrap: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginBottom: 12 },
   sportChip: {

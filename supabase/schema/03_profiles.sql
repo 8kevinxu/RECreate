@@ -11,7 +11,8 @@ create table if not exists public.profiles (
   age             int         check (age is null or age between 13 and 120),
   bio             text        check (bio is null or char_length(bio) <= 280),
   neighborhood    text        check (neighborhood is null or char_length(neighborhood) <= 60),
-  favorite_sports text[],     -- sport ids from lib/sports.js
+  favorite_sports     text[], -- sport ids from lib/sports.js
+  favorite_categories text[], -- class-category ids from data/classes.js (interests)
   friend_code     text        unique,  -- short shareable code, set by trigger below
   created_at      timestamptz not null default now()
 );

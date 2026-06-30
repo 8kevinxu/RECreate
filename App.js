@@ -917,6 +917,12 @@ export default function App() {
             courts={courtData}
             sport={sport}
             userLocation={userLocation}
+            onPickCourt={(id) => {
+              setSelectedId(id);
+              goTab('home');
+              const court = courtData.find((c) => c.id === id);
+              if (court) setTimeout(() => mapRef.current?.focusCourt(court), 250);
+            }}
           />
         )}
 

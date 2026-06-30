@@ -80,6 +80,7 @@ stays centered on San Francisco — everything else still works.
 | `lib/blocks.js` · `lib/reports.js` | Trust & safety: block users (filtered into every social loader) + file content reports |
 | `lib/sports.js` | The tracked sports table (id, label, emoji) |
 | `lib/favorites.js` | On-device court→sport favorites (`useFavorites`) behind the ⭐ Favorites map view |
+| `lib/recommend.js` · `components/RecommendPane.js` | "Recommended for you" — interest-based games + classes in the Social tab |
 | `lib/playerCheckins.js` | Per-user visit stats (per-sport counts, favorite park) |
 | `lib/i18n.js` | i18n: `STRINGS` dict (en/zh/es), `I18nProvider`, `useI18n()`, and `tg()` for non-React modules |
 | `vercel.json` · `netlify.toml` | Web static-export deploy config (build → `dist` → SPA rewrite) |
@@ -464,6 +465,19 @@ bubbles, and a rounded composer. Swipe a row to hide a chat (restore it from the
 read state + hidden threads are tracked locally (`AsyncStorage`). Code lives in
 `lib/chat.js`, `components/ChatsScreen.js` (list), and `components/ChatThread.js`
 (conversation). Setup: run [`supabase/schema/08_chat.sql`](supabase/schema/08_chat.sql).
+
+## Recommended for you
+
+The top of the **Social** tab shows an auto-revolving card of suggestions tailored
+to your **interests** — your **favorite sports** and **class categories** (fitness,
+dance, music, arts, photography, social), both set on your profile. It mixes
+**open-gym games** happening today for your sports (“Play basketball at Palega ·
+2:00 PM” — tap to open that court) with **rec-center classes that have openings** in
+your categories (“Zumba at Sunset Rec · Openings” — tap to register). With no
+interests set it recommends across everything. All computed on-device from the
+bundled court + class data (`lib/recommend.js`, `components/RecommendPane.js`); set
+interests are stored in `profiles.favorite_categories` (run
+[`supabase/migrations/008_add_interests.sql`](supabase/migrations/008_add_interests.sql)).
 
 ## Trust & safety (report / block)
 

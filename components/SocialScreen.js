@@ -4,21 +4,33 @@ import React, { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useI18n } from '../lib/i18n';
+import { useAuth } from '../lib/auth';
 import FeedModal from './FeedModal';
 import ChatsScreen from './ChatsScreen';
+import RecommendPane from './RecommendPane';
 
 export default function SocialScreen({
   courtsById = {},
   courts = [],
   sport = 'basketball',
   userLocation = null,
+  onPickCourt,
 }) {
   const insets = useSafeAreaInsets();
   const { t } = useI18n();
+  const { profile } = useAuth();
   const [seg, setSeg] = useState('activity'); // 'activity' | 'chats'
 
   return (
     <View style={[styles.page, { paddingTop: insets.top + 12 }]}>
+      <RecommendPane
+        courts={courts}
+        userLocation={userLocation}
+        sports={profile?.favorite_sports || []}
+        categories={profile?.favorite_categories || []}
+        onPickCourt={onPickCourt}
+      />
+
       <View style={styles.segment}>
         {[
           { id: 'activity', label: t('social.activity') },
