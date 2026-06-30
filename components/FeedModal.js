@@ -17,6 +17,7 @@ import { loadFeed } from '../lib/feed';
 import { subscribeSignals } from '../lib/signals';
 import { subscribeCheckins } from '../lib/playerCheckins';
 import { joinRun, leaveRun, cancelRun, formatRunTime, subscribeRuns } from '../lib/runs';
+import { sendMessage } from '../lib/chat';
 import { sportMeta } from '../lib/sports';
 import { viewLabel } from '../lib/datetime';
 import { useI18n, tg } from '../lib/i18n';
@@ -77,6 +78,21 @@ export default function FeedModal({
         : t('feed.subScheduled'),
     });
 
+  // After joining / suggesting from the session sheet: announce it in the signal's
+  // group chat and drop the user straight into that chat.
+  const onJoinedChat = async (sig, body) => {
+    setSelectedSignal(null);
+    if (sig && body) {
+      try {
+        await sendMessage({ kind: 'signal', signalId: sig.id }, body);
+      } catch (e) {
+        // non-fatal — still open the chat
+      }
+    }
+    if (sig) openSignalChat(sig);
+    refresh();
+  };
+
   const refresh = () => loadFeed().then(setItems);
 
   useEffect(() => {
@@ -118,8 +134,9 @@ export default function FeedModal({
       : s.isNow
       ? t('feed.nowWhen')
       : viewLabel(s.startsAt);
-    // A confirmed session (court + time locked in) gets a ✅ to stand out.
-    const lead = s.plannedAt ? '✅' : '🏀';
+    // A confirmed session (court + time locked in) gets a ✅ to stand out;
+    // otherwise the signal's sport emoji.
+    const lead = s.plannedAt ? '✅' : sportMeta(s.sport).emoji;
     return (
       <Pressable
         key={`signal:${s.id}`}
@@ -252,6 +269,7 @@ export default function FeedModal({
         sport={sport}
         onClose={() => setSelectedSignal(null)}
         onChanged={refresh}
+        onJoinedChat={onJoinedChat}
       />
       <ChatThread
         visible={!!chatThread}

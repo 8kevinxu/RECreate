@@ -18,10 +18,21 @@ import {
 } from '../lib/signals';
 import { startOfDay, dayChipLabel, fmtClock, viewLabel } from '../lib/datetime';
 import { dropinWeekdays, openGymSlots } from '../lib/hours';
-import { useI18n } from '../lib/i18n';
+import { sportMeta } from '../lib/sports';
+import { sportLabel, useI18n } from '../lib/i18n';
 
-export default function SessionModal({ visible, signal, courts = [], sport = 'basketball', onClose, onChanged }) {
+export default function SessionModal({
+  visible,
+  signal,
+  courts = [],
+  sport: sportProp = 'basketball',
+  onClose,
+  onChanged,
+  onJoinedChat,
+}) {
   const { t } = useI18n();
+  // Court suggestions + open-gym times follow the signal's own sport.
+  const sport = signal?.sport || sportProp;
   const days = useMemo(() => {
     const base = startOfDay(new Date());
     return Array.from({ length: 7 }, (_, i) => {
@@ -105,6 +116,25 @@ export default function SessionModal({ visible, signal, courts = [], sport = 'ba
   };
   const canSuggest = !!courtId && !!picked;
 
+  // Join (or suggest a court + time), then drop into the session's group chat with
+  // an announcement so everyone sees who's in and what they proposed.
+  const joinThenChat = async (withSuggestion) => {
+    setBusy(true);
+    const { error } = withSuggestion
+      ? await joinSignal(signal.id, picked, courtId)
+      : await joinSignal(signal.id);
+    await onChanged?.();
+    setBusy(false);
+    if (error) return;
+    const body = withSuggestion
+      ? t('signal.chatSuggested', {
+          court: nameById[courtId] || t('session.aCourt'),
+          when: viewLabel(picked),
+        })
+      : t('signal.chatJoined');
+    onJoinedChat?.(signal, body);
+  };
+
   return (
     <Modal visible={visible} transparent animationType="slide" onRequestClose={onClose}>
       <Pressable style={styles.backdrop} onPress={onClose}>
@@ -119,6 +149,7 @@ export default function SessionModal({ visible, signal, courts = [], sport = 'ba
           </View>
 
           <Text style={styles.sub}>
+            {sportMeta(sport).emoji} {sportLabel(t, sport)} ·{' '}
             {signal.isNow
               ? t('session.downNow')
               : t('session.downAt', { when: viewLabel(signal.startsAt) })}
@@ -244,7 +275,7 @@ export default function SessionModal({ visible, signal, courts = [], sport = 'ba
               <Pressable
                 style={[styles.primary, busy && styles.disabled]}
                 disabled={busy}
-                onPress={() => run(() => joinSignal(signal.id))}
+                onPress={() => joinThenChat(false)}
               >
                 {busy ? <ActivityIndicator color="#fff" /> : <Text style={styles.primaryText}>{t('session.imIn')}</Text>}
               </Pressable>
@@ -260,7 +291,7 @@ export default function SessionModal({ visible, signal, courts = [], sport = 'ba
               <Pressable
                 style={[styles.primary, (busy || !canSuggest) && styles.disabled]}
                 disabled={busy || !canSuggest}
-                onPress={() => run(() => joinSignal(signal.id, picked, courtId))}
+                onPress={() => joinThenChat(true)}
               >
                 {busy ? <ActivityIndicator color="#fff" /> : <Text style={styles.primaryText}>{t('session.suggestTime')}</Text>}
               </Pressable>

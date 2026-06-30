@@ -8,6 +8,7 @@ create table if not exists public.hoop_signals (
   id               uuid        primary key default gen_random_uuid(),
   user_id          uuid        not null references public.profiles (id) on delete cascade,
   starts_at        timestamptz,                                   -- null = "right now"
+  sport            text        not null default 'basketball',     -- tracked sport id (see lib/sports.js)
   note             text        check (note is null or char_length(note) <= 200),
   planned_at       timestamptz,                                   -- host-confirmed time (null until confirmed)
   planned_court_id text,                                          -- host-confirmed court (matches data/courts.js ids)

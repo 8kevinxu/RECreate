@@ -13,12 +13,14 @@ import {
 } from 'react-native';
 import { createSignal } from '../lib/signals';
 import { startOfDay, dayChipLabel, fmtClock } from '../lib/datetime';
-import { useI18n } from '../lib/i18n';
+import { SPORTS, DEFAULT_SPORT } from '../lib/sports';
+import { sportLabel, useI18n } from '../lib/i18n';
 
 export default function SignalModal({ visible, onClose, onPosted }) {
   const { t } = useI18n();
   const [mode, setMode] = useState('now'); // 'now' | 'time'
   const [picked, setPicked] = useState(null);
+  const [sport, setSport] = useState(DEFAULT_SPORT);
   const [note, setNote] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(null);
@@ -40,6 +42,7 @@ export default function SignalModal({ visible, onClose, onPosted }) {
   useEffect(() => {
     if (!visible) return;
     setMode('now');
+    setSport(DEFAULT_SPORT);
     setNote('');
     setError(null);
     setBusy(false);
@@ -62,6 +65,7 @@ export default function SignalModal({ visible, onClose, onPosted }) {
     setError(null);
     const { error } = await createSignal({
       startsAt: mode === 'now' ? null : picked,
+      sport,
       note,
     });
     setBusy(false);
@@ -102,6 +106,28 @@ export default function SignalModal({ visible, onClose, onPosted }) {
               </Text>
             </Pressable>
           </View>
+
+          <Text style={styles.label}>{t('signal.sport')}</Text>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.chipRow}
+          >
+            {SPORTS.map((s) => {
+              const active = s.id === sport;
+              return (
+                <Pressable
+                  key={s.id}
+                  onPress={() => setSport(s.id)}
+                  style={[styles.chip, active && styles.chipActive]}
+                >
+                  <Text style={[styles.chipText, active && styles.chipTextActive]}>
+                    {s.emoji} {sportLabel(t, s.id)}
+                  </Text>
+                </Pressable>
+              );
+            })}
+          </ScrollView>
 
           {mode === 'time' && (
             <>
