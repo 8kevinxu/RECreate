@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "hoopmap",
-    "slug": "hoopmap",
+    "name": "RECreate",
+    "slug": "recreate",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -9,9 +9,9 @@
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
-        "NSLocationWhenInUseUsageDescription": "HoopMap uses your location to show nearby courts, pools, and drop-in classes."
+        "NSLocationWhenInUseUsageDescription": "RECreate uses your location to show nearby courts, pools, and drop-in classes."
       },
-      "bundleIdentifier": "com.8kevinxu.hoopmap"
+      "bundleIdentifier": "com.8kevinxu.recreate"
     },
     "android": {
       "adaptiveIcon": {
@@ -32,7 +32,7 @@
       [
         "expo-location",
         {
-          "locationWhenInUsePermission": "HoopMap uses your location to show nearby courts, pools, and drop-in classes."
+          "locationWhenInUsePermission": "RECreate uses your location to show nearby courts, pools, and drop-in classes."
         }
       ],
       [

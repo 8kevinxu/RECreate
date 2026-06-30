@@ -1,4 +1,4 @@
--- HoopMap — social: chat. One messages table backs three kinds of threads:
+-- RECreate — social: chat. One messages table backs three kinds of threads:
 --   • run     — group chat for a planned run (members = its participants)
 --   • signal  — group chat for a "down to hoop" signal (members = its participants)
 --   • direct  — 1:1 chat between two accepted friends
@@ -11,8 +11,8 @@
 
 create table if not exists public.chat_messages (
   id         uuid        primary key default gen_random_uuid(),
-  run_id     uuid        references public.hoop_runs (id)    on delete cascade,
-  signal_id  uuid        references public.hoop_signals (id) on delete cascade,
+  run_id     uuid        references public.rec_runs (id)    on delete cascade,
+  signal_id  uuid        references public.rec_signals (id) on delete cascade,
   direct_key text,                                            -- 'uuidA:uuidB' (sorted) for 1:1
   user_id    uuid        not null references public.profiles (id) on delete cascade,
   body       text        not null check (char_length(body) between 1 and 1000),
@@ -34,11 +34,11 @@ create policy "read messages in your threads"
   on public.chat_messages for select
   using (
     (run_id is not null and exists (
-      select 1 from public.hoop_run_participants p
+      select 1 from public.rec_run_participants p
       where p.run_id = chat_messages.run_id and p.user_id = auth.uid()
     ))
     or (signal_id is not null and exists (
-      select 1 from public.hoop_signal_participants p
+      select 1 from public.rec_signal_participants p
       where p.signal_id = chat_messages.signal_id and p.user_id = auth.uid()
     ))
     or (direct_key is not null and (
@@ -55,11 +55,11 @@ create policy "send messages to your threads"
     user_id = auth.uid()
     and (
       (run_id is not null and exists (
-        select 1 from public.hoop_run_participants p
+        select 1 from public.rec_run_participants p
         where p.run_id = chat_messages.run_id and p.user_id = auth.uid()
       ))
       or (signal_id is not null and exists (
-        select 1 from public.hoop_signal_participants p
+        select 1 from public.rec_signal_participants p
         where p.signal_id = chat_messages.signal_id and p.user_id = auth.uid()
       ))
       or (direct_key is not null

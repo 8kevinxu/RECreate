@@ -1,6 +1,6 @@
 # Supabase setup
 
-The backend for HoopMap's shared/social features (crowd check-ins, reviews,
+The backend for RECreate's shared/social features (crowd check-ins, reviews,
 accounts, runs, friends, "down to hoop" signals, and push). Everything is
 optional — the app runs fully signed-out without any of this; configure it only
 to enable the shared + social features.
@@ -60,3 +60,9 @@ new:
 | `007_moderation.sql` | `blocked_users` + `content_reports` (block / report) |
 | `008_add_interests.sql` | `profiles.favorite_categories` (class-category interests) |
 | `009_signal_proposed_sport.sql` | `hoop_signal_participants.proposed_sport` (suggest an activity) |
+| `010_rename_to_recreate.sql` | Rebrand: rename `hoop_*` tables → `rec_*` (+ recreate dependent functions) |
+
+> Note: migrations 001–009 were authored before the RECreate rebrand and still
+> reference the old `hoop_*` table names. Apply them **in order** — `010` renames
+> the tables at the end, so the earlier deltas line up. A fresh DB built from
+> `schema/` is already fully `rec_*` and skips all of this.

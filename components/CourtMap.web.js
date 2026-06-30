@@ -79,16 +79,16 @@ function bookLevel(pct) {
 // Inject Leaflet's CSS + our marker animations once.
 function ensureStyles() {
   if (typeof document === 'undefined') return;
-  if (!document.getElementById('hoopmap-leaflet-css')) {
+  if (!document.getElementById('recreate-leaflet-css')) {
     const link = document.createElement('link');
-    link.id = 'hoopmap-leaflet-css';
+    link.id = 'recreate-leaflet-css';
     link.rel = 'stylesheet';
     link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
     document.head.appendChild(link);
   }
-  if (!document.getElementById('hoopmap-marker-css')) {
+  if (!document.getElementById('recreate-marker-css')) {
     const style = document.createElement('style');
-    style.id = 'hoopmap-marker-css';
+    style.id = 'recreate-marker-css';
     style.textContent = `
       .ballwrap { position: relative; width: 26px; height: 26px; }
       .bball { position: relative; z-index: 1; width: 100%; height: 100%; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.45)); }

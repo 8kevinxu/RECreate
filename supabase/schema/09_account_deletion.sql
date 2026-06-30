@@ -1,4 +1,4 @@
--- HoopMap — account self-deletion. Lets a signed-in user delete their own
+-- RECreate — account self-deletion. Lets a signed-in user delete their own
 -- account from the app with only the anon key. Depends on: 03 (profiles).
 --
 -- Why a function: the client can't touch the auth schema, and deleting an

@@ -1,4 +1,4 @@
--- HoopMap — crowd check-ins (anonymous "how busy is this court right now").
+-- RECreate — crowd check-ins (anonymous "how busy is this court right now").
 -- Apply the schema/ files in numeric order; see supabase/README.md.
 
 create table if not exists public.check_ins (

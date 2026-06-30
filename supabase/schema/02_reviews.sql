@@ -1,4 +1,4 @@
--- HoopMap — reviews (free-text comments per court). Anonymous + public, like
+-- RECreate — reviews (free-text comments per court). Anonymous + public, like
 -- crowd check-ins. Depends on: nothing.
 
 create table if not exists public.reviews (

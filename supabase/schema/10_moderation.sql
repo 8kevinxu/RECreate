@@ -1,4 +1,4 @@
--- HoopMap — trust & safety: user blocking + content reports. Required for App
+-- RECreate — trust & safety: user blocking + content reports. Required for App
 -- Store review of any app with user-generated content (chat, reviews, signals):
 -- users must be able to block abusive accounts and report objectionable content.
 -- Depends on: 03_profiles.sql.

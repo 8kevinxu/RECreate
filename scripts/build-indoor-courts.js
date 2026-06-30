@@ -431,7 +431,7 @@ function loadCache() {
 async function main() {
   console.log('Fetching rec-center coordinates from DataSF…');
   const rows = await (await fetch(DATASF, {
-    headers: { 'User-Agent': 'HoopMapSF/1.0', Accept: '*/*' },
+    headers: { 'User-Agent': 'RECreateSF/1.0', Accept: '*/*' },
   })).json();
 
   // Lookup by property name; prefer a "Rec Center" row, else first with coords.

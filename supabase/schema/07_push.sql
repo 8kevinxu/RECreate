@@ -1,4 +1,4 @@
--- HoopMap — push notifications. A device registers its Expo push token here;
+-- RECreate — push notifications. A device registers its Expo push token here;
 -- triggers on runs / signals / friendships send pushes to the relevant users'
 -- tokens via Expo's push API, called straight from Postgres with pg_net (no Edge
 -- Function). Depends on: every section above (it references all of those tables).
@@ -102,8 +102,8 @@ begin
   );
   return new;
 end; $$;
-drop trigger if exists hoop_signals_notify on public.hoop_signals;
-create trigger hoop_signals_notify after insert on public.hoop_signals
+drop trigger if exists rec_signals_notify on public.rec_signals;
+create trigger rec_signals_notify after insert on public.rec_signals
   for each row execute function public.notify_signal();
 
 -- A friend plans a game → notify their accepted friends (public + friends-only;
@@ -129,8 +129,8 @@ begin
   );
   return new;
 end; $$;
-drop trigger if exists hoop_runs_notify on public.hoop_runs;
-create trigger hoop_runs_notify after insert on public.hoop_runs
+drop trigger if exists rec_runs_notify on public.rec_runs;
+create trigger rec_runs_notify after insert on public.rec_runs
   for each row execute function public.notify_run();
 
 -- Someone joins your run → notify the host. Skips the host's own auto-join row.
@@ -138,21 +138,21 @@ create or replace function public.notify_run_join()
 returns trigger language plpgsql security definer set search_path = public as $$
 declare host_id uuid; court text; joiner_name text;
 begin
-  select host, court_id into host_id, court from public.hoop_runs where id = new.run_id;
+  select host, court_id into host_id, court from public.rec_runs where id = new.run_id;
   if host_id is null or host_id = new.user_id then
     return new;
   end if;
   select display_name into joiner_name from public.profiles where id = new.user_id;
   perform public.send_push(
     array[host_id],
-    coalesce(joiner_name, 'Someone') || ' is in for your run 🏀',
+    coalesce(joiner_name, 'Someone') || ' is in for your game 🏀',
     'Tap to see who''s going',
     jsonb_build_object('type', 'run', 'runId', new.run_id, 'courtId', court)
   );
   return new;
 end; $$;
-drop trigger if exists hoop_run_participants_notify on public.hoop_run_participants;
-create trigger hoop_run_participants_notify after insert on public.hoop_run_participants
+drop trigger if exists rec_run_participants_notify on public.rec_run_participants;
+create trigger rec_run_participants_notify after insert on public.rec_run_participants
   for each row execute function public.notify_run_join();
 
 -- Someone joins your session → notify the host. Skips the poster's auto-join.
@@ -160,21 +160,21 @@ create or replace function public.notify_signal_join()
 returns trigger language plpgsql security definer set search_path = public as $$
 declare host_id uuid; joiner_name text;
 begin
-  select user_id into host_id from public.hoop_signals where id = new.signal_id;
+  select user_id into host_id from public.rec_signals where id = new.signal_id;
   if host_id is null or host_id = new.user_id then
     return new;
   end if;
   select display_name into joiner_name from public.profiles where id = new.user_id;
   perform public.send_push(
     array[host_id],
-    coalesce(joiner_name, 'Someone') || ' is in 🏀',
-    'They joined your down-to-hoop session',
+    coalesce(joiner_name, 'Someone') || ' is in 🤙',
+    'They joined your session',
     jsonb_build_object('type', 'signal', 'signalId', new.signal_id)
   );
   return new;
 end; $$;
-drop trigger if exists hoop_signal_participants_notify on public.hoop_signal_participants;
-create trigger hoop_signal_participants_notify after insert on public.hoop_signal_participants
+drop trigger if exists rec_signal_participants_notify on public.rec_signal_participants;
+create trigger rec_signal_participants_notify after insert on public.rec_signal_participants
   for each row execute function public.notify_signal_join();
 
 -- Host confirms a session's court + time → notify the other participants.
@@ -186,18 +186,18 @@ begin
     return new;
   end if;
   select array_agg(user_id) into recipients
-  from public.hoop_signal_participants
+  from public.rec_signal_participants
   where signal_id = new.id and user_id <> new.user_id;
   perform public.send_push(
     recipients,
-    'Session confirmed 🏀',
+    'Session confirmed 🗓️',
     'The host locked in a time — tap for details',
     jsonb_build_object('type', 'signal', 'signalId', new.id)
   );
   return new;
 end; $$;
-drop trigger if exists hoop_signals_confirm_notify on public.hoop_signals;
-create trigger hoop_signals_confirm_notify after update on public.hoop_signals
+drop trigger if exists rec_signals_confirm_notify on public.rec_signals;
+create trigger rec_signals_confirm_notify after update on public.rec_signals
   for each row execute function public.notify_session_confirmed();
 
 -- Your friend request is accepted → notify the requester. The accepter is the
@@ -213,7 +213,7 @@ begin
   perform public.send_push(
     array[new.requester],
     coalesce(accepter_name, 'Someone') || ' accepted your friend request 🤝',
-    'You''re now friends on HoopMap',
+    'You''re now friends on RECreate',
     jsonb_build_object('type', 'friend')
   );
   return new;

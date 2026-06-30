@@ -1,4 +1,4 @@
--- HoopMap — social: friends graph (request / accept friendships).
+-- RECreate — social: friends graph (request / accept friendships).
 -- You add a friend by their friend_code (set in 03_profiles.sql), which creates
 -- a pending request the other person accepts. Depends on: 03_profiles.sql, and
 -- 04_runs.sql for the friends-only-runs policy at the bottom.
@@ -52,15 +52,15 @@ end $$;
 -- public and own runs). Multiple SELECT policies on a table are OR'd together.
 -- ---------------------------------------------------------------------------
 create policy "friends can see friends-only runs"
-  on public.hoop_runs for select
+  on public.rec_runs for select
   using (
     visibility = 'friends'
     and exists (
       select 1 from public.friendships f
       where f.status = 'accepted'
         and (
-          (f.requester = auth.uid() and f.addressee = hoop_runs.host)
-          or (f.addressee = auth.uid() and f.requester = hoop_runs.host)
+          (f.requester = auth.uid() and f.addressee = rec_runs.host)
+          or (f.addressee = auth.uid() and f.requester = rec_runs.host)
         )
     )
   );

@@ -1,4 +1,4 @@
--- HoopMap — accounts: player profiles, friend codes, and personal check-ins.
+-- RECreate — accounts: player profiles, friend codes, and personal check-ins.
 -- Supabase Auth (email + password) manages auth.users; this adds the app-level
 -- profile that the social features build on. Depends on: auth (built-in).
 --

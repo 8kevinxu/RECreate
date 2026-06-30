@@ -3,10 +3,10 @@
 -- Apply once to an existing database in the Supabase SQL editor. Idempotent.
 -- New databases get this from schema/04_runs.sql + schema/07_push.sql.
 
--- 1) Widen the hoop_runs.sport check to every sport in lib/sports.js.
-alter table public.hoop_runs drop constraint if exists hoop_runs_sport_check;
-alter table public.hoop_runs
-  add constraint hoop_runs_sport_check
+-- 1) Widen the rec_runs.sport check to every sport in lib/sports.js.
+alter table public.rec_runs drop constraint if exists rec_runs_sport_check;
+alter table public.rec_runs
+  add constraint rec_runs_sport_check
   check (sport in ('basketball', 'volleyball', 'pingpong', 'pickleball', 'tennis'));
 
 -- 2) Generalize the "friend planned a game" push (emoji per sport + wording).

@@ -1,7 +1,7 @@
-# 🏀 HoopMap SF
+# 🏀 RECreate SF
 https://hoopmap-one.vercel.app/
 
-Find somewhere to play **right now** in San Francisco. HoopMap started as an
+Find somewhere to play **right now** in San Francisco. RECreate started as an
 indoor-basketball finder and has grown into a map of SF Rec & Parks **drop-in
 recreation** across five tabs:
 
@@ -70,6 +70,7 @@ stays centered on San Francisco — everything else still works.
 | `components/NearbyList.js` | Nearby courts ranked by distance, with a min-open filter |
 | `components/BottomNav.js` | Five-tab bottom bar (Home / Classes / Pools / Social / Profile) |
 | `components/ClassesScreen.js` | **Classes tab** — browse drop-in programs by category, with filters + live openings |
+| `components/ClassDetail.js` | Class/activity detail sheet (schedule, location, cost, ages, availability + Register on ActiveNet) |
 | `data/classes.js` · `scripts/build-classes.js` | **Generated** classes catalog + its ActiveNet scraper (with build-time title translation) |
 | `lib/classesLive.js` | Runtime ActiveNet fetch for "right now" class openings (native only; CORS-blocked on web) |
 | `components/PoolsScreen.js` | **Pools tab** — swimming pools, today's sessions, open-now, fees, schedule PDFs |
@@ -397,13 +398,13 @@ the default, or **Anyone**), and an optional note. If the map's time picker is s
 the form opens seeded to that time. Others who can see it tap **I'm in** to join
 (from the **Activity** feed); the host sees a roster count and can **Cancel**.
 Code lives in `lib/runs.js` + `components/RunModal.js` (internally still the
-`hoop_runs` table — only the user-facing wording is "plan / game").
+`rec_runs` table — only the user-facing wording is "plan / game").
 
 Visibility is enforced by RLS via the `visibility` column (`public` | `friends`):
 public games are readable by all, friends-only ones only by the host and accepted
 friends (`loadUpcomingRuns` powers the Activity feed across all courts).
 Setup: run [`supabase/schema/04_runs.sql`](supabase/schema/04_runs.sql) — it adds
-`hoop_runs` / `hoop_run_participants`, policies, real-time, and the host auto-join
+`rec_runs` / `rec_run_participants`, policies, real-time, and the host auto-join
 trigger. The friends-only visibility policy lives in
 [`05_friends.sql`](supabase/schema/05_friends.sql) (it needs the friendships table).
 On an **existing** DB, apply [`supabase/migrations/003_generalize_run_sports.sql`](supabase/migrations/003_generalize_run_sports.sql)
@@ -449,7 +450,7 @@ confirmed court + time show to everyone and extend the session's expiry. Code li
 `components/SessionModal.js` (session).
 
 Setup: run [`supabase/schema/06_signals.sql`](supabase/schema/06_signals.sql) — it
-adds `hoop_signals` + `hoop_signal_participants` (with the sport + suggested/confirmed
+adds `rec_signals` + `rec_signal_participants` (with the sport + suggested/confirmed
 court + time columns), policies, the auto-join trigger, and real-time. On an
 **existing** DB, apply [`supabase/migrations/006_signal_sport.sql`](supabase/migrations/006_signal_sport.sql)
 to add the `sport` column.
@@ -475,9 +476,10 @@ The top of the **Social** tab shows an auto-revolving card of suggestions tailor
 to your **interests** — your **favorite sports** and **class categories** (fitness,
 dance, music, arts, photography, social), both set on your profile. It mixes
 **open-gym games** happening today for your sports (“Play basketball at Palega ·
-2:00 PM” — tap to open that court) with **rec-center classes that have openings** in
-your categories (“Zumba at Sunset Rec · Openings” — tap to register). With no
-interests set it recommends across everything. All computed on-device from the
+2:00 PM” — tap to open that court **on the matching sport**) with **rec-center
+classes that have openings** in your categories (“Zumba at Sunset Rec · Openings” —
+tap for a detail sheet, `components/ClassDetail.js`, then register on ActiveNet).
+With no interests set it recommends across everything. All computed on-device from the
 bundled court + class data (`lib/recommend.js`, `components/RecommendPane.js`); set
 interests are stored in `profiles.favorite_categories` (run
 [`supabase/migrations/008_add_interests.sql`](supabase/migrations/008_add_interests.sql)).
@@ -515,8 +517,8 @@ land even when the app is closed:
 | Your **friend request is accepted** | the requester |
 
 **How it works.** On sign-in the app registers the device's **Expo push token**
-in a `device_tokens` table (`lib/push.js`). Postgres triggers on `hoop_signals`,
-`hoop_runs`, the participant tables, and `friendships` call a `send_push()`
+in a `device_tokens` table (`lib/push.js`). Postgres triggers on `rec_signals`,
+`rec_runs`, the participant tables, and `friendships` call a `send_push()`
 helper that POSTs to **Expo's push API straight from the database via `pg_net`**
 — no Edge Function or server to run. Tapping a push deep-links into the app (the
 court for a run, the Activity feed for signals/sessions, the Friends sheet for a

@@ -180,7 +180,7 @@ async function main() {
   let scheduleSource;
 
   try {
-    const res = await fetch(DATASF, { headers: { 'User-Agent': 'HoopMapSF/1.0', Accept: '*/*' } });
+    const res = await fetch(DATASF, { headers: { 'User-Agent': 'RECreateSF/1.0', Accept: '*/*' } });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const rows = await res.json();
     courts = buildCourts(rows);

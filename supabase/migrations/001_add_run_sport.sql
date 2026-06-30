@@ -3,7 +3,7 @@
 -- Idempotent — safe to re-run. New databases get this from schema/04_runs.sql.
 
 -- 1) Add the column. Existing rows backfill to 'basketball'.
-alter table public.hoop_runs
+alter table public.rec_runs
   add column if not exists sport text not null default 'basketball'
   check (sport in ('basketball', 'volleyball'));
 
