@@ -214,6 +214,9 @@ export default function AuthModal({
 
   const favCourt = stats?.favoriteCourtId ? courtsById[stats.favoriteCourtId] : null;
   const favSportsList = SPORTS.filter((s) => (profile?.favorite_sports || []).includes(s.id));
+  const favCategoriesList = CLASS_CATEGORIES.filter((c) =>
+    (profile?.favorite_categories || []).includes(c.id)
+  );
   // "Most check-ins at X for Y sport"
   const tcs = stats?.topCourtSport;
   const tcsCourt = tcs ? courtsById[tcs.courtId]?.name : null;
@@ -377,23 +380,23 @@ export default function AuthModal({
                     <Text style={styles.profileName}>
                       {profile?.display_name || displayName || t('auth.yourName')}
                     </Text>
-                    {(profile?.age != null || !!profile?.neighborhood) && (
-                      <Text style={styles.profileMeta}>
-                        {[
-                          profile?.age != null ? t('auth.ageMeta', { age: profile.age }) : null,
-                          profile?.neighborhood,
-                        ]
-                          .filter(Boolean)
-                          .join('  ·  ')}
-                      </Text>
+                    {!!profile?.neighborhood && (
+                      <Text style={styles.profileMeta}>{profile.neighborhood}</Text>
                     )}
                     {!!profile?.bio && <Text style={styles.profileBio}>{profile.bio}</Text>}
-                    {favSportsList.length > 0 && (
+                    {(favSportsList.length > 0 || favCategoriesList.length > 0) && (
                       <View style={styles.viewSportWrap}>
                         {favSportsList.map((s) => (
                           <View key={s.id} style={styles.viewSportChip}>
                             <Text style={styles.viewSportText}>
                               {s.emoji} {sportLabel(t, s.id)}
+                            </Text>
+                          </View>
+                        ))}
+                        {favCategoriesList.map((c) => (
+                          <View key={c.id} style={styles.viewCatChip}>
+                            <Text style={styles.viewCatText}>
+                              {c.emoji} {t('cat.' + c.id)}
                             </Text>
                           </View>
                         ))}
@@ -625,6 +628,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fdece1',
   },
   viewSportText: { color: '#c2571a', fontWeight: '700', fontSize: 13 },
+  viewCatChip: {
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 999,
+    backgroundColor: '#e7f0fc',
+  },
+  viewCatText: { color: '#2f74d6', fontWeight: '700', fontSize: 13 },
 
   switch: {
     textAlign: 'center',

@@ -394,13 +394,19 @@ export default function App() {
     const categories = profile?.favorite_categories || [];
     if (!sports.length && !categories.length) return undefined;
     const sync = () =>
-      syncInterestNotifications({ courts: courtData, sports, categories, lang });
+      syncInterestNotifications({
+        courts: courtData,
+        sports,
+        categories,
+        age: profile?.age ?? null,
+        lang,
+      });
     sync();
     const sub = AppState.addEventListener('change', (s) => {
       if (s === 'active') sync();
     });
     return () => sub.remove();
-  }, [user?.id, courtData, profile?.favorite_sports, profile?.favorite_categories, lang]);
+  }, [user?.id, courtData, profile?.favorite_sports, profile?.favorite_categories, profile?.age, lang]);
 
   // "View time": all schedule / open-gym logic runs against this. It tracks the
   // live clock by default; picking a future day+time freezes it so the map shows

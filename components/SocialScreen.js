@@ -28,6 +28,7 @@ export default function SocialScreen({
         userLocation={userLocation}
         sports={profile?.favorite_sports || []}
         categories={profile?.favorite_categories || []}
+        age={profile?.age ?? null}
         onPickCourt={onPickCourt}
       />
 

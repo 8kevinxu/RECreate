@@ -43,6 +43,7 @@ export default function RecommendPane({
   userLocation = null,
   sports = [],
   categories = [],
+  age = null,
   onPickCourt,
 }) {
   const { t, lang } = useI18n();
@@ -79,8 +80,8 @@ export default function RecommendPane({
   }, [user?.id, hasInterests]);
 
   const recs = useMemo(
-    () => buildRecommendations({ courts, userLocation, sports, categories, history }),
-    [courts, userLocation, sports.join(','), categories.join(','), history]
+    () => buildRecommendations({ courts, userLocation, sports, categories, history, age }),
+    [courts, userLocation, sports.join(','), categories.join(','), history, age]
   );
   const [idx, setIdx] = useState(0);
   const [nudge, setNudge] = useState(0); // bumped on manual swipe to reset the timer
