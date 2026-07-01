@@ -329,6 +329,9 @@ const SPORTS = [
   { id: 'volleyball', match: /volleyball/i },
   { id: 'pingpong', match: /table tennis|ping[\s-]?pong/i },
   { id: 'pickleball', match: /pickleball/i },
+  // Not a sport — the rec-center weight/fitness room drop-in hours, surfaced on the
+  // map as its own option (see lib/sports.js WEIGHT_ROOM). Lives in its own room row.
+  { id: 'weightroom', match: /weight ?room|fitness (room|center)/i },
 ];
 const emptyWeek = () => [[], [], [], [], [], [], []];
 const emptyDropins = () => Object.fromEntries(SPORTS.map((s) => [s.id, emptyWeek()]));
@@ -570,7 +573,8 @@ function render(courts, season, generatedAt) {
 // schedule[]   = FACILITY hours, indexed 0=Sun..6=Sat; [openMin,closeMin] or null.
 // dropins      = { sportId: week } drop-in OPEN-GYM blocks per sport; each week is
 //   indexed 0=Sun..6=Sat and each day is an array of [startMin,closeMin] blocks
-//   (empty when none that day). Sports: basketball, volleyball, pingpong, pickleball.
+//   (empty when none that day). Sports: basketball, volleyball, pingpong, pickleball;
+//   plus weightroom (rec-center weight/fitness room drop-in hours, not a sport).
 // scheduleSource = "live" (scraped this run) | "cache" (last good) | "curated".
 
 export const GENERATED_AT = ${JSON.stringify(generatedAt)};

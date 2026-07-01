@@ -41,7 +41,7 @@ import {
   getDropinWeek,
   getDropinRemaining,
 } from './lib/hours';
-import { SPORTS, DEFAULT_SPORT, sportMeta } from './lib/sports';
+import { MAP_SPORTS, DEFAULT_SPORT, sportMeta, isPlayableSport } from './lib/sports';
 import { useFavorites } from './lib/favorites';
 import { useI18n, sportLabel, tg } from './lib/i18n';
 import {
@@ -669,7 +669,7 @@ export default function App() {
                 </View>
               </Pressable>
             )}
-            {SPORTS.filter((s) => favoritesMode || s.id !== sport).map((s) => (
+            {MAP_SPORTS.filter((s) => favoritesMode || s.id !== sport).map((s) => (
               <Pressable
                 key={s.id}
                 style={styles.sportDialItem}
@@ -942,7 +942,9 @@ export default function App() {
           <SocialScreen
             courtsById={courtsById}
             courts={courtData}
-            sport={sport}
+            // The weight room isn't a playable sport — hand social features a real
+            // sport so a run/signal never defaults to "weightroom".
+            sport={isPlayableSport(sport) ? sport : DEFAULT_SPORT}
             userLocation={userLocation}
             onPickCourt={(id, pickSport) => {
               // A recommendation carries the sport it was for — switch the map to it

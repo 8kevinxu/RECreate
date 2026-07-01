@@ -81,10 +81,49 @@
         [],
         [],
         []
+      ],
+      "weightroom": [
+        [],
+        [],
+        [
+          [
+            540,
+            1020
+          ]
+        ],
+        [
+          [
+            540,
+            1020
+          ]
+        ],
+        [
+          [
+            540,
+            1020
+          ],
+          [
+            1080,
+            1245,
+            "women"
+          ]
+        ],
+        [
+          [
+            540,
+            1020
+          ]
+        ],
+        [
+          [
+            540,
+            1020
+          ]
+        ]
       ]
     },
     "season": "Mission Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-29T17:32:09.798Z"
+    "scrapedAt": "2026-07-01T08:28:57.209Z"
   },
   "Moscone-Rec-Center-101": {
     "dropins": {
@@ -168,10 +207,19 @@
             750
           ]
         ]
+      ],
+      "weightroom": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     "season": "Moscone Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-29T17:32:10.302Z"
+    "scrapedAt": "2026-07-01T08:28:57.544Z"
   },
   "St-Marys-Rec-Center-109": {
     "dropins": {
@@ -235,10 +283,19 @@
         [],
         [],
         []
+      ],
+      "weightroom": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     "season": "St. Mary's Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-29T17:32:10.746Z"
+    "scrapedAt": "2026-07-01T08:28:58.019Z"
   },
   "Upper-Noe-Rec-Center-112": {
     "dropins": {
@@ -302,10 +359,19 @@
         [],
         [],
         []
+      ],
+      "weightroom": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     "season": "Upper Noe Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-29T17:32:11.196Z"
+    "scrapedAt": "2026-07-01T08:28:58.361Z"
   },
   "Hamilton-Rec-Center-93": {
     "dropins": {
@@ -384,10 +450,19 @@
         [],
         [],
         []
+      ],
+      "weightroom": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     "season": "Hamilton Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-29T17:32:11.606Z"
+    "scrapedAt": "2026-07-01T08:28:58.704Z"
   },
   "Eureka-Valley-Rec-Center-86": {
     "dropins": {
@@ -471,10 +546,19 @@
           ]
         ],
         []
+      ],
+      "weightroom": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     "season": "Eureka Valley Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-29T17:32:12.016Z"
+    "scrapedAt": "2026-07-01T08:28:59.018Z"
   },
   "Richmond-Rec-Center-105": {
     "dropins": {
@@ -578,10 +662,19 @@
             810
           ]
         ]
+      ],
+      "weightroom": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     "season": "Richmond Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-29T17:32:13.282Z"
+    "scrapedAt": "2026-07-01T08:28:59.754Z"
   },
   "Sunset-Rec-Center-110": {
     "dropins": {
@@ -655,10 +748,19 @@
         [],
         [],
         []
+      ],
+      "weightroom": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     "season": "Sunset Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-29T17:32:13.720Z"
+    "scrapedAt": "2026-07-01T08:29:00.161Z"
   },
   "Palega-Rec-Center-103": {
     "dropins": {
@@ -732,10 +834,19 @@
         [],
         [],
         []
+      ],
+      "weightroom": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     "season": "Palega Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-29T17:32:14.164Z"
+    "scrapedAt": "2026-07-01T08:29:00.577Z"
   },
   "Joseph-Lee-Rec-Center-95": {
     "dropins": {
@@ -804,10 +915,19 @@
         [],
         [],
         []
+      ],
+      "weightroom": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     "season": "Joseph Lee Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-29T17:32:14.618Z"
+    "scrapedAt": "2026-07-01T08:29:00.900Z"
   },
   "Minnie-Love-Ward-Rec-Center-97": {
     "dropins": {
@@ -901,10 +1021,44 @@
         [],
         [],
         []
+      ],
+      "weightroom": [
+        [],
+        [],
+        [
+          [
+            960,
+            1230
+          ]
+        ],
+        [
+          [
+            960,
+            1230
+          ]
+        ],
+        [
+          [
+            960,
+            1230
+          ]
+        ],
+        [
+          [
+            960,
+            1230
+          ]
+        ],
+        [
+          [
+            600,
+            990
+          ]
+        ]
       ]
     },
     "season": "Minnie & Lovie Ward Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-29T17:32:15.026Z"
+    "scrapedAt": "2026-07-01T08:29:01.428Z"
   },
   "Bernal-Heights-Rec-Center-83": {
     "dropins": {
@@ -973,10 +1127,19 @@
         [],
         [],
         []
+      ],
+      "weightroom": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     "season": "Bernal Heights Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-29T17:32:15.413Z"
+    "scrapedAt": "2026-07-01T08:29:01.868Z"
   },
   "Betty-Ann-Ong-Recreation-Center-84": {
     "dropins": {
@@ -1075,10 +1238,19 @@
         [],
         [],
         []
+      ],
+      "weightroom": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     "season": "Betty Ann Ong Chinese Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-29T17:32:15.789Z"
+    "scrapedAt": "2026-07-01T08:29:02.411Z"
   },
   "Glen-Canyon-Park-Recreation-Center-89": {
     "dropins": {
@@ -1209,10 +1381,44 @@
           ]
         ],
         []
+      ],
+      "weightroom": [
+        [],
+        [],
+        [
+          [
+            600,
+            1170
+          ]
+        ],
+        [
+          [
+            600,
+            1170
+          ]
+        ],
+        [
+          [
+            600,
+            1170
+          ]
+        ],
+        [
+          [
+            600,
+            1170
+          ]
+        ],
+        [
+          [
+            540,
+            1020
+          ]
+        ]
       ]
     },
     "season": "Glen Canyon Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-29T17:32:16.220Z"
+    "scrapedAt": "2026-07-01T08:29:02.737Z"
   },
   "Herz-Recreation-Center-471": {
     "dropins": {
@@ -1276,10 +1482,19 @@
         [],
         [],
         []
+      ],
+      "weightroom": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     "season": "Herz Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-29T17:32:16.714Z"
+    "scrapedAt": "2026-07-01T08:29:03.074Z"
   },
   "Potrero-Hill-Rec-Center-275": {
     "dropins": {
@@ -1374,9 +1589,18 @@
         [],
         [],
         []
+      ],
+      "weightroom": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     "season": "Potrero Hill Rec Center Summer Schedule",
-    "scrapedAt": "2026-06-29T17:32:17.127Z"
+    "scrapedAt": "2026-07-01T08:29:03.429Z"
   }
 }
