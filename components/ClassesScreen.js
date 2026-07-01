@@ -169,7 +169,7 @@ export default function ClassesScreen({ userLocation = null }) {
       <Text style={styles.sub}>{t('classes.sub')}</Text>
 
       <View style={styles.infoBullet}>
-        <Ionicons name="information-circle-outline" size={15} color="#5b7a9a" style={styles.infoBulletIcon} />
+        <Ionicons name="information-circle-outline" size={15} color="#5b7a9a" />
         <Text style={styles.infoBulletText}>{t('classes.activeNetInfo')}</Text>
       </View>
 
@@ -388,14 +388,14 @@ const styles = StyleSheet.create({
   sub: { fontSize: 13, color: '#6b7a8a', marginTop: 2, marginBottom: 8 },
   infoBullet: {
     flexDirection: 'row',
-    gap: 6,
+    alignItems: 'center',
+    gap: 7,
     backgroundColor: '#eef4fb',
     borderRadius: 10,
     paddingHorizontal: 10,
     paddingVertical: 8,
     marginBottom: 10,
   },
-  infoBulletIcon: { marginTop: 1 },
   infoBulletText: { flex: 1, fontSize: 12, color: '#46586a', fontWeight: '600', lineHeight: 16 },
 
   search: {
