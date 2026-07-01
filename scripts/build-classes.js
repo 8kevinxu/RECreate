@@ -133,6 +133,24 @@ const dehtml = (s) =>
     .replace(/&quot;/g, '"')
     .trim();
 
+// Descriptions come as HTML — some carry <a href="…">link</a> markup and <br>/<p>
+// tags. Strip the markup (keeping the visible link text, which is already a readable
+// label/URL), decode entities, and collapse whitespace into a clean single-line blurb.
+const stripHtml = (s) =>
+  String(s || '')
+    .replace(/<br\s*\/?>/gi, ' ')
+    .replace(/<\/(p|div|li)>/gi, ' ')
+    .replace(/<[^>]+>/g, '') // drop all remaining tags (anchors, spans, …)
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&#39;|&rsquo;|&lsquo;/g, '’')
+    .replace(/&quot;|&ldquo;|&rdquo;/g, '"')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(Number(n)))
+    .replace(/\s+/g, ' ')
+    .trim();
+
 async function getSession() {
   const res = await fetch(`${BASE}/activity/search?locale=en-US`, { headers: { 'User-Agent': UA } });
   const cookies = (res.headers.getSetCookie ? res.headers.getSetCookie() : [res.headers.get('set-cookie')])
@@ -210,7 +228,7 @@ function toClass(item, category, coords) {
   // Short catalog blurb ActiveNet returns inline on the list item (same text as the
   // detail page's description). Collapse the runs of whitespace it embeds; absent for
   // some classes, in which case the app shows a "No description available" fallback.
-  const desc = String(item.desc || '').replace(/\s+/g, ' ').trim();
+  const desc = stripHtml(item.desc);
   return {
     id: `anc-${item.id}`,
     name,
