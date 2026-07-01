@@ -287,6 +287,18 @@
     "zh": "排舞 - 超级初级",
     "es": "Baile en Línea - Ultra Principiantes"
   },
+  "Low Impact Aerobics": {
+    "zh": "低冲击有氧运动",
+    "es": "Aeróbicos de Bajo Impacto"
+  },
+  "Mindful Move & Groove for Tweens": {
+    "zh": "少儿正念律动",
+    "es": "Movimiento Consciente para Preadolescentes"
+  },
+  "Move n Groove Fitness for Seniors": {
+    "zh": "老年人律动健身",
+    "es": "Fitness Move n Groove para Mayores"
+  },
   "Nuture Your Well-Being": {
     "zh": "滋养身心健康",
     "es": "Cuida tu Bienestar"
@@ -299,6 +311,14 @@
     "zh": "普拉提 - 全级别",
     "es": "Pilates - Todos los Niveles"
   },
+  "Pilates/Yoga Fusion": {
+    "zh": "普拉提/瑜伽融合",
+    "es": "Fusión Pilates/Yoga"
+  },
+  "Qi Gong for Seniors": {
+    "zh": "老年人气功",
+    "es": "Qi Gong para Mayores"
+  },
   "Sing Along": {
     "zh": "跟唱",
     "es": "Cantemos Juntos"
@@ -307,9 +327,21 @@
     "zh": "老年人素描与绘画",
     "es": "Dibujo y Pintura para Mayores"
   },
+  "Strength and Conditioning for Seniors": {
+    "zh": "老年人力量与体能训练",
+    "es": "Fuerza y Acondicionamiento para Mayores"
+  },
+  "Strength and Flexibility": {
+    "zh": "力量与柔韧",
+    "es": "Fuerza y Flexibilidad"
+  },
   "Stress Management for Modern Day Living": {
     "zh": "现代生活压力管理",
     "es": "Manejo del Estrés para la Vida Moderna"
+  },
+  "Stretch for Seniors": {
+    "zh": "老年人伸展运动",
+    "es": "Estiramiento para Mayores"
   },
   "Tai Chi": {
     "zh": "太极",
