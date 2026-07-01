@@ -18,6 +18,7 @@ import {
   View,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Ionicons } from '@expo/vector-icons';
 import { useAuth } from '../lib/auth';
 
 // Account creation requires agreeing to a EULA (App Store rule for UGC apps). The
@@ -385,33 +386,38 @@ export default function AuthModal({
                 </>
               ) : (
                 <>
-                  <View style={styles.profileCard}>
-                    <Text style={styles.profileName}>
-                      {profile?.display_name || displayName || t('auth.yourName')}
-                    </Text>
-                    {!!profile?.neighborhood && (
+                  <Text style={styles.profileName}>
+                    {profile?.display_name || displayName || t('auth.yourName')}
+                  </Text>
+                  {!!profile?.neighborhood && (
+                    <View style={styles.profileMetaRow}>
+                      <Ionicons name="location-outline" size={14} color="#5b6b7b" />
                       <Text style={styles.profileMeta}>{profile.neighborhood}</Text>
-                    )}
-                    {!!profile?.bio && <Text style={styles.profileBio}>{profile.bio}</Text>}
-                    {(favSportsList.length > 0 || favCategoriesList.length > 0) && (
-                      <View style={styles.viewSportWrap}>
-                        {favSportsList.map((s) => (
-                          <View key={s.id} style={styles.viewSportChip}>
-                            <Text style={styles.viewSportText}>
-                              {s.emoji} {sportLabel(t, s.id)}
-                            </Text>
-                          </View>
-                        ))}
-                        {favCategoriesList.map((c) => (
-                          <View key={c.id} style={styles.viewCatChip}>
-                            <Text style={styles.viewCatText}>
-                              {c.emoji} {t('cat.' + c.id)}
-                            </Text>
-                          </View>
-                        ))}
-                      </View>
-                    )}
-                  </View>
+                    </View>
+                  )}
+                  {(favSportsList.length > 0 || favCategoriesList.length > 0) && (
+                    <View style={styles.viewSportWrap}>
+                      {favSportsList.map((s) => (
+                        <View key={s.id} style={styles.viewSportChip}>
+                          <Text style={styles.viewSportText}>
+                            {s.emoji} {sportLabel(t, s.id)}
+                          </Text>
+                        </View>
+                      ))}
+                      {favCategoriesList.map((c) => (
+                        <View key={c.id} style={styles.viewCatChip}>
+                          <Text style={styles.viewCatText}>
+                            {c.emoji} {t('cat.' + c.id)}
+                          </Text>
+                        </View>
+                      ))}
+                    </View>
+                  )}
+                  {!!profile?.bio && (
+                    <View style={styles.profileCard}>
+                      <Text style={styles.profileBio}>{profile.bio}</Text>
+                    </View>
+                  )}
                   {!!savedNote && !savedNote.err && <Text style={styles.info}>{savedNote.text}</Text>}
 
                   <Text style={styles.sectionLabel}>{t('auth.yourCheckins')}</Text>
@@ -634,9 +640,10 @@ const styles = StyleSheet.create({
   cancelText: { color: '#46586a', fontWeight: '800', fontSize: 15 },
 
   profileCard: { backgroundColor: '#f4f6f8', borderRadius: 14, padding: 16, marginTop: 8 },
-  profileName: { fontSize: 20, fontWeight: '800', color: '#0d1b2a' },
-  profileMeta: { fontSize: 14, color: '#5b6b7b', marginTop: 3, fontWeight: '600' },
-  profileBio: { fontSize: 14, color: '#2a3a4a', marginTop: 8, lineHeight: 20 },
+  profileName: { fontSize: 22, fontWeight: '800', color: '#0d1b2a', marginTop: 8, paddingHorizontal: 2 },
+  profileMetaRow: { flexDirection: 'row', alignItems: 'center', gap: 4, marginTop: 4, paddingHorizontal: 2 },
+  profileMeta: { fontSize: 14, color: '#5b6b7b', fontWeight: '600' },
+  profileBio: { fontSize: 14, color: '#2a3a4a', lineHeight: 20 },
   viewSportWrap: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 12 },
   viewSportChip: {
     paddingHorizontal: 12,
