@@ -27,6 +27,7 @@ const PRIVACY_URL = 'https://recreate-sf.vercel.app/privacy.html';
 import { SPORTS } from '../lib/sports';
 import { CLASS_CATEGORIES } from '../data/classes';
 import { loadMyStats } from '../lib/playerCheckins';
+import { loadMyReportCount } from '../lib/crowd';
 import { useI18n, sportLabel } from '../lib/i18n';
 import SettingsScreen from './SettingsScreen';
 
@@ -60,6 +61,7 @@ export default function AuthModal({
   const [pCategories, setPCategories] = useState([]); // class-category interests
   const [savedNote, setSavedNote] = useState(null); // { err, text }
   const [stats, setStats] = useState(null);
+  const [crowdReports, setCrowdReports] = useState(0);
   const [settingsOpen, setSettingsOpen] = useState(false);
 
   const seedFromProfile = () => {
@@ -88,6 +90,9 @@ export default function AuthModal({
     let alive = true;
     loadMyStats(user.id).then((s) => {
       if (alive) setStats(s);
+    });
+    loadMyReportCount().then((n) => {
+      if (alive) setCrowdReports(n);
     });
     return () => {
       alive = false;
@@ -213,6 +218,10 @@ export default function AuthModal({
   };
 
   const favCourt = stats?.favoriteCourtId ? courtsById[stats.favoriteCourtId] : null;
+  // "basketball, pickleball" — sports logged at the favorite park, most-played first.
+  const favSportsLabel = (stats?.favoriteSports || [])
+    .map((id) => sportLabel(t, id))
+    .join(t('listSep'));
   const favSportsList = SPORTS.filter((s) => (profile?.favorite_sports || []).includes(s.id));
   const favCategoriesList = CLASS_CATEGORIES.filter((c) =>
     (profile?.favorite_categories || []).includes(c.id)
@@ -428,8 +437,13 @@ export default function AuthModal({
                       {!!favCourt && (
                         <Text style={styles.favLine}>
                           {t('auth.favoritePark')}{' '}
-                          <Text style={styles.favName}>{favCourt.name}</Text> ({stats.favoriteCount}{' '}
-                          {t(stats.favoriteCount === 1 ? 'auth.visit' : 'auth.visits')})
+                          <Text style={styles.favName}>{favCourt.name}</Text>{' '}
+                          {favSportsLabel
+                            ? t('auth.favParkStat', {
+                                count: stats.favoriteCount,
+                                sports: favSportsLabel,
+                              })
+                            : t('auth.favParkVisits', { count: stats.favoriteCount })}
                         </Text>
                       )}
                       <Text style={styles.totalLine}>
@@ -439,6 +453,9 @@ export default function AuthModal({
                   ) : (
                     <Text style={styles.muted}>{t('auth.noCheckins')}</Text>
                   )}
+                  <Text style={styles.totalLine}>
+                    {t('auth.crowdReports', { count: crowdReports })}
+                  </Text>
                 </>
               )}
 
