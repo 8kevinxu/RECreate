@@ -63,6 +63,8 @@ import {
 import { loadReviews, addReview, MAX_BODY, MAX_NAME, isShared as reviewsShared } from './lib/reviews';
 import { reportContent } from './lib/reports';
 import { liveBooked, bookedAt } from './lib/reservations';
+import { GENERATED_AT as RES_GENERATED_AT } from './data/reservations';
+import { fetchLiveReservations, locationIdFromUrl } from './lib/reservationsLive';
 import { openDirections } from './lib/maps';
 import { logVisit } from './lib/playerCheckins';
 
@@ -1013,8 +1015,28 @@ function CourtDetail({
   const meta = sportMeta(vSport);
   const sportName = sportLabel(t, vSport);
   // rec.us reservations for this sport, if this court is reservable, plus the live
-  // "% booked right now" reading derived from the point-in-time slot map.
-  const booked = court.reserved?.[vSport];
+  // "% booked right now" reading derived from the point-in-time slot map. We prefer
+  // a live rec.us reading fetched when the card opens (bookings change hourly, so
+  // the weekly build snapshot goes stale); on web that fetch CORS-falls back to null
+  // and we use the snapshot. `resIsLive`/`resFresh` gate the freshness label below
+  // and how confidently we assert "fully booked".
+  const [liveRes, setLiveRes] = useState(null);
+  useEffect(() => {
+    setLiveRes(null);
+    const url = court.reserved && Object.values(court.reserved).find((v) => v && v.url)?.url;
+    const locId = locationIdFromUrl(url);
+    if (!locId) return;
+    let alive = true;
+    fetchLiveReservations(locId).then((r) => alive && setLiveRes(r));
+    return () => { alive = false; };
+  }, [court.id]);
+  const liveForSport = liveRes?.bySport?.[vSport];
+  const booked = liveForSport || court.reserved?.[vSport];
+  const resIsLive = !!liveForSport;
+  const resAgeMs = resIsLive ? 0 : Date.now() - Date.parse(RES_GENERATED_AT);
+  // A build snapshot older than this can't be trusted for a definitive "fully
+  // booked" — say "100% booked (as of …)" instead of "🔴 Fully booked".
+  const resFresh = resIsLive || (Number.isFinite(resAgeMs) && resAgeMs < 6 * 60 * 60 * 1000);
   // Booked reading shown on the card: at the picked date+time when one is set
   // (e.g. "0% booked at 6 PM"), otherwise the live "right now" reading.
   const atLabel = isPicked ? fmtClock(viewTime.getHours(), viewTime.getMinutes()) : null;
@@ -1024,7 +1046,16 @@ function CourtDetail({
         return b ? { ...b, picked: true } : null;
       })()
     : liveBooked(booked);
-  const fullyBooked = !!live && live.pct === 100 && (live.now || live.picked);
+  const fullyBooked = !!live && live.pct === 100 && (live.now || live.picked) && resFresh;
+  // Freshness note under the reservation line: a live reading vs. how old the
+  // build snapshot is, so stale availability never masquerades as "right now".
+  const resDate = new Date(RES_GENERATED_AT);
+  const resAsOf =
+    !live || (!live.now && !live.picked)
+      ? null
+      : resIsLive
+      ? t('court.resLive')
+      : t('court.resAsOf', { date: `${resDate.getMonth() + 1}/${resDate.getDate()}` });
   // "X of Y courts open for booking" when fewer courts are released for this time,
   // plus when the rest open (e.g. "2 more open ~7/2") if we can date it.
   const partialOpen =
@@ -1313,6 +1344,7 @@ function CourtDetail({
                     : '',
                 })}
           </Text>
+          {resAsOf && <Text style={styles.bookedFresh}>{resAsOf}</Text>}
           <Pressable
             style={styles.bookBtn}
             onPress={() => Linking.openURL(booked.url || BOOK_URL)}
@@ -1899,6 +1931,7 @@ const styles = StyleSheet.create({
   facTextMuted: { fontSize: 12, fontWeight: '600', color: '#9aa7b4', fontStyle: 'italic' },
   bookedNote: { fontSize: 12, color: '#7a6a55', marginBottom: 8, lineHeight: 16 },
   bookedNoteFull: { color: '#c0392b', fontWeight: '700' },
+  bookedFresh: { fontSize: 11, color: '#a89a86', marginTop: -4, marginBottom: 8 },
   bookBtn: {
     backgroundColor: '#e8732c',
     borderRadius: 10,

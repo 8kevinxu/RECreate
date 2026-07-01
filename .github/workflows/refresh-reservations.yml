@@ -1,0 +1,46 @@
+name: Refresh reservation availability
+
+# rec.us court bookings change hourly (people book/cancel all day), so the
+# reservable-court occupancy snapshot is re-scraped on its own frequent cadence —
+# separate from the weekly full data refresh — committing only the reservation
+# data when it changes. This keeps the bundled baseline (and the web build, which
+# can't fetch rec.us live due to CORS) reasonably current; native clients also
+# fetch a live reading per court when its card opens (see lib/reservationsLive.js).
+# build:reservations self-gates (keeps last-good data on a bad/short scrape).
+
+on:
+  schedule:
+    - cron: '0 */3 * * *' # every 3 hours
+  workflow_dispatch: {} # allow manual runs from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Re-scrape reservation availability
+        run: npm run build:reservations
+
+      - name: Commit refreshed reservations if they changed
+        run: |
+          FILES="data/reservations.js scripts/reservations-cache.json"
+          if git diff --quiet -- $FILES; then
+            echo "No reservation changes."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add $FILES
+            git commit -m "chore: refresh reservation availability"
+            git push
+          fi
