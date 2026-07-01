@@ -9,6 +9,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { CLASS_CATEGORIES } from '../data/classes';
 import { openDirections } from '../lib/maps';
+import { localizeWhen } from '../lib/datetime';
 import { useI18n } from '../lib/i18n';
 
 const catMeta = (id) => CLASS_CATEGORIES.find((c) => c.id === id) || {};
@@ -68,7 +69,7 @@ export default function ClassDetail({ item, onClose }) {
             </View>
 
             <View style={styles.rows}>
-              <Row icon="🕒" label={t('cls.schedule')} value={c.when} />
+              <Row icon="🕒" label={t('cls.schedule')} value={localizeWhen(c.when)} />
               <Row icon="📍" label={t('cls.location')} value={c.location} />
               <Row icon="💵" label={t('cls.cost')} value={c.cost} />
               <Row icon="🎂" label={t('cls.ages')} value={c.ages} />

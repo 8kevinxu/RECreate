@@ -18,6 +18,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { CLASSES, CLASS_CATEGORIES } from '../data/classes';
 import { haversineMiles, formatDistance } from '../lib/distance';
 import { openDirections } from '../lib/maps';
+import { localizeWhen } from '../lib/datetime';
 import { fetchLiveAvailability } from '../lib/classesLive';
 import { useI18n } from '../lib/i18n';
 import ClassDetail from './ClassDetail';
@@ -258,7 +259,7 @@ export default function ClassesScreen({ userLocation = null }) {
                   </Text>
                 </View>
               </View>
-              <Text style={styles.when}>🕒 {c.when}</Text>
+              <Text style={styles.when}>🕒 {localizeWhen(c.when)}</Text>
               <Text style={styles.loc}>
                 📍 {c.location}
                 {d != null ? ` · ${formatDistance(d)}` : ''}
