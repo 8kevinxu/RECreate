@@ -10,6 +10,7 @@ import {
   Pressable,
   ScrollView,
   StyleSheet,
+  Switch,
   Text,
   TextInput,
   View,
@@ -25,7 +26,12 @@ const CONFIRM_CODE = 'DELETE';
 export default function SettingsScreen({ visible, onClose, onEditProfile }) {
   const insets = useSafeAreaInsets();
   const { t, lang, setLang } = useI18n();
-  const { user, deleteAccount } = useAuth();
+  const { user, deleteAccount, profile, updateProfile } = useAuth();
+
+  // "Share activity with friends" — controls whether check-ins / crowd votes /
+  // signals / runs notify friends (default on). When off, each action prompts.
+  const shareOn = profile?.share_activity !== false;
+  const toggleShare = (v) => updateProfile({ share_activity: v });
 
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [confirm, setConfirm] = useState('');
@@ -109,6 +115,21 @@ export default function SettingsScreen({ visible, onClose, onEditProfile }) {
                   <Text style={styles.rowText}>{t('mod.blockedUsers')}</Text>
                   <Text style={styles.rowChevron}>›</Text>
                 </Pressable>
+              </View>
+
+              <Text style={styles.sectionLabel}>{t('settings.sharing')}</Text>
+              <Text style={styles.hint}>{t('settings.shareActivityHint')}</Text>
+              <View style={styles.rowGroup}>
+                <View style={styles.row}>
+                  <Text style={styles.rowText}>{t('settings.shareActivity')}</Text>
+                  <View style={{ marginLeft: 'auto' }}>
+                    <Switch
+                      value={shareOn}
+                      onValueChange={toggleShare}
+                      trackColor={{ true: '#2f74d6' }}
+                    />
+                  </View>
+                </View>
               </View>
             </>
           )}

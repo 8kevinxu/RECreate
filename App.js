@@ -67,6 +67,7 @@ import { GENERATED_AT as RES_GENERATED_AT } from './data/reservations';
 import { fetchLiveReservations, locationIdFromUrl } from './lib/reservationsLive';
 import { openDirections } from './lib/maps';
 import { logVisit } from './lib/playerCheckins';
+import { resolveNotify } from './lib/activityShare';
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -250,13 +251,17 @@ export default function App() {
       setCrowd(await loadCrowd());
       return { removed: true };
     }
-    const res = await recordCheckIn(courtId, level);
+    // Whether to broadcast this crowd report to friends (share_activity setting,
+    // or a one-off prompt when it's off). Only relevant for signed-in users.
+    const notify = user ? await resolveNotify(profile?.share_activity) : false;
+    const res = await recordCheckIn(courtId, level, notify);
     if (res && res.id) {
       if (mine) await removeCheckIn(courtId, mine.id); // replace previous vote
       persistMyVote(courtId, { id: res.id, level, ts: Date.now() });
       setCrowd(await loadCrowd());
       // A signed-in crowd report also logs a personal visit for the selected
       // sport (deduped server-side window) — feeds the account check-in stats.
+      // Silent: the crowd report above already handled any friend notification.
       if (user) logVisit(user.id, courtId, sport);
       return res;
     }
@@ -264,7 +269,10 @@ export default function App() {
   };
 
   // Dedicated "I played here" check-in for the selected sport (court detail).
-  const handleLogVisit = async (courtId) => logVisit(user?.id, courtId, sport);
+  const handleLogVisit = async (courtId) => {
+    const notify = user ? await resolveNotify(profile?.share_activity) : false;
+    return logVisit(user?.id, courtId, sport, notify);
+  };
 
   // Refresh "open now" status every minute.
   useEffect(() => {

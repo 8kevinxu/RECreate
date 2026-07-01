@@ -61,6 +61,8 @@ new:
 | `008_add_interests.sql` | `profiles.favorite_categories` (class-category interests) |
 | `009_signal_proposed_sport.sql` | `hoop_signal_participants.proposed_sport` (suggest an activity) |
 | `010_rename_to_recreate.sql` | Rebrand: rename `hoop_*` tables → `rec_*` (+ recreate dependent functions) |
+| `011_lock_down_push_functions.sql` | SECURITY: revoke client EXECUTE on `send_push()` / `accepted_friend_ids()` |
+| `012_activity_notifications.sql` | `profiles.share_activity` + per-row `notify` flag; gate signal/run push + add check-in/crowd-vote push |
 
 > Note: migrations 001–009 were authored before the RECreate rebrand and still
 > reference the old `hoop_*` table names. Apply them **in order** — `010` renames

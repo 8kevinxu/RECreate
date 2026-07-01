@@ -13,6 +13,7 @@ create table if not exists public.rec_runs (
   note        text        check (note is null or char_length(note) <= 200),
   visibility  text        not null default 'public' check (visibility in ('public', 'friends')),
   status      text        not null default 'open'   check (status in ('open', 'cancelled')),
+  notify      boolean     not null default false,  -- notify friends on create (gated by the host's share_activity; see 07_push.sql)
   created_at  timestamptz not null default now()
 );
 

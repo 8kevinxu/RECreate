@@ -6,6 +6,7 @@ create table if not exists public.check_ins (
   court_id    text        not null,
   level       text        not null check (level in ('empty', 'moderate', 'packed')),
   ip          text,        -- captured server-side by the rate-limit trigger
+  notify      boolean     not null default false,  -- opt-in "tell my friends I voted" (see 07_push.sql)
   created_at  timestamptz not null default now()
 );
 

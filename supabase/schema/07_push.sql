@@ -96,11 +96,14 @@ $$;
 -- via rpc('send_push', …), bypassing device_tokens RLS (phishing/spam vector).
 revoke all on function public.send_push(uuid[], text, text, jsonb) from public, anon, authenticated;
 
--- A friend posts a "down to hoop" signal → notify their accepted friends.
+-- A friend posts a "down to hoop" signal → notify their accepted friends, but only
+-- when they chose to broadcast it (new.notify, set by the client from the poster's
+-- share_activity setting / per-post prompt).
 create or replace function public.notify_signal()
 returns trigger language plpgsql security definer set search_path = public as $$
 declare host_name text; recipients uuid[];
 begin
+  if not new.notify then return new; end if;
   select display_name into host_name from public.profiles where id = new.user_id;
   select array_agg(fid) into recipients
   from public.accepted_friend_ids(new.user_id) as fid;
@@ -124,6 +127,7 @@ create or replace function public.notify_run()
 returns trigger language plpgsql security definer set search_path = public as $$
 declare host_name text; recipients uuid[]; sport_emoji text;
 begin
+  if not new.notify then return new; end if;
   select display_name into host_name from public.profiles where id = new.host;
   select array_agg(fid) into recipients
   from public.accepted_friend_ids(new.host) as fid;
@@ -233,3 +237,54 @@ end; $$;
 drop trigger if exists friendships_accept_notify on public.friendships;
 create trigger friendships_accept_notify after update on public.friendships
   for each row execute function public.notify_friend_accepted();
+
+-- A friend logs a visit ("I played here") → notify their accepted friends, but only
+-- when they opted to broadcast it (new.notify).
+create or replace function public.notify_player_checkin()
+returns trigger language plpgsql security definer set search_path = public as $$
+declare who text; recipients uuid[];
+begin
+  if not new.notify then return new; end if;
+  select display_name into who from public.profiles where id = new.user_id;
+  select array_agg(fid) into recipients
+  from public.accepted_friend_ids(new.user_id) as fid;
+  perform public.send_push(
+    recipients,
+    coalesce(who, 'A friend') || ' checked in 📍',
+    'Tap to see where they''re playing',
+    jsonb_build_object('type', 'checkin', 'courtId', new.court_id)
+  );
+  return new;
+end; $$;
+drop trigger if exists player_check_ins_notify on public.player_check_ins;
+create trigger player_check_ins_notify after insert on public.player_check_ins
+  for each row execute function public.notify_player_checkin();
+
+-- A friend reports how busy a court is → notify their accepted friends. Crowd
+-- check-ins are otherwise anonymous, so we take the voter from the JWT (auth.uid())
+-- — never a client-supplied id — and only send when they opted in (new.notify) and
+-- are actually signed in.
+create or replace function public.notify_crowd()
+returns trigger language plpgsql security definer set search_path = public as $$
+declare voter uuid; who text; recipients uuid[]; level_word text;
+begin
+  voter := auth.uid();
+  if not new.notify or voter is null then return new; end if;
+  select display_name into who from public.profiles where id = voter;
+  select array_agg(fid) into recipients
+  from public.accepted_friend_ids(voter) as fid;
+  level_word := case new.level
+    when 'empty'    then 'wide open 🟢'
+    when 'moderate' then 'moderately busy 🟡'
+    else                 'packed 🔴' end;
+  perform public.send_push(
+    recipients,
+    coalesce(who, 'A friend') || ' shared a crowd update 👀',
+    'A court looks ' || level_word || ' — tap to see',
+    jsonb_build_object('type', 'crowd', 'courtId', new.court_id)
+  );
+  return new;
+end; $$;
+drop trigger if exists check_ins_notify on public.check_ins;
+create trigger check_ins_notify after insert on public.check_ins
+  for each row execute function public.notify_crowd();

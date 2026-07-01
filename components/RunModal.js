@@ -19,6 +19,8 @@ import { dropinWeekdays, openGymSlots } from '../lib/hours';
 import { SPORTS } from '../lib/sports';
 import { haversineMiles, formatDistance } from '../lib/distance';
 import { useI18n, sportLabel } from '../lib/i18n';
+import { useAuth } from '../lib/auth';
+import { resolveNotify } from '../lib/activityShare';
 
 const minutesOf = (d) => d.getHours() * 60 + d.getMinutes();
 // Does this court run the sport's open gym at the exact picked day+time? Slots are
@@ -36,6 +38,7 @@ export default function RunModal({
   onCreated,
 }) {
   const { t } = useI18n();
+  const { profile } = useAuth();
   // Seeded from the map's current sport, but switchable here so you can plan a
   // run for either sport regardless of what the map is showing.
   const [sport, setSport] = useState(sportProp);
@@ -190,6 +193,7 @@ export default function RunModal({
       setError(t('run.errTime'));
       return;
     }
+    const notify = await resolveNotify(profile?.share_activity);
     setBusy(true);
     setError(null);
     const { error } = await createRun({
@@ -198,6 +202,7 @@ export default function RunModal({
       sport,
       note,
       visibility,
+      notify,
     });
     setBusy(false);
     if (error) {

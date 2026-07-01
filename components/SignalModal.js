@@ -15,12 +15,15 @@ import { createSignal } from '../lib/signals';
 import { startOfDay, dayChipLabel, fmtClock } from '../lib/datetime';
 import { SPORTS, ANY_SPORT, sportMeta } from '../lib/sports';
 import { sportLabel, useI18n } from '../lib/i18n';
+import { useAuth } from '../lib/auth';
+import { resolveNotify } from '../lib/activityShare';
 
 // "Anything" (just down for rec) first, then the specific sports.
 const SPORT_OPTS = [{ id: ANY_SPORT, emoji: sportMeta(ANY_SPORT).emoji }, ...SPORTS];
 
 export default function SignalModal({ visible, onClose, onPosted }) {
   const { t } = useI18n();
+  const { profile } = useAuth();
   const [mode, setMode] = useState('now'); // 'now' | 'time'
   const [picked, setPicked] = useState(null);
   const [sport, setSport] = useState(ANY_SPORT);
@@ -64,12 +67,14 @@ export default function SignalModal({ visible, onClose, onPosted }) {
   };
 
   const submit = async () => {
+    const notify = await resolveNotify(profile?.share_activity);
     setBusy(true);
     setError(null);
     const { error } = await createSignal({
       startsAt: mode === 'now' ? null : picked,
       sport,
       note,
+      notify,
     });
     setBusy(false);
     if (error) {

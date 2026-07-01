@@ -12,6 +12,7 @@ create table if not exists public.rec_signals (
   note             text        check (note is null or char_length(note) <= 200),
   planned_at       timestamptz,                                   -- host-confirmed time (null until confirmed)
   planned_court_id text,                                          -- host-confirmed court (matches data/courts.js ids)
+  notify           boolean     not null default false,            -- notify friends on post (gated by share_activity; see 07_push.sql)
   created_at       timestamptz not null default now(),
   expires_at       timestamptz not null                          -- set by the client
 );

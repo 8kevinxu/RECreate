@@ -14,6 +14,7 @@ create table if not exists public.profiles (
   favorite_sports     text[], -- sport ids from lib/sports.js
   favorite_categories text[], -- class-category ids from data/classes.js (interests)
   friend_code     text        unique,  -- short shareable code, set by trigger below
+  share_activity  boolean     not null default true,  -- broadcast my check-ins/signals/runs/votes to friends (07_push.sql)
   created_at      timestamptz not null default now()
 );
 
@@ -111,6 +112,7 @@ create table if not exists public.player_check_ins (
   user_id    uuid        not null references public.profiles (id) on delete cascade,
   court_id   text        not null,
   sport      text        not null,
+  notify     boolean     not null default false,  -- opt-in "tell my friends I checked in" (07_push.sql)
   created_at timestamptz not null default now()
 );
 
