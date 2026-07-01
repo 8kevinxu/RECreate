@@ -201,6 +201,16 @@ function toClass(item, category, coords) {
   const unlimited = /unlimited/i.test(openingsRaw);
   const parsed = parseInt(openingsRaw, 10);
   const spots = unlimited ? null : Number.isFinite(parsed) ? parsed : null;
+  // Some drop-in programs (bingo, mah-jong, ballroom, tai chi…) can't be registered
+  // online — ActiveNet shows a "View Registration Info" fee placeholder instead of a
+  // price. These are free community walk-ins: you just show up at the start time. We
+  // flag them (noOnlineReg) and price them Free rather than the unhelpful "See site".
+  const feeLabel = (item.fee && item.fee.label) || '';
+  const noOnlineReg = /registration info/i.test(feeLabel);
+  // Short catalog blurb ActiveNet returns inline on the list item (same text as the
+  // detail page's description). Collapse the runs of whitespace it embeds; absent for
+  // some classes, in which case the app shows a "No description available" fallback.
+  const desc = String(item.desc || '').replace(/\s+/g, ' ').trim();
   return {
     id: `anc-${item.id}`,
     name,
@@ -208,11 +218,13 @@ function toClass(item, category, coords) {
     location,
     when,
     dropIn: /drop-?in/i.test(name) || unlimited,
-    cost: cleanFee(item.fee),
+    cost: noOnlineReg ? 'Free' : cleanFee(item.fee),
     ages: dehtml(item.age_description || '').replace(/,\s*$/, '') || 'All ages',
     minAge,
     spots, // open spots remaining (null when unlimited/unknown)
     unlimited, // true = no registration cap
+    ...(noOnlineReg ? { noOnlineReg: true } : {}), // free walk-in, no online sign-up
+    ...(desc ? { desc } : {}),
     ...(c ? { lat: c.lat, lng: c.lng } : {}),
     url: item.detail_url || `${BASE}/activity/search?locale=en-US`,
   };
@@ -349,11 +361,12 @@ function render(classes, generatedAt) {
 //
 // SF Rec & Park drop-in classes & programs (non-court), from their ActiveNet catalog.
 // Each class: { id, name, category, location, when, dropIn, cost, ages, minAge, spots,
-// unlimited, lat?, lng?, url, name_zh?, name_es? }. lat/lng are present when the rec
-// center matched our court data (for distance filtering); name_zh/name_es are bundled
-// translations of the title (absent if untranslated); spots is the open-spot count from
-// ActiveNet openings (0 = full, null = unknown), unlimited = no-cap drop-in;
-// minAge drives the age filters.
+// unlimited, noOnlineReg?, desc?, lat?, lng?, url, name_zh?, name_es? }. lat/lng are
+// present when the rec center matched our court data (for distance filtering);
+// name_zh/name_es are bundled translations of the title (absent if untranslated);
+// spots is the open-spot count from ActiveNet openings (0 = full, null = unknown),
+// unlimited = no-cap drop-in; noOnlineReg = free walk-in with no online registration;
+// desc is the catalog blurb (absent when the source has none); minAge drives the age filters.
 
 export const CLASS_CATEGORIES = ${JSON.stringify(cats, null, 2)
     .replace(/\n/g, '\n')};

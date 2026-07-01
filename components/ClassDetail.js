@@ -1,8 +1,8 @@
 // Extended detail sheet for a single class/activity. Opened by tapping a class
 // card on the Classes tab or a class recommendation in the Social tab. Shows the
-// full structured info we have (schedule, location, cost, ages, availability) and
-// links out to ActiveNet to register. There is no long-form description in the
-// source data, so "more info" here means the details laid out clearly in one place.
+// full structured info we have (schedule, location, cost, ages, availability, the
+// catalog blurb) and links out to ActiveNet to register. Free walk-in drop-ins that
+// can't be registered online get a notice explaining to just show up at the start time.
 import React from 'react';
 import { Linking, Modal, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
@@ -16,7 +16,7 @@ const catMeta = (id) => CLASS_CATEGORIES.find((c) => c.id === id) || {};
 
 // Availability line, mirroring the Classes-tab logic (qualitative when uncapped).
 function spaceText(t, c) {
-  if (c.unlimited) return t('classes.lotsSpots');
+  if (c.unlimited) return t('classes.unlimited');
   const n = c.spots;
   if (n == null) return c.dropIn ? t('classes.lotsSpots') : null;
   if (n <= 0) return t('classes.full');
@@ -74,7 +74,15 @@ export default function ClassDetail({ item, onClose }) {
               <Row icon="💵" label={t('cls.cost')} value={c.cost} />
               <Row icon="🎂" label={t('cls.ages')} value={c.ages} />
               <Row icon="🎟️" label={t('cls.availability')} value={spots} />
+              <Row icon="📝" label={t('cls.about')} value={c.desc || t('cls.noDesc')} />
             </View>
+
+            {c.noOnlineReg && (
+              <View style={styles.notice}>
+                <Text style={styles.noticeIcon}>ℹ️</Text>
+                <Text style={styles.noticeText}>{t('cls.noOnlineReg')}</Text>
+              </View>
+            )}
 
             {c.lat != null && (
               <Pressable style={styles.dirBtn} onPress={() => openDirections(c.lat, c.lng, c.location)}>
@@ -85,7 +93,7 @@ export default function ClassDetail({ item, onClose }) {
 
             {!!c.url && (
               <Pressable style={styles.cta} onPress={() => Linking.openURL(c.url).catch(() => {})}>
-                <Text style={styles.ctaText}>{t('cls.register')}</Text>
+                <Text style={styles.ctaText}>{c.noOnlineReg ? t('cls.viewOnSite') : t('cls.register')}</Text>
                 <Ionicons name="open-outline" size={16} color="#fff" />
               </Pressable>
             )}
@@ -137,6 +145,18 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
   rowValue: { fontSize: 15, color: '#1d2b3a', fontWeight: '600', marginTop: 2 },
+  notice: {
+    flexDirection: 'row',
+    gap: 8,
+    backgroundColor: '#fef6e6',
+    borderWidth: 1,
+    borderColor: '#f2d999',
+    borderRadius: 12,
+    padding: 12,
+    marginBottom: 14,
+  },
+  noticeIcon: { fontSize: 15, marginTop: 1 },
+  noticeText: { flex: 1, fontSize: 13, color: '#7a5a12', fontWeight: '600', lineHeight: 18 },
   dirBtn: {
     flexDirection: 'row',
     alignItems: 'center',

@@ -51,7 +51,7 @@ function priceTone(cost) {
 // qualitative when it's a lot or a no-cap drop-in. Returns null when unknown.
 // Returns an i18n key (+ count) so the caller renders it in the current language.
 function spaceInfo(c) {
-  if (c.unlimited) return { key: 'classes.lotsSpots', tone: 'good' };
+  if (c.unlimited) return { key: 'classes.unlimited', tone: 'good' };
   const n = c.spots;
   if (n == null) return c.dropIn ? { key: 'classes.lotsSpots', tone: 'good' } : null;
   if (n <= 0) return { key: 'classes.full', tone: 'bad' };
@@ -122,7 +122,13 @@ export default function ClassesScreen({ userLocation = null }) {
 
   const list = useMemo(() => {
     const q = query.trim().toLowerCase();
+    // ActiveNet delists cancelled/ended classes, so a class missing from a *healthy*
+    // live catalog fetch is no longer offered — hide it (real-time on native; web
+    // falls back to the baseline). The size guard avoids mass-hiding on a thin fetch.
+    const liveComplete =
+      liveStatus === 'ok' && live && Object.keys(live).length >= CLASSES.length * 0.8;
     return CLASSES.filter((c) => {
+      if (liveComplete && !live[c.id]) return false;
       if (cat !== 'all' && c.category !== cat) return false;
       if (
         q &&
@@ -148,7 +154,7 @@ export default function ClassesScreen({ userLocation = null }) {
       return true;
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cat, query, age, radius, freeOnly, hasSpots, live, userLocation, lang]);
+  }, [cat, query, age, radius, freeOnly, hasSpots, live, liveStatus, userLocation, lang]);
 
   const clearAll = () => {
     setAge(null);
