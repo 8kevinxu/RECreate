@@ -168,6 +168,11 @@ export default function ClassesScreen({ userLocation = null }) {
       <Text style={styles.title}>{t('classes.title')}</Text>
       <Text style={styles.sub}>{t('classes.sub')}</Text>
 
+      <View style={styles.infoBullet}>
+        <Text style={styles.infoBulletIcon}>ℹ️</Text>
+        <Text style={styles.infoBulletText}>{t('classes.activeNetInfo')}</Text>
+      </View>
+
       <View style={styles.search}>
         <Ionicons name="search" size={16} color="#8a99a8" />
         <TextInput
@@ -380,7 +385,18 @@ const spaceStyles = {
 const styles = StyleSheet.create({
   page: { flex: 1, backgroundColor: '#eef1f5', paddingHorizontal: 16 },
   title: { fontSize: 24, fontWeight: '800', color: '#0d1b2a' },
-  sub: { fontSize: 13, color: '#6b7a8a', marginTop: 2, marginBottom: 10 },
+  sub: { fontSize: 13, color: '#6b7a8a', marginTop: 2, marginBottom: 8 },
+  infoBullet: {
+    flexDirection: 'row',
+    gap: 6,
+    backgroundColor: '#eef4fb',
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    marginBottom: 10,
+  },
+  infoBulletIcon: { fontSize: 12, marginTop: 1 },
+  infoBulletText: { flex: 1, fontSize: 12, color: '#46586a', fontWeight: '600', lineHeight: 16 },
 
   search: {
     flexDirection: 'row',
