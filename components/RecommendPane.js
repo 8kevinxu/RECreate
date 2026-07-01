@@ -5,7 +5,7 @@
 // Openings"). Tapping a game opens that court; a class opens its registration page.
 // Hidden when there's nothing to recommend. Data comes from lib/recommend.
 import React, { useEffect, useMemo, useState } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { PanResponder, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { buildRecommendations } from '../lib/recommend';
 import { CLASS_CATEGORIES, CLASSES } from '../data/classes';
@@ -15,7 +15,8 @@ import { useI18n, sportLabel } from '../lib/i18n';
 import ClassDetail from './ClassDetail';
 
 const CAT_EMOJI = Object.fromEntries(CLASS_CATEGORIES.map((c) => [c.id, c.emoji]));
-const ROTATE_MS = 4500;
+const ROTATE_MS = 9000; // auto-advance cadence (slow — users can also swipe)
+const SWIPE_MIN = 40; // horizontal px to count a swipe as prev/next
 
 export default function RecommendPane({
   courts = [],
@@ -30,14 +31,39 @@ export default function RecommendPane({
     [courts, userLocation, sports.join(','), categories.join(',')]
   );
   const [idx, setIdx] = useState(0);
+  const [nudge, setNudge] = useState(0); // bumped on manual swipe to reset the timer
   const [detail, setDetail] = useState(null); // full class object when a class is tapped
+  const len = recs.length;
 
-  useEffect(() => setIdx(0), [recs.length]);
+  // Advance by ±1 (wrapping) and restart the auto-rotate clock so a manual swipe
+  // gets a full dwell before the next auto-advance.
+  const go = (dir) => {
+    if (len < 2) return;
+    setIdx((i) => (i + dir + len) % len);
+    setNudge((n) => n + 1);
+  };
+
+  useEffect(() => setIdx(0), [len]);
   useEffect(() => {
-    if (recs.length < 2) return undefined;
-    const id = setInterval(() => setIdx((i) => (i + 1) % recs.length), ROTATE_MS);
+    if (len < 2) return undefined;
+    const id = setInterval(() => setIdx((i) => (i + 1) % len), ROTATE_MS);
     return () => clearInterval(id);
-  }, [recs.length]);
+  }, [len, nudge]);
+
+  // Horizontal swipe → prev/next. Recreated when the count changes so `go` closes
+  // over the current length; a near-stationary touch stays a tap (Pressable onPress).
+  const panResponder = useMemo(
+    () =>
+      PanResponder.create({
+        onMoveShouldSetPanResponder: (_, g) =>
+          Math.abs(g.dx) > 10 && Math.abs(g.dx) > Math.abs(g.dy) * 1.5,
+        onPanResponderRelease: (_, g) => {
+          if (g.dx <= -SWIPE_MIN) go(1);
+          else if (g.dx >= SWIPE_MIN) go(-1);
+        },
+      }),
+    [len]
+  );
 
   if (!recs.length) return null;
   const r = recs[Math.min(idx, recs.length - 1)];
@@ -68,6 +94,7 @@ export default function RecommendPane({
 
   return (
     <>
+    <View {...panResponder.panHandlers}>
     <Pressable style={styles.card} onPress={onPress}>
       <View style={styles.headRow}>
         <Text style={styles.head}>{t('rec.title')}</Text>
@@ -95,6 +122,7 @@ export default function RecommendPane({
         <Ionicons name="chevron-forward" size={18} color="#b8c6d4" />
       </View>
     </Pressable>
+    </View>
     {detail && <ClassDetail item={detail} onClose={() => setDetail(null)} />}
     </>
   );
