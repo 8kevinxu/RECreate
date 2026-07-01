@@ -17,6 +17,24 @@ import ClassDetail from './ClassDetail';
 const CAT_EMOJI = Object.fromEntries(CLASS_CATEGORIES.map((c) => [c.id, c.emoji]));
 const ROTATE_MS = 9000; // auto-advance cadence (slow — users can also swipe)
 const SWIPE_MIN = 40; // horizontal px to count a swipe as prev/next
+const MAX_DOTS = 7; // Instagram-style: cap visible dots, shrinking the edges
+
+// Windowed pagination dots. With few recs, show one dot each; with many, slide a
+// fixed window over them and shrink the edge dots (like Instagram's carousel) so the
+// row stays a constant width. Returns [{ i, tier }] where tier scales the dot size.
+function dotList(len, active) {
+  if (len <= MAX_DOTS) return Array.from({ length: len }, (_, i) => ({ i, tier: 'full' }));
+  const start = Math.max(0, Math.min(active - Math.floor(MAX_DOTS / 2), len - MAX_DOTS));
+  return Array.from({ length: MAX_DOTS }, (_, k) => {
+    const i = start + k;
+    const moreLeft = start > 0;
+    const moreRight = start + MAX_DOTS < len;
+    let tier = 'full';
+    if ((k === 0 && moreLeft) || (k === MAX_DOTS - 1 && moreRight)) tier = 'sm';
+    else if ((k === 1 && moreLeft) || (k === MAX_DOTS - 2 && moreRight)) tier = 'md';
+    return { i, tier };
+  });
+}
 
 export default function RecommendPane({
   courts = [],
@@ -98,11 +116,6 @@ export default function RecommendPane({
     <Pressable style={styles.card} onPress={onPress}>
       <View style={styles.headRow}>
         <Text style={styles.head}>{t('rec.title')}</Text>
-        {recs.length > 1 && (
-          <Text style={styles.count}>
-            {(idx % recs.length) + 1}/{recs.length}
-          </Text>
-        )}
       </View>
       <View style={styles.row}>
         <Text style={styles.emoji}>{emoji}</Text>
@@ -121,6 +134,20 @@ export default function RecommendPane({
         </View>
         <Ionicons name="chevron-forward" size={18} color="#b8c6d4" />
       </View>
+      {len > 1 && (
+        <View style={styles.dots}>
+          {dotList(len, idx % len).map(({ i, tier }) => (
+            <View
+              key={i}
+              style={[
+                styles.dot,
+                styles['dot_' + tier],
+                i === idx % len ? styles.dotActive : styles.dotIdle,
+              ]}
+            />
+          ))}
+        </View>
+      )}
     </Pressable>
     </View>
     {detail && <ClassDetail item={detail} onClose={() => setDetail(null)} />}
@@ -131,14 +158,14 @@ export default function RecommendPane({
 const styles = StyleSheet.create({
   card: {
     backgroundColor: '#0d1b2a',
-    borderRadius: 16,
-    paddingHorizontal: 16,
-    paddingTop: 12,
+    borderRadius: 18,
+    paddingHorizontal: 18,
+    paddingTop: 15,
     paddingBottom: 14,
     marginHorizontal: 18,
     marginBottom: 10,
   },
-  headRow: { flexDirection: 'row', alignItems: 'center', marginBottom: 8 },
+  headRow: { flexDirection: 'row', alignItems: 'center', marginBottom: 11 },
   head: {
     fontSize: 11,
     fontWeight: '800',
@@ -146,17 +173,29 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     letterSpacing: 0.6,
   },
-  count: { marginLeft: 'auto', fontSize: 11, fontWeight: '700', color: '#5b6b7b' },
-  row: { flexDirection: 'row', alignItems: 'center', gap: 12 },
-  emoji: { fontSize: 26 },
+  row: { flexDirection: 'row', alignItems: 'center', gap: 14 },
+  emoji: { fontSize: 32 },
   textCol: { flex: 1 },
-  title: { fontSize: 15, fontWeight: '800', color: '#fff' },
-  sub: { fontSize: 12, color: '#9fb0c2', marginTop: 1 },
+  title: { fontSize: 17, fontWeight: '800', color: '#fff' },
+  sub: { fontSize: 13, color: '#9fb0c2', marginTop: 2 },
   chip: {
     backgroundColor: '#1f9d55',
     borderRadius: 12,
-    paddingHorizontal: 10,
-    paddingVertical: 4,
+    paddingHorizontal: 11,
+    paddingVertical: 5,
   },
   chipText: { color: '#fff', fontSize: 12, fontWeight: '800' },
+  dots: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 5,
+    marginTop: 13,
+  },
+  dot: { borderRadius: 4 },
+  dot_full: { width: 6, height: 6, borderRadius: 3 },
+  dot_md: { width: 5, height: 5, borderRadius: 2.5 },
+  dot_sm: { width: 4, height: 4, borderRadius: 2 },
+  dotActive: { backgroundColor: '#e8eef6' },
+  dotIdle: { backgroundColor: '#3a4b5e' },
 });
