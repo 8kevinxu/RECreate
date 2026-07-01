@@ -169,7 +169,18 @@ const html = `
       '<path d="M84,18 C58,34 58,66 84,82"/>' +
       '</g></svg>';
 
-    var SPORT_SVG = { basketball: BBALL_SVG, volleyball: VBALL_SVG, pingpong: PPONG_SVG, pickleball: PICKLE_SVG, tennis: TENNIS_SVG };
+    // A steel dumbbell — the rec-center weight room (a facility view, not a sport).
+    var WEIGHT_SVG =
+      '<svg viewBox="0 0 100 100" width="100%" height="100%">' +
+      '<rect x="36" y="44" width="28" height="12" rx="2" fill="#9aa4af" stroke="#2b3138" stroke-width="3"/>' +
+      '<g fill="#5b6570" stroke="#2b3138" stroke-width="3" stroke-linejoin="round">' +
+      '<rect x="12" y="28" width="15" height="44" rx="4"/>' +
+      '<rect x="28" y="37" width="11" height="26" rx="3"/>' +
+      '<rect x="61" y="37" width="11" height="26" rx="3"/>' +
+      '<rect x="73" y="28" width="15" height="44" rx="4"/>' +
+      '</g></svg>';
+
+    var SPORT_SVG = { basketball: BBALL_SVG, volleyball: VBALL_SVG, pingpong: PPONG_SVG, pickleball: PICKLE_SVG, tennis: TENNIS_SVG, weightroom: WEIGHT_SVG };
     var currentSport = 'basketball';
     // A court may carry its own sport (the Favorites view glyphs each pin by the
     // sport it was favorited for); otherwise fall back to the map-wide sport.
