@@ -120,7 +120,7 @@ export default function RecommendPane({
       <View style={styles.row}>
         <Text style={styles.emoji}>{emoji}</Text>
         <View style={styles.textCol}>
-          <Text style={styles.title} numberOfLines={1}>
+          <Text style={styles.title} numberOfLines={2}>
             {title}
           </Text>
           {!!sub && (
@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'center', gap: 14 },
   emoji: { fontSize: 32 },
   textCol: { flex: 1 },
-  title: { fontSize: 17, fontWeight: '800', color: '#fff' },
+  title: { fontSize: 17, fontWeight: '800', color: '#fff', lineHeight: 21 },
   sub: { fontSize: 13, color: '#9fb0c2', marginTop: 2 },
   chip: {
     backgroundColor: '#1f9d55',
