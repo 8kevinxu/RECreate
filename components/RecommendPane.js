@@ -12,6 +12,8 @@ import { CLASS_CATEGORIES, CLASSES } from '../data/classes';
 import { sportMeta } from '../lib/sports';
 import { fmtClock } from '../lib/datetime';
 import { useI18n, sportLabel } from '../lib/i18n';
+import { useAuth } from '../lib/auth';
+import { loadMyStats } from '../lib/playerCheckins';
 import ClassDetail from './ClassDetail';
 
 const CAT_EMOJI = Object.fromEntries(CLASS_CATEGORIES.map((c) => [c.id, c.emoji]));
@@ -44,9 +46,41 @@ export default function RecommendPane({
   onPickCourt,
 }) {
   const { t, lang } = useI18n();
+  const { user } = useAuth();
+  const hasInterests = sports.length > 0 || categories.length > 0;
+
+  // When the user has set no interests, fall back to their check-in history so
+  // recommendations reflect what they actually play (and where). Signed-out / no
+  // history → stays null, and buildRecommendations recommends nearby.
+  const [history, setHistory] = useState(null);
+  useEffect(() => {
+    let alive = true;
+    if (hasInterests || !user?.id) {
+      setHistory(null);
+      return () => {
+        alive = false;
+      };
+    }
+    (async () => {
+      const stats = await loadMyStats(user.id);
+      if (!alive) return;
+      if (stats && stats.total > 0) {
+        const bySport = Object.entries(stats.perSport)
+          .sort((a, b) => b[1] - a[1])
+          .map(([s]) => s);
+        setHistory({ sports: bySport, courtIds: [stats.favoriteCourtId].filter(Boolean) });
+      } else {
+        setHistory(null);
+      }
+    })();
+    return () => {
+      alive = false;
+    };
+  }, [user?.id, hasInterests]);
+
   const recs = useMemo(
-    () => buildRecommendations({ courts, userLocation, sports, categories }),
-    [courts, userLocation, sports.join(','), categories.join(',')]
+    () => buildRecommendations({ courts, userLocation, sports, categories, history }),
+    [courts, userLocation, sports.join(','), categories.join(','), history]
   );
   const [idx, setIdx] = useState(0);
   const [nudge, setNudge] = useState(0); // bumped on manual swipe to reset the timer
