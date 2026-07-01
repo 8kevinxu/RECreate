@@ -42,6 +42,12 @@ as $$
     and (f.requester = uid or f.addressee = uid);
 $$;
 
+-- SECURITY: this is an internal helper only the SECURITY DEFINER notify_* triggers
+-- call (as the owner). Revoke direct client access — otherwise any anon/authed
+-- caller could enumerate ANY user's friend list via rpc('accepted_friend_ids', …),
+-- bypassing the friendships RLS. (Trigger calls are unaffected: they run as owner.)
+revoke all on function public.accepted_friend_ids(uuid) from public, anon, authenticated;
+
 -- Fire-and-forget Expo push to a set of users (all their registered devices).
 -- Silently does nothing when there are no recipients or no tokens.
 create or replace function public.send_push(
@@ -83,6 +89,12 @@ begin
   );
 end;
 $$;
+
+-- SECURITY: server-side only. The notify_* triggers (SECURITY DEFINER, owned by
+-- the same role) call this internally as the owner. Revoke direct client access —
+-- otherwise any anon/authed caller could push arbitrary notifications to any user
+-- via rpc('send_push', …), bypassing device_tokens RLS (phishing/spam vector).
+revoke all on function public.send_push(uuid[], text, text, jsonb) from public, anon, authenticated;
 
 -- A friend posts a "down to hoop" signal → notify their accepted friends.
 create or replace function public.notify_signal()
