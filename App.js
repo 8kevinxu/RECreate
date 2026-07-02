@@ -689,6 +689,9 @@ export default function App() {
 
   const handleSelect = (id) => {
     setSelectedId(id);
+    // Close the sport dial / filter bar so they don't sit under the court card.
+    setSportPickerOpen(false);
+    setControlsVisible(false);
     const court = courts.find((c) => c.id === id);
     if (court) mapRef.current?.focusCourt(court);
   };
@@ -713,37 +716,49 @@ export default function App() {
             </Text>
           </View>
         )}
-        {/* Sport FAB: tap to reveal all sports as icons; pick one to switch. */}
-        <Pressable
-          style={[
-            styles.fab,
-            styles.filterFab,
-            { top: insets.top + 8 },
-            sportPickerOpen && styles.filterFabActive,
-          ]}
-          onPress={() => {
-            setSportPickerOpen((v) => !v);
-            setControlsVisible(false);
-          }}
-        >
-          <Text style={styles.filterFabSport}>{favoritesMode ? '⭐' : sportMeta(sport).emoji}</Text>
-        </Pressable>
+        {/* Sport + filter FABs — hidden while a court card is open so they don't
+            overlap the card's top-right controls. */}
+        {!selected && (
+          <>
+            {/* Sport FAB: tap to reveal all sports as icons; pick one to switch. */}
+            <Pressable
+              style={[
+                styles.fab,
+                styles.filterFab,
+                { top: insets.top + 8 },
+                sportPickerOpen && styles.filterFabActive,
+              ]}
+              onPress={() => {
+                setSportPickerOpen((v) => !v);
+                setControlsVisible(false);
+              }}
+            >
+              <Text style={styles.filterFabSport}>
+                {favoritesMode ? '⭐' : sportMeta(sport).emoji}
+              </Text>
+            </Pressable>
 
-        {/* Filter FAB: the open-now / time / place / amenity controls bar. */}
-        <Pressable
-          style={[
-            styles.fab,
-            styles.filterFab2,
-            { top: insets.top + 8 },
-            controlsVisible && styles.filterFabActive,
-          ]}
-          onPress={() => {
-            setControlsVisible((v) => !v);
-            setSportPickerOpen(false);
-          }}
-        >
-          <Ionicons name="options-outline" size={21} color={controlsVisible ? '#fff' : '#2f74d6'} />
-        </Pressable>
+            {/* Filter FAB: the open-now / time / place / amenity controls bar. */}
+            <Pressable
+              style={[
+                styles.fab,
+                styles.filterFab2,
+                { top: insets.top + 8 },
+                controlsVisible && styles.filterFabActive,
+              ]}
+              onPress={() => {
+                setControlsVisible((v) => !v);
+                setSportPickerOpen(false);
+              }}
+            >
+              <Ionicons
+                name="options-outline"
+                size={21}
+                color={controlsVisible ? '#fff' : '#2f74d6'}
+              />
+            </Pressable>
+          </>
+        )}
 
         {sportPickerOpen && (
           <View style={[styles.sportDial, { top: insets.top + 8 + 52 }]}>
@@ -1998,7 +2013,7 @@ const styles = StyleSheet.create({
     left: 12,
     right: 12,
     bottom: 16,
-    maxHeight: Dimensions.get('window').height * 0.82,
+    maxHeight: Dimensions.get('window').height * 0.72,
     backgroundColor: '#fff',
     borderRadius: 16,
     padding: 16,
