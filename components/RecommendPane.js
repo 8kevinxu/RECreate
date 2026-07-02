@@ -17,7 +17,7 @@ import { loadMyStats } from '../lib/playerCheckins';
 import ClassDetail from './ClassDetail';
 
 const CAT_EMOJI = Object.fromEntries(CLASS_CATEGORIES.map((c) => [c.id, c.emoji]));
-const ROTATE_MS = 9000; // auto-advance cadence (slow — users can also swipe)
+const ROTATE_MS = 5000; // auto-advance cadence (users can also swipe)
 const SWIPE_MIN = 40; // horizontal px to count a swipe as prev/next
 const MAX_DOTS = 7; // Instagram-style: cap visible dots, shrinking the edges
 
@@ -193,14 +193,14 @@ export default function RecommendPane({
 const styles = StyleSheet.create({
   card: {
     backgroundColor: '#0d1b2a',
-    borderRadius: 18,
-    paddingHorizontal: 18,
-    paddingTop: 15,
-    paddingBottom: 14,
-    marginHorizontal: 18,
+    borderRadius: 20,
+    paddingHorizontal: 20,
+    paddingTop: 18,
+    paddingBottom: 17,
+    marginHorizontal: 16,
     marginBottom: 10,
   },
-  headRow: { flexDirection: 'row', alignItems: 'center', marginBottom: 11 },
+  headRow: { flexDirection: 'row', alignItems: 'center', marginBottom: 13 },
   head: {
     fontSize: 11,
     fontWeight: '800',
@@ -208,11 +208,11 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     letterSpacing: 0.6,
   },
-  row: { flexDirection: 'row', alignItems: 'center', gap: 14 },
-  emoji: { fontSize: 32 },
+  row: { flexDirection: 'row', alignItems: 'center', gap: 15 },
+  emoji: { fontSize: 36 },
   textCol: { flex: 1 },
-  title: { fontSize: 17, fontWeight: '800', color: '#fff', lineHeight: 21 },
-  sub: { fontSize: 13, color: '#9fb0c2', marginTop: 2 },
+  title: { fontSize: 18, fontWeight: '800', color: '#fff', lineHeight: 23 },
+  sub: { fontSize: 13.5, color: '#9fb0c2', marginTop: 3 },
   chip: {
     backgroundColor: '#1f9d55',
     borderRadius: 12,
