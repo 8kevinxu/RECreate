@@ -97,11 +97,27 @@ export default function ClassesScreen({ userLocation = null }) {
   // directly off the scroll offset (finger-tracked) rather than toggled with
   // start/stop animations, so the expand-back is smooth instead of choppy.
   const scrollY = useRef(new Animated.Value(0)).current;
+  const scrollRef = useRef(null);
+  const lastY = useRef(0);
   const [headerH, setHeaderH] = useState(0);
+  const [showTop, setShowTop] = useState(false); // "back to top" arrow visibility
   const onListScroll = Animated.event(
     [{ nativeEvent: { contentOffset: { y: scrollY } } }],
-    { useNativeDriver: false } // animating layout height can't use the native driver
+    {
+      useNativeDriver: false, // animating layout height can't use the native driver
+      // Show the back-to-top arrow when the user swipes UP while collapsed (scrolled
+      // past the header); hide it when scrolling down or back near the top.
+      listener: (e) => {
+        const y = e.nativeEvent.contentOffset.y;
+        const dy = y - lastY.current;
+        lastY.current = y;
+        if (y < 12) setShowTop(false);
+        else if (dy < -4 && y > headerH) setShowTop(true);
+        else if (dy > 4) setShowTop(false);
+      },
+    }
   );
+  const scrollToTop = () => scrollRef.current?.scrollTo({ y: 0, animated: true });
   const collapsibleStyle = headerH
     ? {
         overflow: 'hidden',
@@ -119,6 +135,16 @@ export default function ClassesScreen({ userLocation = null }) {
         }),
       }
     : { overflow: 'hidden' };
+
+  // Fade/slide the back-to-top arrow in and out.
+  const topBtnAnim = useRef(new Animated.Value(0)).current;
+  useEffect(() => {
+    Animated.timing(topBtnAnim, {
+      toValue: showTop ? 1 : 0,
+      duration: 180,
+      useNativeDriver: true,
+    }).start();
+  }, [showTop]);
 
   const refreshLive = async (isPull) => {
     if (isPull) setRefreshing(true);
@@ -281,6 +307,7 @@ export default function ClassesScreen({ userLocation = null }) {
       </View>
 
       <ScrollView
+        ref={scrollRef}
         style={styles.list}
         contentContainerStyle={{ paddingBottom: insets.bottom + 96 }}
         showsVerticalScrollIndicator={false}
@@ -343,6 +370,24 @@ export default function ClassesScreen({ userLocation = null }) {
 
         <Text style={styles.disclaimer}>{t('classes.disclaimer')}</Text>
       </ScrollView>
+
+      <Animated.View
+        pointerEvents={showTop ? 'auto' : 'none'}
+        style={[
+          styles.topBtnWrap,
+          { bottom: insets.bottom + 92 },
+          {
+            opacity: topBtnAnim,
+            transform: [
+              { translateY: topBtnAnim.interpolate({ inputRange: [0, 1], outputRange: [14, 0] }) },
+            ],
+          },
+        ]}
+      >
+        <Pressable style={styles.topBtn} onPress={scrollToTop} hitSlop={8}>
+          <Ionicons name="arrow-up" size={22} color="#fff" />
+        </Pressable>
+      </Animated.View>
 
       <Modal
         visible={filtersOpen}
@@ -526,6 +571,20 @@ const styles = StyleSheet.create({
   empty: { fontSize: 13, color: '#9aa7b4', fontStyle: 'italic', paddingVertical: 16 },
 
   list: { flex: 1 },
+  topBtnWrap: { position: 'absolute', right: 16, zIndex: 30 },
+  topBtn: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: '#2f74d6',
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOpacity: 0.22,
+    shadowRadius: 6,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 5,
+  },
   card: {
     backgroundColor: '#fff',
     borderRadius: 14,
