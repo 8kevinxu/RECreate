@@ -2013,7 +2013,7 @@ const styles = StyleSheet.create({
     left: 12,
     right: 12,
     bottom: 16,
-    maxHeight: Dimensions.get('window').height * 0.72,
+    maxHeight: Dimensions.get('window').height * 0.75,
     backgroundColor: '#fff',
     borderRadius: 16,
     padding: 16,

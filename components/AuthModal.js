@@ -228,7 +228,12 @@ export default function AuthModal({
     setEditing(false);
   };
 
-  const favCourt = stats?.favoriteCourtId ? courtsById[stats.favoriteCourtId] : null;
+  // courtsById maps id -> name (a string). Resolve the favorite court(s) to names,
+  // dropping any that aren't in the current court list. Ties list every tied park.
+  const favCourtIds =
+    stats?.favoriteCourtIds || (stats?.favoriteCourtId ? [stats.favoriteCourtId] : []);
+  const favCourtNames = favCourtIds.map((id) => courtsById[id]).filter(Boolean);
+  const favParkLabel = favCourtNames.join(t('listSep'));
   // "basketball, pickleball" — sports logged at the favorite park, most-played first.
   const favSportsLabel = (stats?.favoriteSports || [])
     .map((id) => sportLabel(t, id))
@@ -239,7 +244,7 @@ export default function AuthModal({
   );
   // "Most check-ins at X for Y sport"
   const tcs = stats?.topCourtSport;
-  const tcsCourt = tcs ? courtsById[tcs.courtId]?.name : null;
+  const tcsCourt = tcs ? courtsById[tcs.courtId] : null;
   const tcsSport = tcs ? SPORTS.find((s) => s.id === tcs.sport) : null;
 
   const wrap = (inner) =>
@@ -302,6 +307,7 @@ export default function AuthModal({
               {editing ? (
                 <>
                   <Text style={styles.sectionLabel}>{t('auth.editProfile')}</Text>
+                  <Text style={styles.fieldHint}>{t('auth.hintName')}</Text>
                   <TextInput
                     style={styles.input}
                     placeholder={t('auth.displayName')}
@@ -311,6 +317,7 @@ export default function AuthModal({
                     maxLength={50}
                     autoCapitalize="words"
                   />
+                  <Text style={styles.fieldHint}>{t('auth.hintAge')}</Text>
                   <TextInput
                     style={styles.input}
                     placeholder={t('auth.age')}
@@ -320,6 +327,7 @@ export default function AuthModal({
                     keyboardType="number-pad"
                     maxLength={3}
                   />
+                  <Text style={styles.fieldHint}>{t('auth.hintNeighborhood')}</Text>
                   <TextInput
                     style={styles.input}
                     placeholder={t('auth.neighborhoodPh')}
@@ -329,6 +337,7 @@ export default function AuthModal({
                     maxLength={60}
                     autoCapitalize="words"
                   />
+                  <Text style={styles.fieldHint}>{t('auth.hintBio')}</Text>
                   <TextInput
                     style={[styles.input, styles.inputMultiline]}
                     placeholder={t('auth.bioPh')}
@@ -450,11 +459,13 @@ export default function AuthModal({
                           {t(tcs.count === 1 ? 'auth.checkin' : 'auth.checkins')})
                         </Text>
                       )}
-                      {!!favCourt && (
+                      {favCourtNames.length > 0 && (
                         <Text style={styles.favLine}>
-                          {t('auth.favoritePark')}{' '}
-                          <Text style={styles.favName}>{favCourt.name}</Text>{' '}
-                          {favSportsLabel
+                          {t(favCourtNames.length > 1 ? 'auth.favoriteParks' : 'auth.favoritePark')}{' '}
+                          <Text style={styles.favName}>{favParkLabel}</Text>{' '}
+                          {favCourtNames.length > 1
+                            ? t('auth.favParkTie', { count: stats.favoriteCount })
+                            : favSportsLabel
                             ? t('auth.favParkStat', {
                                 count: stats.favoriteCount,
                                 sports: favSportsLabel,
@@ -732,6 +743,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.4,
   },
   fieldLabel: { fontSize: 13, color: '#5b6b7b', fontWeight: '700', marginBottom: 6 },
+  fieldHint: { fontSize: 12, color: '#7a8894', marginBottom: 5, marginTop: 2, lineHeight: 16 },
   fieldHint: { fontSize: 12, color: '#9aa7b4', marginTop: -2, marginBottom: 8 },
 
   sportWrap: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginBottom: 12 },
