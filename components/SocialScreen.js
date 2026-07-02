@@ -14,6 +14,10 @@ export default function SocialScreen({
   courts = [],
   sport = 'basketball',
   userLocation = null,
+  // Effective interests resolved in App.js (profile if signed-in, else on-device
+  // onboarding picks); fall back to the profile directly if not supplied.
+  interestSports,
+  interestCategories,
   onPickCourt,
 }) {
   const insets = useSafeAreaInsets();
@@ -26,8 +30,8 @@ export default function SocialScreen({
       <RecommendPane
         courts={courts}
         userLocation={userLocation}
-        sports={profile?.favorite_sports || []}
-        categories={profile?.favorite_categories || []}
+        sports={interestSports ?? profile?.favorite_sports ?? []}
+        categories={interestCategories ?? profile?.favorite_categories ?? []}
         age={profile?.age ?? null}
         onPickCourt={onPickCourt}
       />

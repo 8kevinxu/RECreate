@@ -45,6 +45,7 @@ import {
 } from './lib/hours';
 import { MAP_SPORTS, DEFAULT_SPORT, sportMeta, isPlayableSport } from './lib/sports';
 import { useFavorites } from './lib/favorites';
+import { loadLocalInterests, saveLocalInterests } from './lib/interests';
 import { useI18n, sportLabel, tg } from './lib/i18n';
 import {
   loadCrowd,
@@ -212,7 +213,7 @@ export default function App() {
   const [myVotes, setMyVotes] = useState({}); // { courtId: { id, level, ts } }
   const [pickedTime, setPickedTime] = useState(null); // null = live "now"
   const [pickerOpen, setPickerOpen] = useState(false);
-  const { enabled: authEnabled, user, displayName, profile } = useAuth();
+  const { enabled: authEnabled, user, displayName, profile, updateProfile } = useAuth();
   const insets = useSafeAreaInsets(); // device notch / home-indicator insets (edge-to-edge)
   // The map fills the whole screen with the nav floating over it; this is how far up
   // map overlays (zoom, recenter, Nearby, court card) must sit to clear the nav pill.
@@ -223,6 +224,20 @@ export default function App() {
   const [unread, setUnread] = useState(0); // unread activity-feed items (badge)
   const [requestCount, setRequestCount] = useState(0); // incoming friend requests (badge)
   const [onboarded, setOnboarded] = useState(null); // null = still checking the flag
+  // Interests picked during onboarding (signed-out); the profile takes over once
+  // the user has an account. Drives the "Recommended for you" pane on day one.
+  const [localInterests, setLocalInterests] = useState({ sports: [], categories: [] });
+  useEffect(() => {
+    loadLocalInterests().then(setLocalInterests);
+  }, []);
+  // A signed-in account's saved interests take precedence; the on-device picks are
+  // the fallback so recommendations personalize even before there's an account.
+  const interestSports = profile?.favorite_sports?.length
+    ? profile.favorite_sports
+    : localInterests.sports;
+  const interestCategories = profile?.favorite_categories?.length
+    ? profile.favorite_categories
+    : localInterests.categories;
 
   // Load check-ins + my votes on mount; (when shared) live-update by merging
   // new check-ins incrementally and refetching on deletes.
@@ -380,6 +395,16 @@ export default function App() {
   // the location prompt in context via finishOnboarding.
   useEffect(() => {
     let alive = true;
+    // DEV: always replay onboarding on reload so it stays previewable (the flag
+    // persists across reloads, so once dismissed it wouldn't reappear). Remove
+    // this block — or it's a no-op in production (__DEV__ is false) — to test the
+    // real returning-user path.
+    if (__DEV__) {
+      setOnboarded(false);
+      return () => {
+        alive = false;
+      };
+    }
     AsyncStorage.getItem(ONBOARDED_KEY).then((v) => {
       if (!alive) return;
       setOnboarded(!!v);
@@ -391,17 +416,31 @@ export default function App() {
   }, [requestLocation]);
 
   const finishOnboarding = useCallback(
-    async (enableLocation) => {
+    async ({ interests, createAccount, enabledLocation } = {}) => {
       try {
         await AsyncStorage.setItem(ONBOARDED_KEY, '1');
       } catch {
         // best-effort — worst case onboarding shows again next launch
       }
+      // Persist interest picks: on-device (drives recs while signed-out) and, if
+      // already signed in, onto the profile too.
+      const sports = interests?.sports || [];
+      const categories = interests?.categories || [];
+      if (sports.length || categories.length) {
+        saveLocalInterests({ sports, categories });
+        setLocalInterests({ sports, categories });
+        if (user) {
+          updateProfile?.({ favorite_sports: sports, favorite_categories: categories });
+        }
+      }
       setOnboarded(true);
-      if (enableLocation) requestLocation();
-      else setLocating(false); // don't leave the "Finding you…" pill spinning
+      // Location is requested in context from the location slide (onEnableLocation);
+      // if they skipped it, clear the "Finding you…" pill.
+      if (!enabledLocation) setLocating(false);
+      // "Create account" routes to the profile tab, where the signed-out view shows sign-up.
+      if (createAccount && !user) goTab('profile');
     },
-    [requestLocation]
+    [user, updateProfile, goTab]
   );
 
   // Center the map on the user the first time we get a fix.
@@ -990,6 +1029,8 @@ export default function App() {
             // sport so a run/signal never defaults to "weightroom".
             sport={isPlayableSport(sport) ? sport : DEFAULT_SPORT}
             userLocation={userLocation}
+            interestSports={interestSports}
+            interestCategories={interestCategories}
             onPickCourt={(id, pickSport) => {
               // A recommendation carries the sport it was for — switch the map to it
               // (and leave Favorites view) so the court card opens on the right sport.
@@ -1030,7 +1071,9 @@ export default function App() {
         />
       </View>
 
-      {onboarded === false && <Onboarding onFinish={finishOnboarding} />}
+      {onboarded === false && (
+        <Onboarding onFinish={finishOnboarding} onEnableLocation={requestLocation} />
+      )}
     </View>
   );
 }
