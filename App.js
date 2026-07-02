@@ -419,16 +419,6 @@ export default function App() {
   // the location prompt in context via finishOnboarding.
   useEffect(() => {
     let alive = true;
-    // DEV: always replay onboarding on reload so it stays previewable (the flag
-    // persists across reloads, so once dismissed it wouldn't reappear). Remove
-    // this block — or it's a no-op in production (__DEV__ is false) — to test the
-    // real returning-user path.
-    if (__DEV__) {
-      setOnboarded(false);
-      return () => {
-        alive = false;
-      };
-    }
     AsyncStorage.getItem(ONBOARDED_KEY).then((v) => {
       if (!alive) return;
       setOnboarded(!!v);
