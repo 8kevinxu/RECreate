@@ -234,17 +234,12 @@ export default function AuthModal({
     stats?.favoriteCourtIds || (stats?.favoriteCourtId ? [stats.favoriteCourtId] : []);
   const favCourtNames = favCourtIds.map((id) => courtsById[id]).filter(Boolean);
   const favParkLabel = favCourtNames.join(t('listSep'));
-  // "basketball, pickleball" — sports logged at the favorite park, most-played first.
-  const favSportsLabel = (stats?.favoriteSports || [])
-    .map((id) => sportLabel(t, id))
-    .join(t('listSep'));
   const favSportsList = SPORTS.filter((s) => (profile?.favorite_sports || []).includes(s.id));
   const favCategoriesList = CLASS_CATEGORIES.filter((c) =>
     (profile?.favorite_categories || []).includes(c.id)
   );
-  // "Most check-ins at X for Y sport"
+  // "Most played: X sport (N check-ins)"
   const tcs = stats?.topCourtSport;
-  const tcsCourt = tcs ? courtsById[tcs.courtId] : null;
   const tcsSport = tcs ? SPORTS.find((s) => s.id === tcs.sport) : null;
 
   const wrap = (inner) =>
@@ -451,12 +446,11 @@ export default function AuthModal({
                           </View>
                         ))}
                       </View>
-                      {!!(tcs && tcsCourt && tcsSport) && (
+                      {!!(tcs && tcsSport) && (
                         <Text style={styles.favLine}>
                           {t('auth.mostPlayedPre')}{' '}
                           <Text style={styles.favName}>{sportLabel(t, tcsSport.id)}</Text>{' '}
-                          {t('auth.at')} <Text style={styles.favName}>{tcsCourt}</Text> ({tcs.count}{' '}
-                          {t(tcs.count === 1 ? 'auth.checkin' : 'auth.checkins')})
+                          ({tcs.count} {t(tcs.count === 1 ? 'auth.checkin' : 'auth.checkins')})
                         </Text>
                       )}
                       {favCourtNames.length > 0 && (
@@ -465,12 +459,7 @@ export default function AuthModal({
                           <Text style={styles.favName}>{favParkLabel}</Text>{' '}
                           {favCourtNames.length > 1
                             ? t('auth.favParkTie', { count: stats.favoriteCount })
-                            : favSportsLabel
-                            ? t('auth.favParkStat', {
-                                count: stats.favoriteCount,
-                                sports: favSportsLabel,
-                              })
-                            : t('auth.favParkVisits', { count: stats.favoriteCount })}
+                            : t('auth.favParkStat', { count: stats.favoriteCount })}
                         </Text>
                       )}
                       <Text style={styles.totalLine}>
