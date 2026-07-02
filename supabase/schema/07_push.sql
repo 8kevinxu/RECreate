@@ -263,16 +263,40 @@ drop trigger if exists player_check_ins_notify on public.player_check_ins;
 create trigger player_check_ins_notify after insert on public.player_check_ins
   for each row execute function public.notify_player_checkin();
 
+-- Per-voter-per-court cooldown log for crowd pushes. Switching levels / re-tapping
+-- inserts a new check-in each time (and deletes the previous row), so without this
+-- a friend gets a push on every tap. Server-only: RLS on with no policies — only the
+-- SECURITY DEFINER trigger below writes it.
+create table if not exists public.crowd_notify_log (
+  voter_id uuid        not null references public.profiles (id) on delete cascade,
+  court_id text        not null,
+  sent_at  timestamptz not null default now(),
+  primary key (voter_id, court_id)
+);
+alter table public.crowd_notify_log enable row level security;
+
 -- A friend reports how busy a court is → notify their accepted friends. Crowd
 -- check-ins are otherwise anonymous, so we take the voter from the JWT (auth.uid())
 -- — never a client-supplied id — and only send when they opted in (new.notify) and
--- are actually signed in.
+-- are actually signed in. Rate-limited to one push per voter+court per 10 minutes.
 create or replace function public.notify_crowd()
 returns trigger language plpgsql security definer set search_path = public as $$
-declare voter uuid; who text; recipients uuid[]; level_word text;
+declare voter uuid; who text; recipients uuid[]; level_word text; last_sent timestamptz;
 begin
   voter := auth.uid();
   if not new.notify or voter is null then return new; end if;
+
+  -- Anti-spam: skip if this voter already pushed a crowd update for this court in
+  -- the last 10 min (stops spam-tapping / rapidly switching levels).
+  select sent_at into last_sent from public.crowd_notify_log
+    where voter_id = voter and court_id = new.court_id;
+  if last_sent is not null and last_sent > now() - interval '10 minutes' then
+    return new;
+  end if;
+  insert into public.crowd_notify_log (voter_id, court_id, sent_at)
+    values (voter, new.court_id, now())
+    on conflict (voter_id, court_id) do update set sent_at = excluded.sent_at;
+
   select display_name into who from public.profiles where id = voter;
   select array_agg(fid) into recipients
   from public.accepted_friend_ids(voter) as fid;
