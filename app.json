@@ -41,6 +41,15 @@
         {
           "defaultChannel": "default"
         }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 220,
+          "resizeMode": "contain",
+          "backgroundColor": "#E6F4FE"
+        }
       ]
     ],
     "owner": "8kevinxu",
