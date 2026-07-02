@@ -3,11 +3,12 @@
 // optional account nudge. Shown once; App.js gates it on the recreate.onboarded.v1
 // flag. onFinish reports the picks/intent back so App.js can persist interests
 // (locally, so recs personalize even signed-out) and route to sign-up if asked.
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useI18n, sportLabel } from '../lib/i18n';
+import { useAuth } from '../lib/auth';
 import { SPORTS } from '../lib/sports';
 import { CLASS_CATEGORIES } from '../data/classes';
 import AuthModal from './AuthModal';
@@ -27,6 +28,7 @@ const toggle = (arr, id) => (arr.includes(id) ? arr.filter((x) => x !== id) : [.
 
 export default function Onboarding({ onFinish, onEnableLocation }) {
   const { t } = useI18n();
+  const { user } = useAuth();
   const insets = useSafeAreaInsets();
   const [idx, setIdx] = useState(0);
   const [selSports, setSelSports] = useState([]);
@@ -50,6 +52,18 @@ export default function Onboarding({ onFinish, onEnableLocation }) {
     onEnableLocation?.();
     go(1);
   };
+
+  // Distinguish "signed up successfully" from "dismissed the sheet": if the user
+  // becomes signed in while onboarding is open, finish and land on the map.
+  // Dismissing the sheet without signing in just closes it (handled by onClose).
+  const wasSignedIn = useRef(!!user);
+  useEffect(() => {
+    if (user && !wasSignedIn.current) {
+      wasSignedIn.current = true;
+      finish();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
   const nSel = selSports.length + selCats.length;
 
@@ -188,10 +202,10 @@ export default function Onboarding({ onFinish, onEnableLocation }) {
         )}
       </View>
 
-      {/* Inline sign-up — reuses AuthModal (terms/validation). Finishing onboarding
-          on close lands the user on the map, whether they created an account or
-          dismissed the sheet. */}
-      {authOpen && <AuthModal visible onClose={finish} initialMode="signup" />}
+      {/* Inline sign-up — reuses AuthModal (terms/validation). Dismissing the sheet
+          only closes it (back to the account slide); a successful sign-up is caught
+          by the sign-in effect above, which finishes onboarding onto the map. */}
+      {authOpen && <AuthModal visible onClose={() => setAuthOpen(false)} initialMode="signup" />}
     </View>
   );
 }
