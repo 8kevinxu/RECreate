@@ -47,6 +47,8 @@ export default function AuthModal({
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+  const [confirm, setConfirm] = useState(''); // confirm-password (signup)
+  const [showPw, setShowPw] = useState(false); // reveal password fields
   const [agreed, setAgreed] = useState(false); // EULA/privacy acceptance (signup)
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(null);
@@ -108,6 +110,8 @@ export default function AuthModal({
   const close = () => {
     reset();
     setPassword('');
+    setConfirm('');
+    setShowPw(false);
     onClose();
   };
 
@@ -120,6 +124,10 @@ export default function AuthModal({
     }
     if (mode === 'signup' && password.length < 6) {
       setError(t('auth.errPwLen'));
+      return;
+    }
+    if (mode === 'signup' && password !== confirm) {
+      setError(t('auth.errPwMatch'));
       return;
     }
     if (mode === 'signup' && !agreed) {
@@ -141,6 +149,7 @@ export default function AuthModal({
       setInfo(t('auth.infoConfirm'));
       setMode('signin');
       setPassword('');
+      setConfirm('');
       return;
     }
     close();
@@ -519,8 +528,28 @@ export default function AuthModal({
                 placeholderTextColor="#9aa7b4"
                 value={password}
                 onChangeText={setPassword}
-                secureTextEntry
+                secureTextEntry={!showPw}
               />
+              {mode === 'signup' && (
+                <TextInput
+                  style={styles.input}
+                  placeholder={t('auth.confirmPassword')}
+                  placeholderTextColor="#9aa7b4"
+                  value={confirm}
+                  onChangeText={setConfirm}
+                  secureTextEntry={!showPw}
+                />
+              )}
+              <Pressable style={styles.showPwRow} onPress={() => setShowPw((v) => !v)} hitSlop={8}>
+                <Ionicons
+                  name={showPw ? 'eye-off-outline' : 'eye-outline'}
+                  size={16}
+                  color="#5b7a9a"
+                />
+                <Text style={styles.showPwText}>
+                  {showPw ? t('auth.hidePassword') : t('auth.showPassword')}
+                </Text>
+              </Pressable>
 
               {mode === 'signup' && (
                 <>
@@ -566,6 +595,7 @@ export default function AuthModal({
                 onPress={() => {
                   reset();
                   setAgreed(false);
+                  setConfirm('');
                   setMode(mode === 'signin' ? 'signup' : 'signin');
                 }}
               >
@@ -620,6 +650,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   inputMultiline: { minHeight: 70, textAlignVertical: 'top' },
+  showPwRow: { flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 12, marginTop: 1 },
+  showPwText: { fontSize: 13, color: '#5b7a9a', fontWeight: '600' },
   error: { color: '#c0392b', fontSize: 13, marginBottom: 8, fontWeight: '600' },
   info: { color: '#1f6f43', fontSize: 13, marginBottom: 8, fontWeight: '600' },
 
