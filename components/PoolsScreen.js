@@ -20,6 +20,7 @@ import { haversineMiles, formatDistance } from '../lib/distance';
 import { openDirections } from '../lib/maps';
 import { fmtClock } from '../lib/datetime';
 import { useI18n } from '../lib/i18n';
+import ScrollTopFab, { useScrollTop } from './ScrollTopFab';
 
 const DOW_KEYS = ['day.0', 'day.1', 'day.2', 'day.3', 'day.4', 'day.5', 'day.6'];
 // Color palette per session kind (pill background / text).
@@ -45,6 +46,7 @@ const todayStr = () => {
 export default function PoolsScreen({ userLocation }) {
   const { t } = useI18n();
   const insets = useSafeAreaInsets();
+  const { scrollRef, onScroll, showTop, scrollToTop } = useScrollTop(40);
   const [query, setQuery] = useState('');
   const [kind, setKind] = useState(null); // session-type filter
   const [feesOpen, setFeesOpen] = useState(false);
@@ -125,7 +127,14 @@ export default function PoolsScreen({ userLocation }) {
         })}
       </ScrollView>
 
-      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingBottom: 28 }} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        ref={scrollRef}
+        onScroll={onScroll}
+        scrollEventThrottle={16}
+        style={{ flex: 1 }}
+        contentContainerStyle={{ paddingBottom: 28 }}
+        showsVerticalScrollIndicator={false}
+      >
         {closure && <Text style={styles.closure}>{t('pools.closedToday', { holiday: closure.label })}</Text>}
 
         {list.map((p) => {
@@ -243,6 +252,8 @@ export default function PoolsScreen({ userLocation }) {
         {list.length === 0 && <Text style={styles.empty}>{t('pools.empty')}</Text>}
         <Text style={styles.disclaimer}>{t('pools.disclaimer')}</Text>
       </ScrollView>
+
+      <ScrollTopFab show={showTop} onPress={scrollToTop} bottom={insets.bottom + 92} />
 
       {/* Fees sheet */}
       <Modal visible={feesOpen} transparent animationType="slide" onRequestClose={() => setFeesOpen(false)}>

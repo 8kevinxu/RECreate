@@ -26,6 +26,7 @@ import SignalModal from './SignalModal';
 import SessionModal from './SessionModal';
 import RunModal from './RunModal';
 import ChatThread from './ChatThread';
+import ScrollTopFab, { useScrollTop } from './ScrollTopFab';
 
 // Compact relative time for check-in rows. Shares the app's localized time keys.
 function timeAgo(iso) {
@@ -52,6 +53,7 @@ export default function FeedModal({
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
+  const { scrollRef, onScroll, showTop, scrollToTop } = useScrollTop(40);
   const [runBusy, setRunBusy] = useState(null);
   const [signalOpen, setSignalOpen] = useState(false);
   const [runOpen, setRunOpen] = useState(false);
@@ -259,6 +261,9 @@ export default function FeedModal({
         </ScrollView>
       ) : (
         <ScrollView
+          ref={scrollRef}
+          onScroll={onScroll}
+          scrollEventThrottle={16}
           style={asPage && styles.pageList}
           keyboardShouldPersistTaps="handled"
           refreshControl={
@@ -310,6 +315,7 @@ export default function FeedModal({
         ]}
       >
         {content}
+        <ScrollTopFab show={showTop} onPress={scrollToTop} bottom={insets.bottom + 92} />
       </View>
     );
 

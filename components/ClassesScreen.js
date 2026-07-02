@@ -23,6 +23,7 @@ import { localizeWhen } from '../lib/datetime';
 import { fetchLiveAvailability } from '../lib/classesLive';
 import { useI18n } from '../lib/i18n';
 import ClassDetail from './ClassDetail';
+import ScrollTopFab from './ScrollTopFab';
 
 // "updated 8s ago" style relative time for the live-availability stamp.
 function agoLabel(t, ts) {
@@ -118,33 +119,28 @@ export default function ClassesScreen({ userLocation = null }) {
     }
   );
   const scrollToTop = () => scrollRef.current?.scrollTo({ y: 0, animated: true });
+  // Decouple fade from height so the block never shows a top-down clip reveal (which
+  // made the info bullet "lag in" last). Phase 1 (first 30% of scroll): stay at FULL
+  // height and just fade — so the whole block appears/disappears as one unit, never
+  // clipped. Phase 2 (remaining 70%): already invisible, collapse the height to
+  // reclaim space. Reversed on the way up: height grows invisibly, then the full
+  // block fades in together.
+  const FADE = headerH * 0.3;
   const collapsibleStyle = headerH
     ? {
         overflow: 'hidden',
-        // collapse over the first `headerH` px of scroll; fade out a bit sooner so
-        // the text is gone before the height pinches, avoiding reflow jitter.
         height: scrollY.interpolate({
-          inputRange: [0, headerH],
-          outputRange: [headerH, 0],
+          inputRange: [0, FADE, headerH],
+          outputRange: [headerH, headerH, 0],
           extrapolate: 'clamp',
         }),
         opacity: scrollY.interpolate({
-          inputRange: [0, headerH * 0.6],
+          inputRange: [0, FADE],
           outputRange: [1, 0],
           extrapolate: 'clamp',
         }),
       }
     : { overflow: 'hidden' };
-
-  // Fade/slide the back-to-top arrow in and out.
-  const topBtnAnim = useRef(new Animated.Value(0)).current;
-  useEffect(() => {
-    Animated.timing(topBtnAnim, {
-      toValue: showTop ? 1 : 0,
-      duration: 180,
-      useNativeDriver: true,
-    }).start();
-  }, [showTop]);
 
   const refreshLive = async (isPull) => {
     if (isPull) setRefreshing(true);
@@ -371,23 +367,7 @@ export default function ClassesScreen({ userLocation = null }) {
         <Text style={styles.disclaimer}>{t('classes.disclaimer')}</Text>
       </ScrollView>
 
-      <Animated.View
-        pointerEvents={showTop ? 'auto' : 'none'}
-        style={[
-          styles.topBtnWrap,
-          { bottom: insets.bottom + 92 },
-          {
-            opacity: topBtnAnim,
-            transform: [
-              { translateY: topBtnAnim.interpolate({ inputRange: [0, 1], outputRange: [14, 0] }) },
-            ],
-          },
-        ]}
-      >
-        <Pressable style={styles.topBtn} onPress={scrollToTop} hitSlop={8}>
-          <Ionicons name="arrow-up" size={22} color="#fff" />
-        </Pressable>
-      </Animated.View>
+      <ScrollTopFab show={showTop} onPress={scrollToTop} bottom={insets.bottom + 92} />
 
       <Modal
         visible={filtersOpen}
@@ -571,20 +551,6 @@ const styles = StyleSheet.create({
   empty: { fontSize: 13, color: '#9aa7b4', fontStyle: 'italic', paddingVertical: 16 },
 
   list: { flex: 1 },
-  topBtnWrap: { position: 'absolute', right: 16, zIndex: 30 },
-  topBtn: {
-    width: 44,
-    height: 44,
-    borderRadius: 22,
-    backgroundColor: '#2f74d6',
-    alignItems: 'center',
-    justifyContent: 'center',
-    shadowColor: '#000',
-    shadowOpacity: 0.22,
-    shadowRadius: 6,
-    shadowOffset: { width: 0, height: 2 },
-    elevation: 5,
-  },
   card: {
     backgroundColor: '#fff',
     borderRadius: 14,
