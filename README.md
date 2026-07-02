@@ -31,8 +31,27 @@ npm install        # if you haven't already
 npx expo start     # then press 'i' (iOS sim), 'a' (Android), or scan the QR in Expo Go
 ```
 
-The first launch asks for location permission. If you decline, the map just
-stays centered on San Francisco — everything else still works.
+## First-launch onboarding
+
+On first launch the app shows a short, skippable onboarding flow
+(`components/Onboarding.js`, a full-screen overlay): value-prop slides → **pick
+interests** (favorite sports + class activities) → a **location primer** → an
+optional **Create account** step. It's shown once, gated on the
+`recreate.onboarded.v1` AsyncStorage flag; returning users skip straight to the
+map. Navigation is a top-left back button (no swipe).
+
+Two things make it more than a splash:
+- The **location prompt fires in context** — declining a slide never triggers the
+  OS dialog, so tapping "Enable location" later still shows the real prompt. If you
+  skip it, the map just stays centered on San Francisco and everything else works.
+- **Interests picked here work signed-out** — they're stored on-device
+  (`lib/interests.js`) and drive "Recommended for you" immediately; the signed-in
+  profile's favorites take over once you have an account. **Create account** opens
+  the sign-up sheet inline and, on success, drops you on the map.
+
+If location is off, a dismiss-once map banner offers to enable it, and the
+"enable location" action is Settings-aware (routes to iOS Settings once the
+permission has been hard-denied).
 
 ## Project layout
 
@@ -84,6 +103,8 @@ stays centered on San Francisco — everything else still works.
 | `lib/recommend.js` · `components/RecommendPane.js` | "Recommended for you" — interest-based games + classes in the Social tab |
 | `lib/playerCheckins.js` | Per-user visit stats (per-sport counts, favorite park) |
 | `lib/i18n.js` | i18n: `STRINGS` dict (en/zh/es), `I18nProvider`, `useI18n()`, and `tg()` for non-React modules |
+| `components/Onboarding.js` · `lib/interests.js` | First-launch onboarding overlay (slides → interests → location → account) + on-device interest store |
+| `components/WebAnalytics.js` · `.web.js` | Vercel Analytics, mounted web-only via the `.web.js` platform split |
 | `vercel.json` · `netlify.toml` | Web static-export deploy config (build → `dist` → SPA rewrite) |
 
 ## Court data (SF Rec & Parks indoor gyms)
@@ -605,7 +626,11 @@ The web build is a **static SPA export** — `npx expo export --platform web` �
 `vercel.json` and `netlify.toml` both configure the same thing (that build command,
 `dist` as the publish dir, and an SPA rewrite of all routes to `index.html`); set the
 three `EXPO_PUBLIC_*` vars in the host's dashboard since a CI build has no local `.env`.
-Don't run both hosts as primary auto-deploys at once.
+Don't run both hosts as primary auto-deploys at once. **Vercel Analytics** is mounted
+web-only (`components/WebAnalytics.web.js`, `@vercel/analytics/react`) and only collects
+when served from Vercel. The iOS app is **iPhone-only** (`ios.supportsTablet: false`);
+cloud EAS builds don't read the local `.env`, so `EXPO_PUBLIC_*` vars are set in the EAS
+**production** environment.
 
 ## Ideas for next
 
