@@ -5,6 +5,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import App from './App';
 import { AuthProvider } from './lib/auth';
 import { I18nProvider } from './lib/i18n';
+import WebAnalytics from './components/WebAnalytics';
 
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);
 // It also ensures that whether you load the app in Expo Go or in a native build,
@@ -18,6 +19,7 @@ function Root() {
       <I18nProvider>
         <AuthProvider>
           <App />
+          <WebAnalytics />
         </AuthProvider>
       </I18nProvider>
     </SafeAreaProvider>
