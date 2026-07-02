@@ -705,7 +705,7 @@ export default function App() {
         {tab === 'home' && (
           <>
       <View style={styles.body}>
-        {!!generatedAt && (
+        {!!generatedAt && !selected && (
           <View style={[styles.updatedPill, { top: insets.top + 10 }]}>
             <View style={styles.updatedDot} />
             <Text style={styles.updatedPillText}>
