@@ -191,6 +191,7 @@ function formatUpdated(iso) {
 }
 
 const ONBOARDED_KEY = 'recreate.onboarded.v1'; // first-launch onboarding shown flag
+const LOC_BANNER_KEY = 'recreate.locbanner.v1'; // dismissed the "turn on location" map banner
 
 export default function App() {
   const { t, lang } = useI18n();
@@ -230,6 +231,18 @@ export default function App() {
   useEffect(() => {
     loadLocalInterests().then(setLocalInterests);
   }, []);
+  // Gentle, dismiss-once "turn on location" map banner (shown only when we have no
+  // fix). Starts hidden until we confirm it wasn't previously dismissed.
+  const [locBannerHidden, setLocBannerHidden] = useState(true);
+  useEffect(() => {
+    AsyncStorage.getItem(LOC_BANNER_KEY).then((v) => {
+      if (!v) setLocBannerHidden(false);
+    });
+  }, []);
+  const dismissLocBanner = () => {
+    setLocBannerHidden(true);
+    AsyncStorage.setItem(LOC_BANNER_KEY, '1').catch(() => {});
+  };
   // A signed-in account's saved interests take precedence; the on-device picks are
   // the fallback so recommendations personalize even before there's an account.
   const interestSports = profile?.favorite_sports?.length
@@ -376,19 +389,30 @@ export default function App() {
   const requestLocation = useCallback(async () => {
     setLocating(true);
     try {
-      const { status } = await Location.requestForegroundPermissionsAsync();
-      if (status === 'granted') {
+      let perm = await Location.getForegroundPermissionsAsync();
+      // Only the OS can show its prompt, and only while permission is undetermined
+      // (canAskAgain). If it's already been denied, requesting again is a silent
+      // no-op — so route the user to Settings instead.
+      if (perm.status !== 'granted' && perm.canAskAgain) {
+        perm = await Location.requestForegroundPermissionsAsync();
+      }
+      if (perm.status === 'granted') {
         const pos = await Location.getCurrentPositionAsync({
           accuracy: Location.Accuracy.Balanced,
         });
         setUserLocation({ lat: pos.coords.latitude, lng: pos.coords.longitude });
+      } else if (!perm.canAskAgain) {
+        Alert.alert(t('loc.deniedTitle'), t('loc.deniedBody'), [
+          { text: t('loc.cancel'), style: 'cancel' },
+          { text: t('loc.openSettings'), onPress: () => Linking.openSettings() },
+        ]);
       }
     } catch (e) {
       // Ignore — map still works centered on San Francisco.
     } finally {
       setLocating(false);
     }
-  }, []);
+  }, [t]);
 
   // First-launch gate: returning users skip straight in and we request location
   // immediately (as before); brand-new users see onboarding first, which primes
@@ -957,6 +981,23 @@ export default function App() {
             <Text style={styles.locatingText}>{t('home.finding')}</Text>
           </View>
         )}
+
+        {!locating &&
+          !userLocation &&
+          !locBannerHidden &&
+          !sportPickerOpen &&
+          !controlsVisible && (
+            <Pressable
+              style={[styles.locBanner, { top: insets.top + 56 }]}
+              onPress={requestLocation}
+            >
+              <Ionicons name="location-outline" size={17} color="#2f74d6" />
+              <Text style={styles.locBannerText}>{t('loc.banner')}</Text>
+              <Pressable hitSlop={10} onPress={dismissLocBanner}>
+                <Ionicons name="close" size={17} color="#8fa2b5" />
+              </Pressable>
+            </Pressable>
+          )}
 
         {favoritesMode && visibleCourts.length === 0 && !selected && (
           <View style={styles.favEmpty} pointerEvents="none">
@@ -1902,6 +1943,27 @@ const styles = StyleSheet.create({
     zIndex: 1000,
   },
   locatingText: { color: '#fff', fontSize: 13 },
+
+  locBanner: {
+    position: 'absolute',
+    left: 14,
+    right: 14,
+    alignSelf: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 9,
+    backgroundColor: '#fff',
+    paddingHorizontal: 14,
+    paddingVertical: 11,
+    borderRadius: 14,
+    zIndex: 26,
+    shadowColor: '#000',
+    shadowOpacity: 0.12,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 4,
+  },
+  locBannerText: { flex: 1, fontSize: 13, fontWeight: '700', color: '#2a3a4a' },
 
   recenterBtn: {
     position: 'absolute',
