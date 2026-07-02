@@ -2,8 +2,9 @@
 // social games) that aren't court sports. Browse by category; filters live behind
 // a button (grouped Age / Cost / Distance). Each card shows the schedule, a
 // color-coded price badge, and how many spots are open.
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
+  Animated,
   Modal,
   Pressable,
   RefreshControl,
@@ -91,6 +92,33 @@ export default function ClassesScreen({ userLocation = null }) {
   const [liveAt, setLiveAt] = useState(null);
   const [refreshing, setRefreshing] = useState(false);
 
+  // Collapsing header: shrink the title/subtitle/info block when scrolling the list
+  // down (giving the list more room) and restore it when scrolling back up.
+  const collapse = useRef(new Animated.Value(0)).current;
+  const collapsed = useRef(false);
+  const lastY = useRef(0);
+  const [headerH, setHeaderH] = useState(0);
+  const onListScroll = (e) => {
+    const y = e.nativeEvent.contentOffset.y;
+    const dy = y - lastY.current;
+    lastY.current = y;
+    const to = (v, flag) => {
+      if (collapsed.current === flag) return;
+      collapsed.current = flag;
+      Animated.timing(collapse, { toValue: v, duration: 200, useNativeDriver: false }).start();
+    };
+    if (y < 12) to(0, false); // near the top → always expanded
+    else if (dy > 6) to(1, true); // scrolling down → collapse
+    else if (dy < -6) to(0, false); // scrolling up → expand
+  };
+  const collapsibleStyle = {
+    opacity: collapse.interpolate({ inputRange: [0, 1], outputRange: [1, 0] }),
+    overflow: 'hidden',
+    ...(headerH
+      ? { height: collapse.interpolate({ inputRange: [0, 1], outputRange: [headerH, 0] }) }
+      : null),
+  };
+
   const refreshLive = async (isPull) => {
     if (isPull) setRefreshing(true);
     else setLiveStatus((s) => (s === 'ok' ? 'ok' : 'loading'));
@@ -165,13 +193,21 @@ export default function ClassesScreen({ userLocation = null }) {
 
   return (
     <View style={[styles.page, { paddingTop: insets.top + 14 }]}>
-      <Text style={styles.title}>{t('classes.title')}</Text>
-      <Text style={styles.sub}>{t('classes.sub')}</Text>
-
-      <View style={styles.infoBullet}>
-        <Ionicons name="information-circle-outline" size={15} color="#5b7a9a" />
-        <Text style={styles.infoBulletText}>{t('classes.activeNetInfo')}</Text>
-      </View>
+      <Animated.View style={collapsibleStyle}>
+        <View
+          onLayout={(e) => {
+            const h = e.nativeEvent.layout.height;
+            if (h && Math.abs(h - headerH) > 1 && !collapsed.current) setHeaderH(h);
+          }}
+        >
+          <Text style={styles.title}>{t('classes.title')}</Text>
+          <Text style={styles.sub}>{t('classes.sub')}</Text>
+          <View style={styles.infoBullet}>
+            <Ionicons name="information-circle-outline" size={15} color="#5b7a9a" />
+            <Text style={styles.infoBulletText}>{t('classes.activeNetInfo')}</Text>
+          </View>
+        </View>
+      </Animated.View>
 
       <View style={styles.search}>
         <Ionicons name="search" size={16} color="#8a99a8" />
@@ -245,6 +281,8 @@ export default function ClassesScreen({ userLocation = null }) {
         style={styles.list}
         contentContainerStyle={{ paddingBottom: insets.bottom + 96 }}
         showsVerticalScrollIndicator={false}
+        onScroll={onListScroll}
+        scrollEventThrottle={16}
         refreshControl={
           <RefreshControl
             refreshing={refreshing}
