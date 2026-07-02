@@ -3,23 +3,14 @@
 // optional account nudge. Shown once; App.js gates it on the recreate.onboarded.v1
 // flag. onFinish reports the picks/intent back so App.js can persist interests
 // (locally, so recs personalize even signed-out) and route to sign-up if asked.
-import React, { useMemo, useState } from 'react';
-import {
-  PanResponder,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import React, { useState } from 'react';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useI18n, sportLabel } from '../lib/i18n';
 import { SPORTS } from '../lib/sports';
 import { CLASS_CATEGORIES } from '../data/classes';
 import AuthModal from './AuthModal';
-
-const SWIPE_MIN = 40; // horizontal px to count a swipe as prev/next on info slides
 
 // Value-prop slides, then the setup steps (each special-cased in render).
 const SLIDES = [
@@ -60,38 +51,30 @@ export default function Onboarding({ onFinish, onEnableLocation }) {
     go(1);
   };
 
-  // Horizontal swipe → prev/next, only on the plain info slides (interactive
-  // slides have their own controls and scroll content).
-  const panResponder = useMemo(
-    () =>
-      PanResponder.create({
-        onMoveShouldSetPanResponder: (_, g) =>
-          slide.type === 'info' &&
-          Math.abs(g.dx) > 10 &&
-          Math.abs(g.dx) > Math.abs(g.dy) * 1.5,
-        onPanResponderRelease: (_, g) => {
-          if (g.dx <= -SWIPE_MIN) go(1);
-          else if (g.dx >= SWIPE_MIN) go(-1);
-        },
-      }),
-    [slide.type, len]
-  );
-
   const nSel = selSports.length + selCats.length;
 
   return (
     <View style={[styles.overlay, { paddingTop: insets.top + 8, paddingBottom: insets.bottom + 20 }]}>
       <View style={styles.topBar}>
-        {slide.type === 'info' && (
+        {idx > 0 ? (
+          <Pressable hitSlop={12} onPress={() => go(-1)}>
+            <Ionicons name="chevron-back" size={26} color="#5b7a9a" />
+          </Pressable>
+        ) : (
+          <View style={styles.topSpacer} />
+        )}
+        {slide.type === 'info' ? (
           <Pressable hitSlop={12} onPress={finish}>
             <Text style={styles.skip}>{t('onb.skip')}</Text>
           </Pressable>
+        ) : (
+          <View style={styles.topSpacer} />
         )}
       </View>
 
       {/* ---- slide body ---- */}
       {slide.type === 'info' && (
-        <View style={styles.body} {...panResponder.panHandlers}>
+        <View style={styles.body}>
           <Text style={styles.emoji}>{slide.emoji}</Text>
           <Text style={styles.title}>{t(slide.title)}</Text>
           <Text style={styles.text}>{t(slide.body)}</Text>
@@ -220,7 +203,13 @@ const styles = StyleSheet.create({
     zIndex: 100,
     paddingHorizontal: 28,
   },
-  topBar: { height: 32, alignItems: 'flex-end', justifyContent: 'center' },
+  topBar: {
+    height: 32,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  topSpacer: { width: 26 },
   skip: { fontSize: 15, fontWeight: '700', color: '#7a8ba0' },
   body: { flex: 1, alignItems: 'center', justifyContent: 'center' },
   emoji: { fontSize: 84, marginBottom: 28 },
