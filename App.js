@@ -15,8 +15,10 @@ import {
   View,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import CourtMap from './components/CourtMap';
+import Onboarding from './components/Onboarding';
 import AuthModal from './components/AuthModal';
 import FriendsModal from './components/FriendsModal';
 import SocialScreen from './components/SocialScreen';
@@ -187,6 +189,8 @@ function formatUpdated(iso) {
   return `${MONTHS[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
 }
 
+const ONBOARDED_KEY = 'recreate.onboarded.v1'; // first-launch onboarding shown flag
+
 export default function App() {
   const { t, lang } = useI18n();
   const mapRef = useRef(null);
@@ -218,6 +222,7 @@ export default function App() {
   const [nearbyOpen, setNearbyOpen] = useState(false);
   const [unread, setUnread] = useState(0); // unread activity-feed items (badge)
   const [requestCount, setRequestCount] = useState(0); // incoming friend requests (badge)
+  const [onboarded, setOnboarded] = useState(null); // null = still checking the flag
 
   // Load check-ins + my votes on mount; (when shared) live-update by merging
   // new check-ins incrementally and refetching on deletes.
@@ -370,9 +375,34 @@ export default function App() {
     }
   }, []);
 
+  // First-launch gate: returning users skip straight in and we request location
+  // immediately (as before); brand-new users see onboarding first, which primes
+  // the location prompt in context via finishOnboarding.
   useEffect(() => {
-    requestLocation();
+    let alive = true;
+    AsyncStorage.getItem(ONBOARDED_KEY).then((v) => {
+      if (!alive) return;
+      setOnboarded(!!v);
+      if (v) requestLocation();
+    });
+    return () => {
+      alive = false;
+    };
   }, [requestLocation]);
+
+  const finishOnboarding = useCallback(
+    async (enableLocation) => {
+      try {
+        await AsyncStorage.setItem(ONBOARDED_KEY, '1');
+      } catch {
+        // best-effort — worst case onboarding shows again next launch
+      }
+      setOnboarded(true);
+      if (enableLocation) requestLocation();
+      else setLocating(false); // don't leave the "Finding you…" pill spinning
+    },
+    [requestLocation]
+  );
 
   // Center the map on the user the first time we get a fix.
   useEffect(() => {
@@ -999,6 +1029,8 @@ export default function App() {
           bottomInset={insets.bottom}
         />
       </View>
+
+      {onboarded === false && <Onboarding onFinish={finishOnboarding} />}
     </View>
   );
 }
