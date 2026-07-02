@@ -416,14 +416,14 @@ export default function App() {
   }, [requestLocation]);
 
   const finishOnboarding = useCallback(
-    async ({ interests, createAccount, enabledLocation } = {}) => {
+    async ({ interests, enabledLocation } = {}) => {
       try {
         await AsyncStorage.setItem(ONBOARDED_KEY, '1');
       } catch {
         // best-effort — worst case onboarding shows again next launch
       }
       // Persist interest picks: on-device (drives recs while signed-out) and, if
-      // already signed in, onto the profile too.
+      // already signed in (created an account during onboarding), onto the profile too.
       const sports = interests?.sports || [];
       const categories = interests?.categories || [];
       if (sports.length || categories.length) {
@@ -435,12 +435,11 @@ export default function App() {
       }
       setOnboarded(true);
       // Location is requested in context from the location slide (onEnableLocation);
-      // if they skipped it, clear the "Finding you…" pill.
+      // if they skipped it, clear the "Finding you…" pill. Dismissing onboarding
+      // just reveals the map (home) underneath — no navigation needed.
       if (!enabledLocation) setLocating(false);
-      // "Create account" routes to the profile tab, where the signed-out view shows sign-up.
-      if (createAccount && !user) goTab('profile');
     },
-    [user, updateProfile, goTab]
+    [user, updateProfile]
   );
 
   // Center the map on the user the first time we get a fix.

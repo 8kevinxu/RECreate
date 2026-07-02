@@ -17,6 +17,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useI18n, sportLabel } from '../lib/i18n';
 import { SPORTS } from '../lib/sports';
 import { CLASS_CATEGORIES } from '../data/classes';
+import AuthModal from './AuthModal';
 
 const SWIPE_MIN = 40; // horizontal px to count a swipe as prev/next on info slides
 
@@ -40,17 +41,16 @@ export default function Onboarding({ onFinish, onEnableLocation }) {
   const [selSports, setSelSports] = useState([]);
   const [selCats, setSelCats] = useState([]);
   const [enabledLoc, setEnabledLoc] = useState(false);
+  const [authOpen, setAuthOpen] = useState(false); // inline sign-up sheet
 
   const len = SLIDES.length;
   const slide = SLIDES[idx];
-  const isLast = idx === len - 1;
 
   const go = (dir) => setIdx((i) => Math.max(0, Math.min(len - 1, i + dir)));
 
-  const finish = (createAccount) =>
+  const finish = () =>
     onFinish({
       interests: { sports: selSports, categories: selCats },
-      createAccount,
       enabledLocation: enabledLoc,
     });
 
@@ -83,7 +83,7 @@ export default function Onboarding({ onFinish, onEnableLocation }) {
     <View style={[styles.overlay, { paddingTop: insets.top + 8, paddingBottom: insets.bottom + 20 }]}>
       <View style={styles.topBar}>
         {slide.type === 'info' && (
-          <Pressable hitSlop={12} onPress={() => finish(false)}>
+          <Pressable hitSlop={12} onPress={finish}>
             <Text style={styles.skip}>{t('onb.skip')}</Text>
           </Pressable>
         )}
@@ -195,15 +195,20 @@ export default function Onboarding({ onFinish, onEnableLocation }) {
 
         {slide.type === 'account' && (
           <>
-            <Pressable style={styles.primaryBtn} onPress={() => finish(true)}>
+            <Pressable style={styles.primaryBtn} onPress={() => setAuthOpen(true)}>
               <Text style={styles.primaryText}>{t('onb.acct.create')}</Text>
             </Pressable>
-            <Pressable hitSlop={10} style={styles.laterBtn} onPress={() => finish(false)}>
+            <Pressable hitSlop={10} style={styles.laterBtn} onPress={finish}>
               <Text style={styles.laterText}>{t('onb.acct.later')}</Text>
             </Pressable>
           </>
         )}
       </View>
+
+      {/* Inline sign-up — reuses AuthModal (terms/validation). Finishing onboarding
+          on close lands the user on the map, whether they created an account or
+          dismissed the sheet. */}
+      {authOpen && <AuthModal visible onClose={finish} initialMode="signup" />}
     </View>
   );
 }

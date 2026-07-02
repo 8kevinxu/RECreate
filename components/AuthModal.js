@@ -38,11 +38,12 @@ export default function AuthModal({
   asPage = false, // render inline as the Profile tab page instead of a modal
   onFriends, // open the Friends sheet (shown in the signed-in panel)
   courtsById = {},
+  initialMode = 'signin', // 'signin' | 'signup' — start the form on this tab
 }) {
   const { user, displayName, profile, signIn, signUp, signOut, updateProfile } = useAuth();
   const { t } = useI18n();
   const insets = useSafeAreaInsets();
-  const [mode, setMode] = useState('signin'); // 'signin' | 'signup'
+  const [mode, setMode] = useState(initialMode); // 'signin' | 'signup'
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
