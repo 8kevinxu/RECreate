@@ -24,6 +24,9 @@ The whole UI is **localized in English / 中文 / Español**. Built with **Expo 
 React Native** (also shipped to the **web** as a static export). The map is
 **Leaflet + OpenStreetMap** rendered inside a `WebView` (no API key, no billing).
 
+**Coverage: San Francisco only for now.** The data pipeline (courts, classes,
+pools) is SF-specific — more cities are on the way.
+
 ## Run it
 
 ```bash
