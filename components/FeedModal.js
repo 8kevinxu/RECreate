@@ -7,6 +7,7 @@ import {
   ActivityIndicator,
   Modal,
   Pressable,
+  RefreshControl,
   ScrollView,
   StyleSheet,
   Text,
@@ -50,6 +51,7 @@ export default function FeedModal({
   const insets = useSafeAreaInsets();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
   const [runBusy, setRunBusy] = useState(null);
   const [signalOpen, setSignalOpen] = useState(false);
   const [runOpen, setRunOpen] = useState(false);
@@ -94,6 +96,12 @@ export default function FeedModal({
   };
 
   const refresh = () => loadFeed().then(setItems);
+
+  // Pull-to-refresh (manual reload on top of the live subscriptions).
+  const onRefresh = () => {
+    setRefreshing(true);
+    refresh().finally(() => setRefreshing(false));
+  };
 
   useEffect(() => {
     if (!visible) return;
@@ -240,9 +248,23 @@ export default function FeedModal({
           <ActivityIndicator color="#2f74d6" />
         </View>
       ) : items.length === 0 ? (
-        <Text style={styles.muted}>{t('feed.empty')}</Text>
+        <ScrollView
+          style={asPage && styles.pageList}
+          contentContainerStyle={styles.emptyWrap}
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor="#2f74d6" />
+          }
+        >
+          <Text style={styles.muted}>{t('feed.empty')}</Text>
+        </ScrollView>
       ) : (
-        <ScrollView style={asPage && styles.pageList} keyboardShouldPersistTaps="handled">
+        <ScrollView
+          style={asPage && styles.pageList}
+          keyboardShouldPersistTaps="handled"
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor="#2f74d6" />
+          }
+        >
           {items.map((it) =>
             it.kind === 'signal'
               ? renderSignal(it.signal)
@@ -356,4 +378,5 @@ const styles = StyleSheet.create({
   declineBtn: { backgroundColor: '#eef1f4' },
   declineText: { color: '#5b6b7b', fontWeight: '700', fontSize: 13 },
   muted: { fontSize: 14, color: '#9aa7b4', fontStyle: 'italic', paddingVertical: 16, textAlign: 'center' },
+  emptyWrap: { flexGrow: 1, alignItems: 'center', justifyContent: 'center', paddingTop: 40 },
 });
