@@ -108,6 +108,7 @@ permission has been hard-denied).
 | `lib/i18n.js` | i18n: `STRINGS` dict (en/zh/es), `I18nProvider`, `useI18n()`, and `tg()` for non-React modules |
 | `components/Onboarding.js` · `lib/interests.js` | First-launch onboarding overlay (slides → interests → location → account) + on-device interest store |
 | `components/WebAnalytics.js` · `.web.js` | Vercel Analytics, mounted web-only via the `.web.js` platform split |
+| `components/ScrollTopFab.js` | Shared back-to-top arrow (`useScrollTop` hook + FAB) used by Classes / Pools / feed |
 | `vercel.json` · `netlify.toml` | Web static-export deploy config (build → `dist` → SPA rewrite) |
 
 ## Court data (SF Rec & Parks indoor gyms)
@@ -542,9 +543,13 @@ land even when the app is closed:
 
 **How it works.** On sign-in the app registers the device's **Expo push token**
 in a `device_tokens` table (`lib/push.js`). Postgres triggers on `rec_signals`,
-`rec_runs`, the participant tables, and `friendships` call a `send_push()`
-helper that POSTs to **Expo's push API straight from the database via `pg_net`**
-— no Edge Function or server to run. Tapping a push deep-links into the app (the
+`rec_runs`, the participant tables, `check_ins`, and `friendships` call a
+`send_push()` helper that POSTs to **Expo's push API straight from the database
+via `pg_net`** — no Edge Function or server to run. `send_push()` sends **one
+request per token** (Expo rejects a batch that mixes tokens from different
+projects, so one stale token can't silence a broadcast), and crowd-update pushes
+are **rate-limited to one per voter+court per 10 min** (`crowd_notify_log`) so
+rapid level-switching doesn't spam friends. Tapping a push deep-links into the app (the
 court for a run, the Activity feed for signals/sessions, the Friends sheet for a
 friend accept).
 
