@@ -7,7 +7,7 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "ios": {
-      "supportsTablet": true,
+      "supportsTablet": false,
       "infoPlist": {
         "NSLocationWhenInUseUsageDescription": "RECreate uses your location to show nearby courts, pools, and drop-in classes.",
         "ITSAppUsesNonExemptEncryption": false
