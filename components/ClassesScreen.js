@@ -92,32 +92,33 @@ export default function ClassesScreen({ userLocation = null }) {
   const [liveAt, setLiveAt] = useState(null);
   const [refreshing, setRefreshing] = useState(false);
 
-  // Collapsing header: shrink the title/subtitle/info block when scrolling the list
-  // down (giving the list more room) and restore it when scrolling back up.
-  const collapse = useRef(new Animated.Value(0)).current;
-  const collapsed = useRef(false);
-  const lastY = useRef(0);
+  // Collapsing header: the title/subtitle/info block shrinks + fades as one unit as
+  // you scroll the list down, and grows smoothly back as you scroll up. Driven
+  // directly off the scroll offset (finger-tracked) rather than toggled with
+  // start/stop animations, so the expand-back is smooth instead of choppy.
+  const scrollY = useRef(new Animated.Value(0)).current;
   const [headerH, setHeaderH] = useState(0);
-  const onListScroll = (e) => {
-    const y = e.nativeEvent.contentOffset.y;
-    const dy = y - lastY.current;
-    lastY.current = y;
-    const to = (v, flag) => {
-      if (collapsed.current === flag) return;
-      collapsed.current = flag;
-      Animated.timing(collapse, { toValue: v, duration: 200, useNativeDriver: false }).start();
-    };
-    if (y < 12) to(0, false); // near the top → always expanded
-    else if (dy > 6) to(1, true); // scrolling down → collapse
-    else if (dy < -6) to(0, false); // scrolling up → expand
-  };
-  const collapsibleStyle = {
-    opacity: collapse.interpolate({ inputRange: [0, 1], outputRange: [1, 0] }),
-    overflow: 'hidden',
-    ...(headerH
-      ? { height: collapse.interpolate({ inputRange: [0, 1], outputRange: [headerH, 0] }) }
-      : null),
-  };
+  const onListScroll = Animated.event(
+    [{ nativeEvent: { contentOffset: { y: scrollY } } }],
+    { useNativeDriver: false } // animating layout height can't use the native driver
+  );
+  const collapsibleStyle = headerH
+    ? {
+        overflow: 'hidden',
+        // collapse over the first `headerH` px of scroll; fade out a bit sooner so
+        // the text is gone before the height pinches, avoiding reflow jitter.
+        height: scrollY.interpolate({
+          inputRange: [0, headerH],
+          outputRange: [headerH, 0],
+          extrapolate: 'clamp',
+        }),
+        opacity: scrollY.interpolate({
+          inputRange: [0, headerH * 0.6],
+          outputRange: [1, 0],
+          extrapolate: 'clamp',
+        }),
+      }
+    : { overflow: 'hidden' };
 
   const refreshLive = async (isPull) => {
     if (isPull) setRefreshing(true);
@@ -196,8 +197,10 @@ export default function ClassesScreen({ userLocation = null }) {
       <Animated.View style={collapsibleStyle}>
         <View
           onLayout={(e) => {
+            // Natural height of the block (measured on the inner view, so the outer
+            // clamp/clip never feeds back into the measurement).
             const h = e.nativeEvent.layout.height;
-            if (h && Math.abs(h - headerH) > 1 && !collapsed.current) setHeaderH(h);
+            if (h && Math.abs(h - headerH) > 1) setHeaderH(h);
           }}
         >
           <Text style={styles.title}>{t('classes.title')}</Text>
