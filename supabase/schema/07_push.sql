@@ -62,31 +62,34 @@ security definer
 set search_path = public
 as $$
 declare
-  tokens text[];
+  tok text;
 begin
   if recipient_ids is null or array_length(recipient_ids, 1) is null then
     return;
   end if;
 
-  select array_agg(distinct dt.token) into tokens
-  from public.device_tokens dt
-  where dt.user_id = any (recipient_ids);
-
-  if tokens is null or array_length(tokens, 1) is null then
-    return;
-  end if;
-
-  perform net.http_post(
-    url := 'https://exp.host/--/api/v2/push/send',
-    headers := jsonb_build_object('Content-Type', 'application/json'),
-    body := jsonb_build_object(
-      'to', to_jsonb(tokens),
-      'title', title,
-      'body', body,
-      'data', coalesce(data, '{}'::jsonb),
-      'sound', 'default'
-    )
-  );
+  -- One request PER TOKEN (not one batched request for all). Expo rejects an
+  -- entire request that mixes tokens from different projects / experience IDs
+  -- (PUSH_TOO_MANY_EXPERIENCE_IDS), and a single invalid token can fail a batch —
+  -- so batching means one bad token silences the whole broadcast. Per-token,
+  -- each send is independent: a stale/foreign/expired token only fails itself.
+  for tok in
+    select distinct dt.token
+    from public.device_tokens dt
+    where dt.user_id = any (recipient_ids)
+  loop
+    perform net.http_post(
+      url := 'https://exp.host/--/api/v2/push/send',
+      headers := jsonb_build_object('Content-Type', 'application/json'),
+      body := jsonb_build_object(
+        'to', tok,
+        'title', title,
+        'body', body,
+        'data', coalesce(data, '{}'::jsonb),
+        'sound', 'default'
+      )
+    );
+  end loop;
 end;
 $$;
 
