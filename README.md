@@ -8,16 +8,20 @@ recreation** across five tabs:
 - **🏀 Map** — every rec-center gym and outdoor court, across **5 sports**
   (basketball, volleyball, ping pong, pickleball, tennis), with weekly **open-gym
   schedules**, **"open now"** filtering, live **crowd check-ins**, and tennis/
-  pickleball **reservation occupancy** ("% booked right now"). Star a court for the
-  sport you're viewing (Parkside for pickleball, Palega for basketball) and the sport
-  dial's **⭐ Favorites** view becomes a personal map of just your spots, each shown
-  open or closed for the sport you favorited it for.
+  pickleball **reservation occupancy** ("% booked right now"). Each sport has its own
+  glyph (down to a drawn perforated pickleball). To keep dense areas legible, nearby
+  courts **cluster into count bubbles** when zoomed out (orange = something open now)
+  that split as you zoom in, and courts **open now show as full glyphs while closed
+  ones recede to faded dots**. Star a court for the sport you're viewing (Parkside for
+  pickleball, Palega for basketball) and the sport dial's **⭐ Favorites** view becomes
+  a personal map of just your spots, each shown open or closed for the sport you
+  favorited it for.
 - **📅 Classes** — SF Rec & Park drop-in programs (fitness, dance, music/arts,
   photography, social games) with live openings.
 - **🏊 Pools** — the 9 public swimming pools with parsed weekly swim schedules
   (lap / family / senior / lessons …), fees, and "open now".
-- **👥 Social** — accounts, friends, "down to play" signals, planned pickup games,
-  an activity feed, and chat.
+- **👥 Social** — accounts, friends, "down to play" signals, planned games, an
+  activity feed, and chat.
 - **👤 Profile** — your profile/stats, plus **Settings** (language + account).
 
 The whole UI is **localized in English / 中文 / Español**. Built with **Expo /
@@ -61,7 +65,8 @@ permission has been hard-denied).
 | File | What it does |
 | --- | --- |
 | `App.js` | Main screen: header, open-now filter, map, court detail card, geolocation |
-| `components/CourtMap.js` | Leaflet map in a WebView; renders markers, handles taps |
+| `components/CourtMap.js` · `.web.js` | Leaflet map (native = WebView, web = DOM); markers, **zoom clustering + open/closed hierarchy**, taps — keep the two in sync |
+| `components/SportGlyph.js` | Per-sport glyph: emoji for most, a drawn/rasterized ball for **pickleball** (which has no emoji) |
 | `assets/stephCurryIcon.js` | User-location marker image (data URI) |
 | `data/courts.js` | **Generated** bundled court list (offline fallback) |
 | `data/courts.json` | **Generated** hostable court data the app fetches at launch |
@@ -79,13 +84,13 @@ permission has been hard-denied).
 | `lib/auth.js` | Account state (Supabase Auth: session, profile, sign in/out) |
 | `lib/runs.js` | "Plan a run" store (create/join/leave/cancel pickup runs) |
 | `components/AuthModal.js` | Sign in / create account / account sheet |
-| `components/RunModal.js` | Top-level "Plan a run" form — pick a court + day/time in either order |
+| `components/RunModal.js` | Top-level "Plan a game" form — sport, Indoor/Outdoor filter, court + day/time in either order |
 | `lib/friends.js` | Friends graph (codes, add/accept/remove) |
 | `components/FriendsModal.js` | Friends sheet (your code, add by code, requests, friends list) |
 | `lib/feed.js` | Activity feed: merges signals + runs into one stream; unread tracking |
 | `components/FeedModal.js` | Activity sheet — friends' signals + upcoming runs, with composers |
 | `lib/signals.js` | "Down to play" signals + joinable sessions (friends-only, realtime) |
-| `components/SignalModal.js` | "Down to play" composer (now / at a time + note) |
+| `components/SignalModal.js` | "Down to play" composer (now / at a time, optional sport · place · court + note) |
 | `components/SessionModal.js` | Session sheet (join, suggest a time, host confirms) |
 | `lib/distance.js` | Haversine distance + formatting (miles) |
 | `lib/push.js` | Expo push-token registration + notification-tap handling |
@@ -412,18 +417,21 @@ via Supabase realtime on both the signal and run tables. Code lives in
 The **👥 Friends** sheet is now just friend management (code, add, requests,
 list), and its badge counts pending **friend requests**.
 
-## Plan a game (pickup games)
+## Plan a game
 
-Signed-in users **plan a game** from the **＋ Plan** button next to the map's time
-picker (no longer buried in each court's card). The form lets you start from
-**either end**: pick a **court** and its open-gym days/times light up, or pick a
-**day/time** and the court list flags which gyms run open gym then (others are
-disabled). Pick the **sport** (any tracked sport), **who can see it** (**Friends**,
-the default, or **Anyone**), and an optional note. If the map's time picker is set,
-the form opens seeded to that time. Others who can see it tap **I'm in** to join
-(from the **Activity** feed); the host sees a roster count and can **Cancel**.
-Code lives in `lib/runs.js` + `components/RunModal.js` (internally still the
-`rec_runs` table — only the user-facing wording is "plan / game").
+Plan an actual session — a court, a sport, and a time — for whatever you're
+organizing (not only casual pickup; any tracked sport at any tracked court).
+Signed-in users start from the **＋ Plan** button next to the map's time picker (no
+longer buried in each court's card). The form lets you start from **either end**:
+pick a **court** and its open-gym days/times light up, or pick a **day/time** and the
+court list flags which gyms run open gym then (others are disabled). For sports that
+have both, an **Indoor / Outdoor / Either** filter narrows the court list (the same
+control the map uses). Pick the **sport** (any tracked sport), **who can see it**
+(**Friends**, the default, or **Anyone**), and an optional note. If the map's time
+picker is set, the form opens seeded to that time. Others who can see it tap **I'm
+in** to join (from the **Activity** feed); the host sees a roster count and can
+**Cancel**. Code lives in `lib/runs.js` + `components/RunModal.js` (internally still
+the `rec_runs` table — only the user-facing wording is "plan / game").
 
 Visibility is enforced by RLS via the `visibility` column (`public` | `friends`):
 public games are readable by all, friends-only ones only by the host and accepted
@@ -451,14 +459,18 @@ live in [`03_profiles.sql`](supabase/schema/03_profiles.sql).)
 
 ## Down to play
 
-A location-less availability ping to friends: in the **📣 Activity** sheet tap
-**🤙 I’m down** → optionally pick a **sport** (or leave it **🤸 Anything** — just
-down for some recreation) and **Right now** or **At a time** (+ optional note).
-Friends see it live in their Activity feed, and the Activity button shows an
-**unread badge** — the in-app "notification". Signals are **friends-only** (RLS) and
-**auto-expire** 2h after they start. The chosen sport rides along on the feed row and
-the session sheet, and scopes which courts/times you can suggest (an **Anything**
-signal falls back to a default sport for those suggestions).
+An availability ping to friends: in the **📣 Activity** sheet tap **🤙 I’m down** →
+optionally pick a **sport** (or leave it **🤸 Anything** — just down for some
+recreation) and **Right now** or **At a time** (+ optional note). You can also seed
+the location up front — an optional **Indoor / Outdoor / Either** preference and an
+optional **specific court** (or leave it **Anywhere** and let friends decide) — the
+same filters the map uses. Anything you set shows on the session sheet as a "Prefers:
+…" line; anything you leave blank stays open for friends to suggest. Friends see it
+live in their Activity feed, and the Activity button shows an **unread badge** — the
+in-app "notification". Signals are **friends-only** (RLS) and **auto-expire** 2h after
+they start. The chosen sport rides along on the feed row and the session sheet, and
+scopes which courts/times you can suggest (an **Anything** signal falls back to a
+default sport for those suggestions).
 
 Each signal is a **joinable session**: tap it to open the session sheet, **join**
 (**I'm in**), **suggest an activity → place → time**, and — as the host — **confirm**
@@ -475,10 +487,12 @@ confirmed court + time show to everyone and extend the session's expiry. Code li
 `components/SessionModal.js` (session).
 
 Setup: run [`supabase/schema/06_signals.sql`](supabase/schema/06_signals.sql) — it
-adds `rec_signals` + `rec_signal_participants` (with the sport + suggested/confirmed
-court + time columns), policies, the auto-join trigger, and real-time. On an
-**existing** DB, apply [`supabase/migrations/006_signal_sport.sql`](supabase/migrations/006_signal_sport.sql)
-to add the `sport` column.
+adds `rec_signals` + `rec_signal_participants` (with the sport, creator place/court
+prefs, and suggested/confirmed court + time columns), policies, the auto-join trigger,
+and real-time. On an **existing** DB, apply
+[`006_signal_sport.sql`](supabase/migrations/006_signal_sport.sql) (the `sport`
+column) and [`015_signal_place_court.sql`](supabase/migrations/015_signal_place_court.sql)
+(the creator's `place` + `pref_court_id` prefs).
 
 > **Note:** the in-app feed is real-time. To also **buzz the phone when the app
 > is closed**, see *Push notifications* below.
