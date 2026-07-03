@@ -92,6 +92,25 @@ const html = `
       0%, 100% { transform: translateY(0); }
       50%      { transform: translateY(-3px); }
     }
+
+    /* Closed / no drop-in right now → recede to a small faded dot so open
+       courts (full balls) carry the eye. */
+    .dot {
+      width: 100%; height: 100%; border-radius: 50%;
+      background: #8a97a5; border: 1.5px solid #fff; opacity: 0.6;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    }
+
+    /* Cluster bubble: a count for nearby courts, orange if any are open now,
+       grey if none. Tap to zoom in and split it apart. */
+    .clus {
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; font: 700 13px/1 -apple-system, sans-serif;
+      color: #fff; border: 2px solid #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+    }
+    .clus.has-open { background: #ee7d1b; }
+    .clus.no-open  { background: #9aa4af; }
   </style>
 </head>
 <body>
@@ -208,32 +227,93 @@ const html = `
       return ''; // moderate / none → no animation
     }
 
-    window.setCourts = function (courts) {
-      courtLayer.clearLayers();
-      markersById = {};
-      courts.forEach(function (c) {
-        // Outdoor courts (basketball/tennis/pickleball) are dense, so render them a
-        // bit smaller than indoor gyms to cut map clutter.
-        var size = c.indoor === false ? 21 : 26;
-        var ball = '<div class="bball" style="opacity:' + (c.open ? 1 : 0.45) + '">' + ballSvg(c.sport) + '</div>';
+    // Zoomed-out courts are grouped into count bubbles (grid-clustered by screen
+    // distance) so dense areas — basketball especially — don't wall off the map;
+    // zoom past DECLUSTER_ZOOM and every court shows on its own.
+    var allCourts = [];
+    var CLUSTER_RADIUS = 55; // px: courts closer than this on screen group together
+    var DECLUSTER_ZOOM = 16; // at/after this zoom, always show individual courts
+
+    function individualIcon(c) {
+      // Open now → full sport ball with its crowd/booking decorations.
+      if (c.open) {
+        var size = c.indoor === false ? 22 : 26;
+        var ball = '<div class="bball">' + ballSvg(c.sport) + '</div>';
         var level = bookLevel(c.booked);
         var ring = level ? '<div class="bookring bk-' + level + '"></div>' : '';
         // Fully booked hops; otherwise an active crowd bounces.
         var anim = level === 'full' ? ' jump'
           : (c.crowd === 'moderate' || c.crowd === 'packed') ? ' bounce' : '';
-        var icon = L.divIcon({
+        return L.divIcon({
           className: '',
           html: '<div class="ballwrap' + anim + '" style="width:' + size + 'px;height:' + size + 'px">' +
             crowdDecoration(c.crowd) + ring + ball + '</div>',
           iconSize: [size, size],
           iconAnchor: [size / 2, size / 2]
         });
-        var m = L.marker([c.lat, c.lng], { icon: icon });
-        m.on('click', function () { post({ type: 'select', id: c.id }); });
-        m.addTo(courtLayer);
-        markersById[c.id] = m;
+      }
+      // Closed / no drop-in now → small faded dot.
+      return L.divIcon({
+        className: '', html: '<div class="dot"></div>',
+        iconSize: [13, 13], iconAnchor: [6.5, 6.5]
       });
+    }
+
+    function addIndividual(c) {
+      var m = L.marker([c.lat, c.lng], { icon: individualIcon(c) });
+      m.on('click', function () { post({ type: 'select', id: c.id }); });
+      m.addTo(courtLayer);
+      markersById[c.id] = m;
+    }
+
+    function addCluster(group) {
+      var anyOpen = false, sumLat = 0, sumLng = 0, n = group.length;
+      for (var i = 0; i < n; i++) {
+        if (group[i].open) anyOpen = true;
+        sumLat += group[i].lat; sumLng += group[i].lng;
+      }
+      var d = 26 + Math.min(18, Math.round(Math.log(n) / Math.LN2 * 7)); // grows with count
+      var icon = L.divIcon({
+        className: '',
+        html: '<div class="clus ' + (anyOpen ? 'has-open' : 'no-open') +
+          '" style="width:' + d + 'px;height:' + d + 'px">' + n + '</div>',
+        iconSize: [d, d], iconAnchor: [d / 2, d / 2]
+      });
+      var m = L.marker([sumLat / n, sumLng / n], { icon: icon });
+      var bounds = L.latLngBounds(group.map(function (c) { return [c.lat, c.lng]; }));
+      m.on('click', function () { map.fitBounds(bounds.pad(0.3), { maxZoom: DECLUSTER_ZOOM }); });
+      m.addTo(courtLayer);
+    }
+
+    function renderMarkers() {
+      courtLayer.clearLayers();
+      markersById = {};
+      if (map.getZoom() >= DECLUSTER_ZOOM) {
+        allCourts.forEach(addIndividual);
+        return;
+      }
+      // Bucket courts by a fixed screen-pixel grid (pan-invariant layer points),
+      // then render each bucket as a lone court or a cluster bubble.
+      var buckets = {};
+      allCourts.forEach(function (c) {
+        var p = map.latLngToLayerPoint([c.lat, c.lng]);
+        var key = Math.round(p.x / CLUSTER_RADIUS) + '_' + Math.round(p.y / CLUSTER_RADIUS);
+        (buckets[key] = buckets[key] || []).push(c);
+      });
+      Object.keys(buckets).forEach(function (k) {
+        var g = buckets[k];
+        if (g.length === 1) addIndividual(g[0]); else addCluster(g);
+      });
+    }
+
+    window.setCourts = function (courts) {
+      allCourts = courts || [];
+      renderMarkers();
     };
+
+    // Re-cluster on zoom (grouping is a function of zoom + geography, so panning
+    // needs no rebuild — the geo-anchored markers just move with the map).
+    map.on('zoomend', renderMarkers);
 
     window.setUser = function (lat, lng) {
       if (userMarker) { map.removeLayer(userMarker); }
@@ -250,8 +330,9 @@ const html = `
     window.focusCourt = function (id, lat, lng) {
       // Center the marker in the visible area *above* the court detail card
       // (which slides up over the bottom of the screen) by shifting the map
-      // center below the marker, so the pin sits higher on screen.
-      var z = 15;
+      // center below the marker, so the pin sits higher on screen. Zoom to the
+      // decluster level so the focused court resolves to its own pin, not a bubble.
+      var z = DECLUSTER_ZOOM;
       var offsetY = Math.round(map.getSize().y * 0.25);
       var center = map.unproject(map.project([lat, lng], z).add([0, offsetY]), z);
       map.setView(center, z, { animate: true });

@@ -124,9 +124,93 @@ function ensureStyles() {
       @keyframes flicker { from { transform: scale(0.9) rotate(-4deg); opacity: 0.85; } to { transform: scale(1.12) rotate(4deg); opacity: 1; } }
       .bounce { animation: bounce 0.6s ease-in-out infinite; }
       @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+      .dot { width: 100%; height: 100%; border-radius: 50%; background: #8a97a5; border: 1.5px solid #fff; opacity: 0.6; box-shadow: 0 1px 2px rgba(0,0,0,0.3); }
+      .clus { display: flex; align-items: center; justify-content: center; border-radius: 50%; font: 700 13px/1 -apple-system, sans-serif; color: #fff; border: 2px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.35); }
+      .clus.has-open { background: #ee7d1b; }
+      .clus.no-open { background: #9aa4af; }
     `;
     document.head.appendChild(style);
   }
+}
+
+// Zoomed-out courts are grouped into count bubbles (grid-clustered by screen
+// distance) so dense areas — basketball especially — don't wall off the map;
+// zoom past DECLUSTER_ZOOM and every court shows on its own.
+const CLUSTER_RADIUS = 55; // px: courts closer than this on screen group together
+const DECLUSTER_ZOOM = 16; // at/after this zoom, always show individual courts
+
+function individualIcon(c, sport) {
+  // Open now → full sport ball with its crowd/booking decorations.
+  if (c.open) {
+    const size = c.indoor === false ? 22 : 26;
+    // A court may carry its own sport (Favorites view glyphs each pin by the sport
+    // it was favorited for); otherwise fall back to the map-wide sport.
+    const ball = '<div class="bball">' + ballSvg(c.sport || sport) + '</div>';
+    const level = bookLevel(c.booked);
+    const ring = level ? '<div class="bookring bk-' + level + '"></div>' : '';
+    const anim = level === 'full' ? ' jump' : c.crowd === 'moderate' || c.crowd === 'packed' ? ' bounce' : '';
+    return L.divIcon({
+      className: '',
+      html:
+        '<div class="ballwrap' + anim + '" style="width:' + size + 'px;height:' + size + 'px">' +
+        crowdDecoration(c.crowd) + ring + ball + '</div>',
+      iconSize: [size, size],
+      iconAnchor: [size / 2, size / 2],
+    });
+  }
+  // Closed / no drop-in now → small faded dot.
+  return L.divIcon({ className: '', html: '<div class="dot"></div>', iconSize: [13, 13], iconAnchor: [6.5, 6.5] });
+}
+
+function addCluster(map, layer, group) {
+  let anyOpen = false;
+  let sumLat = 0;
+  let sumLng = 0;
+  const n = group.length;
+  for (const c of group) {
+    if (c.open) anyOpen = true;
+    sumLat += c.lat;
+    sumLng += c.lng;
+  }
+  const d = 26 + Math.min(18, Math.round(Math.log2(n) * 7)); // grows with count
+  const icon = L.divIcon({
+    className: '',
+    html:
+      '<div class="clus ' + (anyOpen ? 'has-open' : 'no-open') + '" style="width:' + d + 'px;height:' + d + 'px">' + n + '</div>',
+    iconSize: [d, d],
+    iconAnchor: [d / 2, d / 2],
+  });
+  const mk = L.marker([sumLat / n, sumLng / n], { icon }).addTo(layer);
+  const bounds = L.latLngBounds(group.map((c) => [c.lat, c.lng]));
+  mk.on('click', () => map.fitBounds(bounds.pad(0.3), { maxZoom: DECLUSTER_ZOOM }));
+}
+
+// Render markers for the current zoom: individual pins past DECLUSTER_ZOOM,
+// otherwise grid-bucketed into lone pins + cluster bubbles. Returns the id→marker
+// map (for focusCourt). onSelect fires when an individual court is tapped.
+function renderMarkers(map, layer, courts, sport, onSelect) {
+  layer.clearLayers();
+  const markers = {};
+  const addIndividual = (c) => {
+    const mk = L.marker([c.lat, c.lng], { icon: individualIcon(c, sport) }).addTo(layer);
+    mk.on('click', () => onSelect(c.id));
+    markers[c.id] = mk;
+  };
+  if (map.getZoom() >= DECLUSTER_ZOOM) {
+    courts.forEach(addIndividual);
+    return markers;
+  }
+  const buckets = {};
+  courts.forEach((c) => {
+    const p = map.latLngToLayerPoint([c.lat, c.lng]);
+    const key = Math.round(p.x / CLUSTER_RADIUS) + '_' + Math.round(p.y / CLUSTER_RADIUS);
+    (buckets[key] = buckets[key] || []).push(c);
+  });
+  Object.values(buckets).forEach((g) => {
+    if (g.length === 1) addIndividual(g[0]);
+    else addCluster(map, layer, g);
+  });
+  return markers;
 }
 
 const CourtMap = forwardRef(function CourtMap(
@@ -140,6 +224,9 @@ const CourtMap = forwardRef(function CourtMap(
   const userRef = useRef(null);
   const onSelectRef = useRef(onSelectCourt);
   onSelectRef.current = onSelectCourt;
+  // Latest courts/sport for the zoomend re-cluster handler (registered once).
+  const courtsRef = useRef(courts);
+  const sportRef = useRef(sport);
 
   useEffect(() => {
     ensureStyles();
@@ -163,6 +250,17 @@ const CourtMap = forwardRef(function CourtMap(
     ).addTo(map);
     layerRef.current = L.layerGroup().addTo(map);
     mapRef.current = map;
+    // Re-cluster on zoom (grouping is a function of zoom + geography, so panning
+    // needs no rebuild — the geo-anchored markers just move with the map).
+    map.on('zoomend', () => {
+      markersRef.current = renderMarkers(
+        map,
+        layerRef.current,
+        courtsRef.current,
+        sportRef.current,
+        (id) => onSelectRef.current && onSelectRef.current(id)
+      );
+    });
     // Container may size after mount — make sure Leaflet measures correctly.
     setTimeout(() => map.invalidateSize(), 0);
     return () => {
@@ -173,37 +271,18 @@ const CourtMap = forwardRef(function CourtMap(
 
   // Re-render markers whenever courts (incl. open/crowd) change.
   useEffect(() => {
+    courtsRef.current = courts;
+    sportRef.current = sport;
+    const map = mapRef.current;
     const layer = layerRef.current;
-    if (!layer) return;
-    layer.clearLayers();
-    markersRef.current = {};
-    courts.forEach((c) => {
-      // Outdoor courts are dense, so render them a bit smaller than indoor gyms.
-      const size = c.indoor === false ? 21 : 26;
-      // A court may carry its own sport (Favorites view glyphs each pin by the sport
-      // it was favorited for); otherwise fall back to the map-wide sport.
-      const ball =
-        '<div class="bball" style="opacity:' + (c.open ? 1 : 0.45) + '">' + ballSvg(c.sport || sport) + '</div>';
-      const level = bookLevel(c.booked);
-      const ring = level ? '<div class="bookring bk-' + level + '"></div>' : '';
-      const anim =
-        level === 'full'
-          ? ' jump'
-          : c.crowd === 'moderate' || c.crowd === 'packed'
-          ? ' bounce'
-          : '';
-      const icon = L.divIcon({
-        className: '',
-        html:
-          '<div class="ballwrap' + anim + '" style="width:' + size + 'px;height:' + size + 'px">' +
-          crowdDecoration(c.crowd) + ring + ball + '</div>',
-        iconSize: [size, size],
-        iconAnchor: [size / 2, size / 2],
-      });
-      const m = L.marker([c.lat, c.lng], { icon }).addTo(layer);
-      m.on('click', () => onSelectRef.current && onSelectRef.current(c.id));
-      markersRef.current[c.id] = m;
-    });
+    if (!map || !layer) return;
+    markersRef.current = renderMarkers(
+      map,
+      layer,
+      courts,
+      sport,
+      (id) => onSelectRef.current && onSelectRef.current(id)
+    );
   }, [courts, sport]);
 
   // User location dot.
@@ -231,7 +310,8 @@ const CourtMap = forwardRef(function CourtMap(
       if (!map) return;
       // Shift the map center below the marker so the pin sits in the visible
       // area above the court detail card (which covers the bottom of the screen).
-      const z = 15;
+      // Zoom to the decluster level so the court resolves to its own pin.
+      const z = DECLUSTER_ZOOM;
       const offsetY = Math.round(map.getSize().y * 0.25);
       const center = map.unproject(map.project([court.lat, court.lng], z).add([0, offsetY]), z);
       map.setView(center, z, { animate: true });
