@@ -22,7 +22,8 @@ recreation** across five tabs:
   (lap / family / senior / lessons …), fees, and "open now".
 - **👥 Social** — accounts, friends, "down to play" signals, planned games, an
   activity feed, and chat.
-- **👤 Profile** — your profile/stats, plus **Settings** (language + account).
+- **👤 Profile** — your profile/stats, plus **Settings** (language, legal &
+  support links, activity-sharing, account).
 
 The whole UI is **localized in English / 中文 / Español**. Built with **Expo /
 React Native** (also shipped to the **web** as a static export). The map is
@@ -59,6 +60,11 @@ Two things make it more than a splash:
 If location is off, a dismiss-once map banner offers to enable it, and the
 "enable location" action is Settings-aware (routes to iOS Settings once the
 permission has been hard-denied).
+
+Once on the map, a **one-time coach mark** points at the sport FAB (the map's
+least-obvious control — an emoji glyph with no label), explaining that it switches
+sport / opens ⭐ Favorites. It's shown once and then never again (persisted under
+`recreate.coach.sportfab.v1`), dismissed by tapping it or opening the sport dial.
 
 ## Project layout
 
@@ -102,7 +108,8 @@ permission has been hard-denied).
 | `lib/classesLive.js` | Runtime ActiveNet fetch for "right now" class openings (native only; CORS-blocked on web) |
 | `components/PoolsScreen.js` | **Pools tab** — swimming pools, today's sessions, open-now, fees, schedule PDFs |
 | `data/pools.js` · `scripts/build-pools.js` | **Generated** pools + schedules parsed from seasonal PDFs (`pdfjs-dist`) |
-| `components/SettingsScreen.js` | Settings sheet — language switch (en/zh/es) + delete account |
+| `components/SettingsScreen.js` | Settings sheet — language switch (en/zh/es), Legal & Support links, activity-sharing toggle, delete account |
+| `docs/privacy-nutrition-label.md` | Reconciles the Privacy Policy with the App Store Connect privacy label (2.1 reference) |
 | `components/SocialScreen.js` · `ChatsScreen.js` · `ChatThread.js` | Social tab shell + 1:1 / group chat |
 | `lib/chat.js` | Chat data layer (run / signal / direct threads) |
 | `lib/blocks.js` · `lib/reports.js` | Trust & safety: block users (filtered into every social loader) + file content reports |
@@ -252,10 +259,18 @@ Each court's card has a **Reviews** section — a list of comments plus a box to
 add one (optional name + text). Stored in `lib/reviews.js` with the same
 Supabase-or-local pattern as check-ins; loaded lazily per court.
 
-Guards for free-text content: body capped at 1000 chars, optional name at 50,
-and a per-IP rate limit (10 reviews / 10 min) via a Supabase trigger. There's no
-in-app delete — **moderate via the Supabase dashboard** (Table Editor → `reviews`)
-if needed. A `rating` column exists (unused) so star ratings are an easy add.
+Guards for free-text content (spam + UGC accountability):
+- **Sign-in required to post** when reviews are shared (Supabase configured) — the
+  card shows a "Sign in to write a review" prompt that routes to the Profile tab,
+  and **RLS enforces it server-side** (insert policy is `to authenticated` with
+  `auth.uid()` — migration [`016_reviews_require_auth.sql`](supabase/migrations/016_reviews_require_auth.sql),
+  also folded into `schema/02_reviews.sql`). Local-only reviews (no backend) stay
+  open, since they never leave the device. The **Report** flow is unchanged.
+- Body capped at 1000 chars, optional name at 50, and a per-IP rate limit
+  (10 reviews / 10 min) via a Supabase trigger, kept as defense-in-depth.
+
+There's no in-app delete — **moderate via the Supabase dashboard** (Table Editor →
+`reviews`) if needed. A `rating` column exists (unused) so star ratings are an easy add.
 
 **Seed your own initial data** in the Supabase SQL editor:
 
@@ -362,14 +377,18 @@ with too little time left.
 
 The list reuses the app's current **Open now/then** filter and time picker, so it
 respects the selected view time — e.g. nearest court open for 1h+ at Tue 3 PM.
-Distance + time-left also show on each court's detail card. Without location
+Distance + time-left also show on each court's detail card, alongside **rough
+travel times** (drive / bus / walk) derived from straight-line distance — shown
+with a leading `~` (e.g. "~12 min") to read as estimates, since the real ETA comes
+from tapping **Directions**. Without location
 permission the list stays in default order with an "Enable location" prompt. Code:
 `components/NearbyList.js` (+ `getBasketballRemaining` in `lib/hours.js`).
 
 ## Accounts (optional)
 
-Accounts are the foundation for social features. They're **optional** — the map,
-check-ins, and reviews all work signed-out; you only need an account for social.
+Accounts are the foundation for social features. They're **optional** — the map
+and check-ins work signed-out; you need an account for social features and (when a
+Supabase backend is configured) to **post a review**. Reading reviews needs no account.
 
 Sign-in is **email + password** via Supabase Auth (`lib/auth.js`). Tap **Sign in**
 in the header to create an account (with a display name) or log in; the session
@@ -540,7 +559,16 @@ filtered into every social loader (`signals`, `chat`, `feed`, `friends`), so a
 blocked user's content disappears everywhere; manage/undo from **Settings →
 Blocked users**. Reports land in `content_reports` for out-of-band review. Account
 creation also requires agreeing to the **Terms (EULA)** and **Privacy Policy**.
-Setup: run [`supabase/schema/10_moderation.sql`](supabase/schema/10_moderation.sql).
+Posting a **review** additionally requires sign-in (see *Reviews*). Setup: run
+[`supabase/schema/10_moderation.sql`](supabase/schema/10_moderation.sql).
+
+### Accessibility
+
+Every **icon-only control** carries an `accessibilityLabel` (+ `accessibilityRole`)
+so VoiceOver announces it instead of reading a raw glyph — the sport & filter FABs,
+the recenter button, all ✕ close buttons (card / Settings / Blocked users), the
+location-banner dismiss, the bottom-nav tabs (with a `selected` state), and the
+review Report action. This is an App Store review consideration as much as a UX one.
 
 ## Push notifications
 
@@ -633,7 +661,9 @@ titles**, pre-translated at build time (see *Classes & activities* above).
 
 ## Settings & account deletion
 
-**Profile → ⚙️ Settings** opens a sheet with the language switch and a **Delete my
+**Profile → ⚙️ Settings** opens a sheet with the language switch, a **Legal &
+Support** section (links to the **Privacy Policy**, **Terms (EULA)**, and **Support**
+pages), an optional **Share activity with friends** toggle, and a **Delete my
 account** action. Deletion asks the user to type a confirmation word, then calls a
 `delete_account()` **SECURITY DEFINER** Postgres RPC that deletes their `auth.users`
 row; FK `ON DELETE CASCADE` then clears all of their app data (profile, check-ins,
@@ -641,6 +671,18 @@ runs, signals, friendships, chats, push tokens). Setup: run
 [`supabase/schema/09_account_deletion.sql`](supabase/schema/09_account_deletion.sql)
 (or [`supabase/migrations/005_account_deletion.sql`](supabase/migrations/005_account_deletion.sql)
 on an existing DB).
+
+### App Store privacy label
+
+The App Store **privacy nutrition label** (configured in App Store Connect, not the
+repo) must match the written [Privacy Policy](public/privacy.html).
+[`docs/privacy-nutrition-label.md`](docs/privacy-nutrition-label.md) reconciles the
+two: it maps every data type the app actually collects (email, name, user id, push
+token, user content — all *linked, not tracking, app-functionality*) to the exact
+ASC selections, and flags that **Location must stay "Not Collected"** because it's
+used on-device only (declaring it would contradict the policy). The same collected
+types are declared in `app.json` → `ios.privacyManifests` so the shipped
+`PrivacyInfo.xcprivacy` is consistent too.
 
 ## Deploy (web)
 
