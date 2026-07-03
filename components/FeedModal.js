@@ -13,6 +13,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { loadFeed } from '../lib/feed';
 import { subscribeSignals } from '../lib/signals';
@@ -230,7 +231,7 @@ export default function FeedModal({
           <Text style={styles.title}>{t('social.activity')}</Text>
           {!asPage && (
             <Pressable hitSlop={10} onPress={onClose}>
-              <Text style={styles.close}>✕</Text>
+              <Ionicons name="close" size={20} color="#90a0b0" />
             </Pressable>
           )}
         </View>
@@ -355,7 +356,6 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   title: { fontSize: 18, fontWeight: '800', color: '#0d1b2a' },
-  close: { fontSize: 18, color: '#90a0b0' },
   loading: { paddingVertical: 30, alignItems: 'center' },
 
   composeRow: { flexDirection: 'row', gap: 10, marginBottom: 6 },

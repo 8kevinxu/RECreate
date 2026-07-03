@@ -16,6 +16,7 @@ import {
   TextInput,
   View,
 } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAuth } from '../lib/auth';
 import { listBlockedUsers, unblockUser } from '../lib/blocks';
@@ -104,7 +105,7 @@ export default function SettingsScreen({ visible, onClose, onEditProfile }) {
             accessibilityRole="button"
             accessibilityLabel={t('a11y.close')}
           >
-            <Text style={styles.close}>✕</Text>
+            <Ionicons name="close" size={20} color="#90a0b0" />
           </Pressable>
         </View>
 
@@ -259,7 +260,7 @@ export default function SettingsScreen({ visible, onClose, onEditProfile }) {
               accessibilityRole="button"
               accessibilityLabel={t('a11y.close')}
             >
-              <Text style={styles.close}>✕</Text>
+              <Ionicons name="close" size={20} color="#90a0b0" />
             </Pressable>
           </View>
           <ScrollView
@@ -298,7 +299,6 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   title: { fontSize: 20, fontWeight: '800', color: '#0d1b2a' },
-  close: { fontSize: 18, color: '#90a0b0' },
   scroll: { flex: 1 },
 
   sectionLabel: {

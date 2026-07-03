@@ -10,6 +10,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import {
   joinSignal,
   leaveSignal,
@@ -161,7 +162,7 @@ export default function SessionModal({
               {mine ? t('session.yourSession') : t('session.theirSession', { name: signal.name })}
             </Text>
             <Pressable hitSlop={10} onPress={onClose}>
-              <Text style={styles.close}>✕</Text>
+              <Ionicons name="close" size={20} color="#90a0b0" />
             </Pressable>
           </View>
 
@@ -392,7 +393,6 @@ const styles = StyleSheet.create({
   },
   header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   title: { fontSize: 18, fontWeight: '800', color: '#0d1b2a' },
-  close: { fontSize: 18, color: '#90a0b0' },
   sub: { fontSize: 13, color: '#5b6b7b', marginTop: 2 },
   pref: { fontSize: 13, color: '#2f74d6', fontWeight: '700', marginTop: 4 },
 

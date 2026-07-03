@@ -13,6 +13,7 @@ import {
   TextInput,
   View,
 } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { createRun, MAX_NOTE } from '../lib/runs';
 import { startOfDay, dayChipLabel, fmtClock } from '../lib/datetime';
 import { dropinWeekdays, openGymSlots } from '../lib/hours';
@@ -247,7 +248,7 @@ export default function RunModal({
           <View style={styles.header}>
             <Text style={styles.title}>{t('run.title')}</Text>
             <Pressable hitSlop={10} onPress={onClose}>
-              <Text style={styles.close}>✕</Text>
+              <Ionicons name="close" size={20} color="#90a0b0" />
             </Pressable>
           </View>
 
@@ -512,7 +513,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   title: { fontSize: 18, fontWeight: '800', color: '#0d1b2a' },
-  close: { fontSize: 18, color: '#90a0b0' },
 
   sportRow: { flexDirection: 'row', gap: 8, marginBottom: 14 },
   sportChip: {

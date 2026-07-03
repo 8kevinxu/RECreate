@@ -283,7 +283,7 @@ export default function AuthModal({
               </Pressable>
             ) : (
               <Pressable hitSlop={10} onPress={close}>
-                <Text style={styles.close}>✕</Text>
+                <Ionicons name="close" size={20} color="#90a0b0" />
               </Pressable>
             )}
           </View>
@@ -637,7 +637,6 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   title: { fontSize: 18, fontWeight: '800', color: '#0d1b2a' },
-  close: { fontSize: 18, color: '#90a0b0' },
   gear: { fontSize: 20 },
 
   input: {

@@ -10,6 +10,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { formatDistance } from '../lib/distance';
 import { fmtDuration } from '../lib/datetime';
 import { isFullyBooked } from '../lib/reservations';
@@ -52,7 +53,7 @@ export default function NearbyList({
           <View style={styles.header}>
             <Text style={styles.title}>{t('nearby.title')}</Text>
             <Pressable hitSlop={10} onPress={onClose}>
-              <Text style={styles.close}>✕</Text>
+              <Ionicons name="close" size={20} color="#90a0b0" />
             </Pressable>
           </View>
 
@@ -149,7 +150,6 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   title: { fontSize: 18, fontWeight: '800', color: '#0d1b2a' },
-  close: { fontSize: 18, color: '#90a0b0' },
 
   enableLoc: {
     backgroundColor: '#e3eefb',

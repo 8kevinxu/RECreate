@@ -3,8 +3,10 @@ import React, {
   useEffect,
   useImperativeHandle,
   useRef,
+  useState,
 } from 'react';
 import L from 'leaflet';
+import { useI18n } from '../lib/i18n';
 
 // Web build of the map: Leaflet rendered directly in the DOM (no WebView).
 // Mirrors components/CourtMap.js so native + web look identical.
@@ -215,6 +217,8 @@ const CourtMap = forwardRef(function CourtMap(
   { courts, sport = 'basketball', userLocation, onSelectCourt },
   ref
 ) {
+  const { t } = useI18n();
+  const [offline, setOffline] = useState(false);
   const elRef = useRef(null);
   const mapRef = useRef(null);
   const layerRef = useRef(null);
@@ -237,7 +241,7 @@ const CourtMap = forwardRef(function CourtMap(
       zoomDelta: 0.4,
       wheelPxPerZoomLevel: 90,
     }).setView(SF, 12);
-    L.tileLayer(
+    const tiles = L.tileLayer(
       'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
       {
         maxZoom: 20,
@@ -246,6 +250,17 @@ const CourtMap = forwardRef(function CourtMap(
         attribution: '&copy; OpenStreetMap &copy; CARTO',
       }
     ).addTo(map);
+    // Offline / tile-failure hint: a few failed tile fetches (no network, CDN
+    // down) surface a banner; one successful load clears it. Mirrors CourtMap.js.
+    let tileErrs = 0;
+    tiles.on('tileerror', () => {
+      tileErrs++;
+      if (tileErrs >= 3) setOffline(true);
+    });
+    tiles.on('tileload', () => {
+      tileErrs = 0;
+      setOffline(false);
+    });
     layerRef.current = L.layerGroup().addTo(map);
     mapRef.current = map;
     // Re-cluster on zoom (grouping is a function of zoom + geography, so panning
@@ -320,10 +335,34 @@ const CourtMap = forwardRef(function CourtMap(
   }));
 
   return (
-    <div
-      ref={elRef}
-      style={{ width: '100%', height: '100%', backgroundColor: '#aadaf0' }}
-    />
+    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+      <div
+        ref={elRef}
+        style={{ width: '100%', height: '100%', backgroundColor: '#aadaf0' }}
+      />
+      {offline && (
+        <div
+          style={{
+            position: 'absolute',
+            bottom: 96,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 7,
+            background: 'rgba(13,27,42,0.9)',
+            color: '#fff',
+            borderRadius: 20,
+            padding: '8px 14px',
+            font: '700 12px/1 -apple-system, BlinkMacSystemFont, sans-serif',
+            pointerEvents: 'none',
+            zIndex: 500,
+          }}
+        >
+          ☁︎ {t('map.offline')}
+        </div>
+      )}
+    </div>
   );
 });
 

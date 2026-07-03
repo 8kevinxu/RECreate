@@ -18,7 +18,6 @@ const SLIDES = [
   { type: 'info', emoji: '🏃', title: 'onb.s1.title', body: 'onb.s1.body' },
   { type: 'info', emoji: '🗺️', title: 'onb.s2.title', body: 'onb.s2.body' },
   { type: 'info', emoji: '🚦', title: 'onb.s3.title', body: 'onb.s3.body' },
-  { type: 'info', emoji: '🤝', title: 'onb.s4.title', body: 'onb.s4.body' },
   { type: 'interests' },
   { type: 'location' },
   { type: 'account' },

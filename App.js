@@ -877,13 +877,18 @@ export default function App() {
             onPress={toggleTimePicker}
             style={[styles.timePill, (pickerOpen || isPicked) && styles.timePillActive]}
           >
+            <Ionicons
+              name="time-outline"
+              size={15}
+              color={pickerOpen || isPicked ? '#fff' : '#46586a'}
+            />
             <Text
               style={[
                 styles.timePillText,
                 (pickerOpen || isPicked) && styles.timePillTextActive,
               ]}
             >
-              🕒 {isPicked ? viewLabel(viewTime) : t('home.pickTime')}
+              {isPicked ? viewLabel(viewTime) : t('home.pickTime')}
             </Text>
           </Pressable>
 
@@ -896,7 +901,7 @@ export default function App() {
               }}
               style={styles.timeReset}
             >
-              <Text style={styles.timeResetText}>✕</Text>
+              <Ionicons name="close" size={16} color="#8a99a8" />
             </Pressable>
           )}
 
@@ -1058,7 +1063,7 @@ export default function App() {
             style={[styles.recenterBtn, { bottom: navClearance }]}
             onPress={recenter}
           >
-            <Text style={styles.recenterIcon}>◎</Text>
+            <Ionicons name="locate" size={22} color="#2f74d6" />
           </Pressable>
         )}
 
@@ -1423,7 +1428,7 @@ function CourtDetail({
             accessibilityRole="button"
             accessibilityLabel={t('a11y.close')}
           >
-            <Text style={styles.close}>✕</Text>
+            <Ionicons name="close" size={22} color="#90a0b0" />
           </Pressable>
         </View>
       </View>
@@ -1770,30 +1775,6 @@ function CourtDetail({
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: '#eef1f5' },
 
-  header: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    paddingHorizontal: 16,
-    paddingTop: 8,
-    paddingBottom: 4,
-    gap: 10,
-  },
-  headerText: { flex: 1 },
-  headerBtns: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-end',
-    flexWrap: 'wrap',
-    gap: 8,
-  },
-  account: {
-    backgroundColor: '#1b2b3d',
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    borderRadius: 10,
-    maxWidth: 150,
-  },
-  accountText: { color: '#1f2a37', fontWeight: '700', fontSize: 13 },
   badge: {
     position: 'absolute',
     top: -5,
@@ -1807,33 +1788,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 4,
   },
   badgeText: { color: '#fff', fontSize: 11, fontWeight: '800' },
-  title: { color: '#0d1b2a', fontSize: 24, fontWeight: '800' },
-  subtitle: { color: '#1f2a37', fontSize: 15, fontWeight: '700' },
-  updated: { color: '#8a99a8', fontSize: 11, marginTop: 2 },
 
-  filterBar: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 16,
-    paddingVertical: 10,
-    gap: 10,
-  },
-  segment: {
-    flexDirection: 'row',
-    backgroundColor: '#1b2b3d',
-    borderRadius: 10,
-    padding: 3,
-    flex: 1,
-  },
-  segmentItem: {
-    flex: 1,
-    paddingVertical: 7,
-    borderRadius: 8,
-    alignItems: 'center',
-  },
-  segmentItemActive: { backgroundColor: '#2f74d6' },
-  segmentText: { color: '#9db4cc', fontWeight: '600', fontSize: 13 },
-  segmentTextActive: { color: '#fff' },
 
   openToggle: {
     paddingHorizontal: 14,
@@ -1941,18 +1896,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
   },
   sportDialLabelText: { color: '#1f2a37', fontWeight: '700', fontSize: 13 },
-  sportRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  sportChip: {
-    paddingHorizontal: 14,
-    paddingVertical: 8,
-    borderRadius: 999,
-    backgroundColor: '#fff',
-    borderWidth: 1,
-    borderColor: '#dde3ea',
-  },
-  sportChipActive: { backgroundColor: '#e8732c', borderColor: '#e8732c' },
-  sportChipText: { color: '#46586a', fontWeight: '700', fontSize: 13 },
-  sportChipTextActive: { color: '#fff' },
   placeRow: { flexDirection: 'row', gap: 6 },
   placeChip: {
     paddingHorizontal: 12,
@@ -1986,12 +1929,15 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#dde3ea',
   },
-  menuBtnActive: { backgroundColor: '#e8732c', borderColor: '#e8732c' },
+  menuBtnActive: { backgroundColor: '#e8730c', borderColor: '#e8730c' },
   menuBtnText: { color: '#1f2a37', fontWeight: '800', fontSize: 13 },
   menuBtnTextActive: { color: '#fff' },
   filtersPanel: { marginTop: 10, gap: 8 },
 
   timePill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
     paddingHorizontal: 14,
     paddingVertical: 9,
     borderRadius: 10,
@@ -2003,16 +1949,7 @@ const styles = StyleSheet.create({
   timePillText: { color: '#46586a', fontWeight: '700', fontSize: 13 },
   timePillTextActive: { color: '#fff' },
   timeReset: { paddingHorizontal: 6, paddingVertical: 9 },
-  timeResetText: { color: '#8a99a8', fontWeight: '700', fontSize: 14 },
 
-  planRunBtn: {
-    marginLeft: 'auto',
-    paddingHorizontal: 14,
-    paddingVertical: 9,
-    borderRadius: 10,
-    backgroundColor: '#1f9d55',
-  },
-  planRunBtnText: { color: '#fff', fontWeight: '800', fontSize: 13 },
 
   pickerPanel: { marginTop: 10, gap: 8 },
   chipRow: { gap: 8, paddingRight: 16 },
@@ -2093,7 +2030,6 @@ const styles = StyleSheet.create({
     elevation: 4,
     zIndex: 1000,
   },
-  recenterIcon: { fontSize: 22, color: '#2f74d6' },
 
   nearbyBtn: {
     position: 'absolute',
@@ -2154,7 +2090,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#eef2f6',
   },
   etaText: { color: '#46586a', fontWeight: '800', fontSize: 13 },
-  close: { fontSize: 18, color: '#90a0b0', paddingLeft: 8 },
   cardHeadActions: { flexDirection: 'row', alignItems: 'center', gap: 10, paddingLeft: 4 },
 
   favEmpty: { position: 'absolute', left: 32, right: 32, top: '40%', alignItems: 'center' },
@@ -2196,14 +2131,13 @@ const styles = StyleSheet.create({
   bookedNoteFull: { color: '#c0392b', fontWeight: '700' },
   bookedFresh: { fontSize: 11, color: '#a89a86', marginTop: -4, marginBottom: 8 },
   bookBtn: {
-    backgroundColor: '#e8732c',
+    backgroundColor: '#e8730c',
     borderRadius: 10,
     paddingVertical: 11,
     alignItems: 'center',
     marginBottom: 8,
   },
   bookBtnText: { color: '#fff', fontWeight: '800', fontSize: 14 },
-  bookHowto: { fontSize: 12, color: '#2f74d6', fontWeight: '700', marginBottom: 10 },
   bookHelpToggle: { fontSize: 12, color: '#2f74d6', fontWeight: '700', marginBottom: 6 },
   bookHelpBody: { marginBottom: 10 },
   bookHelpText: { fontSize: 12, color: '#5b6b7b', lineHeight: 17 },
@@ -2282,7 +2216,6 @@ const styles = StyleSheet.create({
   weekTimes: { fontSize: 13, color: '#2a3a4a', flex: 1, textAlign: 'right' },
   weekClosed: { color: '#aab4bd' },
   weekTodayText: { color: '#e8730c', fontWeight: '700' },
-  wheelchairNote: { fontSize: 11, color: '#6f8298', marginTop: 6, fontStyle: 'italic' },
 
   notes: { fontSize: 13, color: '#5b6b7b', marginTop: 8, lineHeight: 18 },
   disclaimer: {

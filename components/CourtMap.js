@@ -5,8 +5,10 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { WebView } from 'react-native-webview';
+import { useI18n } from '../lib/i18n';
 
 // San Francisco center, used as the initial map view.
 const SF_CENTER = { lat: 37.7749, lng: -122.4194 };
@@ -130,12 +132,25 @@ const html = `
     // CARTO Voyager: colorful but clean basemap (green parks, blue water, soft
     // roads) with no mountain/peak symbols. Free, no API key. detectRetina
     // pulls @2x tiles for crisp phone display.
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    var tiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
       maxZoom: 20,
       subdomains: 'abcd',
       detectRetina: true,
       attribution: '&copy; OpenStreetMap &copy; CARTO'
     }).addTo(map);
+
+    // Offline / tile-failure hint: after a few tile fetches fail (no network,
+    // CDN down), tell the native layer to show a banner. A single successful
+    // tile load clears it. Only posts on transitions, not per tile.
+    var tileErrs = 0, offlineShown = false;
+    tiles.on('tileerror', function () {
+      tileErrs++;
+      if (tileErrs >= 3 && !offlineShown) { offlineShown = true; post({ type: 'tiles', ok: false }); }
+    });
+    tiles.on('tileload', function () {
+      tileErrs = 0;
+      if (offlineShown) { offlineShown = false; post({ type: 'tiles', ok: true }); }
+    });
 
     var courtLayer = L.layerGroup().addTo(map);
     var markersById = {};
@@ -353,8 +368,10 @@ const CourtMap = forwardRef(function CourtMap(
   { courts, sport = 'basketball', userLocation, onSelectCourt },
   ref
 ) {
+  const { t } = useI18n();
   const webRef = useRef(null);
   const [ready, setReady] = useState(false);
+  const [offline, setOffline] = useState(false);
 
   const inject = useCallback((js) => {
     webRef.current?.injectJavaScript(js + ' true;');
@@ -396,6 +413,8 @@ const CourtMap = forwardRef(function CourtMap(
         setReady(true);
       } else if (msg.type === 'select') {
         onSelectCourt?.(msg.id);
+      } else if (msg.type === 'tiles') {
+        setOffline(!msg.ok);
       }
     },
     [onSelectCourt]
@@ -412,6 +431,12 @@ const CourtMap = forwardRef(function CourtMap(
         domStorageEnabled
         style={styles.webview}
       />
+      {offline && (
+        <View style={styles.offline} pointerEvents="none">
+          <Ionicons name="cloud-offline-outline" size={15} color="#fff" />
+          <Text style={styles.offlineText}>{t('map.offline')}</Text>
+        </View>
+      )}
     </View>
   );
 });
@@ -419,6 +444,19 @@ const CourtMap = forwardRef(function CourtMap(
 const styles = StyleSheet.create({
   container: { flex: 1, overflow: 'hidden' },
   webview: { flex: 1, backgroundColor: '#aadaf0' },
+  offline: {
+    position: 'absolute',
+    bottom: 96,
+    alignSelf: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 7,
+    backgroundColor: 'rgba(13,27,42,0.9)',
+    borderRadius: 20,
+    paddingVertical: 8,
+    paddingHorizontal: 14,
+  },
+  offlineText: { color: '#fff', fontSize: 12, fontWeight: '700' },
 });
 
 export default CourtMap;
