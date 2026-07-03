@@ -57,6 +57,15 @@ const TYPE_SPORTS = {
   'Tennis/Pickleball Court': ['tennis', 'pickleball'],
 };
 
+// DataSF (by property_name) that are INDOOR-only rec centers whose gym court it
+// tags as a plain "Basketball Court" — with no indoor/outdoor field to tell them
+// apart, they'd surface as phantom always-open outdoor courts duplicating the
+// indoor record from build-indoor-courts.js. Skip them here. (Only list a facility
+// once confirmed it has no real outdoor courts — many rec-center parks legitimately
+// do.) Gene Friend (270 6th St, SoMa) is an indoor-only gym, currently under
+// renovation, so its DataSF "Basketball Court" is the indoor court, not outdoor.
+const EXCLUDE_PROPERTIES = new Set(['Eugene Friend Rec Center']);
+
 const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 
 // Order a park's sports for readable notes/labels.
@@ -80,6 +89,7 @@ function buildCourts(rows) {
   for (const r of rows) {
     const sports = TYPE_SPORTS[r.facility_type];
     if (!sports || !r.latitude || !r.longitude) continue;
+    if (EXCLUDE_PROPERTIES.has(r.property_name)) continue;
     let p = byPark.get(r.property_name);
     if (!p) {
       p = {
