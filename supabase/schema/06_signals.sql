@@ -10,6 +10,8 @@ create table if not exists public.rec_signals (
   starts_at        timestamptz,                                   -- null = "right now"
   sport            text        not null default 'basketball',     -- tracked sport id (see lib/sports.js)
   note             text        check (note is null or char_length(note) <= 200),
+  place            text,                                          -- creator's 'indoor' | 'outdoor' pref (null = either)
+  pref_court_id    text,                                          -- creator's preferred court (matches data/courts.js ids; null = anywhere)
   planned_at       timestamptz,                                   -- host-confirmed time (null until confirmed)
   planned_court_id text,                                          -- host-confirmed court (matches data/courts.js ids)
   notify           boolean     not null default false,            -- notify friends on post (gated by share_activity; see 07_push.sql)

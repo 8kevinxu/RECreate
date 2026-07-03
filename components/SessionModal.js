@@ -173,6 +173,22 @@ export default function SessionModal({
             {signal.note ? ` · ${signal.note}` : ''}
           </Text>
 
+          {(signal.place || signal.prefCourtId) && (
+            <Text style={styles.pref}>
+              {t('session.prefers')}:{' '}
+              {[
+                signal.place
+                  ? signal.place === 'indoor'
+                    ? t('place.indoor')
+                    : t('place.outdoor')
+                  : null,
+                signal.prefCourtId ? nameById[signal.prefCourtId] || t('session.aCourt') : null,
+              ]
+                .filter(Boolean)
+                .join(' · ')}
+            </Text>
+          )}
+
           <View style={[styles.banner, plannedAt ? styles.bannerOn : styles.bannerOff]}>
             <Text style={plannedAt ? styles.bannerOnText : styles.bannerOffText}>
               {plannedAt
@@ -378,6 +394,7 @@ const styles = StyleSheet.create({
   title: { fontSize: 18, fontWeight: '800', color: '#0d1b2a' },
   close: { fontSize: 18, color: '#90a0b0' },
   sub: { fontSize: 13, color: '#5b6b7b', marginTop: 2 },
+  pref: { fontSize: 13, color: '#2f74d6', fontWeight: '700', marginTop: 4 },
 
   banner: { borderRadius: 10, paddingVertical: 10, paddingHorizontal: 12, marginTop: 12 },
   bannerOn: { backgroundColor: '#d4f3df' },

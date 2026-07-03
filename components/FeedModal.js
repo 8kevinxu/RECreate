@@ -280,7 +280,13 @@ export default function FeedModal({
         </ScrollView>
       )}
 
-      <SignalModal visible={signalOpen} onClose={() => setSignalOpen(false)} onPosted={refresh} />
+      <SignalModal
+        visible={signalOpen}
+        courts={courts}
+        userLocation={userLocation}
+        onClose={() => setSignalOpen(false)}
+        onPosted={refresh}
+      />
       <RunModal
         visible={runOpen}
         courts={courts}

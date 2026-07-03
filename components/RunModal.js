@@ -52,6 +52,7 @@ export default function RunModal({
   }, []);
 
   const [courtId, setCourtId] = useState(null);
+  const [place, setPlace] = useState('all'); // 'all' | 'indoor' | 'outdoor'
   const [picked, setPicked] = useState(null);
   const [note, setNote] = useState('');
   const [visibility, setVisibility] = useState('friends');
@@ -67,9 +68,24 @@ export default function RunModal({
     () => courts.filter((c) => (c.dropins?.[sport] || []).some((d) => d && d.length)),
     [courts, sport]
   );
-  // Day/time options are constrained to the chosen court, or to all sport courts
-  // when none is chosen yet (so you can pick a time first, then a court open then).
-  const candidates = useMemo(() => (court ? [court] : sportCourts), [court, sportCourts]);
+  // Offer the Indoor/Outdoor filter only when this sport has both (like the map).
+  const sportHasBoth = useMemo(() => {
+    let indoor = false;
+    let outdoor = false;
+    for (const c of sportCourts) c.indoor === false ? (outdoor = true) : (indoor = true);
+    return indoor && outdoor;
+  }, [sportCourts]);
+  // Court list narrowed by the Indoor/Outdoor filter ('all' = either).
+  const placeCourts = useMemo(
+    () =>
+      sportCourts.filter(
+        (c) => place === 'all' || (place === 'outdoor' ? c.indoor === false : c.indoor !== false)
+      ),
+    [sportCourts, place]
+  );
+  // Day/time options are constrained to the chosen court, or to the (place-filtered)
+  // sport courts when none is chosen yet (pick a time first, then a court open then).
+  const candidates = useMemo(() => (court ? [court] : placeCourts), [court, placeCourts]);
   const daysWithHoops = useMemo(() => {
     const set = new Set();
     for (const c of candidates) for (const wd of dropinWeekdays(c, sport)) set.add(wd);
@@ -98,6 +114,7 @@ export default function RunModal({
     setBusy(false);
     setSport(sportProp);
     setCourtId(null);
+    setPlace('all');
     setPicked(defaultTime ? new Date(defaultTime) : null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible]);
@@ -106,7 +123,17 @@ export default function RunModal({
   const changeSport = (s) => {
     setSport(s);
     setCourtId(null);
+    setPlace('all');
     setPicked(null);
+  };
+
+  // Switching the Indoor/Outdoor filter drops a chosen court that no longer fits.
+  const changePlace = (p) => {
+    setPlace(p);
+    if (courtId && p !== 'all') {
+      const c = courts.find((x) => x.id === courtId);
+      if (c && (p === 'outdoor' ? c.indoor !== false : c.indoor === false)) setCourtId(null);
+    }
   };
 
   const selDay = picked ? startOfDay(picked) : firstOpenDay;
@@ -169,7 +196,7 @@ export default function RunModal({
   };
 
   const courtRows = useMemo(() => {
-    const rows = sportCourts.map((c) => ({
+    const rows = placeCourts.map((c) => ({
       c,
       open: courtOpenAt(c, sport, picked),
       booked: bookedFor(c),
@@ -182,7 +209,7 @@ export default function RunModal({
       if (a.dist != null && b.dist != null) return a.dist - b.dist;
       return 0; // no location → keep default (alphabetical) order
     });
-  }, [sportCourts, sport, picked, userLocation]);
+  }, [placeCourts, sport, picked, userLocation]);
 
   const submit = async () => {
     if (!courtId) {
@@ -240,6 +267,22 @@ export default function RunModal({
               );
             })}
           </View>
+
+          {sportHasBoth && (
+            <View style={[styles.toggle, { marginTop: 12 }]}>
+              {['all', 'indoor', 'outdoor'].map((p) => (
+                <Pressable
+                  key={p}
+                  style={[styles.toggleItem, place === p && styles.toggleActive]}
+                  onPress={() => changePlace(p)}
+                >
+                  <Text style={[styles.toggleText, place === p && styles.toggleTextActive]}>
+                    {p === 'all' ? t('place.all') : p === 'indoor' ? t('place.indoor') : t('place.outdoor')}
+                  </Text>
+                </Pressable>
+              ))}
+            </View>
+          )}
 
           <View style={styles.labelRow}>
             <Text style={styles.label}>{t('run.court')}</Text>

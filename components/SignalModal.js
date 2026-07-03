@@ -14,6 +14,7 @@ import {
 import { createSignal } from '../lib/signals';
 import { startOfDay, dayChipLabel, fmtClock } from '../lib/datetime';
 import { SPORTS, ANY_SPORT, sportMeta } from '../lib/sports';
+import { haversineMiles, formatDistance } from '../lib/distance';
 import { sportLabel, useI18n } from '../lib/i18n';
 import { useAuth } from '../lib/auth';
 import { resolveNotify } from '../lib/activityShare';
@@ -21,15 +22,47 @@ import { resolveNotify } from '../lib/activityShare';
 // "Anything" (just down for rec) first, then the specific sports.
 const SPORT_OPTS = [{ id: ANY_SPORT, emoji: sportMeta(ANY_SPORT).emoji }, ...SPORTS];
 
-export default function SignalModal({ visible, onClose, onPosted }) {
+export default function SignalModal({ visible, courts = [], userLocation, onClose, onPosted }) {
   const { t } = useI18n();
   const { profile } = useAuth();
   const [mode, setMode] = useState('now'); // 'now' | 'time'
   const [picked, setPicked] = useState(null);
   const [sport, setSport] = useState(ANY_SPORT);
+  const [place, setPlace] = useState('all'); // 'all' | 'indoor' | 'outdoor' (optional)
+  const [courtId, setCourtId] = useState(null); // optional preferred court ('Anywhere' = null)
   const [note, setNote] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(null);
+
+  // Courts offering the chosen sport (all courts when "Anything"), then narrowed by
+  // the optional Indoor/Outdoor filter, ranked by proximity. All of this is optional
+  // — the creator can leave place/court blank and let friends decide.
+  const sportCourts = useMemo(() => {
+    const base =
+      sport === ANY_SPORT
+        ? courts
+        : courts.filter((c) => (c.dropins?.[sport] || []).some((d) => d && d.length));
+    return base.filter(
+      (c) => place === 'all' || (place === 'outdoor' ? c.indoor === false : c.indoor !== false)
+    );
+  }, [courts, sport, place]);
+  const sportHasBoth = useMemo(() => {
+    const base =
+      sport === ANY_SPORT
+        ? courts
+        : courts.filter((c) => (c.dropins?.[sport] || []).some((d) => d && d.length));
+    let indoor = false;
+    let outdoor = false;
+    for (const c of base) c.indoor === false ? (outdoor = true) : (indoor = true);
+    return indoor && outdoor;
+  }, [courts, sport]);
+  const courtRows = useMemo(() => {
+    const rows = sportCourts.map((c) => ({
+      c,
+      dist: userLocation ? haversineMiles(userLocation.lat, userLocation.lng, c.lat, c.lng) : null,
+    }));
+    return rows.sort((a, b) => (a.dist != null && b.dist != null ? a.dist - b.dist : 0));
+  }, [sportCourts, userLocation]);
 
   const days = useMemo(() => {
     const base = startOfDay(new Date());
@@ -49,6 +82,8 @@ export default function SignalModal({ visible, onClose, onPosted }) {
     if (!visible) return;
     setMode('now');
     setSport(ANY_SPORT);
+    setPlace('all');
+    setCourtId(null);
     setNote('');
     setError(null);
     setBusy(false);
@@ -57,6 +92,21 @@ export default function SignalModal({ visible, onClose, onPosted }) {
     setPicked(d);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible]);
+
+  // Switching sport changes the court list, so clear the place filter + chosen court.
+  const changeSport = (s) => {
+    setSport(s);
+    setPlace('all');
+    setCourtId(null);
+  };
+  // Switching Indoor/Outdoor drops a chosen court that no longer fits.
+  const changePlace = (p) => {
+    setPlace(p);
+    if (courtId && p !== 'all') {
+      const c = courts.find((x) => x.id === courtId);
+      if (c && (p === 'outdoor' ? c.indoor !== false : c.indoor === false)) setCourtId(null);
+    }
+  };
 
   const selDayTs = picked ? startOfDay(picked).getTime() : null;
   const selMin = picked ? picked.getHours() * 60 + picked.getMinutes() : null;
@@ -73,6 +123,8 @@ export default function SignalModal({ visible, onClose, onPosted }) {
     const { error } = await createSignal({
       startsAt: mode === 'now' ? null : picked,
       sport,
+      place: place === 'all' ? null : place,
+      prefCourtId: courtId,
       note,
       notify,
     });
@@ -126,12 +178,77 @@ export default function SignalModal({ visible, onClose, onPosted }) {
               return (
                 <Pressable
                   key={s.id}
-                  onPress={() => setSport(s.id)}
+                  onPress={() => changeSport(s.id)}
                   style={[styles.chip, active && styles.chipActive]}
                 >
                   <Text style={[styles.chipText, active && styles.chipTextActive]}>
                     {s.emoji} {sportLabel(t, s.id)}
                   </Text>
+                </Pressable>
+              );
+            })}
+          </ScrollView>
+
+          {/* Optional up-front location: an Indoor/Outdoor pref and/or a specific
+              court. Blank = "Anywhere" / let friends decide. */}
+          {sportHasBoth && (
+            <>
+              <Text style={styles.label}>{t('label.place')}</Text>
+              <View style={styles.toggle}>
+                {['all', 'indoor', 'outdoor'].map((p) => (
+                  <Pressable
+                    key={p}
+                    style={[styles.toggleItem, place === p && styles.toggleActive]}
+                    onPress={() => changePlace(p)}
+                  >
+                    <Text style={[styles.toggleText, place === p && styles.toggleTextActive]}>
+                      {p === 'all' ? t('place.all') : p === 'indoor' ? t('place.indoor') : t('place.outdoor')}
+                    </Text>
+                  </Pressable>
+                ))}
+              </View>
+            </>
+          )}
+
+          <Text style={styles.label}>{t('signal.courtOpt')}</Text>
+          <ScrollView style={styles.courtList} nestedScrollEnabled>
+            <Pressable
+              onPress={() => setCourtId(null)}
+              style={[styles.courtRow, courtId === null && styles.courtRowActive]}
+            >
+              <Text style={[styles.courtRowName, courtId === null && styles.courtRowNameActive]}>
+                {t('signal.anywhere')}
+              </Text>
+              {courtId === null && <Text style={styles.courtRowCheck}>✓</Text>}
+            </Pressable>
+            {courtRows.map(({ c, dist }) => {
+              const active = c.id === courtId;
+              const sub = [c.neighborhood, dist != null ? formatDistance(dist) : null]
+                .filter(Boolean)
+                .join(' · ');
+              return (
+                <Pressable
+                  key={c.id}
+                  onPress={() => setCourtId(active ? null : c.id)}
+                  style={[styles.courtRow, active && styles.courtRowActive]}
+                >
+                  <View style={{ flex: 1 }}>
+                    <Text
+                      style={[styles.courtRowName, active && styles.courtRowNameActive]}
+                      numberOfLines={1}
+                    >
+                      {c.name}
+                    </Text>
+                    {!!sub && (
+                      <Text
+                        style={[styles.courtRowSub, active && styles.courtRowSubActive]}
+                        numberOfLines={1}
+                      >
+                        {sub}
+                      </Text>
+                    )}
+                  </View>
+                  {active && <Text style={styles.courtRowCheck}>✓</Text>}
                 </Pressable>
               );
             })}
@@ -265,6 +382,28 @@ const styles = StyleSheet.create({
   chipActive: { backgroundColor: '#2f74d6' },
   chipText: { color: '#46586a', fontWeight: '600', fontSize: 13 },
   chipTextActive: { color: '#fff' },
+
+  courtList: {
+    maxHeight: 150,
+    borderWidth: 1,
+    borderColor: '#e3e8ee',
+    borderRadius: 12,
+    marginTop: 2,
+  },
+  courtRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#eef1f4',
+  },
+  courtRowActive: { backgroundColor: '#2f74d6' },
+  courtRowName: { fontSize: 14, fontWeight: '700', color: '#0d1b2a', flex: 1 },
+  courtRowNameActive: { color: '#fff' },
+  courtRowSub: { fontSize: 12, color: '#7c8a98', marginTop: 1 },
+  courtRowSubActive: { color: '#d6e4f5' },
+  courtRowCheck: { fontSize: 16, fontWeight: '800', color: '#fff', marginLeft: 8 },
 
   note: {
     fontSize: 14,
