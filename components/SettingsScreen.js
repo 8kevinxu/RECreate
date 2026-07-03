@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import {
   ActivityIndicator,
+  Linking,
   Modal,
   Pressable,
   ScrollView,
@@ -22,6 +23,12 @@ import { useI18n, LANGUAGES } from '../lib/i18n';
 
 // The literal a user must type to confirm deletion (kept across languages).
 const CONFIRM_CODE = 'DELETE';
+
+// Legal + support destinations. Terms is Apple's standard EULA (same as the
+// signup screen's terms link); privacy + support are the hosted static pages.
+const TERMS_URL = 'https://www.apple.com/legal/internet-services/itunes/dev/stdeula/';
+const PRIVACY_URL = 'https://recreate-sf.vercel.app/privacy.html';
+const SUPPORT_URL = 'https://recreate-sf.vercel.app/support.html';
 
 export default function SettingsScreen({ visible, onClose, onEditProfile }) {
   const insets = useSafeAreaInsets();
@@ -91,7 +98,12 @@ export default function SettingsScreen({ visible, onClose, onEditProfile }) {
       <View style={[styles.page, { paddingTop: insets.top + 12 }]}>
         <View style={styles.header}>
           <Text style={styles.title}>{t('settings')}</Text>
-          <Pressable hitSlop={10} onPress={close}>
+          <Pressable
+            hitSlop={10}
+            onPress={close}
+            accessibilityRole="button"
+            accessibilityLabel={t('a11y.close')}
+          >
             <Text style={styles.close}>✕</Text>
           </Pressable>
         </View>
@@ -157,6 +169,34 @@ export default function SettingsScreen({ visible, onClose, onEditProfile }) {
             })}
           </View>
 
+          <Text style={styles.sectionLabel}>{t('settings.legal')}</Text>
+          <View style={styles.rowGroup}>
+            <Pressable
+              style={styles.row}
+              onPress={() => Linking.openURL(PRIVACY_URL)}
+              accessibilityRole="link"
+            >
+              <Text style={styles.rowText}>{t('terms.viewPrivacy')}</Text>
+              <Text style={styles.rowChevron}>›</Text>
+            </Pressable>
+            <Pressable
+              style={styles.row}
+              onPress={() => Linking.openURL(TERMS_URL)}
+              accessibilityRole="link"
+            >
+              <Text style={styles.rowText}>{t('terms.viewTerms')}</Text>
+              <Text style={styles.rowChevron}>›</Text>
+            </Pressable>
+            <Pressable
+              style={styles.row}
+              onPress={() => Linking.openURL(SUPPORT_URL)}
+              accessibilityRole="link"
+            >
+              <Text style={styles.rowText}>{t('settings.support')}</Text>
+              <Text style={styles.rowChevron}>›</Text>
+            </Pressable>
+          </View>
+
           {/* Danger zone pinned to the bottom of the content. */}
           {user ? (
             <View style={styles.danger}>
@@ -213,7 +253,12 @@ export default function SettingsScreen({ visible, onClose, onEditProfile }) {
         <View style={[styles.page, { paddingTop: insets.top + 12 }]}>
           <View style={styles.header}>
             <Text style={styles.title}>{t('mod.blockedUsers')}</Text>
-            <Pressable hitSlop={10} onPress={() => setBlockedOpen(false)}>
+            <Pressable
+              hitSlop={10}
+              onPress={() => setBlockedOpen(false)}
+              accessibilityRole="button"
+              accessibilityLabel={t('a11y.close')}
+            >
               <Text style={styles.close}>✕</Text>
             </Pressable>
           </View>

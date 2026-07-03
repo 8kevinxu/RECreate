@@ -192,6 +192,7 @@ function formatUpdated(iso) {
 }
 
 const ONBOARDED_KEY = 'recreate.onboarded.v1'; // first-launch onboarding shown flag
+const COACH_SPORT_KEY = 'recreate.coach.sportfab.v1'; // one-time sport-FAB coach mark shown flag
 const LOC_BANNER_KEY = 'recreate.locbanner.v1'; // dismissed the "turn on location" map banner
 
 export default function App() {
@@ -243,6 +244,18 @@ export default function App() {
   const dismissLocBanner = () => {
     setLocBannerHidden(true);
     AsyncStorage.setItem(LOC_BANNER_KEY, '1').catch(() => {});
+  };
+  // One-time coach mark pointing at the sport FAB (the map's least-obvious control:
+  // an emoji glyph with no label). Shown once on the map, then never again.
+  const [coachHidden, setCoachHidden] = useState(true);
+  useEffect(() => {
+    AsyncStorage.getItem(COACH_SPORT_KEY).then((v) => {
+      if (!v) setCoachHidden(false);
+    });
+  }, []);
+  const dismissCoach = () => {
+    setCoachHidden(true);
+    AsyncStorage.setItem(COACH_SPORT_KEY, '1').catch(() => {});
   };
   // A signed-in account's saved interests take precedence; the on-device picks are
   // the fallback so recommendations personalize even before there's an account.
@@ -723,6 +736,8 @@ export default function App() {
           <>
             {/* Sport FAB: tap to reveal all sports as icons; pick one to switch. */}
             <Pressable
+              accessibilityRole="button"
+              accessibilityLabel={t('a11y.chooseSport')}
               style={[
                 styles.fab,
                 styles.filterFab,
@@ -732,6 +747,7 @@ export default function App() {
               onPress={() => {
                 setSportPickerOpen((v) => !v);
                 setControlsVisible(false);
+                dismissCoach();
               }}
             >
               {favoritesMode ? (
@@ -743,6 +759,8 @@ export default function App() {
 
             {/* Filter FAB: the open-now / time / place / amenity controls bar. */}
             <Pressable
+              accessibilityRole="button"
+              accessibilityLabel={t('filters')}
               style={[
                 styles.fab,
                 styles.filterFab2,
@@ -760,6 +778,20 @@ export default function App() {
                 color={controlsVisible ? '#fff' : '#2f74d6'}
               />
             </Pressable>
+
+            {/* One-time coach mark: points at the sport FAB so first-run users
+                discover the sport switcher / Favorites. */}
+            {!coachHidden && onboarded === true && !sportPickerOpen && !controlsVisible && (
+              <Pressable
+                style={[styles.coach, { top: insets.top + 8 + 52 }]}
+                onPress={dismissCoach}
+                accessibilityRole="button"
+              >
+                <View style={styles.coachCaret} />
+                <Text style={styles.coachText}>{t('coach.sportFab')}</Text>
+                <Text style={styles.coachGotIt}>{t('coach.gotIt')}</Text>
+              </Pressable>
+            )}
           </>
         )}
 
@@ -1001,7 +1033,12 @@ export default function App() {
             >
               <Ionicons name="location-outline" size={17} color="#2f74d6" />
               <Text style={styles.locBannerText}>{t('loc.banner')}</Text>
-              <Pressable hitSlop={10} onPress={dismissLocBanner}>
+              <Pressable
+                hitSlop={10}
+                onPress={dismissLocBanner}
+                accessibilityRole="button"
+                accessibilityLabel={t('a11y.dismiss')}
+              >
                 <Ionicons name="close" size={17} color="#8fa2b5" />
               </Pressable>
             </Pressable>
@@ -1015,7 +1052,12 @@ export default function App() {
         )}
 
         {userLocation && (
-          <Pressable style={[styles.recenterBtn, { bottom: navClearance }]} onPress={recenter}>
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel={t('a11y.recenter')}
+            style={[styles.recenterBtn, { bottom: navClearance }]}
+            onPress={recenter}
+          >
             <Text style={styles.recenterIcon}>◎</Text>
           </Pressable>
         )}
@@ -1045,6 +1087,10 @@ export default function App() {
           onLogVisit={handleLogVisit}
           canLogVisit={!!user}
           onClose={() => setSelectedId(null)}
+          onNeedSignIn={() => {
+            setSelectedId(null);
+            goTab('profile');
+          }}
         />
       )}
 
@@ -1141,8 +1187,10 @@ function CourtDetail({
   onLogVisit,
   canLogVisit,
   onClose,
+  onNeedSignIn,
 }) {
   const { t } = useI18n();
+  const { user } = useAuth();
   const { status } = court;
   // The sport whose schedule/reservations the card shows — the map's selected sport,
   // or (in the Favorites view) the sport this court was favorited for. The star below
@@ -1334,18 +1382,18 @@ function CourtDetail({
                   <>
                     <View style={styles.etaChip}>
                       <Ionicons name="car" size={13} color="#46586a" />
-                      <Text style={styles.etaText}>{eta.drive} {t('unit.min')}</Text>
+                      <Text style={styles.etaText}>~{eta.drive} {t('unit.min')}</Text>
                     </View>
                     <View style={styles.etaChip}>
                       {eta.bus != null ? (
                         <>
                           <Ionicons name="bus" size={13} color="#46586a" />
-                          <Text style={styles.etaText}>{eta.bus} {t('unit.min')}</Text>
+                          <Text style={styles.etaText}>~{eta.bus} {t('unit.min')}</Text>
                         </>
                       ) : (
                         <>
                           <Ionicons name="walk" size={14} color="#46586a" />
-                          <Text style={styles.etaText}>{eta.walk} {t('unit.min')}</Text>
+                          <Text style={styles.etaText}>~{eta.walk} {t('unit.min')}</Text>
                         </>
                       )}
                     </View>
@@ -1369,7 +1417,12 @@ function CourtDetail({
               />
             </Pressable>
           )}
-          <Pressable hitSlop={10} onPress={onClose}>
+          <Pressable
+            hitSlop={10}
+            onPress={onClose}
+            accessibilityRole="button"
+            accessibilityLabel={t('a11y.close')}
+          >
             <Text style={styles.close}>✕</Text>
           </Pressable>
         </View>
@@ -1650,7 +1703,12 @@ function CourtDetail({
               </View>
               <Text style={styles.reviewBody}>{r.body}</Text>
               {reviewsShared && (
-                <Pressable hitSlop={6} onPress={() => reportReview(r)}>
+                <Pressable
+                  hitSlop={6}
+                  onPress={() => reportReview(r)}
+                  accessibilityRole="button"
+                  accessibilityLabel={t('mod.report')}
+                >
                   <Text style={styles.reviewReport}>{t('mod.report')}</Text>
                 </Pressable>
               )}
@@ -1660,7 +1718,19 @@ function CourtDetail({
       </ScrollView>
       )}
 
-      {expanded && (
+      {expanded && reviewsShared && !user ? (
+        // Shared (Supabase) reviews require an account — ties every review to a
+        // user who agreed to the terms and can be reported/blocked, and blocks
+        // anonymous spam. Local-only reviews (no backend) stay open below.
+        <Pressable
+          style={styles.reviewSignIn}
+          onPress={onNeedSignIn}
+          accessibilityRole="button"
+        >
+          <Text style={styles.reviewSignInText}>{t('court.signInToReview')}</Text>
+          <Text style={styles.reviewSignInCta}>{t('auth.signIn')} ›</Text>
+        </Pressable>
+      ) : expanded ? (
       <View style={styles.reviewForm}>
         <TextInput
           style={styles.reviewNameInput}
@@ -1692,7 +1762,7 @@ function CourtDetail({
           </Pressable>
         </View>
       </View>
-      )}
+      ) : null}
     </View>
   );
 }
@@ -1825,6 +1895,39 @@ const styles = StyleSheet.create({
   filterFab2: { position: 'absolute', top: 10, right: 70, zIndex: 25 },
   filterFabActive: { backgroundColor: '#2f74d6' },
   filterFabSport: { fontSize: 24 },
+  coach: {
+    position: 'absolute',
+    right: 14,
+    maxWidth: 230,
+    backgroundColor: '#0d1b2a',
+    borderRadius: 12,
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+    zIndex: 30,
+    shadowColor: '#0d1b2a',
+    shadowOpacity: 0.28,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 10,
+  },
+  coachCaret: {
+    position: 'absolute',
+    top: -6,
+    right: 16,
+    width: 12,
+    height: 12,
+    backgroundColor: '#0d1b2a',
+    transform: [{ rotate: '45deg' }],
+    borderRadius: 2,
+  },
+  coachText: { color: '#fff', fontSize: 13, fontWeight: '600', lineHeight: 18 },
+  coachGotIt: {
+    color: '#8fc0ff',
+    fontSize: 13,
+    fontWeight: '800',
+    marginTop: 6,
+    alignSelf: 'flex-end',
+  },
   sportDial: { position: 'absolute', right: 14, zIndex: 26, alignItems: 'flex-end', gap: 8 },
   sportDialItem: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   sportDialLabel: {
@@ -2205,6 +2308,18 @@ const styles = StyleSheet.create({
   reviewBody: { fontSize: 13, color: '#46586a', lineHeight: 18 },
 
   reviewForm: { marginTop: 10, borderTopWidth: 1, borderTopColor: '#e3e8ec', paddingTop: 10 },
+  reviewSignIn: {
+    marginTop: 10,
+    borderTopWidth: 1,
+    borderTopColor: '#e3e8ec',
+    paddingTop: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 10,
+  },
+  reviewSignInText: { flex: 1, fontSize: 13, color: '#6b7a8a' },
+  reviewSignInCta: { fontSize: 13, fontWeight: '800', color: '#2f74d6' },
   reviewNameInput: {
     fontSize: 13,
     color: '#0d1b2a',

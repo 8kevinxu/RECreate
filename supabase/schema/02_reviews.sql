@@ -19,11 +19,17 @@ alter table public.reviews enable row level security;
 create policy "anyone can read reviews"
   on public.reviews for select using (true);
 
--- Insert allowed with sane length limits enforced server-side.
-create policy "anyone can add a review"
+-- Insert requires a signed-in account (spam guardrail + UGC accountability):
+-- every review is tied to an authenticated user who agreed to the terms and can
+-- be moderated. Length limits enforced server-side. The client shows a
+-- "Sign in to review" prompt when Supabase is configured and nobody is signed
+-- in. (See migration 016 for existing databases.)
+create policy "signed-in users can add a review"
   on public.reviews for insert
+  to authenticated
   with check (
-    char_length(body) between 1 and 1000
+    auth.uid() is not null
+    and char_length(body) between 1 and 1000
     and (author is null or char_length(author) <= 50)
   );
 

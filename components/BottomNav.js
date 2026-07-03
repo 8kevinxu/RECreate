@@ -38,6 +38,9 @@ export default function BottomNav({
             style={styles.item}
             onPress={() => onChange(item.id)}
             hitSlop={6}
+            accessibilityRole="tab"
+            accessibilityState={{ selected: active }}
+            accessibilityLabel={t('nav.' + item.id)}
           >
             <View>
               <Ionicons name={active ? item.on : item.off} size={25} color={color} />
