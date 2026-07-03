@@ -218,7 +218,14 @@ const CourtMap = forwardRef(function CourtMap(
   ref
 ) {
   const { t } = useI18n();
-  const [offline, setOffline] = useState(false);
+  // Two independent offline signals, OR'd for the banner: the browser's network
+  // status (fires even on a fully-cached map, the moment you go offline) and a
+  // run of failed tile fetches (catches "network up but tile CDN unreachable").
+  const [netOffline, setNetOffline] = useState(
+    typeof navigator !== 'undefined' ? navigator.onLine === false : false
+  );
+  const [tileOffline, setTileOffline] = useState(false);
+  const offline = netOffline || tileOffline;
   const elRef = useRef(null);
   const mapRef = useRef(null);
   const layerRef = useRef(null);
@@ -229,6 +236,19 @@ const CourtMap = forwardRef(function CourtMap(
   // Latest courts/sport for the zoomend re-cluster handler (registered once).
   const courtsRef = useRef(courts);
   const sportRef = useRef(sport);
+
+  // Browser online/offline events — surfaces the banner immediately when the
+  // network drops, without needing to pan to uncached tiles.
+  useEffect(() => {
+    const goOnline = () => setNetOffline(false);
+    const goOffline = () => setNetOffline(true);
+    window.addEventListener('online', goOnline);
+    window.addEventListener('offline', goOffline);
+    return () => {
+      window.removeEventListener('online', goOnline);
+      window.removeEventListener('offline', goOffline);
+    };
+  }, []);
 
   useEffect(() => {
     ensureStyles();
@@ -255,11 +275,11 @@ const CourtMap = forwardRef(function CourtMap(
     let tileErrs = 0;
     tiles.on('tileerror', () => {
       tileErrs++;
-      if (tileErrs >= 3) setOffline(true);
+      if (tileErrs >= 3) setTileOffline(true);
     });
     tiles.on('tileload', () => {
       tileErrs = 0;
-      setOffline(false);
+      setTileOffline(false);
     });
     layerRef.current = L.layerGroup().addTo(map);
     mapRef.current = map;

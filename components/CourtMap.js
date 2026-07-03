@@ -152,6 +152,12 @@ const html = `
       if (offlineShown) { offlineShown = false; post({ type: 'tiles', ok: true }); }
     });
 
+    // Network status straight from the WebView's browser context — fires the
+    // moment connectivity drops, even on a fully-cached map (no pan needed).
+    function postNet() { post({ type: 'net', online: navigator.onLine }); }
+    window.addEventListener('online', postNet);
+    window.addEventListener('offline', postNet);
+
     var courtLayer = L.layerGroup().addTo(map);
     var markersById = {};
     var userMarker = null;
@@ -357,8 +363,10 @@ const html = `
       map.setView([lat, lng], 14, { animate: true });
     };
 
-    // Tell React Native the map is ready to receive data.
+    // Tell React Native the map is ready to receive data, and report the
+    // current network status (covers launching while already offline).
     post({ type: 'ready' });
+    postNet();
   </script>
 </body>
 </html>
@@ -371,7 +379,11 @@ const CourtMap = forwardRef(function CourtMap(
   const { t } = useI18n();
   const webRef = useRef(null);
   const [ready, setReady] = useState(false);
-  const [offline, setOffline] = useState(false);
+  // Two independent offline signals, OR'd for the banner: browser network status
+  // (fires even on a cached map) and a run of failed tile fetches (CDN down).
+  const [netOffline, setNetOffline] = useState(false);
+  const [tileOffline, setTileOffline] = useState(false);
+  const offline = netOffline || tileOffline;
 
   const inject = useCallback((js) => {
     webRef.current?.injectJavaScript(js + ' true;');
@@ -414,7 +426,9 @@ const CourtMap = forwardRef(function CourtMap(
       } else if (msg.type === 'select') {
         onSelectCourt?.(msg.id);
       } else if (msg.type === 'tiles') {
-        setOffline(!msg.ok);
+        setTileOffline(!msg.ok);
+      } else if (msg.type === 'net') {
+        setNetOffline(!msg.online);
       }
     },
     [onSelectCourt]
@@ -446,7 +460,7 @@ const styles = StyleSheet.create({
   webview: { flex: 1, backgroundColor: '#aadaf0' },
   offline: {
     position: 'absolute',
-    bottom: 96,
+    bottom: 178,
     alignSelf: 'center',
     flexDirection: 'row',
     alignItems: 'center',

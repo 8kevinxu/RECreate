@@ -2036,9 +2036,9 @@ const styles = StyleSheet.create({
     left: 14,
     bottom: 14,
     backgroundColor: '#fff',
-    paddingHorizontal: 14,
-    height: 44,
-    borderRadius: 22,
+    paddingHorizontal: 13.5,
+    height: 41,
+    borderRadius: 20.5,
     alignItems: 'center',
     justifyContent: 'center',
     shadowColor: '#000',
@@ -2048,7 +2048,7 @@ const styles = StyleSheet.create({
     elevation: 4,
     zIndex: 1000,
   },
-  nearbyBtnText: { fontSize: 14, color: '#2f74d6', fontWeight: '800' },
+  nearbyBtnText: { fontSize: 13.5, color: '#2f74d6', fontWeight: '800' },
 
   card: {
     position: 'absolute',

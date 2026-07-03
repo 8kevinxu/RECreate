@@ -541,14 +541,10 @@ export default function AuthModal({
                 />
               )}
               <Pressable style={styles.showPwRow} onPress={() => setShowPw((v) => !v)} hitSlop={8}>
-                <Ionicons
-                  name={showPw ? 'eye-off-outline' : 'eye-outline'}
-                  size={16}
-                  color="#5b7a9a"
-                />
-                <Text style={styles.showPwText}>
-                  {showPw ? t('auth.hidePassword') : t('auth.showPassword')}
-                </Text>
+                <View style={[styles.checkbox, showPw && styles.checkboxOn]}>
+                  {showPw && <Text style={styles.checkboxTick}>✓</Text>}
+                </View>
+                <Text style={styles.showPwText}>{t('auth.showPassword')}</Text>
               </Pressable>
 
               {mode === 'signup' && (
