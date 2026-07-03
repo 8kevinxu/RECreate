@@ -18,6 +18,7 @@ import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import CourtMap from './components/CourtMap';
+import SportGlyph from './components/SportGlyph';
 import Onboarding from './components/Onboarding';
 import AuthModal from './components/AuthModal';
 import FriendsModal from './components/FriendsModal';
@@ -733,9 +734,11 @@ export default function App() {
                 setControlsVisible(false);
               }}
             >
-              <Text style={styles.filterFabSport}>
-                {favoritesMode ? '⭐' : sportMeta(sport).emoji}
-              </Text>
+              {favoritesMode ? (
+                <Text style={styles.filterFabSport}>⭐</Text>
+              ) : (
+                <SportGlyph id={sport} size={24} style={styles.filterFabSport} />
+              )}
             </Pressable>
 
             {/* Filter FAB: the open-now / time / place / amenity controls bar. */}
@@ -796,7 +799,7 @@ export default function App() {
                   <Text style={styles.sportDialLabelText}>{sportLabel(t, s.id)}</Text>
                 </View>
                 <View style={styles.fab}>
-                  <Text style={styles.filterFabSport}>{s.emoji}</Text>
+                  <SportGlyph id={s.id} size={24} style={styles.filterFabSport} />
                 </View>
               </Pressable>
             ))}
