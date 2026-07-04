@@ -118,10 +118,19 @@
           [],
           [],
           []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "alamo-square-outdoor",
@@ -241,18 +250,27 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor tennis — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "alice-chalmers-playground-outdoor",
       "name": "Alice Chalmers Playground",
       "address": "670 Brunswick St",
       "neighborhood": "Excelsior",
-      "lat": 37.709802,
-      "lng": -122.447162,
+      "lat": 37.709901,
+      "lng": -122.446453,
       "indoor": false,
       "schedule": [
         [
@@ -399,10 +417,54 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & soccer — first-come, open during park hours (no posted drop-in schedule). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "alice-marble-tennis-courts-outdoor",
@@ -557,10 +619,19 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "alta-plaza-park-outdoor",
@@ -680,18 +751,27 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor tennis — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "angelo-j-rossi-playground-outdoor",
       "name": "Angelo J. Rossi Playground",
       "address": "600 Arguello Blvd",
       "neighborhood": "Lone Mountain/USF",
-      "lat": 37.77923,
-      "lng": -122.457396,
+      "lat": 37.778667,
+      "lng": -122.457236,
       "indoor": false,
       "schedule": [
         [
@@ -873,18 +953,62 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis & pickleball courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & pickleball & soccer — first-come, open during park hours (no posted drop-in schedule). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "aptos-playground-outdoor",
       "name": "Aptos Playground",
       "address": "139 Aptos Ave",
       "neighborhood": "West of Twin Peaks",
-      "lat": 37.728923,
-      "lng": -122.465825,
+      "lat": 37.728387,
+      "lng": -122.466398,
       "indoor": false,
       "schedule": [
         [
@@ -996,10 +1120,54 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor tennis & soccer — first-come, open during park hours (no posted drop-in schedule). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "argonne-playground-outdoor",
@@ -1154,18 +1322,27 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "balboa-park-outdoor",
       "name": "Balboa Park",
       "address": "51 Havelock St",
       "neighborhood": "Outer Mission",
-      "lat": 37.726054,
-      "lng": -122.443226,
+      "lat": 37.724056,
+      "lng": -122.445376,
       "indoor": false,
       "schedule": [
         [
@@ -1312,10 +1489,186 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & soccer — first-come, open during park hours (no posted drop-in schedule). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
+    },
+    {
+      "id": "bayview-k-c-jones-playground-outdoor",
+      "name": "Bayview K.C. Jones Playground",
+      "address": "5701 3rd St",
+      "neighborhood": "Bayview Hunters Point",
+      "lat": 37.72624,
+      "lng": -122.393252,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor soccer — first-come, open during park hours (no posted drop-in schedule). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "bernal-heights-rec-center-outdoor",
@@ -1435,10 +1788,19 @@
           [],
           [],
           []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "betty-ann-ong-chinese-rec-center-outdoor",
@@ -1558,10 +1920,19 @@
           [],
           [],
           []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "buchanan-street-mall-outdoor",
@@ -1681,10 +2052,19 @@
           [],
           [],
           []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "buena-vista-park-outdoor",
@@ -1839,10 +2219,19 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis & pickleball courts — first-come, open during park hours (no posted drop-in schedule). Pickleball shares the tennis courts (lined for both)."
+      "notes": "Outdoor tennis & pickleball — first-come, open during park hours (no posted drop-in schedule). Pickleball shares the tennis courts (lined for both)."
     },
     {
       "id": "cabrillo-playground-outdoor",
@@ -1997,18 +2386,27 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "camp-mather-outdoor",
       "name": "Camp Mather",
-      "address": "32560 Mather Road",
+      "address": "",
       "neighborhood": "",
-      "lat": 37.879444,
-      "lng": -119.85374,
+      "lat": 37.881518,
+      "lng": -119.850489,
       "indoor": false,
       "schedule": [
         [
@@ -2120,18 +2518,62 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor tennis & soccer — first-come, open during park hours (no posted drop-in schedule). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "carl-larsen-park-outdoor",
       "name": "Carl Larsen Park",
       "address": "2695 19th Ave",
       "neighborhood": "Sunset/Parkside",
-      "lat": 37.739812,
-      "lng": -122.476014,
+      "lat": 37.740857,
+      "lng": -122.476027,
       "indoor": false,
       "schedule": [
         [
@@ -2243,10 +2685,54 @@
           [],
           [],
           []
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor pickleball courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor pickleball & soccer — first-come, open during park hours (no posted drop-in schedule). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "cayuga-playground-outdoor",
@@ -2401,18 +2887,62 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & soccer — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "crocker-amazon-playground-outdoor",
       "name": "Crocker Amazon Playground",
       "address": "799 Moscow St",
       "neighborhood": "Excelsior, McLaren Park",
-      "lat": 37.71462,
-      "lng": -122.431766,
+      "lat": 37.714386,
+      "lng": -122.430747,
       "indoor": false,
       "schedule": [
         [
@@ -2594,10 +3124,54 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis & pickleball courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & pickleball & soccer — first-come, open during park hours (no posted drop-in schedule). Designated SF Rec open-play soccer field. Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "douglass-playground-outdoor",
@@ -2752,10 +3326,19 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "duboce-park-outdoor",
@@ -2875,10 +3458,19 @@
           [],
           [],
           []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "dupont-tennis-courts-outdoor",
@@ -2998,18 +3590,159 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor tennis — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
+      "id": "esprit-park-outdoor",
+      "name": "Esprit Park",
+      "address": "",
+      "neighborhood": "Potrero Hill",
+      "lat": 37.761014,
+      "lng": -122.391166,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor soccer — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "eureka-valley-rec-center-outdoor",
       "name": "Eureka Valley Rec Center",
       "address": "100 Collingwood St",
       "neighborhood": "Castro/Upper Market",
-      "lat": 37.759474,
-      "lng": -122.436209,
+      "lat": 37.759512,
+      "lng": -122.436646,
       "indoor": false,
       "schedule": [
         [
@@ -3121,18 +3854,62 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor tennis & soccer — first-come, open during park hours (no posted drop-in schedule). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "excelsior-playground-outdoor",
       "name": "Excelsior Playground",
       "address": "579 Madrid St",
       "neighborhood": "Excelsior",
-      "lat": 37.719946,
-      "lng": -122.433332,
+      "lat": 37.720506,
+      "lng": -122.433126,
       "indoor": false,
       "schedule": [
         [
@@ -3279,10 +4056,54 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & soccer — first-come, open during park hours (no posted drop-in schedule). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "father-alfred-e-boeddeker-park-outdoor",
@@ -3402,10 +4223,151 @@
           [],
           [],
           []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
+      "id": "franklin-square-outdoor",
+      "name": "Franklin Square",
+      "address": "2500 17th St",
+      "neighborhood": "Mission",
+      "lat": 37.765101,
+      "lng": -122.409374,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor soccer — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "fulton-playground-outdoor",
@@ -3560,10 +4522,19 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "garfield-square-outdoor",
@@ -3683,18 +4654,62 @@
           [],
           [],
           []
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & soccer — first-come, open during park hours (no posted drop-in schedule). Designated SF Rec open-play soccer field."
     },
     {
       "id": "george-christopher-playground-outdoor",
       "name": "George Christopher Playground",
       "address": "5210 Diamond Heights Blvd",
       "neighborhood": "Glen Park",
-      "lat": 37.744279,
-      "lng": -122.440469,
+      "lat": 37.743218,
+      "lng": -122.440798,
       "indoor": false,
       "schedule": [
         [
@@ -3841,18 +4856,62 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis & pickleball courts — first-come, open during park hours (no posted drop-in schedule). Pickleball shares the tennis courts (lined for both)."
+      "notes": "Outdoor tennis & pickleball & soccer — first-come, open during park hours (no posted drop-in schedule). Pickleball shares the tennis courts (lined for both). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "gilman-playground-outdoor",
       "name": "Gilman Playground",
       "address": "993 Gilman Ave",
       "neighborhood": "Bayview Hunters Point",
-      "lat": 37.716978,
-      "lng": -122.388583,
+      "lat": 37.717371,
+      "lng": -122.387967,
       "indoor": false,
       "schedule": [
         [
@@ -3964,18 +5023,62 @@
           [],
           [],
           []
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & soccer — first-come, open during park hours (no posted drop-in schedule). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "glen-canyon-park-outdoor",
       "name": "Glen Canyon Park",
       "address": "70 Elk St",
       "neighborhood": "Glen Park, West of Twin Peaks",
-      "lat": 37.736651,
-      "lng": -122.440197,
+      "lat": 37.735996,
+      "lng": -122.440573,
       "indoor": false,
       "schedule": [
         [
@@ -4087,10 +5190,54 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor tennis & soccer — first-come, open during park hours (no posted drop-in schedule). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "golden-gate-heights-park-outdoor",
@@ -4210,10 +5357,19 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor tennis — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "golden-gate-park-section-1-outdoor",
@@ -4333,18 +5489,159 @@
           [],
           [],
           []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
+      "id": "golden-gate-park-section-6-outdoor",
+      "name": "Golden Gate Park - Section 6",
+      "address": "501 Stanyan St",
+      "neighborhood": "Golden Gate Park, Outer Richmond",
+      "lat": 37.767435,
+      "lng": -122.508874,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor soccer — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "golden-gate-park-section-7-outdoor",
       "name": "Golden Gate Park - Section 7",
       "address": "501 Stanyan St",
       "neighborhood": "Golden Gate Park",
-      "lat": 37.770163,
-      "lng": -122.458952,
+      "lat": 37.767382,
+      "lng": -122.464626,
       "indoor": false,
       "schedule": [
         [
@@ -4456,10 +5753,54 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor tennis & soccer — first-come, open during park hours (no posted drop-in schedule). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "grattan-playground-outdoor",
@@ -4614,10 +5955,54 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & soccer — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "hamilton-rec-center-outdoor",
@@ -4772,10 +6157,54 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & soccer — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "hayes-valley-playground-outdoor",
@@ -4930,10 +6359,19 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "head-brotherood-mini-park-outdoor",
@@ -5053,10 +6491,19 @@
           [],
           [],
           []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "helen-wills-playground-outdoor",
@@ -5211,18 +6658,27 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "herz-playground-outdoor",
       "name": "Herz Playground",
       "address": "1701 Visitacion Ave",
       "neighborhood": "McLaren Park, Visitacion Valley",
-      "lat": 37.714306,
-      "lng": -122.416483,
+      "lat": 37.713716,
+      "lng": -122.416872,
       "indoor": false,
       "schedule": [
         [
@@ -5334,18 +6790,62 @@
           [],
           [],
           []
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & soccer — first-come, open during park hours (no posted drop-in schedule). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "holly-park-outdoor",
       "name": "Holly Park",
       "address": "",
       "neighborhood": "Bernal Heights",
-      "lat": 37.736989,
-      "lng": -122.420399,
+      "lat": 37.737571,
+      "lng": -122.419906,
       "indoor": false,
       "schedule": [
         [
@@ -5492,10 +6992,54 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & soccer — first-come, open during park hours (no posted drop-in schedule). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "india-basin-shoreline-park-outdoor",
@@ -5615,10 +7159,19 @@
           [],
           [],
           []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "j-p-murphy-playground-outdoor",
@@ -5773,18 +7326,62 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & soccer — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "jackson-playground-outdoor",
       "name": "Jackson Playground",
       "address": "1645 17th St",
       "neighborhood": "Potrero Hill",
-      "lat": 37.763856,
-      "lng": -122.399774,
+      "lat": 37.764417,
+      "lng": -122.399684,
       "indoor": false,
       "schedule": [
         [
@@ -5966,18 +7563,62 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis & pickleball courts — first-come, open during park hours (no posted drop-in schedule). Pickleball shares the tennis courts (lined for both)."
+      "notes": "Outdoor basketball & tennis & pickleball & soccer — first-come, open during park hours (no posted drop-in schedule). Pickleball shares the tennis courts (lined for both). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "james-rolph-jr-playground-outdoor",
       "name": "James Rolph Jr. Playground",
       "address": "1451 Hampshire St",
       "neighborhood": "Mission",
-      "lat": 37.750084,
-      "lng": -122.406538,
+      "lat": 37.749511,
+      "lng": -122.406161,
       "indoor": false,
       "schedule": [
         [
@@ -6124,10 +7765,54 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & soccer — first-come, open during park hours (no posted drop-in schedule). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "joe-dimaggio-playground-outdoor",
@@ -6282,10 +7967,19 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "john-mclaren-park-outdoor",
@@ -6440,10 +8134,19 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "jose-coronado-playground-outdoor",
@@ -6598,18 +8301,27 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "junipero-serra-playground-outdoor",
       "name": "Junipero Serra Playground",
       "address": "300 Stonecrest Dr",
       "neighborhood": "West of Twin Peaks",
-      "lat": 37.725059,
-      "lng": -122.473808,
+      "lat": 37.72464,
+      "lng": -122.473898,
       "indoor": false,
       "schedule": [
         [
@@ -6756,10 +8468,54 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & soccer — first-come, open during park hours (no posted drop-in schedule). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "kelloch-velasco-mini-park-outdoor",
@@ -6879,10 +8635,19 @@
           [],
           [],
           []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "koshland-park-outdoor",
@@ -7002,10 +8767,19 @@
           [],
           [],
           []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "lafayette-park-outdoor",
@@ -7125,18 +8899,27 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor tennis — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "laurel-hill-playground-outdoor",
       "name": "Laurel Hill Playground",
       "address": "251 Euclid Ave",
       "neighborhood": "Presidio Heights",
-      "lat": 37.783949,
-      "lng": -122.451341,
+      "lat": 37.783922,
+      "lng": -122.45086,
       "indoor": false,
       "schedule": [
         [
@@ -7283,10 +9066,54 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & soccer — first-come, open during park hours (no posted drop-in schedule). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "little-hollywood-park-outdoor",
@@ -7406,18 +9233,27 @@
           [],
           [],
           []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "louis-sutter-playground-outdoor",
       "name": "Louis Sutter Playground",
       "address": "599 Yale St",
       "neighborhood": "McLaren Park",
-      "lat": 37.72229,
-      "lng": -122.413618,
+      "lat": 37.723109,
+      "lng": -122.413482,
       "indoor": false,
       "schedule": [
         [
@@ -7564,18 +9400,62 @@
           [],
           [],
           []
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & pickleball courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & pickleball & soccer — first-come, open during park hours (no posted drop-in schedule). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "margaret-s-hayward-playground-outdoor",
       "name": "Margaret S.Hayward Playground",
       "address": "1016 Laguna St",
       "neighborhood": "Western Addition",
-      "lat": 37.780527,
-      "lng": -122.426763,
+      "lat": 37.780974,
+      "lng": -122.42467,
       "indoor": false,
       "schedule": [
         [
@@ -7722,18 +9602,62 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & soccer — first-come, open during park hours (no posted drop-in schedule). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "mccoppin-square-outdoor",
       "name": "McCoppin Square",
       "address": "2354 24th Ave",
       "neighborhood": "Sunset/Parkside",
-      "lat": 37.743205,
-      "lng": -122.480411,
+      "lat": 37.744032,
+      "lng": -122.479908,
       "indoor": false,
       "schedule": [
         [
@@ -7880,10 +9804,54 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & soccer — first-come, open during park hours (no posted drop-in schedule). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "merced-heights-playground-outdoor",
@@ -8038,10 +10006,19 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "michelangelo-playground-outdoor",
@@ -8161,10 +10138,19 @@
           [],
           [],
           []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "midtown-terrace-playground-outdoor",
@@ -8284,18 +10270,27 @@
           [],
           [],
           []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "minnie-and-lovie-rec-center-outdoor",
       "name": "Minnie and Lovie Rec Center",
       "address": "650 Capitol Ave",
       "neighborhood": "Oceanview/Merced/Ingleside",
-      "lat": 37.716339,
-      "lng": -122.456721,
+      "lat": 37.715283,
+      "lng": -122.457351,
       "indoor": false,
       "schedule": [
         [
@@ -8442,18 +10437,62 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & soccer — first-come, open during park hours (no posted drop-in schedule). Designated SF Rec open-play soccer field. Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "miraloma-playground-outdoor",
       "name": "Miraloma Playground",
       "address": "25 Omar Way",
       "neighborhood": "West of Twin Peaks",
-      "lat": 37.739056,
-      "lng": -122.449145,
+      "lat": 37.73853,
+      "lng": -122.449403,
       "indoor": false,
       "schedule": [
         [
@@ -8600,10 +10639,54 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & soccer — first-come, open during park hours (no posted drop-in schedule). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "mission-creek-park-outdoor",
@@ -8758,10 +10841,19 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "mission-dolores-park-outdoor",
@@ -8916,10 +11008,19 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "mission-playground-outdoor",
@@ -9074,18 +11175,194 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & soccer — first-come, open during park hours (no posted drop-in schedule). Designated SF Rec open-play soccer field."
+    },
+    {
+      "id": "mission-rec-center-outdoor",
+      "name": "Mission Rec Center",
+      "address": "2450 Harrison St",
+      "neighborhood": "Mission",
+      "lat": 37.758,
+      "lng": -122.412901,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor soccer — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "moscone-rec-center-outdoor",
       "name": "Moscone Rec Center",
       "address": "1800 Chestnut St",
       "neighborhood": "Marina",
-      "lat": 37.802093,
-      "lng": -122.433178,
+      "lat": 37.802237,
+      "lng": -122.432875,
       "indoor": false,
       "schedule": [
         [
@@ -9267,10 +11544,54 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis & pickleball courts — first-come, open during park hours (no posted drop-in schedule). Pickleball shares the tennis courts (lined for both)."
+      "notes": "Outdoor basketball & tennis & pickleball & soccer — first-come, open during park hours (no posted drop-in schedule). Pickleball shares the tennis courts (lined for both). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "mountain-lake-park-outdoor",
@@ -9425,10 +11746,19 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "noe-valley-courts-outdoor",
@@ -9583,18 +11913,27 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "palega-playground-outdoor",
       "name": "Palega Playground",
       "address": "500 Felton St",
       "neighborhood": "Portola",
-      "lat": 37.729098,
-      "lng": -122.410453,
+      "lat": 37.729511,
+      "lng": -122.409705,
       "indoor": false,
       "schedule": [
         [
@@ -9741,10 +12080,54 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & soccer — first-come, open during park hours (no posted drop-in schedule). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "palou-phelps-park-outdoor",
@@ -9864,18 +12247,27 @@
           [],
           [],
           []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "parkside-square-outdoor",
       "name": "Parkside Square",
       "address": "2680 28th Ave",
       "neighborhood": "Sunset/Parkside",
-      "lat": 37.738765,
-      "lng": -122.483443,
+      "lat": 37.738431,
+      "lng": -122.484326,
       "indoor": false,
       "schedule": [
         [
@@ -10057,10 +12449,54 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis & pickleball courts — first-come, open during park hours (no posted drop-in schedule). Pickleball shares the tennis courts (lined for both)."
+      "notes": "Outdoor basketball & tennis & pickleball & soccer — first-come, open during park hours (no posted drop-in schedule). Pickleball shares the tennis courts (lined for both). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "peixotto-playground-outdoor",
@@ -10180,18 +12616,159 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor tennis — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
+      "id": "potrero-del-sol-outdoor",
+      "name": "Potrero del Sol",
+      "address": "",
+      "neighborhood": "Mission",
+      "lat": 37.750943,
+      "lng": -122.405493,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor soccer — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "potrero-hill-rec-center-outdoor",
       "name": "Potrero Hill Rec Center",
       "address": "801 Arkansas St",
       "neighborhood": "Potrero Hill",
-      "lat": 37.75692,
-      "lng": -122.397217,
+      "lat": 37.755491,
+      "lng": -122.39702,
       "indoor": false,
       "schedule": [
         [
@@ -10338,10 +12915,54 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & soccer — first-come, open during park hours (no posted drop-in schedule). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "presidio-heights-playground-outdoor",
@@ -10461,18 +13082,27 @@
           [],
           [],
           []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "presidio-wall-playground-outdoor",
       "name": "Presidio Wall Playground",
       "address": "3550 Pacific Ave",
       "neighborhood": "Presidio, Presidio Heights",
-      "lat": 37.791222,
-      "lng": -122.454337,
+      "lat": 37.791482,
+      "lng": -122.452672,
       "indoor": false,
       "schedule": [
         [
@@ -10654,10 +13284,186 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis & pickleball courts — first-come, open during park hours (no posted drop-in schedule). Pickleball shares the tennis courts (lined for both)."
+      "notes": "Outdoor basketball & tennis & pickleball & soccer — first-come, open during park hours (no posted drop-in schedule). Pickleball shares the tennis courts (lined for both). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
+    },
+    {
+      "id": "raymond-kimball-playground-outdoor",
+      "name": "Raymond Kimball Playground",
+      "address": "1901 Geary Blvd",
+      "neighborhood": "Western Addition",
+      "lat": 37.782774,
+      "lng": -122.435076,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor soccer — first-come, open during park hours (no posted drop-in schedule). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "richmond-playground-outdoor",
@@ -10847,10 +13653,19 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis & pickleball courts — first-come, open during park hours (no posted drop-in schedule). Pickleball shares the tennis courts (lined for both)."
+      "notes": "Outdoor basketball & tennis & pickleball — first-come, open during park hours (no posted drop-in schedule). Pickleball shares the tennis courts (lined for both)."
     },
     {
       "id": "rochambeau-playground-outdoor",
@@ -11005,10 +13820,19 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "selby-palou-mini-park-outdoor",
@@ -11128,10 +13952,19 @@
           [],
           [],
           []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "sigmund-stern-recreation-grove-outdoor",
@@ -11286,18 +14119,27 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis & pickleball courts — first-come, open during park hours (no posted drop-in schedule). Pickleball shares the tennis courts (lined for both)."
+      "notes": "Outdoor tennis & pickleball — first-come, open during park hours (no posted drop-in schedule). Pickleball shares the tennis courts (lined for both)."
     },
     {
       "id": "silver-terrace-playground-outdoor",
       "name": "Silver Terrace Playground",
       "address": "1700 Silver Ave",
       "neighborhood": "Bayview Hunters Point",
-      "lat": 37.732756,
-      "lng": -122.402326,
+      "lat": 37.733007,
+      "lng": -122.403336,
       "indoor": false,
       "schedule": [
         [
@@ -11444,18 +14286,62 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & soccer — first-come, open during park hours (no posted drop-in schedule). Designated SF Rec open-play soccer field. Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "south-sunset-playground-outdoor",
       "name": "South Sunset Playground",
       "address": "2601 40th Ave",
       "neighborhood": "Sunset/Parkside",
-      "lat": 37.737816,
-      "lng": -122.498526,
+      "lat": 37.737107,
+      "lng": -122.498474,
       "indoor": false,
       "schedule": [
         [
@@ -11602,18 +14488,62 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & soccer — first-come, open during park hours (no posted drop-in schedule). Designated SF Rec open-play soccer field. Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "st-mary-s-rec-center-outdoor",
       "name": "St. Mary's Rec Center",
       "address": "95 Justin Dr",
       "neighborhood": "Bernal Heights",
-      "lat": 37.733393,
-      "lng": -122.421076,
+      "lat": 37.734277,
+      "lng": -122.420859,
       "indoor": false,
       "schedule": [
         [
@@ -11760,10 +14690,54 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & soccer — first-come, open during park hours (no posted drop-in schedule). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "states-street-playground-outdoor",
@@ -11918,10 +14892,54 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & soccer — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "sunnyside-playground-outdoor",
@@ -12076,18 +15094,27 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "sunset-rec-center-outdoor",
       "name": "Sunset Rec Center",
       "address": "2201 Lawton St",
       "neighborhood": "Sunset/Parkside",
-      "lat": 37.756688,
-      "lng": -122.486569,
+      "lat": 37.756153,
+      "lng": -122.486841,
       "indoor": false,
       "schedule": [
         [
@@ -12234,10 +15261,54 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & soccer — first-come, open during park hours (no posted drop-in schedule). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "tenderloin-recreation-center-outdoor",
@@ -12357,18 +15428,27 @@
           [],
           [],
           []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "upper-noe-rec-center-outdoor",
       "name": "Upper Noe Rec Center",
       "address": "295 Day St",
       "neighborhood": "Noe Valley",
-      "lat": 37.742268,
-      "lng": -122.427964,
+      "lat": 37.742464,
+      "lng": -122.42748,
       "indoor": false,
       "schedule": [
         [
@@ -12550,18 +15630,62 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis & pickleball courts — first-come, open during park hours (no posted drop-in schedule). Pickleball shares the tennis courts (lined for both)."
+      "notes": "Outdoor basketball & tennis & pickleball & soccer — first-come, open during park hours (no posted drop-in schedule). Pickleball shares the tennis courts (lined for both). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "victoria-manalo-draves-park-outdoor",
       "name": "Victoria Manalo Draves Park",
       "address": "55 Sherman St",
       "neighborhood": "South of Market",
-      "lat": 37.777391,
-      "lng": -122.40662,
+      "lat": 37.77669,
+      "lng": -122.40556,
       "indoor": false,
       "schedule": [
         [
@@ -12673,10 +15797,54 @@
           [],
           [],
           []
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & soccer — first-come, open during park hours (no posted drop-in schedule). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "walter-haas-playground-outdoor",
@@ -12796,10 +15964,19 @@
           [],
           [],
           []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "west-portal-playground-outdoor",
@@ -12919,18 +16096,27 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor tennis — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "west-sunset-playground-outdoor",
       "name": "West Sunset Playground",
       "address": "3223 Ortega St",
       "neighborhood": "Sunset/Parkside",
-      "lat": 37.750259,
-      "lng": -122.497789,
+      "lat": 37.749042,
+      "lng": -122.498733,
       "indoor": false,
       "schedule": [
         [
@@ -13077,10 +16263,54 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & soccer — first-come, open during park hours (no posted drop-in schedule). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "willie-woo-woo-wong-playground-outdoor",
@@ -13235,18 +16465,159 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
+      "id": "yik-oi-huang-peace-friendship-park-outdoor",
+      "name": "Yik Oi Huang Peace & Friendship Park",
+      "address": "251 Leland Ave",
+      "neighborhood": "Visitacion Valley",
+      "lat": 37.712286,
+      "lng": -122.409097,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor soccer — first-come, open during park hours (no posted drop-in schedule). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     },
     {
       "id": "youngblood-coleman-playground-outdoor",
       "name": "Youngblood-Coleman Playground",
       "address": "1398 Hudson Ave",
       "neighborhood": "Bayview Hunters Point",
-      "lat": 37.738173,
-      "lng": -122.383815,
+      "lat": 37.738729,
+      "lng": -122.384354,
       "indoor": false,
       "schedule": [
         [
@@ -13393,11 +16764,55 @@
               1200
             ]
           ]
+        ],
+        "soccer": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis courts — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & soccer — first-come, open during park hours (no posted drop-in schedule). Soccer is on an open grass ball field (baseball diamond) — informal, first-come."
     }
   ],
-  "fetchedAt": "2026-07-03T00:05:39.129Z"
+  "fetchedAt": "2026-07-04T00:46:57.859Z"
 }

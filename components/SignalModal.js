@@ -14,14 +14,14 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { createSignal } from '../lib/signals';
 import { startOfDay, dayChipLabel, fmtClock } from '../lib/datetime';
-import { SPORTS, ANY_SPORT, sportMeta } from '../lib/sports';
+import { PLAN_SPORTS, ANY_SPORT, sportMeta } from '../lib/sports';
 import { haversineMiles, formatDistance } from '../lib/distance';
 import { sportLabel, useI18n } from '../lib/i18n';
 import { useAuth } from '../lib/auth';
 import { resolveNotify } from '../lib/activityShare';
 
-// "Anything" (just down for rec) first, then the specific sports.
-const SPORT_OPTS = [{ id: ANY_SPORT, emoji: sportMeta(ANY_SPORT).emoji }, ...SPORTS];
+// "Anything" (just down for rec) first, then the specific sports + weight room.
+const SPORT_OPTS = [{ id: ANY_SPORT, emoji: sportMeta(ANY_SPORT).emoji }, ...PLAN_SPORTS];
 
 export default function SignalModal({ visible, courts = [], userLocation, onClose, onPosted }) {
   const { t } = useI18n();

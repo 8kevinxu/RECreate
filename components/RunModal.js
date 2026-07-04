@@ -1,4 +1,4 @@
-// "Plan a game": pick a court and a day+time, in either order. Choosing a court
+// "Plan a session": pick a court and a day+time, in either order. Choosing a court
 // limits the time chips to that court's open-gym blocks; picking a time first
 // flags which courts run open gym then (others are disabled). Reuses the map's
 // time-picker chips and the shared date helpers in lib/datetime.
@@ -17,7 +17,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { createRun, MAX_NOTE } from '../lib/runs';
 import { startOfDay, dayChipLabel, fmtClock } from '../lib/datetime';
 import { dropinWeekdays, openGymSlots } from '../lib/hours';
-import { SPORTS } from '../lib/sports';
+import { PLAN_SPORTS } from '../lib/sports';
 import { haversineMiles, formatDistance } from '../lib/distance';
 import { useI18n, sportLabel } from '../lib/i18n';
 import { useAuth } from '../lib/auth';
@@ -253,7 +253,7 @@ export default function RunModal({
           </View>
 
           <View style={styles.sportRow}>
-            {SPORTS.map((s) => {
+            {PLAN_SPORTS.map((s) => {
               const active = s.id === sport;
               return (
                 <Pressable
@@ -514,7 +514,7 @@ const styles = StyleSheet.create({
   },
   title: { fontSize: 18, fontWeight: '800', color: '#0d1b2a' },
 
-  sportRow: { flexDirection: 'row', gap: 8, marginBottom: 14 },
+  sportRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginBottom: 14 },
   sportChip: {
     paddingHorizontal: 14,
     paddingVertical: 8,

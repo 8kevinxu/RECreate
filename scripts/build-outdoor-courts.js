@@ -1,15 +1,17 @@
 #!/usr/bin/env node
 /*
- * Build data/outdoor-courts.js — SF Recreation & Parks OUTDOOR courts
- * (basketball + tennis + pickleball). Run with:  npm run build:outdoor
+ * Build data/outdoor-courts.js — SF Recreation & Parks OUTDOOR courts & fields
+ * (basketball + tennis + pickleball + soccer). Run with:  npm run build:outdoor
  *
  * Source: the DataSF "Recreation and Parks Facilities" dataset (ib5c-xgwu) — the
- * same one build-indoor-courts.js uses for coordinates. We pull the court
+ * same one build-indoor-courts.js uses for coordinates. We pull the court/field
  * facility types and map each to the sport(s) it offers:
  *   Basketball Court        -> basketball
  *   Tennis Court            -> tennis
  *   Pickleball Courts       -> pickleball
  *   Tennis/Pickleball Court -> tennis + pickleball (one surface lined for both)
+ *   Soccer Field            -> soccer
+ *   Multi-Use Turf          -> soccer (synthetic turf, commonly used for soccer)
  *
  * Outdoor courts have no posted drop-in schedule — they're first-come during park
  * hours — so each is modeled as open a fixed daily window (PARK_HOURS) with its
@@ -30,7 +32,7 @@ const OUT_FILE = path.join(__dirname, '..', 'data', 'outdoor-courts.js');
 const DATASF =
   'https://data.sfgov.org/resource/ib5c-xgwu.json?' +
   '$select=property_name,facility_type,address,analysis_neighborhood,latitude,longitude&' +
-  "$where=facility_type in('Basketball Court','Tennis Court','Tennis/Pickleball Court','Pickleball Courts')&$limit=500";
+  "$where=facility_type in('Basketball Court','Tennis Court','Tennis/Pickleball Court','Pickleball Courts','Soccer Field','Multi-Use Turf','Ball Field')&$limit=500";
 
 // Abort (keep last-good data) if fewer than this many courts come back.
 const MIN_COURTS_OK = 20;
@@ -46,15 +48,22 @@ const allOpenHoursWeek = (sched) => sched.map((h) => (h ? [[h[0], h[1]]] : []));
 
 // All tracked sports (keep in sync with lib/sports.js); every court carries a week
 // for each so the dropins shape is uniform (outdoor courts only fill racquet ones).
-const ALL_SPORTS = ['basketball', 'volleyball', 'pingpong', 'pickleball', 'tennis'];
+const ALL_SPORTS = ['basketball', 'volleyball', 'pingpong', 'pickleball', 'tennis', 'soccer'];
 const emptyWeek = () => [[], [], [], [], [], [], []];
 
-// Which sport(s) each outdoor court facility type offers.
+// Which sport(s) each outdoor court/field facility type offers. Soccer comes from
+// dedicated "Soccer Field" records, "Multi-Use Turf" (SF's synthetic turf fields),
+// and "Ball Field" — baseball/softball diamonds whose open grass outfields are
+// widely used for informal pickup soccer (e.g. Palega). Ball-field soccer gets a
+// clarifying note (see buildCourts) so it isn't mistaken for a dedicated pitch.
 const TYPE_SPORTS = {
   'Basketball Court': ['basketball'],
   'Tennis Court': ['tennis'],
   'Pickleball Courts': ['pickleball'],
   'Tennis/Pickleball Court': ['tennis', 'pickleball'],
+  'Soccer Field': ['soccer'],
+  'Multi-Use Turf': ['soccer'],
+  'Ball Field': ['soccer'],
 };
 
 // DataSF (by property_name) that are INDOOR-only rec centers whose gym court it
@@ -69,12 +78,24 @@ const EXCLUDE_PROPERTIES = new Set(['Eugene Friend Rec Center']);
 const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 
 // Order a park's sports for readable notes/labels.
-const ORDER = ['basketball', 'tennis', 'pickleball'];
+const ORDER = ['basketball', 'tennis', 'pickleball', 'soccer'];
 const ordered = (sports) => ORDER.filter((s) => sports.includes(s));
+
+// SF Rec's designated open-play soccer fields (sfrecpark.org/508/Open-Play). The
+// page posts no online hours, so this only adds an informational note; matched
+// loosely by property_name keyword against DataSF's soccer/turf records.
+const OPEN_PLAY_KEYS = [
+  'beach chalet', 'crocker', 'garfield', 'kimbell', 'minnie', 'mission playground', 'silver terrace', 'south sunset',
+];
+const isOpenPlaySoccer = (name) => {
+  const n = (name || '').toLowerCase();
+  return OPEN_PLAY_KEYS.some((k) => n.includes(k));
+};
 
 function noteFor(sports, sharedTennis) {
   const list = ordered(sports).join(' & ');
-  let n = `Outdoor ${list} courts — first-come, open during park hours (no posted drop-in schedule).`;
+  // Neutral noun: a park pin can mix courts (basketball/tennis) and fields (soccer).
+  let n = `Outdoor ${list} — first-come, open during park hours (no posted drop-in schedule).`;
   if (sharedTennis && sports.includes('pickleball') && sports.includes('tennis')) {
     n += ' Pickleball shares the tennis courts (lined for both).';
   } else if (sharedTennis && sports.includes('pickleball')) {
@@ -100,11 +121,13 @@ function buildCourts(rows) {
         lng: Number(Number(r.longitude).toFixed(6)),
         sports: new Set(),
         sharedTennis: false,
+        hasBallField: false,
       };
       byPark.set(r.property_name, p);
     }
     sports.forEach((s) => p.sports.add(s));
     if (r.facility_type === 'Tennis/Pickleball Court') p.sharedTennis = true;
+    if (r.facility_type === 'Ball Field') p.hasBallField = true;
   }
 
   const sched = parkSchedule();
@@ -124,7 +147,14 @@ function buildCourts(rows) {
         schedule: sched,
         dropins,
         source: 'sfrecpark-outdoor',
-        notes: noteFor(offered, p.sharedTennis),
+        notes:
+          noteFor(offered, p.sharedTennis) +
+          (offered.includes('soccer') && isOpenPlaySoccer(p.name)
+            ? ' Designated SF Rec open-play soccer field.'
+            : '') +
+          (offered.includes('soccer') && p.hasBallField
+            ? ' Soccer is on an open grass ball field (baseball diamond) — informal, first-come.'
+            : ''),
       };
     })
     .sort((a, b) => a.name.localeCompare(b.name));
@@ -202,7 +232,8 @@ async function main() {
     const count = (sport) => courts.filter((c) => c.dropins[sport].some((d) => d.length)).length;
     console.log(
       `  ✓ ${courts.length} parks — ${count('basketball')} basketball, ` +
-        `${count('tennis')} tennis, ${count('pickleball')} pickleball (live)`
+        `${count('tennis')} tennis, ${count('pickleball')} pickleball, ` +
+        `${count('soccer')} soccer (live)`
     );
   } catch (e) {
     const cache = loadCache();
