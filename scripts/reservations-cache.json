@@ -8265,7 +8265,7 @@
       },
       "guidelines": "Come on out to Upper Noe, where pickleball and tennis are always welcome! There is one dedicated tennis court with space for two temporary pickleball courts. \n\n**Reservation Policy**\n- Any individual may reserve a court, but may not book more than 1 court in a day or 3 courts in a calendar week.\n- Reservation requests are for individual play only. No lessons, team practices, clinics or league matches.\n- Courts left vacant 15 minutes after reservation time are available for walk-up play\n- Please **[click here](https://sfrecpark.org/1188/Tennis-Pickleball-Reservations)** to view the full San Francisco Rec and Park reservation policy.\n\n**Reservation Overview**\n\n*Court 1*\n- Court 1 is reservable for Tennis 2 days in advance.\n- Reservations open at noon. \n- All slots are 90 minutes, starting at 7:30am, 9:00am, 10:30am, 12:00pm, 1:30pm, 3:00pm, 4:30pm, 6:00pm, and 7:30pm. \n\n*Courts A and B*\n- Courts A and B are reservable for Pickleball 2 days in advance. \n- Reservations open at noon.\n- All slots are 90 minutes, starting at 10:30am and 12:00pm.\n\n**Location Features**\n- 1 tennis court\n- 2 pickleball courts. Pickleball net, paddles and balls available to borrow Tuesday-Friday, 10am-7pm and Saturday 9am-4pm.\n- Lights\n- Bathroom access",
       "tennis": {
-        "pct": 50,
+        "pct": 56,
         "courts": 1,
         "slots": {
           "2026-07-04 07:30": 0,
@@ -8286,9 +8286,9 @@
           "2026-07-04 15:00": 100,
           "2026-07-04 15:30": 100,
           "2026-07-04 16:00": 100,
-          "2026-07-04 16:30": 0,
-          "2026-07-04 17:00": 0,
-          "2026-07-04 17:30": 0,
+          "2026-07-04 16:30": 100,
+          "2026-07-04 17:00": 100,
+          "2026-07-04 17:30": 100,
           "2026-07-04 18:00": 0,
           "2026-07-04 18:30": 0,
           "2026-07-04 19:00": 0,
@@ -8327,5 +8327,5 @@
       }
     }
   },
-  "fetchedAt": "2026-07-04T08:46:35.461Z"
+  "fetchedAt": "2026-07-04T10:57:39.406Z"
 }
