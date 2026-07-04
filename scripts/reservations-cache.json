@@ -3123,12 +3123,12 @@
     },
     "jackson-playground-outdoor": {
       "pickleball": {
-        "pct": 58,
+        "pct": 64,
         "courts": 2,
         "slots": {
-          "2026-07-04 07:30": 0,
-          "2026-07-04 08:00": 0,
-          "2026-07-04 08:30": 0,
+          "2026-07-04 07:30": 100,
+          "2026-07-04 08:00": 100,
+          "2026-07-04 08:30": 100,
           "2026-07-04 09:00": 100,
           "2026-07-04 09:30": 100,
           "2026-07-04 10:00": 100,
@@ -3185,12 +3185,12 @@
       },
       "guidelines": "Welcome to Jackson Park in Potrero Hill! One tennis court (or two pickleball courts) can be found at the Southwest corner of the park. \n\n**Reservation Policy**\n- Any individual may reserve a court, but may not book more than 1 court in a day or 3 courts in a calendar week.\n- Reservation requests are for individual play only. No lessons, team practices, clinics or league matches.\n- Courts left vacant 15 minutes after reservation time are available for walk-up play\n- Please **[click here](https://sfrecpark.org/1188/Tennis-Pickleball-Reservations)** to view the full San Francisco Rec and Park reservation policy.\n\n**Reservation Overview**\n\n*Court 1*\n- Court 1 is reservable for Tennis 2 days in advance\n- Reservations open at noon. \n- Slots are 90 minutes and start at 7:30am, 9:00am, 10:30am, 12:00pm, 1:30pm, 3:00pm, 4:30pm, 6:00pm, 7:30pm.\n\n*Courts A and B*\n- Courts A and B are reservable for Pickleball 2 days in advance\n- Reservations open at noon.\n- Slots are 90 minutes and start at 7:30am, 9:00am, 10:30am, 12:00pm, 1:30pm, 3:00pm, 4:30pm, 6:00pm, 7:30pm.\n\n**Location Features** \n- 1 Tennis Court\n- 2 Pickleball Courts. Players must provide their own nets.\n- Lights",
       "tennis": {
-        "pct": 61,
+        "pct": 67,
         "courts": 1,
         "slots": {
-          "2026-07-04 07:30": 0,
-          "2026-07-04 08:00": 0,
-          "2026-07-04 08:30": 0,
+          "2026-07-04 07:30": 100,
+          "2026-07-04 08:00": 100,
+          "2026-07-04 08:30": 100,
           "2026-07-04 09:00": 100,
           "2026-07-04 09:30": 100,
           "2026-07-04 10:00": 100,
@@ -8327,5 +8327,5 @@
       }
     }
   },
-  "fetchedAt": "2026-07-04T10:57:39.406Z"
+  "fetchedAt": "2026-07-04T13:48:12.483Z"
 }
