@@ -73,6 +73,15 @@
           ]
         ]
       ],
+      "badminton": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
       "pickleball": [
         [],
         [],
@@ -123,7 +132,7 @@
       ]
     },
     "season": "Mission Rec Center Summer Schedule",
-    "scrapedAt": "2026-07-01T08:28:57.209Z"
+    "scrapedAt": "2026-07-04T09:15:12.176Z"
   },
   "Moscone-Rec-Center-101": {
     "dropins": {
@@ -184,6 +193,15 @@
         [],
         []
       ],
+      "badminton": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
       "pickleball": [
         [],
         [],
@@ -219,7 +237,7 @@
       ]
     },
     "season": "Moscone Rec Center Summer Schedule",
-    "scrapedAt": "2026-07-01T08:28:57.544Z"
+    "scrapedAt": "2026-07-04T09:15:12.554Z"
   },
   "St-Marys-Rec-Center-109": {
     "dropins": {
@@ -275,6 +293,15 @@
           ]
         ]
       ],
+      "badminton": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
       "pickleball": [
         [],
         [],
@@ -295,7 +322,7 @@
       ]
     },
     "season": "St. Mary's Rec Center Summer Schedule",
-    "scrapedAt": "2026-07-01T08:28:58.019Z"
+    "scrapedAt": "2026-07-04T09:15:13.090Z"
   },
   "Upper-Noe-Rec-Center-112": {
     "dropins": {
@@ -351,6 +378,15 @@
         ],
         []
       ],
+      "badminton": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
       "pickleball": [
         [],
         [],
@@ -371,7 +407,7 @@
       ]
     },
     "season": "Upper Noe Rec Center Summer Schedule",
-    "scrapedAt": "2026-07-01T08:28:58.361Z"
+    "scrapedAt": "2026-07-04T09:15:13.558Z"
   },
   "Hamilton-Rec-Center-93": {
     "dropins": {
@@ -442,6 +478,15 @@
           ]
         ]
       ],
+      "badminton": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
       "pickleball": [
         [],
         [],
@@ -462,7 +507,7 @@
       ]
     },
     "season": "Hamilton Rec Center Summer Schedule",
-    "scrapedAt": "2026-07-01T08:28:58.704Z"
+    "scrapedAt": "2026-07-04T09:15:13.935Z"
   },
   "Eureka-Valley-Rec-Center-86": {
     "dropins": {
@@ -499,10 +544,6 @@
         [],
         [
           [
-            540,
-            780
-          ],
-          [
             1035,
             1200
           ]
@@ -516,6 +557,15 @@
         ]
       ],
       "pingpong": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "badminton": [
         [],
         [],
         [],
@@ -558,7 +608,7 @@
       ]
     },
     "season": "Eureka Valley Rec Center Summer Schedule",
-    "scrapedAt": "2026-07-01T08:28:59.018Z"
+    "scrapedAt": "2026-07-04T09:15:14.273Z"
   },
   "Richmond-Rec-Center-105": {
     "dropins": {
@@ -644,6 +694,15 @@
           ]
         ]
       ],
+      "badminton": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
       "pickleball": [
         [],
         [],
@@ -674,7 +733,7 @@
       ]
     },
     "season": "Richmond Rec Center Summer Schedule",
-    "scrapedAt": "2026-07-01T08:28:59.754Z"
+    "scrapedAt": "2026-07-04T09:15:15.000Z"
   },
   "Sunset-Rec-Center-110": {
     "dropins": {
@@ -740,6 +799,15 @@
           ]
         ]
       ],
+      "badminton": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
       "pickleball": [
         [],
         [],
@@ -760,7 +828,7 @@
       ]
     },
     "season": "Sunset Rec Center Summer Schedule",
-    "scrapedAt": "2026-07-01T08:29:00.161Z"
+    "scrapedAt": "2026-07-04T09:15:15.442Z"
   },
   "Palega-Rec-Center-103": {
     "dropins": {
@@ -826,6 +894,15 @@
         [],
         []
       ],
+      "badminton": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
       "pickleball": [
         [],
         [],
@@ -846,7 +923,7 @@
       ]
     },
     "season": "Palega Rec Center Summer Schedule",
-    "scrapedAt": "2026-07-01T08:29:00.577Z"
+    "scrapedAt": "2026-07-04T09:15:15.790Z"
   },
   "Joseph-Lee-Rec-Center-95": {
     "dropins": {
@@ -907,6 +984,15 @@
         [],
         []
       ],
+      "badminton": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
       "pickleball": [
         [],
         [],
@@ -927,7 +1013,7 @@
       ]
     },
     "season": "Joseph Lee Rec Center Summer Schedule",
-    "scrapedAt": "2026-07-01T08:29:00.900Z"
+    "scrapedAt": "2026-07-04T09:15:16.191Z"
   },
   "Minnie-Love-Ward-Rec-Center-97": {
     "dropins": {
@@ -1008,6 +1094,15 @@
           ]
         ]
       ],
+      "badminton": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
       "pickleball": [
         [],
         [],
@@ -1058,7 +1153,7 @@
       ]
     },
     "season": "Minnie & Lovie Ward Rec Center Summer Schedule",
-    "scrapedAt": "2026-07-01T08:29:01.428Z"
+    "scrapedAt": "2026-07-04T09:15:16.783Z"
   },
   "Bernal-Heights-Rec-Center-83": {
     "dropins": {
@@ -1119,6 +1214,15 @@
         [],
         []
       ],
+      "badminton": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
       "pickleball": [
         [],
         [],
@@ -1139,7 +1243,7 @@
       ]
     },
     "season": "Bernal Heights Rec Center Summer Schedule",
-    "scrapedAt": "2026-07-01T08:29:01.868Z"
+    "scrapedAt": "2026-07-04T09:15:17.226Z"
   },
   "Betty-Ann-Ong-Recreation-Center-84": {
     "dropins": {
@@ -1230,6 +1334,25 @@
           ]
         ]
       ],
+      "badminton": [
+        [],
+        [],
+        [
+          [
+            960,
+            1230
+          ]
+        ],
+        [],
+        [],
+        [
+          [
+            570,
+            960
+          ]
+        ],
+        []
+      ],
       "pickleball": [
         [],
         [],
@@ -1250,7 +1373,7 @@
       ]
     },
     "season": "Betty Ann Ong Chinese Rec Center Summer Schedule",
-    "scrapedAt": "2026-07-01T08:29:02.411Z"
+    "scrapedAt": "2026-07-04T09:15:17.590Z"
   },
   "Glen-Canyon-Park-Recreation-Center-89": {
     "dropins": {
@@ -1358,6 +1481,15 @@
           ]
         ]
       ],
+      "badminton": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
       "pickleball": [
         [],
         [],
@@ -1418,7 +1550,7 @@
       ]
     },
     "season": "Glen Canyon Rec Center Summer Schedule",
-    "scrapedAt": "2026-07-01T08:29:02.737Z"
+    "scrapedAt": "2026-07-04T09:15:18.286Z"
   },
   "Herz-Recreation-Center-471": {
     "dropins": {
@@ -1474,6 +1606,15 @@
         [],
         []
       ],
+      "badminton": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
       "pickleball": [
         [],
         [],
@@ -1494,7 +1635,7 @@
       ]
     },
     "season": "Herz Rec Center Summer Schedule",
-    "scrapedAt": "2026-07-01T08:29:03.074Z"
+    "scrapedAt": "2026-07-04T09:15:18.823Z"
   },
   "Potrero-Hill-Rec-Center-275": {
     "dropins": {
@@ -1581,6 +1722,15 @@
           ]
         ]
       ],
+      "badminton": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
       "pickleball": [
         [],
         [],
@@ -1601,6 +1751,126 @@
       ]
     },
     "season": "Potrero Hill Rec Center Summer Schedule",
-    "scrapedAt": "2026-07-01T08:29:03.429Z"
+    "scrapedAt": "2026-07-04T09:15:19.167Z"
+  },
+  "Gene-Friend-Rec-Center-88": {
+    "dropins": {
+      "basketball": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "volleyball": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "pingpong": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "badminton": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "pickleball": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "weightroom": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    "season": "",
+    "scrapedAt": "2026-07-04T09:15:14.612Z"
+  },
+  "Crocker-Amazon-Playground-236": {
+    "dropins": {
+      "basketball": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "volleyball": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "pingpong": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "badminton": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "pickleball": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "weightroom": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    "season": "Crocker Amazon Playground Summer Schedule",
+    "scrapedAt": "2026-07-04T09:15:17.957Z"
   }
 }

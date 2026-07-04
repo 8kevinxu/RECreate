@@ -27,12 +27,9 @@ const MIN_OK = 30; // abort (keep last-good) if fewer than this many classes par
 
 // Our categories. ActiveNet's own categories lump very different things together
 // (its "Music & Arts" mixes ukulele with oil painting and darkroom photography), so
-// we pull each ActiveNet category and re-bucket every item by keyword into clearer
-// app categories. ActiveNet category ids we query:
-//   29 Fitness & Wellness        -> fitness
-//   50/25/24 Music & Arts        -> music / arts / photo (by keyword)
-//   26 Dance / Music / Perf Arts -> dance (default) / music / arts / photo
-//   33 Social Activities         -> social (default) / music
+// we pull every ActiveNet category and re-bucket each item by keyword into clearer
+// app categories. The ActiveNet ids each group queries — and the app category the
+// group's unmatched items fall back to — live in `groups` inside scrape().
 const CATEGORIES = [
   { id: 'fitness', label: 'Fitness & Wellness', emoji: '🧘' },
   { id: 'dance', label: 'Dance', emoji: '💃' },
@@ -41,10 +38,23 @@ const CATEGORIES = [
   { id: 'photo', label: 'Photography', emoji: '📷' },
   { id: 'social', label: 'Social & Games', emoji: '🎲' },
   { id: 'aquatics', label: 'Aquatics', emoji: '🏊' },
+  { id: 'sports', label: 'Sports & Rec', emoji: '🏅' },
+  { id: 'camps', label: 'Camps', emoji: '🏕️' },
+  { id: 'youth', label: 'Youth & After School', emoji: '🧒' },
 ];
 
-// Keyword classifiers, checked photo -> arts -> music; the caller supplies the
-// fallback for items that match none (the ActiveNet category's dominant theme).
+// Drop-in sessions for sports the map already tracks are skipped: their hours are
+// scraped from the facility pages into data/courts.js (the map's open-gym blocks),
+// so listing them as classes too would duplicate the map. Sports the map doesn't
+// cover (karate, parkour, archery, skateboarding…) stay in the catalog.
+const MAP_SPORT_DROPIN_RE =
+  /^drop-?in\b.*\b(basketball|volleyball|table tennis|ping[\s-]?pong|badminton|pickleball|tennis|soccer|baseball|weight ?room)\b/i;
+
+// Keyword classifiers, checked camp -> photo -> arts -> music; the caller supplies
+// the fallback for items that match none (the ActiveNet category's dominant theme).
+// CAMP_RE routes any "…Summer Camp…" / "Camp Mather…" title into camps regardless
+// of its source category; the lookbehind spares fitness "Boot Camp" classes.
+const CAMP_RE = /(?<!boot\s)\bcamps?\b/i;
 const PHOTO_RE =
   /photo|lightroom|darkroom|\bfilm\b|camera|cyanotype|photoshop|collage|negative|develop/i;
 const ARTS_RE =
@@ -53,6 +63,7 @@ const MUSIC_RE =
   /music|sing|choir|ukulele|guitar|piano|drum|instrument|karaoke|\bband\b|orchestra|appreciation/i;
 
 function classify(name, fallback) {
+  if (CAMP_RE.test(name)) return 'camps';
   if (PHOTO_RE.test(name)) return 'photo';
   if (ARTS_RE.test(name)) return 'arts';
   if (MUSIC_RE.test(name)) return 'music';
@@ -219,8 +230,15 @@ async function fetchCategory(session, catIds) {
 // ActiveNet item -> our class row, or null to drop it.
 function toClass(item, category, coords) {
   const name = dehtml(item.name);
-  const location = cleanLoc(item.location?.label);
-  if (!name || !location || /^n\/?a$/i.test(item.location?.label || '')) return null; // multi-site / TBD
+  if (!name) return null;
+  let location = cleanLoc(item.location?.label);
+  if (!location || /^n\/?a$/i.test(item.location?.label || '')) {
+    // Multi-site/TBD listings ("Learn to Swim - Level 1" templates) have no usable
+    // location; salvage the ones whose name embeds it ("Kayaking at India Basin").
+    const at = name.match(/\bat ([A-Z][\w'’.\- ]{3,})$/);
+    if (!at) return null;
+    location = at[1].trim();
+  }
   const when = [cleanDays(item.days_of_week), item.time_range].filter(Boolean).join(' · ');
   const c = coords.coordsFor(item.location?.label);
   const minAge = Number(item.age_min_year) || 0;
@@ -281,7 +299,7 @@ async function scrape() {
   const seen = new Set();
   const add = (item, cat) => {
     const c = toClass(item, cat, coords);
-    if (c && !seen.has(c.id)) {
+    if (c && !MAP_SPORT_DROPIN_RE.test(c.name) && !seen.has(c.id)) {
       seen.add(c.id);
       rows.push(c);
     }
@@ -289,20 +307,119 @@ async function scrape() {
 
   // Each ActiveNet category, re-bucketed by keyword. The second arg is the fallback
   // category for items matching no keyword (the source category's dominant theme).
+  // Covers ActiveNet's full category list (33 ids as of mid-2026); an item in two
+  // queried categories dedupes by id, first group wins.
   const groups = [
-    { ids: ['29'], fallback: 'fitness' },
-    { ids: ['50', '25', '24'], fallback: 'arts' }, // Music & Arts
+    { ids: ['29', '56'], fallback: 'fitness' }, // Exercise & Fitness; Seniors - Virtual
+    { ids: ['50', '25', '24', '23'], fallback: 'arts' }, // Arts & Crafts / Visual / Photography / Digital
     { ids: ['26'], fallback: 'dance' }, // Dance / Music / Performing Arts
-    { ids: ['33'], fallback: 'social' }, // Social Activities
-    { ids: ['51'], fallback: 'aquatics' }, // Aquatics — Learn to Swim (one program per pool)
+    { ids: ['33', '30', '31', '32'], fallback: 'social' }, // Social; Food; Personal Dev; Sci & Tech
+    { ids: ['40', '41', '51'], fallback: 'aquatics' }, // Aquatics; Waterfront; Learn-to-Swim camps
+    // All seasonal camp categories (winter/spring break + the summer-camp family).
+    { ids: ['34', '35', '36', '37', '38', '43', '44', '45', '46', '47', '52'], fallback: 'camps' },
+    // Drop-in sports sessions, alternative rec (karate/parkour/archery), girls
+    // sports, adaptive rec, outdoor rec (CAMP_RE reroutes its Camp Mather items).
+    { ids: ['21', '49', '42', '54', '39', '18'], fallback: 'sports' },
+    { ids: ['22', '28'], fallback: 'youth' }, // After School; Early Childhood
   ];
+  // ActiveNet's multi-id search is unreliable — it repeats some categories' items
+  // across pages and omits other categories entirely — so query one id at a time;
+  // a group only supplies the shared fallback bucket.
   for (const g of groups) {
-    const items = await fetchCategory(session, g.ids);
-    for (const it of items) add(it, classify(dehtml(it.name), g.fallback));
-    console.log(`  ANC ${g.ids.join(',')}: ${items.length}`);
+    for (const id of g.ids) {
+      const items = await fetchCategory(session, [id]);
+      for (const it of items) add(it, classify(dehtml(it.name), g.fallback));
+      console.log(`  ANC ${id}: ${items.length}`);
+    }
   }
 
-  return rows;
+  const collapsed = collapseSeries(rows);
+  await fillFeeDetails(session, collapsed);
+  return collapsed;
+}
+
+// Some classes' list fee is the literal "View Fee Details" placeholder (multi-tier
+// pricing, e.g. Randall Museum member/non-member rates). Pull the real numbers from
+// the detail page's price-estimate endpoint and show a price (or "$lo–$hi" range)
+// instead. Only rows whose cost has no digits need it; failures keep the label.
+async function fillFeeDetails(session, rows) {
+  const needs = rows.filter((r) => !/\d/.test(r.cost) && !/free/i.test(r.cost));
+  if (!needs.length) return;
+  const fmt = (n) => '$' + (Number.isInteger(n) ? String(n) : n.toFixed(2));
+  let filled = 0;
+  for (const r of needs) {
+    try {
+      const res = await fetch(
+        `${BASE}/rest/activity/detail/estimateprice/${r.id.replace(/^anc-/, '')}?locale=en-US`,
+        {
+          headers: {
+            'User-Agent': UA,
+            'X-CSRF-Token': session.csrf,
+            'X-Requested-With': 'XMLHttpRequest',
+            Cookie: session.cookies,
+            Referer: `${BASE}/activity/search?locale=en-US`,
+          },
+        }
+      );
+      if (!res.ok) continue;
+      const ep = (await res.json()).body?.estimateprice;
+      if (!ep) continue;
+      if (ep.free) {
+        r.cost = 'Free';
+        filled++;
+        continue;
+      }
+      const amounts = [];
+      for (const p of ep.prices || [])
+        for (const det of p.details || []) {
+          const m = String(det.price || '').match(/\$?([\d,]+(?:\.\d{2})?)/);
+          if (m) amounts.push(parseFloat(m[1].replace(/,/g, '')));
+        }
+      if (!amounts.length) continue;
+      const lo = Math.min(...amounts);
+      const hi = Math.max(...amounts);
+      r.cost = lo === hi ? fmt(lo) : `${fmt(lo)}–${fmt(hi)}`;
+      filled++;
+    } catch {
+      // keep the placeholder label; the register link still shows the fees
+    }
+    await sleep(150);
+  }
+  console.log(`  fee details filled for ${filled}/${needs.length} placeholder-fee classes`);
+}
+
+// Drop-in series are published as one activity per date — five "Drop-in:
+// Basketball" rows are five consecutive Tuesdays. Collapse rows identical in
+// everything but their date into one card spanning earliest→latest date, keyed
+// by the LATEST instance's id: the app hides ids missing from a healthy live
+// catalog (delisted = cancelled), and past instances delist while the series is
+// still running — the last instance outlives them all.
+function collapseSeries(rows) {
+  const by = new Map();
+  for (const r of rows) {
+    const k = [r.name, r.location, r.category, r.when, r.cost, r.ages].join('|');
+    const prev = by.get(k);
+    if (!prev) {
+      by.set(k, { ...r, _lastStart: r.start || '' });
+      continue;
+    }
+    if (r.start && (!prev.start || r.start < prev.start)) prev.start = r.start;
+    const rEnd = r.end || r.start;
+    const pEnd = prev.end || prev.start;
+    if (rEnd && (!pEnd || rEnd > pEnd)) prev.end = rEnd;
+    if ((r.start || '') >= prev._lastStart) {
+      prev.id = r.id;
+      prev._lastStart = r.start || '';
+    }
+    if (prev.oneDay && prev.start && prev.end && prev.start !== prev.end) delete prev.oneDay;
+    if (r.unlimited) {
+      prev.unlimited = true;
+      prev.spots = null;
+    } else if (!prev.unlimited && r.spots != null && (prev.spots == null || r.spots > prev.spots)) {
+      prev.spots = r.spots; // most open spots across upcoming instances
+    }
+  }
+  return [...by.values()].map(({ _lastStart, ...r }) => r);
 }
 
 function loadCache() {

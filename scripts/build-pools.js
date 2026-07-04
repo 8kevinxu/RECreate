@@ -111,7 +111,17 @@ function parseTime(s) {
   const m = s.match(TIME);
   if (!m) return null;
   const endAp = (m[7] || '').replace(/\./g, '').toLowerCase() || (/noon/i.test(m[4]) ? 'pm' : '');
-  return { start: toMin(m[1], m[2], m[3], endAp), end: toMin(m[5] || 12, m[6], m[7] || '', endAp) };
+  let start = toMin(m[1], m[2], m[3], endAp);
+  let end = toMin(m[5] || 12, m[6], m[7] || '', endAp);
+  // Borrowing the end's meridiem can invert a range that straddles noon
+  // ("11:30–12:30 PM" must not read as 11:30 PM), and a 12:xx end after an
+  // AM start is PM even when the PDF says otherwise. Prefer the reading that
+  // makes the session run forward.
+  if (end <= start) {
+    if (!m[3] && start >= 720 && start - 720 < end) start -= 720;
+    else if (end + 720 > start && end + 720 <= 1440) end += 720;
+  }
+  return end > start ? { start, end } : null;
 }
 
 // Merge per-glyph text fragments on the same line into row cells (dropping the
@@ -193,6 +203,12 @@ function parseGrid(items) {
     const seen = new Set();
     out[c.dow] = sess
       .filter((s) => {
+        // A session that runs backwards or longer than 10h is a misparse of the
+        // PDF grid — publish nothing rather than a wrong time.
+        if (s.end <= s.start || s.end - s.start > 600) {
+          console.warn(`    ⚠ dropping implausible session dow=${c.dow} ${s.kind} ${s.start}–${s.end}`);
+          return false;
+        }
         const k = s.kind + s.start + s.end;
         if (seen.has(k)) return false;
         seen.add(k);

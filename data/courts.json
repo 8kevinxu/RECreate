@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-01T08:29:03.445Z",
+  "generatedAt": "2026-07-04T09:15:19.178Z",
   "season": "Summer",
   "courts": [
     {
@@ -86,6 +86,15 @@
           []
         ],
         "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "badminton": [
           [],
           [],
           [],
@@ -242,6 +251,25 @@
             ]
           ]
         ],
+        "badminton": [
+          [],
+          [],
+          [
+            [
+              960,
+              1230
+            ]
+          ],
+          [],
+          [],
+          [
+            [
+              570,
+              960
+            ]
+          ],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -264,6 +292,105 @@
       "scheduleSource": "live",
       "source": "sfrecpark",
       "notes": "Gymnasium with basketball open gym."
+    },
+    {
+      "id": "crocker-amazon-clubhouse",
+      "name": "Crocker Amazon Clubhouse",
+      "address": "799 Moscow St",
+      "neighborhood": "Excelsior, McLaren Park",
+      "lat": 37.714905,
+      "lng": -122.431812,
+      "indoor": true,
+      "hoops": 2,
+      "lights": true,
+      "schedule": [
+        null,
+        [
+          510,
+          1200
+        ],
+        [
+          510,
+          1200
+        ],
+        [
+          510,
+          1200
+        ],
+        [
+          510,
+          1200
+        ],
+        [
+          510,
+          1200
+        ],
+        null
+      ],
+      "dropins": {
+        "basketball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [
+            [
+              1080,
+              1170
+            ]
+          ],
+          [],
+          [],
+          [],
+          []
+        ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "scheduleSource": "live",
+      "source": "sfrecpark",
+      "notes": "Clubhouse with drop-in ping pong Tuesday evenings; also hosts camps, Zumba and yoga."
     },
     {
       "id": "eureka-valley-recreation-center",
@@ -333,10 +460,6 @@
           [],
           [
             [
-              540,
-              780
-            ],
-            [
               1035,
               1200
             ]
@@ -350,6 +473,15 @@
           ]
         ],
         "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "badminton": [
           [],
           [],
           [],
@@ -457,6 +589,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -476,7 +617,7 @@
           []
         ]
       },
-      "scheduleSource": "curated",
+      "scheduleSource": "live",
       "source": "sfrecpark",
       "notes": "Gymnasium with basketball. Facility page is offline (renovation) — verify hours and open gym at sfrecpark.org."
     },
@@ -618,6 +759,15 @@
               1020
             ]
           ]
+        ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ],
         "pickleball": [
           [],
@@ -784,6 +934,15 @@
             ]
           ]
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -889,6 +1048,15 @@
           []
         ],
         "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "badminton": [
           [],
           [],
           [],
@@ -1004,6 +1172,15 @@
           []
         ],
         "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "badminton": [
           [],
           [],
           [],
@@ -1146,6 +1323,15 @@
               990
             ]
           ]
+        ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ],
         "pickleball": [
           [],
@@ -1307,6 +1493,15 @@
             ]
           ]
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -1444,6 +1639,15 @@
           []
         ],
         "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "badminton": [
           [],
           [],
           [],
@@ -1612,6 +1816,15 @@
             ]
           ]
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -1753,6 +1966,15 @@
             ]
           ]
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -1893,6 +2115,15 @@
             ]
           ]
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -2012,6 +2243,15 @@
               1260
             ]
           ]
+        ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ],
         "pickleball": [
           [],
@@ -2133,6 +2373,15 @@
             ]
           ]
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -2241,6 +2490,15 @@
               1260
             ]
           ],
+          []
+        ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
           []
         ],
         "pickleball": [

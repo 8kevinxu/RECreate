@@ -1172,6 +1172,11 @@
             "end": 705
           },
           {
+            "kind": "lap",
+            "start": 615,
+            "end": 780
+          },
+          {
             "kind": "senior",
             "start": 720,
             "end": 780
@@ -1200,11 +1205,6 @@
             "kind": "senior",
             "start": 1050,
             "end": 1110
-          },
-          {
-            "kind": "lap",
-            "start": 1335,
-            "end": 780
           }
         ],
         [
@@ -1219,9 +1219,14 @@
             "end": 750
           },
           {
+            "kind": "exercise",
+            "start": 690,
+            "end": 750
+          },
+          {
             "kind": "senior",
-            "start": 615,
-            "end": 1395
+            "start": 690,
+            "end": 750
           },
           {
             "kind": "family",
@@ -1242,16 +1247,6 @@
             "kind": "lap",
             "start": 1050,
             "end": 1140
-          },
-          {
-            "kind": "exercise",
-            "start": 1410,
-            "end": 750
-          },
-          {
-            "kind": "senior",
-            "start": 1410,
-            "end": 750
           }
         ],
         [
@@ -1328,9 +1323,14 @@
             "end": 750
           },
           {
+            "kind": "exercise",
+            "start": 690,
+            "end": 750
+          },
+          {
             "kind": "senior",
-            "start": 615,
-            "end": 1395
+            "start": 690,
+            "end": 750
           },
           {
             "kind": "family",
@@ -1356,16 +1356,6 @@
             "kind": "lap",
             "start": 1050,
             "end": 1170
-          },
-          {
-            "kind": "exercise",
-            "start": 1410,
-            "end": 750
-          },
-          {
-            "kind": "senior",
-            "start": 1410,
-            "end": 750
           }
         ],
         [
@@ -1617,6 +1607,11 @@
             "end": 750
           },
           {
+            "kind": "exercise",
+            "start": 765,
+            "end": 825
+          },
+          {
             "kind": "lap",
             "start": 765,
             "end": 825
@@ -1640,11 +1635,6 @@
             "kind": "lap",
             "start": 1095,
             "end": 1170
-          },
-          {
-            "kind": "exercise",
-            "start": 1410,
-            "end": 750
           }
         ],
         [],
@@ -1696,12 +1686,12 @@
           {
             "kind": "other",
             "start": 660,
-            "end": 30
+            "end": 750
           },
           {
             "kind": "senior",
             "start": 660,
-            "end": 30
+            "end": 750
           },
           {
             "kind": "family",
@@ -1952,5 +1942,5 @@
       "label": "Independence Day"
     }
   ],
-  "fetchedAt": "2026-07-04T05:07:46.477Z"
+  "fetchedAt": "2026-07-04T09:08:27.530Z"
 }

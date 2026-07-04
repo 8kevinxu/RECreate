@@ -227,6 +227,18 @@ const CENTERS = [
     notes: 'Gymnasium with basketball open gym.',
   },
   {
+    prop: 'Crocker Amazon Playground',
+    name: 'Crocker Amazon Clubhouse',
+    // Clubhouse programming runs weekdays only (day camp 8:30–5:30 + evening drop-ins).
+    sched: schedule({ mon: [8.5, 20], tue: [8.5, 20], wed: [8.5, 20], thu: [8.5, 20], fri: [8.5, 20] }),
+    bball: bball({}), // no gym — clubhouse only
+    // The facility page's weekly schedule lists only camps/classes, but ActiveNet
+    // publishes the drop-in (Drop-in: Ping Pong, Tue 6:00–7:30 PM, Jun 9–Aug 11 2026)
+    // — curate it, and re-verify against ActiveNet each season.
+    curatedDropins: { pingpong: bball({ tue: [[t(18), t(19, 30)]] }) },
+    notes: 'Clubhouse with drop-in ping pong Tuesday evenings; also hosts camps, Zumba and yoga.',
+  },
+  {
     prop: 'Glen Canyon Park',
     name: 'Glen Park Recreation Center',
     sched: tueFriSat(10, 21),
@@ -288,6 +300,7 @@ const FID = {
   'Minnie & Lovie Ward Recreation Center': 'Minnie-Love-Ward-Rec-Center-97',
   'Bernal Heights Recreation Center': 'Bernal-Heights-Rec-Center-83',
   'Betty Ann Ong Recreation Center': 'Betty-Ann-Ong-Recreation-Center-84',
+  'Crocker Amazon Clubhouse': 'Crocker-Amazon-Playground-236',
   'Glen Park Recreation Center': 'Glen-Canyon-Park-Recreation-Center-89',
   'Herz Recreation Center': 'Herz-Recreation-Center-471',
   'Potrero Hill Recreation Center': 'Potrero-Hill-Rec-Center-275',
@@ -328,6 +341,7 @@ const SPORTS = [
   { id: 'basketball', match: /basketball/i },
   { id: 'volleyball', match: /volleyball/i },
   { id: 'pingpong', match: /table tennis|ping[\s-]?pong/i },
+  { id: 'badminton', match: /badminton/i },
   { id: 'pickleball', match: /pickleball/i },
   // Not a sport — the rec-center weight/fitness room drop-in hours, surfaced on the
   // map as its own option (see lib/sports.js WEIGHT_ROOM). Lives in its own room row.
@@ -413,13 +427,14 @@ function parseGymDropins(html) {
   return { season, dropins, bballCount };
 }
 
-async function scrapeSchedule(fid) {
+async function scrapeSchedule(fid, requireBball = true) {
   const url = `https://sfrecpark.org/Facilities/Facility/Details/${fid}`;
   const res = await fetch(url, { headers: { 'User-Agent': BROWSER_UA } });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const parsed = parseGymDropins(await res.text());
   // Gate on basketball (broad coverage); volleyball/etc. are legitimately sparse.
-  if (parsed.bballCount === 0) throw new Error('no gym basketball blocks found');
+  // Skipped for centers without a basketball gym (e.g. a ping-pong-only clubhouse).
+  if (requireBball && parsed.bballCount === 0) throw new Error('no gym basketball blocks found');
   return parsed;
 }
 
@@ -460,7 +475,7 @@ async function main() {
     let chosen = { dropins: { ...emptyDropins(), basketball: c.bball }, source: 'curated' };
     if (fid) {
       try {
-        const live = await scrapeSchedule(fid);
+        const live = await scrapeSchedule(fid, c.bball.some((d) => d.length));
         cache[fid] = { dropins: live.dropins, season: live.season, scrapedAt: new Date().toISOString() };
         chosen = { dropins: live.dropins, source: 'live' };
         const s = (live.season.match(/spring|summer|fall|autumn|winter/i) || [])[0];
@@ -484,6 +499,12 @@ async function main() {
     if (c.pingpongAllHours) {
       chosen.dropins = { ...chosen.dropins, pingpong: allOpenHoursWeek(c.sched) };
       console.log(`    + ${c.name} — curated ping pong across all open hours`);
+    }
+    // Timed curated weeks for drop-ins the facility page omits but ActiveNet
+    // confirms (e.g. Crocker Amazon's ping pong) — they win over the scraped week.
+    if (c.curatedDropins) {
+      chosen.dropins = { ...chosen.dropins, ...c.curatedDropins };
+      console.log(`    + ${c.name} — curated ${Object.keys(c.curatedDropins).join(', ')} week`);
     }
     c._dropins = chosen.dropins;
     c._scheduleSource = chosen.source;
@@ -573,8 +594,8 @@ function render(courts, season, generatedAt) {
 // schedule[]   = FACILITY hours, indexed 0=Sun..6=Sat; [openMin,closeMin] or null.
 // dropins      = { sportId: week } drop-in OPEN-GYM blocks per sport; each week is
 //   indexed 0=Sun..6=Sat and each day is an array of [startMin,closeMin] blocks
-//   (empty when none that day). Sports: basketball, volleyball, pingpong, pickleball;
-//   plus weightroom (rec-center weight/fitness room drop-in hours, not a sport).
+//   (empty when none that day). Sports: basketball, volleyball, pingpong, badminton,
+//   pickleball; plus weightroom (weight/fitness room drop-in hours, not a sport).
 // scheduleSource = "live" (scraped this run) | "cache" (last good) | "curated".
 
 export const GENERATED_AT = ${JSON.stringify(generatedAt)};

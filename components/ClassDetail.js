@@ -4,7 +4,16 @@
 // catalog blurb) and links out to ActiveNet to register. Free walk-in drop-ins that
 // can't be registered online get a notice explaining to just show up at the start time.
 import React from 'react';
-import { Linking, Modal, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import {
+  Linking,
+  Modal,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  useWindowDimensions,
+  View,
+} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { CLASS_CATEGORIES } from '../data/classes';
@@ -50,6 +59,7 @@ function Row({ icon, label, value }) {
 
 export default function ClassDetail({ item, onClose }) {
   const insets = useSafeAreaInsets();
+  const { height: winH } = useWindowDimensions();
   const { t, lang } = useI18n();
   if (!item) return null;
   const c = item;
@@ -64,7 +74,16 @@ export default function ClassDetail({ item, onClose }) {
       <Pressable style={styles.backdrop} onPress={onClose}>
         <Pressable style={[styles.sheet, { paddingBottom: insets.bottom + 16 }]} onPress={() => {}}>
           <View style={styles.handle} />
-          <ScrollView showsVerticalScrollIndicator={false}>
+          {/* The ScrollView must carry its own numeric maxHeight: native Yoga does
+              NOT shrink flex children to a parent's percent maxHeight (web does),
+              so without this its frame equals the content height and long content
+              overflows unscrollably. The cap leaves room for the sheet chrome plus
+              the pinned Directions/Register buttons below, which live OUTSIDE the
+              scroll area so they're always tappable no matter the content length. */}
+          <ScrollView
+            style={[styles.scroll, { maxHeight: winH * 0.85 - 200 - insets.bottom }]}
+            showsVerticalScrollIndicator={false}
+          >
             <View style={styles.header}>
               <Text style={styles.emoji}>{meta.emoji || '✨'}</Text>
               <View style={{ flex: 1 }}>
@@ -104,22 +123,22 @@ export default function ClassDetail({ item, onClose }) {
                 <Text style={styles.noticeText}>{t('cls.noOnlineReg')}</Text>
               </View>
             )}
-
-            {c.lat != null && (
-              <Pressable style={styles.dirBtn} onPress={() => openDirections(c.lat, c.lng, c.location)}>
-                <Ionicons name="navigate" size={15} color="#2f74d6" />
-                <Text style={styles.dirBtnText}>{t('directions')}</Text>
-              </Pressable>
-            )}
-
-            {!!c.url && (
-              <Pressable style={styles.cta} onPress={() => Linking.openURL(c.url).catch(() => {})}>
-                <Text style={styles.ctaText}>{c.noOnlineReg ? t('cls.viewOnSite') : t('cls.register')}</Text>
-                <Ionicons name="open-outline" size={16} color="#fff" />
-              </Pressable>
-            )}
-            <Text style={styles.note}>{t('cls.activeNetNote')}</Text>
           </ScrollView>
+
+          {c.lat != null && (
+            <Pressable style={styles.dirBtn} onPress={() => openDirections(c.lat, c.lng, c.location)}>
+              <Ionicons name="navigate" size={15} color="#2f74d6" />
+              <Text style={styles.dirBtnText}>{t('directions')}</Text>
+            </Pressable>
+          )}
+
+          {!!c.url && (
+            <Pressable style={styles.cta} onPress={() => Linking.openURL(c.url).catch(() => {})}>
+              <Text style={styles.ctaText}>{c.noOnlineReg ? t('cls.viewOnSite') : t('cls.register')}</Text>
+              <Ionicons name="open-outline" size={16} color="#fff" />
+            </Pressable>
+          )}
+          <Text style={styles.note}>{t('cls.activeNetNote')}</Text>
         </Pressable>
       </Pressable>
     </Modal>
@@ -144,6 +163,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginBottom: 14,
   },
+  scroll: { flexGrow: 0, flexShrink: 1, marginBottom: 12 },
   header: { flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 18 },
   emoji: { fontSize: 34 },
   name: { fontSize: 20, fontWeight: '800', color: '#0d1b2a' },
