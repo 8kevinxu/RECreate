@@ -40,6 +40,7 @@ const CATEGORIES = [
   { id: 'arts', label: 'Arts & Crafts', emoji: '🎨' },
   { id: 'photo', label: 'Photography', emoji: '📷' },
   { id: 'social', label: 'Social & Games', emoji: '🎲' },
+  { id: 'aquatics', label: 'Aquatics', emoji: '🏊' },
 ];
 
 // Keyword classifiers, checked photo -> arts -> music; the caller supplies the
@@ -85,6 +86,17 @@ function buildCoords() {
     'golden gate park senior center': { lat: 37.77154, lng: -122.49702 },
     'civic center plaza': { lat: 37.77952, lng: -122.41758 },
     'harvey milk photo center': { lat: 37.76958, lng: -122.43456 },
+    // Pools (Aquatics / Learn to Swim). ActiveNet labels them "<NAME> SWIMMING
+    // POOL"; coords mirror data/pools.js so swim classes get distance + Directions.
+    'balboa swimming pool': { lat: 37.726134, lng: -122.443381 },
+    'coffman swimming pool': { lat: 37.713221, lng: -122.4158 },
+    'garfield swimming pool': { lat: 37.750098, lng: -122.412027 },
+    'hamilton swimming pool': { lat: 37.784566, lng: -122.435086 },
+    'martin luther king jr swimming pool': { lat: 37.725545, lng: -122.393722 },
+    'mission community pool': { lat: 37.759653, lng: -122.422606 },
+    'north beach swimming pool': { lat: 37.802705, lng: -122.412437 },
+    'rossi swimming pool': { lat: 37.779065, lng: -122.45828 },
+    'sava swimming pool': { lat: 37.737803, lng: -122.475897 },
   };
   const map = {};
   const sources = [];
@@ -229,6 +241,16 @@ function toClass(item, category, coords) {
   // detail page's description). Collapse the runs of whitespace it embeds; absent for
   // some classes, in which case the app shows a "No description available" fallback.
   const desc = stripHtml(item.desc);
+  // Course term: ActiveNet gives ISO start/end + a one-day flag. A registered
+  // (non-drop-in) course enrolls you for the ENTIRE range — every weekly meeting
+  // from start to end — not a single session; oneDay marks a single-date activity.
+  // Store ISO so the app can localize the display; drop when the source omits it.
+  const start = /^\d{4}-\d{2}-\d{2}$/.test(item.date_range_start || '') ? item.date_range_start : null;
+  const end = /^\d{4}-\d{2}-\d{2}$/.test(item.date_range_end || '') ? item.date_range_end : null;
+  const oneDay = !!item.only_one_day || (start && end && start === end);
+  // Instructor name when the catalog names one ("Unspecified" is ActiveNet's blank).
+  const instrRaw = typeof item.instructor === 'string' ? dehtml(item.instructor) : '';
+  const instructor = /^(unspecified|n\/?a|tbd)$/i.test(instrRaw) ? '' : instrRaw;
   return {
     id: `anc-${item.id}`,
     name,
@@ -242,6 +264,10 @@ function toClass(item, category, coords) {
     spots, // open spots remaining (null when unlimited/unknown)
     unlimited, // true = no registration cap
     ...(noOnlineReg ? { noOnlineReg: true } : {}), // free walk-in, no online sign-up
+    ...(start ? { start } : {}), // course term start (ISO YYYY-MM-DD)
+    ...(end ? { end } : {}), // course term end (ISO)
+    ...(oneDay ? { oneDay: true } : {}), // single-date activity (not a multi-week course)
+    ...(instructor ? { instructor } : {}), // named instructor, when the catalog lists one
     ...(desc ? { desc } : {}),
     ...(c ? { lat: c.lat, lng: c.lng } : {}),
     url: item.detail_url || `${BASE}/activity/search?locale=en-US`,
@@ -268,6 +294,7 @@ async function scrape() {
     { ids: ['50', '25', '24'], fallback: 'arts' }, // Music & Arts
     { ids: ['26'], fallback: 'dance' }, // Dance / Music / Performing Arts
     { ids: ['33'], fallback: 'social' }, // Social Activities
+    { ids: ['51'], fallback: 'aquatics' }, // Aquatics — Learn to Swim (one program per pool)
   ];
   for (const g of groups) {
     const items = await fetchCategory(session, g.ids);
@@ -379,7 +406,10 @@ function render(classes, generatedAt) {
 //
 // SF Rec & Park drop-in classes & programs (non-court), from their ActiveNet catalog.
 // Each class: { id, name, category, location, when, dropIn, cost, ages, minAge, spots,
-// unlimited, noOnlineReg?, desc?, lat?, lng?, url, name_zh?, name_es? }. lat/lng are
+// unlimited, noOnlineReg?, start?, end?, oneDay?, instructor?, desc?, lat?, lng?,
+// url, name_zh?, name_es? }. start/end are the course term (ISO YYYY-MM-DD) — a registered course
+// enrolls for the whole range, not one session; oneDay marks a single-date activity.
+// lat/lng are
 // present when the rec center matched our court data (for distance filtering);
 // name_zh/name_es are bundled translations of the title (absent if untranslated);
 // spots is the open-spot count from ActiveNet openings (0 = full, null = unknown),

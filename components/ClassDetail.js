@@ -9,10 +9,20 @@ import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { CLASS_CATEGORIES } from '../data/classes';
 import { openDirections } from '../lib/maps';
-import { localizeWhen } from '../lib/datetime';
+import { localizeWhen, formatDateRange } from '../lib/datetime';
 import { useI18n } from '../lib/i18n';
 
 const catMeta = (id) => CLASS_CATEGORIES.find((c) => c.id === id) || {};
+
+// How registration works for this activity — the answer to "one session or the
+// whole run?". Drop-ins have no series sign-up; a one-day activity is that single
+// date; everything else is a course you enroll in for the entire term.
+function regModelText(t, c) {
+  if (c.dropIn) return t('cls.regDropIn');
+  if (c.oneDay) return t('cls.regOneDay');
+  if (c.start) return t('cls.regFullSession');
+  return null;
+}
 
 // Availability line, mirroring the Classes-tab logic (qualitative when uncapped).
 function spaceText(t, c) {
@@ -46,6 +56,8 @@ export default function ClassDetail({ item, onClose }) {
   const meta = catMeta(c.category);
   const name = c['name_' + lang] || c.name;
   const spots = spaceText(t, c);
+  const dates = formatDateRange(c.start, c.end);
+  const regModel = regModelText(t, c);
 
   return (
     <Modal visible transparent animationType="slide" onRequestClose={onClose}>
@@ -70,12 +82,21 @@ export default function ClassDetail({ item, onClose }) {
 
             <View style={styles.rows}>
               <Row icon="🕒" label={t('cls.schedule')} value={localizeWhen(c.when)} />
+              <Row icon="🗓️" label={t(c.oneDay ? 'cls.date' : 'cls.dates')} value={dates} />
               <Row icon="📍" label={t('cls.location')} value={c.location} />
               <Row icon="💵" label={t('cls.cost')} value={c.cost} />
               <Row icon="🎂" label={t('cls.ages')} value={c.ages} />
+              <Row icon="🧑‍🏫" label={t('cls.instructor')} value={c.instructor} />
               <Row icon="🎟️" label={t('cls.availability')} value={spots} />
               <Row icon="📝" label={t('cls.about')} value={c.desc || t('cls.noDesc')} />
             </View>
+
+            {regModel && (
+              <View style={styles.regInfo}>
+                <Text style={styles.regInfoIcon}>🎟️</Text>
+                <Text style={styles.regInfoText}>{regModel}</Text>
+              </View>
+            )}
 
             {c.noOnlineReg && (
               <View style={styles.notice}>
@@ -145,6 +166,18 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
   rowValue: { fontSize: 15, color: '#1d2b3a', fontWeight: '600', marginTop: 2 },
+  regInfo: {
+    flexDirection: 'row',
+    gap: 8,
+    backgroundColor: '#eaf2fb',
+    borderWidth: 1,
+    borderColor: '#cfe0f5',
+    borderRadius: 12,
+    padding: 12,
+    marginBottom: 14,
+  },
+  regInfoIcon: { fontSize: 15, marginTop: 1 },
+  regInfoText: { flex: 1, fontSize: 13, color: '#2b5178', fontWeight: '600', lineHeight: 18 },
   notice: {
     flexDirection: 'row',
     gap: 8,

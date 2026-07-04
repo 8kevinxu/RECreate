@@ -38,6 +38,34 @@ function agoLabel(t, ts) {
 const catMeta = (id) => CLASS_CATEGORIES.find((c) => c.id === id) || {};
 const ageBand = (m) => (m >= 55 ? '55' : m >= 18 ? '18' : m >= 11 ? 'teen' : 'all');
 
+// Start time (minutes from midnight) parsed from a `when` string like
+// "Tue & Wed · 8:30 AM - 10:30 AM" — the time part after the day separator.
+function startMin(when) {
+  if (!when) return null;
+  const timePart = String(when).split('·').pop();
+  const m = timePart.match(/(\d{1,2})(?::(\d{2}))?\s*(AM|PM)/i);
+  if (m) {
+    const h = (Number(m[1]) % 12) + (/PM/i.test(m[3]) ? 12 : 0);
+    return h * 60 + (m[2] ? Number(m[2]) : 0);
+  }
+  return /noon/i.test(timePart) ? 720 : null;
+}
+// Time-of-day bucket: morning < 12 PM, afternoon 12–5 PM, evening ≥ 5 PM.
+const timeBand = (min) => (min == null ? null : min < 720 ? 'morning' : min < 1020 ? 'afternoon' : 'evening');
+
+// Weekdays a class meets (Set of 0=Sun..6=Sat), parsed from the day part of `when`
+// ("Tue & Wed & Thu & Fri · …"). Null when none are recognized.
+const DOW_IDX = { sun: 0, mon: 1, tue: 2, wed: 3, thu: 4, fri: 5, sat: 6 };
+function daysOf(when) {
+  if (!when) return null;
+  const dayPart = String(when).split('·')[0];
+  const set = new Set();
+  const re = /\b(sun|mon|tue|wed|thu|fri|sat)\b/gi;
+  let m;
+  while ((m = re.exec(dayPart))) set.add(DOW_IDX[m[1].toLowerCase()]);
+  return set.size ? set : null;
+}
+
 // Price tier for the color-coded badge: free = green, cheap = yellow, pricier = red.
 const PRICE_YELLOW_MAX = 10; // dollars; at or below is yellow, above is red
 function priceTone(cost) {
@@ -81,6 +109,8 @@ export default function ClassesScreen({ userLocation = null }) {
   const [cat, setCat] = useState('all');
   const [query, setQuery] = useState('');
   const [age, setAge] = useState(null); // 'teen' | '18' | '55' | null
+  const [time, setTime] = useState(null); // 'morning' | 'afternoon' | 'evening' | null
+  const [day, setDay] = useState(null); // 0=Sun..6=Sat, or null (any day)
   const [radius, setRadius] = useState(null); // 1 | 3 | 5 | null (miles)
   const [freeOnly, setFreeOnly] = useState(false);
   const [hasSpots, setHasSpots] = useState(false); // hide classes that are full
@@ -164,7 +194,13 @@ export default function ClassesScreen({ userLocation = null }) {
   // Overlay live openings onto a class when we have them.
   const withLive = (c) => (live && live[c.id] ? { ...c, ...live[c.id] } : c);
 
-  const activeCount = (age ? 1 : 0) + (freeOnly ? 1 : 0) + (radius ? 1 : 0) + (hasSpots ? 1 : 0);
+  const activeCount =
+    (age ? 1 : 0) +
+    (time ? 1 : 0) +
+    (day !== null ? 1 : 0) +
+    (freeOnly ? 1 : 0) +
+    (radius ? 1 : 0) +
+    (hasSpots ? 1 : 0);
 
   const distOf = (c) =>
     userLocation && c.lat != null
@@ -178,7 +214,7 @@ export default function ClassesScreen({ userLocation = null }) {
     // falls back to the baseline). The size guard avoids mass-hiding on a thin fetch.
     const liveComplete =
       liveStatus === 'ok' && live && Object.keys(live).length >= CLASSES.length * 0.8;
-    return CLASSES.filter((c) => {
+    const filtered = CLASSES.filter((c) => {
       if (liveComplete && !live[c.id]) return false;
       if (cat !== 'all' && c.category !== cat) return false;
       if (
@@ -192,6 +228,8 @@ export default function ClassesScreen({ userLocation = null }) {
         const b = ageBand(c.minAge || 0);
         if (b !== age && b !== 'all') return false;
       }
+      if (time && timeBand(startMin(c.when)) !== time) return false;
+      if (day !== null && !daysOf(c.when)?.has(day)) return false;
       if (freeOnly && c.cost !== 'Free') return false;
       if (hasSpots) {
         // Drop only classes we *know* are full (uses the live overlay when present).
@@ -204,11 +242,20 @@ export default function ClassesScreen({ userLocation = null }) {
       }
       return true;
     });
+    // Sink full classes to the bottom, otherwise keep the source (alphabetic) order.
+    // Stable partition (not sort) so ordering within each group is untouched.
+    const isFull = (c) => {
+      const sp = spaceInfo(withLive(c));
+      return !!sp && sp.tone === 'bad';
+    };
+    return [...filtered.filter((c) => !isFull(c)), ...filtered.filter(isFull)];
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cat, query, age, radius, freeOnly, hasSpots, live, liveStatus, userLocation, lang]);
+  }, [cat, query, age, time, day, radius, freeOnly, hasSpots, live, liveStatus, userLocation, lang]);
 
   const clearAll = () => {
     setAge(null);
+    setTime(null);
+    setDay(null);
     setFreeOnly(false);
     setRadius(null);
     setHasSpots(false);
@@ -392,6 +439,30 @@ export default function ClassesScreen({ userLocation = null }) {
               <FilterChip label={t('filter.teen')} on={age === 'teen'} onPress={() => setAge(age === 'teen' ? null : 'teen')} />
               <FilterChip label="18+" on={age === '18'} onPress={() => setAge(age === '18' ? null : '18')} />
               <FilterChip label="55+" on={age === '55'} onPress={() => setAge(age === '55' ? null : '55')} />
+            </View>
+
+            <Text style={styles.groupLabel}>{t('filter.time')}</Text>
+            <View style={styles.groupChips}>
+              {['morning', 'afternoon', 'evening'].map((tb) => (
+                <FilterChip
+                  key={tb}
+                  label={t('filter.' + tb)}
+                  on={time === tb}
+                  onPress={() => setTime(time === tb ? null : tb)}
+                />
+              ))}
+            </View>
+
+            <Text style={styles.groupLabel}>{t('filter.days')}</Text>
+            <View style={styles.groupChips}>
+              {[0, 1, 2, 3, 4, 5, 6].map((d) => (
+                <FilterChip
+                  key={d}
+                  label={t('day.' + d)}
+                  on={day === d}
+                  onPress={() => setDay(day === d ? null : d)}
+                />
+              ))}
             </View>
 
             <Text style={styles.groupLabel}>{t('filter.availability')}</Text>

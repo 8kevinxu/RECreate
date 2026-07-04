@@ -569,8 +569,8 @@
       ],
       "scheduleUrls": [
         {
-          "label": "Hamilton Pool _ Summer 2026 _ June 9 to Aug 15",
-          "url": "https://sfrecpark.org/DocumentCenter/View/29565"
+          "label": "Hamilton Pool _ Summer 2026 _ June 9 to Aug 15 New (1)",
+          "url": "https://sfrecpark.org/DocumentCenter/View/29599"
         }
       ],
       "sessions": [
@@ -767,8 +767,8 @@
           },
           {
             "kind": "parent_child",
-            "start": 1110,
-            "end": 1200
+            "start": 960,
+            "end": 1020
           }
         ]
       ]
@@ -1952,5 +1952,5 @@
       "label": "Independence Day"
     }
   ],
-  "fetchedAt": "2026-06-30T08:41:20.950Z"
+  "fetchedAt": "2026-07-04T05:07:46.477Z"
 }

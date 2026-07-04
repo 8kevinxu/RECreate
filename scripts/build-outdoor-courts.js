@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /*
  * Build data/outdoor-courts.js — SF Recreation & Parks OUTDOOR courts & fields
- * (basketball + tennis + pickleball + soccer). Run with:  npm run build:outdoor
+ * (basketball + tennis + pickleball + soccer + baseball). Run: npm run build:outdoor
  *
  * Source: the DataSF "Recreation and Parks Facilities" dataset (ib5c-xgwu) — the
  * same one build-indoor-courts.js uses for coordinates. We pull the court/field
@@ -11,7 +11,8 @@
  *   Pickleball Courts       -> pickleball
  *   Tennis/Pickleball Court -> tennis + pickleball (one surface lined for both)
  *   Soccer Field            -> soccer
- *   Multi-Use Turf          -> soccer (synthetic turf, commonly used for soccer)
+ *   Multi-Use Turf          -> soccer (synthetic turf; also football/lacrosse)
+ *   Ball Field              -> baseball (baseball/softball diamonds)
  *
  * Outdoor courts have no posted drop-in schedule — they're first-come during park
  * hours — so each is modeled as open a fixed daily window (PARK_HOURS) with its
@@ -48,14 +49,15 @@ const allOpenHoursWeek = (sched) => sched.map((h) => (h ? [[h[0], h[1]]] : []));
 
 // All tracked sports (keep in sync with lib/sports.js); every court carries a week
 // for each so the dropins shape is uniform (outdoor courts only fill racquet ones).
-const ALL_SPORTS = ['basketball', 'volleyball', 'pingpong', 'pickleball', 'tennis', 'soccer'];
+const ALL_SPORTS = ['basketball', 'volleyball', 'pingpong', 'pickleball', 'tennis', 'soccer', 'baseball'];
 const emptyWeek = () => [[], [], [], [], [], [], []];
 
-// Which sport(s) each outdoor court/field facility type offers. Soccer comes from
-// dedicated "Soccer Field" records, "Multi-Use Turf" (SF's synthetic turf fields),
-// and "Ball Field" — baseball/softball diamonds whose open grass outfields are
-// widely used for informal pickup soccer (e.g. Palega). Ball-field soccer gets a
-// clarifying note (see buildCourts) so it isn't mistaken for a dedicated pitch.
+// Which sport(s) each outdoor court/field facility type offers. SF's fields are
+// strictly designated by type (verified against DataSF): soccer = dedicated
+// "Soccer Field" + "Multi-Use Turf" (synthetic turf, also football/lacrosse);
+// baseball = "Ball Field" (baseball/softball diamonds). A single field is never
+// both — parks that offer both simply contain a separate pitch and diamond, which
+// this build unions onto one pin (like a park with both a basketball & tennis court).
 const TYPE_SPORTS = {
   'Basketball Court': ['basketball'],
   'Tennis Court': ['tennis'],
@@ -63,7 +65,7 @@ const TYPE_SPORTS = {
   'Tennis/Pickleball Court': ['tennis', 'pickleball'],
   'Soccer Field': ['soccer'],
   'Multi-Use Turf': ['soccer'],
-  'Ball Field': ['soccer'],
+  'Ball Field': ['baseball'],
 };
 
 // DataSF (by property_name) that are INDOOR-only rec centers whose gym court it
@@ -78,7 +80,7 @@ const EXCLUDE_PROPERTIES = new Set(['Eugene Friend Rec Center']);
 const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 
 // Order a park's sports for readable notes/labels.
-const ORDER = ['basketball', 'tennis', 'pickleball', 'soccer'];
+const ORDER = ['basketball', 'tennis', 'pickleball', 'soccer', 'baseball'];
 const ordered = (sports) => ORDER.filter((s) => sports.includes(s));
 
 // SF Rec's designated open-play soccer fields (sfrecpark.org/508/Open-Play). The
@@ -121,13 +123,11 @@ function buildCourts(rows) {
         lng: Number(Number(r.longitude).toFixed(6)),
         sports: new Set(),
         sharedTennis: false,
-        hasBallField: false,
       };
       byPark.set(r.property_name, p);
     }
     sports.forEach((s) => p.sports.add(s));
     if (r.facility_type === 'Tennis/Pickleball Court') p.sharedTennis = true;
-    if (r.facility_type === 'Ball Field') p.hasBallField = true;
   }
 
   const sched = parkSchedule();
@@ -151,9 +151,6 @@ function buildCourts(rows) {
           noteFor(offered, p.sharedTennis) +
           (offered.includes('soccer') && isOpenPlaySoccer(p.name)
             ? ' Designated SF Rec open-play soccer field.'
-            : '') +
-          (offered.includes('soccer') && p.hasBallField
-            ? ' Soccer is on an open grass ball field (baseball diamond) — informal, first-come.'
             : ''),
       };
     })
@@ -233,7 +230,7 @@ async function main() {
     console.log(
       `  ✓ ${courts.length} parks — ${count('basketball')} basketball, ` +
         `${count('tennis')} tennis, ${count('pickleball')} pickleball, ` +
-        `${count('soccer')} soccer (live)`
+        `${count('soccer')} soccer, ${count('baseball')} baseball (live)`
     );
   } catch (e) {
     const cache = loadCache();

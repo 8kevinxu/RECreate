@@ -80,7 +80,7 @@ const TIME = /(\d{1,2})(?::(\d{2}))?\s*(a\.?m\.?|p\.?m\.?)?\s*[-–]\s*((\d{1,2}
 const KINDS = [
   [/parent\s*(&|and)?\s*tot|piranha|parent.?child/i, 'parent_child'],
   [/adult\s*(swim\s*)?lesson/i, 'adult_lessons'],
-  [/learn\s*to\s*swim|summer\s*lts|swim\s*lesson|youth\s*lesson|pre-?school|swim\s*team|youth\s*team|special\s*olympic/i, 'lessons'],
+  [/learn\s*to\s*swim|\blts\b|swim\s*lesson|youth\s*lesson|pre-?school|swim\s*team|youth\s*team|special\s*olympic/i, 'lessons'],
   [/water\s*exercise|self.?guided|deep\s*water/i, 'exercise'],
   [/senior|therapy/i, 'senior'],
   [/rec\/?family|family|recreation|rec\s*swim/i, 'family'],

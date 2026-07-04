@@ -18,9 +18,10 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { POOLS, POOL_FEES, POOL_CLOSURES, POOL_SESSION_KINDS } from '../data/pools';
 import { haversineMiles, formatDistance } from '../lib/distance';
 import { openDirections } from '../lib/maps';
-import { fmtClock } from '../lib/datetime';
+import { fmtClock, startOfDay, dayChipLabel, viewLabel } from '../lib/datetime';
 import { useI18n } from '../lib/i18n';
 import ScrollTopFab, { useScrollTop } from './ScrollTopFab';
+import TimeSlider from './TimeSlider';
 
 const DOW_KEYS = ['day.0', 'day.1', 'day.2', 'day.3', 'day.4', 'day.5', 'day.6'];
 // Color palette per session kind (pill background / text).
@@ -57,6 +58,63 @@ export default function PoolsScreen({ userLocation }) {
   const nowMin = now.getHours() * 60 + now.getMinutes();
   const closure = POOL_CLOSURES.find((c) => c.date === todayStr());
 
+  // Day + time selector (mirrors the map's): scrub to a day/time to see what's open
+  // then. pick = null → live "now".
+  const [pickerOpen, setPickerOpen] = useState(false);
+  const [pick, setPick] = useState(null); // { ts, min } | null
+
+  const todayTs = startOfDay(now).getTime();
+  const days = Array.from({ length: 7 }, (_, i) => new Date(todayTs + i * 86400000));
+  const effTs = pick ? pick.ts : todayTs;
+  const effDow = new Date(effTs).getDay();
+  const effMin = pick ? pick.min : nowMin;
+  const isLive = !pick;
+  const effClosure = isLive ? closure : null; // date-based closures only apply to live "today"
+
+  // 30-min slots spanning the day's pool hours (min start → max end across pools)
+  // for the TimeSlider; falls back to 6 AM–9:30 PM when the day has no sessions.
+  const dayTimes = useMemo(() => {
+    let lo = Infinity;
+    let hi = -Infinity;
+    for (const p of POOLS)
+      for (const s of p.sessions[effDow] || []) {
+        lo = Math.min(lo, s.start);
+        hi = Math.max(hi, s.end);
+      }
+    if (!isFinite(lo)) {
+      lo = 360;
+      hi = 1290;
+    }
+    lo = Math.floor(lo / 30) * 30;
+    hi = Math.ceil(hi / 30) * 30;
+    const out = [];
+    for (let m = lo; m <= hi; m += 30) out.push(m);
+    return out;
+  }, [effDow]);
+
+  // Snap the slider to the nearest slot (nowMin rarely lands on a 30-min boundary).
+  const sliderVal = dayTimes.reduce(
+    (best, m) => (Math.abs(m - effMin) < Math.abs(best - effMin) ? m : best),
+    dayTimes[0]
+  );
+
+  const togglePicker = () => {
+    if (pickerOpen) {
+      setPickerOpen(false);
+      return;
+    }
+    if (!pick) setPick({ ts: todayTs, min: sliderVal });
+    setPickerOpen(true);
+  };
+  const resetPick = () => {
+    setPick(null);
+    setPickerOpen(false);
+  };
+
+  // Effective day+time as a Date, for the pill label ("Today 3 PM" / "Tue 6/22 3 PM").
+  const effDate = new Date(effTs);
+  effDate.setHours(Math.floor(effMin / 60), effMin % 60, 0, 0);
+
   const distOf = (p) =>
     userLocation && p.lat != null ? haversineMiles(userLocation.lat, userLocation.lng, p.lat, p.lng) : null;
 
@@ -64,9 +122,9 @@ export default function PoolsScreen({ userLocation }) {
   const list = useMemo(() => {
     const q = query.trim().toLowerCase();
     return POOLS.map((p) => {
-      const today = (p.sessions[dow] || []).filter((s) => !kind || s.kind === kind);
-      const openNow = !closure && today.find((s) => nowMin >= s.start && nowMin < s.end);
-      const next = !closure && today.find((s) => s.start > nowMin);
+      const today = (p.sessions[effDow] || []).filter((s) => !kind || s.kind === kind);
+      const openNow = !effClosure && today.find((s) => effMin >= s.start && effMin < s.end);
+      const next = !effClosure && today.find((s) => s.start > effMin);
       const d = distOf(p);
       return { ...p, today, openNow, next, dist: d };
     })
@@ -80,7 +138,7 @@ export default function PoolsScreen({ userLocation }) {
         return a.name.localeCompare(b.name);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query, kind, userLocation, dow, nowMin, closure]);
+  }, [query, kind, userLocation, effDow, effMin, effClosure]);
 
   return (
     <View style={[styles.page, { paddingTop: insets.top + 14 }]}>
@@ -127,6 +185,49 @@ export default function PoolsScreen({ userLocation }) {
         })}
       </ScrollView>
 
+      {/* Day + time selector — scrub to see what's open then (else live "now") */}
+      <View style={styles.pickRow}>
+        <Pressable
+          onPress={togglePicker}
+          style={[styles.timePill, (pickerOpen || !isLive) && styles.timePillActive]}
+        >
+          <Ionicons name="time-outline" size={15} color={pickerOpen || !isLive ? '#fff' : '#46586a'} />
+          <Text style={[styles.timePillText, (pickerOpen || !isLive) && styles.timePillTextActive]}>
+            {isLive ? t('pool.now') : viewLabel(effDate)}
+          </Text>
+        </Pressable>
+        {!isLive && (
+          <Pressable onPress={resetPick} hitSlop={8} style={styles.resetBtn} accessibilityLabel={t('a11y.dismiss')}>
+            <Ionicons name="close-circle" size={18} color="#8a99a8" />
+          </Pressable>
+        )}
+      </View>
+      {pickerOpen && (
+        <View style={styles.pickerPanel}>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.pickChipRow}
+          >
+            {days.map((d) => {
+              const active = startOfDay(d).getTime() === effTs;
+              return (
+                <Pressable
+                  key={d.getTime()}
+                  onPress={() => setPick({ ts: startOfDay(d).getTime(), min: pick ? pick.min : sliderVal })}
+                  style={[styles.pickChip, active && styles.pickChipActive]}
+                >
+                  <Text style={[styles.pickChipText, active && styles.pickChipTextActive]}>
+                    {dayChipLabel(d)}
+                  </Text>
+                </Pressable>
+              );
+            })}
+          </ScrollView>
+          <TimeSlider times={dayTimes} value={sliderVal} onChange={(m) => setPick({ ts: effTs, min: m })} />
+        </View>
+      )}
+
       <ScrollView
         ref={scrollRef}
         onScroll={onScroll}
@@ -135,7 +236,7 @@ export default function PoolsScreen({ userLocation }) {
         contentContainerStyle={{ paddingBottom: 28 }}
         showsVerticalScrollIndicator={false}
       >
-        {closure && <Text style={styles.closure}>{t('pools.closedToday', { holiday: closure.label })}</Text>}
+        {isLive && closure && <Text style={styles.closure}>{t('pools.closedToday', { holiday: closure.label })}</Text>}
 
         {list.map((p) => {
           const isOpen = !!p.openNow;
@@ -150,9 +251,12 @@ export default function PoolsScreen({ userLocation }) {
               <View style={styles.statusRow}>
                 {isOpen ? (
                   <View style={[styles.statusPill, styles.openPill]}>
-                    <View style={styles.openDot} />
+                    {isLive && <View style={styles.openDot} />}
                     <Text style={styles.openText}>
-                      {t('pool.openNow', { kind: t('pool.kind.' + p.openNow.kind), end: fmtMin(p.openNow.end) })}
+                      {t(isLive ? 'pool.openNow' : 'pool.openAt', {
+                        kind: t('pool.kind.' + p.openNow.kind),
+                        end: fmtMin(p.openNow.end),
+                      })}
                     </Text>
                   </View>
                 ) : p.next ? (
@@ -164,7 +268,11 @@ export default function PoolsScreen({ userLocation }) {
                 ) : (
                   <View style={[styles.statusPill, styles.closedPill]}>
                     <Text style={styles.closedText}>
-                      {p.today.length ? t('pool.doneForDay') : t('pool.closedDay')}
+                      {isLive
+                        ? p.today.length
+                          ? t('pool.doneForDay')
+                          : t('pool.closedDay')
+                        : t('pool.noneSel')}
                     </Text>
                   </View>
                 )}
@@ -174,7 +282,7 @@ export default function PoolsScreen({ userLocation }) {
               {/* Today's sessions */}
               {p.today.length > 0 && (
                 <>
-                  <Text style={styles.dayLabel}>{t('pool.today')}</Text>
+                  <Text style={styles.dayLabel}>{dayChipLabel(effDate)}</Text>
                   <View style={styles.sessRow}>
                     {p.today.map((s, i) => (
                       <View key={i} style={[styles.sess, { backgroundColor: tone(s.kind).bg }]}>
@@ -315,6 +423,36 @@ const styles = StyleSheet.create({
   kindChipActive: { backgroundColor: '#2f74d6', borderColor: '#2f74d6' },
   kindChipText: { color: '#46586a', fontWeight: '700', fontSize: 13 },
   kindChipTextActive: { color: '#fff' },
+
+  pickRow: { flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 10 },
+  timePill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    backgroundColor: '#fff',
+    borderRadius: 16,
+    paddingHorizontal: 12,
+    paddingVertical: 7,
+    borderWidth: 1,
+    borderColor: '#e6e9ee',
+  },
+  timePillActive: { backgroundColor: '#2f74d6', borderColor: '#2f74d6' },
+  timePillText: { color: '#46586a', fontWeight: '700', fontSize: 13 },
+  timePillTextActive: { color: '#fff' },
+  resetBtn: { padding: 2 },
+  pickerPanel: {
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    padding: 10,
+    marginTop: 8,
+    borderWidth: 1,
+    borderColor: '#e6e9ee',
+  },
+  pickChipRow: { gap: 6, paddingBottom: 8 },
+  pickChip: { paddingHorizontal: 10, paddingVertical: 6, borderRadius: 14, backgroundColor: '#f1f4f7' },
+  pickChipActive: { backgroundColor: '#2f74d6' },
+  pickChipText: { color: '#46586a', fontWeight: '700', fontSize: 12 },
+  pickChipTextActive: { color: '#fff' },
 
   closure: { backgroundColor: '#fdeaea', color: '#c23b3b', fontWeight: '700', fontSize: 13, padding: 10, borderRadius: 10, marginTop: 12, overflow: 'hidden' },
 
