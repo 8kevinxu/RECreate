@@ -482,5 +482,405 @@
   "Aquatics - Learn to Swim - Sava Pool": {
     "zh": "水上运动 - 学习游泳 - 萨瓦游泳池",
     "es": "Acuática - Aprender a Nadar - Piscina Sava"
+  },
+  "Adult Swim - Improving Skills and Swimming Strokes": {
+    "zh": "成人游泳 - 提高技巧和游泳姿势",
+    "es": "Natación para Adultos - Mejora de Técnicas y Estilos"
+  },
+  "Adult Swim - Learning the Basics": {
+    "zh": "成人游泳 - 基础学习",
+    "es": "Natación para Adultos - Aprenda lo Básico"
+  },
+  "Aquatics - Parent and Tot Swim": {
+    "zh": "水上运动 - 亲子游泳课",
+    "es": "Acuáticos - Natación para Padres e Hijos"
+  },
+  "Aquatics - Preschool Swim": {
+    "zh": "水上运动 - 学前班游泳课",
+    "es": "Acuáticos - Natación Preescolar"
+  },
+  "Garfield Gators Swim Team": {
+    "zh": "加菲尔德鳄鱼游泳队",
+    "es": "Equipo de Natación Garfield Gators"
+  },
+  "Garfield Jr. Gators Swim Team": {
+    "zh": "加菲尔德初级鳄鱼游泳队",
+    "es": "Equipo Junior de Natación Garfield Gators"
+  },
+  "Kayaking at India Basin": {
+    "zh": "印度盆地皮划艇",
+    "es": "Kayak en India Basin"
+  },
+  "Wave Riders": {
+    "zh": "冲浪者",
+    "es": "Wave Riders"
+  },
+  "Intermediate B&W Printing": {
+    "zh": "中级黑白版画",
+    "es": "Impresión en Blanco y Negro - Intermediate"
+  },
+  "Mordançage": {
+    "zh": "咬花版印刷术",
+    "es": "Mordançage"
+  },
+  "Saturday Afternoon Drop-in Art": {
+    "zh": "周六下午免费艺术课",
+    "es": "Arte Drop-in Sábado por la Tarde"
+  },
+  "The Art of Floral Design": {
+    "zh": "花卉设计艺术",
+    "es": "El Arte del Diseño Floral"
+  },
+  "Woodworking for Tots with Grownups": {
+    "zh": "幼儿木工课（亲子）",
+    "es": "Carpintería para Pequeños con Adultos"
+  },
+  "Gelli Plate Printmaking Crash Course": {
+    "zh": "Gelli版画速成班",
+    "es": "Curso Intensivo de Impresión con Gelli Plate"
+  },
+  "Jewelry Workshop: Bangle Making Intensive": {
+    "zh": "珠宝工坊：手镯制作集训",
+    "es": "Taller de Joyería: Intensivo de Pulseras"
+  },
+  "Jewelry Workshop: Hand Forged Flowers": {
+    "zh": "珠宝工坊：手工锻造花卉",
+    "es": "Taller de Joyería: Flores Forjadas a Mano"
+  },
+  "Camp Mather Senior Getaway Lottery Registration": {
+    "zh": "玛瑟营地高龄人士周末营抽签报名",
+    "es": "Registro de Lotería para Retiro Senior del Campamento Mather"
+  },
+  "Camp For All - Betty Ann Ong - Summer Camp - Ages 5-10": {
+    "zh": "为所有人而建的营地 - 贝蒂·安·翁 - 暑期营 - 5-10岁",
+    "es": "Campamento para Todos - Betty Ann Ong - Campamento de Verano - Edades 5-10"
+  },
+  "Kezar Baseball Summer Camp - Ages 6-14": {
+    "zh": "科泽棒球暑期营 - 6-14岁",
+    "es": "Campamento de Béisbol Kezar de Verano - Edades 6-14"
+  },
+  "Camp Mather Lottery Registration": {
+    "zh": "玛瑟营地抽签报名",
+    "es": "Registro de Lotería del Campamento Mather"
+  },
+  "Randall Museum Overnight Youth Camp": {
+    "zh": "兰德尔博物馆青少年过夜营",
+    "es": "Campamento Nocturno para Jóvenes del Museo Randall"
+  },
+  "Crocker Amazon - Summer Camp- Ages 6-11": {
+    "zh": "克罗克亚马逊 - 暑期营 - 6-11岁",
+    "es": "Crocker Amazon - Campamento de Verano - Edades 6-11"
+  },
+  "Wetlands Explorer - Summer Camp Ages 6-11": {
+    "zh": "湿地探险家 - 暑期营 - 6-11岁",
+    "es": "Explorador de Humedales - Campamento de Verano - Edades 6-11"
+  },
+  "Look What I Can Do! Summer Camp- Ages 4-5": {
+    "zh": "看看我能做什么！暑期营 - 4-5岁",
+    "es": "¡Mira lo que Puedo Hacer! Campamento de Verano - Edades 4-5"
+  },
+  "Excelsior Fun & Friends - Summer Camp - Ages 5-10": {
+    "zh": "埃克塞尔西奥趣味与友谊 - 暑期营 - 5-10岁",
+    "es": "Excelsior Diversión y Amistad - Campamento de Verano - Edades 5-10"
+  },
+  "Garfield Fun In the Sun - Summer Camp - Ages 6-10": {
+    "zh": "加菲尔德阳光趣味 - 暑期营 - 6-10岁",
+    "es": "Garfield Diversión bajo el Sol - Campamento de Verano - Edades 6-10"
+  },
+  "Silver Tree - Summer Camp- Ages 6-11": {
+    "zh": "银树 - 暑期营 - 6-11岁",
+    "es": "Silver Tree - Campamento de Verano - Edades 6-11"
+  },
+  "Silver Tree LIT - Summer Camp- Ages 12-14": {
+    "zh": "银树青年领袖 - 暑期营 - 12-14岁",
+    "es": "Silver Tree LIT - Campamento de Verano - Edades 12-14"
+  },
+  "TLC Summer Smash  - Summer Camp - Ages 11-13": {
+    "zh": "TLC暑期盛典 - 暑期营 - 11-13岁",
+    "es": "TLC Summer Smash - Campamento de Verano - Edades 11-13"
+  },
+  "3 Times The Fun - Summer Camp - Ages 6-12": {
+    "zh": "三倍趣味 - 暑期营 - 6-12岁",
+    "es": "3 Veces la Diversión - Campamento de Verano - Edades 6-12"
+  },
+  "YPTMTC Performance & Creative Art - Summer Camp - Ages 13-17": {
+    "zh": "青年表演与创意艺术 - 暑期营 - 13-17岁",
+    "es": "Performance y Arte Creativo - Campamento de Verano - Edades 13-17"
+  },
+  "MM-LAFTS Tennis - Summer Camp Ages 9-15": {
+    "zh": "MM-LAFTS网球 - 暑期营 - 9-15岁",
+    "es": "Tenis MM-LAFTS - Campamento de Verano - Edades 9-15"
+  },
+  "Bayview All Stars - Summer Camp - Ages 6-10": {
+    "zh": "贝维尤全明星 - 暑期营 - 6-10岁",
+    "es": "Bayview All Stars - Campamento de Verano - Edades 6-10"
+  },
+  "Kezar Basketball Summer Camp - Ages 6-14": {
+    "zh": "科泽篮球暑期营 - 6-14岁",
+    "es": "Campamento de Baloncesto Kezar de Verano - Edades 6-14"
+  },
+  "Kezar Flag Football Summer Camp - Ages 6-14": {
+    "zh": "科泽美式橄榄球暑期营 - 6-14岁",
+    "es": "Campamento de Flag Football Kezar de Verano - Edades 6-14"
+  },
+  "Kezar Girls Track & Field Summer Camp - Ages 6-14": {
+    "zh": "科泽女子田径暑期营 - 6-14岁",
+    "es": "Campamento de Atletismo Femenino Kezar de Verano - Edades 6-14"
+  },
+  "Kezar Racquet Sports - Summer Camp - Ages 6-14": {
+    "zh": "科泽网拍运动暑期营 - 6-14岁",
+    "es": "Campamento de Deportes de Raqueta Kezar de Verano - Edades 6-14"
+  },
+  "Kezar Track & Field Summer Camp - Ages 6-14": {
+    "zh": "科泽田径暑期营 - 6-14岁",
+    "es": "Campamento de Atletismo Kezar de Verano - Edades 6-14"
+  },
+  "Kezar Volleyball Summer Camp - Ages 6-14": {
+    "zh": "科泽排球暑期营 - 6-14岁",
+    "es": "Campamento de Voleibol Kezar de Verano - Edades 6-14"
+  },
+  "Kezar Soccer Summer Camp - Ages 6-14": {
+    "zh": "科泽足球暑期营 - 6-14岁",
+    "es": "Campamento de Fútbol Kezar de Verano - Edades 6-14"
+  },
+  "Camp Sukahica - Summer Camp- Ages 10-13": {
+    "zh": "苏卡希卡营地 - 暑期营 - 10-13岁",
+    "es": "Campamento Sukahica - Campamento de Verano - Edades 10-13"
+  },
+  "Camp For All - Louis Sutter - Summer Camp - Ages 6-11": {
+    "zh": "为所有人设营 - 路易斯·萨特 - 暑期营 - 6-11岁",
+    "es": "Campamento Para Todos - Louis Sutter - Campamento de Verano - Edades 6-11"
+  },
+  "Superstar Adventure- Summer Camp - Ages 6-13": {
+    "zh": "超级明星冒险 - 暑期营 - 6-13岁",
+    "es": "Superstar Adventure - Campamento de Verano - Edades 6-13"
+  },
+  "Pathway LIT - Summer Camp- Ages 13-14": {
+    "zh": "途径LIT - 暑期营 - 13-14岁",
+    "es": "Pathway LIT - Campamento de Verano - Edades 13-14"
+  },
+  "Girls Play Sports - Mission Rec - Summer Camp Ages 5-12": {
+    "zh": "女孩运动 - 使命休闲中心 - 暑期营 - 5-12岁",
+    "es": "Girls Play Sports - Mission Rec - Campamento de Verano - Edades 5-12"
+  },
+  "Everybody Plays - Summer Camp - Ages 6-12": {
+    "zh": "人人参与 - 暑期营 - 6-12岁",
+    "es": "Everybody Plays - Campamento de Verano - Edades 6-12"
+  },
+  "Everybody Travels - Summer Camp - Ages 9-15": {
+    "zh": "人人旅行 - 暑期营 - 9-15岁",
+    "es": "Everybody Travels - Campamento de Verano - Edades 9-15"
+  },
+  "SLICE - Summer Camp - Ages 15-25": {
+    "zh": "SLICE - 暑期营 - 15-25岁",
+    "es": "SLICE - Campamento de Verano - Edades 15-25"
+  },
+  "Teen City - Summer Camp - Ages 13-23": {
+    "zh": "少年城市 - 暑期营 - 13-23岁",
+    "es": "Teen City - Campamento de Verano - Edades 13-23"
+  },
+  "Summer Explosion  - Summer Camp - Ages 7-10": {
+    "zh": "夏日爆炸 - 暑期营 - 7-10岁",
+    "es": "Summer Explosion - Campamento de Verano - Edades 7-10"
+  },
+  "Pine Lake - Summer Camp- Ages 6-11": {
+    "zh": "松湖 - 暑期营 - 6-11岁",
+    "es": "Pine Lake - Campamento de Verano - Edades 6-11"
+  },
+  "Navigate SF: The Amazing Race Experience": {
+    "zh": "探索旧金山：奇妙竞速体验",
+    "es": "Navigate SF: La Experiencia Amazing Race"
+  },
+  "Randall Museum Art Science & Technology Day Camp": {
+    "zh": "兰德尔博物馆艺术、科学与技术日营",
+    "es": "Campamento Diurno de Arte, Ciencia y Tecnología del Museo Randall"
+  },
+  "Shred N' Butter - Summer Camp- Ages 12-14": {
+    "zh": "玩坏滑板 - 暑期营 - 12-14岁",
+    "es": "Shred N' Butter - Campamento de Verano - Edades 12-14"
+  },
+  "Sharon Art Studio Ceramics - Summer Camp": {
+    "zh": "莎伦艺术工作室陶艺 - 暑期营",
+    "es": "Sharon Art Studio Cerámica - Campamento de Verano"
+  },
+  "Sharon Art Studio Fine Arts - Summer Camp": {
+    "zh": "莎伦艺术工作室美术 - 暑期营",
+    "es": "Sharon Art Studio Bellas Artes - Campamento de Verano"
+  },
+  "Sharon Art Studio Jewelry & Metal Arts - Summer Camp": {
+    "zh": "莎伦艺术工作室珠宝与金属艺术 - 暑期营",
+    "es": "Sharon Art Studio Joyería y Artes Metálicas - Campamento de Verano"
+  },
+  "Goal-Getters  - Summer Camp- Ages 7-12": {
+    "zh": "目标实现者 - 暑期营 - 7-12岁",
+    "es": "Goal-Getters - Campamento de Verano - Edades 7-12"
+  },
+  "Fog City Summer Camp - Ages 8-13": {
+    "zh": "雾城暑期营 - 8-13岁",
+    "es": "Campamento de Verano Fog City - Edades 8-13"
+  },
+  "Upper Noe Sports - Summer Camp Ages 9-14": {
+    "zh": "上诺埃体育 - 暑期营 - 9-14岁",
+    "es": "Upper Noe Sports - Campamento de Verano - Edades 9-14"
+  },
+  "City Outdoor Rec Expedition - Ages 12-14": {
+    "zh": "城市户外休闲探险 - 12-14岁",
+    "es": "Expedición de Recreación Outdoor Urbana - Edades 12-14"
+  },
+  "Adventure & Art - Summer Camp - Ages 6-10": {
+    "zh": "冒险与艺术 - 暑期营 - 6-10岁",
+    "es": "Adventure & Art - Campamento de Verano - Edades 6-10"
+  },
+  "Zoom Physical Conditioning for Active Seniors": {
+    "zh": "活跃老年人体能锻炼 (线上)",
+    "es": "Acondicionamiento Físico Zoom para Adultos Mayores Activos"
+  },
+  "Making a Photobook": {
+    "zh": "制作相册",
+    "es": "Haciendo un Fotolibro"
+  },
+  "Matting, Framing, Presenting Your Photos": {
+    "zh": "装裱、框装和展示您的照片",
+    "es": "Enmarque, Montaje y Presentación de Fotos"
+  },
+  "Photo Center Orientation": {
+    "zh": "摄影中心入门介绍",
+    "es": "Orientación del Centro Fotográfico"
+  },
+  "Petite Bakers": {
+    "zh": "小小烘焙师",
+    "es": "Petite Bakers"
+  },
+  "Book Discussion Group": {
+    "zh": "书籍讨论小组",
+    "es": "Grupo de Discusión de Libros"
+  },
+  "Drop-in: Writing to Remember": {
+    "zh": "随到随学：记忆中的文字",
+    "es": "Drop-in: Escritura para Recordar"
+  },
+  "Conversation Mandarin for Beginners/Intermediate": {
+    "zh": "初级/中级普通话会话",
+    "es": "Conversación Mandarín para Principiantes/Intermedio"
+  },
+  "New Technologies: 3D Printing and Laser Cutting Fab Lab": {
+    "zh": "新技术：3D打印和激光切割制造实验室",
+    "es": "Nuevas Tecnologías: Laboratorio Fab de Impresión 3D y Corte Láser"
+  },
+  "New Technologies: Electronic Inventor Lab with AI Coding": {
+    "zh": "新技术：电子发明实验室及AI编程",
+    "es": "Nuevas Tecnologías: Laboratorio de Inventor Electrónico con Codificación IA"
+  },
+  "Saturday Science Drop-in Workshop": {
+    "zh": "周六科学随到随学工坊",
+    "es": "Taller de Ciencia Drop-in del Sábado"
+  },
+  "Drop-in: Shred N Butter Skateboards & Scooters": {
+    "zh": "随到随学：玩坏滑板与滑板车",
+    "es": "Drop-in: Patinetas Shred N Butter y Scooters"
+  },
+  "Karate Kidz": {
+    "zh": "空手道小子",
+    "es": "Karate Kidz"
+  },
+  "Karate Kidz - Little Kickers": {
+    "zh": "空手道小子 - 小脚踢",
+    "es": "Karate Kidz - Little Kickers"
+  },
+  "Disability Sports: Power Chair Soccer": {
+    "zh": "残障人士体育：电动轮椅足球",
+    "es": "Deportes para Personas con Discapacidad: Fútbol en Silla de Ruedas Motorizada"
+  },
+  "Drop-in: Deaf Club": {
+    "zh": "随到随学：聋人俱乐部",
+    "es": "Drop-in: Club de Sordos"
+  },
+  "Rec and Parkour": {
+    "zh": "休闲公园跑酷",
+    "es": "Rec and Parkour"
+  },
+  "Open Rock Climbing": {
+    "zh": "开放式攀岩",
+    "es": "Escalada en Roca Abierta"
+  },
+  "SF Adaptive Cycling Program": {
+    "zh": "旧金山自适应骑行项目",
+    "es": "Programa de Ciclismo Adaptativo de SF"
+  },
+  "Archery - Open Range": {
+    "zh": "射箭 - 开放射程",
+    "es": "Tiro con Arco - Rango Abierto"
+  },
+  "SF Bay Sox Baseball Program": {
+    "zh": "旧金山湾棒球队项目",
+    "es": "Programa de Béisbol SF Bay Sox"
+  },
+  "After School Program - Bernal Heights": {
+    "zh": "课后项目 - 伯纳尔高地",
+    "es": "Programa Después de Escuela - Bernal Heights"
+  },
+  "Drop-in: A Place to Play": {
+    "zh": "随到随玩",
+    "es": "Abierto: Un Lugar para Jugar"
+  },
+  "After School Program - Betty Ann Ong": {
+    "zh": "课后项目 - 贝蒂·安·翁",
+    "es": "Programa Después de Escuela - Betty Ann Ong"
+  },
+  "After School Program - Douglass": {
+    "zh": "课后项目 - 道格拉斯",
+    "es": "Programa Después de Escuela - Douglass"
+  },
+  "Drop-in: Nannies Time Out": {
+    "zh": "随到随玩：保姆休息时间",
+    "es": "Abierto: Tiempo de Descanso para Niñeras"
+  },
+  "Little Hands Creative Art": {
+    "zh": "小手创意艺术",
+    "es": "Manitas Creativas de Arte"
+  },
+  "After School Program - Excelsior": {
+    "zh": "课后项目 - 埃克塞尔西奥",
+    "es": "Programa Después de Escuela - Excelsior"
+  },
+  "After School Program - Garfield": {
+    "zh": "课后项目 - 加菲尔德",
+    "es": "Programa Después de Escuela - Garfield"
+  },
+  "After School Program - J.P. Murphy": {
+    "zh": "课后项目 - 杰·彼得·墨菲",
+    "es": "Programa Después de Escuela - J.P. Murphy"
+  },
+  "After School Program - Jackson": {
+    "zh": "课后项目 - 杰克逊",
+    "es": "Programa Después de Escuela - Jackson"
+  },
+  "After School Program - Joe Lee": {
+    "zh": "课后项目 - 乔·李",
+    "es": "Programa Después de Escuela - Joe Lee"
+  },
+  "After School Program - Louis Sutter": {
+    "zh": "课后项目 - 路易斯·萨特",
+    "es": "Programa Después de Escuela - Louis Sutter"
+  },
+  "After School Program - Midtown Terrace": {
+    "zh": "课后项目 - 中城露台",
+    "es": "Programa Después de Escuela - Midtown Terrace"
+  },
+  "After School Program - Miraloma": {
+    "zh": "课后项目 - 米拉洛玛",
+    "es": "Programa Después de Escuela - Miraloma"
+  },
+  "After School Program - Potrero Hill": {
+    "zh": "课后项目 - 波特雷罗山",
+    "es": "Programa Después de Escuela - Potrero Hill"
+  },
+  "After School Program - Sunnyside": {
+    "zh": "课后项目 - 阳光山",
+    "es": "Programa Después de Escuela - Sunnyside"
+  },
+  "After School Program - West Portal": {
+    "zh": "课后项目 - 西波特兰",
+    "es": "Programa Después de Escuela - West Portal"
   }
 }
