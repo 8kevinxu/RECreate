@@ -647,7 +647,9 @@ downloads it, extracts the text with **`pdfjs-dist`**, and reconstructs the week
 grid (merge text fragments → map cells to day columns by x-position → pair each
 activity label with the time below it → classify into a session **kind**). Output is
 `sessions[dow] = [{ kind, start, end }]` — minutes-from-midnight, `0=Sun..6=Sat`,
-same convention as courts.
+same convention as courts. North Beach has **two pools under one roof** with
+separate warm-/cool-pool PDFs, so its sessions also carry `pool: "warm" | "cool"`
+and render as separately labeled ♨️/❄️ groups.
 
 Session kinds (**lap / family / senior / lessons / adult lessons / parent-child /
 water exercise / camps / rentals**) render as color-coded, localized pills. Each

@@ -95,8 +95,9 @@ It also exports `WEIGHT_ROOM`, `GOLF`, and `MAP_SPORTS` (`SPORTS` + both): each 
 a *facility view* — the **weight room** spans rec-center weight rooms plus DataSF
 outdoor fitness courts, scraped into `dropins.weightroom` like a sport; **golf** is
 the 6 SFRPD courses, hand-curated in `data/manual-courts.js` with daylight-hours
-`dropins.golf` weeks plus a `golf` block (holes/par/yardage, green fees, tee-time
-booking link) the court card renders, and golf-only filter chips (9/18 holes,
+`dropins.golf` weeks plus a `golf` block (holes/par/yardage, a short description,
+green fees, tee-time booking + official-website links) the court card renders, and
+golf-only filter chips (9/18 holes,
 beginner-friendly, driving range) that surface via the generic amenity-chip
 machinery. Both are selectable in the map's sport picker but kept out of
 `SPORTS` so they never leak into runs/signals/favorites (`isPlayableSport()` guards
