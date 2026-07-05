@@ -101,6 +101,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -129,6 +138,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -207,6 +225,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -270,6 +297,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -383,6 +419,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -488,6 +533,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -594,6 +648,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -657,6 +720,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -735,6 +807,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -798,6 +879,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -911,6 +1001,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [
             [
@@ -1051,6 +1150,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -1122,6 +1230,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -1227,6 +1344,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -1333,6 +1459,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -1396,6 +1531,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -1509,6 +1653,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -1649,6 +1802,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -1657,10 +1819,10 @@
     {
       "id": "bayview-k-c-jones-playground-outdoor",
       "name": "Bayview K.C. Jones Playground",
-      "address": "5701 3rd St",
+      "address": "51 Havelock St",
       "neighborhood": "Bayview Hunters Point",
-      "lat": 37.72624,
-      "lng": -122.393252,
+      "lat": 37.722751,
+      "lng": -122.390961,
       "indoor": false,
       "schedule": [
         [
@@ -1720,6 +1882,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -1790,10 +1961,54 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor baseball — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor baseball & fitness equipment — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "bernal-heights-rec-center-outdoor",
@@ -1896,6 +2111,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -1924,6 +2148,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -2037,6 +2270,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -2065,6 +2307,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -2178,6 +2429,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -2206,6 +2466,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -2284,6 +2553,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [
             [
@@ -2382,6 +2660,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -2495,6 +2782,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -2558,6 +2854,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -2569,182 +2874,6 @@
       },
       "source": "sfrecpark-outdoor",
       "notes": "Outdoor basketball & tennis — first-come, open during park hours (no posted drop-in schedule)."
-    },
-    {
-      "id": "camp-mather-outdoor",
-      "name": "Camp Mather",
-      "address": "",
-      "neighborhood": "",
-      "lat": 37.881518,
-      "lng": -119.850489,
-      "indoor": false,
-      "schedule": [
-        [
-          480,
-          1200
-        ],
-        [
-          480,
-          1200
-        ],
-        [
-          480,
-          1200
-        ],
-        [
-          480,
-          1200
-        ],
-        [
-          480,
-          1200
-        ],
-        [
-          480,
-          1200
-        ],
-        [
-          480,
-          1200
-        ]
-      ],
-      "dropins": {
-        "basketball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
-        ],
-        "volleyball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
-        ],
-        "pingpong": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
-        ],
-        "pickleball": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
-        ],
-        "tennis": [
-          [
-            [
-              480,
-              1200
-            ]
-          ],
-          [
-            [
-              480,
-              1200
-            ]
-          ],
-          [
-            [
-              480,
-              1200
-            ]
-          ],
-          [
-            [
-              480,
-              1200
-            ]
-          ],
-          [
-            [
-              480,
-              1200
-            ]
-          ],
-          [
-            [
-              480,
-              1200
-            ]
-          ],
-          [
-            [
-              480,
-              1200
-            ]
-          ]
-        ],
-        "soccer": [
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          []
-        ],
-        "baseball": [
-          [
-            [
-              480,
-              1200
-            ]
-          ],
-          [
-            [
-              480,
-              1200
-            ]
-          ],
-          [
-            [
-              480,
-              1200
-            ]
-          ],
-          [
-            [
-              480,
-              1200
-            ]
-          ],
-          [
-            [
-              480,
-              1200
-            ]
-          ],
-          [
-            [
-              480,
-              1200
-            ]
-          ],
-          [
-            [
-              480,
-              1200
-            ]
-          ]
-        ]
-      },
-      "source": "sfrecpark-outdoor",
-      "notes": "Outdoor tennis & baseball — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "carl-larsen-park-outdoor",
@@ -2812,6 +2941,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [
             [
@@ -2917,6 +3055,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -3023,6 +3170,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -3121,6 +3277,15 @@
           ]
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -3217,6 +3382,50 @@
           ]
         ],
         "volleyball": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ],
+        "pingpong": [
           [],
           [],
           [],
@@ -3225,7 +3434,7 @@
           [],
           []
         ],
-        "pingpong": [
+        "badminton": [
           [],
           [],
           [],
@@ -3409,10 +3618,19 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis & pickleball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule). Designated SF Rec open-play soccer field."
+      "notes": "Outdoor basketball & volleyball & tennis & pickleball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule). Designated SF Rec open-play soccer field."
     },
     {
       "id": "douglass-playground-outdoor",
@@ -3515,6 +3733,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -3578,6 +3805,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -3691,6 +3927,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -3719,6 +3964,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -3797,6 +4051,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -3867,6 +4130,15 @@
           [],
           [],
           []
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -3875,10 +4147,10 @@
     {
       "id": "esprit-park-outdoor",
       "name": "Esprit Park",
-      "address": "",
+      "address": "700 Minnesota St",
       "neighborhood": "Potrero Hill",
-      "lat": 37.761014,
-      "lng": -122.391166,
+      "lat": 37.760891,
+      "lng": -122.391071,
       "indoor": false,
       "schedule": [
         [
@@ -3938,6 +4210,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -4008,10 +4289,54 @@
           [],
           [],
           []
+        ],
+        "weightroom": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor soccer — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor soccer & fitness equipment — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "eureka-valley-rec-center-outdoor",
@@ -4079,6 +4404,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -4184,6 +4518,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -4290,6 +4633,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -4395,6 +4747,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -4501,6 +4862,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -4536,6 +4906,15 @@
           [],
           [],
           []
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -4546,8 +4925,8 @@
       "name": "Franklin Square",
       "address": "2500 17th St",
       "neighborhood": "Mission",
-      "lat": 37.765101,
-      "lng": -122.409374,
+      "lat": 37.764563,
+      "lng": -122.410094,
       "indoor": false,
       "schedule": [
         [
@@ -4599,6 +4978,15 @@
           []
         ],
         "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "badminton": [
           [],
           [],
           [],
@@ -4677,10 +5065,54 @@
           [],
           [],
           []
+        ],
+        "weightroom": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor soccer — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor soccer & fitness equipment — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "fulton-playground-outdoor",
@@ -4783,6 +5215,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -4846,6 +5287,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -4959,6 +5409,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -5022,6 +5481,15 @@
           ]
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -5100,6 +5568,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [
             [
@@ -5240,6 +5717,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -5346,6 +5832,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -5416,6 +5911,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -5487,6 +5991,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -5592,6 +6105,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -5663,6 +6185,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -5733,6 +6264,15 @@
           [],
           [],
           []
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -5743,8 +6283,8 @@
       "name": "Golden Gate Park - Section 1",
       "address": "501 Stanyan St",
       "neighborhood": "Golden Gate Park",
-      "lat": 37.772289,
-      "lng": -122.448461,
+      "lat": 37.772184,
+      "lng": -122.448792,
       "indoor": false,
       "schedule": [
         [
@@ -5839,6 +6379,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -5874,10 +6423,54 @@
           [],
           [],
           []
+        ],
+        "weightroom": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & fitness equipment — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "golden-gate-park-section-6-outdoor",
@@ -5945,6 +6538,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -6008,6 +6610,15 @@
           ]
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -6086,6 +6697,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -6226,6 +6846,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -6332,6 +6961,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -6430,6 +7068,15 @@
           ]
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -6543,6 +7190,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -6641,6 +7297,15 @@
           ]
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -6754,6 +7419,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -6817,6 +7491,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -6930,6 +7613,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -6958,6 +7650,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -7071,6 +7772,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -7134,6 +7844,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -7247,6 +7966,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -7317,10 +8045,178 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
       "notes": "Outdoor basketball & baseball — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
+      "id": "hilltop-park-outdoor",
+      "name": "Hilltop Park",
+      "address": "2 Willie B Kennedy Dr",
+      "neighborhood": "Bayview Hunters Point",
+      "lat": 37.732997,
+      "lng": -122.382881,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor fitness equipment — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "holly-park-outdoor",
@@ -7423,6 +8319,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -7528,10 +8433,178 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
       "notes": "Outdoor basketball & tennis & baseball — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
+      "id": "in-chan-kaajal-park-outdoor",
+      "name": "In Chan Kaajal Park",
+      "address": "2080 Folsom St",
+      "neighborhood": "Mission",
+      "lat": 37.763917,
+      "lng": -122.415402,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor fitness equipment — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "india-basin-shoreline-park-outdoor",
@@ -7634,6 +8707,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -7662,6 +8744,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -7775,6 +8866,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -7873,6 +8973,15 @@
           ]
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -7986,6 +9095,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [
             [
@@ -8126,6 +9244,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -8232,6 +9359,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -8337,6 +9473,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -8443,6 +9588,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -8506,6 +9660,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -8619,6 +9782,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -8682,6 +9854,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -8795,6 +9976,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -8858,6 +10048,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -8971,6 +10170,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -9111,6 +10319,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -9217,6 +10434,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -9245,6 +10471,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -9358,6 +10593,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -9386,6 +10630,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -9464,6 +10717,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -9534,10 +10796,178 @@
           [],
           [],
           []
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
       "notes": "Outdoor tennis — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
+      "id": "lake-merced-park-outdoor",
+      "name": "Lake Merced Park",
+      "address": "Lake Merced Boulevard",
+      "neighborhood": "Lakeshore",
+      "lat": 37.712338,
+      "lng": -122.489078,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor fitness equipment — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "laurel-hill-playground-outdoor",
@@ -9640,6 +11070,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -9745,6 +11184,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -9851,6 +11299,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -9879,6 +11336,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -9992,6 +11458,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [
             [
@@ -10132,6 +11607,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -10238,6 +11722,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -10378,6 +11871,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -10484,6 +11986,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -10589,6 +12100,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -10599,8 +12119,8 @@
       "name": "Merced Heights Playground",
       "address": "801 Shields St",
       "neighborhood": "Oceanview/Merced/Ingleside",
-      "lat": 37.717338,
-      "lng": -122.470054,
+      "lat": 37.717743,
+      "lng": -122.470386,
       "indoor": false,
       "schedule": [
         [
@@ -10695,6 +12215,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -10765,10 +12294,54 @@
           [],
           [],
           []
+        ],
+        "weightroom": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & fitness equipment — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "michelangelo-playground-outdoor",
@@ -10871,6 +12444,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -10899,6 +12481,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -11012,6 +12603,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -11040,6 +12640,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -11136,6 +12745,50 @@
           ]
         ],
         "volleyball": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ],
+        "pingpong": [
           [],
           [],
           [],
@@ -11144,7 +12797,7 @@
           [],
           []
         ],
-        "pingpong": [
+        "badminton": [
           [],
           [],
           [],
@@ -11293,10 +12946,19 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis & soccer & baseball — first-come, open during park hours (no posted drop-in schedule). Designated SF Rec open-play soccer field."
+      "notes": "Outdoor basketball & volleyball & tennis & soccer & baseball — first-come, open during park hours (no posted drop-in schedule). Designated SF Rec open-play soccer field."
     },
     {
       "id": "miraloma-playground-outdoor",
@@ -11399,6 +13061,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -11504,6 +13175,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -11593,6 +13273,50 @@
           ]
         ],
         "volleyball": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ],
+        "pingpong": [
           [],
           [],
           [],
@@ -11601,7 +13325,7 @@
           [],
           []
         ],
-        "pingpong": [
+        "badminton": [
           [],
           [],
           [],
@@ -11680,10 +13404,19 @@
           [],
           [],
           []
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & volleyball & tennis — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "mission-dolores-park-outdoor",
@@ -11786,6 +13519,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -11849,6 +13591,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -11962,6 +13713,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -12060,6 +13820,15 @@
           ]
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -12138,6 +13907,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -12201,6 +13979,15 @@
           ]
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -12314,6 +14101,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [
             [
@@ -12454,6 +14250,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -12464,8 +14269,8 @@
       "name": "Mountain Lake Park",
       "address": "1 11th Ave",
       "neighborhood": "Inner Richmond, Presidio",
-      "lat": 37.787457,
-      "lng": -122.469447,
+      "lat": 37.787139,
+      "lng": -122.468146,
       "indoor": false,
       "schedule": [
         [
@@ -12560,6 +14365,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -12630,10 +14444,54 @@
           [],
           [],
           []
+        ],
+        "weightroom": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & fitness equipment — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "noe-valley-courts-outdoor",
@@ -12736,6 +14594,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -12799,6 +14666,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -12912,6 +14788,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -13017,6 +14902,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -13123,6 +15017,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -13151,6 +15054,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -13264,6 +15176,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [
             [
@@ -13404,6 +15325,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -13475,6 +15405,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -13538,6 +15477,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -13616,6 +15564,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -13679,6 +15636,15 @@
           ]
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -13792,6 +15758,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -13897,6 +15872,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -14003,6 +15987,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -14031,6 +16024,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -14144,6 +16146,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [
             [
@@ -14319,6 +16330,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -14390,6 +16410,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -14495,6 +16524,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -14601,6 +16639,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [
             [
@@ -14699,6 +16746,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -14812,6 +16868,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -14875,6 +16940,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -14988,6 +17062,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -15023,10 +17106,178 @@
           [],
           [],
           []
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
       "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
+      "id": "shoreview-park-outdoor",
+      "name": "Shoreview Park",
+      "address": "1 Lillian St",
+      "neighborhood": "Bayview Hunters Point",
+      "lat": 37.731941,
+      "lng": -122.380957,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor fitness equipment — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "sigmund-stern-recreation-grove-outdoor",
@@ -15094,6 +17345,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [
             [
@@ -15192,6 +17452,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -15305,6 +17574,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -15410,6 +17688,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -15499,6 +17786,50 @@
           ]
         ],
         "volleyball": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ],
+        "pingpong": [
           [],
           [],
           [],
@@ -15507,7 +17838,7 @@
           [],
           []
         ],
-        "pingpong": [
+        "badminton": [
           [],
           [],
           [],
@@ -15621,10 +17952,19 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis & baseball — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & volleyball & tennis & baseball — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "st-mary-s-rec-center-outdoor",
@@ -15727,6 +18067,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -15832,6 +18181,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -15938,6 +18296,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -16036,6 +18403,15 @@
           ]
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -16149,6 +18525,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -16212,6 +18597,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -16325,6 +18719,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -16430,6 +18833,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -16536,6 +18948,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -16564,6 +18985,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -16677,6 +19107,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [
             [
@@ -16817,6 +19256,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -16923,6 +19371,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -16993,6 +19450,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -17099,6 +19565,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -17127,6 +19602,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -17205,6 +19689,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -17268,6 +19761,15 @@
           []
         ],
         "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
           [],
           [],
           [],
@@ -17381,6 +19883,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -17521,6 +20032,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -17531,8 +20051,8 @@
       "name": "Willie Woo Woo Wong Playground",
       "address": "850 Sacramento St",
       "neighborhood": "Chinatown",
-      "lat": 37.793721,
-      "lng": -122.40732,
+      "lat": 37.793576,
+      "lng": -122.407221,
       "indoor": false,
       "schedule": [
         [
@@ -17627,6 +20147,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -17697,10 +20226,213 @@
           [],
           [],
           []
+        ],
+        "weightroom": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
         ]
       },
       "source": "sfrecpark-outdoor",
-      "notes": "Outdoor basketball & tennis — first-come, open during park hours (no posted drop-in schedule)."
+      "notes": "Outdoor basketball & tennis & fitness equipment — first-come, open during park hours (no posted drop-in schedule)."
+    },
+    {
+      "id": "yacht-harbor-and-marina-green-outdoor",
+      "name": "Yacht Harbor and Marina Green",
+      "address": "1 Marina Green Dr",
+      "neighborhood": "Marina, Presidio",
+      "lat": 37.806649,
+      "lng": -122.436099,
+      "indoor": false,
+      "schedule": [
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ],
+          [
+            [
+              480,
+              1200
+            ]
+          ]
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor fitness equipment — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "yik-oi-huang-peace-friendship-park-outdoor",
@@ -17768,6 +20500,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -17838,6 +20579,15 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
@@ -17944,6 +20694,15 @@
           [],
           []
         ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
         "pickleball": [
           [],
           [],
@@ -18084,11 +20843,20 @@
               1200
             ]
           ]
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ]
       },
       "source": "sfrecpark-outdoor",
       "notes": "Outdoor basketball & tennis & soccer & baseball — first-come, open during park hours (no posted drop-in schedule)."
     }
   ],
-  "fetchedAt": "2026-07-04T07:40:22.342Z"
+  "fetchedAt": "2026-07-04T19:53:07.350Z"
 }

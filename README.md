@@ -5,9 +5,11 @@ Find somewhere to play **right now** in San Francisco. RECreate started as an
 indoor-basketball finder and has grown into a map of SF Rec & Parks **drop-in
 recreation** across five tabs:
 
-- **🏀 Map** — every rec-center gym and outdoor court, across **5 sports**
-  (basketball, volleyball, ping pong, pickleball, tennis), with weekly **open-gym
-  schedules**, **"open now"** filtering, live **crowd check-ins**, and tennis/
+- **🏀 Map** — every rec-center gym, outdoor court, and field, across **8 sports**
+  (basketball, volleyball, ping pong, badminton, pickleball, tennis, soccer,
+  baseball) plus a **weight room** view (rec-center weight rooms + outdoor fitness
+  courts), with weekly **open-gym schedules**, **"open now"** filtering, live
+  **crowd check-ins**, and tennis/
   pickleball **reservation occupancy** ("% booked right now"). Each sport has its own
   glyph (down to a drawn perforated pickleball). To keep dense areas legible, nearby
   courts **cluster into count bubbles** when zoomed out (orange = something open now)
@@ -16,8 +18,9 @@ recreation** across five tabs:
   pickleball, Palega for basketball) and the sport dial's **⭐ Favorites** view becomes
   a personal map of just your spots, each shown open or closed for the sport you
   favorited it for.
-- **📅 Classes** — SF Rec & Park drop-in programs (fitness, dance, music/arts,
-  photography, social games) with live openings.
+- **📅 Classes** — SF Rec & Park's full ActiveNet program catalog (fitness, dance,
+  music, arts, photography, social games, aquatics & swim lessons, sports & rec,
+  camps, youth & after-school) with real prices and live openings.
 - **🏊 Pools** — the 9 public swimming pools with parsed weekly swim schedules
   (lap / family / senior / lessons …), fees, and "open now".
 - **👥 Social** — accounts, friends, "down to play" signals, planned games, an
@@ -141,14 +144,16 @@ Each court carries:
 - `dropins` — a `{ sportId: week }` map of drop-in open-gym blocks per sport, where
   each `week` is indexed `0=Sun..6=Sat` and each day is an array of `[startMin,
   endMin]` blocks. Tracked sports live in `lib/sports.js` (**basketball**,
-  **volleyball**, **ping pong**, **pickleball**, **tennis**); the app shows one at
-  a time via the (scrollable) sport toggle. Indoor coverage comes from rec-center
-  gyms (basketball broad; volleyball ~6 centers; ping pong ~10, scraped from the
-  multipurpose-room / auditorium rows, not just the gym). **Basketball**,
-  **pickleball**, and **tennis** also add outdoor public courts from DataSF (see
-  below): basketball ~76 parks, tennis ~66, pickleball ~13. So basketball and
-  pickleball are **both** indoor and outdoor (the app shows an Indoor/Outdoor
-  sub-filter for them); tennis is outdoor-only.
+  **volleyball**, **ping pong**, **badminton**, **pickleball**, **tennis**,
+  **soccer**, **baseball**); the app shows one at a time via the (scrollable)
+  sport toggle. Indoor coverage comes from rec-center gyms (basketball broad;
+  volleyball/pickleball a handful of centers; ping pong ~10 and badminton at
+  Betty Ann Ong, scraped from the multipurpose-room / auditorium rows, not just
+  the gym). DataSF adds outdoor public courts & fields (see below): basketball
+  ~75 parks, tennis ~65, pickleball ~13, volleyball 4, soccer ~23 (incl.
+  multi-use turf), baseball ~39 diamonds, plus 12 outdoor **fitness courts**
+  that join the weight-room view. Sports with both settings get an
+  Indoor/Outdoor sub-filter; tennis, soccer, and baseball are outdoor-only.
 - `indoor` — `true` for gyms, `false` for outdoor courts; surfaced as an
   Indoor/Outdoor badge and in the header count.
 - `scheduleSource` — `"live"` (scraped this run) · `"cache"` (last-good) ·
@@ -224,10 +229,17 @@ by `id`, so `npm run build:courts` never touches them. Two flavors:
 - **Classes & activities** (non-court programs) for the **Classes tab** come from
   `scripts/build-classes.js`, which scrapes SF Rec & Park's **ActiveNet** catalog
   (`anc.apm.activecommunities.com/sfrecpark`). It does the ActiveNet CSRF + session
-  handshake, pages the activity-search API per category, and re-buckets every item by
-  keyword into **six** app categories (fitness, dance, music, arts/crafts, photography,
-  social games), writing `data/classes.js` — each class
+  handshake, pages the activity-search API **one category id at a time** (ActiveNet's
+  multi-id search silently drops categories) across the full catalog (33 source
+  categories), and re-buckets every item by keyword into **ten** app categories
+  (fitness, dance, music, arts & crafts, photography, social & games, aquatics,
+  sports & rec, camps, youth & after school), writing `data/classes.js` — each class
   `{ name, category, location, when, dropIn, cost, ages, url, name_zh?, name_es? }`.
+  Drop-in series published as one row per date are collapsed into a single card
+  spanning the term (keyed by the latest instance id, so delist-hiding doesn't eat
+  live series); drop-ins for sports the map already tracks are skipped as
+  duplicates; and classes whose list fee is the "View Fee Details" placeholder get
+  real prices (or "$lo–$hi" ranges) from the detail-page price-estimate endpoint.
   `npm run build:classes`, same last-good cache + gate resilience (`scripts/classes-cache.json`).
   Class **titles are scraped English**, so the build optionally pre-translates each
   distinct title to zh/es via the Anthropic API (Claude Haiku) when `ANTHROPIC_API_KEY`
@@ -531,8 +543,8 @@ read state + hidden threads are tracked locally (`AsyncStorage`). Code lives in
 ## Recommended for you
 
 The top of the **Social** tab shows an auto-revolving card of suggestions tailored
-to your **interests** — your **favorite sports** and **class categories** (fitness,
-dance, music, arts, photography, social), both set on your profile. It mixes
+to your **interests** — your **favorite sports** and **class categories** (any of
+the Classes tab's ten), both set on your profile. It mixes
 **open-gym games** happening today for your sports (“Play basketball at Palega ·
 2:00 PM” — tap to open that court **on the matching sport**) with **rec-center
 classes that have openings** in your categories (“Zumba at Sunset Rec · Openings” —

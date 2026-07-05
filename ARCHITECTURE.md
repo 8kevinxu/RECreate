@@ -89,9 +89,11 @@ injection surface.
 
 ### Sports vs. facility views
 `lib/sports.js` defines the **playable** sports (`SPORTS`: basketball, volleyball,
-ping pong, pickleball, tennis) that you can plan runs / post signals / favorite.
+ping pong, badminton, pickleball, tennis, soccer, baseball) that you can plan runs
+/ post signals / favorite.
 It also exports `WEIGHT_ROOM` and `MAP_SPORTS` (`SPORTS` + weight room): the
-rec-center **weight room** is a *facility view*, scraped into `dropins.weightroom`
+**weight room** is a *facility view* — rec-center weight rooms plus DataSF outdoor
+fitness courts — scraped into `dropins.weightroom`
 like a sport and selectable in the map's sport speed-dial, but kept out of
 `SPORTS` so it never leaks into runs/signals/favorites (`isPlayableSport()` guards
 the hand-off to social features). The speed-dial's ⭐ **Favorites** entry is a
@@ -186,10 +188,10 @@ The `data/*.js` datasets are **generated — never hand-edited**. Each
 | Dataset | Source | Notes |
 |---|---|---|
 | `courts.js` | sfrecpark.org gym schedules + DataSF coords | indoor rec centers; also weight-room drop-in hours |
-| `outdoor-courts.js` | DataSF | outdoor basketball/tennis/pickleball |
+| `outdoor-courts.js` | DataSF | outdoor courts & fields (basketball/volleyball/tennis/pickleball/soccer/baseball) + fitness courts; greater-SF bounds only (Camp Mather excluded) |
 | `reservations.js` | rec.us API | tennis/pickleball booked% per court+slot |
 | `court-directory.js` | sfrecpark directories | facility facts |
-| `classes.js` | ActiveNet | class catalog; titles pre-translated to zh/es |
+| `classes.js` | ActiveNet | full catalog (33 source categories → 10 app categories, one id per query — multi-id search drops categories); real prices via the detail price-estimate endpoint; titles pre-translated to zh/es |
 | `pools.js` | seasonal PDFs (pdfjs-dist) | weekly swim grids reconstructed geometrically |
 
 **Resilience pattern** (shared by every script): each source falls back
