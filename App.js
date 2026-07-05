@@ -796,45 +796,61 @@ export default function App() {
         )}
 
         {sportPickerOpen && (
-          <View style={[styles.sportDial, { top: insets.top + 8 + 52 }]}>
+          <View style={[styles.sportPanel, { top: insets.top + 8 + 52 }]}>
+            <Text style={styles.sportPanelTitle}>{t('sport.choose')}</Text>
+            {/* All sports in a 3-wide grid: one contained surface instead of a tall
+                single-file column, so it stays compact as sports are added. The
+                active sport (or Favorites) is highlighted rather than hidden, so the
+                grid keeps a stable layout and shows the current selection. */}
+            <View style={styles.sportGrid}>
+              {MAP_SPORTS.map((s) => {
+                const active = !favoritesMode && s.id === sport;
+                return (
+                  <Pressable
+                    key={s.id}
+                    style={[styles.sportCell, active && styles.sportCellActive]}
+                    accessibilityRole="button"
+                    accessibilityState={{ selected: active }}
+                    accessibilityLabel={sportLabel(t, s.id)}
+                    onPress={() => {
+                      setSport(s.id);
+                      setFavoritesMode(false); // leave the Favorites view
+                      setPlaceFilter('all'); // reset indoor/outdoor sub-filter
+                      setAmenities([]); // reset amenity filters
+                      setSportPickerOpen(false);
+                    }}
+                  >
+                    <View style={styles.sportCellGlyph}>
+                      <SportGlyph id={s.id} size={26} />
+                    </View>
+                    <Text
+                      style={[styles.sportCellLabel, active && styles.sportCellLabelActive]}
+                      numberOfLines={1}
+                    >
+                      {sportLabel(t, s.id)}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            </View>
             {/* ⭐ Favorites: a personal map of just your starred courts, open in any
-                sport. Hidden while already in the Favorites view. */}
-            {!favoritesMode && (
-              <Pressable
-                style={styles.sportDialItem}
-                onPress={() => {
-                  setFavoritesMode(true);
-                  setSportPickerOpen(false);
-                }}
-              >
-                <View style={styles.sportDialLabel}>
-                  <Text style={styles.sportDialLabelText}>{t('sport.favorites')}</Text>
-                </View>
-                <View style={styles.fab}>
-                  <Text style={styles.filterFabSport}>⭐</Text>
-                </View>
-              </Pressable>
-            )}
-            {MAP_SPORTS.filter((s) => favoritesMode || s.id !== sport).map((s) => (
-              <Pressable
-                key={s.id}
-                style={styles.sportDialItem}
-                onPress={() => {
-                  setSport(s.id);
-                  setFavoritesMode(false); // leave the Favorites view
-                  setPlaceFilter('all'); // reset indoor/outdoor sub-filter
-                  setAmenities([]); // reset amenity filters
-                  setSportPickerOpen(false);
-                }}
-              >
-                <View style={styles.sportDialLabel}>
-                  <Text style={styles.sportDialLabelText}>{sportLabel(t, s.id)}</Text>
-                </View>
-                <View style={styles.fab}>
-                  <SportGlyph id={s.id} size={24} style={styles.filterFabSport} />
-                </View>
-              </Pressable>
-            ))}
+                sport. A full-width row below the grid, highlighted when active. */}
+            <View style={styles.sportDivider} />
+            <Pressable
+              style={[styles.sportFavRow, favoritesMode && styles.sportCellActive]}
+              accessibilityRole="button"
+              accessibilityState={{ selected: favoritesMode }}
+              accessibilityLabel={t('sport.favorites')}
+              onPress={() => {
+                setFavoritesMode(true);
+                setSportPickerOpen(false);
+              }}
+            >
+              <Text style={styles.sportFavStar}>⭐</Text>
+              <Text style={[styles.sportFavLabel, favoritesMode && styles.sportCellLabelActive]}>
+                {t('sport.favorites')}
+              </Text>
+            </Pressable>
           </View>
         )}
 
@@ -1883,19 +1899,54 @@ const styles = StyleSheet.create({
     marginTop: 6,
     alignSelf: 'flex-end',
   },
-  sportDial: { position: 'absolute', right: 14, zIndex: 26, alignItems: 'flex-end', gap: 8 },
-  sportDialItem: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  sportDialLabel: {
+  sportPanel: {
+    position: 'absolute',
+    right: 14,
+    width: 268,
+    zIndex: 26,
     backgroundColor: '#fff',
-    paddingHorizontal: 12,
-    paddingVertical: 7,
-    borderRadius: 999,
+    borderRadius: 16,
+    paddingHorizontal: 8,
+    paddingTop: 12,
+    paddingBottom: 8,
     shadowColor: '#000',
     shadowOpacity: 0.18,
-    shadowRadius: 4,
-    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 8,
   },
-  sportDialLabelText: { color: '#1f2a37', fontWeight: '700', fontSize: 13 },
+  sportPanelTitle: {
+    fontSize: 12,
+    fontWeight: '800',
+    color: '#8a99a8',
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+    marginBottom: 8,
+    marginLeft: 8,
+  },
+  sportGrid: { flexDirection: 'row', flexWrap: 'wrap' },
+  sportCell: {
+    width: '33.33%',
+    alignItems: 'center',
+    paddingVertical: 10,
+    borderRadius: 12,
+  },
+  sportCellActive: { backgroundColor: '#eaf2fb' },
+  sportCellGlyph: { height: 30, justifyContent: 'center', marginBottom: 5 },
+  sportCellLabel: { fontSize: 11, fontWeight: '700', color: '#3a4a5a' },
+  sportCellLabelActive: { color: '#2f74d6' },
+  sportDivider: { height: 1, backgroundColor: '#eef1f5', marginTop: 4, marginHorizontal: 8 },
+  sportFavRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+    marginTop: 4,
+    paddingVertical: 10,
+    borderRadius: 12,
+  },
+  sportFavStar: { fontSize: 20 },
+  sportFavLabel: { fontSize: 14, fontWeight: '800', color: '#3a4a5a' },
   placeRow: { flexDirection: 'row', gap: 6 },
   placeChip: {
     paddingHorizontal: 12,
