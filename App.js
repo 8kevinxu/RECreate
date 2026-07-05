@@ -164,6 +164,12 @@ const AMENITIES = [
     id: 'nets',
     test: (c, s) => /provided/i.test(c.directory?.[s]?.nets || ''),
   },
+  // Golf-course filters: only the curated golf entries carry `c.golf`, so these
+  // chips surface only in the ⛳ Golf view and hide everywhere else.
+  { id: 'nine', test: (c) => c.golf?.holes === 9 },
+  { id: 'eighteen', test: (c) => c.golf?.holes === 18 },
+  { id: 'beginner', test: (c) => c.golf?.beginner === true },
+  { id: 'range', test: (c) => c.golf?.range === true },
 ];
 
 // ISO timestamp → "today" / "yesterday" / "Jun 18, 2026".
@@ -1140,8 +1146,8 @@ export default function App() {
           <SocialScreen
             courtsById={courtsById}
             courts={courtData}
-            // The weight room isn't a playable sport — hand social features a real
-            // sport so a run/signal never defaults to "weightroom".
+            // Facility views (weight room, golf) aren't playable sports — hand
+            // social features a real sport so a run/signal never defaults to one.
             sport={isPlayableSport(sport) ? sport : DEFAULT_SPORT}
             userLocation={userLocation}
             interestSports={interestSports}
@@ -1511,6 +1517,47 @@ function CourtDetail({
             </View>
           )}
         </View>
+      )}
+
+      {/* Golf course: holes/par/yardage chips, curated green fees, and the
+          course's tee-time booking link (see data/manual-courts.js). */}
+      {court.golf && (
+        <>
+          <View style={styles.facRow}>
+            <View style={styles.facChip}>
+              <Text style={styles.facText}>
+                ⛳ {t('golf.holesPar', { holes: court.golf.holes, par: court.golf.par })}
+              </Text>
+            </View>
+            <View style={styles.facChip}>
+              <Text style={styles.facText}>{t('golf.yards', { yards: court.golf.yards })}</Text>
+            </View>
+            {court.golf.range && (
+              <View style={styles.facChip}>
+                <Text style={styles.facText}>{t('amenity.range')}</Text>
+              </View>
+            )}
+            {court.golf.beginner && (
+              <View style={styles.facChip}>
+                <Text style={styles.facText}>{t('amenity.beginner')}</Text>
+              </View>
+            )}
+          </View>
+          <View style={styles.golfFees}>
+            <Text style={styles.sectionLabel}>{t('golf.fees')}</Text>
+            {court.golf.fees.map((f, i) => (
+              <Text key={i} style={styles.golfFeeLine}>
+                {f}
+              </Text>
+            ))}
+          </View>
+          <Pressable
+            style={styles.bookBtn}
+            onPress={() => Linking.openURL(court.golf.bookUrl)}
+          >
+            <Text style={styles.bookBtnText}>{t('golf.book')}</Text>
+          </Pressable>
+        </>
       )}
 
       {/* SF Rec & Park publishes lights for tennis/pickleball courts but not basketball,
@@ -2189,6 +2236,8 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   bookBtnText: { color: '#fff', fontWeight: '800', fontSize: 14 },
+  golfFees: { marginBottom: 8 },
+  golfFeeLine: { fontSize: 12, color: '#5b6b7b', lineHeight: 18 },
   bookHelpToggle: { fontSize: 12, color: '#2f74d6', fontWeight: '700', marginBottom: 6 },
   bookHelpBody: { marginBottom: 10 },
   bookHelpText: { fontSize: 12, color: '#5b6b7b', lineHeight: 17 },

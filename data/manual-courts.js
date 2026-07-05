@@ -10,9 +10,173 @@
 //
 // Same schema as data/courts.js. Times are minutes-from-midnight; arrays are
 // indexed 0=Sun..6=Sat. `schedule[i]` = facility hours [openMin,closeMin] or null;
-// `basketball[i]` = drop-in open-gym basketball blocks [[startMin,endMin], ...].
+// dropins[sport][i] = drop-in blocks [[startMin,endMin], ...].
 // Optional `disclaimer` overrides the default "verify on sfrecpark.org" footnote.
 
-export const MANUAL_COURTS = [];
+// ---------------------------------------------------------------------------
+// Golf — the 6 SFRPD courses (⛳ facility view; see lib/sports.js GOLF).
+//
+// Courses have no drop-in schedule, so each is modeled as playable over an
+// approximate daylight window every day (first tee ~6:30 AM, last light ~8 PM);
+// the card's disclaimer says so. The `golf` block is what the court card
+// renders: holes/par/yards, curated green fees, and the tee-time booking link.
+// Facts curated from sfrecpark.org/1384/Rates-and-Tee-Times + each course's
+// site, July 2026 — fees change ~annually, bump by hand (like the pool FEES
+// tables). Coordinates from DataSF ib5c-xgwu (clubhouse locations).
+// ---------------------------------------------------------------------------
+
+// Daylight week: the same [start,end] block every day, as hours + dropin weeks.
+const DAYLIGHT = [390, 1200]; // ~6:30 AM – 8:00 PM
+const WEEK_HOURS = Array(7).fill(DAYLIGHT);
+const WEEK_BLOCKS = Array(7).fill([DAYLIGHT]);
+
+const GOLF_DISCLAIMER =
+  'Hours are approximate (roughly dawn to dusk); fees as of July 2026 — verify rates and book tee times with the course.';
+
+const golfCourse = (c) => ({
+  indoor: false,
+  schedule: WEEK_HOURS,
+  dropins: { golf: WEEK_BLOCKS },
+  scheduleSource: 'curated',
+  source: 'sfrecpark-golf',
+  disclaimer: GOLF_DISCLAIMER,
+  ...c,
+});
+
+export const MANUAL_COURTS = [
+  golfCourse({
+    id: 'tpc-harding-park-golf',
+    name: 'TPC Harding Park',
+    address: '99 Harding Rd',
+    neighborhood: 'Lake Merced',
+    lat: 37.722378,
+    lng: -122.490198,
+    notes:
+      'Championship 18 on Lake Merced — host of the 2020 PGA Championship. Toptracer driving range, putting and short-game areas, club rentals, restaurant.',
+    golf: {
+      holes: 18,
+      par: 72,
+      yards: '7,169',
+      range: true,
+      beginner: false,
+      fees: [
+        'Dynamic pricing — SF Resident Card holders are guaranteed the lowest rate',
+        'Driving range: $5–$22.50 ball buckets (Toptracer)',
+      ],
+      bookUrl: 'https://tpc.com/hardingpark/golf/book-a-tee-time/',
+    },
+  }),
+  golfCourse({
+    id: 'fleming-9-golf',
+    name: 'Fleming 9 (TPC Harding Park)',
+    address: '99 Harding Rd',
+    neighborhood: 'Lake Merced',
+    lat: 37.724703,
+    lng: -122.488408,
+    notes:
+      'Short 9 tucked inside TPC Harding Park — six par-3s and three par-4s, a relaxed place to learn or squeeze in a quick loop. Shares Harding’s Toptracer range.',
+    golf: {
+      holes: 9,
+      par: 30,
+      yards: '2,165',
+      range: true,
+      beginner: true,
+      fees: [
+        'Standard $33 wkdy · $38 wknd',
+        'SF resident $28 · $30',
+        'Junior (resident) $14 · $17',
+      ],
+      bookUrl: 'https://tpc.com/hardingpark/golf/book-a-tee-time/',
+    },
+  }),
+  golfCourse({
+    id: 'lincoln-park-golf',
+    name: 'Lincoln Park Golf Course',
+    address: '300 34th Ave',
+    neighborhood: 'Outer Richmond',
+    lat: 37.782275,
+    lng: -122.49432,
+    notes:
+      'Historic city 18 above Lands End, with the famous Golden Gate Bridge view from the 17th. Practice putting green; club and cart rentals.',
+    golf: {
+      holes: 18,
+      par: 68,
+      yards: '5,416',
+      range: false,
+      beginner: false,
+      fees: [
+        'Standard $62 wkdy · $69 wknd',
+        'SF resident $48 · $54',
+        'Twilight from $44',
+      ],
+      bookUrl: 'https://lincolnpark.ezlinksgolf.com/index.html#/search',
+    },
+  }),
+  golfCourse({
+    id: 'golden-gate-park-golf',
+    name: 'Golden Gate Park Golf Course',
+    address: '970 47th Ave',
+    neighborhood: 'Outer Richmond',
+    lat: 37.769057,
+    lng: -122.506515,
+    notes:
+      'Renovated 9-hole par-3 near Ocean Beach — the friendliest place in town to pick up the game. Ball cage, club rentals, clubhouse café.',
+    golf: {
+      holes: 9,
+      par: 27,
+      yards: '1,357',
+      range: false,
+      beginner: true,
+      fees: [
+        'Standard $45 wkdy · $55 wknd',
+        'SF resident $28 · $30',
+        'Junior $16 · $19',
+      ],
+      bookUrl: 'https://www.goldengateparkgolf.com/',
+    },
+  }),
+  golfCourse({
+    id: 'gleneagles-golf',
+    name: 'Gleneagles Golf Course',
+    address: '2100 Sunnydale Ave',
+    neighborhood: 'McLaren Park',
+    lat: 37.716001,
+    lng: -122.424405,
+    notes:
+      'Challenging, hilly 9 in McLaren Park — play it twice for a full 18. Practice green and a well-loved clubhouse bar.',
+    golf: {
+      holes: 9,
+      par: 36,
+      yards: '3,260',
+      range: false,
+      beginner: false,
+      fees: ['Standard $40 wkdy · $44 wknd', 'SF resident $35 · $40', 'Junior $28'],
+      bookUrl: 'https://gleneagles-gc-mclaren-park.book.teeitup.com/',
+    },
+  }),
+  golfCourse({
+    id: 'sharp-park-golf',
+    name: 'Sharp Park Golf Course',
+    address: 'Sharp Park Rd & Hwy 1, Pacifica',
+    neighborhood: 'Pacifica',
+    lat: 37.624964,
+    lng: -122.488817,
+    notes:
+      'Alister MacKenzie’s seaside links just south of the city — SFRPD-owned though it sits in Pacifica. Driving range, practice green, restaurant.',
+    golf: {
+      holes: 18,
+      par: 72,
+      yards: '6,494',
+      range: true,
+      beginner: false,
+      fees: [
+        'Standard $78 wkdy · $86 wknd',
+        'SF resident $62 · $68',
+        'Twilight from $48',
+      ],
+      bookUrl: 'https://sharppark.ezlinksgolf.com/index.html#/search',
+    },
+  }),
+];
 
 export default MANUAL_COURTS;

@@ -91,13 +91,18 @@ injection surface.
 `lib/sports.js` defines the **playable** sports (`SPORTS`: basketball, volleyball,
 ping pong, badminton, pickleball, tennis, soccer, baseball) that you can plan runs
 / post signals / favorite.
-It also exports `WEIGHT_ROOM` and `MAP_SPORTS` (`SPORTS` + weight room): the
-**weight room** is a *facility view* — rec-center weight rooms plus DataSF outdoor
-fitness courts — scraped into `dropins.weightroom`
-like a sport and selectable in the map's sport speed-dial, but kept out of
-`SPORTS` so it never leaks into runs/signals/favorites (`isPlayableSport()` guards
-the hand-off to social features). The speed-dial's ⭐ **Favorites** entry is a
-similar non-sport map view.
+It also exports `WEIGHT_ROOM`, `GOLF`, and `MAP_SPORTS` (`SPORTS` + both): each is
+a *facility view* — the **weight room** spans rec-center weight rooms plus DataSF
+outdoor fitness courts, scraped into `dropins.weightroom` like a sport; **golf** is
+the 6 SFRPD courses, hand-curated in `data/manual-courts.js` with daylight-hours
+`dropins.golf` weeks plus a `golf` block (holes/par/yardage, green fees, tee-time
+booking link) the court card renders, and golf-only filter chips (9/18 holes,
+beginner-friendly, driving range) that surface via the generic amenity-chip
+machinery. Both are selectable in the map's sport picker but kept out of
+`SPORTS` so they never leak into runs/signals/favorites (`isPlayableSport()` guards
+the hand-off to social features), though both are in `PLAN_SPORTS` so the social
+composers can plan a lifting session or a round. The picker's ⭐ **Favorites**
+entry is a similar non-sport map view.
 
 The map's filtering is fully generic over `dropins[sport]`: `offersSport`,
 open-now status (`lib/hours.js`), and the `CourtDetail` card all key off the

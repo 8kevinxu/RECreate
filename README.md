@@ -8,7 +8,9 @@ recreation** across five tabs:
 - **🏀 Map** — every rec-center gym, outdoor court, and field, across **8 sports**
   (basketball, volleyball, ping pong, badminton, pickleball, tennis, soccer,
   baseball) plus a **weight room** view (rec-center weight rooms + outdoor fitness
-  courts), with weekly **open-gym schedules**, **"open now"** filtering, live
+  courts) and a **⛳ golf** view (all 6 SFRPD courses with holes/par/yardage, green
+  fees, 9/18-hole & beginner filters, and tee-time booking links), with weekly
+  **open-gym schedules**, **"open now"** filtering, live
   **crowd check-ins**, and tennis/
   pickleball **reservation occupancy** ("% booked right now"). Each sport has its own
   glyph (down to a drawn perforated pickleball). To keep dense areas legible, nearby
@@ -172,7 +174,9 @@ courts into whatever the SF pipeline produced (bundled, cached, or remote), dedu
 by `id`, so `npm run build:courts` never touches them. Two flavors:
 
 - **Fully static** courts (no upstream schedule to refresh) are hand-authored in
-  **`data/manual-courts.js`**.
+  **`data/manual-courts.js`** — today that's the **6 SFRPD golf courses** (⛳ map
+  view), each with a curated `golf` block: holes/par/yardage, green fees (as of
+  July 2026 — bump ~annually like the pool fee tables), and tee-time booking link.
 - **Refreshable** courts get their own build script + generated file. The **San
   Bruno Recreation & Aquatic Center** is the first: `scripts/build-sanbruno-court.js`
   pulls the city's public *Gymnasium Schedule* Google Sheet (CSV export), parses the
