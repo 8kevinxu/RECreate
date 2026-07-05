@@ -52,18 +52,21 @@ export const MANUAL_COURTS = [
     lat: 37.722378,
     lng: -122.490198,
     notes:
-      'Championship 18 on Lake Merced — host of the 2020 PGA Championship. Toptracer driving range, putting and short-game areas, club rentals, restaurant.',
+      'Toptracer driving range, putting and short-game areas, club rentals, restaurant.',
     golf: {
       holes: 18,
       par: 72,
       yards: '7,169',
       range: true,
       beginner: false,
+      desc:
+        'Built in 1925 among towering Monterey cypress on the shore of Lake Merced and restored into SF’s championship flagship — host of the 2009 Presidents Cup and the 2020 PGA Championship.',
       fees: [
         'Dynamic pricing — SF Resident Card holders are guaranteed the lowest rate',
         'Driving range: $5–$22.50 ball buckets (Toptracer)',
       ],
-      bookUrl: 'https://tpc.com/hardingpark/golf/book-a-tee-time/',
+      bookUrl: 'https://hardingpark.ezlinksgolf.com/index.html#!/search',
+      website: 'https://tpc.com/hardingpark/',
     },
   }),
   golfCourse({
@@ -73,20 +76,22 @@ export const MANUAL_COURTS = [
     neighborhood: 'Lake Merced',
     lat: 37.724703,
     lng: -122.488408,
-    notes:
-      'Short 9 tucked inside TPC Harding Park — six par-3s and three par-4s, a relaxed place to learn or squeeze in a quick loop. Shares Harding’s Toptracer range.',
+    notes: 'Shares Harding Park’s Toptracer driving range and clubhouse.',
     golf: {
       holes: 9,
       par: 30,
       yards: '2,165',
       range: true,
       beginner: true,
+      desc:
+        'A Jack Fleming short course (1961) tucked inside Harding Park under the same cypress canopy — six par-3s and three par-4s, perfect for beginners, juniors, and a quick evening loop.',
       fees: [
         'Standard $33 wkdy · $38 wknd',
         'SF resident $28 · $30',
         'Junior (resident) $14 · $17',
       ],
-      bookUrl: 'https://tpc.com/hardingpark/golf/book-a-tee-time/',
+      bookUrl: 'https://hardingpark.ezlinksgolf.com/index.html#!/search',
+      website: 'https://tpc.com/hardingpark/',
     },
   }),
   golfCourse({
@@ -96,20 +101,22 @@ export const MANUAL_COURTS = [
     neighborhood: 'Outer Richmond',
     lat: 37.782275,
     lng: -122.49432,
-    notes:
-      'Historic city 18 above Lands End, with the famous Golden Gate Bridge view from the 17th. Practice putting green; club and cart rentals.',
+    notes: 'Practice putting green; club and cart rentals (cart-path-only course).',
     golf: {
       holes: 18,
       par: 68,
       yards: '5,416',
       range: false,
       beginner: false,
+      desc:
+        'Golf has been played on these Lands End headlands since 1902, making Lincoln one of the West’s oldest municipal courses — short, hilly, and capped by the par-3 17th with its postcard Golden Gate Bridge view.',
       fees: [
         'Standard $62 wkdy · $69 wknd',
         'SF resident $48 · $54',
         'Twilight from $44',
       ],
       bookUrl: 'https://lincolnpark.ezlinksgolf.com/index.html#/search',
+      website: 'http://www.lincolnparkgolfcourse.com/',
     },
   }),
   golfCourse({
@@ -119,20 +126,22 @@ export const MANUAL_COURTS = [
     neighborhood: 'Outer Richmond',
     lat: 37.769057,
     lng: -122.506515,
-    notes:
-      'Renovated 9-hole par-3 near Ocean Beach — the friendliest place in town to pick up the game. Ball cage, club rentals, clubhouse café.',
+    notes: 'Ball cage, club rentals, clubhouse café.',
     golf: {
       holes: 9,
       par: 27,
       yards: '1,357',
       range: false,
       beginner: true,
+      desc:
+        'A 1951 pitch-and-putt par-3 in the dunes at the park’s ocean end, freshly renovated in 2023 — the friendliest (and cheapest) place in town to pick up the game, with a full loop taking about an hour.',
       fees: [
         'Standard $45 wkdy · $55 wknd',
         'SF resident $28 · $30',
         'Junior $16 · $19',
       ],
-      bookUrl: 'https://www.goldengateparkgolf.com/',
+      bookUrl: 'https://www.goldengateparkgolf.com/tee-times/',
+      website: 'https://www.goldengateparkgolf.com/',
     },
   }),
   golfCourse({
@@ -142,16 +151,18 @@ export const MANUAL_COURTS = [
     neighborhood: 'McLaren Park',
     lat: 37.716001,
     lng: -122.424405,
-    notes:
-      'Challenging, hilly 9 in McLaren Park — play it twice for a full 18. Practice green and a well-loved clubhouse bar.',
+    notes: 'Practice green and a well-loved clubhouse bar.',
     golf: {
       holes: 9,
       par: 36,
       yards: '3,260',
       range: false,
       beginner: false,
+      desc:
+        'Jack Fleming’s famously demanding 9 (1962) on the windy slopes of McLaren Park — long par-4s, uneven lies, and a devoted local following; play it twice from different tees for a full 18.',
       fees: ['Standard $40 wkdy · $44 wknd', 'SF resident $35 · $40', 'Junior $28'],
       bookUrl: 'https://gleneagles-gc-mclaren-park.book.teeitup.com/',
+      website: 'https://www.gleneaglesgolfsf.com/',
     },
   }),
   golfCourse({
@@ -162,19 +173,22 @@ export const MANUAL_COURTS = [
     lat: 37.624964,
     lng: -122.488817,
     notes:
-      'Alister MacKenzie’s seaside links just south of the city — SFRPD-owned though it sits in Pacifica. Driving range, practice green, restaurant.',
+      'SFRPD-owned though it sits in Pacifica. Driving range, practice green, restaurant.',
     golf: {
       holes: 18,
       par: 72,
       yards: '6,494',
       range: true,
       beginner: false,
+      desc:
+        'A 1932 seaside links by Alister MacKenzie — architect of Augusta National and Cypress Point — running behind the sea wall in Pacifica; Golden Age design at a municipal price.',
       fees: [
         'Standard $78 wkdy · $86 wknd',
         'SF resident $62 · $68',
         'Twilight from $48',
       ],
       bookUrl: 'https://sharppark.ezlinksgolf.com/index.html#/search',
+      website: 'https://sharpparkgc.com/',
     },
   }),
 ];

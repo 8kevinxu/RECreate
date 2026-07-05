@@ -1543,6 +1543,7 @@ function CourtDetail({
               </View>
             )}
           </View>
+          {!!court.golf.desc && <Text style={styles.golfDesc}>{court.golf.desc}</Text>}
           <View style={styles.golfFees}>
             <Text style={styles.sectionLabel}>{t('golf.fees')}</Text>
             {court.golf.fees.map((f, i) => (
@@ -1557,6 +1558,14 @@ function CourtDetail({
           >
             <Text style={styles.bookBtnText}>{t('golf.book')}</Text>
           </Pressable>
+          {!!court.golf.website && (
+            <Pressable
+              style={styles.golfSiteBtn}
+              onPress={() => Linking.openURL(court.golf.website)}
+            >
+              <Text style={styles.golfSiteBtnText}>🌐 {t('golf.website')}</Text>
+            </Pressable>
+          )}
         </>
       )}
 
@@ -2238,6 +2247,16 @@ const styles = StyleSheet.create({
   bookBtnText: { color: '#fff', fontWeight: '800', fontSize: 14 },
   golfFees: { marginBottom: 8 },
   golfFeeLine: { fontSize: 12, color: '#5b6b7b', lineHeight: 18 },
+  golfDesc: { fontSize: 12.5, color: '#46586a', lineHeight: 18, marginBottom: 10 },
+  golfSiteBtn: {
+    borderWidth: 1,
+    borderColor: '#d7dde3',
+    borderRadius: 10,
+    paddingVertical: 10,
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  golfSiteBtnText: { color: '#2f74d6', fontWeight: '800', fontSize: 13 },
   bookHelpToggle: { fontSize: 12, color: '#2f74d6', fontWeight: '700', marginBottom: 6 },
   bookHelpBody: { marginBottom: 10 },
   bookHelpText: { fontSize: 12, color: '#5b6b7b', lineHeight: 17 },

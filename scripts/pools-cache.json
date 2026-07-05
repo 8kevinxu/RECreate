@@ -1126,7 +1126,7 @@
       "lng": -122.412437,
       "phone": null,
       "season": "Jun 6 – Aug 10",
-      "note": "Two pools: a warm pool and a cool pool. Schedules below are combined.",
+      "note": "Two pools under one roof: a warm pool and a cool pool.",
       "programs": [
         "lap",
         "family",
@@ -1154,265 +1154,364 @@
           {
             "kind": "lap",
             "start": 420,
-            "end": 480
+            "end": 480,
+            "pool": "cool"
           },
           {
             "kind": "senior",
             "start": 420,
-            "end": 480
+            "end": 480,
+            "pool": "warm"
           },
           {
             "kind": "lessons",
             "start": 510,
-            "end": 585
+            "end": 585,
+            "pool": "cool"
+          },
+          {
+            "kind": "lessons",
+            "start": 510,
+            "end": 585,
+            "pool": "warm"
           },
           {
             "kind": "family",
             "start": 615,
-            "end": 705
+            "end": 705,
+            "pool": "warm"
           },
           {
             "kind": "lap",
             "start": 615,
-            "end": 780
+            "end": 780,
+            "pool": "cool"
           },
           {
             "kind": "senior",
             "start": 720,
-            "end": 780
+            "end": 780,
+            "pool": "warm"
           },
           {
             "kind": "family",
             "start": 810,
-            "end": 930
+            "end": 930,
+            "pool": "warm"
           },
           {
             "kind": "lap",
             "start": 810,
-            "end": 945
+            "end": 945,
+            "pool": "cool"
           },
           {
             "kind": "lessons",
             "start": 960,
-            "end": 1035
+            "end": 1035,
+            "pool": "cool"
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1035,
+            "pool": "warm"
           },
           {
             "kind": "lap",
             "start": 1050,
-            "end": 1110
+            "end": 1110,
+            "pool": "cool"
           },
           {
             "kind": "senior",
             "start": 1050,
-            "end": 1110
+            "end": 1110,
+            "pool": "warm"
           }
         ],
         [
           {
             "kind": "lessons",
             "start": 510,
-            "end": 585
+            "end": 585,
+            "pool": "cool"
+          },
+          {
+            "kind": "lessons",
+            "start": 510,
+            "end": 585,
+            "pool": "warm"
           },
           {
             "kind": "lap",
             "start": 615,
-            "end": 750
+            "end": 750,
+            "pool": "cool"
           },
           {
             "kind": "exercise",
             "start": 690,
-            "end": 750
+            "end": 750,
+            "pool": "warm"
           },
           {
             "kind": "senior",
             "start": 690,
-            "end": 750
+            "end": 750,
+            "pool": "warm"
           },
           {
             "kind": "family",
             "start": 780,
-            "end": 930
+            "end": 930,
+            "pool": "warm"
           },
           {
             "kind": "lap",
             "start": 780,
-            "end": 945
+            "end": 945,
+            "pool": "cool"
           },
           {
             "kind": "lessons",
             "start": 960,
-            "end": 1035
+            "end": 1035,
+            "pool": "cool"
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1035,
+            "pool": "warm"
           },
           {
             "kind": "lap",
             "start": 1050,
-            "end": 1140
+            "end": 1140,
+            "pool": "cool"
           }
         ],
         [
           {
             "kind": "lap",
             "start": 420,
-            "end": 480
+            "end": 480,
+            "pool": "cool"
           },
           {
             "kind": "senior",
             "start": 420,
-            "end": 480
+            "end": 480,
+            "pool": "warm"
           },
           {
             "kind": "lessons",
             "start": 510,
-            "end": 585
+            "end": 585,
+            "pool": "cool"
+          },
+          {
+            "kind": "lessons",
+            "start": 510,
+            "end": 585,
+            "pool": "warm"
           },
           {
             "kind": "lap",
             "start": 615,
-            "end": 780
+            "end": 780,
+            "pool": "cool"
           },
           {
             "kind": "family",
             "start": 630,
-            "end": 705
+            "end": 705,
+            "pool": "warm"
           },
           {
             "kind": "senior",
             "start": 720,
-            "end": 780
+            "end": 780,
+            "pool": "warm"
           },
           {
             "kind": "family",
             "start": 810,
-            "end": 915
+            "end": 915,
+            "pool": "warm"
           },
           {
             "kind": "lap",
             "start": 810,
-            "end": 945
+            "end": 945,
+            "pool": "cool"
           },
           {
             "kind": "adult_lessons",
             "start": 920,
-            "end": 950
+            "end": 950,
+            "pool": "warm"
           },
           {
             "kind": "lessons",
             "start": 960,
-            "end": 1035
+            "end": 1035,
+            "pool": "cool"
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1035,
+            "pool": "warm"
           },
           {
             "kind": "exercise",
             "start": 1050,
-            "end": 1110
+            "end": 1110,
+            "pool": "warm"
           },
           {
             "kind": "lap",
             "start": 1050,
-            "end": 1110
+            "end": 1110,
+            "pool": "cool"
           }
         ],
         [
           {
             "kind": "lessons",
             "start": 510,
-            "end": 585
+            "end": 585,
+            "pool": "cool"
+          },
+          {
+            "kind": "lessons",
+            "start": 510,
+            "end": 585,
+            "pool": "warm"
           },
           {
             "kind": "lap",
             "start": 615,
-            "end": 750
+            "end": 750,
+            "pool": "cool"
           },
           {
             "kind": "exercise",
             "start": 690,
-            "end": 750
+            "end": 750,
+            "pool": "warm"
           },
           {
             "kind": "senior",
             "start": 690,
-            "end": 750
+            "end": 750,
+            "pool": "warm"
           },
           {
             "kind": "family",
             "start": 780,
-            "end": 930
+            "end": 930,
+            "pool": "warm"
           },
           {
             "kind": "lap",
             "start": 780,
-            "end": 945
+            "end": 945,
+            "pool": "cool"
           },
           {
             "kind": "lessons",
             "start": 960,
-            "end": 1035
+            "end": 1035,
+            "pool": "cool"
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1035,
+            "pool": "warm"
           },
           {
             "kind": "family",
             "start": 1050,
-            "end": 1140
+            "end": 1140,
+            "pool": "warm"
           },
           {
             "kind": "lap",
             "start": 1050,
-            "end": 1170
+            "end": 1170,
+            "pool": "cool"
           }
         ],
         [
           {
             "kind": "lessons",
             "start": 540,
-            "end": 570
+            "end": 570,
+            "pool": "warm"
           },
           {
             "kind": "parent_child",
             "start": 540,
-            "end": 600
+            "end": 600,
+            "pool": "cool"
           },
           {
             "kind": "parent_child",
             "start": 615,
-            "end": 675
+            "end": 675,
+            "pool": "cool"
           },
           {
             "kind": "lessons",
             "start": 630,
-            "end": 660
+            "end": 660,
+            "pool": "warm"
           },
           {
             "kind": "other",
             "start": 630,
-            "end": 660
+            "end": 660,
+            "pool": "warm"
           },
           {
             "kind": "family",
             "start": 720,
-            "end": 795
+            "end": 795,
+            "pool": "warm"
           },
           {
             "kind": "lap",
             "start": 720,
-            "end": 900
+            "end": 900,
+            "pool": "cool"
           },
           {
             "kind": "senior",
             "start": 825,
-            "end": 900
+            "end": 900,
+            "pool": "warm"
           },
           {
             "kind": "family",
             "start": 930,
-            "end": 1020
+            "end": 1020,
+            "pool": "warm"
           },
           {
             "kind": "lap",
             "start": 930,
-            "end": 990
+            "end": 990,
+            "pool": "cool"
           },
           {
             "kind": "adult_lessons",
             "start": 990,
-            "end": 1020
+            "end": 1020,
+            "pool": "cool"
           }
         ]
       ]
@@ -1942,5 +2041,5 @@
       "label": "Independence Day"
     }
   ],
-  "fetchedAt": "2026-07-04T09:08:27.530Z"
+  "fetchedAt": "2026-07-05T06:30:56.049Z"
 }

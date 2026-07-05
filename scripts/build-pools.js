@@ -46,7 +46,7 @@ const META = [
   { id: 'pool-hamilton', slug: 'Hamilton-Pool-215', name: 'Hamilton Pool', address: '1900 Geary Blvd, San Francisco, CA 94115', lat: 37.784566, lng: -122.435086, phone: null, season: 'Jun 9 – Aug 15' },
   { id: 'pool-mlk', slug: 'Martin-Luther-King-Jr-Pool-216', name: 'Martin Luther King Jr. Pool', address: '5701 3rd St, San Francisco, CA 94124', lat: 37.725545, lng: -122.393722, phone: '(415) 288-2807', season: 'Jun 9 – Aug 15' },
   { id: 'pool-mission', slug: 'Mission-Community-Pool-217', name: 'Mission Community Pool', address: '1 Linda St, San Francisco, CA 94110', lat: 37.759653, lng: -122.422606, phone: null, season: 'Jun 9 – Aug 15' },
-  { id: 'pool-northbeach', slug: 'North-Beach-Pool-218', name: 'North Beach Pool', address: '661 Lombard St, San Francisco, CA 94133', lat: 37.802705, lng: -122.412437, phone: null, season: 'Jun 6 – Aug 10', note: 'Two pools: a warm pool and a cool pool. Schedules below are combined.' },
+  { id: 'pool-northbeach', slug: 'North-Beach-Pool-218', name: 'North Beach Pool', address: '661 Lombard St, San Francisco, CA 94133', lat: 37.802705, lng: -122.412437, phone: null, season: 'Jun 6 – Aug 10', note: 'Two pools under one roof: a warm pool and a cool pool.' },
   { id: 'pool-rossi', slug: 'Rossi-Pool-219', name: 'Rossi Pool', address: '600 Arguello Blvd, San Francisco, CA 94118', lat: 37.779065, lng: -122.45828, phone: '(628) 652-7230', season: 'Jun 7 – Aug 13' },
   { id: 'pool-sava', slug: 'Sava-Pool-220', name: 'Sava Pool', address: '1149 Wawona St (19th Ave), San Francisco, CA 94116', lat: 37.737803, lng: -122.475897, phone: null, season: 'Jun 30 – Aug 15' },
 ];
@@ -250,16 +250,23 @@ async function pdfItems(url) {
 
 async function scrapePool(m) {
   const scheduleUrls = await discoverPdfs(m.slug);
+  // A facility with separate warm-pool and cool-pool PDFs (North Beach) gets each
+  // session tagged with which pool runs it, so the app can show the two schedules
+  // separately. Single-PDF pools stay untagged (no `pool` field).
+  const poolTag = (label) => (/warm/i.test(label) ? 'warm' : /cool/i.test(label) ? 'cool' : null);
+  const tags = new Set(scheduleUrls.map((d) => poolTag(d.label)).filter(Boolean));
+  const tagPdfs = tags.has('warm') && tags.has('cool');
   const week = [[], [], [], [], [], [], []];
   const seen = week.map(() => new Set());
   for (const d of scheduleUrls) {
+    const tag = tagPdfs ? poolTag(d.label) : null;
     const grid = parseGrid(await pdfItems(d.url)) || {};
     for (const dow of Object.keys(grid))
       for (const s of grid[dow]) {
-        const k = s.kind + s.start + s.end;
+        const k = (tag || '') + s.kind + s.start + s.end;
         if (!seen[dow].has(k)) {
           seen[dow].add(k);
-          week[dow].push(s);
+          week[dow].push(tag ? { ...s, pool: tag } : s);
         }
       }
   }
@@ -291,7 +298,9 @@ function render(pools) {
 // weekly schedule is parsed from its seasonal PDF (the authoritative source —
 // see scheduleUrls). sessions[dow] = array of { kind, start, end } where dow is
 // 0=Sun..6=Sat and start/end are minutes-from-midnight. kind is one of
-// POOL_SESSION_KINDS; the app renders a localized label per kind. Schedules are
+// POOL_SESSION_KINDS; the app renders a localized label per kind. A facility
+// with separate warm-/cool-pool PDFs (North Beach) also tags each session with
+// pool: "warm" | "cool" so the two schedules render separately. Schedules are
 // seasonal (see \`season\`) and the build refreshes them when SFRP posts new PDFs.
 
 export const POOL_SESSION_KINDS = ${JSON.stringify(KIND_ORDER)};

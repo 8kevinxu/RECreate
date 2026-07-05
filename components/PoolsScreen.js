@@ -39,6 +39,42 @@ const KIND_TONE = {
 };
 const tone = (k) => KIND_TONE[k] || KIND_TONE.other;
 const fmtMin = (m) => fmtClock(Math.floor(m / 60), m % 60);
+
+// Split a day's sessions by which pool runs them: North Beach has two pools
+// under one roof and its sessions carry pool: "warm" | "cool" (from the two
+// schedule PDFs), rendered as separate labeled groups. Single-pool facilities
+// have untagged sessions and yield one anonymous group (no header).
+const POOL_TAGS = ['warm', 'cool'];
+const groupByPool = (sessions) => {
+  if (!sessions.some((s) => s.pool)) return [[null, sessions]];
+  const groups = [];
+  const untagged = sessions.filter((s) => !s.pool);
+  if (untagged.length) groups.push([null, untagged]);
+  for (const p of POOL_TAGS) {
+    const g = sessions.filter((s) => s.pool === p);
+    if (g.length) groups.push([p, g]);
+  }
+  return groups;
+};
+
+// A day's session pills, grouped by warm/cool pool when tagged.
+function SessionPills({ sessions, t }) {
+  return groupByPool(sessions).map(([pool, group]) => (
+    <View key={pool || 'all'}>
+      {!!pool && <Text style={styles.poolTag}>{t('pool.' + pool + 'Pool')}</Text>}
+      <View style={styles.sessRow}>
+        {group.map((s, i) => (
+          <View key={i} style={[styles.sess, { backgroundColor: tone(s.kind).bg }]}>
+            <Text style={[styles.sessKind, { color: tone(s.kind).fg }]}>{t('pool.kind.' + s.kind)}</Text>
+            <Text style={[styles.sessTime, { color: tone(s.kind).fg }]}>
+              {fmtMin(s.start)}–{fmtMin(s.end)}
+            </Text>
+          </View>
+        ))}
+      </View>
+    </View>
+  ));
+}
 const todayStr = () => {
   const d = new Date();
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
@@ -117,6 +153,10 @@ export default function PoolsScreen({ userLocation }) {
 
   const distOf = (p) =>
     userLocation && p.lat != null ? haversineMiles(userLocation.lat, userLocation.lng, p.lat, p.lng) : null;
+
+  // Session-kind label for the status pills, naming the pool when tagged —
+  // "Lap swim (warm pool)" — so North Beach's two pools read unambiguously.
+  const kindWithPool = (s) => t('pool.kind.' + s.kind) + (s.pool ? ` (${t('pool.' + s.pool)})` : '');
 
   // Decorate each pool with today's sessions + open-now / next-up state.
   const list = useMemo(() => {
@@ -254,7 +294,7 @@ export default function PoolsScreen({ userLocation }) {
                     {isLive && <View style={styles.openDot} />}
                     <Text style={styles.openText}>
                       {t(isLive ? 'pool.openNow' : 'pool.openAt', {
-                        kind: t('pool.kind.' + p.openNow.kind),
+                        kind: kindWithPool(p.openNow),
                         end: fmtMin(p.openNow.end),
                       })}
                     </Text>
@@ -262,7 +302,7 @@ export default function PoolsScreen({ userLocation }) {
                 ) : p.next ? (
                   <View style={[styles.statusPill, styles.nextPill]}>
                     <Text style={styles.nextText}>
-                      {t('pool.next', { kind: t('pool.kind.' + p.next.kind), at: fmtMin(p.next.start) })}
+                      {t('pool.next', { kind: kindWithPool(p.next), at: fmtMin(p.next.start) })}
                     </Text>
                   </View>
                 ) : (
@@ -283,40 +323,21 @@ export default function PoolsScreen({ userLocation }) {
               {p.today.length > 0 && (
                 <>
                   <Text style={styles.dayLabel}>{dayChipLabel(effDate)}</Text>
-                  <View style={styles.sessRow}>
-                    {p.today.map((s, i) => (
-                      <View key={i} style={[styles.sess, { backgroundColor: tone(s.kind).bg }]}>
-                        <Text style={[styles.sessKind, { color: tone(s.kind).fg }]}>{t('pool.kind.' + s.kind)}</Text>
-                        <Text style={[styles.sessTime, { color: tone(s.kind).fg }]}>
-                          {fmtMin(s.start)}–{fmtMin(s.end)}
-                        </Text>
-                      </View>
-                    ))}
-                  </View>
+                  <SessionPills sessions={p.today} t={t} />
                 </>
               )}
 
               {/* Full week (expandable) */}
               {showWeek &&
-                p.sessions.map((day, i) =>
-                  day.length ? (
+                p.sessions.map((day, i) => {
+                  const sess = day.filter((s) => !kind || s.kind === kind);
+                  return sess.length ? (
                     <View key={i} style={styles.weekDay}>
                       <Text style={styles.weekDow}>{t(DOW_KEYS[i])}</Text>
-                      <View style={styles.sessRow}>
-                        {day
-                          .filter((s) => !kind || s.kind === kind)
-                          .map((s, j) => (
-                            <View key={j} style={[styles.sess, { backgroundColor: tone(s.kind).bg }]}>
-                              <Text style={[styles.sessKind, { color: tone(s.kind).fg }]}>{t('pool.kind.' + s.kind)}</Text>
-                              <Text style={[styles.sessTime, { color: tone(s.kind).fg }]}>
-                                {fmtMin(s.start)}–{fmtMin(s.end)}
-                              </Text>
-                            </View>
-                          ))}
-                      </View>
+                      <SessionPills sessions={sess} t={t} />
                     </View>
-                  ) : null
-                )}
+                  ) : null;
+                })}
 
               {!!p.note && <Text style={styles.note}>{p.note}</Text>}
 
@@ -473,6 +494,7 @@ const styles = StyleSheet.create({
   season: { marginLeft: 'auto', fontSize: 11, color: '#9aa7b4', fontWeight: '600' },
 
   dayLabel: { fontSize: 11, fontWeight: '800', color: '#8a99a8', textTransform: 'uppercase', letterSpacing: 0.5, marginTop: 12, marginBottom: 6 },
+  poolTag: { fontSize: 11, fontWeight: '800', color: '#46586a', marginTop: 6, marginBottom: 4 },
   sessRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6 },
   sess: { borderRadius: 8, paddingHorizontal: 8, paddingVertical: 5 },
   sessKind: { fontSize: 12, fontWeight: '800' },
