@@ -1,0 +1,30 @@
+name: CI
+
+# Thin sanity gate (scripts/check-app.js), not a test suite: every .js parses,
+# lib/i18n.js keeps en/zh/es at full key parity, and the generated data modules
+# load with non-trivial entry counts. Runs on the data-refresh crons' commits
+# too, so a scrape that slips past its own build gates still turns main red.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run check

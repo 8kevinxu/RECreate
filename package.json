@@ -40,7 +40,8 @@
     "build:classes": "node scripts/build-classes.js",
     "build:pools": "node scripts/build-pools.js",
     "build:data": "npm run build:courts && npm run build:sanbruno && npm run build:outdoor && npm run build:reservations && npm run build:directory && npm run build:classes && npm run build:pools",
-    "update:prod": "eas update --channel production"
+    "update:prod": "eas update --channel production",
+    "check": "node scripts/check-app.js"
   },
   "private": true,
   "engines": {
@@ -51,6 +52,7 @@
   },
   "devDependencies": {
     "cheerio": "^1.2.0",
+    "esbuild": "^0.28.1",
     "pdfjs-dist": "^4.10.38"
   }
 }

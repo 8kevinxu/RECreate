@@ -28,7 +28,7 @@ npm run build:pools        # swimming pools + schedules parsed from seasonal PDF
 
 `build:classes` and `build:pools` need network access; `build:classes` optionally calls the Anthropic API (Claude Haiku) to translate new class titles to zh/es when `ANTHROPIC_API_KEY` is set, caching results in `scripts/classes-i18n-cache.json` (degrades gracefully to English without a key).
 
-There is **no test suite, linter, or typechecker** configured — this is a plain JS (not TS) Expo app. "Verifying" a change means running the app (`npx expo start`).
+There is **no test suite, linter, or typechecker** configured — this is a plain JS (not TS) Expo app. "Verifying" a change means running the app (`npx expo start`). There *is* a thin CI sanity gate: `npm run check` (`scripts/check-app.js`, run by `.github/workflows/ci.yml` on every push/PR) — every `.js` parses (esbuild/jsx), `lib/i18n.js` keeps en/zh/es at full key parity, and the generated `data/` modules load with non-trivial entry counts. Run it before committing; keep its data floors loose (they exist to catch gutted scrapes, not seasonal shrink).
 
 ## Architecture
 
