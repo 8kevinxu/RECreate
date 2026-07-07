@@ -918,5 +918,37 @@
   "Drop In Ping Pong": {
     "zh": "乒乓球随到随玩",
     "es": "Ping Pong - Acceso Libre"
+  },
+  "Woodworking I: Shaker Bench": {
+    "zh": "木工工坊I：夏克风格长凳",
+    "es": "Carpintería I: Banco Shaker"
+  },
+  "Woodworking I: Shaker Table": {
+    "zh": "木工工坊I：夏克风格桌子",
+    "es": "Carpintería I: Mesa Shaker"
+  },
+  "Woodworking in Small Spaces: Hand Tools": {
+    "zh": "小空间木工：手工工具",
+    "es": "Carpintería en Espacios Pequeños: Herramientas Manuales"
+  },
+  "Woodworking: Intro to Turning!": {
+    "zh": "木工工坊：车床入门",
+    "es": "Carpintería: Introducción al Torneado"
+  },
+  "Woodworking: Open Shop": {
+    "zh": "木工工坊：开放车间",
+    "es": "Carpintería: Taller Abierto"
+  },
+  "Life Drawing": {
+    "zh": "人体素描",
+    "es": "Dibujo de Modelo Vivo"
+  },
+  "Life Drawing: The Long Pose": {
+    "zh": "人体素描：长时间姿态",
+    "es": "Dibujo de Modelo Vivo: Poses Largas"
+  },
+  "Scanning and Digitizing your Negatives and Slides": {
+    "zh": "扫描和数字化底片和幻灯片",
+    "es": "Escaneo y Digitalización de Negativos y Diapositivas"
   }
 }
