@@ -25,6 +25,7 @@ noted).
 | **User Content → Other User Content** | Yes | Yes | No | App Functionality | Reviews, chats, signals, runs, check-ins ("Content you create") |
 | **Identifiers → User ID** | Yes | Yes | No | App Functionality | Supabase account id linking your content |
 | **Identifiers → Device ID** | Yes | Yes | No | App Functionality, Notifications | Expo push token ("Push token") |
+| **Diagnostics → Crash Data** | Yes | **No** | No | App Functionality | Sentry crash reports ("Crash data") — the one label item **not** linked to identity |
 
 ### Explicitly **Not Collected** (must be answered "No" / left off the label)
 
@@ -34,9 +35,13 @@ noted).
   add Location to the nutrition label — adding it would *contradict* the policy.
   (The `NSLocationWhenInUseUsageDescription` string is still required and present
   in `app.json`; that governs the runtime permission prompt, not the label.)
-- **Usage Data / Analytics / Diagnostics.** No analytics SDK is bundled in the
-  native app. (`@vercel/analytics` is **web-only** via `WebAnalytics.web.js` and
-  never enters the iOS bundle — see CLAUDE.md.) Answer **No**.
+- **Usage Data / Analytics.** No usage-analytics SDK is bundled in the native
+  app. (`@vercel/analytics` is **web-only** via `WebAnalytics.web.js` and never
+  enters the iOS bundle — see CLAUDE.md.) Answer **No**. Diagnostics → **Crash
+  Data is the exception** (Sentry, native-only via `lib/crash.js`, active when
+  `EXPO_PUBLIC_SENTRY_DSN` is set): answer **Yes**, not linked to identity —
+  `Sentry.init` sets `sendDefaultPii: false` and we never call `setUser`.
+  Performance Data / Other Diagnostics stay **No** (`tracesSampleRate: 0`).
 - **Purchases, Financial Info, Health, Browsing History, Search History,
   Sensitive Info, Contacts.** None collected → **No**.
 - **Safety data (blocks/reports)** and **on-device preferences (language,
@@ -46,9 +51,10 @@ noted).
 
 ## On-device privacy manifest (`app.json` → `ios.privacyManifests`)
 
-`NSPrivacyCollectedDataTypes` declares the same five types above
-(`EmailAddress`, `Name`, `UserID`, `OtherUserContent`, `DeviceID`), each
-`Linked = true`, `Tracking = false`, purpose `AppFunctionality`.
+`NSPrivacyCollectedDataTypes` declares the same six types above
+(`EmailAddress`, `Name`, `UserID`, `OtherUserContent`, `DeviceID` with
+`Linked = true`, plus `CrashData` with `Linked = false`), each
+`Tracking = false`, purpose `AppFunctionality`.
 `NSPrivacyTracking = false`. Location is intentionally omitted (on-device only).
 Required-reason API declarations (`NSPrivacyAccessedAPITypes` for UserDefaults,
 file timestamps, system boot time, disk space) are aggregated automatically by

@@ -6,6 +6,7 @@
     "@expo/metro-runtime": "~6.1.2",
     "@expo/vector-icons": "15.0.3",
     "@react-native-async-storage/async-storage": "2.2.0",
+    "@sentry/react-native": "~7.2.0",
     "@supabase/supabase-js": "^2.108.2",
     "@vercel/analytics": "^2.0.1",
     "expo": "^54.0.35",
@@ -16,6 +17,7 @@
     "expo-notifications": "~0.32.17",
     "expo-splash-screen": "~31.0.13",
     "expo-status-bar": "~3.0.9",
+    "expo-updates": "~29.0.18",
     "leaflet": "^1.9.4",
     "react": "19.1.0",
     "react-dom": "19.1.0",
@@ -37,7 +39,8 @@
     "build:directory": "node scripts/build-court-directory.js",
     "build:classes": "node scripts/build-classes.js",
     "build:pools": "node scripts/build-pools.js",
-    "build:data": "npm run build:courts && npm run build:sanbruno && npm run build:outdoor && npm run build:reservations && npm run build:directory && npm run build:classes && npm run build:pools"
+    "build:data": "npm run build:courts && npm run build:sanbruno && npm run build:outdoor && npm run build:reservations && npm run build:directory && npm run build:classes && npm run build:pools",
+    "update:prod": "eas update --channel production"
   },
   "private": true,
   "engines": {

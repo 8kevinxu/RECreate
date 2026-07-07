@@ -5,6 +5,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import App from './App';
 import { AuthProvider } from './lib/auth';
 import { I18nProvider } from './lib/i18n';
+import { withCrashReporting } from './lib/crash';
 import WebAnalytics from './components/WebAnalytics';
 
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);
@@ -26,4 +27,6 @@ function Root() {
   );
 }
 
-registerRootComponent(Root);
+// withCrashReporting wraps in Sentry's error boundary on native when
+// EXPO_PUBLIC_SENTRY_DSN is set; it's the identity function on web / unset.
+registerRootComponent(withCrashReporting(Root));
