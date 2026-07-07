@@ -41,9 +41,17 @@ create policy "users can create their own runs"
 create policy "host can update their run"
   on public.rec_runs for update using (host = auth.uid());
 
--- Participants: readable by all (rosters/counts); users manage only their own row.
-create policy "run participants are readable"
-  on public.rec_run_participants for select using (true);
+-- Participants: you always see your own rows (chat membership must survive
+-- friendship churn on friends-only runs), plus the roster of any run you can
+-- see (RLS on rec_runs applies inside the subquery, so friends-only rosters
+-- stay friends-only — same pattern as signal participants in 06_signals.sql).
+-- Users manage only their own row.
+create policy "see your own participation and rosters of visible runs"
+  on public.rec_run_participants for select
+  using (
+    user_id = auth.uid()
+    or exists (select 1 from public.rec_runs r where r.id = run_id)
+  );
 
 create policy "users can join as themselves"
   on public.rec_run_participants for insert with check (user_id = auth.uid());

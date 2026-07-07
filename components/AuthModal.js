@@ -40,14 +40,27 @@ export default function AuthModal({
   courtsById = {},
   initialMode = 'signin', // 'signin' | 'signup' — start the form on this tab
 }) {
-  const { user, displayName, profile, signIn, signUp, signOut, updateProfile } = useAuth();
+  const {
+    user,
+    displayName,
+    profile,
+    signIn,
+    signUp,
+    signOut,
+    updateProfile,
+    resetPassword,
+    verifyResetCode,
+    updatePassword,
+  } = useAuth();
   const { t } = useI18n();
   const insets = useSafeAreaInsets();
-  const [mode, setMode] = useState(initialMode); // 'signin' | 'signup'
+  const [mode, setMode] = useState(initialMode); // 'signin' | 'signup' | 'reset'
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
-  const [confirm, setConfirm] = useState(''); // confirm-password (signup)
+  const [confirm, setConfirm] = useState(''); // confirm-password (signup + reset)
+  const [resetStep, setResetStep] = useState('email'); // 'email' | 'code' (reset mode)
+  const [code, setCode] = useState(''); // 6-digit recovery code (reset mode)
   const [showPw, setShowPw] = useState(false); // reveal password fields
   const [agreed, setAgreed] = useState(false); // EULA/privacy acceptance (signup)
   const [busy, setBusy] = useState(false);
@@ -111,7 +124,10 @@ export default function AuthModal({
     reset();
     setPassword('');
     setConfirm('');
+    setCode('');
     setShowPw(false);
+    if (mode === 'reset') setMode('signin');
+    setResetStep('email');
     onClose();
   };
 
@@ -122,7 +138,7 @@ export default function AuthModal({
       setError(t('auth.errCreds'));
       return;
     }
-    if (mode === 'signup' && password.length < 6) {
+    if (mode === 'signup' && password.length < 8) {
       setError(t('auth.errPwLen'));
       return;
     }
@@ -153,6 +169,61 @@ export default function AuthModal({
       return;
     }
     close();
+  };
+
+  // Forgot password, step 1: email the user a 6-digit recovery code.
+  const sendResetCode = async () => {
+    reset();
+    const e = email.trim();
+    if (!e) {
+      setError(t('auth.errEmail'));
+      return;
+    }
+    setBusy(true);
+    const { error: err } = await resetPassword(e);
+    setBusy(false);
+    if (err) {
+      setError(err.message);
+      return;
+    }
+    setResetStep('code');
+    setInfo(t('auth.codeSent'));
+  };
+
+  // Forgot password, step 2: verify the code (starts a recovery session, i.e.
+  // signs the user in) and set the new password on it. If verification already
+  // succeeded on a prior attempt (`user` is set but updateUser failed — the code
+  // is single-use, so it can't be re-verified), skip straight to the update.
+  const submitReset = async () => {
+    reset();
+    if (!user && code.trim().length < 6) {
+      setError(t('auth.errCode'));
+      return;
+    }
+    if (password.length < 8) {
+      setError(t('auth.errPwLen'));
+      return;
+    }
+    if (password !== confirm) {
+      setError(t('auth.errPwMatch'));
+      return;
+    }
+    setBusy(true);
+    if (!user) {
+      const { error: vErr } = await verifyResetCode(email.trim(), code.trim());
+      if (vErr) {
+        setBusy(false);
+        setError(vErr.message);
+        return;
+      }
+    }
+    const { error: uErr } = await updatePassword(password);
+    setBusy(false);
+    if (uErr) {
+      setError(uErr.message);
+      return;
+    }
+    close(); // recovery session persists — the user is now signed in
   };
 
   const doSignOut = async () => {
@@ -271,7 +342,9 @@ export default function AuthModal({
           />
           <View style={styles.header}>
             <Text style={styles.title}>
-              {user
+              {mode === 'reset'
+                ? t('auth.resetTitle')
+                : user
                 ? t('auth.account')
                 : mode === 'signin'
                 ? t('auth.signIn')
@@ -288,7 +361,96 @@ export default function AuthModal({
             )}
           </View>
 
-          {user ? (
+          {mode === 'reset' ? (
+            <>
+              {resetStep === 'email' ? (
+                <>
+                  <Text style={styles.resetHint}>{t('auth.resetHint')}</Text>
+                  <TextInput
+                    style={styles.input}
+                    placeholder={t('auth.email')}
+                    placeholderTextColor="#9aa7b4"
+                    value={email}
+                    onChangeText={setEmail}
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    keyboardType="email-address"
+                    inputMode="email"
+                  />
+                </>
+              ) : (
+                <>
+                  <TextInput
+                    style={styles.input}
+                    placeholder={t('auth.codePh')}
+                    placeholderTextColor="#9aa7b4"
+                    value={code}
+                    onChangeText={(v) => setCode(v.replace(/[^0-9]/g, ''))}
+                    keyboardType="number-pad"
+                    maxLength={6}
+                    autoComplete="one-time-code"
+                    textContentType="oneTimeCode"
+                  />
+                  <TextInput
+                    style={styles.input}
+                    placeholder={t('auth.newPassword')}
+                    placeholderTextColor="#9aa7b4"
+                    value={password}
+                    onChangeText={setPassword}
+                    secureTextEntry={!showPw}
+                  />
+                  <TextInput
+                    style={styles.input}
+                    placeholder={t('auth.confirmPassword')}
+                    placeholderTextColor="#9aa7b4"
+                    value={confirm}
+                    onChangeText={setConfirm}
+                    secureTextEntry={!showPw}
+                  />
+                  <Pressable
+                    style={styles.showPwRow}
+                    onPress={() => setShowPw((v) => !v)}
+                    hitSlop={8}
+                  >
+                    <View style={[styles.checkbox, showPw && styles.checkboxOn]}>
+                      {showPw && <Text style={styles.checkboxTick}>✓</Text>}
+                    </View>
+                    <Text style={styles.showPwText}>{t('auth.showPassword')}</Text>
+                  </Pressable>
+                </>
+              )}
+
+              {!!error && <Text style={styles.error}>{error}</Text>}
+              {!!info && <Text style={styles.info}>{info}</Text>}
+
+              <Pressable
+                style={[styles.submit, busy && styles.submitDisabled]}
+                disabled={busy}
+                onPress={resetStep === 'email' ? sendResetCode : submitReset}
+              >
+                {busy ? (
+                  <ActivityIndicator color="#fff" />
+                ) : (
+                  <Text style={styles.submitText}>
+                    {resetStep === 'email' ? t('auth.sendCode') : t('auth.resetSubmit')}
+                  </Text>
+                )}
+              </Pressable>
+
+              <Pressable
+                onPress={() => {
+                  reset();
+                  setCode('');
+                  setPassword('');
+                  setConfirm('');
+                  setResetStep('email');
+                  setMode('signin');
+                }}
+              >
+                <Text style={styles.switch}>{t('auth.backToSignIn')}</Text>
+              </Pressable>
+            </>
+          ) : user ? (
             <ScrollView
               style={[styles.accountScroll, asPage && styles.pageScroll]}
               keyboardShouldPersistTaps="handled"
@@ -599,6 +761,21 @@ export default function AuthModal({
                   {mode === 'signin' ? t('auth.noAccount') : t('auth.haveAccount')}
                 </Text>
               </Pressable>
+
+              {mode === 'signin' && (
+                <Pressable
+                  onPress={() => {
+                    reset();
+                    setPassword('');
+                    setConfirm('');
+                    setCode('');
+                    setResetStep('email');
+                    setMode('reset');
+                  }}
+                >
+                  <Text style={styles.forgotLink}>{t('auth.forgotPw')}</Text>
+                </Pressable>
+              )}
             </>
           )}
     </>
@@ -695,6 +872,14 @@ const styles = StyleSheet.create({
     fontSize: 13,
     marginTop: 14,
   },
+  forgotLink: {
+    textAlign: 'center',
+    color: '#5b7a9a',
+    fontWeight: '700',
+    fontSize: 13,
+    marginTop: 12,
+  },
+  resetHint: { fontSize: 13, color: '#5b6b7b', lineHeight: 18, marginBottom: 10 },
 
   termsRow: { flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 4 },
   checkbox: {

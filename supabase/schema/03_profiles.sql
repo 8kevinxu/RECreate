@@ -20,9 +20,12 @@ create table if not exists public.profiles (
 
 alter table public.profiles enable row level security;
 
--- Profiles are public (names show up in social features); users edit only theirs.
-create policy "profiles are readable by everyone"
-  on public.profiles for select using (true);
+-- Profiles are readable by any signed-in user (names show up across the social
+-- features, and friend-code lookup must search all profiles) but not by anon —
+-- the anon key ships in the app bundle, so a world-readable policy would let
+-- anyone script-dump every user's age/bio/neighborhood. Users edit only theirs.
+create policy "profiles are readable by signed-in users"
+  on public.profiles for select to authenticated using (true);
 
 create policy "users can insert their own profile"
   on public.profiles for insert with check (auth.uid() = id);
@@ -121,9 +124,11 @@ create index if not exists player_check_ins_user_idx
 
 alter table public.player_check_ins enable row level security;
 
--- Public read (profiles are public); users write only their own rows.
-create policy "player check-ins are readable by everyone"
-  on public.player_check_ins for select using (true);
+-- Check-ins are a location history, so reads are private: your own rows here,
+-- plus accepted friends' rows via the augmenting policy in 05_friends.sql
+-- (multiple SELECT policies are OR'd). Users write only their own rows.
+create policy "users read their own check-ins"
+  on public.player_check_ins for select using (auth.uid() = user_id);
 
 create policy "users log their own check-ins"
   on public.player_check_ins for insert with check (auth.uid() = user_id);

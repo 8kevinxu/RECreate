@@ -63,6 +63,13 @@ new:
 | `010_rename_to_recreate.sql` | Rebrand: rename `hoop_*` tables → `rec_*` (+ recreate dependent functions) |
 | `011_lock_down_push_functions.sql` | SECURITY: revoke client EXECUTE on `send_push()` / `accepted_friend_ids()` |
 | `012_activity_notifications.sql` | `profiles.share_activity` + per-row `notify` flag; gate signal/run push + add check-in/crowd-vote push |
+| `013_push_per_token.sql` | `send_push()` sends one Expo request per token (mixed-project batches 400) |
+| `014_crowd_notify_cooldown.sql` | `crowd_notify_log`: rate-limit crowd-update push to 1 per voter+court per 10 min |
+| `015_signal_place_court.sql` | `rec_signals.place` + `pref_court_id` (optional location on a signal) |
+| `016_reviews_require_auth.sql` | SECURITY: posting a review requires a signed-in account |
+| `017_player_checkins_friends_only.sql` | PRIVACY: `player_check_ins` reads scoped to own + accepted friends (was world-readable) |
+| `018_profiles_require_auth.sql` | PRIVACY: `profiles` reads require a signed-in user (anon could dump age/bio/neighborhood) |
+| `019_run_participants_visibility.sql` | PRIVACY: `rec_run_participants` reads scoped to own rows + rosters of visible runs (was world-readable) |
 
 > Note: migrations 001–009 were authored before the RECreate rebrand and still
 > reference the old `hoop_*` table names. Apply them **in order** — `010` renames

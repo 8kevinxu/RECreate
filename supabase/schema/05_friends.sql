@@ -64,3 +64,21 @@ create policy "friends can see friends-only runs"
         )
     )
   );
+
+-- ---------------------------------------------------------------------------
+-- Let friends see each other's player check-ins for the activity feed
+-- (augments 03_profiles.sql, which covers reading your own). Check-ins are a
+-- location history, so they're never world-readable.
+-- ---------------------------------------------------------------------------
+create policy "friends can see friends' check-ins"
+  on public.player_check_ins for select
+  using (
+    exists (
+      select 1 from public.friendships f
+      where f.status = 'accepted'
+        and (
+          (f.requester = auth.uid() and f.addressee = player_check_ins.user_id)
+          or (f.addressee = auth.uid() and f.requester = player_check_ins.user_id)
+        )
+    )
+  );
