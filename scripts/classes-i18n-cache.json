@@ -950,5 +950,21 @@
   "Scanning and Digitizing your Negatives and Slides": {
     "zh": "扫描和数字化底片和幻灯片",
     "es": "Escaneo y Digitalización de Negativos y Diapositivas"
+  },
+  "Drop-in: Lap Swim": {
+    "zh": "随时参加：泳道游泳",
+    "es": "Abierto: Natación en Carril"
+  },
+  "Drop-in: Rec/Family Swim": {
+    "zh": "随时参加：休闲/家庭游泳",
+    "es": "Abierto: Natación Recreativa/Familiar"
+  },
+  "Drop-in: Senior/Therapy Swim": {
+    "zh": "随时参加：老年人/治疗游泳",
+    "es": "Abierto: Natación para Adultos Mayores/Terapéutica"
+  },
+  "Drop-in: Water Exercise": {
+    "zh": "随时参加：水上健身",
+    "es": "Abierto: Ejercicio Acuático"
   }
 }
