@@ -11,8 +11,8 @@ create table if not exists public.profiles (
   age             int         check (age is null or age between 13 and 120),
   bio             text        check (bio is null or char_length(bio) <= 280),
   neighborhood    text        check (neighborhood is null or char_length(neighborhood) <= 60),
-  favorite_sports     text[], -- sport ids from lib/sports.js
-  favorite_categories text[], -- class-category ids from data/classes.js (interests)
+  favorite_sports     text[]   check (favorite_sports is null or char_length(array_to_string(favorite_sports, ',')) <= 2000), -- sport ids from lib/sports.js
+  favorite_categories text[]   check (favorite_categories is null or char_length(array_to_string(favorite_categories, ',')) <= 2000), -- class-category ids from data/classes.js (interests)
   friend_code     text        unique,  -- short shareable code, set by trigger below
   share_activity  boolean     not null default true,  -- broadcast my check-ins/signals/runs/votes to friends (07_push.sql)
   created_at      timestamptz not null default now()
@@ -113,8 +113,8 @@ end $$;
 create table if not exists public.player_check_ins (
   id         bigint      generated always as identity primary key,
   user_id    uuid        not null references public.profiles (id) on delete cascade,
-  court_id   text        not null,
-  sport      text        not null,
+  court_id   text        not null check (char_length(court_id) <= 128),
+  sport      text        not null check (char_length(sport) <= 40),
   notify     boolean     not null default false,  -- opt-in "tell my friends I checked in" (07_push.sql)
   created_at timestamptz not null default now()
 );

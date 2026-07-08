@@ -8,12 +8,12 @@ create table if not exists public.rec_signals (
   id               uuid        primary key default gen_random_uuid(),
   user_id          uuid        not null references public.profiles (id) on delete cascade,
   starts_at        timestamptz,                                   -- null = "right now"
-  sport            text        not null default 'basketball',     -- tracked sport id (see lib/sports.js)
+  sport            text        not null default 'basketball' check (char_length(sport) <= 40), -- tracked sport id (see lib/sports.js)
   note             text        check (note is null or char_length(note) <= 200),
-  place            text,                                          -- creator's 'indoor' | 'outdoor' pref (null = either)
-  pref_court_id    text,                                          -- creator's preferred court (matches data/courts.js ids; null = anywhere)
+  place            text        check (place is null or char_length(place) <= 40),             -- creator's 'indoor' | 'outdoor' pref (null = either)
+  pref_court_id    text        check (pref_court_id is null or char_length(pref_court_id) <= 128), -- creator's preferred court (matches data/courts.js ids; null = anywhere)
   planned_at       timestamptz,                                   -- host-confirmed time (null until confirmed)
-  planned_court_id text,                                          -- host-confirmed court (matches data/courts.js ids)
+  planned_court_id text        check (planned_court_id is null or char_length(planned_court_id) <= 128), -- host-confirmed court (matches data/courts.js ids)
   notify           boolean     not null default false,            -- notify friends on post (gated by share_activity; see 07_push.sql)
   created_at       timestamptz not null default now(),
   expires_at       timestamptz not null                          -- set by the client
@@ -53,8 +53,8 @@ create table if not exists public.rec_signal_participants (
   signal_id         uuid        not null references public.rec_signals (id) on delete cascade,
   user_id           uuid        not null references public.profiles (id) on delete cascade,
   proposed_at       timestamptz,                                  -- optional "I suggest this time"
-  proposed_court_id text,                                         -- optional "I suggest this court"
-  proposed_sport    text,                                         -- optional "I suggest this sport/activity"
+  proposed_court_id text        check (proposed_court_id is null or char_length(proposed_court_id) <= 128), -- optional "I suggest this court"
+  proposed_sport    text        check (proposed_sport is null or char_length(proposed_sport) <= 40),        -- optional "I suggest this sport/activity"
   created_at        timestamptz not null default now(),
   primary key (signal_id, user_id)
 );

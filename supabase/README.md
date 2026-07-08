@@ -70,6 +70,7 @@ new:
 | `017_player_checkins_friends_only.sql` | PRIVACY: `player_check_ins` reads scoped to own + accepted friends (was world-readable) |
 | `018_profiles_require_auth.sql` | PRIVACY: `profiles` reads require a signed-in user (anon could dump age/bio/neighborhood) |
 | `019_run_participants_visibility.sql` | PRIVACY: `rec_run_participants` reads scoped to own rows + rosters of visible runs (was world-readable) |
+| `020_length_caps.sql` | T&S: length `CHECK`s on unconstrained user-supplied text (court/sport/place ids, profile interest arrays) |
 
 > Note: migrations 001–009 were authored before the RECreate rebrand and still
 > reference the old `hoop_*` table names. Apply them **in order** — `010` renames

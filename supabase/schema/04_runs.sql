@@ -6,7 +6,7 @@
 create table if not exists public.rec_runs (
   id          uuid        primary key default gen_random_uuid(),
   host        uuid        not null references public.profiles (id) on delete cascade,
-  court_id    text        not null,
+  court_id    text        not null check (char_length(court_id) <= 128),
   starts_at   timestamptz not null,
   sport       text        not null default 'basketball'
                           check (sport in ('basketball', 'volleyball', 'pingpong', 'pickleball', 'tennis')),
