@@ -387,7 +387,9 @@ export default function AuthModal({
                     value={code}
                     onChangeText={(v) => setCode(v.replace(/[^0-9]/g, ''))}
                     keyboardType="number-pad"
-                    maxLength={6}
+                    // Supabase's email OTP length is a project setting (6–10
+                    // digits), so don't assume 6.
+                    maxLength={10}
                     autoComplete="one-time-code"
                     textContentType="oneTimeCode"
                   />
