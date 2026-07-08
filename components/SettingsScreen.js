@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import {
   ActivityIndicator,
+  Alert,
   Linking,
   Modal,
   Pressable,
@@ -20,10 +21,16 @@ import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAuth } from '../lib/auth';
 import { listBlockedUsers, unblockUser } from '../lib/blocks';
+import { captureTestError, crashReportingEnabled } from '../lib/crash';
 import { useI18n, LANGUAGES } from '../lib/i18n';
 
 // The literal a user must type to confirm deletion (kept across languages).
 const CONFIRM_CODE = 'DELETE';
+
+// Show the Sentry "send test crash" button in dev, or in a build that opts in
+// via EXPO_PUBLIC_SENTRY_TEST=1 (set only for a throwaway TestFlight test build,
+// never for the App Store release). See lib/crash.js.
+const SHOW_CRASH_TEST = __DEV__ || process.env.EXPO_PUBLIC_SENTRY_TEST === '1';
 
 // Legal + support destinations. Terms is Apple's standard EULA (same as the
 // signup screen's terms link); privacy + support are the hosted static pages.
@@ -197,6 +204,36 @@ export default function SettingsScreen({ visible, onClose, onEditProfile }) {
               <Text style={styles.rowChevron}>›</Text>
             </Pressable>
           </View>
+
+          {/* Sentry verification button. Shows in dev, and in any build where
+              EXPO_PUBLIC_SENTRY_TEST=1 is set (e.g. this TestFlight build) — so
+              it's testable on a real device but stays hidden in the App Store
+              release, where that env var is simply left unset. Remove this block
+              once crash reporting is verified. */}
+          {SHOW_CRASH_TEST && (
+            <>
+              <Text style={styles.sectionLabel}>Developer</Text>
+              <View style={styles.rowGroup}>
+                <Pressable
+                  style={styles.row}
+                  onPress={() => {
+                    const sent = captureTestError();
+                    Alert.alert(
+                      'Sentry',
+                      sent
+                        ? 'Test event sent — check the Sentry dashboard in ~30s.'
+                        : 'Crash reporting is disabled (no EXPO_PUBLIC_SENTRY_DSN, or running in Expo Go).'
+                    );
+                  }}
+                >
+                  <Text style={styles.rowText}>
+                    Send test crash report{crashReportingEnabled ? '' : ' (disabled)'}
+                  </Text>
+                  <Text style={styles.rowChevron}>›</Text>
+                </Pressable>
+              </View>
+            </>
+          )}
 
           {/* Danger zone pinned to the bottom of the content. */}
           {user ? (
