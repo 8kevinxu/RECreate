@@ -60,7 +60,8 @@ export default function AuthModal({
   const [name, setName] = useState('');
   const [confirm, setConfirm] = useState(''); // confirm-password (signup + reset)
   const [resetStep, setResetStep] = useState('email'); // 'email' | 'code' (reset mode)
-  const [code, setCode] = useState(''); // 6-digit recovery code (reset mode)
+  const [code, setCode] = useState(''); // recovery code from the email (reset mode)
+  const [cooldown, setCooldown] = useState(0); // seconds until "Resend code" re-enables
   const [showPw, setShowPw] = useState(false); // reveal password fields
   const [agreed, setAgreed] = useState(false); // EULA/privacy acceptance (signup)
   const [busy, setBusy] = useState(false);
@@ -126,6 +127,7 @@ export default function AuthModal({
     setConfirm('');
     setCode('');
     setShowPw(false);
+    setCooldown(0);
     if (mode === 'reset') setMode('signin');
     setResetStep('email');
     onClose();
@@ -171,8 +173,17 @@ export default function AuthModal({
     close();
   };
 
-  // Forgot password, step 1: email the user a 6-digit recovery code.
-  const sendResetCode = async () => {
+  // Tick the resend cooldown down to zero (one timer per second-change).
+  useEffect(() => {
+    if (cooldown <= 0) return;
+    const id = setTimeout(() => setCooldown((c) => Math.max(0, c - 1)), 1000);
+    return () => clearTimeout(id);
+  }, [cooldown]);
+
+  // Forgot password, step 1: email the user a recovery code. `isResend` only
+  // swaps the confirmation copy; a short cooldown throttles repeat sends so we
+  // don't trip Supabase's per-email rate limit.
+  const sendResetCode = async (isResend = false) => {
     reset();
     const e = email.trim();
     if (!e) {
@@ -187,7 +198,8 @@ export default function AuthModal({
       return;
     }
     setResetStep('code');
-    setInfo(t('auth.codeSent'));
+    setInfo(t(isResend ? 'auth.resent' : 'auth.codeSent'));
+    setCooldown(30);
   };
 
   // Forgot password, step 2: verify the code (starts a recovery session, i.e.
@@ -419,6 +431,16 @@ export default function AuthModal({
                     </View>
                     <Text style={styles.showPwText}>{t('auth.showPassword')}</Text>
                   </Pressable>
+
+                  <Pressable
+                    disabled={busy || cooldown > 0}
+                    onPress={() => sendResetCode(true)}
+                    hitSlop={8}
+                  >
+                    <Text style={[styles.resendLink, (busy || cooldown > 0) && styles.resendLinkOff]}>
+                      {cooldown > 0 ? t('auth.resendIn', { n: cooldown }) : t('auth.resend')}
+                    </Text>
+                  </Pressable>
                 </>
               )}
 
@@ -428,7 +450,7 @@ export default function AuthModal({
               <Pressable
                 style={[styles.submit, busy && styles.submitDisabled]}
                 disabled={busy}
-                onPress={resetStep === 'email' ? sendResetCode : submitReset}
+                onPress={resetStep === 'email' ? () => sendResetCode() : submitReset}
               >
                 {busy ? (
                   <ActivityIndicator color="#fff" />
@@ -446,6 +468,7 @@ export default function AuthModal({
                   setPassword('');
                   setConfirm('');
                   setResetStep('email');
+                  setCooldown(0);
                   setMode('signin');
                 }}
               >
@@ -882,6 +905,8 @@ const styles = StyleSheet.create({
     marginTop: 12,
   },
   resetHint: { fontSize: 13, color: '#5b6b7b', lineHeight: 18, marginBottom: 10 },
+  resendLink: { color: '#2f74d6', fontWeight: '700', fontSize: 13, marginTop: 4, marginBottom: 2 },
+  resendLinkOff: { color: '#9aa7b4' },
 
   termsRow: { flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 4 },
   checkbox: {
