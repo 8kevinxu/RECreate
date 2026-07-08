@@ -113,7 +113,14 @@
           "backgroundColor": "#E6F4FE"
         }
       ],
-      "@sentry/react-native"
+      [
+        "@sentry/react-native/expo",
+        {
+          "url": "https://sentry.io/",
+          "organization": "recreate-o6",
+          "project": "recreate"
+        }
+      ]
     ],
     "owner": "8kevinxu",
     "extra": {
