@@ -50,6 +50,16 @@ const CATEGORIES = [
 const MAP_SPORT_DROPIN_RE =
   /^drop-?in\b.*\b(basketball|volleyball|table tennis|ping[\s-]?pong|badminton|pickleball|tennis|soccer|baseball|weight ?room)\b/i;
 
+// Drop-in swim sessions at the public pools (lap/rec/family/senior/water-exercise)
+// duplicate the Pools tab, which already renders each pool's full weekly schedule
+// from the official PDFs (data/pools.js). Skip them here — but keep registerable
+// swim *lessons* (Learn to Swim, Adult Swim, Parent-and-Tot: dropIn === false),
+// which the Pools tab can't sign you up for. Matches all 9 SF pools ("<name>
+// Swimming Pool" + "Mission Community Pool"). Applied post-source in main() so it
+// also cleans a cache-sourced build, where these rows already sit in the cache.
+const POOL_LOC_RE = /\b(swimming|community)\s+pool\b/i;
+const isPoolDropIn = (c) => c.dropIn && POOL_LOC_RE.test(c.location || '');
+
 // Keyword classifiers, checked camp -> photo -> arts -> music; the caller supplies
 // the fallback for items that match none (the ActiveNet category's dominant theme).
 // CAMP_RE routes any "…Summer Camp…" / "Camp Mather…" title into camps regardless
@@ -564,6 +574,13 @@ async function main() {
     classes = cache.classes;
     source = 'cache';
     console.log(`  ↺ ${e.message}; using cache from ${cache.fetchedAt || 'unknown'}`);
+  }
+
+  // Drop pool drop-in sessions (covered by the Pools tab) regardless of source.
+  const beforePool = classes.length;
+  classes = classes.filter((c) => !isPoolDropIn(c));
+  if (classes.length < beforePool) {
+    console.log(`  ⊘ dropped ${beforePool - classes.length} pool drop-in(s) — covered by the Pools tab`);
   }
 
   await applyTranslations(classes);
