@@ -6,7 +6,11 @@ import App from './App';
 import { AuthProvider } from './lib/auth';
 import { I18nProvider } from './lib/i18n';
 import { withCrashReporting } from './lib/crash';
+import { installFastWheel } from './lib/webScroll';
 import WebAnalytics from './components/WebAnalytics';
+
+// Web-only: nudge mouse-wheel scrolling a touch faster (no-op on native).
+installFastWheel();
 
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);
 // It also ensures that whether you load the app in Expo Go or in a native build,
