@@ -1002,5 +1002,17 @@
   "Glass": {
     "zh": "玻璃工艺",
     "es": "Vidrio"
+  },
+  "Adult Swim - Swimming for Fitness": {
+    "zh": "成人游泳 - 健身游泳",
+    "es": "Natación para Adultos - Natación para el Fitness"
+  },
+  "Aquatics - Competitive Stroke Clinic - Junior Piranhas": {
+    "zh": "水上运动 - 竞技泳姿诊所 - 小比诺鱼队",
+    "es": "Acuáticos - Clínica de Estilos Competitivos - Piranhas Junior"
+  },
+  "Aquatics - Competitive Stroke Clinic - Piranhas": {
+    "zh": "水上运动 - 竞技泳姿诊所 - 比诺鱼队",
+    "es": "Acuáticos - Clínica de Estilos Competitivos - Piranhas"
   }
 }
