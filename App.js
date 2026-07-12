@@ -46,6 +46,7 @@ import {
 } from './lib/hours';
 import { MAP_SPORTS, DEFAULT_SPORT, sportMeta, isPlayableSport } from './lib/sports';
 import { useFavorites } from './lib/favorites';
+import { readUrlState, writeUrlState } from './lib/urlState';
 import { loadLocalInterests, saveLocalInterests } from './lib/interests';
 import { useI18n, sportLabel, tg } from './lib/i18n';
 import {
@@ -205,16 +206,22 @@ export default function App() {
   const { t, lang } = useI18n();
   const mapRef = useRef(null);
   const didCenterRef = useRef(false); // auto-center on the user only once
+  // On web the current view (tab, sport, Favorites mode, open court) is mirrored
+  // into the URL, so a reload — or a shared link — restores it instead of
+  // resetting to the default map. Native reads null and skips all of this.
+  const [urlInit] = useState(readUrlState);
   const [openOnly, setOpenOnly] = useState(false);
-  const [sport, setSport] = useState(DEFAULT_SPORT); // which drop-in sport to show
-  const [favoritesMode, setFavoritesMode] = useState(false); // ⭐ personal favorites map
+  const [sport, setSport] = useState(() =>
+    urlInit && MAP_SPORTS.some((s) => s.id === urlInit.sport) ? urlInit.sport : DEFAULT_SPORT
+  ); // which drop-in sport to show
+  const [favoritesMode, setFavoritesMode] = useState(urlInit?.fav === '1'); // ⭐ personal favorites map
   const { favoriteSport, toggle: toggleFavorite } = useFavorites();
   const [placeFilter, setPlaceFilter] = useState('all'); // indoor/outdoor sub-filter
   const [amenities, setAmenities] = useState([]); // active amenity filter ids (multi-select)
   const [menuOpen, setMenuOpen] = useState(false); // sport + filters dropdown menu
   const [controlsVisible, setControlsVisible] = useState(false); // filter bar shown via the FAB
   const [sportPickerOpen, setSportPickerOpen] = useState(false); // sport speed-dial off the sport FAB
-  const [selectedId, setSelectedId] = useState(null);
+  const [selectedId, setSelectedId] = useState(urlInit?.court || null);
   const [userLocation, setUserLocation] = useState(null);
   const [locating, setLocating] = useState(true);
   const [now, setNow] = useState(new Date());
@@ -227,7 +234,11 @@ export default function App() {
   // The map fills the whole screen with the nav floating over it; this is how far up
   // map overlays (zoom, recenter, Nearby, court card) must sit to clear the nav pill.
   const navClearance = insets.bottom + 86;
-  const [tab, setTab] = useState('home'); // home | social | profile (bottom nav)
+  const [tab, setTab] = useState(() =>
+    urlInit && ['classes', 'pools', 'social', 'profile'].includes(urlInit.tab)
+      ? urlInit.tab
+      : 'home'
+  ); // home | classes | pools | social | profile (bottom nav)
   const [friendsOpen, setFriendsOpen] = useState(false);
   const [nearbyOpen, setNearbyOpen] = useState(false);
   const [unread, setUnread] = useState(0); // unread activity-feed items (badge)
@@ -379,6 +390,17 @@ export default function App() {
     setTab(nextTab);
     if (nextTab === 'social') markFeedSeen().then(() => setUnread(0));
   }, []);
+
+  // Mirror the view into the URL (web only); defaults drop their param so the
+  // starting view keeps a bare URL.
+  useEffect(() => {
+    writeUrlState({
+      tab: tab === 'home' ? null : tab,
+      sport: sport === DEFAULT_SPORT ? null : sport,
+      fav: favoritesMode ? '1' : null,
+      court: selectedId,
+    });
+  }, [tab, sport, favoritesMode, selectedId]);
 
   // Register this device for push when signed in (no-ops on web/simulator/Expo
   // Go or without an EAS projectId). Sign-out unregisters via lib/auth.
@@ -700,6 +722,19 @@ export default function App() {
     () => courts.find((c) => c.id === selectedId) || null,
     [courts, selectedId]
   );
+
+  // A court restored from the URL gets focused once the map + courts are up
+  // (one-shot); claiming the one-time auto-center keeps a late location fix
+  // from yanking the map away from it.
+  const didFocusUrlCourtRef = useRef(!urlInit?.court);
+  useEffect(() => {
+    if (didFocusUrlCourtRef.current) return;
+    if (selected && selected.id === urlInit.court && mapRef.current) {
+      didFocusUrlCourtRef.current = true;
+      didCenterRef.current = true;
+      mapRef.current.focusCourt(selected);
+    }
+  }, [selected, urlInit]);
 
   // In the Favorites view the card opens on the sport the court was favorited for.
   const detailSport = useMemo(() => {
