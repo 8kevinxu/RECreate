@@ -71,6 +71,8 @@ new:
 | `018_profiles_require_auth.sql` | PRIVACY: `profiles` reads require a signed-in user (anon could dump age/bio/neighborhood) |
 | `019_run_participants_visibility.sql` | PRIVACY: `rec_run_participants` reads scoped to own rows + rosters of visible runs (was world-readable) |
 | `020_length_caps.sql` | T&S: length `CHECK`s on unconstrained user-supplied text (court/sport/place ids, profile interest arrays) |
+| `021_friend_request_push.sql` | Push when a friend request arrives (not just when it's accepted) |
+| `022_report_runs.sql` | T&S: allow `content_reports.kind = 'run'` (report a planned run from the feed) |
 
 > Note: migrations 001–009 were authored before the RECreate rebrand and still
 > reference the old `hoop_*` table names. Apply them **in order** — `010` renames

@@ -33,7 +33,14 @@ import { useCourts } from './lib/useCourts';
 import { fmtClock, startOfDay, viewLabel, dayChipLabel, fmtDuration } from './lib/datetime';
 import { haversineMiles, formatDistance } from './lib/distance';
 import { subscribeSignals } from './lib/signals';
-import { subscribeRuns } from './lib/runs';
+import {
+  subscribeRuns,
+  loadRuns,
+  joinRun,
+  leaveRun,
+  cancelRun,
+  formatRunTime,
+} from './lib/runs';
 import { loadFeed, getFeedSeenAt, markFeedSeen, unreadCount } from './lib/feed';
 import { listIncomingRequests } from './lib/friends';
 import { registerForPush, onNotificationTap } from './lib/push';
@@ -1187,6 +1194,9 @@ export default function App() {
             userLocation={userLocation}
             interestSports={interestSports}
             interestCategories={interestCategories}
+            onOpenFriends={authEnabled && user ? () => setFriendsOpen(true) : undefined}
+            requestCount={requestCount}
+            onSignIn={() => goTab('profile')}
             onPickCourt={(id, pickSport) => {
               // A recommendation carries the sport it was for — switch the map to it
               // (and leave Favorites view) so the court card opens on the right sport.
@@ -1369,6 +1379,29 @@ function CourtDetail({
     } else {
       setNote(t('court.visitFail'));
     }
+  };
+
+  // Upcoming planned games at this court (rec_runs — public + RLS-visible
+  // friends' runs). Hidden when there are none; no-ops without Supabase.
+  const [runs, setRuns] = useState([]);
+  const [runBusy, setRunBusy] = useState(null);
+  useEffect(() => {
+    let alive = true;
+    setRuns([]);
+    loadRuns(court.id, user?.id).then((r) => alive && setRuns(r));
+    return () => {
+      alive = false;
+    };
+  }, [court.id, user?.id]);
+  const toggleRun = async (run) => {
+    if (!user) return onNeedSignIn && onNeedSignIn(); // joining needs an account
+    setRunBusy(run.id);
+    if (run.mine) await cancelRun(run.id);
+    else if (run.joined) await leaveRun(run.id);
+    else await joinRun(run.id);
+    const r = await loadRuns(court.id, user.id);
+    setRuns(r);
+    setRunBusy(null);
   };
 
   // Reviews (loaded lazily for the open court).
@@ -1764,6 +1797,42 @@ function CourtDetail({
           </View>
         )}
       </View>
+      )}
+
+      {/* Planned games here — shown in the peek (rare enough not to clutter,
+          timely enough that hiding them behind "details" would bury them). */}
+      {runs.length > 0 && (
+        <View style={styles.runsBox}>
+          <Text style={styles.sectionLabel}>{t('court.runsHead')}</Text>
+          {runs.map((run) => (
+            <View key={run.id} style={styles.runRow}>
+              <View style={{ flex: 1 }}>
+                <Text style={styles.runWhen}>
+                  {sportMeta(run.sport).emoji} {formatRunTime(run.startsAt)}
+                </Text>
+                <Text style={styles.runMeta}>
+                  {run.mine ? t('feed.you') : run.hostName} · {t('feed.going', { n: run.count })}
+                  {run.note ? ` · ${run.note}` : ''}
+                </Text>
+              </View>
+              <Pressable
+                style={[styles.runBtn, run.mine || run.joined ? styles.runBtnOff : styles.runBtnOn]}
+                disabled={runBusy === run.id}
+                onPress={() => toggleRun(run)}
+              >
+                <Text style={run.mine || run.joined ? styles.runBtnOffText : styles.runBtnOnText}>
+                  {runBusy === run.id
+                    ? '…'
+                    : run.mine
+                    ? t('cancel')
+                    : run.joined
+                    ? t('session.leave')
+                    : t('session.imIn')}
+                </Text>
+              </Pressable>
+            </View>
+          ))}
+        </View>
       )}
 
       <Pressable style={styles.expandToggle} onPress={() => setExpanded((v) => !v)}>
@@ -2340,6 +2409,15 @@ const styles = StyleSheet.create({
   expandToggle: { paddingVertical: 10, alignItems: 'center' },
   expandToggleText: { fontSize: 13, fontWeight: '700', color: '#2f74d6' },
 
+  runsBox: { marginTop: 10, borderTopWidth: 1, borderTopColor: '#e3e8ec', paddingTop: 8 },
+  runRow: { flexDirection: 'row', alignItems: 'center', gap: 10, paddingVertical: 5 },
+  runWhen: { fontSize: 14, fontWeight: '700', color: '#1a2a3a' },
+  runMeta: { fontSize: 12.5, color: '#5b6b7b', marginTop: 1 },
+  runBtn: { borderRadius: 8, paddingHorizontal: 12, paddingVertical: 7 },
+  runBtnOn: { backgroundColor: '#1f9d55' },
+  runBtnOnText: { color: '#fff', fontWeight: '700', fontSize: 13 },
+  runBtnOff: { backgroundColor: '#eef1f4' },
+  runBtnOffText: { color: '#5b6b7b', fontWeight: '700', fontSize: 13 },
   history: { marginTop: 10, borderTopWidth: 1, borderTopColor: '#e3e8ec', paddingTop: 8 },
   historyHead: { fontSize: 12, fontWeight: '700', color: '#46586a', marginBottom: 5 },
   historyRow: {

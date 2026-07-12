@@ -5,6 +5,7 @@
 import React, { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
+  Alert,
   Modal,
   Pressable,
   RefreshControl,
@@ -22,6 +23,10 @@ import { joinRun, leaveRun, cancelRun, formatRunTime, subscribeRuns } from '../l
 import { sendMessage } from '../lib/chat';
 import { sportMeta } from '../lib/sports';
 import { viewLabel } from '../lib/datetime';
+import { haversineMiles, formatDistance } from '../lib/distance';
+import { reportContent } from '../lib/reports';
+import { blockUser } from '../lib/blocks';
+import { useAuth } from '../lib/auth';
 import { useI18n, tg } from '../lib/i18n';
 import SignalModal from './SignalModal';
 import SessionModal from './SessionModal';
@@ -48,8 +53,11 @@ export default function FeedModal({
   courts = [],
   sport = 'basketball',
   userLocation = null,
+  onPickCourt, // open a court (its card, on a sport) on the map tab
+  onOpenFriends, // open the Friends sheet (signed-in only; App.js owns it)
 }) {
   const { t } = useI18n();
+  const { user } = useAuth();
   const insets = useSafeAreaInsets();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -132,9 +140,56 @@ export default function FeedModal({
     setRunBusy(run.id);
     if (run.mine) await cancelRun(run.id);
     else if (run.joined) await leaveRun(run.id);
-    else await joinRun(run.id);
+    else {
+      const res = await joinRun(run.id);
+      // Signed-out joins fail silently otherwise — say why (public runs are
+      // visible without an account, but joining one needs it).
+      if (res?.error) Alert.alert(res.error.message);
+    }
     await refresh();
     setRunBusy(null);
+  };
+
+  // Long-press someone else's post → report it or block them (same App-Store
+  // UGC moderation pattern as chat messages in ChatThread).
+  const moderate = ({ name, reportKey, kind, refId, userId }) => {
+    Alert.alert(name, undefined, [
+      { text: t(reportKey), onPress: () => doReport({ kind, refId, userId }) },
+      {
+        text: t('mod.blockUser', { name }),
+        style: 'destructive',
+        onPress: () => confirmBlock({ name, userId }),
+      },
+      { text: t('cancel'), style: 'cancel' },
+    ]);
+  };
+  const doReport = async ({ kind, refId, userId }) => {
+    const { error } = await reportContent({ kind, refId, reportedUser: userId });
+    Alert.alert(error ? t('mod.fail') : t('mod.reported'));
+  };
+  const confirmBlock = ({ name, userId }) => {
+    Alert.alert(t('mod.blockTitle', { name }), t('mod.blockBody'), [
+      { text: t('cancel'), style: 'cancel' },
+      {
+        text: t('mod.block'),
+        style: 'destructive',
+        onPress: async () => {
+          const { error } = await blockUser(userId);
+          if (error) return Alert.alert(t('mod.fail'));
+          refresh(); // feed loaders filter blocked users at source
+        },
+      },
+    ]);
+  };
+
+  // Straight-line distance to a court, for run rows ("is this open run near me?").
+  const distanceTo = (courtId) => {
+    if (!userLocation) return '';
+    const court = courts.find((c) => c.id === courtId);
+    if (!court) return '';
+    return formatDistance(
+      haversineMiles(userLocation.lat, userLocation.lng, court.lat, court.lng)
+    );
   };
 
   const renderSignal = (s) => {
@@ -153,6 +208,18 @@ export default function FeedModal({
         key={`signal:${s.id}`}
         style={styles.row}
         onPress={() => setSelectedSignal(s.id)}
+        onLongPress={
+          s.mine
+            ? undefined
+            : () =>
+                moderate({
+                  name: s.name,
+                  reportKey: 'mod.reportSignal',
+                  kind: 'signal',
+                  refId: s.id,
+                  userId: s.userId,
+                })
+        }
       >
         <View style={{ flex: 1 }}>
           <Text style={styles.rowName}>
@@ -174,18 +241,39 @@ export default function FeedModal({
     );
   };
 
-  const renderRun = (run) => (
+  const renderRun = (run) => {
+    const dist = distanceTo(run.courtId);
+    return (
     <View key={`run:${run.id}`} style={styles.row}>
-      <View style={{ flex: 1 }}>
+      <Pressable
+        style={{ flex: 1 }}
+        onPress={onPickCourt ? () => onPickCourt(run.courtId, run.sport) : undefined}
+        onLongPress={
+          run.mine
+            ? undefined
+            : () =>
+                moderate({
+                  name: run.hostName,
+                  reportKey: 'mod.reportRun',
+                  kind: 'run',
+                  refId: run.id,
+                  userId: run.hostId,
+                })
+        }
+      >
         <Text style={styles.rowName}>
           📅 {sportMeta(run.sport).emoji} {courtsById[run.courtId] || t('feed.aCourtCap')}
         </Text>
         <Text style={styles.note}>
-          {formatRunTime(run.startsAt)} · {run.mine ? t('feed.you') : run.hostName} ·{' '}
+          {/* Public runs are visible beyond the host's friends — mark them as
+              open pickup anyone can join, with how far away the court is. */}
+          {run.visibility === 'public' && !run.mine ? `🌐 ${t('feed.openRun')} · ` : ''}
+          {formatRunTime(run.startsAt)}
+          {dist ? ` · ${dist}` : ''} · {run.mine ? t('feed.you') : run.hostName} ·{' '}
           {t('feed.going', { n: run.count })}
           {run.note ? ` · ${run.note}` : ''}
         </Text>
-      </View>
+      </Pressable>
       {(run.mine || run.joined) && (
         <Pressable style={styles.chatBtn} hitSlop={6} onPress={() => openRunChat(run)}>
           <Text style={styles.chatBtnText}>💬</Text>
@@ -207,10 +295,16 @@ export default function FeedModal({
         </Text>
       </Pressable>
     </View>
-  );
+    );
+  };
 
+  // Tapping a check-in opens that court on the map, on the check-in's sport.
   const renderCheckin = (c) => (
-    <View key={`checkin:${c.id}`} style={styles.row}>
+    <Pressable
+      key={`checkin:${c.id}`}
+      style={styles.row}
+      onPress={onPickCourt ? () => onPickCourt(c.courtId, c.sport) : undefined}
+    >
       <View style={{ flex: 1 }}>
         <Text style={styles.rowName}>
           {sportMeta(c.sport).emoji}{' '}
@@ -221,7 +315,8 @@ export default function FeedModal({
         </Text>
         <Text style={styles.note}>{timeAgo(c.createdAt)}</Text>
       </View>
-    </View>
+      {!!onPickCourt && <Text style={styles.chevron}>›</Text>}
+    </Pressable>
   );
 
   const content = (
@@ -259,6 +354,32 @@ export default function FeedModal({
           }
         >
           <Text style={styles.muted}>{t('feed.empty')}</Text>
+          {/* Cold-start nudges: an empty feed usually means no friends yet, so
+              point at the two actions that fix it. Signed-out users get the
+              account CTA from SocialScreen instead. */}
+          {!!user && (
+            <View style={styles.emptyCards}>
+              {!!onOpenFriends && (
+                <View style={styles.emptyCard}>
+                  <Text style={styles.emptyCardTitle}>{t('feed.emptyFriendsTitle')}</Text>
+                  <Text style={styles.emptyCardBody}>{t('feed.emptyFriendsBody')}</Text>
+                  <Pressable style={styles.emptyCardBtn} onPress={onOpenFriends}>
+                    <Text style={styles.emptyCardBtnText}>{t('feed.emptyFriendsBtn')}</Text>
+                  </Pressable>
+                </View>
+              )}
+              <View style={styles.emptyCard}>
+                <Text style={styles.emptyCardTitle}>{t('feed.emptySignalTitle')}</Text>
+                <Text style={styles.emptyCardBody}>{t('feed.emptySignalBody')}</Text>
+                <Pressable
+                  style={[styles.emptyCardBtn, styles.emptyCardBtnGreen]}
+                  onPress={() => setSignalOpen(true)}
+                >
+                  <Text style={styles.emptyCardBtnText}>{t('feed.imDown')}</Text>
+                </Pressable>
+              </View>
+            </View>
+          )}
         </ScrollView>
       ) : (
         <ScrollView
@@ -391,4 +512,17 @@ const styles = StyleSheet.create({
   declineText: { color: '#5b6b7b', fontWeight: '700', fontSize: 13 },
   muted: { fontSize: 14, color: '#9aa7b4', fontStyle: 'italic', paddingVertical: 16, textAlign: 'center' },
   emptyWrap: { flexGrow: 1, alignItems: 'center', justifyContent: 'center', paddingTop: 40 },
+  emptyCards: { alignSelf: 'stretch', gap: 10, marginTop: 4 },
+  emptyCard: { backgroundColor: '#f4f6f8', borderRadius: 12, padding: 14 },
+  emptyCardTitle: { fontSize: 14, fontWeight: '800', color: '#0d1b2a' },
+  emptyCardBody: { fontSize: 12.5, color: '#46586a', marginTop: 2, marginBottom: 10 },
+  emptyCardBtn: {
+    alignSelf: 'flex-start',
+    backgroundColor: '#2f74d6',
+    borderRadius: 9,
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+  },
+  emptyCardBtnGreen: { backgroundColor: '#1f9d55' },
+  emptyCardBtnText: { color: '#fff', fontWeight: '800', fontSize: 13 },
 });

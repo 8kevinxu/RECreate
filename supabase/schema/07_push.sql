@@ -219,6 +219,28 @@ drop trigger if exists rec_signals_confirm_notify on public.rec_signals;
 create trigger rec_signals_confirm_notify after update on public.rec_signals
   for each row execute function public.notify_session_confirmed();
 
+-- A friend request arrives → notify the addressee (otherwise it sits invisible
+-- until they happen to open Profile → Friends). Adding someone who already
+-- requested you auto-accepts via an UPDATE, so that path fires the acceptance
+-- trigger below instead — never both.
+create or replace function public.notify_friend_request()
+returns trigger language plpgsql security definer set search_path = public as $$
+declare requester_name text;
+begin
+  if new.status <> 'pending' then return new; end if;
+  select display_name into requester_name from public.profiles where id = new.requester;
+  perform public.send_push(
+    array[new.addressee],
+    coalesce(requester_name, 'Someone') || ' sent you a friend request 👋',
+    'Open Friends to accept',
+    jsonb_build_object('type', 'friend')
+  );
+  return new;
+end; $$;
+drop trigger if exists friendships_request_notify on public.friendships;
+create trigger friendships_request_notify after insert on public.friendships
+  for each row execute function public.notify_friend_request();
+
 -- Your friend request is accepted → notify the requester. The accepter is the
 -- addressee (they received and accepted the request).
 create or replace function public.notify_friend_accepted()
