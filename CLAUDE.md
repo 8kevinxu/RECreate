@@ -13,7 +13,7 @@ npm install            # install deps
 npx expo start         # dev server; press i (iOS sim), a (Android), w (web), or scan QR in Expo Go
 npx expo start -c      # same, clearing cache — required after changing .env vars
 npm run ios            # native dev build on device/sim (needed for push; Expo Go can't do remote push)
-npm run web            # web build (the static export Vercel/Netlify serves)
+npm run web            # web build (the static export Vercel serves)
 
 # Regenerate the bundled court/class/pool data (scrapes live sources):
 npm run build:data         # everything below, in order
@@ -72,7 +72,7 @@ All runtime config is `EXPO_PUBLIC_*` (inlined at build time, client-safe — th
 
 **Vercel Analytics** is mounted web-only via `components/WebAnalytics.web.js` (renders `@vercel/analytics/react`), with a native no-op `WebAnalytics.js` — same `.web.js` platform-split as `CourtMap`, so the DOM-based lib never enters the native bundle. Use the `/react` entry, not `/next` (this is a react-native-web SPA). The launch splash is `expo-splash-screen` (config in `app.json` plugins → `assets/splash-icon.png`, the running stick figure). The app is **iPhone-only** (`ios.supportsTablet: false`) — runs on iPad in compatibility mode, no iPad assets needed.
 
-The web target is a **static SPA export** (`npx expo export --platform web` → `dist/`), served by Vercel (`vercel.json`) or Netlify (`netlify.toml`) — both mirror the same build command, `dist` output, and SPA rewrite of all paths to `index.html`. Set the three `EXPO_PUBLIC_*` vars in the host dashboard (a CI build has no local `.env`). Don't run both hosts as primary auto-deploys at once. Note: the live ActiveNet class-availability fetch (`lib/classesLive.js`) is blocked by CORS on web and falls back to the bundled baseline — expected; native isn't bound by CORS.
+The web target is a **static SPA export** (`npm run build:web` = `expo export --platform web` → `dist/`, then `scripts/postbuild-web.js`), served by Vercel (`vercel.json`: build command, `dist` output, SPA rewrite of all paths to `index.html`). Set the three `EXPO_PUBLIC_*` vars in the Vercel dashboard (a CI build has no local `.env`). **SEO (`scripts/postbuild-web.js`)**: the raw export is an empty JS shell Google can't index, so the postbuild pass injects real `<head>` metadata into `dist/index.html` and prerenders static landing pages from the bundled `data/` modules — one per playable sport plus `/golf`, `/pools`, `/classes` — with addresses, drop-in hours, JSON-LD, and links into the app via the URL-state params, plus `sitemap.xml`/`robots.txt`/`og.png`. Vercel serves real files before applying the SPA rewrite, so these coexist with the app. The site origin is hardcoded there (`SITE`) — update it if the domain changes, and keep `vercel.json`'s build command on `npm run build:web`. Note: the live ActiveNet class-availability fetch (`lib/classesLive.js`) is blocked by CORS on web and falls back to the bundled baseline — expected; native isn't bound by CORS.
 
 ## Deploy (native) — crash reporting & OTA updates
 

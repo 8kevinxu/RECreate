@@ -126,7 +126,7 @@ sport / opens ⭐ Favorites. It's shown once and then never again (persisted und
 | `components/Onboarding.js` · `lib/interests.js` | First-launch onboarding overlay (slides → interests → location → account) + on-device interest store |
 | `components/WebAnalytics.js` · `.web.js` | Vercel Analytics, mounted web-only via the `.web.js` platform split |
 | `components/ScrollTopFab.js` | Shared back-to-top arrow (`useScrollTop` hook + FAB) used by Classes / Pools / feed |
-| `vercel.json` · `netlify.toml` | Web static-export deploy config (build → `dist` → SPA rewrite) |
+| `vercel.json` · `scripts/postbuild-web.js` | Web static-export deploy config (build → SEO postbuild → `dist` → SPA rewrite) |
 
 ## Court data (SF Rec & Parks indoor gyms)
 
@@ -704,11 +704,13 @@ types are declared in `app.json` → `ios.privacyManifests` so the shipped
 
 ## Deploy (web)
 
-The web build is a **static SPA export** — `npx expo export --platform web` → `dist/`.
-`vercel.json` and `netlify.toml` both configure the same thing (that build command,
-`dist` as the publish dir, and an SPA rewrite of all routes to `index.html`); set the
-three `EXPO_PUBLIC_*` vars in the host's dashboard since a CI build has no local `.env`.
-Don't run both hosts as primary auto-deploys at once. **Vercel Analytics** is mounted
+The web build is a **static SPA export** — `npm run build:web` (= `expo export
+--platform web` → `dist/`, then `scripts/postbuild-web.js`, which injects SEO
+metadata into `index.html` and prerenders crawlable landing pages, sitemap, and
+robots.txt from the bundled data). `vercel.json` configures that build command,
+`dist` as the publish dir, and an SPA rewrite of all routes to `index.html`; set the
+three `EXPO_PUBLIC_*` vars in the Vercel dashboard since a CI build has no local `.env`.
+**Vercel Analytics** is mounted
 web-only (`components/WebAnalytics.web.js`, `@vercel/analytics/react`) and only collects
 when served from Vercel. The iOS app is **iPhone-only** (`ios.supportsTablet: false`);
 cloud EAS builds don't read the local `.env`, so `EXPO_PUBLIC_*` vars are set in the EAS

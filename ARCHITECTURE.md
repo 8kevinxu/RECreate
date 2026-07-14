@@ -23,7 +23,7 @@ rules and gotchas, see `CLAUDE.md`; for the database, see `supabase/README.md`.
 | Local persistence | `AsyncStorage` |
 | i18n | Hand-rolled dictionary in `lib/i18n.js` (English / 中文 / Español) |
 | Push | Expo Push, triggered from Postgres via `pg_net` |
-| Hosting (web) | Vercel (primary) / Netlify — static export of `dist/` |
+| Hosting (web) | Vercel — static export of `dist/` + SEO postbuild |
 | Data refresh | GitHub Actions crons re-scrape public sources and commit |
 
 There is **no test suite, linter, or typechecker** — "verifying" a change means
@@ -243,9 +243,10 @@ pre-translated at build time, and **weekday tokens** in class schedule strings
 
 - **Native**: Expo / EAS build to iOS + Android. Push requires a dev/production
   build (Expo Go can't do remote push).
-- **Web**: `npx expo export --platform web` → `dist/`, a static SPA served by
-  Vercel (`vercel.json`) or Netlify (`netlify.toml`), both rewriting all paths to
-  `index.html`. Set the three `EXPO_PUBLIC_*` vars in the host dashboard. The web
+- **Web**: `npm run build:web` (`expo export --platform web` → `dist/`, then the
+  `scripts/postbuild-web.js` SEO pass), a static SPA served by Vercel
+  (`vercel.json`), rewriting all paths to `index.html` after real files. Set the
+  three `EXPO_PUBLIC_*` vars in the Vercel dashboard. The web
   build can't do the rec.us / ActiveNet live fetches (CORS) and falls back to the
   bundled snapshots — expected; native isn't bound by CORS.
 
