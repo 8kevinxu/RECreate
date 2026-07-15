@@ -1,7 +1,9 @@
-// Friends sheet: share your code, add friends by code, and accept/decline
-// incoming requests. Opened from the header when signed in. (The activity feed —
-// "down to play" signals and planned runs — lives in the Activity sheet now.)
-import React, { useEffect, useState } from 'react';
+// Friends sheet: share your code (as text, an invite link, or a scannable QR),
+// add friends by code, and accept/decline incoming requests. Opened from the
+// header when signed in. (The activity feed — "down to play" signals and
+// planned runs — lives in the Activity sheet now.) An `inviteCode` prop (from
+// an ?add= invite link) is submitted automatically when the sheet opens.
+import React, { useEffect, useRef, useState } from 'react';
 import {
   ActivityIndicator,
   Modal,
@@ -22,9 +24,11 @@ import {
   acceptRequest,
   removeFriendship,
 } from '../lib/friends';
+import { inviteUrl } from '../lib/invite';
 import { useI18n } from '../lib/i18n';
+import QRCode from './QRCode';
 
-export default function FriendsModal({ visible, onClose }) {
+export default function FriendsModal({ visible, onClose, inviteCode, onInviteConsumed }) {
   const { t } = useI18n();
   const [code, setCode] = useState(null);
   const [friends, setFriends] = useState([]);
@@ -53,10 +57,10 @@ export default function FriendsModal({ visible, onClose }) {
     refresh().finally(() => setLoading(false));
   }, [visible]);
 
-  const onAdd = async () => {
+  const submitCode = async (code) => {
     setBusy(true);
     setMsg(null);
-    const res = await addFriendByCode(addInput);
+    const res = await addFriendByCode(code);
     setBusy(false);
     if (res.error) {
       setMsg({ kind: 'err', text: res.error.message });
@@ -73,6 +77,18 @@ export default function FriendsModal({ visible, onClose }) {
     await refresh();
   };
 
+  const onAdd = () => submitCode(addInput);
+
+  // An invite link's code (?add=…) submits itself: the recipient tapped the
+  // link, so the intent to add is explicit. Guarded so it fires once per code.
+  const invitedRef = useRef(null);
+  useEffect(() => {
+    if (!visible || !inviteCode || invitedRef.current === inviteCode) return;
+    invitedRef.current = inviteCode;
+    setAddInput(inviteCode);
+    submitCode(inviteCode).finally(() => onInviteConsumed?.());
+  }, [visible, inviteCode]);
+
   const onAccept = async (id) => {
     setBusy(true);
     await acceptRequest(id);
@@ -88,12 +104,16 @@ export default function FriendsModal({ visible, onClose }) {
 
   const shareCode = async () => {
     if (!code) return;
+    const message = t('friends.shareMsg', { code, url: inviteUrl(code) });
     try {
-      await Share.share({
-        message: t('friends.shareMsg', { code }),
-      });
+      await Share.share({ message });
     } catch (e) {
-      // Sharing unavailable (e.g. web) — the code is shown to copy manually.
+      // Sharing unavailable (web without navigator.share) — copy the invite
+      // message to the clipboard instead.
+      try {
+        await navigator.clipboard.writeText(message);
+        setMsg({ kind: 'ok', text: t('friends.linkCopied') });
+      } catch {}
     }
   };
 
@@ -125,6 +145,12 @@ export default function FriendsModal({ visible, onClose }) {
                 </Pressable>
               </View>
               <Text style={styles.codeHint}>{t('friends.codeHint')}</Text>
+              {!!code && (
+                <View style={styles.qrWrap}>
+                  <QRCode value={inviteUrl(code)} accessibilityLabel={t('friends.qrHint')} />
+                  <Text style={styles.qrHint}>{t('friends.qrHint')}</Text>
+                </View>
+              )}
 
               {/* Add by code */}
               <Text style={[styles.label, styles.sectionGap]}>{t('friends.addFriend')}</Text>
@@ -258,6 +284,8 @@ const styles = StyleSheet.create({
   },
   shareBtnText: { color: '#fff', fontWeight: '800', fontSize: 14 },
   codeHint: { fontSize: 12, color: '#7a8a9a', marginTop: 6 },
+  qrWrap: { alignItems: 'center', marginTop: 12, gap: 6 },
+  qrHint: { fontSize: 12, color: '#7a8a9a' },
 
   addRow: { flexDirection: 'row', gap: 10 },
   addInput: {

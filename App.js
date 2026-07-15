@@ -54,6 +54,7 @@ import {
 import { MAP_SPORTS, DEFAULT_SPORT, sportMeta, isPlayableSport } from './lib/sports';
 import { useFavorites } from './lib/favorites';
 import { readUrlState, writeUrlState } from './lib/urlState';
+import { parseInviteCode } from './lib/invite';
 import { loadLocalInterests, saveLocalInterests } from './lib/interests';
 import { useI18n, sportLabel, tg } from './lib/i18n';
 import {
@@ -208,6 +209,7 @@ function formatUpdated(iso) {
 const ONBOARDED_KEY = 'recreate.onboarded.v1'; // first-launch onboarding shown flag
 const COACH_SPORT_KEY = 'recreate.coach.sportfab.v1'; // one-time sport-FAB coach mark shown flag
 const LOC_BANNER_KEY = 'recreate.locbanner.v1'; // dismissed the "turn on location" map banner
+const PENDING_ADD_KEY = 'recreate.pendingAdd.v1'; // friend code from an invite link, awaiting sign-in
 
 export default function App() {
   const { t, lang } = useI18n();
@@ -247,6 +249,11 @@ export default function App() {
       : 'home'
   ); // home | classes | pools | social | profile (bottom nav)
   const [friendsOpen, setFriendsOpen] = useState(false);
+  // Friend code from an ?add= invite link (web). Persisted until acted on so
+  // it survives the sign-up round trip; inviteCode is the copy handed to
+  // FriendsModal once signed in, which auto-submits it.
+  const [pendingAdd, setPendingAdd] = useState(() => parseInviteCode(urlInit?.add));
+  const [inviteCode, setInviteCode] = useState(null);
   const [nearbyOpen, setNearbyOpen] = useState(false);
   const [unread, setUnread] = useState(0); // unread activity-feed items (badge)
   const [requestCount, setRequestCount] = useState(0); // incoming friend requests (badge)
@@ -408,6 +415,37 @@ export default function App() {
       court: selectedId,
     });
   }, [tab, sport, favoritesMode, selectedId]);
+
+  // Invite links: a code arriving in the URL is persisted (the sign-up round
+  // trip can reload the page); with none in the URL, pick up any stored one.
+  useEffect(() => {
+    if (pendingAdd) AsyncStorage.setItem(PENDING_ADD_KEY, pendingAdd).catch(() => {});
+    else
+      AsyncStorage.getItem(PENDING_ADD_KEY).then((v) => {
+        const code = parseInviteCode(v);
+        if (code) setPendingAdd(code);
+      });
+  }, []);
+
+  // Act on a pending invite once onboarding has settled: signed in → open the
+  // Friends sheet (which auto-submits the code); signed out → land on the
+  // sign-in screen and keep the code pending until an account exists.
+  useEffect(() => {
+    if (!pendingAdd || onboarded !== true) return;
+    if (!authEnabled) {
+      setPendingAdd(null);
+      AsyncStorage.removeItem(PENDING_ADD_KEY).catch(() => {});
+      return;
+    }
+    if (user) {
+      setInviteCode(pendingAdd);
+      setFriendsOpen(true);
+      setPendingAdd(null);
+      AsyncStorage.removeItem(PENDING_ADD_KEY).catch(() => {});
+    } else {
+      goTab('profile');
+    }
+  }, [pendingAdd, authEnabled, user?.id, onboarded, goTab]);
 
   // Register this device for push when signed in (no-ops on web/simulator/Expo
   // Go or without an EAS projectId). Sign-out unregisters via lib/auth.
@@ -1224,7 +1262,15 @@ export default function App() {
       </View>
 
       {authEnabled && user && (
-        <FriendsModal visible={friendsOpen} onClose={() => setFriendsOpen(false)} />
+        <FriendsModal
+          visible={friendsOpen}
+          onClose={() => {
+            setFriendsOpen(false);
+            setInviteCode(null);
+          }}
+          inviteCode={inviteCode}
+          onInviteConsumed={() => setInviteCode(null)}
+        />
       )}
 
       <View style={styles.navWrap} pointerEvents="box-none">
