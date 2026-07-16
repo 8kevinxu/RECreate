@@ -185,7 +185,8 @@ const AMENITIES = [
 // Rough travel time (minutes) from straight-line miles — drive ~ city streets with a
 // road-vs-crow-flies factor, walk ~ 3 mph, bus ~ transit speed + stop/wait overhead.
 // Estimates only; Directions has the real ETA. For long trips (walk > 30 min) we show
-// the bus estimate instead of an impractical walk.
+// the bus estimate instead of an impractical walk; within an easy walk (< 20 min)
+// the card drops the drive chip entirely.
 function travelEta(miles) {
   if (miles == null) return null;
   const walk = Math.max(1, Math.round(miles * 20));
@@ -1521,10 +1522,12 @@ function CourtDetail({
                 if (!eta) return null;
                 return (
                   <>
-                    <View style={styles.etaChip}>
-                      <Ionicons name="car" size={13} color="#46586a" />
-                      <Text style={styles.etaText}>~{eta.drive} {t('unit.min')}</Text>
-                    </View>
+                    {eta.walk >= 20 && (
+                      <View style={styles.etaChip}>
+                        <Ionicons name="car" size={13} color="#46586a" />
+                        <Text style={styles.etaText}>~{eta.drive} {t('unit.min')}</Text>
+                      </View>
+                    )}
                     <View style={styles.etaChip}>
                       {eta.bus != null ? (
                         <>
