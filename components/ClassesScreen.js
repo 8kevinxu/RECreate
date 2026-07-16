@@ -36,7 +36,19 @@ function agoLabel(t, ts) {
 }
 
 const catMeta = (id) => CLASS_CATEGORIES.find((c) => c.id === id) || {};
-const ageBand = (m) => (m >= 55 ? '55' : m >= 18 ? '18' : m >= 11 ? 'teen' : 'all');
+
+// A class passes an age chip when its [minAge, maxAge] range admits someone in
+// that group (maxAge absent = no upper bound). Kids-only programs (e.g. camps
+// "ages 5-10", parent-and-tot "under 5") are capped by maxAge and so never pass
+// Teen/18+/55+. The 55+ chip is senior-targeted programs specifically — an
+// open-ended adult class doesn't qualify just because a senior could attend.
+const ageEligible = (c, band) => {
+  const lo = c.minAge || 0;
+  const hi = c.maxAge == null ? Infinity : c.maxAge;
+  if (band === 'teen') return lo <= 17 && hi >= 11;
+  if (band === '18') return hi >= 18;
+  return lo >= 55 || /senior/i.test(c.name); // '55'
+};
 
 // Start time (minutes from midnight) parsed from a `when` string like
 // "Tue & Wed · 8:30 AM - 10:30 AM" — the time part after the day separator.
@@ -224,10 +236,7 @@ export default function ClassesScreen({ userLocation = null }) {
         !c.location.toLowerCase().includes(q)
       )
         return false;
-      if (age) {
-        const b = ageBand(c.minAge || 0);
-        if (b !== age && b !== 'all') return false;
-      }
+      if (age && !ageEligible(c, age)) return false;
       if (time && timeBand(startMin(c.when)) !== time) return false;
       if (day !== null && !daysOf(c.when)?.has(day)) return false;
       if (freeOnly && c.cost !== 'Free') return false;

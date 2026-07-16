@@ -252,6 +252,11 @@ function toClass(item, category, coords) {
   const when = [cleanDays(item.days_of_week), item.time_range].filter(Boolean).join(' · ');
   const c = coords.coordsFor(item.location?.label);
   const minAge = Number(item.age_min_year) || 0;
+  // Upper age bound (e.g. camps "ages 5-10", parent-and-tot "under 5"). ActiveNet's
+  // age_max_year is EXCLUSIVE ("less than 11 yrs" → 11) and 0 when there's no cap;
+  // store the inclusive max (10), or null for open-ended.
+  const rawMaxAge = Number(item.age_max_year) || 0;
+  const maxAge = rawMaxAge > 0 ? rawMaxAge - 1 : null;
   // Availability: `openings` is the *actual* number of open spots — "0" when full,
   // or "Unlimited" for no-cap drop-ins. (total_open is capacity, NOT openings, so a
   // full class can still report total_open=4 with openings="0" — that was the bug.)
@@ -289,6 +294,7 @@ function toClass(item, category, coords) {
     cost: noOnlineReg ? 'Free' : cleanFee(item.fee),
     ages: dehtml(item.age_description || '').replace(/,\s*$/, '') || 'All ages',
     minAge,
+    ...(maxAge != null ? { maxAge } : {}),
     spots, // open spots remaining (null when unlimited/unknown)
     unlimited, // true = no registration cap
     ...(noOnlineReg ? { noOnlineReg: true } : {}), // free walk-in, no online sign-up
@@ -532,7 +538,7 @@ function render(classes, generatedAt) {
 // Generated: ${generatedAt}
 //
 // SF Rec & Park drop-in classes & programs (non-court), from their ActiveNet catalog.
-// Each class: { id, name, category, location, when, dropIn, cost, ages, minAge, spots,
+// Each class: { id, name, category, location, when, dropIn, cost, ages, minAge, maxAge?, spots,
 // unlimited, noOnlineReg?, start?, end?, oneDay?, instructor?, desc?, lat?, lng?,
 // url, name_zh?, name_es? }. start/end are the course term (ISO YYYY-MM-DD) — a registered course
 // enrolls for the whole range, not one session; oneDay marks a single-date activity.
@@ -541,7 +547,8 @@ function render(classes, generatedAt) {
 // name_zh/name_es are bundled translations of the title (absent if untranslated);
 // spots is the open-spot count from ActiveNet openings (0 = full, null = unknown),
 // unlimited = no-cap drop-in; noOnlineReg = free walk-in with no online registration;
-// desc is the catalog blurb (absent when the source has none); minAge drives the age filters.
+// desc is the catalog blurb (absent when the source has none); minAge/maxAge drive the
+// age filters (maxAge omitted = no upper bound — an adult can attend).
 
 export const CLASS_CATEGORIES = ${JSON.stringify(cats, null, 2)
     .replace(/\n/g, '\n')};
