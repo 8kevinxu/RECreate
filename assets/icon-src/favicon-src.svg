@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+    <defs>
+      <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#5AA2FF"/>
+        <stop offset="1" stop-color="#1D4EC2"/>
+      </linearGradient>
+      <radialGradient id="glow" cx="0.5" cy="0.12" r="0.9">
+        <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.25"/>
+        <stop offset="0.55" stop-color="#FFFFFF" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="1024" height="1024" fill="url(#bg)"/>
+    <rect width="1024" height="1024" fill="url(#glow)"/><g><ellipse cx="540.0" cy="824.0" rx="115.99999999999999" ry="34.0" fill="#1B2B4A" opacity="0.20"/>
+      <defs><linearGradient id="pinGradlight512430" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E9EFF9"/>
+      </linearGradient></defs>
+      <path d="M 512 820.0
+               C 470.0 732.0 336.0 590.0 316.0 474.0
+               A 200 200 0 1 1 708.0 474.0
+               C 688.0 590.0 554.0 732.0 512 820.0 Z"
+            fill="url(#pinGradlight512430)"/>
+      <defs>
+        <radialGradient id="ballGrad512430" cx="0.35" cy="0.3" r="1">
+          <stop offset="0" stop-color="#FFB25C"/><stop offset="1" stop-color="#F07818"/>
+        </radialGradient>
+        <clipPath id="ballClip512430"><circle cx="512" cy="430" r="148"/></clipPath>
+      </defs>
+      <circle cx="512" cy="430" r="148" fill="url(#ballGrad512430)"/>
+      <g stroke="#B85A10" stroke-width="21" fill="none" clip-path="url(#ballClip512430)">
+        <path d="M 512 282 L 512 578"/>
+        <path d="M 364 430 L 660 430"/>
+        <path d="M 418.76 321.96000000000004 Q 512 430 418.76 538.04"/>
+        <path d="M 605.24 321.96000000000004 Q 512 430 605.24 538.04"/>
+      </g>
+      
+      <defs><clipPath id="discClip512430"><circle cx="512" cy="430" r="148"/></clipPath></defs>
+      <ellipse cx="464.64" cy="356.0" rx="76.96000000000001" ry="44.4"
+               fill="#FFFFFF" opacity="0.13" clip-path="url(#discClip512430)"/></g></svg>

@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+    <g transform="translate(0.0 0.0) scale(1.0)"><polygon points="94,518 512,738 512,802 94,582" fill="#1B4FA0"/><polygon points="512,738 930,518 930,582 512,802" fill="#2C77D6"/>
+      <defs><clipPath id="mapClip"><rect width="1000" height="1000"/></clipPath></defs>
+      <g transform="matrix(0.418 0.22 -0.418 0.22 512 298)" clip-path="url(#mapClip)">
+        <rect width="1000" height="1000" fill="#F6F3EC"/>
+        <g stroke="#FFFFFF" stroke-width="24" fill="none">
+          <path d="M 200 0 L 200 1000"/><path d="M 400 0 L 400 1000"/>
+          <path d="M 600 0 L 600 1000"/><path d="M 800 0 L 800 1000"/>
+          <path d="M 0 200 L 1000 200"/><path d="M 0 400 L 1000 400"/>
+          <path d="M 0 600 L 1000 600"/><path d="M 0 800 L 1000 800"/>
+        </g>
+        <rect x="618" y="24" width="158" height="152" rx="16" fill="#9FD983"/>
+        <rect x="24" y="418" width="152" height="158" rx="16" fill="#9FD983"/>
+        <rect x="818" y="424" width="158" height="146" rx="16" fill="#9FD983"/>
+        <g stroke="#F6C94B" stroke-width="46" fill="none">
+          <path d="M 500 0 L 500 1000"/>
+          <path d="M 0 300 L 1000 300"/>
+        </g>
+        <path d="M 0 810 Q 250 756 500 822 T 1000 806 L 1000 1000 L 0 1000 Z"
+              fill="#90CBF4"/>
+      </g><ellipse cx="512.6" cy="429.3" rx="52.199999999999996" ry="15.3" fill="#1B2B4A" opacity="0.20"/><ellipse cx="351.76" cy="517.4799999999999" rx="48.72" ry="14.280000000000001" fill="#1B2B4A" opacity="0.20"/><ellipse cx="737.76" cy="553.4799999999999" rx="48.72" ry="14.280000000000001" fill="#1B2B4A" opacity="0.20"/><ellipse cx="586.76" cy="649.4799999999999" rx="48.72" ry="14.280000000000001" fill="#1B2B4A" opacity="0.20"/>
+      <defs><linearGradient id="pinGradblue500252" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3E7BE8"/><stop offset="1" stop-color="#2050B8"/>
+      </linearGradient></defs>
+      <path d="M 500 427.5
+               C 481.1 387.9 420.8 324.0 411.8 271.8
+               A 90 90 0 1 1 588.2 271.8
+               C 579.2 324.0 518.9 387.9 500 427.5 Z"
+            fill="url(#pinGradblue500252)"/>
+      <defs>
+        <radialGradient id="ballGrad500252" cx="0.35" cy="0.3" r="1">
+          <stop offset="0" stop-color="#FFB25C"/><stop offset="1" stop-color="#F07818"/>
+        </radialGradient>
+        <clipPath id="ballClip500252"><circle cx="500" cy="252" r="64.8"/></clipPath>
+      </defs>
+      <circle cx="500" cy="252" r="64.8" fill="url(#ballGrad500252)"/>
+      <g stroke="#B85A10" stroke-width="10" fill="none" clip-path="url(#ballClip500252)">
+        <path d="M 500 187.2 L 500 316.8"/>
+        <path d="M 435.2 252 L 564.8 252"/>
+        <path d="M 459.176 204.696 Q 500 252 459.176 299.304"/>
+        <path d="M 540.824 204.696 Q 500 252 540.824 299.304"/>
+      </g>
+      
+      <defs><clipPath id="discClip500252"><circle cx="500" cy="252" r="64.8"/></clipPath></defs>
+      <ellipse cx="479.264" cy="219.6" rx="33.696" ry="19.439999999999998"
+               fill="#FFFFFF" opacity="0.13" clip-path="url(#discClip500252)"/>
+      <defs><linearGradient id="pinGradblue340352" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3E7BE8"/><stop offset="1" stop-color="#2050B8"/>
+      </linearGradient></defs>
+      <path d="M 340 515.8
+               C 322.36 478.84000000000003 266.08 419.2 257.68 370.48
+               A 84 84 0 1 1 422.32 370.48
+               C 413.92 419.2 357.64 478.84000000000003 340 515.8 Z"
+            fill="url(#pinGradblue340352)"/>
+      <defs><radialGradient id="yog340352" cx="0.35" cy="0.3" r="1">
+        <stop offset="0" stop-color="#C9A2F5"/><stop offset="1" stop-color="#9257E0"/>
+      </radialGradient></defs>
+      <circle cx="340" cy="352" r="60.48" fill="url(#yog340352)"/>
+      <!-- flat-illustration lotus: hair bun, face, tank top, skin arms to knees, crossed dark legs -->
+      <g>
+        <!-- crossed legs (behind torso), shins overlapping -->
+        <path d="M 302.5024 373.7728 Q 323.0656 360.4672 344.8384 377.4016"
+              stroke="#4A4A58" stroke-width="10.886399999999998" fill="none" stroke-linecap="round"/>
+        <path d="M 377.4976 373.7728 Q 356.9344 360.4672 335.1616 377.4016"
+              stroke="#4A4A58" stroke-width="10.886399999999998" fill="none" stroke-linecap="round"/>
+        <!-- feet peeking at center -->
+        <circle cx="330.3232" cy="380.4256" r="4.536" fill="#F6CD9E"/>
+        <circle cx="349.6768" cy="380.4256" r="4.536" fill="#F6CD9E"/>
+        <!-- arms resting out to the knees -->
+        <path d="M 331.5328 341.1136 Q 314.5984 349.5808 310.9696 368.9344"
+              stroke="#F6CD9E" stroke-width="6.6528" fill="none" stroke-linecap="round"/>
+        <path d="M 348.4672 341.1136 Q 365.4016 349.5808 369.0304 368.9344"
+              stroke="#F6CD9E" stroke-width="6.6528" fill="none" stroke-linecap="round"/>
+        <!-- tank-top torso, slight waist -->
+        <path d="M 332.1376 331.4368
+                 C 327.904 343.5328 326.6944 353.2096 328.5088 370.144
+                 L 351.4912 370.144
+                 C 353.3056 353.2096 352.096 343.5328 347.8624 331.4368
+                 Q 340 326.5984 332.1376 331.4368 Z"
+              fill="#E8556A"/>
+        <!-- head: hair behind, face, top-knot bun -->
+        <circle cx="340" cy="320.5504" r="11.188799999999999" fill="#4A4A58"/>
+        <circle cx="340" cy="306.03520000000003" r="5.1408000000000005" fill="#4A4A58"/>
+        <circle cx="340" cy="322.3648" r="9.3744" fill="#F6CD9E"/>
+      </g>
+      
+      <defs><clipPath id="discClip340352"><circle cx="340" cy="352" r="60.48"/></clipPath></defs>
+      <ellipse cx="320.64639999999997" cy="321.76" rx="31.4496" ry="18.144"
+               fill="#FFFFFF" opacity="0.13" clip-path="url(#discClip340352)"/>
+      <defs><linearGradient id="pinGradblue726388" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3E7BE8"/><stop offset="1" stop-color="#2050B8"/>
+      </linearGradient></defs>
+      <path d="M 726 551.8
+               C 708.36 514.84 652.08 455.2 643.6800000000001 406.48
+               A 84 84 0 1 1 808.3199999999999 406.48
+               C 799.92 455.2 743.64 514.84 726 551.8 Z"
+            fill="url(#pinGradblue726388)"/>
+      <defs><clipPath id="swmClip726388"><circle cx="726" cy="388" r="60.48"/></clipPath></defs>
+      <circle cx="726" cy="388" r="60.48" fill="#CFEBFA"/>
+      <g clip-path="url(#swmClip726388)">
+        <!-- back/shoulder mass connecting arm base to head above the water -->
+        <ellipse cx="732.048" cy="400.096" rx="15.7248" ry="9.6768" fill="#F6CD9E"/>
+        <!-- head with cap + goggles -->
+        <circle cx="744.144" cy="384.976" r="12.096" fill="#F6CD9E"/>
+        <path d="M 732.048 383.1616 A 12.096 12.096 0 0 1 756.24 383.1616 Z"
+              fill="#5FBD6D"/>
+        <circle cx="752.6112" cy="384.3712" r="3.3264" fill="#53D3E0"/>
+        <!-- recovery arm: short arched stroke, hand about to enter the water -->
+        <path d="M 727.2096 395.2576 Q 706.6464 362.5984 693.3408 394.048"
+              stroke="#F6CD9E" stroke-width="9.6768" fill="none" stroke-linecap="round"/>
+        <!-- wavy water bands on top -->
+        <path d="M 659.472 400.7008 q 16.3296 -9.6768 33.264 0 t 33.264 0 t 33.264 0 t 33.264 0 L 792.528 460.576 L 659.472 460.576 Z"
+              fill="#2E86D4"/>
+        <path d="M 659.472 419.4496 q 16.3296 -9.6768 33.264 0 t 33.264 0 t 33.264 0 t 33.264 0" stroke="#6FB6EC" stroke-width="6.048"
+              fill="none" stroke-linecap="round"/>
+      </g>
+      
+      <defs><clipPath id="discClip726388"><circle cx="726" cy="388" r="60.48"/></clipPath></defs>
+      <ellipse cx="706.6464" cy="357.76" rx="31.4496" ry="18.144"
+               fill="#FFFFFF" opacity="0.13" clip-path="url(#discClip726388)"/>
+      <defs><linearGradient id="pinGradblue575484" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3E7BE8"/><stop offset="1" stop-color="#2050B8"/>
+      </linearGradient></defs>
+      <path d="M 575 647.8
+               C 557.36 610.84 501.08 551.2 492.68 502.48
+               A 84 84 0 1 1 657.3199999999999 502.48
+               C 648.92 551.2 592.64 610.84 575 647.8 Z"
+            fill="url(#pinGradblue575484)"/>
+      <defs><radialGradient id="pkl575484" cx="0.35" cy="0.3" r="1">
+        <stop offset="0" stop-color="#DDF054"/><stop offset="1" stop-color="#A2C316"/>
+      </radialGradient></defs>
+      <circle cx="575" cy="484" r="60.48" fill="url(#pkl575484)"/><circle cx="575" cy="484" r="6.9552" fill="#82A50A"/><circle cx="575.0" cy="452.5504" r="6.9552" fill="#82A50A"/><circle cx="602.2361525388591" cy="468.2752" r="6.9552" fill="#82A50A"/><circle cx="602.2361525388591" cy="499.7248" r="6.9552" fill="#82A50A"/><circle cx="575.0" cy="515.4496" r="6.9552" fill="#82A50A"/><circle cx="547.7638474611409" cy="499.7248" r="6.9552" fill="#82A50A"/><circle cx="547.7638474611409" cy="468.2752" r="6.9552" fill="#82A50A"/>
+      <defs><clipPath id="discClip575484"><circle cx="575" cy="484" r="60.48"/></clipPath></defs>
+      <ellipse cx="555.6464" cy="453.76" rx="31.4496" ry="18.144"
+               fill="#FFFFFF" opacity="0.13" clip-path="url(#discClip575484)"/></g></svg>
