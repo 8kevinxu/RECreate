@@ -18,32 +18,32 @@
         </g>
         <path d="M 0 810 Q 250 756 500 822 T 1000 806 L 1000 1000 L 0 1000 Z"
               fill="#90CBF4"/>
-      </g><ellipse cx="512.6" cy="429.3" rx="52.199999999999996" ry="15.3" fill="#1B2B4A" opacity="0.20"/><ellipse cx="351.76" cy="517.4799999999999" rx="48.72" ry="14.280000000000001" fill="#1B2B4A" opacity="0.20"/><ellipse cx="737.76" cy="553.4799999999999" rx="48.72" ry="14.280000000000001" fill="#1B2B4A" opacity="0.20"/><ellipse cx="586.76" cy="649.4799999999999" rx="48.72" ry="14.280000000000001" fill="#1B2B4A" opacity="0.20"/>
-      <defs><linearGradient id="pinGradblue500252" x1="0" y1="0" x2="0" y2="1">
+      </g><ellipse cx="566.6" cy="387.3" rx="52.199999999999996" ry="15.3" fill="#1B2B4A" opacity="0.20"/><ellipse cx="351.76" cy="517.4799999999999" rx="48.72" ry="14.280000000000001" fill="#1B2B4A" opacity="0.20"/><ellipse cx="811.76" cy="521.4799999999999" rx="48.72" ry="14.280000000000001" fill="#1B2B4A" opacity="0.20"/><ellipse cx="586.76" cy="649.4799999999999" rx="48.72" ry="14.280000000000001" fill="#1B2B4A" opacity="0.20"/>
+      <defs><linearGradient id="pinGradblue554210" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0" stop-color="#3E7BE8"/><stop offset="1" stop-color="#2050B8"/>
       </linearGradient></defs>
-      <path d="M 500 427.5
-               C 481.1 387.9 420.8 324.0 411.8 271.8
-               A 90 90 0 1 1 588.2 271.8
-               C 579.2 324.0 518.9 387.9 500 427.5 Z"
-            fill="url(#pinGradblue500252)"/>
+      <path d="M 554 385.5
+               C 535.1 345.9 474.8 282.0 465.8 229.8
+               A 90 90 0 1 1 642.2 229.8
+               C 633.2 282.0 572.9 345.9 554 385.5 Z"
+            fill="url(#pinGradblue554210)"/>
       <defs>
-        <radialGradient id="ballGrad500252" cx="0.35" cy="0.3" r="1">
+        <radialGradient id="ballGrad554210" cx="0.35" cy="0.3" r="1">
           <stop offset="0" stop-color="#FFB25C"/><stop offset="1" stop-color="#F07818"/>
         </radialGradient>
-        <clipPath id="ballClip500252"><circle cx="500" cy="252" r="64.8"/></clipPath>
+        <clipPath id="ballClip554210"><circle cx="554" cy="210" r="64.8"/></clipPath>
       </defs>
-      <circle cx="500" cy="252" r="64.8" fill="url(#ballGrad500252)"/>
-      <g stroke="#B85A10" stroke-width="10" fill="none" clip-path="url(#ballClip500252)">
-        <path d="M 500 187.2 L 500 316.8"/>
-        <path d="M 435.2 252 L 564.8 252"/>
-        <path d="M 459.176 204.696 Q 500 252 459.176 299.304"/>
-        <path d="M 540.824 204.696 Q 500 252 540.824 299.304"/>
+      <circle cx="554" cy="210" r="64.8" fill="url(#ballGrad554210)"/>
+      <g stroke="#B85A10" stroke-width="10" fill="none" clip-path="url(#ballClip554210)">
+        <path d="M 554 145.2 L 554 274.8"/>
+        <path d="M 489.2 210 L 618.8 210"/>
+        <path d="M 513.176 162.696 Q 554 210 513.176 257.304"/>
+        <path d="M 594.824 162.696 Q 554 210 594.824 257.304"/>
       </g>
       
-      <defs><clipPath id="discClip500252"><circle cx="500" cy="252" r="64.8"/></clipPath></defs>
-      <ellipse cx="479.264" cy="219.6" rx="33.696" ry="19.439999999999998"
-               fill="#FFFFFF" opacity="0.13" clip-path="url(#discClip500252)"/>
+      <defs><clipPath id="discClip554210"><circle cx="554" cy="210" r="64.8"/></clipPath></defs>
+      <ellipse cx="533.264" cy="177.6" rx="33.696" ry="19.439999999999998"
+               fill="#FFFFFF" opacity="0.13" clip-path="url(#discClip554210)"/>
       <defs><linearGradient id="pinGradblue340352" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0" stop-color="#3E7BE8"/><stop offset="1" stop-color="#2050B8"/>
       </linearGradient></defs>
@@ -87,37 +87,37 @@
       <defs><clipPath id="discClip340352"><circle cx="340" cy="352" r="60.48"/></clipPath></defs>
       <ellipse cx="320.64639999999997" cy="321.76" rx="31.4496" ry="18.144"
                fill="#FFFFFF" opacity="0.13" clip-path="url(#discClip340352)"/>
-      <defs><linearGradient id="pinGradblue726388" x1="0" y1="0" x2="0" y2="1">
+      <defs><linearGradient id="pinGradblue800356" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0" stop-color="#3E7BE8"/><stop offset="1" stop-color="#2050B8"/>
       </linearGradient></defs>
-      <path d="M 726 551.8
-               C 708.36 514.84 652.08 455.2 643.6800000000001 406.48
-               A 84 84 0 1 1 808.3199999999999 406.48
-               C 799.92 455.2 743.64 514.84 726 551.8 Z"
-            fill="url(#pinGradblue726388)"/>
-      <defs><clipPath id="swmClip726388"><circle cx="726" cy="388" r="60.48"/></clipPath></defs>
-      <circle cx="726" cy="388" r="60.48" fill="#CFEBFA"/>
-      <g clip-path="url(#swmClip726388)">
+      <path d="M 800 519.8
+               C 782.36 482.84000000000003 726.08 423.2 717.6800000000001 374.48
+               A 84 84 0 1 1 882.3199999999999 374.48
+               C 873.92 423.2 817.64 482.84000000000003 800 519.8 Z"
+            fill="url(#pinGradblue800356)"/>
+      <defs><clipPath id="swmClip800356"><circle cx="800" cy="356" r="60.48"/></clipPath></defs>
+      <circle cx="800" cy="356" r="60.48" fill="#CFEBFA"/>
+      <g clip-path="url(#swmClip800356)">
         <!-- back/shoulder mass connecting arm base to head above the water -->
-        <ellipse cx="732.048" cy="400.096" rx="15.7248" ry="9.6768" fill="#F6CD9E"/>
+        <ellipse cx="806.048" cy="368.096" rx="15.7248" ry="9.6768" fill="#F6CD9E"/>
         <!-- head with cap + goggles -->
-        <circle cx="744.144" cy="384.976" r="12.096" fill="#F6CD9E"/>
-        <path d="M 732.048 383.1616 A 12.096 12.096 0 0 1 756.24 383.1616 Z"
+        <circle cx="818.144" cy="352.976" r="12.096" fill="#F6CD9E"/>
+        <path d="M 806.048 351.1616 A 12.096 12.096 0 0 1 830.24 351.1616 Z"
               fill="#5FBD6D"/>
-        <circle cx="752.6112" cy="384.3712" r="3.3264" fill="#53D3E0"/>
+        <circle cx="826.6112" cy="352.3712" r="3.3264" fill="#53D3E0"/>
         <!-- recovery arm: short arched stroke, hand about to enter the water -->
-        <path d="M 727.2096 395.2576 Q 706.6464 362.5984 693.3408 394.048"
+        <path d="M 801.2096 363.2576 Q 780.6464 330.5984 767.3408 362.048"
               stroke="#F6CD9E" stroke-width="9.6768" fill="none" stroke-linecap="round"/>
         <!-- wavy water bands on top -->
-        <path d="M 659.472 400.7008 q 16.3296 -9.6768 33.264 0 t 33.264 0 t 33.264 0 t 33.264 0 L 792.528 460.576 L 659.472 460.576 Z"
+        <path d="M 733.472 368.7008 q 16.3296 -9.6768 33.264 0 t 33.264 0 t 33.264 0 t 33.264 0 L 866.528 428.576 L 733.472 428.576 Z"
               fill="#2E86D4"/>
-        <path d="M 659.472 419.4496 q 16.3296 -9.6768 33.264 0 t 33.264 0 t 33.264 0 t 33.264 0" stroke="#6FB6EC" stroke-width="6.048"
+        <path d="M 733.472 387.4496 q 16.3296 -9.6768 33.264 0 t 33.264 0 t 33.264 0 t 33.264 0" stroke="#6FB6EC" stroke-width="6.048"
               fill="none" stroke-linecap="round"/>
       </g>
       
-      <defs><clipPath id="discClip726388"><circle cx="726" cy="388" r="60.48"/></clipPath></defs>
-      <ellipse cx="706.6464" cy="357.76" rx="31.4496" ry="18.144"
-               fill="#FFFFFF" opacity="0.13" clip-path="url(#discClip726388)"/>
+      <defs><clipPath id="discClip800356"><circle cx="800" cy="356" r="60.48"/></clipPath></defs>
+      <ellipse cx="780.6464" cy="325.76" rx="31.4496" ry="18.144"
+               fill="#FFFFFF" opacity="0.13" clip-path="url(#discClip800356)"/>
       <defs><linearGradient id="pinGradblue575484" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0" stop-color="#3E7BE8"/><stop offset="1" stop-color="#2050B8"/>
       </linearGradient></defs>

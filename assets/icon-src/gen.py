@@ -263,9 +263,9 @@ def yoga(cx, cy, r, pal):
 # map slab (back / left / right / front) so no pin covers another;
 # ordered back-to-front (by tip y)
 LAYOUT = [
-    (500, 252, 90, ball),        # tip lands at (500, 428)
+    (554, 210, 90, ball),        # tip lands at (554, 386) — top-corner block, off the highway
     (340, 352, 84, yoga),        # tip lands at (340, 516) — on land, clear of shore
-    (726, 388, 84, swim),        # tip lands at (726, 552)
+    (800, 356, 84, swim),        # tip lands at (800, 520) — near the right corner
     (575, 484, 84, pickleball),  # tip lands at (575, 648) — on land, clear of shore
 ]
 
