@@ -263,10 +263,10 @@ def yoga(cx, cy, r, pal):
 # map slab (back / left / right / front) so no pin covers another;
 # ordered back-to-front (by tip y)
 LAYOUT = [
-    (554, 210, 90, ball),        # tip lands at (554, 386) — top-corner block, off the highway
-    (340, 352, 84, yoga),        # tip lands at (340, 516) — on land, clear of shore
-    (800, 356, 84, swim),        # tip lands at (800, 520) — near the right corner
-    (575, 484, 84, pickleball),  # tip lands at (575, 648) — on land, clear of shore
+    (554, 201, 95, ball),        # tip lands at (554, 386) — top-corner block, off the highway
+    (340, 344, 88, yoga),        # tip lands at (340, 516) — on land, clear of shore
+    (800, 348, 88, swim),        # tip lands at (800, 520) — near the right corner
+    (575, 476, 88, pickleball),  # tip lands at (575, 648) — on land, clear of shore
 ]
 
 
@@ -278,7 +278,7 @@ def ground(cx, cy, r):
 
 
 def pins(palette="color", body="light", glyphs=True, shadow=False, grounded=True,
-         with_map=True, scale=1.0):
+         with_map=True, scale=1.0, dy=0):
     """The icon subject: 3D tilted map slab with activity pins standing on it."""
     pal = COLORS[palette]
     parts = []
@@ -294,7 +294,7 @@ def pins(palette="color", body="light", glyphs=True, shadow=False, grounded=True
     filt = ' filter="url(#soft)"' if shadow else ''
     tx = 512 * (1 - scale)
     return f'''{SHADOW if shadow else ''}
-    <g transform="translate({tx} {tx}) scale({scale})"{filt}>{''.join(parts)}</g>'''
+    <g transform="translate({tx} {tx + dy}) scale({scale})"{filt}>{''.join(parts)}</g>'''
 
 
 def hero_pin():
@@ -306,11 +306,11 @@ def hero_pin():
 
 variants = {
     # iOS light (full-bleed; alpha flattened to RGB later)
-    "icon-light": svg(BG + pins(body="blue", shadow=True)),
+    "icon-light": svg(BG + pins(body="blue", shadow=True, scale=1.15, dy=25)),
     # iOS dark: transparent bg, system supplies dark backdrop
-    "icon-dark": svg(pins(body="blue")),
+    "icon-dark": svg(pins(body="blue", scale=1.15, dy=25)),
     # iOS tinted: grayscale on transparent, system tints by luminance
-    "icon-tinted": svg(pins(palette="gray", body="gray")),
+    "icon-tinted": svg(pins(palette="gray", body="gray", scale=1.15, dy=25)),
     # Android adaptive foreground: map + pins inside ~66% safe zone
     "android-fg": svg(pins(body="blue", scale=0.66)),
     # Android adaptive background: the gradient

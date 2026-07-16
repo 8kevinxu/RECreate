@@ -16,7 +16,7 @@
         <feDropShadow dx="0" dy="14" stdDeviation="22" flood-color="#0A2560" flood-opacity="0.35"/>
       </filter>
     </defs>
-    <g transform="translate(0.0 0.0) scale(1.0)" filter="url(#soft)"><polygon points="94,518 512,738 512,802 94,582" fill="#1B4FA0"/><polygon points="512,738 930,518 930,582 512,802" fill="#2C77D6"/>
+    <g transform="translate(-76.79999999999995 -51.799999999999955) scale(1.15)" filter="url(#soft)"><polygon points="94,518 512,738 512,802 94,582" fill="#1B4FA0"/><polygon points="512,738 930,518 930,582 512,802" fill="#2C77D6"/>
       <defs><clipPath id="mapClip"><rect width="1000" height="1000"/></clipPath></defs>
       <g transform="matrix(0.418 0.22 -0.418 0.22 512 298)" clip-path="url(#mapClip)">
         <rect width="1000" height="1000" fill="#F6F3EC"/>
@@ -35,118 +35,118 @@
         </g>
         <path d="M 0 810 Q 250 756 500 822 T 1000 806 L 1000 1000 L 0 1000 Z"
               fill="#90CBF4"/>
-      </g><ellipse cx="566.6" cy="387.3" rx="52.199999999999996" ry="15.3" fill="#1B2B4A" opacity="0.20"/><ellipse cx="351.76" cy="517.4799999999999" rx="48.72" ry="14.280000000000001" fill="#1B2B4A" opacity="0.20"/><ellipse cx="811.76" cy="521.4799999999999" rx="48.72" ry="14.280000000000001" fill="#1B2B4A" opacity="0.20"/><ellipse cx="586.76" cy="649.4799999999999" rx="48.72" ry="14.280000000000001" fill="#1B2B4A" opacity="0.20"/>
-      <defs><linearGradient id="pinGradblue554210" x1="0" y1="0" x2="0" y2="1">
+      </g><ellipse cx="567.3" cy="388.15" rx="55.099999999999994" ry="16.150000000000002" fill="#1B2B4A" opacity="0.20"/><ellipse cx="352.32" cy="517.36" rx="51.04" ry="14.96" fill="#1B2B4A" opacity="0.20"/><ellipse cx="812.32" cy="521.36" rx="51.04" ry="14.96" fill="#1B2B4A" opacity="0.20"/><ellipse cx="587.32" cy="649.36" rx="51.04" ry="14.96" fill="#1B2B4A" opacity="0.20"/>
+      <defs><linearGradient id="pinGradblue554201" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0" stop-color="#3E7BE8"/><stop offset="1" stop-color="#2050B8"/>
       </linearGradient></defs>
-      <path d="M 554 385.5
-               C 535.1 345.9 474.8 282.0 465.8 229.8
-               A 90 90 0 1 1 642.2 229.8
-               C 633.2 282.0 572.9 345.9 554 385.5 Z"
-            fill="url(#pinGradblue554210)"/>
+      <path d="M 554 386.25
+               C 534.05 344.45 470.4 277.0 460.9 221.9
+               A 95 95 0 1 1 647.1 221.9
+               C 637.6 277.0 573.95 344.45 554 386.25 Z"
+            fill="url(#pinGradblue554201)"/>
       <defs>
-        <radialGradient id="ballGrad554210" cx="0.35" cy="0.3" r="1">
+        <radialGradient id="ballGrad554201" cx="0.35" cy="0.3" r="1">
           <stop offset="0" stop-color="#FFB25C"/><stop offset="1" stop-color="#F07818"/>
         </radialGradient>
-        <clipPath id="ballClip554210"><circle cx="554" cy="210" r="64.8"/></clipPath>
+        <clipPath id="ballClip554201"><circle cx="554" cy="201" r="68.39999999999999"/></clipPath>
       </defs>
-      <circle cx="554" cy="210" r="64.8" fill="url(#ballGrad554210)"/>
-      <g stroke="#B85A10" stroke-width="10" fill="none" clip-path="url(#ballClip554210)">
-        <path d="M 554 145.2 L 554 274.8"/>
-        <path d="M 489.2 210 L 618.8 210"/>
-        <path d="M 513.176 162.696 Q 554 210 513.176 257.304"/>
-        <path d="M 594.824 162.696 Q 554 210 594.824 257.304"/>
+      <circle cx="554" cy="201" r="68.39999999999999" fill="url(#ballGrad554201)"/>
+      <g stroke="#B85A10" stroke-width="10" fill="none" clip-path="url(#ballClip554201)">
+        <path d="M 554 132.60000000000002 L 554 269.4"/>
+        <path d="M 485.6 201 L 622.4 201"/>
+        <path d="M 510.908 151.068 Q 554 201 510.908 250.932"/>
+        <path d="M 597.092 151.068 Q 554 201 597.092 250.932"/>
       </g>
       
-      <defs><clipPath id="discClip554210"><circle cx="554" cy="210" r="64.8"/></clipPath></defs>
-      <ellipse cx="533.264" cy="177.6" rx="33.696" ry="19.439999999999998"
-               fill="#FFFFFF" opacity="0.13" clip-path="url(#discClip554210)"/>
-      <defs><linearGradient id="pinGradblue340352" x1="0" y1="0" x2="0" y2="1">
+      <defs><clipPath id="discClip554201"><circle cx="554" cy="201" r="68.39999999999999"/></clipPath></defs>
+      <ellipse cx="532.112" cy="166.8" rx="35.568" ry="20.519999999999996"
+               fill="#FFFFFF" opacity="0.13" clip-path="url(#discClip554201)"/>
+      <defs><linearGradient id="pinGradblue340344" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0" stop-color="#3E7BE8"/><stop offset="1" stop-color="#2050B8"/>
       </linearGradient></defs>
-      <path d="M 340 515.8
-               C 322.36 478.84000000000003 266.08 419.2 257.68 370.48
-               A 84 84 0 1 1 422.32 370.48
-               C 413.92 419.2 357.64 478.84000000000003 340 515.8 Z"
-            fill="url(#pinGradblue340352)"/>
-      <defs><radialGradient id="yog340352" cx="0.35" cy="0.3" r="1">
+      <path d="M 340 515.6
+               C 321.52 476.88 262.56 414.4 253.76 363.36
+               A 88 88 0 1 1 426.24 363.36
+               C 417.44 414.4 358.48 476.88 340 515.6 Z"
+            fill="url(#pinGradblue340344)"/>
+      <defs><radialGradient id="yog340344" cx="0.35" cy="0.3" r="1">
         <stop offset="0" stop-color="#C9A2F5"/><stop offset="1" stop-color="#9257E0"/>
       </radialGradient></defs>
-      <circle cx="340" cy="352" r="60.48" fill="url(#yog340352)"/>
+      <circle cx="340" cy="344" r="63.36" fill="url(#yog340344)"/>
       <!-- flat-illustration lotus: hair bun, face, tank top, skin arms to knees, crossed dark legs -->
       <g>
         <!-- crossed legs (behind torso), shins overlapping -->
-        <path d="M 302.5024 373.7728 Q 323.0656 360.4672 344.8384 377.4016"
-              stroke="#4A4A58" stroke-width="10.886399999999998" fill="none" stroke-linecap="round"/>
-        <path d="M 377.4976 373.7728 Q 356.9344 360.4672 335.1616 377.4016"
-              stroke="#4A4A58" stroke-width="10.886399999999998" fill="none" stroke-linecap="round"/>
+        <path d="M 300.7168 366.8096 Q 322.2592 352.8704 345.0688 370.6112"
+              stroke="#4A4A58" stroke-width="11.4048" fill="none" stroke-linecap="round"/>
+        <path d="M 379.2832 366.8096 Q 357.7408 352.8704 334.9312 370.6112"
+              stroke="#4A4A58" stroke-width="11.4048" fill="none" stroke-linecap="round"/>
         <!-- feet peeking at center -->
-        <circle cx="330.3232" cy="380.4256" r="4.536" fill="#F6CD9E"/>
-        <circle cx="349.6768" cy="380.4256" r="4.536" fill="#F6CD9E"/>
+        <circle cx="329.8624" cy="373.7792" r="4.752" fill="#F6CD9E"/>
+        <circle cx="350.1376" cy="373.7792" r="4.752" fill="#F6CD9E"/>
         <!-- arms resting out to the knees -->
-        <path d="M 331.5328 341.1136 Q 314.5984 349.5808 310.9696 368.9344"
-              stroke="#F6CD9E" stroke-width="6.6528" fill="none" stroke-linecap="round"/>
-        <path d="M 348.4672 341.1136 Q 365.4016 349.5808 369.0304 368.9344"
-              stroke="#F6CD9E" stroke-width="6.6528" fill="none" stroke-linecap="round"/>
+        <path d="M 331.1296 332.5952 Q 313.3888 341.4656 309.5872 361.7408"
+              stroke="#F6CD9E" stroke-width="6.9696" fill="none" stroke-linecap="round"/>
+        <path d="M 348.8704 332.5952 Q 366.6112 341.4656 370.4128 361.7408"
+              stroke="#F6CD9E" stroke-width="6.9696" fill="none" stroke-linecap="round"/>
         <!-- tank-top torso, slight waist -->
-        <path d="M 332.1376 331.4368
-                 C 327.904 343.5328 326.6944 353.2096 328.5088 370.144
-                 L 351.4912 370.144
-                 C 353.3056 353.2096 352.096 343.5328 347.8624 331.4368
-                 Q 340 326.5984 332.1376 331.4368 Z"
+        <path d="M 331.7632 322.4576
+                 C 327.328 335.1296 326.0608 345.2672 327.9616 363.008
+                 L 352.0384 363.008
+                 C 353.9392 345.2672 352.672 335.1296 348.2368 322.4576
+                 Q 340 317.3888 331.7632 322.4576 Z"
               fill="#E8556A"/>
         <!-- head: hair behind, face, top-knot bun -->
-        <circle cx="340" cy="320.5504" r="11.188799999999999" fill="#4A4A58"/>
-        <circle cx="340" cy="306.03520000000003" r="5.1408000000000005" fill="#4A4A58"/>
-        <circle cx="340" cy="322.3648" r="9.3744" fill="#F6CD9E"/>
+        <circle cx="340" cy="311.0528" r="11.7216" fill="#4A4A58"/>
+        <circle cx="340" cy="295.8464" r="5.3856" fill="#4A4A58"/>
+        <circle cx="340" cy="312.9536" r="9.8208" fill="#F6CD9E"/>
       </g>
       
-      <defs><clipPath id="discClip340352"><circle cx="340" cy="352" r="60.48"/></clipPath></defs>
-      <ellipse cx="320.64639999999997" cy="321.76" rx="31.4496" ry="18.144"
-               fill="#FFFFFF" opacity="0.13" clip-path="url(#discClip340352)"/>
-      <defs><linearGradient id="pinGradblue800356" x1="0" y1="0" x2="0" y2="1">
+      <defs><clipPath id="discClip340344"><circle cx="340" cy="344" r="63.36"/></clipPath></defs>
+      <ellipse cx="319.7248" cy="312.32" rx="32.9472" ry="19.008"
+               fill="#FFFFFF" opacity="0.13" clip-path="url(#discClip340344)"/>
+      <defs><linearGradient id="pinGradblue800348" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0" stop-color="#3E7BE8"/><stop offset="1" stop-color="#2050B8"/>
       </linearGradient></defs>
-      <path d="M 800 519.8
-               C 782.36 482.84000000000003 726.08 423.2 717.6800000000001 374.48
-               A 84 84 0 1 1 882.3199999999999 374.48
-               C 873.92 423.2 817.64 482.84000000000003 800 519.8 Z"
-            fill="url(#pinGradblue800356)"/>
-      <defs><clipPath id="swmClip800356"><circle cx="800" cy="356" r="60.48"/></clipPath></defs>
-      <circle cx="800" cy="356" r="60.48" fill="#CFEBFA"/>
-      <g clip-path="url(#swmClip800356)">
+      <path d="M 800 519.6
+               C 781.52 480.88 722.56 418.4 713.76 367.36
+               A 88 88 0 1 1 886.24 367.36
+               C 877.44 418.4 818.48 480.88 800 519.6 Z"
+            fill="url(#pinGradblue800348)"/>
+      <defs><clipPath id="swmClip800348"><circle cx="800" cy="348" r="63.36"/></clipPath></defs>
+      <circle cx="800" cy="348" r="63.36" fill="#CFEBFA"/>
+      <g clip-path="url(#swmClip800348)">
         <!-- back/shoulder mass connecting arm base to head above the water -->
-        <ellipse cx="806.048" cy="368.096" rx="15.7248" ry="9.6768" fill="#F6CD9E"/>
+        <ellipse cx="806.336" cy="360.672" rx="16.4736" ry="10.1376" fill="#F6CD9E"/>
         <!-- head with cap + goggles -->
-        <circle cx="818.144" cy="352.976" r="12.096" fill="#F6CD9E"/>
-        <path d="M 806.048 351.1616 A 12.096 12.096 0 0 1 830.24 351.1616 Z"
+        <circle cx="819.008" cy="344.832" r="12.672" fill="#F6CD9E"/>
+        <path d="M 806.336 342.9312 A 12.672 12.672 0 0 1 831.68 342.9312 Z"
               fill="#5FBD6D"/>
-        <circle cx="826.6112" cy="352.3712" r="3.3264" fill="#53D3E0"/>
+        <circle cx="827.8784" cy="344.1984" r="3.4848" fill="#53D3E0"/>
         <!-- recovery arm: short arched stroke, hand about to enter the water -->
-        <path d="M 801.2096 363.2576 Q 780.6464 330.5984 767.3408 362.048"
-              stroke="#F6CD9E" stroke-width="9.6768" fill="none" stroke-linecap="round"/>
+        <path d="M 801.2672 355.6032 Q 779.7248 321.3888 765.7856 354.336"
+              stroke="#F6CD9E" stroke-width="10.1376" fill="none" stroke-linecap="round"/>
         <!-- wavy water bands on top -->
-        <path d="M 733.472 368.7008 q 16.3296 -9.6768 33.264 0 t 33.264 0 t 33.264 0 t 33.264 0 L 866.528 428.576 L 733.472 428.576 Z"
+        <path d="M 730.304 361.3056 q 17.107200000000002 -10.1376 34.848 0 t 34.848 0 t 34.848 0 t 34.848 0 L 869.696 424.032 L 730.304 424.032 Z"
               fill="#2E86D4"/>
-        <path d="M 733.472 387.4496 q 16.3296 -9.6768 33.264 0 t 33.264 0 t 33.264 0 t 33.264 0" stroke="#6FB6EC" stroke-width="6.048"
+        <path d="M 730.304 380.9472 q 17.107200000000002 -10.1376 34.848 0 t 34.848 0 t 34.848 0 t 34.848 0" stroke="#6FB6EC" stroke-width="6.336"
               fill="none" stroke-linecap="round"/>
       </g>
       
-      <defs><clipPath id="discClip800356"><circle cx="800" cy="356" r="60.48"/></clipPath></defs>
-      <ellipse cx="780.6464" cy="325.76" rx="31.4496" ry="18.144"
-               fill="#FFFFFF" opacity="0.13" clip-path="url(#discClip800356)"/>
-      <defs><linearGradient id="pinGradblue575484" x1="0" y1="0" x2="0" y2="1">
+      <defs><clipPath id="discClip800348"><circle cx="800" cy="348" r="63.36"/></clipPath></defs>
+      <ellipse cx="779.7248" cy="316.32" rx="32.9472" ry="19.008"
+               fill="#FFFFFF" opacity="0.13" clip-path="url(#discClip800348)"/>
+      <defs><linearGradient id="pinGradblue575476" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0" stop-color="#3E7BE8"/><stop offset="1" stop-color="#2050B8"/>
       </linearGradient></defs>
-      <path d="M 575 647.8
-               C 557.36 610.84 501.08 551.2 492.68 502.48
-               A 84 84 0 1 1 657.3199999999999 502.48
-               C 648.92 551.2 592.64 610.84 575 647.8 Z"
-            fill="url(#pinGradblue575484)"/>
-      <defs><radialGradient id="pkl575484" cx="0.35" cy="0.3" r="1">
+      <path d="M 575 647.6
+               C 556.52 608.88 497.56 546.4 488.76 495.36
+               A 88 88 0 1 1 661.24 495.36
+               C 652.44 546.4 593.48 608.88 575 647.6 Z"
+            fill="url(#pinGradblue575476)"/>
+      <defs><radialGradient id="pkl575476" cx="0.35" cy="0.3" r="1">
         <stop offset="0" stop-color="#DDF054"/><stop offset="1" stop-color="#A2C316"/>
       </radialGradient></defs>
-      <circle cx="575" cy="484" r="60.48" fill="url(#pkl575484)"/><circle cx="575" cy="484" r="6.9552" fill="#82A50A"/><circle cx="575.0" cy="452.5504" r="6.9552" fill="#82A50A"/><circle cx="602.2361525388591" cy="468.2752" r="6.9552" fill="#82A50A"/><circle cx="602.2361525388591" cy="499.7248" r="6.9552" fill="#82A50A"/><circle cx="575.0" cy="515.4496" r="6.9552" fill="#82A50A"/><circle cx="547.7638474611409" cy="499.7248" r="6.9552" fill="#82A50A"/><circle cx="547.7638474611409" cy="468.2752" r="6.9552" fill="#82A50A"/>
-      <defs><clipPath id="discClip575484"><circle cx="575" cy="484" r="60.48"/></clipPath></defs>
-      <ellipse cx="555.6464" cy="453.76" rx="31.4496" ry="18.144"
-               fill="#FFFFFF" opacity="0.13" clip-path="url(#discClip575484)"/></g></svg>
+      <circle cx="575" cy="476" r="63.36" fill="url(#pkl575476)"/><circle cx="575" cy="476" r="7.2864" fill="#82A50A"/><circle cx="575.0" cy="443.0528" r="7.2864" fill="#82A50A"/><circle cx="603.5331121835667" cy="459.5264" r="7.2864" fill="#82A50A"/><circle cx="603.5331121835667" cy="492.4736" r="7.2864" fill="#82A50A"/><circle cx="575.0" cy="508.9472" r="7.2864" fill="#82A50A"/><circle cx="546.4668878164333" cy="492.4736" r="7.2864" fill="#82A50A"/><circle cx="546.4668878164333" cy="459.52639999999997" r="7.2864" fill="#82A50A"/>
+      <defs><clipPath id="discClip575476"><circle cx="575" cy="476" r="63.36"/></clipPath></defs>
+      <ellipse cx="554.7248" cy="444.32" rx="32.9472" ry="19.008"
+               fill="#FFFFFF" opacity="0.13" clip-path="url(#discClip575476)"/></g></svg>

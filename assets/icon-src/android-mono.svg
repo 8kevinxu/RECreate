@@ -1,34 +1,34 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
     <g transform="translate(204.8 204.8) scale(0.6)">
-      <defs><linearGradient id="pinGradflat554210" x1="0" y1="0" x2="0" y2="1">
+      <defs><linearGradient id="pinGradflat554201" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#FFFFFF"/>
       </linearGradient></defs>
-      <path d="M 554 385.5
-               C 535.1 345.9 474.8 282.0 465.8 229.8
-               A 90 90 0 1 1 642.2 229.8
-               C 633.2 282.0 572.9 345.9 554 385.5 Z"
-            fill="url(#pinGradflat554210)"/>
-      <defs><linearGradient id="pinGradflat340352" x1="0" y1="0" x2="0" y2="1">
+      <path d="M 554 386.25
+               C 534.05 344.45 470.4 277.0 460.9 221.9
+               A 95 95 0 1 1 647.1 221.9
+               C 637.6 277.0 573.95 344.45 554 386.25 Z"
+            fill="url(#pinGradflat554201)"/>
+      <defs><linearGradient id="pinGradflat340344" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#FFFFFF"/>
       </linearGradient></defs>
-      <path d="M 340 515.8
-               C 322.36 478.84000000000003 266.08 419.2 257.68 370.48
-               A 84 84 0 1 1 422.32 370.48
-               C 413.92 419.2 357.64 478.84000000000003 340 515.8 Z"
-            fill="url(#pinGradflat340352)"/>
-      <defs><linearGradient id="pinGradflat800356" x1="0" y1="0" x2="0" y2="1">
+      <path d="M 340 515.6
+               C 321.52 476.88 262.56 414.4 253.76 363.36
+               A 88 88 0 1 1 426.24 363.36
+               C 417.44 414.4 358.48 476.88 340 515.6 Z"
+            fill="url(#pinGradflat340344)"/>
+      <defs><linearGradient id="pinGradflat800348" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#FFFFFF"/>
       </linearGradient></defs>
-      <path d="M 800 519.8
-               C 782.36 482.84000000000003 726.08 423.2 717.6800000000001 374.48
-               A 84 84 0 1 1 882.3199999999999 374.48
-               C 873.92 423.2 817.64 482.84000000000003 800 519.8 Z"
-            fill="url(#pinGradflat800356)"/>
-      <defs><linearGradient id="pinGradflat575484" x1="0" y1="0" x2="0" y2="1">
+      <path d="M 800 519.6
+               C 781.52 480.88 722.56 418.4 713.76 367.36
+               A 88 88 0 1 1 886.24 367.36
+               C 877.44 418.4 818.48 480.88 800 519.6 Z"
+            fill="url(#pinGradflat800348)"/>
+      <defs><linearGradient id="pinGradflat575476" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#FFFFFF"/>
       </linearGradient></defs>
-      <path d="M 575 647.8
-               C 557.36 610.84 501.08 551.2 492.68 502.48
-               A 84 84 0 1 1 657.3199999999999 502.48
-               C 648.92 551.2 592.64 610.84 575 647.8 Z"
-            fill="url(#pinGradflat575484)"/></g></svg>
+      <path d="M 575 647.6
+               C 556.52 608.88 497.56 546.4 488.76 495.36
+               A 88 88 0 1 1 661.24 495.36
+               C 652.44 546.4 593.48 608.88 575 647.6 Z"
+            fill="url(#pinGradflat575476)"/></g></svg>
