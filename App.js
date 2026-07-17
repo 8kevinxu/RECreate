@@ -1654,7 +1654,7 @@ function CourtDetail({
               <Text style={styles.facText}>
                 🟢 {dir.openPlayCourts
                   ? t('court.openPlayCourts', { n: dir.openPlayCourts })
-                  : t('court.openPlayTimes', { t: dir.openPlayTimes })}
+                  : t('court.openPlay')}
               </Text>
             </View>
           )}
@@ -1938,6 +1938,19 @@ function CourtDetail({
             </Text>
           </View>
         ))}
+
+        {/* Open-play times (from the SFRP directory / posted schedule PDFs) live
+            here in the schedule, not on the fact chip — the chip stays a badge. */}
+        {!!dir?.openPlayTimes && (
+          <>
+            <Text style={[styles.sectionLabel, styles.openPlayLabel]}>
+              🟢 {t('court.openPlay')}
+            </Text>
+            {dir.openPlayTimes.split(' · ').map((line) => (
+              <Text key={line} style={styles.openPlayLine}>{line}</Text>
+            ))}
+          </>
+        )}
 
         {!!court.notes && <Text style={styles.notes}>{court.notes}</Text>}
         <Text style={styles.disclaimer}>
@@ -2523,6 +2536,8 @@ const styles = StyleSheet.create({
   weekTimes: { fontSize: 13, color: '#2a3a4a', flex: 1, textAlign: 'right' },
   weekClosed: { color: '#aab4bd' },
   weekTodayText: { color: '#e8730c', fontWeight: '700' },
+  openPlayLabel: { marginTop: 10 },
+  openPlayLine: { fontSize: 13, color: '#2a3a4a', paddingVertical: 2, paddingHorizontal: 8 },
 
   notes: { fontSize: 13, color: '#5b6b7b', marginTop: 8, lineHeight: 18 },
   disclaimer: {
