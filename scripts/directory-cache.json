@@ -416,7 +416,50 @@
         "lights": true,
         "restrooms": true,
         "nets": "Provided (4 rolling nets)",
-        "openPlayTimes": "Mon/Wed 7AM-3PM · Tue/Thu/Fri/Sun 7AM-9AM · Sat 7AM-5PM"
+        "openPlayWeek": [
+          [
+            [
+              420,
+              540
+            ]
+          ],
+          [
+            [
+              420,
+              900
+            ]
+          ],
+          [
+            [
+              420,
+              540
+            ]
+          ],
+          [
+            [
+              420,
+              900
+            ]
+          ],
+          [
+            [
+              420,
+              540
+            ]
+          ],
+          [
+            [
+              420,
+              540
+            ]
+          ],
+          [
+            [
+              420,
+              1020
+            ]
+          ]
+        ]
       }
     },
     "mountain-lake-park-outdoor": {
@@ -540,7 +583,35 @@
         "lights": false,
         "restrooms": true,
         "nets": "Provided (4 rolling nets); Court E has a permanent net",
-        "openPlayTimes": "Tue/Thu/Fri 9AM-3PM · Sun 9AM-5PM"
+        "openPlayWeek": [
+          [
+            [
+              540,
+              1020
+            ]
+          ],
+          [],
+          [
+            [
+              540,
+              900
+            ]
+          ],
+          [],
+          [
+            [
+              540,
+              900
+            ]
+          ],
+          [
+            [
+              540,
+              900
+            ]
+          ],
+          []
+        ]
       }
     },
     "silver-terrace-playground-outdoor": {
@@ -620,7 +691,25 @@
         "lights": true,
         "restrooms": true,
         "nets": "Pickleball net, paddles and balls available to borrow Tuesday to Friday, 10 a.m. to 7 p.m., and Saturday, 9 a.m. to 4 p.m.",
-        "openPlayTimes": "Tuesdays and Thursdays, 10:30 a.m. to 1:30 p.m."
+        "openPlayWeek": [
+          [],
+          [],
+          [
+            [
+              630,
+              810
+            ]
+          ],
+          [],
+          [
+            [
+              630,
+              810
+            ]
+          ],
+          [],
+          []
+        ]
       }
     },
     "west-portal-playground-outdoor": {
@@ -673,5 +762,5 @@
       }
     }
   },
-  "fetchedAt": "2026-07-17T00:20:13.808Z"
+  "fetchedAt": "2026-07-17T00:49:11.012Z"
 }

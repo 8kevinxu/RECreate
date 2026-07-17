@@ -47,14 +47,18 @@ const ALIASES = {
 
 // Pickleball open-play times for "See schedule" directory rows come from the
 // schedule PDF each row links (DocumentCenter): openPlayFromPdf() parses the
-// poster's weekly grid when the PDF has a text layer (Moscone). Some posters are
-// flattened images with NO text layer (Presidio Wall, Rossi as of 2026-07) —
-// those fall back to the strings below, transcribed from the posters themselves.
-// The build logs when a fallback is used; re-verify these if SFRP posts a new
-// poster (the log prints the current PDF URL). Keyed by normalized facility name.
-const PDF_FALLBACK_TIMES = {
-  'presidio wall': 'Daily 9AM-dusk · courts B/D/F always drop-in',
-  rossi: 'Tue/Thu/Fri 9AM-3PM · Sun 9AM-5PM',
+// poster's weekly grid when the PDF has a text layer (Moscone) into a 7-day
+// week of [startMin, endMin] blocks (0=Sun..6=Sat — same convention as
+// court.dropins, so the app can merge them into the schedule rows). Some
+// posters are flattened images with NO text layer (Presidio Wall, Rossi as of
+// 2026-07) — those fall back to the entries below, transcribed from the
+// posters: a `week` when the times are concrete, a display-only `times` string
+// when they aren't ("9AM-dusk"). The build logs when a fallback is used;
+// re-verify these if SFRP posts a new poster (the log prints the PDF URL).
+const PDF_FALLBACK = {
+  'presidio wall': { times: 'Daily 9AM-dusk · courts B/D/F always drop-in' },
+  // Tue/Thu/Fri 9AM-3PM, Sun 9AM-5PM
+  rossi: { week: [[[540, 1020]], [], [[540, 900]], [], [[540, 900]], [[540, 900]], []] },
 };
 
 const norm = (s) =>
@@ -114,8 +118,44 @@ function parseTable($, table) {
 // (build-only devDep, same as build-pools), cluster items into day rows by
 // y-gaps, and take the time ranges x-aligned with each OPEN GROUP PLAY label.
 // Returns null when the PDF has no text layer (a flattened image poster).
-const DAYS_SHORT = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 const TIME_RE = /^\d{1,2}(:\d{2})?(AM|PM)?\s*-\s*\d{1,2}(:\d{2})?(AM|PM)$/i;
+
+// "7AM" / "10:30 a.m." → minutes from midnight; a missing meridiem borrows the
+// range's end meridiem ("3-6PM" → 3PM).
+function toMin(s, fallbackMer) {
+  const m = String(s).trim().match(/^(\d{1,2})(?::(\d{2}))?\s*(a\.?m\.?|p\.?m\.?)?$/i);
+  if (!m) return null;
+  let h = +m[1] % 12;
+  if (/^p/i.test(m[3] || fallbackMer || '')) h += 12;
+  return h * 60 + (+m[2] || 0);
+}
+
+// "7AM-3PM" / "10:30 a.m. to 1:30 p.m." → [startMin, endMin], or null.
+function parseRange(str) {
+  const m = String(str).match(
+    /(\d{1,2}(?::\d{2})?\s*(?:a\.?m\.?|p\.?m\.?)?)\s*(?:-|–|to)\s*(\d{1,2}(?::\d{2})?\s*(?:a\.?m\.?|p\.?m\.?))/i
+  );
+  if (!m) return null;
+  const endMer = (m[2].match(/a\.?m\.?|p\.?m\.?/i) || [''])[0];
+  const s = toMin(m[1], endMer);
+  const e = toMin(m[2]);
+  return s != null && e != null && e > s ? [s, e] : null;
+}
+
+// Explicit directory-cell text like "Tuesdays and Thursdays, 10:30 a.m. to
+// 1:30 p.m." → a 7-day week (one shared time range), or null when unparseable.
+const DAY_TOKENS = { sun: 0, mon: 1, tue: 2, wed: 3, thu: 4, fri: 5, sat: 6 };
+function weekFromText(text) {
+  const days = new Set();
+  const re = /\b(sun|mon|tue|wed|thu|fri|sat)[a-z]*\b/gi;
+  let m;
+  while ((m = re.exec(text))) days.add(DAY_TOKENS[m[1].toLowerCase()]);
+  const range = parseRange(text);
+  if (!days.size || !range) return null;
+  const week = Array.from({ length: 7 }, () => []);
+  for (const d of days) week[d] = [range];
+  return week;
+}
 
 async function openPlayFromPdf(url) {
   const pdfjs = await import('pdfjs-dist/legacy/build/pdf.mjs');
@@ -149,27 +189,23 @@ async function openPlayFromPdf(url) {
   // (never plain PICKLEBALL), and as a guard we skip a heading whose block
   // carries an x-aligned RESERVABLE tag. (Most blocks also say "OPEN GROUP
   // PLAY", but e.g. Moscone's Sunday block omits it, so it can't be the anchor.)
-  const perDay = dayBands.map((band) => {
+  // Rows read top-to-bottom Mon..Sun; emit Sun-first to match court.dropins.
+  const week = Array.from({ length: 7 }, () => []);
+  dayBands.forEach((band, i) => {
     const heads = band.filter((it) => /^pickleball$/i.test(it.s));
-    const times = [];
+    const blocks = [];
     for (const h of heads) {
       if (band.some((it) => /^reservable$/i.test(it.s) && Math.abs(it.x - h.x) < 60)) continue;
       for (const it of band) {
-        if (TIME_RE.test(it.s) && Math.abs(it.x - h.x) < 60) times.push(it.s.replace(/\s/g, ''));
+        if (TIME_RE.test(it.s) && Math.abs(it.x - h.x) < 60) {
+          const r = parseRange(it.s);
+          if (r) blocks.push(r);
+        }
       }
     }
-    return times.join(' & ');
+    week[(i + 1) % 7] = blocks.sort((a, b) => a[0] - b[0]);
   });
-
-  // Compact: group days sharing the same times, in first-appearance order.
-  const groups = new Map();
-  perDay.forEach((t, d) => {
-    if (!t) return;
-    if (!groups.has(t)) groups.set(t, []);
-    groups.get(t).push(DAYS_SHORT[d]);
-  });
-  if (!groups.size) return null;
-  return [...groups.entries()].map(([t, days]) => `${days.join('/')} ${t}`).join(' · ');
+  return week.some((d) => d.length) ? week : null;
 }
 
 // Our outdoor courts, indexed for name matching, with the sports each offers.
@@ -260,26 +296,31 @@ async function build() {
     const openKey = Object.keys(r).find((k) => /open\s*play/i.test(k) && k !== '_links');
     const openRaw = openKey ? String(r[openKey]).trim() : '';
     const openPlayCourts = /^\d+$/.test(openRaw) ? num(openRaw) : 0;
+    let openPlayWeek = null;
     let openPlayTimes = openRaw && !/^\d+$/.test(openRaw) ? openRaw : null;
     if (openPlayTimes && /^(see\s+)?schedule/i.test(openPlayTimes)) {
       const link = openKey && r._links[openKey];
-      let parsed = null;
       if (link) {
         try {
-          parsed = await openPlayFromPdf(link);
+          openPlayWeek = await openPlayFromPdf(link);
         } catch (e) {
           console.log(`  ⚠ ${facility} schedule PDF: ${e.message}`);
         }
       }
-      if (!parsed) {
-        parsed = PDF_FALLBACK_TIMES[norm(facility)] || null;
+      if (!openPlayWeek) {
+        const fb = PDF_FALLBACK[norm(facility)];
+        openPlayWeek = (fb && fb.week) || null;
+        openPlayTimes = (fb && fb.times) || openPlayTimes;
         console.log(
-          `  ↺ ${facility}: open-play times from ${parsed ? 'transcribed fallback' : 'nowhere (left as-is)'}` +
+          `  ↺ ${facility}: open-play from ${fb ? 'transcribed fallback' : 'nowhere (left as-is)'}` +
             (link ? ` — poster is not machine-readable, re-verify against ${link}` : '')
         );
       }
-      openPlayTimes = parsed || openPlayTimes;
+    } else if (openPlayTimes) {
+      // Explicit times right in the cell (e.g. Upper Noe) — structure when parseable.
+      openPlayWeek = weekFromText(openPlayTimes);
     }
+    if (openPlayWeek) openPlayTimes = null; // week supersedes the display string
     (out[court.id] ||= {}).pickleball = {
       total,
       reservable: num(r['Reservable']),
@@ -288,6 +329,7 @@ async function build() {
       restrooms: yes(r['Restrooms']),
       nets: nets || null,
       ...(openPlayCourts > 0 ? { openPlayCourts } : {}),
+      ...(openPlayWeek ? { openPlayWeek } : {}),
       ...(openPlayTimes ? { openPlayTimes } : {}),
     };
   }
@@ -313,10 +355,13 @@ function render(directory, generatedAt) {
 // Per-court facility facts from SF Rec & Park's tennis + pickleball court
 // directories. Map of our court id -> { sport: { total, reservable, walkup,
 // lights, restrooms, [dedicated], [nets], [openPlayCourts], [openPlayTimes] } }.
-// openPlayCourts = dedicated open-play court count; openPlayTimes = the shared-use
-// open-play schedule (parsed from the posted schedule PDF each "See schedule" row
-// links; transcribed fallback for image-only posters). Merged onto courts at
-// runtime by lib/useCourts.js and shown on the court detail card.
+// openPlayCourts = dedicated open-play court count; openPlayWeek = shared-use
+// open-play blocks as a dropins-style week (0=Sun..6=Sat, [startMin, endMin] —
+// parsed from the posted schedule PDF each "See schedule" row links, or from
+// explicit cell text; transcribed fallback for image-only posters); openPlayTimes
+// = display-only string when the times can't be structured ("9AM-dusk"). Merged
+// onto courts at runtime by lib/useCourts.js; the card folds openPlayWeek into
+// the weekly schedule rows tagged "(open play)".
 
 export const DIRECTORY = {
 ${body}

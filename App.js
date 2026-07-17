@@ -180,7 +180,7 @@ const AMENITIES = [
     id: 'openplay',
     test: (c, s) => {
       const d = c.directory?.[s];
-      return !!d && ((d.openPlayCourts || 0) > 0 || !!d.openPlayTimes);
+      return !!d && ((d.openPlayCourts || 0) > 0 || !!d.openPlayWeek || !!d.openPlayTimes);
     },
   },
   // Golf-course filters: only the curated golf entries carry `c.golf`, so these
@@ -1393,7 +1393,7 @@ function CourtDetail({
   const dir = court.directory?.[vSport];
   // The location's rec.us booking guidelines (markdown), shared across its sports.
   const guidelines = court.reserved?.guidelines;
-  const week = getDropinWeek(court, vSport, viewTime);
+  const week = getDropinWeek(court, vSport, viewTime, dir?.openPlayWeek);
   const level = currentLevel(history, now); // community's latest
   const last = latest(history);
   const lastHour = countWithin(history, 60 * 60 * 1000, now);
@@ -1649,7 +1649,7 @@ function CourtDetail({
               <Text style={styles.facText}>🥅 {netsLabel(dir.nets)}</Text>
             </View>
           )}
-          {(dir.openPlayCourts || dir.openPlayTimes) && (
+          {(dir.openPlayCourts || dir.openPlayWeek || dir.openPlayTimes) && (
             <View style={styles.facChip}>
               <Text style={styles.facText}>
                 🟢 {dir.openPlayCourts
@@ -1939,17 +1939,13 @@ function CourtDetail({
           </View>
         ))}
 
-        {/* Open-play times (from the SFRP directory / posted schedule PDFs) live
-            here in the schedule, not on the fact chip — the chip stays a badge. */}
+        {/* Structured open-play blocks merge into the week rows above (tagged
+            "(open play)"); this line covers the rare court whose posted times
+            can't be structured (e.g. "9AM-dusk"). */}
         {!!dir?.openPlayTimes && (
-          <>
-            <Text style={[styles.sectionLabel, styles.openPlayLabel]}>
-              🟢 {t('court.openPlay')}
-            </Text>
-            {dir.openPlayTimes.split(' · ').map((line) => (
-              <Text key={line} style={styles.openPlayLine}>{line}</Text>
-            ))}
-          </>
+          <Text style={styles.openPlayLine}>
+            🟢 {t('court.openPlay')}: {dir.openPlayTimes}
+          </Text>
         )}
 
         {!!court.notes && <Text style={styles.notes}>{court.notes}</Text>}
@@ -2536,8 +2532,7 @@ const styles = StyleSheet.create({
   weekTimes: { fontSize: 13, color: '#2a3a4a', flex: 1, textAlign: 'right' },
   weekClosed: { color: '#aab4bd' },
   weekTodayText: { color: '#e8730c', fontWeight: '700' },
-  openPlayLabel: { marginTop: 10 },
-  openPlayLine: { fontSize: 13, color: '#2a3a4a', paddingVertical: 2, paddingHorizontal: 8 },
+  openPlayLine: { fontSize: 13, color: '#2a3a4a', marginTop: 8, paddingHorizontal: 8 },
 
   notes: { fontSize: 13, color: '#5b6b7b', marginTop: 8, lineHeight: 18 },
   disclaimer: {
