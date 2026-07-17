@@ -407,7 +407,8 @@
         "reservable": 4,
         "walkup": 0,
         "lights": true,
-        "restrooms": true
+        "restrooms": true,
+        "note": "Courts 3 & 4 host pickleball part-day; tennis-only Tue/Thu 9 AM-3 PM & Sun 9 AM-5 PM, shared 3-6 PM weekdays. Courts 1 & 2 all-day tennis."
       },
       "pickleball": {
         "total": 6,
@@ -459,7 +460,8 @@
               1020
             ]
           ]
-        ]
+        ],
+        "note": "Reservable for tennis or pickleball 3-6 PM weekdays, from 5 PM weekends."
       }
     },
     "mountain-lake-park-outdoor": {
@@ -530,7 +532,52 @@
         "reservable": 4,
         "walkup": 0,
         "lights": false,
-        "restrooms": true
+        "restrooms": true,
+        "playWeek": [
+          [
+            [
+              450,
+              540
+            ]
+          ],
+          [
+            [
+              450,
+              540
+            ]
+          ],
+          [
+            [
+              450,
+              540
+            ]
+          ],
+          [
+            [
+              450,
+              540
+            ]
+          ],
+          [
+            [
+              450,
+              540
+            ]
+          ],
+          [
+            [
+              450,
+              540
+            ]
+          ],
+          [
+            [
+              450,
+              540
+            ]
+          ]
+        ],
+        "note": "Tennis 7:30-9 AM daily only — courts convert to pickleball at 9 AM. High-school tennis may reserve 3-6 PM in season."
       },
       "pickleball": {
         "total": 6,
@@ -539,7 +586,51 @@
         "lights": false,
         "restrooms": true,
         "nets": "Provided (storage box)",
-        "openPlayTimes": "Daily 9AM-dusk · courts B/D/F always drop-in"
+        "openPlayWeek": [
+          [
+            [
+              540,
+              1200
+            ]
+          ],
+          [
+            [
+              540,
+              1200
+            ]
+          ],
+          [
+            [
+              540,
+              1200
+            ]
+          ],
+          [
+            [
+              540,
+              1200
+            ]
+          ],
+          [
+            [
+              540,
+              1200
+            ]
+          ],
+          [
+            [
+              540,
+              1200
+            ]
+          ],
+          [
+            [
+              540,
+              1200
+            ]
+          ]
+        ],
+        "note": "Courts B/D/F: open play all day. Courts A/C/E: reservable after 1 PM (3 PM weekends)."
       }
     },
     "richmond-playground-outdoor": {
@@ -574,7 +665,8 @@
         "reservable": 3,
         "walkup": 0,
         "lights": false,
-        "restrooms": true
+        "restrooms": true,
+        "note": "Court 3 hosts pickleball part-day (shared from 3 PM weekdays / 5 PM weekends); courts 1 & 2 all-day tennis."
       },
       "pickleball": {
         "total": 9,
@@ -611,7 +703,8 @@
             ]
           ],
           []
-        ]
+        ],
+        "note": "Reservable for tennis or pickleball from 3 PM weekdays, 5 PM weekends; Court E (permanent net) reservable all day."
       }
     },
     "silver-terrace-playground-outdoor": {
@@ -762,5 +855,5 @@
       }
     }
   },
-  "fetchedAt": "2026-07-17T00:49:11.012Z"
+  "fetchedAt": "2026-07-17T01:11:24.738Z"
 }

@@ -52,13 +52,46 @@ const ALIASES = {
 // court.dropins, so the app can merge them into the schedule rows). Some
 // posters are flattened images with NO text layer (Presidio Wall, Rossi as of
 // 2026-07) — those fall back to the entries below, transcribed from the
-// posters: a `week` when the times are concrete, a display-only `times` string
-// when they aren't ("9AM-dusk"). The build logs when a fallback is used;
-// re-verify these if SFRP posts a new poster (the log prints the PDF URL).
+// posters: a `week` of open-play blocks, plus an optional `note` for nuance
+// the week can't carry. The build logs when a fallback is used; re-verify
+// these if SFRP posts a new poster (the log prints the PDF URL).
 const PDF_FALLBACK = {
-  'presidio wall': { times: 'Daily 9AM-dusk · courts B/D/F always drop-in' },
+  // Poster: courts B/D/F are open play 9AM-dark every day; courts A/C/E are
+  // open play 9AM-1PM (weekends 9AM-3PM) then reservable until dark. The week
+  // carries the all-day open play (true via B/D/F, ending at the 8PM the app
+  // uses for park daylight hours); the A/C/E split rides OPEN_PLAY_NOTES.
+  'presidio wall': { week: Array.from({ length: 7 }, () => [[540, 1200]]) },
   // Tue/Thu/Fri 9AM-3PM, Sun 9AM-5PM
   rossi: { week: [[[540, 1020]], [], [[540, 900]], [], [[540, 900]], [[540, 900]], []] },
+};
+
+// Court-split / reservation nuance the weekly open-play blocks can't carry,
+// transcribed from the same posters (applies to parsed and fallback courts
+// alike); the card shows it under the weekly schedule. Re-verify with the
+// posters when SFRP revises them.
+const OPEN_PLAY_NOTES = {
+  moscone: 'Reservable for tennis or pickleball 3-6 PM weekdays, from 5 PM weekends.',
+  'presidio wall': 'Courts B/D/F: open play all day. Courts A/C/E: reservable after 1 PM (3 PM weekends).',
+  rossi: 'Reservable for tennis or pickleball from 3 PM weekdays, 5 PM weekends; Court E (permanent net) reservable all day.',
+};
+
+// The same posters constrain TENNIS at these facilities. Presidio Wall's poster
+// covers every court, so tennis there is literally 7:30-9 AM daily — playWeek
+// REPLACES the court's dropins.tennis at runtime (lib/useCourts.js), so the
+// map's open-now status and the schedule agree. Moscone's and Rossi's posters
+// govern only courts 3(&4) while their other courts stay all-day tennis, so
+// they get a note instead of an override.
+const TENNIS_ADJUST = {
+  'presidio wall': {
+    playWeek: Array.from({ length: 7 }, () => [[450, 540]]),
+    note: 'Tennis 7:30-9 AM daily only — courts convert to pickleball at 9 AM. High-school tennis may reserve 3-6 PM in season.',
+  },
+  moscone: {
+    note: 'Courts 3 & 4 host pickleball part-day; tennis-only Tue/Thu 9 AM-3 PM & Sun 9 AM-5 PM, shared 3-6 PM weekdays. Courts 1 & 2 all-day tennis.',
+  },
+  rossi: {
+    note: 'Court 3 hosts pickleball part-day (shared from 3 PM weekdays / 5 PM weekends); courts 1 & 2 all-day tennis.',
+  },
 };
 
 const norm = (s) =>
@@ -269,12 +302,15 @@ async function build() {
       if (total > 0) misses.push(`tennis: ${facility}`);
       continue;
     }
+    const tAdj = TENNIS_ADJUST[norm(facility)];
     (out[court.id] ||= {}).tennis = {
       total,
       reservable: num(r['Reservable courts']),
       walkup: num(r['Walk-up courts']),
       lights: yes(r['Lights']),
       restrooms: yes(r['Restrooms']),
+      ...(tAdj && tAdj.playWeek ? { playWeek: tAdj.playWeek } : {}),
+      ...(tAdj && tAdj.note ? { note: tAdj.note } : {}),
     };
   }
 
@@ -310,7 +346,6 @@ async function build() {
       if (!openPlayWeek) {
         const fb = PDF_FALLBACK[norm(facility)];
         openPlayWeek = (fb && fb.week) || null;
-        openPlayTimes = (fb && fb.times) || openPlayTimes;
         console.log(
           `  ↺ ${facility}: open-play from ${fb ? 'transcribed fallback' : 'nowhere (left as-is)'}` +
             (link ? ` — poster is not machine-readable, re-verify against ${link}` : '')
@@ -321,6 +356,7 @@ async function build() {
       openPlayWeek = weekFromText(openPlayTimes);
     }
     if (openPlayWeek) openPlayTimes = null; // week supersedes the display string
+    const note = OPEN_PLAY_NOTES[norm(facility)] || null;
     (out[court.id] ||= {}).pickleball = {
       total,
       reservable: num(r['Reservable']),
@@ -331,6 +367,7 @@ async function build() {
       ...(openPlayCourts > 0 ? { openPlayCourts } : {}),
       ...(openPlayWeek ? { openPlayWeek } : {}),
       ...(openPlayTimes ? { openPlayTimes } : {}),
+      ...(note ? { note } : {}),
     };
   }
 
@@ -359,9 +396,12 @@ function render(directory, generatedAt) {
 // open-play blocks as a dropins-style week (0=Sun..6=Sat, [startMin, endMin] —
 // parsed from the posted schedule PDF each "See schedule" row links, or from
 // explicit cell text; transcribed fallback for image-only posters); openPlayTimes
-// = display-only string when the times can't be structured ("9AM-dusk"). Merged
-// onto courts at runtime by lib/useCourts.js; the card folds openPlayWeek into
-// the weekly schedule rows tagged "(open play)".
+// = display-only string when the times can't be structured; note = court-split /
+// reservation nuance shown under the card's schedule; playWeek (tennis) =
+// authoritative week that REPLACES the court's dropins for that sport at runtime
+// (poster covers every court, e.g. Presidio Wall). Merged onto courts by
+// lib/useCourts.js; the card folds openPlayWeek into the weekly schedule rows
+// tagged "(open play)".
 
 export const DIRECTORY = {
 ${body}

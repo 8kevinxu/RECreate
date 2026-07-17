@@ -98,8 +98,11 @@ const BOOK_HOWTO_URL =
 function courtCountLabel(d) {
   const n = d.total || 0;
   const unit = n === 1 ? tg('unit.court') : tg('unit.courts');
-  if (d.walkup === 0 && d.reservable > 0) return `${n} ${unit} · ${tg('court.allReservable')}`;
-  if (d.reservable === 0 && d.walkup > 0) return `${n} ${unit} · ${tg('court.allWalkup')}`;
+  // "all …" only when the count actually covers every court — Presidio Wall is
+  // 6 total / 3 reservable / 0 walk-up (the other 3 are open-play only), which
+  // must read "3 reservable", not "all reservable".
+  if (n && d.reservable === n) return `${n} ${unit} · ${tg('court.allReservable')}`;
+  if (n && d.walkup === n) return `${n} ${unit} · ${tg('court.allWalkup')}`;
   const parts = [];
   if (d.reservable) parts.push(tg('court.nReservable', { n: d.reservable }));
   if (d.walkup) parts.push(tg('court.nWalkup', { n: d.walkup }));
@@ -1940,13 +1943,14 @@ function CourtDetail({
         ))}
 
         {/* Structured open-play blocks merge into the week rows above (tagged
-            "(open play)"); this line covers the rare court whose posted times
-            can't be structured (e.g. "9AM-dusk"). */}
+            "(open play)"). Below: unstructurable posted times, plus the poster's
+            court-split / reservation nuance (directory `note`). */}
         {!!dir?.openPlayTimes && (
           <Text style={styles.openPlayLine}>
             🟢 {t('court.openPlay')}: {dir.openPlayTimes}
           </Text>
         )}
+        {!!dir?.note && <Text style={styles.openPlayLine}>ℹ️ {dir.note}</Text>}
 
         {!!court.notes && <Text style={styles.notes}>{court.notes}</Text>}
         <Text style={styles.disclaimer}>
