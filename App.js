@@ -108,6 +108,46 @@ function courtCountLabel(d) {
   if (d.walkup) parts.push(tg('court.nWalkup', { n: d.walkup }));
   return parts.length ? `${n} ${unit} · ${parts.join(', ')}` : `${n} ${unit}`;
 }
+// Sport-scoped facility note. Outdoor notes list every sport at the park
+// ("Outdoor basketball & tennis & baseball — first-come, …"); the card views
+// ONE sport, so rewrite the lead to just that sport and keep only the clauses
+// relevant to it. Indoor notes are freeform facility text — hide them when
+// they're clearly about other sports only (the schedule rows carry the real
+// info). Notes are unlocalized data strings, so this stays in English too.
+const NOTE_SPORT_WORDS = {
+  basketball: ['basketball'],
+  volleyball: ['volleyball'],
+  tennis: ['tennis'],
+  pickleball: ['pickleball'],
+  badminton: ['badminton'],
+  pingpong: ['ping pong', 'ping-pong', 'table tennis'],
+  soccer: ['soccer'],
+  baseball: ['baseball', 'ball field'],
+  weightroom: ['weight', 'fitness'],
+  golf: ['golf'],
+};
+const NOTE_LABEL = { weightroom: 'fitness equipment', pingpong: 'ping pong' };
+function sportNote(notes, sport) {
+  if (!notes) return null;
+  const low = notes.toLowerCase();
+  const words = NOTE_SPORT_WORDS[sport] || [sport];
+  if (!/^Outdoor /.test(notes)) {
+    // Indoor/manual: keep unless it names sports and none is the viewed one.
+    const namesAny = Object.values(NOTE_SPORT_WORDS).some((ws) => ws.some((w) => low.includes(w)));
+    return namesAny && !words.some((w) => low.includes(w)) ? null : notes;
+  }
+  const dash = notes.indexOf('—');
+  if (dash < 0) return notes;
+  const sentences = (notes.slice(dash + 1).trim().match(/[^.]*\./g) || []).map((s) => s.trim());
+  const extras = sentences.slice(1).filter((s) => {
+    if (/pickleball shares the tennis/i.test(s)) return sport === 'pickleball' || sport === 'tennis';
+    if (/lined for pickleball/i.test(s)) return sport === 'pickleball';
+    if (/soccer field/i.test(s)) return sport === 'soccer';
+    return true; // unrecognized clause — keep rather than lose information
+  });
+  return [`Outdoor ${NOTE_LABEL[sport] || sport} — ${sentences[0] || ''}`, ...extras].join(' ');
+}
+
 function netsLabel(nets) {
   if (!nets) return null;
   if (/bring your own/i.test(nets)) return tg('nets.byo');
@@ -1957,7 +1997,14 @@ function CourtDetail({
         {!!dir?.note && <Text style={styles.openPlayLine}>ℹ️ {dir.note}</Text>}
         {!!dir?.desc && <Text style={styles.notes}>{dir.desc}</Text>}
 
-        {!!court.notes && <Text style={styles.notes}>{court.notes}</Text>}
+        {/* Generic facility note, scoped to the viewed sport; skipped entirely
+            when a posted schedule (playWeek/openPlayWeek) governs this sport —
+            "first-come, no posted schedule" would contradict the rows above. */}
+        {(() => {
+          const n =
+            dir?.playWeek || dir?.openPlayWeek ? null : sportNote(court.notes, vSport);
+          return n ? <Text style={styles.notes}>{n}</Text> : null;
+        })()}
         <Text style={styles.disclaimer}>
           {court.disclaimer || t('court.disclaimerDefault')}
         </Text>

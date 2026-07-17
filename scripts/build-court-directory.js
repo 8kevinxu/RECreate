@@ -367,10 +367,18 @@ async function pbsfEnrich(out) {
           // ...and a trailing lead-in that ran into a list on the source page
           // ("Open play hours are:") — a dangling colon reads broken in our card.
           .replace(/\s*[^.!?]*:$/, '');
-        const finalDesc = cleaned.length >= 40 ? cleaned : desc;
+        let finalDesc = cleaned.length >= 40 ? cleaned : desc;
+        // Append one practical tip (parking / restrooms / entrance) when the
+        // page has one and it fits — e.g. Louis Sutter's driveway directions.
+        const practical = candidates.find(
+          (p) => p !== desc && /parking|restroom|entrance|water fountain/i.test(p)
+        );
+        if (practical && (finalDesc + practical).length <= 330) {
+          finalDesc += ' ' + practical.replace(/\s*[^.!?]*:$/, '');
+        }
         entry.desc =
-          finalDesc.length > 300
-            ? finalDesc.slice(0, 297).replace(/[,;\s]+\S*$/, '') + '…'
+          finalDesc.length > 340
+            ? finalDesc.slice(0, 337).replace(/[,;\s]+\S*$/, '') + '…'
             : finalDesc;
         added++;
       } else if (PBSF_DESC_FALLBACK[slug]) {
