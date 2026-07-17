@@ -339,6 +339,9 @@ export default function PoolsScreen({ userLocation }) {
                   ) : null;
                 })}
 
+              {/* SFRP's own blurb about this pool (scraped off its facility
+                  page) — only in the expanded view to keep cards compact. */}
+              {showWeek && !!p.desc && <Text style={styles.desc}>{p.desc}</Text>}
               {!!p.note && <Text style={styles.note}>{p.note}</Text>}
 
               <View style={styles.actions}>
@@ -504,6 +507,7 @@ const styles = StyleSheet.create({
   weekDow: { fontSize: 12, fontWeight: '800', color: '#0d1b2a', marginBottom: 5 },
 
   note: { fontSize: 12, color: '#6b7a8a', marginTop: 10, fontStyle: 'italic' },
+  desc: { fontSize: 12, color: '#46586a', marginTop: 10, lineHeight: 17 },
 
   actions: { flexDirection: 'row', flexWrap: 'wrap', gap: 14, marginTop: 12 },
   actBtn: { flexDirection: 'row', alignItems: 'center', gap: 4 },

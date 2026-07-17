@@ -25,7 +25,14 @@
         "walkup": 0,
         "lights": false,
         "restrooms": false,
-        "wall": true
+        "wall": true,
+        "tsf": {
+          "ratings": 6,
+          "overall": 3,
+          "surface": 2.2,
+          "crowded": 3.5,
+          "matches": 502
+        }
       }
     },
     "alta-plaza-park-outdoor": {
@@ -34,7 +41,14 @@
         "reservable": 0,
         "walkup": 3,
         "lights": false,
-        "restrooms": false
+        "restrooms": false,
+        "tsf": {
+          "ratings": 2,
+          "overall": 3.6,
+          "surface": 3.7,
+          "crowded": 2.8,
+          "matches": 331
+        }
       }
     },
     "aptos-playground-outdoor": {
@@ -61,7 +75,14 @@
         "reservable": 4,
         "walkup": 0,
         "lights": false,
-        "restrooms": true
+        "restrooms": true,
+        "tsf": {
+          "ratings": 4,
+          "overall": 4,
+          "surface": 5,
+          "crowded": 2.8,
+          "matches": 1
+        }
       }
     },
     "buena-vista-park-outdoor": {
@@ -70,7 +91,14 @@
         "reservable": 1,
         "walkup": 1,
         "lights": false,
-        "restrooms": false
+        "restrooms": false,
+        "tsf": {
+          "ratings": 5,
+          "overall": 4,
+          "surface": 4.6,
+          "crowded": 2.8,
+          "matches": 273
+        }
       },
       "pickleball": {
         "total": 4,
@@ -133,7 +161,14 @@
         "reservable": 3,
         "walkup": 3,
         "lights": true,
-        "restrooms": true
+        "restrooms": true,
+        "tsf": {
+          "ratings": 9,
+          "overall": 4.2,
+          "surface": 4.7,
+          "crowded": 2.3,
+          "matches": 2
+        }
       }
     },
     "douglass-playground-outdoor": {
@@ -178,7 +213,14 @@
         "reservable": 1,
         "walkup": 0,
         "lights": false,
-        "restrooms": true
+        "restrooms": true,
+        "tsf": {
+          "ratings": 1,
+          "overall": 2,
+          "surface": 2,
+          "crowded": 2,
+          "matches": 62
+        }
       }
     },
     "george-christopher-playground-outdoor": {
@@ -232,7 +274,14 @@
         "reservable": 2,
         "walkup": 0,
         "lights": true,
-        "restrooms": true
+        "restrooms": true,
+        "tsf": {
+          "ratings": 8,
+          "overall": 4.3,
+          "surface": 4.1,
+          "crowded": 2.6,
+          "matches": 1
+        }
       }
     },
     "hayes-valley-playground-outdoor": {
@@ -241,7 +290,14 @@
         "reservable": 0,
         "walkup": 1,
         "lights": true,
-        "restrooms": true
+        "restrooms": true,
+        "tsf": {
+          "ratings": 1,
+          "overall": 2.5,
+          "surface": 3,
+          "crowded": 3.5,
+          "matches": 66
+        }
       }
     },
     "helen-wills-playground-outdoor": {
@@ -269,7 +325,14 @@
         "walkup": 0,
         "lights": false,
         "restrooms": true,
-        "wall": true
+        "wall": true,
+        "tsf": {
+          "ratings": 3,
+          "overall": 4,
+          "surface": 4.3,
+          "crowded": 2.3,
+          "matches": 628
+        }
       }
     },
     "jackson-playground-outdoor": {
@@ -278,7 +341,14 @@
         "reservable": 1,
         "walkup": 0,
         "lights": true,
-        "restrooms": false
+        "restrooms": false,
+        "tsf": {
+          "ratings": 2,
+          "overall": 3.5,
+          "surface": 3.3,
+          "crowded": 3.3,
+          "matches": 158
+        }
       },
       "pickleball": {
         "total": 2,
@@ -306,7 +376,14 @@
         "walkup": 2,
         "lights": true,
         "restrooms": true,
-        "wall": true
+        "wall": true,
+        "tsf": {
+          "ratings": 5,
+          "overall": 4,
+          "surface": 4.3,
+          "crowded": 2.3,
+          "matches": 599
+        }
       }
     },
     "junipero-serra-playground-outdoor": {
@@ -360,7 +437,14 @@
         "reservable": 6,
         "walkup": 0,
         "lights": false,
-        "restrooms": true
+        "restrooms": true,
+        "tsf": {
+          "ratings": 1,
+          "overall": 4.3,
+          "surface": 4,
+          "crowded": 3.9,
+          "matches": 569
+        }
       }
     },
     "merced-heights-playground-outdoor": {
@@ -396,7 +480,14 @@
         "reservable": 0,
         "walkup": 2,
         "lights": true,
-        "restrooms": true
+        "restrooms": true,
+        "tsf": {
+          "ratings": 6,
+          "overall": 2.7,
+          "surface": 4.3,
+          "crowded": 2.3,
+          "matches": 472
+        }
       }
     },
     "mission-creek-park-outdoor": {
@@ -405,7 +496,14 @@
         "reservable": 0,
         "walkup": 1,
         "lights": true,
-        "restrooms": true
+        "restrooms": true,
+        "tsf": {
+          "ratings": 3,
+          "overall": 4,
+          "surface": 3.7,
+          "crowded": 3.7,
+          "matches": 39
+        }
       }
     },
     "moscone-rec-center-outdoor": {
@@ -416,7 +514,14 @@
         "lights": true,
         "restrooms": true,
         "note": "Courts 3 & 4 host pickleball part-day; tennis-only Tue/Thu 9 AM-3 PM & Sun 9 AM-5 PM, shared 3-6 PM weekdays. Courts 1 & 2 all-day tennis.",
-        "wall": true
+        "wall": true,
+        "tsf": {
+          "ratings": 4,
+          "overall": 4.3,
+          "surface": 4.5,
+          "crowded": 3,
+          "matches": 1
+        }
       },
       "pickleball": {
         "total": 6,
@@ -511,7 +616,14 @@
         "reservable": 4,
         "walkup": 0,
         "lights": false,
-        "restrooms": true
+        "restrooms": true,
+        "tsf": {
+          "ratings": 5,
+          "overall": 4,
+          "surface": 3.4,
+          "crowded": 2.2,
+          "matches": 531
+        }
       }
     },
     "noe-valley-courts-outdoor": {
@@ -529,7 +641,14 @@
         "reservable": 0,
         "walkup": 2,
         "lights": true,
-        "restrooms": true
+        "restrooms": true,
+        "tsf": {
+          "ratings": 2,
+          "overall": 3.5,
+          "surface": 3,
+          "crowded": 4.5,
+          "matches": 124
+        }
       }
     },
     "parkside-square-outdoor": {
@@ -566,7 +685,14 @@
         "walkup": 0,
         "lights": true,
         "restrooms": true,
-        "wall": true
+        "wall": true,
+        "tsf": {
+          "ratings": 4,
+          "overall": 2.8,
+          "surface": 2.5,
+          "crowded": 4.3,
+          "matches": 476
+        }
       }
     },
     "presidio-wall-playground-outdoor": {
@@ -620,7 +746,14 @@
             ]
           ]
         ],
-        "note": "Tennis 7:30-9 AM daily only — courts convert to pickleball at 9 AM. High-school tennis may reserve 3-6 PM in season."
+        "note": "Tennis 7:30-9 AM daily only — courts convert to pickleball at 9 AM. High-school tennis may reserve 3-6 PM in season.",
+        "tsf": {
+          "ratings": 3,
+          "overall": 4,
+          "surface": 3,
+          "crowded": 3.5,
+          "matches": 279
+        }
       },
       "pickleball": {
         "total": 6,
@@ -829,7 +962,14 @@
         "reservable": 1,
         "walkup": 0,
         "lights": true,
-        "restrooms": true
+        "restrooms": true,
+        "tsf": {
+          "ratings": 1,
+          "overall": 3.8,
+          "surface": 3.8,
+          "crowded": 4,
+          "matches": 293
+        }
       },
       "pickleball": {
         "total": 2,
@@ -876,7 +1016,14 @@
         "walkup": 2,
         "lights": true,
         "restrooms": true,
-        "wall": true
+        "wall": true,
+        "tsf": {
+          "ratings": 1,
+          "overall": 2,
+          "surface": 4,
+          "crowded": 4,
+          "matches": 73
+        }
       }
     },
     "youngblood-coleman-playground-outdoor": {
@@ -885,7 +1032,14 @@
         "reservable": 0,
         "walkup": 2,
         "lights": true,
-        "restrooms": true
+        "restrooms": true,
+        "tsf": {
+          "ratings": 4,
+          "overall": 3.8,
+          "surface": 4.5,
+          "crowded": 3.5,
+          "matches": 111
+        }
       }
     },
     "carl-larsen-park-outdoor": {
@@ -914,9 +1068,16 @@
     },
     "sunset-rec-center-outdoor": {
       "tennis": {
-        "wall": true
+        "wall": true,
+        "tsf": {
+          "ratings": 2,
+          "overall": 3.7,
+          "surface": 3,
+          "crowded": 3.3,
+          "matches": 244
+        }
       }
     }
   },
-  "fetchedAt": "2026-07-17T04:06:20.914Z"
+  "fetchedAt": "2026-07-17T06:18:48.615Z"
 }

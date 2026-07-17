@@ -8,6 +8,7 @@
       "lng": -122.443381,
       "phone": "(415) 831-6805",
       "season": "Jun 9 – Aug 15",
+      "desc": "A $9 million renovation project has transformed this neighborhood favorite into a state-of-the-art swimming facility featuring new community rooms for events, new mechanical and plumbing systems to improve the comfort of patrons, and a thoughtful redesign that prioritizes pedestrian safety and accessibility for all. A pool divider…",
       "programs": [
         "lap",
         "family",
@@ -201,6 +202,7 @@
       "lng": -122.4158,
       "phone": null,
       "season": "Jun 9 – Aug 15",
+      "desc": "The 10,000-square-foot Coffman Pool, originally built in 1957, was refreshed in 2008, and is located on Visitacion Avenue and Hahn Streets within Herz Playground at the southeastern entrance of McLaren Park. A hidden gem for city swimmers, Coffman offers a variety of swim programs for all ages, including recreational swim,…",
       "programs": [
         "lap",
         "family",
@@ -406,6 +408,7 @@
       "lng": -122.412027,
       "phone": "(628) 652-7221",
       "season": "Jun 7 – Aug 13",
+      "desc": "Garfield Pool recently completed a renovation project that included a full overhaul of the existing pool building, and the demolition and replacement of the adjacent clubhouse building. The newly reconfigured recreation center includes a shared entry lobby to access the pool facility and clubhouse, a new multi-purpose courtyard,…",
       "programs": [
         "lap",
         "family",
@@ -558,6 +561,7 @@
       "lng": -122.435086,
       "phone": null,
       "season": "Jun 9 – Aug 15",
+      "desc": "Make a splash at Hamilton Pool, one of the city's most popular swimming destinations. Hamilton features a heated pool and not one, but two indoor water slides, the only ones in the city.",
       "programs": [
         "lap",
         "family",
@@ -781,6 +785,7 @@
       "lng": -122.393722,
       "phone": "(415) 288-2807",
       "season": "Jun 9 – Aug 15",
+      "desc": "Another hidden pool gem, MLK Pool features a 25-yard x 25-meter pool and a separate wading pool for tots.",
       "programs": [
         "lap",
         "family",
@@ -1748,6 +1753,7 @@
       "lng": -122.475897,
       "phone": null,
       "season": "Jun 30 – Aug 15",
+      "desc": "A neighborhood favorite, Sava Pool reopened in 2009 after a $17 million renovation. It features a 25-yard, eight-lane multi-purpose pool that accommodates recreation, lap and competitive swimming. The unique design of the building maximizes the use of natural lighting and ventilation with rooftop monitors and a south facing window…",
       "programs": [
         "lap",
         "family",
@@ -2041,5 +2047,5 @@
       "label": "Independence Day"
     }
   ],
-  "fetchedAt": "2026-07-13T17:11:25.396Z"
+  "fetchedAt": "2026-07-17T06:17:57.472Z"
 }

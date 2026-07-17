@@ -1544,6 +1544,26 @@ function CourtDetail({
     ]);
   };
 
+  // "Schedule look wrong?" — a content report against this court+sport's hours,
+  // so bad scraped/transcribed data gets flagged by the people standing at the
+  // court. Reviewed out-of-band like every content report. Surfaces the error
+  // message (e.g. "sign in first") since the fix is actionable, unlike mod.fail.
+  const reportSchedule = () => {
+    Alert.alert(t('court.reportSchedTitle'), t('court.reportSchedBody'), [
+      { text: t('cancel'), style: 'cancel' },
+      {
+        text: t('mod.report'),
+        onPress: async () => {
+          const { error } = await reportContent({
+            kind: 'schedule',
+            refId: `${court.id}:${vSport}`,
+          });
+          Alert.alert(error ? error.message || t('mod.fail') : t('court.reportSchedThanks'));
+        },
+      },
+    ]);
+  };
+
   const submitReview = async () => {
     const body = reviewBody.trim();
     if (!body || posting) return;
@@ -2007,6 +2027,20 @@ function CourtDetail({
         {!!dir?.note && <Text style={styles.openPlayLine}>ℹ️ {dir.note}</Text>}
         {!!dir?.desc && <Text style={styles.notes}>{dir.desc}</Text>}
 
+        {/* tennissf.com community ratings (tennis entries only) — advisory
+            player-sourced color no official source publishes. */}
+        {!!dir?.tsf && (
+          <Text style={styles.openPlayLine}>
+            🎾{' '}
+            {t('court.tsfLine', {
+              overall: dir.tsf.overall,
+              surface: dir.tsf.surface ?? '–',
+              crowded: dir.tsf.crowded ?? '–',
+              n: dir.tsf.ratings,
+            })}
+          </Text>
+        )}
+
         {/* Generic facility note, scoped to the viewed sport; skipped entirely
             when a posted schedule (playWeek/openPlayWeek) governs this sport —
             "first-come, no posted schedule" would contradict the rows above. */}
@@ -2018,6 +2052,13 @@ function CourtDetail({
         <Text style={styles.disclaimer}>
           {court.disclaimer || t('court.disclaimerDefault')}
         </Text>
+        <Pressable
+          onPress={reportSchedule}
+          accessibilityRole="button"
+          accessibilityLabel={t('court.reportSchedule')}
+        >
+          <Text style={styles.scheduleReport}>{t('court.reportSchedule')}</Text>
+        </Pressable>
 
         <Text style={[styles.sectionLabel, styles.reviewsLabel]}>{t('court.reviews')}</Text>
         {reviews === null ? (
@@ -2621,6 +2662,13 @@ const styles = StyleSheet.create({
   reviewAuthor: { fontSize: 13, fontWeight: '700', color: '#2a3a4a' },
   reviewAgo: { fontSize: 11, color: '#9aa7b4' },
   reviewReport: { fontSize: 11, color: '#9aa7b4', fontWeight: '700', marginTop: 4 },
+  scheduleReport: {
+    fontSize: 11,
+    color: '#9aa7b4',
+    fontWeight: '700',
+    marginTop: 6,
+    paddingHorizontal: 8,
+  },
   reviewBody: { fontSize: 13, color: '#46586a', lineHeight: 18 },
 
   reviewForm: { marginTop: 10, borderTopWidth: 1, borderTopColor: '#e3e8ec', paddingTop: 10 },

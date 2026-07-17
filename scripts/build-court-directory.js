@@ -71,6 +71,21 @@ const PDF_FALLBACK = {
   // overlay on the general daylight hours — NOT a playWeek replacement — and
   // the court split rides OPEN_PLAY_NOTES.
   rossi: { week: [[[540, 1020]], [], [[540, 900]], [], [[540, 900]], [[540, 900]], []] },
+  // Moscone's poster parses live today (it has a text layer) — this transcription
+  // is insurance for the day SFRP re-posts it as a flattened image like the two
+  // above. Mirrors the 2025-09-15 poster exactly (what openPlayFromPdf returns):
+  // playWeek REPLACES dropins with honest gaps while tennis holds courts 3 & 4.
+  moscone: {
+    playWeek: [
+      [[420, 540, 'openplay']], // Sun
+      [[420, 900, 'openplay'], [900, 1080, 'reservable']],
+      [[420, 540, 'openplay'], [900, 1080, 'reservable']],
+      [[420, 900, 'openplay'], [900, 1080, 'reservable']],
+      [[420, 540, 'openplay'], [900, 1080, 'reservable']],
+      [[420, 540, 'openplay'], [900, 1080, 'reservable']],
+      [[420, 1020, 'openplay']], // Sat
+    ],
+  },
 };
 
 // Court-split / reservation nuance the weekly open-play blocks can't carry,
@@ -331,6 +346,57 @@ async function tennisWalls(out, courts) {
   }
 }
 
+// ---- tennissf.com community ratings ------------------------------------------
+// Each tennissf court_detail page carries what no official source publishes:
+// player ratings of the court (overall / surface / how crowded, out of 5) and a
+// lifetime count of league matches played there. Purely advisory community
+// color, rendered as one line on the tennis card; unrated venues and any
+// fetch/parse failure are skipped. Their page text flattens to
+// "Court Rating (6 rating(s) …) Overall Rating 60.0% Complete 3.0 Surface
+// Rating … Crowded …" — the number after each "% Complete" is the 0-5 score.
+async function tsfRatings(out, courts) {
+  try {
+    const html = await getHtml(TENNISSF_URL);
+    const slugs = [...new Set([...html.matchAll(/href="(\/court_detail\/[^"]+)"/g)].map((m) => m[1]))];
+    let rated = 0;
+    for (const slug of slugs) {
+      let page;
+      try {
+        page = await getHtml('https://www.tennissf.com' + slug);
+      } catch {
+        continue;
+      }
+      const text = cheerio.load(page)('body').text().replace(/\s+/g, ' ');
+      const pick = (re) => {
+        const m = text.match(re);
+        return m ? Number(m[1]) : null;
+      };
+      const ratings = pick(/\((\d+)\s*rating/i);
+      const overall = pick(/Overall Rating\s*[\d.]+%\s*Complete\s*([\d.]+)/i);
+      if (!ratings || overall == null) continue; // unrated venue
+      // Title is the only clean name delimiter: " SF - <name> tennis courts | …"
+      // (body text runs the name straight into the street address).
+      const name = ((page.match(/<title>\s*SF - (.*?)\s*tennis courts/i) || [])[1] || '').trim();
+      const court = name && matchCourt(name, 'tennis', courts);
+      if (!court) continue; // private club or venue outside our data
+      const surface = pick(/Surface Rating\s*[\d.]+%\s*Complete\s*([\d.]+)/i);
+      const crowded = pick(/Crowded\s*[\d.]+%\s*Complete\s*([\d.]+)/i);
+      const matches = pick(/Matches Played Here\s*(\d+)/i);
+      ((out[court.id] ||= {}).tennis ||= {}).tsf = {
+        ratings,
+        overall,
+        ...(surface != null ? { surface } : {}),
+        ...(crowded != null ? { crowded } : {}),
+        ...(matches ? { matches } : {}),
+      };
+      rated++;
+    }
+    console.log(`  tennissf: community ratings on ${rated} courts (${slugs.length} venue pages)`);
+  } catch (e) {
+    console.log(`  ⚠ tennissf ratings: ${e.message} — skipped`);
+  }
+}
+
 // ---- pickleballsf.com enrichment --------------------------------------------
 // The community-maintained venue pages provide what SFRP doesn't publish: a
 // short human description of each location. SFRP stays CANONICAL for schedules
@@ -533,6 +599,7 @@ async function build() {
   }
 
   await tennisWalls(out, courts);
+  await tsfRatings(out, courts);
   await pbsfEnrich(out);
 
   let count = 0;

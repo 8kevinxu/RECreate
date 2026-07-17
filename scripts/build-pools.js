@@ -221,7 +221,29 @@ function parseGrid(items) {
 
 // ---- Scraping -------------------------------------------------------------
 
-async function discoverPdfs(slug) {
+// Site-wide boilerplate that appears on every facility page (department blurb,
+// contact/accessibility footer, share widget), funding minutiae, dated
+// announcement letters ("Dear Swimmers…"), and the "offers lap swim, …" line
+// that just duplicates the card's program chips. Footer phrases are matched
+// precisely — a pool's real blurb may legitimately mention accessibility.
+const DESC_SKIP =
+  /SocialShare|\$\(document\)|Department manages|10-minute walk|Main Office|committed to ensuring|accessibility barrier|WCAG|Human Resources|Language Access|reasonable effort|offers lap swim|funded by|GO Bond|Impact Fee|^Dear\b|excited to announce/i;
+
+// The facility page's own paragraph about this pool (renovation, layout,
+// amenities) — the only per-pool description SFRP publishes anywhere. First
+// substantial paragraph that isn't boilerplate wins; null when a page has none.
+function pageDesc($) {
+  let best = null;
+  $('p').each((_, p) => {
+    if (best) return;
+    const t = $(p).text().replace(/\s+/g, ' ').trim();
+    if (t.length < 80 || DESC_SKIP.test(t)) return;
+    best = t.length > 340 ? t.slice(0, 337).replace(/\s+\S*$/, '') + '…' : t;
+  });
+  return best;
+}
+
+async function fetchFacilityPage(slug) {
   const cheerio = require('cheerio');
   const html = await (await fetch(`${BASE}/Facilities/Facility/Details/${slug}`, { headers: { 'User-Agent': UA } })).text();
   const $ = cheerio.load(html);
@@ -234,7 +256,7 @@ async function discoverPdfs(slug) {
       docs.push({ label: text, url: href.startsWith('http') ? href : BASE + href });
     }
   });
-  return docs;
+  return { docs, desc: pageDesc($) };
 }
 
 async function pdfItems(url) {
@@ -249,7 +271,7 @@ async function pdfItems(url) {
 }
 
 async function scrapePool(m) {
-  const scheduleUrls = await discoverPdfs(m.slug);
+  const { docs: scheduleUrls, desc } = await fetchFacilityPage(m.slug);
   // A facility with separate warm-pool and cool-pool PDFs (North Beach) gets each
   // session tagged with which pool runs it, so the app can show the two schedules
   // separately. Single-PDF pools stay untagged (no `pool` field).
@@ -281,6 +303,7 @@ async function scrapePool(m) {
     phone: m.phone,
     season: m.season,
     ...(m.note ? { note: m.note } : {}),
+    ...(desc ? { desc } : {}),
     programs: KIND_ORDER.filter((k) => kinds.has(k)),
     scheduleUrls,
     sessions: week,

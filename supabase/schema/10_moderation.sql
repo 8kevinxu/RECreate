@@ -30,8 +30,8 @@ create table if not exists public.content_reports (
   id               uuid        primary key default gen_random_uuid(),
   reporter_id      uuid        references public.profiles (id) on delete set null,
   reported_user_id uuid        references public.profiles (id) on delete set null,
-  kind             text        not null check (kind in ('message', 'review', 'signal', 'profile', 'run')),
-  ref_id           text,                                              -- id of the reported row (message/review/signal/run)
+  kind             text        not null check (kind in ('message', 'review', 'signal', 'profile', 'run', 'schedule')),
+  ref_id           text,                                              -- id of the reported row (message/review/signal/run), or '<courtId>:<sportId>' for schedule reports
   reason           text        check (reason is null or char_length(reason) <= 500),
   created_at       timestamptz not null default now()
 );
