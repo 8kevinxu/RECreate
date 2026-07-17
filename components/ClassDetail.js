@@ -5,13 +5,13 @@
 // can't be registered online get a notice explaining to just show up at the start time.
 import React from 'react';
 import {
+  Dimensions,
   Linking,
   Modal,
   Pressable,
   ScrollView,
   StyleSheet,
   Text,
-  useWindowDimensions,
   View,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
@@ -60,7 +60,6 @@ function Row({ icon, label, value }) {
 
 export default function ClassDetail({ item, onClose }) {
   const insets = useSafeAreaInsets();
-  const { height: winH } = useWindowDimensions();
   const { t, lang } = useI18n();
   if (!item) return null;
   const c = item;
@@ -73,19 +72,16 @@ export default function ClassDetail({ item, onClose }) {
   return (
     <Modal visible transparent animationType="slide" onRequestClose={onClose}>
       <Pressable style={styles.backdrop} onPress={onClose}>
-        <Pressable
-          style={[styles.sheet, { paddingBottom: insets.bottom + 16, maxHeight: winH * 0.85 }]}
-          onPress={() => {}}
-        >
+        <Pressable style={[styles.sheet, { paddingBottom: insets.bottom + 16 }]} onPress={() => {}}>
           <View style={styles.handle} />
-          {/* The sheet's maxHeight must be NUMERIC: native Yoga does not shrink
-              flex children to a parent's *percent* maxHeight (web does), so with
-              '85%' the flexShrink ScrollView never shrinks and long content is
-              clipped unscrollably. With a numeric cap Yoga shrinks the ScrollView
-              to the remaining space and it scrolls — same proven pattern as
-              CourtDetail's card (numeric maxHeight + flexShrink: 1). The pinned
-              Directions/Register buttons live OUTSIDE the scroll area so they're
-              always tappable no matter the content length. */}
+          {/* The sheet's maxHeight is a STATIC NUMERIC value in StyleSheet.create
+              (Dimensions-based, like CourtDetail's card — the one sheet proven to
+              scroll on device): native Yoga does not shrink flex children to a
+              parent's *percent* maxHeight, and an inline/array maxHeight also
+              failed to constrain on device — only this static registered form has
+              worked. The flexShrink ScrollView then shrinks to the remaining space
+              and scrolls; the pinned Directions/Register buttons live OUTSIDE the
+              scroll area so they're always tappable no matter the content length. */}
           <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
             <View style={styles.header}>
               <Text style={styles.emoji}>{meta.emoji || '✨'}</Text>
@@ -165,8 +161,9 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
     paddingHorizontal: 20,
     paddingTop: 10,
-    // maxHeight is set inline (numeric, from useWindowDimensions) — see the
-    // Yoga note in the component; a percent here breaks native scrolling.
+    // Static numeric cap — see the Yoga note in the component. A percent here
+    // (or an inline maxHeight) breaks native scrolling.
+    maxHeight: Dimensions.get('window').height * 0.85,
   },
   handle: {
     width: 40,
