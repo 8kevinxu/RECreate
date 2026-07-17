@@ -361,8 +361,12 @@ async function pbsfEnrich(out) {
       if (desc) {
         // Drop a lead sentence that references the source page's own layout
         // ("Dedicated hours for pickleball below. …") — meaningless in our card.
-        const cleaned = desc.replace(/^[^.!?]*\b(below|above)\b[^.!?]*[.!?]\s*/i, '');
-        const finalDesc = cleaned.length >= 80 ? cleaned : desc;
+        const cleaned = desc
+          .replace(/^[^.!?]*\b(below|above)\b[^.!?]*[.!?]\s*/i, '')
+          // ...and a trailing lead-in that ran into a list on the source page
+          // ("Open play hours are:") — a dangling colon reads broken in our card.
+          .replace(/\s*[^.!?]*:$/, '');
+        const finalDesc = cleaned.length >= 40 ? cleaned : desc;
         entry.desc =
           finalDesc.length > 300
             ? finalDesc.slice(0, 297).replace(/[,;\s]+\S*$/, '') + '…'
