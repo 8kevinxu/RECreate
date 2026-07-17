@@ -122,7 +122,8 @@
         "walkup": 0,
         "lights": true,
         "restrooms": true,
-        "nets": "Provided"
+        "nets": "Provided",
+        "desc": "4 permanent pickleball courts, reservable on rec.us."
       }
     },
     "mission-dolores-park-outdoor": {
@@ -675,7 +676,7 @@
           ]
         ],
         "note": "Courts B/D/F: open play all day. Courts A/C/E: reservable after 1 PM (3 PM weekends).",
-        "desc": "PARKING IS AVAILABLE AT THE COURTS. Drive onto West Pacific Ave via Arguello Blvd to park on the shoulder near the playground courts. West Pacific Ave no longer allows thru traffic east of the playground to Presidio Ave. Alternately, you can park at the Golf Course clubhouse parking lot and walk…"
+        "desc": "Presidio Wall is a multi-use tennis facility. Presidio Wall is the main free pickleball play facility in the northern part of San Francisco."
       }
     },
     "richmond-playground-outdoor": {
@@ -721,78 +722,36 @@
         "lights": false,
         "restrooms": true,
         "nets": "Provided (4 rolling nets); Court E has a permanent net",
-        "playWeek": [
+        "openPlayWeek": [
           [
             [
               540,
-              1020,
-              "openplay"
-            ],
-            [
-              1020,
-              1200,
-              "reservable"
+              1020
             ]
           ],
-          [
-            [
-              900,
-              1200,
-              "reservable"
-            ]
-          ],
+          [],
           [
             [
               540,
-              900,
-              "openplay"
-            ],
-            [
-              900,
-              1200,
-              "reservable"
+              900
             ]
           ],
+          [],
           [
             [
-              900,
-              1200,
-              "reservable"
+              540,
+              900
             ]
           ],
           [
             [
               540,
-              900,
-              "openplay"
-            ],
-            [
-              900,
-              1200,
-              "reservable"
+              900
             ]
           ],
-          [
-            [
-              540,
-              900,
-              "openplay"
-            ],
-            [
-              900,
-              1200,
-              "reservable"
-            ]
-          ],
-          [
-            [
-              1020,
-              1200,
-              "reservable"
-            ]
-          ]
+          []
         ],
-        "note": "Times shown are court 3 (main pod). Courts 1 & 2: walk-up, bring your own net (tennis reservations may take them weekend mornings). Court E (permanent net): reservable all day.",
+        "note": "Open play is on court 3 (main pod), reservable after it ends. Courts 1 & 2: walk-up, bring your own net (tennis reservations may take them weekend mornings). Court E (permanent net): reservable all day.",
         "desc": "Rossi Playground has 3 tennis courts that have been multi-lined for Pickleball plus one permanent court with a dedicated net. The courts are located behind the Pool building along Anza St. Street parking is available, but neighborhood time limits apply. Bathrooms are in the pool building. The…"
       }
     },
@@ -931,7 +890,8 @@
         "lights": false,
         "restrooms": true,
         "nets": "Provided",
-        "openPlayCourts": 8
+        "openPlayCourts": 8,
+        "desc": "Dedicated drop-in pickleball hub — \"next up\" paddle queues when busy. Bring your own paddle and balls; no fees. Play during daylight hours (no play before 7:30 AM)."
       }
     },
     "louis-sutter-playground-outdoor": {
@@ -942,9 +902,10 @@
         "lights": false,
         "restrooms": true,
         "nets": "Provided",
-        "openPlayCourts": 6
+        "openPlayCourts": 6,
+        "desc": "Louis Sutter Pickleball Hub is an excellent facility with 6 outdoor dedicated Pickleball courts next to the basketball court below the pond."
       }
     }
   },
-  "fetchedAt": "2026-07-17T01:58:21.911Z"
+  "fetchedAt": "2026-07-17T02:26:13.284Z"
 }

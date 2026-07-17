@@ -63,22 +63,12 @@ const PDF_FALLBACK = {
   // doesn't exist here before 9AM (tennis holds 7:30-9). The A/C/E split
   // rides OPEN_PLAY_NOTES.
   'presidio wall': { playWeek: Array.from({ length: 7 }, () => [[540, 1200, 'openplay']]) },
-  // Poster ("Rossi Court 3", the main pickleball pod): open play Tue/Thu/Fri
-  // 9AM-3PM & Sun 9AM-5PM; tennis-or-pickleball reservable from 3PM weekdays /
-  // 5PM weekends (ends at the app's 8PM park close). Mon/Wed/Sat daytime is
-  // tennis-only, so those are gaps. Courts 1 & 2 (walk-up, BYO net) and
-  // court E (reservable all day) ride OPEN_PLAY_NOTES.
-  rossi: {
-    playWeek: [
-      [[540, 1020, 'openplay'], [1020, 1200, 'reservable']], // Sun
-      [[900, 1200, 'reservable']],                           // Mon
-      [[540, 900, 'openplay'], [900, 1200, 'reservable']],   // Tue
-      [[900, 1200, 'reservable']],                           // Wed
-      [[540, 900, 'openplay'], [900, 1200, 'reservable']],   // Thu
-      [[540, 900, 'openplay'], [900, 1200, 'reservable']],   // Fri
-      [[1020, 1200, 'reservable']],                          // Sat
-    ],
-  },
+  // Poster ("Rossi Court 3"): open play Tue/Thu/Fri 9AM-3PM & Sun 9AM-5PM on
+  // the main pod. Unlike Moscone, pickleball at Rossi is available all day on
+  // OTHER courts (1 & 2 walk-up, court E reservable), so this is an open-play
+  // overlay on the general daylight hours — NOT a playWeek replacement — and
+  // the court split rides OPEN_PLAY_NOTES.
+  rossi: { week: [[[540, 1020]], [], [[540, 900]], [], [[540, 900]], [[540, 900]], []] },
 };
 
 // Court-split / reservation nuance the weekly open-play blocks can't carry,
@@ -88,7 +78,7 @@ const PDF_FALLBACK = {
 const OPEN_PLAY_NOTES = {
   moscone: 'Evenings after the times shown: court 4 reservable for tennis or pickleball (Tue/Thu tennis-only); court 3 tennis-only.',
   'presidio wall': 'Courts B/D/F: open play all day. Courts A/C/E: reservable after 1 PM (3 PM weekends).',
-  rossi: 'Times shown are court 3 (main pod). Courts 1 & 2: walk-up, bring your own net (tennis reservations may take them weekend mornings). Court E (permanent net): reservable all day.',
+  rossi: 'Open play is on court 3 (main pod), reservable after it ends. Courts 1 & 2: walk-up, bring your own net (tennis reservations may take them weekend mornings). Court E (permanent net): reservable all day.',
 };
 
 // The same posters constrain TENNIS at these facilities. Presidio Wall's poster
@@ -327,6 +317,15 @@ const PBSF_VENUES = {
   'upper-noe-recreation-center': 'upper-noe-rec-center-outdoor',
 };
 
+// Transcribed descriptions for venue pages whose content is only short bullet
+// lists the extractor can't use (composed from those bullets; re-check the
+// pages occasionally).
+const PBSF_DESC_FALLBACK = {
+  'larsen-playground-pb-court-hub':
+    'Dedicated drop-in pickleball hub — "next up" paddle queues when busy. Bring your own paddle and balls; no fees. Play during daylight hours (no play before 7:30 AM).',
+  'crocker-amazon': '4 permanent pickleball courts, reservable on rec.us.',
+};
+
 const dehtmlText = (s) =>
   String(s)
     .replace(/<[^>]+>/g, '')
@@ -346,18 +345,20 @@ async function pbsfEnrich(out) {
     if (!entry) continue;
     try {
       const html = await getHtml(PBSF_BASE + slug + '/');
-      const paras = [...html.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g)]
-        .map((m) => dehtmlText(m[1]))
+      const paras = [...html.matchAll(/<(p|li)[^>]*>([\s\S]*?)<\/\1>/g)]
+        .map((m) => dehtmlText(m[2]))
         .filter(Boolean);
       // Description: the first substantive paragraph (venue pages lead with one).
-      // Skip link plugs, the site's boilerplate mission blurb, and divider rows.
-      const desc = paras.find(
+      // Skip link plugs, the site's boilerplate mission blurb, and divider rows;
+      // prefer text that's actually about the courts over e.g. parking tips.
+      const candidates = paras.filter(
         (p) =>
           p.length >= 80 &&
           !/https?:/i.test(p) &&
           !/pickleball community is a friendly/i.test(p) &&
           (p.match(/[a-z]/gi) || []).length / p.length > 0.6
       );
+      const desc = candidates.find((p) => /pickleball|court/i.test(p)) || candidates[0];
       if (desc) {
         // Drop a lead sentence that references the source page's own layout
         // ("Dedicated hours for pickleball below. …") — meaningless in our card.
@@ -371,6 +372,9 @@ async function pbsfEnrich(out) {
           finalDesc.length > 300
             ? finalDesc.slice(0, 297).replace(/[,;\s]+\S*$/, '') + '…'
             : finalDesc;
+        added++;
+      } else if (PBSF_DESC_FALLBACK[slug]) {
+        entry.desc = PBSF_DESC_FALLBACK[slug];
         added++;
       }
       // Advisory cross-reference: surface their schedule text beside ours so a
