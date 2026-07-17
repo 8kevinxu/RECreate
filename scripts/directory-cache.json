@@ -24,7 +24,8 @@
         "reservable": 4,
         "walkup": 0,
         "lights": false,
-        "restrooms": false
+        "restrooms": false,
+        "wall": true
       }
     },
     "alta-plaza-park-outdoor": {
@@ -267,7 +268,8 @@
         "reservable": 3,
         "walkup": 0,
         "lights": false,
-        "restrooms": true
+        "restrooms": true,
+        "wall": true
       }
     },
     "jackson-playground-outdoor": {
@@ -303,7 +305,8 @@
         "reservable": 1,
         "walkup": 2,
         "lights": true,
-        "restrooms": true
+        "restrooms": true,
+        "wall": true
       }
     },
     "junipero-serra-playground-outdoor": {
@@ -412,7 +415,8 @@
         "walkup": 0,
         "lights": true,
         "restrooms": true,
-        "note": "Courts 3 & 4 host pickleball part-day; tennis-only Tue/Thu 9 AM-3 PM & Sun 9 AM-5 PM, shared 3-6 PM weekdays. Courts 1 & 2 all-day tennis."
+        "note": "Courts 3 & 4 host pickleball part-day; tennis-only Tue/Thu 9 AM-3 PM & Sun 9 AM-5 PM, shared 3-6 PM weekdays. Courts 1 & 2 all-day tennis.",
+        "wall": true
       },
       "pickleball": {
         "total": 6,
@@ -561,7 +565,8 @@
         "reservable": 2,
         "walkup": 0,
         "lights": true,
-        "restrooms": true
+        "restrooms": true,
+        "wall": true
       }
     },
     "presidio-wall-playground-outdoor": {
@@ -870,7 +875,8 @@
         "reservable": 0,
         "walkup": 2,
         "lights": true,
-        "restrooms": true
+        "restrooms": true,
+        "wall": true
       }
     },
     "youngblood-coleman-playground-outdoor": {
@@ -905,7 +911,12 @@
         "openPlayCourts": 6,
         "desc": "Louis Sutter Pickleball Hub is an excellent facility with 6 outdoor dedicated Pickleball courts next to the basketball court below the pond. There are lots of parking spaces around the park, and the primary entrance driveway is at the corner of University and Woolsey Sts."
       }
+    },
+    "sunset-rec-center-outdoor": {
+      "tennis": {
+        "wall": true
+      }
     }
   },
-  "fetchedAt": "2026-07-17T03:48:26.851Z"
+  "fetchedAt": "2026-07-17T04:06:20.914Z"
 }

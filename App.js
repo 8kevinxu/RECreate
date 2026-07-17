@@ -216,6 +216,9 @@ const AMENITIES = [
     id: 'nets',
     test: (c, s) => /provided/i.test(c.directory?.[s]?.nets || ''),
   },
+  // Hitting wall (tennis): only tennis directory entries carry `wall`, so the
+  // chip self-hides in other sport views.
+  { id: 'wall', test: (c, s) => c.directory?.[s]?.wall === true },
   // Open play (pickleball): dedicated open-play courts or a shared-use open-play
   // schedule from the SFRP directory. Only pickleball entries carry these fields,
   // so the chip self-hides in other sport views.
@@ -1678,9 +1681,11 @@ function CourtDetail({
 
       {dir && (
         <View style={styles.facRow}>
-          <View style={styles.facChip}>
-            <Text style={styles.facText}>{meta.emoji} {courtCountLabel(dir)}</Text>
-          </View>
+          {!!dir.total && (
+            <View style={styles.facChip}>
+              <Text style={styles.facText}>{meta.emoji} {courtCountLabel(dir)}</Text>
+            </View>
+          )}
           {dir.lights && (
             <View style={styles.facChip}>
               <Text style={styles.facText}>{t('amenity.lights')}</Text>
@@ -1694,6 +1699,11 @@ function CourtDetail({
           {netsLabel(dir.nets) && (
             <View style={styles.facChip}>
               <Text style={styles.facText}>🥅 {netsLabel(dir.nets)}</Text>
+            </View>
+          )}
+          {dir.wall && (
+            <View style={styles.facChip}>
+              <Text style={styles.facText}>{t('amenity.wall')}</Text>
             </View>
           )}
           {(dir.openPlayCourts || dir.openPlayWeek || dir.openPlayTimes) && (

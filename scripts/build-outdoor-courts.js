@@ -119,6 +119,78 @@ function noteFor(sports, sharedTennis) {
   return n;
 }
 
+// ---- Golden Gate Park pick-up volleyball -------------------------------------
+// sfrecpark.org/1830 designates rotating no-permit grass meadows in GGP for
+// volleyball — one set of meadows open in odd months, another in even months,
+// with occasional closures for turf recovery. DataSF has no record of these, so
+// we scrape the page into one synthetic park pin (volleyball only). If the page
+// won't parse, the pin ships with a static note pointing at the page.
+const VB_URL = 'https://sfrecpark.org/1830/Pick-Up-Volleyball';
+const VB_UA =
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
+const VB_FALLBACK_NOTE =
+  'No-permit volleyball on rotating Golden Gate Park grass meadows (one set odd months, another even) — see sfrecpark.org/1830 for current areas. Max 4 standard nets; bring your own.';
+
+async function ggpVolleyballNote() {
+  const res = await fetch(VB_URL, { headers: { 'User-Agent': VB_UA } });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const text = (await res.text())
+    .replace(/<[^>]+>/g, '\n')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&apos;|&#8217;|&rsquo;/g, "'")
+    .replace(/&#8211;|&ndash;/g, '-');
+  const lines = text.split('\n').map((l) => l.trim()).filter(Boolean);
+  const groups = { odd: [], even: [] };
+  let cur = null;
+  for (const line of lines) {
+    if (/^Additional information/i.test(line)) break;
+    if (/^Open January/i.test(line)) cur = 'odd';
+    else if (/^Open February/i.test(line)) cur = 'even';
+    else if (cur && /\b(meadow|fields?)\b/i.test(line) && !/^(please|areas|-)/i.test(line)) {
+      groups[cur].push(line.replace(/\s*-\s*$/, ''));
+    } else if (cur && /closed/i.test(line) && groups[cur].length) {
+      groups[cur][groups[cur].length - 1] += ' (closed for turf recovery)';
+    } else if (cur && /^\(.+\)$/.test(line) && groups[cur].length) {
+      groups[cur][groups[cur].length - 1] += ' ' + line;
+    }
+  }
+  if (!groups.odd.length || !groups.even.length) {
+    throw new Error('meadow groups not found — page layout changed?');
+  }
+  return (
+    'No-permit volleyball on rotating Golden Gate Park meadows. ' +
+    `Odd months (Jan/Mar/May/Jul/Sep/Nov): ${groups.odd.join(', ')}. ` +
+    `Even months (Feb/Apr/Jun/Aug/Oct/Dec): ${groups.even.join(', ')}. ` +
+    'Max 4 standard nets — bring your own.'
+  );
+}
+
+async function ggpVolleyball() {
+  let notes = VB_FALLBACK_NOTE;
+  try {
+    notes = await ggpVolleyballNote();
+    console.log('  ✓ GGP volleyball meadows scraped from sfrecpark.org/1830');
+  } catch (e) {
+    console.log(`  ⚠ GGP volleyball page: ${e.message} — using static note`);
+  }
+  const week = () => Array.from({ length: 7 }, () => []);
+  const daylight = Array.from({ length: 7 }, () => [[480, 1200]]);
+  const dropins = {};
+  for (const s of ORDER) dropins[s] = week();
+  dropins.volleyball = daylight;
+  return {
+    id: 'ggp-volleyball-meadows',
+    name: 'Golden Gate Park Volleyball Meadows',
+    address: 'Golden Gate Park (JFK Dr area)',
+    neighborhood: 'Golden Gate Park',
+    lat: 37.77,
+    lng: -122.459,
+    schedule: Array.from({ length: 7 }, () => [480, 1200]),
+    dropins,
+    notes,
+  };
+}
+
 // Group DataSF records by park; union the sports across that park's court records.
 function buildCourts(rows) {
   const byPark = new Map();
@@ -256,6 +328,12 @@ async function main() {
     scheduleSource = 'cache';
     console.log(`  ↺ fetch failed (${e.message}); using cache from ${cache.fetchedAt || 'unknown'}`);
   }
+
+  // Synthetic GGP volleyball pin (scraped from sfrecpark.org/1830, not DataSF).
+  // Cache-safe: drop any prior copy before appending, then keep the name sort.
+  const vb = await ggpVolleyball();
+  courts = courts.filter((c) => c.id !== vb.id).concat(vb);
+  courts.sort((a, b) => a.name.localeCompare(b.name));
 
   const generatedAt = new Date().toISOString();
   fs.writeFileSync(OUT_FILE, render(courts, generatedAt, scheduleSource));

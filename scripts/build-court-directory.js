@@ -35,6 +35,8 @@ const MIN_COURTS_OK = 30;
 // Directory facility name (normalized) -> our court id, for names that don't match
 // by substring (the directory shortens or renames a few parks).
 const ALIASES = {
+  'alice marble rec center': 'alice-marble-tennis-courts-outdoor',
+  'north beach': 'joe-dimaggio-playground-outdoor',
   rossi: 'angelo-j-rossi-playground-outdoor',
   'dolores park': 'mission-dolores-park-outdoor',
   larsen: 'carl-larsen-park-outdoor',
@@ -293,6 +295,42 @@ function matchCourt(facility, sport, courts) {
   return best;
 }
 
+// ---- tennissf.com hitting-wall flags ----------------------------------------
+// tennissf.com's court list is the only source marking which SF public courts
+// have a practice/hitting wall — a purely factual flag folded into the tennis
+// directory entries (everything else there duplicates SFRP data). Advisory
+// source: any failure just skips the flags.
+const TENNISSF_URL = 'https://www.tennissf.com/SF-Tennis-Courts';
+
+async function tennisWalls(out, courts) {
+  try {
+    const html = await getHtml(TENNISSF_URL);
+    // Venue blocks start at a literal "SF - <name>" heading and run until the
+    // next one; a standalone "Wall" chip inside the block marks a hitting wall.
+    const seen = new Set();
+    let flagged = 0;
+    for (const seg of html.split('SF - ').slice(1)) {
+      const name = seg.slice(0, seg.indexOf('<')).replace(/\s+/g, ' ').trim();
+      if (!name || seen.has(name)) continue;
+      seen.add(name);
+      if (!/>\s*Wall\s*</.test(seg)) continue;
+      const court = matchCourt(name, 'tennis', courts);
+      if (court) {
+        // A court can have a wall without appearing in SFRP's tennis directory
+        // (e.g. Sunset Rec Center) — a minimal wall-only entry is fine; the
+        // card skips the court-count chip when `total` is absent.
+        ((out[court.id] ||= {}).tennis ||= {}).wall = true;
+        flagged++;
+      } else {
+        console.log(`  ⚠ tennissf wall venue unmatched: ${name}`);
+      }
+    }
+    console.log(`  tennissf: hitting-wall flag on ${flagged} courts`);
+  } catch (e) {
+    console.log(`  ⚠ tennissf: ${e.message} — wall flags skipped`);
+  }
+}
+
 // ---- pickleballsf.com enrichment --------------------------------------------
 // The community-maintained venue pages provide what SFRP doesn't publish: a
 // short human description of each location. SFRP stays CANONICAL for schedules
@@ -494,6 +532,7 @@ async function build() {
     };
   }
 
+  await tennisWalls(out, courts);
   await pbsfEnrich(out);
 
   let count = 0;
@@ -524,7 +563,8 @@ function render(directory, generatedAt) {
 // = display-only string when the times can't be structured; note = court-split /
 // reservation nuance shown under the card's schedule; desc = short location
 // description from pickleballsf.com (community site — descriptions only, never
-// schedules); playWeek (tennis) =
+// schedules); wall (tennis) = practice/hitting wall on site (tennissf.com);
+// playWeek (tennis) =
 // authoritative week that REPLACES the court's dropins for that sport at runtime
 // (poster covers every court, e.g. Presidio Wall). Merged onto courts by
 // lib/useCourts.js; the card folds openPlayWeek into the weekly schedule rows
