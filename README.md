@@ -12,7 +12,10 @@ recreation** across five tabs:
   fees, 9/18-hole & beginner filters, and tee-time booking links), with weekly
   **open-gym schedules**, **"open now"** filtering, live
   **crowd check-ins**, and tennis/
-  pickleball **reservation occupancy** ("% booked right now"). Each sport has its own
+  pickleball **reservation occupancy** ("% booked right now"). Pickleball courts show
+  **posted open-play schedules** (parsed from SFRP's schedule posters, honest gaps and
+  all), and cards carry community color — venue descriptions from pickleballsf.com,
+  hitting-wall flags and player ratings from tennissf.com. Each sport has its own
   glyph (down to a drawn perforated pickleball). To keep dense areas legible, nearby
   courts **cluster into count bubbles** when zoomed out (orange = something open now)
   that split as you zoom in, and courts **open now show as full glyphs while closed
@@ -24,11 +27,13 @@ recreation** across five tabs:
   music, arts, photography, social games, aquatics & swim lessons, sports & rec,
   camps, youth & after-school) with real prices and live openings.
 - **🏊 Pools** — the 9 public swimming pools with parsed weekly swim schedules
-  (lap / family / senior / lessons …), fees, and "open now".
+  (lap / family / senior / lessons …), fees, per-pool descriptions, and "open now".
 - **👥 Social** — accounts, friends, "down to play" signals, planned games, an
   activity feed, and chat.
 - **👤 Profile** — your profile/stats, plus **Settings** (language, legal &
-  support links, activity-sharing, account).
+  support links, activity-sharing, "Report a problem", account). Every schedule
+  also carries a one-tap **"looks wrong? report it"** flag so stale data gets
+  caught by the people standing at the court.
 
 The whole UI is **localized in English / 中文 / Español**. Built with **Expo /
 React Native** (also shipped to the **web** as a static export). The map is
@@ -117,7 +122,7 @@ sport / opens ⭐ Favorites. It's shown once and then never again (persisted und
 | `docs/privacy-nutrition-label.md` | Reconciles the Privacy Policy with the App Store Connect privacy label (2.1 reference) |
 | `components/SocialScreen.js` · `ChatsScreen.js` · `ChatThread.js` | Social tab shell + 1:1 / group chat |
 | `lib/chat.js` | Chat data layer (run / signal / direct threads) |
-| `lib/blocks.js` · `lib/reports.js` | Trust & safety: block users (filtered into every social loader) + file content reports |
+| `lib/blocks.js` · `lib/reports.js` | Trust & safety: block users (filtered into every social loader) + content reports, incl. one-tap "data looks wrong" flags (court/class/pool) and Settings' free-text "Report a problem" |
 | `lib/sports.js` | The tracked sports table (id, label, emoji) |
 | `lib/favorites.js` | On-device court→sport favorites (`useFavorites`) behind the ⭐ Favorites map view |
 | `lib/recommend.js` · `components/RecommendPane.js` | "Recommended for you" — interest-based games + classes in the Social tab |
