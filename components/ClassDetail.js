@@ -73,18 +73,20 @@ export default function ClassDetail({ item, onClose }) {
   return (
     <Modal visible transparent animationType="slide" onRequestClose={onClose}>
       <Pressable style={styles.backdrop} onPress={onClose}>
-        <Pressable style={[styles.sheet, { paddingBottom: insets.bottom + 16 }]} onPress={() => {}}>
+        <Pressable
+          style={[styles.sheet, { paddingBottom: insets.bottom + 16, maxHeight: winH * 0.85 }]}
+          onPress={() => {}}
+        >
           <View style={styles.handle} />
-          {/* The ScrollView must carry its own numeric maxHeight: native Yoga does
-              NOT shrink flex children to a parent's percent maxHeight (web does),
-              so without this its frame equals the content height and long content
-              overflows unscrollably. The cap leaves room for the sheet chrome plus
-              the pinned Directions/Register buttons below, which live OUTSIDE the
-              scroll area so they're always tappable no matter the content length. */}
-          <ScrollView
-            style={[styles.scroll, { maxHeight: winH * 0.85 - 200 - insets.bottom }]}
-            showsVerticalScrollIndicator={false}
-          >
+          {/* The sheet's maxHeight must be NUMERIC: native Yoga does not shrink
+              flex children to a parent's *percent* maxHeight (web does), so with
+              '85%' the flexShrink ScrollView never shrinks and long content is
+              clipped unscrollably. With a numeric cap Yoga shrinks the ScrollView
+              to the remaining space and it scrolls — same proven pattern as
+              CourtDetail's card (numeric maxHeight + flexShrink: 1). The pinned
+              Directions/Register buttons live OUTSIDE the scroll area so they're
+              always tappable no matter the content length. */}
+          <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
             <View style={styles.header}>
               <Text style={styles.emoji}>{meta.emoji || '✨'}</Text>
               <View style={{ flex: 1 }}>
@@ -163,7 +165,8 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
     paddingHorizontal: 20,
     paddingTop: 10,
-    maxHeight: '85%',
+    // maxHeight is set inline (numeric, from useWindowDimensions) — see the
+    // Yoga note in the component; a percent here breaks native scrolling.
   },
   handle: {
     width: 40,
