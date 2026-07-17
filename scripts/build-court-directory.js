@@ -88,7 +88,7 @@ const PDF_FALLBACK = {
 const OPEN_PLAY_NOTES = {
   moscone: 'Evenings after the times shown: court 4 reservable for tennis or pickleball (Tue/Thu tennis-only); court 3 tennis-only.',
   'presidio wall': 'Courts B/D/F: open play all day. Courts A/C/E: reservable after 1 PM (3 PM weekends).',
-  rossi: 'Times shown are court 3 (main pod). Courts 1 & 2: walk-up any time, bring your own net. Court E (permanent net): reservable all day.',
+  rossi: 'Times shown are court 3 (main pod). Courts 1 & 2: walk-up, bring your own net (tennis reservations may take them weekend mornings). Court E (permanent net): reservable all day.',
 };
 
 // The same posters constrain TENNIS at these facilities. Presidio Wall's poster
@@ -303,6 +303,86 @@ function matchCourt(facility, sport, courts) {
   return best;
 }
 
+// ---- pickleballsf.com enrichment --------------------------------------------
+// The community-maintained venue pages provide what SFRP doesn't publish: a
+// short human description of each location. SFRP stays CANONICAL for schedules
+// — pickleballsf can lag (their Buena Vista page still referenced Spotery,
+// SFRP's pre-rec.us booking system) — so schedule-looking text from these
+// pages is only LOGGED as an advisory cross-reference, never written to data.
+// Keyed by pickleballsf URL slug (stabler than page titles) -> our court id.
+const PBSF_BASE = 'https://pickleballsf.com/';
+const PBSF_VENUES = {
+  'buena-vista-park': 'buena-vista-park-outdoor',
+  'christopher-playground': 'george-christopher-playground-outdoor',
+  'crocker-amazon': 'crocker-amazon-playground-outdoor',
+  'jackson-playground': 'jackson-playground-outdoor',
+  'larsen-playground-pb-court-hub': 'carl-larsen-park-outdoor',
+  'louis-sutter-pickleball-complex': 'louis-sutter-playground-outdoor',
+  'moscone-playground': 'moscone-rec-center-outdoor',
+  'parkside-square-courts': 'parkside-square-outdoor',
+  'presidio-wall': 'presidio-wall-playground-outdoor',
+  'richmond-playground': 'richmond-playground-outdoor',
+  'rossi-playground': 'angelo-j-rossi-playground-outdoor',
+  'stern-grove-playground': 'sigmund-stern-recreation-grove-outdoor',
+  'upper-noe-recreation-center': 'upper-noe-rec-center-outdoor',
+};
+
+const dehtmlText = (s) =>
+  String(s)
+    .replace(/<[^>]+>/g, '')
+    .replace(/&#0?38;|&amp;/g, '&')
+    .replace(/&#8217;|&rsquo;|&#039;/g, "'")
+    .replace(/&#8211;|&ndash;/g, '-')
+    .replace(/&#8212;|&mdash;/g, '—')
+    .replace(/&#8220;|&#8221;|&quot;/g, '"')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+async function pbsfEnrich(out) {
+  let added = 0;
+  for (const [slug, courtId] of Object.entries(PBSF_VENUES)) {
+    const entry = out[courtId] && out[courtId].pickleball;
+    if (!entry) continue;
+    try {
+      const html = await getHtml(PBSF_BASE + slug + '/');
+      const paras = [...html.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g)]
+        .map((m) => dehtmlText(m[1]))
+        .filter(Boolean);
+      // Description: the first substantive paragraph (venue pages lead with one).
+      // Skip link plugs, the site's boilerplate mission blurb, and divider rows.
+      const desc = paras.find(
+        (p) =>
+          p.length >= 80 &&
+          !/https?:/i.test(p) &&
+          !/pickleball community is a friendly/i.test(p) &&
+          (p.match(/[a-z]/gi) || []).length / p.length > 0.6
+      );
+      if (desc) {
+        // Drop a lead sentence that references the source page's own layout
+        // ("Dedicated hours for pickleball below. …") — meaningless in our card.
+        const cleaned = desc.replace(/^[^.!?]*\b(below|above)\b[^.!?]*[.!?]\s*/i, '');
+        const finalDesc = cleaned.length >= 80 ? cleaned : desc;
+        entry.desc =
+          finalDesc.length > 300
+            ? finalDesc.slice(0, 297).replace(/[,;\s]+\S*$/, '') + '…'
+            : finalDesc;
+        added++;
+      }
+      // Advisory cross-reference: surface their schedule text beside ours so a
+      // human running the build can spot drift — SFRP data is not overwritten.
+      const sched = paras.filter((p) => /open play|drop-?in|group play/i.test(p) && /\d/.test(p));
+      if (sched.length && (entry.playWeek || entry.openPlayWeek)) {
+        console.log(`  ✎ pickleballsf x-ref for ${courtId}:`);
+        for (const s of sched.slice(0, 3)) console.log(`      "${s.slice(0, 140)}"`);
+      }
+    } catch (e) {
+      console.log(`  ⚠ pickleballsf ${slug}: ${e.message}`);
+    }
+  }
+  console.log(`  pickleballsf: descriptions for ${added} courts`);
+}
+
 function loadCache() {
   try {
     return JSON.parse(fs.readFileSync(CACHE_FILE, 'utf8'));
@@ -398,6 +478,8 @@ async function build() {
     };
   }
 
+  await pbsfEnrich(out);
+
   let count = 0;
   for (const id of Object.keys(out)) count += Object.keys(out[id]).length;
   if (count < MIN_COURTS_OK) {
@@ -424,7 +506,9 @@ function render(directory, generatedAt) {
 // parsed from the posted schedule PDF each "See schedule" row links, or from
 // explicit cell text; transcribed fallback for image-only posters); openPlayTimes
 // = display-only string when the times can't be structured; note = court-split /
-// reservation nuance shown under the card's schedule; playWeek (tennis) =
+// reservation nuance shown under the card's schedule; desc = short location
+// description from pickleballsf.com (community site — descriptions only, never
+// schedules); playWeek (tennis) =
 // authoritative week that REPLACES the court's dropins for that sport at runtime
 // (poster covers every court, e.g. Presidio Wall). Merged onto courts by
 // lib/useCourts.js; the card folds openPlayWeek into the weekly schedule rows

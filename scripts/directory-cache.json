@@ -77,7 +77,8 @@
         "walkup": 0,
         "lights": false,
         "restrooms": false,
-        "nets": "Bring your own"
+        "nets": "Bring your own",
+        "desc": "New dual lined courts at Buena Vista Park located in the center of San Francisco, between the Panhandle and Randall Museum hidden among the trees up from Haight Street. These 4 courts are all painted on a single tennis court, Court #1"
       }
     },
     "cabrillo-playground-outdoor": {
@@ -192,7 +193,8 @@
         "walkup": 2,
         "lights": true,
         "restrooms": true,
-        "nets": "Bring your own"
+        "nets": "Bring your own",
+        "desc": "George Christopher Playground is part of a ballfield complex behind the shopping Center on the top of Glen Park Canyon. The tennis court was resurfaced and multi-lined with 2 pickleball courts. This location is not on Spotery - first come first serve. Must bring net & balls."
       }
     },
     "glen-canyon-park-outdoor": {
@@ -281,7 +283,8 @@
         "walkup": 0,
         "lights": true,
         "restrooms": false,
-        "nets": "Bring your own"
+        "nets": "Bring your own",
+        "desc": "Jackson Playground has 2 Pickleball courts dual-lined on the tennis court on the Mariposa St. side of the park. Two rolling nets are located on the court."
       }
     },
     "james-rolph-jr-playground-outdoor": {
@@ -493,7 +496,8 @@
             ]
           ]
         ],
-        "note": "Evenings after the times shown: court 4 reservable for tennis or pickleball (Tue/Thu tennis-only); court 3 tennis-only."
+        "note": "Evenings after the times shown: court 4 reservable for tennis or pickleball (Tue/Thu tennis-only); court 3 tennis-only.",
+        "desc": "Players can reserve courts for either tennis or pickleball at sfrecpark.org. Pickleball open play hours (no reservation required) are:"
       }
     },
     "mountain-lake-park-outdoor": {
@@ -537,7 +541,8 @@
         "walkup": 0,
         "lights": false,
         "restrooms": true,
-        "nets": "Bring your own"
+        "nets": "Bring your own",
+        "desc": "Courts A-H are on the REC Court Reservation System. Bring own net, although an on-site lock box may have some available."
       }
     },
     "peixotto-playground-outdoor": {
@@ -669,7 +674,8 @@
             ]
           ]
         ],
-        "note": "Courts B/D/F: open play all day. Courts A/C/E: reservable after 1 PM (3 PM weekends)."
+        "note": "Courts B/D/F: open play all day. Courts A/C/E: reservable after 1 PM (3 PM weekends).",
+        "desc": "PARKING IS AVAILABLE AT THE COURTS. Drive onto West Pacific Ave via Arguello Blvd to park on the shoulder near the playground courts. West Pacific Ave no longer allows thru traffic east of the playground to Presidio Ave. Alternately, you can park at the Golf Course clubhouse parking lot and walk…"
       }
     },
     "richmond-playground-outdoor": {
@@ -686,7 +692,8 @@
         "walkup": 0,
         "lights": false,
         "restrooms": true,
-        "nets": "Provided (2 rolling nets)"
+        "nets": "Provided (2 rolling nets)",
+        "desc": "Richmond Playground in the Outer Richmond neighborhood has been recently resurfaced with play areas, a basketball court and one tennis court which is multi-lined for pickleball. It is unattended and has a bathroom on the property."
       }
     },
     "rochambeau-playground-outdoor": {
@@ -785,7 +792,8 @@
             ]
           ]
         ],
-        "note": "Times shown are court 3 (main pod). Courts 1 & 2: walk-up any time, bring your own net. Court E (permanent net): reservable all day."
+        "note": "Times shown are court 3 (main pod). Courts 1 & 2: walk-up, bring your own net (tennis reservations may take them weekend mornings). Court E (permanent net): reservable all day.",
+        "desc": "Rossi Playground has 3 tennis courts that have been multi-lined for Pickleball plus one permanent court with a dedicated net. The courts are located behind the Pool building along Anza St. Street parking is available, but neighborhood time limits apply. Bathrooms are in the pool building. The…"
       }
     },
     "silver-terrace-playground-outdoor": {
@@ -838,7 +846,8 @@
         "walkup": 0,
         "lights": false,
         "restrooms": true,
-        "nets": "Provided (4 rolling nets)"
+        "nets": "Provided (4 rolling nets)",
+        "desc": "OUTDOOR - 6 dual-lined courts on 2 Tennis courts 4 rolling nets on-site 630 Sloat Blvd (at 19th Ave.)"
       }
     },
     "sunnyside-playground-outdoor": {
@@ -883,7 +892,8 @@
           ],
           [],
           []
-        ]
+        ],
+        "desc": "The Rec Center space also houses a full-size gym with four courts painted with pickleball court lines. Portable nets are set up for drop-in play at scheduled times in the gym. Loaner paddles and balls are available."
       }
     },
     "west-portal-playground-outdoor": {
@@ -936,5 +946,5 @@
       }
     }
   },
-  "fetchedAt": "2026-07-17T01:32:49.254Z"
+  "fetchedAt": "2026-07-17T01:57:49.080Z"
 }

@@ -1955,6 +1955,7 @@ function CourtDetail({
           </Text>
         )}
         {!!dir?.note && <Text style={styles.openPlayLine}>ℹ️ {dir.note}</Text>}
+        {!!dir?.desc && <Text style={styles.notes}>{dir.desc}</Text>}
 
         {!!court.notes && <Text style={styles.notes}>{court.notes}</Text>}
         <Text style={styles.disclaimer}>
