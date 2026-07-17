@@ -416,7 +416,7 @@
         "lights": true,
         "restrooms": true,
         "nets": "Provided (4 rolling nets)",
-        "openPlayTimes": "Daily 7-9 AM · Mon & Wed 9 AM-3 PM · Sat 7 AM-5 PM"
+        "openPlayTimes": "Mon/Wed 7AM-3PM · Tue/Thu/Fri/Sun 7AM-9AM · Sat 7AM-5PM"
       }
     },
     "mountain-lake-park-outdoor": {
@@ -496,7 +496,7 @@
         "lights": false,
         "restrooms": true,
         "nets": "Provided (storage box)",
-        "openPlayTimes": "Daily 9 AM-dusk · courts B/D/F always drop-in"
+        "openPlayTimes": "Daily 9AM-dusk · courts B/D/F always drop-in"
       }
     },
     "richmond-playground-outdoor": {
@@ -540,7 +540,7 @@
         "lights": false,
         "restrooms": true,
         "nets": "Provided (4 rolling nets); Court E has a permanent net",
-        "openPlayTimes": "Tue/Thu/Fri 9 AM-3 PM · Sun 9 AM-5 PM"
+        "openPlayTimes": "Tue/Thu/Fri 9AM-3PM · Sun 9AM-5PM"
       }
     },
     "silver-terrace-playground-outdoor": {
@@ -673,5 +673,5 @@
       }
     }
   },
-  "fetchedAt": "2026-07-17T00:03:25.593Z"
+  "fetchedAt": "2026-07-17T00:20:13.808Z"
 }

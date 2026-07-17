@@ -1582,6 +1582,12 @@ function CourtDetail({
         </View>
       </View>
 
+      {/* Everything below the header scrolls as one body — the card caps at 75%
+          of the window, and a court with tall fixed content (pickleball's booked
+          badge + facility chips + booking section) used to crush the separate
+          schedule/reviews ScrollView to zero height when expanded (native Yoga
+          doesn't shrink fixed siblings — same gotcha as ClassDetail's sheet). */}
+      <ScrollView style={styles.cardScroll} keyboardShouldPersistTaps="handled">
       <View style={styles.badgeRow}>
         <View
           style={[styles.badge, dropin.open ? styles.badgeOpen : styles.badgeClosed]}
@@ -1910,7 +1916,7 @@ function CourtDetail({
       </Pressable>
 
       {expanded && (
-      <ScrollView style={styles.cardScroll} keyboardShouldPersistTaps="handled">
+      <View>
         <Text style={styles.sectionLabel}>{t('court.openGymSport', { sport: sportName })}</Text>
         {week.map((d) => (
           <View
@@ -1964,8 +1970,9 @@ function CourtDetail({
             </View>
           ))
         )}
-      </ScrollView>
+      </View>
       )}
+      </ScrollView>
 
       {expanded && reviewsShared && !user ? (
         // Shared (Supabase) reviews require an account — ties every review to a
