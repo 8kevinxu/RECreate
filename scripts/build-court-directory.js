@@ -57,15 +57,12 @@ const ALIASES = {
 // these if SFRP posts a new poster (the log prints the PDF URL).
 const PDF_FALLBACK = {
   // Poster: courts B/D/F are open play 9AM-dark every day; courts A/C/E are
-  // open play 9AM-1PM (weekends 9AM-3PM) then reservable until dark. The week
-  // carries the all-day open play (true via B/D/F, ending at the 8PM the app
-  // uses for park daylight hours); the A/C/E split rides OPEN_PLAY_NOTES.
-  // playWeek: pickleball doesn't exist here before 9AM (tennis holds 7:30-9),
-  // so the poster week REPLACES the generic 8AM-8PM dropins (like tennis).
-  'presidio wall': {
-    week: Array.from({ length: 7 }, () => [[540, 1200]]),
-    playWeek: Array.from({ length: 7 }, () => [[540, 1200]]),
-  },
+  // open play 9AM-1PM (weekends 9AM-3PM) then reservable until dark. One
+  // tagged open-play block per day (true via B/D/F, ending at the 8PM the app
+  // uses for park daylight hours) REPLACES the generic dropins — pickleball
+  // doesn't exist here before 9AM (tennis holds 7:30-9). The A/C/E split
+  // rides OPEN_PLAY_NOTES.
+  'presidio wall': { playWeek: Array.from({ length: 7 }, () => [[540, 1200, 'openplay']]) },
   // Tue/Thu/Fri 9AM-3PM, Sun 9AM-5PM
   rossi: { week: [[[540, 1020]], [], [[540, 900]], [], [[540, 900]], [[540, 900]], []] },
 };
@@ -75,7 +72,7 @@ const PDF_FALLBACK = {
 // alike); the card shows it under the weekly schedule. Re-verify with the
 // posters when SFRP revises them.
 const OPEN_PLAY_NOTES = {
-  moscone: 'Reservable for tennis or pickleball 3-6 PM weekdays, from 5 PM weekends.',
+  moscone: 'Evenings after the times shown: court 4 reservable for tennis or pickleball (Tue/Thu tennis-only); court 3 tennis-only.',
   'presidio wall': 'Courts B/D/F: open play all day. Courts A/C/E: reservable after 1 PM (3 PM weekends).',
   rossi: 'Reservable for tennis or pickleball from 3 PM weekdays, 5 PM weekends; Court E (permanent net) reservable all day.',
 };
@@ -228,19 +225,27 @@ async function openPlayFromPdf(url) {
   // carries an x-aligned RESERVABLE tag. (Most blocks also say "OPEN GROUP
   // PLAY", but e.g. Moscone's Sunday block omits it, so it can't be the anchor.)
   // Rows read top-to-bottom Mon..Sun; emit Sun-first to match court.dropins.
+  // Blocks carry display tags: 'openplay' (standalone PICKLEBALL heading) and
+  // 'reservable' (shared TENNIS OR PICKLEBALL heading). Tennis-only windows
+  // simply don't appear, and court-specific evening slots (icon-only in the
+  // poster) ride the facility note — so the week is the court's complete
+  // pickleball hours and REPLACES the generic daylight dropins (playWeek).
   const week = Array.from({ length: 7 }, () => []);
   dayBands.forEach((band, i) => {
-    const heads = band.filter((it) => /^pickleball$/i.test(it.s));
     const blocks = [];
-    for (const h of heads) {
-      if (band.some((it) => /^reservable$/i.test(it.s) && Math.abs(it.x - h.x) < 60)) continue;
-      for (const it of band) {
-        if (TIME_RE.test(it.s) && Math.abs(it.x - h.x) < 60) {
-          const r = parseRange(it.s);
-          if (r) blocks.push(r);
+    const collect = (headRe, tag, tol) => {
+      for (const h of band.filter((it) => headRe.test(it.s))) {
+        if (tag === 'openplay' && band.some((it) => /^reservable$/i.test(it.s) && Math.abs(it.x - h.x) < tol)) continue;
+        for (const it of band) {
+          if (TIME_RE.test(it.s) && Math.abs(it.x - h.x) < tol) {
+            const r = parseRange(it.s);
+            if (r) blocks.push([r[0], r[1], tag]);
+          }
         }
       }
-    }
+    };
+    collect(/^pickleball$/i, 'openplay', 60);
+    collect(/^tennis\s*or\s*pickleball$/i, 'reservable', 120);
     week[(i + 1) % 7] = blocks.sort((a, b) => a[0] - b[0]);
   });
   return week.some((d) => d.length) ? week : null;
@@ -344,12 +349,12 @@ async function build() {
       const link = openKey && r._links[openKey];
       if (link) {
         try {
-          openPlayWeek = await openPlayFromPdf(link);
+          pbPlayWeek = await openPlayFromPdf(link);
         } catch (e) {
           console.log(`  ⚠ ${facility} schedule PDF: ${e.message}`);
         }
       }
-      if (!openPlayWeek) {
+      if (!pbPlayWeek) {
         const fb = PDF_FALLBACK[norm(facility)];
         openPlayWeek = (fb && fb.week) || null;
         pbPlayWeek = (fb && fb.playWeek) || null;
@@ -362,7 +367,7 @@ async function build() {
       // Explicit times right in the cell (e.g. Upper Noe) — structure when parseable.
       openPlayWeek = weekFromText(openPlayTimes);
     }
-    if (openPlayWeek) openPlayTimes = null; // week supersedes the display string
+    if (openPlayWeek || pbPlayWeek) openPlayTimes = null; // structured data supersedes the string
     const note = OPEN_PLAY_NOTES[norm(facility)] || null;
     (out[court.id] ||= {}).pickleball = {
       total,

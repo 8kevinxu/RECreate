@@ -417,51 +417,83 @@
         "lights": true,
         "restrooms": true,
         "nets": "Provided (4 rolling nets)",
-        "openPlayWeek": [
+        "playWeek": [
           [
             [
               420,
-              540
+              540,
+              "openplay"
             ]
           ],
           [
             [
               420,
-              900
+              900,
+              "openplay"
+            ],
+            [
+              900,
+              1080,
+              "reservable"
             ]
           ],
           [
             [
               420,
-              540
+              540,
+              "openplay"
+            ],
+            [
+              900,
+              1080,
+              "reservable"
             ]
           ],
           [
             [
               420,
-              900
+              900,
+              "openplay"
+            ],
+            [
+              900,
+              1080,
+              "reservable"
             ]
           ],
           [
             [
               420,
-              540
+              540,
+              "openplay"
+            ],
+            [
+              900,
+              1080,
+              "reservable"
             ]
           ],
           [
             [
               420,
-              540
+              540,
+              "openplay"
+            ],
+            [
+              900,
+              1080,
+              "reservable"
             ]
           ],
           [
             [
               420,
-              1020
+              1020,
+              "openplay"
             ]
           ]
         ],
-        "note": "Reservable for tennis or pickleball 3-6 PM weekdays, from 5 PM weekends."
+        "note": "Evenings after the times shown: court 4 reservable for tennis or pickleball (Tue/Thu tennis-only); court 3 tennis-only."
       }
     },
     "mountain-lake-park-outdoor": {
@@ -586,91 +618,54 @@
         "lights": false,
         "restrooms": true,
         "nets": "Provided (storage box)",
-        "openPlayWeek": [
-          [
-            [
-              540,
-              1200
-            ]
-          ],
-          [
-            [
-              540,
-              1200
-            ]
-          ],
-          [
-            [
-              540,
-              1200
-            ]
-          ],
-          [
-            [
-              540,
-              1200
-            ]
-          ],
-          [
-            [
-              540,
-              1200
-            ]
-          ],
-          [
-            [
-              540,
-              1200
-            ]
-          ],
-          [
-            [
-              540,
-              1200
-            ]
-          ]
-        ],
         "playWeek": [
           [
             [
               540,
-              1200
+              1200,
+              "openplay"
             ]
           ],
           [
             [
               540,
-              1200
+              1200,
+              "openplay"
             ]
           ],
           [
             [
               540,
-              1200
+              1200,
+              "openplay"
             ]
           ],
           [
             [
               540,
-              1200
+              1200,
+              "openplay"
             ]
           ],
           [
             [
               540,
-              1200
+              1200,
+              "openplay"
             ]
           ],
           [
             [
               540,
-              1200
+              1200,
+              "openplay"
             ]
           ],
           [
             [
               540,
-              1200
+              1200,
+              "openplay"
             ]
           ]
         ],
@@ -899,5 +894,5 @@
       }
     }
   },
-  "fetchedAt": "2026-07-17T01:17:41.179Z"
+  "fetchedAt": "2026-07-17T01:27:39.473Z"
 }

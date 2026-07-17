@@ -183,7 +183,11 @@ const AMENITIES = [
     id: 'openplay',
     test: (c, s) => {
       const d = c.directory?.[s];
-      return !!d && ((d.openPlayCourts || 0) > 0 || !!d.openPlayWeek || !!d.openPlayTimes);
+      if (!d) return false;
+      const inPlayWeek = (d.playWeek || []).some((day) =>
+        (day || []).some((b) => b && b[2] === 'openplay')
+      );
+      return (d.openPlayCourts || 0) > 0 || !!d.openPlayWeek || inPlayWeek || !!d.openPlayTimes;
     },
   },
   // Golf-course filters: only the curated golf entries carry `c.golf`, so these
