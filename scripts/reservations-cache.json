@@ -347,9 +347,9 @@
           "2026-07-18 09:00": 100,
           "2026-07-18 09:30": 100,
           "2026-07-18 10:00": 100,
-          "2026-07-18 10:30": 100,
-          "2026-07-18 11:00": 100,
-          "2026-07-18 11:30": 100,
+          "2026-07-18 10:30": 75,
+          "2026-07-18 11:00": 75,
+          "2026-07-18 11:30": 75,
           "2026-07-18 12:00": 100,
           "2026-07-18 12:30": 100,
           "2026-07-18 13:00": 75,
@@ -2605,7 +2605,7 @@
     },
     "hamilton-rec-center-outdoor": {
       "tennis": {
-        "pct": 78,
+        "pct": 77,
         "courts": 2,
         "slots": {
           "2026-07-17 07:30": 50,
@@ -2791,9 +2791,9 @@
           "2026-07-23 16:30": 0,
           "2026-07-23 17:00": 0,
           "2026-07-23 17:30": 0,
-          "2026-07-23 18:00": 100,
-          "2026-07-23 18:30": 100,
-          "2026-07-23 19:00": 100,
+          "2026-07-23 18:00": 0,
+          "2026-07-23 18:30": 0,
+          "2026-07-23 19:00": 0,
           "2026-07-23 19:30": 100,
           "2026-07-23 20:00": 100,
           "2026-07-23 20:30": 100
@@ -3447,7 +3447,7 @@
     },
     "j-p-murphy-playground-outdoor": {
       "tennis": {
-        "pct": 55,
+        "pct": 56,
         "courts": 3,
         "slots": {
           "2026-07-17 07:30": 33,
@@ -3486,9 +3486,9 @@
           "2026-07-18 12:00": 33,
           "2026-07-18 12:30": 33,
           "2026-07-18 13:00": 33,
-          "2026-07-18 13:30": 33,
-          "2026-07-18 14:00": 33,
-          "2026-07-18 14:30": 33,
+          "2026-07-18 13:30": 67,
+          "2026-07-18 14:00": 67,
+          "2026-07-18 14:30": 67,
           "2026-07-18 15:00": 67,
           "2026-07-18 15:30": 67,
           "2026-07-18 16:00": 67,
@@ -6429,7 +6429,7 @@
     },
     "potrero-hill-rec-center-outdoor": {
       "tennis": {
-        "pct": 77,
+        "pct": 76,
         "courts": 2,
         "slots": {
           "2026-07-17 07:30": 100,
@@ -6588,9 +6588,9 @@
           "2026-07-22 16:30": 100,
           "2026-07-22 17:00": 100,
           "2026-07-22 17:30": 100,
-          "2026-07-22 18:00": 100,
-          "2026-07-22 18:30": 100,
-          "2026-07-22 19:00": 100,
+          "2026-07-22 18:00": 0,
+          "2026-07-22 18:30": 0,
+          "2026-07-22 19:00": 0,
           "2026-07-22 19:30": 100,
           "2026-07-22 20:00": 100,
           "2026-07-22 20:30": 100,
@@ -7608,9 +7608,9 @@
           "2026-07-20 12:00": 0,
           "2026-07-20 12:30": 0,
           "2026-07-20 13:00": 0,
-          "2026-07-20 13:30": 75,
-          "2026-07-20 14:00": 75,
-          "2026-07-20 14:30": 75,
+          "2026-07-20 13:30": 50,
+          "2026-07-20 14:00": 50,
+          "2026-07-20 14:30": 50,
           "2026-07-20 15:00": 0,
           "2026-07-20 15:30": 0,
           "2026-07-20 16:00": 0,
@@ -7697,7 +7697,7 @@
       },
       "guidelines": "You know and love it for its summer concert series, but Stern Grove has tennis and pickleball too! \n\n**Reservation Policy**\n- Any individual may reserve a court, but may not book more than 1 court in a day or 3 courts in a calendar week.\n- Reservation requests are for individual play only. No lessons, team practices, clinics or league matches.\n- Courts left vacant 15 minutes after reservation time are available for walk-up play\n- Please **[click here](https://sfrecpark.org/1188/Tennis-Pickleball-Reservations)** to view the full San Francisco Rec and Park reservation policy.\n\n**Reservation Overview**\n\n*Courts 1 and 2*\n- Courts 1 and 2 are reservable for Tennis 7 days in advance.\n- Reservations open at 8:00am. \n- All slots are 90 minutes, starting at 7:30am, 9:00am, 10:30am, 12:00pm, 1:30pm, 3:00pm and 4:30pm (6:00pm during Daylight Saving Time). \n\n*Courts A, C, D, and F*\n- Courts A, C, D, and F are reservable for Pickleball 7 days in advance. \n- Reservations open at 8:00am. \n- All slots are 90 minutes, starting at 7:30am, 9:00am, 10:30am, 12:00pm, 1:30pm, 3:00pm and 4:30pm (6:00pm during Daylight Saving Time). \n\n**Location Features**\n- 2 tennis courts\n- 6 pickleball courts. There are 4 roll-on nets for use on courts A, C, D, and F\n- Bathroom access - the nearest restrooms are at 20th Avenue & Wawona Street.",
       "tennis": {
-        "pct": 42,
+        "pct": 41,
         "courts": 2,
         "slots": {
           "2026-07-17 07:30": 0,
@@ -7784,9 +7784,9 @@
           "2026-07-20 12:00": 0,
           "2026-07-20 12:30": 0,
           "2026-07-20 13:00": 0,
-          "2026-07-20 13:30": 100,
-          "2026-07-20 14:00": 100,
-          "2026-07-20 14:30": 100,
+          "2026-07-20 13:30": 50,
+          "2026-07-20 14:00": 50,
+          "2026-07-20 14:30": 50,
           "2026-07-20 15:00": 0,
           "2026-07-20 15:30": 0,
           "2026-07-20 16:00": 0,
@@ -8312,5 +8312,5 @@
       }
     }
   },
-  "fetchedAt": "2026-07-17T08:20:25.781Z"
+  "fetchedAt": "2026-07-17T10:53:16.033Z"
 }
