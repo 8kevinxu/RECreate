@@ -71,8 +71,19 @@ export default function ClassDetail({ item, onClose }) {
 
   return (
     <Modal visible transparent animationType="slide" onRequestClose={onClose}>
-      <Pressable style={styles.backdrop} onPress={onClose}>
-        <Pressable style={[styles.sheet, { paddingBottom: insets.bottom + 16 }]} onPress={() => {}}>
+      {/* The tap-to-close backdrop is a SIBLING stacked behind the sheet, not a
+          wrapper around it: a Pressable ancestor swallows the ScrollView's pan
+          gesture on device (new-arch RN), freezing the sheet's scroll. Touches
+          on the sheet bubble up the sheet's own branch and never reach the
+          sibling Pressable, so no empty-onPress guard is needed either. */}
+      <View style={styles.backdrop}>
+        <Pressable
+          style={StyleSheet.absoluteFill}
+          onPress={onClose}
+          accessibilityRole="button"
+          accessibilityLabel={t('a11y.close')}
+        />
+        <View style={[styles.sheet, { paddingBottom: insets.bottom + 16 }]}>
           <View style={styles.handle} />
           {/* The sheet's maxHeight is a STATIC NUMERIC value in StyleSheet.create
               (Dimensions-based, like CourtDetail's card — the one sheet proven to
@@ -147,8 +158,8 @@ export default function ClassDetail({ item, onClose }) {
             </Pressable>
           )}
           <Text style={styles.note}>{t('cls.activeNetNote')}</Text>
-        </Pressable>
-      </Pressable>
+        </View>
+      </View>
     </Modal>
   );
 }
