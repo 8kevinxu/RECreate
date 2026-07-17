@@ -20,6 +20,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAuth } from '../lib/auth';
 import { listBlockedUsers, unblockUser } from '../lib/blocks';
+import { reportContent } from '../lib/reports';
 import { useI18n, LANGUAGES } from '../lib/i18n';
 
 // The literal a user must type to confirm deletion (kept across languages).
@@ -57,6 +58,34 @@ export default function SettingsScreen({ visible, onClose, onEditProfile }) {
   const doUnblock = async (id) => {
     await unblockUser(id);
     setBlocked((prev) => (prev || []).filter((b) => b.id !== id));
+  };
+
+  // General "Report a problem" (free text) — the catch-all for anything without
+  // a contextual "looks wrong" flag: bugs, wrong addresses, missing courts.
+  // Files a content report (kind 'issue'); requires sign-in like all reports.
+  const [reportOpen, setReportOpen] = useState(false);
+  const [reportText, setReportText] = useState('');
+  const [reportBusy, setReportBusy] = useState(false);
+  const [reportErr, setReportErr] = useState(null);
+  const [reportSent, setReportSent] = useState(false);
+  const openReport = () => {
+    setReportText('');
+    setReportErr(null);
+    setReportSent(false);
+    setReportOpen(true);
+  };
+  const closeReport = () => {
+    if (!reportBusy) setReportOpen(false);
+  };
+  const sendReport = async () => {
+    const text = reportText.trim();
+    if (!text || reportBusy) return;
+    setReportErr(null);
+    setReportBusy(true);
+    const { error } = await reportContent({ kind: 'issue', reason: text });
+    setReportBusy(false);
+    if (error) setReportErr(error.message || t('mod.fail'));
+    else setReportSent(true);
   };
 
   const canDelete = confirm.trim().toUpperCase() === CONFIRM_CODE && !busy;
@@ -196,6 +225,10 @@ export default function SettingsScreen({ visible, onClose, onEditProfile }) {
               <Text style={styles.rowText}>{t('settings.support')}</Text>
               <Text style={styles.rowChevron}>›</Text>
             </Pressable>
+            <Pressable style={styles.row} onPress={openReport} accessibilityRole="button">
+              <Text style={styles.rowText}>{t('report.problem')}</Text>
+              <Text style={styles.rowChevron}>›</Text>
+            </Pressable>
           </View>
 
           {/* Danger zone pinned to the bottom of the content. */}
@@ -245,6 +278,61 @@ export default function SettingsScreen({ visible, onClose, onEditProfile }) {
                 )}
               </Pressable>
             </View>
+          </Pressable>
+        </Pressable>
+      </Modal>
+
+      {/* Report a problem: free text -> content report (kind 'issue'). */}
+      <Modal visible={reportOpen} transparent animationType="fade" onRequestClose={closeReport}>
+        <Pressable style={styles.backdrop} onPress={closeReport}>
+          <Pressable style={styles.dialog} onPress={() => {}}>
+            <Text style={styles.reportTitle}>{t('report.problem')}</Text>
+            {reportSent ? (
+              <>
+                <Text style={styles.warning}>{t('report.sent')}</Text>
+                <Pressable
+                  style={[styles.dialogBtn, styles.cancelBtn]}
+                  onPress={() => setReportOpen(false)}
+                >
+                  <Text style={styles.cancelText}>{t('report.done')}</Text>
+                </Pressable>
+              </>
+            ) : (
+              <>
+                <Text style={styles.warning}>{t('report.problemHint')}</Text>
+                <TextInput
+                  style={styles.reportInput}
+                  placeholder={t('report.placeholder')}
+                  placeholderTextColor="#9aa7b4"
+                  value={reportText}
+                  onChangeText={setReportText}
+                  multiline
+                  maxLength={500}
+                  autoFocus
+                />
+                {!!reportErr && <Text style={styles.error}>{reportErr}</Text>}
+                <View style={styles.dialogBtns}>
+                  <Pressable style={[styles.dialogBtn, styles.cancelBtn]} onPress={closeReport}>
+                    <Text style={styles.cancelText}>{t('cancel')}</Text>
+                  </Pressable>
+                  <Pressable
+                    style={[
+                      styles.dialogBtn,
+                      styles.sendBtn,
+                      (!reportText.trim() || reportBusy) && styles.sendBtnDisabled,
+                    ]}
+                    disabled={!reportText.trim() || reportBusy}
+                    onPress={sendReport}
+                  >
+                    {reportBusy ? (
+                      <ActivityIndicator color="#fff" />
+                    ) : (
+                      <Text style={styles.sendText}>{t('report.send')}</Text>
+                    )}
+                  </Pressable>
+                </View>
+              </>
+            )}
           </Pressable>
         </Pressable>
       </Modal>
@@ -375,6 +463,24 @@ const styles = StyleSheet.create({
   deleteBtnDisabled: { opacity: 0.4 },
   deleteText: { color: '#fff', fontWeight: '800', fontSize: 15 },
   signedOut: { fontSize: 13, color: '#9aa7b4', fontStyle: 'italic', marginTop: 36 },
+
+  reportTitle: { fontSize: 18, fontWeight: '800', color: '#0d1b2a', marginBottom: 10 },
+  reportInput: {
+    fontSize: 15,
+    color: '#0d1b2a',
+    backgroundColor: '#f4f6f8',
+    borderRadius: 10,
+    paddingHorizontal: 12,
+    paddingVertical: 11,
+    borderWidth: 1,
+    borderColor: '#e3e8ee',
+    marginBottom: 10,
+    minHeight: 90,
+    textAlignVertical: 'top',
+  },
+  sendBtn: { backgroundColor: '#2f74d6' },
+  sendBtnDisabled: { opacity: 0.4 },
+  sendText: { color: '#fff', fontWeight: '800', fontSize: 15 },
 
   backdrop: {
     flex: 1,

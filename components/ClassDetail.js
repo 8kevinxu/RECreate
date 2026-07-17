@@ -17,6 +17,7 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { CLASS_CATEGORIES } from '../data/classes';
+import { confirmReportData } from '../lib/reports';
 import { openDirections } from '../lib/maps';
 import { localizeWhen, formatDateRange } from '../lib/datetime';
 import { useI18n } from '../lib/i18n';
@@ -123,6 +124,15 @@ export default function ClassDetail({ item, onClose }) {
                 <Text style={styles.noticeText}>{t('cls.noOnlineReg')}</Text>
               </View>
             )}
+
+            {/* "This data looks wrong" flag, same flow as the court/pool cards. */}
+            <Pressable
+              onPress={() => confirmReportData(`class:${c.id}`)}
+              accessibilityRole="button"
+              accessibilityLabel={t('report.classInfo')}
+            >
+              <Text style={styles.reportLink}>{t('report.classInfo')}</Text>
+            </Pressable>
           </ScrollView>
 
           {c.lat != null && (
@@ -233,4 +243,5 @@ const styles = StyleSheet.create({
   },
   ctaText: { color: '#fff', fontWeight: '800', fontSize: 15 },
   note: { fontSize: 11, color: '#9fb0c2', textAlign: 'center', marginTop: 10 },
+  reportLink: { fontSize: 11, color: '#9aa7b4', fontWeight: '700', marginTop: 12 },
 });

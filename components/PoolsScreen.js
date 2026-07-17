@@ -18,6 +18,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { POOLS, POOL_FEES, POOL_CLOSURES, POOL_SESSION_KINDS } from '../data/pools';
 import { haversineMiles, formatDistance } from '../lib/distance';
 import { openDirections } from '../lib/maps';
+import { confirmReportData } from '../lib/reports';
 import { fmtClock, startOfDay, dayChipLabel, viewLabel } from '../lib/datetime';
 import { useI18n } from '../lib/i18n';
 import ScrollTopFab, { useScrollTop } from './ScrollTopFab';
@@ -340,9 +341,19 @@ export default function PoolsScreen({ userLocation }) {
                 })}
 
               {/* SFRP's own blurb about this pool (scraped off its facility
-                  page) — only in the expanded view to keep cards compact. */}
+                  page) — only in the expanded view to keep cards compact,
+                  along with the "this data looks wrong" flag. */}
               {showWeek && !!p.desc && <Text style={styles.desc}>{p.desc}</Text>}
               {!!p.note && <Text style={styles.note}>{p.note}</Text>}
+              {showWeek && (
+                <Pressable
+                  onPress={() => confirmReportData(`pool:${p.id}`)}
+                  accessibilityRole="button"
+                  accessibilityLabel={t('report.schedule')}
+                >
+                  <Text style={styles.reportLink}>{t('report.schedule')}</Text>
+                </Pressable>
+              )}
 
               <View style={styles.actions}>
                 <Pressable style={styles.actBtn} onPress={() => setExpanded(showWeek ? null : p.id)}>
@@ -508,6 +519,7 @@ const styles = StyleSheet.create({
 
   note: { fontSize: 12, color: '#6b7a8a', marginTop: 10, fontStyle: 'italic' },
   desc: { fontSize: 12, color: '#46586a', marginTop: 10, lineHeight: 17 },
+  reportLink: { fontSize: 11, color: '#9aa7b4', fontWeight: '700', marginTop: 10 },
 
   actions: { flexDirection: 'row', flexWrap: 'wrap', gap: 14, marginTop: 12 },
   actBtn: { flexDirection: 'row', alignItems: 'center', gap: 4 },

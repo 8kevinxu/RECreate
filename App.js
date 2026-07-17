@@ -74,7 +74,7 @@ import {
   LEVEL_META,
 } from './lib/crowd';
 import { loadReviews, addReview, MAX_BODY, MAX_NAME, isShared as reviewsShared } from './lib/reviews';
-import { reportContent } from './lib/reports';
+import { reportContent, confirmReportData } from './lib/reports';
 import { liveBooked, bookedAt } from './lib/reservations';
 import { GENERATED_AT as RES_GENERATED_AT } from './data/reservations';
 import { fetchLiveReservations, locationIdFromUrl } from './lib/reservationsLive';
@@ -1544,26 +1544,6 @@ function CourtDetail({
     ]);
   };
 
-  // "Schedule look wrong?" — a content report against this court+sport's hours,
-  // so bad scraped/transcribed data gets flagged by the people standing at the
-  // court. Reviewed out-of-band like every content report. Surfaces the error
-  // message (e.g. "sign in first") since the fix is actionable, unlike mod.fail.
-  const reportSchedule = () => {
-    Alert.alert(t('court.reportSchedTitle'), t('court.reportSchedBody'), [
-      { text: t('cancel'), style: 'cancel' },
-      {
-        text: t('mod.report'),
-        onPress: async () => {
-          const { error } = await reportContent({
-            kind: 'schedule',
-            refId: `${court.id}:${vSport}`,
-          });
-          Alert.alert(error ? error.message || t('mod.fail') : t('court.reportSchedThanks'));
-        },
-      },
-    ]);
-  };
-
   const submitReview = async () => {
     const body = reviewBody.trim();
     if (!body || posting) return;
@@ -2052,12 +2032,14 @@ function CourtDetail({
         <Text style={styles.disclaimer}>
           {court.disclaimer || t('court.disclaimerDefault')}
         </Text>
+        {/* "This data looks wrong" flag — one per surface (court/class/pool),
+            all through the shared confirmReportData flow. */}
         <Pressable
-          onPress={reportSchedule}
+          onPress={() => confirmReportData(`court:${court.id}:${vSport}`)}
           accessibilityRole="button"
-          accessibilityLabel={t('court.reportSchedule')}
+          accessibilityLabel={t('report.schedule')}
         >
-          <Text style={styles.scheduleReport}>{t('court.reportSchedule')}</Text>
+          <Text style={styles.scheduleReport}>{t('report.schedule')}</Text>
         </Pressable>
 
         <Text style={[styles.sectionLabel, styles.reviewsLabel]}>{t('court.reviews')}</Text>
