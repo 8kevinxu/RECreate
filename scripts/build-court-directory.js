@@ -60,7 +60,12 @@ const PDF_FALLBACK = {
   // open play 9AM-1PM (weekends 9AM-3PM) then reservable until dark. The week
   // carries the all-day open play (true via B/D/F, ending at the 8PM the app
   // uses for park daylight hours); the A/C/E split rides OPEN_PLAY_NOTES.
-  'presidio wall': { week: Array.from({ length: 7 }, () => [[540, 1200]]) },
+  // playWeek: pickleball doesn't exist here before 9AM (tennis holds 7:30-9),
+  // so the poster week REPLACES the generic 8AM-8PM dropins (like tennis).
+  'presidio wall': {
+    week: Array.from({ length: 7 }, () => [[540, 1200]]),
+    playWeek: Array.from({ length: 7 }, () => [[540, 1200]]),
+  },
   // Tue/Thu/Fri 9AM-3PM, Sun 9AM-5PM
   rossi: { week: [[[540, 1020]], [], [[540, 900]], [], [[540, 900]], [[540, 900]], []] },
 };
@@ -333,6 +338,7 @@ async function build() {
     const openRaw = openKey ? String(r[openKey]).trim() : '';
     const openPlayCourts = /^\d+$/.test(openRaw) ? num(openRaw) : 0;
     let openPlayWeek = null;
+    let pbPlayWeek = null; // authoritative pickleball hours replacing base dropins
     let openPlayTimes = openRaw && !/^\d+$/.test(openRaw) ? openRaw : null;
     if (openPlayTimes && /^(see\s+)?schedule/i.test(openPlayTimes)) {
       const link = openKey && r._links[openKey];
@@ -346,6 +352,7 @@ async function build() {
       if (!openPlayWeek) {
         const fb = PDF_FALLBACK[norm(facility)];
         openPlayWeek = (fb && fb.week) || null;
+        pbPlayWeek = (fb && fb.playWeek) || null;
         console.log(
           `  ↺ ${facility}: open-play from ${fb ? 'transcribed fallback' : 'nowhere (left as-is)'}` +
             (link ? ` — poster is not machine-readable, re-verify against ${link}` : '')
@@ -366,6 +373,7 @@ async function build() {
       nets: nets || null,
       ...(openPlayCourts > 0 ? { openPlayCourts } : {}),
       ...(openPlayWeek ? { openPlayWeek } : {}),
+      ...(pbPlayWeek ? { playWeek: pbPlayWeek } : {}),
       ...(openPlayTimes ? { openPlayTimes } : {}),
       ...(note ? { note } : {}),
     };
