@@ -63,8 +63,22 @@ const PDF_FALLBACK = {
   // doesn't exist here before 9AM (tennis holds 7:30-9). The A/C/E split
   // rides OPEN_PLAY_NOTES.
   'presidio wall': { playWeek: Array.from({ length: 7 }, () => [[540, 1200, 'openplay']]) },
-  // Tue/Thu/Fri 9AM-3PM, Sun 9AM-5PM
-  rossi: { week: [[[540, 1020]], [], [[540, 900]], [], [[540, 900]], [[540, 900]], []] },
+  // Poster ("Rossi Court 3", the main pickleball pod): open play Tue/Thu/Fri
+  // 9AM-3PM & Sun 9AM-5PM; tennis-or-pickleball reservable from 3PM weekdays /
+  // 5PM weekends (ends at the app's 8PM park close). Mon/Wed/Sat daytime is
+  // tennis-only, so those are gaps. Courts 1 & 2 (walk-up, BYO net) and
+  // court E (reservable all day) ride OPEN_PLAY_NOTES.
+  rossi: {
+    playWeek: [
+      [[540, 1020, 'openplay'], [1020, 1200, 'reservable']], // Sun
+      [[900, 1200, 'reservable']],                           // Mon
+      [[540, 900, 'openplay'], [900, 1200, 'reservable']],   // Tue
+      [[900, 1200, 'reservable']],                           // Wed
+      [[540, 900, 'openplay'], [900, 1200, 'reservable']],   // Thu
+      [[540, 900, 'openplay'], [900, 1200, 'reservable']],   // Fri
+      [[1020, 1200, 'reservable']],                          // Sat
+    ],
+  },
 };
 
 // Court-split / reservation nuance the weekly open-play blocks can't carry,
@@ -74,7 +88,7 @@ const PDF_FALLBACK = {
 const OPEN_PLAY_NOTES = {
   moscone: 'Evenings after the times shown: court 4 reservable for tennis or pickleball (Tue/Thu tennis-only); court 3 tennis-only.',
   'presidio wall': 'Courts B/D/F: open play all day. Courts A/C/E: reservable after 1 PM (3 PM weekends).',
-  rossi: 'Reservable for tennis or pickleball from 3 PM weekdays, 5 PM weekends; Court E (permanent net) reservable all day.',
+  rossi: 'Times shown are court 3 (main pod). Courts 1 & 2: walk-up any time, bring your own net. Court E (permanent net): reservable all day.',
 };
 
 // The same posters constrain TENNIS at these facilities. Presidio Wall's poster

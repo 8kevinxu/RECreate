@@ -714,36 +714,78 @@
         "lights": false,
         "restrooms": true,
         "nets": "Provided (4 rolling nets); Court E has a permanent net",
-        "openPlayWeek": [
+        "playWeek": [
           [
             [
               540,
-              1020
-            ]
-          ],
-          [],
-          [
+              1020,
+              "openplay"
+            ],
             [
-              540,
-              900
-            ]
-          ],
-          [],
-          [
-            [
-              540,
-              900
+              1020,
+              1200,
+              "reservable"
             ]
           ],
           [
             [
-              540,
-              900
+              900,
+              1200,
+              "reservable"
             ]
           ],
-          []
+          [
+            [
+              540,
+              900,
+              "openplay"
+            ],
+            [
+              900,
+              1200,
+              "reservable"
+            ]
+          ],
+          [
+            [
+              900,
+              1200,
+              "reservable"
+            ]
+          ],
+          [
+            [
+              540,
+              900,
+              "openplay"
+            ],
+            [
+              900,
+              1200,
+              "reservable"
+            ]
+          ],
+          [
+            [
+              540,
+              900,
+              "openplay"
+            ],
+            [
+              900,
+              1200,
+              "reservable"
+            ]
+          ],
+          [
+            [
+              1020,
+              1200,
+              "reservable"
+            ]
+          ]
         ],
-        "note": "Reservable for tennis or pickleball from 3 PM weekdays, 5 PM weekends; Court E (permanent net) reservable all day."
+        "note": "Times shown are court 3 (main pod). Courts 1 & 2: walk-up any time, bring your own net. Court E (permanent net): reservable all day."
       }
     },
     "silver-terrace-playground-outdoor": {
@@ -894,5 +936,5 @@
       }
     }
   },
-  "fetchedAt": "2026-07-17T01:27:39.473Z"
+  "fetchedAt": "2026-07-17T01:32:49.254Z"
 }
