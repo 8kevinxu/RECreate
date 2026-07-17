@@ -45,6 +45,16 @@ const ALIASES = {
   'stern grove': 'sigmund-stern-recreation-grove-outdoor',
 };
 
+// Open-play schedules for pickleball directory rows that just say "Scheduled".
+// Curated from the community-maintained pickleballsf.com venue pages (SFRP's
+// directory doesn't publish the times itself) — bump these when SF Rec & Park
+// revises the shared-use schedules. Keyed by normalized directory facility name.
+const OPEN_PLAY_SCHEDULES = {
+  moscone: 'Daily 7-9 AM · Mon & Wed 9 AM-3 PM · Sat 7 AM-5 PM',
+  'presidio wall': 'Daily 9 AM-dusk · courts B/D/F always drop-in',
+  rossi: 'Tue/Thu/Fri 9 AM-3 PM · Sun 9 AM-5 PM',
+};
+
 const norm = (s) =>
   String(s || '')
     .toLowerCase()
@@ -171,6 +181,17 @@ async function build() {
       continue;
     }
     const nets = (r['Nets*'] || r['Nets'] || '').trim();
+    // "Open Play" column: a court count (dedicated open-play courts), "Scheduled"
+    // (times curated above), or explicit times ("Tues/Thurs 10:30am-1:30pm").
+    const openKey = Object.keys(r).find((k) => /open\s*play/i.test(k));
+    const openRaw = openKey ? String(r[openKey]).trim() : '';
+    const openPlayCourts = /^\d+$/.test(openRaw) ? num(openRaw) : 0;
+    const openPlayTimes =
+      openRaw && !/^\d+$/.test(openRaw)
+        ? /^(see\s+)?schedule/i.test(openRaw)
+          ? OPEN_PLAY_SCHEDULES[norm(facility)] || openRaw
+          : openRaw
+        : null;
     (out[court.id] ||= {}).pickleball = {
       total,
       reservable: num(r['Reservable']),
@@ -178,6 +199,8 @@ async function build() {
       lights: yes(r['Lights']),
       restrooms: yes(r['Restrooms']),
       nets: nets || null,
+      ...(openPlayCourts > 0 ? { openPlayCourts } : {}),
+      ...(openPlayTimes ? { openPlayTimes } : {}),
     };
   }
 
@@ -201,8 +224,10 @@ function render(directory, generatedAt) {
 //
 // Per-court facility facts from SF Rec & Park's tennis + pickleball court
 // directories. Map of our court id -> { sport: { total, reservable, walkup,
-// lights, restrooms, [dedicated], [nets] } }. Merged onto courts at runtime by
-// lib/useCourts.js and shown on the court detail card.
+// lights, restrooms, [dedicated], [nets], [openPlayCourts], [openPlayTimes] } }.
+// openPlayCourts = dedicated open-play court count; openPlayTimes = the shared-use
+// open-play schedule (curated for "Scheduled" rows). Merged onto courts at runtime
+// by lib/useCourts.js and shown on the court detail card.
 
 export const DIRECTORY = {
 ${body}

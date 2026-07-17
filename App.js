@@ -173,6 +173,16 @@ const AMENITIES = [
     id: 'nets',
     test: (c, s) => /provided/i.test(c.directory?.[s]?.nets || ''),
   },
+  // Open play (pickleball): dedicated open-play courts or a shared-use open-play
+  // schedule from the SFRP directory. Only pickleball entries carry these fields,
+  // so the chip self-hides in other sport views.
+  {
+    id: 'openplay',
+    test: (c, s) => {
+      const d = c.directory?.[s];
+      return !!d && ((d.openPlayCourts || 0) > 0 || !!d.openPlayTimes);
+    },
+  },
   // Golf-course filters: only the curated golf entries carry `c.golf`, so these
   // chips surface only in the ⛳ Golf view and hide everywhere else.
   { id: 'nine', test: (c) => c.golf?.holes === 9 },
@@ -1631,6 +1641,15 @@ function CourtDetail({
           {netsLabel(dir.nets) && (
             <View style={styles.facChip}>
               <Text style={styles.facText}>🥅 {netsLabel(dir.nets)}</Text>
+            </View>
+          )}
+          {(dir.openPlayCourts || dir.openPlayTimes) && (
+            <View style={styles.facChip}>
+              <Text style={styles.facText}>
+                🟢 {dir.openPlayCourts
+                  ? t('court.openPlayCourts', { n: dir.openPlayCourts })
+                  : t('court.openPlayTimes', { t: dir.openPlayTimes })}
+              </Text>
             </View>
           )}
         </View>

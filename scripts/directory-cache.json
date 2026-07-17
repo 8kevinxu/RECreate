@@ -415,7 +415,8 @@
         "walkup": 0,
         "lights": true,
         "restrooms": true,
-        "nets": "Provided (4 rolling nets)"
+        "nets": "Provided (4 rolling nets)",
+        "openPlayTimes": "Daily 7-9 AM · Mon & Wed 9 AM-3 PM · Sat 7 AM-5 PM"
       }
     },
     "mountain-lake-park-outdoor": {
@@ -494,7 +495,8 @@
         "walkup": 0,
         "lights": false,
         "restrooms": true,
-        "nets": "Provided (storage box)"
+        "nets": "Provided (storage box)",
+        "openPlayTimes": "Daily 9 AM-dusk · courts B/D/F always drop-in"
       }
     },
     "richmond-playground-outdoor": {
@@ -537,7 +539,8 @@
         "walkup": 4,
         "lights": false,
         "restrooms": true,
-        "nets": "Provided (4 rolling nets); Court E has a permanent net"
+        "nets": "Provided (4 rolling nets); Court E has a permanent net",
+        "openPlayTimes": "Tue/Thu/Fri 9 AM-3 PM · Sun 9 AM-5 PM"
       }
     },
     "silver-terrace-playground-outdoor": {
@@ -616,7 +619,8 @@
         "walkup": 0,
         "lights": true,
         "restrooms": true,
-        "nets": "Pickleball net, paddles and balls available to borrow Tuesday to Friday, 10 a.m. to 7 p.m., and Saturday, 9 a.m. to 4 p.m."
+        "nets": "Pickleball net, paddles and balls available to borrow Tuesday to Friday, 10 a.m. to 7 p.m., and Saturday, 9 a.m. to 4 p.m.",
+        "openPlayTimes": "Tuesdays and Thursdays, 10:30 a.m. to 1:30 p.m."
       }
     },
     "west-portal-playground-outdoor": {
@@ -653,7 +657,8 @@
         "walkup": 0,
         "lights": false,
         "restrooms": true,
-        "nets": "Provided"
+        "nets": "Provided",
+        "openPlayCourts": 8
       }
     },
     "louis-sutter-playground-outdoor": {
@@ -663,9 +668,10 @@
         "walkup": 0,
         "lights": false,
         "restrooms": true,
-        "nets": "Provided"
+        "nets": "Provided",
+        "openPlayCourts": 6
       }
     }
   },
-  "fetchedAt": "2026-07-13T17:10:58.022Z"
+  "fetchedAt": "2026-07-17T00:03:25.593Z"
 }
