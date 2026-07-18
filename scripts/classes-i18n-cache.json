@@ -1030,5 +1030,329 @@
   "Drop-in: Teqball": {
     "zh": "随到随学：铁球",
     "es": "Sin cita previa: Teqball"
+  },
+  "Parent and Tot Swim": {
+    "zh": "亲子游泳课",
+    "es": "Natación para Padres e Hijos"
+  },
+  "Kayaking - Tandem Self Guided Tour of India Basin": {
+    "zh": "皮划艇 - 双人自导印度盆地之旅",
+    "es": "Kayak - Tour Autoguiado en Tándem de India Basin"
+  },
+  "Kayaking - Tandem Self Guided Tour": {
+    "zh": "皮划艇 - 双人自导之旅",
+    "es": "Kayak - Tour Autoguiado en Tándem"
+  },
+  "Senior Art Expression - Session 1": {
+    "zh": "长者艺术表达 - 第一阶段",
+    "es": "Expresión Artística para Adultos Mayores - Sesión 1"
+  },
+  "Senior Art Expression - Session 2": {
+    "zh": "长者艺术表达 - 第二阶段",
+    "es": "Expresión Artística para Adultos Mayores - Sesión 2"
+  },
+  "Halloween Haunted House Family Workshop": {
+    "zh": "万圣节鬼屋家庭工作坊",
+    "es": "Taller Familiar de Casa Embrujada de Halloween"
+  },
+  "Holiday Family Workshop": {
+    "zh": "假日家庭工作坊",
+    "es": "Taller Familiar de Vacaciones"
+  },
+  "Puppet Making Family Workshop": {
+    "zh": "布偶制作家庭工作坊",
+    "es": "Taller Familiar de Confección de Títeres"
+  },
+  "Thanksgiving Family Workshop": {
+    "zh": "感恩节家庭工作坊",
+    "es": "Taller Familiar de Acción de Gracias"
+  },
+  "Mini Cinema": {
+    "zh": "迷你电影院",
+    "es": "Mini Cine"
+  },
+  "Basic Sewing Workshop": {
+    "zh": "基础缝纫工作坊",
+    "es": "Taller de Costura Básica"
+  },
+  "Cartooning and Graphic Novels for Adults": {
+    "zh": "成人漫画与图文小说",
+    "es": "Cómics y Novelas Gráficas para Adultos"
+  },
+  "Clay Creations: Polymer Bake Clay Workshop": {
+    "zh": "黏土创意：聚合黏土烘烤工作坊",
+    "es": "Creaciones de Arcilla: Taller de Arcilla Polimérica para Hornear"
+  },
+  "Holiday Workshop: Ornaments": {
+    "zh": "假日工作坊：装饰品",
+    "es": "Taller de Vacaciones: Adornos"
+  },
+  "Holiday Workshop: Youth Polymer Bake Clay Workshop": {
+    "zh": "假日工作坊：青少年聚合黏土烘烤",
+    "es": "Taller de Vacaciones: Arcilla Polimérica para Hornear para Jóvenes"
+  },
+  "Marbling Workshop": {
+    "zh": "大理石纹工作坊",
+    "es": "Taller de Marmoleado"
+  },
+  "Background Design for Comics & Animation": {
+    "zh": "漫画与动画背景设计",
+    "es": "Diseño de Fondo para Cómics y Animación"
+  },
+  "Character Design for Comics & Animation": {
+    "zh": "漫画与动画人物设计",
+    "es": "Diseño de Personajes para Cómics y Animación"
+  },
+  "Community Sewing Class - Beginners": {
+    "zh": "社区缝纫课 - 初级",
+    "es": "Clase de Costura Comunitaria - Principiantes"
+  },
+  "Active Art for Toddlers": {
+    "zh": "幼儿美术活动",
+    "es": "Arte Activo para Niños Pequeños"
+  },
+  "Beginning Coding for Minecraft": {
+    "zh": "我的世界编程入门",
+    "es": "Introducción a la Programación en Minecraft"
+  },
+  "Audio Production": {
+    "zh": "音频制作",
+    "es": "Producción de Audio"
+  },
+  "New Technologies: 3D Printing": {
+    "zh": "新技术：3D打印",
+    "es": "Nuevas Tecnologías: Impresión 3D"
+  },
+  "Beginner Jewelry & Independent Study": {
+    "zh": "初级珠宝制作与自主学习",
+    "es": "Joyería para Principiantes y Estudio Independiente"
+  },
+  "Archery & Adventure Winter Camp": {
+    "zh": "射箭与冒险冬令营",
+    "es": "Campamento de Arquería y Aventura de Invierno"
+  },
+  "Great Time Out Winter Break Camp": {
+    "zh": "美好时光冬令营",
+    "es": "Campamento de Receso de Invierno Great Time Out"
+  },
+  "Camp In, Climb On Overnight": {
+    "zh": "露营、攀爬夜间营地",
+    "es": "Campamento Nocturno de Acampada y Escalada"
+  },
+  "Winter Wonderland Camp": {
+    "zh": "冬日仙境营地",
+    "es": "Campamento Winter Wonderland"
+  },
+  "Tennis - Winter  Break Camp": {
+    "zh": "网球 - 冬令营",
+    "es": "Tenis - Campamento de Receso de Invierno"
+  },
+  "Act It Out! Creative Theater Games": {
+    "zh": "表演出来！创意戏剧游戏",
+    "es": "¡Actúalo! Juegos de Teatro Creativo"
+  },
+  "Adult Ballet": {
+    "zh": "成人芭蕾舞",
+    "es": "Ballet para Adultos"
+  },
+  "Body Worship": {
+    "zh": "身体礼赞",
+    "es": "Body Worship"
+  },
+  "BollyX": {
+    "zh": "宝莱坞健身舞蹈",
+    "es": "BollyX"
+  },
+  "Forever Fit for Seniors": {
+    "zh": "长者永远健身课",
+    "es": "Para Siempre en Forma para Adultos Mayores"
+  },
+  "Drop-in: Real Taiji": {
+    "zh": "随到随学：真太极",
+    "es": "Acceso Libre: Taichi Auténtico"
+  },
+  "Drop-in: Fitness Center": {
+    "zh": "随到随学：健身中心",
+    "es": "Acceso Libre: Centro de Fitness"
+  },
+  "Breathe and Flow: A 3-Hour Vinyasa Retreat": {
+    "zh": "呼吸与流动：3小时瑜伽静修",
+    "es": "Respira y Fluye: Retiro de Vinyasa de 3 Horas"
+  },
+  "Drop-in: Chinese Cultural Dance": {
+    "zh": "随到随学：中国文化舞蹈",
+    "es": "Acceso Libre: Danza de Cultura China"
+  },
+  "Drop-in: Chinese Dance Fitness": {
+    "zh": "随到随学：中国舞蹈健身",
+    "es": "Acceso Libre: Danza China para la Salud"
+  },
+  "Baby Boomer Sing-Along": {
+    "zh": "婴儿潮一代歌唱聚会",
+    "es": "Encuentro de Canto para Generación de Posguerra"
+  },
+  "Archery - Intro to Archery Development": {
+    "zh": "射箭 - 初级射箭入门",
+    "es": "Tiro con Arco - Introducción al Desarrollo del Tiro"
+  },
+  "Drop-in: Mahjong": {
+    "zh": "随到随学：麻将",
+    "es": "Acceso Directo: Mahjong"
+  },
+  "Drop-in: Table Games": {
+    "zh": "随到随学：桌面游戏",
+    "es": "Acceso Directo: Juegos de Mesa"
+  },
+  "Garden Explorers Club": {
+    "zh": "花园探险俱乐部",
+    "es": "Club de Exploradores de Jardín"
+  },
+  "Mad Scientists Mashup!": {
+    "zh": "疯狂科学家大混搭！",
+    "es": "¡Mashup de Científicos Locos!"
+  },
+  "New Technologies: Inventor Lab Club": {
+    "zh": "新技术：发明家实验室俱乐部",
+    "es": "Nuevas Tecnologías: Club Laboratorio de Inventores"
+  },
+  "New Technologies: Laser Cut Animals, Heroes, and More!": {
+    "zh": "新技术：激光切割动物、英雄等",
+    "es": "Nuevas Tecnologías: Animales Cortados con Láser, Héroes y Más"
+  },
+  "New Technologies: Robotics Workshop": {
+    "zh": "新技术：机器人工作坊",
+    "es": "Nuevas Tecnologías: Taller de Robótica"
+  },
+  "New Technologies: Scrapyard Robotics": {
+    "zh": "新技术：废料场机器人",
+    "es": "Nuevas Tecnologías: Robótica de Desguace"
+  },
+  "Futsal for Tots": {
+    "zh": "幼儿五人制足球",
+    "es": "Futsal para Pequeños"
+  },
+  "Shred N' Butter for Tots": {
+    "zh": "幼儿滑雪技巧",
+    "es": "Shred N' Butter para Pequeños"
+  },
+  "Archery After School": {
+    "zh": "放学后射箭课程",
+    "es": "Tiro con Arco Después de la Escuela"
+  },
+  "Girls Play Sports: Archery": {
+    "zh": "女孩运动课程：射箭",
+    "es": "Las Niñas Juegan Deportes: Tiro con Arco"
+  },
+  "Baseball: Girls Bay Sox Girls Fall Workouts": {
+    "zh": "棒球：女孩湾区红袜队秋季训练",
+    "es": "Béisbol: Entrenamientos de Otoño de las Niñas Bay Sox"
+  },
+  "Basketball Fundamentals - Girls": {
+    "zh": "篮球基础 - 女孩",
+    "es": "Fundamentos de Baloncesto - Niñas"
+  },
+  "Deaf Club": {
+    "zh": "聋人俱乐部",
+    "es": "Club de Sordos"
+  },
+  "Tennis - Girl's Beginning": {
+    "zh": "网球 - 女孩初级班",
+    "es": "Tenis - Nivel Principiante para Niñas"
+  },
+  "Adaptive Cycling": {
+    "zh": "自适应骑行",
+    "es": "Ciclismo Adaptativo"
+  },
+  "Rock Climbing - Open Climb": {
+    "zh": "攀岩 - 开放式攀爬",
+    "es": "Escalada en Roca - Escalada Abierta"
+  },
+  "Rock Climbing 101": {
+    "zh": "攀岩入门 101",
+    "es": "Escalada en Roca 101"
+  },
+  "Archery - Halloween Tournament": {
+    "zh": "射箭 - 万圣节锦标赛",
+    "es": "Tiro con Arco - Torneo de Halloween"
+  },
+  "Basketball Fundamentals": {
+    "zh": "篮球基础",
+    "es": "Fundamentos de Baloncesto"
+  },
+  "Basketball Fundamentals - Advanced": {
+    "zh": "篮球基础 - 高级班",
+    "es": "Fundamentos de Baloncesto - Nivel Avanzado"
+  },
+  "Tang Soo Doo - Intermediate": {
+    "zh": "唐手道 - 中级班",
+    "es": "Tang Soo Doo - Nivel Intermedio"
+  },
+  "Tang Soo Doo House - All Skill Levels": {
+    "zh": "唐手道馆 - 全级别",
+    "es": "Casa Tang Soo Doo - Todos los Niveles"
+  },
+  "Tang Soo Doo House - Beginning": {
+    "zh": "唐手道馆 - 初级班",
+    "es": "Casa Tang Soo Doo - Nivel Principiante"
+  },
+  "Ropes Course Adventure": {
+    "zh": "绳索课程冒险",
+    "es": "Aventura del Curso de Cuerdas"
+  },
+  "Biking: Bayfront Biking": {
+    "zh": "骑行：海滨骑行",
+    "es": "Ciclismo: Ciclismo por la Bahía"
+  },
+  "Play Day": {
+    "zh": "游戏日",
+    "es": "Día de Juego"
+  },
+  "Teen Time": {
+    "zh": "少年时间",
+    "es": "Hora de Adolescentes"
+  },
+  "TR Social Club": {
+    "zh": "TR 社交俱乐部",
+    "es": "Club Social TR"
+  },
+  "Basketball - Girls MRC Rebels Tryouts Fall 2026": {
+    "zh": "篮球 - 女孩 MRC 反叛队选拔赛 2026 年秋季",
+    "es": "Baloncesto - Pruebas de Selección de las Niñas MRC Rebels Otoño 2026"
+  },
+  "ACCESS To Health & Fitness": {
+    "zh": "无障碍健康和体能课程",
+    "es": "ACCESO a Salud y Acondicionamiento Físico"
+  },
+  "Basketball - Pee Wee": {
+    "zh": "篮球 - 幼儿班",
+    "es": "Baloncesto - Pee Wee"
+  },
+  "Drop-in: Girls Bay Sox Specialty Clinic": {
+    "zh": "随到随学：女孩湾区红袜队专项诊所",
+    "es": "Acceso Directo: Clínica Especializada de las Niñas Bay Sox"
+  },
+  "TR Family Day": {
+    "zh": "TR 家庭日",
+    "es": "Día Familiar TR"
+  },
+  "Tennis - Girl's Intermediate/Advanced": {
+    "zh": "网球 - 女孩中级/高级班",
+    "es": "Tenis - Nivel Intermedio/Avanzado para Niñas"
+  },
+  "Biking: Pedal The Park": {
+    "zh": "骑行：骑行游公园",
+    "es": "Ciclismo: Pedal El Parque"
+  },
+  "Drop-in: Storytime": {
+    "zh": "随到随学：故事时间",
+    "es": "Acceso Directo: La Hora del Cuento"
+  },
+  "Little Learners - Intro to Pre-K": {
+    "zh": "小学者 - 学前班入门课程",
+    "es": "Pequeños Aprendices - Introducción a Pre-K"
+  },
+  "Aventuras en Espanol": {
+    "zh": "西班牙语冒险",
+    "es": "Aventuras en Español"
   }
 }
