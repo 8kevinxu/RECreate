@@ -23,6 +23,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { fetchT } = require('./fetch-timeout');
 
 const API = 'https://api.rec.us';
 const CACHE_FILE = path.join(__dirname, 'reservations-cache.json');
@@ -50,7 +51,7 @@ const MIN_COURTS_OK = 10;
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 async function getJson(url) {
-  const res = await fetch(url, { headers: HEADERS });
+  const res = await fetchT(url, { headers: HEADERS });
   if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
   return res.json();
 }

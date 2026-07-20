@@ -16,6 +16,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { fetchT } = require('./fetch-timeout');
 
 const UA =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
@@ -185,7 +186,7 @@ const stripHtml = (s) =>
     .trim();
 
 async function getSession() {
-  const res = await fetch(`${BASE}/activity/search?locale=en-US`, { headers: { 'User-Agent': UA } });
+  const res = await fetchT(`${BASE}/activity/search?locale=en-US`, { headers: { 'User-Agent': UA } });
   const cookies = (res.headers.getSetCookie ? res.headers.getSetCookie() : [res.headers.get('set-cookie')])
     .filter(Boolean)
     .map((c) => c.split(';')[0])
@@ -211,7 +212,7 @@ async function fetchCategory(session, catIds) {
       },
       activity_transfer_pattern: {},
     };
-    const res = await fetch(
+    const res = await fetchT(
       `${BASE}/rest/activities/list?locale=en-US&page_number=${page}&total_records_per_page=20`,
       {
         method: 'POST',
@@ -365,7 +366,7 @@ async function fillFeeDetails(session, rows) {
   let filled = 0;
   for (const r of needs) {
     try {
-      const res = await fetch(
+      const res = await fetchT(
         `${BASE}/rest/activity/detail/estimateprice/${r.id.replace(/^anc-/, '')}?locale=en-US`,
         {
           headers: {
@@ -472,7 +473,7 @@ async function translateChunk(names) {
     `preserve level markers like "Intermediate"/"Beginner". Reply with ONLY a JSON ` +
     `array of exactly ${names.length} objects, same order, each {"zh":"…","es":"…"} ` +
     `— no prose, no code fences.\n\n${list}`;
-  const res = await fetch('https://api.anthropic.com/v1/messages', {
+  const res = await fetchT('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: {
       'x-api-key': process.env.ANTHROPIC_API_KEY,

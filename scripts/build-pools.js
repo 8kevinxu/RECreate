@@ -27,6 +27,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { fetchT } = require('./fetch-timeout');
 
 const BASE = 'https://sfrecpark.org';
 const UA =
@@ -245,7 +246,7 @@ function pageDesc($) {
 
 async function fetchFacilityPage(slug) {
   const cheerio = require('cheerio');
-  const html = await (await fetch(`${BASE}/Facilities/Facility/Details/${slug}`, { headers: { 'User-Agent': UA } })).text();
+  const html = await (await fetchT(`${BASE}/Facilities/Facility/Details/${slug}`, { headers: { 'User-Agent': UA } })).text();
   const $ = cheerio.load(html);
   const docs = [];
   $('a[href*="/DocumentCenter/View/"]').each((_, a) => {
@@ -261,7 +262,7 @@ async function fetchFacilityPage(slug) {
 
 async function pdfItems(url) {
   const pdfjs = await import('pdfjs-dist/legacy/build/pdf.mjs');
-  const buf = Buffer.from(await (await fetch(url, { headers: { 'User-Agent': UA } })).arrayBuffer());
+  const buf = Buffer.from(await (await fetchT(url, { headers: { 'User-Agent': UA } })).arrayBuffer());
   const doc = await pdfjs.getDocument({ data: new Uint8Array(buf) }).promise;
   const page = await doc.getPage(1);
   const tc = await page.getTextContent();

@@ -18,6 +18,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { fetchT } = require('./fetch-timeout');
 const cheerio = require('cheerio');
 
 const SOURCES = {
@@ -135,7 +136,7 @@ const num = (s) => {
 const yes = (s) => /^\s*y/i.test(String(s || ''));
 
 async function getHtml(url) {
-  const res = await fetch(url, { headers: { 'User-Agent': BROWSER_UA } });
+  const res = await fetchT(url, { headers: { 'User-Agent': BROWSER_UA } });
   if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
   return res.text();
 }
@@ -215,7 +216,7 @@ function weekFromText(text) {
 
 async function openPlayFromPdf(url) {
   const pdfjs = await import('pdfjs-dist/legacy/build/pdf.mjs');
-  const res = await fetch(url, { headers: { 'User-Agent': BROWSER_UA } });
+  const res = await fetchT(url, { headers: { 'User-Agent': BROWSER_UA } });
   if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
   const doc = await pdfjs.getDocument({ data: new Uint8Array(await res.arrayBuffer()) }).promise;
   const page = await doc.getPage(1);

@@ -22,6 +22,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { fetchT } = require('./fetch-timeout');
 
 const CACHE_FILE = path.join(__dirname, 'sanbruno-cache.json');
 const OUT_FILE = path.join(__dirname, '..', 'data', 'sanbruno-court.js');
@@ -247,7 +248,7 @@ async function main() {
   let scheduleSource;
 
   try {
-    const res = await fetch(CSV_URL, { headers: { 'User-Agent': BROWSER_UA }, redirect: 'follow' });
+    const res = await fetchT(CSV_URL, { headers: { 'User-Agent': BROWSER_UA }, redirect: 'follow' });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const csv = await res.text();
     dropins = parseSchedule(csv);

@@ -30,6 +30,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { fetchT } = require('./fetch-timeout');
 
 const CACHE_FILE = path.join(__dirname, 'outdoor-courts-cache.json');
 const OUT_FILE = path.join(__dirname, '..', 'data', 'outdoor-courts.js');
@@ -132,7 +133,7 @@ const VB_FALLBACK_NOTE =
   'No-permit volleyball on rotating Golden Gate Park grass meadows (one set odd months, another even) — see sfrecpark.org/1830 for current areas. Max 4 standard nets; bring your own.';
 
 async function ggpVolleyballNote() {
-  const res = await fetch(VB_URL, { headers: { 'User-Agent': VB_UA } });
+  const res = await fetchT(VB_URL, { headers: { 'User-Agent': VB_UA } });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const text = (await res.text())
     .replace(/<[^>]+>/g, '\n')
@@ -303,7 +304,7 @@ async function main() {
   let scheduleSource;
 
   try {
-    const res = await fetch(DATASF, { headers: { 'User-Agent': 'RECreateSF/1.0', Accept: '*/*' } });
+    const res = await fetchT(DATASF, { headers: { 'User-Agent': 'RECreateSF/1.0', Accept: '*/*' } });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const rows = await res.json();
     courts = buildCourts(rows);

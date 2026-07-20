@@ -19,6 +19,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { fetchT } = require('./fetch-timeout');
 const cheerio = require('cheerio');
 
 const CACHE_FILE = path.join(__dirname, 'schedule-cache.json');
@@ -429,7 +430,7 @@ function parseGymDropins(html) {
 
 async function scrapeSchedule(fid, requireBball = true) {
   const url = `https://sfrecpark.org/Facilities/Facility/Details/${fid}`;
-  const res = await fetch(url, { headers: { 'User-Agent': BROWSER_UA } });
+  const res = await fetchT(url, { headers: { 'User-Agent': BROWSER_UA } });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const parsed = parseGymDropins(await res.text());
   // Gate on basketball (broad coverage); volleyball/etc. are legitimately sparse.
@@ -448,7 +449,7 @@ function loadCache() {
 
 async function main() {
   console.log('Fetching rec-center coordinates from DataSF…');
-  const rows = await (await fetch(DATASF, {
+  const rows = await (await fetchT(DATASF, {
     headers: { 'User-Agent': 'RECreateSF/1.0', Accept: '*/*' },
   })).json();
 
