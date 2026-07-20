@@ -17,6 +17,7 @@ permissions:
 jobs:
   refresh:
     runs-on: ubuntu-latest
+    timeout-minutes: 15 # scrapes are ~1-2 min; hard-cap so a hung fetch can't burn the runner
     steps:
       - uses: actions/checkout@v4
 
