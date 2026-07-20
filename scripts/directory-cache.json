@@ -331,7 +331,7 @@
           "overall": 4,
           "surface": 4.3,
           "crowded": 2.3,
-          "matches": 628
+          "matches": 633
         }
       }
     },
@@ -347,7 +347,7 @@
           "overall": 3.5,
           "surface": 3.3,
           "crowded": 3.3,
-          "matches": 158
+          "matches": 159
         }
       },
       "pickleball": {
@@ -443,7 +443,7 @@
           "overall": 4.3,
           "surface": 4,
           "crowded": 3.9,
-          "matches": 569
+          "matches": 571
         }
       }
     },
@@ -486,7 +486,7 @@
           "overall": 2.7,
           "surface": 4.3,
           "crowded": 2.3,
-          "matches": 472
+          "matches": 473
         }
       }
     },
@@ -1079,5 +1079,5 @@
       }
     }
   },
-  "fetchedAt": "2026-07-17T06:18:48.615Z"
+  "fetchedAt": "2026-07-20T18:54:36.973Z"
 }
