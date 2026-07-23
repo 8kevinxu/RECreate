@@ -208,14 +208,20 @@ const PLACE_OPTS = [{ id: 'all' }, { id: 'indoor' }, { id: 'outdoor' }];
 // (multi-select). Each chip only appears for a sport when at least one of its
 // courts qualifies, so e.g. "Nets provided" shows for pickleball but not tennis.
 const AMENITIES = [
+  // Bookable: SF rec.us reservations / SF directory reservable count / a city
+  // facts flag (NYC tennis permit system marks facts[sport].reservable).
   {
     id: 'bookable',
-    test: (c, s) => !!c.reserved?.[s] || (c.directory?.[s]?.reservable || 0) > 0,
+    test: (c, s) => !!c.reserved?.[s] || (c.directory?.[s]?.reservable || 0) > 0 || c.facts?.[s]?.reservable === true,
   },
   // Lights: SF directory says per-sport; other cities' datasets say per-court
   // (aggregated into facts[sport].lit by the city builders).
   { id: 'lights', test: (c, s) => c.directory?.[s]?.lights === true || c.facts?.[s]?.lit === true },
-  { id: 'restrooms', test: (c, s) => c.directory?.[s]?.restrooms === true },
+  // Restrooms: SF directory (per-sport) or a city court-level flag (NYC).
+  { id: 'restrooms', test: (c, s) => c.directory?.[s]?.restrooms === true || c.restrooms === true },
+  // Drinking water: city court-level flag (NYC drinking-fountains join); SF has
+  // no source, so the chip self-hides there.
+  { id: 'water', test: (c) => c.water === true },
   // ADA-accessible facilities — only city datasets that track it (NYC) carry
   // `accessible`, so the chip self-hides elsewhere.
   { id: 'accessible', test: (c) => c.accessible === true },
@@ -1806,11 +1812,13 @@ function CourtDetail({
         </View>
       )}
 
-      {/* City-dataset facility facts (NYC: per-sport court count, lighting,
-          surface, ADA flag) — the non-SF counterpart of the directory row. */}
-      {!dir && court.facts?.[vSport] && (
+      {/* City-dataset facility facts (NYC): per-sport count/lighting/surface
+          plus court-level amenities (ADA, restrooms, drinking water) — the
+          non-SF counterpart of the directory row. Renders for outdoor pins
+          (facts) and indoor rec centers (court-level flags only). */}
+      {!dir && (court.facts?.[vSport] || court.accessible || court.restrooms || court.water) && (
         <View style={styles.facRow}>
-          {court.facts[vSport].n > 0 && (
+          {court.facts?.[vSport]?.n > 0 && (
             <View style={styles.facChip}>
               <Text style={styles.facText}>
                 {meta.emoji}{' '}
@@ -1820,7 +1828,7 @@ function CourtDetail({
               </Text>
             </View>
           )}
-          {court.facts[vSport].lit && (
+          {court.facts?.[vSport]?.lit && (
             <View style={styles.facChip}>
               <Text style={styles.facText}>{t('amenity.lights')}</Text>
             </View>
@@ -1830,7 +1838,17 @@ function CourtDetail({
               <Text style={styles.facText}>{t('amenity.accessible')}</Text>
             </View>
           )}
-          {(court.facts[vSport].surf || []).map((s) => (
+          {court.restrooms && (
+            <View style={styles.facChip}>
+              <Text style={styles.facText}>{t('amenity.restrooms')}</Text>
+            </View>
+          )}
+          {court.water && (
+            <View style={styles.facChip}>
+              <Text style={styles.facText}>{t('amenity.water')}</Text>
+            </View>
+          )}
+          {(court.facts?.[vSport]?.surf || []).map((s) => (
             <View key={s} style={styles.facChip}>
               <Text style={styles.facText}>{s}</Text>
             </View>
@@ -1957,6 +1975,31 @@ function CourtDetail({
               >
                 {t('court.howToGuide')}
               </Text>
+            </View>
+          )}
+        </>
+      )}
+
+      {/* City permit-based reservations (NYC tennis): no per-court availability
+          API, so show the permit requirement + reservation link instead of a
+          % badge. Gated on the sport being reservable at this court. */}
+      {court.booking && court.facts?.[vSport]?.reservable && (
+        <>
+          <Text style={styles.bookedNote}>{t('court.permitLine')}</Text>
+          <Pressable
+            style={styles.bookBtn}
+            onPress={() => Linking.openURL(court.booking.url)}
+          >
+            <Text style={styles.bookBtnText}>{t('court.permitReserveBtn')}</Text>
+          </Pressable>
+          <Pressable hitSlop={6} onPress={() => setBookingHelp((v) => !v)}>
+            <Text style={styles.bookHelpToggle}>
+              {bookingHelp ? '▾' : '▸'} {t('court.howBooking')}
+            </Text>
+          </Pressable>
+          {bookingHelp && (
+            <View style={styles.bookHelpBody}>
+              <Text style={styles.bookHelpText}>{t('court.permitGuidelines')}</Text>
             </View>
           )}
         </>

@@ -41,6 +41,32 @@ const PAGE = 1000;
 // Display order for the sports in a pin's note (same as SF's builder).
 const ORDER = ['basketball', 'volleyball', 'tennis', 'pickleball', 'soccer', 'baseball', 'weightroom'];
 
+const normName = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, '');
+
+// Amenity join: a court-level boolean set true when the park has a matching
+// row in another portal dataset. Two join kinds:
+//   'key'  — join by the same park key (e.g. gispropnum) → Set of keys
+//   'name' — join by normalized park name (+ optional area/borough) → Set of
+//            "name|area" strings (the facilities dataset has no name, so this
+//            resolves against the lookup-derived name in buildCourts)
+async function fetchAmenitySet(domain, spec) {
+  const cols = spec.kind === 'key' ? [spec.keyField] : [spec.nameField, spec.areaField].filter(Boolean);
+  const rows = await fetchAllRows(domain, spec.datasetId, {
+    $select: cols.join(','),
+    ...(spec.where ? { $where: spec.where } : {}),
+  });
+  const set = new Set();
+  for (const r of rows) {
+    if (spec.kind === 'key') {
+      if (r[spec.keyField]) set.add(r[spec.keyField]);
+    } else {
+      const nm = normName(r[spec.nameField]);
+      if (nm) set.add(spec.areaField ? `${nm}|${r[spec.areaField] || ''}` : nm);
+    }
+  }
+  return set;
+}
+
 async function fetchAllRows(domain, datasetId, params) {
   const rows = [];
   for (let offset = 0; ; offset += PAGE) {
@@ -126,7 +152,7 @@ function buildParks(rows, cfg) {
   }));
 }
 
-function buildCourts(parks, lookupByKey, cfg) {
+function buildCourts(parks, lookupByKey, cfg, amenitySets = {}) {
   // Deterministic ids: assign in park-key order, and when two properties share
   // a name slug (NYC repeats playground names across boroughs), suffix BOTH
   // with their park key — a weekly cron must never churn ids (check-ins,
@@ -141,6 +167,8 @@ function buildCourts(parks, lookupByKey, cfg) {
     const s = slug(p.name);
     slugCount.set(s, (slugCount.get(s) || 0) + 1);
   }
+  const amenityCfg = cfg.amenities || {};
+  const reservable = cfg.reservable; // { sports:[...], booking:{ url, permit } }
   return parks
     .map((p) => {
       const base = slug(p.name);
@@ -149,8 +177,8 @@ function buildCourts(parks, lookupByKey, cfg) {
           ? `${cfg.cityId}-${base}-${p.key.toLowerCase()}-outdoor`
           : `${cfg.cityId}-${base}-outdoor`;
       const facts = {};
-      for (const s of ORDER) if (p.facts[s]) facts[s] = p.facts[s];
-      return {
+      for (const s of ORDER) if (p.facts[s]) facts[s] = { ...p.facts[s] };
+      const rec = {
         id,
         name: p.name,
         address: p.address,
@@ -165,6 +193,26 @@ function buildCourts(parks, lookupByKey, cfg) {
         lights: Object.values(p.facts).some((f) => f.lit),
         notes: noteFor(p.sports),
       };
+      // Court-level amenities from other portal datasets (water/restrooms/…).
+      for (const [name, spec] of Object.entries(amenityCfg)) {
+        const set = amenitySets[name];
+        if (!set) continue;
+        const hit =
+          spec.kind === 'key'
+            ? set.has(p.key)
+            : set.has(spec.areaField ? `${normName(p.name)}|${p.neighborhood}` : normName(p.name));
+        if (hit) rec[name] = true;
+      }
+      // Reservable sports (e.g. NYC tennis permit system): flag the sport +
+      // attach a court-level booking link/guidelines for the render.
+      if (reservable) {
+        const has = reservable.sports.filter((s) => rec.sports.includes(s));
+        if (has.length) {
+          for (const s of has) if (rec.facts[s]) rec.facts[s].reservable = true;
+          rec.booking = reservable.booking;
+        }
+      }
+      return rec;
     })
     .sort((a, b) => a.name.localeCompare(b.name) || (a.id < b.id ? -1 : 1));
 }
@@ -181,7 +229,7 @@ function render(courts, cfg, generatedAt, scheduleSource) {
     lng: ${c.lng},
     sports: ${JSON.stringify(c.sports)},
     facts: ${JSON.stringify(c.facts || {})},
-    accessible: ${!!c.accessible},${c.lights ? '\n    lights: true,' : ''}
+    accessible: ${!!c.accessible},${c.lights ? '\n    lights: true,' : ''}${c.restrooms ? '\n    restrooms: true,' : ''}${c.water ? '\n    water: true,' : ''}${c.booking ? `\n    booking: ${JSON.stringify(c.booking)},` : ''}
     notes: ${JSON.stringify(c.notes)},
   },`
     )
@@ -249,19 +297,34 @@ async function buildCityOutdoor(cfg) {
       };
     }
 
-    courts = buildCourts(parks, lookupByKey, cfg);
+    // Court-level amenity joins from other portal datasets (config-driven).
+    const amenitySets = {};
+    for (const [name, spec] of Object.entries(cfg.amenities || {})) {
+      try {
+        amenitySets[name] = await fetchAmenitySet(cfg.domain, spec);
+      } catch (e) {
+        console.log(`  ⚠ amenity "${name}" (${spec.datasetId}): ${e.message} — skipped this run`);
+      }
+    }
+
+    courts = buildCourts(parks, lookupByKey, cfg, amenitySets);
     if (courts.length < cfg.minCourtsOk) {
       throw new Error(`only ${courts.length} parks (min ${cfg.minCourtsOk}) — dataset may have changed`);
     }
     scheduleSource = 'live';
     saveCache(cacheFile, { courts, fetchedAt: new Date().toISOString() });
     const count = (sport) => courts.filter((c) => c.sports.includes(sport)).length;
+    const amenityCount = (f) => courts.filter((c) => c[f]).length;
     console.log(
       `  ✓ ${courts.length} parks — ` +
         ORDER.filter((s) => count(s))
           .map((s) => `${count(s)} ${s}`)
           .join(', ') +
         ' (live)'
+    );
+    console.log(
+      `  amenities: ${amenityCount('restrooms')} restrooms, ${amenityCount('water')} water, ` +
+        `${amenityCount('booking')} reservable`
     );
   } catch (e) {
     const cache = loadCache(cacheFile);

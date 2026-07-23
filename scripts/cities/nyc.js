@@ -51,6 +51,21 @@ module.exports = {
     fields: { name: 'name311', address: 'address', area: 'borough' },
   },
   areaNames: { X: 'Bronx', B: 'Brooklyn', M: 'Manhattan', Q: 'Queens', R: 'Staten Island' },
+  // Court-level amenities joined from other NYC Open Data datasets.
+  //   water     — active drinking fountain in the same park (gispropnum join; ~92%).
+  //   restrooms — the park is in the public-toilets directory (name+borough
+  //               match; the directory has no park key, ~230 courts).
+  amenities: {
+    water: { kind: 'key', datasetId: 'qnv7-p7a2', where: "featuresta='Active'", keyField: 'gispropnum' },
+    restrooms: { kind: 'name', datasetId: 'hjae-yuav', nameField: 'name', areaField: 'borough' },
+  },
+  // NYC public tennis courts run on the citywide permit + online reservation
+  // system (no per-court availability API, unlike rec.us) — flag tennis
+  // reservable and attach the reservation/permit link for the booking block.
+  reservable: {
+    sports: ['tennis'],
+    booking: { url: 'https://www.nycgovparks.org/tennisreservation', permit: true },
+  },
   bbox: [40.4, -74.3, 41.0, -73.6], // keep in sync with lib/cities.js
   parkHours: [480, 1200], // 8 AM – 8 PM, same model as SF outdoor courts
   minCourtsOk: 350, // ~half of the ~700 park pins seen at launch
