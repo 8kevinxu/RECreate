@@ -31,6 +31,16 @@
 const fs = require('fs');
 const path = require('path');
 const { fetchT } = require('./fetch-timeout');
+const {
+  slug,
+  time,
+  emptyWeek,
+  parkSchedule,
+  allOpenHoursWeek,
+  ALL_SPORTS,
+  loadCache,
+  saveCache,
+} = require('./lib/courts-common');
 
 const CACHE_FILE = path.join(__dirname, 'outdoor-courts-cache.json');
 const OUT_FILE = path.join(__dirname, '..', 'data', 'outdoor-courts.js');
@@ -43,19 +53,9 @@ const DATASF =
 // Abort (keep last-good data) if fewer than this many courts come back.
 const MIN_COURTS_OK = 20;
 
-const time = (h, m = 0) => h * 60 + m;
-
 // First-come outdoor courts have no posted schedule; treat them as open a fixed
 // daily daytime window (approx. park hours) every day of the week.
 const PARK_HOURS = [time(8), time(20)]; // 8 AM – 8 PM
-const parkSchedule = () => Array.from({ length: 7 }, () => [...PARK_HOURS]);
-// One drop-in block per open day spanning the window — "available all open hours".
-const allOpenHoursWeek = (sched) => sched.map((h) => (h ? [[h[0], h[1]]] : []));
-
-// All tracked sports (keep in sync with lib/sports.js) + the weight-room facility
-// view; every court carries a week for each so the dropins shape is uniform.
-const ALL_SPORTS = ['basketball', 'volleyball', 'pingpong', 'badminton', 'pickleball', 'tennis', 'soccer', 'baseball', 'weightroom'];
-const emptyWeek = () => [[], [], [], [], [], [], []];
 
 // Which sport(s) each outdoor court/field facility type offers. SF's fields are
 // strictly designated by type (verified against DataSF): soccer = dedicated
@@ -88,8 +88,6 @@ const IN_AREA = (lat, lng) => lat > 37.5 && lat < 37.9 && lng > -122.6 && lng < 
 // do.) Gene Friend (270 6th St, SoMa) is an indoor-only gym, currently under
 // renovation, so its DataSF "Basketball Court" is the indoor court, not outdoor.
 const EXCLUDE_PROPERTIES = new Set(['Eugene Friend Rec Center']);
-
-const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 
 // Order a park's sports for readable notes/labels ('weightroom' reads as its
 // facility, not a sport).
@@ -217,7 +215,7 @@ function buildCourts(rows) {
     if (r.facility_type === 'Tennis/Pickleball Court') p.sharedTennis = true;
   }
 
-  const sched = parkSchedule();
+  const sched = parkSchedule(PARK_HOURS);
   return [...byPark.values()]
     .map((p) => {
       const offered = [...p.sports];
@@ -244,19 +242,12 @@ function buildCourts(rows) {
     .sort((a, b) => a.name.localeCompare(b.name));
 }
 
-function loadCache() {
-  try {
-    return JSON.parse(fs.readFileSync(CACHE_FILE, 'utf8'));
-  } catch {
-    return null;
-  }
-}
-
 function render(courts, generatedAt, scheduleSource) {
   const body = courts
     .map(
       (c) => `  {
     id: ${JSON.stringify(c.id)},
+    city: "sf",
     name: ${JSON.stringify(c.name)},
     address: ${JSON.stringify(c.address)},
     neighborhood: ${JSON.stringify(c.neighborhood)},
@@ -312,7 +303,7 @@ async function main() {
       throw new Error(`only ${courts.length} courts (min ${MIN_COURTS_OK}) — dataset may have changed`);
     }
     scheduleSource = 'datasf';
-    fs.writeFileSync(CACHE_FILE, JSON.stringify({ courts, fetchedAt: new Date().toISOString() }, null, 2) + '\n');
+    saveCache(CACHE_FILE, { courts, fetchedAt: new Date().toISOString() });
     const count = (sport) => courts.filter((c) => c.dropins[sport].some((d) => d.length)).length;
     console.log(
       `  ✓ ${courts.length} parks — ${count('basketball')} basketball, ` +
@@ -321,7 +312,7 @@ async function main() {
         `${count('baseball')} baseball, ${count('weightroom')} fitness courts (live)`
     );
   } catch (e) {
-    const cache = loadCache();
+    const cache = loadCache(CACHE_FILE);
     if (!cache || !Array.isArray(cache.courts)) {
       throw new Error(`fetch failed (${e.message}) and no cache available — data/outdoor-courts.js left unchanged`);
     }
