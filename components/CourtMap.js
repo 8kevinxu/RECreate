@@ -245,7 +245,13 @@ const buildHtml = (center, zoom) => `
       '<text x="50" y="52" font-size="82" text-anchor="middle" dominant-baseline="central">⛳</text>' +
       '</svg>';
 
-    var SPORT_SVG = { basketball: BBALL_SVG, volleyball: VBALL_SVG, pingpong: PPONG_SVG, badminton: BADMINTON_SVG, pickleball: PICKLE_SVG, tennis: TENNIS_SVG, soccer: SOCCER_SVG, baseball: BASEBALL_SVG, weightroom: WEIGHT_SVG, golf: GOLF_SVG };
+    // The 🏊 emoji (swimming — the public pools).
+    var SWIM_SVG =
+      '<svg viewBox="0 0 100 100" width="100%" height="100%">' +
+      '<text x="50" y="52" font-size="82" text-anchor="middle" dominant-baseline="central">🏊</text>' +
+      '</svg>';
+
+    var SPORT_SVG = { basketball: BBALL_SVG, volleyball: VBALL_SVG, pingpong: PPONG_SVG, badminton: BADMINTON_SVG, pickleball: PICKLE_SVG, tennis: TENNIS_SVG, soccer: SOCCER_SVG, baseball: BASEBALL_SVG, weightroom: WEIGHT_SVG, golf: GOLF_SVG, swimming: SWIM_SVG };
     var currentSport = 'basketball';
     // A court may carry its own sport (the Favorites view glyphs each pin by the
     // sport it was favorited for); otherwise fall back to the map-wide sport.
