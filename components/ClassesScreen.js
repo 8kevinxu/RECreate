@@ -17,6 +17,7 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { CLASSES, CLASS_CATEGORIES } from '../data/classes';
+import { CITY_CLASSES } from '../data/cities';
 import { haversineMiles, formatDistance } from '../lib/distance';
 import { openDirections } from '../lib/maps';
 import { localizeWhen } from '../lib/datetime';
@@ -113,9 +114,14 @@ function FilterChip({ label, on, onPress }) {
   );
 }
 
-export default function ClassesScreen({ userLocation = null }) {
+export default function ClassesScreen({ userLocation = null, city = 'sf' }) {
   const insets = useSafeAreaInsets();
   const { t, lang } = useI18n();
+  // The active city's catalog: SF's ActiveNet classes, or the city's own list
+  // (NYC: free Parks programs). The ActiveNet live-availability overlay and its
+  // delist-hiding are SF-only — other sources have no realtime feed.
+  const isSF = city === 'sf';
+  const catalog = isSF ? CLASSES : CITY_CLASSES[city] || [];
   // Bundled title translation (build-classes.js); falls back to the English name.
   const className = (c) => c['name_' + lang] || c.name;
   const [cat, setCat] = useState('all');
@@ -199,9 +205,9 @@ export default function ClassesScreen({ userLocation = null }) {
   };
 
   useEffect(() => {
-    refreshLive(false);
+    if (isSF) refreshLive(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isSF]);
 
   // Overlay live openings onto a class when we have them.
   const withLive = (c) => (live && live[c.id] ? { ...c, ...live[c.id] } : c);
@@ -225,8 +231,8 @@ export default function ClassesScreen({ userLocation = null }) {
     // live catalog fetch is no longer offered — hide it (real-time on native; web
     // falls back to the baseline). The size guard avoids mass-hiding on a thin fetch.
     const liveComplete =
-      liveStatus === 'ok' && live && Object.keys(live).length >= CLASSES.length * 0.8;
-    const filtered = CLASSES.filter((c) => {
+      isSF && liveStatus === 'ok' && live && Object.keys(live).length >= catalog.length * 0.8;
+    const filtered = catalog.filter((c) => {
       if (liveComplete && !live[c.id]) return false;
       if (cat !== 'all' && c.category !== cat) return false;
       if (
@@ -259,7 +265,7 @@ export default function ClassesScreen({ userLocation = null }) {
     };
     return [...filtered.filter((c) => !isFull(c)), ...filtered.filter(isFull)];
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cat, query, age, time, day, radius, freeOnly, hasSpots, live, liveStatus, userLocation, lang]);
+  }, [catalog, cat, query, age, time, day, radius, freeOnly, hasSpots, live, liveStatus, userLocation, lang]);
 
   const clearAll = () => {
     setAge(null);
@@ -282,10 +288,12 @@ export default function ClassesScreen({ userLocation = null }) {
           }}
         >
           <Text style={styles.title}>{t('classes.title')}</Text>
-          <Text style={styles.sub}>{t('classes.sub')}</Text>
+          <Text style={styles.sub}>{t(isSF ? 'classes.sub' : 'classes.subNyc')}</Text>
           <View style={styles.infoBullet}>
             <Ionicons name="information-circle-outline" size={15} color="#5b7a9a" />
-            <Text style={styles.infoBulletText}>{t('classes.activeNetInfo')}</Text>
+            <Text style={styles.infoBulletText}>
+              {t(isSF ? 'classes.activeNetInfo' : 'classes.nycInfo')}
+            </Text>
           </View>
         </View>
       </Animated.View>
@@ -341,22 +349,24 @@ export default function ClassesScreen({ userLocation = null }) {
         </Text>
       </View>
 
-      <View style={styles.liveRow}>
-        <View
-          style={[
-            styles.liveDot,
-            liveStatus === 'ok' && styles.liveDotOk,
-            liveStatus === 'fail' && styles.liveDotFail,
-          ]}
-        />
-        <Text style={styles.liveText}>
-          {liveStatus === 'loading'
-            ? t('classes.liveLoading')
-            : liveStatus === 'ok'
-            ? t('classes.liveOk', { ago: agoLabel(t, liveAt) })
-            : t('classes.liveFail')}
-        </Text>
-      </View>
+      {isSF && (
+        <View style={styles.liveRow}>
+          <View
+            style={[
+              styles.liveDot,
+              liveStatus === 'ok' && styles.liveDotOk,
+              liveStatus === 'fail' && styles.liveDotFail,
+            ]}
+          />
+          <Text style={styles.liveText}>
+            {liveStatus === 'loading'
+              ? t('classes.liveLoading')
+              : liveStatus === 'ok'
+              ? t('classes.liveOk', { ago: agoLabel(t, liveAt) })
+              : t('classes.liveFail')}
+          </Text>
+        </View>
+      )}
 
       <ScrollView
         ref={scrollRef}
@@ -366,11 +376,13 @@ export default function ClassesScreen({ userLocation = null }) {
         onScroll={onListScroll}
         scrollEventThrottle={16}
         refreshControl={
-          <RefreshControl
-            refreshing={refreshing}
-            onRefresh={() => refreshLive(true)}
-            tintColor="#2f74d6"
-          />
+          isSF ? (
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={() => refreshLive(true)}
+              tintColor="#2f74d6"
+            />
+          ) : undefined
         }
       >
         {list.length === 0 && <Text style={styles.empty}>{t('classes.empty')}</Text>}
@@ -420,7 +432,7 @@ export default function ClassesScreen({ userLocation = null }) {
           );
         })}
 
-        <Text style={styles.disclaimer}>{t('classes.disclaimer')}</Text>
+        <Text style={styles.disclaimer}>{t(isSF ? 'classes.disclaimer' : 'cls.nycNote')}</Text>
       </ScrollView>
 
       <ScrollTopFab show={showTop} onPress={scrollToTop} bottom={insets.bottom + 92} />

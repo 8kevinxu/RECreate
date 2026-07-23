@@ -19,7 +19,7 @@ export default function SocialScreen({
   // onboarding picks); fall back to the profile directly if not supplied.
   interestSports,
   interestCategories,
-  includeClasses = true, // false in courts-only cities (classes are SF-only)
+  classes, // the active city's class list (undefined = SF default)
   onPickCourt,
   onOpenFriends, // signed-in only: opens the Friends sheet (App.js owns it)
   requestCount = 0, // incoming friend requests — badge on the Friends button
@@ -38,7 +38,7 @@ export default function SocialScreen({
         sports={interestSports ?? profile?.favorite_sports ?? []}
         categories={interestCategories ?? profile?.favorite_categories ?? []}
         age={profile?.age ?? null}
-        includeClasses={includeClasses}
+        {...(classes && { classes })}
         onPickCourt={onPickCourt}
       />
 

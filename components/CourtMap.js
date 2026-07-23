@@ -15,7 +15,10 @@ const SF_CENTER = { lat: 37.7749, lng: -122.4194 };
 
 // Leaflet + OpenStreetMap rendered inside a WebView. No API key required.
 // We use circleMarkers (pure vector) so there are no broken marker-image paths.
-const html = `
+// The HTML is built per-instance so the initial view is the active city's
+// (the map remounts on tab switches — a fixed SF start would strand another
+// city's user on an empty SF viewport). Keep in sync with CourtMap.web.js.
+const buildHtml = (center, zoom) => `
 <!DOCTYPE html>
 <html>
 <head>
@@ -127,7 +130,7 @@ const html = `
     // No +/- buttons (pinch to zoom, like Google/Apple Maps). zoomSnap 0 keeps
     // pinch/scroll zoom continuous; attribution control hidden for a clean map.
     var map = L.map('map', { zoomControl: false, attributionControl: false, zoomSnap: 0, zoomDelta: 0.4, wheelPxPerZoomLevel: 90 })
-      .setView([${SF_CENTER.lat}, ${SF_CENTER.lng}], 12);
+      .setView([${center.lat}, ${center.lng}], ${zoom});
 
     // CARTO Voyager: colorful but clean basemap (green parks, blue water, soft
     // roads) with no mountain/peak symbols. Free, no API key. detectRetina
@@ -403,12 +406,14 @@ const html = `
 `;
 
 const CourtMap = forwardRef(function CourtMap(
-  { courts, sport = 'basketball', userLocation, onSelectCourt },
+  { courts, sport = 'basketball', userLocation, onSelectCourt, initialCenter = SF_CENTER, initialZoom = 12 },
   ref
 ) {
   const { t } = useI18n();
   const webRef = useRef(null);
   const [ready, setReady] = useState(false);
+  // Initial view captured at mount; later city switches go through setCity().
+  const [html] = useState(() => buildHtml(initialCenter, initialZoom));
   // City view requested before the WebView finished loading (e.g. the persisted
   // city restoring on launch) — replayed once the map reports ready.
   const pendingCityRef = useRef(null);

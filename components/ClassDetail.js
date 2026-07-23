@@ -153,11 +153,17 @@ export default function ClassDetail({ item, onClose }) {
 
           {!!c.url && (
             <Pressable style={styles.cta} onPress={() => Linking.openURL(c.url).catch(() => {})}>
-              <Text style={styles.ctaText}>{c.noOnlineReg ? t('cls.viewOnSite') : t('cls.register')}</Text>
+              <Text style={styles.ctaText}>
+                {c.noOnlineReg
+                  ? t('cls.viewOnSite')
+                  : t(c.source === 'nycparks' ? 'cls.registerNyc' : 'cls.register')}
+              </Text>
               <Ionicons name="open-outline" size={16} color="#fff" />
             </Pressable>
           )}
-          <Text style={styles.note}>{t('cls.activeNetNote')}</Text>
+          <Text style={styles.note}>
+            {t(c.source === 'nycparks' ? 'cls.nycNote' : 'cls.activeNetNote')}
+          </Text>
         </View>
       </View>
     </Modal>

@@ -238,7 +238,7 @@ function renderMarkers(map, layer, courts, sport, onSelect) {
 }
 
 const CourtMap = forwardRef(function CourtMap(
-  { courts, sport = 'basketball', userLocation, onSelectCourt },
+  { courts, sport = 'basketball', userLocation, onSelectCourt, initialCenter, initialZoom = 12 },
   ref
 ) {
   const { t } = useI18n();
@@ -284,7 +284,7 @@ const CourtMap = forwardRef(function CourtMap(
       zoomSnap: 0,
       zoomDelta: 0.4,
       wheelPxPerZoomLevel: 90,
-    }).setView(SF, 12);
+    }).setView(initialCenter ? [initialCenter.lat, initialCenter.lng] : SF, initialZoom);
     const tiles = L.tileLayer(
       'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
       {

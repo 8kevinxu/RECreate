@@ -53,6 +53,7 @@ import {
 } from './lib/hours';
 import { MAP_SPORTS, DEFAULT_SPORT, sportMeta, isPlayableSport } from './lib/sports';
 import { DEFAULT_CITY, getCity, nearestCity } from './lib/cities';
+import { CITY_CLASSES } from './data/cities';
 import { useFavorites } from './lib/favorites';
 import { readUrlState, writeUrlState } from './lib/urlState';
 import { parseInviteCode } from './lib/invite';
@@ -211,8 +212,13 @@ const AMENITIES = [
     id: 'bookable',
     test: (c, s) => !!c.reserved?.[s] || (c.directory?.[s]?.reservable || 0) > 0,
   },
-  { id: 'lights', test: (c, s) => c.directory?.[s]?.lights === true },
+  // Lights: SF directory says per-sport; other cities' datasets say per-court
+  // (aggregated into facts[sport].lit by the city builders).
+  { id: 'lights', test: (c, s) => c.directory?.[s]?.lights === true || c.facts?.[s]?.lit === true },
   { id: 'restrooms', test: (c, s) => c.directory?.[s]?.restrooms === true },
+  // ADA-accessible facilities — only city datasets that track it (NYC) carry
+  // `accessible`, so the chip self-hides elsewhere.
+  { id: 'accessible', test: (c) => c.accessible === true },
   {
     id: 'nets',
     test: (c, s) => /provided/i.test(c.directory?.[s]?.nets || ''),
@@ -664,6 +670,10 @@ export default function App() {
     [courtData, activeCity]
   );
 
+  // The active city's class catalog: SF keeps its bundled ActiveNet list (the
+  // default inside the consumers), other cities use theirs (or none).
+  const cityClasses = activeCity === 'sf' ? undefined : CITY_CLASSES[activeCity] || [];
+
   // A selected court outside the active city (cross-city link/feed item)
   // switches the view to its metro so the card + marker can render.
   useEffect(() => {
@@ -696,14 +706,14 @@ export default function App() {
         categories,
         age: profile?.age ?? null,
         lang,
-        includeClasses: cityFeatures.classes,
+        classes: cityFeatures.classes ? cityClasses : [],
       });
     sync();
     const sub = AppState.addEventListener('change', (s) => {
       if (s === 'active') sync();
     });
     return () => sub.remove();
-  }, [user?.id, cityCourtData, cityFeatures.classes, profile?.favorite_sports, profile?.favorite_categories, profile?.age, lang]);
+  }, [user?.id, cityCourtData, cityClasses, cityFeatures.classes, profile?.favorite_sports, profile?.favorite_categories, profile?.age, lang]);
 
   // "View time": all schedule / open-gym logic runs against this. It tracks the
   // live clock by default; picking a future day+time freezes it so the map shows
@@ -1248,6 +1258,10 @@ export default function App() {
           sport={sport}
           userLocation={userLocation}
           onSelectCourt={handleSelect}
+          // The map remounts on tab switches — start it on the active city so
+          // returning to Home never resets another city's view to SF.
+          initialCenter={getCity(activeCity).center}
+          initialZoom={getCity(activeCity).zoom}
         />
 
         {locating && (
@@ -1346,7 +1360,7 @@ export default function App() {
           </>
         )}
 
-        {tab === 'classes' && <ClassesScreen userLocation={userLocation} />}
+        {tab === 'classes' && <ClassesScreen userLocation={userLocation} city={activeCity} />}
 
         {tab === 'pools' && <PoolsScreen userLocation={userLocation} />}
 
@@ -1354,7 +1368,7 @@ export default function App() {
           <SocialScreen
             courtsById={courtsById}
             courts={cityCourtData}
-            includeClasses={cityFeatures.classes}
+            classes={cityFeatures.classes ? cityClasses : []}
             // Facility views (weight room, golf) aren't playable sports — hand
             // social features a real sport so a run/signal never defaults to one.
             sport={isPlayableSport(sport) ? sport : DEFAULT_SPORT}
@@ -1789,6 +1803,38 @@ function CourtDetail({
               </Text>
             </View>
           )}
+        </View>
+      )}
+
+      {/* City-dataset facility facts (NYC: per-sport court count, lighting,
+          surface, ADA flag) — the non-SF counterpart of the directory row. */}
+      {!dir && court.facts?.[vSport] && (
+        <View style={styles.facRow}>
+          {court.facts[vSport].n > 0 && (
+            <View style={styles.facChip}>
+              <Text style={styles.facText}>
+                {meta.emoji}{' '}
+                {t(court.facts[vSport].n === 1 ? 'court.courtsCountOne' : 'court.courtsCountMany', {
+                  n: court.facts[vSport].n,
+                })}
+              </Text>
+            </View>
+          )}
+          {court.facts[vSport].lit && (
+            <View style={styles.facChip}>
+              <Text style={styles.facText}>{t('amenity.lights')}</Text>
+            </View>
+          )}
+          {court.accessible && (
+            <View style={styles.facChip}>
+              <Text style={styles.facText}>{t('amenity.accessible')}</Text>
+            </View>
+          )}
+          {(court.facts[vSport].surf || []).map((s) => (
+            <View key={s} style={styles.facChip}>
+              <Text style={styles.facText}>{s}</Text>
+            </View>
+          ))}
         </View>
       )}
 

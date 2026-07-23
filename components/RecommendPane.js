@@ -44,7 +44,7 @@ export default function RecommendPane({
   sports = [],
   categories = [],
   age = null,
-  includeClasses = true, // false in courts-only cities (the class catalog is SF-only)
+  classes = CLASSES, // the active city's class list (SF ActiveNet by default)
   onPickCourt,
 }) {
   const { t, lang } = useI18n();
@@ -81,8 +81,8 @@ export default function RecommendPane({
   }, [user?.id, hasInterests]);
 
   const recs = useMemo(
-    () => buildRecommendations({ courts, userLocation, sports, categories, history, age, includeClasses }),
-    [courts, userLocation, sports.join(','), categories.join(','), history, age, includeClasses]
+    () => buildRecommendations({ courts, userLocation, sports, categories, history, age, classes }),
+    [courts, userLocation, sports.join(','), categories.join(','), history, age, classes]
   );
   const [idx, setIdx] = useState(0);
   const [nudge, setNudge] = useState(0); // bumped on manual swipe to reset the timer
@@ -124,7 +124,7 @@ export default function RecommendPane({
 
   const onPress = () => {
     if (r.kind === 'class') {
-      setDetail(CLASSES.find((c) => c.id === r.id) || null);
+      setDetail(classes.find((c) => c.id === r.id) || null);
     } else {
       onPickCourt?.(r.courtId, r.sport);
     }
