@@ -103,12 +103,23 @@ function noteFor(sports) {
   return `Outdoor ${list} — first-come, open during park hours (no posted drop-in schedule).`;
 }
 
+// Evaluate a sport-attribute spec against a row: { cols: [boolCols] } (any
+// true) or { field: '<textCol>', match: '<regex>' }.
+function attrHit(r, spec, truthy) {
+  if (spec.cols) return spec.cols.some((c) => truthy(r[c]));
+  if (spec.field) return new RegExp(spec.match, 'i').test(String(r[spec.field] || ''));
+  return false;
+}
+
 // Group facility rows by park property; union sports; average row centroids.
 // Per-sport facility facts (court count, lighting, surfaces) and park-level
 // accessibility aggregate from cfg.facilities.factFields when configured:
 //   { lighted: '<bool col>', accessible: '<bool col>', surface: '<text col>' }
+// cfg.facilities.sportAttrs adds per-sport boolean attributes (e.g. basketball
+// full/half court from `dimensions`, soccer regulation pitch, adult diamond):
+//   { <sport>: { <attr>: { cols:[...] } | { field, match } } }
 function buildParks(rows, cfg) {
-  const { parkKeyField, geoField, sportFlags, factFields = {} } = cfg.facilities;
+  const { parkKeyField, geoField, sportFlags, factFields = {}, sportAttrs = {} } = cfg.facilities;
   const [latMin, lngMin, latMax, lngMax] = cfg.bbox;
   const truthy = (v) => v === true || v === 'true';
   const byPark = new Map();
@@ -136,6 +147,10 @@ function buildParks(rows, cfg) {
       f.n++; // one dataset row = one court/field
       if (lighted) f.lit = true;
       if (surface && !f.surf.includes(surface)) f.surf.push(surface);
+      // Sport-specific attributes (full/half court, regulation pitch, adult
+      // diamond) — a park is flagged if any of its courts qualifies.
+      const attrs = sportAttrs[s];
+      if (attrs) for (const [attr, spec] of Object.entries(attrs)) if (attrHit(r, spec, truthy)) f[attr] = true;
     }
     if (factFields.accessible && truthy(r[factFields.accessible])) p.accessible = true;
     p.lat += c.lat;
@@ -271,12 +286,19 @@ async function buildCityOutdoor(cfg) {
   let courts;
   let scheduleSource;
   try {
-    const { datasetId, where, parkKeyField, geoField, sportFlags, factFields = {} } = cfg.facilities;
+    const { datasetId, where, parkKeyField, geoField, sportFlags, factFields = {}, sportAttrs = {} } = cfg.facilities;
     const flagOr = Object.keys(sportFlags)
       .map((f) => `${f}=true`)
       .join(' OR ');
+    // Columns referenced by sport-attribute specs (bool cols + text fields).
+    const attrCols = [];
+    for (const attrs of Object.values(sportAttrs))
+      for (const spec of Object.values(attrs)) attrCols.push(...(spec.cols || [spec.field]));
+    const select = [
+      ...new Set([parkKeyField, geoField, ...Object.keys(sportFlags), ...Object.values(factFields), ...attrCols]),
+    ];
     const rows = await fetchAllRows(cfg.domain, datasetId, {
-      $select: [parkKeyField, geoField, ...Object.keys(sportFlags), ...Object.values(factFields)].join(','),
+      $select: select.join(','),
       $where: `${where} AND (${flagOr})`,
     });
     const parks = buildParks(rows, cfg);

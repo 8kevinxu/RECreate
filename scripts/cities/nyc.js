@@ -44,6 +44,19 @@ module.exports = {
     // Per-row facility facts aggregated into each pin's per-sport `facts`
     // (court count, lighting, surfaces) + park-level `accessible`.
     factFields: { lighted: 'field_lighted', accessible: 'accessible', surface: 'surface_type' },
+    // Sport-specific attributes for the app's sport filters:
+    //   basketball full/half court (from the `dimensions` text),
+    //   soccer regulation (full-size) pitch, baseball adult (vs little-league)
+    //   diamond. Surfaces (turf/grass/clay) are derived at filter time from the
+    //   already-captured `surf` values, so they need no config here.
+    sportAttrs: {
+      basketball: {
+        full: { field: 'dimensions', match: 'full court' },
+        half: { field: 'dimensions', match: 'half court' },
+      },
+      soccer: { regulation: { cols: ['regulation_soccer'] } },
+      baseball: { adult: { cols: ['adult_baseball', 'adult_softball'] } },
+    },
   },
   lookup: {
     datasetId: 'enfh-gkve',

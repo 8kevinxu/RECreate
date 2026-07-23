@@ -17,14 +17,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -48,7 +50,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         }
       },
       "accessible": false,
@@ -73,7 +77,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         }
       },
       "accessible": false,
@@ -97,7 +102,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -122,7 +128,8 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -146,7 +153,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         }
       },
       "accessible": false,
@@ -170,7 +179,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -193,7 +203,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         }
       },
       "accessible": false,
@@ -217,7 +229,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -242,7 +255,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -266,7 +280,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -289,7 +304,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         }
       },
       "accessible": false,
@@ -313,7 +329,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         }
       },
       "accessible": false,
@@ -337,7 +355,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -363,7 +382,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "volleyball": {
           "n": 1,
@@ -394,7 +414,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         }
       },
       "accessible": false,
@@ -436,7 +458,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -465,14 +488,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -498,7 +523,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 2,
@@ -512,7 +538,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -537,7 +564,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -585,7 +613,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -609,7 +638,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         }
       },
       "accessible": false,
@@ -633,7 +664,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -658,7 +690,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
@@ -689,7 +722,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -715,7 +749,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 2,
@@ -730,7 +765,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -758,7 +794,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -808,7 +845,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -833,7 +871,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -864,7 +903,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         }
       },
       "accessible": false,
@@ -890,7 +930,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         },
         "tennis": {
           "n": 3,
@@ -905,7 +946,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -936,7 +978,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "tennis": {
           "n": 14,
@@ -951,7 +995,8 @@
           "lit": true,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         }
       },
       "accessible": false,
@@ -979,7 +1024,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -1003,7 +1049,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -1027,7 +1074,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -1052,7 +1100,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -1076,7 +1125,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         }
       },
       "accessible": false,
@@ -1100,7 +1151,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -1128,7 +1180,9 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "tennis": {
           "n": 8,
@@ -1143,14 +1197,16 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 5,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -1180,7 +1236,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "soccer": {
           "n": 1,
@@ -1211,7 +1269,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "volleyball": {
           "n": 1,
@@ -1242,7 +1301,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -1266,7 +1326,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         }
       },
       "accessible": false,
@@ -1293,7 +1355,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -1307,7 +1370,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Multi"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -1333,7 +1397,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -1379,7 +1444,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -1403,7 +1469,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -1454,7 +1521,8 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 6,
@@ -1469,7 +1537,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -1497,7 +1566,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -1570,7 +1640,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         }
       },
       "accessible": false,
@@ -1594,7 +1666,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         }
       },
       "accessible": false,
@@ -1618,7 +1691,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -1642,7 +1716,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -1669,7 +1744,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -1709,7 +1785,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -1735,14 +1812,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -1766,7 +1845,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "volleyball": {
           "n": 1,
@@ -1798,7 +1879,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
@@ -1830,7 +1912,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         }
       },
       "accessible": false,
@@ -1858,7 +1941,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "tennis": {
           "n": 8,
@@ -1880,7 +1965,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -1909,7 +1995,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         }
       },
       "accessible": false,
@@ -1933,7 +2021,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -1959,21 +2048,24 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
           "lit": true,
           "surf": [
             "Natural"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 2,
           "lit": true,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -2023,7 +2115,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -2037,7 +2130,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Multi"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -2062,7 +2156,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -2094,7 +2189,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -2120,7 +2216,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -2134,7 +2231,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -2158,7 +2256,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -2182,7 +2281,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -2208,7 +2308,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 2,
@@ -2223,7 +2324,8 @@
           "lit": true,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         }
       },
       "accessible": false,
@@ -2253,21 +2355,24 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -2293,7 +2398,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -2325,7 +2431,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         }
       },
       "accessible": false,
@@ -2349,7 +2456,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -2373,7 +2481,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -2399,7 +2508,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "soccer": {
           "n": 1,
@@ -2413,7 +2524,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -2437,7 +2549,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -2462,7 +2575,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -2489,7 +2603,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -2504,7 +2619,8 @@
           "surf": [
             "Natural",
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -2528,7 +2644,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -2553,7 +2670,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -2576,7 +2694,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -2600,7 +2719,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -2625,7 +2745,8 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 2,
@@ -2633,14 +2754,16 @@
           "surf": [
             "Synthetic - Large/Full",
             "Asphalt"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 4,
           "lit": true,
           "surf": [
             "Synthetic - Multi"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -2664,7 +2787,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -2689,7 +2813,8 @@
           "surf": [
             "Asphalt",
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -2714,7 +2839,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 2,
@@ -2752,7 +2878,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "soccer": {
           "n": 2,
@@ -2767,7 +2895,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -2793,7 +2922,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -2808,7 +2938,8 @@
           "surf": [
             "Natural",
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -2835,7 +2966,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 6,
@@ -2850,7 +2982,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 5,
@@ -2858,7 +2991,8 @@
           "surf": [
             "Natural",
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -2887,7 +3021,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -2913,14 +3048,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": true,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -2945,7 +3082,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -2969,7 +3107,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -2994,14 +3133,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -3026,7 +3167,8 @@
           "surf": [
             "Synthetic - Large/Full",
             "Synthetic - Multi"
-          ]
+          ],
+          "regulation": true
         }
       },
       "accessible": false,
@@ -3053,7 +3195,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "volleyball": {
           "n": 1,
@@ -3098,7 +3241,8 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -3124,7 +3268,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 6,
@@ -3132,14 +3277,16 @@
           "surf": [
             "Synthetic - Large/Full",
             "Natural"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 3,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -3164,14 +3311,17 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "baseball": {
           "n": 2,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -3197,21 +3347,25 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "soccer": {
           "n": 1,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 13,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -3236,7 +3390,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -3260,7 +3415,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -3284,7 +3440,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         }
       },
       "accessible": false,
@@ -3309,7 +3467,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -3335,14 +3494,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -3368,7 +3529,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -3400,7 +3563,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -3425,7 +3589,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -3448,7 +3613,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -3474,14 +3640,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -3505,7 +3673,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         }
       },
       "accessible": false,
@@ -3528,7 +3698,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -3557,7 +3728,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "volleyball": {
           "n": 6,
@@ -3588,7 +3760,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -3617,14 +3790,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -3649,7 +3824,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -3682,14 +3859,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -3762,21 +3941,24 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 2,
           "lit": false,
           "surf": [
             "Synthetic - Multi"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -3801,7 +3983,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         }
       },
       "accessible": false,
@@ -3825,7 +4009,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -3850,14 +4035,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -3883,14 +4070,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": true,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -3916,14 +4105,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": true,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -3948,7 +4139,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -3973,7 +4165,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -3996,7 +4189,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -4021,14 +4215,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -4052,7 +4248,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -4077,7 +4274,9 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "tennis": {
           "n": 2,
@@ -4114,14 +4313,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 3,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -4145,7 +4346,8 @@
           "lit": true,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -4170,14 +4372,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -4203,7 +4407,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 1,
@@ -4246,7 +4451,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -4271,14 +4477,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -4310,7 +4518,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -4334,7 +4543,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -4360,14 +4570,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -4392,14 +4604,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -4426,7 +4640,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "volleyball": {
           "n": 3,
@@ -4440,7 +4656,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         }
       },
       "accessible": false,
@@ -4468,7 +4685,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "volleyball": {
           "n": 1,
@@ -4483,7 +4701,8 @@
           "surf": [
             "Asphalt",
             "Natural"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 3,
@@ -4491,7 +4710,8 @@
           "surf": [
             "Asphalt",
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -4523,7 +4743,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -4548,7 +4769,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "baseball": {
           "n": 1,
@@ -4581,7 +4804,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "volleyball": {
           "n": 5,
@@ -4634,7 +4858,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -4659,7 +4884,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "volleyball": {
           "n": 2,
@@ -4691,7 +4918,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         }
       },
       "accessible": false,
@@ -4740,7 +4969,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -4766,21 +4996,25 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "soccer": {
           "n": 1,
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -4804,7 +5038,9 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         }
       },
       "accessible": false,
@@ -4828,7 +5064,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -4869,7 +5106,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -4900,7 +5138,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 20,
@@ -4923,7 +5162,8 @@
           "surf": [
             "Natural",
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -4951,7 +5191,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -4979,7 +5220,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 19,
@@ -4994,14 +5236,16 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 23,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -5032,7 +5276,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "soccer": {
           "n": 1,
@@ -5070,7 +5316,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -5095,14 +5342,16 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -5128,7 +5377,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 3,
@@ -5166,7 +5416,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 3,
@@ -5181,7 +5432,8 @@
           "lit": true,
           "surf": [
             "Synthetic - Multi"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -5209,7 +5461,8 @@
           "surf": [
             "Asphalt",
             "Synthetic - Large/Full"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -5223,7 +5476,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -5248,7 +5502,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 1,
@@ -5285,14 +5540,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -5316,7 +5573,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         }
       },
       "accessible": false,
@@ -5342,7 +5600,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 8,
@@ -5357,7 +5616,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -5386,7 +5646,8 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -5410,7 +5671,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -5460,7 +5722,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -5484,7 +5747,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         }
       },
       "accessible": false,
@@ -5508,7 +5772,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         }
       },
       "accessible": false,
@@ -5533,14 +5799,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 2,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -5564,7 +5832,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -5589,14 +5858,17 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -5620,7 +5892,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -5645,7 +5918,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -5671,14 +5945,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -5704,7 +5980,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         },
         "tennis": {
           "n": 4,
@@ -5719,7 +5996,8 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -5750,7 +6028,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 9,
@@ -5767,7 +6046,8 @@
             "Natural",
             "Asphalt",
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 13,
@@ -5776,7 +6056,8 @@
             "Natural",
             "Asphalt",
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -5805,7 +6086,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -5830,7 +6112,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -5862,7 +6145,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -5887,7 +6171,8 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -5913,7 +6198,8 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
@@ -5945,7 +6231,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         }
       },
       "accessible": false,
@@ -5970,7 +6258,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -5995,7 +6284,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "soccer": {
           "n": 1,
@@ -6028,7 +6319,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         },
         "soccer": {
           "n": 1,
@@ -6067,14 +6359,17 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -6099,7 +6394,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -6123,7 +6419,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -6174,7 +6471,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "volleyball": {
           "n": 1,
@@ -6224,7 +6522,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         }
       },
       "accessible": false,
@@ -6257,7 +6557,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -6281,7 +6582,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -6305,7 +6607,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -6329,7 +6632,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -6395,14 +6699,16 @@
           "lit": true,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -6430,14 +6736,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -6470,7 +6778,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -6494,7 +6803,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         }
       },
       "accessible": false,
@@ -6522,7 +6833,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "volleyball": {
           "n": 2,
@@ -6537,7 +6849,8 @@
           "surf": [
             "Natural",
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 2,
@@ -6568,7 +6881,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -6593,7 +6907,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "volleyball": {
           "n": 1,
@@ -6631,7 +6946,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -6658,7 +6974,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 8,
@@ -6680,7 +6997,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -6712,7 +7030,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "volleyball": {
           "n": 10,
@@ -6735,14 +7054,16 @@
           "surf": [
             "Synthetic - Large/Full",
             "Natural"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 6,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -6770,7 +7091,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -6796,7 +7118,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
@@ -6830,7 +7153,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 14,
@@ -6845,7 +7169,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 7,
@@ -6855,7 +7180,8 @@
             "Natural",
             "Synthetic - Multi",
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -6884,7 +7210,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 6,
@@ -6923,21 +7250,24 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 2,
           "lit": false,
           "surf": [
             "Synthetic - Multi"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -6961,7 +7291,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -7011,7 +7342,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         },
         "volleyball": {
           "n": 2,
@@ -7046,7 +7378,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "volleyball": {
           "n": 5,
@@ -7068,14 +7401,16 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 2,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -7140,7 +7475,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -7164,7 +7500,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -7190,14 +7527,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -7222,7 +7561,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -7248,14 +7588,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 2,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -7283,7 +7625,9 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "tennis": {
           "n": 2,
@@ -7298,7 +7642,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 3,
@@ -7337,7 +7682,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "volleyball": {
           "n": 2,
@@ -7352,14 +7698,16 @@
           "surf": [
             "Natural",
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 8,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -7384,14 +7732,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 2,
           "lit": true,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -7416,7 +7766,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -7441,14 +7792,16 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -7474,7 +7827,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -7488,7 +7842,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -7543,7 +7898,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -7567,7 +7923,8 @@
           "lit": true,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         }
       },
       "accessible": false,
@@ -7616,7 +7973,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -7645,7 +8003,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -7669,7 +8028,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -7693,7 +8053,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         }
       },
       "accessible": false,
@@ -7717,7 +8079,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -7742,7 +8105,9 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "soccer": {
           "n": 1,
@@ -7757,7 +8122,8 @@
           "surf": [
             "Synthetic - Multi",
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -7781,7 +8147,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -7805,7 +8172,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -7830,7 +8198,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 2,
@@ -7861,7 +8230,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         }
       },
       "accessible": false,
@@ -7885,7 +8256,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -7910,14 +8282,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 3,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -7966,7 +8340,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -7991,7 +8366,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
@@ -8023,7 +8399,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "volleyball": {
           "n": 1,
@@ -8055,7 +8433,8 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -8081,14 +8460,17 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -8112,7 +8494,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         }
       },
       "accessible": false,
@@ -8136,7 +8520,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -8162,7 +8547,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 1,
@@ -8177,7 +8563,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -8204,7 +8591,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -8228,7 +8616,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -8253,14 +8642,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 2,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -8285,7 +8676,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         }
       },
       "accessible": false,
@@ -8309,7 +8702,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -8334,7 +8728,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
@@ -8366,7 +8761,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         },
         "soccer": {
           "n": 1,
@@ -8399,14 +8795,17 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -8431,7 +8830,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -8459,7 +8859,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "volleyball": {
           "n": 2,
@@ -8480,7 +8881,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -8504,7 +8906,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -8529,7 +8932,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -8556,7 +8960,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 6,
@@ -8608,14 +9013,17 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": true,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -8640,7 +9048,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -8665,14 +9074,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         },
         "baseball": {
           "n": 2,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -8697,7 +9108,8 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -8723,7 +9135,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -8737,7 +9150,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -8762,7 +9176,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -8788,7 +9203,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
@@ -8820,7 +9236,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -8846,7 +9263,8 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 3,
@@ -8854,14 +9272,16 @@
           "surf": [
             "Synthetic - Large/Full",
             "Synthetic - Multi"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 2,
           "lit": true,
           "surf": [
             "Synthetic - Multi"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -8885,7 +9305,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -8909,7 +9330,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -8934,7 +9356,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -8965,7 +9388,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 6,
@@ -8973,7 +9397,8 @@
           "surf": [
             "Natural",
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -8999,14 +9424,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -9030,7 +9457,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         }
       },
       "accessible": false,
@@ -9055,7 +9484,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         }
       },
       "accessible": false,
@@ -9080,14 +9511,17 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "baseball": {
           "n": 2,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -9113,7 +9547,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -9145,7 +9581,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         }
       },
       "accessible": false,
@@ -9170,7 +9607,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -9194,7 +9632,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -9228,7 +9667,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "tennis": {
           "n": 1,
@@ -9243,7 +9684,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -9272,7 +9714,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         },
         "volleyball": {
           "n": 1,
@@ -9304,7 +9747,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
@@ -9336,7 +9780,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -9361,7 +9806,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         },
         "baseball": {
           "n": 1,
@@ -9394,14 +9840,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -9427,14 +9875,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -9460,7 +9910,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -9474,7 +9925,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -9501,7 +9953,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "volleyball": {
           "n": 3,
@@ -9523,7 +9977,8 @@
           "surf": [
             "Natural",
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -9550,7 +10005,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 18,
@@ -9572,7 +10028,8 @@
           "lit": true,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -9607,7 +10064,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -9633,7 +10091,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 2,
@@ -9704,7 +10163,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Multi"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -9729,14 +10189,16 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -9762,14 +10224,16 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": true,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -9793,7 +10257,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         }
       },
       "accessible": false,
@@ -9818,14 +10284,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -9851,7 +10319,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -9865,7 +10334,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -9890,14 +10360,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -9946,14 +10418,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -9978,7 +10452,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 6,
@@ -10015,7 +10490,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         }
       },
       "accessible": false,
@@ -10040,14 +10517,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -10071,7 +10550,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -10119,7 +10599,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -10144,7 +10625,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -10194,7 +10676,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 9,
@@ -10211,14 +10694,16 @@
             "Asphalt",
             "Natural",
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 10,
           "lit": true,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -10248,7 +10733,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         },
         "volleyball": {
           "n": 1,
@@ -10262,7 +10748,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -10287,7 +10774,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         }
       },
       "accessible": false,
@@ -10312,7 +10801,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 2,
@@ -10345,7 +10835,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 4,
@@ -10381,7 +10872,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         }
       },
       "accessible": false,
@@ -10408,21 +10901,24 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -10448,7 +10944,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -10462,7 +10960,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -10486,7 +10985,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         }
       },
       "accessible": false,
@@ -10510,7 +11011,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         }
       },
       "accessible": false,
@@ -10533,7 +11036,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -10567,14 +11071,16 @@
           "surf": [
             "Synthetic - Large/Full",
             "Synthetic - Multi"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 1,
           "lit": true,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -10598,7 +11104,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         }
       },
       "accessible": false,
@@ -10622,7 +11130,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -10646,7 +11155,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         }
       },
       "accessible": false,
@@ -10672,7 +11182,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "volleyball": {
           "n": 1,
@@ -10711,7 +11222,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -10735,7 +11247,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -10762,7 +11275,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "soccer": {
           "n": 1,
@@ -10776,7 +11291,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -10802,7 +11318,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "tennis": {
           "n": 8,
@@ -10847,7 +11365,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         },
         "tennis": {
           "n": 1,
@@ -10887,7 +11406,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "volleyball": {
           "n": 2,
@@ -10910,7 +11431,8 @@
           "surf": [
             "Synthetic - Large/Full",
             "Synthetic - Multi"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 8,
@@ -10919,7 +11441,8 @@
             "Natural",
             "Synthetic - Multi",
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -10949,7 +11472,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -10963,7 +11487,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -10989,14 +11514,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         },
         "baseball": {
           "n": 2,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -11021,14 +11548,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 2,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -11052,7 +11581,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         }
       },
       "accessible": false,
@@ -11079,7 +11609,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 10,
@@ -11094,7 +11625,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 8,
@@ -11102,7 +11634,8 @@
           "surf": [
             "Natural",
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -11134,7 +11667,8 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 12,
@@ -11150,14 +11684,16 @@
           "surf": [
             "Asphalt",
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 2,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -11188,7 +11724,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 7,
@@ -11203,7 +11740,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -11231,7 +11769,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         }
       },
       "accessible": false,
@@ -11255,7 +11795,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -11282,7 +11823,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 2,
@@ -11290,7 +11832,8 @@
           "surf": [
             "Synthetic - Large/Full",
             "Synthetic - Multi"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 6,
@@ -11298,7 +11841,8 @@
           "surf": [
             "Natural",
             "Synthetic - Multi"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -11324,7 +11868,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "tennis": {
           "n": 1,
@@ -11339,7 +11885,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -11369,7 +11916,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "tennis": {
           "n": 12,
@@ -11385,7 +11934,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -11415,7 +11965,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -11479,7 +12030,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "baseball": {
           "n": 1,
@@ -11510,7 +12063,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         }
       },
       "accessible": false,
@@ -11534,7 +12088,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -11558,7 +12113,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -11606,7 +12162,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -11630,7 +12187,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -11654,7 +12212,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -11677,7 +12236,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -11701,7 +12261,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -11725,7 +12286,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -11749,7 +12311,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -11776,7 +12339,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "volleyball": {
           "n": 1,
@@ -11798,7 +12363,8 @@
           "surf": [
             "Natural",
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -11822,7 +12388,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -11847,7 +12414,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "volleyball": {
           "n": 1,
@@ -11881,7 +12449,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 11,
@@ -11904,7 +12473,8 @@
           "surf": [
             "Natural",
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -11936,7 +12506,8 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 5,
@@ -11960,14 +12531,16 @@
             "Asphalt",
             "Synthetic - Large/Full",
             "Synthetic - Multi"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -11997,14 +12570,17 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "baseball": {
           "n": 2,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -12029,7 +12605,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -12053,7 +12630,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -12078,14 +12656,16 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -12109,7 +12689,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -12134,7 +12715,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -12158,7 +12740,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -12184,7 +12767,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
@@ -12216,14 +12800,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -12256,7 +12842,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -12286,7 +12873,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "volleyball": {
           "n": 1,
@@ -12316,7 +12904,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -12341,7 +12930,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -12365,14 +12955,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -12396,7 +12988,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -12422,21 +13015,24 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
           "lit": true,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 3,
           "lit": true,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -12461,7 +13057,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -12487,14 +13084,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
           "lit": true,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 3,
@@ -12503,7 +13102,8 @@
             "Asphalt",
             "Synthetic - Large/Full",
             "Synthetic - Multi"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -12527,7 +13127,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -12553,7 +13154,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -12587,7 +13189,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 6,
@@ -12630,7 +13233,8 @@
           "lit": true,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -12653,7 +13257,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -12680,21 +13285,24 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -12719,7 +13327,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -12745,21 +13354,24 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 2,
           "lit": false,
           "surf": [
             "Synthetic - Multi"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -12785,14 +13397,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -12816,7 +13430,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -12842,7 +13457,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 1,
@@ -12864,7 +13480,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -12893,7 +13510,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "volleyball": {
           "n": 1,
@@ -12926,14 +13544,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -12961,7 +13581,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 12,
@@ -12984,7 +13605,8 @@
           "surf": [
             "Natural",
             "Asphalt"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 20,
@@ -12992,7 +13614,8 @@
           "surf": [
             "Natural",
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -13021,7 +13644,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -13047,7 +13671,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -13079,7 +13705,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -13103,7 +13730,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -13127,7 +13755,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -13151,7 +13780,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -13177,14 +13807,16 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -13208,7 +13840,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -13233,7 +13866,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "baseball": {
           "n": 1,
@@ -13264,7 +13899,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -13288,7 +13924,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -13314,14 +13951,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -13346,7 +13985,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -13374,7 +14014,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "tennis": {
           "n": 7,
@@ -13397,7 +14039,8 @@
           "surf": [
             "Natural",
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -13429,7 +14072,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 7,
@@ -13451,7 +14095,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -13506,7 +14151,8 @@
           "surf": [
             "Natural",
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -13537,7 +14183,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 8,
@@ -13559,7 +14206,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -13588,7 +14236,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -13615,7 +14264,8 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -13629,7 +14279,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -13655,7 +14306,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         },
         "soccer": {
           "n": 1,
@@ -13710,7 +14362,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -13734,7 +14387,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -13758,7 +14412,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -13784,7 +14439,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "tennis": {
           "n": 2,
@@ -13800,7 +14457,8 @@
           "surf": [
             "Asphalt",
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -13858,7 +14516,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -13907,7 +14566,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -13932,21 +14592,24 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 2,
           "lit": false,
           "surf": [
             "Synthetic - Multi"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -13971,7 +14634,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         }
       },
       "accessible": false,
@@ -13996,7 +14661,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "tennis": {
           "n": 1,
@@ -14011,7 +14678,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -14039,7 +14707,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -14064,14 +14733,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 2,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -14096,7 +14767,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -14120,7 +14792,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         }
       },
       "accessible": false,
@@ -14145,7 +14818,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -14171,7 +14845,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -14211,7 +14886,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 2,
@@ -14225,7 +14901,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -14250,7 +14927,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -14275,7 +14953,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "baseball": {
           "n": 1,
@@ -14306,7 +14986,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -14330,7 +15011,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -14354,7 +15036,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -14380,7 +15063,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -14413,7 +15097,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -14427,7 +15113,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -14492,7 +15179,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -14517,14 +15205,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -14549,7 +15239,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -14600,7 +15291,9 @@
           "surf": [
             "Asphalt",
             "Rubber"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "soccer": {
           "n": 1,
@@ -14614,7 +15307,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": true,
@@ -14638,7 +15332,8 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -14663,7 +15358,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -14687,7 +15383,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 2,
@@ -14724,14 +15421,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -14756,7 +15455,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         }
       },
       "accessible": false,
@@ -14781,14 +15481,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -14814,7 +15516,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         },
         "soccer": {
           "n": 1,
@@ -14848,7 +15551,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -14862,7 +15567,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -14887,7 +15593,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -14911,7 +15618,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -14937,7 +15645,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -14951,7 +15661,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -14977,21 +15688,24 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 2,
           "lit": false,
           "surf": [
             "Synthetic - Multi"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -15016,7 +15730,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         }
       },
       "accessible": false,
@@ -15039,7 +15754,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         }
       },
       "accessible": false,
@@ -15065,14 +15782,16 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 2,
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -15097,7 +15816,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 2,
@@ -15133,7 +15853,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "volleyball": {
           "n": 1,
@@ -15158,7 +15879,8 @@
             "Natural",
             "Synthetic - Multi",
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 6,
@@ -15166,7 +15888,8 @@
           "surf": [
             "Natural",
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -15204,7 +15927,8 @@
           "surf": [
             "Synthetic - Multi",
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -15229,7 +15953,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         },
         "baseball": {
           "n": 1,
@@ -15260,7 +15985,8 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": true,
@@ -15284,7 +16010,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "soccer": {
           "n": 1,
@@ -15316,7 +16044,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -15366,7 +16095,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -15423,7 +16153,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 1,
@@ -15466,7 +16197,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -15494,7 +16226,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "volleyball": {
           "n": 6,
@@ -15530,7 +16263,8 @@
           "lit": true,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -15558,7 +16292,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         }
       },
       "accessible": false,
@@ -15582,7 +16318,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -15606,14 +16343,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -15637,7 +16376,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -15663,7 +16403,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         },
         "tennis": {
           "n": 3,
@@ -15685,7 +16426,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -15714,14 +16456,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -15747,14 +16491,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 2,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -15778,7 +16524,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         }
       },
       "accessible": false,
@@ -15803,7 +16550,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -15842,7 +16590,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         }
       },
       "accessible": false,
@@ -15868,7 +16618,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -15906,14 +16657,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -15937,7 +16690,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         }
       },
       "accessible": false,
@@ -15961,7 +16715,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -15986,7 +16741,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 3,
@@ -16022,7 +16778,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -16046,7 +16803,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -16071,14 +16829,17 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -16105,7 +16866,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 4,
@@ -16127,7 +16889,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -16157,7 +16920,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -16171,7 +16935,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Multi"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -16195,7 +16960,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -16220,14 +16986,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -16251,7 +17019,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -16274,7 +17043,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -16299,7 +17069,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -16323,7 +17094,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -16348,7 +17120,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -16374,7 +17147,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -16388,7 +17162,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -16412,7 +17187,8 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -16438,14 +17214,16 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 7,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -16469,7 +17247,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -16492,7 +17271,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -16515,7 +17295,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -16565,7 +17346,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -16604,14 +17387,16 @@
           "lit": true,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 2,
           "lit": true,
           "surf": [
             "Synthetic - Multi"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -16636,7 +17421,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 1,
@@ -16691,7 +17477,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -16724,14 +17511,16 @@
           "lit": false,
           "surf": [
             "Synthetic - Multi"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 4,
           "lit": true,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -16758,7 +17547,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "soccer": {
           "n": 1,
@@ -16772,7 +17563,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -16797,7 +17589,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         }
       },
       "accessible": false,
@@ -16821,7 +17615,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -16845,7 +17640,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -16882,14 +17678,16 @@
           "surf": [
             "Natural",
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 38,
           "lit": true,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -16917,7 +17715,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -16943,14 +17742,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -16975,7 +17776,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -17007,7 +17810,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -17038,7 +17842,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -17064,7 +17869,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "volleyball": {
           "n": 1,
@@ -17078,7 +17884,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -17105,7 +17912,9 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "volleyball": {
           "n": 2,
@@ -17121,7 +17930,8 @@
             "Natural",
             "Synthetic - Large/Full",
             "Synthetic - Multi"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 9,
@@ -17129,7 +17939,8 @@
           "surf": [
             "Synthetic - Large/Full",
             "Synthetic - Multi"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": true,
@@ -17154,14 +17965,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -17186,7 +17999,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
@@ -17219,14 +18033,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -17250,7 +18066,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         }
       },
       "accessible": false,
@@ -17325,7 +18143,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 2,
@@ -17389,14 +18208,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -17424,7 +18245,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "volleyball": {
           "n": 8,
@@ -17450,7 +18273,8 @@
             "Natural",
             "Synthetic - Large/Full",
             "Synthetic - Multi"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 7,
@@ -17459,7 +18283,8 @@
             "Natural",
             "Synthetic - Multi",
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -17491,7 +18316,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "volleyball": {
           "n": 3,
@@ -17551,7 +18377,9 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "volleyball": {
           "n": 2,
@@ -17596,7 +18424,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -17610,7 +18440,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Multi"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -17661,7 +18492,8 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 6,
@@ -17676,7 +18508,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -17705,7 +18538,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -17730,7 +18564,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "pickleball": {
           "n": 1,
@@ -17763,7 +18598,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 4,
@@ -17805,7 +18641,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         }
       },
       "accessible": false,
@@ -17829,7 +18667,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         }
       },
       "accessible": false,
@@ -17853,7 +18692,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -17877,7 +18717,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         },
         "soccer": {
           "n": 1,
@@ -17939,7 +18780,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "baseball": {
           "n": 1,
@@ -17973,7 +18816,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 4,
@@ -17988,14 +18832,16 @@
           "lit": true,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 4,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -18024,7 +18870,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -18049,7 +18896,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -18075,7 +18923,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "tennis": {
           "n": 2,
@@ -18142,7 +18992,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -18166,14 +19017,17 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -18197,7 +19051,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -18223,7 +19078,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "volleyball": {
           "n": 5,
@@ -18240,7 +19096,8 @@
             "Synthetic - Large/Full",
             "Synthetic - Multi",
             "Asphalt"
-          ]
+          ],
+          "regulation": true
         }
       },
       "accessible": true,
@@ -18265,7 +19122,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -18290,14 +19148,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -18320,7 +19180,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         }
       },
       "accessible": false,
@@ -18345,14 +19206,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -18377,7 +19240,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -18401,7 +19265,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -18425,7 +19290,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -18450,7 +19316,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 2,
@@ -18484,7 +19351,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 6,
@@ -18506,7 +19374,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -18535,7 +19404,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         }
       },
       "accessible": false,
@@ -18559,7 +19430,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "volleyball": {
           "n": 3,
@@ -18590,7 +19462,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -18617,7 +19490,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 4,
@@ -18633,7 +19507,8 @@
           "surf": [
             "Natural",
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 10,
@@ -18641,7 +19516,8 @@
           "surf": [
             "Natural",
             "Synthetic - Multi"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -18669,7 +19545,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -18702,7 +19579,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -18731,7 +19609,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -18757,7 +19636,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "baseball": {
           "n": 1,
@@ -18790,14 +19671,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -18824,7 +19707,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "volleyball": {
           "n": 2,
@@ -18838,7 +19722,8 @@
           "lit": true,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 7,
@@ -18846,7 +19731,8 @@
           "surf": [
             "Natural",
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -18899,7 +19785,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -18923,7 +19810,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -18948,14 +19836,16 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -18979,7 +19869,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -19007,7 +19898,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 3,
@@ -19029,7 +19921,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -19060,7 +19953,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         },
         "tennis": {
           "n": 2,
@@ -19105,7 +19999,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 2,
@@ -19120,7 +20015,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -19149,7 +20045,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         }
       },
       "accessible": false,
@@ -19175,7 +20073,9 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "volleyball": {
           "n": 1,
@@ -19189,7 +20089,8 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -19216,7 +20117,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         },
         "tennis": {
           "n": 3,
@@ -19258,7 +20160,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -19283,7 +20186,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 4,
@@ -19328,7 +20232,8 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -19343,7 +20248,8 @@
           "surf": [
             "Natural",
             "Synthetic - Multi"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -19371,7 +20277,8 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "volleyball": {
           "n": 1,
@@ -19400,7 +20307,8 @@
           "lit": true,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -19430,21 +20338,24 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
           "lit": true,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 1,
           "lit": true,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -19468,7 +20379,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -19493,7 +20405,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -19519,7 +20432,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "soccer": {
           "n": 1,
@@ -19533,7 +20448,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -19558,7 +20474,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -19583,7 +20500,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -19616,21 +20534,24 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 2,
           "lit": false,
           "surf": [
             "Synthetic - Multi"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -19654,7 +20575,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -19679,7 +20601,8 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 2,
@@ -19716,7 +20639,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -19741,7 +20665,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -19773,21 +20698,24 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
           "lit": true,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 2,
           "lit": true,
           "surf": [
             "Synthetic - Multi"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -19812,7 +20740,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -19837,7 +20766,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -19869,7 +20799,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -19893,7 +20824,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -19919,14 +20851,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -19952,7 +20886,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 2,
@@ -19966,7 +20901,8 @@
           "lit": true,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -19992,7 +20928,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "soccer": {
           "n": 1,
@@ -20024,7 +20962,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -20049,7 +20988,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -20081,14 +21021,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -20114,7 +21056,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -20146,7 +21089,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         },
         "soccer": {
           "n": 1,
@@ -20178,7 +21122,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         }
       },
       "accessible": false,
@@ -20202,7 +21147,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -20226,7 +21172,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -20251,7 +21198,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -20274,7 +21222,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         }
       },
       "accessible": false,
@@ -20298,7 +21247,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -20324,7 +21274,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
@@ -20355,7 +21306,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         }
       },
       "accessible": false,
@@ -20382,7 +21335,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "volleyball": {
           "n": 2,
@@ -20397,14 +21351,16 @@
           "surf": [
             "Synthetic - Multi",
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 3,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -20429,7 +21385,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -20455,14 +21412,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -20488,7 +21447,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "tennis": {
           "n": 1,
@@ -20526,14 +21487,17 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -20582,7 +21546,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -20607,7 +21572,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -20641,14 +21608,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 5,
@@ -20657,7 +21626,8 @@
             "Asphalt",
             "Natural",
             "Synthetic - Multi"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -20681,7 +21651,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         }
       },
       "accessible": false,
@@ -20706,14 +21678,16 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -20738,7 +21712,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         },
         "soccer": {
           "n": 1,
@@ -20773,7 +21748,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 12,
@@ -20796,14 +21772,16 @@
           "surf": [
             "Natural",
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 15,
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -20831,7 +21809,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         }
       },
       "accessible": false,
@@ -20858,7 +21838,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "tennis": {
           "n": 2,
@@ -20880,7 +21862,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -20908,7 +21891,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         }
       },
       "accessible": false,
@@ -20933,7 +21917,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -20958,7 +21943,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -20982,7 +21968,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -21006,7 +21993,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -21030,7 +22018,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -21062,7 +22051,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -21086,7 +22076,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -21142,7 +22133,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 6,
@@ -21157,7 +22149,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -21209,7 +22202,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -21233,7 +22227,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         }
       },
       "accessible": false,
@@ -21257,7 +22252,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -21282,7 +22278,9 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         },
         "tennis": {
           "n": 1,
@@ -21326,7 +22324,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Multi"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -21350,7 +22349,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -21374,7 +22374,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -21398,7 +22399,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         }
       },
       "accessible": false,
@@ -21424,7 +22427,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -21463,7 +22467,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -21488,7 +22493,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -21513,7 +22519,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -21536,7 +22543,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         }
       },
       "accessible": false,
@@ -21563,7 +22572,8 @@
           "surf": [
             "Asphalt",
             "Synthetic - Large/Full"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -21601,7 +22611,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -21626,7 +22637,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "baseball": {
           "n": 1,
@@ -21657,7 +22670,8 @@
           "lit": true,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -21681,7 +22695,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         }
       },
       "accessible": false,
@@ -21706,7 +22722,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "baseball": {
           "n": 1,
@@ -21737,7 +22754,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true,
+          "full": true
         }
       },
       "accessible": false,
@@ -21762,7 +22781,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -21797,7 +22817,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 8,
@@ -21812,7 +22833,8 @@
           "lit": false,
           "surf": [
             "Synthetic - Large/Full"
-          ]
+          ],
+          "regulation": true
         },
         "baseball": {
           "n": 1,
@@ -21848,7 +22870,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -21874,7 +22897,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "half": true
         },
         "soccer": {
           "n": 1,
@@ -21906,7 +22930,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -21938,7 +22963,8 @@
           "lit": false,
           "surf": [
             "Natural"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -21965,7 +22991,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         },
         "soccer": {
           "n": 1,
@@ -21979,7 +23007,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "adult": true
         }
       },
       "accessible": false,
@@ -22003,7 +23032,8 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -22036,7 +23066,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 2,
@@ -22073,7 +23104,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "tennis": {
           "n": 2,
@@ -22110,7 +23142,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         },
         "soccer": {
           "n": 1,
@@ -22142,7 +23175,8 @@
           "lit": true,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -22167,7 +23201,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -22191,7 +23226,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -22216,7 +23252,8 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true
         }
       },
       "accessible": false,
@@ -22240,7 +23277,9 @@
           "lit": false,
           "surf": [
             "Asphalt"
-          ]
+          ],
+          "full": true,
+          "half": true
         }
       },
       "accessible": false,
@@ -22250,5 +23289,5 @@
       "restrooms": true
     }
   ],
-  "fetchedAt": "2026-07-23T07:23:17.290Z"
+  "fetchedAt": "2026-07-23T08:34:47.080Z"
 }

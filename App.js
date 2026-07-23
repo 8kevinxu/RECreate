@@ -207,6 +207,18 @@ const PLACE_OPTS = [{ id: 'all' }, { id: 'indoor' }, { id: 'outdoor' }];
 // Amenity filters from the tennis/pickleball directory + reservation data
 // (multi-select). Each chip only appears for a sport when at least one of its
 // courts qualifies, so e.g. "Nets provided" shows for pickleball but not tennis.
+// Normalize a court's raw surface strings (city `facts[sport].surf`, e.g.
+// "Synthetic - Large/Full", "Har-Tru", "Asphalt") into filterable categories.
+const surfaceCats = (surf) => {
+  const s = (surf || []).join(' ').toLowerCase();
+  const cats = [];
+  if (/clay|har.?tru/.test(s)) cats.push('clay');
+  if (/synthetic|turf|artificial/.test(s)) cats.push('turf');
+  if (/natural|grass/.test(s)) cats.push('grass');
+  return cats;
+};
+const hasSurface = (c, s, cat) => surfaceCats(c.facts?.[s]?.surf).includes(cat);
+
 const AMENITIES = [
   // Bookable: SF rec.us reservations / SF directory reservable count / a city
   // facts flag (NYC tennis permit system marks facts[sport].reservable).
@@ -252,6 +264,21 @@ const AMENITIES = [
   { id: 'eighteen', test: (c) => c.golf?.holes === 18 },
   { id: 'beginner', test: (c) => c.golf?.beginner === true },
   { id: 'range', test: (c) => c.golf?.range === true },
+
+  // Sport-specific filters from the city facilities dataset (NYC). Each is
+  // scoped so it only appears in its sport's view (the amenity self-hide keys
+  // off the active sport), and self-hides where the data is absent.
+  // Surfaces (derived from facts[sport].surf):
+  { id: 'clay', test: (c, s) => s === 'tennis' && hasSurface(c, s, 'clay') },
+  // Turf vs grass are field-sport distinctions — scope to soccer/baseball so a
+  // stray synthetic basketball court doesn't surface an odd chip.
+  { id: 'turf', test: (c, s) => (s === 'soccer' || s === 'baseball') && hasSurface(c, s, 'turf') },
+  { id: 'grass', test: (c, s) => (s === 'soccer' || s === 'baseball') && hasSurface(c, s, 'grass') },
+  // Court/field type (from facts[sport] attribute flags):
+  { id: 'fullcourt', test: (c, s) => s === 'basketball' && c.facts?.basketball?.full === true },
+  { id: 'halfcourt', test: (c, s) => s === 'basketball' && c.facts?.basketball?.half === true },
+  { id: 'fullpitch', test: (c, s) => s === 'soccer' && c.facts?.soccer?.regulation === true },
+  { id: 'adultfield', test: (c, s) => s === 'baseball' && c.facts?.baseball?.adult === true },
 ];
 
 // ISO timestamp → "today" / "yesterday" / "Jun 18, 2026".
