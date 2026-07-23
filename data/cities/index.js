@@ -10,6 +10,7 @@
 
 import { SPORTS, WEIGHT_ROOM } from '../../lib/sports';
 import NYC, { CITY as NYC_CITY, PARK_HOURS as NYC_HOURS, SOURCE as NYC_SOURCE, DISCLAIMER as NYC_DISCLAIMER } from './nyc/outdoor-courts';
+import NYC_INDOOR from './nyc/indoor-courts';
 import NYC_CLASSES from './nyc/classes';
 
 const SPORT_KEYS = [...SPORTS.map((s) => s.id), WEIGHT_ROOM];
@@ -32,7 +33,9 @@ function expandCity(courts, city, parkHours, source, disclaimer) {
 // lib/useCourts.js (deduped by id there; city ids are prefixed so they can
 // never collide with SF's bare slugs).
 export const CITY_COURTS = {
-  [NYC_CITY]: expandCity(NYC, NYC_CITY, NYC_HOURS, NYC_SOURCE, NYC_DISCLAIMER),
+  // Indoor rec centers carry full records (real per-sport schedules); outdoor
+  // pins are compact and expanded here.
+  [NYC_CITY]: [...NYC_INDOOR, ...expandCity(NYC, NYC_CITY, NYC_HOURS, NYC_SOURCE, NYC_DISCLAIMER)],
 };
 
 // city id -> class/program list (same record shape as data/classes.js). SF's
