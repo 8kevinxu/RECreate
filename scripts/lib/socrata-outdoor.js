@@ -78,26 +78,40 @@ function noteFor(sports) {
 }
 
 // Group facility rows by park property; union sports; average row centroids.
+// Per-sport facility facts (court count, lighting, surfaces) and park-level
+// accessibility aggregate from cfg.facilities.factFields when configured:
+//   { lighted: '<bool col>', accessible: '<bool col>', surface: '<text col>' }
 function buildParks(rows, cfg) {
-  const { parkKeyField, geoField, sportFlags } = cfg.facilities;
+  const { parkKeyField, geoField, sportFlags, factFields = {} } = cfg.facilities;
   const [latMin, lngMin, latMax, lngMax] = cfg.bbox;
+  const truthy = (v) => v === true || v === 'true';
   const byPark = new Map();
   for (const r of rows) {
     const key = r[parkKeyField];
     if (!key) continue;
     const sports = new Set();
     for (const [flag, mapped] of Object.entries(sportFlags)) {
-      if (r[flag] === true || r[flag] === 'true') mapped.forEach((s) => sports.add(s));
+      if (truthy(r[flag])) mapped.forEach((s) => sports.add(s));
     }
     if (!sports.size) continue;
     const c = centroid(r[geoField]);
     if (!c || c.lat < latMin || c.lat > latMax || c.lng < lngMin || c.lng > lngMax) continue;
     let p = byPark.get(key);
     if (!p) {
-      p = { key, sports: new Set(), lat: 0, lng: 0, n: 0 };
+      p = { key, sports: new Set(), lat: 0, lng: 0, n: 0, facts: {}, accessible: false };
       byPark.set(key, p);
     }
-    sports.forEach((s) => p.sports.add(s));
+    const lighted = factFields.lighted ? truthy(r[factFields.lighted]) : false;
+    const surface = factFields.surface ? String(r[factFields.surface] || '').trim() : '';
+    for (const s of sports) {
+      p.sports.add(s);
+      let f = p.facts[s];
+      if (!f) f = p.facts[s] = { n: 0, lit: false, surf: [] };
+      f.n++; // one dataset row = one court/field
+      if (lighted) f.lit = true;
+      if (surface && !f.surf.includes(surface)) f.surf.push(surface);
+    }
+    if (factFields.accessible && truthy(r[factFields.accessible])) p.accessible = true;
     p.lat += c.lat;
     p.lng += c.lng;
     p.n++;
@@ -105,6 +119,8 @@ function buildParks(rows, cfg) {
   return [...byPark.values()].map((p) => ({
     key: p.key,
     sports: [...p.sports],
+    facts: p.facts,
+    accessible: p.accessible,
     lat: Number((p.lat / p.n).toFixed(6)),
     lng: Number((p.lng / p.n).toFixed(6)),
   }));
@@ -132,6 +148,8 @@ function buildCourts(parks, lookupByKey, cfg) {
         slugCount.get(base) > 1
           ? `${cfg.cityId}-${base}-${p.key.toLowerCase()}-outdoor`
           : `${cfg.cityId}-${base}-outdoor`;
+      const facts = {};
+      for (const s of ORDER) if (p.facts[s]) facts[s] = p.facts[s];
       return {
         id,
         name: p.name,
@@ -140,6 +158,11 @@ function buildCourts(parks, lookupByKey, cfg) {
         lat: p.lat,
         lng: p.lng,
         sports: ORDER.filter((s) => p.sports.includes(s)),
+        facts,
+        accessible: p.accessible,
+        // Any lighted facility ⇒ the park pin counts as lit (the card's Lights
+        // chip; per-sport truth lives in facts[sport].lit).
+        lights: Object.values(p.facts).some((f) => f.lit),
         notes: noteFor(p.sports),
       };
     })
@@ -157,6 +180,8 @@ function render(courts, cfg, generatedAt, scheduleSource) {
     lat: ${c.lat},
     lng: ${c.lng},
     sports: ${JSON.stringify(c.sports)},
+    facts: ${JSON.stringify(c.facts || {})},
+    accessible: ${!!c.accessible},${c.lights ? '\n    lights: true,' : ''}
     notes: ${JSON.stringify(c.notes)},
   },`
     )
@@ -198,12 +223,12 @@ async function buildCityOutdoor(cfg) {
   let courts;
   let scheduleSource;
   try {
-    const { datasetId, where, parkKeyField, geoField, sportFlags } = cfg.facilities;
+    const { datasetId, where, parkKeyField, geoField, sportFlags, factFields = {} } = cfg.facilities;
     const flagOr = Object.keys(sportFlags)
       .map((f) => `${f}=true`)
       .join(' OR ');
     const rows = await fetchAllRows(cfg.domain, datasetId, {
-      $select: [parkKeyField, geoField, ...Object.keys(sportFlags)].join(','),
+      $select: [parkKeyField, geoField, ...Object.keys(sportFlags), ...Object.values(factFields)].join(','),
       $where: `${where} AND (${flagOr})`,
     });
     const parks = buildParks(rows, cfg);

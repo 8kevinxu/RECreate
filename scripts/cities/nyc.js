@@ -41,6 +41,9 @@ module.exports = {
       regulation_soccer: ['soccer'],
       nonregulation_soccer: ['soccer'],
     },
+    // Per-row facility facts aggregated into each pin's per-sport `facts`
+    // (court count, lighting, surfaces) + park-level `accessible`.
+    factFields: { lighted: 'field_lighted', accessible: 'accessible', surface: 'surface_type' },
   },
   lookup: {
     datasetId: 'enfh-gkve',
