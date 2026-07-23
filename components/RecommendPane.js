@@ -44,6 +44,7 @@ export default function RecommendPane({
   sports = [],
   categories = [],
   age = null,
+  includeClasses = true, // false in courts-only cities (the class catalog is SF-only)
   onPickCourt,
 }) {
   const { t, lang } = useI18n();
@@ -80,8 +81,8 @@ export default function RecommendPane({
   }, [user?.id, hasInterests]);
 
   const recs = useMemo(
-    () => buildRecommendations({ courts, userLocation, sports, categories, history, age }),
-    [courts, userLocation, sports.join(','), categories.join(','), history, age]
+    () => buildRecommendations({ courts, userLocation, sports, categories, history, age, includeClasses }),
+    [courts, userLocation, sports.join(','), categories.join(','), history, age, includeClasses]
   );
   const [idx, setIdx] = useState(0);
   const [nudge, setNudge] = useState(0); // bumped on manual swipe to reset the timer

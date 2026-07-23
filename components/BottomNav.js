@@ -23,11 +23,12 @@ export default function BottomNav({
   socialBadge = 0,
   profileBadge = 0,
   bottomInset = 0,
+  hidden = [], // tab ids the active city doesn't offer (e.g. classes/pools outside SF)
 }) {
   const { t } = useI18n();
   return (
     <View style={[styles.bar, { marginBottom: Math.max(bottomInset, 8) }]}>
-      {TABS.map((item) => {
+      {TABS.filter((item) => !hidden.includes(item.id)).map((item) => {
         const active = item.id === tab;
         const badge =
           item.id === 'social' ? socialBadge : item.id === 'profile' ? profileBadge : 0;

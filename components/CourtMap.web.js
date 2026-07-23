@@ -376,6 +376,12 @@ const CourtMap = forwardRef(function CourtMap(
     recenter(loc) {
       mapRef.current && mapRef.current.setView([loc.lat, loc.lng], 14, { animate: true });
     },
+    // Jump to a city's overview: { lat, lng, zoom }. No animation — a
+    // cross-country glide loads hundreds of tiles for nothing. Keep in sync
+    // with CourtMap.js.
+    setCity(city) {
+      mapRef.current && mapRef.current.setView([city.lat, city.lng], city.zoom, { animate: false });
+    },
   }));
 
   return (

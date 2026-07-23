@@ -387,6 +387,12 @@ const html = `
       map.setView([lat, lng], 14, { animate: true });
     };
 
+    // Jump to another city's overview (no animation — a cross-country glide at
+    // z12 loads hundreds of tiles for nothing).
+    window.setCity = function (lat, lng, zoom) {
+      map.setView([lat, lng], zoom, { animate: false });
+    };
+
     // Tell React Native the map is ready to receive data, and report the
     // current network status (covers launching while already offline).
     post({ type: 'ready' });
@@ -403,6 +409,9 @@ const CourtMap = forwardRef(function CourtMap(
   const { t } = useI18n();
   const webRef = useRef(null);
   const [ready, setReady] = useState(false);
+  // City view requested before the WebView finished loading (e.g. the persisted
+  // city restoring on launch) — replayed once the map reports ready.
+  const pendingCityRef = useRef(null);
   // Two independent offline signals, OR'd for the banner: browser network status
   // (fires even on a cached map) and a run of failed tile fetches (CDN down).
   const [netOffline, setNetOffline] = useState(false);
@@ -428,12 +437,28 @@ const CourtMap = forwardRef(function CourtMap(
     if (ready) pushState();
   }, [ready, pushState]);
 
+  React.useEffect(() => {
+    if (ready && pendingCityRef.current) {
+      const c = pendingCityRef.current;
+      pendingCityRef.current = null;
+      inject(`window.setCity(${c.lat}, ${c.lng}, ${c.zoom});`);
+    }
+  }, [ready, inject]);
+
   useImperativeHandle(ref, () => ({
     focusCourt(court) {
       inject(`window.focusCourt(${JSON.stringify(court.id)}, ${court.lat}, ${court.lng});`);
     },
     recenter(loc) {
       inject(`window.recenter(${loc.lat}, ${loc.lng});`);
+    },
+    // Jump to a city's overview: { lat, lng, zoom }. Keep in sync with CourtMap.web.js.
+    setCity(city) {
+      if (!ready) {
+        pendingCityRef.current = city;
+        return;
+      }
+      inject(`window.setCity(${city.lat}, ${city.lng}, ${city.zoom});`);
     },
   }));
 

@@ -52,6 +52,7 @@ import {
   getDropinRemaining,
 } from './lib/hours';
 import { MAP_SPORTS, DEFAULT_SPORT, sportMeta, isPlayableSport } from './lib/sports';
+import { DEFAULT_CITY, getCity, nearestCity } from './lib/cities';
 import { useFavorites } from './lib/favorites';
 import { readUrlState, writeUrlState } from './lib/urlState';
 import { parseInviteCode } from './lib/invite';
@@ -268,6 +269,7 @@ function formatUpdated(iso) {
 }
 
 const ONBOARDED_KEY = 'recreate.onboarded.v1'; // first-launch onboarding shown flag
+const CITY_KEY = 'recreate.city.v1'; // active metro: { id, chosen } — chosen = picked manually
 const COACH_SPORT_KEY = 'recreate.coach.sportfab.v1'; // one-time sport-FAB coach mark shown flag
 const LOC_BANNER_KEY = 'recreate.locbanner.v1'; // dismissed the "turn on location" map banner
 const PENDING_ADD_KEY = 'recreate.pendingAdd.v1'; // friend code from an invite link, awaiting sign-in
@@ -349,6 +351,38 @@ export default function App() {
     setCoachHidden(true);
     AsyncStorage.setItem(COACH_SPORT_KEY, '1').catch(() => {});
   };
+  // Active metro. Restored from storage on launch; auto-detected from the first
+  // location fix unless the user has picked one manually (chosen). Only this
+  // city's courts show on the map/lists; its feature flags gate the SF-only
+  // surfaces (Classes/Pools tabs, class recommendations).
+  const [activeCity, setActiveCityState] = useState(DEFAULT_CITY);
+  const activeCityRef = useRef(DEFAULT_CITY);
+  const cityChosenRef = useRef(false);
+  const setActiveCity = useCallback((id, { chosen = true, moveMap = true } = {}) => {
+    const c = getCity(id);
+    if (c.id !== id) return; // unknown id — ignore
+    if (chosen) cityChosenRef.current = true;
+    AsyncStorage.setItem(CITY_KEY, JSON.stringify({ id, chosen: cityChosenRef.current })).catch(() => {});
+    if (activeCityRef.current === id) return;
+    activeCityRef.current = id;
+    setActiveCityState(id);
+    if (moveMap) {
+      // Claim the one-time auto-center so a late location fix (possibly in
+      // another metro) doesn't yank the map away from the chosen city.
+      didCenterRef.current = true;
+      mapRef.current?.setCity({ lat: c.center.lat, lng: c.center.lng, zoom: c.zoom });
+    }
+  }, []);
+  useEffect(() => {
+    AsyncStorage.getItem(CITY_KEY).then((raw) => {
+      if (!raw) return;
+      try {
+        const saved = JSON.parse(raw);
+        setActiveCity(saved.id, { chosen: !!saved.chosen });
+      } catch {}
+    });
+  }, [setActiveCity]);
+  const cityFeatures = getCity(activeCity).features;
   // A signed-in account's saved interests take precedence; the on-device picks are
   // the fallback so recommendations personalize even before there's an account.
   const interestSports = profile?.favorite_sports?.length
@@ -549,6 +583,13 @@ export default function App() {
           accuracy: Location.Accuracy.Balanced,
         });
         setUserLocation({ lat: pos.coords.latitude, lng: pos.coords.longitude });
+        // Auto-select the metro the user is actually in — unless they've picked
+        // one manually. No map jump: the one-time auto-center on the fix
+        // already frames their neighborhood, which beats a city-wide overview.
+        if (!cityChosenRef.current) {
+          const near = nearestCity(pos.coords.latitude, pos.coords.longitude);
+          if (near) setActiveCity(near.id, { chosen: false, moveMap: false });
+        }
       } else if (!perm.canAskAgain) {
         Alert.alert(t('loc.deniedTitle'), t('loc.deniedBody'), [
           { text: t('loc.cancel'), style: 'cancel' },
@@ -615,6 +656,31 @@ export default function App() {
   // Court data: bundled → cached → freshly fetched (see useCourts).
   const { courts: courtData, generatedAt } = useCourts();
 
+  // The map/lists/social suggestions show one metro at a time. courtData stays
+  // unfiltered for resolving ids that arrive from outside the active city
+  // (friends' runs/signals, push payloads, shared links).
+  const cityCourtData = useMemo(
+    () => courtData.filter((c) => (c.city || 'sf') === activeCity),
+    [courtData, activeCity]
+  );
+
+  // A selected court outside the active city (cross-city link/feed item)
+  // switches the view to its metro so the card + marker can render.
+  useEffect(() => {
+    if (!selectedId) return;
+    const c = courtData.find((x) => x.id === selectedId);
+    if (c && (c.city || 'sf') !== activeCityRef.current) {
+      setActiveCity(c.city || 'sf', { chosen: false, moveMap: false });
+    }
+  }, [selectedId, courtData, setActiveCity]);
+
+  // Leaving SF while on an SF-only tab (Classes/Pools) falls back to the map.
+  useEffect(() => {
+    if ((tab === 'classes' && !cityFeatures.classes) || (tab === 'pools' && !cityFeatures.pools)) {
+      goTab('home');
+    }
+  }, [tab, cityFeatures, goTab]);
+
   // Interest-based local notifications: schedule reminders for today's matching
   // games + classes when the app opens and each time it returns to the foreground
   // (no-ops on web/simulator, without interests, or without notification permission).
@@ -625,18 +691,19 @@ export default function App() {
     if (!sports.length && !categories.length) return undefined;
     const sync = () =>
       syncInterestNotifications({
-        courts: courtData,
+        courts: cityCourtData,
         sports,
         categories,
         age: profile?.age ?? null,
         lang,
+        includeClasses: cityFeatures.classes,
       });
     sync();
     const sub = AppState.addEventListener('change', (s) => {
       if (s === 'active') sync();
     });
     return () => sub.remove();
-  }, [user?.id, courtData, profile?.favorite_sports, profile?.favorite_categories, profile?.age, lang]);
+  }, [user?.id, cityCourtData, cityFeatures.classes, profile?.favorite_sports, profile?.favorite_categories, profile?.age, lang]);
 
   // "View time": all schedule / open-gym logic runs against this. It tracks the
   // live clock by default; picking a future day+time freezes it so the map shows
@@ -665,13 +732,13 @@ export default function App() {
   // self-adjusts to the schedule (and to the chosen sport).
   const sportDays = useMemo(() => {
     const set = new Set();
-    for (const c of courtData) {
+    for (const c of cityCourtData) {
       (c.dropins?.[sport] || []).forEach((blocks, d) => {
         if (blocks && blocks.length) set.add(d);
       });
     }
     return set;
-  }, [courtData, sport]);
+  }, [cityCourtData, sport]);
   const firstOpenDay = useMemo(
     () => days.find((d) => sportDays.has(d.getDay())) || days[0],
     [days, sportDays]
@@ -716,7 +783,7 @@ export default function App() {
   // Annotated with facility status, the selected sport's open-gym status, minutes
   // of open-gym left, and distance from the user (when location is available).
   const courts = useMemo(() => {
-    return courtData.map((c) => ({
+    return cityCourtData.map((c) => ({
       ...c,
       status: getOpenStatus(c, viewTime),
       dropin: getDropinStatus(c, sport, viewTime),
@@ -728,7 +795,7 @@ export default function App() {
         ? haversineMiles(userLocation.lat, userLocation.lng, c.lat, c.lng)
         : null,
     }));
-  }, [courtData, sport, viewTime, userLocation]);
+  }, [cityCourtData, sport, viewTime, userLocation]);
 
   // Does the selected sport have both indoor and outdoor courts? If so, offer the
   // secondary Indoor/Outdoor toggle (today that's pickleball).
@@ -1286,7 +1353,8 @@ export default function App() {
         {tab === 'social' && (
           <SocialScreen
             courtsById={courtsById}
-            courts={courtData}
+            courts={cityCourtData}
+            includeClasses={cityFeatures.classes}
             // Facility views (weight room, golf) aren't playable sports — hand
             // social features a real sport so a run/signal never defaults to one.
             sport={isPlayableSport(sport) ? sport : DEFAULT_SPORT}
@@ -1318,6 +1386,8 @@ export default function App() {
             onClose={() => {}}
             courtsById={courtsById}
             onFriends={user ? () => setFriendsOpen(true) : undefined}
+            cityId={activeCity}
+            onSelectCity={(id) => setActiveCity(id)}
           />
         )}
       </View>
@@ -1341,6 +1411,10 @@ export default function App() {
           socialBadge={unread}
           profileBadge={requestCount}
           bottomInset={insets.bottom}
+          hidden={[
+            ...(cityFeatures.classes ? [] : ['classes']),
+            ...(cityFeatures.pools ? [] : ['pools']),
+          ]}
         />
       </View>
 

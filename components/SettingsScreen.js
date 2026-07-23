@@ -22,6 +22,7 @@ import { useAuth } from '../lib/auth';
 import { listBlockedUsers, unblockUser } from '../lib/blocks';
 import { reportContent } from '../lib/reports';
 import { useI18n, LANGUAGES } from '../lib/i18n';
+import { CITIES } from '../lib/cities';
 
 // The literal a user must type to confirm deletion (kept across languages).
 const CONFIRM_CODE = 'DELETE';
@@ -32,7 +33,7 @@ const TERMS_URL = 'https://www.apple.com/legal/internet-services/itunes/dev/stde
 const PRIVACY_URL = 'https://recreate-sf.vercel.app/privacy.html';
 const SUPPORT_URL = 'https://recreate-sf.vercel.app/support.html';
 
-export default function SettingsScreen({ visible, onClose, onEditProfile }) {
+export default function SettingsScreen({ visible, onClose, onEditProfile, cityId, onSelectCity }) {
   const insets = useSafeAreaInsets();
   const { t, lang, setLang } = useI18n();
   const { user, deleteAccount, profile, updateProfile } = useAuth();
@@ -172,6 +173,30 @@ export default function SettingsScreen({ visible, onClose, onEditProfile }) {
                     />
                   </View>
                 </View>
+              </View>
+            </>
+          )}
+
+          {!!onSelectCity && (
+            <>
+              <Text style={styles.sectionLabel}>{t('settings.city')}</Text>
+              <Text style={styles.hint}>{t('settings.cityHint')}</Text>
+              <View style={styles.langWrap}>
+                {CITIES.map((c) => {
+                  const active = c.id === cityId;
+                  return (
+                    <Pressable
+                      key={c.id}
+                      onPress={() => onSelectCity(c.id)}
+                      style={[styles.langRow, active && styles.langRowActive]}
+                    >
+                      <Text style={[styles.langNative, active && styles.langTextActive]}>
+                        {t('city.' + c.id)}
+                      </Text>
+                      {active && <Text style={styles.check}>✓</Text>}
+                    </Pressable>
+                  );
+                })}
               </View>
             </>
           )}

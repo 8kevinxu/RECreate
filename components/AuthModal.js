@@ -39,6 +39,8 @@ export default function AuthModal({
   onFriends, // open the Friends sheet (shown in the signed-in panel)
   courtsById = {},
   initialMode = 'signin', // 'signin' | 'signup' — start the form on this tab
+  cityId, // active metro + switcher, threaded into Settings (profile page only)
+  onSelectCity,
 }) {
   const {
     user,
@@ -351,6 +353,8 @@ export default function AuthModal({
               setSettingsOpen(false);
               startEdit();
             }}
+            cityId={cityId}
+            onSelectCity={onSelectCity}
           />
           <View style={styles.header}>
             <Text style={styles.title}>
