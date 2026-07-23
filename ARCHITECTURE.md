@@ -71,13 +71,16 @@ simply hide. This is what lets the app work offline and without any backend.
 `I18nProvider`. `App.js` (~1900 lines) is deliberately the hub: it holds the home
 **map screen**, all shared cross-feature state, and the `CourtDetail` card.
 
-`BottomNav` switches five tabs via a `tab` state:
+`BottomNav` switches four tabs via a `tab` state:
 
 - `home` — the map (default)
 - `classes` — `ClassesScreen` (drop-in classes catalog)
-- `pools` — `PoolsScreen` (swim schedules)
 - `social` — `SocialScreen` (activity feed, recommendations, chats)
 - `profile` — account / settings
+
+Swimming pools are a **sport on the map** (not a tab): `lib/poolCourts.js` shapes
+`data/pools.js` into `swimming` court records and `components/PoolDetail.js`
+renders the schedule/fees block in the `CourtDetail` card.
 
 Most other features are **modals** toggled from `App.js` (`AuthModal`, `RunModal`,
 `SignalModal`, `SessionModal`, `FriendsModal`, `FeedModal`, `NearbyList`, …).
