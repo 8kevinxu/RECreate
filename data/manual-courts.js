@@ -46,6 +46,7 @@ const golfCourse = (c) => ({
 export const MANUAL_COURTS = [
   golfCourse({
     id: 'tpc-harding-park-golf',
+    city: 'sf',
     name: 'TPC Harding Park',
     address: '99 Harding Rd',
     neighborhood: 'Lake Merced',
@@ -71,6 +72,7 @@ export const MANUAL_COURTS = [
   }),
   golfCourse({
     id: 'fleming-9-golf',
+    city: 'sf',
     name: 'Fleming 9 (TPC Harding Park)',
     address: '99 Harding Rd',
     neighborhood: 'Lake Merced',
@@ -96,6 +98,7 @@ export const MANUAL_COURTS = [
   }),
   golfCourse({
     id: 'lincoln-park-golf',
+    city: 'sf',
     name: 'Lincoln Park Golf Course',
     address: '300 34th Ave',
     neighborhood: 'Outer Richmond',
@@ -121,6 +124,7 @@ export const MANUAL_COURTS = [
   }),
   golfCourse({
     id: 'golden-gate-park-golf',
+    city: 'sf',
     name: 'Golden Gate Park Golf Course',
     address: '970 47th Ave',
     neighborhood: 'Outer Richmond',
@@ -146,6 +150,7 @@ export const MANUAL_COURTS = [
   }),
   golfCourse({
     id: 'gleneagles-golf',
+    city: 'sf',
     name: 'Gleneagles Golf Course',
     address: '2100 Sunnydale Ave',
     neighborhood: 'McLaren Park',
@@ -167,6 +172,7 @@ export const MANUAL_COURTS = [
   }),
   golfCourse({
     id: 'sharp-park-golf',
+    city: 'sf',
     name: 'Sharp Park Golf Course',
     address: 'Sharp Park Rd & Hwy 1, Pacifica',
     neighborhood: 'Pacifica',

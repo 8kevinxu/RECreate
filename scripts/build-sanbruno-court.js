@@ -55,6 +55,7 @@ const emptyWeek = () => [[], [], [], [], [], [], []];
 // schedule[] indexed 0=Sun..6=Sat: Mon–Fri 6a–9p, Sat 8a–8p, Sun 12p–5p.
 const SAN_BRUNO = {
   id: 'san-bruno-rac',
+  city: 'sf', // greater-SF metro (the app's SF city view includes San Bruno)
   name: 'Recreation & Aquatic Center (RAC)',
   address: '251 City Park Way',
   neighborhood: 'San Bruno',
@@ -221,6 +222,7 @@ export const GENERATED_AT = ${JSON.stringify(generatedAt)};
 export const SANBRUNO_COURTS = [
   {
     id: ${JSON.stringify(court.id)},
+    city: "sf",
     name: ${JSON.stringify(court.name)},
     address: ${JSON.stringify(court.address)},
     neighborhood: ${JSON.stringify(court.neighborhood)},

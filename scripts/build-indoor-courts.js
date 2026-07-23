@@ -524,6 +524,7 @@ async function main() {
     if (!row) throw new Error(`No DataSF coordinates found for "${c.prop}"`);
     return {
       id: slug(c.name),
+      city: 'sf',
       name: c.name,
       address: row.address || '',
       neighborhood: row.analysis_neighborhood || '',
@@ -565,6 +566,7 @@ function render(courts, season, generatedAt) {
     .map(
       (c) => `  {
     id: ${JSON.stringify(c.id)},
+    city: "sf",
     name: ${JSON.stringify(c.name)},
     address: ${JSON.stringify(c.address)},
     neighborhood: ${JSON.stringify(c.neighborhood)},
