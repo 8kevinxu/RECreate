@@ -232,22 +232,13 @@ export default function ClassesScreen({ userLocation = null, city = 'sf', subreg
       ? haversineMiles(userLocation.lat, userLocation.lng, c.lat, c.lng)
       : null;
 
-  // Categories with at least one class in this catalog (counting primary +
-  // tags), so empty chips self-hide — e.g. 'philanthropy' only shows for NYC.
-  const presentCats = useMemo(() => {
-    const set = new Set();
-    for (const c of catalog) {
-      set.add(c.category);
-      for (const tg of c.tags || []) set.add(tg);
-    }
-    return set;
-  }, [catalog]);
-
-  // If the selected category no longer exists (e.g. after switching city),
-  // fall back to All so the list doesn't silently filter to nothing.
+  // The category row is the SAME canonical set in every city, so the Classes/Programs
+  // filters stay identical across SF/NYC (a chip just yields an empty list where a
+  // city genuinely has none of that program). We only reset the selection if it's a
+  // retired id no longer in the taxonomy (e.g. the old 'photo'/'film' after the merge).
   useEffect(() => {
-    if (cat !== 'all' && !presentCats.has(cat)) setCat('all');
-  }, [cat, presentCats]);
+    if (cat !== 'all' && !CLASS_CATEGORIES.some((c) => c.id === cat)) setCat('all');
+  }, [cat]);
 
   const list = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -341,7 +332,7 @@ export default function ClassesScreen({ userLocation = null, city = 'sf', subreg
       </View>
 
       <View style={styles.catRow}>
-        {[{ id: 'all', emoji: '✨' }, ...CLASS_CATEGORIES.filter((c) => presentCats.has(c.id))].map((c) => {
+        {[{ id: 'all', emoji: '✨' }, ...CLASS_CATEGORIES].map((c) => {
           const active = cat === c.id;
           return (
             <Pressable

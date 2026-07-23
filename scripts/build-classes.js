@@ -32,26 +32,26 @@ const MIN_OK = 30; // abort (keep last-good) if fewer than this many classes par
 // we pull every ActiveNet category and re-bucket each item by keyword into clearer
 // app categories. The ActiveNet ids each group queries — and the app category the
 // group's unmatched items fall back to — live in `groups` inside scrape().
+// ONE canonical program taxonomy, shared across every city so the Classes/Programs
+// filter row is identical everywhere (a chip is blank only when the city genuinely
+// has none of that program). Photography folds into Arts & Crafts; Film folds into
+// "Performances & Screenings" (both are attend-and-watch events). The last three are
+// cross-cutting FACET tags (youth/volunteer/accessible) that co-exist with a type.
 const CATEGORIES = [
   { id: 'fitness', label: 'Fitness & Wellness', emoji: '🧘' },
   { id: 'dance', label: 'Dance', emoji: '💃' },
   { id: 'music', label: 'Music', emoji: '🎵' },
   { id: 'arts', label: 'Arts & Crafts', emoji: '🎨' },
-  { id: 'photo', label: 'Photography', emoji: '📷' },
-  { id: 'social', label: 'Social & Games', emoji: '🎲' },
-  { id: 'aquatics', label: 'Aquatics', emoji: '🏊' },
   { id: 'sports', label: 'Sports & Rec', emoji: '🏅' },
-  { id: 'camps', label: 'Camps', emoji: '🏕️' },
-  { id: 'youth', label: 'Youth & After School', emoji: '🧒' },
-  // Categories/themes populated mainly by NYC (outdoors, tours, movies,
-  // volunteer, adaptive, live shows). Empty for SF — the category chips
-  // self-hide when a catalog has none of them.
+  { id: 'aquatics', label: 'Aquatics', emoji: '🏊' },
   { id: 'nature', label: 'Nature & Outdoors', emoji: '🌳' },
   { id: 'learn', label: 'Learn & Explore', emoji: '🧭' },
-  { id: 'film', label: 'Film & Movies', emoji: '🎬' },
+  { id: 'camps', label: 'Camps', emoji: '🏕️' },
+  { id: 'performances', label: 'Performances & Screenings', emoji: '🎭' },
+  { id: 'social', label: 'Social & Games', emoji: '🎲' },
+  { id: 'youth', label: 'Youth & After School', emoji: '🧒' },
   { id: 'philanthropy', label: 'Volunteer & Stewardship', emoji: '🤝' },
   { id: 'accessible', label: 'Accessible', emoji: '♿' },
-  { id: 'performances', label: 'Performances', emoji: '🎭' },
 ];
 
 // Drop-in sessions for sports the map already tracks are skipped: their hours are
@@ -85,10 +85,40 @@ const MUSIC_RE =
 
 function classify(name, fallback) {
   if (CAMP_RE.test(name)) return 'camps';
-  if (PHOTO_RE.test(name)) return 'photo';
-  if (ARTS_RE.test(name)) return 'arts';
+  // Photography (and hobby filmmaking) fold into Arts & Crafts — no standalone
+  // Photo/Film category in the shared taxonomy.
+  if (PHOTO_RE.test(name) || ARTS_RE.test(name)) return 'arts';
   if (MUSIC_RE.test(name)) return 'music';
   return fallback;
+}
+
+// Cross-cutting THEME tags layered on top of the primary category (same model as
+// the NYC builder's `categoriesFor`), so an SF class also surfaces under each
+// matching theme filter. These backfill the categories that were previously
+// NYC-only, so the shared chips aren't dead in SF. Matched against the class NAME
+// only: ActiveNet descriptions carry boilerplate ("volunteer instructors", "refine
+// their performance") that misfires these terms, whereas the curated title is a
+// high-precision signal. A theme legitimately absent from the SF catalog (e.g. no
+// registerable volunteer programs) simply yields an empty — but still visible — chip.
+const NATURE_RE =
+  /\bnature\b|wildlife|\bbird|canoe|kayak|\bfish(ing)?\b|marsh|wetland|garden|forest|habitat|\bhik(e|ing)\b|\btrail|outdoor|waterfront|\branger|excursion/i;
+const LEARN_RE = /histor(y|ic)|lecture|\btalks?\b|museum|seminar|docent/i;
+const PHILANTHROPY_RE = /volunteer|steward|clean.?up|restoration|litter|tree care|community service/i;
+const ACCESSIBLE_RE = /adaptive|inclusive|sensory.?friendly|wheelchair|accessible activit/i;
+const PERFORMANCES_RE =
+  /concert|theat(er|re)|\brecital\b|showcase|\bcomedy\b|opera|symphony|orchestra|cabaret|\bperformance/i;
+
+function tagsFor(text, primary) {
+  const tags = [];
+  const add = (id, cond) => {
+    if (cond && id !== primary && !tags.includes(id)) tags.push(id);
+  };
+  add('nature', NATURE_RE.test(text));
+  add('learn', LEARN_RE.test(text));
+  add('philanthropy', PHILANTHROPY_RE.test(text));
+  add('accessible', ACCESSIBLE_RE.test(text));
+  add('performances', PERFORMANCES_RE.test(text));
+  return tags;
 }
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -295,10 +325,14 @@ function toClass(item, category, coords) {
   // Instructor name when the catalog names one ("Unspecified" is ActiveNet's blank).
   const instrRaw = typeof item.instructor === 'string' ? dehtml(item.instructor) : '';
   const instructor = /^(unspecified|n\/?a|tbd)$/i.test(instrRaw) ? '' : instrRaw;
+  // Cross-cutting theme tags (nature/learn/volunteer/accessible/performances) from
+  // the class name, so a class also appears under each matching shared filter.
+  const tags = tagsFor(name, category);
   return {
     id: `anc-${item.id}`,
     name,
     category,
+    ...(tags.length ? { tags } : {}),
     location,
     when,
     dropIn: /drop-?in/i.test(name) || unlimited,

@@ -84,10 +84,11 @@ const CATEGORY_MAP = [
   ['learn', /history|historic|lecture|\btalks?\b|education|workshop|reservoir|aqueduct/i],
   ['learn', /\btours?\b/i],
   ['nature', /\bhik|\btrail|waterfront|\branger|excursion|adventure course|walking|\bwalk\b|outdoor/i],
-  ['film', /\bfilms?\b|movie|cinema|screening/i],
+  // Film / movie screenings fold into Performances & Screenings (attend-and-watch).
+  ['performances', /\bfilms?\b|movie|cinema|screening/i],
   ['music', /music|concert/i],
-  ['photo', /photo/i],
-  ['arts', /arts? ?& ?crafts|\bart\b|theater|theatre/i],
+  // Photography folds into Arts & Crafts — no standalone Photo category.
+  ['arts', /arts? ?& ?crafts|\bart\b|theater|theatre|photo/i],
   ['camps', /\bcamp\b/i],
   ['youth', /best for kids|kids|youth|teen/i],
 ];
@@ -459,7 +460,7 @@ function groupSeries(items) {
 }
 
 function buildClasses(seriesList) {
-  return seriesList
+  const arr = seriesList
     .map((s) => {
       s.dates.sort();
       const dows = [...new Set(s.dates.map((d) => new Date(d + 'T12:00:00').getDay()))].sort();
@@ -509,7 +510,25 @@ function buildClasses(seriesList) {
         url: s.regUrl || s.url,
       };
     })
-    .sort((a, b) => a.name.localeCompare(b.name) || (a.id < b.id ? -1 : 1));
+    // Stable order (url tiebreaker) so the collision-suffix pass below is
+    // deterministic across weekly crons.
+    .sort(
+      (a, b) =>
+        a.name.localeCompare(b.name) ||
+        (a.id < b.id ? -1 : a.id > b.id ? 1 : 0) ||
+        (a.url < b.url ? -1 : a.url > b.url ? 1 : 0)
+    );
+  // Distinct series can slug to the same id (same title + location + start time,
+  // e.g. two "It's My Park at Highbridge Park Basketball Courts" listings). Suffix
+  // repeats so React keys stay unique. Class ids are ephemeral (rolling event
+  // window; not referenced by check-ins/favorites), so a suffix is safe.
+  const seen = new Map();
+  for (const c of arr) {
+    const n = (seen.get(c.id) || 0) + 1;
+    seen.set(c.id, n);
+    if (n > 1) c.id = `${c.id}-${n}`;
+  }
+  return arr;
 }
 
 function render(classes, generatedAt, source) {
