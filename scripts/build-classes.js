@@ -43,11 +43,15 @@ const CATEGORIES = [
   { id: 'sports', label: 'Sports & Rec', emoji: '🏅' },
   { id: 'camps', label: 'Camps', emoji: '🏕️' },
   { id: 'youth', label: 'Youth & After School', emoji: '🧒' },
-  // Cross-cutting theme for volunteer / stewardship events (NYC: cleanups, tree
-  // care, forest/river restoration). Assigned as a secondary tag, so an event
-  // keeps its natural category and also appears here. Empty for SF — the
-  // category chips self-hide when a catalog has none.
+  // Categories/themes populated mainly by NYC (outdoors, tours, movies,
+  // volunteer, adaptive, live shows). Empty for SF — the category chips
+  // self-hide when a catalog has none of them.
+  { id: 'nature', label: 'Nature & Outdoors', emoji: '🌳' },
+  { id: 'learn', label: 'Learn & Explore', emoji: '🧭' },
+  { id: 'film', label: 'Film & Movies', emoji: '🎬' },
   { id: 'philanthropy', label: 'Volunteer & Stewardship', emoji: '🤝' },
+  { id: 'accessible', label: 'Accessible', emoji: '♿' },
+  { id: 'performances', label: 'Performances', emoji: '🎭' },
 ];
 
 // Drop-in sessions for sports the map already tracks are skipped: their hours are

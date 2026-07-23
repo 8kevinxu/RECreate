@@ -67,9 +67,34 @@ export const CLASS_CATEGORIES = [
     "emoji": "🧒"
   },
   {
+    "id": "nature",
+    "label": "Nature & Outdoors",
+    "emoji": "🌳"
+  },
+  {
+    "id": "learn",
+    "label": "Learn & Explore",
+    "emoji": "🧭"
+  },
+  {
+    "id": "film",
+    "label": "Film & Movies",
+    "emoji": "🎬"
+  },
+  {
     "id": "philanthropy",
     "label": "Volunteer & Stewardship",
     "emoji": "🤝"
+  },
+  {
+    "id": "accessible",
+    "label": "Accessible",
+    "emoji": "♿"
+  },
+  {
+    "id": "performances",
+    "label": "Performances",
+    "emoji": "🎭"
   }
 ];
 

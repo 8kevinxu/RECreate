@@ -4,7 +4,12 @@
       "id": "nycp-cultivating-presence-in-the-garden-storytelling-workshops-with-roundabout-theatre-company-poppa-momma-jones-historical-garden-1020",
       "source": "nycparks",
       "name": "\"Cultivating Presence in the Garden\": Storytelling Workshops with Roundabout Theatre Company",
-      "category": "arts",
+      "category": "nature",
+      "tags": [
+        "learn",
+        "arts",
+        "performances"
+      ],
       "location": "Poppa & Momma Jones Historical Garden",
       "when": "Tue · 5:00 PM - 6:30 PM",
       "dropIn": true,
@@ -26,7 +31,7 @@
       "id": "nycp-07-24-wingate-in-person-care-captain-training-playground-in-hamilton-metz-field-600",
       "source": "nycparks",
       "name": "07/24 Wingate In-Person Care Captain Training",
-      "category": "social",
+      "category": "nature",
       "tags": [
         "philanthropy"
       ],
@@ -51,9 +56,11 @@
       "id": "nycp-11bc-serenity-garden-presents-mary-edwards-11-bc-serenity-garden-900",
       "source": "nycparks",
       "name": "11BC Serenity Garden Presents Mary Edwards",
-      "category": "music",
+      "category": "nature",
       "tags": [
-        "arts"
+        "music",
+        "arts",
+        "performances"
       ],
       "location": "11 BC Serenity Garden",
       "when": "Sun · 3:00 PM - 4:00 PM",
@@ -76,7 +83,10 @@
       "id": "nycp-40-in-focus-summerstage-through-the-lens-of-photographer-jack-vartoogian-arsenal-in-central-park-540",
       "source": "nycparks",
       "name": "40 in Focus: SummerStage through the Lens of Photographer Jack Vartoogian",
-      "category": "arts",
+      "category": "learn",
+      "tags": [
+        "arts"
+      ],
       "location": "Arsenal (in Central Park)",
       "when": "Mon & Tue & Wed & Thu & Fri · 9:00 AM - 5:00 PM",
       "dropIn": true,
@@ -103,8 +113,9 @@
       "id": "nycp-7-24-restoration-fridays-at-forest-park-buddy-monument-in-forest-park-600",
       "source": "nycparks",
       "name": "7/24 Restoration Fridays at Forest Park",
-      "category": "social",
+      "category": "nature",
       "tags": [
+        "learn",
         "philanthropy"
       ],
       "location": "Buddy Monument (in Forest Park)",
@@ -128,8 +139,9 @@
       "id": "nycp-7-31-restoration-fridays-at-highland-park-vermont-place-parking-lot-in-highland-park-600",
       "source": "nycparks",
       "name": "7/31 Restoration Fridays at Highland Park",
-      "category": "fitness",
+      "category": "nature",
       "tags": [
+        "learn",
         "philanthropy"
       ],
       "location": "Vermont Place Parking Lot (in Highland Park)",
@@ -153,7 +165,7 @@
       "id": "nycp-8-1-forest-restoration-at-strack-pond-strack-pond-in-forest-park-600",
       "source": "nycparks",
       "name": "8/1 Forest Restoration at Strack Pond",
-      "category": "social",
+      "category": "nature",
       "tags": [
         "philanthropy"
       ],
@@ -178,7 +190,7 @@
       "id": "nycp-accessible-nature-hike-sparrows-and-shorebirds-sunset-cove-park-entrance-in-sunset-cove-park-660",
       "source": "nycparks",
       "name": "Accessible Nature Hike: Sparrows and Shorebirds",
-      "category": "social",
+      "category": "nature",
       "location": "Sunset Cove Park Entrance (in Sunset Cove Park)",
       "when": "Sun · 11:00 AM - 12:00 PM",
       "dropIn": true,
@@ -200,7 +212,7 @@
       "id": "nycp-adventure-course-free-public-sunday-afternoon-program-alley-pond-adventure-course-in-alley-pond-park-780",
       "source": "nycparks",
       "name": "Adventure Course Free Public Sunday Afternoon Program",
-      "category": "social",
+      "category": "nature",
       "location": "Alley Pond Adventure Course (in Alley Pond Park)",
       "when": "Sun · 1:00 PM - 3:00 PM",
       "dropIn": true,
@@ -227,7 +239,7 @@
       "id": "nycp-adventure-course-free-public-sunday-morning-program-alley-pond-adventure-course-in-alley-pond-park-570",
       "source": "nycparks",
       "name": "Adventure Course Free Public Sunday Morning Program",
-      "category": "social",
+      "category": "nature",
       "location": "Alley Pond Adventure Course (in Alley Pond Park)",
       "when": "Sun · 9:30 AM - 11:30 AM",
       "dropIn": true,
@@ -254,8 +266,9 @@
       "id": "nycp-afternoon-gardening-thursday-at-shoelace-park-shoelace-park-960",
       "source": "nycparks",
       "name": "Afternoon Gardening Thursday at Shoelace Park",
-      "category": "youth",
+      "category": "nature",
       "tags": [
+        "youth",
         "philanthropy"
       ],
       "location": "Shoelace Park",
@@ -279,7 +292,7 @@
       "id": "nycp-all-that-skitters-salt-marsh-nature-center-in-marine-park-810",
       "source": "nycparks",
       "name": "All That Skitters!",
-      "category": "social",
+      "category": "nature",
       "location": "Salt Marsh Nature Center (in Marine Park)",
       "when": "Sat · 1:30 PM - 2:30 PM",
       "dropIn": true,
@@ -301,7 +314,7 @@
       "id": "nycp-archery-and-nature-exploration-archery-field-parking-lot-in-willowbrook-park-660",
       "source": "nycparks",
       "name": "Archery and Nature Exploration",
-      "category": "social",
+      "category": "nature",
       "location": "Archery Field Parking Lot (in Willowbrook Park)",
       "when": "Thu · 11:00 AM - 1:00 PM",
       "dropIn": true,
@@ -353,8 +366,9 @@
       "id": "nycp-art-meets-books-kids-playground-large-in-washington-square-park-900",
       "source": "nycparks",
       "name": "Art Meets Books",
-      "category": "arts",
+      "category": "learn",
       "tags": [
+        "arts",
         "youth"
       ],
       "location": "Kids Playground - Large (in Washington Square Park)",
@@ -439,8 +453,9 @@
       "id": "nycp-august-project-waste-muskrat-cove-600",
       "source": "nycparks",
       "name": "August Project WASTE",
-      "category": "social",
+      "category": "nature",
       "tags": [
+        "learn",
         "philanthropy"
       ],
       "location": "Muskrat Cove",
@@ -488,7 +503,7 @@
       "id": "nycp-basic-canoeing-oakland-lake-in-alley-pond-park-660",
       "source": "nycparks",
       "name": "Basic Canoeing",
-      "category": "social",
+      "category": "nature",
       "location": "Oakland Lake (in Alley Pond Park)",
       "when": "Sat · 11:00 AM - 12:30 PM",
       "dropIn": true,
@@ -510,7 +525,7 @@
       "id": "nycp-basic-canoeing-and-nature-exploration-eton-place-parking-lot-in-willowbrook-park-660",
       "source": "nycparks",
       "name": "Basic Canoeing and Nature Exploration",
-      "category": "social",
+      "category": "nature",
       "location": "Eton Place Parking Lot (in Willowbrook Park)",
       "when": "Thu · 11:00 AM - 12:30 PM",
       "dropIn": true,
@@ -594,7 +609,10 @@
       "id": "nycp-before-the-aqueduct-nyc-s-toxic-wells-and-lost-pond-lafayette-street-and-franklin-street-in-collect-pond-park-780",
       "source": "nycparks",
       "name": "Before the Aqueduct: NYC's Toxic Wells and Lost Pond",
-      "category": "social",
+      "category": "learn",
+      "tags": [
+        "nature"
+      ],
       "location": "Lafayette Street and Franklin Street (in Collect Pond Park)",
       "when": "Sun · 1:00 PM - 2:30 PM",
       "dropIn": true,
@@ -616,7 +634,10 @@
       "id": "nycp-beginner-crochet-workshop-multi-use-room-in-kissena-park-900",
       "source": "nycparks",
       "name": "Beginner Crochet Workshop",
-      "category": "arts",
+      "category": "learn",
+      "tags": [
+        "arts"
+      ],
       "location": "Multi-Use Room (in Kissena Park)",
       "when": "Thu · 3:00 PM - 4:00 PM",
       "dropIn": true,
@@ -645,6 +666,9 @@
       "source": "nycparks",
       "name": "Beginner Yoga",
       "category": "fitness",
+      "tags": [
+        "nature"
+      ],
       "location": "Sobelsohn Basketball Court (in Forest Park)",
       "when": "Sat · 10:00 AM - 11:00 AM",
       "dropIn": false,
@@ -668,9 +692,12 @@
       "id": "nycp-best-special-kids-horticulture-and-art-workshop-with-gisselle-ramirez-shoelace-park-in-bronx-park-660",
       "source": "nycparks",
       "name": "Best Special Kids: Horticulture and Art Workshop with Gisselle Ramirez",
-      "category": "arts",
+      "category": "nature",
       "tags": [
-        "youth"
+        "learn",
+        "arts",
+        "youth",
+        "accessible"
       ],
       "location": "Shoelace Park (in Bronx Park)",
       "when": "Sat · 11:00 AM - 1:00 PM",
@@ -694,6 +721,9 @@
       "source": "nycparks",
       "name": "Big City Folk in Greeley Square Park",
       "category": "music",
+      "tags": [
+        "performances"
+      ],
       "location": "Greeley Square Park",
       "when": "Mon · 6:00 PM - 8:00 PM",
       "dropIn": true,
@@ -720,8 +750,9 @@
       "id": "nycp-bioblitz-concrete-plant-park-to-starlight-park-with-rj-hawkins-concrete-plant-park-660",
       "source": "nycparks",
       "name": "Bioblitz: Concrete Plant Park to Starlight Park with RJ Hawkins",
-      "category": "social",
+      "category": "nature",
       "tags": [
+        "learn",
         "philanthropy"
       ],
       "location": "Concrete Plant Park",
@@ -745,7 +776,7 @@
       "id": "nycp-birding-by-canoe-excursion-spring-creek-dock-in-fresh-creek-nature-preserve-780",
       "source": "nycparks",
       "name": "Birding by Canoe Excursion",
-      "category": "social",
+      "category": "nature",
       "location": "Spring Creek Dock (in Fresh Creek Nature Preserve)",
       "when": "Sun · 1:00 PM - 2:30 PM",
       "dropIn": true,
@@ -767,7 +798,7 @@
       "id": "nycp-birding-beginner-birding-crotona-nature-center-in-crotona-park-780",
       "source": "nycparks",
       "name": "Birding: Beginner Birding",
-      "category": "social",
+      "category": "nature",
       "location": "Crotona Nature Center (in Crotona Park)",
       "when": "Sun · 1:00 PM - 2:00 PM",
       "dropIn": true,
@@ -791,7 +822,8 @@
       "name": "Bloom to the Beat: A Bronx River Sound & Flower Experience with Zinzi Gonzalez",
       "category": "dance",
       "tags": [
-        "fitness",
+        "nature",
+        "learn",
         "youth"
       ],
       "location": "Starlight Park",
@@ -865,7 +897,8 @@
       "name": "Bodyroll",
       "category": "dance",
       "tags": [
-        "fitness"
+        "fitness",
+        "nature"
       ],
       "location": "Garibaldi Plaza (in Washington Square Park)",
       "when": "Tue · 9:30 AM - 10:30 AM",
@@ -1136,7 +1169,10 @@
       "id": "nycp-bookclub-at-bryant-park-reading-room-reading-room-in-bryant-park-750",
       "source": "nycparks",
       "name": "BookClub at Bryant Park Reading Room",
-      "category": "social",
+      "category": "learn",
+      "tags": [
+        "accessible"
+      ],
       "location": "Reading Room (in Bryant Park)",
       "when": "Tue · 12:30 PM - 1:30 PM",
       "dropIn": true,
@@ -1160,7 +1196,8 @@
       "name": "Bring a Friend Friday at Ocean Breeze Athletic Complex",
       "category": "sports",
       "tags": [
-        "fitness"
+        "fitness",
+        "nature"
       ],
       "location": "Ocean Breeze Track & Field Athletic Complex (in Ocean Breeze Park)",
       "when": "Fri · 6:30 AM - 1:00 PM",
@@ -1183,8 +1220,9 @@
       "id": "nycp-bronx-river-city-of-water-day-celebration-bronx-river-house-in-starlight-park-720",
       "source": "nycparks",
       "name": "Bronx River City of Water Day Celebration",
-      "category": "arts",
+      "category": "nature",
       "tags": [
+        "arts",
         "youth",
         "philanthropy"
       ],
@@ -1209,7 +1247,7 @@
       "id": "nycp-brooklyn-bridge-park-conservancy-waterfront-walks-brooklyn-bridge-park-1110",
       "source": "nycparks",
       "name": "Brooklyn Bridge Park Conservancy Waterfront Walks",
-      "category": "fitness",
+      "category": "nature",
       "location": "Brooklyn Bridge Park",
       "when": "Tue · 6:30 PM - 8:00 PM",
       "dropIn": false,
@@ -1236,7 +1274,7 @@
       "id": "nycp-brooklyn-bridge-park-movies-with-a-view-presented-by-persol-brooklyn-bridge-park-pier-1-brooklyn-ny-11201-in-brooklyn-bridge-park-1080",
       "source": "nycparks",
       "name": "Brooklyn Bridge Park Movies With A View presented by Persol",
-      "category": "arts",
+      "category": "film",
       "location": "Brooklyn Bridge Park Pier 1 Brooklyn, NY 11201 (in Brooklyn Bridge Park)",
       "when": "Thu · 6:00 PM - 11:00 PM",
       "dropIn": false,
@@ -1263,7 +1301,11 @@
       "id": "nycp-bryant-park-author-series-speculative-fiction-reading-room-in-bryant-park-750",
       "source": "nycparks",
       "name": "Bryant Park Author Series: Speculative Fiction",
-      "category": "arts",
+      "category": "learn",
+      "tags": [
+        "arts",
+        "accessible"
+      ],
       "location": "Reading Room (in Bryant Park)",
       "when": "Wed · 12:30 PM - 1:45 PM",
       "dropIn": true,
@@ -1285,7 +1327,7 @@
       "id": "nycp-bryant-park-movie-nights-bryant-park-lawn-in-bryant-park-1020",
       "source": "nycparks",
       "name": "Bryant Park Movie Nights",
-      "category": "arts",
+      "category": "film",
       "location": "Bryant Park Lawn (in Bryant Park)",
       "when": "Mon · 5:00 PM - 10:30 PM",
       "dropIn": true,
@@ -1314,7 +1356,8 @@
       "name": "Bryant Park Picnic Performance: Carnegie Hall Citywide: El Laberinto del Coco",
       "category": "music",
       "tags": [
-        "arts"
+        "arts",
+        "performances"
       ],
       "location": "Bryant Park Lawn (in Bryant Park)",
       "when": "Fri · 7:00 PM - 8:30 PM",
@@ -1338,6 +1381,9 @@
       "source": "nycparks",
       "name": "Bryant Park Picnic Performance: Carnegie Hall Citywide: NYC Ska Orchestra",
       "category": "music",
+      "tags": [
+        "performances"
+      ],
       "location": "Bryant Park Lawn (in Bryant Park)",
       "when": "Fri · 7:00 PM - 8:30 PM",
       "dropIn": true,
@@ -1360,6 +1406,9 @@
       "source": "nycparks",
       "name": "Bryant Park Tai Chi",
       "category": "fitness",
+      "tags": [
+        "nature"
+      ],
       "location": "Upper Terrace (in Bryant Park)",
       "when": "Tue · 7:30 AM - 8:30 AM",
       "dropIn": true,
@@ -1410,7 +1459,7 @@
       "id": "nycp-canine-court-volunteer-clean-up-canine-court-in-van-cortlandt-park-780",
       "source": "nycparks",
       "name": "Canine Court Volunteer Clean Up",
-      "category": "social",
+      "category": "nature",
       "tags": [
         "philanthropy"
       ],
@@ -1586,6 +1635,9 @@
       "source": "nycparks",
       "name": "Cardio Sculpt",
       "category": "fitness",
+      "tags": [
+        "nature"
+      ],
       "location": "Athletic Courts (in Torsney Playground)",
       "when": "Mon & Wed & Fri · 9:00 AM - 10:00 AM",
       "dropIn": false,
@@ -1684,8 +1736,10 @@
       "id": "nycp-carousel-grab-n-go-seaside-bead-bracelets-1-eton-place-in-willowbrook-park-660",
       "source": "nycparks",
       "name": "Carousel Grab n Go - Seaside Bead Bracelets",
-      "category": "arts",
+      "category": "learn",
       "tags": [
+        "nature",
+        "arts",
         "youth"
       ],
       "location": "1 Eton Place (in Willowbrook Park)",
@@ -1709,7 +1763,7 @@
       "id": "nycp-celebrate-marine-park-s-history-salt-marsh-nature-center-in-marine-park-810",
       "source": "nycparks",
       "name": "Celebrate Marine Park's history",
-      "category": "social",
+      "category": "learn",
       "location": "Salt Marsh Nature Center (in Marine Park)",
       "when": "Sat · 1:30 PM - 2:30 PM",
       "dropIn": true,
@@ -1731,7 +1785,10 @@
       "id": "nycp-celebrate-shorebirds-boardwalk-at-beach-60th-street-in-rockaway-beach-and-boardwalk-720",
       "source": "nycparks",
       "name": "Celebrate Shorebirds",
-      "category": "social",
+      "category": "nature",
+      "tags": [
+        "learn"
+      ],
       "location": "Boardwalk at Beach 60th Street (in Rockaway Beach and Boardwalk)",
       "when": "Sat · 12:00 PM - 3:00 PM",
       "dropIn": true,
@@ -1826,6 +1883,10 @@
       "source": "nycparks",
       "name": "Chair Yoga at Greeley Square Park",
       "category": "fitness",
+      "tags": [
+        "nature",
+        "accessible"
+      ],
       "location": "Greeley Square Park",
       "when": "Wed · 11:00 AM - 12:00 PM",
       "dropIn": false,
@@ -1852,7 +1913,12 @@
       "id": "nycp-cinema-under-the-stars-the-price-of-the-ticket-1989-by-karen-thorsen-james-baldwin-lawn-in-st-nicholas-park-135th-street-and-st-nicholas-avenue-in-st-nicholas-park-1110",
       "source": "nycparks",
       "name": "Cinema Under the Stars: The Price of the Ticket (1989) by Karen Thorsen",
-      "category": "arts",
+      "category": "learn",
+      "tags": [
+        "film",
+        "arts",
+        "performances"
+      ],
       "location": "James Baldwin Lawn (in St. Nicholas Park),135th Street and St. Nicholas Avenue (in St. Nicholas Park)",
       "when": "Sat · 6:30 PM - 10:30 PM",
       "dropIn": true,
@@ -1874,7 +1940,10 @@
       "id": "nycp-circus-arts-in-herald-square-park-herald-square-1080",
       "source": "nycparks",
       "name": "Circus Arts in Herald Square Park",
-      "category": "arts",
+      "category": "learn",
+      "tags": [
+        "arts"
+      ],
       "location": "Herald Square",
       "when": "Wed · 6:00 PM - 7:00 PM",
       "dropIn": true,
@@ -1926,7 +1995,7 @@
       "id": "nycp-city-of-water-day-at-kaiser-park-kaiser-park-beach-in-kaiser-park-600",
       "source": "nycparks",
       "name": "City of Water Day at Kaiser Park",
-      "category": "social",
+      "category": "nature",
       "tags": [
         "philanthropy"
       ],
@@ -1978,7 +2047,7 @@
       "id": "nycp-city-of-water-day-with-friends-of-inwood-hill-park-inwood-hill-nature-center-in-inwood-hill-park-600",
       "source": "nycparks",
       "name": "City of Water Day with Friends of Inwood Hill Park",
-      "category": "fitness",
+      "category": "nature",
       "tags": [
         "arts",
         "philanthropy"
@@ -2004,7 +2073,7 @@
       "id": "nycp-city-of-water-day-boardwalk-tidal-tales-poseidon-playground-660",
       "source": "nycparks",
       "name": "City of Water Day: Boardwalk Tidal Tales",
-      "category": "social",
+      "category": "nature",
       "location": "Poseidon Playground",
       "when": "Sat · 11:00 AM - 12:00 PM",
       "dropIn": true,
@@ -2026,7 +2095,7 @@
       "id": "nycp-city-of-water-day-island-hopping-canoeing-excursion-canoe-and-kayak-launch-in-pelham-bay-park-600",
       "source": "nycparks",
       "name": "City of Water Day: Island Hopping Canoeing Excursion",
-      "category": "social",
+      "category": "nature",
       "location": "Canoe and Kayak Launch (in Pelham Bay Park)",
       "when": "Sat · 10:00 AM - 11:30 AM",
       "dropIn": true,
@@ -2048,7 +2117,10 @@
       "id": "nycp-city-of-water-day-salt-marsh-exploration-west-218th-street-and-indian-road-in-inwood-hill-park-780",
       "source": "nycparks",
       "name": "City of Water Day: Salt Marsh Exploration",
-      "category": "social",
+      "category": "nature",
+      "tags": [
+        "learn"
+      ],
       "location": "West 218th Street and Indian Road (in Inwood Hill Park)",
       "when": "Sat · 1:00 PM - 2:30 PM",
       "dropIn": true,
@@ -2070,7 +2142,7 @@
       "id": "nycp-city-of-water-day-saltwater-fishing-entrance-west-street-and-greenpoint-avenue-in-wnyc-transmitter-park-660",
       "source": "nycparks",
       "name": "City of Water Day: Saltwater Fishing",
-      "category": "social",
+      "category": "nature",
       "location": "Entrance-West Street and Greenpoint Avenue (in WNYC Transmitter Park)",
       "when": "Sat · 11:00 AM - 12:30 PM",
       "dropIn": true,
@@ -2092,7 +2164,10 @@
       "id": "nycp-city-of-water-day-silver-lake-forest-avenue-and-silver-lake-park-road-in-silver-lake-park-660",
       "source": "nycparks",
       "name": "City of Water Day: Silver Lake",
-      "category": "social",
+      "category": "nature",
+      "tags": [
+        "learn"
+      ],
       "location": "Forest Avenue and Silver Lake Park Road (in Silver Lake Park)",
       "when": "Sat · 11:00 AM - 12:30 PM",
       "dropIn": true,
@@ -2114,7 +2189,7 @@
       "id": "nycp-city-of-water-day-soundview-park-guided-walk-soundview-park-600",
       "source": "nycparks",
       "name": "City of Water Day: Soundview Park Guided Walk",
-      "category": "fitness",
+      "category": "nature",
       "location": "Soundview Park",
       "when": "Sat · 10:00 AM - 1:00 PM",
       "dropIn": false,
@@ -2137,8 +2212,9 @@
       "id": "nycp-citywide-nursery-gardening-citywide-nursery-540",
       "source": "nycparks",
       "name": "Citywide Nursery Gardening",
-      "category": "social",
+      "category": "nature",
       "tags": [
+        "learn",
         "philanthropy"
       ],
       "location": "Citywide Nursery",
@@ -2192,7 +2268,11 @@
       "id": "nycp-cocktails-on-the-farm-urban-farm-in-randall-s-island-park-1020",
       "source": "nycparks",
       "name": "Cocktails on the Farm",
-      "category": "arts",
+      "category": "nature",
+      "tags": [
+        "learn",
+        "arts"
+      ],
       "location": "Urban Farm (in Randall's Island Park)",
       "when": "Sat · 5:00 PM - 8:00 PM",
       "dropIn": true,
@@ -2214,7 +2294,10 @@
       "id": "nycp-community-paddle-at-starlight-park-bronx-river-house-in-starlight-park-660",
       "source": "nycparks",
       "name": "Community Paddle at Starlight Park",
-      "category": "youth",
+      "category": "nature",
+      "tags": [
+        "youth"
+      ],
       "location": "Bronx River House (in Starlight Park)",
       "when": "Sat · 11:00 AM - 3:00 PM",
       "dropIn": false,
@@ -2236,7 +2319,7 @@
       "id": "nycp-community-work-day-wyckoff-farmhouse-museum-in-fidler-wyckoff-house-park-660",
       "source": "nycparks",
       "name": "Community Work Day",
-      "category": "social",
+      "category": "nature",
       "tags": [
         "philanthropy"
       ],
@@ -2263,6 +2346,7 @@
       "name": "Cross Country Course Volunteer Days",
       "category": "fitness",
       "tags": [
+        "nature",
         "philanthropy"
       ],
       "location": "VCPA Garden & Compost Site (in Van Cortlandt Park)",
@@ -2314,8 +2398,10 @@
       "id": "nycp-cyanotype-workshop-with-nadia-hunts-point-riverside-park-720",
       "source": "nycparks",
       "name": "Cyanotype Workshop with Nadia",
-      "category": "arts",
+      "category": "nature",
       "tags": [
+        "learn",
+        "arts",
         "youth"
       ],
       "location": "Hunts Point Riverside Park",
@@ -2341,7 +2427,8 @@
       "name": "Dance Fitness",
       "category": "dance",
       "tags": [
-        "fitness"
+        "fitness",
+        "nature"
       ],
       "location": "125th Street and Marginal Street (in West Harlem Piers)",
       "when": "Sat · 11:00 AM - 12:00 PM",
@@ -2572,7 +2659,8 @@
       "category": "sports",
       "tags": [
         "dance",
-        "fitness"
+        "fitness",
+        "nature"
       ],
       "location": "East River Picnic Area (in Randall's Island Park)",
       "when": "Sat · 11:00 AM - 11:45 AM",
@@ -2600,7 +2688,7 @@
       "id": "nycp-discovery-hike-staten-island-s-shoreline-chester-avenue-and-huguenot-avenue-in-wolfe-s-pond-park-660",
       "source": "nycparks",
       "name": "Discovery Hike: Staten Island's Shoreline",
-      "category": "fitness",
+      "category": "nature",
       "location": "Chester Avenue and Huguenot Avenue (in Wolfe's Pond Park)",
       "when": "Sun · 11:00 AM - 12:00 PM",
       "dropIn": true,
@@ -2625,6 +2713,7 @@
       "category": "sports",
       "tags": [
         "fitness",
+        "nature",
         "youth"
       ],
       "location": "Garibaldi Plaza (in Washington Square Park)",
@@ -2653,8 +2742,9 @@
       "id": "nycp-exhibition-think-global-act-local-visitor-center-satterlee-street-and-hylan-boulevard-in-conference-house-park-600",
       "source": "nycparks",
       "name": "Exhibition: Think Global. Act Local.",
-      "category": "fitness",
+      "category": "nature",
       "tags": [
+        "learn",
         "arts",
         "philanthropy"
       ],
@@ -2742,7 +2832,7 @@
       "id": "nycp-family-camping-bronx-section-2-orchard-beach-in-pelham-bay-park-1140",
       "source": "nycparks",
       "name": "Family Camping: Bronx",
-      "category": "social",
+      "category": "nature",
       "location": "Section 2 Orchard Beach (in Pelham Bay Park)",
       "when": "Sun · 7:00 PM - 8:00 AM",
       "dropIn": false,
@@ -2764,7 +2854,7 @@
       "id": "nycp-family-camping-queens-alley-pond-adventure-course-in-alley-pond-park-1080",
       "source": "nycparks",
       "name": "Family Camping: Queens",
-      "category": "social",
+      "category": "nature",
       "location": "Alley Pond Adventure Course (in Alley Pond Park)",
       "when": "Sun · 6:00 PM - 7:00 AM",
       "dropIn": true,
@@ -2786,7 +2876,7 @@
       "id": "nycp-family-camping-staten-island-blue-heron-nature-center-in-blue-heron-park-1080",
       "source": "nycparks",
       "name": "Family Camping: Staten Island",
-      "category": "social",
+      "category": "nature",
       "location": "Blue Heron Nature Center (in Blue Heron Park)",
       "when": "Fri · 6:00 PM - 7:00 AM",
       "dropIn": true,
@@ -2808,7 +2898,7 @@
       "id": "nycp-find-a-friend-in-nature-hike-potter-avenue-and-royal-oak-road-in-clove-lakes-park-660",
       "source": "nycparks",
       "name": "Find a Friend In Nature Hike",
-      "category": "fitness",
+      "category": "nature",
       "location": "Potter Avenue and Royal Oak Road (in Clove Lakes Park)",
       "when": "Sun · 11:00 AM - 12:00 PM",
       "dropIn": true,
@@ -2860,7 +2950,8 @@
       "name": "Fit & Lit with Janeil Mason",
       "category": "dance",
       "tags": [
-        "fitness"
+        "fitness",
+        "nature"
       ],
       "location": "On the High Line, under the Standard Hotel (in The High Line)",
       "when": "Mon · 6:30 PM - 7:30 PM",
@@ -2884,6 +2975,9 @@
       "source": "nycparks",
       "name": "Folk Jams in Greeley Square Park",
       "category": "music",
+      "tags": [
+        "performances"
+      ],
       "location": "Greeley Square Park",
       "when": "Tue · 6:00 PM - 8:00 PM",
       "dropIn": true,
@@ -2905,8 +2999,10 @@
       "id": "nycp-foragers-in-the-foodway-concrete-plant-park-600",
       "source": "nycparks",
       "name": "Foragers in the Foodway",
-      "category": "youth",
+      "category": "nature",
       "tags": [
+        "learn",
+        "youth",
         "philanthropy"
       ],
       "location": "Concrete Plant Park",
@@ -2930,7 +3026,11 @@
       "id": "nycp-free-movie-on-the-waterfront-ferris-bueller-s-day-off-astoria-park-lawn-in-astoria-park-1230",
       "source": "nycparks",
       "name": "Free Movie On The Waterfront: Ferris Bueller's Day Off",
-      "category": "arts",
+      "category": "nature",
+      "tags": [
+        "film",
+        "accessible"
+      ],
       "location": "Astoria Park Lawn (in Astoria Park)",
       "when": "Mon · 8:30 PM - 10:00 PM",
       "dropIn": true,
@@ -2952,9 +3052,11 @@
       "id": "nycp-free-movie-on-the-waterfront-ratatouille-astoria-park-lawn-in-astoria-park-1230",
       "source": "nycparks",
       "name": "Free Movie On The Waterfront: Ratatouille",
-      "category": "arts",
+      "category": "nature",
       "tags": [
-        "youth"
+        "film",
+        "youth",
+        "accessible"
       ],
       "location": "Astoria Park Lawn (in Astoria Park)",
       "when": "Mon · 8:30 PM - 10:00 PM",
@@ -3004,7 +3106,7 @@
       "id": "nycp-friends-of-bronx-river-forest-meeting-virtual-online-events-720",
       "source": "nycparks",
       "name": "Friends of Bronx River Forest Meeting",
-      "category": "social",
+      "category": "learn",
       "tags": [
         "philanthropy"
       ],
@@ -3029,7 +3131,10 @@
       "id": "nycp-from-plant-to-paper-with-sana-ashraf-bronx-river-house-in-starlight-park-780",
       "source": "nycparks",
       "name": "From Plant to Paper with Sana Ashraf",
-      "category": "arts",
+      "category": "learn",
+      "tags": [
+        "arts"
+      ],
       "location": "Bronx River House (in Starlight Park)",
       "when": "Sat · 1:00 PM - 3:00 PM",
       "dropIn": false,
@@ -3103,6 +3208,9 @@
       "source": "nycparks",
       "name": "Full Moon Yoga Club",
       "category": "fitness",
+      "tags": [
+        "nature"
+      ],
       "location": "Backyard Garden",
       "when": "Wed · 6:30 PM - 7:30 PM",
       "dropIn": true,
@@ -3148,7 +3256,11 @@
       "id": "nycp-garden-glow-up-plant-based-beauty-workshop-harlem-grown-134th-street-farm-840",
       "source": "nycparks",
       "name": "Garden Glow-Up: Plant-Based Beauty Workshop",
-      "category": "arts",
+      "category": "nature",
+      "tags": [
+        "learn",
+        "arts"
+      ],
       "location": "Harlem Grown 134th Street Farm",
       "when": "Sat · 2:00 PM - 3:00 PM",
       "dropIn": true,
@@ -3170,7 +3282,11 @@
       "id": "nycp-garden-sing-along-east-fourth-street-community-garden-780",
       "source": "nycparks",
       "name": "Garden Sing-Along",
-      "category": "music",
+      "category": "nature",
+      "tags": [
+        "music",
+        "performances"
+      ],
       "location": "East Fourth Street Community Garden",
       "when": "Sun · 1:00 PM - 2:00 PM",
       "dropIn": true,
@@ -3268,6 +3384,9 @@
       "source": "nycparks",
       "name": "Golden Hour at Greeley Square Park",
       "category": "music",
+      "tags": [
+        "performances"
+      ],
       "location": "Greeley Square Park",
       "when": "Thu · 6:30 PM - 8:30 PM",
       "dropIn": true,
@@ -3324,7 +3443,7 @@
       "id": "nycp-greenbelt-adult-hike-acme-pond-chisholm-street-and-eylandt-street-in-wolfe-s-pond-park-660",
       "source": "nycparks",
       "name": "Greenbelt Adult Hike – Acme Pond",
-      "category": "fitness",
+      "category": "nature",
       "location": "Chisholm Street and Eylandt Street (in Wolfe's Pond Park)",
       "when": "Thu · 11:00 AM - 1:00 PM",
       "dropIn": false,
@@ -3428,6 +3547,9 @@
       "source": "nycparks",
       "name": "Harlem Run: Monday Night Run",
       "category": "fitness",
+      "tags": [
+        "nature"
+      ],
       "location": "Marcus Garvey Park",
       "when": "Mon · 6:45 PM - 8:30 PM",
       "dropIn": false,
@@ -3454,7 +3576,10 @@
       "id": "nycp-hart-island-tour-south-island-hart-island-600",
       "source": "nycparks",
       "name": "Hart Island Tour (South Island)",
-      "category": "social",
+      "category": "learn",
+      "tags": [
+        "nature"
+      ],
       "location": "Hart Island",
       "when": "Tue · 10:00 AM - 12:30 PM",
       "dropIn": true,
@@ -3477,6 +3602,9 @@
       "source": "nycparks",
       "name": "Hatha Flow",
       "category": "fitness",
+      "tags": [
+        "nature"
+      ],
       "location": "Brower Park Lawn (in Brower Park)",
       "when": "Sun · 1:00 PM - 2:00 PM",
       "dropIn": false,
@@ -3524,7 +3652,11 @@
       "id": "nycp-highland-park-community-garden-sip-discover-community-garden-in-highland-park-1080",
       "source": "nycparks",
       "name": "Highland Park Community Garden: Sip & Discover",
-      "category": "arts",
+      "category": "nature",
+      "tags": [
+        "learn",
+        "arts"
+      ],
       "location": "Community Garden (in Highland Park)",
       "when": "Wed · 6:00 PM - 8:00 PM",
       "dropIn": false,
@@ -3548,8 +3680,10 @@
       "name": "HIP TO HIP PRESENTS: AS YOU LIKE IT",
       "category": "dance",
       "tags": [
+        "learn",
         "arts",
-        "youth"
+        "youth",
+        "performances"
       ],
       "location": "Crocheron Park at 215 Place (in Crocheron Park)",
       "when": "Wed · 7:00 PM - 9:00 PM",
@@ -3575,7 +3709,8 @@
       "category": "dance",
       "tags": [
         "arts",
-        "youth"
+        "youth",
+        "performances"
       ],
       "location": "Crocheron Park at 215 Place (in Crocheron Park)",
       "when": "Thu · 7:00 PM - 9:00 PM",
@@ -3600,7 +3735,8 @@
       "name": "Hippo Playground Summer Concerts Featuring Esther Crow",
       "category": "music",
       "tags": [
-        "youth"
+        "youth",
+        "performances"
       ],
       "location": "Hippo Playground (in Riverside Park)",
       "when": "Wed · 3:30 PM - 4:30 PM",
@@ -3625,7 +3761,8 @@
       "name": "Hippo Playground Summer Concerts featuring Suzi Shelton",
       "category": "music",
       "tags": [
-        "youth"
+        "youth",
+        "performances"
       ],
       "location": "Hippo Playground (in Riverside Park)",
       "when": "Wed · 3:30 PM - 4:30 PM",
@@ -3648,7 +3785,10 @@
       "id": "nycp-historic-new-york-ridgewood-reservoir-vermont-place-parking-lot-in-highland-park-780",
       "source": "nycparks",
       "name": "Historic New York: Ridgewood Reservoir",
-      "category": "social",
+      "category": "nature",
+      "tags": [
+        "learn"
+      ],
       "location": "Vermont Place Parking Lot (in Highland Park)",
       "when": "Sun · 1:00 PM - 2:00 PM",
       "dropIn": true,
@@ -3670,7 +3810,10 @@
       "id": "nycp-historic-new-york-the-highbridge-water-tower-west-174-street-and-amsterdam-avenue-in-highbridge-park-780",
       "source": "nycparks",
       "name": "Historic New York: The Highbridge Water Tower",
-      "category": "social",
+      "category": "learn",
+      "tags": [
+        "nature"
+      ],
       "location": "West 174 Street and Amsterdam Avenue (in Highbridge Park)",
       "when": "Sun · 1:00 PM - 3:00 PM",
       "dropIn": true,
@@ -3692,7 +3835,10 @@
       "id": "nycp-historic-new-york-the-little-red-lighthouse-little-red-lighthouse-in-fort-washington-park-780",
       "source": "nycparks",
       "name": "Historic New York: The Little Red Lighthouse",
-      "category": "social",
+      "category": "learn",
+      "tags": [
+        "nature"
+      ],
       "location": "Little Red Lighthouse (in Fort Washington Park)",
       "when": "Sat · 1:00 PM - 3:00 PM",
       "dropIn": true,
@@ -3716,7 +3862,8 @@
       "name": "Hoop Jam in Herald Square Park",
       "category": "sports",
       "tags": [
-        "fitness"
+        "fitness",
+        "nature"
       ],
       "location": "Herald Square",
       "when": "Mon · 6:00 PM - 7:00 PM",
@@ -3745,6 +3892,9 @@
       "source": "nycparks",
       "name": "Hudson Classical Theater Company presents: The Dancing Men",
       "category": "arts",
+      "tags": [
+        "performances"
+      ],
       "location": "Soldiers' and Sailors' Monument (in Riverside Park)",
       "when": "Sun & Thu & Fri & Sat · 6:30 PM - 8:30 PM",
       "dropIn": true,
@@ -3798,7 +3948,11 @@
       "id": "nycp-ice-cream-flavors-of-the-diaspora-tranquility-farm-780",
       "source": "nycparks",
       "name": "Ice Cream Flavors of the Diaspora",
-      "category": "youth",
+      "category": "nature",
+      "tags": [
+        "learn",
+        "youth"
+      ],
       "location": "Tranquility Farm",
       "when": "Sat · 1:00 PM - 3:30 PM",
       "dropIn": false,
@@ -3820,7 +3974,10 @@
       "id": "nycp-incense-and-smoke-wand-workshop-with-lashette-williams-concrete-plant-park-660",
       "source": "nycparks",
       "name": "Incense and Smoke Wand Workshop with Lashette Williams",
-      "category": "arts",
+      "category": "learn",
+      "tags": [
+        "arts"
+      ],
       "location": "Concrete Plant Park",
       "when": "Sat · 11:00 AM - 1:00 PM",
       "dropIn": false,
@@ -3842,8 +3999,9 @@
       "id": "nycp-indigenous-art-workshop-with-naic-ny-bronx-river-house-in-starlight-park-660",
       "source": "nycparks",
       "name": "Indigenous Art Workshop with NAIC-NY",
-      "category": "arts",
+      "category": "learn",
       "tags": [
+        "arts",
         "youth"
       ],
       "location": "Bronx River House (in Starlight Park)",
@@ -3867,8 +4025,9 @@
       "id": "nycp-indigenous-art-workshop-with-naic-ny-bronx-river-house-in-starlight-park-720",
       "source": "nycparks",
       "name": "Indigenous Art Workshop with NAIC-NY",
-      "category": "arts",
+      "category": "learn",
       "tags": [
+        "arts",
         "youth"
       ],
       "location": "Bronx River House (in Starlight Park)",
@@ -3893,6 +4052,9 @@
       "source": "nycparks",
       "name": "intenSati",
       "category": "fitness",
+      "tags": [
+        "nature"
+      ],
       "location": "Myrtle Avenue and Park Lane South (in Forest Park)",
       "when": "Wed · 5:30 PM - 6:30 PM",
       "dropIn": false,
@@ -3916,7 +4078,7 @@
       "id": "nycp-intermediate-canoeing-west-218th-street-and-indian-road-in-inwood-hill-park-600",
       "source": "nycparks",
       "name": "Intermediate Canoeing",
-      "category": "social",
+      "category": "nature",
       "location": "West 218th Street and Indian Road (in Inwood Hill Park)",
       "when": "Wed · 10:00 AM - 11:30 AM",
       "dropIn": true,
@@ -3940,7 +4102,9 @@
       "name": "Inwood Canoe Club City of Water Saturday Open House",
       "category": "aquatics",
       "tags": [
-        "fitness"
+        "fitness",
+        "nature",
+        "accessible"
       ],
       "location": "Muscota Marsh (in Inwood Hill Park),West 218th Street and Indian Road (in Inwood Hill Park)",
       "when": "Sat · 12:15 PM - 3:00 PM",
@@ -3965,7 +4129,9 @@
       "name": "Inwood Canoe Club Sunday Open House",
       "category": "aquatics",
       "tags": [
-        "fitness"
+        "fitness",
+        "nature",
+        "accessible"
       ],
       "location": "Inwood Canoe Club (in Inwood Hill Park)",
       "when": "Sun · 9:00 AM - 12:30 PM",
@@ -4740,6 +4906,9 @@
       "source": "nycparks",
       "name": "Jazz in the Park at Ralph Ellison",
       "category": "music",
+      "tags": [
+        "performances"
+      ],
       "location": "Ralph Ellison Plaza",
       "when": "Sun · 2:00 PM - 5:00 PM",
       "dropIn": true,
@@ -7196,7 +7365,7 @@
       "id": "nycp-kissena-park-forest-restoration-kissena-park-540",
       "source": "nycparks",
       "name": "Kissena Park Forest Restoration",
-      "category": "social",
+      "category": "nature",
       "tags": [
         "philanthropy"
       ],
@@ -7598,7 +7767,7 @@
       "id": "nycp-magnetic-archery-and-foam-axe-throwing-crotona-nature-center-in-crotona-park-780",
       "source": "nycparks",
       "name": "Magnetic Archery and Foam Axe Throwing",
-      "category": "social",
+      "category": "nature",
       "location": "Crotona Nature Center (in Crotona Park)",
       "when": "Sat · 1:00 PM - 2:00 PM",
       "dropIn": true,
@@ -7620,7 +7789,7 @@
       "id": "nycp-marine-park-forest-restoration-36th-street-and-avenue-u-in-marine-park-600",
       "source": "nycparks",
       "name": "Marine Park Forest Restoration",
-      "category": "social",
+      "category": "nature",
       "tags": [
         "philanthropy"
       ],
@@ -7647,6 +7816,9 @@
       "source": "nycparks",
       "name": "Mark Morris Dance Group Workshop",
       "category": "dance",
+      "tags": [
+        "learn"
+      ],
       "location": "Brooklyn Bridge Park",
       "when": "Sun · 11:00 AM - 12:00 PM",
       "dropIn": false,
@@ -7783,6 +7955,10 @@
       "source": "nycparks",
       "name": "Meditation Marathon: Peace in the Park",
       "category": "fitness",
+      "tags": [
+        "learn",
+        "nature"
+      ],
       "location": "Naumburg Bandshell (in Central Park)",
       "when": "Fri · 12:00 PM - 6:00 PM",
       "dropIn": false,
@@ -7804,7 +7980,7 @@
       "id": "nycp-microorganisms-exploration-paerdegat-park-lawn-in-paerdegat-park-720",
       "source": "nycparks",
       "name": "Microorganisms Exploration",
-      "category": "social",
+      "category": "nature",
       "location": "Paerdegat Park Lawn (in Paerdegat Park)",
       "when": "Sun · 12:00 PM - 1:00 PM",
       "dropIn": true,
@@ -7854,6 +8030,9 @@
       "source": "nycparks",
       "name": "Midtown Fit",
       "category": "fitness",
+      "tags": [
+        "nature"
+      ],
       "location": "Herald Square",
       "when": "Thu · 6:00 PM - 7:00 PM",
       "dropIn": true,
@@ -7881,6 +8060,9 @@
       "source": "nycparks",
       "name": "Midtown Music in Greeley Square Park",
       "category": "music",
+      "tags": [
+        "performances"
+      ],
       "location": "Greeley Square Park",
       "when": "Wed · 2:30 PM - 5:30 PM",
       "dropIn": true,
@@ -7907,8 +8089,10 @@
       "id": "nycp-monday-morning-pitch-in-to-pick-up-bronx-river-house-in-starlight-park-600",
       "source": "nycparks",
       "name": "Monday Morning Pitch In to Pick Up",
-      "category": "youth",
+      "category": "nature",
       "tags": [
+        "learn",
+        "youth",
         "philanthropy"
       ],
       "location": "Bronx River House (in Starlight Park)",
@@ -7938,6 +8122,9 @@
       "source": "nycparks",
       "name": "Morning Yoga at Bryant Park",
       "category": "fitness",
+      "tags": [
+        "nature"
+      ],
       "location": "Upper Terrace (in Bryant Park)",
       "when": "Tue · 10:00 AM - 11:00 AM",
       "dropIn": false,
@@ -7994,8 +8181,9 @@
       "id": "nycp-movie-night-zootopia-2-field-62-63-in-randall-s-island-park-1200",
       "source": "nycparks",
       "name": "Movie Night: Zootopia 2",
-      "category": "arts",
+      "category": "nature",
       "tags": [
+        "film",
         "youth"
       ],
       "location": "Field 62 - 63 (in Randall's Island Park)",
@@ -8019,7 +8207,7 @@
       "id": "nycp-movie-nights-at-bella-abzug-park-ferris-bueller-s-day-off-bella-abzug-park-fountains-in-bella-abzug-park-1200",
       "source": "nycparks",
       "name": "Movie Nights at Bella Abzug Park: Ferris Bueller's Day Off",
-      "category": "arts",
+      "category": "film",
       "location": "Bella Abzug Park Fountains (in Bella Abzug Park)",
       "when": "Tue · 8:00 PM - 10:00 PM",
       "dropIn": true,
@@ -8041,7 +8229,7 @@
       "id": "nycp-movies-under-the-stars-a-minecraft-movie-basketball-court-in-parkside-playground-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: A Minecraft Movie",
-      "category": "arts",
+      "category": "film",
       "tags": [
         "youth"
       ],
@@ -8066,7 +8254,7 @@
       "id": "nycp-movies-under-the-stars-a-minecraft-movie-raoul-wallenberg-playground-in-highbridge-park-1200",
       "source": "nycparks",
       "name": "Movies Under the Stars: A MineCraft Movie",
-      "category": "arts",
+      "category": "film",
       "tags": [
         "youth"
       ],
@@ -8092,7 +8280,7 @@
       "id": "nycp-movies-under-the-stars-addams-family-values-north-plaza-in-union-square-park-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: Addams Family Values",
-      "category": "arts",
+      "category": "film",
       "location": "North Plaza (in Union Square Park)",
       "when": "Thu · 8:30 PM - 11:00 PM",
       "dropIn": false,
@@ -8116,7 +8304,7 @@
       "id": "nycp-movies-under-the-stars-big-hero-6-2014-lawn-area-in-mckinley-park-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: Big Hero 6 (2014)",
-      "category": "arts",
+      "category": "film",
       "tags": [
         "youth"
       ],
@@ -8142,7 +8330,7 @@
       "id": "nycp-movies-under-the-stars-cool-runnings-1993-play-area-in-marion-hopkinson-playground-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: Cool Runnings (1993)",
-      "category": "arts",
+      "category": "film",
       "tags": [
         "youth"
       ],
@@ -8168,7 +8356,7 @@
       "id": "nycp-movies-under-the-stars-f1-entrance-cornelia-avenue-and-chester-avenue-in-wolfe-s-pond-park-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: F1",
-      "category": "arts",
+      "category": "film",
       "location": "Entrance - Cornelia Avenue and Chester Avenue (in Wolfe's Pond Park)",
       "when": "Thu · 8:30 PM - 11:00 PM",
       "dropIn": false,
@@ -8192,7 +8380,7 @@
       "id": "nycp-movies-under-the-stars-ferris-bueller-s-day-off-play-area-in-spuyten-duyvil-playground-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: Ferris Bueller's Day Off",
-      "category": "arts",
+      "category": "film",
       "location": "Play Area (in Spuyten Duyvil Playground)",
       "when": "Wed · 8:30 PM - 10:30 PM",
       "dropIn": false,
@@ -8216,7 +8404,7 @@
       "id": "nycp-movies-under-the-stars-gabby-s-dollhouse-the-movie-play-area-in-gerard-p-dugan-playground-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: Gabby's Dollhouse: The Movie",
-      "category": "arts",
+      "category": "film",
       "tags": [
         "youth"
       ],
@@ -8242,7 +8430,7 @@
       "id": "nycp-movies-under-the-stars-goat-basketball-courts-in-watson-gleason-playground-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: Goat",
-      "category": "arts",
+      "category": "film",
       "tags": [
         "youth"
       ],
@@ -8268,7 +8456,7 @@
       "id": "nycp-movies-under-the-stars-goat-2026-far-rockaway-beach-boardwalk-in-rockaway-beach-and-boardwalk-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: Goat (2026)",
-      "category": "arts",
+      "category": "film",
       "tags": [
         "youth"
       ],
@@ -8294,7 +8482,7 @@
       "id": "nycp-movies-under-the-stars-greenland-2-migration-ballfields-in-midland-field-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: Greenland 2: Migration",
-      "category": "arts",
+      "category": "film",
       "location": "Ballfields (in Midland Field)",
       "when": "Fri · 8:30 PM - 10:00 PM",
       "dropIn": false,
@@ -8318,7 +8506,7 @@
       "id": "nycp-movies-under-the-stars-hamilton-athletic-field-in-bill-rainey-park-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: Hamilton",
-      "category": "arts",
+      "category": "film",
       "location": "Athletic Field (in Bill Rainey Park)",
       "when": "Thu · 8:30 PM - 10:30 PM",
       "dropIn": false,
@@ -8342,7 +8530,7 @@
       "id": "nycp-movies-under-the-stars-hoppers-2026-play-area-in-judge-moses-weinstein-playground-1245",
       "source": "nycparks",
       "name": "Movies Under the Stars: Hoppers (2026)",
-      "category": "arts",
+      "category": "film",
       "tags": [
         "youth"
       ],
@@ -8368,7 +8556,7 @@
       "id": "nycp-movies-under-the-stars-how-to-train-your-dragon-pg-union-turnpike-and-196th-street-in-cunningham-park-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: How to Train Your Dragon PG",
-      "category": "arts",
+      "category": "film",
       "location": "Union Turnpike and 196th Street (in Cunningham Park)",
       "when": "Mon · 8:30 PM - 10:45 PM",
       "dropIn": false,
@@ -8391,7 +8579,7 @@
       "id": "nycp-movies-under-the-stars-inside-out-2-2024-athletic-field-in-corlears-hook-park-1200",
       "source": "nycparks",
       "name": "Movies Under the Stars: Inside Out 2 (2024)",
-      "category": "arts",
+      "category": "film",
       "tags": [
         "youth"
       ],
@@ -8417,7 +8605,7 @@
       "id": "nycp-movies-under-the-stars-kicking-screaming-lower-parking-lot-in-blood-root-valley-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: Kicking & Screaming",
-      "category": "arts",
+      "category": "film",
       "tags": [
         "youth"
       ],
@@ -8443,7 +8631,7 @@
       "id": "nycp-movies-under-the-stars-michael-eastchester-playground-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: Michael",
-      "category": "arts",
+      "category": "film",
       "location": "Eastchester Playground",
       "when": "Wed · 8:30 PM - 10:30 PM",
       "dropIn": false,
@@ -8467,7 +8655,7 @@
       "id": "nycp-movies-under-the-stars-michael-lawn-area-bay-street-and-school-road-in-von-briesen-park-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: Michael",
-      "category": "arts",
+      "category": "film",
       "location": "Lawn Area - Bay Street and School Road (in Von Briesen Park)",
       "when": "Fri · 8:30 PM - 10:30 PM",
       "dropIn": false,
@@ -8491,7 +8679,7 @@
       "id": "nycp-movies-under-the-stars-robot-dreams-harlem-art-park-open-area-in-harlem-art-park-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: Robot Dreams",
-      "category": "arts",
+      "category": "film",
       "location": "Harlem Art Park Open Area (in Harlem Art Park)",
       "when": "Wed · 8:30 PM - 10:00 PM",
       "dropIn": true,
@@ -8514,7 +8702,7 @@
       "id": "nycp-movies-under-the-stars-school-of-rock-2003-long-meadow-lawn-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: School of Rock (2003)",
-      "category": "arts",
+      "category": "film",
       "location": "Long Meadow Lawn",
       "when": "Sat · 8:30 PM - 10:30 PM",
       "dropIn": false,
@@ -8538,7 +8726,7 @@
       "id": "nycp-movies-under-the-stars-sing-2-sing-along-highland-park-lawn-area-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: Sing 2 Sing-Along",
-      "category": "arts",
+      "category": "film",
       "tags": [
         "youth"
       ],
@@ -8564,7 +8752,7 @@
       "id": "nycp-movies-under-the-stars-sister-act-1992-herbert-von-king-park-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: Sister Act (1992)",
-      "category": "arts",
+      "category": "film",
       "tags": [
         "youth"
       ],
@@ -8590,7 +8778,7 @@
       "id": "nycp-movies-under-the-stars-small-soldiers-main-entrance-in-seton-park-1200",
       "source": "nycparks",
       "name": "Movies Under the Stars: Small Soldiers",
-      "category": "arts",
+      "category": "film",
       "location": "Main Entrance (in Seton Park)",
       "when": "Tue · 8:00 PM - 10:30 PM",
       "dropIn": true,
@@ -8613,7 +8801,7 @@
       "id": "nycp-movies-under-the-stars-space-jam-athletic-field-in-eugene-mccabe-field-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: Space Jam",
-      "category": "arts",
+      "category": "film",
       "location": "Athletic Field (in Eugene McCabe Field)",
       "when": "Wed · 8:30 PM - 10:30 PM",
       "dropIn": false,
@@ -8636,7 +8824,7 @@
       "id": "nycp-movies-under-the-stars-spy-kids-basketball-court-in-alexander-hamilton-playground-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: Spy Kids",
-      "category": "arts",
+      "category": "film",
       "tags": [
         "youth"
       ],
@@ -8661,7 +8849,7 @@
       "id": "nycp-movies-under-the-stars-spy-kids-2001-play-area-in-behagen-playground-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: Spy Kids (2001)",
-      "category": "arts",
+      "category": "film",
       "tags": [
         "youth"
       ],
@@ -8687,7 +8875,7 @@
       "id": "nycp-movies-under-the-stars-storks-southeast-corner-at-washington-market-park-in-washington-market-park-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: Storks",
-      "category": "arts",
+      "category": "film",
       "location": "Southeast Corner at Washington Market Park (in Washington Market Park)",
       "when": "Thu · 8:30 PM - 11:00 PM",
       "dropIn": false,
@@ -8710,7 +8898,7 @@
       "id": "nycp-movies-under-the-stars-superman-2025-homecrest-playground-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: Superman (2025)",
-      "category": "arts",
+      "category": "film",
       "location": "Homecrest Playground",
       "when": "Thu · 8:30 PM - 10:30 PM",
       "dropIn": false,
@@ -8734,7 +8922,7 @@
       "id": "nycp-movies-under-the-stars-superman-2025-play-area-in-bowne-playground-1245",
       "source": "nycparks",
       "name": "Movies Under the Stars: Superman (2025)",
-      "category": "arts",
+      "category": "film",
       "location": "Play Area (in Bowne Playground)",
       "when": "Sat · 8:45 PM - 10:45 PM",
       "dropIn": false,
@@ -8758,7 +8946,7 @@
       "id": "nycp-movies-under-the-stars-teenage-mutant-ninja-turtles-1990-grass-area-in-vidalia-park-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: Teenage Mutant Ninja Turtles (1990)",
-      "category": "arts",
+      "category": "film",
       "tags": [
         "youth"
       ],
@@ -8784,7 +8972,7 @@
       "id": "nycp-movies-under-the-stars-the-bad-guys-2-2025-multipurpose-hard-top-area-in-evergreen-park-1245",
       "source": "nycparks",
       "name": "Movies Under the Stars: The Bad Guys 2 (2025)",
-      "category": "arts",
+      "category": "film",
       "tags": [
         "youth"
       ],
@@ -8810,7 +8998,7 @@
       "id": "nycp-movies-under-the-stars-the-land-of-sometimes-2026-front-lawn-in-de-matti-park-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: The Land of Sometimes (2026)",
-      "category": "arts",
+      "category": "film",
       "tags": [
         "youth"
       ],
@@ -8836,7 +9024,7 @@
       "id": "nycp-movies-under-the-stars-the-lego-batman-movie-2017-stroud-playground-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: The LEGO Batman Movie (2017)",
-      "category": "arts",
+      "category": "film",
       "tags": [
         "youth"
       ],
@@ -8862,7 +9050,7 @@
       "id": "nycp-movies-under-the-stars-the-marvels-2023-basketball-courts-in-playground-one-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: The Marvels (2023)",
-      "category": "arts",
+      "category": "film",
       "location": "Basketball Courts (in Playground One)",
       "when": "Thu · 8:30 PM - 10:00 PM",
       "dropIn": true,
@@ -8885,7 +9073,7 @@
       "id": "nycp-movies-under-the-stars-the-santa-clause-1994-play-area-in-arrochar-playground-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: The Santa Clause (1994)",
-      "category": "arts",
+      "category": "film",
       "tags": [
         "youth"
       ],
@@ -8911,7 +9099,7 @@
       "id": "nycp-movies-under-the-stars-the-spongebob-movie-search-for-squarepants-2025-wilson-avenue-and-weirfield-street-in-irving-square-park-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: The Spongebob Movie: Search for Squarepants (2025)",
-      "category": "arts",
+      "category": "film",
       "tags": [
         "youth"
       ],
@@ -8937,7 +9125,7 @@
       "id": "nycp-movies-under-the-stars-when-harry-met-sally-outdoors-at-asser-levy-recreation-center-in-asser-levy-playground-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: When Harry Met Sally",
-      "category": "arts",
+      "category": "film",
       "location": "Outdoors at Asser Levy Recreation Center (in Asser Levy Playground)",
       "when": "Fri · 8:30 PM - 10:00 PM",
       "dropIn": true,
@@ -8959,7 +9147,7 @@
       "id": "nycp-movies-under-the-stars-wicked-for-good-crotona-tennis-house-in-crotona-park-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: Wicked: For Good",
-      "category": "arts",
+      "category": "film",
       "tags": [
         "youth"
       ],
@@ -8984,7 +9172,7 @@
       "id": "nycp-movies-under-the-stars-wicked-for-good-gymnasium-in-sorrentino-recreation-center-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: Wicked: For Good",
-      "category": "arts",
+      "category": "film",
       "tags": [
         "youth"
       ],
@@ -9010,7 +9198,7 @@
       "id": "nycp-movies-under-the-stars-wicked-for-good-williamsbridge-oval-recreation-center-front-entrance-in-williamsbridge-oval-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: Wicked: For Good",
-      "category": "arts",
+      "category": "film",
       "tags": [
         "youth"
       ],
@@ -9036,7 +9224,7 @@
       "id": "nycp-movies-under-the-stars-zootopia-2-2025-hard-top-multipurpose-field-in-dutch-kills-playground-1245",
       "source": "nycparks",
       "name": "Movies Under the Stars: Zootopia 2 (2025)",
-      "category": "arts",
+      "category": "film",
       "tags": [
         "youth"
       ],
@@ -9064,7 +9252,8 @@
       "name": "Musical Theater Workshop Performance",
       "category": "music",
       "tags": [
-        "arts"
+        "arts",
+        "performances"
       ],
       "location": "Herbert Von King Cultural Arts Center (in Herbert Von King Park)",
       "when": "Thu · 1:00 PM - 2:30 PM",
@@ -9088,7 +9277,7 @@
       "id": "nycp-nature-book-club-west-218th-street-and-indian-road-in-inwood-hill-park-1020",
       "source": "nycparks",
       "name": "Nature Book Club",
-      "category": "social",
+      "category": "nature",
       "location": "West 218th Street and Indian Road (in Inwood Hill Park)",
       "when": "Wed · 5:00 PM - 6:00 PM",
       "dropIn": true,
@@ -9110,7 +9299,11 @@
       "id": "nycp-nature-talks-at-bryant-park-reading-room-nature-and-humanity-reading-room-in-bryant-park-720",
       "source": "nycparks",
       "name": "Nature Talks at Bryant Park Reading Room: Nature and Humanity",
-      "category": "social",
+      "category": "nature",
+      "tags": [
+        "learn",
+        "accessible"
+      ],
       "location": "Reading Room (in Bryant Park)",
       "when": "Fri · 12:00 PM - 1:00 PM",
       "dropIn": true,
@@ -9132,7 +9325,7 @@
       "id": "nycp-nature-s-workshop-sandcastles-and-beachcombing-entrance-cornelia-avenue-and-chester-avenue-in-wolfe-s-pond-park-660",
       "source": "nycparks",
       "name": "Nature's Workshop: Sandcastles and Beachcombing",
-      "category": "fitness",
+      "category": "nature",
       "location": "Entrance - Cornelia Avenue and Chester Avenue (in Wolfe's Pond Park)",
       "when": "Sat · 11:00 AM - 12:00 PM",
       "dropIn": true,
@@ -9178,7 +9371,10 @@
       "id": "nycp-non-fiction-at-bryant-park-reading-room-reading-room-in-bryant-park-1140",
       "source": "nycparks",
       "name": "Non-Fiction at Bryant Park Reading Room",
-      "category": "social",
+      "category": "learn",
+      "tags": [
+        "accessible"
+      ],
       "location": "Reading Room (in Bryant Park)",
       "when": "Wed · 7:00 PM - 8:15 PM",
       "dropIn": true,
@@ -9200,7 +9396,10 @@
       "id": "nycp-non-fiction-at-bryant-park-reading-room-reading-room-in-bryant-park-1140",
       "source": "nycparks",
       "name": "Non-Fiction at Bryant Park Reading Room",
-      "category": "social",
+      "category": "learn",
+      "tags": [
+        "accessible"
+      ],
       "location": "Reading Room (in Bryant Park)",
       "when": "Wed · 7:00 PM - 8:00 PM",
       "dropIn": true,
@@ -9247,7 +9446,10 @@
       "id": "nycp-nypl-storytime-under-the-trees-east-alcove-seating-area-in-washington-square-park-660",
       "source": "nycparks",
       "name": "NYPL Storytime Under the Trees",
-      "category": "youth",
+      "category": "learn",
+      "tags": [
+        "youth"
+      ],
       "location": "East Alcove Seating Area (in Washington Square Park)",
       "when": "Tue · 11:00 AM - 11:30 AM",
       "dropIn": true,
@@ -9755,6 +9957,9 @@
       "source": "nycparks",
       "name": "On a Limb! In the Garden",
       "category": "music",
+      "tags": [
+        "performances"
+      ],
       "location": "61 Franklin Street Garden",
       "when": "Thu · 6:30 PM - 8:30 PM",
       "dropIn": true,
@@ -9776,7 +9981,11 @@
       "id": "nycp-one-book-one-bronx-book-club-bronx-river-community-garden-720",
       "source": "nycparks",
       "name": "One Book One Bronx book club",
-      "category": "social",
+      "category": "nature",
+      "tags": [
+        "learn",
+        "accessible"
+      ],
       "location": "Bronx River Community Garden",
       "when": "Sat · 12:00 PM - 1:30 PM",
       "dropIn": true,
@@ -9803,7 +10012,10 @@
       "id": "nycp-ongoing-museum-exhibit-new-york-s-brick-terra-cotta-industries-h-h-biddle-house-in-conference-house-park-660",
       "source": "nycparks",
       "name": "Ongoing Museum Exhibit: New York's Brick & Terra Cotta Industries",
-      "category": "arts",
+      "category": "learn",
+      "tags": [
+        "arts"
+      ],
       "location": "H.H. Biddle House (in Conference House Park)",
       "when": "Tue & Wed & Thu · 11:00 AM - 3:00 PM",
       "dropIn": true,
@@ -9830,8 +10042,10 @@
       "id": "nycp-ongoing-museum-exhibit-out-of-the-box-biodiversity-student-art-rutan-becket-house-in-conference-house-park-660",
       "source": "nycparks",
       "name": "Ongoing Museum Exhibit: Out of the Box Biodiversity: Student Art",
-      "category": "arts",
+      "category": "nature",
       "tags": [
+        "learn",
+        "arts",
         "youth"
       ],
       "location": "Rutan-Becket House (in Conference House Park)",
@@ -9860,7 +10074,11 @@
       "id": "nycp-ongoing-museum-exhibit-still-waters-reflections-of-a-maritime-community-rutan-becket-house-in-conference-house-park-660",
       "source": "nycparks",
       "name": "Ongoing Museum Exhibit: Still Waters: Reflections of a Maritime Community",
-      "category": "arts",
+      "category": "learn",
+      "tags": [
+        "nature",
+        "arts"
+      ],
       "location": "Rutan-Becket House (in Conference House Park)",
       "when": "Tue & Wed & Thu · 11:00 AM - 3:00 PM",
       "dropIn": true,
@@ -9887,8 +10105,9 @@
       "id": "nycp-ongoing-outdoor-museum-exhibit-alice-s-terracotta-garden-h-h-biddle-house-in-conference-house-park-660",
       "source": "nycparks",
       "name": "Ongoing Outdoor Museum Exhibit: Alice's Terracotta Garden",
-      "category": "fitness",
+      "category": "learn",
       "tags": [
+        "nature",
         "arts"
       ],
       "location": "H.H. Biddle House (in Conference House Park)",
@@ -9917,7 +10136,7 @@
       "id": "nycp-paddle-and-pick-up-at-starlight-park-bronx-river-house-in-starlight-park-780",
       "source": "nycparks",
       "name": "Paddle and Pick Up at Starlight Park",
-      "category": "social",
+      "category": "nature",
       "tags": [
         "philanthropy"
       ],
@@ -9942,7 +10161,10 @@
       "id": "nycp-paint-studio-multi-use-room-in-kissena-park-780",
       "source": "nycparks",
       "name": "Paint Studio",
-      "category": "arts",
+      "category": "learn",
+      "tags": [
+        "arts"
+      ],
       "location": "Multi-Use Room (in Kissena Park)",
       "when": "Thu · 1:00 PM - 3:00 PM",
       "dropIn": true,
@@ -9996,6 +10218,9 @@
       "source": "nycparks",
       "name": "Pétanque in the Park",
       "category": "fitness",
+      "tags": [
+        "nature"
+      ],
       "location": "Pétanque Court (in Washington Square Park)",
       "when": "Wed · 12:00 PM - 3:00 PM",
       "dropIn": true,
@@ -10023,6 +10248,9 @@
       "source": "nycparks",
       "name": "Pétanque in the Park",
       "category": "fitness",
+      "tags": [
+        "nature"
+      ],
       "location": "Pétanque Court (in Washington Square Park)",
       "when": "Mon · 1:00 PM - 4:00 PM",
       "dropIn": true,
@@ -10051,7 +10279,8 @@
       "name": "Peter and the Wolf - Archie Spigner Park",
       "category": "arts",
       "tags": [
-        "youth"
+        "youth",
+        "performances"
       ],
       "location": "St. Albans Park (in Archie Spigner Park)",
       "when": "Tue · 11:00 AM - 12:00 PM",
@@ -10076,7 +10305,8 @@
       "name": "Peter and the Wolf - Horatio Playground: Alley Pond Park",
       "category": "arts",
       "tags": [
-        "youth"
+        "youth",
+        "performances"
       ],
       "location": "Horatio Playground (in Alley Pond Park)",
       "when": "Wed · 11:00 AM - 12:00 PM",
@@ -10099,7 +10329,11 @@
       "id": "nycp-philip-wailes-ensemble-61-franklin-street-garden-1110",
       "source": "nycparks",
       "name": "Philip Wailes Ensemble",
-      "category": "music",
+      "category": "nature",
+      "tags": [
+        "music",
+        "performances"
+      ],
       "location": "61 Franklin Street Garden",
       "when": "Thu · 6:30 PM - 8:30 PM",
       "dropIn": true,
@@ -10121,7 +10355,10 @@
       "id": "nycp-phoenix-community-garden-farm-stand-phoenix-community-garden-660",
       "source": "nycparks",
       "name": "Phoenix Community Garden Farm Stand",
-      "category": "social",
+      "category": "nature",
+      "tags": [
+        "accessible"
+      ],
       "location": "Phoenix Community Garden",
       "when": "Sat · 11:00 AM - 3:00 PM",
       "dropIn": true,
@@ -10149,6 +10386,10 @@
       "source": "nycparks",
       "name": "Piano in Bryant Park",
       "category": "music",
+      "tags": [
+        "accessible",
+        "performances"
+      ],
       "location": "Upper Terrace (in Bryant Park)",
       "when": "Mon & Tue & Wed & Thu & Fri · 12:30 PM - 2:30 PM",
       "dropIn": true,
@@ -10332,6 +10573,9 @@
       "source": "nycparks",
       "name": "Poetry at Bryant Park Reading Room",
       "category": "social",
+      "tags": [
+        "accessible"
+      ],
       "location": "Reading Room (in Bryant Park)",
       "when": "Tue · 6:00 PM - 7:15 PM",
       "dropIn": true,
@@ -10358,7 +10602,10 @@
       "id": "nycp-public-gallery-tour-wave-hill-840",
       "source": "nycparks",
       "name": "Public Gallery Tour",
-      "category": "arts",
+      "category": "learn",
+      "tags": [
+        "arts"
+      ],
       "location": "Wave Hill",
       "when": "Thu & Sat · 2:00 PM - 3:00 PM",
       "dropIn": true,
@@ -10386,6 +10633,9 @@
       "source": "nycparks",
       "name": "Puppet Mobile featuring Pinocchio",
       "category": "arts",
+      "tags": [
+        "performances"
+      ],
       "location": "Peformance Space (in Roy Wilkins Recreation Center)",
       "when": "Mon · 11:00 AM - 12:00 PM",
       "dropIn": true,
@@ -10408,6 +10658,9 @@
       "source": "nycparks",
       "name": "Queens Jazz Trail Concert: Arturo O'Farrill",
       "category": "music",
+      "tags": [
+        "performances"
+      ],
       "location": "George Seuffert, Sr. Bandshell (in Forest Park)",
       "when": "Thu · 7:00 PM - 8:00 PM",
       "dropIn": true,
@@ -10430,6 +10683,9 @@
       "source": "nycparks",
       "name": "Queens Jazz Trail Concert: John Yao & His 17-Piece Instrument",
       "category": "music",
+      "tags": [
+        "performances"
+      ],
       "location": "Bowne Park Field House (in Bowne Park)",
       "when": "Thu · 7:00 PM - 8:00 PM",
       "dropIn": true,
@@ -10452,6 +10708,9 @@
       "source": "nycparks",
       "name": "Queens Jazz Trail Concert: Wycliffe Gordon",
       "category": "music",
+      "tags": [
+        "performances"
+      ],
       "location": "Beach 94th St. Amphitheater (in Rockaway Beach and Boardwalk)",
       "when": "Thu · 7:00 PM - 8:00 PM",
       "dropIn": true,
@@ -10500,8 +10759,10 @@
       "name": "Queensboro Dance Festival: Performances at Fort Totten Park",
       "category": "dance",
       "tags": [
+        "learn",
         "music",
-        "arts"
+        "arts",
+        "performances"
       ],
       "location": "Bayside Historical Society (in Fort Totten Park)",
       "when": "Sun · 3:00 PM - 4:30 PM",
@@ -10554,7 +10815,10 @@
       "id": "nycp-reel-talks-at-bryant-park-conversation-on-eric-rohmer-reading-room-in-bryant-park-750",
       "source": "nycparks",
       "name": "Reel Talks at Bryant Park: Conversation on Eric Rohmer",
-      "category": "social",
+      "category": "learn",
+      "tags": [
+        "accessible"
+      ],
       "location": "Reading Room (in Bryant Park)",
       "when": "Mon · 12:30 PM - 1:30 PM",
       "dropIn": true,
@@ -10576,7 +10840,11 @@
       "id": "nycp-reel-talks-at-bryant-park-the-making-of-rear-window-reading-room-in-bryant-park-750",
       "source": "nycparks",
       "name": "Reel Talks at Bryant Park: The Making of Rear Window",
-      "category": "arts",
+      "category": "learn",
+      "tags": [
+        "film",
+        "accessible"
+      ],
       "location": "Reading Room (in Bryant Park)",
       "when": "Mon · 12:30 PM - 1:30 PM",
       "dropIn": true,
@@ -10695,7 +10963,11 @@
       "id": "nycp-rta-summer-sunset-concert-series-featuring-richard-baratta-96th-street-tennis-courts-in-riverside-park-1140",
       "source": "nycparks",
       "name": "RTA Summer Sunset Concert Series featuring Richard Baratta",
-      "category": "music",
+      "category": "nature",
+      "tags": [
+        "music",
+        "performances"
+      ],
       "location": "96th Street Tennis Courts (in Riverside Park)",
       "when": "Sat · 7:00 PM - 8:30 PM",
       "dropIn": true,
@@ -10717,7 +10989,11 @@
       "id": "nycp-rta-summer-sunset-concert-series-featuring-the-brooklyners-96th-street-tennis-courts-in-riverside-park-1140",
       "source": "nycparks",
       "name": "RTA Summer Sunset Concert Series featuring The Brooklyners",
-      "category": "music",
+      "category": "nature",
+      "tags": [
+        "music",
+        "performances"
+      ],
       "location": "96th Street Tennis Courts (in Riverside Park)",
       "when": "Sat · 7:00 PM - 8:30 PM",
       "dropIn": true,
@@ -10740,6 +11016,9 @@
       "source": "nycparks",
       "name": "Running Group",
       "category": "fitness",
+      "tags": [
+        "nature"
+      ],
       "location": "Broadway and 251st Street (in Van Cortlandt Park)",
       "when": "Fri · 10:00 AM - 11:00 AM",
       "dropIn": false,
@@ -10765,7 +11044,8 @@
       "name": "Salsa Social",
       "category": "dance",
       "tags": [
-        "fitness"
+        "fitness",
+        "nature"
       ],
       "location": "Garibaldi Plaza (in Washington Square Park)",
       "when": "Wed · 6:00 PM - 9:00 PM",
@@ -10793,7 +11073,10 @@
       "id": "nycp-salt-marsh-ecology-hike-salt-marsh-nature-center-in-marine-park-660",
       "source": "nycparks",
       "name": "Salt Marsh Ecology Hike",
-      "category": "social",
+      "category": "nature",
+      "tags": [
+        "learn"
+      ],
       "location": "Salt Marsh Nature Center (in Marine Park)",
       "when": "Sat · 11:00 AM - 12:00 PM",
       "dropIn": true,
@@ -10815,8 +11098,10 @@
       "id": "nycp-salt-marsh-saturday-city-of-water-day-seining-in-the-harlem-river-water-s-edge-garden-in-randall-s-island-park-660",
       "source": "nycparks",
       "name": "Salt Marsh Saturday: City of Water Day Seining in the Harlem River",
-      "category": "youth",
+      "category": "nature",
       "tags": [
+        "learn",
+        "youth",
         "philanthropy"
       ],
       "location": "Water's Edge Garden (in Randall's Island Park)",
@@ -10840,7 +11125,10 @@
       "id": "nycp-screen-printing-for-beginners-multi-use-room-in-kissena-park-780",
       "source": "nycparks",
       "name": "Screen Printing for Beginners",
-      "category": "arts",
+      "category": "learn",
+      "tags": [
+        "arts"
+      ],
       "location": "Multi-Use Room (in Kissena Park)",
       "when": "Thu · 1:00 PM - 3:00 PM",
       "dropIn": true,
@@ -10868,7 +11156,7 @@
       "id": "nycp-seining-entrance-east-88th-street-and-seaview-avenue-in-canarsie-park-900",
       "source": "nycparks",
       "name": "Seining",
-      "category": "social",
+      "category": "nature",
       "location": "Entrance - East 88th Street and Seaview Avenue (in Canarsie Park)",
       "when": "Sat · 3:00 PM - 4:30 PM",
       "dropIn": true,
@@ -11799,6 +12087,9 @@
       "source": "nycparks",
       "name": "Shakespeare As You Like It",
       "category": "arts",
+      "tags": [
+        "performances"
+      ],
       "location": "Union Turnpike and 196th Street (in Cunningham Park)",
       "when": "Thu · 7:00 PM - 8:30 PM",
       "dropIn": true,
@@ -11871,7 +12162,7 @@
       "id": "nycp-shoreline-cleanup-inwood-canoe-club-in-inwood-hill-park-630",
       "source": "nycparks",
       "name": "Shoreline Cleanup",
-      "category": "social",
+      "category": "nature",
       "tags": [
         "philanthropy"
       ],
@@ -11918,7 +12209,10 @@
       "id": "nycp-sips-scholars-success-garden-east-new-york-1110",
       "source": "nycparks",
       "name": "Sips & Scholars",
-      "category": "arts",
+      "category": "learn",
+      "tags": [
+        "arts"
+      ],
       "location": "Success Garden - East New York",
       "when": "Tue · 6:30 PM - 8:30 PM",
       "dropIn": true,
@@ -11942,7 +12236,8 @@
       "name": "Skyline CircleSing with Gaia Music Collective",
       "category": "music",
       "tags": [
-        "arts"
+        "arts",
+        "performances"
       ],
       "location": "Brooklyn Bridge Park",
       "when": "Wed · 7:00 PM - 9:30 PM",
@@ -11993,6 +12288,9 @@
       "source": "nycparks",
       "name": "Soccer Skills with New York Football Academy",
       "category": "fitness",
+      "tags": [
+        "learn"
+      ],
       "location": "Harlem Grown 134th Street Farm",
       "when": "Sat · 1:00 PM - 2:30 PM",
       "dropIn": false,
@@ -12014,7 +12312,10 @@
       "id": "nycp-spotted-lanternfly-trap-building-greenbelt-nature-center-in-blood-root-valley-600",
       "source": "nycparks",
       "name": "Spotted Lanternfly Trap Building",
-      "category": "social",
+      "category": "nature",
+      "tags": [
+        "learn"
+      ],
       "location": "Greenbelt Nature Center (in Blood Root Valley)",
       "when": "Sun · 10:00 AM - 12:00 PM",
       "dropIn": false,
@@ -12036,7 +12337,10 @@
       "id": "nycp-stargazing-on-the-high-line-on-the-high-line-at-13th-street-in-the-high-line-under-the-standard-at-13th-st-in-the-high-line-1215",
       "source": "nycparks",
       "name": "Stargazing on the High Line",
-      "category": "social",
+      "category": "nature",
+      "tags": [
+        "learn"
+      ],
       "location": "On the High Line at 13th Street (in The High Line),under The Standard, at 13th St. (in The High Line)",
       "when": "Tue · 8:15 PM - 10:00 PM",
       "dropIn": true,
@@ -12087,7 +12391,7 @@
       "id": "nycp-stewardship-morning-at-the-foodway-concrete-plant-park-600",
       "source": "nycparks",
       "name": "Stewardship Morning at the Foodway",
-      "category": "social",
+      "category": "nature",
       "tags": [
         "philanthropy"
       ],
@@ -12117,7 +12421,11 @@
       "id": "nycp-storytime-at-bryant-park-reading-room-reading-room-in-bryant-park-630",
       "source": "nycparks",
       "name": "StoryTime at Bryant Park Reading Room",
-      "category": "youth",
+      "category": "learn",
+      "tags": [
+        "youth",
+        "accessible"
+      ],
       "location": "Reading Room (in Bryant Park)",
       "when": "Tue · 10:30 AM - 11:30 AM",
       "dropIn": true,
@@ -12340,6 +12648,9 @@
       "source": "nycparks",
       "name": "Summer Concert Series -  The Zoo",
       "category": "music",
+      "tags": [
+        "performances"
+      ],
       "location": "George Seuffert, Sr. Bandshell (in Forest Park)",
       "when": "Thu · 7:30 PM - 9:00 PM",
       "dropIn": true,
@@ -12362,6 +12673,9 @@
       "source": "nycparks",
       "name": "Summer Concert Series - Queens Jazz Trail - Arturo O'Farrill",
       "category": "music",
+      "tags": [
+        "performances"
+      ],
       "location": "George Seuffert, Sr. Bandshell (in Forest Park)",
       "when": "Thu · 7:00 PM - 9:00 PM",
       "dropIn": true,
@@ -12384,6 +12698,9 @@
       "source": "nycparks",
       "name": "Summer Concert Series - Queensboro Dance Festival",
       "category": "music",
+      "tags": [
+        "performances"
+      ],
       "location": "George Seuffert, Sr. Bandshell (in Forest Park)",
       "when": "Thu · 7:00 PM - 9:00 PM",
       "dropIn": true,
@@ -12405,7 +12722,7 @@
       "id": "nycp-summer-movies-in-the-park-shrek-2-long-meadow-north-in-prospect-park-1080",
       "source": "nycparks",
       "name": "Summer Movies in the Park | Shrek 2",
-      "category": "arts",
+      "category": "film",
       "location": "Long Meadow North (in Prospect Park)",
       "when": "Wed · 6:00 PM - 10:00 PM",
       "dropIn": false,
@@ -12428,6 +12745,9 @@
       "source": "nycparks",
       "name": "Summer on the Hudson: Amplified Sundays featuring Chispa",
       "category": "music",
+      "tags": [
+        "performances"
+      ],
       "location": "Pier I (in Riverside Park South)",
       "when": "Sun · 7:00 PM - 8:30 PM",
       "dropIn": true,
@@ -12477,7 +12797,10 @@
       "id": "nycp-summer-on-the-hudson-art-in-the-park-riverbank-camel-playground-in-riverside-park-600",
       "source": "nycparks",
       "name": "Summer on the Hudson: Art in the Park",
-      "category": "arts",
+      "category": "nature",
+      "tags": [
+        "arts"
+      ],
       "location": "Riverbank (Camel) Playground (in Riverside Park)",
       "when": "Mon & Thu · 10:00 AM - 12:00 PM",
       "dropIn": true,
@@ -12508,6 +12831,7 @@
       "category": "dance",
       "tags": [
         "fitness",
+        "nature",
         "arts"
       ],
       "location": "On the Pier (in West Harlem Piers)",
@@ -12531,7 +12855,10 @@
       "id": "nycp-summer-on-the-hudson-billion-oyster-project-presentation-on-the-pier-in-west-harlem-piers-720",
       "source": "nycparks",
       "name": "Summer on the Hudson: Billion Oyster Project Presentation",
-      "category": "social",
+      "category": "nature",
+      "tags": [
+        "learn"
+      ],
       "location": "On the Pier (in West Harlem Piers)",
       "when": "Sat · 12:00 PM - 2:00 PM",
       "dropIn": true,
@@ -12553,7 +12880,7 @@
       "id": "nycp-summer-on-the-hudson-birding-tour-116th-street-and-riverside-drive-in-riverside-park-480",
       "source": "nycparks",
       "name": "Summer on the Hudson: Birding Tour",
-      "category": "social",
+      "category": "nature",
       "location": "116th Street and Riverside Drive (in Riverside Park)",
       "when": "Sat · 8:00 AM - 10:00 AM",
       "dropIn": true,
@@ -12576,6 +12903,9 @@
       "source": "nycparks",
       "name": "Summer on the Hudson: Bodyweight Blast",
       "category": "fitness",
+      "tags": [
+        "nature"
+      ],
       "location": "Pier I (in Riverside Park South)",
       "when": "Thu · 6:30 PM - 7:30 PM",
       "dropIn": true,
@@ -12599,7 +12929,8 @@
       "name": "Summer on the Hudson: Cardio Dance with Caro",
       "category": "dance",
       "tags": [
-        "fitness"
+        "fitness",
+        "nature"
       ],
       "location": "145th and the Hudson River (in Riverside Park)",
       "when": "Tue · 6:30 PM - 7:30 PM",
@@ -12622,10 +12953,12 @@
       "id": "nycp-summer-on-the-hudson-children-s-performance-series-featuring-arm-of-the-sea-theatre-pier-i-in-riverside-park-south-600",
       "source": "nycparks",
       "name": "Summer on the Hudson: Children's Performance Series featuring Arm-of-the-Sea Theatre",
-      "category": "music",
+      "category": "nature",
       "tags": [
+        "music",
         "arts",
-        "youth"
+        "youth",
+        "performances"
       ],
       "location": "Pier I (in Riverside Park South)",
       "when": "Thu · 10:00 AM - 11:00 AM",
@@ -12648,9 +12981,11 @@
       "id": "nycp-summer-on-the-hudson-children-s-performance-series-featuring-joanie-leeds-pier-i-in-riverside-park-south-600",
       "source": "nycparks",
       "name": "Summer on the Hudson: Children's Performance Series featuring Joanie Leeds",
-      "category": "music",
+      "category": "nature",
       "tags": [
-        "youth"
+        "music",
+        "youth",
+        "performances"
       ],
       "location": "Pier I (in Riverside Park South)",
       "when": "Thu · 10:00 AM - 11:00 AM",
@@ -12674,6 +13009,9 @@
       "source": "nycparks",
       "name": "Summer on the Hudson: Everybody Tango!",
       "category": "dance",
+      "tags": [
+        "nature"
+      ],
       "location": "On the Pier (in West Harlem Piers)",
       "when": "Wed · 6:30 PM - 8:30 PM",
       "dropIn": true,
@@ -12695,7 +13033,11 @@
       "id": "nycp-summer-on-the-hudson-friday-night-jams-featuring-christine-chanel-125th-street-and-marginal-street-in-west-harlem-piers-1140",
       "source": "nycparks",
       "name": "Summer on the Hudson: Friday Night Jams featuring Christine Chanel",
-      "category": "music",
+      "category": "nature",
+      "tags": [
+        "music",
+        "performances"
+      ],
       "location": "125th Street and Marginal Street (in West Harlem Piers)",
       "when": "Fri · 7:00 PM - 8:00 PM",
       "dropIn": false,
@@ -12719,7 +13061,8 @@
       "name": "Summer on the Hudson: Joyflow",
       "category": "dance",
       "tags": [
-        "fitness"
+        "fitness",
+        "nature"
       ],
       "location": "145th and the Hudson River (in Riverside Park)",
       "when": "Tue · 6:30 PM - 7:30 PM",
@@ -12744,7 +13087,8 @@
       "name": "Summer on the Hudson: Movement Speaks Workshop",
       "category": "dance",
       "tags": [
-        "fitness"
+        "fitness",
+        "nature"
       ],
       "location": "General Grant National Memorial (Grant's Tomb) (in Riverside Park)",
       "when": "Wed · 11:00 AM - 12:30 PM",
@@ -12772,8 +13116,9 @@
       "id": "nycp-summer-on-the-hudson-movies-on-the-waterfront-strange-world-2022-145th-and-the-hudson-river-in-riverside-park-1200",
       "source": "nycparks",
       "name": "Summer on the Hudson: Movies on the Waterfront - Strange World (2022)",
-      "category": "arts",
+      "category": "nature",
       "tags": [
+        "film",
         "youth"
       ],
       "location": "145th and the Hudson River (in Riverside Park)",
@@ -12797,7 +13142,11 @@
       "id": "nycp-summer-on-the-hudson-mycelium-a-solar-powered-concert-pier-i-in-riverside-park-south-1140",
       "source": "nycparks",
       "name": "Summer on the Hudson: Mycelium - A Solar-Powered Concert",
-      "category": "music",
+      "category": "nature",
+      "tags": [
+        "music",
+        "performances"
+      ],
       "location": "Pier I (in Riverside Park South)",
       "when": "Tue · 7:00 PM - 8:30 PM",
       "dropIn": true,
@@ -12846,7 +13195,7 @@
       "id": "nycp-summer-on-the-hudson-pier-i-picture-show-the-good-dinosaur-2015-pier-i-in-riverside-park-south-1230",
       "source": "nycparks",
       "name": "Summer on the Hudson: Pier I Picture Show- The Good Dinosaur (2015)",
-      "category": "arts",
+      "category": "film",
       "tags": [
         "youth"
       ],
@@ -12871,7 +13220,7 @@
       "id": "nycp-summer-on-the-hudson-pier-i-picture-show-the-maltese-falcon-1941-pier-i-in-riverside-park-south-1230",
       "source": "nycparks",
       "name": "Summer on the Hudson: Pier I Picture Show- The Maltese Falcon (1941)",
-      "category": "arts",
+      "category": "film",
       "location": "Pier I (in Riverside Park South)",
       "when": "Wed · 8:30 PM - 10:30 PM",
       "dropIn": true,
@@ -12894,6 +13243,9 @@
       "source": "nycparks",
       "name": "Summer on the Hudson: Pilates in the Park",
       "category": "fitness",
+      "tags": [
+        "nature"
+      ],
       "location": "The Plaza at 66th Street (in Riverside Park South)",
       "when": "Tue · 6:30 PM - 7:30 PM",
       "dropIn": true,
@@ -12920,7 +13272,7 @@
       "id": "nycp-summer-on-the-hudson-riverside-comedy-club-pier-i-in-riverside-park-south-1170",
       "source": "nycparks",
       "name": "Summer on the Hudson: Riverside Comedy Club",
-      "category": "social",
+      "category": "nature",
       "location": "Pier I (in Riverside Park South)",
       "when": "Fri · 7:30 PM - 9:00 PM",
       "dropIn": true,
@@ -12943,6 +13295,9 @@
       "source": "nycparks",
       "name": "Summer on the Hudson: Silent Disco",
       "category": "dance",
+      "tags": [
+        "nature"
+      ],
       "location": "Pier I (in Riverside Park South)",
       "when": "Sat · 6:00 PM - 10:00 PM",
       "dropIn": true,
@@ -12986,7 +13341,11 @@
       "id": "nycp-summer-on-the-hudson-summer-pops-with-calliope-brass-125th-street-and-marginal-street-in-west-harlem-piers-1140",
       "source": "nycparks",
       "name": "Summer on the Hudson: Summer Pops with Calliope Brass",
-      "category": "music",
+      "category": "nature",
+      "tags": [
+        "music",
+        "performances"
+      ],
       "location": "125th Street and Marginal Street (in West Harlem Piers)",
       "when": "Fri · 7:00 PM - 8:00 PM",
       "dropIn": true,
@@ -13008,7 +13367,10 @@
       "id": "nycp-summer-on-the-hudson-sun-gaze-sundays-pier-i-in-riverside-park-south-780",
       "source": "nycparks",
       "name": "Summer on the Hudson: Sun Gaze Sundays",
-      "category": "social",
+      "category": "learn",
+      "tags": [
+        "nature"
+      ],
       "location": "Pier I (in Riverside Park South)",
       "when": "Sun · 1:00 PM - 4:00 PM",
       "dropIn": true,
@@ -13031,6 +13393,9 @@
       "source": "nycparks",
       "name": "Summer on the Hudson: Sunset Yoga",
       "category": "fitness",
+      "tags": [
+        "nature"
+      ],
       "location": "145th and the Hudson River (in Riverside Park)",
       "when": "Thu · 6:30 PM - 7:30 PM",
       "dropIn": true,
@@ -13058,6 +13423,9 @@
       "source": "nycparks",
       "name": "Summer on the Hudson: Tai Chi",
       "category": "fitness",
+      "tags": [
+        "nature"
+      ],
       "location": "Soldiers' and Sailors' Monument (in Riverside Park)",
       "when": "Sun · 8:00 AM - 9:30 AM",
       "dropIn": true,
@@ -13110,6 +13478,9 @@
       "source": "nycparks",
       "name": "Summer on the Hudson: Vinyl Nights",
       "category": "dance",
+      "tags": [
+        "nature"
+      ],
       "location": "Pier I (in Riverside Park South)",
       "when": "Sat · 6:00 PM - 9:30 PM",
       "dropIn": true,
@@ -13132,6 +13503,9 @@
       "source": "nycparks",
       "name": "Summer on the Hudson: Yoga- Evening Salute to the Sun",
       "category": "fitness",
+      "tags": [
+        "nature"
+      ],
       "location": "The Plaza at 66th Street (in Riverside Park South)",
       "when": "Wed · 6:30 PM - 7:30 PM",
       "dropIn": true,
@@ -13623,7 +13997,7 @@
       "id": "nycp-summerstarz-2026-free-movies-wnyc-transmitter-park-1200",
       "source": "nycparks",
       "name": "Summerstarz 2026 Free Movies",
-      "category": "arts",
+      "category": "film",
       "tags": [
         "youth"
       ],
@@ -13656,7 +14030,9 @@
       "category": "dance",
       "tags": [
         "music",
-        "arts"
+        "arts",
+        "accessible",
+        "performances"
       ],
       "location": "Wave Hill",
       "when": "Wed · 7:00 PM - 8:00 PM",
@@ -13684,7 +14060,10 @@
       "id": "nycp-tapestry-weaving-workshop-with-amirtha-arasu-bronx-river-house-in-starlight-park-780",
       "source": "nycparks",
       "name": "Tapestry Weaving Workshop with Amirtha Arasu",
-      "category": "arts",
+      "category": "learn",
+      "tags": [
+        "arts"
+      ],
       "location": "Bronx River House (in Starlight Park)",
       "when": "Sat · 1:00 PM - 3:00 PM",
       "dropIn": false,
@@ -13728,7 +14107,10 @@
       "id": "nycp-teach-a-horse-to-fish-with-ciara-middleton-concrete-plant-park-840",
       "source": "nycparks",
       "name": "Teach a Horse to Fish with Ciara Middleton",
-      "category": "social",
+      "category": "nature",
+      "tags": [
+        "learn"
+      ],
       "location": "Concrete Plant Park",
       "when": "Fri · 2:00 PM - 4:00 PM",
       "dropIn": false,
@@ -13750,8 +14132,9 @@
       "id": "nycp-team-river-volunteers-randall-s-island-park-570",
       "source": "nycparks",
       "name": "Team RIVER Volunteers",
-      "category": "social",
+      "category": "nature",
       "tags": [
+        "learn",
         "philanthropy"
       ],
       "location": "Randall's Island Park",
@@ -13781,7 +14164,10 @@
       "id": "nycp-the-bronx-museum-presents-meet-me-at-the-park-wood-carving-with-artist-jill-cohen-nu-ez-joyce-kilmer-park-900",
       "source": "nycparks",
       "name": "The Bronx Museum Presents: Meet Me At The Park–Wood Carving With Artist Jill Cohen-Nuñez",
-      "category": "arts",
+      "category": "learn",
+      "tags": [
+        "arts"
+      ],
       "location": "Joyce Kilmer Park",
       "when": "Wed · 3:00 PM - 5:00 PM",
       "dropIn": true,
@@ -13803,7 +14189,10 @@
       "id": "nycp-the-light-that-shines-through-the-universe-the-nature-of-light-on-the-high-line-at-30th-st-in-the-high-line-the-spur-in-the-high-line-750",
       "source": "nycparks",
       "name": "The Light That Shines Through the Universe: The Nature of Light",
-      "category": "arts",
+      "category": "learn",
+      "tags": [
+        "arts"
+      ],
       "location": "On the High Line at 30th St. (in The High Line),The Spur (in The High Line)",
       "when": "Wed · 12:30 PM - 1:30 PM",
       "dropIn": false,
@@ -13874,6 +14263,9 @@
       "source": "nycparks",
       "name": "Total Body Fitness",
       "category": "fitness",
+      "tags": [
+        "nature"
+      ],
       "location": "Handball Courts (in St. John's Park)",
       "when": "Tue & Thu · 8:00 AM - 9:00 AM",
       "dropIn": false,
@@ -13946,6 +14338,9 @@
       "source": "nycparks",
       "name": "Total Body Reset",
       "category": "fitness",
+      "tags": [
+        "nature"
+      ],
       "location": "Herbert Von King Park",
       "when": "Sat · 11:00 AM - 12:00 PM",
       "dropIn": false,
@@ -13971,6 +14366,7 @@
       "name": "Trail Work Thursdays",
       "category": "fitness",
       "tags": [
+        "nature",
         "philanthropy"
       ],
       "location": "VCPA Learning Garden (in Van Cortlandt Park)",
@@ -13999,8 +14395,9 @@
       "id": "nycp-trees-count-at-asser-levy-park-asser-levy-park-play-area-in-asser-levy-park-600",
       "source": "nycparks",
       "name": "Trees Count at Asser Levy Park",
-      "category": "social",
+      "category": "nature",
       "tags": [
+        "learn",
         "philanthropy"
       ],
       "location": "Asser Levy Park Play Area (in Asser Levy Park)",
@@ -14024,8 +14421,9 @@
       "id": "nycp-trees-count-at-barretto-point-park-tiffany-street-and-viele-avenue-in-barretto-point-park-600",
       "source": "nycparks",
       "name": "Trees Count at Barretto Point Park",
-      "category": "social",
+      "category": "nature",
       "tags": [
+        "learn",
         "philanthropy"
       ],
       "location": "Tiffany Street and Viele Avenue (in Barretto Point Park)",
@@ -14049,8 +14447,9 @@
       "id": "nycp-trees-count-at-canarsie-park-canarsie-park-600",
       "source": "nycparks",
       "name": "Trees Count at Canarsie Park",
-      "category": "social",
+      "category": "nature",
       "tags": [
+        "learn",
         "philanthropy"
       ],
       "location": "Canarsie Park",
@@ -14074,8 +14473,9 @@
       "id": "nycp-trees-count-at-father-macris-park-father-macris-park-660",
       "source": "nycparks",
       "name": "Trees Count at Father Macris Park",
-      "category": "social",
+      "category": "nature",
       "tags": [
+        "learn",
         "philanthropy"
       ],
       "location": "Father Macris Park",
@@ -14099,8 +14499,9 @@
       "id": "nycp-trees-count-at-franz-sigel-park-franz-sigel-park-600",
       "source": "nycparks",
       "name": "Trees Count at Franz Sigel Park",
-      "category": "social",
+      "category": "nature",
       "tags": [
+        "learn",
         "philanthropy"
       ],
       "location": "Franz Sigel Park",
@@ -14124,8 +14525,9 @@
       "id": "nycp-trees-count-at-grover-cleveland-playground-play-area-in-grover-cleveland-playground-720",
       "source": "nycparks",
       "name": "Trees Count at Grover Cleveland Playground",
-      "category": "social",
+      "category": "nature",
       "tags": [
+        "learn",
         "philanthropy"
       ],
       "location": "Play Area (in Grover Cleveland Playground)",
@@ -14149,8 +14551,9 @@
       "id": "nycp-trees-count-at-jennifer-s-playground-jennifer-s-playground-600",
       "source": "nycparks",
       "name": "Trees Count at Jennifer's Playground",
-      "category": "social",
+      "category": "nature",
       "tags": [
+        "learn",
         "philanthropy"
       ],
       "location": "Jennifer's Playground",
@@ -14174,8 +14577,9 @@
       "id": "nycp-trees-count-at-latourette-park-historic-richmond-town-historic-richmond-town-600",
       "source": "nycparks",
       "name": "Trees Count at Latourette Park (Historic Richmond Town)",
-      "category": "social",
+      "category": "nature",
       "tags": [
+        "learn",
         "philanthropy"
       ],
       "location": "Historic Richmond Town",
@@ -14199,8 +14603,9 @@
       "id": "nycp-trees-count-at-pomonok-playground-pomonok-playground-600",
       "source": "nycparks",
       "name": "Trees Count at Pomonok Playground",
-      "category": "social",
+      "category": "nature",
       "tags": [
+        "learn",
         "philanthropy"
       ],
       "location": "Pomonok Playground",
@@ -14224,8 +14629,9 @@
       "id": "nycp-trees-count-at-prospect-park-parkside-and-ocean-avenue-entrance-in-prospect-park-600",
       "source": "nycparks",
       "name": "Trees Count at Prospect Park",
-      "category": "social",
+      "category": "nature",
       "tags": [
+        "learn",
         "philanthropy"
       ],
       "location": "Parkside and Ocean Avenue entrance (in Prospect Park)",
@@ -14249,8 +14655,9 @@
       "id": "nycp-trees-count-at-riverside-park-south-west-66th-street-and-riverside-boulevard-in-riverside-park-600",
       "source": "nycparks",
       "name": "Trees Count at Riverside Park South",
-      "category": "social",
+      "category": "nature",
       "tags": [
+        "learn",
         "philanthropy"
       ],
       "location": "West 66th Street and Riverside Boulevard (in Riverside Park)",
@@ -14274,8 +14681,9 @@
       "id": "nycp-trees-count-at-rochdale-park-rochdale-park-jhs-72-in-rochdale-park-780",
       "source": "nycparks",
       "name": "Trees Count at Rochdale Park",
-      "category": "social",
+      "category": "nature",
       "tags": [
+        "learn",
         "philanthropy"
       ],
       "location": "Rochdale Park (JHS 72) (in Rochdale Park)",
@@ -14299,7 +14707,7 @@
       "id": "nycp-trees-count-at-soundview-park-with-the-urban-park-rangers-entrance-metcalf-avenue-and-seward-avenue-in-soundview-park-660",
       "source": "nycparks",
       "name": "Trees Count at Soundview Park with the Urban Park Rangers",
-      "category": "social",
+      "category": "nature",
       "location": "Entrance - Metcalf Avenue and Seward Avenue (in Soundview Park)",
       "when": "Sun · 11:00 AM - 1:00 PM",
       "dropIn": true,
@@ -14321,8 +14729,9 @@
       "id": "nycp-trees-count-at-spring-creek-park-spring-creek-park-600",
       "source": "nycparks",
       "name": "Trees Count at Spring Creek Park",
-      "category": "social",
+      "category": "nature",
       "tags": [
+        "learn",
         "philanthropy"
       ],
       "location": "Spring Creek Park",
@@ -14346,8 +14755,9 @@
       "id": "nycp-trees-count-at-st-james-park-st-james-park-780",
       "source": "nycparks",
       "name": "Trees Count at St. James Park",
-      "category": "social",
+      "category": "nature",
       "tags": [
+        "learn",
         "philanthropy"
       ],
       "location": "St. James Park",
@@ -14371,8 +14781,9 @@
       "id": "nycp-trees-count-at-thomas-jefferson-park-thomas-jefferson-park-600",
       "source": "nycparks",
       "name": "Trees Count at Thomas Jefferson Park",
-      "category": "social",
+      "category": "nature",
       "tags": [
+        "learn",
         "philanthropy"
       ],
       "location": "Thomas Jefferson Park",
@@ -14396,8 +14807,9 @@
       "id": "nycp-trees-count-at-washington-market-park-washington-market-park-600",
       "source": "nycparks",
       "name": "Trees Count at Washington Market Park",
-      "category": "social",
+      "category": "nature",
       "tags": [
+        "learn",
         "philanthropy"
       ],
       "location": "Washington Market Park",
@@ -14421,8 +14833,9 @@
       "id": "nycp-trees-count-at-washington-s-walk-washington-s-walk-600",
       "source": "nycparks",
       "name": "Trees Count at Washington's Walk",
-      "category": "social",
+      "category": "nature",
       "tags": [
+        "learn",
         "philanthropy"
       ],
       "location": "Washington's Walk",
@@ -14446,8 +14859,9 @@
       "id": "nycp-turtle-quest-explore-observe-protect-with-lizbeth-miron-shoelace-park-in-bronx-park-660",
       "source": "nycparks",
       "name": "Turtle Quest: Explore, Observe, Protect with Lizbeth Miron",
-      "category": "social",
+      "category": "nature",
       "tags": [
+        "learn",
         "philanthropy"
       ],
       "location": "Shoelace Park (in Bronx Park)",
@@ -14471,7 +14885,7 @@
       "id": "nycp-ugh-it-s-a-bug-greenbelt-nature-center-in-blood-root-valley-660",
       "source": "nycparks",
       "name": "Ugh It's a Bug",
-      "category": "fitness",
+      "category": "nature",
       "tags": [
         "youth"
       ],
@@ -14522,6 +14936,8 @@
       "name": "Urban Farm Volunteers",
       "category": "fitness",
       "tags": [
+        "nature",
+        "learn",
         "philanthropy"
       ],
       "location": "Urban Farm (in Randall's Island Park)",
@@ -14650,7 +15066,7 @@
       "id": "nycp-volunteer-day-bay-84th-street-community-garden-bay-84th-street-community-garden-600",
       "source": "nycparks",
       "name": "Volunteer Day: Bay 84th Street Community Garden",
-      "category": "social",
+      "category": "nature",
       "tags": [
         "philanthropy"
       ],
@@ -14675,7 +15091,7 @@
       "id": "nycp-volunteer-day-newport-garden-newport-community-garden-600",
       "source": "nycparks",
       "name": "Volunteer Day: Newport Garden",
-      "category": "social",
+      "category": "nature",
       "tags": [
         "philanthropy"
       ],
@@ -14700,7 +15116,7 @@
       "id": "nycp-volunteer-day-work-learn-at-hattie-carthan-herban-farm-hattie-carthan-herban-farm-960",
       "source": "nycparks",
       "name": "Volunteer Day: Work + Learn at Hattie Carthan Herban Farm",
-      "category": "social",
+      "category": "nature",
       "tags": [
         "philanthropy"
       ],
@@ -14725,7 +15141,12 @@
       "id": "nycp-waterfront-concert-series-forever-ray-astoria-park-lawn-in-astoria-park-1170",
       "source": "nycparks",
       "name": "Waterfront Concert Series: Forever Ray",
-      "category": "music",
+      "category": "nature",
+      "tags": [
+        "music",
+        "accessible",
+        "performances"
+      ],
       "location": "Astoria Park Lawn (in Astoria Park)",
       "when": "Thu · 7:30 PM - 9:00 PM",
       "dropIn": true,
@@ -14747,7 +15168,11 @@
       "id": "nycp-waterfront-concert-series-strangemagic-astoria-park-lawn-in-astoria-park-1170",
       "source": "nycparks",
       "name": "Waterfront Concert Series: StrangeMagic",
-      "category": "music",
+      "category": "nature",
+      "tags": [
+        "music",
+        "performances"
+      ],
       "location": "Astoria Park Lawn (in Astoria Park)",
       "when": "Thu · 7:30 PM - 9:00 PM",
       "dropIn": true,
@@ -14769,7 +15194,7 @@
       "id": "nycp-waterfront-walks-brooklyn-bridge-park-630",
       "source": "nycparks",
       "name": "Waterfront Walks",
-      "category": "fitness",
+      "category": "nature",
       "location": "Brooklyn Bridge Park",
       "when": "Sun · 10:30 AM - 12:00 PM",
       "dropIn": false,
@@ -14797,6 +15222,9 @@
       "source": "nycparks",
       "name": "Waterfront Workouts: Amp'd Bootcamp",
       "category": "fitness",
+      "tags": [
+        "nature"
+      ],
       "location": "Pier 2 (in Brooklyn Bridge Park),Brooklyn Bridge Park",
       "when": "Wed · 6:00 PM - 7:00 PM",
       "dropIn": false,
@@ -14824,6 +15252,9 @@
       "source": "nycparks",
       "name": "West Harlem Summer Jazz Festival",
       "category": "music",
+      "tags": [
+        "performances"
+      ],
       "location": "James Baldwin Lawn (in St. Nicholas Park),135th Street and St. Nicholas Avenue (in St. Nicholas Park)",
       "when": "Fri · 6:00 PM - 7:30 PM",
       "dropIn": true,
@@ -14872,7 +15303,10 @@
       "id": "nycp-wild-apothecary-from-soil-to-skin-with-imelda-bell-concrete-plant-park-960",
       "source": "nycparks",
       "name": "Wild Apothecary: From Soil to Skin with Imelda Bell",
-      "category": "social",
+      "category": "nature",
+      "tags": [
+        "learn"
+      ],
       "location": "Concrete Plant Park",
       "when": "Fri · 4:00 PM - 6:00 PM",
       "dropIn": false,
@@ -14894,7 +15328,10 @@
       "id": "nycp-worms-at-work-compost-sifting-soil-discovery-harlem-grown-134th-street-farm-840",
       "source": "nycparks",
       "name": "Worms at Work: Compost Sifting & Soil Discovery",
-      "category": "social",
+      "category": "nature",
+      "tags": [
+        "learn"
+      ],
       "location": "Harlem Grown 134th Street Farm",
       "when": "Sat · 2:00 PM - 3:00 PM",
       "dropIn": true,
@@ -14916,7 +15353,10 @@
       "id": "nycp-writers-workshop-at-bryant-park-reading-room-reading-room-in-bryant-park-1110",
       "source": "nycparks",
       "name": "Writers Workshop at Bryant Park Reading Room",
-      "category": "social",
+      "category": "learn",
+      "tags": [
+        "accessible"
+      ],
       "location": "Reading Room (in Bryant Park)",
       "when": "Thu · 6:30 PM - 8:00 PM",
       "dropIn": true,
@@ -14944,6 +15384,9 @@
       "source": "nycparks",
       "name": "Yoga",
       "category": "fitness",
+      "tags": [
+        "nature"
+      ],
       "location": "Brooklyn Public Library- Gerritsen Beach",
       "when": "Mon · 10:00 AM - 11:00 AM",
       "dropIn": false,
@@ -15043,6 +15486,9 @@
       "source": "nycparks",
       "name": "Yoga",
       "category": "fitness",
+      "tags": [
+        "nature"
+      ],
       "location": "Garibaldi Plaza (in Washington Square Park)",
       "when": "Fri · 8:30 AM - 9:30 AM",
       "dropIn": true,
@@ -15118,6 +15564,9 @@
       "source": "nycparks",
       "name": "Yoga at Bryant Park",
       "category": "fitness",
+      "tags": [
+        "nature"
+      ],
       "location": "Bryant Park Lawn (in Bryant Park)",
       "when": "Wed · 6:00 PM - 7:00 PM",
       "dropIn": false,
@@ -15146,7 +15595,9 @@
       "name": "Yoga in the Park",
       "category": "sports",
       "tags": [
-        "fitness"
+        "fitness",
+        "learn",
+        "nature"
       ],
       "location": "East River Picnic Area (in Randall's Island Park)",
       "when": "Tue · 6:30 PM - 7:30 PM",
@@ -15176,7 +15627,9 @@
       "name": "Yoga in the Park",
       "category": "sports",
       "tags": [
-        "fitness"
+        "fitness",
+        "learn",
+        "nature"
       ],
       "location": "East River Picnic Area (in Randall's Island Park)",
       "when": "Sat · 10:00 AM - 11:00 AM",
@@ -15338,7 +15791,8 @@
       "name": "Zumba",
       "category": "dance",
       "tags": [
-        "fitness"
+        "fitness",
+        "nature"
       ],
       "location": "Midland Beach Splash Plaza (in Franklin D. Roosevelt Boardwalk and Beach)",
       "when": "Sat · 9:00 AM - 10:00 AM",
@@ -15663,5 +16117,5 @@
       "url": "https://www.nycgovparks.org/events/2026/07/23/zumba-under-the-stars-wlisa-g-rockazumbaway"
     }
   ],
-  "fetchedAt": "2026-07-23T07:53:26.926Z"
+  "fetchedAt": "2026-07-23T08:10:14.583Z"
 }

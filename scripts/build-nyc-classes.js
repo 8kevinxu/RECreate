@@ -72,10 +72,22 @@ const CATEGORY_MAP = [
   ['aquatics', /swim|aquatic/i],
   ['sports', /sports|pickleball|tennis|basketball|soccer|volleyball|baseball|track|golf|skate|hockey|martial|boxing|archery/i],
   ['dance', /dance/i],
-  ['fitness', /fitness|shape up|exercise|yoga|pilates|zumba|wellness|tai chi|hik(e|ing)|running|walking|biking/i],
+  // Fitness no longer claims hiking/walking — those read as outdoors (below).
+  ['fitness', /fitness|shape up|exercise|yoga|pilates|zumba|wellness|tai chi|running|jogging|biking|cycling|strength|weightlift|calisthenic|bootcamp|aerobic|cardio/i],
+  // Nature vs Learn is tiered so ambiguous words ("tour", "walk") don't
+  // outrank clear signals: STRONG nature (birding, canoe, wildlife) →
+  // STRONG learn (history, lecture, workshop) → a bare "tour" → weak outdoors
+  // (hike, trail, ranger, waterfront). So "Birding by Canoe Excursion" is
+  // Nature, "Historic Walking Tour" is Learn, "Harbor Walking Tour" is Learn,
+  // "Nature Walk" is Nature.
+  ['nature', /nature|wildlife|\bbird|canoe|kayak|\bfish|marsh|wetland|garden|nurser|forest|bioblitz|camping|ecolog|greenwatch|habitat|shorebird/i],
+  ['learn', /history|historic|lecture|\btalks?\b|education|workshop|reservoir|aqueduct/i],
+  ['learn', /\btours?\b/i],
+  ['nature', /\bhik|\btrail|waterfront|\branger|excursion|adventure course|walking|\bwalk\b|outdoor/i],
+  ['film', /\bfilms?\b|movie|cinema|screening/i],
   ['music', /music|concert/i],
   ['photo', /photo/i],
-  ['arts', /arts? ?& ?crafts|\bart\b|film|movie|theater|theatre/i],
+  ['arts', /arts? ?& ?crafts|\bart\b|theater|theatre/i],
   ['camps', /\bcamp\b/i],
   ['youth', /best for kids|kids|youth|teen/i],
 ];
@@ -123,25 +135,32 @@ const fmtClock = (min) => {
   return `${h}:${mm} ${h24 < 12 ? 'AM' : 'PM'}`;
 };
 
-// Volunteer / stewardship events (cleanups, tree care, river/forest restoration,
-// "It's My Park", Project WASTE) read as community service — a cross-cutting
-// THEME, not a primary category, so they keep their natural category and also
-// gain a 'philanthropy' tag (appears under both filters).
+// Cross-cutting THEMES layered on top of the primary category as tags, so an
+// event keeps its natural category and also appears under each theme filter:
+//   philanthropy — volunteer / stewardship (cleanups, tree care, restoration).
+//   accessible   — adaptive / inclusive / sensory-friendly programming.
+//   performances — live shows (concerts, theater, comedy) — a concert stays
+//                  primary 'music' but also surfaces under Performances.
 const PHILANTHROPY_RE =
-  /volunteer|steward|clean.?up|restoration|it'?s my park|conservan|\bwaste\b|litter|\btrash\b|tree care|forest|habitat|ecolog|community service/i;
+  /volunteer|steward|clean.?up|restoration|it'?s my park|conservan|\bwaste\b|litter|\btrash\b|tree care|forest|habitat|ecolog|community (service|work)/i;
+const ACCESSIBLE_RE = /accessible activit|adaptive|inclusive|sensory.?friendly|wheelchair/i;
+const PERFORMANCES_RE = /concert|theat(er|re)|performance|comedy|opera|symphony|orchestra|cabaret/i;
 
 // An event's NYC categories (pipe-separated, e.g. "Concerts | Art | Gardening")
 // map to one PRIMARY app category (most-specific first match) plus secondary
-// TAGS — every other app category it matches, so a multi-theme event surfaces
-// under each. Returns { category, tags }.
+// TAGS — every other app category it matches, plus the cross-cutting themes —
+// so a multi-theme event surfaces under each. Returns { category, tags }.
 function categoriesFor(categories) {
   const matched = [];
   for (const [id, re] of CATEGORY_MAP) if (re.test(categories) && !matched.includes(id)) matched.push(id);
   const category = matched[0] || 'social';
   const tags = matched.slice(1);
-  if (PHILANTHROPY_RE.test(categories) && !tags.includes('philanthropy') && category !== 'philanthropy') {
-    tags.push('philanthropy');
-  }
+  const addTag = (id, cond) => {
+    if (cond && id !== category && !tags.includes(id)) tags.push(id);
+  };
+  addTag('philanthropy', PHILANTHROPY_RE.test(categories));
+  addTag('accessible', ACCESSIBLE_RE.test(categories));
+  addTag('performances', PERFORMANCES_RE.test(categories));
   return { category, tags };
 }
 

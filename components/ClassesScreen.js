@@ -132,6 +132,7 @@ export default function ClassesScreen({ userLocation = null, city = 'sf' }) {
   const [radius, setRadius] = useState(null); // 1 | 3 | 5 | null (miles)
   const [freeOnly, setFreeOnly] = useState(false);
   const [hasSpots, setHasSpots] = useState(false); // hide classes that are full
+  const [walkIn, setWalkIn] = useState(false); // only walk-ins (no registration)
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [detail, setDetail] = useState(null); // class tapped open for its detail sheet
 
@@ -217,6 +218,7 @@ export default function ClassesScreen({ userLocation = null, city = 'sf' }) {
     (time ? 1 : 0) +
     (day !== null ? 1 : 0) +
     (freeOnly ? 1 : 0) +
+    (walkIn ? 1 : 0) +
     (radius ? 1 : 0) +
     (hasSpots ? 1 : 0);
 
@@ -265,6 +267,7 @@ export default function ClassesScreen({ userLocation = null, city = 'sf' }) {
       if (time && timeBand(startMin(c.when)) !== time) return false;
       if (day !== null && !daysOf(c.when)?.has(day)) return false;
       if (freeOnly && c.cost !== 'Free') return false;
+      if (walkIn && !c.dropIn) return false;
       if (hasSpots) {
         // Drop only classes we *know* are full (uses the live overlay when present).
         const sp = spaceInfo(live && live[c.id] ? { ...c, ...live[c.id] } : c);
@@ -284,7 +287,7 @@ export default function ClassesScreen({ userLocation = null, city = 'sf' }) {
     };
     return [...filtered.filter((c) => !isFull(c)), ...filtered.filter(isFull)];
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [catalog, cat, query, age, time, day, radius, freeOnly, hasSpots, live, liveStatus, userLocation, lang]);
+  }, [catalog, cat, query, age, time, day, radius, freeOnly, hasSpots, walkIn, live, liveStatus, userLocation, lang]);
 
   const clearAll = () => {
     setAge(null);
@@ -293,6 +296,7 @@ export default function ClassesScreen({ userLocation = null, city = 'sf' }) {
     setFreeOnly(false);
     setRadius(null);
     setHasSpots(false);
+    setWalkIn(false);
   };
 
   return (
@@ -508,6 +512,7 @@ export default function ClassesScreen({ userLocation = null, city = 'sf' }) {
             <Text style={styles.groupLabel}>{t('filter.availability')}</Text>
             <View style={styles.groupChips}>
               <FilterChip label={t('filter.hasSpots')} on={hasSpots} onPress={() => setHasSpots((v) => !v)} />
+              <FilterChip label={t('filter.walkIn')} on={walkIn} onPress={() => setWalkIn((v) => !v)} />
             </View>
 
             <Text style={styles.groupLabel}>{t('filter.cost')}</Text>
