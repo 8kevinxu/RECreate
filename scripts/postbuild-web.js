@@ -306,7 +306,7 @@ pages.push({
   description: `Lap swim, family swim, and lesson schedules for all ${POOLS.length} San Francisco public pools — Balboa, Coffman, Garfield, Hamilton, MLK, Mission, North Beach, Rossi, and Sava — updated from each pool's official seasonal schedule.`,
   h1: 'Public swimming pools in San Francisco',
   intro: `San Francisco has ${POOLS.length} public pools run by Rec &amp; Parks. Drop-in swims are cheap ($8 adults, $2 kids); each pool posts a seasonal schedule. The app shows today's sessions live — below is each pool with its programs and official schedule.`,
-  cta: { href: '/?tab=pools', label: 'See today’s swim times' },
+  cta: { href: '/?sport=swimming', label: 'See today’s swim times' },
   body: `<ul class="places">${POOLS.map((p) => {
     const sessions = p.sessions.reduce((n, day) => n + (day?.length || 0), 0);
     const programs = (p.programs || []).map((k) => KIND_LABEL[k] || k).join(', ');
@@ -314,7 +314,7 @@ pages.push({
 <span class="nm">${esc(p.name)}</span>
 <div class="meta">${esc([p.address, p.phone].filter(Boolean).join(' · '))}</div>
 <div class="hrs">Season ${esc(p.season || '')} · ${sessions} sessions/week: ${esc(programs)}</div>
-${(p.scheduleUrls || []).map((u) => `<a class="map" href="${esc(u.url)}" rel="noopener">Official schedule (PDF)</a>`).join(' · ')} · <a class="map" href="/?tab=pools">Open in the app</a>
+${(p.scheduleUrls || []).map((u) => `<a class="map" href="${esc(u.url)}" rel="noopener">Official schedule (PDF)</a>`).join(' · ')} · <a class="map" href="/?sport=swimming&court=${encodeURIComponent(p.id)}">Open in the app</a>
 </li>`;
   }).join('\n')}</ul>`,
   jsonLd: {
