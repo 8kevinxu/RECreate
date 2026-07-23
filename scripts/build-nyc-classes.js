@@ -328,6 +328,13 @@ function parsePerfectMind(html, occurrenceDate) {
   };
 }
 
+// Where a page's real description ends and its nav/footer chrome begins — the
+// anchored extraction below must stop here or it swallows menu labels (seen on
+// nycgovparks.org/reg pages: "…Was this information helpful?", run-together nav
+// like "ProgramsPrograms by Type", "StewardshipStewardship").
+const BOILERPLATE_RE =
+  /Was this information helpful|Programs by Type|Email Updates|Subscribe to receive|More Volunteer Opportunities|Partnerships for Parks|Contact the Commissioner|NYC Service|Recreation CentersUrban Park|StewardshipStewardship|Programs by Category|Sign up for|Follow us|©\s*\d{4}|opens in new tab/i;
+
 // Recover the full description from an arbitrary registration page by locating
 // the RSS snippet's opening text and taking the contiguous block that follows.
 function extractFullDesc(html, rssDesc) {
@@ -338,6 +345,9 @@ function extractFullDesc(html, rssDesc) {
     const at = flat.indexOf(anchor);
     if (at >= 0) {
       let block = flat.slice(at, at + 2000).trim();
+      // Cut at page nav/footer boilerplate if it appears inside the window.
+      const bp = block.search(BOILERPLATE_RE);
+      if (bp > 200) block = block.slice(0, bp).trim();
       // Trim a dangling partial sentence at the end.
       const lastStop = block.lastIndexOf('. ');
       if (lastStop > 400) block = block.slice(0, lastStop + 1);
@@ -356,6 +366,13 @@ async function enrichFromReg(seriesList) {
   try {
     descCache = JSON.parse(fs.readFileSync(DESC_CACHE_FILE, 'utf8'));
   } catch {}
+  // Clean any cached descriptions that predate the boilerplate cut; drop the
+  // ones that were mostly chrome so they re-fetch clean this run.
+  for (const [url, v] of Object.entries(descCache)) {
+    const bp = String(v).search(BOILERPLATE_RE);
+    if (bp > 200) descCache[url] = String(v).slice(0, bp).trim();
+    else if (bp >= 0) delete descCache[url];
+  }
 
   // PerfectMind pages carry live spots → re-fetch every run. Other reg pages
   // only give a (stable) description → fetch once, then serve from cache.

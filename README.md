@@ -1,9 +1,13 @@
-# 🏀 RECreate SF
+# 🏀 RECreate
 https://recreate-sf.vercel.app/
 
-Find somewhere to play **right now** in San Francisco. RECreate started as an
-indoor-basketball finder and has grown into a map of SF Rec & Parks **drop-in
-recreation** across five tabs:
+Find somewhere to play **right now** — in **San Francisco** or **New York City**.
+RECreate started as an SF indoor-basketball finder and has grown into a
+multi-city map of **drop-in recreation** across five tabs. The app auto-detects
+your metro (with a manual switcher in Settings) and, in NYC, lets you filter to
+just the boroughs you care about. Everything below describes SF, the most fully
+built-out city; see **[Cities](#cities-sf--nyc)** for what NYC adds and how the
+multi-city architecture works.
 
 - **🏀 Map** — every rec-center gym, outdoor court, and field, across **8 sports**
   (basketball, volleyball, ping pong, badminton, pickleball, tennis, soccer,
@@ -39,8 +43,45 @@ The whole UI is **localized in English / 中文 / Español**. Built with **Expo 
 React Native** (also shipped to the **web** as a static export). The map is
 **Leaflet + OpenStreetMap** rendered inside a `WebView` (no API key, no billing).
 
-**Coverage: San Francisco only for now.** The data pipeline (courts, classes,
-pools) is SF-specific — more cities are on the way.
+## Cities (SF · NYC)
+
+RECreate covers **two metros**, with an architecture built to add more.
+
+- **San Francisco** — the full product: indoor gyms + outdoor courts/fields,
+  open-gym schedules, ActiveNet classes, swimming pools, tennis/pickleball
+  reservation occupancy, court directories, and golf.
+- **New York City** — courts-first, and growing fast:
+  - **~700 park pins** (basketball, tennis, volleyball, pickleball, soccer,
+    baseball) from NYC Open Data, plus **~29 rec centers** with real indoor
+    open-gym schedules scraped from nycgovparks.org.
+  - **Amenity filters** from the facilities dataset: lights, ADA-accessible,
+    **restrooms**, **drinking water**, plus **sport-specific** ones — tennis
+    **clay court**, soccer/baseball **turf vs grass**, soccer **full-size
+    pitch**, baseball **adult field**, basketball **full vs half court**.
+  - **Tennis permit booking** — NYC's citywide reservation/permit system
+    (there's no per-court availability API like SF's rec.us), shown as a
+    Reserve/permit block instead of a fake "% booked".
+  - **Free NYC Parks programs** in the Classes tab (Shape Up NYC, rec-center
+    programming, nature walks, tours, cleanups…) with real openings + full
+    descriptions pulled from PerfectMind/registration pages, a **multi-tag**
+    system (a class has one primary category plus themes like 🌳 Nature &
+    Outdoors, 🧭 Learn & Explore, 🤝 Volunteer & Stewardship), and a "No
+    registration" (walk-in) filter.
+  - **Borough filter** — pick one or more of the five boroughs in Settings to
+    hide the rest of the city's clutter from the map and classes.
+
+**How it's wired.** `lib/cities.js` is the city registry (center, zoom,
+timezone, bbox, per-city feature flags, optional `subregions`); `nearestCity()`
+auto-detects your metro and Settings has a manual switcher. Every court/class
+record carries a `city` field (SF ids are unchanged, so existing check-ins /
+reviews / favorites keep working). Per-city data lives in `data/cities/<id>/`,
+aggregated by `data/cities/index.js`. Sport and class filter chips **self-hide
+when a city has no matching data**, so NYC-only filters never show for SF and
+vice-versa. NYC's outdoor courts come through a **config-driven Socrata
+adapter** (`scripts/lib/socrata-outdoor.js` + `scripts/cities/nyc.js`) — adding
+another Socrata-portal city (e.g. Chicago) is config-only; an ArcGIS city
+(Seattle/LA) needs a new adapter. See `CLAUDE.md` → *Multi-city* for the full
+contributor notes.
 
 ## Run it
 
@@ -88,6 +129,11 @@ sport / opens ⭐ Favorites. It's shown once and then never again (persisted und
 | `data/courts.json` | **Generated** hostable court data the app fetches at launch |
 | `data/manual-courts.js` | **Hand-curated** fully-static courts; merged in at runtime, never regenerated |
 | `data/sanbruno-court.js` | **Generated** San Bruno RAC court (drop-in hours from a city Google Sheet) |
+| `lib/cities.js` | **City registry** (center/zoom/tz/bbox/feature-flags/boroughs) + `nearestCity` / `inSubregions` |
+| `data/cities/index.js` · `data/cities/<id>/*` | **Per-city generated data** (NYC outdoor/indoor courts + classes) + the aggregator that merges them |
+| `scripts/lib/socrata-outdoor.js` · `scripts/cities/nyc.js` | **Config-driven Socrata adapter** + NYC config (run via `scripts/build-city-outdoor.js`) |
+| `scripts/build-nyc-indoor.js` · `scripts/build-nyc-classes.js` | NYC rec-center schedules + NYC Parks programs feed builders |
+| `scripts/lib/courts-common.js` · `scripts/lib/translate-titles.js` | Shared builder helpers (cache/slug/time; Claude title translation) |
 | `scripts/build-indoor-courts.js` | Builds the SF data files; scrapes live schedules |
 | `scripts/build-sanbruno-court.js` | Builds the San Bruno court; parses the city gym Google Sheet |
 | `scripts/schedule-cache.json` | Last-good scraped schedule per facility (fallback) |
@@ -723,8 +769,10 @@ cloud EAS builds don't read the local `.env`, so `EXPO_PUBLIC_*` vars are set in
 
 ## Ideas for next
 
+- **More cities:** the Socrata adapter makes another portal city (e.g. Chicago)
+  config-only; ArcGIS cities (Seattle / LA) need one new adapter module.
+- **NYC parity:** pools, golf, and per-court reservation availability for NYC as
+  sources are found; handball (NYC has ~1,850 courts — no app sport yet).
 - **Invite links:** wrap a friend code in a deep link to add with one tap.
-- **More outdoor sports:** the DataSF facilities dataset also has volleyball,
-  skatepark, and other court types — the outdoor pipeline can fold them in next.
 - **Per-court hours for outdoor courts:** today they use a fixed park-hours window;
-  some SF courts publish real hours / reservation windows worth scraping.
+  some courts publish real hours / reservation windows worth scraping.

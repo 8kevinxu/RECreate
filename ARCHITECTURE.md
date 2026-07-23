@@ -1,11 +1,15 @@
 # RECreate — Architecture
 
 RECreate is a mobile-first app for finding places to play sports and recreate in
-San Francisco: indoor rec-center gyms, outdoor courts, swimming pools, and
-drop-in classes — with live "how busy is it" crowd signals, court reservation
-availability, and lightweight social features (friends, planned runs, "down to
-play" pings, group chat). It's an **Expo / React Native** app that ships to iOS
-and Android and also exports to the web as a static SPA.
+**San Francisco and New York City**: indoor rec-center gyms, outdoor courts,
+swimming pools, and drop-in classes — with live "how busy is it" crowd signals,
+court reservation availability, and lightweight social features (friends,
+planned runs, "down to play" pings, group chat). It's an **Expo / React Native**
+app that ships to iOS and Android and also exports to the web as a static SPA.
+The app auto-detects the user's metro (manual switcher in Settings); the
+multi-city seam is a **city registry** (`lib/cities.js`) + per-city generated
+data (`data/cities/<id>/`) + config-driven scrapers — see `CLAUDE.md` →
+*Multi-city* for the full picture.
 
 This document explains how the pieces fit together. For day-to-day contributor
 rules and gotchas, see `CLAUDE.md`; for the database, see `supabase/README.md`.
@@ -199,11 +203,20 @@ The `data/*.js` datasets are **generated — never hand-edited**. Each
 | `court-directory.js` | sfrecpark directories | facility facts |
 | `classes.js` | ActiveNet | full catalog (33 source categories → 10 app categories, one id per query — multi-id search drops categories); real prices via the detail price-estimate endpoint; titles pre-translated to zh/es |
 | `pools.js` | seasonal PDFs (pdfjs-dist) | weekly swim grids reconstructed geometrically |
+| `cities/nyc/outdoor-courts.js` | NYC Open Data (Socrata) | ~700 park pins via the config-driven `socrata-outdoor.js` adapter: sport flags, facility facts (lights/accessible/surface), amenity joins (water/restrooms), tennis permit reservable, sport attributes (full/half court, turf/grass, regulation pitch, adult field) |
+| `cities/nyc/indoor-courts.js` | nycgovparks.org | rec-center weekly open-gym schedules (open-gym vs class classified by rules + Claude fallback) |
+| `cities/nyc/classes.js` | nycgovparks events RSS + PerfectMind | free NYC Parks programs with real openings, full descriptions, multi-tag categories/themes, borough |
 
-**Resilience pattern** (shared by every script): each source falls back
-**live → cache (`scripts/*-cache.json`) → curated**, with a validation gate that
-aborts the build (keeping old data) if too few records scrape — so an upstream
-redesign fails loudly instead of publishing empty data.
+**Resilience pattern** (shared by every script via `scripts/lib/courts-common.js`):
+each source falls back **live → cache (`scripts/*-cache.json`) → curated**, with a
+validation gate that aborts the build (keeping old data) if too few records
+scrape — so an upstream redesign fails loudly instead of publishing empty data.
+
+**Multi-city:** `data/cities/index.js` aggregates the per-city modules into
+`CITY_COURTS` / `CITY_CLASSES`, merged into the app by `lib/useCourts.js` /
+`App.js` and scoped to the active city (+ borough) from `lib/cities.js`. Records
+carry a `city` field; SF ids are unchanged. Adding a Socrata-portal city is
+config-only (`scripts/cities/<id>.js`); see `CLAUDE.md` → *Multi-city*.
 
 **Class-title translation:** `build-classes.js` translates *new* distinct titles
 to zh/es via Claude Haiku when `ANTHROPIC_API_KEY` is set, caching them in
