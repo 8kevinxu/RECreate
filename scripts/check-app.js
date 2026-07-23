@@ -31,6 +31,11 @@ const files = [
   ...collect('lib'),
   ...collect('data'),
   ...collect('scripts'),
+  // collect() is not recursive — list the per-city subdirectories explicitly.
+  ...collect('data/cities'),
+  ...collect('data/cities/nyc'),
+  ...collect('scripts/lib'),
+  ...collect('scripts/cities'),
 ];
 
 try {
@@ -97,6 +102,7 @@ if (langKeys.en && langKeys.zh && langKeys.es) {
 const DATA_FLOORS = [
   ['data/courts.js', 'COURTS', 10],
   ['data/outdoor-courts.js', 'OUTDOOR_COURTS', 50],
+  ['data/cities/nyc/outdoor-courts.js', 'OUTDOOR_COURTS', 350],
   ['data/classes.js', 'CLASSES', 100],
   ['data/pools.js', 'POOLS', 5],
   ['data/manual-courts.js', 'MANUAL_COURTS', 1],
