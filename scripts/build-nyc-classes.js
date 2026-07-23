@@ -50,6 +50,10 @@ const UA =
 
 const CACHE_FILE = path.join(__dirname, 'cities', 'nyc-classes-cache.json');
 const COST_CACHE_FILE = path.join(__dirname, 'cities', 'nyc-classes-cost-cache.json');
+// Full descriptions (from registration pages) are stable → cached by URL so
+// only new events cost a fetch. PerfectMind spots/status are volatile and
+// re-fetched every run (not cached).
+const DESC_CACHE_FILE = path.join(__dirname, 'cities', 'nyc-classes-desc-cache.json');
 const I18N_CACHE_FILE = path.join(__dirname, 'cities', 'nyc-classes-i18n-cache.json');
 const OUT_FILE = path.join(__dirname, '..', 'data', 'cities', 'nyc', 'classes.js');
 
@@ -119,9 +123,26 @@ const fmtClock = (min) => {
   return `${h}:${mm} ${h24 < 12 ? 'AM' : 'PM'}`;
 };
 
-function categoryFor(categories) {
-  for (const [id, re] of CATEGORY_MAP) if (re.test(categories)) return id;
-  return 'social';
+// Volunteer / stewardship events (cleanups, tree care, river/forest restoration,
+// "It's My Park", Project WASTE) read as community service — a cross-cutting
+// THEME, not a primary category, so they keep their natural category and also
+// gain a 'philanthropy' tag (appears under both filters).
+const PHILANTHROPY_RE =
+  /volunteer|steward|clean.?up|restoration|it'?s my park|conservan|\bwaste\b|litter|\btrash\b|tree care|forest|habitat|ecolog|community service/i;
+
+// An event's NYC categories (pipe-separated, e.g. "Concerts | Art | Gardening")
+// map to one PRIMARY app category (most-specific first match) plus secondary
+// TAGS — every other app category it matches, so a multi-theme event surfaces
+// under each. Returns { category, tags }.
+function categoriesFor(categories) {
+  const matched = [];
+  for (const [id, re] of CATEGORY_MAP) if (re.test(categories) && !matched.includes(id)) matched.push(id);
+  const category = matched[0] || 'social';
+  const tags = matched.slice(1);
+  if (PHILANTHROPY_RE.test(categories) && !tags.includes('philanthropy') && category !== 'philanthropy') {
+    tags.push('philanthropy');
+  }
+  return { category, tags };
 }
 
 // Age bounds from free text ("ages 6 to 17", "ages 8-14", "8 and older",
@@ -233,6 +254,149 @@ async function enrichFromPages(seriesList) {
   );
 }
 
+// ---- Registration-page enrichment: openings, ages, full description ---------
+// Most registration events (415/559) book on nycparks.perfectmind.com, whose
+// landing page embeds per-occurrence JSON: SpotsLeft (real openings — the RSS
+// has none), age restrictions, the registration deadline, and the full class
+// description. Everything else (bronxriver, eventbrite, nyrr…) gets its full
+// description recovered by anchoring on the RSS snippet's opening text.
+
+const grab = (s, re) => {
+  const m = String(s).match(re);
+  return m ? m[1] : '';
+};
+const unescapeJson = (s) =>
+  String(s).replace(/\\"/g, '"').replace(/\\n/g, '\n').replace(/\\\//g, '/').replace(/\\\\/g, '\\');
+
+function parsePerfectMind(html, occurrenceDate) {
+  // Each occurrence object spans SpotsLeft/DisplayableRestrictions/… (near its
+  // start) through the class description to "OccurrenceDate" (near its end), so
+  // the two can be far apart. Pair each OccurrenceDate with the SpotsLeft that
+  // most recently precedes it, giving a date → occurrence-window map.
+  const spotHits = [...html.matchAll(/"SpotsLeft":(\d+)/g)];
+  const occHits = [...html.matchAll(/"OccurrenceDate":"(\d{8})"/g)];
+  const dates = [...new Set(occHits.map((m) => m[1]))].sort();
+
+  const windowFor = (occ) => {
+    const oh = occ ? occHits.find((m) => m[1] === occ) : occHits[0];
+    const end = oh ? oh.index + 30 : 0;
+    // SpotsLeft nearest before this occurrence's OccurrenceDate.
+    let start = 0;
+    for (const sh of spotHits) if (sh.index < (oh ? oh.index : Infinity)) start = sh.index;
+    // Lead in ~400 chars so DisplayableRestrictions (just before SpotsLeft) is
+    // inside the window.
+    return { win: html.slice(Math.max(0, start - 400), end), sh: spotHits.filter((s) => s.index <= (oh ? oh.index : Infinity)).pop() };
+  };
+
+  // Prefer the requested date; else the first (soonest) occurrence on the page.
+  const { win, sh } = windowFor(dates.includes(occurrenceDate) ? occurrenceDate : dates[0]);
+  return {
+    spots: sh ? Number(sh[1]) : null,
+    closed: /"IsRegistrationClosed":true/.test(win),
+    ages: unescapeJson(grab(win, /"DisplayableRestrictions":"((?:[^"\\]|\\.)*)"/)),
+    deadline: unescapeJson(grab(win, /"FormattedRegistrationInfo":"((?:[^"\\]|\\.)*)"/)),
+    // Class description (class-level, appears once near the top).
+    desc: unescapeJson(grab(html, /"Details":"((?:[^"\\]|\\.)*)"/)),
+    dates, // all occurrence dates → recurring schedule / scope
+  };
+}
+
+// Recover the full description from an arbitrary registration page by locating
+// the RSS snippet's opening text and taking the contiguous block that follows.
+function extractFullDesc(html, rssDesc) {
+  const text = stripHtml(html.replace(/<script[\s\S]*?<\/script>/gi, '').replace(/<style[\s\S]*?<\/style>/gi, ''));
+  const flat = text.replace(/\s+/g, ' ');
+  const anchor = (rssDesc || '').replace(/\s+/g, ' ').trim().slice(0, 50);
+  if (anchor.length >= 20) {
+    const at = flat.indexOf(anchor);
+    if (at >= 0) {
+      let block = flat.slice(at, at + 2000).trim();
+      // Trim a dangling partial sentence at the end.
+      const lastStop = block.lastIndexOf('. ');
+      if (lastStop > 400) block = block.slice(0, lastStop + 1);
+      if (block.length > (rssDesc || '').length + 40) return block;
+    }
+  }
+  // Fallback: a long og:description / meta description.
+  const og =
+    grab(html, /<meta property="og:description" content="([^"]{80,})"/i) ||
+    grab(html, /<meta name="description" content="([^"]{80,})"/i);
+  return og.length > (rssDesc || '').length + 40 ? stripHtml(og) : '';
+}
+
+async function enrichFromReg(seriesList) {
+  let descCache = {};
+  try {
+    descCache = JSON.parse(fs.readFileSync(DESC_CACHE_FILE, 'utf8'));
+  } catch {}
+
+  // PerfectMind pages carry live spots → re-fetch every run. Other reg pages
+  // only give a (stable) description → fetch once, then serve from cache.
+  const isPM = (u) => /perfectmind\.com/i.test(u) && /classId=/.test(u) && /occurrenceDate=/.test(u);
+  const jobs = [];
+  for (const s of seriesList) {
+    if (!s.regUrl) continue;
+    if (isPM(s.regUrl)) jobs.push(s);
+    else if (!descCache[s.regUrl]) jobs.push(s);
+  }
+
+  let pm = 0;
+  let desc = 0;
+  let failed = 0;
+  const queue = jobs.slice(0, MAX_PAGE_FETCHES);
+  const workers = Array.from({ length: PAGE_CONCURRENCY }, async () => {
+    for (;;) {
+      const s = queue.shift();
+      if (!s) return;
+      try {
+        const res = await fetchT(s.regUrl, { headers: { 'User-Agent': UA } }, 15000);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const html = await res.text();
+        if (isPM(s.regUrl)) {
+          const occ = grab(s.regUrl, /occurrenceDate=(\d{8})/);
+          const info = parsePerfectMind(html, occ);
+          s.pm = info;
+          if (info.desc) descCache[s.regUrl] = info.desc;
+          pm++;
+        } else {
+          const full = extractFullDesc(html, s.desc);
+          if (full) {
+            descCache[s.regUrl] = full;
+            desc++;
+          }
+        }
+      } catch {
+        failed++;
+      }
+    }
+  });
+  await Promise.all(workers);
+
+  // Attach cached full descriptions.
+  for (const s of seriesList) {
+    if (s.regUrl && descCache[s.regUrl]) s.fullDesc = descCache[s.regUrl];
+  }
+
+  // Prune desc cache to the live registration URLs.
+  const live = new Set(seriesList.map((s) => s.regUrl).filter(Boolean));
+  descCache = Object.fromEntries(Object.entries(descCache).filter(([u]) => live.has(u)));
+  fs.writeFileSync(DESC_CACHE_FILE, JSON.stringify(descCache, null, 2) + '\n');
+  console.log(`  ✓ reg pages: ${pm} PerfectMind (spots/ages), ${desc} full descriptions (${failed} failed), ${Object.keys(descCache).length} cached`);
+}
+
+// Human "N sessions · Jul 30 – Oct 29" scope from a class's occurrence dates
+// (PerfectMind's full list, else the feed's rolling-window dates). null for a
+// single session.
+function sessionScope(dates) {
+  const uniq = [...new Set(dates)].sort();
+  if (uniq.length < 2) return null;
+  const fmt = (d) => {
+    const dt = new Date(`${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6, 8)}T12:00:00`);
+    return `${['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][dt.getMonth()]} ${dt.getDate()}`;
+  };
+  return { count: uniq.length, first: fmt(uniq[0]), last: fmt(uniq[uniq.length - 1]) };
+}
+
 // Collapse one-item-per-date recurrences into a single card per
 // (title, location, time), labeled with its days of the week.
 function groupSeries(items) {
@@ -261,12 +425,22 @@ function buildClasses(seriesList) {
       // (closed) registration section — some staff-run programs publish no
       // registration_url in the feed but still aren't walk-ins.
       const noReg = !s.regUrl && !s.regClosed;
-      const age = parseAges(`${s.title} ${s.desc}`, s.categories);
+      const { category, tags } = categoriesFor(s.categories);
+      const pm = s.pm; // PerfectMind enrichment (spots/ages/deadline/dates), when present
+      // Ages: PerfectMind's stated restriction wins; else parse title/description.
+      const pmAge = pm && pm.ages ? parseAges(`ages ${pm.ages}`, '') : null;
+      const age = pmAge && pmAge.ages ? pmAge : parseAges(`${s.title} ${s.desc}`, s.categories);
+      // Spots: PerfectMind's real SpotsLeft; else closed→0, walk-in→0 (unlimited),
+      // open-but-unknown→null (no published capacity).
+      const closed = pm ? pm.closed : s.regClosed;
+      const spots = pm && pm.spots != null ? pm.spots : closed ? 0 : noReg ? 0 : null;
+      const scope = sessionScope(pm && pm.dates && pm.dates.length ? pm.dates : s.dates.map((d) => d.replace(/-/g, '')));
       return {
         id: `nycp-${slug(`${s.title}-${s.location}`)}-${s.start}`,
         source: 'nycparks', // ClassDetail switches its register/note strings on this
         name: s.title,
-        category: categoryFor(s.categories),
+        category,
+        ...(tags.length && { tags }),
         location: s.location,
         when: `${dayLabel} · ${time}`,
         dropIn: noReg,
@@ -275,15 +449,17 @@ function buildClasses(seriesList) {
         ages: age.ages,
         minAge: age.minAge,
         ...(age.maxAge != null && { maxAge: age.maxAge }),
-        // Closed registration maps onto the app's Full indicator (spots 0);
-        // open registration has no published capacity — availability unknown.
-        spots: s.regClosed ? 0 : noReg ? 0 : null,
+        spots,
         unlimited: noReg,
+        ...(scope && { sessions: scope }),
+        ...(pm && pm.deadline && { regDeadline: pm.deadline }),
         start: s.dates[0],
         end: s.dates[s.dates.length - 1],
-        oneDay: s.dates.length === 1,
+        oneDay: s.dates.length === 1 && (!pm || pm.dates.length <= 1),
         ...(s.instructor && { instructor: s.instructor }),
-        desc: s.desc || '',
+        // Full description from the registration page (PerfectMind Details or
+        // the anchored extraction), falling back to the RSS snippet.
+        desc: (s.fullDesc && s.fullDesc.length > (s.desc || '').length ? s.fullDesc : s.desc) || '',
         ...(s.lat != null && { lat: s.lat, lng: s.lng }),
         url: s.regUrl || s.url,
       };
@@ -328,6 +504,7 @@ async function main() {
     }
     const seriesList = groupSeries(items);
     await enrichFromPages(seriesList);
+    await enrichFromReg(seriesList);
     classes = buildClasses(seriesList);
     source = 'live';
     saveCache(CACHE_FILE, { classes, fetchedAt: new Date().toISOString() });

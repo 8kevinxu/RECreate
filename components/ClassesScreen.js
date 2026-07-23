@@ -225,6 +225,23 @@ export default function ClassesScreen({ userLocation = null, city = 'sf' }) {
       ? haversineMiles(userLocation.lat, userLocation.lng, c.lat, c.lng)
       : null;
 
+  // Categories with at least one class in this catalog (counting primary +
+  // tags), so empty chips self-hide — e.g. 'philanthropy' only shows for NYC.
+  const presentCats = useMemo(() => {
+    const set = new Set();
+    for (const c of catalog) {
+      set.add(c.category);
+      for (const tg of c.tags || []) set.add(tg);
+    }
+    return set;
+  }, [catalog]);
+
+  // If the selected category no longer exists (e.g. after switching city),
+  // fall back to All so the list doesn't silently filter to nothing.
+  useEffect(() => {
+    if (cat !== 'all' && !presentCats.has(cat)) setCat('all');
+  }, [cat, presentCats]);
+
   const list = useMemo(() => {
     const q = query.trim().toLowerCase();
     // ActiveNet delists cancelled/ended classes, so a class missing from a *healthy*
@@ -234,7 +251,9 @@ export default function ClassesScreen({ userLocation = null, city = 'sf' }) {
       isSF && liveStatus === 'ok' && live && Object.keys(live).length >= catalog.length * 0.8;
     const filtered = catalog.filter((c) => {
       if (liveComplete && !live[c.id]) return false;
-      if (cat !== 'all' && c.category !== cat) return false;
+      // A class matches a category by its primary `category` OR any secondary
+      // `tags` (e.g. a philanthropy-tagged event still shows under 'social').
+      if (cat !== 'all' && c.category !== cat && !(c.tags || []).includes(cat)) return false;
       if (
         q &&
         !c.name.toLowerCase().includes(q) &&
@@ -313,7 +332,7 @@ export default function ClassesScreen({ userLocation = null, city = 'sf' }) {
       </View>
 
       <View style={styles.catRow}>
-        {[{ id: 'all', emoji: '✨' }, ...CLASS_CATEGORIES].map((c) => {
+        {[{ id: 'all', emoji: '✨' }, ...CLASS_CATEGORIES.filter((c) => presentCats.has(c.id))].map((c) => {
           const active = cat === c.id;
           return (
             <Pressable

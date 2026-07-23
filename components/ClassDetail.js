@@ -41,7 +41,9 @@ function spaceText(t, c) {
   if (n == null) return c.dropIn ? t('classes.lotsSpots') : null;
   if (n <= 0) return t('classes.full');
   if (n <= 5) return t('classes.left', { n });
-  if (n >= 20) return t('classes.lotsSpots');
+  // SF ActiveNet reports big numbers → collapse to "lots"; NYC Parks reports a
+  // real small capacity → show the exact count the user can act on.
+  if (n >= 20 && c.source !== 'nycparks') return t('classes.lotsSpots');
   return t('classes.openings', { n });
 }
 
@@ -99,7 +101,12 @@ export default function ClassDetail({ item, onClose }) {
               <View style={{ flex: 1 }}>
                 <Text style={styles.name}>{name}</Text>
                 {!!meta.id && (
-                  <Text style={styles.category}>{t('cat.' + meta.id)}</Text>
+                  <Text style={styles.category}>
+                    {t('cat.' + meta.id)}
+                    {(c.tags || []).length
+                      ? ' · ' + c.tags.map((tg) => t('cat.' + tg)).join(' · ')
+                      : ''}
+                  </Text>
                 )}
               </View>
               <View style={[styles.tag, c.dropIn ? styles.tagDropIn : styles.tagReg]}>
@@ -117,6 +124,20 @@ export default function ClassDetail({ item, onClose }) {
               <Row icon="🎂" label={t('cls.ages')} value={c.ages} />
               <Row icon="🧑‍🏫" label={t('cls.instructor')} value={c.instructor} />
               <Row icon="🎟️" label={t('cls.availability')} value={spots} />
+              <Row
+                icon="🔁"
+                label={t('cls.sessions')}
+                value={
+                  c.sessions
+                    ? t('cls.sessionsVal', {
+                        count: c.sessions.count,
+                        first: c.sessions.first,
+                        last: c.sessions.last,
+                      })
+                    : ''
+                }
+              />
+              <Row icon="⏳" label={t('cls.regDeadline')} value={c.regDeadline} />
               <Row icon="📝" label={t('cls.about')} value={c.desc || t('cls.noDesc')} />
             </View>
 

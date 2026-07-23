@@ -65,6 +65,11 @@ export const CLASS_CATEGORIES = [
     "id": "youth",
     "label": "Youth & After School",
     "emoji": "🧒"
+  },
+  {
+    "id": "philanthropy",
+    "label": "Volunteer & Stewardship",
+    "emoji": "🤝"
   }
 ];
 

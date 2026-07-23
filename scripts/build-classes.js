@@ -43,6 +43,11 @@ const CATEGORIES = [
   { id: 'sports', label: 'Sports & Rec', emoji: '🏅' },
   { id: 'camps', label: 'Camps', emoji: '🏕️' },
   { id: 'youth', label: 'Youth & After School', emoji: '🧒' },
+  // Cross-cutting theme for volunteer / stewardship events (NYC: cleanups, tree
+  // care, forest/river restoration). Assigned as a secondary tag, so an event
+  // keeps its natural category and also appears here. Empty for SF — the
+  // category chips self-hide when a catalog has none.
+  { id: 'philanthropy', label: 'Volunteer & Stewardship', emoji: '🤝' },
 ];
 
 // Drop-in sessions for sports the map already tracks are skipped: their hours are
