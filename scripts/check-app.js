@@ -103,6 +103,8 @@ const DATA_FLOORS = [
   ['data/courts.js', 'COURTS', 10],
   ['data/outdoor-courts.js', 'OUTDOOR_COURTS', 50],
   ['data/cities/nyc/outdoor-courts.js', 'OUTDOOR_COURTS', 350],
+  // NYC classes are a rolling ~14-day events window — floor loose for seasonal shrink.
+  ['data/cities/nyc/classes.js', 'NYC_CLASSES', 100],
   ['data/classes.js', 'CLASSES', 100],
   ['data/pools.js', 'POOLS', 5],
   ['data/manual-courts.js', 'MANUAL_COURTS', 1],

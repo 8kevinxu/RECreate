@@ -10,6 +10,7 @@
 
 import { SPORTS, WEIGHT_ROOM } from '../../lib/sports';
 import NYC, { CITY as NYC_CITY, PARK_HOURS as NYC_HOURS, SOURCE as NYC_SOURCE, DISCLAIMER as NYC_DISCLAIMER } from './nyc/outdoor-courts';
+import NYC_CLASSES from './nyc/classes';
 
 const SPORT_KEYS = [...SPORTS.map((s) => s.id), WEIGHT_ROOM];
 
@@ -32,6 +33,12 @@ function expandCity(courts, city, parkHours, source, disclaimer) {
 // never collide with SF's bare slugs).
 export const CITY_COURTS = {
   [NYC_CITY]: expandCity(NYC, NYC_CITY, NYC_HOURS, NYC_SOURCE, NYC_DISCLAIMER),
+};
+
+// city id -> class/program list (same record shape as data/classes.js). SF's
+// ActiveNet catalog stays in data/classes.js; cities without one are absent.
+export const CITY_CLASSES = {
+  [NYC_CITY]: NYC_CLASSES,
 };
 
 export default CITY_COURTS;
