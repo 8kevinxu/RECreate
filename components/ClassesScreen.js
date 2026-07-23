@@ -18,6 +18,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { CLASSES, CLASS_CATEGORIES } from '../data/classes';
 import { CITY_CLASSES } from '../data/cities';
+import { inSubregions } from '../lib/cities';
 import { haversineMiles, formatDistance } from '../lib/distance';
 import { openDirections } from '../lib/maps';
 import { localizeWhen } from '../lib/datetime';
@@ -114,14 +115,18 @@ function FilterChip({ label, on, onPress }) {
   );
 }
 
-export default function ClassesScreen({ userLocation = null, city = 'sf' }) {
+export default function ClassesScreen({ userLocation = null, city = 'sf', subregions = null }) {
   const insets = useSafeAreaInsets();
   const { t, lang } = useI18n();
   // The active city's catalog: SF's ActiveNet classes, or the city's own list
-  // (NYC: free Parks programs). The ActiveNet live-availability overlay and its
-  // delist-hiding are SF-only — other sources have no realtime feed.
+  // (NYC: free Parks programs), narrowed to the selected sub-areas (boroughs).
+  // The ActiveNet live-availability overlay and its delist-hiding are SF-only —
+  // other sources have no realtime feed.
   const isSF = city === 'sf';
-  const catalog = isSF ? CLASSES : CITY_CLASSES[city] || [];
+  const catalog = useMemo(
+    () => (isSF ? CLASSES : (CITY_CLASSES[city] || []).filter((c) => inSubregions(c, subregions))),
+    [isSF, city, subregions]
+  );
   // Bundled title translation (build-classes.js); falls back to the English name.
   const className = (c) => c['name_' + lang] || c.name;
   const [cat, setCat] = useState('all');

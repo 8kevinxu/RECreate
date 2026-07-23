@@ -52,7 +52,7 @@ import {
   getDropinRemaining,
 } from './lib/hours';
 import { MAP_SPORTS, DEFAULT_SPORT, sportMeta, isPlayableSport } from './lib/sports';
-import { DEFAULT_CITY, getCity, nearestCity } from './lib/cities';
+import { DEFAULT_CITY, getCity, nearestCity, inSubregions } from './lib/cities';
 import { CITY_CLASSES } from './data/cities';
 import { useFavorites } from './lib/favorites';
 import { readUrlState, writeUrlState } from './lib/urlState';
@@ -282,6 +282,7 @@ function formatUpdated(iso) {
 
 const ONBOARDED_KEY = 'recreate.onboarded.v1'; // first-launch onboarding shown flag
 const CITY_KEY = 'recreate.city.v1'; // active metro: { id, chosen } — chosen = picked manually
+const SUBREGION_KEY = 'recreate.subregions.v1'; // per-city sub-area filter: { cityId: [names] }
 const COACH_SPORT_KEY = 'recreate.coach.sportfab.v1'; // one-time sport-FAB coach mark shown flag
 const LOC_BANNER_KEY = 'recreate.locbanner.v1'; // dismissed the "turn on location" map banner
 const PENDING_ADD_KEY = 'recreate.pendingAdd.v1'; // friend code from an invite link, awaiting sign-in
@@ -394,7 +395,30 @@ export default function App() {
       } catch {}
     });
   }, [setActiveCity]);
-  const cityFeatures = getCity(activeCity).features;
+  const cityObj = getCity(activeCity);
+  const cityFeatures = cityObj.features;
+  // Per-city sub-area (borough) selection: { cityId: [names] }. Empty/absent =
+  // all. Only cities that define `subregions` (NYC) surface the filter.
+  const [subregionSel, setSubregionSel] = useState({});
+  useEffect(() => {
+    AsyncStorage.getItem(SUBREGION_KEY).then((raw) => {
+      if (!raw) return;
+      try {
+        setSubregionSel(JSON.parse(raw) || {});
+      } catch {}
+    });
+  }, []);
+  const activeSubs = cityObj.subregions ? subregionSel[activeCity] || null : null;
+  const setCitySubregions = useCallback(
+    (list) => {
+      setSubregionSel((prev) => {
+        const next = { ...prev, [activeCity]: list && list.length ? list : undefined };
+        AsyncStorage.setItem(SUBREGION_KEY, JSON.stringify(next)).catch(() => {});
+        return next;
+      });
+    },
+    [activeCity]
+  );
   // A signed-in account's saved interests take precedence; the on-device picks are
   // the fallback so recommendations personalize even before there's an account.
   const interestSports = profile?.favorite_sports?.length
@@ -672,13 +696,18 @@ export default function App() {
   // unfiltered for resolving ids that arrive from outside the active city
   // (friends' runs/signals, push payloads, shared links).
   const cityCourtData = useMemo(
-    () => courtData.filter((c) => (c.city || 'sf') === activeCity),
-    [courtData, activeCity]
+    () => courtData.filter((c) => (c.city || 'sf') === activeCity && inSubregions(c, activeSubs)),
+    [courtData, activeCity, activeSubs]
   );
 
   // The active city's class catalog: SF keeps its bundled ActiveNet list (the
-  // default inside the consumers), other cities use theirs (or none).
-  const cityClasses = activeCity === 'sf' ? undefined : CITY_CLASSES[activeCity] || [];
+  // default inside the consumers), other cities use theirs (or none), narrowed
+  // to the selected sub-areas (boroughs).
+  const cityClasses = useMemo(() => {
+    if (activeCity === 'sf') return undefined;
+    const all = CITY_CLASSES[activeCity] || [];
+    return activeSubs ? all.filter((c) => inSubregions(c, activeSubs)) : all;
+  }, [activeCity, activeSubs]);
 
   // A selected court outside the active city (cross-city link/feed item)
   // switches the view to its metro so the card + marker can render.
@@ -1366,7 +1395,9 @@ export default function App() {
           </>
         )}
 
-        {tab === 'classes' && <ClassesScreen userLocation={userLocation} city={activeCity} />}
+        {tab === 'classes' && (
+          <ClassesScreen userLocation={userLocation} city={activeCity} subregions={activeSubs} />
+        )}
 
         {tab === 'pools' && <PoolsScreen userLocation={userLocation} />}
 
@@ -1408,6 +1439,9 @@ export default function App() {
             onFriends={user ? () => setFriendsOpen(true) : undefined}
             cityId={activeCity}
             onSelectCity={(id) => setActiveCity(id)}
+            subregions={cityObj.subregions || null}
+            selectedSubregions={activeSubs}
+            onSetSubregions={setCitySubregions}
           />
         )}
       </View>

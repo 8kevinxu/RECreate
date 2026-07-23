@@ -94,6 +94,10 @@ const CATEGORY_MAP = [
 
 const DOW_SHORT = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
+// NYC park-id prefix → borough (matches the outdoor/indoor courts' neighborhood
+// field, so the app's borough filter applies uniformly across courts + classes).
+const BOROUGH = { X: 'Bronx', B: 'Brooklyn', M: 'Manhattan', Q: 'Queens', R: 'Staten Island' };
+
 const tag = (block, name) => {
   const m = block.match(new RegExp(`<${name}>(?:<!\\[CDATA\\[)?([\\s\\S]*?)(?:\\]\\]>)?</${name}>`));
   return m ? m[1].trim() : '';
@@ -193,8 +197,12 @@ function parseItems(xml) {
     // cancelled date simply falls out of its series' day pattern.
     if (/^\s*(cancel?led|postponed)\b/i.test(title)) continue;
     const coords = tag(block, 'event:coordinates').match(/(-?[\d.]+),\s*(-?[\d.]+)/);
+    // Borough from the (non-CDATA) park-id prefix; blank when absent (→ shows
+    // under any borough filter rather than being wrongly hidden).
+    const parkid = (block.match(/<event:parkids>([^<]*)<\/event:parkids>/) || [])[1] || '';
     items.push({
       title,
+      borough: BOROUGH[parkid.trim()[0]] || '',
       date: startdate,
       start,
       end: toMin(tag(block, 'event:endtime')),
@@ -460,6 +468,7 @@ function buildClasses(seriesList) {
         name: s.title,
         category,
         ...(tags.length && { tags }),
+        ...(s.borough && { borough: s.borough }),
         location: s.location,
         when: `${dayLabel} · ${time}`,
         dropIn: noReg,

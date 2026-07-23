@@ -33,7 +33,16 @@ const TERMS_URL = 'https://www.apple.com/legal/internet-services/itunes/dev/stde
 const PRIVACY_URL = 'https://recreate-sf.vercel.app/privacy.html';
 const SUPPORT_URL = 'https://recreate-sf.vercel.app/support.html';
 
-export default function SettingsScreen({ visible, onClose, onEditProfile, cityId, onSelectCity }) {
+export default function SettingsScreen({
+  visible,
+  onClose,
+  onEditProfile,
+  cityId,
+  onSelectCity,
+  subregions,
+  selectedSubregions,
+  onSetSubregions,
+}) {
   const insets = useSafeAreaInsets();
   const { t, lang, setLang } = useI18n();
   const { user, deleteAccount, profile, updateProfile } = useAuth();
@@ -193,6 +202,38 @@ export default function SettingsScreen({ visible, onClose, onEditProfile, cityId
                       <Text style={[styles.langNative, active && styles.langTextActive]}>
                         {t('city.' + c.id)}
                       </Text>
+                      {active && <Text style={styles.check}>✓</Text>}
+                    </Pressable>
+                  );
+                })}
+              </View>
+            </>
+          )}
+
+          {!!subregions && !!onSetSubregions && (
+            <>
+              <Text style={styles.sectionLabel}>{t('settings.areas')}</Text>
+              <Text style={styles.hint}>{t('settings.areasHint')}</Text>
+              <View style={styles.langWrap}>
+                {subregions.map((name) => {
+                  // No/empty selection = all shown; every chip reads active then.
+                  const all = !selectedSubregions || !selectedSubregions.length;
+                  const active = all || selectedSubregions.includes(name);
+                  const toggle = () => {
+                    const cur = all ? subregions : selectedSubregions;
+                    const next = cur.includes(name)
+                      ? cur.filter((x) => x !== name)
+                      : [...cur, name];
+                    // Full or empty selection collapses back to "all" ([]).
+                    onSetSubregions(next.length === subregions.length ? [] : next);
+                  };
+                  return (
+                    <Pressable
+                      key={name}
+                      onPress={toggle}
+                      style={[styles.langRow, active && styles.langRowActive]}
+                    >
+                      <Text style={[styles.langNative, active && styles.langTextActive]}>{name}</Text>
                       {active && <Text style={styles.check}>✓</Text>}
                     </Pressable>
                   );

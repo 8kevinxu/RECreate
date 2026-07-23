@@ -41,6 +41,9 @@ export default function AuthModal({
   initialMode = 'signin', // 'signin' | 'signup' — start the form on this tab
   cityId, // active metro + switcher, threaded into Settings (profile page only)
   onSelectCity,
+  subregions, // active city's sub-areas (boroughs) + selection, for Settings
+  selectedSubregions,
+  onSetSubregions,
 }) {
   const {
     user,
@@ -355,6 +358,9 @@ export default function AuthModal({
             }}
             cityId={cityId}
             onSelectCity={onSelectCity}
+            subregions={subregions}
+            selectedSubregions={selectedSubregions}
+            onSetSubregions={onSetSubregions}
           />
           <View style={styles.header}>
             <Text style={styles.title}>
