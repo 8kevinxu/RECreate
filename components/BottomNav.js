@@ -12,7 +12,6 @@ const INACTIVE = '#1f2a37';
 const TABS = [
   { id: 'home', on: 'home', off: 'home-outline' },
   { id: 'classes', on: 'calendar', off: 'calendar-outline' },
-  { id: 'pools', on: 'water', off: 'water-outline' },
   { id: 'social', on: 'people', off: 'people-outline' },
   { id: 'profile', on: 'person', off: 'person-outline' },
 ];

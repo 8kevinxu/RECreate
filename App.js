@@ -27,7 +27,7 @@ import NearbyList from './components/NearbyList';
 import TimeSlider from './components/TimeSlider';
 import BottomNav from './components/BottomNav';
 import ClassesScreen from './components/ClassesScreen';
-import PoolsScreen from './components/PoolsScreen';
+import PoolDetail from './components/PoolDetail';
 import { useAuth } from './lib/auth';
 import { useCourts } from './lib/useCourts';
 import { fmtClock, startOfDay, viewLabel, dayChipLabel, fmtDuration } from './lib/datetime';
@@ -279,6 +279,15 @@ const AMENITIES = [
   { id: 'halfcourt', test: (c, s) => s === 'basketball' && c.facts?.basketball?.half === true },
   { id: 'fullpitch', test: (c, s) => s === 'soccer' && c.facts?.soccer?.regulation === true },
   { id: 'adultfield', test: (c, s) => s === 'baseball' && c.facts?.baseball?.adult === true },
+
+  // Swimming session types — only pools carry `pool.programs`, and the `s ===
+  // 'swimming'` guard keeps these out of every other sport's view. Filters the map
+  // to pools that offer the chosen session type (lap / rec-family / senior / …).
+  { id: 'swimlap', test: (c, s) => s === 'swimming' && !!c.pool?.programs?.includes('lap') },
+  { id: 'swimfamily', test: (c, s) => s === 'swimming' && !!c.pool?.programs?.includes('family') },
+  { id: 'swimsenior', test: (c, s) => s === 'swimming' && !!c.pool?.programs?.includes('senior') },
+  { id: 'swimlessons', test: (c, s) => s === 'swimming' && !!c.pool?.programs?.includes('lessons') },
+  { id: 'swimexercise', test: (c, s) => s === 'swimming' && !!c.pool?.programs?.includes('exercise') },
 ];
 
 // ISO timestamp → "today" / "yesterday" / "Jun 18, 2026".
@@ -347,10 +356,10 @@ export default function App() {
   // map overlays (zoom, recenter, Nearby, court card) must sit to clear the nav pill.
   const navClearance = insets.bottom + 86;
   const [tab, setTab] = useState(() =>
-    urlInit && ['classes', 'pools', 'social', 'profile'].includes(urlInit.tab)
+    urlInit && ['classes', 'social', 'profile'].includes(urlInit.tab)
       ? urlInit.tab
       : 'home'
-  ); // home | classes | pools | social | profile (bottom nav)
+  ); // home | classes | social | profile (bottom nav)
   const [friendsOpen, setFriendsOpen] = useState(false);
   // Friend code from an ?add= invite link (web). Persisted until acted on so
   // it survives the sign-up round trip; inviteCode is the copy handed to
@@ -746,9 +755,9 @@ export default function App() {
     }
   }, [selectedId, courtData, setActiveCity]);
 
-  // Leaving SF while on an SF-only tab (Classes/Pools) falls back to the map.
+  // Leaving SF while on an SF-only tab (Classes) falls back to the map.
   useEffect(() => {
-    if ((tab === 'classes' && !cityFeatures.classes) || (tab === 'pools' && !cityFeatures.pools)) {
+    if (tab === 'classes' && !cityFeatures.classes) {
       goTab('home');
     }
   }, [tab, cityFeatures, goTab]);
@@ -1426,8 +1435,6 @@ export default function App() {
           <ClassesScreen userLocation={userLocation} city={activeCity} subregions={activeSubs} />
         )}
 
-        {tab === 'pools' && <PoolsScreen userLocation={userLocation} />}
-
         {tab === 'social' && (
           <SocialScreen
             courtsById={courtsById}
@@ -1492,10 +1499,7 @@ export default function App() {
           socialBadge={unread}
           profileBadge={requestCount}
           bottomInset={insets.bottom}
-          hidden={[
-            ...(cityFeatures.classes ? [] : ['classes']),
-            ...(cityFeatures.pools ? [] : ['pools']),
-          ]}
+          hidden={[...(cityFeatures.classes ? [] : ['classes'])]}
         />
       </View>
 
@@ -1966,6 +1970,10 @@ function CourtDetail({
           )}
         </>
       )}
+
+      {/* Swimming pool: full weekly schedule (by session type), fees, and the
+          official schedule PDF (see lib/poolCourts.js + components/PoolDetail.js). */}
+      {court.pool && <PoolDetail pool={court.pool} poolId={court.id} />}
 
       {/* SF Rec & Park publishes lights for tennis/pickleball courts but not basketball,
           so be honest about it rather than imply anything. */}
