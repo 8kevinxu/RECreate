@@ -314,7 +314,7 @@
     },
     "balboa-park-outdoor": {
       "tennis": {
-        "pct": 27,
+        "pct": 26,
         "courts": 4,
         "slots": {
           "2026-07-24 07:30": 50,
@@ -410,9 +410,9 @@
           "2026-07-27 16:30": 0,
           "2026-07-27 17:00": 0,
           "2026-07-27 17:30": 0,
-          "2026-07-27 18:00": 33,
-          "2026-07-27 18:30": 33,
-          "2026-07-27 19:00": 33,
+          "2026-07-27 18:00": 0,
+          "2026-07-27 18:30": 0,
+          "2026-07-27 19:00": 0,
           "2026-07-28 07:30": 0,
           "2026-07-28 08:00": 0,
           "2026-07-28 08:30": 0,
@@ -2033,8 +2033,8 @@
         "courts": 4,
         "slots": {
           "2026-07-24 07:30": 25,
-          "2026-07-24 08:00": 25,
-          "2026-07-24 08:30": 25,
+          "2026-07-24 08:00": 50,
+          "2026-07-24 08:30": 50,
           "2026-07-24 09:00": 50,
           "2026-07-24 09:30": 50,
           "2026-07-24 10:00": 25,
@@ -3447,7 +3447,7 @@
     },
     "j-p-murphy-playground-outdoor": {
       "tennis": {
-        "pct": 50,
+        "pct": 52,
         "courts": 3,
         "slots": {
           "2026-07-24 07:30": 67,
@@ -3465,9 +3465,9 @@
           "2026-07-24 13:30": 33,
           "2026-07-24 14:00": 33,
           "2026-07-24 14:30": 33,
-          "2026-07-24 15:00": 67,
-          "2026-07-24 15:30": 67,
-          "2026-07-24 16:00": 67,
+          "2026-07-24 15:00": 100,
+          "2026-07-24 15:30": 100,
+          "2026-07-24 16:00": 100,
           "2026-07-24 16:30": 100,
           "2026-07-24 17:00": 100,
           "2026-07-24 17:30": 100,
@@ -3564,15 +3564,15 @@
           "2026-07-28 15:00": 0,
           "2026-07-28 15:30": 0,
           "2026-07-28 16:00": 0,
-          "2026-07-28 16:30": 0,
-          "2026-07-28 17:00": 0,
-          "2026-07-28 17:30": 0,
+          "2026-07-28 16:30": 50,
+          "2026-07-28 17:00": 50,
+          "2026-07-28 17:30": 50,
           "2026-07-28 18:00": 100,
           "2026-07-28 18:30": 100,
           "2026-07-28 19:00": 100,
-          "2026-07-29 07:30": 0,
-          "2026-07-29 08:00": 0,
-          "2026-07-29 08:30": 0,
+          "2026-07-29 07:30": 50,
+          "2026-07-29 08:00": 50,
+          "2026-07-29 08:30": 50,
           "2026-07-29 09:00": 0,
           "2026-07-29 09:30": 0,
           "2026-07-29 10:00": 0,
@@ -6775,7 +6775,7 @@
     },
     "presidio-wall-playground-outdoor": {
       "tennis": {
-        "pct": 52,
+        "pct": 53,
         "courts": 4,
         "slots": {
           "2026-07-24 07:30": 0,
@@ -6943,9 +6943,9 @@
           "2026-07-30 16:30": 100,
           "2026-07-30 17:00": 100,
           "2026-07-30 17:30": 100,
-          "2026-07-30 18:00": 0,
-          "2026-07-30 18:30": 0,
-          "2026-07-30 19:00": 0
+          "2026-07-30 18:00": 100,
+          "2026-07-30 18:30": 100,
+          "2026-07-30 19:00": 100
         },
         "open": {
           "2026-07-24 09:00": 2,
@@ -7542,9 +7542,9 @@
           "2026-07-24 15:00": 75,
           "2026-07-24 15:30": 75,
           "2026-07-24 16:00": 75,
-          "2026-07-24 16:30": 25,
-          "2026-07-24 17:00": 25,
-          "2026-07-24 17:30": 25,
+          "2026-07-24 16:30": 50,
+          "2026-07-24 17:00": 50,
+          "2026-07-24 17:30": 50,
           "2026-07-24 18:00": 75,
           "2026-07-24 18:30": 75,
           "2026-07-24 19:00": 75,
@@ -7697,7 +7697,7 @@
       },
       "guidelines": "You know and love it for its summer concert series, but Stern Grove has tennis and pickleball too! \n\n**Reservation Policy**\n- Any individual may reserve a court, but may not book more than 1 court in a day or 3 courts in a calendar week.\n- Reservation requests are for individual play only. No lessons, team practices, clinics or league matches.\n- Courts left vacant 15 minutes after reservation time are available for walk-up play\n- Please **[click here](https://sfrecpark.org/1188/Tennis-Pickleball-Reservations)** to view the full San Francisco Rec and Park reservation policy.\n\n**Reservation Overview**\n\n*Courts 1 and 2*\n- Courts 1 and 2 are reservable for Tennis 7 days in advance.\n- Reservations open at 8:00am. \n- All slots are 90 minutes, starting at 7:30am, 9:00am, 10:30am, 12:00pm, 1:30pm, 3:00pm and 4:30pm (6:00pm during Daylight Saving Time). \n\n*Courts A, C, D, and F*\n- Courts A, C, D, and F are reservable for Pickleball 7 days in advance. \n- Reservations open at 8:00am. \n- All slots are 90 minutes, starting at 7:30am, 9:00am, 10:30am, 12:00pm, 1:30pm, 3:00pm and 4:30pm (6:00pm during Daylight Saving Time). \n\n**Location Features**\n- 2 tennis courts\n- 6 pickleball courts. There are 4 roll-on nets for use on courts A, C, D, and F\n- Bathroom access - the nearest restrooms are at 20th Avenue & Wawona Street.",
       "tennis": {
-        "pct": 47,
+        "pct": 48,
         "courts": 2,
         "slots": {
           "2026-07-24 07:30": 0,
@@ -7718,9 +7718,9 @@
           "2026-07-24 15:00": 100,
           "2026-07-24 15:30": 100,
           "2026-07-24 16:00": 100,
-          "2026-07-24 16:30": 50,
-          "2026-07-24 17:00": 50,
-          "2026-07-24 17:30": 50,
+          "2026-07-24 16:30": 100,
+          "2026-07-24 17:00": 100,
+          "2026-07-24 17:30": 100,
           "2026-07-24 18:00": 100,
           "2026-07-24 18:30": 100,
           "2026-07-24 19:00": 100,
@@ -8312,5 +8312,5 @@
       }
     }
   },
-  "fetchedAt": "2026-07-24T11:07:59.220Z"
+  "fetchedAt": "2026-07-24T13:58:03.259Z"
 }
