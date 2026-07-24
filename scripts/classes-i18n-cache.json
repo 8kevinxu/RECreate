@@ -1530,5 +1530,661 @@
   "Midday Meditation": {
     "zh": "中午冥想",
     "es": "Meditación del Mediodía"
+  },
+  "Level 1": {
+    "zh": "第1级",
+    "es": "Nivel 1"
+  },
+  "Level 2": {
+    "zh": "第2级",
+    "es": "Nivel 2"
+  },
+  "Preschool Swim": {
+    "zh": "学前游泳",
+    "es": "Natación Preescolar"
+  },
+  "Level 3": {
+    "zh": "第3级",
+    "es": "Nivel 3"
+  },
+  "Level 4": {
+    "zh": "第4级",
+    "es": "Nivel 4"
+  },
+  "King Barracuda Swim Team": {
+    "zh": "国王梭鱼游泳队",
+    "es": "King Barracuda - Equipo de Natación"
+  },
+  "Junior Barracuda Swim Team": {
+    "zh": "少年梭鱼游泳队",
+    "es": "Junior Barracuda - Equipo de Natación"
+  },
+  "Lifeguard Training Class with Oxygen Administration": {
+    "zh": "救生员培训课程及氧气管理",
+    "es": "Clase de Entrenamiento de Salvavidas con Administración de Oxígeno"
+  },
+  "Lifeguarding Instructor/Instructor Trainer Recertification": {
+    "zh": "救生员教练/教练师再认证",
+    "es": "Recertificación de Instructor/Entrenador de Salvavidas"
+  },
+  "Bayview Safety Swim & Splash": {
+    "zh": "贝景安全游泳和水上溅水",
+    "es": "Bayview - Natación de Seguridad y Chapoteo"
+  },
+  "Portfolio Development": {
+    "zh": "作品集开发",
+    "es": "Desarrollo de Portafolio"
+  },
+  "Textiles - Kids Knit & Crochet": {
+    "zh": "纺织品 - 儿童编织与钩编",
+    "es": "Textiles - Tejido y Ganchillo para Niños"
+  },
+  "Youth Cartooning": {
+    "zh": "青少年漫画",
+    "es": "Historietas Juveniles"
+  },
+  "Youth Digital Comics and Storyboarding": {
+    "zh": "青少年数字漫画与分镜设计",
+    "es": "Cómics Digitales Juveniles y Diseño de Guiones Gráficos"
+  },
+  "Intermediate Black & White Printing": {
+    "zh": "中级黑白版画",
+    "es": "Impresión en Blanco y Negro - Intermedio"
+  },
+  "Getting to Know Your DSLR Camera": {
+    "zh": "了解你的单反相机",
+    "es": "Conociendo tu Cámara DSLR"
+  },
+  "Introduction to Inkjet Printing": {
+    "zh": "喷墨版画入门",
+    "es": "Introducción a la Impresión por Inyección de Tinta"
+  },
+  "Wet Plate Collodion Photography Workshop": {
+    "zh": "湿板火棉胶摄影工坊",
+    "es": "Taller de Fotografía de Colodión de Placa Húmeda"
+  },
+  "Community Sewing Class - Intermediate": {
+    "zh": "社区缝纫课 - 中级",
+    "es": "Clase de Costura Comunitaria - Intermedio"
+  },
+  "Tot Arts and Crafts": {
+    "zh": "幼儿美术与手工",
+    "es": "Artes y Manualidades para Pequeños"
+  },
+  "Exploration in Clay": {
+    "zh": "粘土探索",
+    "es": "Exploración en Arcilla"
+  },
+  "Personal Expression Lab: Drawing & Painting": {
+    "zh": "个人表达实验室：绘画与油画",
+    "es": "Laboratorio de Expresión Personal: Dibujo y Pintura"
+  },
+  "Woodworking Week: A Shop Intensive for Tweens": {
+    "zh": "木工周：青少年工坊集训",
+    "es": "Semana de Carpintería: Intensivo de Taller para Pre-adolescentes"
+  },
+  "Colorful Printmaking": {
+    "zh": "彩色版画",
+    "es": "Impresión Colorida"
+  },
+  "Dynamic Duo Clay Explorers": {
+    "zh": "双人粘土探险家",
+    "es": "Exploradores de Arcilla en Dúo"
+  },
+  "Playing With Art": {
+    "zh": "艺术游戏",
+    "es": "Jugando con el Arte"
+  },
+  "Woodworking for Kids": {
+    "zh": "儿童木工",
+    "es": "Carpintería para Niños"
+  },
+  "Woodworking for Tweens: From the Animal Room to the Woodshop": {
+    "zh": "青少年木工：从动物房到木工坊",
+    "es": "Carpintería para Pre-adolescentes: Del Cuarto de Animales al Taller"
+  },
+  "Woodworking: Turning Spindles, Boxes, and Bowls!": {
+    "zh": "木工：旋转纺锤、盒子和碗！",
+    "es": "Carpintería: ¡Tornear Husos, Cajas y Cuencos!"
+  },
+  "Floral Design for Youth": {
+    "zh": "青少年花卉设计",
+    "es": "Diseño Floral Juvenil"
+  },
+  "Woodworking: Make Your Own Cheese Board": {
+    "zh": "木工：制作你自己的奶酪板",
+    "es": "Carpintería: Crea tu Propia Tabla de Quesos"
+  },
+  "Woodworking: Make Your Own Picture Frame": {
+    "zh": "木工：制作你自己的相框",
+    "es": "Carpintería: Crea tu Propio Marco de Fotos"
+  },
+  "Woodworking: What's a Bandsaw Box?": {
+    "zh": "木工：什么是带锯盒？",
+    "es": "Carpintería: ¿Qué es una Caja de Sierra de Cinta?"
+  },
+  "Woodworking: Create a Hardwood Keepsake Box": {
+    "zh": "木工：制作硬木纪念盒",
+    "es": "Carpintería: Crea una Caja de Recuerdo de Madera Dura"
+  },
+  "Watercolor: Fun and Free Landscapes": {
+    "zh": "水彩画：有趣和自由的风景画",
+    "es": "Acuarela: Paisajes Divertidos y Libres"
+  },
+  "Watercolor Journal at the Botanical Garden": {
+    "zh": "植物园水彩日记",
+    "es": "Diario de Acuarela en el Jardín Botánico"
+  },
+  "Plein Air Watercolor Workshop": {
+    "zh": "室外写生水彩工坊",
+    "es": "Taller de Acuarela al Aire Libre"
+  },
+  "Jewelry Workshop: Metal Stamped Friendship Bracelets": {
+    "zh": "珠宝工坊：金属冲压友谊手链",
+    "es": "Taller de Joyería: Pulseras de Amistad Estampadas en Metal"
+  },
+  "Jewelry Workshop: Beaded Bag Charms": {
+    "zh": "珠宝工坊：珠饰包包挂件",
+    "es": "Taller de Joyería: Encantos de Bolsa con Cuentas"
+  },
+  "Glass - Advanced": {
+    "zh": "玻璃 - 高级",
+    "es": "Vidrio - Avanzado"
+  },
+  "Drawing Studio - The Basics": {
+    "zh": "绘画工作室 - 基础入门",
+    "es": "Estudio de Dibujo - Lo Básico"
+  },
+  "Drawing with Soft Pastels: Flowers and Landscape": {
+    "zh": "软粉笔绘画：花卉和风景",
+    "es": "Dibujo con Pasteles Suaves: Flores y Paisaje"
+  },
+  "Drawing Workshop: Surrealist Dreamscapes": {
+    "zh": "绘画工作坊：超现实主义梦境",
+    "es": "Taller de Dibujo: Paisajes Oníricos Surrealistas"
+  },
+  "Jewelry Open Studio": {
+    "zh": "珠宝开放工作室",
+    "es": "Estudio Abierto de Joyería"
+  },
+  "Jewelry Workshop: Brass & Rainbow Crystal Sun Catchers": {
+    "zh": "珠宝工作坊：黄铜和彩晶太阳捕捉器",
+    "es": "Taller de Joyería: Atrapasoles de Latón y Cristal Arcoíris"
+  },
+  "Mixed Media: Abstract and Figure-Hybrid Art": {
+    "zh": "混合媒体：抽象和人像混合艺术",
+    "es": "Arte Mixto: Arte Híbrido Abstracto y Figurativo"
+  },
+  "Mixed Media Workshop: Folk Art Collage": {
+    "zh": "混合媒体工作坊：民间艺术拼贴",
+    "es": "Taller de Arte Mixto: Collage de Arte Folclórico"
+  },
+  "Sketchbooking : Planting Seeds": {
+    "zh": "速写本艺术：播种",
+    "es": "Sketchbook: Sembrando Semillas"
+  },
+  "Glass - Stained Glass Jewelry Workshop": {
+    "zh": "玻璃工艺 - 彩色玻璃珠宝工作坊",
+    "es": "Vidrio - Taller de Joyería de Vitrales"
+  },
+  "Graphic Medicine - Comics as Healthcare": {
+    "zh": "图形医学 - 漫画作为医疗保健",
+    "es": "Medicina Gráfica - Cómics como Cuidado de la Salud"
+  },
+  "Halloween Craft Night - Collage Magic": {
+    "zh": "万圣节手工创意之夜 - 拼贴魔法",
+    "es": "Noche de Manualidades de Halloween - Magia de Collage"
+  },
+  "Handmade Greeting Cards with Printmaking Techniques": {
+    "zh": "手工贺卡与版画技巧",
+    "es": "Tarjetas de Felicitación Hechas a Mano con Técnicas de Impresión"
+  },
+  "Handmade Wrapping Paper with Printmaking Techniques": {
+    "zh": "手工包装纸与版画技巧",
+    "es": "Papel de Envolver Hecho a Mano con Técnicas de Impresión"
+  },
+  "Introduction to Brooch Mechanisms": {
+    "zh": "胸针机制入门",
+    "es": "Introducción a Mecanismos de Broches"
+  },
+  "Jewelry Workshop: Chainmail": {
+    "zh": "珠宝工作坊：锁子甲",
+    "es": "Taller de Joyería: Malla de Cadena"
+  },
+  "Porcelain Ornaments & Gift Tags Workshop": {
+    "zh": "瓷器饰品和礼品标签工作坊",
+    "es": "Taller de Adornos de Porcelana y Etiquetas de Regalo"
+  },
+  "Printmaking Workshop: Gelli Plate Prints": {
+    "zh": "版画工作坊：Gelli 板版画",
+    "es": "Taller de Impresión: Impresiones con Placa Gelli"
+  },
+  "Sketchbooking as Exploration": {
+    "zh": "速写本艺术：探索",
+    "es": "Sketchbook: Exploración"
+  },
+  "Glass - Stained Glass Air Plant Holders": {
+    "zh": "玻璃工艺 - 彩色玻璃空气植物架",
+    "es": "Vidrio - Soportes de Plantas de Aire de Vitrales"
+  },
+  "Sterling Silver Stacking Rings": {
+    "zh": "纯银堆叠戒指",
+    "es": "Anillos Apilables de Plata Esterlina"
+  },
+  "Teen Holiday Sparkle Earrings": {
+    "zh": "少年节日闪耀耳环",
+    "es": "Aretes Brillantes Festivos para Adolescentes"
+  },
+  "Watercolor - Inktober Line & Wash with Fountain Pens": {
+    "zh": "水彩画 - Inktober 线条与洗色 - 钢笔",
+    "es": "Acuarela - Inktober Línea y Lavado con Plumas Estilográficas"
+  },
+  "Watercolor Line & Wash - Colors of Fall": {
+    "zh": "水彩线条与洗色 - 秋日色彩",
+    "es": "Acuarela Línea y Lavado - Colores del Otoño"
+  },
+  "Wire Bonsai Trees": {
+    "zh": "铁丝盆景树",
+    "es": "Árboles Bonsái de Alambre"
+  },
+  "Family Holiday Craft Day": {
+    "zh": "家庭节日手工日",
+    "es": "Día de Manualidades Festivas Familiares"
+  },
+  "Archery & Adventure Thanksgiving Camp": {
+    "zh": "射箭和冒险感恩节营",
+    "es": "Campamento de Acción de Gracias: Tiro con Arco y Aventura"
+  },
+  "Great Time Out Thanksgiving Break Camp": {
+    "zh": "精彩感恩节假期营",
+    "es": "Campamento de Vacaciones Especiales de Acción de Gracias"
+  },
+  "Tennis - Thanksgiving Break Camp": {
+    "zh": "网球 - 感恩节假期营",
+    "es": "Tenis - Campamento de Vacaciones de Acción de Gracias"
+  },
+  "Shred N' Butter - Fall Camp": {
+    "zh": "滑雪与黄油 - 秋季营",
+    "es": "Shred N' Butter - Campamento de Otoño"
+  },
+  "Chinese Folk Dance": {
+    "zh": "中国民间舞蹈",
+    "es": "Danza Folclórica China"
+  },
+  "International Folk Dance": {
+    "zh": "国际民间舞蹈",
+    "es": "Danza Folclórica Internacional"
+  },
+  "Shake the Stage: Hip-Hop Dance": {
+    "zh": "舞动舞台：嘻哈舞蹈",
+    "es": "Shake the Stage: Danza Hip-Hop"
+  },
+  "Shake the Stage: Puppetry and Storytelling": {
+    "zh": "舞动舞台：木偶戏和讲故事",
+    "es": "Shake the Stage: Títeres y Narración de Historias"
+  },
+  "Chinese Cultural Dance - Beginner & Intermediate Level": {
+    "zh": "中国民族舞蹈 - 初级和中级",
+    "es": "Danza Cultural China - Nivel Principiante e Intermedio"
+  },
+  "Tap - Beginner": {
+    "zh": "踢踏舞 - 初级",
+    "es": "Tap - Principiante"
+  },
+  "Tap - Intermediate": {
+    "zh": "踢踏舞 - 中级",
+    "es": "Tap - Intermedio"
+  },
+  "Chinese Folk Dancing": {
+    "zh": "中国民族舞蹈",
+    "es": "Danza Folclórica China"
+  },
+  "Move 'N Groove Fitness for Seniors": {
+    "zh": "移动与律动 - 老年人健身",
+    "es": "Movimiento y Ritmo - Fitness para Personas Mayores"
+  },
+  "Women's Weightlifting - Intermediate": {
+    "zh": "女性举重 - 中级",
+    "es": "Levantamiento de Pesas para Mujeres - Intermedio"
+  },
+  "Women's Weightlifting - Beginner": {
+    "zh": "女性举重 - 初级",
+    "es": "Levantamiento de Pesas para Mujeres - Principiante"
+  },
+  "Essentrics": {
+    "zh": "艾森瑞克斯健身法",
+    "es": "Essentrics"
+  },
+  "Yoga: Chair Yoga": {
+    "zh": "瑜伽：椅子瑜伽",
+    "es": "Yoga: Chair Yoga"
+  },
+  "Ukulele - Beginner": {
+    "zh": "尤克里里 - 初级",
+    "es": "Ukelele - Principiante"
+  },
+  "Ukulele II": {
+    "zh": "尤克里里 II",
+    "es": "Ukelele II"
+  },
+  "Young People's Teen Musical Theatre Company": {
+    "zh": "青少年音乐剧团",
+    "es": "Compañía de Teatro Musical para Jóvenes"
+  },
+  "Guitar II": {
+    "zh": "吉他 II",
+    "es": "Guitarra II"
+  },
+  "SFFBL - Jr.  Division - Minnie and Lovie Ward Team": {
+    "zh": "SFFBL - 少年组 - Minnie and Lovie Ward 队",
+    "es": "SFFBL - División Junior - Equipo Minnie and Lovie Ward"
+  },
+  "SFFBL - Teen Division - Minnie and Lovie Ward Team": {
+    "zh": "SFFBL - 青少年组 - Minnie and Lovie Ward 队",
+    "es": "SFFBL - División Adolescente - Equipo Minnie and Lovie Ward"
+  },
+  "Jr. Division - Crocker Team": {
+    "zh": "少年组 - Crocker 队",
+    "es": "División Junior - Equipo Crocker"
+  },
+  "Sr. Division - Crocker Team": {
+    "zh": "成人组 - Crocker 队",
+    "es": "División Senior - Equipo Crocker"
+  },
+  "Jr. Division - Eureka Valley Team": {
+    "zh": "少年组 - Eureka Valley 队",
+    "es": "División Junior - Equipo Eureka Valley"
+  },
+  "Sr. Division - Eureka Valley Team": {
+    "zh": "成人组 - Eureka Valley 队",
+    "es": "División Senior - Equipo Eureka Valley"
+  },
+  "SFFBL - Jr.  Division - Glen Park Team": {
+    "zh": "SFFBL - 少年组 - Glen Park 队",
+    "es": "SFFBL - División Junior - Equipo Glen Park"
+  },
+  "SFFBL - Sr.  Division - Glen Park Team": {
+    "zh": "SFFBL - 成人组 - Glen Park 队",
+    "es": "SFFBL - División Senior - Equipo Glen Park"
+  },
+  "Volleyball - Glen Park Team - Ages 10-12": {
+    "zh": "排球 - Glen Park 队 - 10-12 岁",
+    "es": "Voleibol - Equipo Glen Park - Edades 10-12"
+  },
+  "Volleyball - Glen Park Team - Ages 8-10": {
+    "zh": "排球 - Glen Park 队 - 8-10 岁",
+    "es": "Voleibol - Equipo Glen Park - Edades 8-10"
+  },
+  "SFFBL - Teen Division - Herz Team": {
+    "zh": "SFFBL - 青少年组 - Herz 队",
+    "es": "SFFBL - División Adolescente - Equipo Herz"
+  },
+  "Intermediate Tang Soo Doo": {
+    "zh": "跆拳道 - 中级",
+    "es": "Tang Soo Do - Intermedio"
+  },
+  "Volleyball League Championship Game": {
+    "zh": "排球联赛冠军赛",
+    "es": "Partido de Campeonato de Voleibol"
+  },
+  "Golf: Beginning": {
+    "zh": "高尔夫 - 初级",
+    "es": "Golf - Principiante"
+  },
+  "Volleyball - Minnie & Lovie Team - Ages 14-15": {
+    "zh": "排球 - Minnie & Lovie 队 - 14-15 岁",
+    "es": "Voleibol - Equipo Minnie & Lovie - Edades 14-15"
+  },
+  "Shred N' Butter for Adults": {
+    "zh": "单板滑雪与黄油技巧 - 成人",
+    "es": "Shred N' Butter para Adultos"
+  },
+  "Shred N' Butter": {
+    "zh": "单板滑雪与黄油技巧",
+    "es": "Shred N' Butter"
+  },
+  "TR STREAM": {
+    "zh": "TR 溪流课程",
+    "es": "TR STREAM"
+  },
+  "Basketball - MRC Rebels 15U": {
+    "zh": "篮球 - MRC Rebels 15U",
+    "es": "Baloncesto - MRC Rebels 15U"
+  },
+  "Basketball - MRC Rebels 17U": {
+    "zh": "篮球 - MRC Rebels 17U",
+    "es": "Baloncesto - MRC Rebels 17U"
+  },
+  "Basketball - MRC Rebels 16U": {
+    "zh": "篮球 - MRC Rebels 16U",
+    "es": "Baloncesto - MRC Rebels 16U"
+  },
+  "Basketball - MRC Rebels 11U": {
+    "zh": "篮球 - MRC Rebels 11U",
+    "es": "Baloncesto - MRC Rebels 11U"
+  },
+  "Basketball - MRC Rebels 13U": {
+    "zh": "篮球 - MRC Rebels 13U",
+    "es": "Baloncesto - MRC Rebels 13U"
+  },
+  "Basketball - MRC Rebels 14U": {
+    "zh": "篮球 - MRC Rebels 14U",
+    "es": "Baloncesto - MRC Rebels 14U"
+  },
+  "Basketball - MRC Rebels 12U": {
+    "zh": "篮球 - MRC Rebels 12U",
+    "es": "Baloncesto - MRC Rebels 12U"
+  },
+  "Volleyball - Moscone Team - Ages 10-12": {
+    "zh": "排球 - Moscone 队 - 10-12 岁",
+    "es": "Voleibol - Equipo Moscone - Edades 10-12"
+  },
+  "Volleyball - Moscone Team - Ages 12-14": {
+    "zh": "排球 - Moscone 队 - 12-14 岁",
+    "es": "Voleibol - Equipo Moscone - Edades 12-14"
+  },
+  "Tennis - Women's Beginning": {
+    "zh": "网球 - 女性初级",
+    "es": "Tenis - Mujeres Principiante"
+  },
+  "Tennis - Women's Intermediate": {
+    "zh": "网球 - 女性中级",
+    "es": "Tenis - Mujeres Intermedio"
+  },
+  "SFFBL - Teen Division - Palega Team": {
+    "zh": "SFFBL - 青少年组 - Palega 队",
+    "es": "SFFBL - División Adolescente - Equipo Palega"
+  },
+  "Volleyball - Women's Advanced League": {
+    "zh": "排球 - 女性高级联赛",
+    "es": "Voleibol - Liga Avanzada de Mujeres"
+  },
+  "Volleyball - Women's Intermediate League": {
+    "zh": "排球 - 女性中级联赛",
+    "es": "Voleibol - Liga Intermedia de Mujeres"
+  },
+  "Volleyball - Palega Team - Ages 12-14": {
+    "zh": "排球 - Palega 队 - 12-14 岁",
+    "es": "Voleibol - Equipo Palega - Edades 12-14"
+  },
+  "Volleyball - Palega Team - Ages 10-12": {
+    "zh": "排球 - Palega 队 - 10-12 岁",
+    "es": "Voleibol - Equipo Palega - Edades 10-12"
+  },
+  "Volleyball - Palega Team - Ages 8-10": {
+    "zh": "排球 - Palega队 - 8-10岁",
+    "es": "Voleibol - Equipo Palega - Edades 8-10"
+  },
+  "Volleyball - Palega Team - Ages 14-15": {
+    "zh": "排球 - Palega队 - 14-15岁",
+    "es": "Voleibol - Equipo Palega - Edades 14-15"
+  },
+  "SFFBL - Jr.  Division - Potrero Hill Team": {
+    "zh": "旧金山棒球联赛 - 少年组 - Potrero Hill队",
+    "es": "Liga de Béisbol SF - División Juvenil - Equipo Potrero Hill"
+  },
+  "SFFBL - Sr.  Division - Potrero Hill Team": {
+    "zh": "旧金山棒球联赛 - 成人组 - Potrero Hill队",
+    "es": "Liga de Béisbol SF - División Senior - Equipo Potrero Hill"
+  },
+  "SFFBL - Potrero Hill - WHOLE FIELD FOR GAMES": {
+    "zh": "旧金山棒球联赛 - Potrero Hill - 全场比赛",
+    "es": "Liga de Béisbol SF - Potrero Hill - Juegos de Campo Completo"
+  },
+  "Jr. Division - Potrero Hill Team": {
+    "zh": "少年组 - Potrero Hill队",
+    "es": "División Juvenil - Equipo Potrero Hill"
+  },
+  "Sr. Division - Potrero Hill Team": {
+    "zh": "成人组 - Potrero Hill队",
+    "es": "División Senior - Equipo Potrero Hill"
+  },
+  "Volleyball - Richmond Team - Ages 8-10": {
+    "zh": "排球 - Richmond队 - 8-10岁",
+    "es": "Voleibol - Equipo Richmond - Edades 8-10"
+  },
+  "Volleyball - Richmond Team - Ages 10-12": {
+    "zh": "排球 - Richmond队 - 10-12岁",
+    "es": "Voleibol - Equipo Richmond - Edades 10-12"
+  },
+  "Volleyball - Richmond Team - Ages 12-14": {
+    "zh": "排球 - Richmond队 - 12-14岁",
+    "es": "Voleibol - Equipo Richmond - Edades 12-14"
+  },
+  "Volleyball - Richmond Team - Ages 14-15": {
+    "zh": "排球 - Richmond队 - 14-15岁",
+    "es": "Voleibol - Equipo Richmond - Edades 14-15"
+  },
+  "Tennis - Beginning": {
+    "zh": "网球 - 初级",
+    "es": "Tenis - Principiante"
+  },
+  "Volleyball League - Advanced": {
+    "zh": "排球联赛 - 高级",
+    "es": "Liga de Voleibol - Avanzado"
+  },
+  "Volleyball League - Intermediate": {
+    "zh": "排球联赛 - 中级",
+    "es": "Liga de Voleibol - Intermedio"
+  },
+  "Volleyball - St. Mary's Team - Ages 14-15": {
+    "zh": "排球 - St. Mary's队 - 14-15岁",
+    "es": "Voleibol - Equipo St. Mary's - Edades 14-15"
+  },
+  "Volleyball - Girls Queens of the Court Tournament (Int)": {
+    "zh": "排球 - 女子法庭皇后锦标赛(中级)",
+    "es": "Voleibol - Torneo Queens of the Court para Chicas (Intermedio)"
+  },
+  "SFFBL - Jr. Division - Sunset Team": {
+    "zh": "旧金山棒球联赛 - 少年组 - Sunset队",
+    "es": "Liga de Béisbol SF - División Juvenil - Equipo Sunset"
+  },
+  "SFFBL - Sr. Division - Sunset Team": {
+    "zh": "旧金山棒球联赛 - 成人组 - Sunset队",
+    "es": "Liga de Béisbol SF - División Senior - Equipo Sunset"
+  },
+  "Rec and Parkour - All Girls": {
+    "zh": "跑酷 - 全女生",
+    "es": "Parkour - Solo Chicas"
+  },
+  "Volleyball - Boys Fundamentals Beginners": {
+    "zh": "排球 - 男子基础初级班",
+    "es": "Voleibol - Fundamentos para Chicos Principiantes"
+  },
+  "Tennis - High Performance (Juniors)": {
+    "zh": "网球 - 高性能训练(青少年)",
+    "es": "Tenis - Alto Rendimiento (Juveniles)"
+  },
+  "Tennis - Intermediate Doubles Clinic": {
+    "zh": "网球 - 中级双打诊所",
+    "es": "Tenis - Clínica de Dobles Intermedia"
+  },
+  "Tennis - Jr. Tennis Team Intermediate": {
+    "zh": "网球 - 少年网球队 中级",
+    "es": "Tenis - Equipo Junior de Tenis Intermedio"
+  },
+  "SFFBL - Jr.  Division - Upper Noe Team": {
+    "zh": "旧金山棒球联赛 - 少年组 - Upper Noe队",
+    "es": "Liga de Béisbol SF - División Juvenil - Equipo Upper Noe"
+  },
+  "SFFBL - Sr.  Division - Upper Noe Team": {
+    "zh": "旧金山棒球联赛 - 成人组 - Upper Noe队",
+    "es": "Liga de Béisbol SF - División Senior - Equipo Upper Noe"
+  },
+  "Tennis - Intermediate/Advanced": {
+    "zh": "网球 - 中级/高级",
+    "es": "Tenis - Intermedio/Avanzado"
+  },
+  "Jr. Division - Upper Noe Team": {
+    "zh": "少年组 - Upper Noe队",
+    "es": "División Juvenil - Equipo Upper Noe"
+  },
+  "Sr. Division - Upper Noe Team": {
+    "zh": "成人组 - Upper Noe队",
+    "es": "División Senior - Equipo Upper Noe"
+  },
+  "Girls Flag Football-Games and Championship": {
+    "zh": "女子旗式足球 - 比赛和锦标赛",
+    "es": "Fútbol Americano Bandera para Chicas - Juegos y Campeonato"
+  },
+  "Volleyball - Upper Noe Team - Ages 10-12": {
+    "zh": "排球 - Upper Noe队 - 10-12岁",
+    "es": "Voleibol - Equipo Upper Noe - Edades 10-12"
+  },
+  "Volleyball - Upper Noe Team - Ages 8-10": {
+    "zh": "排球 - Upper Noe队 - 8-10岁",
+    "es": "Voleibol - Equipo Upper Noe - Edades 8-10"
+  },
+  "Volleyball - Upper Noe Team - Ages 12-14": {
+    "zh": "排球 - Upper Noe队 - 12-14岁",
+    "es": "Voleibol - Equipo Upper Noe - Edades 12-14"
+  },
+  "Volleyball League Games": {
+    "zh": "排球联赛比赛",
+    "es": "Juegos de Liga de Voleibol"
+  },
+  "Volleyball - Girls Queens of the Court Tournament (Beginner)": {
+    "zh": "排球 - 女子法庭皇后锦标赛(初级)",
+    "es": "Voleibol - Torneo Queens of the Court para Chicas (Principiante)"
+  },
+  "Tennis - Beginning / Intermediate": {
+    "zh": "网球 - 初级/中级",
+    "es": "Tenis - Principiante/Intermedio"
+  },
+  "Youth Soccer": {
+    "zh": "青少年足球",
+    "es": "Fútbol Juvenil"
+  },
+  "SFFBL - Teen Division - Joseph Lee Team": {
+    "zh": "旧金山棒球联赛 - 青少年组 - Joseph Lee队",
+    "es": "Liga de Béisbol SF - División Teen - Equipo Joseph Lee"
+  },
+  "TLC - Betty Ann Ong": {
+    "zh": "生活中心 - Betty Ann Ong",
+    "es": "Centro de Vida - Betty Ann Ong"
+  },
+  "Little People's Moovin & Groovin": {
+    "zh": "小朋友音乐舞蹈班",
+    "es": "Pequeños Moviéndose y Bailando"
+  },
+  "Little People's Tumbling": {
+    "zh": "小朋友翻滚班",
+    "es": "Acrobacias para Pequeños"
+  },
+  "TLC - GGPTC": {
+    "zh": "TLC - 金门公园体育中心",
+    "es": "TLC - GGPTC"
+  },
+  "TLC - Hamilton": {
+    "zh": "TLC - 汉密尔顿",
+    "es": "TLC - Hamilton"
+  },
+  "TLC - Palega": {
+    "zh": "TLC - 帕莱加",
+    "es": "TLC - Palega"
+  },
+  "TLC - Youngblood": {
+    "zh": "TLC - 杨布鲁德",
+    "es": "TLC - Youngblood"
   }
 }
