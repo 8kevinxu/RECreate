@@ -129,7 +129,14 @@ export default function ClassesScreen({ userLocation = null, city = 'sf', subreg
   );
   // Bundled title translation (build-classes.js); falls back to the English name.
   const className = (c) => c['name_' + lang] || c.name;
-  const [cat, setCat] = useState('all');
+  const [cats, setCats] = useState(() => new Set()); // selected category ids; empty = all
+  const toggleCat = (id) =>
+    setCats((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
   const [query, setQuery] = useState('');
   const [age, setAge] = useState(null); // 'teen' | '18' | '55' | null
   const [time, setTime] = useState(null); // 'morning' | 'afternoon' | 'evening' | null
@@ -234,11 +241,14 @@ export default function ClassesScreen({ userLocation = null, city = 'sf', subreg
 
   // The category row is the SAME canonical set in every city, so the Classes/Programs
   // filters stay identical across SF/NYC (a chip just yields an empty list where a
-  // city genuinely has none of that program). We only reset the selection if it's a
-  // retired id no longer in the taxonomy (e.g. the old 'photo'/'film' after the merge).
+  // city genuinely has none of that program). Drop any retired ids no longer in the
+  // taxonomy (e.g. the old 'photo'/'film' after the merge) from the multi-selection.
   useEffect(() => {
-    if (cat !== 'all' && !CLASS_CATEGORIES.some((c) => c.id === cat)) setCat('all');
-  }, [cat]);
+    setCats((prev) => {
+      const valid = [...prev].filter((id) => CLASS_CATEGORIES.some((c) => c.id === id));
+      return valid.length === prev.size ? prev : new Set(valid);
+    });
+  }, [cats]);
 
   const list = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -249,9 +259,11 @@ export default function ClassesScreen({ userLocation = null, city = 'sf', subreg
       isSF && liveStatus === 'ok' && live && Object.keys(live).length >= catalog.length * 0.8;
     const filtered = catalog.filter((c) => {
       if (liveComplete && !live[c.id]) return false;
-      // A class matches a category by its primary `category` OR any secondary
-      // `tags` (e.g. a philanthropy-tagged event still shows under 'social').
-      if (cat !== 'all' && c.category !== cat && !(c.tags || []).includes(cat)) return false;
+      // A class matches the selection if ANY chosen category equals its primary
+      // `category` OR is one of its secondary `tags` (a philanthropy-tagged event
+      // still shows under 'social'). Empty selection = show all categories.
+      if (cats.size && !cats.has(c.category) && !(c.tags || []).some((tg) => cats.has(tg)))
+        return false;
       if (
         q &&
         !c.name.toLowerCase().includes(q) &&
@@ -283,7 +295,7 @@ export default function ClassesScreen({ userLocation = null, city = 'sf', subreg
     };
     return [...filtered.filter((c) => !isFull(c)), ...filtered.filter(isFull)];
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [catalog, cat, query, age, time, day, radius, freeOnly, hasSpots, walkIn, live, liveStatus, userLocation, lang]);
+  }, [catalog, cats, query, age, time, day, radius, freeOnly, hasSpots, walkIn, live, liveStatus, userLocation, lang]);
 
   const clearAll = () => {
     setAge(null);
@@ -333,11 +345,15 @@ export default function ClassesScreen({ userLocation = null, city = 'sf', subreg
 
       <View style={styles.catRow}>
         {[{ id: 'all', emoji: '✨' }, ...CLASS_CATEGORIES].map((c) => {
-          const active = cat === c.id;
+          // "All" is active only when nothing is selected; category chips toggle and
+          // can be combined (e.g. Fitness + Dance shows both).
+          const active = c.id === 'all' ? cats.size === 0 : cats.has(c.id);
           return (
             <Pressable
               key={c.id}
-              onPress={() => setCat(c.id)}
+              onPress={() => (c.id === 'all' ? setCats(new Set()) : toggleCat(c.id))}
+              accessibilityRole="button"
+              accessibilityState={{ selected: active }}
               style={[styles.catChip, active && styles.catChipActive]}
             >
               <Text style={[styles.catChipText, active && styles.catChipTextActive]}>

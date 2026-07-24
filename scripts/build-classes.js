@@ -24,6 +24,13 @@ const UA =
 const BASE = 'https://anc.apm.activecommunities.com/sfrecpark';
 const CACHE_FILE = path.join(__dirname, 'classes-cache.json');
 const I18N_CACHE_FILE = path.join(__dirname, 'classes-i18n-cache.json');
+// Persisted pass-2 skip list: ids proven dead (HTTP 202) or ended (last_date < today).
+// Activity ids are assigned monotonically and an ended activity never re-opens, so
+// these are stable — re-runs skip them instead of re-probing the whole id window. A
+// full rescan every PASS2_FULL_RESCAN_DAYS refreshes the list against any drift (the
+// weekly build:data run naturally triggers it; the 6h refresh stays incremental).
+const PASS2_CACHE_FILE = path.join(__dirname, 'classes-pass2-cache.json');
+const PASS2_FULL_RESCAN_DAYS = 7;
 const OUT_FILE = path.join(__dirname, '..', 'data', 'classes.js');
 const MIN_OK = 30; // abort (keep last-good) if fewer than this many classes parse
 
@@ -394,6 +401,21 @@ async function scrape() {
     }
   }
 
+  // Pass 2: backfill activities the category browse can't see (Full / unlisted). This
+  // is where the bulk of the catalog actually lives; see backfillHidden's header. It's
+  // best-effort — a failure keeps the crawl result — and merges by id like `add`.
+  try {
+    const hidden = await backfillHidden(session, coords, rows);
+    for (const r of hidden) {
+      if (!seen.has(r.id)) {
+        seen.add(r.id);
+        rows.push(r);
+      }
+    }
+  } catch (e) {
+    console.log(`  pass 2 skipped: ${e.message}`);
+  }
+
   const collapsed = collapseSeries(rows);
   await fillFeeDetails(session, collapsed);
   return collapsed;
@@ -483,6 +505,278 @@ function collapseSeries(rows) {
   return [...by.values()].map(({ _lastStart, ...r }) => r);
 }
 
+// --- Pass 2: id-backfill of browse-hidden activities ---------------------
+// ActiveNet's activity SEARCH — category browse AND keyword — silently omits a large
+// share of the live catalog: activities that are Full, waitlist-only, or "unlisted"
+// (league / returning-player registrations) never appear in rest/activities/list, no
+// matter which category or activity_select_param you query. Measured 2026-07: the
+// category crawl above surfaces only ~14% of SF Rec's current registerable programs;
+// the other ~86% (most senior programs — Palega line dancing/bingo — plus swim
+// lessons, art-studio and rec-center classes) are reachable ONLY by fetching the
+// activity directly by id from rest/activity/detail/<id>, which is index-independent.
+// This pass scans the live id window (derived from the crawl's own id range) and
+// backfills every current activity the crawl missed. A missing id returns HTTP 202.
+//
+// The detail record carries no weekly meeting pattern (days/time) — that lives only on
+// list items — so we recover `when` (and the precise fee/openings) for the searchable
+// ones with a keyword lookup (keywordSchedules), and fall back to the term date range
+// for the truly unlisted. The whole pass is best-effort: any failure leaves the
+// category-crawl result untouched (see scrape()).
+const DETAIL_CONC = 5; // parallel detail fetches — the API tolerates ~6 before WAF pushback
+const ID_PAD_LOW = 800; // scan a little below the lowest crawled id …
+const ID_PAD_HIGH = 1500; // … and above the highest, to catch stragglers past the window
+const ID_SCAN_CAP = 12000; // hard safety cap on ids probed in one build
+const DEAD_STATUS = /^(cancelled|on hold)$/i;
+
+const detailHeaders = (session) => ({
+  'User-Agent': UA,
+  'X-CSRF-Token': session.csrf,
+  'X-Requested-With': 'XMLHttpRequest',
+  Cookie: session.cookies,
+  Referer: `${BASE}/activity/search?locale=en-US`,
+});
+
+// ActiveNet category label -> our fallback bucket (the text mirror of the id-keyed
+// `groups`, since detail records give the category by NAME, not id). classify() still
+// reroutes camp/photo/arts/music titles on top, exactly as in the crawl path.
+function fallbackForCatText(text) {
+  const t = String(text || '');
+  if (/camp/i.test(t)) return 'camps';
+  if (/aquatic|waterfront/i.test(t)) return 'aquatics';
+  // "Dance / Music / Performing Arts" must be tested before the arts bucket — its own
+  // label contains "Arts" — so line dancing lands in dance, not arts.
+  if (/dance|music|performing/i.test(t)) return 'dance';
+  if (/craft|photograph|visual|digital|\barts?\b/i.test(t)) return 'arts';
+  if (/after school|early childhood/i.test(t)) return 'youth';
+  if (/sport|recreation|adaptive|outdoor/i.test(t)) return 'sports';
+  if (/social|food|nutrition|personal|science|tech/i.test(t)) return 'social';
+  if (/fitness|exercise|senior/i.test(t)) return 'fitness';
+  return 'social';
+}
+
+// "N openings remaining" -> N; "Full" -> 0; "Unlimited"/blank -> null (unknown).
+function spotsFromStatus(status) {
+  const t = String(status || '');
+  if (/full/i.test(t)) return { spots: 0, unlimited: false };
+  const m = t.match(/(\d+)\s+opening/i);
+  if (m) return { spots: Number(m[1]), unlimited: false };
+  if (/unlimited/i.test(t)) return { spots: null, unlimited: true };
+  return { spots: null, unlimited: false };
+}
+
+// Fetch one activity by id. Returns the detail object, or null for a non-existent id
+// (HTTP 202) or an error. Backs off on WAF throttling (429/403).
+async function fetchDetail(session, id) {
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      const res = await fetchT(`${BASE}/rest/activity/detail/${id}?locale=en-US`, { headers: detailHeaders(session) });
+      if (res.status === 202) return null; // no such activity id
+      if (res.status === 429 || res.status === 403) {
+        await sleep(1500 * (attempt + 1));
+        continue;
+      }
+      if (!res.ok) return null;
+      return (await res.json()).body?.detail || null;
+    } catch {
+      await sleep(400);
+    }
+  }
+  return null;
+}
+
+// Paged keyword search (list endpoint) — the only path that returns list items (with
+// days_of_week + time_range) for browse-hidden-but-searchable activities.
+async function fetchKeyword(session, keyword) {
+  const out = [];
+  let page = 1;
+  let total = 1;
+  do {
+    const body = {
+      activity_search_pattern: { activity_select_param: 2, activity_keyword: keyword, for_map: false },
+      activity_transfer_pattern: {},
+    };
+    const res = await fetchT(`${BASE}/rest/activities/list?locale=en-US&page_number=${page}&total_records_per_page=50`, {
+      method: 'POST',
+      headers: { ...detailHeaders(session), 'Content-Type': 'application/json;charset=utf-8' },
+      body: JSON.stringify(body),
+    });
+    if (!res.ok) break;
+    const d = await res.json();
+    out.push(...(d.body?.activity_items || []));
+    total = d.headers?.page_info?.total_page || 1;
+    page++;
+  } while (page <= total && page <= 10);
+  return out;
+}
+
+// Detail record (rest/activity/detail/<id>) -> our class row. Schedule and fee are
+// seeded empty / placeholder and filled downstream (keywordSchedules, then the shared
+// fillFeeDetails estimateprice pass), so backfilled rows converge on the same shape as
+// crawl rows.
+function detailToClass(d, coords) {
+  const name = dehtml(d.activity_name);
+  if (!name) return null;
+  const center = d.centers?.[0]?.name || d.facilities?.[0]?.name || '';
+  const location = cleanLoc(center);
+  if (!location) return null;
+  const category = classify(name, fallbackForCatText(d.category));
+  const minAge = Number(d.age_min_year) || 0;
+  const rawMax = Number(d.age_max_year) || 0;
+  const maxAge = rawMax > 0 ? rawMax - 1 : null; // ActiveNet max is exclusive; store inclusive
+  const { spots, unlimited } = spotsFromStatus(d.space_status);
+  const dropIn = !!d.allow_drop_in_reg || /drop-?in/i.test(name) || unlimited;
+  const c = coords.coordsFor(center);
+  const start = /^\d{4}-\d{2}-\d{2}$/.test(d.first_date || '') ? d.first_date : null;
+  const end = /^\d{4}-\d{2}-\d{2}$/.test(d.last_date || '') ? d.last_date : null;
+  const oneDay = !!(start && end && start === end);
+  const instr = d.instructors?.[0];
+  const instrName = instr ? dehtml([instr.first_name, instr.last_name].filter(Boolean).join(' ')) : '';
+  const instructor = /^(unspecified|n\/?a|tbd)$/i.test(instrName) ? '' : instrName;
+  const desc = stripHtml(d.catalog_description);
+  const tags = tagsFor(name, category);
+  return {
+    id: `anc-${d.activity_id}`,
+    name,
+    category,
+    ...(tags.length ? { tags } : {}),
+    location,
+    when: '', // recovered by keywordSchedules when the activity is searchable
+    dropIn,
+    cost: 'See site', // resolved by the shared fillFeeDetails (estimateprice) pass
+    ages: dehtml(d.age_description || '').replace(/,\s*$/, '') || 'All ages',
+    minAge,
+    ...(maxAge != null ? { maxAge } : {}),
+    spots,
+    unlimited,
+    ...(start ? { start } : {}),
+    ...(end ? { end } : {}),
+    ...(oneDay ? { oneDay: true } : {}),
+    ...(instructor ? { instructor } : {}),
+    ...(desc ? { desc } : {}),
+    ...(c ? { lat: c.lat, lng: c.lng } : {}),
+    url: `${BASE}/activity/detail/${d.activity_id}?locale=en-US`,
+  };
+}
+
+// Recover the weekly schedule (and precise fee/openings) for backfilled rows: one
+// keyword search per distinct activity name, indexed by id. Searchable-but-hidden
+// activities (most of them) get a real `when`; fully-unlisted ones keep the date-range
+// fallback. Returns the count of rows that gained a schedule.
+async function keywordSchedules(session, rows) {
+  const names = [...new Set(rows.map((r) => r.name))];
+  const byId = new Map();
+  let cursor = 0;
+  async function worker() {
+    while (cursor < names.length) {
+      const name = names[cursor++];
+      try {
+        for (const it of await fetchKeyword(session, name.slice(0, 60))) byId.set(it.id, it);
+      } catch {
+        // leave rows with the date-range fallback
+      }
+      await sleep(60);
+    }
+  }
+  await Promise.all(Array.from({ length: DETAIL_CONC }, worker));
+  let filled = 0;
+  for (const r of rows) {
+    const it = byId.get(Number(r.id.replace(/^anc-/, '')));
+    if (!it) continue;
+    const when = [cleanDays(it.days_of_week), it.time_range].filter(Boolean).join(' · ');
+    if (when) {
+      r.when = when;
+      filled++;
+    }
+    const fee = cleanFee(it.fee);
+    if (/\d/.test(fee) || /free/i.test(fee)) r.cost = fee; // real price beats the placeholder
+    const openingsRaw = String(it.openings ?? '');
+    if (/unlimited/i.test(openingsRaw)) {
+      r.unlimited = true;
+      r.spots = null;
+    } else {
+      const n = parseInt(openingsRaw, 10);
+      if (Number.isFinite(n)) r.spots = n;
+    }
+  }
+  return filled;
+}
+
+// Load the persisted skip list and decide whether this run does a full rescan (cache
+// missing or older than PASS2_FULL_RESCAN_DAYS) or an incremental one (skip the known
+// dead/ended ids). Returns { full, skip:Set<number>, builtAt }.
+function loadPass2Cache() {
+  try {
+    const c = JSON.parse(fs.readFileSync(PASS2_CACHE_FILE, 'utf8'));
+    const ageDays = (Date.now() - new Date(c.builtAt).getTime()) / 86400000;
+    if (!Array.isArray(c.skip) || !(ageDays < PASS2_FULL_RESCAN_DAYS)) return { full: true, skip: new Set() };
+    return { full: false, skip: new Set(c.skip), builtAt: c.builtAt };
+  } catch {
+    return { full: true, skip: new Set() };
+  }
+}
+
+// Scan the live id window for current activities the category crawl couldn't see.
+// `crawlRows` are the crawl's rows (their ids define the window and the dedupe set).
+// A committed skip-cache lets the frequent (6h) refresh skip the stable dead/ended ids
+// and only re-probe current + newly-created ids; a weekly full rescan refreshes it.
+async function backfillHidden(session, coords, crawlRows) {
+  const seen = new Set(crawlRows.map((r) => Number(String(r.id).replace(/^anc-/, ''))).filter(Number.isFinite));
+  if (!seen.size) return [];
+  const lo = Math.min(...seen) - ID_PAD_LOW;
+  const hi = Math.max(...seen) + ID_PAD_HIGH;
+  const cache = loadPass2Cache();
+  const ids = [];
+  for (let i = lo; i <= hi && ids.length < ID_SCAN_CAP; i++) {
+    if (!seen.has(i) && !cache.skip.has(i)) ids.push(i);
+  }
+  console.log(
+    `  pass 2: id-scanning ${ids.length} ids (${lo}–${hi}) — ${cache.full ? 'full rescan' : `incremental, skipping ${cache.skip.size} known dead/ended`}…`
+  );
+
+  const today = new Date().toISOString().slice(0, 10);
+  const rows = [];
+  const doneIds = []; // dead (202) or ended — add to the skip list for next run
+  let cursor = 0;
+  let exists = 0;
+  async function worker() {
+    while (cursor < ids.length) {
+      const id = ids[cursor++];
+      const d = await fetchDetail(session, id);
+      if (!d) {
+        doneIds.push(id); // no such activity id (202) — stably dead
+        continue;
+      }
+      exists++;
+      const current = d.last_date && d.last_date >= today;
+      const real = d.activity_type === 'Activity' && !d.is_package && !d.is_parent_activity;
+      const alive = !DEAD_STATUS.test(d.space_status || '');
+      if (!current) doneIds.push(id); // ended — never re-opens, safe to skip henceforth
+      if (!current || !real || !alive) continue;
+      const row = detailToClass(d, coords);
+      if (row && !MAP_SPORT_DROPIN_RE.test(row.name)) rows.push(row);
+      await sleep(20);
+    }
+  }
+  await Promise.all(Array.from({ length: DETAIL_CONC }, worker));
+  const filled = await keywordSchedules(session, rows);
+
+  // Persist the skip list: carry the prior skips still inside the window (incremental
+  // runs) plus everything proven dead/ended this run. builtAt marks the last FULL
+  // rescan, so the weekly cadence re-verifies while the 6h cadence stays incremental.
+  const nextSkip = new Set(doneIds.filter((i) => i >= lo && i <= hi));
+  if (!cache.full) for (const i of cache.skip) if (i >= lo && i <= hi) nextSkip.add(i);
+  try {
+    fs.writeFileSync(
+      PASS2_CACHE_FILE,
+      JSON.stringify({ builtAt: cache.full ? new Date().toISOString() : cache.builtAt, skip: [...nextSkip].sort((a, b) => a - b) }) + '\n'
+    );
+  } catch {
+    // non-fatal: next run just does more work
+  }
+  console.log(`  pass 2: ${exists} ids exist, ${rows.length} current hidden activities recovered (${filled} with schedule)`);
+  return rows;
+}
+
 function loadCache() {
   try {
     return JSON.parse(fs.readFileSync(CACHE_FILE, 'utf8'));
@@ -564,7 +858,12 @@ async function main() {
   console.log(`\n✅ Wrote ${classes.length} classes to data/classes.js (${source})`);
 }
 
-main().catch((e) => {
-  console.error('\n❌ Failed:', e.message);
-  process.exit(1);
-});
+if (require.main === module) {
+  main().catch((e) => {
+    console.error('\n❌ Failed:', e.message);
+    process.exit(1);
+  });
+} else {
+  // Exported for tests/tooling (e.g. validating the pass-2 backfill on a small window).
+  module.exports = { getSession, buildCoords, backfillHidden, detailToClass, fetchDetail, keywordSchedules };
+}

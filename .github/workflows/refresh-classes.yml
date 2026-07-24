@@ -45,7 +45,7 @@ jobs:
         run: |
           # i18n cache only exists once a key-enabled run has translated something,
           # so stage just the files that are present; staging catches new files too.
-          for f in data/classes.js scripts/classes-cache.json scripts/classes-i18n-cache.json data/cities/nyc/classes.js scripts/cities/nyc-classes-cache.json scripts/cities/nyc-classes-cost-cache.json scripts/cities/nyc-classes-desc-cache.json scripts/cities/nyc-classes-i18n-cache.json; do
+          for f in data/classes.js scripts/classes-cache.json scripts/classes-pass2-cache.json scripts/classes-i18n-cache.json data/cities/nyc/classes.js scripts/cities/nyc-classes-cache.json scripts/cities/nyc-classes-cost-cache.json scripts/cities/nyc-classes-desc-cache.json scripts/cities/nyc-classes-i18n-cache.json; do
             [ -e "$f" ] && git add "$f"
           done
           if git diff --cached --quiet; then

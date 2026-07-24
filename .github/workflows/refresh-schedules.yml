@@ -38,7 +38,7 @@ jobs:
 
       - name: Commit refreshed data if it changed
         run: |
-          FILES="data/courts.js data/courts.json scripts/schedule-cache.json data/sanbruno-court.js scripts/sanbruno-cache.json data/outdoor-courts.js scripts/outdoor-courts-cache.json data/cities/nyc/outdoor-courts.js scripts/cities/nyc-cache.json data/cities/nyc/indoor-courts.js scripts/cities/nyc-indoor-cache.json scripts/cities/nyc-indoor-class-cache.json data/cities/nyc/classes.js scripts/cities/nyc-classes-cache.json scripts/cities/nyc-classes-cost-cache.json scripts/cities/nyc-classes-desc-cache.json scripts/cities/nyc-classes-i18n-cache.json data/reservations.js scripts/reservations-cache.json data/court-directory.js scripts/directory-cache.json data/classes.js scripts/classes-cache.json data/pools.js scripts/pools-cache.json"
+          FILES="data/courts.js data/courts.json scripts/schedule-cache.json data/sanbruno-court.js scripts/sanbruno-cache.json data/outdoor-courts.js scripts/outdoor-courts-cache.json data/cities/nyc/outdoor-courts.js scripts/cities/nyc-cache.json data/cities/nyc/indoor-courts.js scripts/cities/nyc-indoor-cache.json scripts/cities/nyc-indoor-class-cache.json data/cities/nyc/classes.js scripts/cities/nyc-classes-cache.json scripts/cities/nyc-classes-cost-cache.json scripts/cities/nyc-classes-desc-cache.json scripts/cities/nyc-classes-i18n-cache.json data/reservations.js scripts/reservations-cache.json data/court-directory.js scripts/directory-cache.json data/classes.js scripts/classes-cache.json scripts/classes-pass2-cache.json data/pools.js scripts/pools-cache.json"
           if git diff --quiet -- $FILES; then
             echo "No schedule changes."
           else
