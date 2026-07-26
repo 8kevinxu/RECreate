@@ -314,7 +314,7 @@
     },
     "balboa-park-outdoor": {
       "tennis": {
-        "pct": 28,
+        "pct": 27,
         "courts": 4,
         "slots": {
           "2026-07-26 07:30": 75,
@@ -330,8 +330,8 @@
           "2026-07-26 12:30": 100,
           "2026-07-26 13:00": 100,
           "2026-07-26 13:30": 100,
-          "2026-07-26 14:00": 75,
-          "2026-07-26 14:30": 75,
+          "2026-07-26 14:00": 100,
+          "2026-07-26 14:30": 100,
           "2026-07-26 15:00": 50,
           "2026-07-26 15:30": 50,
           "2026-07-26 16:00": 50,
@@ -461,12 +461,12 @@
           "2026-07-31 18:00": 0,
           "2026-07-31 18:30": 0,
           "2026-07-31 19:00": 0,
-          "2026-08-01 07:30": 67,
-          "2026-08-01 08:00": 67,
-          "2026-08-01 08:30": 67,
-          "2026-08-01 09:00": 67,
-          "2026-08-01 09:30": 67,
-          "2026-08-01 10:00": 67,
+          "2026-08-01 07:30": 33,
+          "2026-08-01 08:00": 33,
+          "2026-08-01 08:30": 33,
+          "2026-08-01 09:00": 33,
+          "2026-08-01 09:30": 33,
+          "2026-08-01 10:00": 33,
           "2026-08-01 10:30": 100,
           "2026-08-01 11:00": 100,
           "2026-08-01 11:30": 100,
@@ -3123,15 +3123,15 @@
     },
     "jackson-playground-outdoor": {
       "pickleball": {
-        "pct": 68,
+        "pct": 62,
         "courts": 2,
         "slots": {
           "2026-07-26 07:30": 100,
           "2026-07-26 08:00": 100,
           "2026-07-26 08:30": 100,
-          "2026-07-26 09:00": 100,
-          "2026-07-26 09:30": 100,
-          "2026-07-26 10:00": 100,
+          "2026-07-26 09:00": 0,
+          "2026-07-26 09:30": 0,
+          "2026-07-26 10:00": 0,
           "2026-07-26 10:30": 100,
           "2026-07-26 11:00": 100,
           "2026-07-26 11:30": 100,
@@ -3185,15 +3185,15 @@
       },
       "guidelines": "Welcome to Jackson Park in Potrero Hill! One tennis court (or two pickleball courts) can be found at the Southwest corner of the park. \n\n**Reservation Policy**\n- Any individual may reserve a court, but may not book more than 1 court in a day or 3 courts in a calendar week.\n- Reservation requests are for individual play only. No lessons, team practices, clinics or league matches.\n- Courts left vacant 15 minutes after reservation time are available for walk-up play\n- Please **[click here](https://sfrecpark.org/1188/Tennis-Pickleball-Reservations)** to view the full San Francisco Rec and Park reservation policy.\n\n**Reservation Overview**\n\n*Court 1*\n- Court 1 is reservable for Tennis 2 days in advance\n- Reservations open at noon. \n- Slots are 90 minutes and start at 7:30am, 9:00am, 10:30am, 12:00pm, 1:30pm, 3:00pm, 4:30pm, 6:00pm, 7:30pm.\n\n*Courts A and B*\n- Courts A and B are reservable for Pickleball 2 days in advance\n- Reservations open at noon.\n- Slots are 90 minutes and start at 7:30am, 9:00am, 10:30am, 12:00pm, 1:30pm, 3:00pm, 4:30pm, 6:00pm, 7:30pm.\n\n**Location Features** \n- 1 Tennis Court\n- 2 Pickleball Courts. Players must provide their own nets.\n- Lights",
       "tennis": {
-        "pct": 70,
+        "pct": 65,
         "courts": 1,
         "slots": {
           "2026-07-26 07:30": 100,
           "2026-07-26 08:00": 100,
           "2026-07-26 08:30": 100,
-          "2026-07-26 09:00": 100,
-          "2026-07-26 09:30": 100,
-          "2026-07-26 10:00": 100,
+          "2026-07-26 09:00": 0,
+          "2026-07-26 09:30": 0,
+          "2026-07-26 10:00": 0,
           "2026-07-26 10:30": 100,
           "2026-07-26 11:00": 100,
           "2026-07-26 11:30": 100,
@@ -4945,7 +4945,7 @@
     },
     "miraloma-playground-outdoor": {
       "tennis": {
-        "pct": 44,
+        "pct": 38,
         "courts": 1,
         "slots": {
           "2026-07-26 07:30": 100,
@@ -4963,9 +4963,9 @@
           "2026-07-26 13:30": 100,
           "2026-07-26 14:00": 100,
           "2026-07-26 14:30": 100,
-          "2026-07-26 15:00": 100,
-          "2026-07-26 15:30": 100,
-          "2026-07-26 16:00": 100,
+          "2026-07-26 15:00": 0,
+          "2026-07-26 15:30": 0,
+          "2026-07-26 16:00": 0,
           "2026-07-26 16:30": 0,
           "2026-07-26 17:00": 0,
           "2026-07-26 17:30": 0,
@@ -6763,7 +6763,7 @@
     },
     "presidio-wall-playground-outdoor": {
       "tennis": {
-        "pct": 46,
+        "pct": 45,
         "courts": 4,
         "slots": {
           "2026-07-26 07:30": 100,
@@ -6889,9 +6889,9 @@
           "2026-07-30 16:30": 100,
           "2026-07-30 17:00": 100,
           "2026-07-30 17:30": 100,
-          "2026-07-30 18:00": 100,
-          "2026-07-30 18:30": 100,
-          "2026-07-30 19:00": 100,
+          "2026-07-30 18:00": 0,
+          "2026-07-30 18:30": 0,
+          "2026-07-30 19:00": 0,
           "2026-07-31 09:00": 100,
           "2026-07-31 09:30": 100,
           "2026-07-31 10:00": 100,
@@ -8300,5 +8300,5 @@
       }
     }
   },
-  "fetchedAt": "2026-07-26T08:35:24.344Z"
+  "fetchedAt": "2026-07-26T10:48:00.115Z"
 }
