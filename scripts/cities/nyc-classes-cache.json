@@ -107,7 +107,7 @@
       "start": "2026-07-31",
       "end": "2026-07-31",
       "oneDay": true,
-      "desc": "Join NYC Parks and The Forest Park Trust for Restoration Fridays this summer to engage in hands-on forest restoration work, including invasive species removal, trail restoration, and possible planting in Highland Park.\n\nAdvance registration required with the link below. Please wear sturdy, closed toe shoes and clothes you don't mind getting dirty.",
+      "desc": "Join NYC Parks and The Forest Park Trust for Restoration Fridays this summer to engage in hands-on forest restoration work!Date: 07/31/2026 Location: Highland Park (Queens) (opens in new tab) Queens Phone: 7182354100 Description: Join NYC Parks and The Forest Park Trust for Restoration Fridays this summer to engage in hands-on forest restoration work, including invasive species removal, trail restoration, and possible planting in our park. Advance registration is required with the link here. Please wear sturdy, closed toe shoes and clothes you don't mind getting dirty. ProgramsPrograms by TypeRecreation CentersUrban Park RangersTeen ProgramsSenior Programs and ResourcesComputer ClassesSwim ProgramsAfterschool ProgramsAccessible ProgramsShape Up NYCSummer ProgramsYouth Sports Programs & ClinicsEmail UpdatesSubscribe to receive regular Sports and Fitness updates from NYC ParksEmail Address Was this information helpful? Thank you for your feedback. (Optional) Please tell us how we can make this page more helpful. If you need a response, please use the Contact the Commissioner form instead.",
       "lat": 40.686199,
       "lng": -73.889801,
       "url": "https://www.nycgovparks.org/reg/forest-highland/19806"
@@ -2873,13 +2873,13 @@
       "borough": "Queens",
       "location": "Alley Pond Adventure Course (in Alley Pond Park)",
       "when": "Sun · 6:00 PM - 7:00 AM",
-      "dropIn": false,
-      "noOnlineReg": false,
+      "dropIn": true,
+      "noOnlineReg": true,
       "cost": "Free",
       "ages": "",
       "minAge": 0,
       "spots": 0,
-      "unlimited": false,
+      "unlimited": true,
       "start": "2026-07-26",
       "end": "2026-07-26",
       "oneDay": true,
@@ -3650,7 +3650,7 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 19,
+      "spots": 18,
       "unlimited": false,
       "regDeadline": "Registration ends on July 26th, 2026 at 01:00 PM",
       "start": "2026-07-26",
@@ -16698,5 +16698,5 @@
       "url": "https://www.nycgovparks.org/events/2026/07/30/zumba-under-the-stars-wlisa-g-rockazumbaway"
     }
   ],
-  "fetchedAt": "2026-07-26T08:25:44.069Z"
+  "fetchedAt": "2026-07-26T13:18:01.503Z"
 }
