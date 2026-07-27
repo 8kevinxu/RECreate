@@ -1443,6 +1443,7 @@ export default function App() {
             courtsById={courtsById}
             courts={cityCourtData}
             classes={cityFeatures.classes ? cityClasses : []}
+            city={activeCity}
             // Facility views (weight room, golf) aren't playable sports — hand
             // social features a real sport so a run/signal never defaults to one.
             sport={isPlayableSport(sport) ? sport : DEFAULT_SPORT}

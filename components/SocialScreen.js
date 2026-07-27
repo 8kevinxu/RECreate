@@ -1,4 +1,7 @@
-// Social tab shell: a segmented toggle between the Activity feed and Chats.
+// Social tab shell: a segmented toggle between the Activity feed, Chats, and —
+// only when EXPO_PUBLIC_ASSISTANT_URL points at a running chatbot/ service — the
+// Assistant. That segment self-hides otherwise, so production (where the var is
+// unset) shows the same two tabs it always did.
 // Keeps both mounted-on-demand; each manages its own data/subscriptions.
 import React, { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
@@ -9,6 +12,8 @@ import { useAuth } from '../lib/auth';
 import FeedModal from './FeedModal';
 import ChatsScreen from './ChatsScreen';
 import RecommendPane from './RecommendPane';
+import AssistantThread from './AssistantThread';
+import { enabled as assistantEnabled } from '../lib/assistant';
 
 export default function SocialScreen({
   courtsById = {},
@@ -20,6 +25,7 @@ export default function SocialScreen({
   interestSports,
   interestCategories,
   classes, // the active city's class list (undefined = SF default)
+  city = 'sf', // active city id — the assistant must not guess which city you're in
   onPickCourt,
   onOpenFriends, // signed-in only: opens the Friends sheet (App.js owns it)
   requestCount = 0, // incoming friend requests — badge on the Friends button
@@ -28,7 +34,7 @@ export default function SocialScreen({
   const insets = useSafeAreaInsets();
   const { t } = useI18n();
   const { enabled: authEnabled, user, profile } = useAuth();
-  const [seg, setSeg] = useState('activity'); // 'activity' | 'chats'
+  const [seg, setSeg] = useState('activity'); // 'activity' | 'chats' | 'assistant'
 
   return (
     <View style={[styles.page, { paddingTop: insets.top + 12 }]}>
@@ -47,6 +53,8 @@ export default function SocialScreen({
           {[
             { id: 'activity', label: t('social.activity') },
             { id: 'chats', label: t('social.chats') },
+            // Absent unless a service is configured — see lib/assistant.js.
+            ...(assistantEnabled ? [{ id: 'assistant', label: t('assistant.tab') }] : []),
           ].map((s) => {
             const on = seg === s.id;
             return (
@@ -94,7 +102,9 @@ export default function SocialScreen({
       )}
 
       <View style={styles.body}>
-        {seg === 'activity' ? (
+        {seg === 'assistant' ? (
+          <AssistantThread city={city} userLocation={userLocation} />
+        ) : seg === 'activity' ? (
           <FeedModal
             asPage
             embedded
