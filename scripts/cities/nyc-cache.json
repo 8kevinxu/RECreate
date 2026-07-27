@@ -2865,7 +2865,7 @@
       "name": "Bronx Park",
       "address": "2120 BOSTON ROAD",
       "neighborhood": "Bronx",
-      "lat": 40.86008,
+      "lat": 40.860079,
       "lng": -73.872322,
       "sports": [
         "basketball",
@@ -8605,8 +8605,8 @@
       "name": "Grant Park",
       "address": "250-265 EAST 170 STREET",
       "neighborhood": "Bronx",
-      "lat": 40.836357,
-      "lng": -73.913612,
+      "lat": 40.836364,
+      "lng": -73.913617,
       "sports": [
         "basketball"
       ],
@@ -13222,8 +13222,8 @@
       "name": "Mapes Park",
       "address": "786 EAST 181 STREET",
       "neighborhood": "Bronx",
-      "lat": 40.847223,
-      "lng": -73.885846,
+      "lat": 40.847248,
+      "lng": -73.885873,
       "sports": [
         "baseball"
       ],
@@ -14328,8 +14328,8 @@
       "name": "Melrose Commons Park",
       "address": "924 MELROSE AVENUE",
       "neighborhood": "Bronx",
-      "lat": 40.824805,
-      "lng": -73.912498,
+      "lat": 40.824792,
+      "lng": -73.912297,
       "sports": [
         "soccer"
       ],
@@ -14696,8 +14696,8 @@
       "name": "Morgan Playground",
       "address": "1241 PARK AVENUE",
       "neighborhood": "Bronx",
-      "lat": 40.832398,
-      "lng": -73.907367,
+      "lat": 40.832452,
+      "lng": -73.907332,
       "sports": [
         "basketball"
       ],
@@ -15444,8 +15444,8 @@
       "name": "Ogden Plimpton Playground",
       "address": "Ogden Av, Plimpton Av, W 170 St",
       "neighborhood": "Bronx",
-      "lat": 40.841869,
-      "lng": -73.923879,
+      "lat": 40.841865,
+      "lng": -73.923868,
       "sports": [
         "basketball"
       ],
@@ -17409,8 +17409,8 @@
       "name": "Quarry Ballfields",
       "address": "565 EAST 181 STREET",
       "neighborhood": "Bronx",
-      "lat": 40.850854,
-      "lng": -73.890771,
+      "lat": 40.850847,
+      "lng": -73.890815,
       "sports": [
         "soccer",
         "baseball"
@@ -18552,10 +18552,11 @@
       "name": "Rockaway Beach Boardwalk",
       "address": "Shore Front Pkwy. bet. Beach 109 St. and B. 73 St.",
       "neighborhood": "Queens",
-      "lat": 40.584033,
-      "lng": -73.812465,
+      "lat": 40.584773,
+      "lng": -73.809744,
       "sports": [
         "basketball",
+        "volleyball",
         "pickleball"
       ],
       "facts": {
@@ -18567,6 +18568,13 @@
           ],
           "full": true
         },
+        "volleyball": {
+          "n": 1,
+          "lit": false,
+          "surf": [
+            "Natural"
+          ]
+        },
         "pickleball": {
           "n": 1,
           "lit": false,
@@ -18577,7 +18585,7 @@
       },
       "accessible": false,
       "lights": false,
-      "notes": "Outdoor basketball & pickleball — first-come, open during park hours (no posted drop-in schedule).",
+      "notes": "Outdoor basketball & volleyball & pickleball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true
     },
     {
@@ -20789,7 +20797,7 @@
       "address": "880 LAFAYETTE AVENUE",
       "neighborhood": "Bronx",
       "lat": 40.822617,
-      "lng": -73.862797,
+      "lng": -73.862796,
       "sports": [
         "basketball"
       ],
@@ -22216,8 +22224,8 @@
       "name": "Walton Park",
       "address": "2115 WALTON AVENUE",
       "neighborhood": "Bronx",
-      "lat": 40.855341,
-      "lng": -73.905037,
+      "lat": 40.855359,
+      "lng": -73.905053,
       "sports": [
         "basketball"
       ],
@@ -23289,5 +23297,5 @@
       "restrooms": true
     }
   ],
-  "fetchedAt": "2026-07-23T08:34:47.080Z"
+  "fetchedAt": "2026-07-27T16:54:24.822Z"
 }

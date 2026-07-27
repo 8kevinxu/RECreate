@@ -47,7 +47,7 @@
           "overall": 3.6,
           "surface": 3.7,
           "crowded": 2.8,
-          "matches": 331
+          "matches": 332
         }
       }
     },
@@ -97,7 +97,7 @@
           "overall": 4,
           "surface": 4.6,
           "crowded": 2.8,
-          "matches": 273
+          "matches": 274
         }
       },
       "pickleball": {
@@ -331,7 +331,7 @@
           "overall": 4,
           "surface": 4.3,
           "crowded": 2.3,
-          "matches": 633
+          "matches": 642
         }
       }
     },
@@ -443,7 +443,7 @@
           "overall": 4.3,
           "surface": 4,
           "crowded": 3.9,
-          "matches": 571
+          "matches": 573
         }
       }
     },
@@ -486,7 +486,7 @@
           "overall": 2.7,
           "surface": 4.3,
           "crowded": 2.3,
-          "matches": 473
+          "matches": 474
         }
       }
     },
@@ -622,7 +622,7 @@
           "overall": 4,
           "surface": 3.4,
           "crowded": 2.2,
-          "matches": 531
+          "matches": 534
         }
       }
     },
@@ -691,7 +691,7 @@
           "overall": 2.8,
           "surface": 2.5,
           "crowded": 4.3,
-          "matches": 476
+          "matches": 477
         }
       }
     },
@@ -752,7 +752,7 @@
           "overall": 4,
           "surface": 3,
           "crowded": 3.5,
-          "matches": 279
+          "matches": 280
         }
       },
       "pickleball": {
@@ -1074,10 +1074,10 @@
           "overall": 3.7,
           "surface": 3,
           "crowded": 3.3,
-          "matches": 244
+          "matches": 248
         }
       }
     }
   },
-  "fetchedAt": "2026-07-20T18:54:36.973Z"
+  "fetchedAt": "2026-07-27T16:55:42.793Z"
 }
