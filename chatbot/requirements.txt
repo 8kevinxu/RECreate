@@ -1,0 +1,16 @@
+# Deliberately small. The assistant is built from primitives — an HTTP server, an
+# HTTP client, and the standard library — so the interesting logic stays visible
+# instead of living inside a framework's abstractions.
+#
+# Lower bounds rather than exact pins: this is a local dev service, and pinning
+# invites the versions to rot. `pip freeze > requirements.lock` if you ever need
+# a reproducible build.
+fastapi>=0.115
+uvicorn[standard]>=0.34
+httpx>=0.28
+python-dotenv>=1.0
+pytest>=8.0
+
+# Anthropic's official SDK — the `anthropic` provider in llm.py. Ollama has no
+# official Python client, so that provider talks to it over plain httpx.
+anthropic>=0.69

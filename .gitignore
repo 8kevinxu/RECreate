@@ -40,3 +40,11 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# Python assistant service (chatbot/) — generated snapshots + local env
+chatbot/data/
+chatbot/.venv/
+chatbot/__pycache__/
+chatbot/**/__pycache__/
+chatbot/.pytest_cache/
+chatbot/.env
