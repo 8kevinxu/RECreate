@@ -46,6 +46,7 @@
     "build:pools": "node scripts/build-pools.js",
     "build:data": "npm run build:courts && npm run build:sanbruno && npm run build:outdoor && npm run build:nyc && npm run build:nyc-indoor && npm run build:reservations && npm run build:directory && npm run build:classes && npm run build:nyc-classes && npm run build:pools",
     "update:prod": "eas update --channel production",
+    "export:chatbot": "node scripts/export-chatbot-data.js",
     "check": "node scripts/check-app.js"
   },
   "private": true,
