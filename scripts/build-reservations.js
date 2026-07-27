@@ -31,6 +31,20 @@ const OUT_FILE = path.join(__dirname, '..', 'data', 'reservations.js');
 const BROWSER_UA =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
 const HEADERS = { 'User-Agent': BROWSER_UA, Origin: 'https://www.rec.us', Accept: 'application/json' };
+// The /schedule endpoint sits behind a WAF that 403s the two-header request the rest
+// of the API accepts — it wants a full browser header set (sec-ch-ua / sec-fetch-*).
+const PAGE_HEADERS = {
+  'User-Agent': BROWSER_UA,
+  Accept: 'application/json',
+  'Accept-Language': 'en-US,en;q=0.9',
+  Referer: 'https://www.rec.us/',
+  'sec-ch-ua': '"Not;A=Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"',
+  'sec-ch-ua-mobile': '?0',
+  'sec-ch-ua-platform': '"macOS"',
+  'Sec-Fetch-Dest': 'empty',
+  'Sec-Fetch-Mode': 'cors',
+  'Sec-Fetch-Site': 'same-site',
+};
 
 // SF bounding box (rec.us serves many cities; the list endpoint is global).
 const SF_BBOX = { minLat: 37.70, maxLat: 37.83, minLng: -122.52, maxLng: -122.35 };
@@ -121,6 +135,62 @@ function nowSlotKey() {
   return `${ymd(n)} ${pad2(n.getHours())}:${n.getMinutes() < 30 ? '00' : '30'}`;
 }
 
+// --- rec.us's own per-court day schedule -----------------------------------
+// `availableSlots` says only "you can't book this", which conflates two very different
+// things. The /schedule endpoint (what the site's Calendar tab renders) separates them:
+//
+//   RESERVATION + referenceId  → a real booking ON THIS COURT      ("Reserved")
+//   RESERVATION, no referenceId → an OVERLAPPING court is booked    ("Unavailable")
+//   RESERVABLE                  → free and bookable                 ("Reservable")
+//   OPEN (label "Not Reservable")→ outside booking hours, or a walk-up-only court
+//                                  — i.e. drop-in play, not a closure
+//
+// Courts share physical space: Buena Vista's tennis Court 1 IS pickleball Courts A–D
+// (see each court's `overlaps`), so one tennis booking marks all four pickleball courts
+// Unavailable with nobody having reserved them. Without this endpoint that reads as
+// "4 of 4 courts reserved". One request covers the whole window via endDate.
+const SPAN_STATE = { RESERVABLE: 'bookable', OPEN: 'dropin' };
+const stateOf = (info) =>
+  info.referenceType === 'RESERVATION'
+    ? info.referenceId
+      ? 'reserved' // booked on this court
+      : 'blocked' // an overlapping court is booked
+    : SPAN_STATE[info.referenceType] || 'dropin';
+
+// 'YYYY-MM-DD' -> courtNumber -> [{ from 'HH:MM', to 'HH:MM', state }].
+async function fetchSchedule(locId, win) {
+  const url = `${API}/v1/locations/${locId}/schedule?startDate=${win[0].date}&endDate=${win[win.length - 1].date}`;
+  const res = await fetchT(url, { headers: PAGE_HEADERS });
+  if (!res.ok) throw new Error(`HTTP ${res.status} for schedule`);
+  const d = await res.json();
+  const out = {};
+  for (const [key, courts] of Object.entries(d.dates || {})) {
+    const date = `${key.slice(0, 4)}-${key.slice(4, 6)}-${key.slice(6, 8)}`;
+    const byCourt = (out[date] = {});
+    for (const c of courts || []) {
+      byCourt[c.courtNumber] = Object.entries(c.schedule || {}).map(([span, info]) => {
+        const [from, to] = span.split(',').map((s) => s.trim().slice(0, 5));
+        return { from, to, state: stateOf(info) };
+      });
+    }
+  }
+  return out;
+}
+
+// The state of one court at one "HH:MM", or null when the schedule doesn't cover it.
+const stateAt = (spans, hhmm) => (spans || []).find((s) => s.from <= hhmm && hhmm < s.to)?.state || null;
+
+// The other sport sharing this court's physical space, if any — the one whose booking
+// turns this court "Unavailable". `overlaps` names the courts only, so resolve each
+// back to a sibling court record to read its sport.
+function overlapSportOf(court, location, sportMap, ownSport) {
+  for (const o of court.overlaps || []) {
+    const sib = (location.courts || []).find((c) => c.courtNumber === o.courtNumber);
+    for (const s of courtSports(sib || {}, sportMap)) if (s !== ownSport) return s;
+  }
+  return null;
+}
+
 // rec.us per-location booking guidelines (markdown). Keep only real content (some
 // locations have a placeholder like "TBD"); collapse excess blank lines.
 function cleanGuide(s) {
@@ -159,7 +229,7 @@ function windowDays() {
 // `released` = the slot is within this court's reservation window (so its absence
 // from availableSlots means "booked"); when false the slot is open per the court's
 // hours but not yet released for booking, so it isn't booked — just not bookable yet.
-function courtSlots(court, win, nowKey, horizonKey) {
+function courtSlots(court, win, nowKey, horizonKey, sched) {
   const free = new Set((court.availableSlots || []).map((s) => String(s).slice(0, 16)));
   const out = [];
   for (const { date, dow } of win) {
@@ -168,7 +238,10 @@ function courtSlots(court, win, nowKey, horizonKey) {
       for (const hhmm of gridStarts(sl.openFrom, sl.openTo)) {
         const key = `${date} ${hhmm}`;
         if (key < nowKey) continue; // already in the past
-        out.push({ key, free: free.has(key), released: key <= horizonKey });
+        // rec.us's own label for the slot when we have it; `free` is the availableSlots
+        // fallback for when the schedule fetch failed (it can't see blocked-vs-booked).
+        const state = sched ? stateAt(sched[date]?.[court.courtNumber], hhmm) : null;
+        out.push({ key, free: free.has(key), released: key <= horizonKey, state });
       }
     }
   }
@@ -181,7 +254,7 @@ function courtSlots(court, win, nowKey, horizonKey) {
 // for booking (rel), and how many of the released are reserved (booked). So booked% =
 // booked/rel among bookable courts, and "rel of open courts are open for booking". A court
 // lined for multiple sports counts toward each.
-function locationBookedBySport(location, win, sportMap, nowKey, now) {
+function locationBookedBySport(location, win, sportMap, nowKey, now, sched) {
   const bySport = {};
   const locDefaultDays = location.defaultReservationWindow;
   for (const court of location.courts || []) {
@@ -189,15 +262,23 @@ function locationBookedBySport(location, win, sportMap, nowKey, now) {
     if (!sports.length) continue;
     const hours = courtWindowHours(court, locDefaultDays);
     const horizonKey = keyOf(new Date(now.getTime() + hours * 3600 * 1000));
-    const slots = courtSlots(court, win, nowKey, horizonKey);
+    const slots = courtSlots(court, win, nowKey, horizonKey, sched);
     if (!slots.length) continue;
     for (const sport of sports) {
-      const acc = (bySport[sport] ||= { total: 0, reserved: 0, courts: 0, slots: {}, windows: new Set() });
+      const acc = (bySport[sport] ||= {
+        total: 0, reserved: 0, courts: 0, slots: {}, windows: new Set(), overlapSport: null,
+      });
       acc.courts += 1;
       acc.windows.add(hours);
-      for (const { key, free, released } of slots) {
-        const s = (acc.slots[key] ||= { open: 0, rel: 0, booked: 0 });
+      acc.overlapSport ||= overlapSportOf(court, location, sportMap, sport);
+      for (const { key, free, released, state } of slots) {
+        const s = (acc.slots[key] ||= { open: 0, rel: 0, booked: 0, res: 0, blk: 0 });
         s.open += 1;
+        // Reserved vs. blocked-by-an-overlapping-booking, straight from rec.us. Both
+        // make the court unplayable; only the first is someone reserving THIS sport.
+        if (state === 'reserved') s.res += 1;
+        else if (state === 'blocked') s.blk += 1;
+        else if (state == null && !free && released) s.res += 1; // no schedule: assume booked
         if (released) {
           s.rel += 1;
           acc.total += 1;
@@ -276,7 +357,16 @@ async function main() {
         continue;
       }
       await sleep(120);
-      const bySport = locationBookedBySport(detail, win, sportMap, nowKey, now);
+      // Best-effort: without it we fall back to the availableSlots reading, which
+      // can't tell a booking from an overlap block.
+      let sched = null;
+      try {
+        sched = await fetchSchedule(loc.id, win);
+      } catch (e) {
+        console.log(`  ⚠ ${loc.name} — schedule failed (${e.message}), using availableSlots only`);
+      }
+      await sleep(120);
+      const bySport = locationBookedBySport(detail, win, sportMap, nowKey, now, sched);
       for (const [sport, agg] of Object.entries(bySport)) {
         // Attach to the nearest of our courts that offers this sport. If another
         // rec.us location already claimed that court+sport, keep the closer one
@@ -299,9 +389,11 @@ async function main() {
         const slots = {};
         const open = {};
         const released = {};
+        const blk = {};
         for (const [key, s] of Object.entries(agg.slots)) {
           if (s.rel === 0) continue; // nothing bookable at this time → no % to show
-          slots[key] = Math.round((s.booked / s.rel) * 100);
+          slots[key] = s.res; // v2: courts of this sport actually reserved
+          if (s.blk) blk[key] = s.blk; // … and courts blocked by an overlapping booking
           if (s.open < agg.courts) open[key] = s.open;
           if (s.rel < s.open) released[key] = s.rel;
         }
@@ -309,7 +401,12 @@ async function main() {
         // only when they differ, so the app can say when the later-window courts open.
         const windows = [...agg.windows].sort((a, b) => a - b);
         (out[best.id] ||= {})[sport] = {
+          // v marks the slot-value contract: v2 slots are RESERVED COURT COUNTS, older
+          // payloads (a stale cache) hold a booked-% — lib/reservations.js reads both.
+          v: 2,
           pct, courts: agg.courts, slots,
+          ...(Object.keys(blk).length ? { blk } : {}),
+          ...(agg.overlapSport && Object.keys(blk).length ? { overlapSport: agg.overlapSport } : {}),
           ...(Object.keys(open).length ? { open } : {}),
           ...(Object.keys(released).length ? { released } : {}),
           ...(windows.length > 1 ? { windows } : {}),
@@ -372,12 +469,18 @@ function render(reservations, generatedAt, windowDays) {
 // Generated: ${generatedAt}
 //
 // How booked-out each reservable outdoor court is, from rec.us (SF Rec & Park's
-// reservation platform). Map of court id -> { sport: { pct, courts, slots, released?, url } }:
+// reservation platform). Map of court id -> { sport: { v, pct, courts, slots, blk?, … } }:
+//   v        slot-value contract version; 2 = \`slots\` holds reserved COURT COUNTS
 //   pct      share of bookable slots reserved over the next ${windowDays} days (window average)
 //   courts   number of reservable sub-courts at the location
-//   slots    point-in-time booked%, keyed "YYYY-MM-DD HH:MM" SF-local (e.g. "2026-06-28 09:00").
-//            The app looks up the current slot for a live "% booked right now" reading; covers
-//            today onward, so it goes stale after the window (refresh weekly via the cron).
+//   slots    courts RESERVED at that moment, keyed "YYYY-MM-DD HH:MM" SF-local (e.g.
+//            "2026-06-28 09:00") — real bookings on this sport's courts. Covers today
+//            onward, so it goes stale after the window (refresh weekly via the cron).
+//   blk      sparse map (same keys) of courts UNAVAILABLE because an overlapping court
+//            is booked — courts share physical space (Buena Vista's tennis Court 1 is
+//            pickleball Courts A–D), so one booking blocks the rest without reserving
+//            them. Unplayable like a reservation, but nobody booked this sport.
+//   overlapSport  the sport whose bookings block this one (present only alongside blk)
 //   open     sparse map (same keys) of how many courts are OPEN at that hour, present only
 //            when fewer than the location total (some courts have shorter hours / fewer days).
 //   released sparse map (same keys) of how many of the open courts are open for booking now,

@@ -22,6 +22,7 @@ import { haversineMiles, formatDistance } from '../lib/distance';
 import { useI18n, sportLabel } from '../lib/i18n';
 import { useAuth } from '../lib/auth';
 import { resolveNotify } from '../lib/activityShare';
+import { bookedAt } from '../lib/reservations';
 
 const minutesOf = (d) => d.getHours() * 60 + d.getMinutes();
 // Does this court run the sport's open gym at the exact picked day+time? Slots are
@@ -183,16 +184,13 @@ export default function RunModal({
   // proximity/default order breaking ties within each group.
   // rec.us "% booked" for the picked day+time (keyed "YYYY-MM-DD HH:MM", SF-local);
   // with no time picked yet, fall back to the court's window-average booked%.
-  const pad2 = (n) => String(n).padStart(2, '0');
-  const slotKey = picked
-    ? `${picked.getFullYear()}-${pad2(picked.getMonth() + 1)}-${pad2(picked.getDate())} ${pad2(
-        picked.getHours()
-      )}:${pad2(picked.getMinutes())}`
-    : null;
+  // Counted against every court at the location (c.directory), like the court card —
+  // the raw rec.us share is of bookable courts only, which reads far too high when
+  // most courts are in open play at that hour (see lib/reservations.js).
   const bookedFor = (c) => {
     const res = c.reserved?.[sport];
     if (!res) return null;
-    if (slotKey) return res.slots?.[slotKey] ?? null;
+    if (picked) return bookedAt(res, picked, c.directory?.[sport])?.pct ?? null;
     return res.pct ?? null;
   };
 

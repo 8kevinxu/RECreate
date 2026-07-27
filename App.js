@@ -77,7 +77,7 @@ import {
 } from './lib/crowd';
 import { loadReviews, addReview, MAX_BODY, MAX_NAME, isShared as reviewsShared } from './lib/reviews';
 import { reportContent, confirmReportData } from './lib/reports';
-import { liveBooked, bookedAt } from './lib/reservations';
+import { liveBooked, bookedAt, bookableFrom, slotKeyOf } from './lib/reservations';
 import { GENERATED_AT as RES_GENERATED_AT } from './data/reservations';
 import { fetchLiveReservations, locationIdFromUrl } from './lib/reservationsLive';
 import { openDirections } from './lib/maps';
@@ -946,11 +946,14 @@ export default function App() {
         // Booked% used to tint the marker: at the picked date+time when one is set,
         // otherwise "right now". Null when not reservable or no slot at that time.
         const res = c.reserved?.[sport];
+        // Counted against every court here (c.directory), so a park whose one bookable
+        // court is taken doesn't tint hot while its walk-up courts sit empty.
+        const resDir = c.directory?.[sport];
         let booked;
         if (isPicked) {
-          booked = bookedAt(res, viewTime)?.pct ?? null;
+          booked = bookedAt(res, viewTime, resDir)?.pct ?? null;
         } else {
-          const lb = liveBooked(res);
+          const lb = liveBooked(res, resDir);
           booked = lb && lb.now ? lb.pct : null;
         }
         return {
@@ -1565,13 +1568,21 @@ function CourtDetail({
   // Booked reading shown on the card: at the picked date+time when one is set
   // (e.g. "0% booked at 6 PM"), otherwise the live "right now" reading.
   const atLabel = isPicked ? fmtClock(viewTime.getHours(), viewTime.getMinutes()) : null;
+  // SF Rec & Park directory facts (court count, lights, restrooms, nets) for this
+  // sport. Also the denominator for the reservation reading: rec.us only knows its own
+  // bookable courts, so without this a single booking on the one bookable court reads
+  // as "fully booked" while the walk-up / open-play courts sit empty.
+  const dir = court.directory?.[vSport];
   const live = isPicked
     ? (() => {
-        const b = bookedAt(booked, viewTime);
+        const b = bookedAt(booked, viewTime, dir);
         return b ? { ...b, picked: true } : null;
       })()
-    : liveBooked(booked);
-  const fullyBooked = !!live && live.pct === 100 && (live.now || live.picked) && resFresh;
+    : liveBooked(booked, dir);
+  const fullyBooked = !!live && live.free === 0 && (live.now || live.picked) && resFresh;
+  // Nothing free AND nothing reserved for this sport — the overlapping court's booking
+  // holds the space. Say "unavailable", not "fully booked".
+  const blockedOut = fullyBooked && live.booked === 0 && live.blocked > 0;
   // Freshness note under the reservation line: a live reading vs. how old the
   // build snapshot is, so stale availability never masquerades as "right now".
   const resDate = new Date(RES_GENERATED_AT);
@@ -1593,13 +1604,44 @@ function CourtDetail({
           date: `${live.releasesAt.getMonth() + 1}/${live.releasesAt.getDate()}`,
         })
       : '';
-  const courtsClause = !live || live.total == null
+  // Headline reading: courts taken out of every court here (not out of the handful
+  // rec.us happens to be taking bookings for at that hour). Reserved and blocked are
+  // both unplayable, but only "reserved" means someone booked THIS sport — a court
+  // blocked by a booking on the overlapping court is "unavailable" (see
+  // lib/reservations.js), so never call that a reservation.
+  const reservedLabel = !live
     ? null
-    : partialOpen
-    ? tg('court.openForBooking', { open: live.open, total: live.total }) + releaseClause
-    : tg(live.total === 1 ? 'court.courtsCountOne' : 'court.courtsCountMany', { n: live.total });
-  // SF Rec & Park directory facts (court count, lights, restrooms, nets) for this sport.
-  const dir = court.directory?.[vSport];
+    : !live.playable
+    ? tg('court.pctBooked', { pct: live.pct })
+    : live.booked === 0 && live.blocked === 0
+    ? tg('court.allCourtsFree', { total: live.playable })
+    : live.booked === 0
+    ? tg('court.courtsUnavailable', { n: live.blocked, total: live.playable })
+    : tg('court.courtsReserved', { n: live.booked, total: live.playable });
+  // Why they're blocked — a booking on the courts this sport shares its slab with.
+  const blockedWhy =
+    live && live.blocked > 0 && live.blockedBy
+      ? tg('court.blockedBySport', { sport: sportLabel(tg, live.blockedBy) })
+      : '';
+  // Why the rest can't be booked: blocked by an overlapping booking, never reservable
+  // (walk-up), or in open play until the booking grid picks them back up ("4 open play
+  // until 3 PM"). Blocked leads — it's the one that stops you playing.
+  const freeClauses = [];
+  // Both reserved and blocked at once: name the blocked ones rather than lumping them in.
+  if (live && live.booked > 0 && live.blocked > 0)
+    freeClauses.push(tg('court.alsoUnavailable', { n: live.blocked }) + blockedWhy);
+  if (live && live.walkup > 0) freeClauses.push(tg('court.walkupCourts', { n: live.walkup }));
+  if (live && live.openPlay > 0) {
+    const until = bookableFrom(booked, slotKeyOf(isPicked ? viewTime : new Date()));
+    freeClauses.push(
+      until
+        ? tg('court.openPlayUntil', { n: live.openPlay, t: fmtClock(+until.slice(0, 2), +until.slice(3, 5)) })
+        : tg('court.openPlayCourts', { n: live.openPlay })
+    );
+  }
+  // On a future date some open courts haven't been released for booking yet (shorter
+  // reservation windows) — say so, and when the rest open.
+  if (partialOpen) freeClauses.push(tg('court.openForBooking', { open: live.open, total: live.total }) + releaseClause);
   // The location's rec.us booking guidelines (markdown), shared across its sports.
   const guidelines = court.reserved?.guidelines;
   const week = getDropinWeek(court, vSport, viewTime, dir?.openPlayWeek);
@@ -1827,7 +1869,7 @@ function CourtDetail({
             ]}
           >
             <Text style={[styles.badgeText, fullyBooked && styles.badgeTextFull]}>
-              {(fullyBooked ? t('court.fullyBooked') : t('court.pctBooked', { pct: live.pct })) +
+              {(blockedOut ? t('court.fullyUnavailable') : fullyBooked ? t('court.fullyBooked') : reservedLabel) +
                 (atLabel
                   ? ' ' + t('court.bookedAt', { t: atLabel })
                   : live.now
@@ -1988,7 +2030,14 @@ function CourtDetail({
       {booked != null && (
         <>
           <Text style={[styles.bookedNote, fullyBooked && styles.bookedNoteFull]}>
-            {fullyBooked
+            {blockedOut
+              ? t('court.fullyUnavailableLine', {
+                  total: live.playable,
+                  when: isPicked ? viewLabel(viewTime) : t('court.rightNow'),
+                  why: blockedWhy,
+                  alt: isPicked ? t('court.anotherTime') : t('court.later'),
+                })
+              : fullyBooked
               ? t('court.fullyBookedLine', {
                   when: isPicked ? viewLabel(viewTime) : t('court.rightNow'),
                   extra: partialOpen
@@ -2001,10 +2050,10 @@ function CourtDetail({
                   alt: isPicked ? t('court.anotherTime') : t('court.later'),
                 })
               : live && (live.now || live.picked)
-              ? t('court.pctBookedLine', {
-                  pct: live.pct,
+              ? t('court.reservedLine', {
+                  main: reservedLabel + (live.booked === 0 ? blockedWhy : ''),
                   when: isPicked ? viewLabel(viewTime) : t('court.rightNow'),
-                  courts: courtsClause ? ` · ${courtsClause}` : '',
+                  extra: freeClauses.length ? ` · ${freeClauses.join(' · ')}` : '',
                 })
               : live
               ? t('court.closedBookedLine', {

@@ -13,7 +13,7 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { formatDistance } from '../lib/distance';
 import { fmtDuration } from '../lib/datetime';
-import { isFullyBooked } from '../lib/reservations';
+import { fullState } from '../lib/reservations';
 import { useI18n } from '../lib/i18n';
 
 const MIN_OPTIONS = [
@@ -86,13 +86,21 @@ export default function NearbyList({
               <Text style={styles.muted}>{t('nearby.noMatch')}</Text>
             ) : (
               rows.map((c) => {
-                const full = isFullyBooked(c.reserved?.[sport], isPicked ? viewTime : null);
+                // Directory count as the denominator — "fully booked" must mean no
+                // court left, not just no bookable one (see lib/reservations.js), and
+                // an overlapping sport's booking reads "unavailable", not "booked".
+                const full = fullState(c.reserved?.[sport], isPicked ? viewTime : null, c.directory?.[sport]);
                 return (
                 <Pressable key={c.id} style={styles.row} onPress={() => onSelect(c.id)}>
                   <View style={{ flex: 1 }}>
                     <Text style={styles.name}>
                       {c.name}
-                      {full && <Text style={styles.fullTag}>  {t('court.fullyBooked')}</Text>}
+                      {full && (
+                        <Text style={styles.fullTag}>
+                          {'  '}
+                          {t(full === 'unavailable' ? 'court.fullyUnavailable' : 'court.fullyBooked')}
+                        </Text>
+                      )}
                     </Text>
                     <Text style={styles.sub}>
                       {[
