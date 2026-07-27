@@ -31,6 +31,13 @@ const I18N_CACHE_FILE = path.join(__dirname, 'classes-i18n-cache.json');
 // weekly build:data run naturally triggers it; the 6h refresh stays incremental).
 const PASS2_CACHE_FILE = path.join(__dirname, 'classes-pass2-cache.json');
 const PASS2_FULL_RESCAN_DAYS = 7;
+
+// Public, linkable activity page. NOTE the route: `/activity/search/detail/<id>` — the
+// shorter `/activity/detail/<id>` is NOT a route at all and 302s to system/pagenotfound
+// for EVERY id, valid or not (this silently broke every backfilled class's Register
+// link). This is the exact URL ActiveNet's own catalog links redirect to; onlineSiteId
+// is what tells the SPA which site config to load.
+const ancDetailUrl = (id) => `${BASE}/activity/search/detail/${id}?onlineSiteId=0&from_original_cui=true&locale=en-US`;
 const OUT_FILE = path.join(__dirname, '..', 'data', 'classes.js');
 const MIN_OK = 30; // abort (keep last-good) if fewer than this many classes parse
 
@@ -492,6 +499,10 @@ function collapseSeries(rows) {
     if (rEnd && (!pEnd || rEnd > pEnd)) prev.end = rEnd;
     if ((r.start || '') >= prev._lastStart) {
       prev.id = r.id;
+      // Carry the url with the id — they must always name the SAME instance. Promoting
+      // the id while keeping the first instance's url pointed the Register link at an
+      // earlier session that delists mid-series, i.e. eventually at pagenotfound.
+      prev.url = r.url;
       prev._lastStart = r.start || '';
     }
     if (prev.oneDay && prev.start && prev.end && prev.start !== prev.end) delete prev.oneDay;
@@ -654,7 +665,7 @@ function detailToClass(d, coords) {
     ...(instructor ? { instructor } : {}),
     ...(desc ? { desc } : {}),
     ...(c ? { lat: c.lat, lng: c.lng } : {}),
-    url: `${BASE}/activity/detail/${d.activity_id}?locale=en-US`,
+    url: ancDetailUrl(d.activity_id),
   };
 }
 
