@@ -40,6 +40,11 @@ multi-city architecture works.
   support links, activity-sharing, "Report a problem", account). Every schedule
   also carries a one-tap **"looks wrong? report it"** flag so stale data gets
   caught by the people standing at the court.
+- **✨ Assistant** *(optional, self-hosted)* — ask "is it open tomorrow?" from a
+  button that floats over every tab and knows what's on your screen. Answers come
+  from the app's own data via a **local Python service** (`chatbot/`), never from
+  a model's memory. Off unless you run the service — see
+  **[Assistant](#-assistant-optional)**.
 
 The whole UI is **localized in English / 中文 / Español**. Built with **Expo /
 React Native** (also shipped to the **web** as a static export). The map is
@@ -177,6 +182,10 @@ sport / opens ⭐ Favorites. It's shown once and then never again (persisted und
 | `lib/playerCheckins.js` | Per-user visit stats (per-sport counts, favorite park) |
 | `lib/i18n.js` | i18n: `STRINGS` dict (en/zh/es), `I18nProvider`, `useI18n()`, and `tg()` for non-React modules |
 | `components/Onboarding.js` · `lib/interests.js` | First-launch onboarding overlay (slides → interests → location → account) + on-device interest store |
+| `chatbot/` | **The assistant service** (Python/FastAPI) — deterministic retrieval + a model that only picks tools and phrases results; see its own README |
+| `scripts/export-chatbot-data.js` | Exports the app's merged court/class data to `chatbot/data/*.json` (`npm run export:chatbot`) |
+| `lib/assistant.js` · `lib/assistantFallback.js` | The app's only link to the service (gated on `EXPO_PUBLIC_ASSISTANT_URL`) + on-device answers for app questions when it's down |
+| `components/AssistantHost.js` · `AssistantThread.js` | Floating ✨ launcher + sheet (owns the conversation, carries on-screen context) and the thread UI inside it |
 | `components/WebAnalytics.js` · `.web.js` | Vercel Analytics, mounted web-only via the `.web.js` platform split |
 | `components/ScrollTopFab.js` | Shared back-to-top arrow (`useScrollTop` hook + FAB) used by Classes / feed |
 | `vercel.json` · `scripts/postbuild-web.js` | Web static-export deploy config (build → SEO postbuild → `dist` → SPA rewrite) |
@@ -725,6 +734,46 @@ resilience (`scripts/pools-cache.json`). `pdfjs-dist` is a **build-only** depend
 
 > The schedules are machine-parsed from PDFs, so dense multi-lane grids can miss the
 > odd concurrent session — the card always links the official PDF to confirm.
+
+## ✨ Assistant (optional)
+
+Ask the app a question in words — *"is it open tomorrow?"*, *"cheapest beginner
+tennis class in the Mission"*, *"the two closest pickleball courts to Golden Gate
+Park"* — instead of hunting through filters.
+
+It's a **floating launcher over every tab**: a small ✨ button (a slim tab on the
+screen edge on the map, where five controls already float) that opens a bottom
+sheet. Because it travels with you, it **knows what you're looking at** — tap it
+with a court card open and "is it open tomorrow?" means *that* court, no
+re-asking which one. The conversation is owned above the tab switch, so it
+survives navigating away and back.
+
+**Answers come from the app's data, not from a model's memory.** A Python
+service (`chatbot/`) does all retrieval in deterministic code; the model only
+picks a tool, fills its arguments, and writes the sentence. It can't decide
+whether a court is open, so it can't invent an opening. What's on screen is
+passed as a **pointer, not a fact** — the court id tells the service what to look
+up, and every hour and price still comes from a tool.
+
+**It's off by default.** `lib/assistant.js` is gated on
+`EXPO_PUBLIC_ASSISTANT_URL` exactly the way `lib/supabase.js` is gated on its
+keys: unset — what production ships — and the launcher never renders. No API key
+lives in the app; the service holds it server-side. Turn it on with:
+
+```bash
+npm run export:chatbot                                   # data → chatbot/data/
+cd chatbot && .venv/bin/python -m uvicorn app:app --port 8000
+# then set EXPO_PUBLIC_ASSISTANT_URL=http://localhost:8000 and: npx expo start -c
+```
+
+Runs on **Ollama** (free, local, offline) or **Anthropic**. Full setup, the tool
+list, and the security caveats are in **[`chatbot/README.md`](chatbot/README.md)**.
+
+When the service is unreachable, questions *about the app itself* ("how do I save
+a favorite?") are still answered on-device from `lib/assistantFallback.js` — eight
+topics in all three languages, rendered in an amber "offline" bubble so they can't
+read as live. Live-data questions are refused rather than guessed at: hours and
+prices need the service, and saying so is the honest answer.
 
 ## 🌐 Languages (i18n)
 

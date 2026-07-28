@@ -27,12 +27,15 @@ rules and gotchas, see `CLAUDE.md`; for the database, see `supabase/README.md`.
 | Local persistence | `AsyncStorage` |
 | i18n | Hand-rolled dictionary in `lib/i18n.js` (English / 中文 / Español) |
 | Push | Expo Push, triggered from Postgres via `pg_net` |
+| Assistant (optional) | A separate Python/FastAPI service in `chatbot/` over Ollama or Anthropic |
 | Hosting (web) | Vercel — static export of `dist/` + SEO postbuild |
 | Data refresh | GitHub Actions crons re-scrape public sources and commit |
 
-There is **no test suite, linter, or typechecker** — "verifying" a change means
-running the app (`npx expo start`). Non-UI logic is validated by running modules
-in Node and by parsing changed files with `@babel/parser`.
+The JS app has **no test suite, linter, or typechecker** — "verifying" a change
+means running the app (`npx expo start`), plus the `npm run check` CI gate (every
+file parses, i18n at key parity, generated data non-trivial). Non-UI logic is
+validated by running modules in Node. The **assistant service is the exception**:
+`chatbot/` has 388 pytest tests, which `npm run check` does *not* run — see §7.
 
 ---
 
@@ -43,7 +46,7 @@ Three layers fit together, each with a clear boundary:
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │ 1. UI            App.js (map + shared state) · tab screens ·      │
-│                  modals · CourtMap WebView                        │
+│                  modals · CourtMap WebView · ✨ AssistantHost     │
 ├─────────────────────────────────────────────────────────────────┤
 │ 2. lib/          one file per feature's data access.              │
 │                  Supabase-or-local seam (supabase may be null).   │
@@ -54,6 +57,10 @@ Three layers fit together, each with a clear boundary:
         │                        │                         │
    Supabase (RLS)         rec.us / ActiveNet         sfrecpark / DataSF
    accounts + social      live availability          scraped at build time
+
+        ╎ optional sidecar, off unless self-hosted (§7)
+   chatbot/  ◀── export-chatbot-data.js ── the same data/ snapshots
+   FastAPI + deterministic retrieval ──▶ Ollama | Anthropic
 ```
 
 The **central design seam** is `lib/supabase.js`: it exports a configured client
@@ -61,6 +68,11 @@ The **central design seam** is `lib/supabase.js`: it exports a configured client
 shared feature must degrade gracefully when it's null — the app runs fully
 signed-out on bundled data + on-device storage, and account/social features
 simply hide. This is what lets the app work offline and without any backend.
+
+The **assistant follows the same shape**: `lib/assistant.js` is gated on
+`EXPO_PUBLIC_ASSISTANT_URL`, and unset (what production ships) means the feature
+doesn't render at all. Every optional dependency in this app degrades to
+*absent*, never to *broken*.
 
 ---
 
@@ -96,8 +108,10 @@ injection surface.
 
 ### Sports vs. facility views
 `lib/sports.js` defines the **playable** sports (`SPORTS`: basketball, volleyball,
-ping pong, badminton, pickleball, tennis, soccer, baseball) that you can plan runs
-/ post signals / favorite.
+ping pong, badminton, pickleball, tennis, soccer, baseball, **swimming**) that you
+can plan runs / post signals / favorite. Swimming is a full sport rather than a
+tab: `lib/poolCourts.js` shapes the 9 pools into `swimming` court records whose
+open-now comes from their public-swim sessions.
 It also exports `WEIGHT_ROOM`, `GOLF`, and `MAP_SPORTS` (`SPORTS` + both): each is
 a *facility view* — the **weight room** spans rec-center weight rooms plus DataSF
 outdoor fitness courts, scraped into `dropins.weightroom` like a sport; **golf** is
@@ -137,6 +151,7 @@ pattern.
 | `push.js` | Device push-token registration + tap routing |
 | `recommend.js` / `localNotify.js` | "Recommended for you" + interest-based local reminders |
 | `blocks.js`, `reports.js` | Trust & safety (block list, content reports) |
+| `assistant.js` / `assistantFallback.js` | The only link to the `chatbot/` service (gated on its URL env var) + on-device answers for app questions when it's down |
 | `i18n.js`, `datetime.js`, `maps.js`, `distance.js` | Cross-cutting utilities |
 
 **Realtime** features merge incoming rows incrementally by `id` (e.g.
@@ -239,7 +254,63 @@ revalidates.
 
 ---
 
-## 7. Internationalization
+## 7. The assistant (optional sidecar)
+
+A natural-language layer over the same data, reachable from a ✨ launcher that
+floats over every tab. It is **off unless self-hosted** — production ships with
+`EXPO_PUBLIC_ASSISTANT_URL` unset and the launcher never renders.
+
+**It is a separate process, not part of the app bundle.** The app talks to the
+service; the service talks to a model. That split is the whole reason it exists
+as a service: the provider key stays server-side and never reaches a phone.
+
+### The rule that shapes it
+**Retrieval is deterministic Python; the model never decides a fact.** It picks a
+tool, fills its arguments, and phrases the result — so it cannot decide whether a
+court is open, and therefore cannot invent an opening. Three consequences worth
+preserving: payloads are projected narrow (a court's 3KB reserved-slots table
+buried the hours next to it), result keys are named for the question they answer
+(`percent_booked_at_asked_time`, not `percent_booked` — a well-named key beats a
+system-prompt rule a small model obeys inconsistently), and a field that was never
+recorded returns an explicit `UNKNOWN` rather than reading as "none".
+
+### Layers
+| Piece | Responsibility |
+|---|---|
+| `chatbot/retrieval.py` + `tools.py` | The seven tools — the only source of facts |
+| `chatbot/timeutil.py` | Resolves `when="saturday"` to a moment in the city's tz, so the model does no calendar math |
+| `chatbot/llm.py` | One provider seam over Ollama (local, free) and Anthropic |
+| `chatbot/agent.py` | Tool-calling loop + guardrails (step ceiling, duplicate-call detection, truncation) |
+| `chatbot/app.py` | `GET /health`, `POST /chat` — no state; the conversation lives in the client |
+| `scripts/export-chatbot-data.js` | Bridges the app's generated `data/` into the service's snapshots |
+| `lib/assistant.js` | The app's only link to it, gated on the URL env var |
+| `components/AssistantHost.js` | The launcher + sheet; **owns the conversation** so it survives tab switches |
+
+### Two seams worth knowing
+**The export is the only place that knows how a court is assembled.** It
+reproduces `useCourts.js`'s merge and then resolves each sport's week by calling
+the app's *own* `lib/hours.js` (`resolveDropinWeek()` is exported for exactly
+this) — otherwise the service would grow a second copy of the open-play carve-out
+rules and the two would drift on first change.
+
+**On-screen context rides the request, as pointers not facts.** `AssistantHost`
+sits above the tab switch, so it can send what you're looking at (`screen`,
+`court_id`, `sport`) — which is what makes a bare "is *it* open tomorrow?"
+answerable. The court id tells the service what to look up; every hour and price
+still comes from a tool. Like the timestamp, it's appended to the last user turn
+rather than the system prompt, which is the cached prefix.
+
+### Testing
+`chatbot/` has **388 pytest tests** (tools, clock, loop, endpoints; time is frozen
+so pinned dates stay valid). CI does not run them — `npm run check` gates the JS
+app only. Run `cd chatbot && .venv/bin/python -m pytest -q` when touching it.
+
+See [`chatbot/README.md`](chatbot/README.md) for setup, providers, and the
+deployment caveats in §10.
+
+---
+
+## 8. Internationalization
 
 The app is fully localized to **English / 中文 / Español**. `I18nProvider` holds
 the language (persisted in `AsyncStorage`); React components read `const { t } =
@@ -255,7 +326,7 @@ pre-translated at build time, and **weekday tokens** in class schedule strings
 
 ---
 
-## 8. Deploy
+## 9. Deploy
 
 - **Native**: Expo / EAS build to iOS + Android. Push requires a dev/production
   build (Expo Go can't do remote push).
@@ -266,14 +337,19 @@ pre-translated at build time, and **weekday tokens** in class schedule strings
   build can't do the rec.us / ActiveNet live fetches (CORS) and falls back to the
   bundled snapshots — expected; native isn't bound by CORS.
 
+- **Assistant**: not deployed. The web/native builds ship it inert (no
+  `EXPO_PUBLIC_ASSISTANT_URL`), and `chatbot/` runs on a laptop for now — see the
+  caveat in §10 before that changes.
+
 All runtime config is `EXPO_PUBLIC_*` (inlined at build, client-safe — the
-Supabase anon key is protected by RLS). `ANTHROPIC_API_KEY` is **not** an app var;
-it's used only by `build-classes.js` in CI/local to translate titles and must
-never reach the client bundle.
+Supabase anon key is protected by RLS). `ANTHROPIC_API_KEY` is **not** an app var
+and must never reach the client bundle: it's used by `build-classes.js` in
+CI/local to translate titles, and by the `chatbot/` service, which holds its own
+copy server-side.
 
 ---
 
-## 9. Security model (summary)
+## 10. Security model (summary)
 
 - **Anon key is public by design** — RLS is the real boundary; every table has
   policies, and writes are scoped to `auth.uid()`.
@@ -284,3 +360,7 @@ never reach the client bundle.
   is, and it acts solely on the caller).
 - **No secrets in the repo** (`.env` gitignored); no `eval`/`dangerouslySetInnerHTML`;
   all network endpoints are HTTPS (so no iOS ATS exceptions needed).
+- **The assistant service is localhost-only as written** — no auth, no rate
+  limiting, `allow_origins=["*"]`, and every request costs a model call. Add auth
+  + a rate limit and narrow CORS before it listens on anything reachable. No model
+  provider key ever reaches the client; the service holds it.

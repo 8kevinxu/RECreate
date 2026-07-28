@@ -35,6 +35,14 @@ noted).
   add Location to the nutrition label — adding it would *contradict* the policy.
   (The `NSLocationWhenInUseUsageDescription` string is still required and present
   in `app.json`; that governs the runtime permission prompt, not the label.)
+  **The assistant is the one thing that could falsify this.** When
+  `EXPO_PUBLIC_ASSISTANT_URL` is set, `lib/assistant.js` posts the user's
+  coordinates to that service so "near me" questions can be answered — i.e.
+  transmitted off the device. Shipping a build with that var set would make
+  Location **Collected** and this line wrong. Production ships it **unset** (the
+  feature doesn't render at all), which is why the label is unchanged today; if
+  the assistant is ever enabled in a store build, revisit this entry, the policy,
+  and `app.json` → `privacyManifests` together.
 - **Usage Data / Analytics.** No usage-analytics SDK is bundled in the native
   app. (`@vercel/analytics` is **web-only** via `WebAnalytics.web.js` and never
   enters the iOS bundle — see CLAUDE.md.) Answer **No**. Diagnostics → **Crash

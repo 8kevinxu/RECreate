@@ -29,15 +29,20 @@ npm run build:pools        # swimming pools + schedules parsed from seasonal PDF
 npm run build:nyc          # NYC outdoor courts/fields + amenities + sport attrs (NYC Open Data Socrata)
 npm run build:nyc-indoor   # NYC rec-center indoor open-gym schedules (nycgovparks.org; Claude classifies ambiguous programs)
 npm run build:nyc-classes  # NYC Parks free programs feed (+ PerfectMind openings, full descriptions, Claude title translation)
+
+# Assistant service (optional, self-hosted — see "The assistant" below):
+npm run export:chatbot     # app data → chatbot/data/*.json (re-run after any data refresh)
+cd chatbot && .venv/bin/python -m uvicorn app:app --port 8000   # run it
+cd chatbot && .venv/bin/python -m pytest -q                     # its 388 tests (CI does NOT run these)
 ```
 
 `build:classes`, `build:pools`, and the `build:nyc*` scripts need network access; `build:classes` / `build:nyc-classes` optionally call the Anthropic API (Claude Haiku) to translate new class titles to zh/es when `ANTHROPIC_API_KEY` is set (cached in `scripts/*-i18n-cache.json`, degrades to English without a key), and `build:nyc-indoor` optionally uses it to classify ambiguous open-gym vs class programs (cached; excludes the ambiguous ones without a key). All build scripts share `scripts/lib/courts-common.js` (cache/slug/time helpers) and the live→cache→gate resilience pattern.
 
-There is **no test suite, linter, or typechecker** configured — this is a plain JS (not TS) Expo app. "Verifying" a change means running the app (`npx expo start`). There *is* a thin CI sanity gate: `npm run check` (`scripts/check-app.js`, run by `.github/workflows/ci.yml` on every push/PR) — every `.js` parses (esbuild/jsx), `lib/i18n.js` keeps en/zh/es at full key parity, and the generated `data/` modules load with non-trivial entry counts. Run it before committing; keep its data floors loose (they exist to catch gutted scrapes, not seasonal shrink).
+The JS app has **no test suite, linter, or typechecker** configured — it's plain JS (not TS). "Verifying" a change means running the app (`npx expo start`). There *is* a thin CI sanity gate: `npm run check` (`scripts/check-app.js`, run by `.github/workflows/ci.yml` on every push/PR) — every `.js` parses (esbuild/jsx), `lib/i18n.js` keeps en/zh/es at full key parity, and the generated `data/` modules load with non-trivial entry counts. Run it before committing; keep its data floors loose (they exist to catch gutted scrapes, not seasonal shrink). **`chatbot/` is the exception** — it has 388 pytest tests, and `npm run check` does not run them, so run them by hand when touching that directory.
 
 ## Architecture
 
-A single-screen Expo/React Native app (also deployed to web as a static export) for finding places to play sports in SF. Three pieces fit together:
+A single-screen Expo/React Native app (also deployed to web as a static export) for finding places to play sports in SF and NYC. Five pieces fit together — the UI, the `lib/` feature stores, the generated `data/` pipeline, the multi-city seam, and an optional self-hosted assistant service:
 
 ### 1. UI — one big `App.js` + a bottom-tab shell
 
@@ -81,11 +86,32 @@ The app now covers **two metros: San Francisco and New York City**, with an arch
 
 GitHub Actions crons re-run the builds and commit only when the generated data changed: `refresh-schedules.yml` runs `build:data` weekly (SF courts/reservations/directory/classes/**pools** + all `build:nyc*`), `refresh-classes.yml` re-scrapes SF **and** NYC classes every 6h, and `refresh-reservations.yml` re-scrapes rec.us occupancy every 3h (bookings change hourly, so the weekly snapshot goes stale fast). On native the court card also fetches a **live** rec.us reading for the open location (`lib/reservationsLive.js`, mirrors `lib/classesLive.js`) and overlays it onto the snapshot's `reserved[sport]` — so "% booked at 3 PM" is real-time; web CORS-falls back to the snapshot and the card labels freshness ("Live from rec.us" vs "as of M/D"), only asserting a hard "🔴 Fully booked" when the reading is live or the snapshot is <6h old. **When adding a new generated file, also add it to the workflow's `FILES` commit list** or the refresh will run but never commit it. Because reservation/class/pool slots are date- or season-keyed and go stale, this refresh is what keeps "right now" accurate.
 
+### 5. The assistant (`chatbot/` + `lib/assistant.js`)
+
+An **optional, self-hosted** natural-language layer over the same data. It is a **separate Python/FastAPI process, not part of the app bundle**: the app talks to the service, the service talks to a model (Ollama or Anthropic), and that split exists so the provider key stays server-side and never reaches a phone. Gated on `EXPO_PUBLIC_ASSISTANT_URL` exactly the way `lib/supabase.js` is gated on its keys — unset (what production ships) means `enabled` is false and `AssistantHost` renders `null`. Full setup, provider notes and tool list: **`chatbot/README.md`**.
+
+**The load-bearing rule: retrieval is deterministic Python, the model never decides a fact.** It picks a tool, fills its arguments, phrases the result — so it cannot decide whether a court is open and cannot invent an opening. Three corollaries that are easy to undo by accident: payloads are projected **narrow** (a court's ~3KB reserved-slots table shipped next to its hours buried them and produced "check the app for fees" *with the fees in context*); result keys are named for **the question they answer** (`percent_booked_at_asked_time`, not `percent_booked` — a well-named key outperforms a system-prompt rule, which a small model obeys inconsistently); and a never-recorded field returns an explicit `UNKNOWN` so absence can't read as "none".
+
+**`npm run export:chatbot` is the only place that knows how a court is assembled.** It reproduces `lib/useCourts.js`'s merge and resolves each sport's week by calling the app's own `lib/hours.js` — which is why `resolveDropinWeek()` is *exported* from there. Never reimplement the open-play carve-out or `playWeek` precedence on the Python side; the two copies would drift on first change. Snapshots (`chatbot/data/*.json`) are gitignored and point-in-time — **re-run the export after any data refresh**, and on a fresh clone before first run.
+
+**`AssistantHost` is mounted in `App.js` outside the tab switch, and that placement is the design.** It owns the conversation (`turns`), so the thread survives navigation; mounted inside a screen, the thread resets on every tab change — fine for a tab you sit in, unacceptable for a launcher that follows you. `AssistantThread` therefore takes `turns`/`onTurnsChange` from props (falling back to local state so it still works standalone) plus an `embedded` flag: filling a tab it must clear the floating `BottomNav` by hand (`insets.bottom + 96`, same as `ClassesScreen`), but inside the sheet there is no nav to clear and that padding leaves a dead band.
+
+**On-screen context is passed as pointers, not facts.** `state.screen` / `court_id` / `court_name` / `sport` tell the service *which* record to look up — every hour and price still comes from a tool, and `_screen_phrase()` says so in the prompt ("being on screen is not knowing its hours") because the risk of handing a model a court name is that it starts answering from it. A name with **no id** is dropped entirely: it can't be looked up, so offering it invites exactly that. Like the timestamp, this rides the **last user turn, never the system prompt** — the system prompt is the cached prefix, and anything volatile up there re-bills it every question.
+
+Gotchas worth not rediscovering:
+- **Coordinate shape.** `App.js` stores a fix as `{ lat, lng }`; Expo's position objects use `{ latitude, longitude }`. `lib/assistant.js` accepts **both** — reading only the latter meant coordinates were never sent, and it failed *silently* because a missing origin just drops distance sorting.
+- **The sheet needs all three device-only patterns** (all invisible on web): a **static numeric `maxHeight` in `StyleSheet.create`** (percent and inline/array numerics don't constrain under native Yoga), the backdrop as an **absoluteFill `Pressable` sibling behind the sheet** (a `Pressable` *ancestor* swallows the ScrollView's pan gesture and scroll silently dies), and **`zIndex` on the overlay wrapper**, not only on its children — a positioned `View` forms its own stacking context, so `60`/`61` inside it still lose to `App`'s `navWrap` (50) and the nav pill eats taps meant for the composer.
+- **The fetch timeout is 90s** (`AbortController` — RN's fetch has none). A local 8B model takes 20–45s for a question needing a tool call, so a normal 10s would fail every request.
+- **Offline behaviour is deliberate.** `lib/assistantFallback.js` answers questions *about the app* on-device (8 topics × 3 languages, amber "offline" bubble so they can't read as live) and **refuses live-data ones** — "how much does the pool cost today?" matches the pools topic on the word "pool", and answering it offline would dodge the question actually asked. Hours/prices need the service; saying so is the honest answer.
+- **`assistant.*` i18n keys need en/zh/es parity** like everything else (`npm run check` enforces it).
+- **`app.py`'s handlers are sync `def` on purpose** — `agent.answer()` blocks for seconds and FastAPI runs sync handlers in a worker thread. Wrapping blocking calls in `async def` would freeze the event loop process-wide on every question.
+- **Not safe on an open port as written**: no auth, no rate limiting, `allow_origins=["*"]`, and each request costs a model call.
+
 ## Environment & config
 
 All runtime config is `EXPO_PUBLIC_*` (inlined at build time, client-safe — the Supabase anon key is protected by RLS). Copy `.env.example` → `.env`. The app runs fully **signed-out with no env vars set** (bundled data + local check-ins); env vars progressively enable remote data and social features. Restart with `npx expo start -c` after changing `.env`.
 
-`ANTHROPIC_API_KEY` is **not** an app var — it's used only by `build:classes` (CI/local) to translate class titles. Never expose it to the web build; only the `EXPO_PUBLIC_*` vars belong in the host's env.
+`ANTHROPIC_API_KEY` is **not** an app var — it's used by `build:classes` / `build:nyc*` (CI/local) to translate class titles, and by the `chatbot/` service, which reads its own copy from `chatbot/.env` server-side. Never expose it to the web build; only the `EXPO_PUBLIC_*` vars belong in the host's env. `EXPO_PUBLIC_ASSISTANT_URL` is the assistant's on/off switch: unset in production, so the feature ships inert.
 
 ## Deploy (web)
 
