@@ -113,6 +113,12 @@ READING TOOL RESULTS
   "open play" is not "walk-up play", "women only" is not "women's hours".
   Renaming a restriction changes who is allowed to show up.
 - `miles_from_user` is how far the place is from the user, nothing else.
+- `miles_from_place` is distance from a place the USER named, not from them. A
+  result carrying `measured_from` is already nearest-first from there, so the
+  first row IS the closest — say so, and say what it was measured from.
+- Never work out a most/biggest/latest/total by comparing find_courts rows; that
+  list is capped and the true answer is often outside it. Use summarize_courts,
+  which reads every record. Several names in `places_with_the_most` is a tie.
 - Two booking numbers; confusing them sends someone to a full court.
   `percent_booked_at_asked_time` is that exact hour — use it for "how busy" and
   "without waiting". `percent_booked_overall` averages days and answers neither.

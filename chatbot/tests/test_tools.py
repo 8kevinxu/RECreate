@@ -235,6 +235,7 @@ class TestCall:
     def test_every_tool_is_reachable_through_dispatch(self):
         calls = {
             "find_courts": {"sport": "basketball", "city": "sf"},
+            "summarize_courts": {"sport": "basketball", "city": "sf"},
             "get_court": {"court": "mission-recreation-center", "sport": "basketball"},
             "get_reservation_policy": {"court": "alice-marble-tennis-courts-outdoor"},
             "find_classes": {"city": "sf", "limit": 2},

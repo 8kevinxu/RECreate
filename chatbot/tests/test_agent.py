@@ -428,8 +428,12 @@ class TestSystemPrompt:
         assert "Pool data is San" in agent.APP_FACTS  # SF-only, wrapped across lines
 
     def test_it_stays_a_reasonable_size(self):
-        # Rides on every request alongside ~8KB of tool schemas.
-        assert len(agent.SYSTEM_PROMPT) < 6000
+        # Rides on every request alongside ~12KB of tool schemas. Raised from 6000
+        # when summarize_courts and anchored distance arrived: both need a rule the
+        # model reads every time (don't compute superlatives from a capped list;
+        # miles_from_place is not miles_from_user). A ceiling that only ever moves
+        # with a stated reason still catches the drift it exists to catch.
+        assert len(agent.SYSTEM_PROMPT) < 6500
 
 
 # ---------------------------------------------------------------------------

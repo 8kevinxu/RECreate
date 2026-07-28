@@ -567,7 +567,7 @@ class TestRegistry:
 
     def test_the_registry_covers_the_public_tools(self):
         assert set(r.TOOLS) == {
-            "find_courts", "get_court", "get_reservation_policy",
+            "find_courts", "summarize_courts", "get_court", "get_reservation_policy",
             "find_classes", "get_pool_info", "list_options",
         }
 
@@ -587,6 +587,7 @@ class TestRegistry:
     def test_every_tool_returns_json_serializable_output(self):
         results = [
             r.find_courts(sport="basketball", city="sf", when=SATURDAY_10AM),
+            r.summarize_courts(sport="basketball", city="sf", when=SATURDAY_10AM),
             r.get_court("mission-recreation-center", sport="basketball"),
             r.get_reservation_policy("alice-marble-tennis-courts-outdoor"),
             r.find_classes(city="sf"),
@@ -595,3 +596,215 @@ class TestRegistry:
         ]
         for result in results:
             json.dumps(result)  # raises if anything unserializable slipped in
+
+
+# ---------------------------------------------------------------------------
+# Anchored proximity — "closest to somewhere that isn't the user"
+# ---------------------------------------------------------------------------
+# Each of these is a question the assistant got wrong before `near` existed. It
+# could only measure from the phone, so "closest to Golden Gate Park" came back
+# with the courts closest to the user, three miles from the park.
+
+
+class TestNear:
+    def test_it_measures_from_the_named_place_not_the_user(self):
+        # Origin is the Mission, deliberately far from the park: if the anchor is
+        # ignored the Mission's courts win, which is the old bug exactly.
+        result = r.find_courts(
+            sport="pickleball", city="sf", near="Golden Gate Park",
+            limit=3, origin=MISSION_ORIGIN,
+        )
+        names = [c["name"] for c in result["courts"]]
+        assert names, "expected pickleball courts near Golden Gate Park"
+        # Everything returned should genuinely be near the park.
+        assert all(c["miles_from_place"] < 2.0 for c in result["courts"])
+        assert any("Richmond" in n or "Rossi" in n for n in names)
+        # And nearest-first from the park, not from the user.
+        distances = [c["miles_from_place"] for c in result["courts"]]
+        assert distances == sorted(distances)
+
+    def test_the_result_says_what_it_measured_from(self):
+        result = r.find_courts(sport="tennis", city="sf", near="the Mission", limit=2)
+        assert "Mission" in result["measured_from"]["place"]
+        assert result["measured_from"]["how"]
+
+    def test_distance_from_a_place_is_a_different_key_from_distance_to_the_user(self):
+        # Both present at once, and never conflated — the reply promises
+        # miles_from_user means one specific thing.
+        result = r.find_courts(
+            sport="tennis", city="sf", near="Union Square", limit=2, origin=MISSION_ORIGIN,
+        )
+        court = result["courts"][0]
+        assert court["miles_from_place"] != court["miles_from_user"]
+
+    def test_a_landmark_with_no_row_in_the_data_still_resolves(self):
+        result = r.find_courts(sport="basketball", city="sf", near="Ferry Building", limit=1)
+        assert result["measured_from"]["how"] == "a known landmark"
+
+    def test_an_unplaceable_name_raises_instead_of_guessing(self):
+        # A wrong anchor silently reorders everything, so failing loudly beats
+        # picking the least-bad match.
+        with pytest.raises(r.ToolError) as exc:
+            r.find_courts(sport="tennis", city="sf", near="Hogwarts Castle")
+        assert "near" in str(exc.value)
+
+    def test_a_neighborhood_beats_a_similarly_named_park(self):
+        # "Golden Gate Heights Park" contains every word of "Golden Gate Park"
+        # but is a different park a mile south. The area has to win.
+        anchor = r._resolve_anchor("Golden Gate Park", "sf")
+        assert anchor["lat"] == pytest.approx(37.769, abs=0.01)
+        assert anchor["lng"] == pytest.approx(-122.470, abs=0.02)
+
+
+# ---------------------------------------------------------------------------
+# Name matching must not match on generic words alone
+# ---------------------------------------------------------------------------
+
+
+class TestNameMatchPrecision:
+    def test_a_shared_generic_word_is_not_a_match(self):
+        # The bug: name="Golden Gate Park" returned Buena Vista Park, Carl Larsen
+        # Park and Glen Park Rec Center, on the word "park", labelled as the
+        # closest name match.
+        result = r.find_courts(sport="pickleball", city="sf", name="Golden Gate Park")
+        assert "Buena Vista Park" not in [c["name"] for c in result["courts"]]
+
+    def test_a_distinctive_partial_word_still_matches(self):
+        result = r.find_courts(sport="basketball", city="sf", name="Mission Rec")
+        assert any("Mission Rec" in c["name"] for c in result["courts"])
+
+    def test_a_weak_match_is_labelled_as_weak(self):
+        strong = r.find_courts(sport="basketball", city="sf", name="Mission Recreation Center")
+        assert strong["ordered_by"].startswith("closest name match")
+        weak = r.find_courts(sport="basketball", city="sf", name="Mission Bay")
+        if weak["courts"]:
+            assert "loose" in weak["ordered_by"]
+
+
+# ---------------------------------------------------------------------------
+# Neighborhood filtering, and its negation
+# ---------------------------------------------------------------------------
+
+
+class TestNeighborhoodFilters:
+    def test_it_keeps_only_that_area(self):
+        result = r.find_courts(sport="basketball", city="sf", neighborhood="Mission", limit=25)
+        assert result["matched"]
+        for court in result["courts"]:
+            assert "Mission" in (court["neighborhood"] or "")
+
+    def test_exclusion_is_the_exact_complement(self):
+        everything = r.find_courts(sport="basketball", city="sf", limit=25)["matched"]
+        inside = r.find_courts(sport="basketball", city="sf", neighborhood="Mission", limit=25)
+        outside = r.find_courts(
+            sport="basketball", city="sf", exclude_neighborhood="Mission", limit=25
+        )
+        assert inside["matched"] + outside["matched"] == everything
+
+    def test_an_exact_area_name_beats_a_broader_token_match(self):
+        # "Mission" must not drag in "Outer Mission", a different part of town.
+        result = r.find_courts(sport="basketball", city="sf", neighborhood="Mission", limit=25)
+        assert all("Outer Mission" not in (c["neighborhood"] or "") for c in result["courts"])
+
+    def test_an_area_that_only_exists_as_a_prefix_still_matches(self):
+        # SF records Inner/Outer Richmond but never plain "Richmond".
+        result = r.find_courts(sport="tennis", city="sf", neighborhood="Richmond", limit=25)
+        assert result["matched"]
+
+
+# ---------------------------------------------------------------------------
+# summarize_courts — figures computed over everything, not over 25 rows
+# ---------------------------------------------------------------------------
+# Every test here is a question the assistant previously answered wrongly by
+# reasoning over a truncated find_courts result.
+
+
+class TestSummarizeCourts:
+    def test_it_counts_every_place_not_a_capped_page(self):
+        summary = r.summarize_courts(sport="tennis", city="sf")
+        assert summary["total_places"] == len(data.courts_in("sf", "tennis"))
+        assert summary["total_places"] > r.MAX_LIMIT
+
+    def test_it_reports_a_tie_rather_than_picking_a_winner(self):
+        # The old answer named Mission Dolores Park alone; John McLaren Park ties
+        # it at 6 courts and sat outside the nearest 25.
+        counts = r.summarize_courts(sport="tennis", city="sf")["court_counts"]
+        assert counts["most_courts_at_one_place"] == 6
+        assert set(counts["places_with_the_most"]) == {"John McLaren Park", "Mission Dolores Park"}
+
+    def test_it_says_when_court_counts_are_not_recorded(self):
+        # SF basketball has no per-place counts at all. Silence here reads as
+        # zero, so the payload has to say UNKNOWN out loud.
+        counts = r.summarize_courts(sport="basketball", city="sf")["court_counts"]
+        assert counts["recorded_for"] == 0
+        assert "NOT recorded" in counts["note"]
+
+    def test_it_finds_the_latest_closing_place_in_the_whole_city(self):
+        # "Everything closes at 8PM" was wrong because the 8:50PM one was outside
+        # the rows fetched.
+        summary = r.summarize_courts(sport="basketball", city="sf", when=SATURDAY)
+        assert summary["latest_close_that_day"]["place"]
+        assert summary["earliest_open_that_day"]["place"]
+
+    def test_cross_sport_overlap_is_computed_over_everything(self):
+        # The failure this exists for: the assistant said Mission and Glen Park
+        # rec centers had no basketball. Both have it.
+        both = r.summarize_courts(sport="weightroom", city="sf", also_offers="basketball")
+        assert "Mission Recreation Center" in both["also_offers"]["places"]
+        assert "Glen Park Recreation Center" in both["also_offers"]["places"]
+
+    def test_it_pairs_separate_records_that_share_a_site(self):
+        # Hamilton Pool and Hamilton Recreation Center are one building at 1900
+        # Geary, stored as two rows. Intersecting ids says nowhere has both a
+        # court and a pool, and the assistant planned two trips because of it.
+        overlap = r.summarize_courts(
+            sport="basketball", city="sf", also_offers="swimming"
+        )["also_offers"]
+        assert overlap["count"] == 0, "no single record holds both, which is the point"
+        pools = {p["and_at_the_same_site"] for p in overlap["same_site"]}
+        assert "Hamilton Pool" in pools
+        assert "Garfield Pool" in pools
+        assert "do not tell the user" in overlap["same_site_note"].lower()
+
+    def test_a_site_is_named_once_even_when_the_data_duplicates_it(self):
+        # "Hamilton Recreation Center" and "Hamilton Rec Center" are both in the
+        # snapshot; the pool must not be reported as two destinations.
+        overlap = r.summarize_courts(
+            sport="basketball", city="sf", also_offers="swimming"
+        )["also_offers"]
+        named = [p["and_at_the_same_site"] for p in overlap["same_site"]]
+        assert len(named) == len(set(named))
+
+    def test_a_shared_name_alone_is_not_a_shared_site(self):
+        # Mission Playground and Mission Dolores Park share "mission" and are a
+        # mile apart. Distance has to do real work, or every district becomes one
+        # enormous site.
+        pairs = r._same_site_pairs(
+            [c for c in data.courts_in("sf") if c["name"] == "Mission Dolores Park"],
+            [c for c in data.courts_in("sf") if c["name"] == "Mission Playground"],
+        )
+        assert pairs == []
+
+    def test_it_rejects_a_bad_sport_the_same_way_find_courts_does(self):
+        with pytest.raises(r.ToolError):
+            r.summarize_courts(sport="quidditch", city="sf")
+
+    def test_it_stays_small_enough_to_read(self):
+        # It replaces a list result in the context window, so it must not cost
+        # more than one.
+        summary = r.summarize_courts(sport="basketball", city="sf", also_offers="volleyball")
+        assert len(json.dumps(summary)) < 4000
+
+
+# ---------------------------------------------------------------------------
+# Pool closures carry the season they were transcribed from
+# ---------------------------------------------------------------------------
+
+
+class TestPoolClosureScope:
+    def test_closures_say_which_season_they_cover(self):
+        # Two summer holidays presented as the whole year left "can I swim on
+        # Thanksgiving?" unanswerable in either direction.
+        result = r.get_pool_info(topic="closures", city="sf")
+        assert result["covers_season"]
+        assert "outside it is NOT" in result["note"]

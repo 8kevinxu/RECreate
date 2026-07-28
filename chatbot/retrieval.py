@@ -30,6 +30,7 @@ latitude will happily produce a plausible one.
 from __future__ import annotations
 
 import math
+import re
 from typing import Any, Callable
 
 import data
@@ -130,6 +131,19 @@ def _resolve_when(when: str | None, city_id: str) -> tu.Target:
         raise ToolError(str(exc)) from exc
 
 
+# Words that appear in so many facility names they carry no identifying power.
+# A partial match on these alone is noise, not a match — see _score_name.
+GENERIC_PLACE_WORDS = frozenset(
+    """park playground playfield recreation rec center centre field fields court
+    courts square complex area clubhouse gym gymnasium pool house yard garden
+    plaza the of and at""".split()
+)
+
+# The score at which every word of the query is present in the name. Below this,
+# a match is partial and should not be described to the model as a close one.
+STRONG_NAME_MATCH = 500
+
+
 def _score_name(query: str, record: dict) -> int:
     """How well a record's name matches free text. 0 means no match.
 
@@ -137,6 +151,14 @@ def _score_name(query: str, record: dict) -> int:
     partial word overlap, then a hit on neighborhood/address. Fuzzier matching
     (edit distance, embeddings) would buy little: the model has usually already
     read the correct name off an earlier tool result.
+
+    Partial overlap counts only DISTINCTIVE words. Scoring every shared token
+    equally meant `name="Golden Gate Park"` matched Buena Vista Park, Carl Larsen
+    Park and Glen Park Rec Center — on the word "park" alone — and find_courts
+    then labelled that ordering "closest name match", which the model reasonably
+    believed and read out as the courts nearest Golden Gate Park. A query whose
+    only overlap is generic scores 0, so the caller gets an empty result it can
+    recover from instead of a confident wrong one.
     """
     wanted = data.tokens(query)
     if not wanted:
@@ -145,12 +167,16 @@ def _score_name(query: str, record: dict) -> int:
         return 1000
     name_words = set(record["_norm"].split())
     if wanted <= name_words:
-        return 500 + len(wanted)
-    overlap = len(wanted & name_words)
-    if overlap:
-        return 100 * overlap
-    where_overlap = len(wanted & set(record.get("_norm_where", "").split()))
-    return 10 * where_overlap
+        return STRONG_NAME_MATCH + len(wanted)
+    overlap = wanted & name_words
+    distinctive = overlap - GENERIC_PLACE_WORDS
+    if distinctive:
+        # Generic words still break ties between equally distinctive matches, so
+        # "Mission Playground" outranks "Mission Bay" for "Mission Playground".
+        return 100 * len(distinctive) + len(overlap)
+    where_words = set(record.get("_norm_where", "").split())
+    where_distinctive = (wanted & where_words) - GENERIC_PLACE_WORDS
+    return 10 * len(where_distinctive)
 
 
 def _match_scored(query: str, records: list[dict]) -> list[tuple[int, dict]]:
@@ -158,6 +184,226 @@ def _match_scored(query: str, records: list[dict]) -> list[tuple[int, dict]]:
     scored = [(s, r) for r in records if (s := _score_name(query, r))]
     scored.sort(key=lambda pair: (-pair[0], pair[1]["name"]))
     return scored
+
+
+# ---------------------------------------------------------------------------
+# Anchors: "closest to <somewhere that isn't the user>"
+# ---------------------------------------------------------------------------
+# Every court carries lat/lng, so "the two closest pickleball courts to Golden
+# Gate Park" is answerable — there was just no way to ask it. `name` filtered by
+# name and `origin` measured from the phone, so the assistant answered with the
+# courts nearest the *user* and said so, which is a different question.
+#
+# A place resolves to coordinates in four ways, most trustworthy first: a curated
+# landmark, the centroid of facilities whose names contain every word, the
+# centroid of a neighborhood, then a distinctive partial name match. Anything
+# weaker raises rather than guessing — a wrong anchor silently reorders the whole
+# answer, which is exactly the failure this replaces.
+
+# Civic reference points people navigate by that have no row in the data.
+# Deliberately tiny: anything that IS a park or facility resolves from the
+# snapshot itself, which stays correct as the data changes. These do not.
+LANDMARKS: dict[str, dict[str, tuple[float, float]]] = {
+    "sf": {
+        "union square": (37.7880, -122.4075),
+        "ferry building": (37.7955, -122.3937),
+        "embarcadero": (37.7955, -122.3937),
+        "civic center": (37.7793, -122.4193),
+        "financial district": (37.7946, -122.3999),
+        "downtown": (37.7879, -122.4074),
+        "fishermans wharf": (37.8080, -122.4177),
+        "chinatown": (37.7941, -122.4078),
+        "twin peaks": (37.7544, -122.4477),
+        "ocean beach": (37.7594, -122.5107),
+        "oracle park": (37.7786, -122.3893),
+        "chase center": (37.7680, -122.3877),
+    },
+    "nyc": {
+        "times square": (40.7580, -73.9855),
+        "midtown": (40.7549, -73.9840),
+        "downtown": (40.7128, -74.0060),
+        "wall street": (40.7061, -74.0087),
+        "grand central": (40.7527, -73.9772),
+        "coney island": (40.5755, -73.9707),
+        "yankee stadium": (40.8296, -73.9262),
+        "jfk airport": (40.6413, -73.7781),
+    },
+}
+
+
+_AREA_SPLIT = re.compile(r"[,/]")
+
+
+def _neighborhood_parts(record: dict) -> set[str]:
+    """A record's neighborhoods, normalized and split apart.
+
+    The field joins names two ways — with a comma when a place straddles areas
+    ("Golden Gate Park, Outer Richmond") and with a slash when the city treats
+    them as one district ("Sunset/Parkside"). Both halves have to be reachable, or
+    asking about the Sunset falls through to matching court *names*.
+    """
+    raw = str(record.get("neighborhood") or "")
+    return {p for part in _AREA_SPLIT.split(raw) if (p := data.normalize(part))}
+
+
+# How close two records have to be to count as the same site. Generous on purpose
+# — Balboa Pool sits 0.18 miles from Balboa Park's centre and is unarguably in it
+# — which is safe only because a shared distinctive name is required too.
+CO_LOCATED_MILES = 0.25
+
+
+def _same_site_pairs(courts: list[dict], others: list[dict]) -> list[dict]:
+    """Records that are one place in real life but two rows in the data.
+
+    A pool is its own record even when it sits inside the rec center it shares a
+    name and an address with. So intersecting ids answers "no single place has
+    both basketball and a pool" — which is how the assistant came to plan two
+    trips to Hamilton, where the gym and the pool are the same building at 1900
+    Geary.
+
+    Pairing needs BOTH a shared distinctive name word and a quarter-mile radius.
+    Either test alone is wrong: the name alone joins Mission Playground to Mission
+    Dolores Park across the neighborhood, and distance alone joins whatever
+    happens to sit on the next block. Together they find 11 pairs across San
+    Francisco, all real ones — Hamilton, Garfield, Balboa, Rossi, Mission,
+    Eureka Valley, Crocker Amazon, Glen Park.
+    """
+    by_token: dict[str, list[dict]] = {}
+    for other in others:
+        for token in data.tokens(other.get("name")) - GENERIC_PLACE_WORDS:
+            by_token.setdefault(token, []).append(other)
+
+    pairs: list[dict] = []
+    for court in courts:
+        if court.get("lat") is None:
+            continue
+        seen: set[str] = set()
+        for token in data.tokens(court.get("name")) - GENERIC_PLACE_WORDS:
+            for other in by_token.get(token, ()):
+                if other["id"] == court["id"] or other["id"] in seen or other.get("lat") is None:
+                    continue
+                seen.add(other["id"])
+                apart = _haversine_miles(court["lat"], court["lng"], other["lat"], other["lng"])
+                if apart <= CO_LOCATED_MILES:
+                    pairs.append(
+                        {
+                            "place": court["name"],
+                            "and_at_the_same_site": other["name"],
+                            "apart_miles": round(apart, 2),
+                            "address": court.get("address") or other.get("address"),
+                        }
+                    )
+    pairs.sort(key=lambda p: (p["apart_miles"], p["place"]))
+    # The snapshot carries some sites twice ("Hamilton Recreation Center" and
+    # "Hamilton Rec Center" are one building), which would otherwise name the same
+    # pool in two pairs and invite the model to list one destination as two.
+    nearest: dict[str, dict] = {}
+    for pair in pairs:
+        nearest.setdefault(pair["and_at_the_same_site"], pair)
+    return list(nearest.values())
+
+
+def _area_predicate(query: str, records: list[dict]) -> Callable[[dict], bool]:
+    """A test for "is this place in <area>", preferring exact area names.
+
+    Plain token-subset matching is too loose in one direction and too tight in the
+    other. "Mission" is a real district, but as a subset test it also matches
+    "Outer Mission" — a different part of the city, and not what someone asking
+    for the Mission means. "Richmond" names no district at all; the data only has
+    "Inner Richmond" and "Outer Richmond", so an exact test would find nothing.
+    So: exact area name when one exists anywhere in the set, subset otherwise.
+    """
+    key = data.normalize(query)
+    key = key[4:] if key.startswith("the ") else key
+    if not key:
+        return lambda c: False
+    if any(key in _neighborhood_parts(record) for record in records):
+        return lambda c: key in _neighborhood_parts(c)
+    wanted = set(key.split())
+    return lambda c: wanted <= data.tokens(c.get("neighborhood"))
+
+
+def _centroid(records: list[dict]) -> tuple[float, float] | None:
+    """Mean position of records that have one. None when none do."""
+    located = [r for r in records if r.get("lat") is not None and r.get("lng") is not None]
+    if not located:
+        return None
+    return (
+        sum(r["lat"] for r in located) / len(located),
+        sum(r["lng"] for r in located) / len(located),
+    )
+
+
+def _resolve_anchor(place: str, city_id: str) -> dict:
+    """A named place -> coordinates to measure from, or a ToolError saying why not.
+
+    Returns the point plus how it was found, which travels into the result so the
+    model can tell the user "measured from the middle of Golden Gate Park" rather
+    than implying a precision that isn't there.
+    """
+    key = data.normalize(place)
+    # People say "the Mission", "the Sunset". The article is never part of a
+    # recorded name, and leaving it on sent both to a name match instead.
+    key = key[4:] if key.startswith("the ") else key
+    if not key:
+        raise ToolError("`near` needs a place name, e.g. near='Golden Gate Park'.")
+
+    if (point := LANDMARKS.get(city_id, {}).get(key)):
+        return {"lat": point[0], "lng": point[1], "label": place, "resolved_from": "a known landmark"}
+
+    courts = data.courts_in(city_id)
+
+    # A named area, tried before names. Large parks are both a neighborhood and a
+    # family of facilities, and the area is the better anchor: matching by name
+    # pulls in "Golden Gate Heights Park" — a different park, whose name happens
+    # to contain every word of "Golden Gate Park" — and dragged the centroid a
+    # mile south of where anyone means.
+    exact_area = [c for c in courts if key in _neighborhood_parts(c)]
+    if (point := _centroid(exact_area)):
+        return {
+            "lat": point[0], "lng": point[1], "label": place,
+            "resolved_from": f"the middle of {place} ({len(exact_area)} places in it)",
+        }
+
+    # Every word of the query present in the name. Several rows often share a
+    # name ("Golden Gate Park - Section 1/6/7"), and their centroid is a better
+    # anchor for a large park than whichever one happened to sort first.
+    named = [c for c in courts if _score_name(place, c) >= STRONG_NAME_MATCH]
+    if (point := _centroid(named)):
+        return {
+            "lat": point[0], "lng": point[1], "label": place,
+            "resolved_from": (
+                f"the middle of {len(named)} places named like {place!r}"
+                if len(named) > 1
+                else named[0]["name"]
+            ),
+        }
+
+    # A neighborhood, measured from the middle of what sits in it.
+    wanted = data.tokens(place)
+    in_area = [c for c in courts if wanted and wanted <= data.tokens(c.get("neighborhood"))]
+    if (point := _centroid(in_area)):
+        return {
+            "lat": point[0], "lng": point[1], "label": place,
+            "resolved_from": f"the middle of the {place} area ({len(in_area)} places)",
+        }
+
+    # Last resort: a distinctive partial name match, e.g. "Rossi" for Angelo J.
+    # Rossi Playground. Generic-only overlap scores 0 and never reaches here.
+    partial = [c for score, c in _match_scored(place, courts) if score >= 100]
+    if (point := _centroid(partial[:3])):
+        return {
+            "lat": point[0], "lng": point[1], "label": place,
+            "resolved_from": f"a partial name match on {partial[0]['name']}",
+            "uncertain": True,
+        }
+
+    raise ToolError(
+        f"Could not place {place!r} on the map in {data.city_name(city_id)}. `near` accepts a "
+        "park, facility or neighborhood name that exists in the data (e.g. 'Golden Gate Park', "
+        "'the Mission'), or a well-known landmark. If the user named somewhere else, say you "
+        "can't measure from there and offer to search by neighborhood instead."
+    )
 
 
 def _match_by_name(query: str, records: list[dict]) -> list[dict]:
@@ -375,6 +621,9 @@ def find_courts(
     indoor: bool | None = None,
     open_only: bool = False,
     name: str | None = None,
+    near: str | None = None,
+    neighborhood: str | None = None,
+    exclude_neighborhood: str | None = None,
     restriction: str | None = None,
     amenity: str | None = None,
     limit: int = DEFAULT_LIMIT,
@@ -389,11 +638,14 @@ def find_courts(
 
     Results are ordered open-first, then by distance when the app supplied the
     user's location, then alphabetically — a stable order so the same question
-    doesn't reshuffle between turns.
+    doesn't reshuffle between turns. `near` replaces that order with pure distance
+    from the named place: someone asking for the two closest courts to a park
+    wants the two closest, open or not.
     """
     city_id = _resolve_city(city)
     sport_id = _resolve_sport(sport, city_id)
     target = _resolve_when(when, city_id)
+    anchor = _resolve_anchor(near, city_id) if near else None
 
     everything = data.courts_in(city_id, sport_id)
 
@@ -454,9 +706,16 @@ def find_courts(
             ("amenity", lambda c: bool(((c.get("facts") or {}).get(sport_id) or {}).get(amenity_key)))
         )
     if name:
-        ranked = _match_by_name(name, everything)
-        rank = {c["id"]: i for i, c in enumerate(ranked)}
+        scored = _match_scored(name, everything)
+        rank = {c["id"]: i for i, (_, c) in enumerate(scored)}
+        best_name_score = scored[0][0] if scored else 0
         tests.append(("name", lambda c: c["id"] in rank))
+    if neighborhood:
+        in_area = _area_predicate(neighborhood, everything)
+        tests.append(("neighborhood", in_area))
+    if exclude_neighborhood:
+        in_excluded = _area_predicate(exclude_neighborhood, everything)
+        tests.append(("exclude_neighborhood", lambda c: not in_excluded(c)))
 
     def surviving(skip: str | None = None) -> list[dict]:
         kept = everything
@@ -470,13 +729,26 @@ def find_courts(
         candidates.sort(key=lambda c: rank[c["id"]])
 
     summaries = [_court_summary(c, sport_id, target, origin, wanted_tag) for c in candidates]
+    if anchor:
+        # Distance from the named place, under its own key. Reusing
+        # `miles_from_user` would make "1.1 mi" mean two different things in two
+        # different answers, and the system prompt promises it means one.
+        for summary, court in zip(summaries, candidates):
+            miles = _distance_from((anchor["lat"], anchor["lng"]), court)
+            if miles is not None:
+                summary["miles_from_place"] = miles
     total_matched = len(summaries)
     open_count = sum(1 for s in summaries if s["open"])
     summaries_before_open_filter = summaries
     if open_only:
         summaries = [s for s in summaries if s["open"]]
 
-    if not name:
+    if anchor:
+        # "Closest to X" is a question about distance, so distance wins outright
+        # here — an open-first sort would answer with a further court that happens
+        # to be open and call it the closest.
+        summaries.sort(key=lambda s: (s.get("miles_from_place", float("inf")), s["name"]))
+    elif not name:
         summaries.sort(
             key=lambda s: (
                 not s["open"],
@@ -509,8 +781,28 @@ def find_courts(
         result["filtered_to"] = ", ".join(applied)
     if ignored:
         result["ignored_filters"] = ignored
+    if anchor:
+        result["measured_from"] = {
+            "place": anchor["label"],
+            "how": anchor["resolved_from"],
+            "note": (
+                f"`miles_from_place` is the distance from {anchor['label']}. "
+                "Order is nearest-first from there, so the first row IS the closest."
+            ),
+        }
+        if anchor.get("uncertain"):
+            result["measured_from"]["warning"] = (
+                f"{anchor['label']!r} was matched loosely — say roughly where you measured from."
+            )
     if name:
-        result["ordered_by"] = f"closest name match to {name!r}"
+        # Only claim a close match when every word actually landed in a name.
+        # Below that the ordering is a weak signal, and describing it as "closest
+        # name match" is what let a search for a park return unrelated parks.
+        result["ordered_by"] = (
+            f"closest name match to {name!r}"
+            if best_name_score >= STRONG_NAME_MATCH
+            else f"loose partial name match on {name!r} — these may not be what was meant"
+        )
 
     if amenity_key and not amenity_documented:
         # Distinguish "none have it" from "nobody recorded it" — the second is not
@@ -561,8 +853,160 @@ def find_courts(
             }
         if relaxed:
             result["if_one_filter_is_dropped"] = relaxed
-    elif origin is None:
+    elif origin is None and not anchor:
         result["note"] = "User location unknown, so these are not sorted by distance."
+    return result
+
+
+# ---------------------------------------------------------------------------
+# Tool: summarize_courts
+# ---------------------------------------------------------------------------
+
+
+def summarize_courts(
+    sport: str | None = None,
+    city: str | None = None,
+    when: str | None = None,
+    also_offers: str | None = None,
+    indoor: bool | None = None,
+    neighborhood: str | None = None,
+) -> dict:
+    """Whole-set figures for one sport: counts, extremes, and cross-sport overlap.
+
+    find_courts caps at 25 rows, which is the right call for "where can I play" —
+    but the model was also answering *superlatives* from those rows, and a
+    superlative computed over a truncated sample is simply wrong. Three real
+    failures, all from the same cause: "everything closes at 8PM" (one facility
+    ran to 8:50PM, outside the 15 fetched), "Mission Dolores Park has the most
+    tennis courts" (John McLaren Park ties it, outside the nearest 25), and — the
+    worst, because it denied a true fact — "Mission and Glen Park rec centers have
+    weight rooms but I don't see basketball listed at them", from intersecting two
+    independently-truncated lists. Both do have basketball.
+
+    So this computes over every record and returns figures, not rows. Nothing here
+    is truncated, and `also_offers` does the intersection server-side.
+    """
+    city_id = _resolve_city(city)
+    sport_id = _resolve_sport(sport, city_id)
+    target = _resolve_when(when, city_id)
+
+    courts = data.courts_in(city_id, sport_id)
+    if indoor is not None:
+        courts = [c for c in courts if c["indoor"] is bool(indoor)]
+    if neighborhood:
+        in_area = _area_predicate(neighborhood, courts)
+        courts = [c for c in courts if in_area(c)]
+
+    statuses = [(c, tu.status_at(c["weeks"][sport_id], target)) for c in courts]
+    open_now = [c for c, s in statuses if s["open"]]
+
+    result: dict[str, Any] = {
+        "sport": sport_id,
+        "city": data.city_name(city_id),
+        "asked_about": target.label,
+        "total_places": len(courts),
+        "open_at_asked_time": len(open_now),
+        "computed_over": "every record, not a truncated list — these figures are complete",
+    }
+    if indoor is not None:
+        result["filtered_to"] = "indoor only" if indoor else "outdoor only"
+    if neighborhood:
+        result["filtered_to_area"] = neighborhood
+
+    if not courts:
+        result["note"] = f"No {sport_id} places in {data.city_name(city_id)} matched."
+        return result
+
+    # Opening and closing extremes on the target's own day, which is what "open
+    # latest tonight" asks about — a facility's Friday hours don't answer it.
+    day_windows: list[tuple[int, int, dict]] = [
+        (block[0], block[1], court)
+        for court in courts
+        for block in tu.blocks_on(court["weeks"][sport_id], target.dow)
+        if len(block) >= 2
+    ]
+    if day_windows:
+        latest = max(day_windows, key=lambda w: w[1])
+        earliest = min(day_windows, key=lambda w: w[0])
+        result["latest_close_that_day"] = {
+            "time": tu.fmt_minutes(latest[1]),
+            "place": latest[2]["name"],
+            "neighborhood": latest[2].get("neighborhood"),
+        }
+        result["earliest_open_that_day"] = {
+            "time": tu.fmt_minutes(earliest[0]),
+            "place": earliest[2]["name"],
+            "neighborhood": earliest[2].get("neighborhood"),
+        }
+    else:
+        result["note_that_day"] = f"Nothing has {sport_id} hours on {target.label}."
+
+    # Court counts, with the denominator. Reporting a leader without saying how
+    # many places even have a recorded count turns "the biggest of the 62 we know"
+    # into "the biggest in the city".
+    counted = [(((c.get("facts") or {}).get(sport_id) or {}).get("total"), c) for c in courts]
+    counted = [(n, c) for n, c in counted if isinstance(n, int) and n > 0]
+    if counted:
+        most = max(n for n, _ in counted)
+        result["court_counts"] = {
+            "recorded_for": len(counted),
+            "of_places": len(courts),
+            "most_courts_at_one_place": most,
+            # Every place tied at the top, so a tie is never reported as a winner.
+            "places_with_the_most": sorted(c["name"] for n, c in counted if n == most),
+            "total_courts_where_recorded": sum(n for n, _ in counted),
+        }
+    else:
+        result["court_counts"] = {
+            "recorded_for": 0,
+            "of_places": len(courts),
+            "note": (
+                f"How many {sport_id} courts each place has is NOT recorded in "
+                f"{data.city_name(city_id)}. Say the number of places, and say the "
+                "per-place court count is unknown. Do not infer or add them up."
+            ),
+        }
+
+    if also_offers:
+        other = _resolve_sport(also_offers, city_id)
+        other_courts = data.courts_in(city_id, other)
+        other_ids = {c["id"] for c in other_courts}
+        both = sorted(c["name"] for c in courts if c["id"] in other_ids)
+        overlap: dict[str, Any] = {
+            "sport": other,
+            "count": len(both),
+            "places": both[:25],
+            "complete": len(both) <= 25,
+        }
+        # One record offering both sports is the clean case. The messier and more
+        # common one is two records at the same site, which counts for a person
+        # planning one trip and is invisible to an id intersection.
+        same_site = _same_site_pairs(
+            [c for c in courts if c["id"] not in other_ids],
+            [c for c in other_courts if c["id"] not in {x["id"] for x in courts}],
+        )
+        # A pair with the same name on both sides isn't two facilities sharing a
+        # site — it's one facility the snapshot stored twice, with each sport on a
+        # different row. That genuinely offers both, so it belongs in the plain
+        # list; left in `same_site` it reads as "X is next door to X".
+        duplicated = [p for p in same_site if data.normalize(p["place"]) == data.normalize(p["and_at_the_same_site"])]
+        if duplicated:
+            both = sorted(set(both) | {p["place"] for p in duplicated})
+            overlap.update(count=len(both), places=both[:25], complete=len(both) <= 25)
+            same_site = [p for p in same_site if p not in duplicated]
+        if same_site:
+            overlap["same_site"] = same_site[:15]
+            overlap["same_site_note"] = (
+                "Separate records at the SAME place — one trip covers both. Treat each pair as "
+                "one destination and say so (e.g. the pool is at the rec center). Do not tell the "
+                "user these are two different places or that nowhere has both."
+            )
+        result["also_offers"] = overlap
+
+    areas: dict[str, int] = {}
+    for court in courts:
+        areas[court.get("neighborhood") or "unknown"] = areas.get(court.get("neighborhood") or "unknown", 0) + 1
+    result["by_neighborhood"] = dict(sorted(areas.items(), key=lambda kv: (-kv[1], kv[0]))[:12])
     return result
 
 
@@ -958,7 +1402,29 @@ def get_pool_info(
             ),
         }
     if topic == "closures":
-        return {"city": data.city_name(city_id), "closures": data.REFERENCE.get("poolClosures")}
+        # The closure list is transcribed from the notes on the CURRENT seasonal
+        # schedule PDFs, so it only ever covers the holidays inside that season's
+        # window. Returned bare, it read as the whole year: asked about
+        # Thanksgiving the assistant saw two summer holidays and could only say
+        # "not listed", leaving the user to guess whether that meant open. The
+        # season travels with it so an out-of-window date is answerable as "that
+        # is past what the posted schedule covers" — which is true, and useful.
+        seasons = sorted({
+            season
+            for court in data.courts_in(city_id, "swimming")
+            if (season := ((court.get("pool") or {}).get("season")))
+        })
+        return {
+            "city": data.city_name(city_id),
+            "closures": data.REFERENCE.get("poolClosures"),
+            "covers_season": seasons[0] if len(seasons) == 1 else seasons,
+            "note": (
+                "These are the closures printed on the current seasonal schedule, so the list "
+                "only covers holidays falling inside that season. A date outside it is NOT "
+                "confirmed open — say the posted schedule doesn't reach that far yet and point "
+                "at the pool's own schedule link. Pools also close on other city holidays."
+            ),
+        }
 
     if not pool:
         # Each pool's status at the asked-about time, not just its name and
@@ -1074,6 +1540,7 @@ def list_options(city: str | None = None) -> dict:
 # existing, or exist without being reachable.
 TOOLS: dict[str, Callable[..., dict]] = {
     "find_courts": find_courts,
+    "summarize_courts": summarize_courts,
     "get_court": get_court,
     "get_reservation_policy": get_reservation_policy,
     "find_classes": find_classes,

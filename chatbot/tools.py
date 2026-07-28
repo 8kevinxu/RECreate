@@ -105,8 +105,32 @@ SCHEMAS: dict[str, dict] = {
             "name": {
                 "type": "string",
                 "description": (
-                    "Filter by place or neighborhood name, e.g. 'Mission' or 'Golden Gate'. "
-                    "Results then come back by name relevance rather than distance."
+                    "Filter by the place's own name, e.g. 'Rossi' or 'Mission Recreation Center'. "
+                    "Results then come back by name relevance rather than distance. "
+                    "Use `near` instead for 'closest to X', and `neighborhood` for 'in X'."
+                ),
+            },
+            "near": {
+                "type": "string",
+                "description": (
+                    "Sort by distance from THIS place instead of from the user — for 'closest to "
+                    "Golden Gate Park', 'nearest the Ferry Building'. Takes a park, facility, "
+                    "neighborhood or landmark. Adds `miles_from_place`, nearest first. Omit for "
+                    "'near me': the user's own location is applied automatically."
+                ),
+            },
+            "neighborhood": {
+                "type": "string",
+                "description": (
+                    "Keep only places in this neighborhood, e.g. 'Mission', 'Outer Richmond'. "
+                    "Matches the recorded neighborhood, unlike `name` which matches the place's name."
+                ),
+            },
+            "exclude_neighborhood": {
+                "type": "string",
+                "description": (
+                    "Drop places in this neighborhood — for 'anywhere but the Mission', "
+                    "'not downtown'. Use with or without `neighborhood`."
                 ),
             },
             "restriction": {
@@ -133,6 +157,39 @@ SCHEMAS: dict[str, dict] = {
             "limit": {
                 "type": "integer",
                 "description": f"How many to return (default {retrieval.DEFAULT_LIMIT}, max {retrieval.MAX_LIMIT}). Raise it when the user asks for 'all' or 'every'.",
+            },
+        },
+        "required": ["sport"],
+    },
+    "summarize_courts": {
+        "description": (
+            "Whole-city figures for one sport, over EVERY record instead of a capped list: how "
+            "many places, how many open, which closes latest and opens earliest that day, which "
+            "has the most courts, and which also offer a second sport. "
+            "Use it for any 'most / biggest / latest / earliest / how many in total' question, "
+            "and for 'which place has both X and Y' — find_courts returns at most 25 rows, so a "
+            "superlative read off those rows is wrong whenever the answer sits outside them. "
+            "find_courts for places to go; this for a number, an extreme or an overlap."
+        ),
+        "properties": {
+            "sport": {"type": "string", "enum": ALL_SPORTS, "description": "Sport to summarize."},
+            "city": {"type": "string", "enum": CITY_IDS, "description": CITY_DESCRIPTION},
+            "when": {"type": "string", "description": WHEN_DESCRIPTION},
+            "also_offers": {
+                "type": "string",
+                "enum": ALL_SPORTS,
+                "description": (
+                    "Also report which of these places offer this second sport — the reliable way "
+                    "to answer 'which rec center has both a weight room and basketball'."
+                ),
+            },
+            "indoor": {
+                "type": "boolean",
+                "description": "True for indoor only, false for outdoor only. Omit if the user didn't say.",
+            },
+            "neighborhood": {
+                "type": "string",
+                "description": "Restrict the figures to one neighborhood.",
             },
         },
         "required": ["sport"],
