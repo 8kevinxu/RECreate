@@ -16,6 +16,7 @@ import pytest
 import agent
 import config
 import llm
+import timeutil as tu
 import tools
 
 
@@ -398,6 +399,66 @@ class TestAnswerShape:
         result, _ = ask("q", llm.Reply(text="hi"))
         assert result.provider == "scripted"
         assert result.model == "scripted-1"
+
+
+# ---------------------------------------------------------------------------
+# Screen context — what the user is looking at
+# ---------------------------------------------------------------------------
+# The assistant used to be a tab you navigated to, so every question arrived with
+# no idea what was on screen. Reached from a floating button it usually does, and
+# "is it open tomorrow?" is only answerable if the open court travels with it.
+
+
+class TestScreenContext:
+    def test_an_open_court_becomes_a_referent_for_it(self):
+        phrase = agent._screen_phrase(
+            {
+                "screen": "court",
+                "court_id": "angelo-j-rossi-playground",
+                "court_name": "Angelo J. Rossi Playground",
+                "sport": "pickleball",
+            }
+        )
+        assert "Angelo J. Rossi Playground" in phrase
+        assert "angelo-j-rossi-playground" in phrase
+        assert "'it'" in phrase
+
+    def test_it_says_being_on_screen_is_not_knowing_the_hours(self):
+        # The whole risk of passing a court name: the model treating it as a
+        # source of facts rather than a pointer to look up.
+        phrase = agent._screen_phrase(
+            {"screen": "court", "court_id": "x", "court_name": "X Playground"}
+        )
+        assert "not knowing its hours" in phrase
+
+    def test_a_court_without_an_id_is_not_claimed(self):
+        # A name with no id can't be looked up, so it must not be offered as one.
+        assert agent._screen_phrase({"screen": "court", "court_name": "Somewhere"}) == ""
+
+    def test_screens_with_nothing_to_point_at_add_nothing(self):
+        assert agent._screen_phrase({"screen": "profile"}) == ""
+        assert agent._screen_phrase({}) == ""
+
+    def test_the_map_carries_the_selected_sport(self):
+        phrase = agent._screen_phrase({"screen": "map", "sport": "basketball"})
+        assert "basketball" in phrase
+
+    def test_context_rides_the_user_turn_not_the_system_prompt(self):
+        # It changes faster than the time does, and the system prompt is the
+        # cached prefix — anything volatile up there re-bills it every question.
+        messages = [{"role": "user", "content": "is it open tomorrow?"}]
+        out = agent._with_context(
+            messages,
+            "sf",
+            tu.now_in("sf"),
+            {"screen": "court", "court_id": "rossi", "court_name": "Rossi"},
+        )
+        assert "Rossi" in out[-1]["content"]
+        assert "Rossi" not in agent.SYSTEM_PROMPT
+
+    def test_no_state_still_produces_a_valid_turn(self):
+        out = agent._with_context([{"role": "user", "content": "hi"}], "sf", tu.now_in("sf"), None)
+        assert out[-1]["content"].startswith("hi")
 
 
 # ---------------------------------------------------------------------------

@@ -215,23 +215,60 @@ class Answer:
 # ---------------------------------------------------------------------------
 
 
-def _with_context(messages: list[dict], city_id: str, now) -> list[dict]:
+def _screen_phrase(state: dict) -> str:
+    """What the user is looking at, as a sentence the model can resolve "it" against.
+
+    The assistant used to be a tab you navigated to, so a question always arrived
+    with no idea what was on screen. Reached from a floating button it usually
+    does: someone tapping it while a court card is open and asking "is it open
+    tomorrow?" means *that* court, and without this they get asked which one.
+
+    Only the screen and the open record are passed. Never a fact about the court
+    — the name is a pointer for the model to call get_court with, not a source of
+    hours or facilities, which still have to come from a tool.
+    """
+    court = (state.get("court_name") or "").strip()
+    court_id = (state.get("court_id") or "").strip()
+    sport = (state.get("sport") or "").strip()
+    screen = (state.get("screen") or "").strip()
+
+    if court and court_id:
+        line = f'They have {court!r} open (court id {court_id!r})'
+        if sport:
+            line += f", showing its {sport} information"
+        return (
+            line + ". Treat a bare 'it', 'this' or 'here' as that place, and pass "
+            "that court id to tools rather than searching by name. Look up anything "
+            "you state about it — being on screen is not knowing its hours."
+        )
+    if screen == "classes":
+        return "They are browsing the Classes list, so a bare 'these' means classes."
+    if screen == "map" and sport:
+        return f"They are on the map with {sport} selected, so a bare 'these' or 'any' means {sport}."
+    return ""
+
+
+def _with_context(messages: list[dict], city_id: str, now, state: dict | None = None) -> list[dict]:
     """Append the volatile facts to the last user turn.
 
     Deliberately NOT in the system prompt: the current time changes every
     request, and anything in the system prompt is part of the cached prefix.
     A timestamp up there would invalidate the cache on every single question.
+    The same applies to what's on screen, which changes even faster.
 
     The model needs the date only for phrasing ("tonight", "this weekend") — not
     for arithmetic. `when="saturday"` is resolved in Python against the city's
     clock, so the model never has to work out what date Saturday is.
     """
     out = [dict(m) for m in messages]
+    screen = _screen_phrase(state or {})
     context = (
         f"(Context — the user is in {data.city_name(city_id)}. "
         f"Local time is {tu.DAY_NAMES[tu.dow(now)]}, "
         f"{now.strftime('%b')} {now.day}, {tu.fmt_minutes(tu.minutes_of(now))}. "
-        f"Tools default to this city; you don't need to pass it.)"
+        f"Tools default to this city; you don't need to pass it."
+        + (f" {screen}" if screen else "")
+        + ")"
     )
     for message in reversed(out):
         if message["role"] == "user":
@@ -355,7 +392,7 @@ def answer(
         origin = (float(state["lat"]), float(state["lng"]))
 
     now = tu.now_in(city_id)
-    working = _with_context(messages, city_id, now)
+    working = _with_context(messages, city_id, now, state)
 
     result = Answer(provider=engine.name, model=engine.model)
     usage_total: dict[str, int] = {}

@@ -86,11 +86,22 @@ class Message(BaseModel):
 
 
 class State(BaseModel):
-    """What the app knows and the model must never guess."""
+    """What the app knows and the model must never guess.
+
+    The screen fields arrived with the floating launcher: reached from a button
+    that sits over whatever you were doing, a question usually has an on-screen
+    subject, and "is it open tomorrow?" is unanswerable without it. They are
+    pointers, not facts — `court_id` tells the model which court to look up, and
+    every hour and price still comes from a tool.
+    """
 
     city: str | None = Field(default=None, description="Active city id, e.g. 'sf'")
     lat: float | None = Field(default=None, ge=-90, le=90)
     lng: float | None = Field(default=None, ge=-180, le=180)
+    screen: str | None = Field(default=None, max_length=32, description="'map' | 'court' | 'classes' | 'profile'")
+    court_id: str | None = Field(default=None, max_length=120, description="Court whose card is open")
+    court_name: str | None = Field(default=None, max_length=200)
+    sport: str | None = Field(default=None, max_length=32, description="Sport currently being viewed")
 
 
 class ChatRequest(BaseModel):

@@ -38,10 +38,24 @@ const STARTER_KEYS = ['assistant.suggestA', 'assistant.suggestB', 'assistant.sug
 // model's worst case, so it only appears when a local model really is grinding.
 const SLOW_AFTER_SECONDS = 15;
 
-export default function AssistantThread({ city = 'sf', userLocation = null }) {
+// `turns` is owned by the caller (AssistantHost) so the conversation outlives
+// whatever screen it was opened over — state here would reset on every tab
+// switch. `embedded` means it's inside the sheet rather than filling a tab, so
+// the sheet handles height and nav clearance instead of this component.
+export default function AssistantThread({
+  city = 'sf',
+  userLocation = null,
+  context = null,
+  turns: turnsProp,
+  onTurnsChange,
+  embedded = false,
+}) {
   const { t } = useI18n();
   const insets = useSafeAreaInsets();
-  const [turns, setTurns] = useState([]); // [{ role, content }]
+  // Falls back to local state so the component still works standalone.
+  const [ownTurns, setOwnTurns] = useState([]);
+  const turns = turnsProp ?? ownTurns;
+  const setTurns = onTurnsChange ?? setOwnTurns;
   const [draft, setDraft] = useState('');
   const [pending, setPending] = useState(false);
   const [elapsed, setElapsed] = useState(0);
@@ -93,7 +107,7 @@ export default function AssistantThread({ city = 'sf', userLocation = null }) {
       scrollDown();
 
       try {
-        const { reply } = await ask(history, { city, location: userLocation });
+        const { reply } = await ask(history, { city, location: userLocation, context });
         setTurns((prev) => [...prev, { role: 'assistant', content: reply }]);
       } catch (err) {
         const kind = err instanceof AssistantError ? err.message : 'failed';
@@ -127,7 +141,7 @@ export default function AssistantThread({ city = 'sf', userLocation = null }) {
         scrollDown();
       }
     },
-    [turns, pending, city, userLocation, t, scrollDown],
+    [turns, pending, city, userLocation, context, setTurns, t, scrollDown],
   );
 
   const retry = useCallback(() => {
@@ -152,9 +166,9 @@ export default function AssistantThread({ city = 'sf', userLocation = null }) {
 
   return (
     <KeyboardAvoidingView
-      style={styles.wrap}
+      style={[styles.wrap, embedded && styles.wrapEmbedded]}
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-      keyboardVerticalOffset={Platform.OS === 'ios' ? 88 : 0}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? (embedded ? 0 : 88) : 0}
     >
       <ScrollView
         ref={scroller}
@@ -250,10 +264,17 @@ export default function AssistantThread({ city = 'sf', userLocation = null }) {
         {turns.length > 0 && <Text style={styles.disclaimer}>{t('assistant.disclaimer')}</Text>}
       </ScrollView>
 
-      {/* The BottomNav is an absolutely-positioned floating pill over the tab
-          content, so the composer has to clear it by hand or it renders behind
-          the nav and is invisible. Same +96 clearance ClassesScreen uses. */}
-      <View style={[styles.composer, { paddingBottom: insets.bottom + 96 }]}>
+      {/* Filling a tab, the composer has to clear the BottomNav by hand — it's
+          an absolutely-positioned floating pill over the content, so without the
+          +96 the composer renders behind it and is invisible (same clearance
+          ClassesScreen uses). Inside the sheet there is no nav to clear: the
+          sheet sits above it, and that padding would leave a dead band. */}
+      <View
+        style={[
+          styles.composer,
+          { paddingBottom: embedded ? Math.max(insets.bottom, 10) : insets.bottom + 96 },
+        ]}
+      >
         <View style={styles.inputPill}>
           <TextInput
             style={styles.input}
@@ -297,6 +318,9 @@ export default function AssistantThread({ city = 'sf', userLocation = null }) {
 
 const styles = StyleSheet.create({
   wrap: { flex: 1, backgroundColor: '#f4f6f8' },
+  // In the sheet the parent caps the height, so the thread must be allowed to
+  // shrink rather than claim flex:1 against an unbounded parent.
+  wrapEmbedded: { flex: 0, flexShrink: 1, backgroundColor: 'transparent' },
   thread: { flex: 1 },
   threadInner: { padding: 14, paddingBottom: 8, gap: 8 },
 

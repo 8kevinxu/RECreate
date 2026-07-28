@@ -26,6 +26,7 @@ import SocialScreen from './components/SocialScreen';
 import NearbyList from './components/NearbyList';
 import TimeSlider from './components/TimeSlider';
 import BottomNav from './components/BottomNav';
+import AssistantHost from './components/AssistantHost';
 import ClassesScreen from './components/ClassesScreen';
 import PoolDetail from './components/PoolDetail';
 import { useAuth } from './lib/auth';
@@ -1443,7 +1444,6 @@ export default function App() {
             courtsById={courtsById}
             courts={cityCourtData}
             classes={cityFeatures.classes ? cityClasses : []}
-            city={activeCity}
             // Facility views (weight room, golf) aren't playable sports — hand
             // social features a real sport so a run/signal never defaults to one.
             sport={isPlayableSport(sport) ? sport : DEFAULT_SPORT}
@@ -1495,6 +1495,17 @@ export default function App() {
           onInviteConsumed={() => setInviteCode(null)}
         />
       )}
+
+      {/* Floats over every tab, so it lives here rather than inside one screen.
+          It owns the conversation, which is why it sits outside the tab switch:
+          mounted per-screen, the thread would reset every time you navigated. */}
+      <AssistantHost
+        tab={tab}
+        city={activeCity}
+        userLocation={userLocation}
+        sport={selected ? detailSport : sport}
+        openCourt={selected ? { id: selected.id, name: selected.name } : null}
+      />
 
       <View style={styles.navWrap} pointerEvents="box-none">
         <BottomNav
