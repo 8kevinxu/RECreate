@@ -26,7 +26,8 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useI18n } from '../lib/i18n';
-import { ask, AssistantError } from '../lib/assistant';
+import { ask, AssistantError, health as checkHealth } from '../lib/assistant';
+import { answerOffline } from '../lib/assistantFallback';
 
 // Starters shown on the empty thread. They exist to teach the tool surface: each
 // one lands on a different retrieval path (courts by time, pools, classes), so a
@@ -45,8 +46,23 @@ export default function AssistantThread({ city = 'sf', userLocation = null }) {
   const [pending, setPending] = useState(false);
   const [elapsed, setElapsed] = useState(0);
   const [error, setError] = useState(null); // { message, retryable }
+  const [down, setDown] = useState(false); // service unreachable or degraded
   const scroller = useRef(null);
   const lastAsked = useRef(''); // for Retry, which must not re-send a partial draft
+
+  // Ask the service whether it can answer, before the user invests in typing a
+  // question. Without this the only way to discover a dead backend is to send
+  // something and wait out the timeout, which is up to 90s. health() never
+  // throws and has its own short timeout, so this can't wedge the screen.
+  useEffect(() => {
+    let cancelled = false;
+    checkHealth().then((result) => {
+      if (!cancelled) setDown(!result.reachable || result.status === 'degraded');
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   // Live counter while waiting, so the pending bubble is visibly progressing.
   useEffect(() => {
@@ -81,13 +97,31 @@ export default function AssistantThread({ city = 'sf', userLocation = null }) {
         setTurns((prev) => [...prev, { role: 'assistant', content: reply }]);
       } catch (err) {
         const kind = err instanceof AssistantError ? err.message : 'failed';
-        setError({
-          message: t(`assistant.err.${kind}`) || t('assistant.err.failed'),
-          // The service's own 503 text says how to fix it ("Try: ollama serve"),
-          // which is exactly what a developer needs and harmless to a user.
-          detail: err?.detail || '',
-          retryable: err?.retryable !== false,
-        });
+        // Before surfacing the failure, see whether this is a question about the
+        // app itself — those answers are static and already on the phone, so a
+        // dead service is no reason to withhold them. Questions about hours,
+        // prices or availability find no match and fall through to the error,
+        // which is the honest outcome: that data needs the service.
+        const offline = answerOffline(question, t);
+        if (offline) {
+          setTurns((prev) => [
+            ...prev,
+            { role: 'assistant', content: offline.answer, offline: true },
+          ]);
+        } else {
+          setError({
+            message: t(`assistant.err.${kind}`) || t('assistant.err.failed'),
+            // Says what the assistant can't do while it's down, and what still
+            // works — more use than a bare failure line.
+            hint: t('assistant.offline.hint'),
+            // Only the service's own 503 text, which says how to fix it ("Try:
+            // ollama serve") and is worth showing. A transport failure's detail
+            // is a raw browser string ("Failed to fetch") that tells a user
+            // nothing the message above hasn't already said.
+            detail: kind === 'unavailable' ? err?.detail || '' : '',
+            retryable: err?.retryable !== false,
+          });
+        }
       } finally {
         setPending(false);
         scrollDown();
@@ -136,6 +170,12 @@ export default function AssistantThread({ city = 'sf', userLocation = null }) {
             </View>
             <Text style={styles.emptyTitle}>{t('assistant.emptyTitle')}</Text>
             <Text style={styles.emptyBody}>{t('assistant.emptyBody')}</Text>
+            {down && (
+              <View style={styles.downBanner}>
+                <Ionicons name="cloud-offline-outline" size={14} color="#8a6d3b" />
+                <Text style={styles.downText}>{t('assistant.offline.hint')}</Text>
+              </View>
+            )}
             {STARTER_KEYS.map((key) => (
               <Pressable key={key} style={styles.starter} onPress={() => send(t(key))}>
                 <Text style={styles.starterText}>{t(key)}</Text>
@@ -151,7 +191,24 @@ export default function AssistantThread({ city = 'sf', userLocation = null }) {
                 key={`${index}-${turn.role}`}
                 style={[styles.row, mine ? styles.rowMine : styles.rowTheirs]}
               >
-                <View style={[styles.bubble, mine ? styles.bubbleMine : styles.bubbleTheirs]}>
+                <View
+                  style={[
+                    styles.bubble,
+                    mine ? styles.bubbleMine : styles.bubbleTheirs,
+                    turn.offline && styles.bubbleOffline,
+                  ]}
+                >
+                  {/* An offline answer must not read as a live one: it says so
+                      above the text, and states what it couldn't check. */}
+                  {turn.offline && (
+                    <View style={styles.offlineHead}>
+                      <Ionicons name="cloud-offline-outline" size={13} color="#8a6d3b" />
+                      <Text style={styles.offlineBadge}>{t('assistant.offline.badge')}</Text>
+                    </View>
+                  )}
+                  {turn.offline && (
+                    <Text style={styles.offlineNotice}>{t('assistant.offline.notice')}</Text>
+                  )}
                   <Text style={mine ? styles.bodyMine : styles.bodyTheirs}>{turn.content}</Text>
                 </View>
               </View>
@@ -178,6 +235,7 @@ export default function AssistantThread({ city = 'sf', userLocation = null }) {
           <View style={[styles.row, styles.rowTheirs]}>
             <View style={[styles.bubble, styles.bubbleError]}>
               <Text style={styles.errorText}>{error.message}</Text>
+              {!!error.hint && <Text style={styles.errorHint}>{error.hint}</Text>}
               {!!error.detail && <Text style={styles.errorDetail}>{error.detail}</Text>}
               {error.retryable && (
                 <Pressable style={styles.retryBtn} onPress={retry}>
@@ -256,6 +314,26 @@ const styles = StyleSheet.create({
   },
   bodyMine: { color: '#fff', fontSize: 15, lineHeight: 21 },
   bodyTheirs: { color: '#0d1b2a', fontSize: 15, lineHeight: 21 },
+  // Amber rather than the plain white bubble: an answer given while the service
+  // is down should be visibly not a live one.
+  bubbleOffline: { backgroundColor: '#fdf6e6', borderColor: '#ecd9a8' },
+  offlineHead: { flexDirection: 'row', alignItems: 'center', gap: 5, marginBottom: 4 },
+  offlineBadge: { color: '#8a6d3b', fontSize: 11, fontWeight: '800', letterSpacing: 0.3 },
+  offlineNotice: { color: '#8a6d3b', fontSize: 13, lineHeight: 18, marginBottom: 8 },
+  downBanner: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: 7,
+    backgroundColor: '#fdf6e6',
+    borderWidth: 1,
+    borderColor: '#ecd9a8',
+    borderRadius: 12,
+    paddingVertical: 9,
+    paddingHorizontal: 11,
+    marginTop: 14,
+    marginBottom: 2,
+  },
+  downText: { flex: 1, color: '#8a6d3b', fontSize: 12.5, lineHeight: 17 },
 
   pending: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   pendingText: { color: '#6b7a8a', fontSize: 14, fontWeight: '600' },
@@ -278,6 +356,7 @@ const styles = StyleSheet.create({
     maxWidth: '90%',
   },
   errorText: { color: '#a3282c', fontSize: 14, fontWeight: '600' },
+  errorHint: { color: '#8a5b5d', fontSize: 13, lineHeight: 18, marginTop: 6 },
   errorDetail: { color: '#8a5b5d', fontSize: 12, marginTop: 4 },
   retryBtn: { flexDirection: 'row', alignItems: 'center', gap: 5, marginTop: 8 },
   retryText: { color: '#2f74d6', fontSize: 13, fontWeight: '700' },
