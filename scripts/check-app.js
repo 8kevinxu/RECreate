@@ -93,7 +93,50 @@ if (langKeys.en && langKeys.zh && langKeys.es) {
   if (parity) ok(`i18n: en/zh/es at full parity (${langKeys.en.size} keys each)`);
 }
 
-// --- 3. Generated data modules load and are non-trivially populated ---------
+// --- 3. Enabling the assistant means disclosing it in the privacy policy -----
+// Turning the assistant on sends two things off the device that otherwise never
+// leave it: the user's typed question, and their coordinates. They are covered
+// very differently, and conflating them produces the wrong gate.
+//
+// **Questions** go to the model provider, a third party that retains what it is
+// sent. That is disclosable regardless of how the service behaves, so it is what
+// this check enforces.
+//
+// **Coordinates** are used to compute a distance and dropped — never stored,
+// logged, or forwarded (the model is sent `miles_from_user`, never a latitude).
+// Apple's definition of collecting excludes data held no longer "than what is
+// necessary to service the transmitted request in real time", so the label's
+// "Location: Not Collected" survives. That exemption is a property of the
+// *service*, not of this build config, so it is enforced where it can actually
+// be observed: `chatbot/tests/test_agent.py` fails if coordinates ever reach the
+// model, a log line, or the response. Do not re-add a Location declaration here
+// without first breaking that invariant on purpose.
+//
+// Keyed off eas.json rather than process.env: a developer running the service
+// locally has the var set all day, and a check that failed for them gets deleted.
+
+{
+  const easJson = JSON.parse(fs.readFileSync(path.join(ROOT, 'eas.json'), 'utf8'));
+  const profiles = Object.entries(easJson.build || {}).filter(
+    ([, profile]) => profile?.env?.EXPO_PUBLIC_ASSISTANT_URL,
+  );
+  const policy = fs.readFileSync(path.join(ROOT, 'public/privacy.html'), 'utf8');
+  const disclosed = /assistant/i.test(policy);
+
+  if (profiles.length && !disclosed) {
+    fail(
+      `privacy: eas.json profile(s) ${profiles.map(([n]) => n).join(', ')} enable the ` +
+        'assistant, which sends users’ questions to a model provider, but ' +
+        'public/privacy.html never mentions it. See docs/privacy-nutrition-label.md.',
+    );
+  } else if (profiles.length) {
+    ok(`privacy: assistant enabled in ${profiles.length} profile(s), disclosed in the policy`);
+  } else {
+    ok('privacy: assistant not enabled in any build profile');
+  }
+}
+
+// --- 4. Generated data modules load and are non-trivially populated ---------
 // Floors are ~half of current size — loose enough for seasonal shrink, tight
 // enough to catch a scrape that published near-empty data. (The build scripts
 // have their own live→cache→curated gates; this catches what slips through,

@@ -195,6 +195,75 @@ class TestStateInjection:
         assert result.steps[0].arguments["city"] == "sf"
 
 
+class TestCoordinatesStayInsideTheRequest:
+    """The invariant the App Store privacy label rests on.
+
+    Apple treats location as *collected* when it is transmitted off the device in
+    a way that allows access "for a period longer than what is necessary to
+    service the transmitted request in real time". The app's label says Location
+    is not collected. That stays true only while the user's coordinates are used
+    to compute a distance and then dropped — never persisted, never logged, and
+    never forwarded to the model provider, which is a genuine third party that
+    retains what it is sent.
+
+    None of that is enforced by the type system and all of it is one debugging
+    session away from being untrue: a `log.info("state=%s", state)` added to chase
+    a bug would silently turn a compliant app into a non-compliant one, with no
+    visible symptom. Hence these tests, which fail loudly instead.
+
+    The coordinates below carry seven decimal places precisely so they cannot
+    coincide with a court's own position or a rounded distance.
+    """
+
+    LAT, LNG = 37.7123456, -122.4123456
+
+    def _ask_near_me(self):
+        provider = ScriptedProvider(
+            llm.Reply(tool_calls=[call("find_courts", {"sport": "basketball"})]),
+            llm.Reply(text="Three courts are open nearby."),
+        )
+        result = agent.answer(
+            [{"role": "user", "content": "what's open near me?"}],
+            {"city": "sf", "lat": self.LAT, "lng": self.LNG},
+            provider=provider,
+            debug=True,
+        )
+        return result, provider
+
+    def test_the_model_is_never_sent_the_users_coordinates(self):
+        _, provider = self._ask_near_me()
+        # Everything that crossed the provider boundary: system prompt, every
+        # turn, and the tool results fed back in.
+        sent = json.dumps(provider.calls, default=str)
+        assert str(self.LAT) not in sent
+        assert str(self.LNG) not in sent
+
+    def test_the_model_gets_a_distance_instead(self):
+        # The point of the above isn't to withhold the capability — "near me"
+        # still works, because Python did the measuring.
+        result, _ = self._ask_near_me()
+        assert any("miles_from_user" in c for c in result.steps[0].result["courts"])
+
+    def test_tool_results_do_not_echo_the_origin_back(self):
+        # The subtle leak: retrieval receives the coordinates, so a tool that
+        # helpfully included them in its result would put them in the transcript
+        # even though the model never asked for them.
+        result, _ = self._ask_near_me()
+        payload = json.dumps(result.steps[0].result, default=str)
+        assert str(self.LAT) not in payload
+        assert str(self.LNG) not in payload
+
+    def test_the_answer_returned_to_the_client_carries_no_coordinates(self):
+        result, _ = self._ask_near_me()
+        assert str(self.LAT) not in json.dumps(result.to_dict(debug=True), default=str)
+
+    def test_nothing_is_logged_that_contains_them(self, caplog):
+        with caplog.at_level("DEBUG"):
+            self._ask_near_me()
+        assert str(self.LAT) not in caplog.text
+        assert str(self.LNG) not in caplog.text
+
+
 class TestContextInjection:
     def test_the_time_and_city_ride_in_the_user_turn(self):
         _, provider = ask("what's open?", llm.Reply(text="Plenty."))

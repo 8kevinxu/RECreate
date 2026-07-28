@@ -35,7 +35,7 @@ The JS app has **no test suite, linter, or typechecker** — "verifying" a chang
 means running the app (`npx expo start`), plus the `npm run check` CI gate (every
 file parses, i18n at key parity, generated data non-trivial). Non-UI logic is
 validated by running modules in Node. The **assistant service is the exception**:
-`chatbot/` has 388 pytest tests, which `npm run check` does *not* run — see §7.
+`chatbot/` has 429 pytest tests, which `npm run check` does *not* run — see §7.
 
 ---
 
@@ -301,7 +301,7 @@ still comes from a tool. Like the timestamp, it's appended to the last user turn
 rather than the system prompt, which is the cached prefix.
 
 ### Testing
-`chatbot/` has **388 pytest tests** (tools, clock, loop, endpoints; time is frozen
+`chatbot/` has **429 pytest tests** (tools, clock, loop, endpoints; time is frozen
 so pinned dates stay valid). CI does not run them — `npm run check` gates the JS
 app only. Run `cd chatbot && .venv/bin/python -m pytest -q` when touching it.
 
@@ -338,8 +338,12 @@ pre-translated at build time, and **weekday tokens** in class schedule strings
   bundled snapshots — expected; native isn't bound by CORS.
 
 - **Assistant**: not deployed. The web/native builds ship it inert (no
-  `EXPO_PUBLIC_ASSISTANT_URL`), and `chatbot/` runs on a laptop for now — see the
-  caveat in §10 before that changes.
+  `EXPO_PUBLIC_ASSISTANT_URL`), and `chatbot/` runs on a laptop for now. It is
+  *ready* to be deployed — auth, rate limits and a daily budget exist and are
+  configured by env (§10) — but two things must move with it: the App Store
+  privacy label (`docs/privacy-nutrition-label.md`, enforced by `npm run check`)
+  and a hosted model provider, since a local 8B model needs hardware a small VPS
+  doesn't have.
 
 All runtime config is `EXPO_PUBLIC_*` (inlined at build, client-safe — the
 Supabase anon key is protected by RLS). `ANTHROPIC_API_KEY` is **not** an app var
@@ -360,7 +364,22 @@ copy server-side.
   is, and it acts solely on the caller).
 - **No secrets in the repo** (`.env` gitignored); no `eval`/`dangerouslySetInnerHTML`;
   all network endpoints are HTTPS (so no iOS ATS exceptions needed).
-- **The assistant service is localhost-only as written** — no auth, no rate
-  limiting, `allow_origins=["*"]`, and every request costs a model call. Add auth
-  + a rate limit and narrow CORS before it listens on anything reachable. No model
-  provider key ever reaches the client; the service holds it.
+- **The assistant defends money, not data** — it holds no user records, but every
+  request costs a model call, so a shared bearer token, per-IP rate limits and a
+  **global daily budget** (`chatbot/limits.py`) gate `/chat`. All default to
+  permissive for localhost and log a warning at boot in that posture. The budget
+  is the load-bearing one: per-IP limits can't stop a distributed caller. The
+  client's token is inlined in the app bundle and therefore **not a secret** — it
+  removes drive-by traffic and nothing more. No model provider key ever reaches
+  the client; the service holds it, and it belongs in a dedicated Anthropic
+  workspace with its own spend limit.
+- **The assistant transmits coordinates without collecting them.**
+  `lib/assistant.js` posts `lat`/`lng`; the service measures a distance and drops
+  them — never persisted, never logged, and never sent to the model (results
+  carry `miles_from_user`, and `origin` cannot be model-supplied). That is inside
+  Apple's real-time-service exemption, so *Location: Not Collected* survives with
+  the assistant on. Since it's a convention rather than a type, it is **enforced
+  by tests** (`TestCoordinatesStayInsideTheRequest`, `TestRequestLogging`) — see
+  `docs/privacy-nutrition-label.md`. Users' *questions* do reach the model
+  provider, so `npm run check` requires the policy to disclose the assistant
+  whenever an `eas.json` profile enables it.

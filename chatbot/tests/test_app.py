@@ -11,9 +11,24 @@ from fastapi.testclient import TestClient
 import agent
 import app as service
 import data
+import limits
 import llm
 
 client = TestClient(service.app)
+
+
+@pytest.fixture(autouse=True)
+def _fresh_limits():
+    """Give every test its own empty rate-limit state.
+
+    The limiter is one object for the process and every test calls from the same
+    host, so without this the suite throttles itself: the seventh request in a
+    file would 429 for reasons having nothing to do with what was being tested,
+    and which test failed would depend on execution order.
+    """
+    service.limiter.reset()
+    yield
+    service.limiter.reset()
 
 
 @pytest.fixture
@@ -182,6 +197,148 @@ class TestErrors:
 # ---------------------------------------------------------------------------
 # Wiring
 # ---------------------------------------------------------------------------
+
+
+# ---------------------------------------------------------------------------
+# Admission: auth and limits
+# ---------------------------------------------------------------------------
+
+
+class TestAuth:
+    def test_open_when_no_token_is_configured(self, canned):
+        # The localhost default. Requiring a credential to run this on your own
+        # machine is the kind of friction that ends with a token in the repo.
+        assert post({"messages": [{"role": "user", "content": "hi"}]}).status_code == 200
+
+    def test_a_configured_token_is_required(self, canned, monkeypatch):
+        monkeypatch.setattr(service.config, "AUTH_TOKEN", "s3cret")
+        assert post({"messages": [{"role": "user", "content": "hi"}]}).status_code == 401
+
+    def test_a_bearer_token_is_accepted(self, canned, monkeypatch):
+        monkeypatch.setattr(service.config, "AUTH_TOKEN", "s3cret")
+        response = client.post(
+            "/chat",
+            json={"messages": [{"role": "user", "content": "hi"}]},
+            headers={"Authorization": "Bearer s3cret"},
+        )
+        assert response.status_code == 200
+
+    def test_the_header_scheme_is_case_insensitive(self, canned, monkeypatch):
+        monkeypatch.setattr(service.config, "AUTH_TOKEN", "s3cret")
+        response = client.post(
+            "/chat",
+            json={"messages": [{"role": "user", "content": "hi"}]},
+            headers={"Authorization": "bearer s3cret"},
+        )
+        assert response.status_code == 200
+
+    def test_the_x_header_also_works(self, canned, monkeypatch):
+        monkeypatch.setattr(service.config, "AUTH_TOKEN", "s3cret")
+        response = client.post(
+            "/chat",
+            json={"messages": [{"role": "user", "content": "hi"}]},
+            headers={"X-Assistant-Token": "s3cret"},
+        )
+        assert response.status_code == 200
+
+    def test_a_wrong_token_is_refused(self, canned, monkeypatch):
+        monkeypatch.setattr(service.config, "AUTH_TOKEN", "s3cret")
+        response = client.post(
+            "/chat",
+            json={"messages": [{"role": "user", "content": "hi"}]},
+            headers={"Authorization": "Bearer wrong"},
+        )
+        assert response.status_code == 401
+
+    def test_the_refusal_says_nothing_useful_to_a_prober(self, canned, monkeypatch):
+        monkeypatch.setattr(service.config, "AUTH_TOKEN", "s3cret")
+        response = client.post(
+            "/chat",
+            json={"messages": [{"role": "user", "content": "hi"}]},
+            headers={"Authorization": "Bearer wrong"},
+        )
+        assert "s3cret" not in response.text
+        assert response.json()["detail"] == "Not authorised."
+
+    def test_an_unauthorised_request_never_reaches_the_model(self, canned, monkeypatch):
+        # The whole point: a refused request must not cost anything.
+        monkeypatch.setattr(service.config, "AUTH_TOKEN", "s3cret")
+        post({"messages": [{"role": "user", "content": "hi"}]})
+        assert "messages" not in canned
+
+    def test_health_stays_open(self, monkeypatch):
+        # An uptime check that needs a credential is one that gets turned off,
+        # and /health makes no model call so it can't be used to spend anything.
+        monkeypatch.setattr(service.config, "AUTH_TOKEN", "s3cret")
+        assert client.get("/health").status_code == 200
+
+    def test_health_reports_that_auth_is_on_but_never_the_token(self, monkeypatch):
+        monkeypatch.setattr(service.config, "AUTH_TOKEN", "s3cret")
+        body = client.get("/health")
+        assert body.json()["config"]["auth_required"] is True
+        assert "s3cret" not in body.text
+
+
+class TestRateLimiting:
+    def test_a_burst_is_refused_with_a_retry_after(self, canned, monkeypatch):
+        monkeypatch.setattr(service, "limiter", limits.Limiter(per_minute=2))
+        for _ in range(2):
+            assert post({"messages": [{"role": "user", "content": "hi"}]}).status_code == 200
+        response = post({"messages": [{"role": "user", "content": "hi"}]})
+        assert response.status_code == 429
+        assert int(response.headers["Retry-After"]) >= 1
+
+    def test_a_limited_request_never_reaches_the_model(self, canned, monkeypatch):
+        monkeypatch.setattr(service, "limiter", limits.Limiter(per_minute=1))
+        post({"messages": [{"role": "user", "content": "first"}]})
+        post({"messages": [{"role": "user", "content": "second"}]})
+        # The agent saw the first question and not the second.
+        assert canned["messages"][-1]["content"] == "first"
+
+    def test_the_budget_refusal_explains_itself(self, canned, monkeypatch):
+        monkeypatch.setattr(service, "limiter", limits.Limiter(daily_budget=1))
+        post({"messages": [{"role": "user", "content": "hi"}]})
+        response = post({"messages": [{"role": "user", "content": "hi"}]})
+        assert response.status_code == 429
+        assert "daily limit" in response.json()["detail"]
+
+    def test_health_goes_degraded_when_the_budget_is_gone(self, canned, monkeypatch):
+        # "Why did it stop answering?" should be answerable without reading logs.
+        monkeypatch.setattr(service, "limiter", limits.Limiter(daily_budget=1))
+        post({"messages": [{"role": "user", "content": "hi"}]})
+        assert client.get("/health").json()["status"] == "degraded"
+
+    def test_health_reports_budget_consumption(self, canned, monkeypatch):
+        monkeypatch.setattr(service, "limiter", limits.Limiter(daily_budget=50))
+        post({"messages": [{"role": "user", "content": "hi"}]})
+        assert client.get("/health").json()["limits"]["used_today"] == 1
+
+
+class TestRequestLogging:
+    """What the HTTP layer writes down about a request.
+
+    The app's privacy label says location is not collected, which holds only
+    while coordinates are used to answer and then dropped. `agent.py`'s own tests
+    cover the model boundary; this covers the handler, which is where a
+    "log the request so I can see what's failing" line would land.
+    """
+
+    def test_a_request_is_logged_without_its_contents(self, canned, caplog):
+        with caplog.at_level("INFO"):
+            post({
+                "messages": [{"role": "user", "content": "where can I play near my house?"}],
+                "state": {"city": "sf", "lat": 37.7123456, "lng": -122.4123456},
+            })
+        assert "37.7123456" not in caplog.text
+        assert "-122.4123456" not in caplog.text
+        assert "near my house" not in caplog.text
+
+    def test_but_the_cost_of_it_is_logged(self, canned, caplog):
+        # The counterpart: spend has to be attributable after the fact, and token
+        # counts say nothing about the person who asked.
+        with caplog.at_level("INFO"):
+            post({"messages": [{"role": "user", "content": "hi"}]})
+        assert "in=100" in caplog.text
 
 
 class TestWiring:

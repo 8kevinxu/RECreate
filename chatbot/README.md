@@ -50,7 +50,8 @@ the data. Everything else here follows from that:
 | `tools.py` | JSON Schema, argument sanitising, dispatch |
 | `llm.py` | One provider seam over Ollama and Anthropic |
 | `agent.py` | The tool-calling loop, its guardrails, and the system prompt |
-| `app.py` | `GET /health`, `POST /chat` |
+| `limits.py` | Per-caller rate limits and the global daily budget |
+| `app.py` | `GET /health`, `POST /chat`, auth |
 
 **Tools:** `find_courts` · `summarize_courts` · `get_court` ·
 `get_reservation_policy` · `find_classes` · `get_pool_info` · `list_options`.
@@ -90,9 +91,12 @@ var and the assistant vanishes from the app entirely — which is what productio
 ships.
 
 **Check it's actually wired up:** `curl localhost:8000/health`. The response is
-deliberately more than `{"ok":true}` — the three things that break in practice
-are missing snapshots, an unreachable model backend, and the service quietly
-running a different model than you assumed. All three are visible there.
+deliberately more than `{"ok":true}` — the things that break in practice are
+missing snapshots, an unreachable model backend, the service quietly running a
+different model than you assumed, and (once deployed) a spent daily budget. All
+four are visible there. It stays unauthenticated even when a token is set: it
+makes no model call, so it can't be used to spend anything, and an uptime check
+that needs a credential is an uptime check that gets turned off.
 
 ### Providers
 
@@ -103,10 +107,13 @@ Set `ASSISTANT_PROVIDER` to `ollama` (free, local, offline) or `anthropic`
   `gemma3` has none; a 3B like `llama3.2` runs but under-reports. `llama3.1:8b` is
   the default and takes **20–45s** for a question needing a tool call, which is
   why the client's fetch timeout is 90s.
-- **Anthropic** defaults to `claude-opus-5` at `ANTHROPIC_EFFORT=low`. The
-  reasoning is already done in Python — the model only picks a tool and writes a
-  sentence — so low effort suits the workload, and a smaller model is a
-  reasonable economy (`ANTHROPIC_MODEL=claude-haiku-4-5`).
+- **Anthropic** defaults to `claude-haiku-4-5` at `ANTHROPIC_EFFORT=low`, and the
+  workload is why. Every fact in an answer was already retrieved by Python; the
+  model chooses a tool, fills its arguments, and writes one sentence around the
+  result. That is not where a frontier model earns its price. Set
+  `ANTHROPIC_MODEL=claude-opus-5` when a specific answer is bad and you want to
+  find out whether the model is the reason — it usually isn't, and the fix is
+  usually a tool returning a differently-shaped payload.
 
 `ANTHROPIC_API_KEY` is server-side only and never appears in `/health`.
 
@@ -115,7 +122,7 @@ Set `ASSISTANT_PROVIDER` to `ollama` (free, local, offline) or `anthropic`
 ## Tests
 
 ```bash
-cd chatbot && .venv/bin/python -m pytest -q      # 388 tests, ~1s
+cd chatbot && .venv/bin/python -m pytest -q      # 429 tests, ~1s
 ```
 
 They cover the tools, the clock, the loop and the endpoints, and the suite
@@ -143,14 +150,77 @@ live → cache → curated resilience posture the build scripts use.
 
 ## Before this ever leaves localhost
 
-As written the service has **no authentication, no rate limiting, and wide-open
-CORS** (`allow_origins=["*"]`), and every request costs a model call. That is
-fine on a laptop and not fine on a reachable port. Put it behind auth and a rate
-limit, and narrow CORS to the app's origin, before deploying it anywhere.
+**Every answered question costs a model call**, so the thing that needs bounding
+here is not load but money. The controls exist; they default to off, because
+requiring a token to run this on your own laptop is the kind of friction that
+ends with a token committed to the repo. Boot logs a warning in that posture, so
+a deployment with the dev defaults still in place announces itself.
 
-One design note worth preserving if you touch `app.py`: **the handlers are sync
-`def` on purpose.** `agent.answer()` blocks for seconds, and FastAPI runs a sync
-handler in a worker thread, so concurrent requests proceed. Wrapping blocking
-calls in `async def` would freeze the event loop for the whole process on every
-question and serialise all users behind one model call — the easiest way to make
-a service like this appear to hang under light load.
+| Setting | Default | Set it to |
+|---|---|---|
+| `ASSISTANT_TOKEN` | unset (open) | a random string, also set as `EXPO_PUBLIC_ASSISTANT_TOKEN` in the repo-root `.env` |
+| `ASSISTANT_ALLOWED_ORIGINS` | `*` | the web build's real origin |
+| `ASSISTANT_RATE_PER_MIN` / `_PER_DAY` | 6 / 100 | per-caller, keyed by IP |
+| `ASSISTANT_DAILY_BUDGET` | 1000 | questions/day across **everyone** |
+| `ASSISTANT_TRUST_PROXY` | `false` | `true` only behind a proxy that sets `X-Forwarded-For` |
+
+Three things about that table are worth understanding rather than copying:
+
+**The token is not a secret.** It ships inlined in the app bundle — it has to,
+since the client is what presents it — and a bundle can be read out of any
+downloaded app. It removes drive-by traffic, which is most of what an open
+endpoint attracts, and it stops nothing more determined. Don't let its presence
+imply the endpoint is private.
+
+**The daily budget is the control that actually bounds the bill.** Per-IP limits
+are defeated by definition by a distributed caller. The global window doesn't
+care how many identities are involved, only how many questions have been
+answered — which is the thing being paid for. Set it to a number of requests
+you'd be content to pay for on your worst day, because that is exactly what it
+buys. When it's exhausted `/health` goes `degraded` and says so, so "why did it
+stop answering?" doesn't require reading logs.
+
+**`ASSISTANT_TRUST_PROXY=true` without a proxy is a bypass, not a hardening.**
+`X-Forwarded-For` is caller-supplied text; trusting it with nothing in front lets
+anyone mint a fresh identity per request.
+
+Belt and braces on the provider side: use a key from a **dedicated Anthropic
+workspace with its own spend limit**, so a runaway here can't reach the credits
+`npm run build:classes` depends on, and so revoking it costs you nothing else.
+The service's budget is a ceiling it enforces on itself; the workspace limit is
+the one that holds when the service is the thing that's wrong.
+
+Token counts are logged on every answer (`in=… out=… cached=…`), not only in
+debug mode — the question they answer is always asked about traffic that has
+already happened.
+
+Two design notes worth preserving if you touch `app.py`:
+
+**The handlers are sync `def` on purpose.** `agent.answer()` blocks for seconds,
+and FastAPI runs a sync handler in a worker thread, so concurrent requests
+proceed. Wrapping blocking calls in `async def` would freeze the event loop for
+the whole process on every question and serialise all users behind one model call
+— the easiest way to make a service like this appear to hang under light load.
+
+**Limit state is in-memory and per-process.** Two workers means two independent
+budgets and a restart forgives every counter. For a single-process service that
+is right, and reaching for Redis to fix it would put a network dependency in the
+request path of a service whose point is to run simply. Scale past one worker and
+this has to move to shared storage.
+
+**One invariant this service owes the app.** `lib/assistant.js` posts the user's
+coordinates so distances can be measured. They are used for a haversine and
+dropped — never persisted, never logged, and **never sent to the model** (`origin`
+is keyword-only and absent from the tool schemas; the model sees
+`miles_from_user`). That is what keeps the app's App Store privacy label able to
+say *Location: Not Collected*, under Apple's exemption for data held no longer
+than needed to service a request in real time.
+
+It is a convention, not something the type system protects, and a single
+`log.info("state=%s", state)` added while debugging would falsify a store listing
+with no visible symptom. So it's pinned by tests —
+`TestCoordinatesStayInsideTheRequest` in `tests/test_agent.py` and
+`TestRequestLogging` in `tests/test_app.py`. If you ever need to break it, read
+`docs/privacy-nutrition-label.md` first: the manifest and the ASC answers change
+with it. Users' *questions* do go to the model provider, which is why the policy
+has to disclose the assistant when a build enables it.

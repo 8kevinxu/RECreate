@@ -35,14 +35,10 @@ noted).
   add Location to the nutrition label — adding it would *contradict* the policy.
   (The `NSLocationWhenInUseUsageDescription` string is still required and present
   in `app.json`; that governs the runtime permission prompt, not the label.)
-  **The assistant is the one thing that could falsify this.** When
-  `EXPO_PUBLIC_ASSISTANT_URL` is set, `lib/assistant.js` posts the user's
-  coordinates to that service so "near me" questions can be answered — i.e.
-  transmitted off the device. Shipping a build with that var set would make
-  Location **Collected** and this line wrong. Production ships it **unset** (the
-  feature doesn't render at all), which is why the label is unchanged today; if
-  the assistant is ever enabled in a store build, revisit this entry, the policy,
-  and `app.json` → `privacyManifests` together.
+  **The assistant transmits coordinates but does not collect them** — it measures
+  a distance and drops them, which is inside Apple's real-time-service exemption.
+  See "Enabling the assistant" below; that exemption is enforced by tests, not by
+  convention.
 - **Usage Data / Analytics.** No usage-analytics SDK is bundled in the native
   app. (`@vercel/analytics` is **web-only** via `WebAnalytics.web.js` and never
   enters the iOS bundle — see CLAUDE.md.) Answer **No**. Diagnostics → **Crash
@@ -67,6 +63,66 @@ noted).
 Required-reason API declarations (`NSPrivacyAccessedAPITypes` for UserDefaults,
 file timestamps, system boot time, disk space) are aggregated automatically by
 Expo/EAS from the bundled libraries.
+
+## Enabling the assistant
+
+Turning the assistant on (`EXPO_PUBLIC_ASSISTANT_URL` set in a build profile)
+sends two things off the device that otherwise never leave it. They land in
+completely different places on this table, and the difference is worth being
+precise about, because the intuitive reading — "the app sends location, so
+Location is now collected" — is wrong here.
+
+### Coordinates: still Not Collected
+
+`lib/assistant.js` posts the user's coordinates so "what's open near me?" can be
+sorted by distance. Apple's definition of *collect* is not "transmits"; it is
+transmitting off-device in a way that allows access **"for a period longer than
+what is necessary to service the transmitted request in real time."**
+
+The service sits inside that exemption, and specifically:
+
+- `agent.py` turns `lat`/`lng` into an `origin` tuple, hands it to retrieval for
+  a haversine, and drops it when the request ends. Nothing is persisted.
+- **The model never receives them.** `origin` is keyword-only and absent from the
+  tool schemas, so it cannot be model-supplied; results carry
+  `miles_from_user: 1.2`, never a latitude. This matters more than the rest —
+  the model provider is a genuine third party that retains what it is sent.
+- No log line carries the request body or state.
+
+So Location stays **Not Collected** and the entry above stands. What makes that
+fragile is that all three properties are conventions, not types: one
+`log.info("state=%s", state)` added while chasing a bug would quietly falsify the
+App Store label with no visible symptom. They are therefore **enforced by tests**
+— `TestCoordinatesStayInsideTheRequest` in `chatbot/tests/test_agent.py` fails if
+coordinates reach the model payload, a log record, or the response, and
+`TestRequestLogging` in `test_app.py` covers the handler. If you ever need to
+break one of those on purpose, that is the moment to revisit this section, add
+`NSPrivacyCollectedDataTypePreciseLocation` to `app.json` → `privacyManifests`,
+and add *Location → Precise Location* to the ASC answers.
+
+### Questions: disclose them in the policy
+
+The user's typed question does go to the model provider and is retained by them.
+That is covered by the existing **User Content** row rather than a new one, but
+it is a materially new flow and the policy should say so. `npm run check` fails
+if any `eas.json` profile enables the assistant while `public/privacy.html` never
+mentions it. Suggested wording:
+
+> **AI assistant** — if you ask the in-app assistant a question, your question is
+> sent to our assistant service and to the AI provider that phrases the answer.
+> Answers come from the app's own court, pool and class data. If you have granted
+> location permission, your coordinates are used to measure distance while
+> answering and are not stored, logged, or sent to the AI provider.
+
+Keep that last clause honest — it is a claim about `chatbot/`'s behaviour, and the
+tests named above are what keep it true.
+
+### And the service itself
+
+A deployed assistant needs `ASSISTANT_TOKEN`, a narrowed
+`ASSISTANT_ALLOWED_ORIGINS`, and a daily budget, because every question costs a
+model call — see `chatbot/README.md` → "Before this ever leaves localhost". Not a
+privacy matter, but it belongs on the same checklist.
 
 ## When to update this
 

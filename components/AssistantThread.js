@@ -123,11 +123,16 @@ export default function AssistantThread({
             { role: 'assistant', content: offline.answer, offline: true },
           ]);
         } else {
+          // "The assistant is offline" is only true when it is. Being rate
+          // limited or holding a bad token means the service is up and declining
+          // to answer *this* request, and telling that user the map still works
+          // from saved data answers a question they didn't ask.
+          const isDown = kind !== 'busy' && kind !== 'unauthorized';
           setError({
             message: t(`assistant.err.${kind}`) || t('assistant.err.failed'),
             // Says what the assistant can't do while it's down, and what still
             // works — more use than a bare failure line.
-            hint: t('assistant.offline.hint'),
+            hint: isDown ? t('assistant.offline.hint') : '',
             // Only the service's own 503 text, which says how to fix it ("Try:
             // ollama serve") and is worth showing. A transport failure's detail
             // is a raw browser string ("Failed to fetch") that tells a user

@@ -766,6 +766,14 @@ cd chatbot && .venv/bin/python -m uvicorn app:app --port 8000
 # then set EXPO_PUBLIC_ASSISTANT_URL=http://localhost:8000 and: npx expo start -c
 ```
 
+Every answered question costs a model call, so the service ships with a bearer
+token, per-IP rate limits and a global daily budget — all off by default for
+localhost, all one env var each. The token is inlined in the app bundle and so
+**isn't a secret**; the budget is what actually bounds the bill. Your coordinates
+are used to measure distance and then dropped — never stored, and never sent to
+the model, which only ever sees "1.2 miles" — an invariant the test suite
+enforces. Details: [`chatbot/README.md`](chatbot/README.md).
+
 Runs on **Ollama** (free, local, offline) or **Anthropic**. Full setup, the tool
 list, and the security caveats are in **[`chatbot/README.md`](chatbot/README.md)**.
 
