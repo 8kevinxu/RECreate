@@ -7,7 +7,7 @@
       "lat": 37.726134,
       "lng": -122.443381,
       "phone": "(415) 831-6805",
-      "season": "Jun 9 – Aug 15",
+      "season": "Jun 3 – Aug 16",
       "desc": "A $9 million renovation project has transformed this neighborhood favorite into a state-of-the-art swimming facility featuring new community rooms for events, new mechanical and plumbing systems to improve the comfort of patrons, and a thoughtful redesign that prioritizes pedestrian safety and accessibility for all. A pool divider…",
       "programs": [
         "lap",
@@ -1130,7 +1130,7 @@
       "lat": 37.802705,
       "lng": -122.412437,
       "phone": null,
-      "season": "Jun 6 – Aug 10",
+      "season": "Jun 9 – Aug 10",
       "note": "Two pools under one roof: a warm pool and a cool pool.",
       "programs": [
         "lap",
@@ -2047,5 +2047,5 @@
       "label": "Independence Day"
     }
   ],
-  "fetchedAt": "2026-07-27T16:57:45.859Z"
+  "fetchedAt": "2026-07-30T08:43:59.634Z"
 }

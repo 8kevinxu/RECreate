@@ -40,6 +40,8 @@ const DECK_RULES = new Set(['/DocumentCenter/View/19018', '/DocumentCenter/View/
 // Curated facts per pool. `slug` is the stable sfrecpark facility path; the
 // schedule PDF link is discovered live from that page each run. Coords were
 // geocoded once (pages have no lat/lng); addresses/phones are hand-verified.
+// `season` is only a FALLBACK now — the live value is read off the schedule PDF's
+// own link text (seasonFromLabel), so it tracks the poster the sessions came from.
 const META = [
   { id: 'pool-balboa', slug: 'Balboa-Pool-212', name: 'Balboa Pool', address: 'San Jose Ave & Havelock St, San Francisco, CA 94112', lat: 37.726134, lng: -122.443381, phone: '(415) 831-6805', season: 'Jun 9 – Aug 15' },
   { id: 'pool-coffman', slug: 'Coffman-Pool-213', name: 'Coffman Pool', address: '1701 Visitacion Ave, San Francisco, CA 94134', lat: 37.713221, lng: -122.4158, phone: null, season: 'Jun 9 – Aug 15' },
@@ -271,6 +273,31 @@ async function pdfItems(url) {
     .map((i) => ({ x: Math.round(i.transform[4]), y: Math.round(i.transform[5]), s: i.str.trim() }));
 }
 
+// The season label the app shows must describe the SAME poster the sessions were
+// parsed from, and the sessions come from whatever PDF is live while `season` was
+// hand-typed — so the two drift apart silently every time SFRP re-posts. They had
+// already drifted for 2 of 9 pools (Balboa curated "Jun 9 – Aug 15" against a
+// poster reading "June 3_Aug 16"; North Beach "Jun 6" against "June 9").
+//
+// The link text SFRP labels each PDF with carries the dates, so read them from
+// there and keep the curated value as the fallback. Labels are inconsistently
+// punctuated — "June 3_Aug 16", "June 7 to Aug 13", "Jun9_ Aug15th",
+// "June30-aug15new" — so month and day may be separated by spaces, underscores,
+// dashes, or nothing at all. `(?!\d)` stops the "20" of a "Summer 2026" stamp
+// from being read as a day.
+const MONTHS = { jan: 'Jan', feb: 'Feb', mar: 'Mar', apr: 'Apr', may: 'May', jun: 'Jun',
+  jul: 'Jul', aug: 'Aug', sep: 'Sep', oct: 'Oct', nov: 'Nov', dec: 'Dec' };
+const MONTH_DAY_RE = /(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*[\s_.\-]*(\d{1,2})(?!\d)/gi;
+
+function seasonFromLabel(label) {
+  const hits = [...String(label || '').matchAll(MONTH_DAY_RE)]
+    .map((h) => ({ mon: MONTHS[h[1].toLowerCase()], day: Number(h[2]) }))
+    .filter((h) => h.mon && h.day >= 1 && h.day <= 31);
+  if (hits.length < 2) return null;
+  const [a, b] = hits;
+  return `${a.mon} ${a.day} – ${b.mon} ${b.day}`;
+}
+
 async function scrapePool(m) {
   const { docs: scheduleUrls, desc } = await fetchFacilityPage(m.slug);
   // A facility with separate warm-pool and cool-pool PDFs (North Beach) gets each
@@ -295,6 +322,18 @@ async function scrapePool(m) {
   }
   week.forEach((a) => a.sort((x, y) => x.start - y.start || x.kind.localeCompare(y.kind)));
   const kinds = new Set(week.flat().map((s) => s.kind));
+
+  // Prefer the posted dates over the curated ones, and say so when they disagree —
+  // a mismatch means the curated table is behind the poster (or SFRP changed a
+  // label format and the parse needs a look).
+  const posted = scheduleUrls.map((d) => seasonFromLabel(d.label)).find(Boolean);
+  const season = posted || m.season;
+  if (posted && posted !== m.season) {
+    console.log(`    ↻ ${m.name} — season from poster: ${posted} (curated said ${m.season})`);
+  } else if (!posted) {
+    console.log(`    ⚠ ${m.name} — no dates in any PDF label; keeping curated ${m.season}`);
+  }
+
   return {
     id: m.id,
     name: m.name,
@@ -302,7 +341,7 @@ async function scrapePool(m) {
     lat: m.lat,
     lng: m.lng,
     phone: m.phone,
-    season: m.season,
+    season,
     ...(m.note ? { note: m.note } : {}),
     ...(desc ? { desc } : {}),
     programs: KIND_ORDER.filter((k) => kinds.has(k)),

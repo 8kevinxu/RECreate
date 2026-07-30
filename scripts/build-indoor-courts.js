@@ -233,11 +233,37 @@ const CENTERS = [
     // Clubhouse programming runs weekdays only (day camp 8:30–5:30 + evening drop-ins).
     sched: schedule({ mon: [8.5, 20], tue: [8.5, 20], wed: [8.5, 20], thu: [8.5, 20], fri: [8.5, 20] }),
     bball: bball({}), // no gym — clubhouse only
-    // The facility page's weekly schedule lists only camps/classes, but ActiveNet
-    // publishes the drop-in (Drop-in: Ping Pong, Tue 6:00–7:30 PM, Jun 9–Aug 11 2026)
-    // — curate it, and re-verify against ActiveNet each season.
-    curatedDropins: { pingpong: bball({ tue: [[t(18), t(19, 30)]] }) },
-    notes: 'Clubhouse with drop-in ping pong Tuesday evenings; also hosts camps, Zumba and yoga.',
+    // The facility page's weekly schedule lists only camps/classes, so the drop-in
+    // has to come from ActiveNet — and ActiveNet DATES it, so the curation carries
+    // the same window and expires with it. Without that, a summer-only block sat
+    // in the app forever: nothing here can go stale quietly any more.
+    // Verified against ActiveNet 2026-07-30:
+    //   [43544] Drop-in: Ping Pong        Tue 6:00–7:30 PM    Jun 9 – Aug 11 2026
+    //   [44636] Drop-in: Ping Pong Basics Tue–Sat 1:00–6:00 PM Sep 1 – Dec 31 2026
+    // The Aug 12–31 gap is real (no ping pong published), so no window covers it.
+    curatedDropins: [
+      {
+        from: '2026-06-09',
+        until: '2026-08-11',
+        note: 'drop-in ping pong Tuesday evenings',
+        weeks: { pingpong: bball({ tue: [[t(18), t(19, 30)]] }) },
+      },
+      {
+        from: '2026-09-01',
+        until: '2026-12-31',
+        note: 'drop-in ping pong Tuesday–Saturday afternoons',
+        weeks: {
+          pingpong: bball({
+            tue: [[t(13), t(18)]],
+            wed: [[t(13), t(18)]],
+            thu: [[t(13), t(18)]],
+            fri: [[t(13), t(18)]],
+            sat: [[t(13), t(18)]],
+          }),
+        },
+      },
+    ],
+    notes: 'Clubhouse hosting camps, Zumba and yoga.',
   },
   {
     prop: 'Glen Canyon Park',
@@ -503,9 +529,27 @@ async function main() {
     }
     // Timed curated weeks for drop-ins the facility page omits but ActiveNet
     // confirms (e.g. Crocker Amazon's ping pong) — they win over the scraped week.
+    // Each carries the session window ActiveNet published it with, and only the
+    // window covering the build date applies: a curated block that has ended
+    // disappears on the next run instead of being advertised indefinitely, and its
+    // clause drops out of the facility note with it. Because the schedule crons run
+    // weekly, an expiry lands within a week of the real date.
     if (c.curatedDropins) {
-      chosen.dropins = { ...chosen.dropins, ...c.curatedDropins };
-      console.log(`    + ${c.name} — curated ${Object.keys(c.curatedDropins).join(', ')} week`);
+      const today = new Date().toISOString().slice(0, 10);
+      const live = c.curatedDropins.find((w) => today >= w.from && today <= w.until);
+      if (live) {
+        chosen.dropins = { ...chosen.dropins, ...live.weeks };
+        if (live.note) c._noteClause = live.note;
+        console.log(
+          `    + ${c.name} — curated ${Object.keys(live.weeks).join(', ')} week (${live.from}→${live.until})`
+        );
+      } else {
+        const next = c.curatedDropins.filter((w) => w.from > today).sort((a, b) => (a.from < b.from ? -1 : 1))[0];
+        console.log(
+          `    ⊘ ${c.name} — no curated window covers ${today}; dropped ` +
+            (next ? `(next starts ${next.from})` : '(none upcoming — re-verify on ActiveNet)')
+        );
+      }
     }
     c._dropins = chosen.dropins;
     c._scheduleSource = chosen.source;
@@ -537,7 +581,9 @@ async function main() {
       dropins: c._dropins,
       scheduleSource: c._scheduleSource,
       source: 'sfrecpark',
-      notes: c.notes,
+      // A dated curated window contributes its own clause, so the note never
+      // advertises a drop-in whose window has closed.
+      notes: c._noteClause ? `${c.notes.replace(/\.$/, '')}; ${c._noteClause}.` : c.notes,
     };
   }).sort((a, b) => a.name.localeCompare(b.name));
 
