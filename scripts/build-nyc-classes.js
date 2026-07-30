@@ -248,20 +248,35 @@ async function enrichFromPages(seriesList) {
   // cost cache is the fallback for pages that fail this run.
   const urls = [...new Set(seriesList.map((s) => s.url).filter(Boolean))].slice(0, MAX_PAGE_FETCHES);
   const pageByUrl = {};
-  let failed = 0;
-  const queue = [...urls];
-  const workers = Array.from({ length: PAGE_CONCURRENCY }, async () => {
-    for (;;) {
-      const url = queue.shift();
-      if (!url) return;
-      try {
-        pageByUrl[url] = await fetchEventPage(url);
-      } catch {
-        failed++;
+  let missed = [];
+  const drain = async (queue) => {
+    const out = [];
+    const workers = Array.from({ length: PAGE_CONCURRENCY }, async () => {
+      for (;;) {
+        const url = queue.shift();
+        if (!url) return;
+        try {
+          pageByUrl[url] = await fetchEventPage(url);
+        } catch {
+          out.push(url);
+        }
       }
-    }
-  });
-  await Promise.all(workers);
+    });
+    await Promise.all(workers);
+    return out;
+  };
+  missed = await drain([...urls]);
+  // Retry the failures once. A dropped fetch here doesn't merely lose a cost, it
+  // publishes a WRONG one: an uncached page falls through to "See event page" on
+  // a feed where 564 of 572 known costs are literally "Free". One retry pass
+  // costs a few seconds and recovered 12 mispriced programs.
+  if (missed.length) {
+    await new Promise((r) => setTimeout(r, 1000));
+    const again = await drain([...missed]);
+    console.log(`  ↻ retried ${missed.length} failed event page(s), ${missed.length - again.length} recovered`);
+    missed = again;
+  }
+  const failed = missed.length;
 
   for (const [url, page] of Object.entries(pageByUrl)) {
     if (page.cost) costCache[url] = page.cost;

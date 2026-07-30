@@ -21,7 +21,7 @@ import { CITY_CLASSES } from '../data/cities';
 import { inSubregions } from '../lib/cities';
 import { haversineMiles, formatDistance } from '../lib/distance';
 import { openDirections } from '../lib/maps';
-import { localizeWhen } from '../lib/datetime';
+import { localizeWhen, formatTermLabel } from '../lib/datetime';
 import { fetchLiveAvailability } from '../lib/classesLive';
 import { useI18n } from '../lib/i18n';
 import ClassDetail from './ClassDetail';
@@ -44,6 +44,19 @@ const catMeta = (id) => CLASS_CATEGORIES.find((c) => c.id === id) || {};
 // "ages 5-10", parent-and-tot "under 5") are capped by maxAge and so never pass
 // Teen/18+/55+. The 55+ chip is senior-targeted programs specifically — an
 // open-ended adult class doesn't qualify just because a senior could attend.
+// Age band compressed to a chip: "18+", "6–17", "≤12". The scraped `c.ages`
+// sentence ("Age at least 7 yrs but less than 16 yrs") is 39 chars — fine in the
+// detail sheet, unreadable in a pill — so the chip is rebuilt from the structured
+// minAge/maxAge instead. Null when the class bounds nothing (436 of 628 NYC
+// programs), so the chip self-hides rather than showing an empty band.
+function ageChipText(t, c) {
+  const lo = c.minAge || 0;
+  const hi = c.maxAge == null ? null : c.maxAge;
+  if (!lo && hi == null) return null;
+  const v = hi == null ? `${lo}+` : lo ? `${lo}–${hi}` : `≤${hi}`;
+  return t('cls.agesShort', { v });
+}
+
 const ageEligible = (c, band) => {
   const lo = c.minAge || 0;
   const hi = c.maxAge == null ? Infinity : c.maxAge;
@@ -425,6 +438,8 @@ export default function ClassesScreen({ userLocation = null, city = 'sf', subreg
           const d = distOf(c);
           const pt = priceTone(c.cost);
           const sp = spaceInfo(withLive(c));
+          const term = formatTermLabel(c.start, c.end);
+          const age = ageChipText(t, c);
           return (
             <Pressable key={c.id} style={styles.card} onPress={() => setDetail(withLive(c))}>
               <View style={styles.cardTop}>
@@ -437,7 +452,22 @@ export default function ClassesScreen({ userLocation = null, city = 'sf', subreg
                   </Text>
                 </View>
               </View>
-              <Text style={styles.when}>🕒 {localizeWhen(c.when)}</Text>
+              {/* The term rides the schedule line rather than a line of its own:
+                  same question ("when"), no extra card height. Muted so it reads
+                  as secondary to the time — and it's what separates the three
+                  sequential terms of a class that are otherwise identical here. */}
+              <Text style={styles.when}>
+                🕒 {localizeWhen(c.when)}
+                {/* 140 of 865 SF classes are pass-2 backfills with no recovered
+                    weekly schedule — the separator has to hang off `when` being
+                    present, or those cards read "🕒  · starts 9/2". */}
+                {term ? (
+                  <Text style={styles.term}>
+                    {c.when ? ' · ' : ''}
+                    {term}
+                  </Text>
+                ) : null}
+              </Text>
               <Text style={styles.loc}>
                 📍 {c.location}
                 {d != null ? ` · ${formatDistance(d)}` : ''}
@@ -454,7 +484,11 @@ export default function ClassesScreen({ userLocation = null, city = 'sf', subreg
                     </Text>
                   </View>
                 )}
-                <View style={{ flex: 1 }} />
+                {age && (
+                  <View style={styles.agePill}>
+                    <Text style={styles.ageText}>{age}</Text>
+                  </View>
+                )}
                 {c.lat != null && (
                   <Pressable style={styles.dirBtn} onPress={() => openDirections(c.lat, c.lng, c.location)}>
                     <Ionicons name="navigate" size={12} color="#2f74d6" />
@@ -462,7 +496,6 @@ export default function ClassesScreen({ userLocation = null, city = 'sf', subreg
                   </Pressable>
                 )}
               </View>
-              <Text style={styles.ages}>{c.ages}</Text>
             </Pressable>
           );
         })}
@@ -696,9 +729,22 @@ const styles = StyleSheet.create({
   tagDropInText: { color: '#1f8a4c' },
   tagRegText: { color: '#2f74d6' },
   when: { fontSize: 13, color: '#46586a', fontWeight: '600', marginTop: 8 },
+  term: { color: '#8a99a8', fontWeight: '600' },
   loc: { fontSize: 13, color: '#46586a', marginTop: 3 },
 
-  pillRow: { flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 10 },
+  // Wraps because the row now carries four items: a long price range
+  // ("$200–$210") plus a spots pill, an age chip and Directions can overflow a
+  // narrow phone. Directions takes the right edge via marginLeft:'auto' rather
+  // than a flex:1 spacer — an auto margin re-resolves on whichever wrapped line
+  // the button lands on, so it stays right-aligned instead of dropping to the
+  // left of a second row.
+  pillRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    gap: 8,
+    marginTop: 10,
+  },
   pricePill: {
     paddingHorizontal: 11,
     paddingVertical: 4,
@@ -708,9 +754,17 @@ const styles = StyleSheet.create({
   priceText: { fontSize: 13, fontWeight: '800' },
   spacePill: { paddingHorizontal: 10, paddingVertical: 4, borderRadius: 999 },
   spaceText: { fontSize: 12, fontWeight: '700' },
+  agePill: {
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 999,
+    backgroundColor: '#eef1f5',
+  },
+  ageText: { fontSize: 12, fontWeight: '700', color: '#5b6b7c' },
   dirBtn: {
     flexDirection: 'row',
     alignItems: 'center',
+    marginLeft: 'auto',
     gap: 4,
     paddingVertical: 5,
     paddingHorizontal: 10,
@@ -718,7 +772,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#e7f0fc',
   },
   dirBtnText: { color: '#2f74d6', fontWeight: '800', fontSize: 12 },
-  ages: { fontSize: 12, color: '#8a99a8', fontWeight: '600', marginTop: 8 },
 
   disclaimer: { fontSize: 11, color: '#9aa7b4', fontStyle: 'italic', marginTop: 6, lineHeight: 16 },
 

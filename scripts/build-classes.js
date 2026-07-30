@@ -465,6 +465,16 @@ async function fillFeeDetails(session, rows) {
           const m = String(det.price || '').match(/\$?([\d,]+(?:\.\d{2})?)/);
           if (m) amounts.push(parseFloat(m[1].replace(/,/g, '')));
         }
+      // A flat single fee (`simple_fee: true`) comes back with prices[] EMPTY —
+      // the number lives only in `estimate_price`. Reading the tier array alone
+      // left every simple-fee activity stuck on the "See site" placeholder: 112
+      // of 915 classes, nearly all of them swim lessons and youth teams.
+      if (!amounts.length) {
+        const m = String(ep.estimate_price ?? ep.search_from_price ?? '').match(
+          /([\d,]+(?:\.\d{2})?)/
+        );
+        if (m) amounts.push(parseFloat(m[1].replace(/,/g, '')));
+      }
       if (!amounts.length) continue;
       const lo = Math.min(...amounts);
       const hi = Math.max(...amounts);

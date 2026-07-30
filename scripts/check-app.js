@@ -157,6 +157,8 @@ const DATA_FLOORS = [
   ['data/court-directory.js', 'DIRECTORY', 1],
 ];
 
+const loaded = {}; // file -> module exports, reused by the price gate below
+
 for (const [file, name, floor] of DATA_FLOORS) {
   try {
     const bundled = esbuild.buildSync({
@@ -168,12 +170,50 @@ for (const [file, name, floor] of DATA_FLOORS) {
     }).outputFiles[0].text;
     const mod = { exports: {} };
     new Function('module', 'exports', bundled)(mod, mod.exports);
+    loaded[file] = mod.exports;
     const v = mod.exports[name];
     const size = Array.isArray(v) ? v.length : v && typeof v === 'object' ? Object.keys(v).length : -1;
     if (size < floor) fail(`data: ${file} ${name} has ${size} entries (floor ${floor})`);
     else ok(`data: ${file} ${name} = ${size} entries`);
   } catch (e) {
     fail(`data: ${file} failed to load — ${e.message}`);
+  }
+}
+
+// --- 5. Class fees actually got resolved ------------------------------------
+// Neither catalog gets a price from its listing. Both seed a placeholder label
+// and fill it from a second request — ActiveNet's estimateprice endpoint, and
+// each NYC event page's <h3>Cost</h3>. Those passes fail SILENTLY: the
+// placeholder simply survives into the app, where "See site" on a card reads
+// like an upstream fact rather than a scrape that gave up. That is exactly how
+// one unread shape of the ActiveNet response (a flat `simple_fee`, whose amount
+// lives outside the tier array) left 112 of 915 SF classes unpriced, and how a
+// dropped page fetch priced 12 free NYC programs as unknown.
+//
+// A ceiling, not a floor: a few genuinely unpublished fees are normal, and a
+// descriptive cost scraped from the source ("Pay what you can.") is a real
+// value, not a placeholder — so this matches the placeholder labels themselves.
+
+const PLACEHOLDER_COST = /^(see site|see event page|—|-)?$/i;
+const MAX_UNPRICED_PCT = 5;
+
+for (const [file, name] of [
+  ['data/classes.js', 'CLASSES'],
+  ['data/cities/nyc/classes.js', 'NYC_CLASSES'],
+]) {
+  const list = loaded[file]?.[name];
+  if (!Array.isArray(list) || !list.length) continue; // already failed the floor gate
+  const unpriced = list.filter((c) => PLACEHOLDER_COST.test(String(c.cost ?? '').trim()));
+  const pct = (unpriced.length / list.length) * 100;
+  const detail = `${unpriced.length}/${list.length} (${pct.toFixed(1)}%)`;
+  if (pct > MAX_UNPRICED_PCT) {
+    fail(
+      `price: ${file} has ${detail} classes still on a placeholder fee — the fee ` +
+        `resolution pass is failing (ceiling ${MAX_UNPRICED_PCT}%). e.g. ` +
+        unpriced.slice(0, 3).map((c) => `${c.id} "${c.cost}"`).join(', '),
+    );
+  } else {
+    ok(`price: ${file} ${detail} unpriced (ceiling ${MAX_UNPRICED_PCT}%)`);
   }
 }
 

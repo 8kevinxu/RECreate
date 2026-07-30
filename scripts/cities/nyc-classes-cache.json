@@ -80,7 +80,7 @@
       "start": "2026-07-31",
       "end": "2026-07-31",
       "oneDay": true,
-      "desc": "Join NYC Parks and The Forest Park Trust for Restoration Fridays this summer to engage in hands-on forest restoration work!Date: 07/31/2026 Location: Highland Park (Queens) (opens in new tab) Queens Phone: 7182354100 Description: Join NYC Parks and The Forest Park Trust for Restoration Fridays this summer to engage in hands-on forest restoration work, including invasive species removal, trail restoration, and possible planting in our park. Advance registration is required with the link here. Please wear sturdy, closed toe shoes and clothes you don't mind getting dirty. ProgramsPrograms by TypeRecreation CentersUrban Park RangersTeen ProgramsSenior Programs and ResourcesComputer ClassesSwim ProgramsAfterschool ProgramsAccessible ProgramsShape Up NYCSummer ProgramsYouth Sports Programs & ClinicsEmail UpdatesSubscribe to receive regular Sports and Fitness updates from NYC ParksEmail Address Was this information helpful? Thank you for your feedback. (Optional) Please tell us how we can make this page more helpful. If you need a response, please use the Contact the Commissioner form instead.",
+      "desc": "Join NYC Parks and The Forest Park Trust for Restoration Fridays this summer to engage in hands-on forest restoration work, including invasive species removal, trail restoration, and possible planting in Highland Park.\n\nAdvance registration required with the link below. Please wear sturdy, closed toe shoes and clothes you don't mind getting dirty.",
       "lat": 40.686199,
       "lng": -73.889801,
       "url": "https://www.nycgovparks.org/reg/forest-highland/19806"
@@ -8747,7 +8747,7 @@
       "ages": "Under 13",
       "minAge": 0,
       "maxAge": 12,
-      "spots": 281,
+      "spots": 279,
       "unlimited": false,
       "regDeadline": "Registration is closed.",
       "start": "2026-07-29",
@@ -9173,7 +9173,7 @@
       "ages": "Under 13",
       "minAge": 0,
       "maxAge": 12,
-      "spots": 287,
+      "spots": 289,
       "unlimited": false,
       "regDeadline": "Registration ends on July 30th, 2026 at 08:30 PM",
       "start": "2026-07-30",
@@ -17316,5 +17316,5 @@
       "url": "https://www.nycgovparks.org/events/2026/08/12/zumba-with-maria-assis"
     }
   ],
-  "fetchedAt": "2026-07-30T02:10:49.327Z"
+  "fetchedAt": "2026-07-30T00:15:27.038Z"
 }
