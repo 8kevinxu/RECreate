@@ -53,9 +53,16 @@ const DATASF =
 // Abort (keep last-good data) if fewer than this many courts come back.
 const MIN_COURTS_OK = 20;
 
-// First-come outdoor courts have no posted schedule; treat them as open a fixed
-// daily daytime window (approx. park hours) every day of the week.
-const PARK_HOURS = [time(8), time(20)]; // 8 AM – 8 PM
+// First-come outdoor courts have no posted schedule of their own, so they're open
+// whenever the park is: SFRP publishes "Park Hours 5 a.m. to Midnight" on every
+// facility page. (This was 8 AM–8 PM — which is the *Restroom Hours* line printed
+// directly beneath park hours on those same pages — so a 9 PM player at a lit court
+// was told the facility was closed.) The 1440 close is deliberate and depends on
+// lib/hours.js `fmt()` taking `% 24`, or midnight renders as "12PM".
+//
+// Some parks do close earlier than the citywide window; reading each park's own
+// posted hours needs the paginated facility index (property name -> numeric id).
+const PARK_HOURS = [time(5), time(24)]; // 5 AM – midnight (sfrecpark.org park hours)
 
 // Which sport(s) each outdoor court/field facility type offers. SF's fields are
 // strictly designated by type (verified against DataSF): soccer = dedicated
@@ -109,7 +116,7 @@ const isOpenPlaySoccer = (name) => {
 function noteFor(sports, sharedTennis) {
   const list = ordered(sports).map((s) => LABEL[s] || s).join(' & ');
   // Neutral noun: a park pin can mix courts (basketball/tennis) and fields (soccer).
-  let n = `Outdoor ${list} — first-come, open during park hours (no posted drop-in schedule).`;
+  let n = `Outdoor ${list} — first-come during SF park hours (5 AM–midnight); no posted drop-in schedule.`;
   if (sharedTennis && sports.includes('pickleball') && sports.includes('tennis')) {
     n += ' Pickleball shares the tennis courts (lined for both).';
   } else if (sharedTennis && sports.includes('pickleball')) {
@@ -173,6 +180,9 @@ async function ggpVolleyball() {
     console.log(`  ⚠ GGP volleyball page: ${e.message} — using static note`);
   }
   const week = () => Array.from({ length: 7 }, () => []);
+  // Daylight (8 AM–8 PM), NOT the PARK_HOURS window the court pins use: these are
+  // unlit grass meadows, so the citywide 5 AM–midnight park hours would advertise
+  // pickup volleyball in the dark. Deliberate divergence, not a missed update.
   const daylight = Array.from({ length: 7 }, () => [[480, 1200]]);
   const dropins = {};
   for (const s of ORDER) dropins[s] = week();
@@ -190,6 +200,36 @@ async function ggpVolleyball() {
   };
 }
 
+// DataSF files Golden Gate Park's facilities under opaque internal property names
+// ("Golden Gate Park - Section 6"), so its landmarks reach the map under a label
+// nobody would search for. Which repair applies depends on whether a property's
+// PLAYABLE rows are one landmark or several.
+//
+// (a) One landmark → relabel the pin. The id keeps coming from the DataSF
+// property name, never the label: SF court ids are referenced by Supabase
+// check-ins/reviews and on-device favorites, so the slug must not move.
+const PROPERTY_LABELS = {
+  // Section 6's only playable row is the Soccer Field at 37.7674,-122.5089 — the
+  // Beach Chalet fields. Relabelling also makes OPEN_PLAY_KEYS' 'beach chalet'
+  // entry finally match (it is tested against this name, so under the section
+  // name it could never fire), so the pin picks up its open-play note too.
+  'Golden Gate Park - Section 6': 'Beach Chalet Soccer Fields',
+};
+
+// (b) Several landmarks → lift one facility type out into its own pin at its own
+// coordinates. Section 7 unions Goldman's tennis courts with Big Rec's ball field
+// and two turf pitches, so relabelling the shared pin would mislabel the fields —
+// and that pin sits on Big Rec, a third of a mile from the tennis center. A new
+// id is safe (nothing references it yet); the property keeps its own id, minus
+// the lifted sport.
+const SPLIT_FACILITIES = [
+  {
+    property: 'Golden Gate Park - Section 7',
+    facilityType: 'Tennis Court',
+    name: 'Goldman Tennis Center',
+  },
+];
+
 // Group DataSF records by park; union the sports across that park's court records.
 function buildCourts(rows) {
   const byPark = new Map();
@@ -198,10 +238,17 @@ function buildCourts(rows) {
     if (!sports || !r.latitude || !r.longitude) continue;
     if (!IN_AREA(Number(r.latitude), Number(r.longitude))) continue;
     if (EXCLUDE_PROPERTIES.has(r.property_name)) continue;
-    let p = byPark.get(r.property_name);
+    const split = SPLIT_FACILITIES.find(
+      (s) => s.property === r.property_name && s.facilityType === r.facility_type
+    );
+    const key = split ? split.name : r.property_name;
+    let p = byPark.get(key);
     if (!p) {
       p = {
-        name: r.property_name,
+        // Split pins slug from their own (new) name; everything else slugs from
+        // the DataSF property name even when relabelled, to keep the id stable.
+        id: `${slug(split ? split.name : r.property_name)}-outdoor`,
+        name: split ? split.name : PROPERTY_LABELS[r.property_name] || r.property_name,
         address: r.address || '',
         neighborhood: r.analysis_neighborhood || '',
         lat: Number(Number(r.latitude).toFixed(6)),
@@ -209,7 +256,7 @@ function buildCourts(rows) {
         sports: new Set(),
         sharedTennis: false,
       };
-      byPark.set(r.property_name, p);
+      byPark.set(key, p);
     }
     sports.forEach((s) => p.sports.add(s));
     if (r.facility_type === 'Tennis/Pickleball Court') p.sharedTennis = true;
@@ -222,7 +269,7 @@ function buildCourts(rows) {
       const dropins = Object.fromEntries(ALL_SPORTS.map((s) => [s, emptyWeek()]));
       for (const s of offered) dropins[s] = allOpenHoursWeek(sched);
       return {
-        id: `${slug(p.name)}-outdoor`,
+        id: p.id,
         name: p.name,
         address: p.address,
         neighborhood: p.neighborhood,

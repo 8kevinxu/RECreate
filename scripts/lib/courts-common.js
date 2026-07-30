@@ -19,7 +19,8 @@ const time = (h, m = 0) => h * 60 + m;
 const emptyWeek = () => [[], [], [], [], [], [], []];
 
 // First-come outdoor courts have no posted schedule; model them as open a fixed
-// daily window (approx. park hours) every day of the week.
+// daily window every day of the week — each city passes its own published park
+// hours (SF: 5 AM–midnight; a close of 1440 is fine, see lib/hours.js `fmt`).
 const parkSchedule = (hours) => Array.from({ length: 7 }, () => [...hours]);
 
 // One drop-in block per open day spanning the window — "available all open hours".
