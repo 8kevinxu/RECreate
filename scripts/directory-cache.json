@@ -219,7 +219,7 @@
           "overall": 2,
           "surface": 2,
           "crowded": 2,
-          "matches": 62
+          "matches": 63
         }
       }
     },
@@ -331,7 +331,7 @@
           "overall": 4,
           "surface": 4.3,
           "crowded": 2.3,
-          "matches": 642
+          "matches": 644
         }
       }
     },
@@ -502,7 +502,7 @@
           "overall": 4,
           "surface": 3.7,
           "crowded": 3.7,
-          "matches": 39
+          "matches": 40
         }
       }
     },
@@ -1074,10 +1074,10 @@
           "overall": 3.7,
           "surface": 3,
           "crowded": 3.3,
-          "matches": 248
+          "matches": 249
         }
       }
     }
   },
-  "fetchedAt": "2026-07-27T16:55:42.793Z"
+  "fetchedAt": "2026-07-29T04:20:58.763Z"
 }
