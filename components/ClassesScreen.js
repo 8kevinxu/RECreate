@@ -2,9 +2,10 @@
 // social games) that aren't court sports. Browse by category; filters live behind
 // a button (grouped Age / Cost / Distance). Each card shows the schedule, a
 // color-coded price badge, and how many spots are open.
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Animated,
+  FlatList,
   Modal,
   Pressable,
   RefreshControl,
@@ -128,6 +129,79 @@ function FilterChip({ label, on, onPress }) {
   );
 }
 
+// One class row, memoized and hoisted to module scope. The catalog is ~880 classes
+// in SF, so re-rendering every row on each keystroke in the search box (or on any
+// unrelated state change) was costing far more than the filtering itself. Props are
+// kept primitive/stable on purpose — the live-availability *entry* is passed in
+// rather than a pre-merged object, because merging in the parent would mint a new
+// object per row per render and defeat the memo. `t` is stable across this screen's
+// renders (I18nProvider sits at the root and only re-renders on a language change).
+const ClassCard = React.memo(function ClassCard({ c, liveInfo, dist, name, t, onOpen }) {
+  const merged = liveInfo ? { ...c, ...liveInfo } : c;
+  const pt = priceTone(c.cost);
+  const sp = spaceInfo(merged);
+  const term = formatTermLabel(c.start, c.end);
+  const ageTxt = ageChipText(t, c);
+  return (
+    <Pressable style={styles.card} onPress={() => onOpen(merged)}>
+      <View style={styles.cardTop}>
+        <Text style={styles.cardName}>
+          {catMeta(c.category).emoji} {name}
+        </Text>
+        <View style={[styles.tag, c.dropIn ? styles.tagDropIn : styles.tagReg]}>
+          <Text style={[styles.tagText, c.dropIn ? styles.tagDropInText : styles.tagRegText]}>
+            {c.dropIn ? t('classes.dropIn') : t('classes.register')}
+          </Text>
+        </View>
+      </View>
+      {/* The term rides the schedule line rather than a line of its own:
+          same question ("when"), no extra card height. Muted so it reads
+          as secondary to the time — and it's what separates the three
+          sequential terms of a class that are otherwise identical here. */}
+      <Text style={styles.when}>
+        🕒 {localizeWhen(c.when)}
+        {/* 140 of 865 SF classes are pass-2 backfills with no recovered
+            weekly schedule — the separator has to hang off `when` being
+            present, or those cards read "🕒  · starts 9/2". */}
+        {term ? (
+          <Text style={styles.term}>
+            {c.when ? ' · ' : ''}
+            {term}
+          </Text>
+        ) : null}
+      </Text>
+      <Text style={styles.loc}>
+        📍 {c.location}
+        {dist != null ? ` · ${formatDistance(dist)}` : ''}
+      </Text>
+
+      <View style={styles.pillRow}>
+        <View style={[styles.pricePill, priceStyles[pt].pill]}>
+          <Text style={[styles.priceText, priceStyles[pt].text]}>{c.cost}</Text>
+        </View>
+        {sp && (
+          <View style={[styles.spacePill, spaceStyles[sp.tone].pill]}>
+            <Text style={[styles.spaceText, spaceStyles[sp.tone].text]}>
+              {t(sp.key, sp.n != null ? { n: sp.n } : undefined)}
+            </Text>
+          </View>
+        )}
+        {ageTxt && (
+          <View style={styles.agePill}>
+            <Text style={styles.ageText}>{ageTxt}</Text>
+          </View>
+        )}
+        {c.lat != null && (
+          <Pressable style={styles.dirBtn} onPress={() => openDirections(c.lat, c.lng, c.location)}>
+            <Ionicons name="navigate" size={12} color="#2f74d6" />
+            <Text style={styles.dirBtnText}>{t('directions')}</Text>
+          </Pressable>
+        )}
+      </View>
+    </Pressable>
+  );
+});
+
 export default function ClassesScreen({ userLocation = null, city = 'sf', subregions = null }) {
   const insets = useSafeAreaInsets();
   const { t, lang } = useI18n();
@@ -210,7 +284,8 @@ export default function ClassesScreen({ userLocation = null, city = 'sf', subreg
       },
     }
   );
-  const scrollToTop = () => scrollRef.current?.scrollTo({ y: 0, animated: true });
+  // FlatList exposes scrollToOffset, not the ScrollView's scrollTo.
+  const scrollToTop = () => scrollRef.current?.scrollToOffset({ offset: 0, animated: true });
   // Decouple fade from height so the block never shows a top-down clip reveal (which
   // made the info bullet "lag in" last). Phase 1 (first 30% of scroll): stay at FULL
   // height and just fade — so the whole block appears/disappears as one unit, never
@@ -328,6 +403,30 @@ export default function ClassesScreen({ userLocation = null, city = 'sf', subreg
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [catalog, cats, query, age, time, day, radius, freeOnly, hasSpots, walkIn, live, liveStatus, userLocation, lang]);
 
+  // Stable identities for the FlatList: a fresh renderItem/keyExtractor on every
+  // render would re-render each visible row and undo ClassCard's memo. Distance and
+  // the localized title are computed here (per visible row only) rather than passed
+  // as helper functions, so the deps stay primitive.
+  const onOpenDetail = useCallback((merged) => setDetail(merged), []);
+  const keyExtractor = useCallback((c) => c.id, []);
+  const renderItem = useCallback(
+    ({ item }) => (
+      <ClassCard
+        c={item}
+        liveInfo={live ? live[item.id] : undefined}
+        dist={
+          userLocation && item.lat != null
+            ? haversineMiles(userLocation.lat, userLocation.lng, item.lat, item.lng)
+            : null
+        }
+        name={item['name_' + lang] || item.name}
+        t={t}
+        onOpen={onOpenDetail}
+      />
+    ),
+    [live, userLocation, lang, t, onOpenDetail]
+  );
+
   const clearAll = () => {
     setAge(null);
     setTime(null);
@@ -440,13 +539,29 @@ export default function ClassesScreen({ userLocation = null, city = 'sf', subreg
         </View>
       )}
 
-      <ScrollView
+      {/* Windowed, not a ScrollView + .map(): the SF catalog is ~880 classes and
+          each card is ~16 native views, so building them all up front cost ~14k
+          views on the JS thread — paid on every visit, since App.js unmounts the
+          screen on a tab switch. FlatList renders only what's on screen.
+          Deliberately no removeClippedSubviews — it's a known cause of blank rows
+          on iOS, and windowSize/maxToRenderPerBatch bound the work without it. */}
+      <FlatList
         ref={scrollRef}
+        data={list}
+        keyExtractor={keyExtractor}
+        renderItem={renderItem}
         style={styles.list}
         contentContainerStyle={{ paddingBottom: insets.bottom + 96 }}
         showsVerticalScrollIndicator={false}
         onScroll={onListScroll}
         scrollEventThrottle={16}
+        initialNumToRender={8}
+        maxToRenderPerBatch={10}
+        windowSize={7}
+        ListEmptyComponent={<Text style={styles.empty}>{t('classes.empty')}</Text>}
+        ListFooterComponent={
+          <Text style={styles.disclaimer}>{t(isSF ? 'classes.disclaimer' : 'cls.nycNote')}</Text>
+        }
         refreshControl={
           isSF ? (
             <RefreshControl
@@ -456,76 +571,7 @@ export default function ClassesScreen({ userLocation = null, city = 'sf', subreg
             />
           ) : undefined
         }
-      >
-        {list.length === 0 && <Text style={styles.empty}>{t('classes.empty')}</Text>}
-        {list.map((c) => {
-          const d = distOf(c);
-          const pt = priceTone(c.cost);
-          const sp = spaceInfo(withLive(c));
-          const term = formatTermLabel(c.start, c.end);
-          const age = ageChipText(t, c);
-          return (
-            <Pressable key={c.id} style={styles.card} onPress={() => setDetail(withLive(c))}>
-              <View style={styles.cardTop}>
-                <Text style={styles.cardName}>
-                  {catMeta(c.category).emoji} {className(c)}
-                </Text>
-                <View style={[styles.tag, c.dropIn ? styles.tagDropIn : styles.tagReg]}>
-                  <Text style={[styles.tagText, c.dropIn ? styles.tagDropInText : styles.tagRegText]}>
-                    {c.dropIn ? t('classes.dropIn') : t('classes.register')}
-                  </Text>
-                </View>
-              </View>
-              {/* The term rides the schedule line rather than a line of its own:
-                  same question ("when"), no extra card height. Muted so it reads
-                  as secondary to the time — and it's what separates the three
-                  sequential terms of a class that are otherwise identical here. */}
-              <Text style={styles.when}>
-                🕒 {localizeWhen(c.when)}
-                {/* 140 of 865 SF classes are pass-2 backfills with no recovered
-                    weekly schedule — the separator has to hang off `when` being
-                    present, or those cards read "🕒  · starts 9/2". */}
-                {term ? (
-                  <Text style={styles.term}>
-                    {c.when ? ' · ' : ''}
-                    {term}
-                  </Text>
-                ) : null}
-              </Text>
-              <Text style={styles.loc}>
-                📍 {c.location}
-                {d != null ? ` · ${formatDistance(d)}` : ''}
-              </Text>
-
-              <View style={styles.pillRow}>
-                <View style={[styles.pricePill, priceStyles[pt].pill]}>
-                  <Text style={[styles.priceText, priceStyles[pt].text]}>{c.cost}</Text>
-                </View>
-                {sp && (
-                  <View style={[styles.spacePill, spaceStyles[sp.tone].pill]}>
-                    <Text style={[styles.spaceText, spaceStyles[sp.tone].text]}>
-                      {t(sp.key, sp.n != null ? { n: sp.n } : undefined)}
-                    </Text>
-                  </View>
-                )}
-                {age && (
-                  <View style={styles.agePill}>
-                    <Text style={styles.ageText}>{age}</Text>
-                  </View>
-                )}
-                {c.lat != null && (
-                  <Pressable style={styles.dirBtn} onPress={() => openDirections(c.lat, c.lng, c.location)}>
-                    <Ionicons name="navigate" size={12} color="#2f74d6" />
-                    <Text style={styles.dirBtnText}>{t('directions')}</Text>
-                  </Pressable>
-                )}
-              </View>
-            </Pressable>
-          );
-        })}
-
-        <Text style={styles.disclaimer}>{t(isSF ? 'classes.disclaimer' : 'cls.nycNote')}</Text>
-      </ScrollView>
+      />
 
       <ScrollTopFab show={showTop} onPress={scrollToTop} bottom={insets.bottom + 92} />
 
