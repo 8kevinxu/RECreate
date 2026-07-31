@@ -250,228 +250,237 @@ export default function RunModal({
             </Pressable>
           </View>
 
-          <View style={styles.sportRow}>
-            {PLAN_SPORTS.map((s) => {
-              const active = s.id === sport;
-              return (
-                <Pressable
-                  key={s.id}
-                  onPress={() => changeSport(s.id)}
-                  style={[styles.sportChip, active && styles.sportChipActive]}
-                >
-                  <Text style={[styles.sportChipText, active && styles.sportChipTextActive]}>
-                    {s.emoji} {sportLabel(t, s.id)}
-                  </Text>
-                </Pressable>
-              );
-            })}
-          </View>
-
-          {sportHasBoth && (
-            <View style={[styles.toggle, { marginTop: 12 }]}>
-              {['all', 'indoor', 'outdoor'].map((p) => (
-                <Pressable
-                  key={p}
-                  style={[styles.toggleItem, place === p && styles.toggleActive]}
-                  onPress={() => changePlace(p)}
-                >
-                  <Text style={[styles.toggleText, place === p && styles.toggleTextActive]}>
-                    {p === 'all' ? t('place.all') : p === 'indoor' ? t('place.indoor') : t('place.outdoor')}
-                  </Text>
-                </Pressable>
-              ))}
-            </View>
-          )}
-
-          <View style={styles.labelRow}>
-            <Text style={styles.label}>{t('run.court')}</Text>
-            {picked && (
-              <Text style={styles.labelHint}>
-                {t('run.openGymAt', {
-                  day: dayChipLabel(picked),
-                  time: fmtClock(Math.floor(selMin / 60), selMin % 60),
-                })}
-              </Text>
-            )}
-          </View>
-          <ScrollView style={styles.courtList} nestedScrollEnabled>
-            {courtRows.map(({ c, open, dist, booked }) => {
-              const active = c.id === courtId;
-              const disabled = !!picked && !open;
-              const sub = [c.neighborhood, dist != null ? formatDistance(dist) : null]
-                .filter(Boolean)
-                .join(' · ');
-              return (
-                <Pressable
-                  key={c.id}
-                  disabled={disabled}
-                  onPress={() => chooseCourt(c)}
-                  style={[
-                    styles.courtRow,
-                    active && styles.courtRowActive,
-                    disabled && styles.courtRowDisabled,
-                  ]}
-                >
-                  <View style={{ flex: 1 }}>
-                    <Text
-                      style={[styles.courtRowName, active && styles.courtRowNameActive]}
-                      numberOfLines={1}
-                    >
-                      {c.name}
-                    </Text>
-                    {!!sub && (
-                      <Text
-                        style={[styles.courtRowSub, active && styles.courtRowSubActive]}
-                        numberOfLines={1}
-                      >
-                        {sub}
-                      </Text>
-                    )}
-                  </View>
-                  <View style={styles.courtRowRight}>
-                    {booked != null && (
-                      <View
-                        style={[
-                          styles.bookedPill,
-                          booked >= 70 ? styles.bookedPillHi : styles.bookedPillLo,
-                        ]}
-                      >
-                        <Text style={styles.bookedPillText}>{t('run.pctBooked', { n: booked })}</Text>
-                      </View>
-                    )}
-                    {active ? (
-                      <Text style={styles.courtRowCheck}>✓</Text>
-                    ) : disabled ? (
-                      <Text style={styles.courtRowClosed}>{t('run.noHoopsThen')}</Text>
-                    ) : null}
-                  </View>
-                </Pressable>
-              );
-            })}
-          </ScrollView>
-
-          <Text style={styles.label}>{t('label.day')}</Text>
+          {/* Everything between the pinned header and the pinned submit scrolls: the
+              sheet is taller than a phone screen (the sport grid alone wraps to five
+              rows), and without this the header — and its ✕ — slid off the top. */}
           <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.chipRow}
+            style={styles.body}
+            keyboardShouldPersistTaps="handled"
+            showsVerticalScrollIndicator={false}
           >
-            {days.map((d) => {
-              const open = daysWithHoops.has(d.getDay());
-              const active = d.getTime() === selDayTs && !!picked;
-              return (
-                <Pressable
-                  key={d.getTime()}
-                  disabled={!open}
-                  onPress={() => pickDay(d)}
-                  style={[
-                    styles.chip,
-                    active && styles.chipActive,
-                    !open && styles.chipDisabled,
-                  ]}
-                >
-                  <Text
+            <View style={styles.sportRow}>
+              {PLAN_SPORTS.map((s) => {
+                const active = s.id === sport;
+                return (
+                  <Pressable
+                    key={s.id}
+                    onPress={() => changeSport(s.id)}
+                    style={[styles.sportChip, active && styles.sportChipActive]}
+                  >
+                    <Text style={[styles.sportChipText, active && styles.sportChipTextActive]}>
+                      {s.emoji} {sportLabel(t, s.id)}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+
+            {sportHasBoth && (
+              <View style={[styles.toggle, { marginTop: 12 }]}>
+                {['all', 'indoor', 'outdoor'].map((p) => (
+                  <Pressable
+                    key={p}
+                    style={[styles.toggleItem, place === p && styles.toggleActive]}
+                    onPress={() => changePlace(p)}
+                  >
+                    <Text style={[styles.toggleText, place === p && styles.toggleTextActive]}>
+                      {p === 'all' ? t('place.all') : p === 'indoor' ? t('place.indoor') : t('place.outdoor')}
+                    </Text>
+                  </Pressable>
+                ))}
+              </View>
+            )}
+
+            <View style={styles.labelRow}>
+              <Text style={styles.label}>{t('run.court')}</Text>
+              {picked && (
+                <Text style={styles.labelHint}>
+                  {t('run.openGymAt', {
+                    day: dayChipLabel(picked),
+                    time: fmtClock(Math.floor(selMin / 60), selMin % 60),
+                  })}
+                </Text>
+              )}
+            </View>
+            <ScrollView style={styles.courtList} nestedScrollEnabled>
+              {courtRows.map(({ c, open, dist, booked }) => {
+                const active = c.id === courtId;
+                const disabled = !!picked && !open;
+                const sub = [c.neighborhood, dist != null ? formatDistance(dist) : null]
+                  .filter(Boolean)
+                  .join(' · ');
+                return (
+                  <Pressable
+                    key={c.id}
+                    disabled={disabled}
+                    onPress={() => chooseCourt(c)}
                     style={[
-                      styles.chipText,
-                      active && styles.chipTextActive,
-                      !open && styles.chipTextDisabled,
+                      styles.courtRow,
+                      active && styles.courtRowActive,
+                      disabled && styles.courtRowDisabled,
                     ]}
                   >
-                    {dayChipLabel(d)}
-                    {open ? '' : ` · ${t('home.noHoops')}`}
-                  </Text>
-                </Pressable>
-              );
-            })}
-          </ScrollView>
-
-          <View style={styles.labelRow}>
-            <Text style={styles.label}>{t('label.time')}</Text>
-            {!!picked && (
-              <Pressable hitSlop={8} onPress={() => setPicked(null)}>
-                <Text style={styles.clearTime}>{t('run.clear')}</Text>
-              </Pressable>
-            )}
-          </View>
-          {blocksForSelDay.length > 0 && (
-            <Text style={styles.hint}>
-              {t('run.openGymRanges', {
-                ranges: blocksForSelDay
-                  .map(
-                    ([s, e]) =>
-                      `${fmtClock(Math.floor(s / 60), s % 60)}–${fmtClock(
-                        Math.floor(e / 60),
-                        e % 60
-                      )}`
-                  )
-                  .join(', '),
+                    <View style={{ flex: 1 }}>
+                      <Text
+                        style={[styles.courtRowName, active && styles.courtRowNameActive]}
+                        numberOfLines={1}
+                      >
+                        {c.name}
+                      </Text>
+                      {!!sub && (
+                        <Text
+                          style={[styles.courtRowSub, active && styles.courtRowSubActive]}
+                          numberOfLines={1}
+                        >
+                          {sub}
+                        </Text>
+                      )}
+                    </View>
+                    <View style={styles.courtRowRight}>
+                      {booked != null && (
+                        <View
+                          style={[
+                            styles.bookedPill,
+                            booked >= 70 ? styles.bookedPillHi : styles.bookedPillLo,
+                          ]}
+                        >
+                          <Text style={styles.bookedPillText}>{t('run.pctBooked', { n: booked })}</Text>
+                        </View>
+                      )}
+                      {active ? (
+                        <Text style={styles.courtRowCheck}>✓</Text>
+                      ) : disabled ? (
+                        <Text style={styles.courtRowClosed}>{t('run.noHoopsThen')}</Text>
+                      ) : null}
+                    </View>
+                  </Pressable>
+                );
               })}
-            </Text>
-          )}
-          {daySlots.length === 0 ? (
-            <Text style={styles.hint}>{t('run.pickDayHint')}</Text>
-          ) : (
+            </ScrollView>
+
+            <Text style={styles.label}>{t('label.day')}</Text>
             <ScrollView
               horizontal
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={styles.chipRow}
             >
-              {daySlots.map((m) => {
-                const active = m === selMin;
+              {days.map((d) => {
+                const open = daysWithHoops.has(d.getDay());
+                const active = d.getTime() === selDayTs && !!picked;
                 return (
                   <Pressable
-                    key={m}
-                    onPress={() => pickAt(selDay, m)}
-                    style={[styles.chip, active && styles.chipActive]}
+                    key={d.getTime()}
+                    disabled={!open}
+                    onPress={() => pickDay(d)}
+                    style={[
+                      styles.chip,
+                      active && styles.chipActive,
+                      !open && styles.chipDisabled,
+                    ]}
                   >
-                    <Text style={[styles.chipText, active && styles.chipTextActive]}>
-                      {fmtClock(Math.floor(m / 60), m % 60)}
+                    <Text
+                      style={[
+                        styles.chipText,
+                        active && styles.chipTextActive,
+                        !open && styles.chipTextDisabled,
+                      ]}
+                    >
+                      {dayChipLabel(d)}
+                      {open ? '' : ` · ${t('home.noHoops')}`}
                     </Text>
                   </Pressable>
                 );
               })}
             </ScrollView>
-          )}
 
-          <Text style={styles.label}>{t('run.whoCanSee')}</Text>
-          <View style={styles.toggle}>
-            <Pressable
-              style={[styles.toggleItem, visibility === 'friends' && styles.toggleActive]}
-              onPress={() => setVisibility('friends')}
-            >
-              <Text
-                style={[
-                  styles.toggleText,
-                  visibility === 'friends' && styles.toggleTextActive,
-                ]}
-              >
-                {t('run.visFriends')}
+            <View style={styles.labelRow}>
+              <Text style={styles.label}>{t('label.time')}</Text>
+              {!!picked && (
+                <Pressable hitSlop={8} onPress={() => setPicked(null)}>
+                  <Text style={styles.clearTime}>{t('run.clear')}</Text>
+                </Pressable>
+              )}
+            </View>
+            {blocksForSelDay.length > 0 && (
+              <Text style={styles.hint}>
+                {t('run.openGymRanges', {
+                  ranges: blocksForSelDay
+                    .map(
+                      ([s, e]) =>
+                        `${fmtClock(Math.floor(s / 60), s % 60)}–${fmtClock(
+                          Math.floor(e / 60),
+                          e % 60
+                        )}`
+                    )
+                    .join(', '),
+                })}
               </Text>
-            </Pressable>
-            <Pressable
-              style={[styles.toggleItem, visibility === 'public' && styles.toggleActive]}
-              onPress={() => setVisibility('public')}
-            >
-              <Text
-                style={[
-                  styles.toggleText,
-                  visibility === 'public' && styles.toggleTextActive,
-                ]}
+            )}
+            {daySlots.length === 0 ? (
+              <Text style={styles.hint}>{t('run.pickDayHint')}</Text>
+            ) : (
+              <ScrollView
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={styles.chipRow}
               >
-                {t('run.visAnyone')}
-              </Text>
-            </Pressable>
-          </View>
+                {daySlots.map((m) => {
+                  const active = m === selMin;
+                  return (
+                    <Pressable
+                      key={m}
+                      onPress={() => pickAt(selDay, m)}
+                      style={[styles.chip, active && styles.chipActive]}
+                    >
+                      <Text style={[styles.chipText, active && styles.chipTextActive]}>
+                        {fmtClock(Math.floor(m / 60), m % 60)}
+                      </Text>
+                    </Pressable>
+                  );
+                })}
+              </ScrollView>
+            )}
 
-          <TextInput
-            style={styles.note}
-            placeholder={t('run.notePh')}
-            placeholderTextColor="#9aa7b4"
-            value={note}
-            onChangeText={setNote}
-            maxLength={MAX_NOTE}
-            multiline
-          />
+            <Text style={styles.label}>{t('run.whoCanSee')}</Text>
+            <View style={styles.toggle}>
+              <Pressable
+                style={[styles.toggleItem, visibility === 'friends' && styles.toggleActive]}
+                onPress={() => setVisibility('friends')}
+              >
+                <Text
+                  style={[
+                    styles.toggleText,
+                    visibility === 'friends' && styles.toggleTextActive,
+                  ]}
+                >
+                  {t('run.visFriends')}
+                </Text>
+              </Pressable>
+              <Pressable
+                style={[styles.toggleItem, visibility === 'public' && styles.toggleActive]}
+                onPress={() => setVisibility('public')}
+              >
+                <Text
+                  style={[
+                    styles.toggleText,
+                    visibility === 'public' && styles.toggleTextActive,
+                  ]}
+                >
+                  {t('run.visAnyone')}
+                </Text>
+              </Pressable>
+            </View>
+
+            <TextInput
+              style={styles.note}
+              placeholder={t('run.notePh')}
+              placeholderTextColor="#9aa7b4"
+              value={note}
+              onChangeText={setNote}
+              maxLength={MAX_NOTE}
+              multiline
+            />
+          </ScrollView>
 
           {!!error && <Text style={styles.error}>{error}</Text>}
 
@@ -504,6 +513,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 18,
     padding: 18,
     paddingBottom: 28,
+    maxHeight: '92%',
   },
   header: {
     flexDirection: 'row',
@@ -511,6 +521,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   title: { fontSize: 18, fontWeight: '800', color: '#0d1b2a' },
+  // Takes whatever height is left between the pinned header and the pinned submit
+  // button; flexShrink lets it give way once the sheet hits its cap.
+  body: { flexShrink: 1 },
 
   sportRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginBottom: 14 },
   sportChip: {

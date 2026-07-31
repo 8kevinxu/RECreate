@@ -149,169 +149,177 @@ export default function SignalModal({ visible, courts = [], userLocation, onClos
             </Pressable>
           </View>
 
-          <View style={styles.toggle}>
-            <Pressable
-              style={[styles.toggleItem, mode === 'now' && styles.toggleActive]}
-              onPress={() => setMode('now')}
-            >
-              <Text style={[styles.toggleText, mode === 'now' && styles.toggleTextActive]}>
-                {t('signal.rightNow')}
-              </Text>
-            </Pressable>
-            <Pressable
-              style={[styles.toggleItem, mode === 'time' && styles.toggleActive]}
-              onPress={() => setMode('time')}
-            >
-              <Text style={[styles.toggleText, mode === 'time' && styles.toggleTextActive]}>
-                {t('signal.atTime')}
-              </Text>
-            </Pressable>
-          </View>
-
-          <Text style={styles.label}>{t('signal.sport')}</Text>
+          {/* Scrolls between the pinned header and submit: in "At a time" mode this
+              sheet outgrows a small phone and used to push its own ✕ off-screen. */}
           <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.chipRow}
+            style={styles.body}
+            keyboardShouldPersistTaps="handled"
+            showsVerticalScrollIndicator={false}
           >
-            {SPORT_OPTS.map((s) => {
-              const active = s.id === sport;
-              return (
-                <Pressable
-                  key={s.id}
-                  onPress={() => changeSport(s.id)}
-                  style={[styles.chip, active && styles.chipActive]}
-                >
-                  <Text style={[styles.chipText, active && styles.chipTextActive]}>
-                    {s.emoji} {sportLabel(t, s.id)}
-                  </Text>
-                </Pressable>
-              );
-            })}
-          </ScrollView>
+            <View style={styles.toggle}>
+              <Pressable
+                style={[styles.toggleItem, mode === 'now' && styles.toggleActive]}
+                onPress={() => setMode('now')}
+              >
+                <Text style={[styles.toggleText, mode === 'now' && styles.toggleTextActive]}>
+                  {t('signal.rightNow')}
+                </Text>
+              </Pressable>
+              <Pressable
+                style={[styles.toggleItem, mode === 'time' && styles.toggleActive]}
+                onPress={() => setMode('time')}
+              >
+                <Text style={[styles.toggleText, mode === 'time' && styles.toggleTextActive]}>
+                  {t('signal.atTime')}
+                </Text>
+              </Pressable>
+            </View>
 
-          {/* Optional up-front location: an Indoor/Outdoor pref and/or a specific
-              court. Blank = "Anywhere" / let friends decide. */}
-          {sportHasBoth && (
-            <>
-              <Text style={styles.label}>{t('label.place')}</Text>
-              <View style={styles.toggle}>
-                {['all', 'indoor', 'outdoor'].map((p) => (
+            <Text style={styles.label}>{t('signal.sport')}</Text>
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={styles.chipRow}
+            >
+              {SPORT_OPTS.map((s) => {
+                const active = s.id === sport;
+                return (
                   <Pressable
-                    key={p}
-                    style={[styles.toggleItem, place === p && styles.toggleActive]}
-                    onPress={() => changePlace(p)}
+                    key={s.id}
+                    onPress={() => changeSport(s.id)}
+                    style={[styles.chip, active && styles.chipActive]}
                   >
-                    <Text style={[styles.toggleText, place === p && styles.toggleTextActive]}>
-                      {p === 'all' ? t('place.all') : p === 'indoor' ? t('place.indoor') : t('place.outdoor')}
+                    <Text style={[styles.chipText, active && styles.chipTextActive]}>
+                      {s.emoji} {sportLabel(t, s.id)}
                     </Text>
                   </Pressable>
-                ))}
-              </View>
-            </>
-          )}
+                );
+              })}
+            </ScrollView>
 
-          <Text style={styles.label}>{t('signal.courtOpt')}</Text>
-          <ScrollView style={styles.courtList} nestedScrollEnabled>
-            <Pressable
-              onPress={() => setCourtId(null)}
-              style={[styles.courtRow, courtId === null && styles.courtRowActive]}
-            >
-              <Text style={[styles.courtRowName, courtId === null && styles.courtRowNameActive]}>
-                {t('signal.anywhere')}
-              </Text>
-              {courtId === null && <Text style={styles.courtRowCheck}>✓</Text>}
-            </Pressable>
-            {courtRows.map(({ c, dist }) => {
-              const active = c.id === courtId;
-              const sub = [c.neighborhood, dist != null ? formatDistance(dist) : null]
-                .filter(Boolean)
-                .join(' · ');
-              return (
-                <Pressable
-                  key={c.id}
-                  onPress={() => setCourtId(active ? null : c.id)}
-                  style={[styles.courtRow, active && styles.courtRowActive]}
-                >
-                  <View style={{ flex: 1 }}>
-                    <Text
-                      style={[styles.courtRowName, active && styles.courtRowNameActive]}
-                      numberOfLines={1}
+            {/* Optional up-front location: an Indoor/Outdoor pref and/or a specific
+                court. Blank = "Anywhere" / let friends decide. */}
+            {sportHasBoth && (
+              <>
+                <Text style={styles.label}>{t('label.place')}</Text>
+                <View style={styles.toggle}>
+                  {['all', 'indoor', 'outdoor'].map((p) => (
+                    <Pressable
+                      key={p}
+                      style={[styles.toggleItem, place === p && styles.toggleActive]}
+                      onPress={() => changePlace(p)}
                     >
-                      {c.name}
-                    </Text>
-                    {!!sub && (
+                      <Text style={[styles.toggleText, place === p && styles.toggleTextActive]}>
+                        {p === 'all' ? t('place.all') : p === 'indoor' ? t('place.indoor') : t('place.outdoor')}
+                      </Text>
+                    </Pressable>
+                  ))}
+                </View>
+              </>
+            )}
+
+            <Text style={styles.label}>{t('signal.courtOpt')}</Text>
+            <ScrollView style={styles.courtList} nestedScrollEnabled>
+              <Pressable
+                onPress={() => setCourtId(null)}
+                style={[styles.courtRow, courtId === null && styles.courtRowActive]}
+              >
+                <Text style={[styles.courtRowName, courtId === null && styles.courtRowNameActive]}>
+                  {t('signal.anywhere')}
+                </Text>
+                {courtId === null && <Text style={styles.courtRowCheck}>✓</Text>}
+              </Pressable>
+              {courtRows.map(({ c, dist }) => {
+                const active = c.id === courtId;
+                const sub = [c.neighborhood, dist != null ? formatDistance(dist) : null]
+                  .filter(Boolean)
+                  .join(' · ');
+                return (
+                  <Pressable
+                    key={c.id}
+                    onPress={() => setCourtId(active ? null : c.id)}
+                    style={[styles.courtRow, active && styles.courtRowActive]}
+                  >
+                    <View style={{ flex: 1 }}>
                       <Text
-                        style={[styles.courtRowSub, active && styles.courtRowSubActive]}
+                        style={[styles.courtRowName, active && styles.courtRowNameActive]}
                         numberOfLines={1}
                       >
-                        {sub}
+                        {c.name}
                       </Text>
-                    )}
-                  </View>
-                  {active && <Text style={styles.courtRowCheck}>✓</Text>}
-                </Pressable>
-              );
-            })}
+                      {!!sub && (
+                        <Text
+                          style={[styles.courtRowSub, active && styles.courtRowSubActive]}
+                          numberOfLines={1}
+                        >
+                          {sub}
+                        </Text>
+                      )}
+                    </View>
+                    {active && <Text style={styles.courtRowCheck}>✓</Text>}
+                  </Pressable>
+                );
+              })}
+            </ScrollView>
+
+            {mode === 'time' && (
+              <>
+                <Text style={styles.label}>{t('label.day')}</Text>
+                <ScrollView
+                  horizontal
+                  showsHorizontalScrollIndicator={false}
+                  contentContainerStyle={styles.chipRow}
+                >
+                  {days.map((d) => {
+                    const active = d.getTime() === selDayTs;
+                    return (
+                      <Pressable
+                        key={d.getTime()}
+                        onPress={() => pick(d, selMin ?? 18 * 60)}
+                        style={[styles.chip, active && styles.chipActive]}
+                      >
+                        <Text style={[styles.chipText, active && styles.chipTextActive]}>
+                          {dayChipLabel(d)}
+                        </Text>
+                      </Pressable>
+                    );
+                  })}
+                </ScrollView>
+                <Text style={styles.label}>{t('label.time')}</Text>
+                <ScrollView
+                  horizontal
+                  showsHorizontalScrollIndicator={false}
+                  contentContainerStyle={styles.chipRow}
+                >
+                  {times.map((m) => {
+                    const active = m === selMin;
+                    const dayDate = days.find((x) => x.getTime() === selDayTs) || days[0];
+                    return (
+                      <Pressable
+                        key={m}
+                        onPress={() => pick(dayDate, m)}
+                        style={[styles.chip, active && styles.chipActive]}
+                      >
+                        <Text style={[styles.chipText, active && styles.chipTextActive]}>
+                          {fmtClock(Math.floor(m / 60), m % 60)}
+                        </Text>
+                      </Pressable>
+                    );
+                  })}
+                </ScrollView>
+              </>
+            )}
+
+            <TextInput
+              style={styles.note}
+              placeholder={t('signal.notePh')}
+              placeholderTextColor="#9aa7b4"
+              value={note}
+              onChangeText={setNote}
+              maxLength={200}
+              multiline
+            />
           </ScrollView>
-
-          {mode === 'time' && (
-            <>
-              <Text style={styles.label}>{t('label.day')}</Text>
-              <ScrollView
-                horizontal
-                showsHorizontalScrollIndicator={false}
-                contentContainerStyle={styles.chipRow}
-              >
-                {days.map((d) => {
-                  const active = d.getTime() === selDayTs;
-                  return (
-                    <Pressable
-                      key={d.getTime()}
-                      onPress={() => pick(d, selMin ?? 18 * 60)}
-                      style={[styles.chip, active && styles.chipActive]}
-                    >
-                      <Text style={[styles.chipText, active && styles.chipTextActive]}>
-                        {dayChipLabel(d)}
-                      </Text>
-                    </Pressable>
-                  );
-                })}
-              </ScrollView>
-              <Text style={styles.label}>{t('label.time')}</Text>
-              <ScrollView
-                horizontal
-                showsHorizontalScrollIndicator={false}
-                contentContainerStyle={styles.chipRow}
-              >
-                {times.map((m) => {
-                  const active = m === selMin;
-                  const dayDate = days.find((x) => x.getTime() === selDayTs) || days[0];
-                  return (
-                    <Pressable
-                      key={m}
-                      onPress={() => pick(dayDate, m)}
-                      style={[styles.chip, active && styles.chipActive]}
-                    >
-                      <Text style={[styles.chipText, active && styles.chipTextActive]}>
-                        {fmtClock(Math.floor(m / 60), m % 60)}
-                      </Text>
-                    </Pressable>
-                  );
-                })}
-              </ScrollView>
-            </>
-          )}
-
-          <TextInput
-            style={styles.note}
-            placeholder={t('signal.notePh')}
-            placeholderTextColor="#9aa7b4"
-            value={note}
-            onChangeText={setNote}
-            maxLength={200}
-            multiline
-          />
 
           {!!error && <Text style={styles.error}>{error}</Text>}
 
@@ -342,6 +350,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 18,
     padding: 18,
     paddingBottom: 28,
+    maxHeight: '92%',
   },
   header: {
     flexDirection: 'row',
@@ -350,6 +359,9 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   title: { fontSize: 18, fontWeight: '800', color: '#0d1b2a' },
+  // Takes whatever height is left between the pinned header and the pinned submit
+  // button; flexShrink lets it give way once the sheet hits its cap.
+  body: { flexShrink: 1 },
 
   toggle: {
     flexDirection: 'row',
