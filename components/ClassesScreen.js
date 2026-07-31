@@ -150,6 +150,24 @@ export default function ClassesScreen({ userLocation = null, city = 'sf', subreg
       else next.add(id);
       return next;
     });
+  // The chips live in one horizontally-scrolling row (they used to wrap to six,
+  // eating 27% of a phone screen). Only ~4 are on screen at a time, so whatever is
+  // selected sorts to the front, right behind "All" — otherwise your own choice
+  // scrolls out of sight and the row looks unfiltered.
+  const catScroll = useRef(null);
+  const catChips = useMemo(
+    () => [
+      { id: 'all', emoji: '✨' },
+      ...CLASS_CATEGORIES.filter((c) => cats.has(c.id)),
+      ...CLASS_CATEGORIES.filter((c) => !cats.has(c.id)),
+    ],
+    [cats]
+  );
+  // Re-sorting moves chips under the finger, so snap back to the start where the
+  // selection now sits.
+  useEffect(() => {
+    catScroll.current?.scrollTo({ x: 0, animated: true });
+  }, [cats]);
   const [query, setQuery] = useState('');
   const [age, setAge] = useState(null); // 'teen' | '18' | '55' | null
   const [time, setTime] = useState(null); // 'morning' | 'afternoon' | 'evening' | null
@@ -356,8 +374,14 @@ export default function ClassesScreen({ userLocation = null, city = 'sf', subreg
         />
       </View>
 
-      <View style={styles.catRow}>
-        {[{ id: 'all', emoji: '✨' }, ...CLASS_CATEGORIES].map((c) => {
+      <ScrollView
+        ref={catScroll}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        style={styles.catScroll}
+        contentContainerStyle={styles.catRow}
+      >
+        {catChips.map((c) => {
           // "All" is active only when nothing is selected; category chips toggle and
           // can be combined (e.g. Fitness + Dance shows both).
           const active = c.id === 'all' ? cats.size === 0 : cats.has(c.id);
@@ -375,7 +399,7 @@ export default function ClassesScreen({ userLocation = null, city = 'sf', subreg
             </Pressable>
           );
         })}
-      </View>
+      </ScrollView>
 
       <View style={styles.toolRow}>
         <Pressable
@@ -639,12 +663,13 @@ const styles = StyleSheet.create({
   },
   searchInput: { flex: 1, fontSize: 14, color: '#0d1b2a', paddingVertical: 0 },
 
+  // flexGrow: 0 keeps the horizontal row from stretching to fill the column.
+  catScroll: { flexGrow: 0, marginBottom: 10 },
   catRow: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     gap: 6,
-    marginBottom: 10,
+    paddingRight: 8,
   },
   catChip: {
     alignSelf: 'flex-start',
