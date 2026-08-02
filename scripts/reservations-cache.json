@@ -316,7 +316,7 @@
     "balboa-park-outdoor": {
       "tennis": {
         "v": 2,
-        "pct": 27,
+        "pct": 28,
         "courts": 4,
         "slots": {
           "2026-08-02 07:30": 4,
@@ -466,12 +466,12 @@
           "2026-08-08 07:30": 1,
           "2026-08-08 08:00": 1,
           "2026-08-08 08:30": 1,
-          "2026-08-08 09:00": 1,
-          "2026-08-08 09:30": 1,
-          "2026-08-08 10:00": 1,
-          "2026-08-08 10:30": 2,
-          "2026-08-08 11:00": 2,
-          "2026-08-08 11:30": 2,
+          "2026-08-08 09:00": 2,
+          "2026-08-08 09:30": 2,
+          "2026-08-08 10:00": 2,
+          "2026-08-08 10:30": 3,
+          "2026-08-08 11:00": 3,
+          "2026-08-08 11:30": 3,
           "2026-08-08 12:00": 1,
           "2026-08-08 12:30": 1,
           "2026-08-08 13:00": 1,
@@ -7251,7 +7251,7 @@
     "presidio-wall-playground-outdoor": {
       "tennis": {
         "v": 2,
-        "pct": 49,
+        "pct": 50,
         "courts": 4,
         "slots": {
           "2026-08-02 07:30": 4,
@@ -7302,9 +7302,9 @@
           "2026-08-03 10:30": 2,
           "2026-08-03 11:00": 2,
           "2026-08-03 11:30": 2,
-          "2026-08-03 12:00": 1,
-          "2026-08-03 12:30": 1,
-          "2026-08-03 13:00": 1,
+          "2026-08-03 12:00": 2,
+          "2026-08-03 12:30": 2,
+          "2026-08-03 13:00": 2,
           "2026-08-03 13:30": 0,
           "2026-08-03 14:00": 0,
           "2026-08-03 14:30": 0,
@@ -8004,9 +8004,9 @@
         "pct": 40,
         "courts": 4,
         "slots": {
-          "2026-08-02 07:30": 0,
-          "2026-08-02 08:00": 0,
-          "2026-08-02 08:30": 0,
+          "2026-08-02 07:30": 1,
+          "2026-08-02 08:00": 1,
+          "2026-08-02 08:30": 1,
           "2026-08-02 09:00": 2,
           "2026-08-02 09:30": 2,
           "2026-08-02 10:00": 2,
@@ -8208,7 +8208,7 @@
       "guidelines": "You know and love it for its summer concert series, but Stern Grove has tennis and pickleball too! \n\n**Reservation Policy**\n- Any individual may reserve a court, but may not book more than 1 court in a day or 3 courts in a calendar week.\n- Reservation requests are for individual play only. No lessons, team practices, clinics or league matches.\n- Courts left vacant 15 minutes after reservation time are available for walk-up play\n- Please **[click here](https://sfrecpark.org/1188/Tennis-Pickleball-Reservations)** to view the full San Francisco Rec and Park reservation policy.\n\n**Reservation Overview**\n\n*Courts 1 and 2*\n- Courts 1 and 2 are reservable for Tennis 7 days in advance.\n- Reservations open at 8:00am. \n- All slots are 90 minutes, starting at 7:30am, 9:00am, 10:30am, 12:00pm, 1:30pm, 3:00pm and 4:30pm (6:00pm during Daylight Saving Time). \n\n*Courts A, C, D, and F*\n- Courts A, C, D, and F are reservable for Pickleball 7 days in advance. \n- Reservations open at 8:00am. \n- All slots are 90 minutes, starting at 7:30am, 9:00am, 10:30am, 12:00pm, 1:30pm, 3:00pm and 4:30pm (6:00pm during Daylight Saving Time). \n\n**Location Features**\n- 2 tennis courts\n- 6 pickleball courts. There are 4 roll-on nets for use on courts A, C, D, and F\n- Bathroom access - the nearest restrooms are at 20th Avenue & Wawona Street.",
       "tennis": {
         "v": 2,
-        "pct": 54,
+        "pct": 55,
         "courts": 2,
         "slots": {
           "2026-08-02 07:30": 0,
@@ -8381,6 +8381,9 @@
           "2026-08-08 19:00": 0
         },
         "blk": {
+          "2026-08-02 07:30": 1,
+          "2026-08-02 08:00": 1,
+          "2026-08-02 08:30": 1,
           "2026-08-02 09:00": 1,
           "2026-08-02 09:30": 1,
           "2026-08-02 10:00": 1,
@@ -8494,7 +8497,7 @@
     "st-mary-s-rec-center-outdoor": {
       "tennis": {
         "v": 2,
-        "pct": 21,
+        "pct": 22,
         "courts": 2,
         "slots": {
           "2026-08-02 07:30": 0,
@@ -8509,9 +8512,9 @@
           "2026-08-02 12:00": 2,
           "2026-08-02 12:30": 2,
           "2026-08-02 13:00": 2,
-          "2026-08-02 13:30": 1,
-          "2026-08-02 14:00": 1,
-          "2026-08-02 14:30": 1,
+          "2026-08-02 13:30": 2,
+          "2026-08-02 14:00": 2,
+          "2026-08-02 14:30": 2,
           "2026-08-02 15:00": 2,
           "2026-08-02 15:30": 2,
           "2026-08-02 16:00": 2,
@@ -8944,5 +8947,5 @@
       }
     }
   },
-  "fetchedAt": "2026-08-02T10:45:18.310Z"
+  "fetchedAt": "2026-08-02T13:41:48.482Z"
 }
