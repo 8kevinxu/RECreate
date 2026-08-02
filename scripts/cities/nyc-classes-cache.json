@@ -960,7 +960,7 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 19,
+      "spots": 18,
       "unlimited": false,
       "regDeadline": "Registration ends on August 3rd, 2026 at 05:30 PM",
       "start": "2026-08-03",
@@ -1443,7 +1443,7 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 11,
+      "spots": 10,
       "unlimited": false,
       "regDeadline": "Registration ends on August 4th, 2026 at 06:00 PM",
       "start": "2026-08-04",
@@ -2599,13 +2599,13 @@
       "borough": "Bronx",
       "location": "Section 2 Orchard Beach (in Pelham Bay Park)",
       "when": "Sun · 7:00 PM - 8:00 AM",
-      "dropIn": false,
-      "noOnlineReg": false,
+      "dropIn": true,
+      "noOnlineReg": true,
       "cost": "Free",
       "ages": "",
       "minAge": 0,
       "spots": 0,
-      "unlimited": false,
+      "unlimited": true,
       "start": "2026-08-02",
       "end": "2026-08-02",
       "oneDay": true,
@@ -3876,7 +3876,7 @@
       "start": "2026-08-08",
       "end": "2026-08-08",
       "oneDay": true,
-      "desc": "Join NYC Parks and The Forest Park Trust for Highland Park Horticulture Helpers this summer to learn some basic gardening skills! Help us weed, water, cultivate and otherwise tend to various horticultural spaces in the park.\n\nRegistration is required. All tools will be provided, and no prior experience is needed. Just bring your enthusiasm. Please come dressed in sturdy, closed-toe shoes and bring your own water bottle.",
+      "desc": "Join NYC Parks and The Forest Park Trust for Highland Park Horticulture Helpers this autumn to learn some basic gardening skills!Date: 08/08/2026 Location: Forest Park (Queens) (opens in new tab) Myrtle Ave, Union Tpke, Park Lane S, Queens Phone: 7182354100 Description: Join NYC Parks and The Forest Park Trust for Highland Park Horticulture Helpers this spring to learn some basic gardening skills! Help us weed, water, cultivate or otherwise tend to various horticultural spaces in the park. Registration is required. All gloves and tools will be provided. ProgramsPrograms by TypeRecreation CentersUrban Park RangersTeen ProgramsSenior Programs and ResourcesComputer ClassesSwim ProgramsAfterschool ProgramsAccessible ProgramsShape Up NYCSummer ProgramsYouth Sports Programs & ClinicsEmail UpdatesSubscribe to receive regular Sports and Fitness updates from NYC ParksEmail Address Was this information helpful? Thank you for your feedback. (Optional) Please tell us how we can make this page more helpful. If you need a response, please use the Contact the Commissioner form instead.",
       "lat": 40.683601,
       "lng": -73.885696,
       "url": "https://www.nycgovparks.org/reg/forest-highland/20252"
@@ -16854,7 +16854,7 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 17,
+      "spots": 15,
       "unlimited": false,
       "regDeadline": "Registration ends on August 8th, 2026 at 09:00 AM",
       "start": "2026-08-08",
@@ -17241,5 +17241,5 @@
       "url": "https://www.nycgovparks.org/events/2026/08/12/zumba-with-maria-assis"
     }
   ],
-  "fetchedAt": "2026-08-02T08:23:00.166Z"
+  "fetchedAt": "2026-08-02T13:18:07.570Z"
 }
