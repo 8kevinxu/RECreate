@@ -28,33 +28,6 @@
       "url": "https://www.eventbrite.com/e/arriba-with-lulada-club-nieves-latin-dance-studio-and-dj-mickey-perez-tickets-1992924875952"
     },
     {
-      "id": "nycp-11bc-serenity-garden-presents-mary-edwards-11-bc-serenity-garden-900",
-      "source": "nycparks",
-      "name": "11BC Serenity Garden Presents Mary Edwards",
-      "category": "nature",
-      "tags": [
-        "music",
-        "arts",
-        "performances"
-      ],
-      "location": "11 BC Serenity Garden",
-      "when": "Sun · 3:00 PM - 4:00 PM",
-      "dropIn": true,
-      "noOnlineReg": true,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 0,
-      "unlimited": true,
-      "start": "2026-08-02",
-      "end": "2026-08-02",
-      "oneDay": true,
-      "desc": "Mary Edwards will be performing her soundscape compositions which combine electroacoustic modeling, conceptualized space data sonification, interactive wordless intonations and her field recordings at our garden.",
-      "lat": 40.727001,
-      "lng": -73.978302,
-      "url": "https://www.nycgovparks.org/events/2026/08/02/11bc-serenity-garden-presents-mary-edwards"
-    },
-    {
       "id": "nycp-18th-annual-stan-michels-jazz-festival-stan-michels-promenade-in-fort-tryon-park-780",
       "source": "nycparks",
       "name": "18th Annual Stan Michels Jazz Festival",
@@ -101,12 +74,12 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 10,
+        "count": 11,
         "first": "Aug 3",
-        "last": "Aug 14"
+        "last": "Aug 17"
       },
       "start": "2026-08-03",
-      "end": "2026-08-14",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "From 1987 to 2019, celebrated NYC photographer Jack Vartoogian captured hundreds of SummerStage performances across Manhattan parks, from Central Park to Marcus Garvey Park and Tompkins Square Park. This selection of intimate, rarely seen imagery gives viewers a look back at past decades of outdoor live music in New York City, a peek behind the curtain with never-before-seen backstage photos and honors those artists who have passed on. From the earliest performances with Sun Ra Arkestra and Mavis and Pop Staples, to legendary artists in memoriam like Tito Puente and Hugh Masekela and backstage shots of Buddy Guy and Darlene Love, this exhibition celebrates not only a photographer's commitment to documenting performance but also celebrates a 40-year legacy of SummerStage.\n\nThis free exhibition is presented by City Parks Foundation in collaboration with NYC Parks Art & Antiquities department.\n\nAn opening reception will be held on June 16 from 6pm-8 pm, offering light refreshments, music and an exclusive exhibition poster while supplies last.\n\nImage credit: Sun Ra Arkestra at SummerStage, 1989, Jack Vartoogian",
       "lat": 40.7672,
@@ -134,7 +107,7 @@
       "start": "2026-08-07",
       "end": "2026-08-07",
       "oneDay": true,
-      "desc": "Join NYC Parks and The Forest Park Trust for Forest Restoration Fridays this summer to engage in hands-on forest restoration work, including invasive species removal, trail restoration, and possible planting in our park.\n\nRegistration is required. All tools will be provided, and no prior experience is needed. Just bring your enthusiasm. Please come dressed in sturdy, closed-toe shoes and bring your own water bottle.",
+      "desc": "Join NYC Parks and The Forest Park Trust for Forest Restoration Fridays this summer to engage in hands-on forest restoration.Date: 08/07/2026 Location: Forest Park (Queens) (opens in new tab) Myrtle Ave, Union Tpke, Park Lane S, Queens Phone: 7182354100 Description: Join NYC Parks and The Forest Park Trust for Forest Restoration Fridays this summer to engage in hands-on forest restoration work, including invasive species removal, trail restoration, and possible planting in our park. Registration is required. All tools will be provided, and no prior experience is needed. Just bring your enthusiasm. Please come dressed in sturdy, closed-toe shoes and bring your own water bottle. ProgramsPrograms by TypeRecreation CentersUrban Park RangersTeen ProgramsSenior Programs and ResourcesComputer ClassesSwim ProgramsAfterschool ProgramsAccessible ProgramsShape Up NYCSummer ProgramsYouth Sports Programs & ClinicsEmail UpdatesSubscribe to receive regular Sports and Fitness updates from NYC ParksEmail Address Was this information helpful? Thank you for your feedback. (Optional) Please tell us how we can make this page more helpful. If you need a response, please use the Contact the Commissioner form instead.",
       "lat": 40.699273,
       "lng": -73.857876,
       "url": "https://www.nycgovparks.org/reg/forest-highland/20174"
@@ -167,29 +140,6 @@
       "url": "https://www.nycgovparks.org/events/2026/08/05/a-splash-from-the-beach"
     },
     {
-      "id": "nycp-accessible-nature-hike-sparrows-and-shorebirds-sunset-cove-park-entrance-in-sunset-cove-park-660",
-      "source": "nycparks",
-      "name": "Accessible Nature Hike: Sparrows and Shorebirds",
-      "category": "nature",
-      "borough": "Queens",
-      "location": "Sunset Cove Park Entrance (in Sunset Cove Park)",
-      "when": "Sun · 11:00 AM - 12:00 PM",
-      "dropIn": true,
-      "noOnlineReg": true,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 0,
-      "unlimited": true,
-      "start": "2026-08-02",
-      "end": "2026-08-02",
-      "oneDay": true,
-      "desc": "Join the Urban Park Rangers on a birding exhibition in the unique habitat of Sunset Cove Park. Enjoy a picturesque view of the New York City skyline from across Jamaica Bay from the newly built accessibility viewing platform. Learn about the importance of salt marshes and the fauna and flora that inhabit them.",
-      "lat": 40.598351,
-      "lng": -73.820941,
-      "url": "https://www.nycgovparks.org/events/2026/08/02/accessible-nature-hike-sparrows-and-shorebirds"
-    },
-    {
       "id": "nycp-adventure-course-free-public-sunday-afternoon-program-alley-pond-adventure-course-in-alley-pond-park-780",
       "source": "nycparks",
       "name": "Adventure Course Free Public Sunday Afternoon Program",
@@ -205,17 +155,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 3,
-        "first": "Aug 2",
+        "count": 2,
+        "first": "Aug 9",
         "last": "Aug 16"
       },
-      "start": "2026-08-02",
+      "start": "2026-08-09",
       "end": "2026-08-16",
       "oneDay": false,
       "desc": "Free programs are available on a first-come, first-served basis. Afternoon program registration takes place from 1:00pm-1:30pm. Please dress appropriately: no sandals, flip flops, or open-toed shoes are allowed. Our programs are appropriate for those ages 8 and older. The Adventure Course program lasts about two hours. Due to its popularity, we ask that you arrive at least half an hour before the start time of each program. Space is limited. A valid Photo ID is required for participants ages 18 and older.",
       "lat": 40.742768,
       "lng": -73.741126,
-      "url": "https://www.nycgovparks.org/events/2026/08/02/adventure-course-free-public-sunday-afternoon-program"
+      "url": "https://www.nycgovparks.org/events/2026/08/09/adventure-course-free-public-sunday-afternoon-program"
     },
     {
       "id": "nycp-adventure-course-free-public-sunday-morning-program-alley-pond-adventure-course-in-alley-pond-park-570",
@@ -233,17 +183,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 3,
-        "first": "Aug 2",
+        "count": 2,
+        "first": "Aug 9",
         "last": "Aug 16"
       },
-      "start": "2026-08-02",
+      "start": "2026-08-09",
       "end": "2026-08-16",
       "oneDay": false,
       "desc": "Free programs are available on a first-come, first-served basis. Morning program registration takes place from 9:30am-10:00am. Please dress appropriately: no sandals, flip flops, or open-toed shoes are allowed. Our programs are appropriate for those ages 8 and older. The Adventure Course program lasts about two hours. Due to its popularity, we ask that you arrive at least half an hour before the start time of each program. Space is limited. A valid Photo ID is required for participants ages 18 and older.",
       "lat": 40.742768,
       "lng": -73.741126,
-      "url": "https://www.nycgovparks.org/events/2026/08/02/adventure-course-free-public-sunday-morning-program"
+      "url": "https://www.nycgovparks.org/events/2026/08/09/adventure-course-free-public-sunday-morning-program"
     },
     {
       "id": "nycp-afternoon-tea-wave-hill-660",
@@ -448,12 +398,12 @@
       "spots": null,
       "unlimited": false,
       "sessions": {
-        "count": 10,
+        "count": 11,
         "first": "Aug 3",
-        "last": "Aug 14"
+        "last": "Aug 17"
       },
       "start": "2026-08-03",
-      "end": "2026-08-14",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Take part in a long-distance lap swim competition. To participate in the competition, please speak to an Aquatics Specialist on the pool deck and indicate this on your application. An awards ceremony will be held at the end of August to celebrate the health and fitness achievements of swimmers who complete 25 miles or more. Visit https://www.nycgovparks.org/events/lap-swim to register.",
       "lat": 40.778794,
@@ -602,32 +552,6 @@
       "url": "https://www.nycgovparks.org/events/2026/08/08/basketball-clinic-at-highbridge-recreation-center-ages-8-to-12"
     },
     {
-      "id": "nycp-before-the-aqueduct-nyc-s-toxic-wells-and-lost-pond-lafayette-street-and-franklin-street-in-collect-pond-park-780",
-      "source": "nycparks",
-      "name": "Before the Aqueduct: NYC's Toxic Wells and Lost Pond",
-      "category": "learn",
-      "tags": [
-        "nature"
-      ],
-      "borough": "Manhattan",
-      "location": "Lafayette Street and Franklin Street (in Collect Pond Park)",
-      "when": "Sun · 1:00 PM - 2:30 PM",
-      "dropIn": true,
-      "noOnlineReg": true,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 0,
-      "unlimited": true,
-      "start": "2026-08-02",
-      "end": "2026-08-02",
-      "oneDay": true,
-      "desc": "Ever wonder what stood here before the square? Join the Urban Park Rangers and dive into the hidden history of Collect Pond and NYC's early water woes.",
-      "lat": 40.716723,
-      "lng": -74.002036,
-      "url": "https://www.nycgovparks.org/events/2026/08/02/before-the-aqueduct-nycs-toxic-wells-and-lost-pond"
-    },
-    {
       "id": "nycp-beginner-crochet-workshop-multi-use-room-in-kissena-park-900",
       "source": "nycparks",
       "name": "Beginner Crochet Workshop",
@@ -706,12 +630,12 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 2,
+        "count": 3,
         "first": "Aug 3",
-        "last": "Aug 10"
+        "last": "Aug 17"
       },
       "start": "2026-08-03",
-      "end": "2026-08-10",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "See New York City's finest singer-songwriters showcase their newest work, presented by Big City Folk and hosted by songsmith Niall Connolly. With a list of past featured artists including Lana Del Ray, Anais Mitchel and Lucius, it may even be an opportunity to see the next big star in action.",
       "lat": 40.748643,
@@ -939,8 +863,8 @@
       "unlimited": false,
       "regDeadline": "Registration ends on August 10th, 2026 at 07:00 PM",
       "start": "2026-08-10",
-      "end": "2026-08-10",
-      "oneDay": true,
+      "end": "2026-08-17",
+      "oneDay": false,
       "instructor": "Sofia Medina-Pardo",
       "desc": "Using your own body weight, come experience this high energy bodyweight circuit training class! Here, we focus on functional, everyday movement with the goal of increasing your overall level of fitness. You can expect several rounds of timed exercises including strength and cardio followed by periods of rest. Sets and rounds vary class to class. All exercises will be demonstrated and cued for participants. Modifications given as needed.  ",
       "lat": 40.736099,
@@ -964,7 +888,7 @@
       "unlimited": false,
       "regDeadline": "Registration ends on August 3rd, 2026 at 05:30 PM",
       "start": "2026-08-03",
-      "end": "2026-08-10",
+      "end": "2026-08-17",
       "oneDay": false,
       "instructor": "Jill Briggs",
       "desc": "This circuit training class combines bodyweight resistance training and conditioning to provide you with a dynamic full body workout. Whether you are a beginner or looking for a challenge; this class for all fitness levels and modifications are always provided. Come engage in exercises that target all muscle groups, get your heart pumping, and connect with people in your community!",
@@ -1038,8 +962,8 @@
       "unlimited": false,
       "regDeadline": "Registration ends on August 10th, 2026 at 05:45 PM",
       "start": "2026-08-10",
-      "end": "2026-08-10",
-      "oneDay": true,
+      "end": "2026-08-17",
+      "oneDay": false,
       "instructor": "Harriet Carter-Range",
       "desc": "Bodyweight Interval Training is an energetic yet low impact exercise class that will get your muscles moving! This mix of cardio and body weight strength exercises is a great way to get a full body workout. Whether you\\u0027re new to exercise or not, the modifications offered in this class make it open to all fitness levels. Come check it out! Please bring your own yoga mat! ",
       "lat": 40.7201,
@@ -1063,7 +987,7 @@
       "unlimited": false,
       "regDeadline": "Registration ends on August 3rd, 2026 at 07:00 PM",
       "start": "2026-08-03",
-      "end": "2026-08-10",
+      "end": "2026-08-17",
       "oneDay": false,
       "instructor": "Choua Vang",
       "desc": "A full-body circuit designed to build strength, power, endurance, and confidence using just your bodyweight. Expect athletic movement, scalable progressions, and high-energy intervals that challenge every fitness level.",
@@ -1087,11 +1011,11 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 10,
+      "spots": 9,
       "unlimited": false,
       "regDeadline": "Registration ends on August 3rd, 2026 at 06:30 PM",
       "start": "2026-08-03",
-      "end": "2026-08-10",
+      "end": "2026-08-17",
       "oneDay": false,
       "instructor": "Anushya Mani",
       "desc": "BollyX is a Bollywood inspired cardio dance fitness class inspired and is driven by the heart-pumping, energetic rhythms of cultural music from all parts of India. The class embodies dynamic choreography and easy-to-follow dance aerobics. Choreography and workout routines have been set so everyone can enjoy the class (modifications for individual steps can be provided in class). No dance experience or Bollywood familiarity is required - just come with comfortable shoes, water, and your smiles!\\r\n\\r\nParticipants must sign in at the front desk and bring locks to lock up their bags. The center does not allow anyone to bring their bags to the dance room except: towel, water and phone.",
@@ -1308,12 +1232,12 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 2,
+        "count": 3,
         "first": "Aug 3",
-        "last": "Aug 10"
+        "last": "Aug 17"
       },
       "start": "2026-08-03",
-      "end": "2026-08-10",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Movie Nights at Bryant Park returns for its 33rd season! Bring a blanket and a friend and grab your spot on the lawn to watch a feature film on the big screen under the stars. The lawn opens at 5pm and films begin at 8pm.\n\nFood items for sale curated by Hester Street Fair are available 4pm-8:30pm on the Fountain Terrace, and beer and wine can be purchased on the western end of the lawn beginning at 5pm. Paramount+ Movie Nights at Bryant Park are supported by Time Out and Sour Patch Kids.\n\nJul 13: Wayne's World\n\nJul 20: Good Morning Vietnam\n\nJul 27: The Truman Show\n\nAug 03: Bridget Jones's Diary\n\nAug 10: Catch Me If You Can\n\nAug 17: City of God\n\nAug 24: King Creole\n\nAug 31: No Country for Old Men\n\nSep 07: Galaxy Quest\n\nSept 14: Shakespeare in Love",
       "lat": 40.75382,
@@ -1582,6 +1506,33 @@
       "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=82da2aa5-ceb5-4bf1-accf-e4f327ce0181&occurrenceDate=20260804"
     },
     {
+      "id": "nycp-cardio-dance-nypl-hamilton-grange-library-1080",
+      "source": "nycparks",
+      "name": "Cardio Dance",
+      "category": "dance",
+      "tags": [
+        "fitness"
+      ],
+      "location": "NYPL - Hamilton Grange Library",
+      "when": "Mon · 6:00 PM - 6:45 PM",
+      "dropIn": false,
+      "noOnlineReg": false,
+      "cost": "Free",
+      "ages": "18 yrs +",
+      "minAge": 18,
+      "spots": 20,
+      "unlimited": false,
+      "regDeadline": "Registration ends on August 17th, 2026 at 06:00 PM",
+      "start": "2026-08-17",
+      "end": "2026-08-17",
+      "oneDay": true,
+      "instructor": "Carolina Morales",
+      "desc": "If cardio is cardi-NO for you, give this Cardio Dance class a try! Come enjoy the beats of Latin rhythms paired with choreography that will not only provide a great workout- but a lot of fun as well! This class is open to all levels. ",
+      "lat": 40.825685,
+      "lng": -73.94806,
+      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=f3bfd3df-aa64-414a-89f0-c132fb2b09ba&occurrenceDate=20260817"
+    },
+    {
       "id": "nycp-cardio-punch-boardwalk-at-beach-60th-street-in-rockaway-beach-and-boardwalk-660",
       "source": "nycparks",
       "name": "Cardio Punch",
@@ -1626,7 +1577,7 @@
       "unlimited": false,
       "regDeadline": "Registration ends on August 3rd, 2026 at 09:00 AM",
       "start": "2026-08-03",
-      "end": "2026-08-14",
+      "end": "2026-08-17",
       "oneDay": false,
       "instructor": "Zarina Noor",
       "desc": "This cardio workout consists of functional movement exercises designed to make daily activities easier to perform. Meets at the athletic courts. ",
@@ -1778,7 +1729,7 @@
       "unlimited": false,
       "regDeadline": "Registration ends on August 3rd, 2026 at 06:30 PM",
       "start": "2026-08-03",
-      "end": "2026-08-10",
+      "end": "2026-08-17",
       "oneDay": false,
       "instructor": "Gretchen Simmons",
       "desc": "This engaging chair yoga session blends gentle stretches, mindful breathing, and light strengthening exercises to leave you feeling relaxed yet revitalized. All movements are easy on the joints while enhancing flexibility, posture, and overall well-being. Ideal for beginners, older adults, or anyone looking for a supportive way to stay active. ",
@@ -1802,7 +1753,7 @@
       "unlimited": false,
       "regDeadline": "Registration ends on August 3rd, 2026 at 05:00 PM",
       "start": "2026-08-03",
-      "end": "2026-08-10",
+      "end": "2026-08-17",
       "oneDay": false,
       "instructor": "Gretchen Simmons",
       "desc": "This uplifting seated flow is designed to get you moving and feeling energized–without stressing your joints. Using gentle, rhythmic movements, we'll raise your heart rate, improve balance, and build strength. Perfect for all fitness levels, especially those seeking a low-impact workout that supports mobility and confidence.",
@@ -1949,12 +1900,12 @@
       "spots": null,
       "unlimited": false,
       "sessions": {
-        "count": 10,
+        "count": 11,
         "first": "Aug 3",
-        "last": "Aug 14"
+        "last": "Aug 17"
       },
       "start": "2026-08-03",
-      "end": "2026-08-14",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Take part in a long-distance lap swim competition. To participate in the competition, please speak to an Aquatics Specialist on the pool deck and indicate this on your application. An awards ceremony will be held at the end of August to celebrate the health and fitness achievements of swimmers who complete 25 miles or more. Visit https://www.nycgovparks.org/events/lap-swim to register.",
       "lat": 40.83721,
@@ -1987,32 +1938,6 @@
       "lat": 40.839053,
       "lng": -73.946267,
       "url": "https://www.nycgovparks.org/events/2026/08/06/community-care-and-culture-day-at-lily-brown-playground"
-    },
-    {
-      "id": "nycp-community-garden-day-demera-santiago-garden-720",
-      "source": "nycparks",
-      "name": "Community Garden Day",
-      "category": "nature",
-      "tags": [
-        "arts",
-        "youth"
-      ],
-      "location": "Demera/Santiago Garden",
-      "when": "Sun · 12:00 PM - 4:00 PM",
-      "dropIn": true,
-      "noOnlineReg": true,
-      "cost": "Free",
-      "ages": "Best for kids",
-      "minAge": 0,
-      "spots": 0,
-      "unlimited": true,
-      "start": "2026-08-02",
-      "end": "2026-08-02",
-      "oneDay": true,
-      "desc": "Come to Demera Santiago Garden for an arts and craft day with face painting and walk through the garden!",
-      "lat": 40.815201,
-      "lng": -73.902199,
-      "url": "https://www.nycgovparks.org/events/2026/08/02/community-garden-day"
     },
     {
       "id": "nycp-community-paddle-at-concrete-plant-park-concrete-plant-park-660",
@@ -2465,12 +2390,12 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 12,
+        "count": 13,
         "first": "Aug 3",
-        "last": "Aug 15"
+        "last": "Aug 17"
       },
       "start": "2026-08-03",
-      "end": "2026-08-15",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Multi artist exhibit of works highlighting endangered local and global species.\n\nLearn what NYC Parks is doing within City to protect and preserve local wildlife as well preervation efforts around the world.\n\nFree admission.",
       "lat": 40.502257,
@@ -2496,12 +2421,12 @@
       "spots": null,
       "unlimited": false,
       "sessions": {
-        "count": 10,
+        "count": 11,
         "first": "Aug 3",
-        "last": "Aug 14"
+        "last": "Aug 17"
       },
       "start": "2026-08-03",
-      "end": "2026-08-14",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Take part in a long-distance lap swim competition. To participate in the competition, please speak to an Aquatics Specialist on the pool deck and indicate this on your application. An awards ceremony will be held at the end of August to celebrate the health and fitness achievements of swimmers who complete 25 miles or more. Visit https://www.nycgovparks.org/events/lap-swim to register.",
       "lat": 40.641191,
@@ -2562,57 +2487,6 @@
       "lat": 40.7253,
       "lng": -73.9786,
       "url": "https://www.nycgovparks.org/events/2026/08/15/falling-on-the-correspondence"
-    },
-    {
-      "id": "nycp-family-art-project-brilliance-of-seeds-and-weeds-wave-hill-600",
-      "source": "nycparks",
-      "name": "Family Art Project: Brilliance of Seeds and Weeds",
-      "category": "learn",
-      "tags": [
-        "arts",
-        "youth",
-        "accessible"
-      ],
-      "borough": "Bronx",
-      "location": "Wave Hill",
-      "when": "Sun · 10:00 AM - 1:00 PM",
-      "dropIn": true,
-      "noOnlineReg": true,
-      "cost": "Free with admission to the grounds",
-      "ages": "Best for kids",
-      "minAge": 0,
-      "spots": 0,
-      "unlimited": true,
-      "start": "2026-08-02",
-      "end": "2026-08-02",
-      "oneDay": true,
-      "desc": "What do you know about seeds and weeds? Let's use these plant parts as materials to make paper and learn more about germination and the seed dispersal process. \n\n At 11:30am families can enjoy a storytime program in the Gund Theater. All ages welcome.\n\nRegistration not required.\n\nWave Hill House is wheelchair-accessible. There is an accessible, ground-level entrance at the front of the building with a power-assist door. The restroom on the ground level is all-gender and ADA-compliant. Additional ADA-compliant restrooms are available on the lower level, which can be accessed by elevator.",
-      "lat": 40.898701,
-      "lng": -73.912498,
-      "url": "https://www.nycgovparks.org/events/2026/08/02/family-art-project-brilliance-of-seeds-and-weeds"
-    },
-    {
-      "id": "nycp-family-camping-bronx-section-2-orchard-beach-in-pelham-bay-park-1140",
-      "source": "nycparks",
-      "name": "Family Camping: Bronx",
-      "category": "nature",
-      "borough": "Bronx",
-      "location": "Section 2 Orchard Beach (in Pelham Bay Park)",
-      "when": "Sun · 7:00 PM - 8:00 AM",
-      "dropIn": true,
-      "noOnlineReg": true,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 0,
-      "unlimited": true,
-      "start": "2026-08-02",
-      "end": "2026-08-02",
-      "oneDay": true,
-      "desc": "We camp to create lasting memories, connect with the natural world, and bond with our families. The Urban Park Rangers celebrate the tradition of camping and we look forward to welcoming your family. Families are chosen by lottery. Lottery registration opens on Monday July 20.",
-      "lat": 40.870399,
-      "lng": -73.786697,
-      "url": "https://www.nycgovparks.org/events/2026/08/02/family-camping-bronx"
     },
     {
       "id": "nycp-family-camping-brooklyn-salt-marsh-nature-center-in-marine-park-1080",
@@ -2763,29 +2637,6 @@
       "lat": 40.644318,
       "lng": -73.920776,
       "url": "https://www.eventbrite.com/e/1989685546029?aff=oddtdtcreator"
-    },
-    {
-      "id": "nycp-find-a-friend-in-nature-hike-potter-avenue-and-royal-oak-road-in-clove-lakes-park-660",
-      "source": "nycparks",
-      "name": "Find a Friend In Nature Hike",
-      "category": "nature",
-      "borough": "Staten Island",
-      "location": "Potter Avenue and Royal Oak Road (in Clove Lakes Park)",
-      "when": "Sun · 11:00 AM - 12:00 PM",
-      "dropIn": true,
-      "noOnlineReg": true,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 0,
-      "unlimited": true,
-      "start": "2026-08-02",
-      "end": "2026-08-02",
-      "oneDay": true,
-      "desc": "Join the Urban Park Rangers on a hike to celebrate National Friendship Day. Invite a friend or be open to making new ones! Friendship bracelets will be made and optionally traded with others at the end of the hike.",
-      "lat": 40.61749,
-      "lng": -74.114521,
-      "url": "https://www.nycgovparks.org/events/2026/08/02/find-a-friend-in-nature-hike"
     },
     {
       "id": "nycp-fisher-pool-swim-team-training-main-pool-in-fisher-pool-660",
@@ -3095,6 +2946,35 @@
       "borough": "Manhattan",
       "location": "Multi-Use Room B (in Marcus Garvey Park)",
       "when": "Sat · 1:00 PM - 3:30 PM",
+      "dropIn": false,
+      "noOnlineReg": false,
+      "cost": "Free",
+      "ages": "7 yrs +",
+      "minAge": 7,
+      "spots": 120,
+      "unlimited": false,
+      "regDeadline": "Registration ends on August 7th, 2026 at 12:00 AM",
+      "start": "2026-08-08",
+      "end": "2026-08-15",
+      "oneDay": false,
+      "instructor": "LaSharn Cooper",
+      "desc": "During this workshop, you will be introduced to the rich traditions, rhythms, and movements of Haitian folkloric dance. This experience is not only about learning choreography — it is about understanding the history, culture, and stories behind the dances. Please note that at least two rehearsals will be held at an alternative location. ",
+      "lat": 40.805023,
+      "lng": -73.944984,
+      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=ea170ca8-a82d-43e7-9e8a-40bf51570e9d&occurrenceDate=20260808"
+    },
+    {
+      "id": "nycp-free-movie-on-the-waterfront-hamilton-astoria-park-lawn-in-astoria-park-1230",
+      "source": "nycparks",
+      "name": "Free Movie On The Waterfront: Hamilton",
+      "category": "nature",
+      "tags": [
+        "performances",
+        "accessible"
+      ],
+      "borough": "Queens",
+      "location": "Astoria Park Lawn (in Astoria Park)",
+      "when": "Mon · 8:30 PM - 10:00 PM",
       "dropIn": true,
       "noOnlineReg": true,
       "cost": "Free",
@@ -3102,19 +2982,13 @@
       "minAge": 0,
       "spots": 0,
       "unlimited": true,
-      "sessions": {
-        "count": 2,
-        "first": "Aug 8",
-        "last": "Aug 15"
-      },
-      "start": "2026-08-08",
-      "end": "2026-08-15",
-      "oneDay": false,
-      "instructor": "LaSharn Cooper",
-      "desc": "During this workshop, you will be introduced to the rich traditions, rhythms, and movements of Haitian folkloric dance. This experience is not only about learning choreography – it is about understanding the history, culture, and stories behind the dances. Please note that at least two rehearsals will be held at an alternative location.",
-      "lat": 40.805023,
-      "lng": -73.944984,
-      "url": "https://www.nycgovparks.org/events/2026/08/08/free-haitian-folkloric-dance-summer-performance-intensive"
+      "start": "2026-08-17",
+      "end": "2026-08-17",
+      "oneDay": true,
+      "desc": "Join us for a free screening of Hamilton on the waterfront! Taking place on the Great Lawn at Astoria Park. Rated PG13. No registration required.",
+      "lat": 40.778156,
+      "lng": -73.924407,
+      "url": "https://www.nycgovparks.org/events/2026/08/17/free-movie-on-the-waterfront-hamilton"
     },
     {
       "id": "nycp-free-movie-on-the-waterfront-ratatouille-astoria-park-lawn-in-astoria-park-1230",
@@ -3397,7 +3271,7 @@
       "unlimited": false,
       "regDeadline": "Registration ends on August 3rd, 2026 at 11:30 AM",
       "start": "2026-08-03",
-      "end": "2026-08-10",
+      "end": "2026-08-17",
       "oneDay": false,
       "instructor": "Alice Chen",
       "desc": "A therapeutic yet powerful series of balancing, stretching, easy back bending, twisting, and mild inverted postures, concluding with a guided relaxation. NOTE: Spots are limited ",
@@ -3514,12 +3388,12 @@
       "spots": null,
       "unlimited": false,
       "sessions": {
-        "count": 10,
+        "count": 11,
         "first": "Aug 3",
-        "last": "Aug 14"
+        "last": "Aug 17"
       },
       "start": "2026-08-03",
-      "end": "2026-08-14",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Take part in a long-distance lap swim competition. To participate in the competition, please speak to an Aquatics Specialist on the pool deck and indicate this on your application. An awards ceremony will be held at the end of August to celebrate the health and fitness achievements of swimmers who complete 25 miles or more. Visit https://www.nycgovparks.org/events/lap-swim to register.",
       "lat": 40.796517,
@@ -3700,12 +3574,12 @@
       "spots": null,
       "unlimited": false,
       "sessions": {
-        "count": 10,
+        "count": 11,
         "first": "Aug 3",
-        "last": "Aug 14"
+        "last": "Aug 17"
       },
       "start": "2026-08-03",
-      "end": "2026-08-14",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Take part in a long-distance lap swim competition. To participate in the competition, please speak to an Aquatics Specialist on the pool deck and indicate this on your application. An awards ceremony will be held at the end of August to celebrate the health and fitness achievements of swimmers who complete 25 miles or more. Visit https://www.nycgovparks.org/events/lap-swim to register.",
       "lat": 40.719952,
@@ -3731,12 +3605,12 @@
       "spots": null,
       "unlimited": false,
       "sessions": {
-        "count": 2,
+        "count": 3,
         "first": "Aug 3",
-        "last": "Aug 10"
+        "last": "Aug 17"
       },
       "start": "2026-08-03",
-      "end": "2026-08-10",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Harlem Run brings free weekly and inclusive pacer-led runs and walks throughout Harlem. Join us for a different route through Harlem, beginning and ending at Marcus Garvey Park. Paces available include 7 min to 12 min, run/walk, and walk groups. Open to all ages and abilities. Bag drop available, though not guaranteed.",
       "lat": 40.804508,
@@ -3991,32 +3865,6 @@
       "url": "https://www.nycgovparks.org/events/2026/08/16/historic-new-york-mount-morris-fire-watch-tower"
     },
     {
-      "id": "nycp-historic-new-york-ridgewood-reservoir-vermont-place-parking-lot-in-highland-park-780",
-      "source": "nycparks",
-      "name": "Historic New York: Ridgewood Reservoir",
-      "category": "nature",
-      "tags": [
-        "learn"
-      ],
-      "borough": "Queens",
-      "location": "Vermont Place Parking Lot (in Highland Park)",
-      "when": "Sun · 1:00 PM - 2:00 PM",
-      "dropIn": true,
-      "noOnlineReg": true,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 0,
-      "unlimited": true,
-      "start": "2026-08-02",
-      "end": "2026-08-02",
-      "oneDay": true,
-      "desc": "Join NYC's Urban Park Rangers for a walk at the Ridgewood Reservoir highlighting the history, ecology and engineering of this cultural treasure. The Ridgewood Reservoir in Highland Park is a 50+ acre natural oasis that straddles the border of Brooklyn and Queens.",
-      "lat": 40.686199,
-      "lng": -73.889801,
-      "url": "https://www.nycgovparks.org/events/2026/08/02/historic-new-york-ridgewood-reservoir"
-    },
-    {
       "id": "nycp-hoop-jam-in-herald-square-park-herald-square-1080",
       "source": "nycparks",
       "name": "Hoop Jam in Herald Square Park",
@@ -4036,12 +3884,12 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 2,
+        "count": 3,
         "first": "Aug 3",
-        "last": "Aug 10"
+        "last": "Aug 17"
       },
       "start": "2026-08-03",
-      "end": "2026-08-10",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "We're collaborating with Big Apple Hooping to bring hooping fun to Herald Square Park. If you're looking to learn the fundamentals of hooping, work on refining your tricks, or meet fellow hoopers from the NYC area, this is the event for you.\n\nHoopers of all experience levels, from beginner to advanced, are welcome, and all equipment is provided. No registration is required, just stop by and join us!",
       "lat": 40.750464,
@@ -4067,17 +3915,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 9,
-        "first": "Aug 2",
+        "count": 8,
+        "first": "Aug 6",
         "last": "Aug 16"
       },
-      "start": "2026-08-02",
+      "start": "2026-08-06",
       "end": "2026-08-16",
       "oneDay": false,
       "desc": "The Hudson Classical Theater Company Presents The Dancing Men: A Sherlock Holmes Mystery written by Susane Lee, adapted from the short story by Sir Arthur Conan Doyle, and directed by Susane Lee and Nicholas Martin-Smith.\n\nHilton Cubitt seeks the help of Sherlock Holmes when he comes across a series of mysterious stick figure drawings resembling \"dancing men\" about his garden. These drawings are linked to his wife, Elsie Patrick, an American woman who harbors a secret past. Holmes needs to decipher these \"dancing men\" before tragedy strikes.\n\nThe Dancing Men runs July 23rd - August 16th. All shows are Thursdays to Sundays at 6:30pm. No reservations--arrive by 6:15pm for a good seat. Cushions provided. Hudson Classical Theater Company Shows are \"Pay What You Can.\"  Audience donations help pay for artists stipends and production costs.\n\nDirections to The Soldiers' & Sailors' Monument:\nSubways: Take the 1 to West 86 or West 96, or take the 2 to West 96.  Walk west towards Riverside Park. You can enter the park at West 89th street or take the entrance at West 91st Street.  You will see the Soldiers' and Sailors' Monument.  Take the path to the right of the monument (not the one closest to the river). Walk around the path and you will be BEHIND the monument where audiences will be seated.",
       "lat": 40.792,
       "lng": -73.978996,
-      "url": "https://www.nycgovparks.org/events/2026/08/02/hudson-classical-theater-company-presents-the-dancing-men1"
+      "url": "https://www.nycgovparks.org/events/2026/08/06/hudson-classical-theater-company-presents-the-dancing-men"
     },
     {
       "id": "nycp-hula-hoop-aerobics-multi-use-room-b-in-marcus-garvey-park-750",
@@ -4202,6 +4050,32 @@
       "url": "https://www.nycgovparks.org/events/2026/08/08/invasive-plant-removal-and-native-plant-id-hike"
     },
     {
+      "id": "nycp-invasive-species-removal-inwood-canoe-club-in-inwood-hill-park-660",
+      "source": "nycparks",
+      "name": "Invasive Species Removal",
+      "category": "nature",
+      "tags": [
+        "accessible"
+      ],
+      "borough": "Manhattan",
+      "location": "Inwood Canoe Club (in Inwood Hill Park)",
+      "when": "Sat · 11:00 AM - 2:00 PM",
+      "dropIn": true,
+      "noOnlineReg": true,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 0,
+      "unlimited": true,
+      "start": "2026-08-08",
+      "end": "2026-08-08",
+      "oneDay": true,
+      "desc": "The Inwood Canoe Club will be doing our first invasive species removal on Saturday, May 23 at 11 am on the greenway to the south of the club. It will be a great opportunity to learn to ID invasive and native plants, use new tools, and get a say in how our greenway will look in the future as we replant.",
+      "lat": 40.868698,
+      "lng": -73.932602,
+      "url": "https://www.nycgovparks.org/events/2026/08/08/invasive-species-removal"
+    },
+    {
       "id": "nycp-inwood-canoe-club-sunday-open-house-inwood-canoe-club-in-inwood-hill-park-540",
       "source": "nycparks",
       "name": "Inwood Canoe Club Sunday Open House",
@@ -4223,11 +4097,11 @@
       "spots": null,
       "unlimited": false,
       "sessions": {
-        "count": 3,
-        "first": "Aug 2",
+        "count": 2,
+        "first": "Aug 9",
         "last": "Aug 16"
       },
-      "start": "2026-08-02",
+      "start": "2026-08-09",
       "end": "2026-08-16",
       "oneDay": false,
       "desc": "Join us for our free, guided 20-minute kayak trips on the Hudson River just north of the George Washington Bridge.\n\nIf you plan on paddling with us, please complete your 2026 season waiver prior to your first visit this year.\n\nWhen:  Every Sunday, Memorial Day – Labor Day (May 24 – September 6, 2026).\n\nSignup begins in person at 9 a.m. for three guided \"waves\" on a first come, first served basis. Once you've signed up, be sure to return to the boathouse on time or you'll forfeit your spot.\n\nSign up to paddle in a boat by yourself or with a friend in a tandem kayak (as available). No previous paddling experience necessary!\n\nWave times:\n\no   Wave 1: Arrive 9:45 a.m., launch 10 a.m.\n\no   Wave 2: Arrive 10:30 a.m., launch 10:45 a.m.\n\no   Wave 3: Arrive 11:15 a.m., launch 11:30 a.m.\n\n What:  Open House Sundays at Inwood Canoe Club\n\nKayak on one of our 12 SOTs (sit-on-tops) or in a tandem kayak (built for two).\n\nPaddle with your family, friends or new acquaintances in our \"canoemaran.\" Up to six guests + two ICC \"Turtles\" (aka members) will fit comfortably.\n\n Details:\n\nAll guests must be able to swim.\n\nMust be a minimum of 8 years old. Guests under 18 must bring a parent or guardian. Whether a minor will be allowed to paddle with us depends on conditions that day and on the discretion of the club member running the Open House.\n\nWe supply boat, paddle and PFD (personal flotation device, aka life vest). No prior paddling experience required.\n\nWear shoes and clothes that can get wet.\n\nDon't bring many valuables; you will need to leave them at the boathouse or supply your own waterproof bag for them. ICC is not liable for the loss of any valuables left in the boathouse, in a boat or on the surrounding property.\n\nNo pets at Open House.\n\nSince Open House began in 2002, the club has offered the only walk-up kayaking program in Northern Manhattan. We generally serve over 1,000 guests every summer.\n\n*****\n\nParticipe en una salida en kayak de 20-minutos, gratuita, guiada, en el Río Hudson justo al norte del George Washington Bridge.\n\nCompletar el formulario de exención.\n\nCUÁNDO: Todos los domingos, desde Memorial Day (Día de los Caídos) a Labor Day (Día del Trabajo) – (24 de mayo – 6 de septiembre de 2026)\n\nPuedes inscribirte en persona a partir de las 9 a.m. frente al club ICC para salir, por orden de llegada, en uno de los tres grupos guiados. Una vez que te hayas registrado, asegúrate de regresar a tiempo o perderás tu lugar.\n\nRegístrate para remar en un kayak solo o con un amigo en un kayak tándem (según disponibilidad). ¡No se necesita experiencia previa de remar!!\n\nHorarios de grupos guiados:\n\nGrupo 1: entrada al embarcadero a las 9:45 a.m., salida al río en kayak a las 10 a.m.\n\nGrupo 2: entrada al embarcadero a las 10:30 a.m., salida al río en kayak a las 10:45 a.m.\n\nGrupo 3: entrada al embarcadero a las 11:15 a.m., salida al río en kayak a las 11:30 a.m.\n\nQUÉ: Domingos: Puertas Abiertas en Inwood Canoe Club\n\nSalidas en kayaks abiertos (SOT) individuales o tándem (dos personas)\n\nRema con tu familia, amigos o desconocidos en nuestro \"canoemaran\". Caben cómodamente hasta seis (6) invitados + dos miembros de ICC\n\nDETALLES:\n\nLleve una mascarilla mientras esté en Inwood Canoe Club \"boathouse\"\n\nTodos los visitantes deben poder nadar\n\nDebe tener un mínimo de 8 años de edad. Los participantes menores de 18 años deben traer a un padre o tutor. La decisión de permitir remar con nosotros a un menor depende de las condiciones de ese día y de la discreción del socio del club que dirija la actividad de Open House\n\nSuministramos bote, remo y PFD (chaleco salvavidas); no necesita experiencia previa\n\nVista calzado que se pueda mojar\n\nNo traiga muchas cosas de valor; tendrá que dejarlas en tierra o suministrar su propia bolsa impermeable para ellos. ICC no se responsabiliza por artículos perdidos o dañados en el embarcadero, en un bote o en la propiedad\n\nLos participantes menores de 18 años deben traer a un padre o tutor. La decisión de permitir remar con nosotros a un menor depende de las condiciones de ese día y de la discreción del socio del club que dirija la actividad de Open House\n\nNo se permite traer mascotas\n\nDesde que se inició el programa de Open House en 2002, el club ha ofrecido el único programa de kayak y canoa sin cita en el Norte de Manhattan. Por lo general, servimos a 1,000 visitantes cada verano.",
@@ -4450,17 +4324,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 3,
-        "first": "Aug 2",
+        "count": 2,
+        "first": "Aug 9",
         "last": "Aug 16"
       },
-      "start": "2026-08-02",
+      "start": "2026-08-09",
       "end": "2026-08-16",
       "oneDay": false,
       "desc": "This It's My Park season, volunteer with Stewards of Brust Park to do a general cleanup at Brust Park. We look forward to cleaning up the park with you!",
       "lat": 40.8899,
       "lng": -73.903603,
-      "url": "https://www.nycgovparks.org/events/2026/08/02/its-my-park-at-brust-park"
+      "url": "https://www.nycgovparks.org/events/2026/08/09/its-my-park-at-brust-park"
     },
     {
       "id": "nycp-it-s-my-park-at-east-river-esplanade-east-river-esplanade-570",
@@ -4513,32 +4387,6 @@
       "lat": 40.88229,
       "lng": -73.910017,
       "url": "https://www.nycgovparks.org/events/2026/08/09/its-my-park-at-ewen-park"
-    },
-    {
-      "id": "nycp-it-s-my-park-at-fort-washington-park-fort-washington-park-600",
-      "source": "nycparks",
-      "name": "It's My Park at Fort Washington Park",
-      "category": "social",
-      "tags": [
-        "philanthropy"
-      ],
-      "borough": "Manhattan",
-      "location": "Fort Washington Park",
-      "when": "Sun · 10:00 AM - 3:00 PM",
-      "dropIn": true,
-      "noOnlineReg": true,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 0,
-      "unlimited": true,
-      "start": "2026-08-02",
-      "end": "2026-08-02",
-      "oneDay": true,
-      "desc": "This It's My Park season, volunteer with The Birdhouse Crew for a general cleanup at 161 Community Birdhouse (161 Fort Washington Ave). We look forward to cleaning up the park with you!",
-      "lat": 40.84946,
-      "lng": -73.946592,
-      "url": "https://www.nycgovparks.org/events/2026/08/02/its-my-park-at-fort-washington-park"
     },
     {
       "id": "nycp-it-s-my-park-at-highbridge-park-basketball-courts-at-175th-and-amsterdam-in-highbridge-park-540",
@@ -4699,17 +4547,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 3,
-        "first": "Aug 2",
+        "count": 2,
+        "first": "Aug 9",
         "last": "Aug 16"
       },
-      "start": "2026-08-02",
+      "start": "2026-08-09",
       "end": "2026-08-16",
       "oneDay": false,
       "desc": "This It's My Park season, volunteer with Parent-Child Relationship Association to beautify McKinley Park. We look forward to cleaning up the park with you!",
       "lat": 40.626701,
       "lng": -74.016403,
-      "url": "https://www.nycgovparks.org/events/2026/08/02/its-my-park-at-mckinley-park"
+      "url": "https://www.nycgovparks.org/events/2026/08/09/its-my-park-at-mckinley-park"
     },
     {
       "id": "nycp-it-s-my-park-at-ralph-bunche-park-ralph-bunche-park-600",
@@ -4844,17 +4692,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 3,
-        "first": "Aug 2",
+        "count": 2,
+        "first": "Aug 9",
         "last": "Aug 16"
       },
-      "start": "2026-08-02",
+      "start": "2026-08-09",
       "end": "2026-08-16",
       "oneDay": false,
       "desc": "This It's My Park season, volunteer with Parent-Child Relationship Association to beautify Sunset Park. We look forward to cleaning up the park with you!",
       "lat": 40.646702,
       "lng": -74.002396,
-      "url": "https://www.nycgovparks.org/events/2026/08/02/its-my-park-at-sunset-park"
+      "url": "https://www.nycgovparks.org/events/2026/08/09/its-my-park-at-sunset-park"
     },
     {
       "id": "nycp-it-s-my-park-at-westerleigh-park-westerleigh-park-540",
@@ -4931,17 +4779,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 3,
-        "first": "Aug 2",
+        "count": 2,
+        "first": "Aug 9",
         "last": "Aug 16"
       },
-      "start": "2026-08-02",
+      "start": "2026-08-09",
       "end": "2026-08-16",
       "oneDay": false,
       "desc": "Berta Indeed presents \"Let the Music Play\", community jazz concerts featuring an array of local musicians and vocalists.",
       "lat": 40.830348,
       "lng": -73.94996,
-      "url": "https://www.nycgovparks.org/events/2026/08/02/jazz-in-the-park-at-ralph-ellison"
+      "url": "https://www.nycgovparks.org/events/2026/08/09/jazz-in-the-park-at-ralph-ellison"
     },
     {
       "id": "nycp-juggling-in-greeley-square-park-greeley-square-park-840",
@@ -7411,12 +7259,12 @@
       "spots": null,
       "unlimited": false,
       "sessions": {
-        "count": 10,
+        "count": 11,
         "first": "Aug 3",
-        "last": "Aug 14"
+        "last": "Aug 17"
       },
       "start": "2026-08-03",
-      "end": "2026-08-14",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Take part in a long-distance lap swim competition. To participate in the competition, please speak to an Aquatics Specialist on the pool deck and indicate this on your application. An awards ceremony will be held at the end of August to celebrate the health and fitness achievements of swimmers who complete 25 miles or more. Visit https://www.nycgovparks.org/events/lap-swim to register.",
       "lat": 40.6912,
@@ -7465,15 +7313,15 @@
       "minAge": 18,
       "spots": 29,
       "unlimited": false,
-      "regDeadline": "Registration is closed.",
-      "start": "2026-08-02",
+      "regDeadline": "Registration ends on August 9th, 2026 at 10:00 AM",
+      "start": "2026-08-09",
       "end": "2026-08-16",
       "oneDay": false,
       "instructor": "Jeana LaDelia",
       "desc": "This dance fitness program is based on ballroom dances, including those seen on Dancing \\r\nwith the Stars. This workout in disguise blends dance patterns, fitness, and music to create a \\r\nlow impact workout suitable for all levels.",
       "lat": 40.572922,
       "lng": -73.984398,
-      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=f381edc0-2459-4af8-b55e-0f35830f66fd&occurrenceDate=20260802"
+      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=f381edc0-2459-4af8-b55e-0f35830f66fd&occurrenceDate=20260809"
     },
     {
       "id": "nycp-latin-dance-fitness-sonia-sotomayor-community-center-1110",
@@ -7518,12 +7366,12 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 6,
+        "count": 7,
         "first": "Aug 3",
-        "last": "Aug 14"
+        "last": "Aug 17"
       },
       "start": "2026-08-03",
-      "end": "2026-08-14",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Le Carrousel Extravaganza is a lively, all-in-one entertainment experience featuring magic, puppetry, science, music, and storytelling. Designed to engage children of all ages, this dynamic program sparks imagination, encourages curiosity, and delivers fun-filled, interactive performances for every audience.LINEUP:All shows 10a-11aMusicAndy & Suzanna\nMonday, July 13\n\nFunkyTown Playground\nMondays: July 20, July 27, August 3, August 24 Wednesdays: September 16, September 23\n\nMr. Simon\nMonday, August 10MagicChris Capeheart\nFridays: June 26, August 21\n\nLee Barrett\nMonday, June 5\nFridays: July 10, August 14\n\nLoonie Louie\nFridays: July 3, August 7\nMonday, September 21\n\nMike Patrick\nFridays: June 19, July 24, August 28\n\nSilly Billy\nFridays: June 12, July 17\nMonday, September 7\n\nZach Alexander\nFridays: July 31,  August 28\nMonday, September 14ScienceCrazy Science\nMondays: June 8, June 15, June 22, June 29\nWednesdays: September 2, September 9Puppet ShowsLucky Duck Puppets\nMonday, August 31\n\nRepertorio Español/Scaramouches Puppet Theatre\nWednesday, July 29, August 5, August 12, August 19, August 26\n\nTeatro SEA\nWednesday, July 1, July 8, July 15, July 22\n\nWonderspark Puppets\nWednesdays: June 10, June 17, June 24StorytimeStoryFaces\nMonday, August 17BubblesBubble Parties with Sophie\nMonday, July 6\n\nPhoto credit: Jazmin Nahas",
       "lat": 40.7533,
@@ -7573,12 +7421,12 @@
       "spots": null,
       "unlimited": false,
       "sessions": {
-        "count": 10,
+        "count": 11,
         "first": "Aug 3",
-        "last": "Aug 14"
+        "last": "Aug 17"
       },
       "start": "2026-08-03",
-      "end": "2026-08-14",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Take part in a long-distance lap swim competition. To participate in the competition, please speak to an Aquatics Specialist on the pool deck and indicate this on your application. An awards ceremony will be held at the end of August to celebrate the health and fitness achievements of swimmers who complete 25 miles or more. Visit https://www.nycgovparks.org/events/lap-swim to register.",
       "lat": 40.701805,
@@ -7634,7 +7482,7 @@
       "unlimited": false,
       "regDeadline": "Registration ends on August 3rd, 2026 at 08:00 AM",
       "start": "2026-08-03",
-      "end": "2026-08-14",
+      "end": "2026-08-17",
       "oneDay": false,
       "instructor": "Anthony Seymour",
       "desc": "Line up and get ready to move in this line dance fitness class! You’ll have a blast with these low-moderate impact dance moves choreographed to your favorite songs. ",
@@ -7684,7 +7532,7 @@
       "unlimited": false,
       "regDeadline": "Registration ends on August 3rd, 2026 at 06:00 PM",
       "start": "2026-08-03",
-      "end": "2026-08-10",
+      "end": "2026-08-17",
       "oneDay": false,
       "instructor": "Malik Smith",
       "desc": "This circuit training class combines bodyweight resistance training and conditioning to provide you with a dynamic full body workout. Whether you are a beginner or looking for a challenge- this class for you! Come engage in exercises that target all muscle groups and get your heart pumping! ",
@@ -7739,12 +7587,12 @@
       "spots": null,
       "unlimited": false,
       "sessions": {
-        "count": 10,
+        "count": 11,
         "first": "Aug 3",
-        "last": "Aug 14"
+        "last": "Aug 17"
       },
       "start": "2026-08-03",
-      "end": "2026-08-14",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Take part in a long-distance lap swim competition. To participate in the competition, please speak to an Aquatics Specialist on the pool deck and indicate this on your application. An awards ceremony will be held at the end of August to celebrate the health and fitness achievements of swimmers who complete 25 miles or more. Visit https://www.nycgovparks.org/events/lap-swim to register.",
       "lat": 40.637199,
@@ -7886,12 +7734,12 @@
       "spots": null,
       "unlimited": false,
       "sessions": {
-        "count": 10,
+        "count": 11,
         "first": "Aug 3",
-        "last": "Aug 14"
+        "last": "Aug 17"
       },
       "start": "2026-08-03",
-      "end": "2026-08-14",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Take part in a long-distance lap swim competition. To participate in the competition, please speak to an Aquatics Specialist on the pool deck and indicate this on your application. An awards ceremony will be held at the end of August to celebrate the health and fitness achievements of swimmers who complete 25 miles or more. Visit https://www.nycgovparks.org/events/lap-swim to register.",
       "lat": 40.720156,
@@ -7920,29 +7768,6 @@
       "lat": 40.828175,
       "lng": -73.885321,
       "url": "https://www.nycgovparks.org/events/2026/08/08/medicinal-plant-id-walk"
-    },
-    {
-      "id": "nycp-microorganisms-exploration-paerdegat-park-lawn-in-paerdegat-park-720",
-      "source": "nycparks",
-      "name": "Microorganisms Exploration",
-      "category": "nature",
-      "borough": "Brooklyn",
-      "location": "Paerdegat Park Lawn (in Paerdegat Park)",
-      "when": "Sun · 12:00 PM - 1:00 PM",
-      "dropIn": true,
-      "noOnlineReg": true,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 0,
-      "unlimited": true,
-      "start": "2026-08-02",
-      "end": "2026-08-02",
-      "oneDay": true,
-      "desc": "View the natural world with your own eyes and through microscopes, as we zoom in on micro-organisms that are a vital part of our pond ecosystem.",
-      "lat": 40.638793,
-      "lng": -73.938189,
-      "url": "https://www.nycgovparks.org/events/2026/08/02/microorganisms-exploration"
     },
     {
       "id": "nycp-midtown-dance-mucho-s-estilo-s-in-greeley-square-park-greeley-square-park-1080",
@@ -8054,12 +7879,12 @@
       "spots": null,
       "unlimited": false,
       "sessions": {
-        "count": 2,
+        "count": 3,
         "first": "Aug 3",
-        "last": "Aug 10"
+        "last": "Aug 17"
       },
       "start": "2026-08-03",
-      "end": "2026-08-10",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Volunteer with us! We will be cleaning up litter to prevent it from entering the Bronx River.\n\nYour efforts not only protect wildlife & the rest of the Bronx River ecosystem, but they also help us identify the sources of trash so we can stop the pollution where it starts",
       "lat": 40.832798,
@@ -8270,7 +8095,7 @@
       "cost": "Free",
       "ages": "Best for kids",
       "minAge": 0,
-      "spots": 300,
+      "spots": 299,
       "unlimited": false,
       "regDeadline": "Registration ends on August 14th, 2026 at 08:30 PM",
       "start": "2026-08-14",
@@ -8545,33 +8370,6 @@
       "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=71cdc11e-c2d7-470f-8b29-dd515c36d8be&occurrenceDate=20260815"
     },
     {
-      "id": "nycp-movies-under-the-stars-goat-pg-playground-in-elmhurst-park-1230",
-      "source": "nycparks",
-      "name": "Movies Under the Stars: Goat | PG",
-      "category": "performances",
-      "tags": [
-        "youth"
-      ],
-      "borough": "Queens",
-      "location": "Playground (in Elmhurst Park)",
-      "when": "Sun · 8:30 PM - 10:15 PM",
-      "dropIn": false,
-      "noOnlineReg": false,
-      "cost": "Free",
-      "ages": "Best for kids",
-      "minAge": 0,
-      "spots": 296,
-      "unlimited": false,
-      "regDeadline": "Registration is closed.",
-      "start": "2026-08-02",
-      "end": "2026-08-02",
-      "oneDay": true,
-      "desc": "Grab a blanket and come enjoy a movie in a neighborhood park or playground! This summer, NYC Parks and The Mayor’s Office of Media and Entertainment will host family-friendly movie showings across the five boroughs. \\r\n\\r\nA small goat with big dreams gets a once-in-a-lifetime shot to join the pros and play roarball, a high-intensity, co-ed, full-contact sport dominated by the fastest, fiercest animals in the world.\\r\n\\r\nRated PG\\r\nThe following movie has been rated PG. Some material may not be suitable for children. The film should be investigated further by parents before they let their younger children attend.\\r\n\\r\nMovies begin at dusk. This event is FREE and open to the public. Glass bottles and alcoholic beverages are strictly prohibited. In the event of heavy rain or extreme weather, the screening may be canceled. The decision to cancel the event will be made prior to the screening and will be promptly posted on our website.\\r\n\\r\nFor more information visit nyc.gov/parks or call 311. Contact (212) 360-1430 or accessibility@parks.nyc.gov for more information regarding accessibility.\\r\n",
-      "lat": 40.730598,
-      "lng": -73.885001,
-      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=dc371140-0a5a-44f5-b56c-35238a4c6703&occurrenceDate=20260802"
-    },
-    {
       "id": "nycp-movies-under-the-stars-grease-1978-west-12th-st-boardwalk-in-coney-island-beach-boardwalk-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: Grease (1978)",
@@ -8632,7 +8430,7 @@
       "ages": "Under 13",
       "minAge": 0,
       "maxAge": 12,
-      "spots": 293,
+      "spots": 292,
       "unlimited": false,
       "regDeadline": "Registration ends on August 6th, 2026 at 08:30 PM",
       "start": "2026-08-06",
@@ -8949,6 +8747,31 @@
       "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=35ff2ab7-3a94-48a2-81fe-8a42ed5b3f27&occurrenceDate=20260812"
     },
     {
+      "id": "nycp-movies-under-the-stars-project-hail-mary-2026-rated-pg-13-lawn-area-in-cunningham-park-1215",
+      "source": "nycparks",
+      "name": "Movies Under the Stars: Project Hail Mary (2026) - Rated PG-13",
+      "category": "performances",
+      "borough": "Queens",
+      "location": "Lawn Area (in Cunningham Park)",
+      "when": "Mon · 8:15 PM - 10:30 PM",
+      "dropIn": false,
+      "noOnlineReg": false,
+      "cost": "Free",
+      "ages": "Under 13",
+      "minAge": 0,
+      "maxAge": 12,
+      "spots": 200,
+      "unlimited": false,
+      "regDeadline": "Registration ends on August 17th, 2026 at 08:15 PM",
+      "start": "2026-08-17",
+      "end": "2026-08-17",
+      "oneDay": true,
+      "desc": "Grab a blanket and come enjoy a movie in a neighborhood park or playground! This summer, NYC Parks and The Mayor’s Office of Media and Entertainment will host family-friendly movie showings across the five boroughs. \\r\n\\r\nIn the near future, astronaut Ryland Grace wakes from a coma afflicted with amnesia. He gradually remembers that he was sent to the Tau Ceti solar system, 12 light-years from Earth, to find a means of reversing a solar dimming event that could cause the extinction of humanity.\\r\n\\r\nRated PG-13\\r\nThe following movie has been rated PG-13. Some material may be inappropriate for young children. Parents may wish to consider whether it should be viewed by those under 13.\\r\n\\r\nMovies begin at dusk. This event is FREE and open to the public. Glass bottles and alcoholic beverages are strictly prohibited. In the event of heavy rain or extreme weather, the screening may be canceled. The decision to cancel the event will be made prior to the screening and will be promptly posted on our website.\\r\n\\r\nFor more information visit nyc.gov/parks or call 311. Contact (212) 360-1430 or accessibility@parks.nyc.gov for more information regarding accessibility.\\r\n",
+      "lat": 40.728261,
+      "lng": -73.775403,
+      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=a1d1b32b-cd83-42c9-b6b9-d66b12ea50c7&occurrenceDate=20260817"
+    },
+    {
       "id": "nycp-movies-under-the-stars-robot-dreams-harlem-art-park-open-area-in-harlem-art-park-1230",
       "source": "nycparks",
       "name": "Movies Under the Stars: Robot Dreams",
@@ -9115,7 +8938,7 @@
       "cost": "Free",
       "ages": "Best for kids",
       "minAge": 0,
-      "spots": 187,
+      "spots": 186,
       "unlimited": false,
       "regDeadline": "Registration ends on August 6th, 2026 at 08:30 PM",
       "start": "2026-08-06",
@@ -9713,29 +9536,6 @@
       "url": "https://www.nyrr.org/openrun/parks/canarsie-park?utm_source=NYC+Gov+Parks&utm_medium=Website+&utm_campaign=Canarsie+Park+"
     },
     {
-      "id": "nycp-nyrr-open-run-conference-house-park-conference-house-park-525",
-      "source": "nycparks",
-      "name": "NYRR Open Run: Conference House Park",
-      "category": "fitness",
-      "borough": "Staten Island",
-      "location": "Conference House Park",
-      "when": "Sun · 8:45 AM - 11:00 AM",
-      "dropIn": false,
-      "noOnlineReg": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": null,
-      "unlimited": false,
-      "start": "2026-08-02",
-      "end": "2026-08-02",
-      "oneDay": true,
-      "desc": "NYRR Open Run Brings free, 5K weekly community-led runs, to neighborhood parks across the greater New York City area. The program is free and open to runners and walkers of all ages, abilities, and experience levels.\n\nLocated at the southernmost point of New York state, Conference House Park features four historic buildings that trace Staten Island's 300+ year history, breathtaking views of the Raritan Bay, extensive hiking and biking trails, and more.",
-      "lat": 40.502602,
-      "lng": -74.251801,
-      "url": "https://www.nyrr.org/openrun/parks/conference-house-park?utm_source=NYC+Gov+Parks&utm_medium=Website+&utm_campaign=Conference+House+Park"
-    },
-    {
       "id": "nycp-nyrr-open-run-conference-house-park-dog-days-of-summer-conference-house-park-540",
       "source": "nycparks",
       "name": "NYRR Open Run: Conference House Park Dog Days of Summer",
@@ -9802,11 +9602,11 @@
       "spots": null,
       "unlimited": false,
       "sessions": {
-        "count": 3,
-        "first": "Aug 2",
+        "count": 2,
+        "first": "Aug 9",
         "last": "Aug 16"
       },
-      "start": "2026-08-02",
+      "start": "2026-08-09",
       "end": "2026-08-16",
       "oneDay": false,
       "desc": "NYRR Open Run brings free, 5K weekly community-led runs, to neighborhood parks across the greater New York City area. The program is free and open to runners and walkers of all ages, abilities, and experience levels.\n\nOne of the largest parks in Queens, Cunningham Park was built between 1928 and 1944 and offers culture, sports (including a large tennis facility), and nature activities and facilities.",
@@ -9926,14 +9726,9 @@
       "minAge": 0,
       "spots": null,
       "unlimited": false,
-      "sessions": {
-        "count": 2,
-        "first": "Aug 2",
-        "last": "Aug 9"
-      },
-      "start": "2026-08-02",
+      "start": "2026-08-09",
       "end": "2026-08-09",
-      "oneDay": false,
+      "oneDay": true,
       "desc": "NYRR Open Run Brings free, 5K weekly community-led runs, to neighborhood parks across the greater New York City area. The program is free and open to runners and walkers of all ages, abilities, and experience levels.\n\nMarine Park serves the nearby communities of Canarsie, Flatlands, Mill Basin, Bergen Beach, and others. The course is flat and includes no sharp turns.",
       "lat": 40.607944,
       "lng": -73.937465,
@@ -10160,16 +9955,16 @@
       "unlimited": true,
       "sessions": {
         "count": 15,
-        "first": "Aug 2",
-        "last": "Aug 16"
+        "first": "Aug 3",
+        "last": "Aug 17"
       },
-      "start": "2026-08-02",
-      "end": "2026-08-16",
+      "start": "2026-08-03",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Terra cotta sculpture garden featuring antique architectural ornaments from Tottenville's Atlantic Terra Cotta Company (west side lawn of Biddle House).\n\nNYC Parks and the Tottenville Historical Society invite you to visit a unique collection of terracotta artifacts that chronicle turn-of-the-twentieth-century architectural styles common in New York City and across the United States.",
       "lat": 40.505546,
       "lng": -74.254194,
-      "url": "https://www.nycgovparks.org/events/2026/08/02/ongoing-outdoor-museum-exhibit-alices-terracotta-garden"
+      "url": "https://www.nycgovparks.org/events/2026/08/03/ongoing-outdoor-museum-exhibit-alices-terracotta-garden"
     },
     {
       "id": "nycp-open-house-at-ocean-breeze-athletic-complex-ocean-breeze-track-field-athletic-complex-in-ocean-breeze-park-360",
@@ -10367,12 +10162,12 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 2,
+        "count": 3,
         "first": "Aug 3",
-        "last": "Aug 10"
+        "last": "Aug 17"
       },
       "start": "2026-08-03",
-      "end": "2026-08-10",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Never heard of Pétanque? Our expert friends at NYC's oldest running Pétanque club will teach you. This French lawn bowling game from the early 20th century is easy to learn, and we provide the boules. Just bring yourself!",
       "lat": 40.730311,
@@ -10510,12 +10305,12 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 10,
+        "count": 11,
         "first": "Aug 3",
-        "last": "Aug 14"
+        "last": "Aug 17"
       },
       "start": "2026-08-03",
-      "end": "2026-08-14",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "A five, six, seven, eight…come on down and swing along to the best ragtime, stride, and jazz the Big Apple has to offer. With special performances on select Thursdays and sprinkled spontaneously throughout the season.",
       "lat": 40.753399,
@@ -10811,17 +10606,44 @@
       "spots": null,
       "unlimited": false,
       "sessions": {
-        "count": 6,
+        "count": 7,
         "first": "Aug 3",
-        "last": "Aug 14"
+        "last": "Aug 17"
       },
       "start": "2026-08-03",
-      "end": "2026-08-14",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Take part in a long-distance lap swim competition. To participate in the competition, please speak to an Aquatics Specialist on the pool deck and indicate this on your application. An awards ceremony will be held at the end of August to celebrate the health and fitness achievements of swimmers who complete 25 miles or more. Visit https://www.nycgovparks.org/events/lap-swim to register.",
       "lat": 40.672396,
       "lng": -74.004087,
       "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=acc80c1b-d6ca-4023-b8ff-4e8c292529f6"
+    },
+    {
+      "id": "nycp-reel-talks-at-bryant-park-how-kung-fu-movies-changed-the-world-reading-room-in-bryant-park-750",
+      "source": "nycparks",
+      "name": "Reel Talks at Bryant Park: How Kung Fu Movies Changed the World",
+      "category": "learn",
+      "tags": [
+        "performances",
+        "accessible"
+      ],
+      "borough": "Manhattan",
+      "location": "Reading Room (in Bryant Park)",
+      "when": "Mon · 12:30 PM - 1:30 PM",
+      "dropIn": true,
+      "noOnlineReg": true,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 0,
+      "unlimited": true,
+      "start": "2026-08-17",
+      "end": "2026-08-17",
+      "oneDay": true,
+      "desc": "In 1973, the Hong Kong movie Five Fingers of Death opened in New York City and became a blockbuster hit. Within five years, Bruce Lee posters were on the walls of every American bedroom, martial arts movies were blowing up the box office, appearing on TV screens, and influencing everything from Hollywood to hip hop. Here's the story of how a bunch of Asian, Black, and Latino kids learned how to do kung fu and changed pop culture for good.\n\nGrady Hendrix is the New York Times bestselling author of How to Sell a Haunted House, Witchcraft for Wayward Girls, and many more. His history of the horror paperback boom of the '70s and '80s, Paperbacks from Hell, won the Stoker Award for Outstanding Achievement in Nonfiction. He's a longtime journalist who has covered the Asian film industries for Variety, Film Comment, and Sight & Sound, and is one of the co-founders of Subway Cinema and the New York Asian Film Festival. He also wrote the 2019 Netflix documentary, Iron Fists & Kung Fu Kicks.\n\nScott Adlerberg is the author of five novels, including Graveyard Love, Jack Waters, and The Screaming Child.  He has written many short stories and contributes pieces regularly to sites such as CrimeReads and Mystery Tribune.  He was born in New York City and lives in Brooklyn.",
+      "lat": 40.754117,
+      "lng": -73.983369,
+      "url": "https://www.nycgovparks.org/events/2026/08/17/reel-talks-at-bryant-park-how-kung-fu-movies-changed-the-wor"
     },
     {
       "id": "nycp-reel-talks-at-bryant-park-the-making-of-rear-window-reading-room-in-bryant-park-750",
@@ -10924,7 +10746,7 @@
       "unlimited": false,
       "regDeadline": "Registration ends on August 3rd, 2026 at 06:30 PM",
       "start": "2026-08-03",
-      "end": "2026-08-10",
+      "end": "2026-08-17",
       "oneDay": false,
       "instructor": "Patricia Collins",
       "desc": "Come dance to classic pop tunes: Top 40, Disco, Electronic and more!  This class is 45 minutes of peppy beats to enhance your cardio conditioning.  A low-impact and fun workout; it is open to any fitness level.  Let\\u0027s dance away blue Monday! ",
@@ -11210,7 +11032,7 @@
       "unlimited": false,
       "regDeadline": "Registration ends on August 3rd, 2026 at 10:30 AM",
       "start": "2026-08-03",
-      "end": "2026-08-12",
+      "end": "2026-08-17",
       "oneDay": false,
       "instructor": "Zarina Noor",
       "desc": "This low impact cardio workout consists of functional movement exercises designed to make daily activities easier to perform.  \\r\n\\r\nParticipants must be 60+ to attend this class. The site requires a separate form for the Department of Aging for all participants. Please come earlier to fill out the consent form. ",
@@ -12106,12 +11928,12 @@
       "spots": 0,
       "unlimited": false,
       "sessions": {
-        "count": 4,
+        "count": 5,
         "first": "Aug 7",
-        "last": "Aug 14"
+        "last": "Aug 17"
       },
       "start": "2026-08-07",
-      "end": "2026-08-14",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Through our Learn to Swim program, your children will put the 'fun' in fundamentals and learn basic swimming and safety skills! During this two-week outdoor program, our Aquatic Specialists will teach your children (ages 6 to 17 years old) basic swimming skills, and how to stay safe around the water. Registration for this program takes place by lottery drawing. Visit https://nyc.gov/parks/learntoswim for rules and regulations.",
       "lat": 40.840685,
@@ -12164,12 +11986,12 @@
       "spots": null,
       "unlimited": false,
       "sessions": {
-        "count": 4,
+        "count": 5,
         "first": "Aug 7",
-        "last": "Aug 14"
+        "last": "Aug 17"
       },
       "start": "2026-08-07",
-      "end": "2026-08-14",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Through our Learn to Swim program, your children will put the 'fun' in fundamentals and learn basic swimming and safety skills! During this two-week outdoor program, our Aquatic Specialists will teach your children (ages 6 to 17 years old) basic swimming skills, and how to stay safe around the water. Registration for this program takes place by lottery drawing. Visit https://nyc.gov/parks/learntoswim for rules and regulations.",
       "lat": 40.719952,
@@ -12193,12 +12015,12 @@
       "spots": null,
       "unlimited": false,
       "sessions": {
-        "count": 4,
+        "count": 5,
         "first": "Aug 7",
-        "last": "Aug 14"
+        "last": "Aug 17"
       },
       "start": "2026-08-07",
-      "end": "2026-08-14",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Through our Learn to Swim program, your children will put the 'fun' in fundamentals and learn basic swimming and safety skills! During this two-week outdoor program, our Aquatic Specialists will teach your children (ages 6 to 17 years old) basic swimming skills, and how to stay safe around the water. Registration for this program takes place by lottery drawing. Visit https://nyc.gov/parks/learntoswim for rules and regulations.",
       "lat": 40.719952,
@@ -12222,12 +12044,12 @@
       "spots": null,
       "unlimited": false,
       "sessions": {
-        "count": 4,
+        "count": 5,
         "first": "Aug 7",
-        "last": "Aug 14"
+        "last": "Aug 17"
       },
       "start": "2026-08-07",
-      "end": "2026-08-14",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Through our Learn to Swim program, your children will put the 'fun' in fundamentals and learn basic swimming and safety skills! During this two-week outdoor program, our Aquatic Specialists will teach your children (ages 6 to 17 years old) basic swimming skills, and how to stay safe around the water. Registration for this program takes place by lottery drawing. Visit https://nyc.gov/parks/learntoswim for rules and regulations.",
       "lat": 40.719952,
@@ -12309,12 +12131,12 @@
       "spots": null,
       "unlimited": false,
       "sessions": {
-        "count": 4,
+        "count": 5,
         "first": "Aug 7",
-        "last": "Aug 14"
+        "last": "Aug 17"
       },
       "start": "2026-08-07",
-      "end": "2026-08-14",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Through our Learn to Swim program, your children will put the 'fun' in fundamentals and learn basic swimming and safety skills! During this two-week outdoor program, our Aquatic Specialists will teach your children (ages 6 to 17 years old) basic swimming skills, and how to stay safe around the water. Registration for this program takes place by lottery drawing. Visit https://nyc.gov/parks/learntoswim for rules and regulations.",
       "lat": 40.6912,
@@ -12338,12 +12160,12 @@
       "spots": 0,
       "unlimited": false,
       "sessions": {
-        "count": 4,
+        "count": 5,
         "first": "Aug 7",
-        "last": "Aug 14"
+        "last": "Aug 17"
       },
       "start": "2026-08-07",
-      "end": "2026-08-14",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Through our Learn to Swim program, your children will put the 'fun' in fundamentals and learn basic swimming and safety skills! During this two-week outdoor program, our Aquatic Specialists will teach your children (ages 6 to 17 years old) basic swimming skills, and how to stay safe around the water. Registration for this program takes place by lottery drawing. Visit https://nyc.gov/parks/learntoswim for rules and regulations.",
       "lat": 40.6912,
@@ -12367,12 +12189,12 @@
       "spots": 0,
       "unlimited": false,
       "sessions": {
-        "count": 4,
+        "count": 5,
         "first": "Aug 7",
-        "last": "Aug 14"
+        "last": "Aug 17"
       },
       "start": "2026-08-07",
-      "end": "2026-08-14",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Through our Learn to Swim program, your children will put the 'fun' in fundamentals and learn basic swimming and safety skills! During this two-week outdoor program, our Aquatic Specialists will teach your children (ages 6 to 17 years old) basic swimming skills, and how to stay safe around the water. Registration for this program takes place by lottery drawing. Visit https://nyc.gov/parks/learntoswim for rules and regulations.",
       "lat": 40.6912,
@@ -12511,12 +12333,12 @@
       "spots": null,
       "unlimited": false,
       "sessions": {
-        "count": 4,
+        "count": 5,
         "first": "Aug 7",
-        "last": "Aug 14"
+        "last": "Aug 17"
       },
       "start": "2026-08-07",
-      "end": "2026-08-14",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Through our Learn to Swim program, your children will put the 'fun' in fundamentals and learn basic swimming and safety skills! During this two-week outdoor program, our Aquatic Specialists will teach your children (ages 6 to 17 years old) basic swimming skills, and how to stay safe around the water. Registration for this program takes place by lottery drawing. Visit https://nyc.gov/parks/learntoswim for rules and regulations.",
       "lat": 40.701805,
@@ -12617,12 +12439,12 @@
       "spots": null,
       "unlimited": false,
       "sessions": {
-        "count": 3,
+        "count": 4,
         "first": "Aug 10",
-        "last": "Aug 13"
+        "last": "Aug 17"
       },
       "start": "2026-08-10",
-      "end": "2026-08-13",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Through our Learn to Swim program, your children will put the 'fun' in fundamentals and learn basic swimming and safety skills! During this two-week outdoor program, our Aquatic Specialists will teach your children (ages 6 to 17 years old) basic swimming skills, and how to stay safe around the water. Registration for this program takes place by lottery drawing. Visit https://nyc.gov/parks/learntoswim for rules and regulations.",
       "lat": 40.637199,
@@ -12646,12 +12468,12 @@
       "spots": 0,
       "unlimited": false,
       "sessions": {
-        "count": 3,
+        "count": 4,
         "first": "Aug 10",
-        "last": "Aug 13"
+        "last": "Aug 17"
       },
       "start": "2026-08-10",
-      "end": "2026-08-13",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Through our Learn to Swim program, your children will put the 'fun' in fundamentals and learn basic swimming and safety skills! During this two-week outdoor program, our Aquatic Specialists will teach your children (ages 6 to 17 years old) basic swimming skills, and how to stay safe around the water. Registration for this program takes place by lottery drawing. Visit https://nyc.gov/parks/learntoswim for rules and regulations.",
       "lat": 40.637199,
@@ -12675,12 +12497,12 @@
       "spots": 0,
       "unlimited": false,
       "sessions": {
-        "count": 4,
+        "count": 5,
         "first": "Aug 7",
-        "last": "Aug 14"
+        "last": "Aug 17"
       },
       "start": "2026-08-07",
-      "end": "2026-08-14",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Through our Learn to Swim program, your children will put the 'fun' in fundamentals and learn basic swimming and safety skills! During this two-week outdoor program, our Aquatic Specialists will teach your children (ages 6 to 17 years old) basic swimming skills, and how to stay safe around the water. Registration for this program takes place by lottery drawing. Visit https://nyc.gov/parks/learntoswim for rules and regulations.",
       "lat": 40.637199,
@@ -12732,12 +12554,12 @@
       "spots": null,
       "unlimited": false,
       "sessions": {
-        "count": 4,
+        "count": 5,
         "first": "Aug 7",
-        "last": "Aug 14"
+        "last": "Aug 17"
       },
       "start": "2026-08-07",
-      "end": "2026-08-14",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Through our Learn to Swim program, your children will put the 'fun' in fundamentals and learn basic swimming and safety skills! During this two-week outdoor program, our Aquatic Specialists will teach your children (ages 6 to 17 years old) basic swimming skills, and how to stay safe around the water. Registration for this program takes place by lottery drawing. Visit https://nyc.gov/parks/learntoswim for rules and regulations.",
       "lat": 40.720156,
@@ -12845,12 +12667,12 @@
       "spots": 0,
       "unlimited": false,
       "sessions": {
-        "count": 4,
+        "count": 5,
         "first": "Aug 7",
-        "last": "Aug 14"
+        "last": "Aug 17"
       },
       "start": "2026-08-07",
-      "end": "2026-08-14",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "The Learn to Swim program puts the fun in fundamentals and teaches basic swimming and safety skills. The program offers tots, from 1 1/2 to 5 years old, the opportunity to become comfortable in the water and prepare to learn to swim. Parents/Guardians must accompany tots in the water. Registration for this program takes place by lottery drawing. Visit https://nyc.gov/parks/learntoswim for rules and regulations.",
       "lat": 40.701805,
@@ -13208,29 +13030,6 @@
       "url": "https://www.nycgovparks.org/events/2026/08/04/stargazing-on-the-high-line"
     },
     {
-      "id": "nycp-staten-island-outloud-that-ever-loyal-island-greenbelt-nature-center-in-blood-root-valley-840",
-      "source": "nycparks",
-      "name": "Staten Island OutLOUD: \"That Ever Loyal Island\"",
-      "category": "learn",
-      "borough": "Staten Island",
-      "location": "Greenbelt Nature Center (in Blood Root Valley)",
-      "when": "Sun · 2:00 PM - 4:00 PM",
-      "dropIn": false,
-      "noOnlineReg": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": null,
-      "unlimited": false,
-      "start": "2026-08-02",
-      "end": "2026-08-02",
-      "oneDay": true,
-      "desc": "Join Staten Island OutLOUD as we celebrate the summer season and explore local Revolutionary War history.Join Staten Island OutLOUD as we celebrate the summer season and explore local Revolutionary War history by reading and discussing an excerpt of That Ever Loyal Island by Professor Philip Papas. For details, visit OutLOUD's website, www.statenislandoutloud.org Good to knowHighlights2 hoursIn personHighlights2 hoursIn personLocationGreenbelt Nature Center700 Rockland Ave Staten Island, NY 10314How do you want to get there?DrivingPublic transportBikingWalkingShow mapOrganized byGGreenbelt ConservancyContact FollowReport this eventMore events from Greenbelt ConservancyDiscover more events from Greenbelt Conservancy, from Community to other experiences you might love.You might also like...Browse more events with different dates, prices, and formats to find your next great experience.Get ticketsUse EventbriteHow it WorksPricingEvent BlogPlan EventsConference Management SoftwareEventbrite + YogaNonprofits & FundraisersSell TicketsEvent Management & PlanningOnline Event RegistrationOnline RSVPMusic Venues & PromotersEvent Equipment & StaffingEventbrite Sales NumberFind EventsBrowse Online EventsGet the Eventbrite AppConnect with UsReport this eventHelp CenterTermsPrivacyCA Privacy NoticeAccessibilityCommunity GuidelinesManage Cookie PreferencesDo Not Sell or Share My Personal InformationPrivacyEventbrite + Ticketfly",
-      "lat": 40.588402,
-      "lng": -74.139099,
-      "url": "https://www.eventbrite.com/e/staten-island-outloud-that-ever-loyal-island-tickets-1993748238652?aff=oddtdtcreator&keep_tld=true"
-    },
-    {
       "id": "nycp-step-aerobics-new-settlement-community-center-630",
       "source": "nycparks",
       "name": "Step Aerobics",
@@ -13246,7 +13045,7 @@
       "unlimited": false,
       "regDeadline": "Registration ends on August 3rd, 2026 at 10:30 AM",
       "start": "2026-08-03",
-      "end": "2026-08-10",
+      "end": "2026-08-17",
       "oneDay": false,
       "instructor": "Melissa Perez",
       "desc": "Step Aerobics is a cardio workout that will elevate your heart rate, strengthen muscles, and improve coordination and balance.  \\r\n\\r\nPlease register for updates about cancellations. Class is first come, first served, but for safety reasons, participants will not be allowed to join after the first fifteen minutes of class. New Settlement Community Center requires all first-time participants to create a profile with the site upon arrival so please arrive at least 15 minutes in advance. ",
@@ -13354,17 +13153,17 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 16,
+      "spots": 19,
       "unlimited": false,
-      "regDeadline": "Registration is closed.",
-      "start": "2026-08-02",
+      "regDeadline": "Registration ends on August 9th, 2026 at 09:30 AM",
+      "start": "2026-08-09",
       "end": "2026-08-16",
       "oneDay": false,
       "instructor": "Chelsie Reid",
       "desc": " This circuit training class combines bodyweight resistance training and conditioning to provide you with a dynamic full body workout. Whether you are a beginneror looking for a challenge; this class for all fitness levels and modifications are always provided. Come engage in exercises that target all muscle groups, get your heart pumping, and connect with people in your community!",
       "lat": 40.6735,
       "lng": -73.934799,
-      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=8989a499-4c44-4d93-82d0-923adb48e6e0&occurrenceDate=20260802"
+      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=8989a499-4c44-4d93-82d0-923adb48e6e0&occurrenceDate=20260809"
     },
     {
       "id": "nycp-strength-in-motion-nypl-spuyten-duyvil-780",
@@ -13430,7 +13229,7 @@
       "unlimited": false,
       "regDeadline": "Registration ends on August 3rd, 2026 at 06:00 PM",
       "start": "2026-08-03",
-      "end": "2026-08-10",
+      "end": "2026-08-17",
       "oneDay": false,
       "instructor": "N'keya Peters-Camille",
       "desc": "Strong \\u0026 Steady Circuit Training is a full-body workout designed for high-energy fun. This class focuses on the mind-body connection, combining steady, controlled movements with high-energy sequences to build strength. Come ready to move, breathe, and leave feeling energized.",
@@ -13688,12 +13487,12 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 4,
+        "count": 5,
         "first": "Aug 3",
-        "last": "Aug 13"
+        "last": "Aug 17"
       },
       "start": "2026-08-03",
-      "end": "2026-08-13",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Art in the Park invites children ages 3-8 to learn about their local environment through a mix of arts & crafts activities. This hands-on, place-based curriculum builds kids' appreciation for the plants, pollinators, and wildlife found in Riverside Park, and fosters their creativity.\n\nMondays and Thursdays at Camel Playground; Tuesdays and Wednesdays at Hippo Playground. Art in the Park is fully funded by proceeds from the Hippo Playground Spring Fair.",
       "lat": 40.82562,
@@ -14003,17 +13802,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 3,
-        "first": "Aug 2",
+        "count": 2,
+        "first": "Aug 9",
         "last": "Aug 16"
       },
-      "start": "2026-08-02",
+      "start": "2026-08-09",
       "end": "2026-08-16",
       "oneDay": false,
       "desc": "Coaches from The Movement Creative teach the basics of parkour during this 6-week program. Build your strength, coordination, and mobility with drills, partner exercise, and games. All ages!",
       "lat": 40.780085,
       "lng": -73.988498,
-      "url": "https://www.nycgovparks.org/events/2026/08/02/summer-on-the-hudson-over-under-through"
+      "url": "https://www.nycgovparks.org/events/2026/08/09/summer-on-the-hudson-over-under-through"
     },
     {
       "id": "nycp-summer-on-the-hudson-pier-i-picture-show-la-chimera-2023-pier-i-in-riverside-park-south-1230",
@@ -14205,33 +14004,6 @@
       "url": "https://www.nycgovparks.org/events/2026/08/16/summer-on-the-hudson-sun-gaze-sundays"
     },
     {
-      "id": "nycp-summer-on-the-hudson-sunset-sounds-125th-street-and-marginal-street-in-west-harlem-piers-1140",
-      "source": "nycparks",
-      "name": "Summer on the Hudson: Sunset Sounds",
-      "category": "nature",
-      "tags": [
-        "music",
-        "performances"
-      ],
-      "borough": "Manhattan",
-      "location": "125th Street and Marginal Street (in West Harlem Piers)",
-      "when": "Fri · 7:00 PM - 8:30 PM",
-      "dropIn": true,
-      "noOnlineReg": true,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 0,
-      "unlimited": true,
-      "start": "2026-08-07",
-      "end": "2026-08-07",
-      "oneDay": true,
-      "desc": "The Jazz Foundation of America presents a spirited sunset concert featuring renowned bandleaders playing a variety of jazz and Latin styles.",
-      "lat": 40.818836,
-      "lng": -73.960915,
-      "url": "https://www.nycgovparks.org/events/2026/08/07/summer-on-the-hudson-sunset-sounds"
-    },
-    {
       "id": "nycp-summer-on-the-hudson-sunset-yoga-145th-and-the-hudson-river-in-riverside-park-1110",
       "source": "nycparks",
       "name": "Summer on the Hudson: Sunset Yoga",
@@ -14281,17 +14053,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 3,
-        "first": "Aug 2",
+        "count": 2,
+        "first": "Aug 9",
         "last": "Aug 16"
       },
-      "start": "2026-08-02",
+      "start": "2026-08-09",
       "end": "2026-08-16",
       "oneDay": false,
       "desc": "Join Silvana Pizzuti to learn and practice Tai Chi, a slow moving martial art with health benefits for all fitness levels. Wear comfortable clothes and sunscreen.",
       "lat": 40.792,
       "lng": -73.978996,
-      "url": "https://www.nycgovparks.org/events/2026/08/02/summer-on-the-hudson-tai-chi"
+      "url": "https://www.nycgovparks.org/events/2026/08/09/summer-on-the-hudson-tai-chi"
     },
     {
       "id": "nycp-summer-on-the-hudson-tots-soccer-71st-street-soccer-field-and-basketball-courts-in-riverside-park-south-570",
@@ -14389,26 +14161,26 @@
       "borough": "Staten Island",
       "location": "Greenbelt Recreation Center (in Blood Root Valley)",
       "when": "Sun & Sat · 8:00 AM - 2:00 PM",
-      "dropIn": true,
-      "noOnlineReg": true,
+      "dropIn": false,
+      "noOnlineReg": false,
       "cost": "Free",
       "ages": "Best for kids",
       "minAge": 0,
       "spots": 0,
-      "unlimited": true,
+      "unlimited": false,
       "sessions": {
-        "count": 5,
-        "first": "Aug 2",
+        "count": 4,
+        "first": "Aug 8",
         "last": "Aug 16"
       },
-      "start": "2026-08-02",
+      "start": "2026-08-08",
       "end": "2026-08-16",
       "oneDay": false,
       "instructor": "Donald Kane",
       "desc": "The Summer Sports Experience program participants receive age-appropriate instruction through organized clinics, skill stations, drills, conditioning, and live game situations led by experienced NYC Parks staff",
       "lat": 40.591983,
       "lng": -74.139472,
-      "url": "https://www.nycgovparks.org/events/2026/08/02/summer-sports-experience-basketball"
+      "url": "https://www.nycgovparks.org/events/2026/08/08/summer-sports-experience-basketball"
     },
     {
       "id": "nycp-summer-sports-experience-basketball-seasonal-clinics-at-faber-recreation-center-multi-use-room-b-in-faber-pool-and-park-720",
@@ -15039,12 +14811,12 @@
       "url": "https://www.eventbrite.com/e/high-line-plinth-lectures-meditations-the-nature-of-light-tickets-1991935356272"
     },
     {
-      "id": "nycp-the-living-forest-of-inwood-hill-park-inwood-hill-park-780",
+      "id": "nycp-the-living-forest-of-inwood-hill-park-seaman-avenue-and-isham-street-in-inwood-hill-park-780",
       "source": "nycparks",
       "name": "The Living Forest of Inwood Hill Park",
       "category": "nature",
       "borough": "Manhattan",
-      "location": "Inwood Hill Park",
+      "location": "Seaman Avenue and Isham Street (in Inwood Hill Park)",
       "when": "Sat · 1:00 PM - 2:30 PM",
       "dropIn": true,
       "noOnlineReg": true,
@@ -15057,8 +14829,8 @@
       "end": "2026-08-15",
       "oneDay": true,
       "desc": "Join the Urban Park Rangers on an exploration of the forest from fungal networks that live out of sight in the soil to towering canopies that are hundreds of years old. Learn how wildlife, plants, and all the micro ecosystems of the forest collaborate to persevere through major climactic change and join in on a discussion considering the wisdom that these woodlands hold in the future of New York City's green spaces.",
-      "lat": 40.873001,
-      "lng": -73.9254,
+      "lat": 40.869701,
+      "lng": -73.920601,
       "url": "https://www.nycgovparks.org/events/2026/08/15/the-living-forest-of-inwood-hill-park"
     },
     {
@@ -15353,33 +15125,6 @@
       "url": "https://www.nycgovparks.org/reg/trees-count/20225"
     },
     {
-      "id": "nycp-trees-count-at-franz-sigel-park-franz-sigel-park-600",
-      "source": "nycparks",
-      "name": "Trees Count at Franz Sigel Park",
-      "category": "nature",
-      "tags": [
-        "learn",
-        "philanthropy"
-      ],
-      "borough": "Bronx",
-      "location": "Franz Sigel Park",
-      "when": "Sun · 10:00 AM - 12:00 PM",
-      "dropIn": false,
-      "noOnlineReg": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": null,
-      "unlimited": false,
-      "start": "2026-08-02",
-      "end": "2026-08-02",
-      "oneDay": true,
-      "desc": "Volunteer with NYC Parks for Trees Count 2025! At each event you will receive a tote bag with all the materials needed to count trees. Returning volunteers will receive additional giveaway items such as shirts, books, and hip bags as supplies last. Next, we'll provide a 30-minute training session that includes the basics of tree identification and how to measure and assess each tree. Using our Tree Census app, you’ll split up into different zones within the park to start counting trees! After completing your first training event, you are welcome to continue counting trees on your own in smaller parks across the city. For your comfort and safety, please bring water and wear closed-toe shoes to this program.Date: 08/02/2026 Location: Franz Sigel Park (Bronx) (",
-      "lat": 40.822498,
-      "lng": -73.927399,
-      "url": "https://www.nycgovparks.org/reg/trees-count/19967"
-    },
-    {
       "id": "nycp-trees-count-at-fulton-park-fulton-park-600",
       "source": "nycparks",
       "name": "Trees Count at Fulton Park",
@@ -15584,33 +15329,6 @@
       "lat": 40.736593,
       "lng": -73.813963,
       "url": "https://www.nycgovparks.org/reg/trees-count/20189"
-    },
-    {
-      "id": "nycp-trees-count-at-prospect-park-parkside-and-ocean-avenue-entrance-in-prospect-park-600",
-      "source": "nycparks",
-      "name": "Trees Count at Prospect Park",
-      "category": "nature",
-      "tags": [
-        "learn",
-        "philanthropy"
-      ],
-      "borough": "Brooklyn",
-      "location": "Parkside and Ocean Avenue entrance (in Prospect Park)",
-      "when": "Sun · 10:00 AM - 12:00 PM",
-      "dropIn": false,
-      "noOnlineReg": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": null,
-      "unlimited": false,
-      "start": "2026-08-02",
-      "end": "2026-08-02",
-      "oneDay": true,
-      "desc": "Volunteer with NYC Parks for Trees Count 2025! At each event you will receive a tote bag with all the materials needed to count trees. Returning volunteers will receive additional giveaway items such as shirts, books, and hip bags as supplies last. Next, we'll provide a 30-minute training session that includes the basics of tree identification and how to measure and assess each tree. Using our Tree Census app, you’ll split up into different zones within the park to start counting trees! After completing your first training event, you are welcome to continue counting trees on your own in smaller parks across the city. For your comfort and safety, please bring water and wear closed-toe shoes to this program.Date: 08/02/2026 Location: Prospect Park (Brooklyn) (",
-      "lat": 40.655174,
-      "lng": -73.962379,
-      "url": "https://www.nycgovparks.org/reg/trees-count/20187"
     },
     {
       "id": "nycp-trees-count-at-ralph-demarco-park-ralph-demarco-park-960",
@@ -15878,6 +15596,31 @@
       "url": "https://www.eventbrite.com/e/upcycled-jars-and-lids-a-collage-and-decoupage-workshop-tickets-1993750033019?aff=oddtdtcreator&keep_tld=true"
     },
     {
+      "id": "nycp-uplifted-dance-fitness-multi-use-room-2nd-fl-in-sorrentino-recreation-center-1095",
+      "source": "nycparks",
+      "name": "Uplifted Dance Fitness",
+      "category": "fitness",
+      "borough": "Queens",
+      "location": "Multi-Use Room - 2nd Fl (in Sorrentino Recreation Center)",
+      "when": "Mon · 6:15 PM - 7:00 PM",
+      "dropIn": false,
+      "noOnlineReg": false,
+      "cost": "Free",
+      "ages": "18 yrs +",
+      "minAge": 18,
+      "spots": 20,
+      "unlimited": false,
+      "regDeadline": "Registration ends on August 17th, 2026 at 06:15 PM",
+      "start": "2026-08-17",
+      "end": "2026-08-17",
+      "oneDay": true,
+      "instructor": "Dawn Whitfield",
+      "desc": "Uplift your spirit with this dance fitness class! Come and enjoy an array of upbeat music featuring gospel. This class is a fusion of motivation, inspiration, fitness, and fun. Move your body, relax your mind, enjoy the community, and lift your spirit!",
+      "lat": 40.602402,
+      "lng": -73.762497,
+      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=2c29f9c3-71c7-4426-bcae-3e51f6ab6995&occurrenceDate=20260817"
+    },
+    {
       "id": "nycp-urban-farm-volunteers-urban-farm-in-randall-s-island-park-600",
       "source": "nycparks",
       "name": "Urban Farm Volunteers",
@@ -15952,12 +15695,12 @@
       "spots": null,
       "unlimited": false,
       "sessions": {
-        "count": 10,
+        "count": 11,
         "first": "Aug 3",
-        "last": "Aug 14"
+        "last": "Aug 17"
       },
       "start": "2026-08-03",
-      "end": "2026-08-14",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Take part in a long-distance lap swim competition. To participate in the competition, please speak to an Aquatics Specialist on the pool deck and indicate this on your application. An awards ceremony will be held at the end of August to celebrate the health and fitness achievements of swimmers who complete 25 miles or more. Visit https://www.nycgovparks.org/events/lap-swim to register.",
       "lat": 40.889884,
@@ -15976,7 +15719,7 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 85,
+      "spots": 84,
       "unlimited": false,
       "regDeadline": "Registration ends on August 8th, 2026 at 09:00 AM",
       "start": "2026-08-08",
@@ -16004,7 +15747,7 @@
       "unlimited": false,
       "regDeadline": "Registration ends on August 3rd, 2026 at 07:30 PM",
       "start": "2026-08-03",
-      "end": "2026-08-10",
+      "end": "2026-08-17",
       "oneDay": false,
       "instructor": "Rika Miyazawa",
       "desc": "Welcome to this online yoga community in Vinyasa Yoga Flow with Rika. This class encompasses a warm-up, mindful flow, balance poses, gentle inversions, and final relaxation. Discover empowerment and affirmation to embrace who you are on and off your mat. Mats and props are recommended but not required. Leave feeling refreshed and centered, and knowing you have a safe community.  \\r\n\\r\n The Zoom link will be sent out two hours before the class and again right before the class starts to registered participants. ",
@@ -16074,7 +15817,7 @@
       ],
       "borough": "Staten Island",
       "location": "Conference House Museum (in Conference House Park)",
-      "when": "Sat · 10:00 AM - 2:00 PM",
+      "when": "Mon & Sat · 10:00 AM - 2:00 PM",
       "dropIn": true,
       "noOnlineReg": true,
       "cost": "Free",
@@ -16082,9 +15825,14 @@
       "minAge": 0,
       "spots": 0,
       "unlimited": true,
+      "sessions": {
+        "count": 2,
+        "first": "Aug 15",
+        "last": "Aug 17"
+      },
       "start": "2026-08-15",
-      "end": "2026-08-15",
-      "oneDay": true,
+      "end": "2026-08-17",
+      "oneDay": false,
       "desc": "Join NYC Parks and the Conference House Park Conservancy for our ongoing beach and park clean-up initiative!\n\nPick up a trash grabber and a bucket and help to beautify our park by picking up litter and debris!\n\nStop by the park Visitor's Center at 298 Satterlee Street, corner of Hylan Boulevard, Staten Island, NY, to meet our staff and borrow a bucket and grabber!\n\nDrop-ins welcome. No RSVP required. Blue Wave clean-ups are self-led by the volunteer stewards themselves.\n\nFor group volunteer opportunities and volunteering at additional Staten Island South Shore sites, please contact the South Shore Parks Programs and Events Manager at 646-406-2155, or carmine.raimondi@parks.nyc.gov.",
       "lat": 40.501999,
       "lng": -74.251404,
@@ -16106,11 +15854,11 @@
       "spots": null,
       "unlimited": false,
       "sessions": {
-        "count": 3,
-        "first": "Aug 2",
+        "count": 2,
+        "first": "Aug 9",
         "last": "Aug 16"
       },
-      "start": "2026-08-02",
+      "start": "2026-08-09",
       "end": "2026-08-16",
       "oneDay": false,
       "desc": "Join a free walking tour to learn about the history of the Brooklyn waterfront at Brooklyn Bridge Park! Learn about the local ecology, Brooklyn Bridge Park's sustainable design, and how the park came to life! Tours last roughly 60-90 minutes, starting from the entrance of Pier 1 and finishing near Pier 3.\n\nAdvance registration is required. Registration opens a month in advance of each date. Please note this event is subject to change due to weather or other extenuating circumstances.",
@@ -16245,11 +15993,11 @@
       "spots": null,
       "unlimited": false,
       "sessions": {
-        "count": 7,
-        "first": "Aug 2",
+        "count": 6,
+        "first": "Aug 7",
         "last": "Aug 16"
       },
-      "start": "2026-08-02",
+      "start": "2026-08-07",
       "end": "2026-08-16",
       "oneDay": false,
       "desc": "Wheel Fun Rentals at Boathouse Row is lighting up summer nights in patriotic style as it celebrates America's 250th anniversary with special Red, White & Blue LED Illuminated Surrey Night Rides. Patriotic Surrey Nights Rides are available now and will run through Labor Day Weekend at their Bensonhurst Park and FDR Boardwalk at Sand Lane bike rental locations.\n\nFor the summer-long celebration, Wheel Fun Rentals has transformed its popular LED-illuminated specialty bikes into dazzling patriotic attractions featuring custom red, white, and blue lighting. Families, couples, and friends can cruise along two of New York City's scenic waterfronts while celebrating America's historic 250th birthday.\n\nOn July 4th, guests can make the holiday even more memorable by riding to waterfront viewing areas for spectacular fireworks displays. Launching from Bensonhurst Park in Brooklyn, riders can enjoy the festive atmosphere along the waterfront bike path with views across New York Harbor. On Staten Island, guests can pedal along the FDR Boardwalk, where the waterfront provides a scenic setting to take in the evening's Independence Day celebrations and fireworks over the harbor.\n\nNight Rides are first-come, first-served and available Friday – Sundays and holidays beginning at sunset until 10pm, last 1-hour rental goes out at 9pm. Pricing is $29 for a Single Surrey (seats up to 3 adults and 2 small children), and $39 for a Double Surrey (seats up to 6 adults and 2 small children).\n\nFor additional location information, current hours of operation, and to learn more about Wheel Fun Rentals available recreational rental options, visit wheelfunrentals.com/NYC.",
@@ -16456,11 +16204,11 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 19,
+      "spots": 17,
       "unlimited": false,
       "regDeadline": "Registration ends on August 3rd, 2026 at 06:15 PM",
       "start": "2026-08-03",
-      "end": "2026-08-10",
+      "end": "2026-08-17",
       "oneDay": false,
       "instructor": "Ambeka Khadse",
       "desc": "Connect with yourself in this Yoga class with Ambeka, a class to be enjoyed by all. Experience a fun and light-hearted, mid-intensity flow that will move you seamlessly from Sun Salutation to a final peak pose. We focus on inversions and breath work to ensure you leave class feeling challenged and balanced. \\r\n",
@@ -16716,12 +16464,12 @@
       "spots": null,
       "unlimited": false,
       "sessions": {
-        "count": 2,
+        "count": 3,
         "first": "Aug 3",
-        "last": "Aug 10"
+        "last": "Aug 17"
       },
       "start": "2026-08-03",
-      "end": "2026-08-10",
+      "end": "2026-08-17",
       "oneDay": false,
       "desc": "Join Bien Good Well for free yoga classes in Bella Abzug Park, bring your own mat!\n\nMay–September 2026\n\n? Mondays 6:00-6:45 PM (yoga flow)\n\n? Wednesdays 5:00-5:45 PM (yoga flow)\n\n? Saturdays at 10:30 AM (mat pilates)\n\nMove, breathe, and reconnect in this 45-minute outdoor yoga class–offered in both English and Spanish.\n\nVeronica guides a welcoming flow rooted in joy, presence, and intuitive movement. Classes include breathwork, gentle yoga postures, and mindful transitions that support grounding, balance, and inner connection.\n\nWhether you're new to yoga or a seasoned mover, you'll be encouraged to listen to your body and move at your own pace.\n\n✨ All levels welcome\n\n✨ Bring a mat, water, and comfy clothes\n\n✨ Class taught in English and Spanish\n\n? Location: Bella Abzug Park – meet by the fountains, between W 34th & W 35th Streets, and 10th & 11th Avenues",
       "lat": 40.755607,
@@ -17051,7 +16799,7 @@
       "unlimited": false,
       "regDeadline": "Registration ends on August 3rd, 2026 at 09:15 AM",
       "start": "2026-08-03",
-      "end": "2026-08-10",
+      "end": "2026-08-17",
       "oneDay": false,
       "instructor": "Melissa Perez",
       "desc": "Zumba Gold®  offers a low-impact workout set to a fusion of Latin, International and popular music dance themes, creating a dynamic, exciting, effective fitness system! The routines feature aerobic fitness interval training with a combination of fast and slow rhythms that challenge both the heart and muscles. With fun music and easy-to-follow steps, you can’t go wrong!   \\r\n\\r\nPlease register for updates about cancellations. Class is first come, first served, but for safety reasons, participants will not be allowed to join after the first fifteen minutes of class. New Settlement Community Center requires all first-time participants to create a profile with the site upon arrival so please arrive at least 15 minutes in advance. ",
@@ -17078,8 +16826,8 @@
       "unlimited": false,
       "regDeadline": "Registration ends on August 3rd, 2026 at 06:00 PM",
       "start": "2026-08-03",
-      "end": "2026-08-03",
-      "oneDay": true,
+      "end": "2026-08-17",
+      "oneDay": false,
       "instructor": "Melissa Perez",
       "desc": "Zumba Gold®  offers a low-impact workout set to a fusion of Latin, International and popular music dance themes, creating a dynamic, exciting, effective fitness system! The routines feature aerobic fitness interval training with a combination of fast and slow rhythms that challenge both the heart and muscles. With fun music and easy-to-follow steps, you can’t go wrong!   ",
       "lat": 40.762045,
@@ -17241,5 +16989,5 @@
       "url": "https://www.nycgovparks.org/events/2026/08/12/zumba-with-maria-assis"
     }
   ],
-  "fetchedAt": "2026-08-03T02:37:33.763Z"
+  "fetchedAt": "2026-08-03T09:42:01.523Z"
 }
