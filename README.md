@@ -838,6 +838,16 @@ paths (`/basketball`, `/pools`, …) and every other city is namespaced under a 
 App Store smart banner and install links, and links into the app via `?city=` so a
 NYC search result opens the app on NYC. Adding a city to `lib/cities.js` and
 `data/cities/index.js` gets its landing pages for free.
+
+Below the sport indexes sits the long tail — **~600 pages** in all: one per court
+(`/court/<id>`), pool (`/pools/hamilton`), and golf course (`/golf/lincoln-park`),
+plus multi-sport **area hubs** (`/sf/mission`, `/nyc/brooklyn`). A court earns a
+page only where there's something to say: SF courts and NYC rec centers all carry
+real schedules, while NYC's first-come outdoor pins must be a genuine destination
+(more than one sport, or 4+ courts) — the rest stay listed on their borough page
+rather than becoming near-identical stubs. Every page is reachable by internal
+link, not just from `sitemap.xml`; `scripts/postbuild-web.js` is the only thing
+that needs to change to add a page type.
 **Vercel Analytics** is mounted
 web-only (`components/WebAnalytics.web.js`, `@vercel/analytics/react`) and only collects
 when served from Vercel. The iOS app is **iPhone-only** (`ios.supportsTablet: false`);

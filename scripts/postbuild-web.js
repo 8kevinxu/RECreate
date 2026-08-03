@@ -55,8 +55,10 @@ const { COURTS } = loadModule('data/courts.js');
 const { OUTDOOR_COURTS } = loadModule('data/outdoor-courts.js');
 const { MANUAL_COURTS } = loadModule('data/manual-courts.js');
 const { SANBRUNO_COURTS } = loadModule('data/sanbruno-court.js');
-const { POOLS } = loadModule('data/pools.js');
+const { POOLS, POOL_FEES } = loadModule('data/pools.js');
 const { CLASSES, CLASS_CATEGORIES } = loadModule('data/classes.js');
+const { DIRECTORY } = loadModule('data/court-directory.js');
+const { RESERVATIONS } = loadModule('data/reservations.js');
 const { SPORTS } = loadModule('lib/sports.js');
 const { CITY_COURTS, CITY_CLASSES } = loadModule('data/cities/index.js');
 const { PARK_HOURS: NYC_PARK_HOURS } = loadModule('data/cities/nyc/outdoor-courts.js');
@@ -119,6 +121,52 @@ function weekSummary(week) {
     .join(' · ');
 }
 
+// Full day-by-day rows for a detail page — the compressed weekSummary is right
+// for a list of 90 courts, but a court's own page should show the whole week.
+function dayRows(week) {
+  if (!week) return [];
+  return DAY_ORDER.filter((d) => week[d]?.length).map((d) => [DAY_ABBR[d], fmtBlocks(week[d])]);
+}
+
+// Union of every sport's drop-in blocks, merged — "when can I play here at all",
+// which is what schema.org openingHoursSpecification means for a venue.
+const LD_DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+function openingHours(c) {
+  const spec = [];
+  for (let d = 0; d < 7; d++) {
+    const blocks = [];
+    for (const s of SPORTS) for (const b of c.dropins?.[s.id]?.[d] || []) blocks.push([b[0], b[1]]);
+    if (!blocks.length) continue;
+    blocks.sort((a, b) => a[0] - b[0]);
+    const merged = [blocks[0].slice()];
+    for (const b of blocks.slice(1)) {
+      const last = merged[merged.length - 1];
+      if (b[0] <= last[1]) last[1] = Math.max(last[1], b[1]);
+      else merged.push(b.slice());
+    }
+    const hhmm = (m) => `${String(Math.floor(m / 60) % 24).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`;
+    for (const [a, b] of merged) {
+      spec.push({ '@type': 'OpeningHoursSpecification', dayOfWeek: LD_DAYS[d], opens: hhmm(a), closes: hhmm(b) });
+    }
+  }
+  return spec.length ? spec : undefined;
+}
+
+const MILES_PER_DEG = 69.09;
+function milesBetween(a, b) {
+  if (!a?.lat || !a?.lng || !b?.lat || !b?.lng) return null;
+  const dLat = (a.lat - b.lat) * MILES_PER_DEG;
+  const dLng = (a.lng - b.lng) * MILES_PER_DEG * Math.cos(((a.lat + b.lat) / 2) * (Math.PI / 180));
+  return Math.sqrt(dLat * dLat + dLng * dLng);
+}
+// "under" rather than "<": this string is interpolated straight into HTML, and
+// a bare < opens a bogus tag that swallows the rest of the element.
+const fmtMiles = (m) => (m < 0.1 ? 'under 0.1 mi' : `${m.toFixed(m < 10 ? 1 : 0)} mi`);
+
+// "basketball, tennis and soccer" — a trailing comma list reads like an error.
+const andList = (arr) =>
+  arr.length < 2 ? arr.join('') : `${arr.slice(0, -1).join(', ')} and ${arr[arr.length - 1]}`;
+
 // Per-court facility facts (NYC's Socrata attrs). Cities without them render
 // hours instead — see courtLi.
 const UNIT = { baseball: ['diamond', 'diamonds'], soccer: ['field', 'fields'] };
@@ -136,7 +184,12 @@ function factsLine(c, sportId) {
     }
     if (f.lit) bits.push('lights');
     for (const k of ['full', 'half', 'adult', 'regulation', 'reservable']) if (f[k]) bits.push(FACT_LABEL[k]);
-    if (f.surf?.length) bits.push(f.surf.join('/').toLowerCase());
+    // Socrata surfaces arrive as "Synthetic - Multi", "Synthetic - Large" …
+    // Keep the material, drop the sub-grade, dedupe: "natural/synthetic".
+    if (f.surf?.length) {
+      const mats = [...new Set(f.surf.map((s) => String(s).split(' - ')[0].trim().toLowerCase()).filter(Boolean))];
+      if (mats.length) bits.push(mats.join('/'));
+    }
   }
   if (c.accessible) bits.push('accessible');
   if (c.restrooms) bits.push('restrooms');
@@ -197,6 +250,70 @@ function appUrl(cfg, params = {}) {
   const s = qs.toString();
   return s ? `/?${s}` : '/';
 }
+
+// --- which courts earn their own page ------------------------------------------
+//
+// A page per court is only worth publishing where there's something to say. SF
+// courts carry real scraped hours (and often directory facts / reservation
+// occupancy) and every NYC rec center has a real open-gym week, so those all
+// qualify. NYC's first-come outdoor pins are a synthetic hours window, so they
+// have to earn it on facilities: a genuine destination (more than one sport, or
+// several courts) rather than a single unlit half-court. The ones that don't
+// qualify lose nothing — they're still listed, with the same facts, on their
+// borough page. Publishing ~320 near-identical single-court stubs is the
+// doorway-page failure mode, and it can drag down the pages that do work.
+const NYC_MIN_COURTS = 4;
+
+const hasSport = (c, sportId) => {
+  const week = c.dropins?.[sportId];
+  return Array.isArray(week) && week.some((day) => day && day.length);
+};
+// Memoized: the nearby-courts pass asks this for every candidate of every
+// detail page, which is ~500 × 700 lookups.
+const _sportsAt = new Map();
+const sportsAt = (c) => {
+  let v = _sportsAt.get(c);
+  if (!v) _sportsAt.set(c, (v = SPORTS.map((s) => s.id).filter((s) => hasSport(c, s))));
+  return v;
+};
+const totalCourtsAt = (c) => Object.values(c.facts || {}).reduce((n, f) => n + (f.n || 0), 0);
+
+function earnsPage(c, cfg) {
+  if (!sportsAt(c).length) return false; // golf-only venues get /golf/<id> instead
+  if (!cfg.parkHours || c.indoor) return true; // real schedule data
+  return sportsAt(c).length >= 2 || totalCourtsAt(c) >= NYC_MIN_COURTS;
+}
+
+const courtPath = (c) => `/court/${c.id}`;
+const COURT_PAGE_IDS = new Set();
+for (const cfg of CITY_CFG) for (const c of cfg.courts) if (earnsPage(c, cfg)) COURT_PAGE_IDS.add(c.id);
+
+// A court's areas: DataSF tags some SF courts with several comma-joined
+// neighborhoods ("Glen Park, West of Twin Peaks") and the court belongs to each.
+const areasOf = (c) => String(c.neighborhood || '').split(',').map((s) => s.trim()).filter(Boolean);
+
+// Which areas earn a hub page. Resolved before any page is built so the sport
+// and court pages can link the hubs — a page reachable only from sitemap.xml
+// gets crawled, but nothing about the site says it matters.
+const AREA_MIN = 3;
+const AREA_HUBS = new Map(); // cfg.id -> Map(area -> { path, courts })
+for (const cfg of CITY_CFG) {
+  const areas = new Map();
+  for (const c of cfg.courts) {
+    if (!sportsAt(c).length) continue; // golf-only venues have their own pages
+    for (const a of areasOf(c)) {
+      if (!areas.has(a)) areas.set(a, []);
+      areas.get(a).push(c);
+    }
+  }
+  const keep = new Map();
+  for (const [a, courts] of [...areas.entries()].sort((x, y) => y[1].length - x[1].length)) {
+    if (courts.length >= AREA_MIN) keep.set(a, { path: `/${cfg.id}/${slug(a)}`, courts });
+  }
+  AREA_HUBS.set(cfg.id, keep);
+}
+const areaHubsFor = (c, cfg) =>
+  areasOf(c).map((a) => [a, AREA_HUBS.get(cfg.id)?.get(a)]).filter(([, h]) => h);
 
 // --- shared page template -----------------------------------------------------
 
@@ -295,11 +412,6 @@ function writePage(page) {
 
 // --- build the page list -------------------------------------------------------
 
-const hasSport = (c, sportId) => {
-  const week = c.dropins?.[sportId];
-  return Array.isArray(week) && week.some((day) => day && day.length);
-};
-
 const placeJsonLd = (c, sportLabel, cfg) => ({
   '@type': 'SportsActivityLocation',
   name: c.name,
@@ -318,16 +430,21 @@ const placeJsonLd = (c, sportLabel, cfg) => ({
 // Indoor courts (and all of SF's) show their real drop-in week; a city whose
 // outdoor pins are a synthetic park-hours window shows facility facts instead —
 // printing "Mon–Sun 8 AM–8 PM" on 620 first-come courts is noise, not a schedule.
-const courtLi = (c, sportId, cfg) => {
+// The court name links to its own page when it has one — that link is the only
+// crawl path to the ~550 detail pages, so it has to ride the sport/area lists.
+const courtLi = (c, sportId, cfg, extra = '') => {
   const useHours = c.indoor || !cfg.parkHours;
   const detail = useHours ? weekSummary(c.dropins?.[sportId]) : factsLine(c, sportId);
   const place = c.indoor ? 'Indoor' : 'Outdoor';
   const meta = [place, c.address, c.neighborhood].filter(Boolean).join(' · ');
+  const named = COURT_PAGE_IDS.has(c.id)
+    ? `<a class="nm" href="${courtPath(c)}">${esc(c.name)}</a>`
+    : `<span class="nm">${esc(c.name)}</span>`;
   return `<li>
-<span class="nm">${esc(c.name)}</span>
+${named}${extra}
 <div class="meta">${esc(meta)}</div>
 ${detail ? `<div class="hrs">${esc(detail)}</div>` : ''}
-<a class="map" href="${appUrl(cfg, { sport: sportId, court: c.id })}">Open in the map</a>
+${COURT_PAGE_IDS.has(c.id) ? `<a class="map" href="${courtPath(c)}">Hours &amp; details</a> · ` : ''}<a class="map" href="${appUrl(cfg, { sport: sportId, court: c.id })}">Open in the map</a>
 </li>`;
 };
 
@@ -381,6 +498,7 @@ for (const cfg of CITY_CFG) {
     for (const [name, list] of bigGroups) {
       const subPath = `${base}/${slug(name)}`;
       pages.push({
+        kind: 'sport-area',
         cfg,
         path: subPath,
         short: `${s.label} · ${name}`,
@@ -426,6 +544,7 @@ for (const cfg of CITY_CFG) {
       : 'Outdoor courts (first come, first served)';
 
     pages.push({
+      kind: 'sport',
       cfg,
       path: base,
       short: s.label,
@@ -434,7 +553,14 @@ for (const cfg of CITY_CFG) {
       h1: `${s.label} in ${cfg.name}`,
       intro: `Every free public place to play ${esc(s.label.toLowerCase())} in ${esc(cfg.name)} — ${indoor.length ? `${indoor.length} indoor rec center${indoor.length === 1 ? '' : 's'} with scheduled drop-in times` : ''}${indoor.length && outdoor.length ? ' and ' : ''}${outdoor.length ? `${outdoor.length} outdoor first-come, first-served location${outdoor.length === 1 ? '' : 's'}` : ''}. See what's open right now on the live map, check in, and find people to play with.`,
       cta: { href: appUrl(cfg, { sport: s.id }), label: `See ${s.label.toLowerCase()} on the live map` },
-      body: section('Indoor drop-in / open gym', indoor) + byArea + section(outdoorLabel, inlineOutdoor),
+      body:
+        section('Indoor drop-in / open gym', indoor) + byArea + section(outdoorLabel, inlineOutdoor) +
+        // Every area hub's inbound link comes from here.
+        (AREA_HUBS.get(cfg.id).size
+          ? `<h2>Browse by ${esc(cfg.subregionLabel)}</h2><p class="more">${[...AREA_HUBS.get(cfg.id)]
+              .map(([a, h]) => `<a href="${h.path}">${esc(inArea(a))}</a>`)
+              .join(' · ')}</p>`
+          : ''),
       // Describe what this page actually renders — on a split page the bulk of
       // the courts live on the subregion pages and are marked up there.
       jsonLd: {
@@ -458,6 +584,7 @@ const SF = CITY_CFG[0];
 const golfCourses = SF.courts.filter((c) => c.golf);
 if (golfCourses.length) {
   pages.push({
+    kind: 'index',
     cfg: SF,
     path: '/golf',
     short: 'Golf',
@@ -471,11 +598,11 @@ if (golfCourses.length) {
         const g = c.golf;
         const facts = [`${g.holes} holes`, `par ${g.par}`, g.yards ? `${g.yards} yds` : null, g.range ? 'driving range' : null, g.beginner ? 'beginner-friendly' : null].filter(Boolean).join(' · ');
         return `<li>
-<span class="nm">${esc(c.name)}</span>
+<a class="nm" href="/golf/${c.id.replace(/-golf$/, '')}">${esc(c.name)}</a>
 <div class="meta">${esc([c.address, facts].filter(Boolean).join(' · '))}</div>
 <div class="hrs">${esc(g.desc || '')}</div>
 ${(g.fees || []).map((f) => `<div class="hrs">💵 ${esc(f)}</div>`).join('')}
-${g.bookUrl ? `<a class="map" href="${esc(g.bookUrl)}" rel="noopener">Book a tee time</a> · ` : ''}<a class="map" href="${appUrl(SF, { sport: 'golf', court: c.id })}">Open in the map</a>
+<a class="map" href="/golf/${c.id.replace(/-golf$/, '')}">Fees &amp; details</a> · ${g.bookUrl ? `<a class="map" href="${esc(g.bookUrl)}" rel="noopener">Book a tee time</a> · ` : ''}<a class="map" href="${appUrl(SF, { sport: 'golf', court: c.id })}">Open in the map</a>
 </li>`;
       })
       .join('\n')}</ul>`,
@@ -496,6 +623,7 @@ ${g.bookUrl ? `<a class="map" href="${esc(g.bookUrl)}" rel="noopener">Book a tee
 // Pools: the 9 public pools with seasons, programs, and schedule-PDF links.
 const KIND_LABEL = { lap: 'lap swim', family: 'family swim', senior: 'senior swim', lessons: 'swim lessons', adult_lessons: 'adult lessons', parent_child: 'parent & child', exercise: 'water exercise', camp: 'day camp', rental: 'rentals', other: 'programs' };
 pages.push({
+  kind: 'index',
   cfg: SF,
   path: '/pools',
   short: 'Pools',
@@ -538,6 +666,7 @@ for (const cfg of CITY_CFG) {
   }
   const free = list.filter((c) => /free/i.test(c.cost || '')).length;
   pages.push({
+    kind: 'index',
     cfg,
     path: `${cfg.prefix}/classes`,
     short: 'Classes',
@@ -554,6 +683,301 @@ for (const cfg of CITY_CFG) {
       })
       .join('\n'),
   });
+}
+
+// --- detail pages: one per court, pool and golf course --------------------------
+//
+// The long tail. "moscone rec center open gym hours" and "hamilton pool lap
+// swim schedule" are the queries these answer, and the answer is a fact we
+// already hold — the sport indexes above can only ever rank for the head term.
+
+const SPORT_BY_ID = new Map(SPORTS.map((s) => [s.id, s]));
+const sportPagePath = (cfg, sportId) => `${cfg.prefix}/${SPORT_PATHS[sportId] || sportId}`;
+
+const breadcrumb = (trail) => ({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: trail.map(([name, url], i) => ({
+    '@type': 'ListItem', position: i + 1, name, item: `${SITE}${url}`,
+  })),
+});
+
+const rows = (list) =>
+  `<table style="border-collapse:collapse;font-size:14px;margin:4px 0 0">${list
+    .map(([k, v]) => `<tr><td style="padding:2px 12px 2px 0;opacity:.7;vertical-align:top;white-space:nowrap">${esc(k)}</td><td style="padding:2px 0">${esc(v)}</td></tr>`)
+    .join('')}</table>`;
+
+for (const cfg of CITY_CFG) {
+  const byId = new Map(cfg.courts.map((c) => [c.id, c]));
+  for (const c of cfg.courts) {
+    if (!COURT_PAGE_IDS.has(c.id)) continue;
+    const sports = sportsAt(c);
+    const labels = sports.map((id) => SPORT_BY_ID.get(id).label);
+    const useHours = c.indoor || !cfg.parkHours;
+    const areas = areasOf(c);
+    const place = c.indoor ? 'indoor' : 'outdoor';
+
+    // Per-sport: the full week for real schedules, facility facts otherwise.
+    const sportSections = sports
+      .map((id) => {
+        const s = SPORT_BY_ID.get(id);
+        const week = dayRows(c.dropins?.[id]);
+        const facts = factsLine(c, id);
+        const dir = DIRECTORY[c.id]?.[id];
+        const detail = useHours && week.length
+          ? rows(week)
+          : facts
+            ? `<p class="hrs">${esc(facts)}</p>`
+            : '';
+        const dirLine = dir
+          ? `<p class="hrs">${esc([
+              dir.total ? `${dir.total} court${dir.total === 1 ? '' : 's'}` : null,
+              dir.walkup ? `${dir.walkup} walk-up` : null,
+              dir.reservable ? `${dir.reservable} reservable` : null,
+              dir.lights ? 'lights' : null,
+              dir.restrooms ? 'restrooms' : null,
+            ].filter(Boolean).join(' · '))}</p>`
+          : '';
+        const pct = RESERVATIONS[c.id]?.[id]?.pct;
+        const resLine = typeof pct === 'number'
+          ? `<p class="hrs">Reservations on rec.us run about ${pct}% booked across the coming week — the app shows the live number for the time you're asking about.</p>`
+          : '';
+        const head = useHours && week.length ? `${s.emoji} ${s.label} drop-in hours` : `${s.emoji} ${s.label}`;
+        return `<h2>${esc(head)}</h2>${detail}${dirLine}${resLine}`;
+      })
+      .join('\n');
+
+    // Nearby: same-sport alternatives, which is the thing you actually want when
+    // a court turns out to be closed or packed.
+    const primary = sports[0];
+    const near = cfg.courts
+      .filter((o) => o.id !== c.id && sportsAt(o).includes(primary))
+      .map((o) => ({ o, d: milesBetween(c, o) }))
+      .filter((x) => x.d != null)
+      .sort((a, b) => a.d - b.d)
+      .slice(0, 6);
+    const nearSection = near.length
+      ? `<h2>Other ${esc(SPORT_BY_ID.get(primary).label.toLowerCase())} nearby</h2><ul class="places">${near
+          .map(({ o, d }) => courtLi(o, primary, cfg, ` <span class="meta">${fmtMiles(d)} away</span>`))
+          .join('\n')}</ul>`
+      : '';
+
+    const amenities = [c.accessible ? 'wheelchair accessible' : null, c.restrooms ? 'restrooms' : null, c.water ? 'drinking water' : null].filter(Boolean);
+    const info = rows([
+      ['Address', c.address || '—'],
+      areas.length ? [cfg.subregionLabel === 'borough' ? 'Borough' : 'Neighborhood', areas.join(', ')] : null,
+      ['Type', `${place === 'indoor' ? 'Indoor rec center' : 'Outdoor'} · free drop-in`],
+      // No posted schedule to show, so name the window these courts are open in.
+      !useHours && cfg.parkHours ? ['Park hours', `${fmtTime(cfg.parkHours[0])}–${fmtTime(cfg.parkHours[1])} daily`] : null,
+      amenities.length ? ['Amenities', amenities.join(', ')] : null,
+      c.notes ? ['Notes', c.notes] : null,
+    ].filter(Boolean));
+
+    const trail = [
+      [cfg.name, cfg.prefix || '/'],
+      [SPORT_BY_ID.get(primary).label, sportPagePath(cfg, primary)],
+      [c.name, courtPath(c)],
+    ];
+
+    pages.push({
+      kind: 'court',
+      cfg,
+      path: courtPath(c),
+      short: c.name,
+      hideFromNav: true,
+      title: `${c.name} — ${labels.slice(0, 3).join(', ')} drop-in hours | ${SITE_NAME}`,
+      description: `${c.name}${c.address ? ` at ${c.address}` : ''}, ${cfg.name}: free ${place} ${andList(labels.slice(0, 3)).toLowerCase()}${useHours ? ' with the full weekly drop-in schedule' : ' — courts, surfaces and amenities'}, plus what's open right now and other spots nearby.`,
+      h1: c.name,
+      intro: `Free public ${esc(andList(labels).toLowerCase())} ${esc(place === 'indoor' ? 'at this rec center' : 'at this park')}${areas.length ? ` in ${esc(inArea(areas[0]))}` : ''}, ${esc(cfg.name)}.${c.disclaimer ? ` ${esc(c.disclaimer)}` : ''} The app shows what's open right now, how busy it is, and who else is playing.`,
+      cta: { href: appUrl(cfg, { sport: primary, court: c.id }), label: 'Open this court in the app' },
+      body:
+        sportSections +
+        `<h2>Location &amp; facilities</h2>${info}` +
+        (c.lat && c.lng
+          ? `<p class="more"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=${c.lat},${c.lng}" rel="noopener">Directions</a></p>`
+          : '') +
+        nearSection +
+        `<p class="more">${[
+          ...sports.map((id) => `<a href="${sportPagePath(cfg, id)}">All ${esc(SPORT_BY_ID.get(id).label.toLowerCase())} in ${esc(cfg.name)}</a>`),
+          ...areaHubsFor(c, cfg).map(([a, h]) => `<a href="${h.path}">Where to play in ${esc(inArea(a))}</a>`),
+        ].join(' · ')}</p>`,
+      jsonLd: [
+        {
+          '@context': 'https://schema.org',
+          ...placeJsonLd({ ...c, dropinSport: primary }, labels[0], cfg),
+          openingHoursSpecification: useHours ? openingHours(c) : undefined,
+        },
+        breadcrumb(trail),
+      ],
+    });
+  }
+}
+
+// Pools: one page each. A pool's weekly grid by session kind is the whole
+// reason someone searches for it, and the city publishes it only as a PDF.
+// Public-swim sessions first — those are what someone searching a pool's name
+// wants; lessons, camps and rentals are the ones they can't just show up for.
+const KIND_ORDER = ['lap', 'family', 'senior', 'exercise', 'parent_child', 'adult_lessons', 'lessons', 'camp', 'rental', 'other'];
+for (const p of POOLS) {
+  const kinds = [...new Set(p.sessions.flat().filter(Boolean).map((s) => s.kind))].sort(
+    (a, b) => (KIND_ORDER.indexOf(a) + 1 || 99) - (KIND_ORDER.indexOf(b) + 1 || 99)
+  );
+  const bySeq = kinds.map((k) => {
+    // Dedupe by start/end: a facility with separate warm- and cool-pool PDFs
+    // (North Beach) can run the same session kind at the same time in both.
+    const week = Array.from({ length: 7 }, (_, d) => {
+      const seen = new Set();
+      return (p.sessions[d] || [])
+        .filter((s) => s.kind === k)
+        .filter((s) => !seen.has(`${s.start}-${s.end}`) && seen.add(`${s.start}-${s.end}`))
+        .map((s) => [s.start, s.end]);
+    });
+    return [k, dayRows(week)];
+  }).filter(([, r]) => r.length);
+  const nearPools = POOLS.filter((o) => o.id !== p.id).map((o) => ({ o, d: milesBetween(p, o) })).filter((x) => x.d != null).sort((a, b) => a.d - b.d).slice(0, 3);
+  const feeRows = (POOL_FEES.groups || []).map((g) => [g.label, `$${g.dropIn} drop-in${(g.passes || []).length ? ` · ${g.passes.map(([l, v]) => `${l} $${v}`).join(' · ')}` : ''}`]);
+  pages.push({
+    kind: 'pool',
+    cfg: SF,
+    path: `/pools/${p.id.replace(/^pool-/, '')}`,
+    short: p.name,
+    hideFromNav: true,
+    title: `${p.name} — lap swim & schedule | San Francisco public pool | ${SITE_NAME}`,
+    description: `${p.name}${p.address ? ` at ${p.address}` : ''}: the full weekly schedule — ${bySeq.map(([k]) => KIND_LABEL[k] || k).join(', ')} — plus drop-in fees, season dates, and the official SF Rec & Parks schedule PDF.`,
+    h1: p.name,
+    intro: `${esc(p.desc || `${p.name} is one of San Francisco's ${POOLS.length} public pools.`)} Season ${esc(p.season || '')}. Drop-in swims are $8 for adults and $2 for kids; the schedule below comes from the pool's own posted PDF.`,
+    cta: { href: appUrl(SF, { sport: 'swimming', court: p.id }), label: 'See today’s swim times' },
+    body:
+      bySeq.map(([k, r]) => `<h2>${esc(KIND_LABEL[k] || k)}</h2>${rows(r)}`).join('\n') +
+      `<h2>Location</h2>${rows([['Address', p.address || '—'], p.phone ? ['Phone', p.phone] : null, ['Season', p.season || '—']].filter(Boolean))}` +
+      (feeRows.length ? `<h2>Fees</h2>${rows(feeRows)}<p class="meta">City-wide pool rates, effective ${esc(POOL_FEES.effective || '')}.</p>` : '') +
+      (p.lat && p.lng ? `<p class="more"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=${p.lat},${p.lng}" rel="noopener">Directions</a></p>` : '') +
+      (p.scheduleUrls || []).map((u) => `<p class="more"><a href="${esc(u.url)}" rel="noopener">Official schedule (PDF)</a></p>`).join('') +
+      (nearPools.length ? `<h2>Other pools nearby</h2><ul class="places">${nearPools.map(({ o, d }) => `<li><a class="nm" href="/pools/${o.id.replace(/^pool-/, '')}">${esc(o.name)}</a> <span class="meta">${fmtMiles(d)} away</span><div class="meta">${esc(o.address || '')}</div></li>`).join('')}</ul>` : '') +
+      `<p class="more"><a href="/pools">All ${POOLS.length} San Francisco public pools</a></p>`,
+    jsonLd: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'PublicSwimmingPool',
+        name: p.name,
+        description: p.desc || undefined,
+        address: { '@type': 'PostalAddress', streetAddress: p.address, addressLocality: 'San Francisco', addressRegion: 'CA' },
+        geo: p.lat && p.lng ? { '@type': 'GeoCoordinates', latitude: p.lat, longitude: p.lng } : undefined,
+        telephone: p.phone || undefined,
+      },
+      breadcrumb([['San Francisco', '/'], ['Pools', '/pools'], [p.name, `/pools/${p.id.replace(/^pool-/, '')}`]]),
+    ],
+  });
+}
+
+// Golf: one page per course, carrying the curated fees and booking links.
+for (const c of golfCourses) {
+  const g = c.golf;
+  const gPath = `/golf/${c.id.replace(/-golf$/, '')}`;
+  pages.push({
+    kind: 'golf',
+    cfg: SF,
+    path: gPath,
+    short: c.name,
+    hideFromNav: true,
+    title: `${c.name} — green fees, tee times & course info | ${SITE_NAME}`,
+    description: `${c.name}, San Francisco: ${g.holes} holes, par ${g.par}${g.yards ? `, ${g.yards} yards` : ''} — green fees, tee-time booking, and what to expect on the course.`,
+    h1: c.name,
+    intro: `${esc(g.desc || '')} ${esc(`${g.holes} holes, par ${g.par}${g.yards ? `, ${g.yards} yards` : ''}.`)} One of San Francisco Rec &amp; Parks' ${golfCourses.length} public courses.`,
+    cta: { href: appUrl(SF, { sport: 'golf', court: c.id }), label: 'Open in the app' },
+    body:
+      `<h2>The course</h2>${rows([
+        ['Holes', String(g.holes)], ['Par', String(g.par)],
+        g.yards ? ['Yardage', `${g.yards} yds`] : null,
+        g.range ? ['Driving range', 'yes'] : null,
+        g.beginner ? ['Beginner-friendly', 'yes'] : null,
+        ['Address', c.address || '—'],
+      ].filter(Boolean))}` +
+      ((g.fees || []).length
+        ? `<h2>Green fees</h2><ul class="places">${g.fees.map((f) => `<li><div class="hrs">💵 ${esc(f)}</div></li>`).join('')}</ul><p class="meta">Rates are curated from the course's published card and change roughly annually — confirm when booking.</p>`
+        : '') +
+      `<p class="more">${[
+        g.bookUrl ? `<a href="${esc(g.bookUrl)}" rel="noopener">Book a tee time</a>` : null,
+        g.website ? `<a href="${esc(g.website)}" rel="noopener">Official site</a>` : null,
+        c.lat && c.lng ? `<a href="https://www.google.com/maps/dir/?api=1&amp;destination=${c.lat},${c.lng}" rel="noopener">Directions</a>` : null,
+      ].filter(Boolean).join(' · ')}</p>` +
+      `<p class="more"><a href="/golf">All ${golfCourses.length} San Francisco public golf courses</a></p>`,
+    jsonLd: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'GolfCourse',
+        name: c.name,
+        description: g.desc || undefined,
+        address: { '@type': 'PostalAddress', streetAddress: c.address, addressLocality: 'San Francisco', addressRegion: 'CA' },
+        geo: c.lat && c.lng ? { '@type': 'GeoCoordinates', latitude: c.lat, longitude: c.lng } : undefined,
+      },
+      breadcrumb([['San Francisco', '/'], ['Golf', '/golf'], [c.name, gPath]]),
+    ],
+  });
+}
+
+// --- area hubs: everything to play in one neighborhood / borough ----------------
+//
+// Cross-cuts the sport indexes. "what's in golden gate park" and "things to play
+// in the mission" are area questions, not sport questions, and a multi-sport
+// page answers them without splitting into thin neighborhood×sport permutations.
+// A borough hub would otherwise relist all 200 of Brooklyn's basketball courts
+// under every sport heading. Show a sample and hand off to the page that owns
+// the full list (the sport×subregion page when there is one).
+const AREA_SPORT_CAP = 12;
+const EXISTING_PATHS = new Set(pages.map((p) => p.path));
+
+for (const cfg of CITY_CFG) {
+  for (const [area, { path: areaPath, courts: list }] of AREA_HUBS.get(cfg.id)) {
+    const bySport = SPORTS.map((s) => [s, list.filter((c) => hasSport(c, s.id))]).filter(([, l]) => l.length);
+    if (!bySport.length) continue;
+    const sportBits = bySport.map(([s, l]) => `${l.length} ${s.label.toLowerCase()}`).join(', ');
+    // Sections are resolved up front so the JSON-LD can describe exactly the
+    // courts this page renders rather than the whole area.
+    const sections = bySport.map(([s, l]) => {
+      const sorted = l.slice().sort((a, b) => a.name.localeCompare(b.name));
+      const subPath = `${sportPagePath(cfg, s.id)}/${slug(area)}`;
+      return { s, total: l.length, shown: sorted.slice(0, AREA_SPORT_CAP), rest: EXISTING_PATHS.has(subPath) ? subPath : sportPagePath(cfg, s.id) };
+    });
+    const rendered = [...new Map(sections.flatMap((x) => x.shown.map((c) => [c.id, c]))).values()];
+    pages.push({
+      kind: 'area',
+      cfg,
+      path: areaPath,
+      short: area,
+      hideFromNav: true,
+      title: `Where to Play in ${inArea(area)} — ${list.length} free courts & fields | ${SITE_NAME}`,
+      description: `Every free public court and field in ${inArea(area)}, ${cfg.name} — ${sportBits} — with drop-in hours and what's open right now.`,
+      h1: `Where to play in ${inArea(area)}`,
+      intro: `${list.length} free public courts and fields in ${esc(inArea(area))}, ${esc(cfg.name)} — ${esc(sportBits)}. Drop-in hours below; the app shows what's open right now and how busy it is.`,
+      cta: { href: appUrl(cfg), label: `Open the ${inArea(area)} map` },
+      body:
+        sections
+          .map(({ s, total, shown, rest }) =>
+            `<h2>${esc(s.emoji)} ${esc(s.label)} (${total})</h2><ul class="places">${shown
+              .map((c) => courtLi(c, s.id, cfg))
+              .join('\n')}</ul>${
+              total > shown.length
+                ? `<p class="more"><a href="${rest}">All ${total} ${esc(s.label.toLowerCase())} spots in ${esc(inArea(area))} →</a></p>`
+                : ''
+            }`
+          )
+          .join('\n') +
+        `<p class="more">${bySport.map(([s]) => `<a href="${sportPagePath(cfg, s.id)}">All ${esc(s.label.toLowerCase())} in ${esc(cfg.name)}</a>`).join(' · ')}</p>`,
+      jsonLd: [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'ItemList',
+          name: `Free public courts and fields in ${inArea(area)}, ${cfg.name}`,
+          numberOfItems: rendered.length,
+          itemListElement: rendered.map((c, i) => ({
+            '@type': 'ListItem', position: i + 1, item: placeJsonLd({ ...c, dropinSport: sportsAt(c)[0] }, SPORT_BY_ID.get(sportsAt(c)[0]).label, cfg),
+          })),
+        },
+        breadcrumb([[cfg.name, cfg.prefix || '/'], [area, areaPath]]),
+      ],
+    });
+  }
 }
 
 // Footer nav references every page, so collect them all before rendering any.
@@ -613,6 +1037,7 @@ fs.writeFileSync(path.join(DIST, 'robots.txt'), `User-agent: *\nAllow: /\n\nSite
 console.log(`✓ index.html <head> patched (App Store id ${APP_STORE_ID})`);
 for (const cfg of CITY_CFG) {
   const mine = pages.filter((p) => p.cfg.id === cfg.id);
-  console.log(`✓ ${cfg.name}: ${mine.length} pages — ${mine.map((p) => p.path).join(' ')}`);
+  const tally = mine.reduce((m, p) => ((m[p.kind] = (m[p.kind] || 0) + 1), m), {});
+  console.log(`✓ ${cfg.name}: ${mine.length} pages (${Object.entries(tally).map(([k, n]) => `${n} ${k}`).join(', ')})`);
 }
 console.log(`✓ sitemap.xml (${urls.length} urls) + robots.txt + og.png`);
