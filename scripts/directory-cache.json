@@ -97,7 +97,7 @@
           "overall": 4,
           "surface": 4.6,
           "crowded": 2.8,
-          "matches": 274
+          "matches": 276
         }
       },
       "pickleball": {
@@ -259,6 +259,15 @@
         "restrooms": false
       }
     },
+    "goldman-tennis-center-outdoor": {
+      "tennis": {
+        "total": 16,
+        "reservable": 16,
+        "walkup": 0,
+        "lights": true,
+        "restrooms": true
+      }
+    },
     "grattan-playground-outdoor": {
       "tennis": {
         "total": 1,
@@ -331,7 +340,7 @@
           "overall": 4,
           "surface": 4.3,
           "crowded": 2.3,
-          "matches": 644
+          "matches": 656
         }
       }
     },
@@ -382,7 +391,7 @@
           "overall": 4,
           "surface": 4.3,
           "crowded": 2.3,
-          "matches": 599
+          "matches": 600
         }
       }
     },
@@ -443,7 +452,7 @@
           "overall": 4.3,
           "surface": 4,
           "crowded": 3.9,
-          "matches": 573
+          "matches": 575
         }
       }
     },
@@ -486,7 +495,7 @@
           "overall": 2.7,
           "surface": 4.3,
           "crowded": 2.3,
-          "matches": 474
+          "matches": 475
         }
       }
     },
@@ -622,7 +631,7 @@
           "overall": 4,
           "surface": 3.4,
           "crowded": 2.2,
-          "matches": 534
+          "matches": 535
         }
       }
     },
@@ -691,7 +700,7 @@
           "overall": 2.8,
           "surface": 2.5,
           "crowded": 4.3,
-          "matches": 477
+          "matches": 478
         }
       }
     },
@@ -1038,7 +1047,7 @@
           "overall": 3.8,
           "surface": 4.5,
           "crowded": 3.5,
-          "matches": 111
+          "matches": 112
         }
       }
     },
@@ -1074,10 +1083,10 @@
           "overall": 3.7,
           "surface": 3,
           "crowded": 3.3,
-          "matches": 249
+          "matches": 250
         }
       }
     }
   },
-  "fetchedAt": "2026-07-29T04:20:58.763Z"
+  "fetchedAt": "2026-08-03T17:08:00.202Z"
 }
