@@ -405,9 +405,13 @@ export default function App() {
   // location fix unless the user has picked one manually (chosen). Only this
   // city's courts show on the map/lists; its feature flags gate the SF-only
   // surfaces (Classes/Pools tabs, class recommendations).
-  const [activeCity, setActiveCityState] = useState(DEFAULT_CITY);
-  const activeCityRef = useRef(DEFAULT_CITY);
-  const cityChosenRef = useRef(false);
+  // ?city= (web) arrives from a prerendered landing page — treat it as an
+  // explicit pick so neither the stored city nor a later location fix overrides
+  // the metro the visitor actually searched for.
+  const urlCity = urlInit?.city && getCity(urlInit.city).id === urlInit.city ? urlInit.city : null;
+  const [activeCity, setActiveCityState] = useState(urlCity || DEFAULT_CITY);
+  const activeCityRef = useRef(urlCity || DEFAULT_CITY);
+  const cityChosenRef = useRef(!!urlCity);
   const setActiveCity = useCallback((id, { chosen = true, moveMap = true } = {}) => {
     const c = getCity(id);
     if (c.id !== id) return; // unknown id — ignore
@@ -424,6 +428,7 @@ export default function App() {
     }
   }, []);
   useEffect(() => {
+    if (urlCity) return; // an explicit link wins over the last-used city
     AsyncStorage.getItem(CITY_KEY).then((raw) => {
       if (!raw) return;
       try {
@@ -431,7 +436,7 @@ export default function App() {
         setActiveCity(saved.id, { chosen: !!saved.chosen });
       } catch {}
     });
-  }, [setActiveCity]);
+  }, [setActiveCity, urlCity]);
   const cityObj = getCity(activeCity);
   const cityFeatures = cityObj.features;
   // Per-city sub-area (borough) selection: { cityId: [names] }. Empty/absent =
@@ -581,8 +586,9 @@ export default function App() {
       sport: sport === DEFAULT_SPORT ? null : sport,
       fav: favoritesMode ? '1' : null,
       court: selectedId,
+      city: activeCity === DEFAULT_CITY ? null : activeCity,
     });
-  }, [tab, sport, favoritesMode, selectedId]);
+  }, [tab, sport, favoritesMode, selectedId, activeCity]);
 
   // Invite links: a code arriving in the URL is persisted (the sign-up round
   // trip can reload the page); with none in the URL, pick up any stored one.

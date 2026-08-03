@@ -828,6 +828,16 @@ metadata into `index.html` and prerenders crawlable landing pages, sitemap, and
 robots.txt from the bundled data). `vercel.json` configures that build command,
 `dist` as the publish dir, and an SPA rewrite of all routes to `index.html`; set the
 three `EXPO_PUBLIC_*` vars in the Vercel dashboard since a CI build has no local `.env`.
+
+The landing pages are generated **per city** from `CITY_CFG` in
+`scripts/postbuild-web.js`: one page per sport that city has courts for, plus its
+class index (SF also gets `/golf` and `/pools`). SF keeps its bare, already-indexed
+paths (`/basketball`, `/pools`, …) and every other city is namespaced under a prefix
+(`/nyc/basketball`); a sport too big for one page splits by subregion
+(`/nyc/basketball/queens` — NYC has 620 basketball courts). Every page carries the
+App Store smart banner and install links, and links into the app via `?city=` so a
+NYC search result opens the app on NYC. Adding a city to `lib/cities.js` and
+`data/cities/index.js` gets its landing pages for free.
 **Vercel Analytics** is mounted
 web-only (`components/WebAnalytics.web.js`, `@vercel/analytics/react`) and only collects
 when served from Vercel. The iOS app is **iPhone-only** (`ios.supportsTablet: false`);
