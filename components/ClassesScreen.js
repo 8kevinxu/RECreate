@@ -7,6 +7,7 @@ import {
   Animated,
   FlatList,
   Modal,
+  Platform,
   Pressable,
   RefreshControl,
   ScrollView,
@@ -210,6 +211,9 @@ export default function ClassesScreen({ userLocation = null, city = 'sf', subreg
   // The ActiveNet live-availability overlay and its delist-hiding are SF-only —
   // other sources have no realtime feed.
   const isSF = city === 'sf';
+  // Web has no pull-to-refresh gesture (RefreshControl is inert under
+  // react-native-web), so it gets an explicit button instead — see reloadWeb.
+  const isWeb = Platform.OS === 'web';
   const catalog = useMemo(
     () => (isSF ? CLASSES : (CITY_CLASSES[city] || []).filter((c) => inSubregions(c, subregions))),
     [isSF, city, subregions]
@@ -255,7 +259,10 @@ export default function ClassesScreen({ userLocation = null, city = 'sf', subreg
 
   // Live availability overlay (openings "right now"), fetched from ActiveNet.
   const [live, setLive] = useState(null); // { 'anc-<id>': { spots, unlimited } }
-  const [liveStatus, setLiveStatus] = useState('loading'); // 'loading' | 'ok' | 'fail'
+  // Web starts already settled on 'fail': the fetch below never runs there, so
+  // "Checking live availability…" would be a lie followed by a guaranteed
+  // fallback. It shows the saved-availability row from the first paint instead.
+  const [liveStatus, setLiveStatus] = useState(isWeb ? 'fail' : 'loading'); // 'loading' | 'ok' | 'fail'
   const [liveAt, setLiveAt] = useState(null);
   const [refreshing, setRefreshing] = useState(false);
 
@@ -323,10 +330,25 @@ export default function ClassesScreen({ userLocation = null, city = 'sf', subreg
     if (isPull) setRefreshing(false);
   };
 
+  // Native only: in a browser the ActiveNet handshake is CORS-blocked (no
+  // Access-Control-Allow-Origin, and the list POST's preflight 403s), so firing
+  // it on web spends a failing request per visit to reach the fallback we
+  // already start in.
   useEffect(() => {
-    if (isSF) refreshLive(false);
+    if (isSF && !isWeb) refreshLive(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSF]);
+
+  // Web's refresh is a page reload, NOT refreshLive(). ActiveNet sends no
+  // Access-Control-Allow-Origin and 403s the preflight, so the live fetch can
+  // never succeed in a browser — a retry button would fail 100% of the time.
+  // What *can* be newer on web is the bundle itself: the crons re-scrape
+  // data/classes.js every 6h and Vercel redeploys, so reloading is the only way
+  // a browser session picks up fresher class data. Costs the current filters and
+  // scroll position, which is the normal price of a refresh.
+  const reloadWeb = () => {
+    if (typeof window !== 'undefined') window.location.reload();
+  };
 
   // Overlay live openings onto a class when we have them.
   const withLive = (c) => (live && live[c.id] ? { ...c, ...live[c.id] } : c);
@@ -515,9 +537,22 @@ export default function ClassesScreen({ userLocation = null, city = 'sf', subreg
             </View>
           )}
         </Pressable>
-        <Text style={styles.resultCount}>
-          {list.length} {t(list.length === 1 ? 'classes.classOne' : 'classes.classMany')}
-        </Text>
+        <View style={styles.toolRight}>
+          <Text style={styles.resultCount}>
+            {list.length} {t(list.length === 1 ? 'classes.classOne' : 'classes.classMany')}
+          </Text>
+          {isWeb && (
+            <Pressable
+              style={styles.refreshBtn}
+              onPress={reloadWeb}
+              hitSlop={8}
+              accessibilityRole="button"
+              accessibilityLabel={t('a11y.refreshClasses')}
+            >
+              <Ionicons name="refresh" size={16} color="#46586a" />
+            </Pressable>
+          )}
+        </View>
       </View>
 
       {isSF && (
@@ -534,7 +569,7 @@ export default function ClassesScreen({ userLocation = null, city = 'sf', subreg
               ? t('classes.liveLoading')
               : liveStatus === 'ok'
               ? t('classes.liveOk', { ago: agoLabel(t, liveAt) })
-              : t('classes.liveFail')}
+              : t(isWeb ? 'classes.liveFailWeb' : 'classes.liveFail')}
           </Text>
         </View>
       )}
@@ -761,6 +796,17 @@ const styles = StyleSheet.create({
   },
   filterCountText: { color: '#fff', fontSize: 11, fontWeight: '800' },
   resultCount: { fontSize: 13, color: '#8a99a8', fontWeight: '600' },
+  toolRight: { flexDirection: 'row', alignItems: 'center', gap: 10 },
+  refreshBtn: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    borderWidth: 1,
+    borderColor: '#dde3ea',
+  },
 
   liveRow: { flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 10 },
   liveDot: { width: 8, height: 8, borderRadius: 4, backgroundColor: '#e0a800' },
