@@ -30,7 +30,7 @@
           "2026-08-05 18:00": 4,
           "2026-08-05 18:30": 4,
           "2026-08-05 19:00": 3,
-          "2026-08-06 07:30": 3,
+          "2026-08-06 07:30": 4,
           "2026-08-06 08:00": 3,
           "2026-08-06 08:30": 3,
           "2026-08-06 09:00": 1,
@@ -175,7 +175,7 @@
           "2026-08-11 18:30": 4,
           "2026-08-11 19:00": 3,
           "2026-08-05 07:00": 0,
-          "2026-08-06 07:00": 0
+          "2026-08-06 07:00": 1
         },
         "open": {
           "2026-08-05 19:00": 3,
@@ -3452,12 +3452,12 @@
     "joe-dimaggio-playground-outdoor": {
       "tennis": {
         "v": 2,
-        "pct": 97,
+        "pct": 96,
         "courts": 1,
         "slots": {
-          "2026-08-05 07:30": 1,
-          "2026-08-05 08:00": 1,
-          "2026-08-05 08:30": 1,
+          "2026-08-05 07:30": 0,
+          "2026-08-05 08:00": 0,
+          "2026-08-05 08:30": 0,
           "2026-08-05 09:00": 1,
           "2026-08-05 09:30": 1,
           "2026-08-05 10:00": 1,
@@ -5337,9 +5337,9 @@
           "2026-08-05 13:30": 0,
           "2026-08-05 14:00": 0,
           "2026-08-05 14:30": 0,
-          "2026-08-05 15:00": 2,
-          "2026-08-05 15:30": 2,
-          "2026-08-05 16:00": 3,
+          "2026-08-05 15:00": 3,
+          "2026-08-05 15:30": 3,
+          "2026-08-05 16:00": 4,
           "2026-08-05 16:30": 4,
           "2026-08-05 17:00": 3,
           "2026-08-05 17:30": 3,
@@ -5714,7 +5714,7 @@
       "guidelines": "Welcome to the Moscone Tennis Courts where you'll find four tennis courts and six pickleball courts spread across two locations: Moscone East and Moscone West.\n\n**Reservation Policy**\n- Any individual may reserve a court, but may not book more than 1 court in a day or 3 courts in a calendar week.\n- Reservation requests are for individual play only. No lessons, team practices, clinics or league matches.\n- Courts left vacant 15 minutes after reservation time are available for walk-up play\n- Please **[click here](https://sfrecpark.org/1188/Tennis-Pickleball-Reservations)** to view the full San Francisco Rec and Park reservation policy.\n\n**Reservation Overview**\n\n*Courts 1, 2, 3*\n- Courts 1, 2, and 3 are reservable for Tennis 7 days in advance\n- Reservations open at 8:00am.\n- Slots are 90 minutes at 7:30am (Courts 1 and 2), 9:00am, 10:30am, 12:00pm, 1:30pm, 3:00pm, 4:30pm, 6:00pm, and 7:30pm. \n\n*Court 4*\n- Court 4 is reservable for Tennis 2 days in advance.  \n- Reservations open at noon. \n- Slots are 60 minute and start at the top of the hour. \n\n*Courts A and B*\n- Courts A and B are reservable for Pickleball 7 days in advance.\n- Reservations open at 8:00am.\n- Slots are 90 minutes. Start time depends on the day of the week. \n\n*Courts E and F*\n- Courts E and F are reservable for Pickleball 2 days in advance\n- Reservations open at 12 PM.\n- Slots are 60 minutes. Start time depends on the day of the week. \n- Courts C and D are available for use during Pickleball open-play hours.\n\n**Location Features**\n- 4 tennis courts\n- 6 pickleball courts. Four rolling nets are provided\n- Lights\n- Bathroom access",
       "pickleball": {
         "v": 2,
-        "pct": 79,
+        "pct": 82,
         "courts": 4,
         "slots": {
           "2026-08-05 09:00": 4,
@@ -5779,7 +5779,9 @@
           "2026-08-05 20:30": 0
         },
         "blk": {
-          "2026-08-05 16:00": 2,
+          "2026-08-05 15:00": 2,
+          "2026-08-05 15:30": 2,
+          "2026-08-05 16:00": 4,
           "2026-08-05 16:30": 4,
           "2026-08-05 17:00": 2,
           "2026-08-05 17:30": 2,
@@ -5853,7 +5855,7 @@
     "mountain-lake-park-outdoor": {
       "tennis": {
         "v": 2,
-        "pct": 61,
+        "pct": 60,
         "courts": 4,
         "slots": {
           "2026-08-05 07:00": 1,
@@ -5953,9 +5955,9 @@
           "2026-08-09 07:30": 0,
           "2026-08-09 08:00": 0,
           "2026-08-09 08:30": 0,
-          "2026-08-09 09:00": 4,
-          "2026-08-09 09:30": 4,
-          "2026-08-09 10:00": 4,
+          "2026-08-09 09:00": 3,
+          "2026-08-09 09:30": 3,
+          "2026-08-09 10:00": 3,
           "2026-08-09 10:30": 4,
           "2026-08-09 11:00": 4,
           "2026-08-09 11:30": 4,
@@ -8528,7 +8530,7 @@
     "st-mary-s-rec-center-outdoor": {
       "tennis": {
         "v": 2,
-        "pct": 23,
+        "pct": 24,
         "courts": 2,
         "slots": {
           "2026-08-05 07:30": 0,
@@ -8645,9 +8647,9 @@
           "2026-08-09 15:00": 1,
           "2026-08-09 15:30": 1,
           "2026-08-09 16:00": 1,
-          "2026-08-09 16:30": 0,
-          "2026-08-09 17:00": 0,
-          "2026-08-09 17:30": 0,
+          "2026-08-09 16:30": 1,
+          "2026-08-09 17:00": 1,
+          "2026-08-09 17:30": 1,
           "2026-08-09 18:00": 0,
           "2026-08-09 18:30": 0,
           "2026-08-09 19:00": 0,
@@ -8884,5 +8886,5 @@
       "guidelines": "Welcome to Sunset Recreation Center, where we have two fantastic tennis courts for your sporting endeavors. \n\n**Reservation Policy**\n- Any individual may reserve a court, but may not book more than 1 court in a day or 3 courts in a calendar week.\n- Reservation requests are for individual play only. No lessons, team practices, clinics or league matches.\n- Courts left vacant 15 minutes after reservation time are available for walk-up play\n- Please **[click here](https://sfrecpark.org/1188/Tennis-Pickleball-Reservations)** to view the full San Francisco Rec and Park reservation policy.\n\n**Reservation Policy**\n- Courts 1 and 2 are reservable for Tennis 7 days in advance. \n- Reservations open at 8 AM. \n- All slots are 90 minutes, starting at 7:30am, 9:00am, 10:30am, 12:00pm, 1:30pm, 3:00pm and 4:30pm (6:00pm during Daylight Saving Time). \n\n**Location Features**\n- 2 tennis courts\n- Bathroom access"
     }
   },
-  "fetchedAt": "2026-08-05T08:45:45.078Z"
+  "fetchedAt": "2026-08-05T11:25:58.661Z"
 }
