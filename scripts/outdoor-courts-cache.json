@@ -8572,6 +8572,165 @@
       "notes": "Outdoor basketball & tennis & baseball — first-come during SF park hours (5 AM–midnight); no posted drop-in schedule."
     },
     {
+      "id": "hunter-s-point-shipyard-parks-outdoor",
+      "name": "Hunter’s Point Shipyard Parks",
+      "address": "",
+      "neighborhood": "Bayview Hunters Point",
+      "lat": 37.727688,
+      "lng": -122.36812,
+      "indoor": false,
+      "schedule": [
+        [
+          300,
+          1440
+        ],
+        [
+          300,
+          1440
+        ],
+        [
+          300,
+          1440
+        ],
+        [
+          300,
+          1440
+        ],
+        [
+          300,
+          1440
+        ],
+        [
+          300,
+          1440
+        ],
+        [
+          300,
+          1440
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "soccer": [
+          [
+            [
+              300,
+              1440
+            ]
+          ],
+          [
+            [
+              300,
+              1440
+            ]
+          ],
+          [
+            [
+              300,
+              1440
+            ]
+          ],
+          [
+            [
+              300,
+              1440
+            ]
+          ],
+          [
+            [
+              300,
+              1440
+            ]
+          ],
+          [
+            [
+              300,
+              1440
+            ]
+          ],
+          [
+            [
+              300,
+              1440
+            ]
+          ]
+        ],
+        "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "sfrecpark-outdoor",
+      "notes": "Outdoor soccer — first-come during SF park hours (5 AM–midnight); no posted drop-in schedule."
+    },
+    {
       "id": "in-chan-kaajal-park-outdoor",
       "name": "In Chan Kaajal Park",
       "address": "2080 Folsom St",
@@ -20982,5 +21141,5 @@
       "notes": "Outdoor basketball & tennis & soccer & baseball — first-come during SF park hours (5 AM–midnight); no posted drop-in schedule."
     }
   ],
-  "fetchedAt": "2026-08-03T17:06:29.525Z"
+  "fetchedAt": "2026-08-10T15:55:37.724Z"
 }

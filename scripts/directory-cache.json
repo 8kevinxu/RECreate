@@ -31,7 +31,7 @@
           "overall": 3,
           "surface": 2.2,
           "crowded": 3.5,
-          "matches": 502
+          "matches": 503
         }
       }
     },
@@ -340,7 +340,7 @@
           "overall": 4,
           "surface": 4.3,
           "crowded": 2.3,
-          "matches": 656
+          "matches": 664
         }
       }
     },
@@ -391,7 +391,7 @@
           "overall": 4,
           "surface": 4.3,
           "crowded": 2.3,
-          "matches": 600
+          "matches": 601
         }
       }
     },
@@ -452,7 +452,7 @@
           "overall": 4.3,
           "surface": 4,
           "crowded": 3.9,
-          "matches": 575
+          "matches": 577
         }
       }
     },
@@ -495,7 +495,7 @@
           "overall": 2.7,
           "surface": 4.3,
           "crowded": 2.3,
-          "matches": 475
+          "matches": 476
         }
       }
     },
@@ -631,7 +631,7 @@
           "overall": 4,
           "surface": 3.4,
           "crowded": 2.2,
-          "matches": 535
+          "matches": 539
         }
       }
     },
@@ -700,7 +700,7 @@
           "overall": 2.8,
           "surface": 2.5,
           "crowded": 4.3,
-          "matches": 478
+          "matches": 480
         }
       }
     },
@@ -761,7 +761,7 @@
           "overall": 4,
           "surface": 3,
           "crowded": 3.5,
-          "matches": 280
+          "matches": 282
         }
       },
       "pickleball": {
@@ -977,7 +977,7 @@
           "overall": 3.8,
           "surface": 3.8,
           "crowded": 4,
-          "matches": 293
+          "matches": 295
         }
       },
       "pickleball": {
@@ -1031,7 +1031,7 @@
           "overall": 2,
           "surface": 4,
           "crowded": 4,
-          "matches": 73
+          "matches": 74
         }
       }
     },
@@ -1083,10 +1083,10 @@
           "overall": 3.7,
           "surface": 3,
           "crowded": 3.3,
-          "matches": 250
+          "matches": 252
         }
       }
     }
   },
-  "fetchedAt": "2026-08-03T17:08:00.202Z"
+  "fetchedAt": "2026-08-10T15:56:51.377Z"
 }

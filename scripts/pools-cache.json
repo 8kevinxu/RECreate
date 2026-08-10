@@ -1150,6 +1150,14 @@
         {
           "label": "North Beach SUMMER 2026 June9_Aug10 Warm Pool",
           "url": "https://sfrecpark.org/DocumentCenter/View/29569"
+        },
+        {
+          "label": "NB Pool_Summer Interim_Aug11_Aug29_ COOL POOL (1)",
+          "url": "https://sfrecpark.org/DocumentCenter/View/29778"
+        },
+        {
+          "label": "NB Pool_Summer Interim_Aug11_Aug29_ WARM POOL (1)",
+          "url": "https://sfrecpark.org/DocumentCenter/View/29779"
         }
       ],
       "sessions": [
@@ -1163,9 +1171,21 @@
             "pool": "cool"
           },
           {
+            "kind": "lap",
+            "start": 420,
+            "end": 600,
+            "pool": "cool"
+          },
+          {
             "kind": "senior",
             "start": 420,
             "end": 480,
+            "pool": "warm"
+          },
+          {
+            "kind": "senior",
+            "start": 420,
+            "end": 510,
             "pool": "warm"
           },
           {
@@ -1178,6 +1198,12 @@
             "kind": "lessons",
             "start": 510,
             "end": 585,
+            "pool": "warm"
+          },
+          {
+            "kind": "parent_child",
+            "start": 540,
+            "end": 600,
             "pool": "warm"
           },
           {
@@ -1191,6 +1217,12 @@
             "start": 615,
             "end": 780,
             "pool": "cool"
+          },
+          {
+            "kind": "lessons",
+            "start": 720,
+            "end": 780,
+            "pool": "warm"
           },
           {
             "kind": "senior",
@@ -1211,6 +1243,18 @@
             "pool": "cool"
           },
           {
+            "kind": "adult_lessons",
+            "start": 960,
+            "end": 990,
+            "pool": "cool"
+          },
+          {
+            "kind": "lap",
+            "start": 960,
+            "end": 1080,
+            "pool": "warm"
+          },
+          {
             "kind": "lessons",
             "start": 960,
             "end": 1035,
@@ -1221,6 +1265,12 @@
             "start": 960,
             "end": 1035,
             "pool": "warm"
+          },
+          {
+            "kind": "lap",
+            "start": 990,
+            "end": 1110,
+            "pool": "cool"
           },
           {
             "kind": "lap",
@@ -1237,6 +1287,12 @@
         ],
         [
           {
+            "kind": "lap",
+            "start": 510,
+            "end": 600,
+            "pool": "cool"
+          },
+          {
             "kind": "lessons",
             "start": 510,
             "end": 585,
@@ -1249,10 +1305,22 @@
             "pool": "warm"
           },
           {
+            "kind": "parent_child",
+            "start": 540,
+            "end": 600,
+            "pool": "warm"
+          },
+          {
             "kind": "lap",
             "start": 615,
             "end": 750,
             "pool": "cool"
+          },
+          {
+            "kind": "senior",
+            "start": 615,
+            "end": 675,
+            "pool": "warm"
           },
           {
             "kind": "exercise",
@@ -1279,6 +1347,12 @@
             "pool": "cool"
           },
           {
+            "kind": "adult_lessons",
+            "start": 945,
+            "end": 975,
+            "pool": "warm"
+          },
+          {
             "kind": "lessons",
             "start": 960,
             "end": 1035,
@@ -1288,6 +1362,24 @@
             "kind": "lessons",
             "start": 960,
             "end": 1035,
+            "pool": "warm"
+          },
+          {
+            "kind": "parent_child",
+            "start": 960,
+            "end": 1020,
+            "pool": "cool"
+          },
+          {
+            "kind": "adult_lessons",
+            "start": 990,
+            "end": 1020,
+            "pool": "warm"
+          },
+          {
+            "kind": "family",
+            "start": 1035,
+            "end": 1110,
             "pool": "warm"
           },
           {
@@ -1305,9 +1397,21 @@
             "pool": "cool"
           },
           {
+            "kind": "lap",
+            "start": 420,
+            "end": 600,
+            "pool": "cool"
+          },
+          {
             "kind": "senior",
             "start": 420,
             "end": 480,
+            "pool": "warm"
+          },
+          {
+            "kind": "senior",
+            "start": 420,
+            "end": 510,
             "pool": "warm"
           },
           {
@@ -1320,6 +1424,12 @@
             "kind": "lessons",
             "start": 510,
             "end": 585,
+            "pool": "warm"
+          },
+          {
+            "kind": "parent_child",
+            "start": 540,
+            "end": 600,
             "pool": "warm"
           },
           {
@@ -1335,6 +1445,24 @@
             "pool": "warm"
           },
           {
+            "kind": "family",
+            "start": 720,
+            "end": 840,
+            "pool": "warm"
+          },
+          {
+            "kind": "other",
+            "start": 720,
+            "end": 840,
+            "pool": "cool"
+          },
+          {
+            "kind": "other",
+            "start": 720,
+            "end": 840,
+            "pool": "warm"
+          },
+          {
             "kind": "senior",
             "start": 720,
             "end": 780,
@@ -1344,6 +1472,12 @@
             "kind": "family",
             "start": 810,
             "end": 915,
+            "pool": "warm"
+          },
+          {
+            "kind": "family",
+            "start": 810,
+            "end": 930,
             "pool": "warm"
           },
           {
@@ -1359,6 +1493,18 @@
             "pool": "warm"
           },
           {
+            "kind": "adult_lessons",
+            "start": 960,
+            "end": 990,
+            "pool": "cool"
+          },
+          {
+            "kind": "family",
+            "start": 960,
+            "end": 1035,
+            "pool": "warm"
+          },
+          {
             "kind": "lessons",
             "start": 960,
             "end": 1035,
@@ -1369,6 +1515,12 @@
             "start": 960,
             "end": 1035,
             "pool": "warm"
+          },
+          {
+            "kind": "lap",
+            "start": 990,
+            "end": 1110,
+            "pool": "cool"
           },
           {
             "kind": "exercise",
@@ -1385,6 +1537,12 @@
         ],
         [
           {
+            "kind": "lap",
+            "start": 510,
+            "end": 600,
+            "pool": "cool"
+          },
+          {
             "kind": "lessons",
             "start": 510,
             "end": 585,
@@ -1397,10 +1555,22 @@
             "pool": "warm"
           },
           {
+            "kind": "parent_child",
+            "start": 540,
+            "end": 600,
+            "pool": "warm"
+          },
+          {
             "kind": "lap",
             "start": 615,
             "end": 750,
             "pool": "cool"
+          },
+          {
+            "kind": "senior",
+            "start": 615,
+            "end": 675,
+            "pool": "warm"
           },
           {
             "kind": "exercise",
@@ -1427,6 +1597,12 @@
             "pool": "cool"
           },
           {
+            "kind": "adult_lessons",
+            "start": 945,
+            "end": 975,
+            "pool": "warm"
+          },
+          {
             "kind": "lessons",
             "start": 960,
             "end": 1035,
@@ -1439,6 +1615,18 @@
             "pool": "warm"
           },
           {
+            "kind": "parent_child",
+            "start": 960,
+            "end": 1020,
+            "pool": "cool"
+          },
+          {
+            "kind": "adult_lessons",
+            "start": 990,
+            "end": 1020,
+            "pool": "warm"
+          },
+          {
             "kind": "family",
             "start": 1050,
             "end": 1140,
@@ -1448,6 +1636,12 @@
             "kind": "lap",
             "start": 1050,
             "end": 1170,
+            "pool": "cool"
+          },
+          {
+            "kind": "lap",
+            "start": 1050,
+            "end": 1140,
             "pool": "cool"
           }
         ],
@@ -1463,6 +1657,12 @@
             "start": 540,
             "end": 600,
             "pool": "cool"
+          },
+          {
+            "kind": "lessons",
+            "start": 585,
+            "end": 615,
+            "pool": "warm"
           },
           {
             "kind": "parent_child",
@@ -1495,6 +1695,12 @@
             "pool": "cool"
           },
           {
+            "kind": "lap",
+            "start": 720,
+            "end": 795,
+            "pool": "cool"
+          },
+          {
             "kind": "senior",
             "start": 825,
             "end": 900,
@@ -1514,6 +1720,18 @@
           },
           {
             "kind": "adult_lessons",
+            "start": 990,
+            "end": 1020,
+            "pool": "cool"
+          },
+          {
+            "kind": "lap",
+            "start": 990,
+            "end": 1020,
+            "pool": "cool"
+          },
+          {
+            "kind": "other",
             "start": 990,
             "end": 1020,
             "pool": "cool"
@@ -2047,5 +2265,5 @@
       "label": "Independence Day"
     }
   ],
-  "fetchedAt": "2026-08-03T17:10:32.316Z"
+  "fetchedAt": "2026-08-10T15:58:49.082Z"
 }
