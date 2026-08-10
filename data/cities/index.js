@@ -19,6 +19,7 @@ import NYC_RES, {
   DUSK as NYC_DUSK,
   LIGHTS as NYC_LIGHTS,
 } from './nyc/reservations';
+import NYC_DIR from './nyc/directory';
 
 const SPORT_KEYS = [...SPORTS.map((s) => s.id), WEIGHT_ROOM];
 
@@ -56,7 +57,24 @@ function duskWeek(parkHours, dusk) {
   return week;
 }
 
-function expandCity(courts, city, parkHours, source, disclaimer, dusk, lights) {
+// NYC Parks' own directory carries the qualitative facts the GIS dataset
+// doesn't — the real tennis surface ("Clay", not "Asphalt"), a phone number,
+// and NYC Parks' prose about the site. It folds into `facts[sport]` rather than
+// the `directory` slot: that slot is SF-shaped, and App.js hides the whole NYC
+// facts row whenever it's present, so using it would trade these facts for the
+// count/lighting/amenity chips already there. The directory's surface REPLACES
+// the GIS one — both describe the same courts, and "Clay" is the useful answer.
+function mergeDirectory(facts, entry) {
+  if (!entry) return facts;
+  const out = { ...facts };
+  for (const [sport, add] of Object.entries(entry)) {
+    if (!out[sport]) continue; // a sport this pin doesn't offer
+    out[sport] = { ...out[sport], ...add };
+  }
+  return out;
+}
+
+function expandCity(courts, city, parkHours, source, disclaimer, dusk, lights, directory) {
   const schedule = duskWeek(parkHours, dusk);
   return courts.map((c) => {
     const lit = (lights && lights[c.id]) || null;
@@ -74,8 +92,17 @@ function expandCity(courts, city, parkHours, source, disclaimer, dusk, lights) {
     // Facility hours span the latest any of its sports is playable.
     const latest = lit ? Math.max(...Object.values(lit)) : 0;
     const facility = latest ? schedule.map((h) => [h[0], Math.max(h[1], latest)]) : schedule;
-    const { sports, ...rest } = c;
-    return { ...rest, city, indoor: false, schedule: facility, dropins, source, disclaimer };
+    const { sports, facts, ...rest } = c;
+    return {
+      ...rest,
+      facts: mergeDirectory(facts, directory && directory[c.id]),
+      city,
+      indoor: false,
+      schedule: facility,
+      dropins,
+      source,
+      disclaimer,
+    };
   });
 }
 
@@ -87,7 +114,7 @@ export const CITY_COURTS = {
   // pins are compact and expanded here.
   [NYC_CITY]: [
     ...NYC_INDOOR,
-    ...expandCity(NYC, NYC_CITY, NYC_HOURS, NYC_SOURCE, NYC_DISCLAIMER, NYC_DUSK, NYC_LIGHTS),
+    ...expandCity(NYC, NYC_CITY, NYC_HOURS, NYC_SOURCE, NYC_DISCLAIMER, NYC_DUSK, NYC_LIGHTS, NYC_DIR),
   ],
 };
 

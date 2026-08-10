@@ -39,7 +39,7 @@ const UA = { 'User-Agent': 'RECreate/1.0', Accept: 'application/json' };
 const PAGE = 1000;
 
 // Display order for the sports in a pin's note (same as SF's builder).
-const ORDER = ['basketball', 'volleyball', 'tennis', 'pickleball', 'soccer', 'baseball', 'weightroom'];
+const ORDER = ['basketball', 'volleyball', 'tennis', 'pickleball', 'handball', 'soccer', 'baseball', 'weightroom'];
 
 const normName = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, '');
 

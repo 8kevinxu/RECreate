@@ -28,7 +28,7 @@ const allOpenHoursWeek = (sched) => sched.map((h) => (h ? [[h[0], h[1]]] : []));
 
 // All tracked sports (keep in sync with lib/sports.js) + the weight-room facility
 // view; every court carries a week for each so the dropins shape is uniform.
-const ALL_SPORTS = ['basketball', 'volleyball', 'pingpong', 'badminton', 'pickleball', 'tennis', 'soccer', 'baseball', 'weightroom'];
+const ALL_SPORTS = ['basketball', 'volleyball', 'pingpong', 'badminton', 'pickleball', 'tennis', 'soccer', 'baseball', 'handball', 'weightroom'];
 
 // Last-good snapshot cache, shared format across builders: JSON file next to the
 // script, pretty-printed with a trailing newline (diff-friendly when committed).

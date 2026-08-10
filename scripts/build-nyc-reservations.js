@@ -28,13 +28,17 @@
  * exact, with no name or distance matching. Never parse the sport out of the id
  * string; read it from the row's sport flag columns.
  *
- * Denominators matter as much as counts. A reading of "2 courts taken" is only
- * meaningful against how many courts exist: for permits that's every active
- * facility of that sport at the park (Socrata), and for tennis it's reservation
- * courts + walk-on courts (the index page publishes both). Without the walk-on
- * half, 2 booked reservation courts at Riverside would read "fully booked" while
- * 8 walk-on courts sat empty — the exact failure lib/reservations.js was written
- * to avoid for SF.
+ * Denominators matter as much as counts. "2 courts taken" is only meaningful
+ * against how many courts exist, and for BOTH halves that number comes from the
+ * GIS dataset: every active facility of that sport at the park. Counted instead
+ * against only the reservable courts, Riverside's 2 booked courts would read
+ * "fully booked" with 18 walk-up courts empty — the exact failure
+ * lib/reservations.js was written to avoid for SF.
+ *
+ * Do NOT use the reservation index's "Reservation Courts" + "Walk-on Courts" as
+ * a total: they overlap rather than sum. Riverside 119th's own page says "Ten
+ * outdoor hard courts. Reservation Courts: 2" while the index lists 2 and 10 —
+ * adding them put "2 of 24 courts reserved" next to a "20 courts" facts chip.
  *
  * Resilience mirrors the other builds: live -> last-good cache
  * (scripts/cities/nyc-reservations-cache.json) -> abort keeping the old file.
@@ -79,13 +83,13 @@ const MIN_READINGS_OK = 40;
 const TENNIS_CACHE_MAX_DAYS = 3;
 
 // Socrata sport flag column -> our sport id. Deliberately a subset of the
-// outdoor build's map: only sports the app can render. Handball is unmapped
-// until it exists in lib/sports.js.
+// outdoor build's map: only sports the app can render.
 const SPORT_FLAGS = {
   basketball: 'basketball',
   tennis: 'tennis',
   volleyball: 'volleyball',
   pickleball: 'pickleball',
+  handball: 'handball',
   adult_baseball: 'baseball',
   adult_softball: 'baseball',
   ll_baseb_12andunder: 'baseball',
@@ -384,7 +388,16 @@ function parseTennisAvailability(html) {
   return { slots, open, courts };
 }
 
-async function fetchTennis(keyToCourt) {
+async function fetchTennis(keyToCourt, counts) {
+  // How many tennis courts each pin actually has, per the GIS dataset. The
+  // reservation index publishes "Reservation Courts" and "Walk-on Courts", and
+  // those OVERLAP rather than summing: Riverside 119th's own page reads "Ten
+  // outdoor hard courts. Reservation Courts: 2" while the index lists 2 + 10.
+  // Adding them made the card say "2 of 24 courts reserved" beside a facts chip
+  // reading "20 courts". The GIS count is canonical (see build-nyc-directory.js).
+  const courtToKey = new Map([...keyToCourt].map(([k, id]) => [id, k]));
+  const gisCourts = (courtId) => counts.get(`${courtToKey.get(courtId)}|tennis`) || 0;
+
   const index = parseTennisIndex(await getText(`${BASE}/tennisreservation`));
   if (!index.length) throw new Error('no locations parsed from /tennisreservation');
   const out = {}; // courtId -> { tennis: {...} }
@@ -405,22 +418,27 @@ async function fetchTennis(keyToCourt) {
     }
     await sleep(PACE_MS);
     const reservation = loc.reservationCourts ?? grid.courts;
-    const total = reservation + (loc.walkOnCourts || 0);
     // Riverside's two reservation sites share one pin — merge rather than
     // letting the second overwrite the first.
     const prev = out[courtId]?.tennis;
+    // Whole-park court count, so the reading's denominator matches the count
+    // the card shows. Falls back to the index's figures only if GIS has none.
+    const total = gisCourts(courtId) || reservation + (loc.walkOnCourts || 0);
     out[courtId] = {
       tennis: prev
         ? {
             slots: mergeCounts(prev.slots, grid.slots),
             open: mergeCounts(prev.open, grid.open),
             courts: prev.courts + reservation,
-            total: prev.total + total,
+            total, // park-wide, so it does NOT accumulate across the two sites
             url: prev.url,
           }
         : { slots: grid.slots, open: grid.open, courts: reservation, total, url },
     };
-    console.log(`  ✓ tennis: ${loc.name} → ${courtId} (${reservation} res + ${loc.walkOnCourts || 0} walk-on)`);
+    console.log(
+      `  ✓ tennis: ${loc.name} → ${courtId} (${reservation} reservable of ${total} courts` +
+        `${gisCourts(courtId) ? '' : ' — no GIS count, using the index figures'})`
+    );
   }
   return out;
 }
@@ -538,7 +556,7 @@ async function main() {
     // republishes week-old permits because tennis hiccuped.
     let tennis = null;
     try {
-      tennis = await fetchTennis(keyToCourt);
+      tennis = await fetchTennis(keyToCourt, counts);
     } catch (e) {
       console.log(`  ⚠ tennis reservations failed (${e.message})`);
     }

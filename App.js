@@ -1998,6 +1998,18 @@ function CourtDetail({
               <Text style={styles.facText}>{s}</Text>
             </View>
           ))}
+          {/* Facility phone, from NYC Parks' directory. Tappable — someone
+              checking whether the bubble is up wants to call, not read. */}
+          {!!court.facts?.[vSport]?.phone && (
+            <Pressable
+              style={styles.facChip}
+              accessibilityRole="button"
+              accessibilityLabel={t('a11y.callFacility')}
+              onPress={() => Linking.openURL(`tel:${court.facts[vSport].phone.replace(/[^\d+]/g, '')}`)}
+            >
+              <Text style={styles.facText}>📞 {court.facts[vSport].phone}</Text>
+            </Pressable>
+          )}
         </View>
       )}
 
@@ -2371,6 +2383,13 @@ function CourtDetail({
               n: dir.tsf.ratings,
             })}
           </Text>
+        )}
+
+        {/* NYC Parks' own prose about this facility (build-nyc-directory.js) —
+            bubble seasons, lessons, which courts a permit actually covers. It
+            rides on facts[sport], so it only shows for the sport it describes. */}
+        {!!court.facts?.[vSport]?.info && (
+          <Text style={styles.notes}>{court.facts[vSport].info}</Text>
         )}
 
         {/* Generic facility note, scoped to the viewed sport; skipped entirely

@@ -1,0 +1,497 @@
+{
+  "directory": {
+    "nyc-haffen-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 379-8347"
+      }
+    },
+    "nyc-pelham-bay-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 885-3442"
+      }
+    },
+    "nyc-seton-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 601-6044",
+        "info": "Lessons Offered"
+      }
+    },
+    "nyc-st-james-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 822-4271"
+      }
+    },
+    "nyc-st-mary-s-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 402-5161"
+      }
+    },
+    "nyc-van-cortlandt-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 549-6494"
+      }
+    },
+    "nyc-williamsbridge-oval-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 654-1851"
+      }
+    },
+    "nyc-decatur-playground-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 493-7612"
+      }
+    },
+    "nyc-dyker-beach-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 259-4016"
+      }
+    },
+    "nyc-fort-greene-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 722-3218",
+        "info": "Lessons Offered"
+      }
+    },
+    "nyc-friends-field-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 965-6502"
+      }
+    },
+    "nyc-jackie-robinson-park-playground-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 622-0025"
+      }
+    },
+    "nyc-john-j-carty-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 439-4296"
+      }
+    },
+    "nyc-mcguire-fields-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ]
+      }
+    },
+    "nyc-kaiser-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 946-1357",
+        "info": "Lessons Offered"
+      }
+    },
+    "nyc-kelly-park-playground-b157-outdoor": {
+      "tennis": {
+        "phone": "(718) 946-5913",
+        "info": "Lessons Offered"
+      }
+    },
+    "nyc-leif-ericson-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 259-4016",
+        "info": "Lessons Offered"
+      }
+    },
+    "nyc-lincoln-terrace-arthur-s-somers-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 804-7077",
+        "info": "Lessons Offered"
+      }
+    },
+    "nyc-linden-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 927-2059"
+      }
+    },
+    "nyc-manhattan-beach-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 646-5913",
+        "info": "Lessons Offered"
+      }
+    },
+    "nyc-marine-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 376-1675",
+        "info": "Lessons Offered"
+      }
+    },
+    "nyc-mcdonald-playground-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 946-1373"
+      }
+    },
+    "nyc-mckinley-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 259-4016",
+        "info": "Lessons Offered"
+      }
+    },
+    "nyc-van-voorhees-playground-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 722-3213"
+      }
+    },
+    "nyc-shore-park-and-parkway-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 259-4016",
+        "info": "Lessons Offered"
+      }
+    },
+    "nyc-central-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard",
+          "Fast Dry"
+        ],
+        "phone": "(212) 280-0206",
+        "info": "Lessons Offered"
+      }
+    },
+    "nyc-fort-washington-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(212) 304-2322",
+        "info": "Lessons offered by Riverside Tennis Association; sign up at RiversideTennis.org"
+      }
+    },
+    "nyc-frederick-johnson-playground-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(212) 234-9609",
+        "info": "Lessons Offered"
+      }
+    },
+    "nyc-inwood-hill-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(212) 304-2381",
+        "info": "Lessons Offered"
+      }
+    },
+    "nyc-riverside-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Clay",
+          "Hard"
+        ],
+        "phone": "(212) 978-0277",
+        "info": "Lessons offered by Riverside Tennis Association; sign up at RiversideTennis.org"
+      }
+    },
+    "nyc-astoria-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 626-8136",
+        "info": "Lessons Offered"
+      }
+    },
+    "nyc-baisley-pond-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ]
+      }
+    },
+    "nyc-broad-channel-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 318-4000"
+      }
+    },
+    "nyc-brookville-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 255-2620",
+        "info": "Lessons Offered"
+      }
+    },
+    "nyc-detective-keith-l-williams-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ]
+      }
+    },
+    "nyc-flushing-fields-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 359-1297"
+      }
+    },
+    "nyc-forest-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 235-5871"
+      }
+    },
+    "nyc-highland-park-q020-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 235-5871",
+        "info": "10 full courts, 8 36-foot youth courts."
+      }
+    },
+    "nyc-juniper-valley-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 326-2877",
+        "info": "Lessons Offered"
+      }
+    },
+    "nyc-kissena-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard",
+          "Hartro"
+        ],
+        "phone": "(718) 359-1297",
+        "info": "Lessons Offered"
+      }
+    },
+    "nyc-louis-pasteur-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ]
+      }
+    },
+    "nyc-bayswater-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 318-4000"
+      }
+    },
+    "nyc-frank-principe-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 326-2877"
+      }
+    },
+    "nyc-police-officer-edward-byrne-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ]
+      }
+    },
+    "nyc-rockaway-community-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 318-4000"
+      }
+    },
+    "nyc-roy-wilkins-recreation-center-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 276-8690"
+      }
+    },
+    "nyc-springfield-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 225-2620"
+      }
+    },
+    "nyc-archie-spigner-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ]
+      }
+    },
+    "nyc-rochdale-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 978-1536"
+      }
+    },
+    "nyc-helen-marshall-playground-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 426-4347"
+      }
+    },
+    "nyc-flushing-meadows-corona-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 760-6999"
+      }
+    },
+    "nyc-walker-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "All Weather"
+        ],
+        "phone": "(718) 667-3545",
+        "info": "Lessons Offered"
+      }
+    },
+    "nyc-wolfe-s-pond-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "All Weather"
+        ],
+        "phone": "(718) 667-3545",
+        "info": "Lessons Offered"
+      }
+    },
+    "nyc-randall-s-island-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(212) 427-6150",
+        "info": "The Sportime Tennis Center is a concession offering half of its available courts to NYC Parks Tennis Permit holders during the outdoor season, which is from the Friday before Memorial Day through Labor Day. For more information, visit the Sportime Randall's Island tennis page . Designated NYC Parks Courts: Walk-ins only for designated NYC Parks courts and Online Reservation System for limited amount of courts to be reserved and paid ahead of time. limited to one (1) hour for singles play, and two (2) hours for doubles play, although players may keep playing after their reserved times have ended if courts are available, upon confirming such availability with club staff. All players using designated NYC Parks courts must affiliate with SPORTIME as an associate/non-member, and complete a waiver, prior to play. No Exceptions. A reserved court is forfeited if the reserving player has not arrived by 5 minutes past the start time. Both hard and soft court surfaces are available at this location."
+      }
+    },
+    "nyc-blood-root-valley-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ],
+        "phone": "(718) 667-3545"
+      }
+    },
+    "nyc-south-oxford-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ]
+      }
+    },
+    "nyc-washington-market-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ]
+      }
+    },
+    "nyc-cooper-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ]
+      }
+    },
+    "nyc-fairview-park-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ]
+      }
+    },
+    "nyc-howard-bennett-playground-outdoor": {
+      "tennis": {
+        "surf": [
+          "Hard"
+        ]
+      }
+    }
+  },
+  "fetchedAt": "2026-08-10T20:31:34.395Z"
+}

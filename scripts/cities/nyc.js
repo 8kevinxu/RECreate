@@ -9,8 +9,10 @@
  * Park names/addresses: "Parks Properties" (enfh-gkve), joined by gispropnum;
  * `borough` codes map to names below.
  *
- * Sports NYC tracks that the app has no sport for (handball, bocce, cricket,
- * football, track) are intentionally unmapped. No pingpong/badminton source.
+ * Sports NYC tracks that the app has no sport for (bocce, cricket, football,
+ * track) are intentionally unmapped. No pingpong/badminton source.
+ * Handball IS mapped: it's NYC's biggest court sport (1,853 active facilities,
+ * more than basketball) even though SF has none.
  */
 
 module.exports = {
@@ -32,6 +34,7 @@ module.exports = {
       tennis: ['tennis'],
       volleyball: ['volleyball'],
       pickleball: ['pickleball'],
+      handball: ['handball'],
       adult_baseball: ['baseball'],
       adult_softball: ['baseball'],
       ll_baseb_12andunder: ['baseball'],

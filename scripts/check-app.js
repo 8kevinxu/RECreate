@@ -158,6 +158,9 @@ const DATA_FLOORS = [
   // NYC permits + tennis reservations. Loose: how many parks carry a permit
   // swings hard with the season (leagues in summer, near-empty in February).
   ['data/cities/nyc/reservations.js', 'NYC_RESERVATIONS', 40],
+  // Tennis-only enrichment from NYC Parks' own directory (78 facilities, of
+  // which the outdoor ones that match a pin land here).
+  ['data/cities/nyc/directory.js', 'NYC_DIRECTORY', 25],
 ];
 
 const loaded = {}; // file -> module exports, reused by the price gate below
