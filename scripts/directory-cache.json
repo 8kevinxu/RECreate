@@ -152,7 +152,7 @@
         "lights": true,
         "restrooms": true,
         "nets": "Provided",
-        "desc": "4 permanent pickleball courts, reservable on rec.us."
+        "desc": "4 permanent pickleball courts. Reservation only."
       }
     },
     "mission-dolores-park-outdoor": {
@@ -616,7 +616,7 @@
           ]
         ],
         "note": "Evenings after the times shown: court 4 reservable for tennis or pickleball (Tue/Thu tennis-only); court 3 tennis-only.",
-        "desc": "Players can reserve courts for either tennis or pickleball at sfrecpark.org. Parking is tough on the nearby residential streets. Best places to try are behind the Safeway on North Point St. or the Ft. Mason public parking lots for the Marina Green."
+        "desc": "6 dual-lined courts on tennis courts #3 & 4 (west side). Restricted shared schedule. Rolling nets (4), must bring own net to use the center 2 courts. Must bring own paddle and balls. Drop-in Open Play sessions. Reservation system bookings are available."
       }
     },
     "mountain-lake-park-outdoor": {
@@ -675,7 +675,7 @@
         "lights": false,
         "restrooms": true,
         "nets": "Bring your own",
-        "desc": "Courts A-H are on the REC Court Reservation System. Bring own net, although an on-site lock box may have some available."
+        "desc": "This 4 tennis court complex is painted with 8 pickleball court lines. All courts reservable using portable nets. No dedicated drop-in hours. A net storage box is onsite, but recommend you bring your own net. Convenient bathroom."
       }
     },
     "peixotto-playground-outdoor": {
@@ -1060,7 +1060,7 @@
         "restrooms": true,
         "nets": "Provided",
         "openPlayCourts": 8,
-        "desc": "Dedicated drop-in pickleball hub — \"next up\" paddle queues when busy. Bring your own paddle and balls; no fees. Play during daylight hours (no play before 7:30 AM)."
+        "desc": "8 permanent-net courts. No fees, open to the public. Drop-in play only; \"next up\" paddle queues in use when busy. Must bring own paddle & balls. Restrooms and street parking available."
       }
     },
     "louis-sutter-playground-outdoor": {
@@ -1088,5 +1088,5 @@
       }
     }
   },
-  "fetchedAt": "2026-08-10T15:56:51.377Z"
+  "fetchedAt": "2026-08-10T23:15:22.893Z"
 }

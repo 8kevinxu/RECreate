@@ -404,8 +404,16 @@ async function tsfRatings(out, courts) {
 // — pickleballsf can lag (their Buena Vista page still referenced Spotery,
 // SFRP's pre-rec.us booking system) — so schedule-looking text from these
 // pages is only LOGGED as an advisory cross-reference, never written to data.
+// The site is WordPress, so we read its REST API instead of scraping the pages:
+// one request returns every mapped venue with clean markup AND a `modified`
+// timestamp, which is the only staleness signal available (several venue pages
+// haven't been touched since 2022). mod_security 406s a request that doesn't
+// send a browser User-Agent, and blocks wp-sitemap.xml outright, but the REST
+// API itself is open. Venue pages are POSTS, not pages — wp/v2/pages holds only
+// the site's nav/boilerplate.
+//
 // Keyed by pickleballsf URL slug (stabler than page titles) -> our court id.
-const PBSF_BASE = 'https://pickleballsf.com/';
+const PBSF_API = 'https://pickleballsf.com/wp-json/wp/v2/posts';
 const PBSF_VENUES = {
   'buena-vista-park': 'buena-vista-park-outdoor',
   'christopher-playground': 'george-christopher-playground-outdoor',
@@ -422,83 +430,184 @@ const PBSF_VENUES = {
   'upper-noe-recreation-center': 'upper-noe-rec-center-outdoor',
 };
 
-// Transcribed descriptions for venue pages whose content is only short bullet
-// lists the extractor can't use (composed from those bullets; re-check the
-// pages occasionally).
+// Last-resort descriptions, used only if a venue page stops yielding one at all
+// (pbsfDesc now composes bulleted pages from their own bullets, which is where
+// both of these came from). Kept as a safety net against a page redesign.
 const PBSF_DESC_FALLBACK = {
   'larsen-playground-pb-court-hub':
     'Dedicated drop-in pickleball hub — "next up" paddle queues when busy. Bring your own paddle and balls; no fees. Play during daylight hours (no play before 7:30 AM).',
   'crocker-amazon': '4 permanent pickleball courts, reservable on rec.us.',
 };
 
+// The API hands back decoded text where the HTML scrape saw entities, so the
+// literal characters need the same normalizing the entity forms already got —
+// otherwise the same sentence renders differently depending on the source path.
 const dehtmlText = (s) =>
   String(s)
     .replace(/<[^>]+>/g, '')
     .replace(/&#0?38;|&amp;/g, '&')
-    .replace(/&#8217;|&rsquo;|&#039;/g, "'")
-    .replace(/&#8211;|&ndash;/g, '-')
+    .replace(/&#8217;|&rsquo;|&#039;|[‘’]/g, "'")
+    .replace(/&#8211;|&ndash;|–/g, '-')
     .replace(/&#8212;|&mdash;/g, '—')
-    .replace(/&#8220;|&#8221;|&quot;/g, '"')
-    .replace(/&nbsp;/g, ' ')
+    .replace(/&#8220;|&#8221;|&quot;|[“”]/g, '"')
+    .replace(/&nbsp;| /g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
 
+// Fetch every mapped venue in ONE request (the slug filter takes a comma list),
+// rather than a page load apiece.
+async function pbsfFetch(slugs) {
+  const url = `${PBSF_API}?per_page=100&slug=${slugs.join(',')}&_fields=slug,modified,content`;
+  const res = await fetchT(url, { headers: { 'User-Agent': BROWSER_UA } });
+  if (!res.ok) throw new Error(`HTTP ${res.status} for pickleballsf API`);
+  const posts = await res.json();
+  return new Map(posts.map((p) => [p.slug, p]));
+}
+
+// A venue page is a two-column Enfold layout. The `av_two_third` column is the
+// venue; its `av_one_third` sibling is an "Other OUTDOOR courts" nav list whose
+// text (other venues' names, post dates, author bylines) would otherwise land in
+// the extract. Inside the main column, headings delimit the sections, so the
+// venue's own header — name, court-count line, address, description — is
+// everything above the first one. Confining `desc` to that header region is what
+// keeps schedule text out of it: the old whole-page scrape pulled Moscone's and
+// Parkside's descriptions straight out of their Play Schedule sections.
+const PBSF_SECTIONS = [
+  [/^play schedule/i, 'schedule'],
+  [/^(more|additional) information/i, 'links'],
+  [/^how to get there/i, 'directions'],
+];
+
+function pbsfSections(html) {
+  const $ = cheerio.load(html);
+  const main = $('.flex_column.av_two_third').first();
+  const scope = main.length ? main : $.root();
+  const sections = { header: [] };
+  let cur = 'header';
+  scope.find('h1,h2,h3,h4,h5,p,li').each((_, el) => {
+    const tag = el.tagName.toLowerCase();
+    const text = dehtmlText($(el).text());
+    if (!text) return;
+    if (/^h[1-5]$/.test(tag)) {
+      const hit = PBSF_SECTIONS.find(([re]) => re.test(text));
+      if (hit) {
+        cur = hit[1];
+        sections[cur] = sections[cur] || [];
+        return;
+      }
+    }
+    (sections[cur] = sections[cur] || []).push({ tag, text });
+  });
+  return sections;
+}
+
+// Build the card description out of the header region. Two shapes in the wild:
+// most venues write a prose paragraph, but several (Larsen, Parkside, Moscone,
+// Crocker) summarize themselves as a bullet list of short facts instead, and
+// those bullets ARE the description — joining them beats the hand-transcribed
+// fallbacks the bulleted pages used to need. Note the blocks aren't restricted
+// to <p>: these pages put body prose in <h3>/<h4> too, and it's the >=80 char
+// test that excludes the venue name, court-count line and address (all short).
+function pbsfDesc(sections) {
+  const blocks = sections.header || [];
+  const texts = blocks.map((b) => b.text);
+  const usable = (p) =>
+    !/https?:/i.test(p) && !/pickleball community is a friendly/i.test(p) &&
+    (p.match(/[a-z]/gi) || []).length / p.length > 0.6;
+
+  const candidates = texts.filter((p) => p.length >= 80 && usable(p));
+  // Require the lead to actually be about the courts. Falling back to
+  // candidates[0] the way this used to would make Moscone's description its
+  // parking advice, since that's its only long line in the header.
+  const desc = candidates.find((p) => /pickleball|court/i.test(p));
+
+  if (desc) {
+    // Drop a lead sentence that references the source page's own layout
+    // ("Dedicated hours for pickleball below. …") — meaningless in our card.
+    const cleaned = desc
+      .replace(/^[^.!?]*\b(below|above)\b[^.!?]*[.!?]\s*/i, '')
+      // ...and a trailing lead-in that ran into a list on the source page
+      // ("Open play hours are:") — a dangling colon reads broken in our card.
+      .replace(/\s*[^.!?]*:$/, '');
+    let finalDesc = cleaned.length >= 40 ? cleaned : desc;
+    // Append one practical tip (parking / restrooms / entrance) when the
+    // page has one and it fits — e.g. Louis Sutter's driveway directions.
+    const practical = candidates.find(
+      (p) => p !== desc && /parking|restroom|entrance|water fountain/i.test(p)
+    );
+    if (practical && (finalDesc + practical).length <= 330) {
+      finalDesc += ' ' + practical.replace(/\s*[^.!?]*:$/, '');
+    }
+    return clampDesc(finalDesc);
+  }
+
+  // Bulleted page: join the header bullets in document order. Skip the address
+  // line, and stop before a bullet that would blow the budget rather than
+  // truncating one mid-sentence.
+  const bullets = blocks
+    .filter((b) => b.tag === 'li' && b.text.length >= 12 && usable(b.text))
+    // Strip pointers to the source page's own layout ("(see below)") — they
+    // refer to a schedule table our card doesn't show.
+    .map((b) => b.text.replace(/\s*\((?:see\s+)?(?:below|above)\)/gi, '').trim())
+    .filter((p) => p.length >= 12 && !/^\d+\s+\S+.*\b(st|ave|avenue|blvd|street|way|rd)\b\.?,?\s*/i.test(p));
+  if (!bullets.length) return null;
+  let joined = '';
+  for (const b of bullets) {
+    const piece = /[.!?]$/.test(b) ? b : b + '.';
+    if (joined && (joined + ' ' + piece).length > 300) break;
+    joined = joined ? `${joined} ${piece}` : piece;
+  }
+  return joined || null;
+}
+
+const clampDesc = (s) =>
+  s.length > 340 ? s.slice(0, 337).replace(/[,;\s]+\S*$/, '') + '…' : s;
+
 async function pbsfEnrich(out) {
+  const slugs = Object.keys(PBSF_VENUES);
+  let posts;
+  try {
+    posts = await pbsfFetch(slugs);
+  } catch (e) {
+    // One request covers every venue, so a single blip would otherwise drop all
+    // 13 descriptions — and main() caches whatever this build produced, making
+    // the loss stick. Carry the last-good descriptions forward instead, the same
+    // live -> cache fallback the rest of the build uses.
+    const cached = (loadCache() || {}).directory || {};
+    let kept = 0;
+    for (const courtId of Object.values(PBSF_VENUES)) {
+      const desc = ((cached[courtId] || {}).pickleball || {}).desc;
+      const entry = out[courtId] && out[courtId].pickleball;
+      if (desc && entry) {
+        entry.desc = desc;
+        kept++;
+      }
+    }
+    console.log(`  ⚠ pickleballsf: ${e.message} — kept ${kept} cached descriptions`);
+    return;
+  }
+  const missing = slugs.filter((s) => !posts.has(s));
+  if (missing.length) console.log(`  ⚠ pickleballsf: no post for ${missing.join(', ')}`);
+
   let added = 0;
   for (const [slug, courtId] of Object.entries(PBSF_VENUES)) {
     const entry = out[courtId] && out[courtId].pickleball;
-    if (!entry) continue;
-    try {
-      const html = await getHtml(PBSF_BASE + slug + '/');
-      const paras = [...html.matchAll(/<(p|li)[^>]*>([\s\S]*?)<\/\1>/g)]
-        .map((m) => dehtmlText(m[2]))
-        .filter(Boolean);
-      // Description: the first substantive paragraph (venue pages lead with one).
-      // Skip link plugs, the site's boilerplate mission blurb, and divider rows;
-      // prefer text that's actually about the courts over e.g. parking tips.
-      const candidates = paras.filter(
-        (p) =>
-          p.length >= 80 &&
-          !/https?:/i.test(p) &&
-          !/pickleball community is a friendly/i.test(p) &&
-          (p.match(/[a-z]/gi) || []).length / p.length > 0.6
-      );
-      const desc = candidates.find((p) => /pickleball|court/i.test(p)) || candidates[0];
-      if (desc) {
-        // Drop a lead sentence that references the source page's own layout
-        // ("Dedicated hours for pickleball below. …") — meaningless in our card.
-        const cleaned = desc
-          .replace(/^[^.!?]*\b(below|above)\b[^.!?]*[.!?]\s*/i, '')
-          // ...and a trailing lead-in that ran into a list on the source page
-          // ("Open play hours are:") — a dangling colon reads broken in our card.
-          .replace(/\s*[^.!?]*:$/, '');
-        let finalDesc = cleaned.length >= 40 ? cleaned : desc;
-        // Append one practical tip (parking / restrooms / entrance) when the
-        // page has one and it fits — e.g. Louis Sutter's driveway directions.
-        const practical = candidates.find(
-          (p) => p !== desc && /parking|restroom|entrance|water fountain/i.test(p)
-        );
-        if (practical && (finalDesc + practical).length <= 330) {
-          finalDesc += ' ' + practical.replace(/\s*[^.!?]*:$/, '');
-        }
-        entry.desc =
-          finalDesc.length > 340
-            ? finalDesc.slice(0, 337).replace(/[,;\s]+\S*$/, '') + '…'
-            : finalDesc;
-        added++;
-      } else if (PBSF_DESC_FALLBACK[slug]) {
-        entry.desc = PBSF_DESC_FALLBACK[slug];
-        added++;
-      }
-      // Advisory cross-reference: surface their schedule text beside ours so a
-      // human running the build can spot drift — SFRP data is not overwritten.
-      const sched = paras.filter((p) => /open play|drop-?in|group play/i.test(p) && /\d/.test(p));
-      if (sched.length && (entry.playWeek || entry.openPlayWeek)) {
-        console.log(`  ✎ pickleballsf x-ref for ${courtId}:`);
-        for (const s of sched.slice(0, 3)) console.log(`      "${s.slice(0, 140)}"`);
-      }
-    } catch (e) {
-      console.log(`  ⚠ pickleballsf ${slug}: ${e.message}`);
+    const post = posts.get(slug);
+    if (!entry || !post) continue;
+    const sections = pbsfSections(post.content.rendered);
+    const desc = pbsfDesc(sections) || PBSF_DESC_FALLBACK[slug];
+    if (desc) {
+      entry.desc = clampDesc(desc);
+      added++;
+    }
+    // Advisory cross-reference: surface their schedule text beside ours so a
+    // human running the build can spot drift — SFRP data is not overwritten.
+    const sched = (sections.schedule || [])
+      .map((b) => b.text)
+      .filter((p) => /open play|drop-?in|group play/i.test(p) && /\d/.test(p));
+    if (sched.length && (entry.playWeek || entry.openPlayWeek)) {
+      console.log(`  ✎ pickleballsf x-ref for ${courtId} (page updated ${post.modified.slice(0, 10)}):`);
+      for (const s of sched.slice(0, 3)) console.log(`      "${s.slice(0, 140)}"`);
     }
   }
   console.log(`  pickleballsf: descriptions for ${added} courts`);
