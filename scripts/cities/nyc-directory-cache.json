@@ -14,6 +14,9 @@
           "Hard"
         ],
         "phone": "(718) 885-3442"
+      },
+      "pickleball": {
+        "n": 4
       }
     },
     "nyc-seton-park-outdoor": {
@@ -47,6 +50,10 @@
           "Hard"
         ],
         "phone": "(718) 549-6494"
+      },
+      "pickleball": {
+        "n": 1,
+        "accessible": true
       }
     },
     "nyc-williamsbridge-oval-outdoor": {
@@ -55,6 +62,10 @@
           "Hard"
         ],
         "phone": "(718) 654-1851"
+      },
+      "pickleball": {
+        "n": 2,
+        "add": true
       }
     },
     "nyc-decatur-playground-outdoor": {
@@ -104,6 +115,12 @@
           "Hard"
         ],
         "phone": "(718) 439-4296"
+      },
+      "pickleball": {
+        "n": 4,
+        "nets": "provided",
+        "openPlay": "All day, everyday, usually starting after 10 AM for open play",
+        "community": "TeamReach FHP"
       }
     },
     "nyc-mcguire-fields-outdoor": {
@@ -135,6 +152,12 @@
         ],
         "phone": "(718) 259-4016",
         "info": "Lessons Offered"
+      },
+      "pickleball": {
+        "n": 13,
+        "nets": "provided",
+        "openPlay": "Everyday, starting at 11:00-4:00 PM. Summer hours may be extended",
+        "community": "TeamReach ontheline"
       }
     },
     "nyc-lincoln-terrace-arthur-s-somers-park-outdoor": {
@@ -152,6 +175,9 @@
           "Hard"
         ],
         "phone": "(718) 927-2059"
+      },
+      "pickleball": {
+        "n": 4
       }
     },
     "nyc-manhattan-beach-park-outdoor": {
@@ -170,6 +196,11 @@
         ],
         "phone": "(718) 376-1675",
         "info": "Lessons Offered"
+      },
+      "pickleball": {
+        "nets": "provided",
+        "openPlay": "Daily, starts at 9 AM",
+        "community": "TeamReach MPPBA"
       }
     },
     "nyc-mcdonald-playground-outdoor": {
@@ -342,6 +373,11 @@
         "surf": [
           "Hard"
         ]
+      },
+      "pickleball": {
+        "n": 2,
+        "accessible": true,
+        "add": true
       }
     },
     "nyc-bayswater-park-outdoor": {
@@ -381,6 +417,10 @@
           "Hard"
         ],
         "phone": "(718) 276-8690"
+      },
+      "pickleball": {
+        "n": 4,
+        "add": true
       }
     },
     "nyc-springfield-park-outdoor": {
@@ -389,6 +429,10 @@
           "Hard"
         ],
         "phone": "(718) 225-2620"
+      },
+      "pickleball": {
+        "n": 2,
+        "add": true
       }
     },
     "nyc-archie-spigner-park-outdoor": {
@@ -396,6 +440,10 @@
         "surf": [
           "Hard"
         ]
+      },
+      "pickleball": {
+        "n": 4,
+        "add": true
       }
     },
     "nyc-rochdale-park-outdoor": {
@@ -483,6 +531,11 @@
         "surf": [
           "Hard"
         ]
+      },
+      "pickleball": {
+        "n": 3,
+        "accessible": true,
+        "openPlay": "Everyday from 8 AM to sundown weather permitting."
       }
     },
     "nyc-howard-bennett-playground-outdoor": {
@@ -491,7 +544,85 @@
           "Hard"
         ]
       }
+    },
+    "nyc-crotona-park-outdoor": {
+      "pickleball": {
+        "n": 2,
+        "add": true
+      }
+    },
+    "nyc-riverdale-playground-outdoor": {
+      "pickleball": {
+        "n": 1,
+        "add": true
+      }
+    },
+    "nyc-breukelen-ballfields-outdoor": {
+      "pickleball": {
+        "n": 3,
+        "add": true
+      }
+    },
+    "nyc-winthrop-playground-outdoor": {
+      "pickleball": {
+        "n": 2,
+        "add": true
+      }
+    },
+    "nyc-carl-schurz-park-outdoor": {
+      "pickleball": {
+        "n": 3,
+        "add": true,
+        "nets": "byon",
+        "openPlay": "Open play throughout the day, feel free to show up and play.",
+        "community": "TeamReach UESPickleball"
+      }
+    },
+    "nyc-james-j-walker-park-outdoor": {
+      "pickleball": {
+        "n": 2,
+        "nets": "byon",
+        "community": "TeamReach NYCPMJJW"
+      }
+    },
+    "nyc-crocheron-park-outdoor": {
+      "pickleball": {
+        "n": 4
+      }
+    },
+    "nyc-dutch-kills-playground-outdoor": {
+      "pickleball": {
+        "n": 2,
+        "add": true
+      }
+    },
+    "nyc-farm-playground-outdoor": {
+      "pickleball": {
+        "n": 1,
+        "accessible": true,
+        "add": true
+      }
+    },
+    "nyc-holy-cow-playground-outdoor": {
+      "pickleball": {
+        "n": 2,
+        "add": true
+      }
+    },
+    "nyc-rockaway-beach-boardwalk-outdoor": {
+      "pickleball": {
+        "n": 1,
+        "accessible": true,
+        "openPlay": "This is a brand new court at the boardwalk at Rockaway Beach.",
+        "community": "TeamReach Red102"
+      }
+    },
+    "nyc-cottages-hill-new-brighton-park-outdoor": {
+      "pickleball": {
+        "n": 4,
+        "accessible": true
+      }
     }
   },
-  "fetchedAt": "2026-08-10T20:31:34.395Z"
+  "fetchedAt": "2026-08-10T23:12:35.856Z"
 }

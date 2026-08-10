@@ -64,12 +64,25 @@ function duskWeek(parkHours, dusk) {
 // facts row whenever it's present, so using it would trade these facts for the
 // count/lighting/amenity chips already there. The directory's surface REPLACES
 // the GIS one — both describe the same courts, and "Clay" is the useful answer.
+
+// Sports the directory ADDS to a pin. Normally the directory only enriches
+// sports the GIS layer already knows about, but pickleball is different: it's
+// lined onto existing tennis and handball slabs, so GIS records those courts
+// under the original sport and never re-flags them. NYC Parks' own pickleball
+// page lists 24 locations where GIS flags 9 — so an entry marked `add` means
+// an official source says the sport is played here, and the pin should offer it.
+const addedSports = (entry) =>
+  Object.entries(entry || {})
+    .filter(([, v]) => v && v.add)
+    .map(([sport]) => sport);
+
 function mergeDirectory(facts, entry) {
   if (!entry) return facts;
   const out = { ...facts };
-  for (const [sport, add] of Object.entries(entry)) {
-    if (!out[sport]) continue; // a sport this pin doesn't offer
-    out[sport] = { ...out[sport], ...add };
+  for (const [sport, extra] of Object.entries(entry)) {
+    const { add, ...rest } = extra;
+    if (!out[sport] && !add) continue; // enrichment for a sport this pin doesn't offer
+    out[sport] = { ...(out[sport] || { n: 0, lit: false, surf: [] }), ...rest };
   }
   return out;
 }
@@ -78,9 +91,12 @@ function expandCity(courts, city, parkHours, source, disclaimer, dusk, lights, d
   const schedule = duskWeek(parkHours, dusk);
   return courts.map((c) => {
     const lit = (lights && lights[c.id]) || null;
+    const dirEntry = directory && directory[c.id];
+    // GIS sports plus any the official directory adds (see addedSports).
+    const offered = new Set([...c.sports, ...addedSports(dirEntry)]);
     const dropins = {};
     for (const k of SPORT_KEYS) {
-      if (!c.sports.includes(k)) {
+      if (!offered.has(k)) {
         dropins[k] = [[], [], [], [], [], [], []];
         continue;
       }
@@ -95,7 +111,7 @@ function expandCity(courts, city, parkHours, source, disclaimer, dusk, lights, d
     const { sports, facts, ...rest } = c;
     return {
       ...rest,
-      facts: mergeDirectory(facts, directory && directory[c.id]),
+      facts: mergeDirectory(facts, dirEntry),
       city,
       indoor: false,
       schedule: facility,

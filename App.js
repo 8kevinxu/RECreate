@@ -1998,6 +1998,16 @@ function CourtDetail({
               <Text style={styles.facText}>{s}</Text>
             </View>
           ))}
+          {/* Whether a net is there at all — for NYC pickleball, lined onto
+              tennis and handball slabs, this decides whether you can play.
+              Community-sourced (nycpickleball.com). */}
+          {!!court.facts?.[vSport]?.nets && (
+            <View style={styles.facChip}>
+              <Text style={styles.facText}>
+                {t(court.facts[vSport].nets === 'byon' ? 'amenity.byon' : 'amenity.nets')}
+              </Text>
+            </View>
+          )}
           {/* Facility phone, from NYC Parks' directory. Tappable — someone
               checking whether the bubble is up wants to call, not read. */}
           {!!court.facts?.[vSport]?.phone && (
@@ -2390,6 +2400,23 @@ function CourtDetail({
             rides on facts[sport], so it only shows for the sport it describes. */}
         {!!court.facts?.[vSport]?.info && (
           <Text style={styles.notes}>{court.facts[vSport].info}</Text>
+        )}
+
+        {/* Community colour from nycpickleball.com — when players actually
+            gather, and the Slack/TeamReach group that organizes the venue.
+            ATTRIBUTED, never folded into the schedule above: organized open
+            play is players agreeing to show up, not posted hours, and showing
+            it as hours would send someone to an empty court on the city's
+            authority. See build-nyc-directory.js. */}
+        {!!court.facts?.[vSport]?.openPlay && (
+          <Text style={styles.openPlayLine}>
+            {t('court.communityPlay', { text: court.facts[vSport].openPlay })}
+          </Text>
+        )}
+        {!!court.facts?.[vSport]?.community && (
+          <Text style={styles.openPlayLine}>
+            {t('court.communityGroup', { contact: court.facts[vSport].community })}
+          </Text>
         )}
 
         {/* Generic facility note, scoped to the viewed sport; skipped entirely
