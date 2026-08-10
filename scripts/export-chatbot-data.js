@@ -140,7 +140,8 @@ async function main() {
   const { OUTDOOR_COURTS } = await load('data/outdoor-courts.js');
   const { MANUAL_COURTS } = await load('data/manual-courts.js');
   const { SANBRUNO_COURTS } = await load('data/sanbruno-court.js');
-  const { POOL_COURTS } = await load('lib/poolCourts.js'); // the 9 pools, shaped as swimming courts
+  // Every city's pools, already shaped as swimming courts and carrying their own `city`.
+  const { POOL_COURTS } = await load('lib/poolCourts.js');
   const { CITY_COURTS, CITY_CLASSES } = await load('data/cities/index.js');
 
   const all = [
@@ -148,7 +149,7 @@ async function main() {
     ...withCity(OUTDOOR_COURTS, 'sf'),
     ...withCity(MANUAL_COURTS, 'sf'),
     ...withCity(SANBRUNO_COURTS, 'sf'),
-    ...withCity(POOL_COURTS, 'sf'),
+    ...POOL_COURTS,
     // CITY_COURTS = { nyc: [...] } — those records already carry their own city.
     ...Object.entries(CITY_COURTS).flatMap(([city, list]) => withCity(list, city)),
   ];

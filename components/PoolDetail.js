@@ -6,7 +6,6 @@
 import React, { useState } from 'react';
 import { Linking, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { POOL_FEES } from '../data/pools';
 import { confirmReportData } from '../lib/reports';
 import { fmtClock } from '../lib/datetime';
 import { useI18n } from '../lib/i18n';
@@ -64,6 +63,9 @@ export default function PoolDetail({ pool, poolId }) {
   const { t } = useI18n();
   const [showFees, setShowFees] = useState(false);
   const sessions = pool.sessions || [];
+  // Fees ride on the pool (lib/poolCourts.js): SF charges per visit, NYC's
+  // outdoor pools are free and its indoor ones need a rec-center membership.
+  const fees = pool.fees || { effective: '', groups: [] };
 
   return (
     <View style={styles.wrap}>
@@ -80,14 +82,19 @@ export default function PoolDetail({ pool, poolId }) {
 
       {!!pool.desc && <Text style={styles.desc}>{pool.desc}</Text>}
 
+      {/* NYC Parks' own explanation when a pool publishes no sessions — e.g.
+          "closed for reconstruction". Shown instead of leaving the empty
+          weekly grid above to speak for itself. */}
+      {!!pool.notice && <Text style={styles.notice}>ℹ️ {pool.notice}</Text>}
+
       <Pressable style={styles.feesToggle} onPress={() => setShowFees((v) => !v)}>
         <Ionicons name={showFees ? 'chevron-up' : 'cash-outline'} size={15} color="#2f74d6" />
         <Text style={styles.feesToggleText}>{t('pools.feesTitle')}</Text>
       </Pressable>
       {showFees && (
         <View>
-          <Text style={styles.feesEffective}>{t('pools.feesEffective', { date: POOL_FEES.effective })}</Text>
-          {POOL_FEES.groups.map((g) => (
+          <Text style={styles.feesEffective}>{t('pools.feesEffective', { date: fees.effective })}</Text>
+          {fees.groups.map((g) => (
             <View key={g.id} style={styles.feeGroup}>
               <View style={styles.feeGroupHead}>
                 <Text style={styles.feeGroupLabel}>{g.label}</Text>
@@ -141,6 +148,7 @@ const styles = StyleSheet.create({
   sessTime: { fontSize: 11, fontWeight: '600', marginTop: 1 },
   poolTag: { fontSize: 11, fontWeight: '800', color: '#46586a', marginTop: 6, marginBottom: 4 },
   desc: { fontSize: 12, color: '#46586a', marginTop: 10, lineHeight: 17 },
+  notice: { fontSize: 12, color: '#8a5a1b', marginTop: 8, lineHeight: 17 },
 
   feesToggle: { flexDirection: 'row', alignItems: 'center', gap: 5, marginTop: 12 },
   feesToggleText: { color: '#2f74d6', fontWeight: '800', fontSize: 13 },
