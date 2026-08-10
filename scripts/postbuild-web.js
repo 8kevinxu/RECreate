@@ -62,6 +62,7 @@ const { RESERVATIONS } = loadModule('data/reservations.js');
 const { SPORTS } = loadModule('lib/sports.js');
 const { CITY_COURTS, CITY_CLASSES } = loadModule('data/cities/index.js');
 const { PARK_HOURS: NYC_PARK_HOURS } = loadModule('data/cities/nyc/outdoor-courts.js');
+const { LIGHTS: NYC_LIGHTS } = loadModule('data/cities/nyc/reservations.js');
 
 // Same merge as lib/useCourts.js: bundled indoor list first, extras deduped by id.
 const ids = new Set(COURTS.map((c) => c.id));
@@ -88,6 +89,30 @@ const fmtTime = (min) => {
   const h = h24 % 12 || 12;
   return m ? `${h}:${String(m).padStart(2, '0')} ${ampm}` : `${h} ${ampm}`;
 };
+
+// How a city's first-come outdoor window reads on a landing page. Where the
+// city closes at real dusk (NYC), printing a single clock time would be a lie
+// for most of the year — dusk there swings ~4 hours between December and June —
+// so say "to dusk" and name the floodlit exception when the court has one.
+// `court` is optional: omitted for the whole-page label, passed for one pin.
+function parkHoursPhrase(cfg, court) {
+  const open = fmtTime(cfg.parkHours[0]);
+  if (!cfg.duskClose) return `park hours ${open}–${fmtTime(cfg.parkHours[1])} daily`;
+  const lit = court && cfg.lights && cfg.lights[court.id];
+  if (!lit) return `${open} to dusk daily`;
+  // Name WHICH sport has the lights. A park often floodlights its soccer pitch
+  // and nothing else, so a bare "lit courts until 11 PM" would read as though
+  // the basketball court on the same page stayed open too.
+  const byTime = new Map();
+  for (const [sport, end] of Object.entries(lit)) {
+    if (!byTime.has(end)) byTime.set(end, []);
+    byTime.get(end).push(sport);
+  }
+  const clauses = [...byTime.entries()]
+    .sort((a, b) => b[0] - a[0])
+    .map(([end, sports]) => `lit ${sports.sort().join(' & ')} until ${fmtTime(end)}`);
+  return `${open} to dusk daily, ${clauses.join(', ')}`;
+}
 
 const DAY_ABBR = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const DAY_ORDER = [1, 2, 3, 4, 5, 6, 0]; // display Mon..Sun
@@ -235,6 +260,10 @@ const CITY_CFG = [
     classesH1: 'Free NYC Parks classes and programs',
     attribution: { name: 'NYC Parks', url: 'https://www.nycgovparks.org' },
     parkHours: NYC_PARK_HOURS,
+    // NYC outdoor courts run "8 a.m. to dusk" per NYC Parks, not to a fixed
+    // hour — see the dusk handling in data/cities/index.js.
+    duskClose: true,
+    lights: NYC_LIGHTS,
     subregionLabel: 'borough',
     golf: false,
     pools: false,
@@ -540,7 +569,7 @@ for (const cfg of CITY_CFG) {
       : '';
 
     const outdoorLabel = cfg.parkHours
-      ? `Outdoor courts (first come, first served${cfg.parkHours ? `, park hours ${fmtTime(cfg.parkHours[0])}–${fmtTime(cfg.parkHours[1])}` : ''})`
+      ? `Outdoor courts (first come, first served, ${parkHoursPhrase(cfg)})`
       : 'Outdoor courts (first come, first served)';
 
     pages.push({
@@ -768,7 +797,7 @@ for (const cfg of CITY_CFG) {
       areas.length ? [cfg.subregionLabel === 'borough' ? 'Borough' : 'Neighborhood', areas.join(', ')] : null,
       ['Type', `${place === 'indoor' ? 'Indoor rec center' : 'Outdoor'} · free drop-in`],
       // No posted schedule to show, so name the window these courts are open in.
-      !useHours && cfg.parkHours ? ['Park hours', `${fmtTime(cfg.parkHours[0])}–${fmtTime(cfg.parkHours[1])} daily`] : null,
+      !useHours && cfg.parkHours ? ['Park hours', parkHoursPhrase(cfg, c)] : null,
       amenities.length ? ['Amenities', amenities.join(', ')] : null,
       c.notes ? ['Notes', c.notes] : null,
     ].filter(Boolean));

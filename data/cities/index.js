@@ -16,21 +16,66 @@ import NYC_RES, {
   ORIGIN as NYC_RES_ORIGIN,
   WINDOW as NYC_RES_WINDOW,
   GENERATED_AT as NYC_RES_AT,
+  DUSK as NYC_DUSK,
+  LIGHTS as NYC_LIGHTS,
 } from './nyc/reservations';
 
 const SPORT_KEYS = [...SPORTS.map((s) => s.id), WEIGHT_ROOM];
 
-function expandCity(courts, city, parkHours, source, disclaimer) {
-  const schedule = Array.from({ length: 7 }, () => [...parkHours]);
+// --- Closing time ----------------------------------------------------------
+// First-come outdoor pins have no posted schedule, so they're modeled as a
+// daily window. A FIXED window is wrong for a city the size of NYC: dusk there
+// runs from ~4:30 PM in December to ~8:45 PM in June, so a flat 8 PM close
+// calls courts open in winter darkness and closed on summer evenings.
+//
+// NYC Parks' own tennis page says courts run "8:00 a.m. to dusk", so we keep
+// the sourced 8 AM open and take the close from real dusk (the permit API
+// reports it, and the daily cron keeps 7 dates rolling). Floodlit facilities
+// with a PUBLISHED lights-out run later, per sport — a park whose soccer pitch
+// is lit until 11 PM says nothing about its unlit basketball court.
+
+// "HH:MM" -> minutes from midnight.
+const hhmmToMin = (s) => {
+  const m = /^(\d{1,2}):(\d{2})$/.exec(String(s || ''));
+  return m ? +m[1] * 60 + +m[2] : null;
+};
+
+// Per-weekday [open, close] from dated dusk readings, falling back to the
+// city's fixed window for any weekday the snapshot doesn't cover (a stale or
+// failed build, or a city with no dusk source at all).
+function duskWeek(parkHours, dusk) {
+  const week = Array.from({ length: 7 }, () => [...parkHours]);
+  for (const [date, hhmm] of Object.entries(dusk || {})) {
+    const close = hhmmToMin(hhmm);
+    if (close == null) continue;
+    // Parse as a plain calendar date — `new Date('2026-08-10')` is UTC and can
+    // land on the previous weekday west of Greenwich.
+    const [y, mo, d] = date.split('-').map(Number);
+    week[new Date(y, mo - 1, d).getDay()] = [parkHours[0], close];
+  }
+  return week;
+}
+
+function expandCity(courts, city, parkHours, source, disclaimer, dusk, lights) {
+  const schedule = duskWeek(parkHours, dusk);
   return courts.map((c) => {
+    const lit = (lights && lights[c.id]) || null;
     const dropins = {};
     for (const k of SPORT_KEYS) {
-      dropins[k] = c.sports.includes(k)
-        ? schedule.map((h) => [[h[0], h[1]]])
-        : [[], [], [], [], [], [], []];
+      if (!c.sports.includes(k)) {
+        dropins[k] = [[], [], [], [], [], [], []];
+        continue;
+      }
+      // A lit court stays playable past dusk — but never CLOSES earlier than
+      // dusk just because its lights go out sooner than a long summer evening.
+      const close = (h) => (lit && lit[k] ? Math.max(h[1], lit[k]) : h[1]);
+      dropins[k] = schedule.map((h) => [[h[0], close(h)]]);
     }
+    // Facility hours span the latest any of its sports is playable.
+    const latest = lit ? Math.max(...Object.values(lit)) : 0;
+    const facility = latest ? schedule.map((h) => [h[0], Math.max(h[1], latest)]) : schedule;
     const { sports, ...rest } = c;
-    return { ...rest, city, indoor: false, schedule, dropins, source, disclaimer };
+    return { ...rest, city, indoor: false, schedule: facility, dropins, source, disclaimer };
   });
 }
 
@@ -40,7 +85,10 @@ function expandCity(courts, city, parkHours, source, disclaimer) {
 export const CITY_COURTS = {
   // Indoor rec centers carry full records (real per-sport schedules); outdoor
   // pins are compact and expanded here.
-  [NYC_CITY]: [...NYC_INDOOR, ...expandCity(NYC, NYC_CITY, NYC_HOURS, NYC_SOURCE, NYC_DISCLAIMER)],
+  [NYC_CITY]: [
+    ...NYC_INDOOR,
+    ...expandCity(NYC, NYC_CITY, NYC_HOURS, NYC_SOURCE, NYC_DISCLAIMER, NYC_DUSK, NYC_LIGHTS),
+  ],
 };
 
 // --- Occupancy -------------------------------------------------------------

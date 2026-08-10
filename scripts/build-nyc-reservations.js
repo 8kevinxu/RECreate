@@ -205,6 +205,53 @@ async function fetchFacilities() {
   return { bySystem, counts, rows: rows.length };
 }
 
+// --- Floodlights -----------------------------------------------------------
+// A handful of NYC fields have lights and stay open well past dusk. NYC Parks
+// publishes them as a GeoJSON linked from the permit map, keyed by the same
+// `system` id the permit API uses — so the join is the one we already have.
+//
+// Socrata's `field_lighted` flag covers ~85 pins but carries NO end time; this
+// file covers 64 facilities and does. Pins flagged lit WITHOUT a published end
+// time deliberately keep dusk: understating hours sends someone home early,
+// overstating them sends someone to a dark court.
+const LIGHT_TIME_RE = /^(\d{1,2}):(\d{2})\s*([ap])\.?m\.?$/i;
+function lightEndMinutes(s) {
+  const m = LIGHT_TIME_RE.exec(String(s || '').trim());
+  if (!m) return null; // absent, or a format we don't recognise — treat as unlit
+  let h = parseInt(m[1], 10) % 12;
+  if (m[3].toLowerCase() === 'p') h += 12;
+  return h * 60 + parseInt(m[2], 10);
+}
+
+// courtId -> sport -> latest lights-out (minutes from midnight).
+async function fetchLights(bySystem, keyToCourt) {
+  // The filename carries a content hash that changes when NYC reposts it, so
+  // discover the link rather than pinning it.
+  const page = await getText(PERMIT_MAP_URL);
+  const link = page.match(/\/pagefiles\/\d+\/ExtendedLightingFields__[a-z0-9]+\.json/i)?.[0];
+  if (!link) throw new Error('no ExtendedLightingFields link on the permit map page');
+  const geo = await getJson(`${BASE}${link}`);
+  const P = 'DWH_DBO_TBL_ParksGIS_AthleticFacility_';
+  const out = {};
+  let lit = 0;
+  for (const f of geo.features || []) {
+    const p = f.properties || {};
+    const end = lightEndMinutes(p[`${P}LightEndTime`]);
+    if (!end) continue;
+    const meta = bySystem.get(p[`${P}System`]);
+    if (!meta) continue; // a sport we don't track
+    const courtId = keyToCourt.get(meta.key);
+    if (!courtId) continue;
+    lit++;
+    for (const sport of meta.sports) {
+      const cur = (out[courtId] ||= {});
+      cur[sport] = Math.max(cur[sport] || 0, end);
+    }
+  }
+  console.log(`  lights: ${geo.features?.length || 0} lit facilities → ${lit} on tracked sports, ${Object.keys(out).length} pins`);
+  return out;
+}
+
 // --- Permit sweep ----------------------------------------------------------
 
 // One citywide snapshot: which systems are unavailable at this moment, + dusk.
@@ -474,6 +521,7 @@ async function main() {
 
   let reservations;
   let dusk;
+  let lights;
   let window;
   let source;
   try {
@@ -510,6 +558,14 @@ async function main() {
       );
     }
 
+    // Also an HTML page load, so it rides with tennis ahead of the sweep.
+    try {
+      lights = await fetchLights(bySystem, keyToCourt);
+    } catch (e) {
+      console.log(`  ⚠ lights failed (${e.message}) — outdoor pins will close at dusk`);
+      lights = loadCache(CACHE_FILE)?.lights || {};
+    }
+
     const sweep = await sweepPermits(dates, bySystem, counts, keyToCourt);
     dusk = sweep.dusk;
     console.log(`  permit sweep: ${sweep.requests} requests, ${Object.keys(sweep.permits).length} parks with permits`);
@@ -522,7 +578,7 @@ async function main() {
       throw new Error(`only ${readings} readings (min ${MIN_READINGS_OK}) — source shape may have changed`);
     }
     source = 'live';
-    saveCache(CACHE_FILE, { reservations, tennis, dusk, window, fetchedAt: new Date().toISOString() });
+    saveCache(CACHE_FILE, { reservations, tennis, dusk, lights, window, fetchedAt: new Date().toISOString() });
     console.log(`  ✓ ${Object.keys(reservations).length} courts, ${readings} court+sport readings (live)`);
   } catch (e) {
     const cache = loadCache(CACHE_FILE);
@@ -531,17 +587,18 @@ async function main() {
     }
     reservations = cache.reservations;
     dusk = cache.dusk || {};
+    lights = cache.lights || {};
     window = cache.window || [null, null];
     source = 'cache';
     console.log(`  ↺ ${e.message}; using cache from ${cache.fetchedAt || 'unknown'}`);
   }
 
   fs.mkdirSync(OUT_DIR, { recursive: true });
-  fs.writeFileSync(OUT_FILE, render(reservations, dusk, window, new Date().toISOString(), source));
+  fs.writeFileSync(OUT_FILE, render(reservations, dusk, lights, window, new Date().toISOString(), source));
   console.log(`\n✅ Wrote ${Object.keys(reservations).length} courts to data/cities/nyc/reservations.js (${source})`);
 }
 
-function render(reservations, dusk, window, generatedAt, source) {
+function render(reservations, dusk, lights, window, generatedAt, source) {
   // Index 0 of every run list. Runs may go negative (the tennis grid starts at
   // 6 AM, before the permit sweep's 7 AM) — that's fine, it's just an offset.
   const origin = window[0];
@@ -609,10 +666,18 @@ export const ORIGIN = ${JSON.stringify(origin)};
 // run at a time genuinely has nobody on it; outside it we simply have no data.
 export const WINDOW = ${JSON.stringify(window)};
 
-// Dusk (NYC-local "HH:MM") per date, straight from the permit API — the honest
-// close time for first-come outdoor courts. Only dates inside the permit window
-// are real; the API returns a fallback for anything further out.
+// Dusk (NYC-local "HH:MM") per date, straight from the permit API. NYC Parks'
+// own tennis page says courts run "8:00 a.m. to dusk", so this is the honest
+// close time for first-come outdoor pins — far better than a fixed 8 PM, which
+// is ~3 hours wrong in both directions across the year. Only dates inside the
+// permit window are real (the API returns a seasonal fallback further out), and
+// the daily cron keeps these 7 dates rolling.
 export const DUSK = ${JSON.stringify(dusk || {}, null, 0)};
+
+// Floodlit pins: court id -> sport -> lights-out (minutes from midnight). Only
+// facilities with a PUBLISHED end time; a pin merely flagged lit in Socrata
+// keeps dusk, because guessing late would send someone to a dark court.
+export const LIGHTS = ${JSON.stringify(lights || {}, null, 0)};
 
 export const NYC_RESERVATIONS = {
 ${body}

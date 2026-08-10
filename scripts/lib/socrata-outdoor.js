@@ -266,10 +266,13 @@ function render(courts, cfg, generatedAt, scheduleSource) {
 //
 // ${cfg.cityName} outdoor public courts & fields (${cfg.attribution}).
 // One pin per park property, offering the union of its records' sports. These
-// are first-come courts with no posted drop-in schedule, modeled as open a
-// fixed daily park-hours window. COMPACT format: \`sports\` lists what's
-// offered; data/cities/index.js expands each record to the app's uniform
-// { schedule, dropins } shape at import.
+// are first-come courts with no posted drop-in schedule. COMPACT format:
+// \`sports\` lists what's offered; data/cities/index.js expands each record to
+// the app's uniform { schedule, dropins } shape at import.
+//
+// PARK_HOURS below is the FALLBACK window. A city with a real dusk source
+// overrides the close per weekday at expand time (NYC: the permit API reports
+// dusk, and floodlit facilities run later, per sport) — see data/cities/index.js.
 //
 // scheduleSource = ${JSON.stringify(scheduleSource)} ("live" fetched this run | "cache" last good)
 
