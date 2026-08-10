@@ -73,8 +73,10 @@ module.exports = {
     restrooms: { kind: 'name', datasetId: 'hjae-yuav', nameField: 'name', areaField: 'borough' },
   },
   // NYC public tennis courts run on the citywide permit + online reservation
-  // system (no per-court availability API, unlike rec.us) — flag tennis
-  // reservable and attach the reservation/permit link for the booking block.
+  // system — flag tennis reservable and attach the reservation/permit link.
+  // Actual occupancy (permits citywide + the 8 online tennis sites) is a
+  // separate build: scripts/build-nyc-reservations.js, which joins back to
+  // these pins through the `key` field emitted below.
   reservable: {
     sports: ['tennis'],
     booking: { url: 'https://www.nycgovparks.org/tennisreservation', permit: true },

@@ -98,7 +98,15 @@ export default function NearbyList({
                       {full && (
                         <Text style={styles.fullTag}>
                           {'  '}
-                          {t(full === 'unavailable' ? 'court.fullyUnavailable' : 'court.fullyBooked')}
+                          {t(
+                            full === 'unavailable'
+                              ? 'court.fullyUnavailable'
+                              : // A NYC permit means a league holds every court, not
+                                // that they're booked out — say what's actually true.
+                              c.reserved?.[sport]?.kind === 'permit'
+                              ? 'court.permittedFull'
+                              : 'court.fullyBooked'
+                          )}
                         </Text>
                       )}
                     </Text>

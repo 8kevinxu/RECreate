@@ -1579,7 +1579,17 @@ function CourtDetail({
   const liveForSport = liveRes?.bySport?.[vSport];
   const booked = liveForSport || court.reserved?.[vSport];
   const resIsLive = !!liveForSport;
-  const resAgeMs = resIsLive ? 0 : Date.now() - Date.parse(RES_GENERATED_AT);
+  // Where this reading came from. SF's rec.us snapshot names no source (it
+  // predates other metros); anything else says so, and the reservation strings
+  // take it as {src} rather than hardcoding a provider.
+  const resSrc = booked?.src || 'rec.us';
+  // NYC Parks permits are not bookings: a league HOLDS the court, you cannot
+  // reserve it, and turning up means waiting. Same numbers, different words —
+  // calling that "reserved" would tell people to go book something they can't.
+  const isPermit = booked?.kind === 'permit';
+  // Each source stamps its own build time; fall back to SF's module-level one.
+  const resGeneratedAt = booked?.generatedAt || RES_GENERATED_AT;
+  const resAgeMs = resIsLive ? 0 : Date.now() - Date.parse(resGeneratedAt);
   // A build snapshot older than this can't be trusted for a definitive "fully
   // booked" — say "100% booked (as of …)" instead of "🔴 Fully booked".
   const resFresh = resIsLive || (Number.isFinite(resAgeMs) && resAgeMs < 6 * 60 * 60 * 1000);
@@ -1603,13 +1613,16 @@ function CourtDetail({
   const blockedOut = fullyBooked && live.booked === 0 && live.blocked > 0;
   // Freshness note under the reservation line: a live reading vs. how old the
   // build snapshot is, so stale availability never masquerades as "right now".
-  const resDate = new Date(RES_GENERATED_AT);
+  const resDate = new Date(resGeneratedAt);
+  const asOfDate = `${resDate.getMonth() + 1}/${resDate.getDate()}`;
   const resAsOf =
     !live || (!live.now && !live.picked)
       ? null
       : resIsLive
       ? t('court.resLive')
-      : t('court.resAsOf', { date: `${resDate.getMonth() + 1}/${resDate.getDate()}` });
+      : isPermit
+      ? t('court.permittedAsOf', { date: asOfDate })
+      : t('court.resAsOf', { date: asOfDate, src: resSrc });
   // "X of Y courts open for booking" when fewer courts are released for this time,
   // plus when the rest open (e.g. "2 more open ~7/2") if we can date it.
   const partialOpen =
@@ -1630,12 +1643,15 @@ function CourtDetail({
   const reservedLabel = !live
     ? null
     : !live.playable
-    ? tg('court.pctBooked', { pct: live.pct })
+    ? tg(isPermit ? 'court.permittedPct' : 'court.pctBooked', { pct: live.pct })
     : live.booked === 0 && live.blocked === 0
     ? tg('court.allCourtsFree', { total: live.playable })
     : live.booked === 0
     ? tg('court.courtsUnavailable', { n: live.blocked, total: live.playable })
-    : tg('court.courtsReserved', { n: live.booked, total: live.playable });
+    : tg(isPermit ? 'court.permittedCourts' : 'court.courtsReserved', {
+        n: live.booked,
+        total: live.playable,
+      });
   // Why they're blocked — a booking on the courts this sport shares its slab with.
   const blockedWhy =
     live && live.blocked > 0 && live.blockedBy
@@ -1887,7 +1903,11 @@ function CourtDetail({
             ]}
           >
             <Text style={[styles.badgeText, fullyBooked && styles.badgeTextFull]}>
-              {(blockedOut ? t('court.fullyUnavailable') : fullyBooked ? t('court.fullyBooked') : reservedLabel) +
+              {(blockedOut
+                ? t('court.fullyUnavailable')
+                : fullyBooked
+                ? t(isPermit ? 'court.permittedFull' : 'court.fullyBooked')
+                : reservedLabel) +
                 (atLabel
                   ? ' ' + t('court.bookedAt', { t: atLabel })
                   : live.now
@@ -2056,31 +2076,54 @@ function CourtDetail({
                   alt: isPicked ? t('court.anotherTime') : t('court.later'),
                 })
               : fullyBooked
-              ? t('court.fullyBookedLine', {
-                  when: isPicked ? viewLabel(viewTime) : t('court.rightNow'),
-                  extra: partialOpen
-                    ? t('court.partialAll', {
-                        open: live.open,
-                        total: live.total,
-                        release: releaseClause,
-                      })
-                    : '',
-                  alt: isPicked ? t('court.anotherTime') : t('court.later'),
-                })
+              ? t(
+                  isPermit
+                    ? live.playable === 1
+                      ? 'court.permittedFullLineOne'
+                      : 'court.permittedFullLine'
+                    : 'court.fullyBookedLine',
+                  {
+                    total: live.playable,
+                    when: isPicked ? viewLabel(viewTime) : t('court.rightNow'),
+                    extra: partialOpen
+                      ? t('court.partialAll', {
+                          open: live.open,
+                          total: live.total,
+                          release: releaseClause,
+                        })
+                      : '',
+                    alt: isPicked ? t('court.anotherTime') : t('court.later'),
+                    src: resSrc,
+                  }
+                )
               : live && (live.now || live.picked)
-              ? t('court.reservedLine', {
+              ? t(isPermit ? 'court.permittedLine' : 'court.reservedLine', {
                   main: reservedLabel + (live.booked === 0 ? blockedWhy : ''),
                   when: isPicked ? viewLabel(viewTime) : t('court.rightNow'),
                   extra: freeClauses.length ? ` · ${freeClauses.join(' · ')}` : '',
+                  src: resSrc,
                 })
               : live
-              ? t('court.closedBookedLine', {
-                  pct: live.pct,
-                  when: viewLabel(new Date(live.at.replace(' ', 'T'))),
-                })
-              : isPicked
-              ? t('court.noSlotLine', { when: viewLabel(viewTime) })
-              : t('court.reservationsLine', {
+              ? t(
+                  isPermit
+                    ? 'court.permittedClosedLine'
+                    : // NYC's tennis system publishes no same-day grid at all
+                    // (it refuses same-day bookings), so the soonest reading is
+                    // always tomorrow. The court itself is open for walk-on
+                    // play — "closed right now" would be plainly false.
+                    booked.kind === 'reserve'
+                    ? 'court.noSameDayLine'
+                    : 'court.closedBookedLine',
+                  {
+                    pct: live.pct,
+                    when: viewLabel(new Date(live.at.replace(' ', 'T'))),
+                    src: resSrc,
+                  }
+                )
+              : isPicked && !isPermit
+              ? t('court.noSlotLine', { when: viewLabel(viewTime), src: resSrc })
+              : t(isPermit ? 'court.permittedNoneLine' : 'court.reservationsLine', {
+                  src: resSrc,
                   courts: booked.courts
                     ? ` · ${t(booked.courts === 1 ? 'court.courtsCountOne' : 'court.courtsCountMany', { n: booked.courts })}`
                     : '',
@@ -2091,7 +2134,9 @@ function CourtDetail({
             style={styles.bookBtn}
             onPress={() => Linking.openURL(booked.url || BOOK_URL)}
           >
-            <Text style={styles.bookBtnText}>{t('court.reserveBtn')}</Text>
+            <Text style={styles.bookBtnText}>
+              {t(isPermit ? 'court.permittedBtn' : 'court.reserveBtn')}
+            </Text>
           </Pressable>
           <Pressable hitSlop={6} onPress={() => setBookingHelp((v) => !v)}>
             <Text style={styles.bookHelpToggle}>
@@ -2103,23 +2148,31 @@ function CourtDetail({
               {guidelines ? (
                 <GuidelineMarkdown text={guidelines} />
               ) : (
-                <Text style={styles.bookHelpText}>{t('court.bookingHelp')}</Text>
+                <Text style={styles.bookHelpText}>
+                  {t(isPermit ? 'court.permittedHelp' : 'court.bookingHelp')}
+                </Text>
               )}
-              <Text
-                style={[styles.bookHelpLink, { marginTop: 8 }]}
-                onPress={() => Linking.openURL(BOOK_HOWTO_URL)}
-              >
-                {t('court.howToGuide')}
-              </Text>
+              {/* The how-to guide is SF Rec & Park's, so it only belongs next to
+                  a rec.us reading — it would be wrong on a NYC permit. */}
+              {resSrc === 'rec.us' && (
+                <Text
+                  style={[styles.bookHelpLink, { marginTop: 8 }]}
+                  onPress={() => Linking.openURL(BOOK_HOWTO_URL)}
+                >
+                  {t('court.howToGuide')}
+                </Text>
+              )}
             </View>
           )}
         </>
       )}
 
-      {/* City permit-based reservations (NYC tennis): no per-court availability
-          API, so show the permit requirement + reservation link instead of a
-          % badge. Gated on the sport being reservable at this court. */}
-      {court.booking && court.facts?.[vSport]?.reservable && (
+      {/* City permit-based reservations (NYC tennis): the permit REQUIREMENT and
+          where to buy one, which is orthogonal to how busy the court is. Skipped
+          when we have an actual occupancy reading above — that block already
+          carries the link and the explainer, and showing both stacks two booking
+          sections on one card. */}
+      {booked == null && court.booking && court.facts?.[vSport]?.reservable && (
         <>
           <Text style={styles.bookedNote}>{t('court.permitLine')}</Text>
           <Pressable

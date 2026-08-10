@@ -2,6 +2,7 @@
   "courts": [
     {
       "id": "nyc-uncle-vito-f-maranzano-glendale-playground-outdoor",
+      "key": "Q290",
       "name": "\"Uncle\" Vito F. Maranzano Glendale Playground",
       "address": "2869 CENTRAL AVENUE",
       "neighborhood": "Queens",
@@ -36,6 +37,7 @@
     },
     {
       "id": "nyc-100-playground-outdoor",
+      "key": "B342",
       "name": "100% Playground",
       "address": "10002 GLENWOOD ROAD",
       "neighborhood": "Brooklyn",
@@ -63,6 +65,7 @@
     },
     {
       "id": "nyc-abc-playground-outdoor",
+      "key": "M116",
       "name": "ABC Playground",
       "address": "164 ESSEX STREET",
       "neighborhood": "Manhattan",
@@ -88,6 +91,7 @@
     },
     {
       "id": "nyc-abigail-playground-outdoor",
+      "key": "X216",
       "name": "Abigail Playground",
       "address": "680 TINTON AVENUE",
       "neighborhood": "Bronx",
@@ -114,6 +118,7 @@
     },
     {
       "id": "nyc-abraham-lincoln-playground-outdoor",
+      "key": "M193",
       "name": "Abraham Lincoln Playground",
       "address": "5 Ave. and E. 135 St.",
       "neighborhood": "Manhattan",
@@ -139,6 +144,7 @@
     },
     {
       "id": "nyc-adam-yauch-park-outdoor",
+      "key": "B223DA",
       "name": "Adam Yauch Park",
       "address": "46 COLUMBIA PLACE",
       "neighborhood": "Brooklyn",
@@ -165,6 +171,7 @@
     },
     {
       "id": "nyc-admiral-farragut-playground-outdoor",
+      "key": "X148H",
       "name": "Admiral Farragut Playground",
       "address": "S/S E 176 St bet. Crotona Av and Prospect Av",
       "neighborhood": "Bronx",
@@ -189,6 +196,7 @@
     },
     {
       "id": "nyc-admiral-playground-outdoor",
+      "key": "Q338",
       "name": "Admiral Playground",
       "address": "42-33 LITTLE NECK PARKWAY",
       "neighborhood": "Queens",
@@ -215,6 +223,7 @@
     },
     {
       "id": "nyc-agnes-haywood-playground-outdoor",
+      "key": "X169",
       "name": "Agnes Haywood Playground",
       "address": "758 EAST 216 STREET",
       "neighborhood": "Bronx",
@@ -241,6 +250,7 @@
     },
     {
       "id": "nyc-al-qui-ones-playground-outdoor",
+      "key": "X179",
       "name": "Al Quiñones Playground",
       "address": "680 Kelly Street",
       "neighborhood": "Bronx",
@@ -266,6 +276,7 @@
     },
     {
       "id": "nyc-al-stabile-playground-outdoor",
+      "key": "Q285",
       "name": "Al Stabile Playground",
       "address": "Centreville St. bet. 133 Ave. and 103 St.",
       "neighborhood": "Queens",
@@ -290,6 +301,7 @@
     },
     {
       "id": "nyc-albemarle-playground-outdoor",
+      "key": "B297",
       "name": "Albemarle Playground",
       "address": "1 ALBEMARLE ROAD",
       "neighborhood": "Brooklyn",
@@ -315,6 +327,7 @@
     },
     {
       "id": "nyc-albert-l-parham-playground-outdoor",
+      "key": "B253",
       "name": "Albert L. Parham Playground",
       "address": "255 ADELPHI STREET",
       "neighborhood": "Brooklyn",
@@ -341,6 +354,7 @@
     },
     {
       "id": "nyc-alexander-hamilton-playground-outdoor",
+      "key": "M041",
       "name": "Alexander Hamilton Playground",
       "address": "66 HAMILTON PLACE",
       "neighborhood": "Manhattan",
@@ -367,6 +381,7 @@
     },
     {
       "id": "nyc-alfred-e-smith-playground-outdoor",
+      "key": "M194",
       "name": "Alfred E. Smith Playground",
       "address": "86 CATHERINE STREET",
       "neighborhood": "Manhattan",
@@ -400,6 +415,7 @@
     },
     {
       "id": "nyc-allerton-playground-outdoor",
+      "key": "X172",
       "name": "Allerton Playground",
       "address": "1251 ALLERTON AVENUE",
       "neighborhood": "Bronx",
@@ -427,6 +443,7 @@
     },
     {
       "id": "nyc-alley-athletic-playground-outdoor",
+      "key": "Q001A",
       "name": "Alley Athletic Playground",
       "address": "Winchester Blvd. bet. Union Tpke. and the Grand Central Pkwy.",
       "neighborhood": "Queens",
@@ -473,6 +490,7 @@
     },
     {
       "id": "nyc-alley-park-outdoor",
+      "key": "Q356",
       "name": "Alley Park",
       "address": "231-02 67 AVENUE",
       "neighborhood": "Queens",
@@ -507,6 +525,7 @@
     },
     {
       "id": "nyc-alley-pond-park-outdoor",
+      "key": "Q001",
       "name": "Alley Pond Park",
       "address": "Little Neck Bay to Springfield Blvd, Union Tpke",
       "neighborhood": "Queens",
@@ -550,6 +569,7 @@
     },
     {
       "id": "nyc-almeda-playground-outdoor",
+      "key": "Q443",
       "name": "Almeda Playground",
       "address": "460 BEACH 66 STREET",
       "neighborhood": "Queens",
@@ -575,6 +595,7 @@
     },
     {
       "id": "nyc-ambrosini-field-outdoor",
+      "key": "X253",
       "name": "Ambrosini Field",
       "address": "200 CITY ISLAND AV",
       "neighborhood": "Bronx",
@@ -599,6 +620,7 @@
     },
     {
       "id": "nyc-american-playground-outdoor",
+      "key": "B001",
       "name": "American Playground",
       "address": "81 FRANKLIN STREET",
       "neighborhood": "Brooklyn",
@@ -624,6 +646,7 @@
     },
     {
       "id": "nyc-andries-playground-outdoor",
+      "key": "B287",
       "name": "Andries Playground",
       "address": "Nostrand Ave. between Ave. L and Ave. K",
       "neighborhood": "Brooklyn",
@@ -650,6 +673,7 @@
     },
     {
       "id": "nyc-annadale-playground-outdoor",
+      "key": "Q319",
       "name": "Annadale Playground",
       "address": "64-35 102 STREET",
       "neighborhood": "Queens",
@@ -675,6 +699,7 @@
     },
     {
       "id": "nyc-annunciation-playground-outdoor",
+      "key": "M003",
       "name": "Annunciation Playground",
       "address": "1501 AMSTERDAM Av",
       "neighborhood": "Manhattan",
@@ -708,6 +733,7 @@
     },
     {
       "id": "nyc-aqueduct-walk-outdoor",
+      "key": "X001A",
       "name": "Aqueduct Walk",
       "address": "Dr. MLK Jr. Blvd. bet. W. Tremont Ave. and E. Fordham Rd.",
       "neighborhood": "Bronx",
@@ -733,6 +759,7 @@
     },
     {
       "id": "nyc-archie-spigner-park-outdoor",
+      "key": "Q051",
       "name": "Archie Spigner Park",
       "address": "169 St., Merrick Blvd., Marne Pl. bet. Linden Blvd., Sayres Ave., and 111 Rd.",
       "neighborhood": "Queens",
@@ -780,6 +807,7 @@
     },
     {
       "id": "nyc-arcilla-playground-outdoor",
+      "key": "X219",
       "name": "Arcilla Playground",
       "address": "991 TELLER AVENUE",
       "neighborhood": "Bronx",
@@ -806,6 +834,7 @@
     },
     {
       "id": "nyc-arrochar-playground-outdoor",
+      "key": "R062",
       "name": "Arrochar Playground",
       "address": "200 MC FARLAND AVENUE",
       "neighborhood": "Staten Island",
@@ -831,6 +860,7 @@
     },
     {
       "id": "nyc-arverne-playground-outdoor",
+      "key": "Q313",
       "name": "Arverne Playground",
       "address": "306 BEACH CHANNEL DRIVE",
       "neighborhood": "Queens",
@@ -856,6 +886,7 @@
     },
     {
       "id": "nyc-asser-levy-playground-outdoor",
+      "key": "M164",
       "name": "Asser Levy Playground",
       "address": "384 ASSER LEVY PLACE",
       "neighborhood": "Manhattan",
@@ -889,6 +920,7 @@
     },
     {
       "id": "nyc-astoria-health-playground-outdoor",
+      "key": "Q123",
       "name": "Astoria Health Playground",
       "address": "38-16 14 STREET",
       "neighborhood": "Queens",
@@ -914,6 +946,7 @@
     },
     {
       "id": "nyc-astoria-heights-playground-outdoor",
+      "key": "Q014",
       "name": "Astoria Heights Playground",
       "address": "45-02 30 ROAD",
       "neighborhood": "Queens",
@@ -962,6 +995,7 @@
     },
     {
       "id": "nyc-astoria-park-outdoor",
+      "key": "Q004",
       "name": "Astoria Park",
       "address": "24-02 19 STREET",
       "neighborhood": "Queens",
@@ -1010,6 +1044,7 @@
     },
     {
       "id": "nyc-athens-square-outdoor",
+      "key": "Q436",
       "name": "Athens Square",
       "address": "28-37 30 AVENUE",
       "neighborhood": "Queens",
@@ -1035,6 +1070,7 @@
     },
     {
       "id": "nyc-auburndale-playground-outdoor",
+      "key": "Q397",
       "name": "Auburndale Playground",
       "address": "171-11 35 AVENUE",
       "neighborhood": "Queens",
@@ -1060,6 +1096,7 @@
     },
     {
       "id": "nyc-audubon-playground-outdoor",
+      "key": "M240",
       "name": "Audubon Playground",
       "address": "550 WEST 170 STREET",
       "neighborhood": "Manhattan",
@@ -1086,6 +1123,7 @@
     },
     {
       "id": "nyc-augustus-st-gaudens-playground-outdoor",
+      "key": "M226",
       "name": "Augustus St. Gaudens Playground",
       "address": "328 2 AVENUE",
       "neighborhood": "Manhattan",
@@ -1111,6 +1149,7 @@
     },
     {
       "id": "nyc-austin-j-mcdonald-playground-outdoor",
+      "key": "R034",
       "name": "Austin J. McDonald Playground",
       "address": "Forest Ave., Myrtle Ave., Broadway, N. Burgher Ave.",
       "neighborhood": "Staten Island",
@@ -1137,6 +1176,7 @@
     },
     {
       "id": "nyc-bailey-playground-outdoor",
+      "key": "X150J",
       "name": "Bailey Playground",
       "address": "3401 BAILEY AVENUE",
       "neighborhood": "Bronx",
@@ -1163,6 +1203,7 @@
     },
     {
       "id": "nyc-baisley-pond-park-outdoor",
+      "key": "Q005",
       "name": "Baisley Pond Park",
       "address": "116-01 116 AVENUE",
       "neighborhood": "Queens",
@@ -1221,6 +1262,7 @@
     },
     {
       "id": "nyc-banneker-playground-outdoor",
+      "key": "B140",
       "name": "Banneker Playground",
       "address": "152 KOSCIUSZKO STREET",
       "neighborhood": "Brooklyn",
@@ -1254,6 +1296,7 @@
     },
     {
       "id": "nyc-barretto-point-park-outdoor",
+      "key": "X307",
       "name": "Barretto Point Park",
       "address": "1121 VIELE AVENUE",
       "neighborhood": "Bronx",
@@ -1287,6 +1330,7 @@
     },
     {
       "id": "nyc-barrier-playground-outdoor",
+      "key": "Q357B01",
       "name": "Barrier Playground",
       "address": "Horace Harding Exwy. Sr. Rd. S., 62 Ave. bet. 102 St. and Yellowstone Blvd.",
       "neighborhood": "Queens",
@@ -1312,6 +1356,7 @@
     },
     {
       "id": "nyc-bartlett-playground-outdoor",
+      "key": "B286",
       "name": "Bartlett Playground",
       "address": "38 BARTLETT STREET",
       "neighborhood": "Brooklyn",
@@ -1339,6 +1384,7 @@
     },
     {
       "id": "nyc-baruch-playground-outdoor",
+      "key": "M165",
       "name": "Baruch Playground",
       "address": "288 DELANCEY STREET",
       "neighborhood": "Manhattan",
@@ -1381,6 +1427,7 @@
     },
     {
       "id": "nyc-bath-beach-park-outdoor",
+      "key": "B164",
       "name": "Bath Beach Park",
       "address": "Shore Pkwy. bet. Bay 14 St. and Bay 16 St.",
       "neighborhood": "Brooklyn",
@@ -1422,6 +1469,7 @@
     },
     {
       "id": "nyc-bath-playground-outdoor",
+      "key": "B349",
       "name": "Bath Playground",
       "address": "8781 CROPSEY AVENUE",
       "neighborhood": "Brooklyn",
@@ -1455,6 +1503,7 @@
     },
     {
       "id": "nyc-bay-terrace-playground-outdoor",
+      "key": "Q399",
       "name": "Bay Terrace Playground",
       "address": "212-33 23 AVENUE",
       "neighborhood": "Queens",
@@ -1480,6 +1529,7 @@
     },
     {
       "id": "nyc-bayside-fields-outdoor",
+      "key": "Q387A",
       "name": "Bayside Fields",
       "address": "204-10 29 AVENUE",
       "neighborhood": "Queens",
@@ -1505,6 +1555,7 @@
     },
     {
       "id": "nyc-bayswater-park-outdoor",
+      "key": "Q007",
       "name": "Bayswater Park",
       "address": "701 BAY 32 STREET",
       "neighborhood": "Queens",
@@ -1552,6 +1603,7 @@
     },
     {
       "id": "nyc-bayview-playground-outdoor",
+      "key": "B274",
       "name": "Bayview Playground",
       "address": "9920 SEAVIEW AVENUE",
       "neighborhood": "Brooklyn",
@@ -1578,6 +1630,7 @@
     },
     {
       "id": "nyc-beach-17-playground-outdoor",
+      "key": "Q162J",
       "name": "Beach 17 Playground",
       "address": "9-01 SEAGIRT BOULEVARD",
       "neighborhood": "Queens",
@@ -1602,6 +1655,7 @@
     },
     {
       "id": "nyc-beach-30th-street-playground-outdoor",
+      "key": "Q162H",
       "name": "Beach 30th Street Playground",
       "address": "102 BEACH 32 STREET",
       "neighborhood": "Queens",
@@ -1626,6 +1680,7 @@
     },
     {
       "id": "nyc-beach-9-playground-outdoor",
+      "key": "Q162J01",
       "name": "Beach 9 Playground",
       "address": "9-01 SEAGIRT BOULEVARD",
       "neighborhood": "Queens",
@@ -1652,6 +1707,7 @@
     },
     {
       "id": "nyc-beach-channel-playground-outdoor",
+      "key": "Q403",
       "name": "Beach Channel Playground",
       "address": "245 BEACH CHANNEL DRIVE",
       "neighborhood": "Queens",
@@ -1677,6 +1733,7 @@
     },
     {
       "id": "nyc-beanstalk-playground-outdoor",
+      "key": "X283",
       "name": "Beanstalk Playground",
       "address": "1862 BILLINGSLEY TERRACE",
       "neighborhood": "Bronx",
@@ -1702,6 +1759,7 @@
     },
     {
       "id": "nyc-bedford-playground-outdoor",
+      "key": "B142",
       "name": "Bedford Playground",
       "address": "449 BEDFORD AVENUE",
       "neighborhood": "Brooklyn",
@@ -1728,6 +1786,7 @@
     },
     {
       "id": "nyc-behagen-playground-outdoor",
+      "key": "X166",
       "name": "Behagen Playground",
       "address": "1050-1054 TINTON AVENUE",
       "neighborhood": "Bronx",
@@ -1771,6 +1830,7 @@
     },
     {
       "id": "nyc-bellaire-playground-outdoor",
+      "key": "Q322",
       "name": "Bellaire Playground",
       "address": "207-00 HILLSIDE AVENUE",
       "neighborhood": "Queens",
@@ -1797,6 +1857,7 @@
     },
     {
       "id": "nyc-bellerose-playground-outdoor",
+      "key": "Q328",
       "name": "Bellerose Playground",
       "address": "248-05 85 AVENUE",
       "neighborhood": "Queens",
@@ -1830,6 +1891,7 @@
     },
     {
       "id": "nyc-bellevue-south-park-outdoor",
+      "key": "M263",
       "name": "Bellevue South Park",
       "address": "315 EAST 26 STREET",
       "neighborhood": "Manhattan",
@@ -1864,6 +1926,7 @@
     },
     {
       "id": "nyc-belmont-playground-outdoor",
+      "key": "X108",
       "name": "Belmont Playground",
       "address": "670 EAST 182 STREET",
       "neighborhood": "Bronx",
@@ -1898,6 +1961,7 @@
     },
     {
       "id": "nyc-benson-playground-outdoor",
+      "key": "B277",
       "name": "Benson Playground",
       "address": "1939 BATH AVENUE",
       "neighborhood": "Brooklyn",
@@ -1924,6 +1988,7 @@
     },
     {
       "id": "nyc-bensonhurst-park-outdoor",
+      "key": "B007",
       "name": "Bensonhurst Park",
       "address": "2122 CROPSEY AVENUE",
       "neighborhood": "Brooklyn",
@@ -1981,6 +2046,7 @@
     },
     {
       "id": "nyc-bergen-beach-playground-outdoor",
+      "key": "B353",
       "name": "Bergen Beach Playground",
       "address": "7101 AVENUE T",
       "neighborhood": "Brooklyn",
@@ -2007,6 +2073,7 @@
     },
     {
       "id": "nyc-berry-playground-outdoor",
+      "key": "B154",
       "name": "Berry Playground",
       "address": "106 SOUTH 3 STREET",
       "neighborhood": "Brooklyn",
@@ -2032,6 +2099,7 @@
     },
     {
       "id": "nyc-betsy-head-park-outdoor",
+      "key": "B008",
       "name": "Betsy Head Park",
       "address": "245 DUMONT AVENUE, 167 LIVONIA AVENUE",
       "neighborhood": "Brooklyn",
@@ -2075,6 +2143,7 @@
     },
     {
       "id": "nyc-bicentennial-veterans-memorial-park-outdoor",
+      "key": "X191A",
       "name": "Bicentennial Veterans Memorial Park",
       "address": "Throgg's Neck Exwy at Pennyfield Ave. and Elisworth Ave.",
       "neighborhood": "Bronx",
@@ -2099,6 +2168,7 @@
     },
     {
       "id": "nyc-big-bush-playground-outdoor",
+      "key": "Q205A",
       "name": "Big Bush Playground",
       "address": "45-25 63 STREET",
       "neighborhood": "Queens",
@@ -2141,6 +2211,7 @@
     },
     {
       "id": "nyc-bildersee-playground-outdoor",
+      "key": "B335",
       "name": "Bildersee Playground",
       "address": "956 AVENUE J",
       "neighborhood": "Brooklyn",
@@ -2175,6 +2246,7 @@
     },
     {
       "id": "nyc-bill-bojangles-robinson-playground-outdoor",
+      "key": "M138",
       "name": "Bill Bojangles Robinson Playground",
       "address": "W. 150 St., W/s 7 Ave.",
       "neighborhood": "Manhattan",
@@ -2200,6 +2272,7 @@
     },
     {
       "id": "nyc-bill-brown-playground-outdoor",
+      "key": "B109",
       "name": "Bill Brown Playground",
       "address": "2401 AVENUE Y",
       "neighborhood": "Brooklyn",
@@ -2242,6 +2315,7 @@
     },
     {
       "id": "nyc-bill-rainey-park-outdoor",
+      "key": "X255",
       "name": "Bill Rainey Park",
       "address": "Beck St bet. Interval Av and Longwood Av",
       "neighborhood": "Bronx",
@@ -2267,6 +2341,7 @@
     },
     {
       "id": "nyc-blake-hobbs-playground-outdoor",
+      "key": "M214",
       "name": "Blake Hobbs Playground",
       "address": "1851 3 AVENUE",
       "neighborhood": "Manhattan",
@@ -2292,6 +2367,7 @@
     },
     {
       "id": "nyc-blood-root-valley-outdoor",
+      "key": "R129",
       "name": "Blood Root Valley",
       "address": "411 ROCKLAND AVENUE",
       "neighborhood": "Staten Island",
@@ -2339,6 +2415,7 @@
     },
     {
       "id": "nyc-bloomingdale-park-outdoor",
+      "key": "R106",
       "name": "Bloomingdale Park",
       "address": "299 BLOOMINGDALE ROAD",
       "neighborhood": "Staten Island",
@@ -2383,6 +2460,7 @@
     },
     {
       "id": "nyc-bloomingdale-playground-outdoor",
+      "key": "M238",
       "name": "Bloomingdale Playground",
       "address": "905 AMSTERDAM AVENUE",
       "neighborhood": "Manhattan",
@@ -2417,6 +2495,7 @@
     },
     {
       "id": "nyc-blue-playground-outdoor",
+      "key": "B223PE",
       "name": "Blue Playground",
       "address": "381 RODNEY STREET",
       "neighborhood": "Brooklyn",
@@ -2442,6 +2521,7 @@
     },
     {
       "id": "nyc-bobbie-lewis-jr-playground-outdoor",
+      "key": "R036",
       "name": "Bobbie Lewis Jr. Playground",
       "address": "Harbor Rd. at Richmond Terr.",
       "neighborhood": "Staten Island",
@@ -2467,6 +2547,7 @@
     },
     {
       "id": "nyc-boerum-park-outdoor",
+      "key": "B361",
       "name": "Boerum Park",
       "address": "364 WARREN STREET",
       "neighborhood": "Brooklyn",
@@ -2492,6 +2573,7 @@
     },
     {
       "id": "nyc-booker-t-washington-playground-outdoor",
+      "key": "M200",
       "name": "Booker T. Washington Playground",
       "address": "960 COLUMBUS AVENUE",
       "neighborhood": "Manhattan",
@@ -2535,6 +2617,7 @@
     },
     {
       "id": "nyc-bowne-park-outdoor",
+      "key": "Q006",
       "name": "Bowne Park",
       "address": "155-01 32 AVENUE",
       "neighborhood": "Queens",
@@ -2561,6 +2644,7 @@
     },
     {
       "id": "nyc-bowne-playground-outdoor",
+      "key": "Q308",
       "name": "Bowne Playground",
       "address": "142-30 BARCLAY AVENUE",
       "neighborhood": "Queens",
@@ -2587,6 +2671,7 @@
     },
     {
       "id": "nyc-breukelen-ballfields-outdoor",
+      "key": "B247",
       "name": "Breukelen Ballfields",
       "address": "276 STANLEY AVENUE",
       "neighborhood": "Brooklyn",
@@ -2630,6 +2715,7 @@
     },
     {
       "id": "nyc-brevoort-playground-outdoor",
+      "key": "B258",
       "name": "Brevoort Playground",
       "address": "291 PATCHEN AVENUE",
       "neighborhood": "Brooklyn",
@@ -2656,6 +2742,7 @@
     },
     {
       "id": "nyc-briarwood-playground-outdoor",
+      "key": "Q379",
       "name": "Briarwood Playground",
       "address": "85-05 144 STREET",
       "neighborhood": "Queens",
@@ -2680,6 +2767,7 @@
     },
     {
       "id": "nyc-bridge-park-3-outdoor",
+      "key": "B223JC",
       "name": "Bridge Park 3",
       "address": "128 PROSPECT STREET",
       "neighborhood": "Brooklyn",
@@ -2705,6 +2793,7 @@
     },
     {
       "id": "nyc-bridge-playground-outdoor",
+      "key": "X148A3",
       "name": "Bridge Playground",
       "address": "1459 UNIVERSITY AVENUE",
       "neighborhood": "Bronx",
@@ -2729,6 +2818,7 @@
     },
     {
       "id": "nyc-brigadier-general-charles-young-playground-outdoor",
+      "key": "M186",
       "name": "Brigadier General Charles Young Playground",
       "address": "680 LENOX AVENUE",
       "neighborhood": "Manhattan",
@@ -2773,6 +2863,7 @@
     },
     {
       "id": "nyc-brighton-playground-outdoor",
+      "key": "B169A",
       "name": "Brighton Playground",
       "address": "126 BRIGHTWATER COURT",
       "neighborhood": "Brooklyn",
@@ -2798,6 +2889,7 @@
     },
     {
       "id": "nyc-broad-channel-american-park-outdoor",
+      "key": "Q467",
       "name": "Broad Channel American Park",
       "address": "20-15 CROSS BAY BOULEVARD",
       "neighborhood": "Queens",
@@ -2824,6 +2916,7 @@
     },
     {
       "id": "nyc-broad-channel-park-outdoor",
+      "key": "Q460",
       "name": "Broad Channel Park",
       "address": "16-26 CROSS BAY BOULEVARD",
       "neighborhood": "Queens",
@@ -2862,6 +2955,7 @@
     },
     {
       "id": "nyc-bronx-park-outdoor",
+      "key": "X002",
       "name": "Bronx Park",
       "address": "2120 BOSTON ROAD",
       "neighborhood": "Bronx",
@@ -2906,6 +3000,7 @@
     },
     {
       "id": "nyc-bronx-river-parkway-outdoor",
+      "key": "X004",
       "name": "Bronx River Parkway",
       "address": "EAST 222ND ST. and BRONX BOULEVARD, BRONX, 10466",
       "neighborhood": "Bronx",
@@ -2949,6 +3044,7 @@
     },
     {
       "id": "nyc-brookville-park-outdoor",
+      "key": "Q008",
       "name": "Brookville Park",
       "address": "S. Conduit Ave., 149 Ave. bet. 232 St. and 235 St.",
       "neighborhood": "Queens",
@@ -3007,6 +3103,7 @@
     },
     {
       "id": "nyc-brower-park-outdoor",
+      "key": "B012",
       "name": "Brower Park",
       "address": "195 BROOKLYN AVENUE",
       "neighborhood": "Brooklyn",
@@ -3033,6 +3130,7 @@
     },
     {
       "id": "nyc-brownsville-playground-outdoor",
+      "key": "B270",
       "name": "Brownsville Playground",
       "address": "1555 LINDEN BOULEVARD",
       "neighborhood": "Brooklyn",
@@ -3068,6 +3166,7 @@
     },
     {
       "id": "nyc-bruckner-playground-outdoor",
+      "key": "X183",
       "name": "Bruckner Playground",
       "address": "2770 LAFAYETTE AVENUE",
       "neighborhood": "Bronx",
@@ -3093,6 +3192,7 @@
     },
     {
       "id": "nyc-bufano-park-outdoor",
+      "key": "X121",
       "name": "Bufano Park",
       "address": "1300 BRADFORD AVENUE",
       "neighborhood": "Bronx",
@@ -3118,6 +3218,7 @@
     },
     {
       "id": "nyc-burns-playground-outdoor",
+      "key": "X232",
       "name": "Burns Playground",
       "address": "2545 GUNTHER AVENUE",
       "neighborhood": "Bronx",
@@ -3152,6 +3253,7 @@
     },
     {
       "id": "nyc-bushwick-inlet-park-outdoor",
+      "key": "B529",
       "name": "Bushwick Inlet Park",
       "address": "86 KENT AVENUE",
       "neighborhood": "Brooklyn",
@@ -3178,6 +3280,7 @@
     },
     {
       "id": "nyc-bushwick-playground-outdoor",
+      "key": "B017",
       "name": "Bushwick Playground",
       "address": "617 KNICKERBOCKER AVENUE",
       "neighborhood": "Brooklyn",
@@ -3227,6 +3330,7 @@
     },
     {
       "id": "nyc-callahan-kelly-playground-outdoor",
+      "key": "B219",
       "name": "Callahan-Kelly Playground",
       "address": "Fulton St., Truxton St., bet. Eastern Pkwy. and Van Sinderen Ave.",
       "neighborhood": "Brooklyn",
@@ -3252,6 +3356,7 @@
     },
     {
       "id": "nyc-calvert-vaux-park-outdoor",
+      "key": "B125",
       "name": "Calvert Vaux Park",
       "address": "2000 SHORE PARKWAY SR S",
       "neighborhood": "Brooklyn",
@@ -3296,6 +3401,7 @@
     },
     {
       "id": "nyc-cambria-playground-outdoor",
+      "key": "Q339",
       "name": "Cambria Playground",
       "address": "Francis Lewis Blvd., 121 Ave. bet. 219 St. and 222 St.",
       "neighborhood": "Queens",
@@ -3331,6 +3437,7 @@
     },
     {
       "id": "nyc-canarsie-park-outdoor",
+      "key": "B018",
       "name": "Canarsie Park",
       "address": "9006 SEAVIEW AVENUE",
       "neighborhood": "Brooklyn",
@@ -3376,6 +3483,7 @@
     },
     {
       "id": "nyc-captain-rivera-playground-outdoor",
+      "key": "X194",
       "name": "Captain Rivera Playground",
       "address": "720 EAST 156 STREET",
       "neighborhood": "Bronx",
@@ -3401,6 +3509,7 @@
     },
     {
       "id": "nyc-captain-william-harry-thompson-playground-outdoor",
+      "key": "X159",
       "name": "Captain William Harry Thompson Playground",
       "address": "E. 174 St. bet. Bronx River Ave. and E. 173 St.",
       "neighborhood": "Bronx",
@@ -3426,6 +3535,7 @@
     },
     {
       "id": "nyc-carl-schurz-park-outdoor",
+      "key": "M081",
       "name": "Carl Schurz Park",
       "address": "97 EAST END AVENUE",
       "neighborhood": "Manhattan",
@@ -3453,6 +3563,7 @@
     },
     {
       "id": "nyc-carmansville-playground-outdoor",
+      "key": "M018",
       "name": "Carmansville Playground",
       "address": "1841 AMSTERDAM AV",
       "neighborhood": "Manhattan",
@@ -3479,6 +3590,7 @@
     },
     {
       "id": "nyc-carroll-park-outdoor",
+      "key": "B019",
       "name": "Carroll Park",
       "address": "375 COURT STREET",
       "neighborhood": "Brooklyn",
@@ -3514,6 +3626,7 @@
     },
     {
       "id": "nyc-carver-playground-outdoor",
+      "key": "B347",
       "name": "Carver Playground",
       "address": "281 RALPH AVENUE",
       "neighborhood": "Brooklyn",
@@ -3549,6 +3662,7 @@
     },
     {
       "id": "nyc-caserta-playground-outdoor",
+      "key": "X160",
       "name": "Caserta Playground",
       "address": "St. Raymond's Ave. bet. Odell St. and Purdy St.",
       "neighborhood": "Bronx",
@@ -3575,6 +3689,7 @@
     },
     {
       "id": "nyc-castle-hill-little-league-field-outdoor",
+      "key": "X239",
       "name": "Castle Hill Little League Field",
       "address": "1188 ZEREGA AVENUE",
       "neighborhood": "Bronx",
@@ -3599,6 +3714,7 @@
     },
     {
       "id": "nyc-castle-hill-playground-outdoor",
+      "key": "X177",
       "name": "Castle Hill Playground",
       "address": "1551 CASTLE HILL AVENUE",
       "neighborhood": "Bronx",
@@ -3625,6 +3741,7 @@
     },
     {
       "id": "nyc-castlewood-playground-outdoor",
+      "key": "Q327",
       "name": "Castlewood Playground",
       "address": "252-72 LITTLE NECK PARKWAY",
       "neighborhood": "Queens",
@@ -3659,6 +3776,7 @@
     },
     {
       "id": "nyc-cedar-grove-playground-outdoor",
+      "key": "Q376",
       "name": "Cedar Grove Playground",
       "address": "Gravett Rd. bet. Main St. and 149 St.",
       "neighborhood": "Queens",
@@ -3684,6 +3802,7 @@
     },
     {
       "id": "nyc-cedar-playground-outdoor",
+      "key": "X111",
       "name": "Cedar Playground",
       "address": "W 179 St bet. Cedar Av and Sedgwick Av",
       "neighborhood": "Bronx",
@@ -3710,6 +3829,7 @@
     },
     {
       "id": "nyc-central-park-outdoor",
+      "key": "M010",
       "name": "Central Park",
       "address": "1000 5 AVENUE",
       "neighborhood": "Manhattan",
@@ -3775,6 +3895,7 @@
     },
     {
       "id": "nyc-centreville-playground-outdoor",
+      "key": "Q386",
       "name": "Centreville Playground",
       "address": "149-48 CENTREVILLE STREET",
       "neighborhood": "Queens",
@@ -3809,6 +3930,7 @@
     },
     {
       "id": "nyc-century-playground-outdoor",
+      "key": "B337",
       "name": "Century Playground",
       "address": "2955 WEST 3 STREET",
       "neighborhood": "Brooklyn",
@@ -3844,6 +3966,7 @@
     },
     {
       "id": "nyc-challenge-playground-outdoor",
+      "key": "Q346",
       "name": "Challenge Playground",
       "address": "61-25 LITTLE NECK PARKWAY",
       "neighborhood": "Queens",
@@ -3878,6 +4001,7 @@
     },
     {
       "id": "nyc-chappetto-square-outdoor",
+      "key": "Q066H",
       "name": "Chappetto Square",
       "address": "Hoyt Ave. bet. 21 St. and 23 St.",
       "neighborhood": "Queens",
@@ -3901,6 +4025,7 @@
     },
     {
       "id": "nyc-charlie-s-place-outdoor",
+      "key": "B302",
       "name": "Charlie's Place",
       "address": "175 ELLERY STREET",
       "neighborhood": "Brooklyn",
@@ -3925,6 +4050,7 @@
     },
     {
       "id": "nyc-chelsea-park-outdoor",
+      "key": "M011",
       "name": "Chelsea Park",
       "address": "294 10 Av",
       "neighborhood": "Manhattan",
@@ -3969,6 +4095,7 @@
     },
     {
       "id": "nyc-cherry-clinton-playground-outdoor",
+      "key": "M171",
       "name": "Cherry Clinton Playground",
       "address": "Corner of Cherry St. and Clinton St.",
       "neighborhood": "Manhattan",
@@ -3995,6 +4122,7 @@
     },
     {
       "id": "nyc-cherry-tree-park-outdoor",
+      "key": "M215",
       "name": "Cherry Tree Park",
       "address": "1785 3 AVENUE",
       "neighborhood": "Manhattan",
@@ -4020,6 +4148,7 @@
     },
     {
       "id": "nyc-chester-playground-outdoor",
+      "key": "B362",
       "name": "Chester Playground",
       "address": "104 CHESTER STREET",
       "neighborhood": "Brooklyn",
@@ -4055,6 +4184,7 @@
     },
     {
       "id": "nyc-city-line-park-outdoor",
+      "key": "B141",
       "name": "City Line Park",
       "address": "79 FOUNTAIN AVENUE",
       "neighborhood": "Brooklyn",
@@ -4090,6 +4220,7 @@
     },
     {
       "id": "nyc-claremont-park-outdoor",
+      "key": "X008",
       "name": "Claremont Park",
       "address": "Clay Ave., Anthony Ave. bet. Mount Eden Pkwy. and E. 170 St",
       "neighborhood": "Bronx",
@@ -4125,6 +4256,7 @@
     },
     {
       "id": "nyc-clark-playground-outdoor",
+      "key": "X200",
       "name": "Clark Playground",
       "address": "2712 3 AVENUE",
       "neighborhood": "Bronx",
@@ -4151,6 +4283,7 @@
     },
     {
       "id": "nyc-classon-playground-b223na-outdoor",
+      "key": "B223NA",
       "name": "Classon Playground",
       "address": "Flushing Ave, Williamsburg Pl, Classon & Kent Aves",
       "neighborhood": "Brooklyn",
@@ -4175,6 +4308,7 @@
     },
     {
       "id": "nyc-classon-playground-b293-outdoor",
+      "key": "B293",
       "name": "Classon Playground",
       "address": "400 DE KALB AVENUE",
       "neighborhood": "Brooklyn",
@@ -4200,6 +4334,7 @@
     },
     {
       "id": "nyc-clawson-playground-outdoor",
+      "key": "R072",
       "name": "Clawson Playground",
       "address": "200 ADELAIDE AVENUE",
       "neighborhood": "Staten Island",
@@ -4234,6 +4369,7 @@
     },
     {
       "id": "nyc-cleopatra-playground-outdoor",
+      "key": "X258",
       "name": "Cleopatra Playground",
       "address": "1751 Anthony Av",
       "neighborhood": "Bronx",
@@ -4259,6 +4395,7 @@
     },
     {
       "id": "nyc-clintonville-playground-outdoor",
+      "key": "Q390",
       "name": "Clintonville Playground",
       "address": "154-60 17 AVENUE",
       "neighborhood": "Queens",
@@ -4298,6 +4435,7 @@
     },
     {
       "id": "nyc-clove-lakes-park-outdoor",
+      "key": "R005",
       "name": "Clove Lakes Park",
       "address": "1321 VICTORY BOULEVARD",
       "neighborhood": "Staten Island",
@@ -4332,6 +4470,7 @@
     },
     {
       "id": "nyc-co-op-city-field-outdoor",
+      "key": "X251",
       "name": "Co-op City Field",
       "address": "Co-op City Blvd. and the Hutch. River bet. Carver Loop and Bellamy Loop",
       "neighborhood": "Bronx",
@@ -4357,6 +4496,7 @@
     },
     {
       "id": "nyc-coffey-park-outdoor",
+      "key": "B077",
       "name": "Coffey Park",
       "address": "85 RICHARDS STREET",
       "neighborhood": "Brooklyn",
@@ -4391,6 +4531,7 @@
     },
     {
       "id": "nyc-colden-playground-outdoor",
+      "key": "Q347",
       "name": "Colden Playground",
       "address": "31-15 140 STREET",
       "neighborhood": "Queens",
@@ -4437,6 +4578,7 @@
     },
     {
       "id": "nyc-coleman-playground-outdoor",
+      "key": "M019",
       "name": "Coleman Playground",
       "address": "166 MARKET STREET",
       "neighborhood": "Manhattan",
@@ -4462,6 +4604,7 @@
     },
     {
       "id": "nyc-colgate-close-outdoor",
+      "key": "X195A",
       "name": "Colgate Close",
       "address": "1445 BRUCKNER BOULEVARD",
       "neighborhood": "Bronx",
@@ -4496,6 +4639,7 @@
     },
     {
       "id": "nyc-college-point-fields-outdoor",
+      "key": "Q476",
       "name": "College Point Fields",
       "address": "130 St. bet., 23rd Ave. and 26 Ave.",
       "neighborhood": "Queens",
@@ -4529,6 +4673,7 @@
     },
     {
       "id": "nyc-college-point-park-outdoor",
+      "key": "Q457",
       "name": "College Point Park",
       "address": "14 Ave. bet. 121 St. and College Point Blvd.",
       "neighborhood": "Queens",
@@ -4555,6 +4700,7 @@
     },
     {
       "id": "nyc-colonel-david-marcus-playground-outdoor",
+      "key": "B128",
       "name": "Colonel David Marcus Playground",
       "address": "1670 EAST 4 STREET, 1662 EAST 5 STREET, 1566 OCEAN PARKWAY",
       "neighborhood": "Brooklyn",
@@ -4589,6 +4735,7 @@
     },
     {
       "id": "nyc-colucci-playground-outdoor",
+      "key": "X122",
       "name": "Colucci Playground",
       "address": "2011 MAYFLOWER AVENUE",
       "neighborhood": "Bronx",
@@ -4624,6 +4771,7 @@
     },
     {
       "id": "nyc-columbus-park-outdoor",
+      "key": "M015",
       "name": "Columbus Park",
       "address": "55 MULBERRY STREET",
       "neighborhood": "Manhattan",
@@ -4668,6 +4816,7 @@
     },
     {
       "id": "nyc-commodore-barry-park-outdoor",
+      "key": "B021",
       "name": "Commodore Barry Park",
       "address": "65 PARK AVENUE",
       "neighborhood": "Brooklyn",
@@ -4721,6 +4870,7 @@
     },
     {
       "id": "nyc-coney-island-boat-basin-outdoor",
+      "key": "B166C",
       "name": "Coney Island Boat Basin",
       "address": "2692 BAY 49 STREET",
       "neighborhood": "Brooklyn",
@@ -4754,6 +4904,7 @@
     },
     {
       "id": "nyc-cooney-grauer-field-outdoor",
+      "key": "X150I",
       "name": "Cooney Grauer Field",
       "address": "141 WEST 233 STREET",
       "neighborhood": "Bronx",
@@ -4788,6 +4939,7 @@
     },
     {
       "id": "nyc-cooper-park-outdoor",
+      "key": "B025",
       "name": "Cooper Park",
       "address": "350 MASPETH AVENUE",
       "neighborhood": "Brooklyn",
@@ -4836,6 +4988,7 @@
     },
     {
       "id": "nyc-corlears-hook-park-outdoor",
+      "key": "M017",
       "name": "Corlears Hook Park",
       "address": "397 FDR DRIVE W LANE",
       "neighborhood": "Manhattan",
@@ -4869,6 +5022,7 @@
     },
     {
       "id": "nyc-corona-golf-playground-outdoor",
+      "key": "Q450",
       "name": "Corona Golf Playground",
       "address": "109-02 46 AVENUE",
       "neighborhood": "Queens",
@@ -4904,6 +5058,7 @@
     },
     {
       "id": "nyc-corporal-john-a-seravalli-playground-outdoor",
+      "key": "M237",
       "name": "Corporal John A. Seravalli Playground",
       "address": "638 HUDSON STREET",
       "neighborhood": "Manhattan",
@@ -4931,6 +5086,7 @@
     },
     {
       "id": "nyc-cottages-hill-new-brighton-park-outdoor",
+      "key": "R123",
       "name": "Cottages Hill New Brighton Park",
       "address": "Arnold St. to Prospect Ave. bet. Harvard Ave and Clyde Pl.",
       "neighborhood": "Staten Island",
@@ -4955,6 +5111,7 @@
     },
     {
       "id": "nyc-courtney-callender-playground-outdoor",
+      "key": "M155",
       "name": "Courtney Callender Playground",
       "address": "2122 5 AVENUE",
       "neighborhood": "Manhattan",
@@ -4980,6 +5137,7 @@
     },
     {
       "id": "nyc-cpl-thompson-park-outdoor",
+      "key": "R109",
       "name": "CPL. Thompson Park",
       "address": "799 HENDERSON AVENUE",
       "neighborhood": "Staten Island",
@@ -5024,6 +5182,7 @@
     },
     {
       "id": "nyc-crack-is-wack-playground-outdoor",
+      "key": "M208E",
       "name": "Crack Is Wack Playground",
       "address": "E. 127 St., 2 Ave., and Harlem River Drive",
       "neighborhood": "Manhattan",
@@ -5050,6 +5209,7 @@
     },
     {
       "id": "nyc-crispus-attucks-playground-outdoor",
+      "key": "B102",
       "name": "Crispus Attucks Playground",
       "address": "1030 FULTON STREET",
       "neighborhood": "Brooklyn",
@@ -5075,6 +5235,7 @@
     },
     {
       "id": "nyc-crocheron-park-outdoor",
+      "key": "Q012",
       "name": "Crocheron Park",
       "address": "214 Pl., 214 La., 215 Pl, Cross Island Pkwy. bet. 33 Ave. and 35 Ave.",
       "neighborhood": "Queens",
@@ -5121,6 +5282,7 @@
     },
     {
       "id": "nyc-crotona-park-outdoor",
+      "key": "X010",
       "name": "Crotona Park",
       "address": "1700 CROTONA AVENUE",
       "neighborhood": "Bronx",
@@ -5177,6 +5339,7 @@
     },
     {
       "id": "nyc-crowley-playground-outdoor",
+      "key": "Q360J",
       "name": "Crowley Playground",
       "address": "Queens Midtown Exwy., 57 Ave. bet. 84 St. and 82 St.",
       "neighborhood": "Queens",
@@ -5203,6 +5366,7 @@
     },
     {
       "id": "nyc-cunningham-park-outdoor",
+      "key": "Q021",
       "name": "Cunningham Park",
       "address": "196-10 UNION TURNPIKE",
       "neighborhood": "Queens",
@@ -5260,6 +5424,7 @@
     },
     {
       "id": "nyc-cypress-hills-playground-outdoor",
+      "key": "B103",
       "name": "Cypress Hills Playground",
       "address": "Euclid Ave. bet. Dumont Ave. and Blake Ave.",
       "neighborhood": "Brooklyn",
@@ -5302,6 +5467,7 @@
     },
     {
       "id": "nyc-d-emic-playground-outdoor",
+      "key": "B210B",
       "name": "D'Emic Playground",
       "address": "150 34 STREET",
       "neighborhood": "Brooklyn",
@@ -5327,6 +5493,7 @@
     },
     {
       "id": "nyc-daniel-m-o-connell-playground-outdoor",
+      "key": "Q106",
       "name": "Daniel M. O'Connell Playground",
       "address": "113-01 196 STREET",
       "neighborhood": "Queens",
@@ -5362,6 +5529,7 @@
     },
     {
       "id": "nyc-de-hostos-playground-outdoor",
+      "key": "B358",
       "name": "De Hostos Playground",
       "address": "140 LORIMER STREET",
       "neighborhood": "Brooklyn",
@@ -5400,6 +5568,7 @@
     },
     {
       "id": "nyc-de-witt-clinton-park-outdoor",
+      "key": "M022",
       "name": "De Witt Clinton Park",
       "address": "601 W 52 STREET",
       "neighborhood": "Manhattan",
@@ -5444,6 +5613,7 @@
     },
     {
       "id": "nyc-dean-playground-outdoor",
+      "key": "B232",
       "name": "Dean Playground",
       "address": "500 DEAN STREET",
       "neighborhood": "Brooklyn",
@@ -5487,6 +5657,7 @@
     },
     {
       "id": "nyc-decatur-playground-outdoor",
+      "key": "B215",
       "name": "Decatur Playground",
       "address": "242 MAC DONOUGH STREET",
       "neighborhood": "Brooklyn",
@@ -5525,6 +5696,7 @@
     },
     {
       "id": "nyc-delphin-h-greene-playground-outdoor",
+      "key": "Q307",
       "name": "Delphin H. Greene Playground",
       "address": "235-01 121 AVENUE",
       "neighborhood": "Queens",
@@ -5559,6 +5731,7 @@
     },
     {
       "id": "nyc-desalvio-playground-outdoor",
+      "key": "M218",
       "name": "DeSalvio Playground",
       "address": "44 SPRING STREET",
       "neighborhood": "Manhattan",
@@ -5584,6 +5757,7 @@
     },
     {
       "id": "nyc-detective-keith-l-williams-park-outdoor",
+      "key": "Q121",
       "name": "Detective Keith L Williams Park",
       "address": "Liberty Ave. bet. 172 St. and 173 St.",
       "neighborhood": "Queens",
@@ -5632,6 +5806,7 @@
     },
     {
       "id": "nyc-detective-william-t-gunn-playground-outdoor",
+      "key": "Q358",
       "name": "Detective William T. Gunn Playground",
       "address": "235-90 HILLSIDE AVENUE",
       "neighborhood": "Queens",
@@ -5657,6 +5832,7 @@
     },
     {
       "id": "nyc-devoe-park-outdoor",
+      "key": "X013",
       "name": "Devoe Park",
       "address": "101 WEST FORDHAM ROAD",
       "neighborhood": "Bronx",
@@ -5683,6 +5859,7 @@
     },
     {
       "id": "nyc-dimattina-playground-outdoor",
+      "key": "B223A",
       "name": "Dimattina Playground",
       "address": "100 RAPELYE STREET",
       "neighborhood": "Brooklyn",
@@ -5708,6 +5885,7 @@
     },
     {
       "id": "nyc-ditmars-playground-outdoor",
+      "key": "Q385",
       "name": "Ditmars Playground",
       "address": "22-55 STEINWAY STREET",
       "neighborhood": "Queens",
@@ -5733,6 +5911,7 @@
     },
     {
       "id": "nyc-dome-playground-outdoor",
+      "key": "B151",
       "name": "Dome Playground",
       "address": "384 DAHILL ROAD",
       "neighborhood": "Brooklyn",
@@ -5758,6 +5937,7 @@
     },
     {
       "id": "nyc-dongan-playground-outdoor",
+      "key": "R087",
       "name": "Dongan Playground",
       "address": "450 BUEL AVENUE",
       "neighborhood": "Staten Island",
@@ -5784,6 +5964,7 @@
     },
     {
       "id": "nyc-dr-charles-r-drew-park-outdoor",
+      "key": "Q220C",
       "name": "Dr. Charles R. Drew Park",
       "address": "Van Wyck Exwy. Sr. Rd. E., 140 St. bet. 115 Ave. and 116 Ave.",
       "neighborhood": "Queens",
@@ -5818,6 +5999,7 @@
     },
     {
       "id": "nyc-dr-gertrude-b-kelly-playground-outdoor",
+      "key": "M066",
       "name": "Dr. Gertrude B. Kelly Playground",
       "address": "317 WEST 16 STREET",
       "neighborhood": "Manhattan",
@@ -5843,6 +6025,7 @@
     },
     {
       "id": "nyc-dr-green-playground-outdoor",
+      "key": "B228",
       "name": "Dr. Green Playground",
       "address": "286 ROCKAWAY AVENUE",
       "neighborhood": "Brooklyn",
@@ -5878,6 +6061,7 @@
     },
     {
       "id": "nyc-drew-playground-outdoor",
+      "key": "X021",
       "name": "Drew Playground",
       "address": "1317 FULTON AVENUE",
       "neighborhood": "Bronx",
@@ -5904,6 +6088,7 @@
     },
     {
       "id": "nyc-dry-dock-playground-outdoor",
+      "key": "M270",
       "name": "Dry Dock Playground",
       "address": "149 EAST 10 STREET",
       "neighborhood": "Manhattan",
@@ -5930,6 +6115,7 @@
     },
     {
       "id": "nyc-dunbar-playground-outdoor",
+      "key": "X185",
       "name": "Dunbar Playground",
       "address": "902 CAULDWELL AVENUE",
       "neighborhood": "Bronx",
@@ -5964,6 +6150,7 @@
     },
     {
       "id": "nyc-dutch-kills-playground-outdoor",
+      "key": "Q218",
       "name": "Dutch Kills Playground",
       "address": "36-11 28 STREET",
       "neighborhood": "Queens",
@@ -6011,6 +6198,7 @@
     },
     {
       "id": "nyc-dyker-beach-park-outdoor",
+      "key": "B028",
       "name": "Dyker Beach Park",
       "address": "9001 7 AVENUE",
       "neighborhood": "Brooklyn",
@@ -6072,6 +6260,7 @@
     },
     {
       "id": "nyc-e-m-t-christopher-j-prescott-playground-outdoor",
+      "key": "R085",
       "name": "E.M.T. Christopher J. Prescott Playground",
       "address": "195 EDITH AV",
       "neighborhood": "Staten Island",
@@ -6097,6 +6286,7 @@
     },
     {
       "id": "nyc-east-river-playground-outdoor",
+      "key": "M258",
       "name": "East River Playground",
       "address": "421 EAST 106 STREET",
       "neighborhood": "Manhattan",
@@ -6131,6 +6321,7 @@
     },
     {
       "id": "nyc-east-springfield-playground-outdoor",
+      "key": "Q404",
       "name": "East Springfield Playground",
       "address": "218-01 116 AVENUE",
       "neighborhood": "Queens",
@@ -6157,6 +6348,7 @@
     },
     {
       "id": "nyc-eastchester-playground-outdoor",
+      "key": "X156",
       "name": "Eastchester Playground",
       "address": "1201 Adee Ave.",
       "neighborhood": "Bronx",
@@ -6183,6 +6375,7 @@
     },
     {
       "id": "nyc-edenwald-playground-outdoor",
+      "key": "X165",
       "name": "Edenwald Playground",
       "address": "1915 SCHIEFFLIN AV",
       "neighborhood": "Bronx",
@@ -6217,6 +6410,7 @@
     },
     {
       "id": "nyc-edmonds-playground-outdoor",
+      "key": "B321",
       "name": "Edmonds Playground",
       "address": "319 CARLTON AVENUE",
       "neighborhood": "Brooklyn",
@@ -6244,6 +6438,7 @@
     },
     {
       "id": "nyc-ehrenreich-austin-playground-outdoor",
+      "key": "Q304",
       "name": "Ehrenreich-Austin Playground",
       "address": "76-10 AUSTIN STREET",
       "neighborhood": "Queens",
@@ -6269,6 +6464,7 @@
     },
     {
       "id": "nyc-el-shabazz-playground-outdoor",
+      "key": "B313",
       "name": "El Shabazz Playground",
       "address": "538 MACON STREET",
       "neighborhood": "Brooklyn",
@@ -6303,6 +6499,7 @@
     },
     {
       "id": "nyc-eleanor-roosevelt-playground-outdoor",
+      "key": "B359",
       "name": "Eleanor Roosevelt Playground",
       "address": "982 DE KALB AVENUE",
       "neighborhood": "Brooklyn",
@@ -6344,6 +6541,7 @@
     },
     {
       "id": "nyc-electric-playground-outdoor",
+      "key": "Q342",
       "name": "Electric Playground",
       "address": "65-40 164 STREET",
       "neighborhood": "Queens",
@@ -6380,6 +6578,7 @@
     },
     {
       "id": "nyc-emerald-playground-outdoor",
+      "key": "Q344",
       "name": "Emerald Playground",
       "address": "70-10 164 STREET",
       "neighborhood": "Queens",
@@ -6405,6 +6604,7 @@
     },
     {
       "id": "nyc-ennis-playground-outdoor",
+      "key": "B095",
       "name": "Ennis Playground",
       "address": "124 11 STREET",
       "neighborhood": "Brooklyn",
@@ -6430,6 +6630,7 @@
     },
     {
       "id": "nyc-equity-playground-outdoor",
+      "key": "Q053",
       "name": "Equity Playground",
       "address": "90-10 88 AVENUE",
       "neighborhood": "Queens",
@@ -6454,6 +6655,7 @@
     },
     {
       "id": "nyc-ericsson-playground-outdoor",
+      "key": "B346",
       "name": "Ericsson Playground",
       "address": "438 LEONARD STREET",
       "neighborhood": "Brooklyn",
@@ -6508,6 +6710,7 @@
     },
     {
       "id": "nyc-ethan-allen-playground-outdoor",
+      "key": "B345",
       "name": "Ethan Allen Playground",
       "address": "970 WORTMAN AVENUE",
       "neighborhood": "Brooklyn",
@@ -6535,6 +6738,7 @@
     },
     {
       "id": "nyc-eugene-mccabe-field-outdoor",
+      "key": "M243",
       "name": "Eugene McCabe Field",
       "address": "1839 MADISON AVENUE",
       "neighborhood": "Manhattan",
@@ -6568,6 +6772,7 @@
     },
     {
       "id": "nyc-evergreen-park-outdoor",
+      "key": "Q302",
       "name": "Evergreen Park",
       "address": "60-09 Saint Felix Avenue",
       "neighborhood": "Queens",
@@ -6593,6 +6798,7 @@
     },
     {
       "id": "nyc-evergreen-playground-outdoor",
+      "key": "B332",
       "name": "Evergreen Playground",
       "address": "84 SCHAEFER STREET",
       "neighborhood": "Brooklyn",
@@ -6618,6 +6824,7 @@
     },
     {
       "id": "nyc-ewen-park-outdoor",
+      "key": "X019",
       "name": "Ewen Park",
       "address": "3036 JOHNSON AVENUE",
       "neighborhood": "Bronx",
@@ -6643,6 +6850,7 @@
     },
     {
       "id": "nyc-faber-pool-and-park-outdoor",
+      "key": "R008",
       "name": "Faber Pool and Park",
       "address": "2175 RICHMOND TERRACE",
       "neighborhood": "Staten Island",
@@ -6667,6 +6875,7 @@
     },
     {
       "id": "nyc-fairview-park-outdoor",
+      "key": "R153",
       "name": "Fairview Park",
       "address": "Englewood Ave., W. Shore Expwy., Veterans Rd. W.",
       "neighborhood": "Staten Island",
@@ -6721,6 +6930,7 @@
     },
     {
       "id": "nyc-farm-playground-outdoor",
+      "key": "Q221",
       "name": "Farm Playground",
       "address": "195-02 69 AVENUE",
       "neighborhood": "Queens",
@@ -6756,6 +6966,7 @@
     },
     {
       "id": "nyc-father-macris-park-outdoor",
+      "key": "R075A",
       "name": "Father Macris Park",
       "address": "S/s Of SI Expressway., Exit 6, Fahy Ave., Lamberts La.",
       "neighborhood": "Staten Island",
@@ -6789,6 +7000,7 @@
     },
     {
       "id": "nyc-fermi-playground-outdoor",
+      "key": "B334",
       "name": "Fermi Playground",
       "address": "125 CENTRAL AVENUE",
       "neighborhood": "Brooklyn",
@@ -6816,6 +7028,7 @@
     },
     {
       "id": "nyc-ferry-point-park-outdoor",
+      "key": "X126",
       "name": "Ferry Point Park",
       "address": "Schley Ave., LI Sound bet. Westchester Creek and Balcom Ave.",
       "neighborhood": "Bronx",
@@ -6867,6 +7080,7 @@
     },
     {
       "id": "nyc-field-of-dreams-court-outdoor",
+      "key": "X264",
       "name": "Field Of Dreams Court",
       "address": "1115-1117 SOUTHERN BOULEVARD",
       "neighborhood": "Bronx",
@@ -6891,6 +7105,7 @@
     },
     {
       "id": "nyc-fish-playground-outdoor",
+      "key": "B325",
       "name": "Fish Playground",
       "address": "231 SARATOGA AVENUE",
       "neighborhood": "Brooklyn",
@@ -6932,6 +7147,7 @@
     },
     {
       "id": "nyc-floyd-patterson-ballfields-outdoor",
+      "key": "B377",
       "name": "Floyd Patterson Ballfields",
       "address": "701 MOTHER GASTON BLVD",
       "neighborhood": "Brooklyn",
@@ -6957,6 +7173,7 @@
     },
     {
       "id": "nyc-flushing-fields-outdoor",
+      "key": "Q086",
       "name": "Flushing Fields",
       "address": "25-03 149 STREET",
       "neighborhood": "Queens",
@@ -7012,6 +7229,7 @@
     },
     {
       "id": "nyc-flushing-meadows-corona-park-outdoor",
+      "key": "Q099",
       "name": "Flushing Meadows Corona Park",
       "address": "Grand Central Pkwy, Van Wyck Exwy",
       "neighborhood": "Queens",
@@ -7077,6 +7295,7 @@
     },
     {
       "id": "nyc-flynn-playground-outdoor",
+      "key": "X146",
       "name": "Flynn Playground",
       "address": "3080 3 AVENUE",
       "neighborhood": "Bronx",
@@ -7103,6 +7322,7 @@
     },
     {
       "id": "nyc-fordham-landing-playground-outdoor",
+      "key": "X150E",
       "name": "Fordham Landing Playground",
       "address": "Landing Rd., Major Deegan Exwy., Bailey",
       "neighborhood": "Bronx",
@@ -7136,6 +7356,7 @@
     },
     {
       "id": "nyc-forest-park-outdoor",
+      "key": "Q015",
       "name": "Forest Park",
       "address": "80-30 PARK LANE",
       "neighborhood": "Queens",
@@ -7195,6 +7416,7 @@
     },
     {
       "id": "nyc-fort-greene-park-outdoor",
+      "key": "B032",
       "name": "Fort Greene Park",
       "address": "100 WASHINGTON PARK",
       "neighborhood": "Brooklyn",
@@ -7234,6 +7456,7 @@
     },
     {
       "id": "nyc-fort-hamilton-athletic-field-outdoor",
+      "key": "B192A",
       "name": "Fort Hamilton Athletic Field",
       "address": "8301 SHORE ROAD",
       "neighborhood": "Brooklyn",
@@ -7277,6 +7500,7 @@
     },
     {
       "id": "nyc-fort-independence-playground-outdoor",
+      "key": "X020",
       "name": "Fort Independence Playground",
       "address": "Jerome Park Resevoir and Sedgwick Av bet. W",
       "neighborhood": "Bronx",
@@ -7303,6 +7527,7 @@
     },
     {
       "id": "nyc-fort-totten-park-outdoor",
+      "key": "Q458",
       "name": "Fort Totten Park",
       "address": "Cross Island Pkwy. bet. Totten Ave. and 15 Rd.",
       "neighborhood": "Queens",
@@ -7327,6 +7552,7 @@
     },
     {
       "id": "nyc-fort-tryon-park-outdoor",
+      "key": "M029",
       "name": "Fort Tryon Park",
       "address": "4565 BROADWAY",
       "neighborhood": "Manhattan",
@@ -7360,6 +7586,7 @@
     },
     {
       "id": "nyc-fort-washington-park-outdoor",
+      "key": "M028",
       "name": "Fort Washington Park",
       "address": "Riverside Dr., Hudson River, W. 155 St. to Dyckman St.",
       "neighborhood": "Manhattan",
@@ -7424,6 +7651,7 @@
     },
     {
       "id": "nyc-fountain-of-youth-playground-outdoor",
+      "key": "X233",
       "name": "Fountain Of Youth Playground",
       "address": "600 TINTON AVENUE",
       "neighborhood": "Bronx",
@@ -7461,6 +7689,7 @@
     },
     {
       "id": "nyc-fox-park-outdoor",
+      "key": "X247",
       "name": "Fox Park",
       "address": "724 FOX STREET",
       "neighborhood": "Bronx",
@@ -7486,6 +7715,7 @@
     },
     {
       "id": "nyc-fox-playground-outdoor",
+      "key": "B248",
       "name": "Fox Playground",
       "address": "1037 EAST 54 STREET",
       "neighborhood": "Brooklyn",
@@ -7512,6 +7742,7 @@
     },
     {
       "id": "nyc-francis-lewis-playground-outdoor",
+      "key": "Q381",
       "name": "Francis Lewis Playground",
       "address": "200-01 42 AVENUE",
       "neighborhood": "Queens",
@@ -7547,6 +7778,7 @@
     },
     {
       "id": "nyc-frank-d-o-connor-playground-outdoor",
+      "key": "Q098",
       "name": "Frank D. O'Connor Playground",
       "address": "78-08 BROADWAY",
       "neighborhood": "Queens",
@@ -7573,6 +7805,7 @@
     },
     {
       "id": "nyc-frank-golden-park-outdoor",
+      "key": "Q445",
       "name": "Frank Golden Park",
       "address": "14-40 136 STREET",
       "neighborhood": "Queens",
@@ -7608,6 +7841,7 @@
     },
     {
       "id": "nyc-frank-principe-park-outdoor",
+      "key": "Q131",
       "name": "Frank Principe Park",
       "address": "Maurice Ave., 63 St. bet. 54 Ave. and Borden Ave.",
       "neighborhood": "Queens",
@@ -7665,6 +7899,7 @@
     },
     {
       "id": "nyc-franklin-d-roosevelt-boardwalk-and-beach-outdoor",
+      "key": "R046",
       "name": "Franklin D. Roosevelt Boardwalk and Beach",
       "address": "280 FR CAPODANNO BLVD",
       "neighborhood": "Staten Island",
@@ -7717,6 +7952,7 @@
     },
     {
       "id": "nyc-franz-sigel-park-outdoor",
+      "key": "X047",
       "name": "Franz Sigel Park",
       "address": "613 GRAND CONCOURSE",
       "neighborhood": "Bronx",
@@ -7752,6 +7988,7 @@
     },
     {
       "id": "nyc-fred-samuel-playground-outdoor",
+      "key": "M160",
       "name": "Fred Samuel Playground",
       "address": "Lenox Ave., W. 139 St. To W. 140 St.",
       "neighborhood": "Manhattan",
@@ -7777,6 +8014,7 @@
     },
     {
       "id": "nyc-frederick-b-judge-playground-outdoor",
+      "key": "Q119",
       "name": "Frederick B. Judge Playground",
       "address": "111-01 134 STREET",
       "neighborhood": "Queens",
@@ -7811,6 +8049,7 @@
     },
     {
       "id": "nyc-frederick-douglass-playground-outdoor",
+      "key": "M220",
       "name": "Frederick Douglass Playground",
       "address": "825 AMSTERDAM AVENUE",
       "neighborhood": "Manhattan",
@@ -7854,6 +8093,7 @@
     },
     {
       "id": "nyc-frederick-johnson-playground-outdoor",
+      "key": "M159",
       "name": "Frederick Johnson Playground",
       "address": "2619 ADAM C POWELL BLVD",
       "neighborhood": "Manhattan",
@@ -7884,6 +8124,7 @@
     },
     {
       "id": "nyc-fresh-meadows-playground-outdoor",
+      "key": "Q314",
       "name": "Fresh Meadows Playground",
       "address": "67-10 FRESH MEADOW LANE",
       "neighborhood": "Queens",
@@ -7909,6 +8150,7 @@
     },
     {
       "id": "nyc-freshkills-park-outdoor",
+      "key": "R017",
       "name": "Freshkills Park",
       "address": "Victory Blvd., Signs Rd., Travis Ave., Arthur Kill Rd.",
       "neighborhood": "Staten Island",
@@ -7934,6 +8176,7 @@
     },
     {
       "id": "nyc-friends-field-outdoor",
+      "key": "B372",
       "name": "Friends Field",
       "address": "1310 EAST 4 STREET",
       "neighborhood": "Brooklyn",
@@ -7989,6 +8232,7 @@
     },
     {
       "id": "nyc-frontera-park-outdoor",
+      "key": "Q360M",
       "name": "Frontera Park",
       "address": "58 Ave. bet. Brown Pl. and 69 St.",
       "neighborhood": "Queens",
@@ -8014,6 +8258,7 @@
     },
     {
       "id": "nyc-frost-playground-outdoor",
+      "key": "B257",
       "name": "Frost Playground",
       "address": "60 KINGSLAND AVENUE",
       "neighborhood": "Brooklyn",
@@ -8039,6 +8284,7 @@
     },
     {
       "id": "nyc-garden-playground-outdoor",
+      "key": "B340",
       "name": "Garden Playground",
       "address": "40 BEAVER STREET",
       "neighborhood": "Brooklyn",
@@ -8065,6 +8311,7 @@
     },
     {
       "id": "nyc-gemini-fields-outdoor",
+      "key": "Q094D",
       "name": "Gemini Fields",
       "address": "S. Conduit Ave.,  Linden Blvd.,  149 Ave., bet. 79 St.  and 85 St.",
       "neighborhood": "Queens",
@@ -8089,6 +8336,7 @@
     },
     {
       "id": "nyc-gen-douglas-macarthur-park-outdoor",
+      "key": "R067",
       "name": "Gen. Douglas MacArthur Park",
       "address": "254 JEFFERSON STREET",
       "neighborhood": "Staten Island",
@@ -8133,6 +8381,7 @@
     },
     {
       "id": "nyc-general-hart-playground-outdoor",
+      "key": "Q067A",
       "name": "General Hart Playground",
       "address": "65-01 37 AVENUE",
       "neighborhood": "Queens",
@@ -8158,6 +8407,7 @@
     },
     {
       "id": "nyc-george-walker-jr-park-outdoor",
+      "key": "B402",
       "name": "George Walker Jr. Park",
       "address": "57 VERMONT STREET",
       "neighborhood": "Brooklyn",
@@ -8183,6 +8433,7 @@
     },
     {
       "id": "nyc-gerard-p-dugan-playground-outdoor",
+      "key": "R026",
       "name": "Gerard P. Dugan Playground",
       "address": "280 MILL ROAD",
       "neighborhood": "Staten Island",
@@ -8216,6 +8467,7 @@
     },
     {
       "id": "nyc-gilbert-ramirez-park-outdoor",
+      "key": "B132",
       "name": "Gilbert Ramirez Park",
       "address": "62 WHITE STREET",
       "neighborhood": "Brooklyn",
@@ -8242,6 +8494,7 @@
     },
     {
       "id": "nyc-givan-square-outdoor",
+      "key": "X187",
       "name": "Givan Square",
       "address": "2910 EASTCHESTER ROAD",
       "neighborhood": "Bronx",
@@ -8267,6 +8520,7 @@
     },
     {
       "id": "nyc-glen-oaks-oval-outdoor",
+      "key": "Q310",
       "name": "Glen Oaks Oval",
       "address": "73-80 260 STREET",
       "neighborhood": "Queens",
@@ -8301,6 +8555,7 @@
     },
     {
       "id": "nyc-glenwood-playground-outdoor",
+      "key": "B236",
       "name": "Glenwood Playground",
       "address": "5818 FARRAGUT ROAD",
       "neighborhood": "Brooklyn",
@@ -8326,6 +8581,7 @@
     },
     {
       "id": "nyc-goble-playground-outdoor",
+      "key": "X114",
       "name": "Goble Playground",
       "address": "1550 Macombs Road",
       "neighborhood": "Bronx",
@@ -8351,6 +8607,7 @@
     },
     {
       "id": "nyc-gonzalo-plasencia-playground-outdoor",
+      "key": "B210I",
       "name": "Gonzalo Plasencia Playground",
       "address": "320 34 STREET",
       "neighborhood": "Brooklyn",
@@ -8384,6 +8641,7 @@
     },
     {
       "id": "nyc-gorman-playground-outdoor",
+      "key": "Q085",
       "name": "Gorman Playground",
       "address": "84-11 30 AVENUE",
       "neighborhood": "Queens",
@@ -8419,6 +8677,7 @@
     },
     {
       "id": "nyc-gouverneur-playground-outdoor",
+      "key": "X222",
       "name": "Gouverneur Playground",
       "address": "1410 WASHINGTON AVENUE",
       "neighborhood": "Bronx",
@@ -8445,6 +8704,7 @@
     },
     {
       "id": "nyc-grace-playground-outdoor",
+      "key": "B078",
       "name": "Grace Playground",
       "address": "2126 PITKIN AVENUE / 395 BELMONT AVENUE",
       "neighborhood": "Brooklyn",
@@ -8480,6 +8740,7 @@
     },
     {
       "id": "nyc-grady-playground-outdoor",
+      "key": "B275",
       "name": "Grady Playground",
       "address": "2801 BRIGHTON 3 STREET",
       "neighborhood": "Brooklyn",
@@ -8506,6 +8767,7 @@
     },
     {
       "id": "nyc-grand-canal-court-outdoor",
+      "key": "M222",
       "name": "Grand Canal Court",
       "address": "Thompson St., Canal St., Ave. of the Americas",
       "neighborhood": "Manhattan",
@@ -8531,6 +8793,7 @@
     },
     {
       "id": "nyc-grand-central-parkway-extension-outdoor",
+      "key": "Q084A",
       "name": "Grand Central Parkway Extension",
       "address": "Astoria Blvd. and 48 St. to Union Tp., Park Drive East.",
       "neighborhood": "Queens",
@@ -8577,6 +8840,7 @@
     },
     {
       "id": "nyc-grand-playground-outdoor",
+      "key": "X244",
       "name": "Grand Playground",
       "address": "2146 GRAND AVENUE",
       "neighborhood": "Bronx",
@@ -8602,6 +8866,7 @@
     },
     {
       "id": "nyc-grant-park-outdoor",
+      "key": "X271",
       "name": "Grant Park",
       "address": "250-265 EAST 170 STREET",
       "neighborhood": "Bronx",
@@ -8627,6 +8892,7 @@
     },
     {
       "id": "nyc-gravesend-park-outdoor",
+      "key": "B042",
       "name": "Gravesend Park",
       "address": "5521 18 AVENUE",
       "neighborhood": "Brooklyn",
@@ -8662,6 +8928,7 @@
     },
     {
       "id": "nyc-great-kills-veterans-playground-outdoor",
+      "key": "R071",
       "name": "Great Kills Veterans Playground",
       "address": "Hillcrest Ave., N/o Highmount Rd.",
       "neighborhood": "Staten Island",
@@ -8688,6 +8955,7 @@
     },
     {
       "id": "nyc-green-central-knoll-outdoor",
+      "key": "B395",
       "name": "Green Central Knoll",
       "address": "55 EVERGREEN AVENUE",
       "neighborhood": "Brooklyn",
@@ -8713,6 +8981,7 @@
     },
     {
       "id": "nyc-greencroft-playground-outdoor",
+      "key": "R089",
       "name": "Greencroft Playground",
       "address": "125 AINSWORTH AVENUE",
       "neighborhood": "Staten Island",
@@ -8746,6 +9015,7 @@
     },
     {
       "id": "nyc-greene-playground-outdoor",
+      "key": "B301",
       "name": "Greene Playground",
       "address": "431 WAVERLY AVENUE",
       "neighborhood": "Brooklyn",
@@ -8780,6 +9050,7 @@
     },
     {
       "id": "nyc-greenwood-playground-outdoor",
+      "key": "B130",
       "name": "Greenwood Playground",
       "address": "83 EAST 5 STREET",
       "neighborhood": "Brooklyn",
@@ -8816,6 +9087,7 @@
     },
     {
       "id": "nyc-grove-hill-playground-outdoor",
+      "key": "X235",
       "name": "Grove Hill Playground",
       "address": "740 EAGLE AVENUE",
       "neighborhood": "Bronx",
@@ -8842,6 +9114,7 @@
     },
     {
       "id": "nyc-grover-cleveland-playground-outdoor",
+      "key": "Q002",
       "name": "Grover Cleveland Playground",
       "address": "3-96 GRANDVIEW AVENUE",
       "neighborhood": "Queens",
@@ -8892,6 +9165,7 @@
     },
     {
       "id": "nyc-gun-hill-playground-outdoor",
+      "key": "X161",
       "name": "Gun Hill Playground",
       "address": "736 MAGENTA STREET",
       "neighborhood": "Bronx",
@@ -8918,6 +9192,7 @@
     },
     {
       "id": "nyc-gutenberg-playground-outdoor",
+      "key": "M221",
       "name": "Gutenberg Playground",
       "address": "409 WEST 49 STREET",
       "neighborhood": "Manhattan",
@@ -8943,6 +9218,7 @@
     },
     {
       "id": "nyc-haffen-park-outdoor",
+      "key": "X196",
       "name": "Haffen Park",
       "address": "1750 BURKE AVENUE",
       "neighborhood": "Bronx",
@@ -8998,6 +9274,7 @@
     },
     {
       "id": "nyc-haggerty-park-outdoor",
+      "key": "Q359",
       "name": "Haggerty Park",
       "address": "202-02 JAMAICA AVENUE",
       "neighborhood": "Queens",
@@ -9034,6 +9311,7 @@
     },
     {
       "id": "nyc-half-nelson-playground-outdoor",
+      "key": "X295",
       "name": "Half-Nelson Playground",
       "address": "1631 NELSON AVENUE",
       "neighborhood": "Bronx",
@@ -9059,6 +9337,7 @@
     },
     {
       "id": "nyc-hallets-cove-playground-outdoor",
+      "key": "Q226",
       "name": "Hallets Cove Playground",
       "address": "Vernon Blvd., Main Ave. to Astoria Blvd., 1 St.",
       "neighborhood": "Queens",
@@ -9094,6 +9373,7 @@
     },
     {
       "id": "nyc-hamilton-fish-park-outdoor",
+      "key": "M033",
       "name": "Hamilton Fish Park",
       "address": "128 PITT STREET",
       "neighborhood": "Manhattan",
@@ -9119,6 +9399,7 @@
     },
     {
       "id": "nyc-hamilton-metz-field-outdoor",
+      "key": "B193",
       "name": "Hamilton Metz Field",
       "address": "608 LEFFERTS AVENUE",
       "neighborhood": "Brooklyn",
@@ -9162,6 +9443,7 @@
     },
     {
       "id": "nyc-hammel-playground-outdoor",
+      "key": "Q367",
       "name": "Hammel Playground",
       "address": "83-000 Rockaway Beach Blvd",
       "neighborhood": "Queens",
@@ -9188,6 +9470,7 @@
     },
     {
       "id": "nyc-happy-warrior-playground-outdoor",
+      "key": "M229",
       "name": "Happy Warrior Playground",
       "address": "163 WEST 97 STREET",
       "neighborhood": "Manhattan",
@@ -9222,6 +9505,7 @@
     },
     {
       "id": "nyc-harding-park-outdoor",
+      "key": "X262",
       "name": "Harding Park",
       "address": "201-125 BOLTON AVENUE",
       "neighborhood": "Bronx",
@@ -9247,6 +9531,7 @@
     },
     {
       "id": "nyc-harlem-river-park-outdoor",
+      "key": "M208D",
       "name": "Harlem River Park",
       "address": "175 EAST 128 STREET",
       "neighborhood": "Manhattan",
@@ -9291,6 +9576,7 @@
     },
     {
       "id": "nyc-harold-ickes-playground-outdoor",
+      "key": "B210H",
       "name": "Harold Ickes Playground",
       "address": "100 HAMILTON AVENUE",
       "neighborhood": "Brooklyn",
@@ -9316,6 +9602,7 @@
     },
     {
       "id": "nyc-harold-schneiderman-playground-outdoor",
+      "key": "Q408",
       "name": "Harold Schneiderman Playground",
       "address": "153-23 153 AVENUE",
       "neighborhood": "Queens",
@@ -9341,6 +9628,7 @@
     },
     {
       "id": "nyc-harris-brothers-park-outdoor",
+      "key": "R053",
       "name": "Harris Brothers Park",
       "address": "Foste Rd., Carlton Ave., Drumgoole Rd. W.",
       "neighborhood": "Staten Island",
@@ -9373,6 +9661,7 @@
     },
     {
       "id": "nyc-harris-park-outdoor",
+      "key": "X136",
       "name": "Harris Park",
       "address": "3034 GOULDEN AVENUE",
       "neighborhood": "Bronx",
@@ -9409,6 +9698,7 @@
     },
     {
       "id": "nyc-harry-maze-playground-outdoor",
+      "key": "B285",
       "name": "Harry Maze Playground",
       "address": "5601 AVENUE D",
       "neighborhood": "Brooklyn",
@@ -9443,6 +9733,7 @@
     },
     {
       "id": "nyc-hart-playground-outdoor",
+      "key": "Q419",
       "name": "Hart Playground",
       "address": "147-36 26 AVENUE",
       "neighborhood": "Queens",
@@ -9470,6 +9761,7 @@
     },
     {
       "id": "nyc-harvard-playground-outdoor",
+      "key": "Q120",
       "name": "Harvard Playground",
       "address": "90-73 179 PLACE",
       "neighborhood": "Queens",
@@ -9496,6 +9788,7 @@
     },
     {
       "id": "nyc-harvey-park-outdoor",
+      "key": "Q089B",
       "name": "Harvey Park",
       "address": "144 St., Whitestone Exwy. bet. 15 Ave. and 20 Ave.",
       "neighborhood": "Queens",
@@ -9532,6 +9825,7 @@
     },
     {
       "id": "nyc-hattie-carthan-playground-outdoor",
+      "key": "B323",
       "name": "Hattie Carthan Playground",
       "address": "308 MONROE STREET",
       "neighborhood": "Brooklyn",
@@ -9567,6 +9861,7 @@
     },
     {
       "id": "nyc-havemeyer-playground-outdoor",
+      "key": "X148M1",
       "name": "Havemeyer Playground",
       "address": "N/B Cross Bronx Exwy Service Rd, Watson Av, Havemeyer Ave",
       "neighborhood": "Bronx",
@@ -9593,6 +9888,7 @@
     },
     {
       "id": "nyc-haviland-playground-outdoor",
+      "key": "X208",
       "name": "Haviland Playground",
       "address": "1101 PUGSLEY AVENUE",
       "neighborhood": "Bronx",
@@ -9617,6 +9913,7 @@
     },
     {
       "id": "nyc-heckscher-playground-outdoor",
+      "key": "B139",
       "name": "Heckscher Playground",
       "address": "Linden St. bet. Central Ave. and Wilson Ave.",
       "neighborhood": "Brooklyn",
@@ -9651,6 +9948,7 @@
     },
     {
       "id": "nyc-helen-marshall-playground-outdoor",
+      "key": "Q373",
       "name": "Helen Marshall Playground",
       "address": "98-01 25 AVENUE",
       "neighborhood": "Queens",
@@ -9699,6 +9997,7 @@
     },
     {
       "id": "nyc-hell-s-kitchen-park-outdoor",
+      "key": "M277",
       "name": "Hell's Kitchen Park",
       "address": "670 10 AVENUE",
       "neighborhood": "Manhattan",
@@ -9732,6 +10031,7 @@
     },
     {
       "id": "nyc-henry-hudson-park-outdoor",
+      "key": "X080",
       "name": "Henry Hudson Park",
       "address": "Palisade Av, Kappock St,  Independence A",
       "neighborhood": "Bronx",
@@ -9766,6 +10066,7 @@
     },
     {
       "id": "nyc-henry-m-jackson-playground-outdoor",
+      "key": "M228",
       "name": "Henry M. Jackson Playground",
       "address": "1 JACKSON STREET",
       "neighborhood": "Manhattan",
@@ -9791,6 +10092,7 @@
     },
     {
       "id": "nyc-herbert-von-king-park-outdoor",
+      "key": "B088",
       "name": "Herbert Von King Park",
       "address": "Marcy Ave., Tompkins Ave., bet. Greene Ave. and Lafayette Ave.",
       "neighborhood": "Brooklyn",
@@ -9825,6 +10127,7 @@
     },
     {
       "id": "nyc-herman-dolgon-playground-outdoor",
+      "key": "B235",
       "name": "Herman Dolgon Playground",
       "address": "3595 NOSTRAND AVENUE",
       "neighborhood": "Brooklyn",
@@ -9860,6 +10163,7 @@
     },
     {
       "id": "nyc-hermon-a-macneil-park-outdoor",
+      "key": "Q009",
       "name": "Hermon A. MacNeil Park",
       "address": "",
       "neighborhood": "Queens",
@@ -9894,6 +10198,7 @@
     },
     {
       "id": "nyc-hickman-playground-outdoor",
+      "key": "B330",
       "name": "Hickman Playground",
       "address": "1420 EAST 67 STREET",
       "neighborhood": "Brooklyn",
@@ -9936,6 +10241,7 @@
     },
     {
       "id": "nyc-highbridge-park-outdoor",
+      "key": "M037",
       "name": "Highbridge Park",
       "address": "506 EDGECOMBE AVENUE",
       "neighborhood": "Manhattan",
@@ -9988,6 +10294,7 @@
     },
     {
       "id": "nyc-highland-park-b047-outdoor",
+      "key": "B047",
       "name": "Highland Park",
       "address": "375 JAMAICA AVENUE",
       "neighborhood": "Brooklyn",
@@ -10042,6 +10349,7 @@
     },
     {
       "id": "nyc-highland-park-q020-outdoor",
+      "key": "Q020",
       "name": "Highland Park",
       "address": "58-02 VERMONT AVENUE",
       "neighborhood": "Queens",
@@ -10076,6 +10384,7 @@
     },
     {
       "id": "nyc-hillside-playground-outdoor",
+      "key": "Q352",
       "name": "Hillside Playground",
       "address": "81-14 256 STREET",
       "neighborhood": "Queens",
@@ -10109,6 +10418,7 @@
     },
     {
       "id": "nyc-hilltop-playground-outdoor",
+      "key": "B387",
       "name": "Hilltop Playground",
       "address": "Hopkinson Ave. bet. Pacific St. and Dean St.",
       "neighborhood": "Brooklyn",
@@ -10133,6 +10443,7 @@
     },
     {
       "id": "nyc-hinton-park-outdoor",
+      "key": "Q410",
       "name": "Hinton Park",
       "address": "34-02 114 STREET",
       "neighborhood": "Queens",
@@ -10174,6 +10485,7 @@
     },
     {
       "id": "nyc-hoffman-park-outdoor",
+      "key": "Q360N",
       "name": "Hoffman Park",
       "address": "Hoffman Dr. bet. 58 Ave. and Woodhaven Blvd.",
       "neighborhood": "Queens",
@@ -10209,6 +10521,7 @@
     },
     {
       "id": "nyc-holcombe-rucker-park-outdoor",
+      "key": "M216",
       "name": "Holcombe Rucker Park",
       "address": "2930 FRED DOUGLASS BLVD",
       "neighborhood": "Manhattan",
@@ -10243,6 +10556,7 @@
     },
     {
       "id": "nyc-hollis-playground-outdoor",
+      "key": "Q405",
       "name": "Hollis Playground",
       "address": "204-08 203 STREET",
       "neighborhood": "Queens",
@@ -10269,6 +10583,7 @@
     },
     {
       "id": "nyc-holy-cow-playground-outdoor",
+      "key": "Q300A1",
       "name": "Holy Cow Playground",
       "address": "Peck Ave. bet. 61 Rd. and 67 Ave.",
       "neighborhood": "Queens",
@@ -10303,6 +10618,7 @@
     },
     {
       "id": "nyc-homecrest-playground-outdoor",
+      "key": "B166B",
       "name": "Homecrest Playground",
       "address": "Belt Pkwy., Williams Court  bet. E. 12 St. and Homecrest Ave",
       "neighborhood": "Brooklyn",
@@ -10345,6 +10661,7 @@
     },
     {
       "id": "nyc-hoover-manton-playgrounds-outdoor",
+      "key": "Q220G",
       "name": "Hoover - Manton Playgrounds",
       "address": "Manton St. bet. 83 Ave., 134 St. and Main St.",
       "neighborhood": "Queens",
@@ -10379,6 +10696,7 @@
     },
     {
       "id": "nyc-hope-ballfield-outdoor",
+      "key": "B429",
       "name": "Hope Ballfield",
       "address": "506 KNICKERBOCKER AVENUE",
       "neighborhood": "Brooklyn",
@@ -10403,6 +10721,7 @@
     },
     {
       "id": "nyc-horace-harding-playground-outdoor",
+      "key": "Q428",
       "name": "Horace Harding Playground",
       "address": "62-27 97 PLACE",
       "neighborhood": "Queens",
@@ -10437,6 +10756,7 @@
     },
     {
       "id": "nyc-howard-bennett-playground-outdoor",
+      "key": "M217",
       "name": "Howard Bennett Playground",
       "address": "2230 5 AVENUE",
       "neighborhood": "Manhattan",
@@ -10476,6 +10796,7 @@
     },
     {
       "id": "nyc-howard-playground-outdoor",
+      "key": "B260",
       "name": "Howard Playground",
       "address": "1550 EAST NEW YORK AVENUE",
       "neighborhood": "Brooklyn",
@@ -10502,6 +10823,7 @@
     },
     {
       "id": "nyc-howard-von-dohlen-playground-outdoor",
+      "key": "Q105",
       "name": "Howard Von Dohlen Playground",
       "address": "138-02 91 AVENUE",
       "neighborhood": "Queens",
@@ -10536,6 +10858,7 @@
     },
     {
       "id": "nyc-hoyt-playground-outdoor",
+      "key": "Q066F",
       "name": "Hoyt Playground",
       "address": "24-57 29 STREET",
       "neighborhood": "Queens",
@@ -10561,6 +10884,7 @@
     },
     {
       "id": "nyc-hunter-s-point-south-park-outdoor",
+      "key": "Q471",
       "name": "Hunter's Point South Park",
       "address": "52-10 CENTER BLVD",
       "neighborhood": "Queens",
@@ -10585,6 +10909,7 @@
     },
     {
       "id": "nyc-hunts-point-playground-outdoor",
+      "key": "X113",
       "name": "Hunts Point Playground",
       "address": "1300 SPOFFORD AVENUE",
       "neighborhood": "Bronx",
@@ -10611,6 +10936,7 @@
     },
     {
       "id": "nyc-i-am-park-outdoor",
+      "key": "X228",
       "name": "I-Am-Park",
       "address": "479 JACKSON AVENUE",
       "neighborhood": "Bronx",
@@ -10635,6 +10961,7 @@
     },
     {
       "id": "nyc-idlewild-park-outdoor",
+      "key": "Q392",
       "name": "Idlewild Park",
       "address": "230-11 ROCKAWAY BOULEVARD",
       "neighborhood": "Queens",
@@ -10659,6 +10986,7 @@
     },
     {
       "id": "nyc-inwood-hill-park-outdoor",
+      "key": "M042",
       "name": "Inwood Hill Park",
       "address": "269 DYCKMAN STREET",
       "neighborhood": "Manhattan",
@@ -10717,6 +11045,7 @@
     },
     {
       "id": "nyc-j-hood-wright-park-outdoor",
+      "key": "M099",
       "name": "J. Hood Wright Park",
       "address": "301 FT WASHINGTON AVENUE",
       "neighborhood": "Manhattan",
@@ -10760,6 +11089,7 @@
     },
     {
       "id": "nyc-jack-breininger-park-outdoor",
+      "key": "Q134",
       "name": "Jack Breininger Park",
       "address": "239-12 BRADDOCK AVENUE",
       "neighborhood": "Queens",
@@ -10786,6 +11116,7 @@
     },
     {
       "id": "nyc-jackie-robinson-park-outdoor",
+      "key": "M014",
       "name": "Jackie Robinson Park",
       "address": "319 W 145 STREET",
       "neighborhood": "Manhattan",
@@ -10820,6 +11151,7 @@
     },
     {
       "id": "nyc-jackie-robinson-park-playground-outdoor",
+      "key": "B294",
       "name": "Jackie Robinson Park Playground",
       "address": "341 MALCOLM X BOULEVARD",
       "neighborhood": "Brooklyn",
@@ -10858,6 +11190,7 @@
     },
     {
       "id": "nyc-jackie-robinson-playground-outdoor",
+      "key": "B357",
       "name": "Jackie Robinson Playground",
       "address": "945 FRANKLIN AVENUE",
       "neighborhood": "Brooklyn",
@@ -10885,6 +11218,7 @@
     },
     {
       "id": "nyc-jacob-h-schiff-playground-outdoor",
+      "key": "M223",
       "name": "Jacob H. Schiff Playground",
       "address": "1540 AMSTERDAM AVENUE",
       "neighborhood": "Manhattan",
@@ -10928,6 +11262,7 @@
     },
     {
       "id": "nyc-jacob-joffe-fields-outdoor",
+      "key": "B324",
       "name": "Jacob Joffe Fields",
       "address": "1163 EAST 58 STREET",
       "neighborhood": "Brooklyn",
@@ -10971,6 +11306,7 @@
     },
     {
       "id": "nyc-jaime-campiz-playground-outdoor",
+      "key": "B223R",
       "name": "Jaime Campiz Playground",
       "address": "15 MARCY AVENUE",
       "neighborhood": "Brooklyn",
@@ -10997,6 +11333,7 @@
     },
     {
       "id": "nyc-jamaica-playground-outdoor",
+      "key": "Q301",
       "name": "Jamaica Playground",
       "address": "109-02 BRINKERHOFF AVENUE",
       "neighborhood": "Queens",
@@ -11022,6 +11359,7 @@
     },
     {
       "id": "nyc-james-a-bland-playground-outdoor",
+      "key": "Q326",
       "name": "James A. Bland Playground",
       "address": "135-10 40 ROAD",
       "neighborhood": "Queens",
@@ -11047,6 +11385,7 @@
     },
     {
       "id": "nyc-james-j-walker-park-outdoor",
+      "key": "M038",
       "name": "James J Walker Park",
       "address": "410 HUDSON STREET",
       "neighborhood": "Manhattan",
@@ -11090,6 +11429,7 @@
     },
     {
       "id": "nyc-james-weldon-johnson-playground-outdoor",
+      "key": "M111",
       "name": "James Weldon Johnson Playground",
       "address": "176 EAST 115 STREET",
       "neighborhood": "Manhattan",
@@ -11116,6 +11456,7 @@
     },
     {
       "id": "nyc-jennifer-s-playground-outdoor",
+      "key": "R114",
       "name": "Jennifer's Playground",
       "address": "250 REGIS DRIVE",
       "neighborhood": "Staten Island",
@@ -11141,6 +11482,7 @@
     },
     {
       "id": "nyc-jerome-playground-outdoor",
+      "key": "B246",
       "name": "Jerome Playground",
       "address": "923 WORTMAN AVENUE",
       "neighborhood": "Brooklyn",
@@ -11166,6 +11508,7 @@
     },
     {
       "id": "nyc-jesse-owens-playground-outdoor",
+      "key": "B269",
       "name": "Jesse Owens Playground",
       "address": "125 STUYVESANT AVENUE",
       "neighborhood": "Brooklyn",
@@ -11208,6 +11551,7 @@
     },
     {
       "id": "nyc-john-allen-payne-playground-outdoor",
+      "key": "B210A",
       "name": "John Allen Payne Playground",
       "address": "6400 3 AVENUE",
       "neighborhood": "Brooklyn",
@@ -11233,6 +11577,7 @@
     },
     {
       "id": "nyc-john-golden-park-outdoor",
+      "key": "Q012B",
       "name": "John Golden Park",
       "address": "215 Pl., Cross Island Pkwy. bet. 31 Rd. and 33 Ave.",
       "neighborhood": "Queens",
@@ -11259,6 +11604,7 @@
     },
     {
       "id": "nyc-john-hancock-playground-outdoor",
+      "key": "B237",
       "name": "John Hancock Playground",
       "address": "90 JEFFERSON AVENUE",
       "neighborhood": "Brooklyn",
@@ -11302,6 +11648,7 @@
     },
     {
       "id": "nyc-john-j-carty-park-outdoor",
+      "key": "B210W",
       "name": "John J Carty Park",
       "address": "9941 FT HAMILTON PARKWAY",
       "neighborhood": "Brooklyn",
@@ -11350,6 +11697,7 @@
     },
     {
       "id": "nyc-john-jay-park-outdoor",
+      "key": "M045",
       "name": "John Jay Park",
       "address": "76-01 FDR DRIVE",
       "neighborhood": "Manhattan",
@@ -11388,6 +11736,7 @@
     },
     {
       "id": "nyc-john-v-lindsay-east-river-park-outdoor",
+      "key": "M144",
       "name": "John V. Lindsay East River Park",
       "address": "Montgomery St. To E. 12 St., FDR Drive",
       "neighborhood": "Manhattan",
@@ -11456,6 +11805,7 @@
     },
     {
       "id": "nyc-joseph-austin-playground-outdoor",
+      "key": "Q391",
       "name": "Joseph Austin Playground",
       "address": "165-65 84 AVENUE",
       "neighborhood": "Queens",
@@ -11499,6 +11849,7 @@
     },
     {
       "id": "nyc-judge-moses-weinstein-playground-outdoor",
+      "key": "Q336",
       "name": "Judge Moses Weinstein Playground",
       "address": "Union Turnpike, Vleigh Pl., 141 St.",
       "neighborhood": "Queens",
@@ -11533,6 +11884,7 @@
     },
     {
       "id": "nyc-julio-carballo-fields-outdoor",
+      "key": "X260",
       "name": "Julio Carballo Fields",
       "address": "765 MANIDA STREET",
       "neighborhood": "Bronx",
@@ -11567,6 +11919,7 @@
     },
     {
       "id": "nyc-junction-playground-outdoor",
+      "key": "Q122",
       "name": "Junction Playground",
       "address": "95-02 34 AVENUE",
       "neighborhood": "Queens",
@@ -11592,6 +11945,7 @@
     },
     {
       "id": "nyc-juniper-valley-park-outdoor",
+      "key": "Q102",
       "name": "Juniper Valley Park",
       "address": "71-01 JUNIPER BLVD SOUTH",
       "neighborhood": "Queens",
@@ -11650,6 +12004,7 @@
     },
     {
       "id": "nyc-kaiser-park-outdoor",
+      "key": "B129",
       "name": "Kaiser Park",
       "address": "2529 NEPTUNE AVENUE",
       "neighborhood": "Brooklyn",
@@ -11708,6 +12063,7 @@
     },
     {
       "id": "nyc-kelly-park-playground-b051-outdoor",
+      "key": "B051",
       "name": "Kelly Park Playground",
       "address": "1301 AVENUE S",
       "neighborhood": "Brooklyn",
@@ -11755,6 +12111,7 @@
     },
     {
       "id": "nyc-kelly-park-playground-b157-outdoor",
+      "key": "B157",
       "name": "Kelly Park Playground",
       "address": "1840 EAST 16 STREET",
       "neighborhood": "Brooklyn",
@@ -11781,6 +12138,7 @@
     },
     {
       "id": "nyc-kennedy-king-playground-outdoor",
+      "key": "B304",
       "name": "Kennedy King Playground",
       "address": "1060 CLARKSON AVENUE",
       "neighborhood": "Brooklyn",
@@ -11807,6 +12165,7 @@
     },
     {
       "id": "nyc-kissena-corridor-park-q300-outdoor",
+      "key": "Q300",
       "name": "Kissena Corridor Park",
       "address": "Lawrence St,N Hempstead Tpk,Elder Ave,Kissena Blvd",
       "neighborhood": "Queens",
@@ -11852,6 +12211,7 @@
     },
     {
       "id": "nyc-kissena-corridor-park-q300a-outdoor",
+      "key": "Q300A",
       "name": "Kissena Corridor Park",
       "address": "Peck & Underhill Aves, Utopia Pkwy, Horace Harding",
       "neighborhood": "Queens",
@@ -11900,6 +12260,7 @@
     },
     {
       "id": "nyc-kissena-park-outdoor",
+      "key": "Q024",
       "name": "Kissena Park",
       "address": "164-01 BOOTH MEMORIAL AVE",
       "neighborhood": "Queens",
@@ -11950,6 +12311,7 @@
     },
     {
       "id": "nyc-kolbert-playground-outdoor",
+      "key": "B150",
       "name": "Kolbert Playground",
       "address": "1706 AVENUE L",
       "neighborhood": "Brooklyn",
@@ -11983,6 +12345,7 @@
     },
     {
       "id": "nyc-kwame-ture-recreation-center-outdoor",
+      "key": "X261",
       "name": "Kwame Ture Recreation Center",
       "address": "1527 JESUP AVENUE",
       "neighborhood": "Bronx",
@@ -12015,6 +12378,7 @@
     },
     {
       "id": "nyc-l-cpl-thomas-p-noonan-jr-playground-outdoor",
+      "key": "Q044",
       "name": "L/CPL Thomas P. Noonan Jr. Playground",
       "address": "42-01 GREENPOINT AVENUE",
       "neighborhood": "Queens",
@@ -12049,6 +12413,7 @@
     },
     {
       "id": "nyc-lafayette-gardens-playground-outdoor",
+      "key": "B317",
       "name": "Lafayette Gardens Playground",
       "address": "345 CLASSON AVENUE",
       "neighborhood": "Brooklyn",
@@ -12074,6 +12439,7 @@
     },
     {
       "id": "nyc-lafayette-playground-b023-outdoor",
+      "key": "B023",
       "name": "Lafayette Playground",
       "address": "1037-1063 LAFAYETTE AVENUE",
       "neighborhood": "Brooklyn",
@@ -12099,6 +12465,7 @@
     },
     {
       "id": "nyc-lafayette-playground-b106b-outdoor",
+      "key": "B106B",
       "name": "Lafayette Playground",
       "address": "2140 STILLWELL AV",
       "neighborhood": "Brooklyn",
@@ -12124,6 +12491,7 @@
     },
     {
       "id": "nyc-laguardia-landing-lights-outdoor",
+      "key": "Q393A",
       "name": "LaGuardia Landing Lights",
       "address": "78-02 25 AVENUE",
       "neighborhood": "Queens",
@@ -12148,6 +12516,7 @@
     },
     {
       "id": "nyc-langston-hughes-playground-outdoor",
+      "key": "M211B",
       "name": "Langston Hughes Playground",
       "address": "2200 ADAM C POWELL BLVD",
       "neighborhood": "Manhattan",
@@ -12173,6 +12542,7 @@
     },
     {
       "id": "nyc-latimer-playground-outdoor",
+      "key": "Q402",
       "name": "Latimer Playground",
       "address": "108-35 167 STREET",
       "neighborhood": "Queens",
@@ -12198,6 +12568,7 @@
     },
     {
       "id": "nyc-latourette-park-golf-course-outdoor",
+      "key": "R013",
       "name": "LaTourette Park & Golf Course",
       "address": "1001 RICHMOND HILL ROAD",
       "neighborhood": "Staten Island",
@@ -12222,6 +12593,7 @@
     },
     {
       "id": "nyc-laurelton-parkway-outdoor",
+      "key": "Q027",
       "name": "Laurelton Parkway",
       "address": "121 Ave., N. Conduit Ave. bet. Laurelton Pkwy. Sr. Rd. S and Brookville Blvd.",
       "neighborhood": "Queens",
@@ -12247,6 +12619,7 @@
     },
     {
       "id": "nyc-laurelton-playground-outdoor",
+      "key": "Q108",
       "name": "Laurelton Playground",
       "address": "Brookville Blvd. bet. 136 Ave. 137 Ave.",
       "neighborhood": "Queens",
@@ -12272,6 +12645,7 @@
     },
     {
       "id": "nyc-lawrence-virgilio-playground-outdoor",
+      "key": "Q031",
       "name": "Lawrence Virgilio Playground",
       "address": "52-01 39 DRIVE",
       "neighborhood": "Queens",
@@ -12297,6 +12671,7 @@
     },
     {
       "id": "nyc-lefferts-playground-outdoor",
+      "key": "Q096E",
       "name": "Lefferts Playground",
       "address": "120-04 NORTH CONDUIT AVENUE",
       "neighborhood": "Queens",
@@ -12322,6 +12697,7 @@
     },
     {
       "id": "nyc-leif-ericson-park-outdoor",
+      "key": "B052",
       "name": "Leif Ericson Park",
       "address": "67 St., 66 St. bet. 4 Ave. and Ft. Hamilton Pkwy.",
       "neighborhood": "Brooklyn",
@@ -12374,6 +12750,7 @@
     },
     {
       "id": "nyc-levy-playground-outdoor",
+      "key": "R033",
       "name": "Levy Playground",
       "address": "133 JEWETT AVENUE",
       "neighborhood": "Staten Island",
@@ -12399,6 +12776,7 @@
     },
     {
       "id": "nyc-lillian-d-wald-playground-outdoor",
+      "key": "M064",
       "name": "Lillian D Wald Playground",
       "address": "356 CHERRY STREET",
       "neighborhood": "Manhattan",
@@ -12432,6 +12810,7 @@
     },
     {
       "id": "nyc-lincoln-terrace-arthur-s-somers-park-outdoor",
+      "key": "B054",
       "name": "Lincoln Terrace / Arthur S. Somers Park",
       "address": "1266 EASTERN PARKWAY",
       "neighborhood": "Brooklyn",
@@ -12488,6 +12867,7 @@
     },
     {
       "id": "nyc-linden-park-outdoor",
+      "key": "B214",
       "name": "Linden Park",
       "address": "559 STANLEY AVENUE",
       "neighborhood": "Brooklyn",
@@ -12555,6 +12935,7 @@
     },
     {
       "id": "nyc-lindower-park-outdoor",
+      "key": "B329",
       "name": "Lindower Park",
       "address": "6120 EAST 60 PLACE",
       "neighborhood": "Brooklyn",
@@ -12591,6 +12972,7 @@
     },
     {
       "id": "nyc-linnaeus-park-outdoor",
+      "key": "Q388",
       "name": "Linnaeus Park",
       "address": "230 St. bet. 57 Ave. and 57 Rd.",
       "neighborhood": "Queens",
@@ -12616,6 +12998,7 @@
     },
     {
       "id": "nyc-linwood-playground-outdoor",
+      "key": "B149B",
       "name": "Linwood Playground",
       "address": "Linwood St. bet. New Lots Ave. and Hegeman Ave.",
       "neighborhood": "Brooklyn",
@@ -12641,6 +13024,7 @@
     },
     {
       "id": "nyc-little-bay-park-outdoor",
+      "key": "Q010A",
       "name": "Little Bay Park",
       "address": "Cross Island Pkwy. bet. Utopia Pkwy. and Totten Ave.",
       "neighborhood": "Queens",
@@ -12675,6 +13059,7 @@
     },
     {
       "id": "nyc-little-flower-playground-outdoor",
+      "key": "M132",
       "name": "Little Flower Playground",
       "address": "300 CHERRY STREET",
       "neighborhood": "Manhattan",
@@ -12701,6 +13086,7 @@
     },
     {
       "id": "nyc-locust-manor-playground-outdoor",
+      "key": "Q330",
       "name": "Locust Manor Playground",
       "address": "121-15 LUCAS STREET",
       "neighborhood": "Queens",
@@ -12726,6 +13112,7 @@
     },
     {
       "id": "nyc-london-planetree-playground-outdoor",
+      "key": "Q128",
       "name": "London Planetree Playground",
       "address": "88-02 ATLANTIC AVENUE",
       "neighborhood": "Queens",
@@ -12752,6 +13139,7 @@
     },
     {
       "id": "nyc-loreto-playground-outdoor",
+      "key": "X163",
       "name": "Loreto Playground",
       "address": "1100 MORRIS PARK AVENUE",
       "neighborhood": "Bronx",
@@ -12785,6 +13173,7 @@
     },
     {
       "id": "nyc-louis-c-moser-playground-outdoor",
+      "key": "Q366",
       "name": "Louis C. Moser Playground",
       "address": "76-01 25 AVENUE",
       "neighborhood": "Queens",
@@ -12819,6 +13208,7 @@
     },
     {
       "id": "nyc-louis-pasteur-park-outdoor",
+      "key": "Q369",
       "name": "Louis Pasteur Park",
       "address": "51-60 MARATHON PARKWAY",
       "neighborhood": "Queens",
@@ -12858,6 +13248,7 @@
     },
     {
       "id": "nyc-lower-east-side-playground-outdoor",
+      "key": "M321",
       "name": "Lower East Side Playground",
       "address": "404 EAST 12 STREET",
       "neighborhood": "Manhattan",
@@ -12890,6 +13281,7 @@
     },
     {
       "id": "nyc-lozada-playground-outdoor",
+      "key": "X131",
       "name": "Lozada Playground",
       "address": "357 EAST 135 STREET",
       "neighborhood": "Bronx",
@@ -12916,6 +13308,7 @@
     },
     {
       "id": "nyc-lt-joseph-petrosino-park-outdoor",
+      "key": "B099",
       "name": "Lt. Joseph Petrosino Park",
       "address": "7002 16 AVENUE",
       "neighborhood": "Brooklyn",
@@ -12940,6 +13333,7 @@
     },
     {
       "id": "nyc-luna-playground-outdoor",
+      "key": "B296",
       "name": "Luna Playground",
       "address": "2941 WEST 12 STREET",
       "neighborhood": "Brooklyn",
@@ -12974,6 +13368,7 @@
     },
     {
       "id": "nyc-lyons-square-playground-outdoor",
+      "key": "X029",
       "name": "Lyons Square Playground",
       "address": "987 LONGFELLOW AVENUE",
       "neighborhood": "Bronx",
@@ -12999,6 +13394,7 @@
     },
     {
       "id": "nyc-macombs-dam-park-outdoor",
+      "key": "X030",
       "name": "Macombs Dam Park",
       "address": "40-44 EAST 161 STREET",
       "neighborhood": "Bronx",
@@ -13043,6 +13439,7 @@
     },
     {
       "id": "nyc-mae-grant-playground-outdoor",
+      "key": "M213",
       "name": "Mae Grant Playground",
       "address": "55 East 104 STREET",
       "neighborhood": "Manhattan",
@@ -13068,6 +13465,7 @@
     },
     {
       "id": "nyc-mafera-park-outdoor",
+      "key": "Q305",
       "name": "Mafera Park",
       "address": "65 PLACE",
       "neighborhood": "Queens",
@@ -13113,6 +13511,7 @@
     },
     {
       "id": "nyc-magenta-playground-outdoor",
+      "key": "X214",
       "name": "Magenta Playground",
       "address": "3330 OLINVILLE AVENUE",
       "neighborhood": "Bronx",
@@ -13139,6 +13538,7 @@
     },
     {
       "id": "nyc-mahoney-playground-outdoor",
+      "key": "R025",
       "name": "Mahoney Playground",
       "address": "163 JERSEY STREET",
       "neighborhood": "Staten Island",
@@ -13173,6 +13573,7 @@
     },
     {
       "id": "nyc-manhattan-beach-park-outdoor",
+      "key": "B251",
       "name": "Manhattan Beach Park",
       "address": "760 ORIENTAL BOULEVARD",
       "neighborhood": "Brooklyn",
@@ -13219,6 +13620,7 @@
     },
     {
       "id": "nyc-mapes-park-outdoor",
+      "key": "X289",
       "name": "Mapes Park",
       "address": "786 EAST 181 STREET",
       "neighborhood": "Bronx",
@@ -13243,6 +13645,7 @@
     },
     {
       "id": "nyc-maple-playground-outdoor",
+      "key": "Q211",
       "name": "Maple Playground",
       "address": "136-50 MAPLE AVENUE",
       "neighborhood": "Queens",
@@ -13269,6 +13672,7 @@
     },
     {
       "id": "nyc-marble-hill-playground-outdoor",
+      "key": "X202",
       "name": "Marble Hill Playground",
       "address": "Marble Hill Av bet. W 230 St and W 228 St",
       "neighborhood": "Bronx",
@@ -13313,6 +13717,7 @@
     },
     {
       "id": "nyc-marc-and-jason-s-playground-outdoor",
+      "key": "B284",
       "name": "Marc And Jason's Playground",
       "address": "360 EMPIRE BOULEVARD",
       "neighborhood": "Brooklyn",
@@ -13338,6 +13743,7 @@
     },
     {
       "id": "nyc-marconi-park-outdoor",
+      "key": "Q127",
       "name": "Marconi Park",
       "address": "155-01 109 AVENUE",
       "neighborhood": "Queens",
@@ -13382,6 +13788,7 @@
     },
     {
       "id": "nyc-marcus-garvey-park-outdoor",
+      "key": "M058",
       "name": "Marcus Garvey Park",
       "address": "18 MT MORRIS PARK WEST",
       "neighborhood": "Manhattan",
@@ -13416,6 +13823,7 @@
     },
     {
       "id": "nyc-marcy-park-south-outdoor",
+      "key": "B223OB",
       "name": "Marcy Park South",
       "address": "243 DIVISION AVENUE",
       "neighborhood": "Brooklyn",
@@ -13440,6 +13848,7 @@
     },
     {
       "id": "nyc-marcy-playground-outdoor",
+      "key": "B217",
       "name": "Marcy Playground",
       "address": "753 MYRTLE AVENUE",
       "neighborhood": "Brooklyn",
@@ -13495,6 +13904,7 @@
     },
     {
       "id": "nyc-maria-hernandez-park-outdoor",
+      "key": "B016",
       "name": "Maria Hernandez Park",
       "address": "64 IRVING AVENUE",
       "neighborhood": "Brooklyn",
@@ -13529,6 +13939,7 @@
     },
     {
       "id": "nyc-marie-curie-playground-outdoor",
+      "key": "Q364",
       "name": "Marie Curie Playground",
       "address": "46-27 OCEANIA STREET",
       "neighborhood": "Queens",
@@ -13563,6 +13974,7 @@
     },
     {
       "id": "nyc-marine-park-outdoor",
+      "key": "B057",
       "name": "Marine Park",
       "address": "Flatbush, Gerritsen & Fillmore Aves, Jamaica Bay",
       "neighborhood": "Brooklyn",
@@ -13630,6 +14042,7 @@
     },
     {
       "id": "nyc-marion-hopkinson-playground-outdoor",
+      "key": "B110",
       "name": "Marion Hopkinson Playground",
       "address": "89 HOPKINSON AVENUE",
       "neighborhood": "Brooklyn",
@@ -13656,6 +14069,7 @@
     },
     {
       "id": "nyc-markham-playground-outdoor",
+      "key": "R076",
       "name": "Markham Playground",
       "address": "20 HOUSTON STREET",
       "neighborhood": "Staten Island",
@@ -13691,6 +14105,7 @@
     },
     {
       "id": "nyc-marlboro-playground-outdoor",
+      "key": "B272",
       "name": "Marlboro Playground",
       "address": "W. 11 St. at Ave. W",
       "neighborhood": "Brooklyn",
@@ -13716,6 +14131,7 @@
     },
     {
       "id": "nyc-martin-luther-king-jr-playground-outdoor",
+      "key": "B056",
       "name": "Martin Luther King Jr. Playground",
       "address": "757 DUMONT AVENUE",
       "neighborhood": "Brooklyn",
@@ -13741,6 +14157,7 @@
     },
     {
       "id": "nyc-martin-luther-playground-outdoor",
+      "key": "B098",
       "name": "Martin Luther Playground",
       "address": "5501 2 AVENUE",
       "neighborhood": "Brooklyn",
@@ -13766,6 +14183,7 @@
     },
     {
       "id": "nyc-martinez-playground-outdoor",
+      "key": "B127",
       "name": "Martinez Playground",
       "address": "195 GRAHAM AVENUE",
       "neighborhood": "Brooklyn",
@@ -13792,6 +14210,7 @@
     },
     {
       "id": "nyc-marx-brothers-playground-outdoor",
+      "key": "M187",
       "name": "Marx Brothers Playground",
       "address": "1860 2 AVENUE",
       "neighborhood": "Manhattan",
@@ -13826,6 +14245,7 @@
     },
     {
       "id": "nyc-mathews-palmer-playground-outdoor",
+      "key": "M154",
       "name": "Mathews-Palmer Playground",
       "address": "437 WEST 45 STREET",
       "neighborhood": "Manhattan",
@@ -13851,6 +14271,7 @@
     },
     {
       "id": "nyc-matthew-p-sapolin-playground-outdoor",
+      "key": "M233",
       "name": "Matthew P. Sapolin Playground",
       "address": "22484 WEST 70 STREET",
       "neighborhood": "Manhattan",
@@ -13885,6 +14306,7 @@
     },
     {
       "id": "nyc-matthews-muliner-playground-outdoor",
+      "key": "X178",
       "name": "Matthews Muliner Playground",
       "address": "Mathews Ave. bet. Morris Park Ave. and Rhinelander Ave.",
       "neighborhood": "Bronx",
@@ -13910,6 +14332,7 @@
     },
     {
       "id": "nyc-maurice-a-fitzgerald-playground-outdoor",
+      "key": "Q337",
       "name": "Maurice A FitzGerald Playground",
       "address": "10430 ATLANTIC AVENUE",
       "neighborhood": "Queens",
@@ -13936,6 +14359,7 @@
     },
     {
       "id": "nyc-mazzei-playground-outdoor",
+      "key": "X157",
       "name": "Mazzei Playground",
       "address": "1000 MACE AVENUE",
       "neighborhood": "Bronx",
@@ -13971,6 +14395,7 @@
     },
     {
       "id": "nyc-mccaffrey-playground-outdoor",
+      "key": "M161",
       "name": "McCaffrey Playground",
       "address": "341 WEST 43 STREET",
       "neighborhood": "Manhattan",
@@ -13997,6 +14422,7 @@
     },
     {
       "id": "nyc-mccarren-park-outdoor",
+      "key": "B058",
       "name": "McCarren Park",
       "address": "Nassau Ave, Bayard, Leonard & N 12 Sts",
       "neighborhood": "Brooklyn",
@@ -14055,6 +14481,7 @@
     },
     {
       "id": "nyc-mcdonald-playground-outdoor",
+      "key": "B244",
       "name": "McDonald Playground",
       "address": "2099 MC DONALD AVENUE",
       "neighborhood": "Brooklyn",
@@ -14111,6 +14538,7 @@
     },
     {
       "id": "nyc-mcguire-fields-outdoor",
+      "key": "B166D",
       "name": "McGuire Fields",
       "address": "2333 BERGEN AVENUE",
       "neighborhood": "Brooklyn",
@@ -14166,6 +14594,7 @@
     },
     {
       "id": "nyc-mckinley-park-outdoor",
+      "key": "B060",
       "name": "McKinley Park",
       "address": "7614 FORT HAMILTON PARKWAY",
       "neighborhood": "Brooklyn",
@@ -14222,6 +14651,7 @@
     },
     {
       "id": "nyc-mckinley-playground-outdoor",
+      "key": "M259",
       "name": "McKinley Playground",
       "address": "162 EAST 4 STREET",
       "neighborhood": "Manhattan",
@@ -14248,6 +14678,7 @@
     },
     {
       "id": "nyc-mclaughlin-park-outdoor",
+      "key": "B061",
       "name": "McLaughlin Park",
       "address": "243 JAY STREET",
       "neighborhood": "Brooklyn",
@@ -14291,6 +14722,7 @@
     },
     {
       "id": "nyc-mellett-playground-outdoor",
+      "key": "B197",
       "name": "Mellett Playground",
       "address": "1301 AVENUE V",
       "neighborhood": "Brooklyn",
@@ -14325,6 +14757,7 @@
     },
     {
       "id": "nyc-melrose-commons-park-outdoor",
+      "key": "X350",
       "name": "Melrose Commons Park",
       "address": "924 MELROSE AVENUE",
       "neighborhood": "Bronx",
@@ -14348,6 +14781,7 @@
     },
     {
       "id": "nyc-melrose-playground-outdoor",
+      "key": "X154",
       "name": "Melrose Playground",
       "address": "705 COURTLANDT AVENUE",
       "neighborhood": "Bronx",
@@ -14373,6 +14807,7 @@
     },
     {
       "id": "nyc-merriam-playground-outdoor",
+      "key": "X153",
       "name": "Merriam Playground",
       "address": "1239 Ogden Avenue",
       "neighborhood": "Bronx",
@@ -14398,6 +14833,7 @@
     },
     {
       "id": "nyc-middle-village-playground-outdoor",
+      "key": "Q101",
       "name": "Middle Village Playground",
       "address": "78-38 68 ROAD",
       "neighborhood": "Queens",
@@ -14423,6 +14859,7 @@
     },
     {
       "id": "nyc-midland-field-outdoor",
+      "key": "R038A",
       "name": "Midland Field",
       "address": "333 MIDLAND AVENUE",
       "neighborhood": "Staten Island",
@@ -14473,6 +14910,7 @@
     },
     {
       "id": "nyc-mill-pond-park-outdoor",
+      "key": "X344",
       "name": "Mill Pond Park",
       "address": "65 EAST 149 STREET - 1 EAST 150 STREET",
       "neighborhood": "Bronx",
@@ -14502,6 +14940,7 @@
     },
     {
       "id": "nyc-millbrook-playground-outdoor",
+      "key": "X182",
       "name": "Millbrook Playground",
       "address": "625 EAST 135 STREET",
       "neighborhood": "Bronx",
@@ -14528,6 +14967,7 @@
     },
     {
       "id": "nyc-monsignor-crawford-field-outdoor",
+      "key": "B147",
       "name": "Monsignor Crawford Field",
       "address": "Ave. U bet. E. 58 St., E. 59 St., and E. 60 St.",
       "neighborhood": "Brooklyn",
@@ -14552,6 +14992,7 @@
     },
     {
       "id": "nyc-monsignor-kett-playground-outdoor",
+      "key": "M199",
       "name": "Monsignor Kett Playground",
       "address": "500 WEST 204 STREET",
       "neighborhood": "Manhattan",
@@ -14576,6 +15017,7 @@
     },
     {
       "id": "nyc-montbellier-park-outdoor",
+      "key": "Q396",
       "name": "Montbellier Park",
       "address": "138-02 SPRINGFIELD BLVD",
       "neighborhood": "Queens",
@@ -14620,6 +15062,7 @@
     },
     {
       "id": "nyc-moore-homestead-playground-outdoor",
+      "key": "Q361",
       "name": "Moore Homestead Playground",
       "address": "82-02 BROADWAY",
       "neighborhood": "Queens",
@@ -14645,6 +15088,7 @@
     },
     {
       "id": "nyc-moore-playground-outdoor",
+      "key": "M204",
       "name": "Moore Playground",
       "address": "2058 MADISON AVENUE",
       "neighborhood": "Manhattan",
@@ -14693,6 +15137,7 @@
     },
     {
       "id": "nyc-morgan-playground-outdoor",
+      "key": "X206",
       "name": "Morgan Playground",
       "address": "1241 PARK AVENUE",
       "neighborhood": "Bronx",
@@ -14718,6 +15163,7 @@
     },
     {
       "id": "nyc-morningside-park-outdoor",
+      "key": "M056",
       "name": "Morningside Park",
       "address": "W 110 St To W 123 St, Manhattan Av To Morningside Av",
       "neighborhood": "Manhattan",
@@ -14753,6 +15199,7 @@
     },
     {
       "id": "nyc-mosholu-parkway-outdoor",
+      "key": "X033",
       "name": "Mosholu Parkway",
       "address": "EAST MOSHOLU PARKWAY NORTH and VAN CORTLANDT AVENUE EAST",
       "neighborhood": "Bronx",
@@ -14778,6 +15225,7 @@
     },
     {
       "id": "nyc-mott-playground-outdoor",
+      "key": "X115",
       "name": "Mott Playground",
       "address": "Morris Av bet. Mc Clellan St and E 166 St",
       "neighborhood": "Bronx",
@@ -14804,6 +15252,7 @@
     },
     {
       "id": "nyc-mount-hope-playground-outdoor",
+      "key": "X257",
       "name": "Mount Hope Playground",
       "address": "25 EAST 177 STREET",
       "neighborhood": "Bronx",
@@ -14829,6 +15278,7 @@
     },
     {
       "id": "nyc-murphy-brothers-playground-outdoor",
+      "key": "M059",
       "name": "Murphy Brothers Playground",
       "address": "292 AVENUE C",
       "neighborhood": "Manhattan",
@@ -14870,6 +15320,7 @@
     },
     {
       "id": "nyc-murray-playground-outdoor",
+      "key": "Q141",
       "name": "Murray Playground",
       "address": "11-01 45 ROAD",
       "neighborhood": "Queens",
@@ -14913,6 +15364,7 @@
     },
     {
       "id": "nyc-naples-playground-outdoor",
+      "key": "R073",
       "name": "Naples Playground",
       "address": "1055 TARGEE STREET",
       "neighborhood": "Staten Island",
@@ -14938,6 +15390,7 @@
     },
     {
       "id": "nyc-nathan-straus-playground-outdoor",
+      "key": "M241",
       "name": "Nathan Straus Playground",
       "address": "178 RIVINGTON STREET",
       "neighborhood": "Manhattan",
@@ -14972,6 +15425,7 @@
     },
     {
       "id": "nyc-nautilus-playground-outdoor",
+      "key": "B268",
       "name": "Nautilus Playground",
       "address": "2903 BOARDWALK WEST",
       "neighborhood": "Brooklyn",
@@ -14997,6 +15451,7 @@
     },
     {
       "id": "nyc-nehemiah-park-outdoor",
+      "key": "B396",
       "name": "Nehemiah Park",
       "address": "405 WATKINS STREET",
       "neighborhood": "Brooklyn",
@@ -15022,6 +15477,7 @@
     },
     {
       "id": "nyc-nelson-playground-outdoor",
+      "key": "X168",
       "name": "Nelson Playground",
       "address": "1082 NELSON AVENUE",
       "neighborhood": "Bronx",
@@ -15048,6 +15504,7 @@
     },
     {
       "id": "nyc-neptune-playground-outdoor",
+      "key": "B331",
       "name": "Neptune Playground",
       "address": "2840 WEST 12 STREET",
       "neighborhood": "Brooklyn",
@@ -15081,6 +15538,7 @@
     },
     {
       "id": "nyc-newport-playground-outdoor",
+      "key": "B339",
       "name": "Newport Playground",
       "address": "411 THATFORD AVENUE",
       "neighborhood": "Brooklyn",
@@ -15125,6 +15583,7 @@
     },
     {
       "id": "nyc-newtown-barge-playground-outdoor",
+      "key": "B135",
       "name": "Newtown Barge Playground",
       "address": "5 COMMERCIAL STREET",
       "neighborhood": "Brooklyn",
@@ -15165,6 +15624,7 @@
     },
     {
       "id": "nyc-nicholas-naquan-heyward-jr-park-outdoor",
+      "key": "B230",
       "name": "Nicholas Naquan Heyward Jr. Park",
       "address": "160 WYCKOFF STREET",
       "neighborhood": "Brooklyn",
@@ -15190,6 +15650,7 @@
     },
     {
       "id": "nyc-noble-playground-outdoor",
+      "key": "X123",
       "name": "Noble Playground",
       "address": "Noble Ave. bet. Bronx River Av and  E 177 St",
       "neighborhood": "Bronx",
@@ -15225,6 +15686,7 @@
     },
     {
       "id": "nyc-north-rochdale-playground-outdoor",
+      "key": "Q426",
       "name": "North Rochdale Playground",
       "address": "126-10 BAISLEY BOULEVARD",
       "neighborhood": "Queens",
@@ -15250,6 +15712,7 @@
     },
     {
       "id": "nyc-northerleigh-park-outdoor",
+      "key": "R078",
       "name": "Northerleigh Park",
       "address": "90 NORTH AVENUE",
       "neighborhood": "Staten Island",
@@ -15274,6 +15737,7 @@
     },
     {
       "id": "nyc-northern-playground-outdoor",
+      "key": "Q363",
       "name": "Northern Playground",
       "address": "93-11 34 AVENUE",
       "neighborhood": "Queens",
@@ -15318,6 +15782,7 @@
     },
     {
       "id": "nyc-nostrand-playground-outdoor",
+      "key": "B250",
       "name": "Nostrand Playground",
       "address": "3002 FOSTER AVENUE",
       "neighborhood": "Brooklyn",
@@ -15344,6 +15809,7 @@
     },
     {
       "id": "nyc-notorious-lic-park-outdoor",
+      "key": "Q360U",
       "name": "Notorious LIC Park",
       "address": "50 Ave. bet. 11 St. and 11 Pl.",
       "neighborhood": "Queens",
@@ -15368,6 +15834,7 @@
     },
     {
       "id": "nyc-oakland-gardens-outdoor",
+      "key": "Q400",
       "name": "Oakland Gardens",
       "address": "53-11 SPRINGFIELD BLVD",
       "neighborhood": "Queens",
@@ -15406,6 +15873,7 @@
     },
     {
       "id": "nyc-ocean-hill-playground-outdoor",
+      "key": "B144",
       "name": "Ocean Hill Playground",
       "address": "275 HOPKINSON AVENUE",
       "neighborhood": "Brooklyn",
@@ -15441,6 +15909,7 @@
     },
     {
       "id": "nyc-ogden-plimpton-playground-outdoor",
+      "key": "X287",
       "name": "Ogden Plimpton Playground",
       "address": "Ogden Av, Plimpton Av, W 170 St",
       "neighborhood": "Bronx",
@@ -15466,6 +15935,7 @@
     },
     {
       "id": "nyc-old-town-playground-outdoor",
+      "key": "R063",
       "name": "Old Town Playground",
       "address": "255 PARKINSON AVENUE",
       "neighborhood": "Staten Island",
@@ -15501,6 +15971,7 @@
     },
     {
       "id": "nyc-oracle-playground-outdoor",
+      "key": "B300",
       "name": "Oracle Playground",
       "address": "121 ADELPHI STREET",
       "neighborhood": "Brooklyn",
@@ -15535,6 +16006,7 @@
     },
     {
       "id": "nyc-osborn-playground-outdoor",
+      "key": "B343",
       "name": "Osborn Playground",
       "address": "1461 LINDEN BOULEVARD",
       "neighborhood": "Brooklyn",
@@ -15579,6 +16051,7 @@
     },
     {
       "id": "nyc-owl-s-head-park-outdoor",
+      "key": "B066",
       "name": "Owl's Head Park",
       "address": "Shore Rd., 68 St., Colonial Rd.",
       "neighborhood": "Brooklyn",
@@ -15604,6 +16077,7 @@
     },
     {
       "id": "nyc-oxport-playground-outdoor",
+      "key": "B295",
       "name": "Oxport Playground",
       "address": "34 NORTH PORTLAND AVE",
       "neighborhood": "Brooklyn",
@@ -15629,6 +16103,7 @@
     },
     {
       "id": "nyc-p-o-reinaldo-salgado-playground-outdoor",
+      "key": "B224",
       "name": "P.O. Reinaldo Salgado Playground",
       "address": "750 MONROE STREET",
       "neighborhood": "Brooklyn",
@@ -15672,6 +16147,7 @@
     },
     {
       "id": "nyc-p-o-serrano-playground-outdoor",
+      "key": "X151",
       "name": "P.O. Serrano Playground",
       "address": "800 OLMSTEAD AVENUE",
       "neighborhood": "Bronx",
@@ -15716,6 +16192,7 @@
     },
     {
       "id": "nyc-p-s-125-playground-outdoor",
+      "key": "B227",
       "name": "P.S. 125 Playground",
       "address": "610 ROCKAWAY AVENUE",
       "neighborhood": "Brooklyn",
@@ -15740,6 +16217,7 @@
     },
     {
       "id": "nyc-p-s-155-playground-outdoor",
+      "key": "M239",
       "name": "P.S. 155 Playground",
       "address": "305 EAST 117 STREET",
       "neighborhood": "Manhattan",
@@ -15767,6 +16245,7 @@
     },
     {
       "id": "nyc-p-s-29-ballfield-outdoor",
+      "key": "X354",
       "name": "P.S. 29 Ballfield",
       "address": "750 COURTLANDT AVENUE",
       "neighborhood": "Bronx",
@@ -15801,6 +16280,7 @@
     },
     {
       "id": "nyc-paerdegat-park-outdoor",
+      "key": "B218",
       "name": "Paerdegat Park",
       "address": "4002 FOSTER AVENUE",
       "neighborhood": "Brooklyn",
@@ -15835,6 +16315,7 @@
     },
     {
       "id": "nyc-parade-ground-outdoor",
+      "key": "B068",
       "name": "Parade Ground",
       "address": "305 PARKSIDE AVENUE",
       "neighborhood": "Brooklyn",
@@ -15903,6 +16384,7 @@
     },
     {
       "id": "nyc-park-bt15-outdoor",
+      "key": "BT15",
       "name": "Park BT15",
       "address": "",
       "neighborhood": "",
@@ -15938,6 +16420,7 @@
     },
     {
       "id": "nyc-park-of-the-americas-outdoor",
+      "key": "Q026",
       "name": "Park Of The Americas",
       "address": "103-02 41 AVENUE",
       "neighborhood": "Queens",
@@ -15971,6 +16454,7 @@
     },
     {
       "id": "nyc-park-q510-outdoor",
+      "key": "Q510",
       "name": "Park Q510",
       "address": "",
       "neighborhood": "",
@@ -15995,6 +16479,7 @@
     },
     {
       "id": "nyc-park-slope-playground-outdoor",
+      "key": "B320",
       "name": "Park Slope Playground",
       "address": "40 LINCOLN PLACE",
       "neighborhood": "Brooklyn",
@@ -16030,6 +16515,7 @@
     },
     {
       "id": "nyc-parkside-playground-outdoor",
+      "key": "X162",
       "name": "Parkside Playground",
       "address": "Arnow Ave. bet. Olinville Ave. and White Plains Rd.",
       "neighborhood": "Bronx",
@@ -16056,6 +16542,7 @@
     },
     {
       "id": "nyc-pat-williams-playground-outdoor",
+      "key": "Q133",
       "name": "Pat Williams Playground",
       "address": "Hempstead Ave., 225 St. and 224 St. Cross Island Parkway Exit at 225 St.",
       "neighborhood": "Queens",
@@ -16080,6 +16567,7 @@
     },
     {
       "id": "nyc-patrick-o-rourke-playground-outdoor",
+      "key": "B282",
       "name": "Patrick O'Rourke Playground",
       "address": "8010 12 AVENUE",
       "neighborhood": "Brooklyn",
@@ -16113,6 +16601,7 @@
     },
     {
       "id": "nyc-patterson-playground-outdoor",
+      "key": "X155",
       "name": "Patterson Playground",
       "address": "E. 148 St. bet. Morris Ave. and College Ave.",
       "neighborhood": "Bronx",
@@ -16137,6 +16626,7 @@
     },
     {
       "id": "nyc-paul-raimonda-playground-outdoor",
+      "key": "Q298",
       "name": "Paul Raimonda Playground",
       "address": "20-02 48 STREET",
       "neighborhood": "Queens",
@@ -16183,6 +16673,7 @@
     },
     {
       "id": "nyc-pelham-bay-little-league-outdoor",
+      "key": "X256",
       "name": "Pelham Bay Little League",
       "address": "2950 WESTCHESTER AVENUE",
       "neighborhood": "Bronx",
@@ -16207,6 +16698,7 @@
     },
     {
       "id": "nyc-pelham-bay-park-outdoor",
+      "key": "X039",
       "name": "Pelham Bay Park",
       "address": "Bruckner Blvd, Eastchester, Hutchinson",
       "neighborhood": "Bronx",
@@ -16278,6 +16770,7 @@
     },
     {
       "id": "nyc-pena-herrera-playground-outdoor",
+      "key": "B210J",
       "name": "Pena Herrera Playground",
       "address": "4601 3 AVENUE",
       "neighborhood": "Brooklyn",
@@ -16304,6 +16797,7 @@
     },
     {
       "id": "nyc-penn-south-playground-outdoor",
+      "key": "M249",
       "name": "Penn South Playground",
       "address": "346 WEST 26 STREET",
       "neighborhood": "Manhattan",
@@ -16328,6 +16822,7 @@
     },
     {
       "id": "nyc-people-s-park-outdoor",
+      "key": "X103",
       "name": "People's Park",
       "address": "535 EAST 141 STREET",
       "neighborhood": "Bronx",
@@ -16362,6 +16857,7 @@
     },
     {
       "id": "nyc-peter-minuit-playground-outdoor",
+      "key": "M183",
       "name": "Peter Minuit Playground",
       "address": "1480 PARK AVENUE",
       "neighborhood": "Manhattan",
@@ -16386,6 +16882,7 @@
     },
     {
       "id": "nyc-peter-s-field-outdoor",
+      "key": "M227",
       "name": "Peter's Field",
       "address": "344 2 AVENUE",
       "neighborhood": "Manhattan",
@@ -16441,6 +16938,7 @@
     },
     {
       "id": "nyc-peters-field-outdoor",
+      "key": "Q351",
       "name": "Peters Field",
       "address": "Liberty Ave. bet. 183 St. and 183 Pl.",
       "neighborhood": "Queens",
@@ -16476,6 +16974,7 @@
     },
     {
       "id": "nyc-phil-scooter-rizzuto-park-outdoor",
+      "key": "Q129",
       "name": "Phil \"Scooter\" Rizzuto Park",
       "address": "125-02 ATLANTIC AVENUE",
       "neighborhood": "Queens",
@@ -16510,6 +17009,7 @@
     },
     {
       "id": "nyc-pier-42-outdoor",
+      "key": "M369",
       "name": "Pier 42",
       "address": "42 SOUTH STREET",
       "neighborhood": "Manhattan",
@@ -16534,6 +17034,7 @@
     },
     {
       "id": "nyc-pink-playground-outdoor",
+      "key": "B309",
       "name": "Pink Playground",
       "address": "1258 LORING AVENUE",
       "neighborhood": "Brooklyn",
@@ -16576,6 +17077,7 @@
     },
     {
       "id": "nyc-playground-103-ciii-outdoor",
+      "key": "M108G",
       "name": "Playground 103 CIII",
       "address": "457 East 102 Street",
       "neighborhood": "Manhattan",
@@ -16602,6 +17104,7 @@
     },
     {
       "id": "nyc-playground-286-outdoor",
+      "key": "B306",
       "name": "Playground 286",
       "address": "2525 HARING STREET",
       "neighborhood": "Brooklyn",
@@ -16642,6 +17145,7 @@
     },
     {
       "id": "nyc-playground-eighty-lxxx-outdoor",
+      "key": "Q318",
       "name": "Playground Eighty LXXX",
       "address": "81-51 261 STREET",
       "neighborhood": "Queens",
@@ -16676,6 +17180,7 @@
     },
     {
       "id": "nyc-playground-ninety-outdoor",
+      "key": "Q362",
       "name": "Playground Ninety",
       "address": "89-02 32 AVENUE",
       "neighborhood": "Queens",
@@ -16701,6 +17206,7 @@
     },
     {
       "id": "nyc-playground-one-outdoor",
+      "key": "M196",
       "name": "Playground One",
       "address": "Madison St. bet. Catherine St. and Oliver St.",
       "neighborhood": "Manhattan",
@@ -16726,6 +17232,7 @@
     },
     {
       "id": "nyc-playground-one-twenty-five-cxxv-outdoor",
+      "key": "M205",
       "name": "Playground One Twenty Five CXXV",
       "address": "413 WEST 123 STREET",
       "neighborhood": "Manhattan",
@@ -16764,6 +17271,7 @@
     },
     {
       "id": "nyc-playground-seventy-five-outdoor",
+      "key": "Q354",
       "name": "Playground Seventy Five",
       "address": "75-20 162 STREET",
       "neighborhood": "Queens",
@@ -16789,6 +17297,7 @@
     },
     {
       "id": "nyc-playground-sixty-two-lxii-outdoor",
+      "key": "Q377",
       "name": "Playground Sixty Two LXII",
       "address": "105-25 62 Road",
       "neighborhood": "Queens",
@@ -16814,6 +17323,7 @@
     },
     {
       "id": "nyc-playground-twenty-one-outdoor",
+      "key": "Q334",
       "name": "Playground Twenty One",
       "address": "163-02 21 AVENUE",
       "neighborhood": "Queens",
@@ -16849,6 +17359,7 @@
     },
     {
       "id": "nyc-police-officer-edward-byrne-park-outdoor",
+      "key": "Q092",
       "name": "Police Officer Edward Byrne Park",
       "address": "N. Conduit Ave., 135 Ave. bet. 130 Pl. and 134 St.",
       "neighborhood": "Queens",
@@ -16904,6 +17415,7 @@
     },
     {
       "id": "nyc-police-officer-john-g-scarangella-park-outdoor",
+      "key": "B106A",
       "name": "Police Officer John G. Scarangella Park",
       "address": "W. 13 St., Stillwell Ave. bet. Ave. U and Ave. V",
       "neighborhood": "Brooklyn",
@@ -16946,6 +17458,7 @@
     },
     {
       "id": "nyc-police-officer-nicholas-demutiis-park-outdoor",
+      "key": "Q118",
       "name": "Police Officer Nicholas Demutiis Park",
       "address": "101-05 101 STREET",
       "neighborhood": "Queens",
@@ -16971,6 +17484,7 @@
     },
     {
       "id": "nyc-pomonok-playground-outdoor",
+      "key": "Q329",
       "name": "Pomonok Playground",
       "address": "Kissena Blvd., 155 St. bet. 65 Ave. and Melbourne Ave.",
       "neighborhood": "Queens",
@@ -17005,6 +17519,7 @@
     },
     {
       "id": "nyc-pontiac-playground-outdoor",
+      "key": "X207",
       "name": "Pontiac Playground",
       "address": "584 JACKSON AVENUE",
       "neighborhood": "Bronx",
@@ -17029,6 +17544,7 @@
     },
     {
       "id": "nyc-poor-richard-s-playground-outdoor",
+      "key": "M230",
       "name": "Poor Richard's Playground",
       "address": "2095 2 AVENUE",
       "neighborhood": "Manhattan",
@@ -17055,6 +17571,7 @@
     },
     {
       "id": "nyc-poppenhusen-playground-outdoor",
+      "key": "Q011",
       "name": "Poppenhusen Playground",
       "address": "123-20 20 AVENUE",
       "neighborhood": "Queens",
@@ -17080,6 +17597,7 @@
     },
     {
       "id": "nyc-potomac-playground-outdoor",
+      "key": "B262",
       "name": "Potomac Playground",
       "address": "446 TOMPKINS AVENUE",
       "neighborhood": "Brooklyn",
@@ -17106,6 +17624,7 @@
     },
     {
       "id": "nyc-powell-playground-outdoor",
+      "key": "B156",
       "name": "Powell Playground",
       "address": "289 PITKIN AVENUE",
       "neighborhood": "Brooklyn",
@@ -17131,6 +17650,7 @@
     },
     {
       "id": "nyc-power-playground-outdoor",
+      "key": "B291",
       "name": "Power Playground",
       "address": "4902 AVENUE N",
       "neighborhood": "Brooklyn",
@@ -17173,6 +17693,7 @@
     },
     {
       "id": "nyc-pratt-playground-outdoor",
+      "key": "B292",
       "name": "Pratt Playground",
       "address": "233 WILLOUGHBY AVENUE",
       "neighborhood": "Brooklyn",
@@ -17199,6 +17720,7 @@
     },
     {
       "id": "nyc-prospect-park-outdoor",
+      "key": "B073",
       "name": "Prospect Park",
       "address": "95 PROSPECT PARK WEST",
       "neighborhood": "Brooklyn",
@@ -17233,6 +17755,7 @@
     },
     {
       "id": "nyc-prospect-playground-outdoor",
+      "key": "X148H1",
       "name": "Prospect Playground",
       "address": "1883 FAIRMOUNT PLACE",
       "neighborhood": "Bronx",
@@ -17257,6 +17780,7 @@
     },
     {
       "id": "nyc-prospect-plaza-park-outdoor",
+      "key": "B585",
       "name": "Prospect Plaza Park",
       "address": "1768 PARK PLACE",
       "neighborhood": "Brooklyn",
@@ -17281,6 +17805,7 @@
     },
     {
       "id": "nyc-pugsley-creek-park-outdoor",
+      "key": "X088",
       "name": "Pugsley Creek Park",
       "address": "White Plains Rd., Stephens Ave., Westchester Creek bet. Randall Ave., Lacombe Ave. and Cornell Ave.",
       "neighborhood": "Bronx",
@@ -17306,6 +17831,7 @@
     },
     {
       "id": "nyc-pulaski-park-outdoor",
+      "key": "X041",
       "name": "Pulaski Park",
       "address": "Bruckner Blvd. bet. Willis Ave. and Brown Pl.",
       "neighborhood": "Bronx",
@@ -17330,6 +17856,7 @@
     },
     {
       "id": "nyc-pulaski-playground-outdoor",
+      "key": "B322",
       "name": "Pulaski Playground",
       "address": "280 HART STREET",
       "neighborhood": "Brooklyn",
@@ -17372,6 +17899,7 @@
     },
     {
       "id": "nyc-quaker-parrot-park-at-the-dust-bowl-outdoor",
+      "key": "B146",
       "name": "Quaker Parrot Park at the Dust Bowl",
       "address": "8 Ave. bet. 65 St. and 66 St.",
       "neighborhood": "Brooklyn",
@@ -17406,6 +17934,7 @@
     },
     {
       "id": "nyc-quarry-ballfields-outdoor",
+      "key": "X263",
       "name": "Quarry Ballfields",
       "address": "565 EAST 181 STREET",
       "neighborhood": "Bronx",
@@ -17440,6 +17969,7 @@
     },
     {
       "id": "nyc-queens-farm-park-outdoor",
+      "key": "Q453",
       "name": "Queens Farm Park",
       "address": "73-50 LITTLE NECK PARKWAY",
       "neighborhood": "Queens",
@@ -17463,6 +17993,7 @@
     },
     {
       "id": "nyc-queens-valley-playground-outdoor",
+      "key": "Q212",
       "name": "Queens Valley Playground",
       "address": "76-01 137 STREET",
       "neighborhood": "Queens",
@@ -17488,6 +18019,7 @@
     },
     {
       "id": "nyc-queensbridge-park-outdoor",
+      "key": "Q104",
       "name": "Queensbridge Park",
       "address": "40-50 VERNON BOULEVARD",
       "neighborhood": "Queens",
@@ -17531,6 +18063,7 @@
     },
     {
       "id": "nyc-railroad-playground-outdoor",
+      "key": "B271",
       "name": "Railroad Playground",
       "address": "9101 DITMAS AVENUE",
       "neighborhood": "Brooklyn",
@@ -17575,6 +18108,7 @@
     },
     {
       "id": "nyc-rainbow-playground-outdoor",
+      "key": "B265",
       "name": "Rainbow Playground",
       "address": "5523 6 AVENUE",
       "neighborhood": "Brooklyn",
@@ -17601,6 +18135,7 @@
     },
     {
       "id": "nyc-ramon-aponte-park-outdoor",
+      "key": "M288",
       "name": "Ramon Aponte Park",
       "address": "47 St. bet. 8 Ave. and 9 Ave.",
       "neighborhood": "Manhattan",
@@ -17626,6 +18161,7 @@
     },
     {
       "id": "nyc-randall-playground-outdoor",
+      "key": "X203",
       "name": "Randall Playground",
       "address": "2180 RANDALL AVENUE",
       "neighborhood": "Bronx",
@@ -17652,6 +18188,7 @@
     },
     {
       "id": "nyc-randall-s-island-park-outdoor",
+      "key": "M104",
       "name": "Randall's Island Park",
       "address": "East River and Harlem River",
       "neighborhood": "Manhattan",
@@ -17701,6 +18238,7 @@
     },
     {
       "id": "nyc-rappaport-playground-outdoor",
+      "key": "B152",
       "name": "Rappaport Playground",
       "address": "5202 FT HAMILTON PARKWAY",
       "neighborhood": "Brooklyn",
@@ -17727,6 +18265,7 @@
     },
     {
       "id": "nyc-ravenswood-playground-outdoor",
+      "key": "Q333",
       "name": "Ravenswood Playground",
       "address": "34-00 21 STREET",
       "neighborhood": "Queens",
@@ -17761,6 +18300,7 @@
     },
     {
       "id": "nyc-raymond-bush-playground-outdoor",
+      "key": "B216",
       "name": "Raymond Bush Playground",
       "address": "308 MARCUS GARVEY BLVD",
       "neighborhood": "Brooklyn",
@@ -17795,6 +18335,7 @@
     },
     {
       "id": "nyc-raymond-o-connor-park-outdoor",
+      "key": "Q103",
       "name": "Raymond O’Connor Park",
       "address": "",
       "neighborhood": "Queens",
@@ -17828,6 +18369,7 @@
     },
     {
       "id": "nyc-real-good-playground-outdoor",
+      "key": "Q357B",
       "name": "Real Good Playground",
       "address": "99-02 HOR HARDING EP SR S",
       "neighborhood": "Queens",
@@ -17853,6 +18395,7 @@
     },
     {
       "id": "nyc-recreational-area-outdoor",
+      "key": "M140",
       "name": "Recreational Area",
       "address": "W. 145 St., W. 155 St., Hudson River",
       "neighborhood": "Manhattan",
@@ -17895,6 +18438,7 @@
     },
     {
       "id": "nyc-red-hook-recreation-area-outdoor",
+      "key": "B126",
       "name": "Red Hook Recreation Area",
       "address": "825 HENRY STREET",
       "neighborhood": "Brooklyn",
@@ -17950,6 +18494,7 @@
     },
     {
       "id": "nyc-redfern-playground-outdoor",
+      "key": "Q345",
       "name": "Redfern Playground",
       "address": "15-01 REDFERN AVENUE",
       "neighborhood": "Queens",
@@ -17984,6 +18529,7 @@
     },
     {
       "id": "nyc-reiff-playground-outdoor",
+      "key": "Q423",
       "name": "Reiff Playground",
       "address": "59-25 FRESH POND ROAD",
       "neighborhood": "Queens",
@@ -18018,6 +18564,7 @@
     },
     {
       "id": "nyc-remsen-playground-outdoor",
+      "key": "B360",
       "name": "Remsen Playground",
       "address": "1100 GLENWOOD ROAD",
       "neighborhood": "Brooklyn",
@@ -18052,6 +18599,7 @@
     },
     {
       "id": "nyc-renaissance-playground-outdoor",
+      "key": "M245",
       "name": "Renaissance Playground",
       "address": "223 WEST 143 STREET",
       "neighborhood": "Manhattan",
@@ -18079,6 +18627,7 @@
     },
     {
       "id": "nyc-rev-j-polite-playground-outdoor",
+      "key": "X116",
       "name": "Rev J Polite Playground",
       "address": "1148 REV JAMES POLITE Av",
       "neighborhood": "Bronx",
@@ -18103,6 +18652,7 @@
     },
     {
       "id": "nyc-rev-dr-maggie-howard-playground-outdoor",
+      "key": "R061",
       "name": "Rev. Dr. Maggie Howard Playground",
       "address": "64 TOMPKINS AVENUE",
       "neighborhood": "Staten Island",
@@ -18127,6 +18677,7 @@
     },
     {
       "id": "nyc-rev-t-wendell-foster-park-and-recreation-center-outdoor",
+      "key": "X034",
       "name": "Rev. T. Wendell Foster Park and Recreation Center",
       "address": "1015 RIVER AVENUE",
       "neighborhood": "Bronx",
@@ -18168,6 +18719,7 @@
     },
     {
       "id": "nyc-rienzi-playground-outdoor",
+      "key": "X141",
       "name": "Rienzi Playground",
       "address": "759 EAST 225 STREET",
       "neighborhood": "Bronx",
@@ -18193,6 +18745,7 @@
     },
     {
       "id": "nyc-riverdale-playground-outdoor",
+      "key": "X186",
       "name": "Riverdale Playground",
       "address": "660 W 237 STREET",
       "neighborhood": "Bronx",
@@ -18227,6 +18780,7 @@
     },
     {
       "id": "nyc-riverside-park-outdoor",
+      "key": "M071",
       "name": "Riverside Park",
       "address": "Riverside Dr. to Hudson River, W. 72 St.to St Clair Pl.",
       "neighborhood": "Manhattan",
@@ -18298,6 +18852,7 @@
     },
     {
       "id": "nyc-riverside-park-south-outdoor",
+      "key": "M353",
       "name": "Riverside Park South",
       "address": "400 RIVERSIDE DRIVE",
       "neighborhood": "Manhattan",
@@ -18361,6 +18916,7 @@
     },
     {
       "id": "nyc-robert-e-venable-park-outdoor",
+      "key": "B380",
       "name": "Robert E. Venable Park",
       "address": "1411 SUTTER AVENUE",
       "neighborhood": "Brooklyn",
@@ -18408,6 +18964,7 @@
     },
     {
       "id": "nyc-robert-moses-playground-outdoor",
+      "key": "M158",
       "name": "Robert Moses Playground",
       "address": "724 1 AVENUE",
       "neighborhood": "Manhattan",
@@ -18452,6 +19009,7 @@
     },
     {
       "id": "nyc-roberto-clemente-ballfield-outdoor",
+      "key": "B382A",
       "name": "Roberto Clemente Ballfield",
       "address": "513 KENT AVENUE",
       "neighborhood": "Brooklyn",
@@ -18476,6 +19034,7 @@
     },
     {
       "id": "nyc-rochdale-park-outdoor",
+      "key": "Q413",
       "name": "Rochdale Park",
       "address": "133-39 GUY R BREWER BLVD",
       "neighborhood": "Queens",
@@ -18524,6 +19083,7 @@
     },
     {
       "id": "nyc-rock-garden-park-outdoor",
+      "key": "X273",
       "name": "Rock Garden Park",
       "address": "Longfellow Av bet. E 173 St and E 174 St",
       "neighborhood": "Bronx",
@@ -18549,6 +19109,7 @@
     },
     {
       "id": "nyc-rockaway-beach-boardwalk-outdoor",
+      "key": "Q163",
       "name": "Rockaway Beach Boardwalk",
       "address": "Shore Front Pkwy. bet. Beach 109 St. and B. 73 St.",
       "neighborhood": "Queens",
@@ -18590,6 +19151,7 @@
     },
     {
       "id": "nyc-rockaway-community-park-outdoor",
+      "key": "Q371",
       "name": "Rockaway Community Park",
       "address": "54-02 ALMEDA AVENUE",
       "neighborhood": "Queens",
@@ -18635,6 +19197,7 @@
     },
     {
       "id": "nyc-rocket-playground-outdoor",
+      "key": "Q414",
       "name": "Rocket Playground",
       "address": "88-17 NORTH CONDUIT AVENUE",
       "neighborhood": "Queens",
@@ -18661,6 +19224,7 @@
     },
     {
       "id": "nyc-rodney-park-north-outdoor",
+      "key": "B223PB",
       "name": "Rodney Park North",
       "address": "298 RODNEY STREET",
       "neighborhood": "Brooklyn",
@@ -18686,6 +19250,7 @@
     },
     {
       "id": "nyc-rodney-park-south-outdoor",
+      "key": "B223OC",
       "name": "Rodney Park South",
       "address": "282 SOUTH 9 STREET",
       "neighborhood": "Brooklyn",
@@ -18710,6 +19275,7 @@
     },
     {
       "id": "nyc-roebling-playground-outdoor",
+      "key": "B264",
       "name": "Roebling Playground",
       "address": "525 BEDFORD AVENUE",
       "neighborhood": "Brooklyn",
@@ -18744,6 +19310,7 @@
     },
     {
       "id": "nyc-rory-staunton-field-outdoor",
+      "key": "Q502",
       "name": "Rory Staunton Field",
       "address": "33-16 79 STREET",
       "neighborhood": "Queens",
@@ -18773,6 +19340,7 @@
     },
     {
       "id": "nyc-rosemary-s-playground-outdoor",
+      "key": "Q398",
       "name": "Rosemary's Playground",
       "address": "751 WOODWARD AVENUE",
       "neighborhood": "Queens",
@@ -18807,6 +19375,7 @@
     },
     {
       "id": "nyc-roy-wilkins-recreation-center-outdoor",
+      "key": "Q448",
       "name": "Roy Wilkins Recreation Center",
       "address": "117-05 MERRICK BOULEVARD",
       "neighborhood": "Queens",
@@ -18864,6 +19433,7 @@
     },
     {
       "id": "nyc-rufus-king-park-outdoor",
+      "key": "Q023",
       "name": "Rufus King Park",
       "address": "150-05 JAMAICA AVENUE",
       "neighborhood": "Queens",
@@ -18890,6 +19460,7 @@
     },
     {
       "id": "nyc-russell-pedersen-playground-outdoor",
+      "key": "B192",
       "name": "Russell Pedersen Playground",
       "address": "8301 SHORE ROAD",
       "neighborhood": "Brooklyn",
@@ -18915,6 +19486,7 @@
     },
     {
       "id": "nyc-russell-sage-playground-outdoor",
+      "key": "Q335",
       "name": "Russell Sage Playground",
       "address": "68-17 68 AVENUE",
       "neighborhood": "Queens",
@@ -18962,6 +19534,7 @@
     },
     {
       "id": "nyc-sakura-park-outdoor",
+      "key": "M087",
       "name": "Sakura Park",
       "address": "Riverside Dr., Claremont Ave. To W. 122 St.",
       "neighborhood": "Manhattan",
@@ -18986,6 +19559,7 @@
     },
     {
       "id": "nyc-samuel-h-young-park-outdoor",
+      "key": "X101A",
       "name": "Samuel H. Young Park",
       "address": "Westchester Ave. bet. Waters Ave. and E. Tremont Ave.",
       "neighborhood": "Bronx",
@@ -19010,6 +19584,7 @@
     },
     {
       "id": "nyc-samuel-seabury-playground-outdoor",
+      "key": "M236",
       "name": "Samuel Seabury Playground",
       "address": "142 EAST 96 STREET",
       "neighborhood": "Manhattan",
@@ -19045,6 +19620,7 @@
     },
     {
       "id": "nyc-sankofa-park-outdoor",
+      "key": "B261",
       "name": "Sankofa Park",
       "address": "816 LIVONIA AVENUE",
       "neighborhood": "Brooklyn",
@@ -19070,6 +19646,7 @@
     },
     {
       "id": "nyc-sara-d-roosevelt-park-outdoor",
+      "key": "M105",
       "name": "Sara D. Roosevelt Park",
       "address": "106 CHRYSTIE STREET",
       "neighborhood": "Manhattan",
@@ -19116,6 +19693,7 @@
     },
     {
       "id": "nyc-sarah-j-s-tompkins-garnet-playground-outdoor",
+      "key": "B022",
       "name": "Sarah J.S. Tompkins Garnet Playground",
       "address": "Lynch St., Middleton St. bet. Lee Ave. and Bedford Ave.",
       "neighborhood": "Brooklyn",
@@ -19141,6 +19719,7 @@
     },
     {
       "id": "nyc-saul-weprin-playground-outdoor",
+      "key": "Q293",
       "name": "Saul Weprin Playground",
       "address": "54-38 202 STREET",
       "neighborhood": "Queens",
@@ -19174,6 +19753,7 @@
     },
     {
       "id": "nyc-saw-mill-playground-outdoor",
+      "key": "X238",
       "name": "Saw Mill Playground",
       "address": "468 EAST 140 STREET",
       "neighborhood": "Bronx",
@@ -19199,6 +19779,7 @@
     },
     {
       "id": "nyc-schmul-park-outdoor",
+      "key": "R045",
       "name": "Schmul Park",
       "address": "150 MELVIN AVENUE",
       "neighborhood": "Staten Island",
@@ -19234,6 +19815,7 @@
     },
     {
       "id": "nyc-sean-s-place-outdoor",
+      "key": "Q444",
       "name": "Sean's Place",
       "address": "31-19 38 STREET",
       "neighborhood": "Queens",
@@ -19259,6 +19841,7 @@
     },
     {
       "id": "nyc-seaside-playground-outdoor",
+      "key": "Q422",
       "name": "Seaside Playground",
       "address": "109-27 ROCKAWAY BEACH BLVD",
       "neighborhood": "Queens",
@@ -19284,6 +19867,7 @@
     },
     {
       "id": "nyc-sedgwick-playground-outdoor",
+      "key": "X158",
       "name": "Sedgwick Playground",
       "address": "Cross Bronx Exwy. Sr. Ramp bet. Undercliff Ave. and Dr. MLK Jr. Blvd.",
       "neighborhood": "Bronx",
@@ -19309,6 +19893,7 @@
     },
     {
       "id": "nyc-seth-low-playground-bealin-square-outdoor",
+      "key": "B100",
       "name": "Seth Low Playground/ Bealin Square",
       "address": "7217 BAY PARKWAY / 33 AVENUE P",
       "neighborhood": "Brooklyn",
@@ -19342,6 +19927,7 @@
     },
     {
       "id": "nyc-seton-park-outdoor",
+      "key": "X201",
       "name": "Seton Park",
       "address": "751 WEST 232 STREET",
       "neighborhood": "Bronx",
@@ -19398,6 +19984,7 @@
     },
     {
       "id": "nyc-seven-gables-playground-outdoor",
+      "key": "Q021C",
       "name": "Seven Gables Playground",
       "address": "61-15 FRANCIS LEWIS BLVD",
       "neighborhood": "Queens",
@@ -19423,6 +20010,7 @@
     },
     {
       "id": "nyc-seward-park-outdoor",
+      "key": "M082",
       "name": "Seward Park",
       "address": "57 ESSEX STREET",
       "neighborhood": "Manhattan",
@@ -19456,6 +20044,7 @@
     },
     {
       "id": "nyc-sheepshead-playground-outdoor",
+      "key": "B239",
       "name": "Sheepshead Playground",
       "address": "2675 NOSTRAND AVENUE",
       "neighborhood": "Brooklyn",
@@ -19481,6 +20070,7 @@
     },
     {
       "id": "nyc-shore-park-and-parkway-outdoor",
+      "key": "B082",
       "name": "Shore Park and Parkway",
       "address": "7420 Shore Rd",
       "neighborhood": "Brooklyn",
@@ -19539,6 +20129,7 @@
     },
     {
       "id": "nyc-sidney-hillman-playground-outdoor",
+      "key": "M195",
       "name": "Sidney Hillman Playground",
       "address": "297 DELANCEY STREET",
       "neighborhood": "Manhattan",
@@ -19564,6 +20155,7 @@
     },
     {
       "id": "nyc-silver-lake-park-outdoor",
+      "key": "R022",
       "name": "Silver Lake Park",
       "address": "927 VICTORY BOULEVARD",
       "neighborhood": "Staten Island",
@@ -19603,6 +20195,7 @@
     },
     {
       "id": "nyc-slattery-playground-outdoor",
+      "key": "X085",
       "name": "Slattery Playground",
       "address": "2300 Ryer Avenue",
       "neighborhood": "Bronx",
@@ -19629,6 +20222,7 @@
     },
     {
       "id": "nyc-sol-bloom-playground-outdoor",
+      "key": "M244",
       "name": "Sol Bloom Playground",
       "address": "59 WEST 91 STREET",
       "neighborhood": "Manhattan",
@@ -19664,6 +20258,7 @@
     },
     {
       "id": "nyc-sol-lain-plgd-outdoor",
+      "key": "M235",
       "name": "Sol Lain Plgd",
       "address": "271 HENRY STREET",
       "neighborhood": "Manhattan",
@@ -19698,6 +20293,7 @@
     },
     {
       "id": "nyc-soundview-park-outdoor",
+      "key": "X118",
       "name": "Soundview Park",
       "address": "Bronx River, Bronx River Ave. bet. Lafayette Ave., Surf Dr.",
       "neighborhood": "Bronx",
@@ -19750,6 +20346,7 @@
     },
     {
       "id": "nyc-south-oxford-park-outdoor",
+      "key": "B407",
       "name": "South Oxford Park",
       "address": "187 SOUTH OXFORD STREET",
       "neighborhood": "Brooklyn",
@@ -19779,6 +20376,7 @@
     },
     {
       "id": "nyc-south-pacific-playground-outdoor",
+      "key": "B153",
       "name": "South Pacific Playground",
       "address": "338 HOWARD AVENUE",
       "neighborhood": "Brooklyn",
@@ -19804,6 +20402,7 @@
     },
     {
       "id": "nyc-south-rochdale-playground-outdoor",
+      "key": "Q427",
       "name": "South Rochdale Playground",
       "address": "171-05 137 AVENUE",
       "neighborhood": "Queens",
@@ -19829,6 +20428,7 @@
     },
     {
       "id": "nyc-southern-fields-outdoor",
+      "key": "Q096B",
       "name": "Southern Fields",
       "address": "114-30 NORTH CONDUIT AVENUE",
       "neighborhood": "Queens",
@@ -19863,6 +20463,7 @@
     },
     {
       "id": "nyc-space-time-playground-outdoor",
+      "key": "X221",
       "name": "Space Time Playground",
       "address": "880 UNDERHILL AVENUE",
       "neighborhood": "Bronx",
@@ -19889,6 +20490,7 @@
     },
     {
       "id": "nyc-sperandeo-brothers-playground-outdoor",
+      "key": "B163",
       "name": "Sperandeo Brothers Playground",
       "address": "343 CLEVELAND STREET",
       "neighborhood": "Brooklyn",
@@ -19945,6 +20547,7 @@
     },
     {
       "id": "nyc-spirit-playground-outdoor",
+      "key": "Q429",
       "name": "Spirit Playground",
       "address": "36-36 10 STREET",
       "neighborhood": "Queens",
@@ -19991,6 +20594,7 @@
     },
     {
       "id": "nyc-springfield-park-outdoor",
+      "key": "Q107",
       "name": "Springfield Park",
       "address": "146-02 SPRINGFIELD BLVD",
       "neighborhood": "Queens",
@@ -20039,6 +20643,7 @@
     },
     {
       "id": "nyc-spuyten-duyvil-playground-outdoor",
+      "key": "X171",
       "name": "Spuyten Duyvil Playground",
       "address": "660 W 235 STREET",
       "neighborhood": "Bronx",
@@ -20065,6 +20670,7 @@
     },
     {
       "id": "nyc-st-andrew-s-playground-outdoor",
+      "key": "B225",
       "name": "St. Andrew's Playground",
       "address": "1405 ATLANTIC AVENUE",
       "neighborhood": "Brooklyn",
@@ -20109,6 +20715,7 @@
     },
     {
       "id": "nyc-st-catherine-s-park-outdoor",
+      "key": "M079",
       "name": "St. Catherine's Park",
       "address": "1245 EAST 67 STREET",
       "neighborhood": "Manhattan",
@@ -20154,6 +20761,7 @@
     },
     {
       "id": "nyc-st-gregory-s-playground-outdoor",
+      "key": "M301",
       "name": "St. Gregory's Playground",
       "address": "136 WEST 90 STREET",
       "neighborhood": "Manhattan",
@@ -20178,6 +20786,7 @@
     },
     {
       "id": "nyc-st-james-park-outdoor",
+      "key": "X044",
       "name": "St. James Park",
       "address": "2550 JEROME AVENUE",
       "neighborhood": "Bronx",
@@ -20224,6 +20833,7 @@
     },
     {
       "id": "nyc-st-john-s-park-outdoor",
+      "key": "B245",
       "name": "St. John's Park",
       "address": "119 TROY AVENUE",
       "neighborhood": "Brooklyn",
@@ -20267,6 +20877,7 @@
     },
     {
       "id": "nyc-st-mary-s-park-outdoor",
+      "key": "X045",
       "name": "St. Mary's Park",
       "address": "376 ST ANN'S AV",
       "neighborhood": "Bronx",
@@ -20330,6 +20941,7 @@
     },
     {
       "id": "nyc-st-michael-s-playground-outdoor",
+      "key": "Q174A",
       "name": "St. Michael's Playground",
       "address": "64-02 30 AVENUE",
       "neighborhood": "Queens",
@@ -20373,6 +20985,7 @@
     },
     {
       "id": "nyc-st-nicholas-park-outdoor",
+      "key": "M077",
       "name": "St. Nicholas Park",
       "address": "48 ST NICHOLAS AVENUE",
       "neighborhood": "Manhattan",
@@ -20399,6 +21012,7 @@
     },
     {
       "id": "nyc-st-nicholas-playground-south-outdoor",
+      "key": "M211A",
       "name": "St. Nicholas Playground South",
       "address": "2400 FRED DOUGLASS BLVD",
       "neighborhood": "Manhattan",
@@ -20424,6 +21038,7 @@
     },
     {
       "id": "nyc-st-vartan-park-outdoor",
+      "key": "M076",
       "name": "St. Vartan Park",
       "address": "613 1 AVENUE",
       "neighborhood": "Manhattan",
@@ -20468,6 +21083,7 @@
     },
     {
       "id": "nyc-stanley-isaacs-playground-outdoor",
+      "key": "M192",
       "name": "Stanley Isaacs Playground",
       "address": "1840-1860 1 AVENUE",
       "neighborhood": "Manhattan",
@@ -20493,6 +21109,7 @@
     },
     {
       "id": "nyc-star-spangled-playground-outdoor",
+      "key": "B266",
       "name": "Star Spangled Playground",
       "address": "955 KENT AVENUE",
       "neighborhood": "Brooklyn",
@@ -20526,6 +21143,7 @@
     },
     {
       "id": "nyc-starlight-park-outdoor",
+      "key": "X147A",
       "name": "Starlight Park",
       "address": "1041 EAST 172 STREET",
       "neighborhood": "Bronx",
@@ -20569,6 +21187,7 @@
     },
     {
       "id": "nyc-starr-playground-outdoor",
+      "key": "Q291",
       "name": "Starr Playground",
       "address": "210 ONDERDONK AVENUE",
       "neighborhood": "Queens",
@@ -20594,6 +21213,7 @@
     },
     {
       "id": "nyc-stars-stripes-playground-outdoor",
+      "key": "X193",
       "name": "Stars & Stripes Playground",
       "address": "3800 BAYCHESTER AVENUE",
       "neighborhood": "Bronx",
@@ -20633,6 +21253,7 @@
     },
     {
       "id": "nyc-stebbins-playground-outdoor",
+      "key": "X211",
       "name": "Stebbins Playground",
       "address": "1010 REV JAMES POLITE Av",
       "neighborhood": "Bronx",
@@ -20658,6 +21279,7 @@
     },
     {
       "id": "nyc-steinway-playground-outdoor",
+      "key": "Q395",
       "name": "Steinway Playground",
       "address": "20-27 37 STREET",
       "neighborhood": "Queens",
@@ -20690,6 +21312,7 @@
     },
     {
       "id": "nyc-sternberg-park-outdoor",
+      "key": "B055",
       "name": "Sternberg Park",
       "address": "286 LORIMER STREET",
       "neighborhood": "Brooklyn",
@@ -20734,6 +21357,7 @@
     },
     {
       "id": "nyc-steuben-playground-outdoor",
+      "key": "B221",
       "name": "Steuben Playground",
       "address": "Flushing Ave., Steuben St., Williamsburg Pl.",
       "neighborhood": "Brooklyn",
@@ -20759,6 +21383,7 @@
     },
     {
       "id": "nyc-stockton-playground-outdoor",
+      "key": "B298",
       "name": "Stockton Playground",
       "address": "662 PARK AVENUE",
       "neighborhood": "Brooklyn",
@@ -20793,6 +21418,7 @@
     },
     {
       "id": "nyc-story-playground-outdoor",
+      "key": "X204",
       "name": "Story Playground",
       "address": "880 LAFAYETTE AVENUE",
       "neighborhood": "Bronx",
@@ -20818,6 +21444,7 @@
     },
     {
       "id": "nyc-stroud-playground-outdoor",
+      "key": "B350",
       "name": "Stroud Playground",
       "address": "500 PARK PLACE",
       "neighborhood": "Brooklyn",
@@ -20844,6 +21471,7 @@
     },
     {
       "id": "nyc-sumner-playground-outdoor",
+      "key": "B263",
       "name": "Sumner Playground",
       "address": "211 THROOP AVENUE",
       "neighborhood": "Brooklyn",
@@ -20878,6 +21506,7 @@
     },
     {
       "id": "nyc-sunset-park-outdoor",
+      "key": "B087",
       "name": "Sunset Park",
       "address": "4200 5 AVENUE",
       "neighborhood": "Brooklyn",
@@ -20921,6 +21550,7 @@
     },
     {
       "id": "nyc-surf-playground-outdoor",
+      "key": "B315",
       "name": "Surf Playground",
       "address": "2501 SURF AVENUE",
       "neighborhood": "Brooklyn",
@@ -20956,6 +21586,7 @@
     },
     {
       "id": "nyc-sutter-ballfields-outdoor",
+      "key": "B419",
       "name": "Sutter Ballfields",
       "address": "Belmont Ave. to Sutter Ave. between Schenck Ave. and Barbey St.",
       "neighborhood": "Brooklyn",
@@ -20981,6 +21612,7 @@
     },
     {
       "id": "nyc-taaffe-playground-outdoor",
+      "key": "B105",
       "name": "Taaffe Playground",
       "address": "390 PARK AVENUE",
       "neighborhood": "Brooklyn",
@@ -21014,6 +21646,7 @@
     },
     {
       "id": "nyc-tall-oak-playground-outdoor",
+      "key": "Q317",
       "name": "Tall Oak Playground",
       "address": "64-45 218 STREET",
       "neighborhood": "Queens",
@@ -21049,6 +21682,7 @@
     },
     {
       "id": "nyc-tanahey-playground-outdoor",
+      "key": "M206",
       "name": "Tanahey Playground",
       "address": "312 WATER STREET",
       "neighborhood": "Manhattan",
@@ -21082,6 +21716,7 @@
     },
     {
       "id": "nyc-tecumseh-playground-outdoor",
+      "key": "M219",
       "name": "Tecumseh Playground",
       "address": "361 AMSTERDAM AVENUE",
       "neighborhood": "Manhattan",
@@ -21116,6 +21751,7 @@
     },
     {
       "id": "nyc-telephone-playground-outdoor",
+      "key": "Q349",
       "name": "Telephone Playground",
       "address": "75-25 BELL BOULEVARD",
       "neighborhood": "Queens",
@@ -21141,6 +21777,7 @@
     },
     {
       "id": "nyc-ten-eyck-playground-outdoor",
+      "key": "B311",
       "name": "Ten Eyck Playground",
       "address": "242 SCHOLES STREET",
       "neighborhood": "Brooklyn",
@@ -21166,6 +21803,7 @@
     },
     {
       "id": "nyc-terrace-playground-outdoor",
+      "key": "R069",
       "name": "Terrace Playground",
       "address": "60 FOOTE AVENUE",
       "neighborhood": "Staten Island",
@@ -21192,6 +21830,7 @@
     },
     {
       "id": "nyc-the-big-park-outdoor",
+      "key": "R068",
       "name": "The Big Park",
       "address": "110 CONTINENTAL PLACE",
       "neighborhood": "Staten Island",
@@ -21216,6 +21855,7 @@
     },
     {
       "id": "nyc-the-painter-s-playground-outdoor",
+      "key": "Q306",
       "name": "The Painter's Playground",
       "address": "65-71 ELLWELL CRESCENT",
       "neighborhood": "Queens",
@@ -21241,6 +21881,7 @@
     },
     {
       "id": "nyc-the-pearly-gates-outdoor",
+      "key": "X170",
       "name": "The Pearly Gates",
       "address": "2470 TRATMAN AVENUE",
       "neighborhood": "Bronx",
@@ -21267,6 +21908,7 @@
     },
     {
       "id": "nyc-thomas-boyland-park-outdoor",
+      "key": "B381",
       "name": "Thomas Boyland Park",
       "address": "16 FURMAN AVENUE",
       "neighborhood": "Brooklyn",
@@ -21300,6 +21942,7 @@
     },
     {
       "id": "nyc-thomas-greene-playground-outdoor",
+      "key": "B145",
       "name": "Thomas Greene Playground",
       "address": "225 NEVINS STREET",
       "neighborhood": "Brooklyn",
@@ -21326,6 +21969,7 @@
     },
     {
       "id": "nyc-thomas-jefferson-park-outdoor",
+      "key": "M047",
       "name": "Thomas Jefferson Park",
       "address": "2158 1 AVENUE",
       "neighborhood": "Manhattan",
@@ -21379,6 +22023,7 @@
     },
     {
       "id": "nyc-tiffany-playground-outdoor",
+      "key": "X190",
       "name": "Tiffany Playground",
       "address": "1050 TIFFANY STREET",
       "neighborhood": "Bronx",
@@ -21405,6 +22050,7 @@
     },
     {
       "id": "nyc-tiger-playground-outdoor",
+      "key": "B307",
       "name": "Tiger Playground",
       "address": "116 ELDERT STREET",
       "neighborhood": "Brooklyn",
@@ -21440,6 +22086,7 @@
     },
     {
       "id": "nyc-tilden-playground-outdoor",
+      "key": "B234",
       "name": "Tilden Playground",
       "address": "4802 TILDEN AVENUE",
       "neighborhood": "Brooklyn",
@@ -21480,6 +22127,7 @@
     },
     {
       "id": "nyc-tompkins-square-park-outdoor",
+      "key": "M088",
       "name": "Tompkins Square Park",
       "address": "144 AVENUE A",
       "neighborhood": "Manhattan",
@@ -21516,6 +22164,7 @@
     },
     {
       "id": "nyc-torsney-playground-outdoor",
+      "key": "Q340",
       "name": "Torsney Playground",
       "address": "41-15 SKILLMAN AVENUE",
       "neighborhood": "Queens",
@@ -21540,6 +22189,7 @@
     },
     {
       "id": "nyc-travers-park-outdoor",
+      "key": "Q303",
       "name": "Travers Park",
       "address": "33-16 78 STREET",
       "neighborhood": "Queens",
@@ -21565,6 +22215,7 @@
     },
     {
       "id": "nyc-triborough-bridge-playground-b-outdoor",
+      "key": "Q066B",
       "name": "Triborough Bridge Playground B",
       "address": "Hoyt Ave. bet. 21 St. and 23 St.",
       "neighborhood": "Queens",
@@ -21600,6 +22251,7 @@
     },
     {
       "id": "nyc-tudor-park-outdoor",
+      "key": "Q094",
       "name": "Tudor Park",
       "address": "N. Conduit Ave., 133 Ave. bet. 80 St. and 88 St.",
       "neighborhood": "Queens",
@@ -21645,6 +22297,7 @@
     },
     {
       "id": "nyc-twenty-four-sycamores-park-outdoor",
+      "key": "M108Q",
       "name": "Twenty-Four Sycamores Park",
       "address": "501 EAST 60 STREET",
       "neighborhood": "Manhattan",
@@ -21671,6 +22324,7 @@
     },
     {
       "id": "nyc-utopia-playground-outdoor",
+      "key": "Q294",
       "name": "Utopia Playground",
       "address": "73 Ave., Jewel Ave. bet. Utopia Pkwy. and 179 St.",
       "neighborhood": "Queens",
@@ -21705,6 +22359,7 @@
     },
     {
       "id": "nyc-van-alst-playground-outdoor",
+      "key": "Q321",
       "name": "Van Alst Playground",
       "address": "14-27 30 AVENUE",
       "neighborhood": "Queens",
@@ -21738,6 +22393,7 @@
     },
     {
       "id": "nyc-van-cortlandt-park-outdoor",
+      "key": "X092",
       "name": "Van Cortlandt Park",
       "address": "3545 JEROME AVENUE",
       "neighborhood": "Bronx",
@@ -21803,6 +22459,7 @@
     },
     {
       "id": "nyc-van-dyke-playground-outdoor",
+      "key": "B249",
       "name": "Van Dyke Playground",
       "address": "603 MOTHER GASTON BLVD",
       "neighborhood": "Brooklyn",
@@ -21829,6 +22486,7 @@
     },
     {
       "id": "nyc-van-voorhees-playground-outdoor",
+      "key": "B050",
       "name": "Van Voorhees Playground",
       "address": "50 COLUMBIA STREET",
       "neighborhood": "Brooklyn",
@@ -21885,6 +22543,7 @@
     },
     {
       "id": "nyc-vesuvio-playground-outdoor",
+      "key": "M069",
       "name": "Vesuvio Playground",
       "address": "85 THOMPSON STREET",
       "neighborhood": "Manhattan",
@@ -21911,6 +22570,7 @@
     },
     {
       "id": "nyc-vidalia-park-outdoor",
+      "key": "X266",
       "name": "Vidalia Park",
       "address": "E. 180 St. bet. Daly Ave. and Vyse Ave.",
       "neighborhood": "Bronx",
@@ -21937,6 +22597,7 @@
     },
     {
       "id": "nyc-vinmont-veteran-park-outdoor",
+      "key": "X152",
       "name": "Vinmont Veteran Park",
       "address": "W. 254 St. bet. Riverdale Ave. and Mosholu Ave.",
       "neighborhood": "Bronx",
@@ -21962,6 +22623,7 @@
     },
     {
       "id": "nyc-vito-locascio-field-outdoor",
+      "key": "Q095",
       "name": "Vito Locascio Field",
       "address": "N. Conduit Ave., 149 Ave., Cross Bay Blvd.",
       "neighborhood": "Queens",
@@ -21987,6 +22649,7 @@
     },
     {
       "id": "nyc-vleigh-playground-outdoor",
+      "key": "Q320",
       "name": "Vleigh Playground",
       "address": "70-35 150 STREET",
       "neighborhood": "Queens",
@@ -22012,6 +22675,7 @@
     },
     {
       "id": "nyc-wagner-houses-pool-outdoor",
+      "key": "M273",
       "name": "Wagner Houses Pool",
       "address": "2435 1 AVENUE",
       "neighborhood": "Manhattan",
@@ -22037,6 +22701,7 @@
     },
     {
       "id": "nyc-wagner-playground-outdoor",
+      "key": "M225",
       "name": "Wagner Playground",
       "address": "2350 2 AVENUE",
       "neighborhood": "Manhattan",
@@ -22070,6 +22735,7 @@
     },
     {
       "id": "nyc-wakefield-playground-outdoor",
+      "key": "X188",
       "name": "Wakefield Playground",
       "address": "4522 CARPENTER AVENUE",
       "neighborhood": "Bronx",
@@ -22096,6 +22762,7 @@
     },
     {
       "id": "nyc-wald-playground-outdoor",
+      "key": "M201",
       "name": "Wald Playground",
       "address": "E. Houston St. and FDR Dr.",
       "neighborhood": "Manhattan",
@@ -22125,6 +22792,7 @@
     },
     {
       "id": "nyc-walker-park-outdoor",
+      "key": "R015",
       "name": "Walker Park",
       "address": "88 DELAFIELD PLACE",
       "neighborhood": "Staten Island",
@@ -22172,6 +22840,7 @@
     },
     {
       "id": "nyc-walter-gladwin-park-outdoor",
+      "key": "X010A",
       "name": "Walter Gladwin Park",
       "address": "530 EAST TREMONT AVENUE",
       "neighborhood": "Bronx",
@@ -22196,6 +22865,7 @@
     },
     {
       "id": "nyc-walter-ward-playground-outdoor",
+      "key": "Q421",
       "name": "Walter Ward Playground",
       "address": "159-15 88 STREET",
       "neighborhood": "Queens",
@@ -22221,6 +22891,7 @@
     },
     {
       "id": "nyc-walton-park-outdoor",
+      "key": "X291",
       "name": "Walton Park",
       "address": "2115 WALTON AVENUE",
       "neighborhood": "Bronx",
@@ -22246,6 +22917,7 @@
     },
     {
       "id": "nyc-washington-hall-park-outdoor",
+      "key": "B220",
       "name": "Washington Hall Park",
       "address": "Park Ave. bet. Washington Ave. and Hall St.",
       "neighborhood": "Brooklyn",
@@ -22271,6 +22943,7 @@
     },
     {
       "id": "nyc-washington-market-park-outdoor",
+      "key": "M308",
       "name": "Washington Market Park",
       "address": "304 GREENWICH STREET",
       "neighborhood": "Manhattan",
@@ -22310,6 +22983,7 @@
     },
     {
       "id": "nyc-washington-park-b111-outdoor",
+      "key": "B111",
       "name": "Washington Park",
       "address": "1 4 AVENUE",
       "neighborhood": "Brooklyn",
@@ -22343,6 +23017,7 @@
     },
     {
       "id": "nyc-washington-park-x280-outdoor",
+      "key": "X280",
       "name": "Washington Park",
       "address": "449-465 EAST 183 STREET",
       "neighborhood": "Bronx",
@@ -22368,6 +23043,7 @@
     },
     {
       "id": "nyc-washington-skate-park-outdoor",
+      "key": "B111A",
       "name": "Washington Skate Park",
       "address": "364 5 AVENUE",
       "neighborhood": "Brooklyn",
@@ -22393,6 +23069,7 @@
     },
     {
       "id": "nyc-washington-s-walk-outdoor",
+      "key": "X038",
       "name": "Washington's Walk",
       "address": "2890 SEDGWICK AVENUE",
       "neighborhood": "Bronx",
@@ -22419,6 +23096,7 @@
     },
     {
       "id": "nyc-watson-gleason-playground-outdoor",
+      "key": "X124",
       "name": "Watson Gleason Playground",
       "address": "Gleason Ave., Watson Ave. bet. Noble Ave., and Rosedale Ave.",
       "neighborhood": "Bronx",
@@ -22461,6 +23139,7 @@
     },
     {
       "id": "nyc-wayanda-park-outdoor",
+      "key": "Q082",
       "name": "Wayanda Park",
       "address": "217-40 HOLLIS AVENUE",
       "neighborhood": "Queens",
@@ -22487,6 +23166,7 @@
     },
     {
       "id": "nyc-webster-playground-outdoor",
+      "key": "X174",
       "name": "Webster Playground",
       "address": "400 EAST 188 STREET",
       "neighborhood": "Bronx",
@@ -22513,6 +23193,7 @@
     },
     {
       "id": "nyc-west-186th-street-basketball-court-outdoor",
+      "key": "M304",
       "name": "West 186th Street Basketball Court",
       "address": "556 WEST 186 STREET",
       "neighborhood": "Manhattan",
@@ -22537,6 +23218,7 @@
     },
     {
       "id": "nyc-west-4th-street-courts-outdoor",
+      "key": "M125C",
       "name": "West 4th Street Courts",
       "address": "320 6 AVENUE",
       "neighborhood": "Manhattan",
@@ -22563,6 +23245,7 @@
     },
     {
       "id": "nyc-west-playground-outdoor",
+      "key": "B252",
       "name": "West Playground",
       "address": "2536 WEST STREET",
       "neighborhood": "Brooklyn",
@@ -22605,6 +23288,7 @@
     },
     {
       "id": "nyc-white-playground-outdoor",
+      "key": "M148",
       "name": "White Playground",
       "address": "167 EAST 105 STREET",
       "neighborhood": "Manhattan",
@@ -22630,6 +23314,7 @@
     },
     {
       "id": "nyc-whitestone-playground-outdoor",
+      "key": "Q343",
       "name": "Whitestone Playground",
       "address": "150-20 12 AVENUE",
       "neighborhood": "Queens",
@@ -22664,6 +23349,7 @@
     },
     {
       "id": "nyc-whitey-ford-field-outdoor",
+      "key": "Q215",
       "name": "Whitey Ford Field",
       "address": "1-09 26 AVENUE",
       "neighborhood": "Queens",
@@ -22689,6 +23375,7 @@
     },
     {
       "id": "nyc-willets-point-playground-outdoor",
+      "key": "Q375",
       "name": "Willets Point Playground",
       "address": "16-16 UTOPIA PARKWAY",
       "neighborhood": "Queens",
@@ -22715,6 +23402,7 @@
     },
     {
       "id": "nyc-william-f-passannante-ballfield-outdoor",
+      "key": "M120A",
       "name": "William F. Passannante Ballfield",
       "address": "244 6 AVENUE",
       "neighborhood": "Manhattan",
@@ -22748,6 +23436,7 @@
     },
     {
       "id": "nyc-william-mccray-playground-outdoor",
+      "key": "M110",
       "name": "William McCray Playground",
       "address": "53-41 WEST 138 STREET",
       "neighborhood": "Manhattan",
@@ -22774,6 +23463,7 @@
     },
     {
       "id": "nyc-william-sheridan-playground-outdoor",
+      "key": "B124",
       "name": "William Sheridan Playground",
       "address": "289 BERRY STREET",
       "neighborhood": "Brooklyn",
@@ -22808,6 +23498,7 @@
     },
     {
       "id": "nyc-williamsbridge-oval-outdoor",
+      "key": "X104",
       "name": "Williamsbridge Oval",
       "address": "3324 RESERVOIR OVAL EAST",
       "neighborhood": "Bronx",
@@ -22864,6 +23555,7 @@
     },
     {
       "id": "nyc-willis-playground-outdoor",
+      "key": "X217",
       "name": "Willis Playground",
       "address": "388 EAST 141 STREET",
       "neighborhood": "Bronx",
@@ -22890,6 +23582,7 @@
     },
     {
       "id": "nyc-willoughby-playground-outdoor",
+      "key": "B348",
       "name": "Willoughby Playground",
       "address": "545 VERNON AVENUE",
       "neighborhood": "Brooklyn",
@@ -22924,6 +23617,7 @@
     },
     {
       "id": "nyc-willow-lake-playground-outdoor",
+      "key": "Q348",
       "name": "Willow Lake Playground",
       "address": "71-25 113 STREET",
       "neighborhood": "Queens",
@@ -22949,6 +23643,7 @@
     },
     {
       "id": "nyc-willowbrook-park-outdoor",
+      "key": "R030",
       "name": "Willowbrook Park",
       "address": "1953 RICHMOND AVENUE",
       "neighborhood": "Staten Island",
@@ -22983,6 +23678,7 @@
     },
     {
       "id": "nyc-wilson-playground-outdoor",
+      "key": "B279",
       "name": "Wilson Playground",
       "address": "1128 AVENUE K",
       "neighborhood": "Brooklyn",
@@ -23025,6 +23721,7 @@
     },
     {
       "id": "nyc-wingate-park-outdoor",
+      "key": "B254",
       "name": "Wingate Park",
       "address": "600 KINGSTON AVENUE",
       "neighborhood": "Brooklyn",
@@ -23059,6 +23756,7 @@
     },
     {
       "id": "nyc-winthrop-playground-outdoor",
+      "key": "B267",
       "name": "Winthrop Playground",
       "address": "164 WINTHROP STREET",
       "neighborhood": "Brooklyn",
@@ -23097,6 +23795,7 @@
     },
     {
       "id": "nyc-wolfe-s-pond-park-outdoor",
+      "key": "R031",
       "name": "Wolfe's Pond Park",
       "address": "Holton Ave., Chisolm St., Luten Ave., Arbutus Ave. and Raritan Bay",
       "neighborhood": "Staten Island",
@@ -23135,6 +23834,7 @@
     },
     {
       "id": "nyc-woods-playground-outdoor",
+      "key": "B364",
       "name": "Woods Playground",
       "address": "1616 BERGEN STREET",
       "neighborhood": "Brooklyn",
@@ -23169,6 +23869,7 @@
     },
     {
       "id": "nyc-woodtree-playground-outdoor",
+      "key": "Q332",
       "name": "Woodtree Playground",
       "address": "20 Ave. bet. 37 St. and 38 St.",
       "neighborhood": "Queens",
@@ -23195,6 +23896,7 @@
     },
     {
       "id": "nyc-wright-brothers-playground-outdoor",
+      "key": "M234",
       "name": "Wright Brothers Playground",
       "address": "1921 AMSTERDAM AVENUE",
       "neighborhood": "Manhattan",
@@ -23220,6 +23922,7 @@
     },
     {
       "id": "nyc-yak-playground-outdoor",
+      "key": "B308",
       "name": "Yak Playground",
       "address": "3000 AVENUE X",
       "neighborhood": "Brooklyn",
@@ -23246,6 +23949,7 @@
     },
     {
       "id": "nyc-yellowstone-park-outdoor",
+      "key": "Q425",
       "name": "Yellowstone Park",
       "address": "68-01 YELLOWSTONE BLVD",
       "neighborhood": "Queens",
@@ -23271,6 +23975,7 @@
     },
     {
       "id": "nyc-zimmerman-playground-outdoor",
+      "key": "X087",
       "name": "Zimmerman Playground",
       "address": "650 BRITTON STREET",
       "neighborhood": "Bronx",
@@ -23297,5 +24002,5 @@
       "restrooms": true
     }
   ],
-  "fetchedAt": "2026-08-10T15:55:44.679Z"
+  "fetchedAt": "2026-08-10T20:02:15.283Z"
 }

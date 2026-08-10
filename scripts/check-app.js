@@ -155,6 +155,9 @@ const DATA_FLOORS = [
   ['data/sanbruno-court.js', 'SANBRUNO_COURTS', 1],
   ['data/reservations.js', 'RESERVATIONS', 1],
   ['data/court-directory.js', 'DIRECTORY', 1],
+  // NYC permits + tennis reservations. Loose: how many parks carry a permit
+  // swings hard with the season (leagues in summer, near-empty in February).
+  ['data/cities/nyc/reservations.js', 'NYC_RESERVATIONS', 40],
 ];
 
 const loaded = {}; // file -> module exports, reused by the price gate below

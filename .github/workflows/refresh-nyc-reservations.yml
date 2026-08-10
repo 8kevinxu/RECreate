@@ -1,0 +1,51 @@
+name: Refresh NYC permits & tennis reservations
+
+# NYC occupancy has a different rhythm from SF's, so it gets its own cadence.
+# Field/court permits are issued to leagues WEEKS ahead — they barely move
+# hour to hour — but the snapshot only covers the next 7 days, so the window
+# has to roll forward daily or the far end goes dark. Hence daily, not the
+# 3-hourly cadence refresh-reservations.yml uses for rec.us bookings.
+#
+# The build is ~217 paced requests to nycgovparks.org (one citywide snapshot
+# per 30-minute slot) plus ~7 HTML page loads for the tennis grids. It
+# self-gates: a short or failed scrape keeps the last-good data.
+
+on:
+  schedule:
+    - cron: '20 9 * * *' # daily, 09:20 UTC (~5:20 AM ET — quiet hours for the source)
+  workflow_dispatch: {} # allow manual runs from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    # The sweep paces itself at ~200ms/request, so a normal run is ~5 min;
+    # hard-cap well above that so a hung fetch can't burn the runner.
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Re-scrape NYC permits and tennis availability
+        run: npm run build:nyc-reservations
+
+      - name: Commit refreshed NYC reservations if they changed
+        run: |
+          FILES="data/cities/nyc/reservations.js scripts/cities/nyc-reservations-cache.json"
+          if git diff --quiet -- $FILES; then
+            echo "No NYC reservation changes."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add $FILES
+            git commit -m "chore: refresh NYC permits & tennis availability"
+            git push
+          fi

@@ -195,6 +195,11 @@ function buildCourts(parks, lookupByKey, cfg, amenitySets = {}) {
       for (const s of ORDER) if (p.facts[s]) facts[s] = { ...p.facts[s] };
       const rec = {
         id,
+        // The portal's park-property key (NYC: gispropnum). Emitted so later
+        // builds can join per-facility feeds onto this pin without re-deriving
+        // the id — scripts/build-nyc-reservations.js maps the permit API's
+        // `system` ids back to pins through it.
+        key: p.key,
         name: p.name,
         address: p.address,
         neighborhood: p.neighborhood,
@@ -235,8 +240,13 @@ function buildCourts(parks, lookupByKey, cfg, amenitySets = {}) {
 function render(courts, cfg, generatedAt, scheduleSource) {
   const body = courts
     .map(
+      // `key` is omitted rather than written as `undefined` when absent: a
+      // last-good cache written before this field existed has no key on its
+      // records, and `key: undefined` is valid JS — it would parse, pass the
+      // check gate, and silently break the permit join in
+      // build-nyc-reservations.js. Omitted, that build fails loudly instead.
       (c) => `  {
-    id: ${JSON.stringify(c.id)},
+    id: ${JSON.stringify(c.id)},${c.key ? `\n    key: ${JSON.stringify(c.key)},` : ''}
     name: ${JSON.stringify(c.name)},
     address: ${JSON.stringify(c.address)},
     neighborhood: ${JSON.stringify(c.neighborhood)},
