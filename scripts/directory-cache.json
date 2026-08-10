@@ -107,7 +107,7 @@
         "lights": false,
         "restrooms": false,
         "nets": "Bring your own",
-        "desc": "New dual lined courts at Buena Vista Park located in the center of San Francisco, between the Panhandle and Randall Museum hidden among the trees up from Haight Street. These 4 courts are all painted on a single tennis court, Court #1"
+        "desc": "Dual lined courts at Buena Vista Park located in the center of San Francisco, between the Panhandle and Randall Museum hidden among the trees up from Haight Street. These 4 courts are all painted on a single tennis court, Court #1"
       }
     },
     "cabrillo-playground-outdoor": {
@@ -238,7 +238,7 @@
         "lights": true,
         "restrooms": true,
         "nets": "Bring your own",
-        "desc": "George Christopher Playground is part of a ballfield complex behind the shopping Center on the top of Glen Park Canyon. The tennis court was resurfaced and multi-lined with 2 pickleball courts. This location is not on Spotery - first come first serve. Must bring net & balls."
+        "desc": "George Christopher Playground is part of a ballfield complex behind the shopping Center on the top of Glen Park Canyon. The tennis court was resurfaced and multi-lined with 2 pickleball courts. Must bring net & balls."
       }
     },
     "glen-canyon-park-outdoor": {
@@ -841,7 +841,7 @@
         "lights": false,
         "restrooms": true,
         "nets": "Provided (2 rolling nets)",
-        "desc": "Richmond Playground in the Outer Richmond neighborhood has been recently resurfaced with play areas, a basketball court and one tennis court which is multi-lined for pickleball. It is unattended and has a bathroom on the property."
+        "desc": "Richmond Playground in the Outer Richmond neighborhood has been resurfaced with play areas, a basketball court and one tennis court which is multi-lined for pickleball. It is unattended and has a bathroom on the property."
       }
     },
     "rochambeau-playground-outdoor": {
@@ -1088,5 +1088,5 @@
       }
     }
   },
-  "fetchedAt": "2026-08-10T23:15:22.893Z"
+  "fetchedAt": "2026-08-10T23:23:53.340Z"
 }

@@ -501,6 +501,38 @@ function pbsfSections(html) {
   return sections;
 }
 
+// These pages are edited at wildly different cadences — some were last touched
+// in 2022 — and two kinds of claim in them decay, each needing its own handling.
+//
+// (1) Dead booking systems, scrubbed at ANY age. SFRP retired Spotery for
+// rec.us, so a sentence naming it is simply wrong today, and we were shipping
+// "This location is not on Spotery" onto a live card. Drop the whole sentence:
+// what it conveys (not on Spotery = walk-up only) is already carried, and kept
+// current, by the reservable/walkup counts scraped from SFRP above. Deleting
+// the claim is safer than rewriting it — a stale page is not evidence about
+// which system a court is on now.
+const PBSF_DEAD_SYSTEM_RE = /[^.!?]*\bspotery\b[^.!?]*(?:[.!?]\s*|$)/gi;
+
+// (2) Recency claims, scrubbed only once the page is old. "New courts",
+// "recently resurfaced" were true when written and quietly stopped being so.
+// Strip just the temporal qualifier and keep the fact it modifies — the courts
+// described are still there, they're only no longer new.
+const PBSF_STALE_YEARS = 2;
+const PBSF_RECENCY_RES = [/^new\s+(?=\w)/i, /\b(recently|newly|brand[- ]new)\s+(?=\w)/gi];
+
+function pbsfFreshen(desc, modified) {
+  let out = desc.replace(PBSF_DEAD_SYSTEM_RE, '').trim();
+  const years = (Date.now() - Date.parse(modified)) / 31557600000;
+  if (years >= PBSF_STALE_YEARS) {
+    for (const re of PBSF_RECENCY_RES) out = out.replace(re, '');
+    out = out.charAt(0).toUpperCase() + out.slice(1);
+  }
+  // Removing a mid-paragraph sentence takes the space that followed the previous
+  // one with it ("…2 pickleball courts.Must bring net"). Only re-space before a
+  // capital, so a bare domain like "sfrecpark.org" isn't split in half.
+  return out.replace(/([.!?])(?=[A-Z])/g, '$1 ').replace(/\s+/g, ' ').trim();
+}
+
 // Build the card description out of the header region. Two shapes in the wild:
 // most venues write a prose paragraph, but several (Larsen, Parkside, Moscone,
 // Crocker) summarize themselves as a bullet list of short facts instead, and
@@ -595,10 +627,16 @@ async function pbsfEnrich(out) {
     const post = posts.get(slug);
     if (!entry || !post) continue;
     const sections = pbsfSections(post.content.rendered);
-    const desc = pbsfDesc(sections) || PBSF_DESC_FALLBACK[slug];
-    if (desc) {
-      entry.desc = clampDesc(desc);
-      added++;
+    const raw = pbsfDesc(sections) || PBSF_DESC_FALLBACK[slug];
+    if (raw) {
+      const desc = pbsfFreshen(raw, post.modified);
+      if (desc !== raw) {
+        console.log(`  ✂ pickleballsf ${slug} (${post.modified.slice(0, 10)}): scrubbed a stale claim`);
+      }
+      if (desc) {
+        entry.desc = clampDesc(desc);
+        added++;
+      }
     }
     // Advisory cross-reference: surface their schedule text beside ours so a
     // human running the build can spot drift — SFRP data is not overwritten.
