@@ -52,11 +52,13 @@ Three layers fit together, each with a clear boundary:
 │                  Supabase-or-local seam (supabase may be null).   │
 ├─────────────────────────────────────────────────────────────────┤
 │ 3. data/ + scripts/   generated, self-refreshing datasets         │
-│                       (courts, classes, pools, reservations)      │
+│                       (courts, classes, pools, occupancy)         │
+│                       SF at data/*, other metros at data/cities/  │
 └─────────────────────────────────────────────────────────────────┘
         │                        │                         │
-   Supabase (RLS)         rec.us / ActiveNet         sfrecpark / DataSF
-   accounts + social      live availability          scraped at build time
+   Supabase (RLS)         rec.us / ActiveNet         sfrecpark · DataSF
+   accounts + social      live availability          nycgovparks · NYC Open Data
+                                                     scraped at build time, per city
 
         ╎ optional sidecar, off unless self-hosted (§7)
    chatbot/  ◀── export-chatbot-data.js ── the same data/ snapshots
@@ -108,10 +110,13 @@ injection surface.
 
 ### Sports vs. facility views
 `lib/sports.js` defines the **playable** sports (`SPORTS`: basketball, volleyball,
-ping pong, badminton, pickleball, tennis, soccer, baseball, **swimming**) that you
-can plan runs / post signals / favorite. Swimming is a full sport rather than a
-tab: `lib/poolCourts.js` shapes the 9 pools into `swimming` court records whose
-open-now comes from their public-swim sessions.
+ping pong, badminton, pickleball, tennis, soccer, baseball, **swimming**,
+**handball**) that you can plan runs / post signals / favorite. Swimming is a full
+sport rather than a tab: `lib/poolCourts.js` shapes **every city's** pools (SF's 9
++ NYC's 92) into `swimming` court records whose open-now comes from their
+public-swim sessions. Handball is NYC-only — 1,853 courts there, more than
+basketball, and effectively nonexistent in SF — which costs SF nothing because
+filters and landing pages self-hide where no record qualifies.
 It also exports `WEIGHT_ROOM`, `GOLF`, and `MAP_SPORTS` (`SPORTS` + both): each is
 a *facility view* — the **weight room** spans rec-center weight rooms plus DataSF
 outdoor fitness courts, scraped into `dropins.weightroom` like a sport; **golf** is
@@ -165,6 +170,24 @@ rec.us location and recomputes per-slot booked% with the same math as the build
 script. Web can't reach rec.us (CORS) and keeps the snapshot. The card labels
 freshness ("Live from rec.us" vs "as of M/D") and only asserts a hard "Fully
 booked" when the reading is live or the snapshot is <6h old.
+
+**NYC feeds the same `reserved` contract from two unrelated systems**
+(`data/cities/nyc/reservations.js`), so one render path serves both cities — the
+reservation UI keys off a court *having* `reserved`, not off a city feature flag.
+An entry's `kind` distinguishes them, and the distinction is the whole point:
+
+- `permit` — NYC Parks issues season permits to leagues, so the court is simply
+  **taken**; you cannot book it. It gets its own vocabulary (`court.permitted*`),
+  because telling someone to go reserve a permitted court would be wrong.
+- `reserve` — the 8 tennis sites that really do take bookings.
+
+Two shape differences follow from the source. Permit coverage is **sparse**, so
+entries carry a `window`: inside it a missing slot is a genuine zero, outside it
+is no data. And the payload is **run-length encoded** (`runs: [[start, end,
+taken]]`), expanded by `data/cities/index.js` — permits are contiguous by nature,
+so 37.8k slot keys / 921 KB of bundled JS become 5.3k runs / ~157 KB, losslessly.
+Denominators come from the GIS court count for both halves, so the reading and
+the card's court-count chip can't contradict each other.
 
 ---
 
@@ -224,6 +247,9 @@ The `data/*.js` datasets are **generated — never hand-edited**. Each
 | `cities/nyc/outdoor-courts.js` | NYC Open Data (Socrata) | ~700 park pins via the config-driven `socrata-outdoor.js` adapter: sport flags, facility facts (lights/accessible/surface), amenity joins (water/restrooms), tennis permit reservable, sport attributes (full/half court, turf/grass, regulation pitch, adult field) |
 | `cities/nyc/indoor-courts.js` | nycgovparks.org | rec-center weekly open-gym schedules (open-gym vs class classified by rules + Claude fallback) |
 | `cities/nyc/classes.js` | nycgovparks events RSS + PerfectMind | free NYC Parks programs with real openings, full descriptions, multi-tag categories/themes, borough |
+| `cities/nyc/reservations.js` | nycgovparks permit API + tennis pages | citywide field/court **permits** (one request returns every unavailable facility, so a 30-min sweep of 7 days is ~217 calls total) + the 8 online tennis grids; also carries the real **dusk** and floodlight times the hours model uses |
+| `cities/nyc/directory.js` | NYC Parks `bigapps` feeds + nycpickleball.com | tennis surface/phone/notes, the **official pickleball page** (the only pass that may add a sport to a pin), and community colour (nets/BYON, open play, Slack/TeamReach) |
+| `cities/nyc/pools.js` | NYC Parks pools pages + rec-center schedules | 79 free outdoor (one citywide schedule, season-aware) + 13 indoor weekly grids |
 
 **Resilience pattern** (shared by every script via `scripts/lib/courts-common.js`):
 each source falls back **live → cache (`scripts/*-cache.json`) → curated**, with a
@@ -231,10 +257,31 @@ validation gate that aborts the build (keeping old data) if too few records
 scrape — so an upstream redesign fails loudly instead of publishing empty data.
 
 **Multi-city:** `data/cities/index.js` aggregates the per-city modules into
-`CITY_COURTS` / `CITY_CLASSES`, merged into the app by `lib/useCourts.js` /
-`App.js` and scoped to the active city (+ borough) from `lib/cities.js`. Records
-carry a `city` field; SF ids are unchanged. Adding a Socrata-portal city is
-config-only (`scripts/cities/<id>.js`); see `CLAUDE.md` → *Multi-city*.
+`CITY_COURTS` / `CITY_CLASSES` / `CITY_RESERVATIONS`, merged into the app by
+`lib/useCourts.js` / `App.js` and scoped to the active city (+ borough) from
+`lib/cities.js`. Records carry a `city` field; SF ids are unchanged. Adding a
+Socrata-portal city is config-only (`scripts/cities/<id>.js`); see `CLAUDE.md` →
+*Multi-city*.
+
+That aggregator is **not just a re-export** — it's where per-city data becomes
+uniform records, so the app never learns a city's quirks: it expands the compact
+`sports` array into `{schedule, dropins}`, applies NYC's per-weekday **dusk**
+close and per-sport **floodlight** extensions, expands run-length-encoded
+occupancy back into slot maps, and unions in sports the official directory adds.
+
+**The join that makes the NYC builds cheap:** `socrata-outdoor.js` emits each
+pin's park key (`key` = `gispropnum`), and every later NYC source keys off it —
+the permit API's `system` ids and the `bigapps` feeds' `Prop_ID` are both that
+same key, so those joins are exact rather than name- or distance-matched.
+
+**Where a source is allowed to be truth.** Official sources may correct the data
+(NYC Parks' pickleball page adds a sport to a pin, because pickleball is lined
+onto tennis and handball slabs that GIS files under the original sport).
+Community sources may only **colour** what an official source already
+established, and their times never reach `dropins` — organized open play is
+players agreeing to meet, not posted hours. Where two official sources disagree
+(court counts differ on ~20% of parks), one is picked as canonical and the
+difference is **logged**, never published as a second number.
 
 **Class-title translation:** `build-classes.js` translates *new* distinct titles
 to zh/es via Claude Haiku when `ANTHROPIC_API_KEY` is set, caching them in

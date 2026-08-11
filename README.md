@@ -9,10 +9,11 @@ just the boroughs you care about. Everything below describes SF, the most fully
 built-out city; see **[Cities](#cities-sf--nyc)** for what NYC adds and how the
 multi-city architecture works.
 
-- **🏀 Map** — every rec-center gym, outdoor court, and field, across **8 sports**
+- **🏀 Map** — every rec-center gym, outdoor court, and field, across **10 sports**
   (basketball, volleyball, ping pong, badminton, pickleball, tennis, soccer,
-  baseball) plus a **weight room** view (rec-center weight rooms + outdoor fitness
-  courts) and a **⛳ golf** view (all 6 SFRPD courses with holes/par/yardage, green
+  baseball, swimming, and **handball** — NYC's biggest court sport, which SF
+  doesn't have) plus a **weight room** view (rec-center weight rooms + outdoor
+  fitness courts) and a **⛳ golf** view (all 6 SFRPD courses with holes/par/yardage, green
   fees, 9/18-hole & beginner filters, and tee-time booking links), with weekly
   **open-gym schedules**, **"open now"** filtering, live
   **crowd check-ins**, and tennis/
@@ -57,17 +58,39 @@ RECreate covers **two metros**, with an architecture built to add more.
 - **San Francisco** — the full product: indoor gyms + outdoor courts/fields,
   open-gym schedules, ActiveNet classes, swimming pools, tennis/pickleball
   reservation occupancy, court directories, and golf.
-- **New York City** — courts-first, and growing fast:
-  - **~700 park pins** (basketball, tennis, volleyball, pickleball, soccer,
-    baseball) from NYC Open Data, plus **~29 rec centers** with real indoor
-    open-gym schedules scraped from nycgovparks.org.
+- **New York City** — near-parity with SF:
+  - **~736 park pins** (basketball, tennis, volleyball, pickleball,
+    **handball**, soccer, baseball) from NYC Open Data, plus **~29 rec
+    centers** with real indoor open-gym schedules scraped from nycgovparks.org.
+  - **Handball** — NYC's biggest court sport, 1,853 courts across 484 parks,
+    more than basketball. Near-unknown outside the northeast, so it's a
+    NYC-only sport and its filters/pages never appear for SF.
+  - **How busy it is right now.** NYC Parks issues season permits to leagues,
+    so a court can simply be *taken* — the card says "1 of 14 courts permitted
+    right now" rather than pretending you could book it. The 8 tennis sites
+    that *do* take online reservations show real availability, counted against
+    every court at the park so walk-on courts aren't invisible.
+  - **Real hours, not a made-up window.** Outdoor courts run 8 a.m. **to
+    dusk** (NYC Parks' own wording), refreshed daily — a fixed 8 p.m. close was
+    wrong by up to 3 hours either way across the year. Floodlit facilities run
+    later, **per sport**: a park's lit soccer pitch says nothing about its
+    unlit basketball court.
+  - **92 pools** — 79 free outdoor (11 a.m.–7 p.m. with the 3–4 p.m. cleaning
+    break, season-aware) and 13 year-round rec-center indoor pools with their
+    real weekly schedules. A closed pool shows NYC Parks' own reason.
   - **Amenity filters** from the facilities dataset: lights, ADA-accessible,
     **restrooms**, **drinking water**, plus **sport-specific** ones — tennis
     **clay court**, soccer/baseball **turf vs grass**, soccer **full-size
     pitch**, baseball **adult field**, basketball **full vs half court**.
-  - **Tennis permit booking** — NYC's citywide reservation/permit system
-    (there's no per-court availability API like SF's rec.us), shown as a
-    Reserve/permit block instead of a fake "% booked".
+  - **Tennis detail** from NYC Parks' own directory: the real surface (Clay,
+    Fast Dry, Har-Tru — the GIS data just says "Asphalt"), a phone number, and
+    NYC Parks' notes on bubble seasons and what a permit covers.
+  - **Pickleball, properly.** It's usually lined onto tennis and handball
+    slabs, so the GIS data files those courts under the original sport —
+    it knew 11 locations where NYC Parks lists 24. The official page fills
+    that in, and nycpickleball.com adds what no official source has: whether
+    **nets are provided or you bring your own**, and the Slack/TeamReach group
+    that organizes each venue.
   - **Free NYC Parks programs** in the Classes tab (Shape Up NYC, rec-center
     programming, nature walks, tours, cleanups…) with real openings + full
     descriptions pulled from PerfectMind/registration pages, a **multi-tag**
@@ -87,8 +110,16 @@ when a city has no matching data**, so NYC-only filters never show for SF and
 vice-versa. NYC's outdoor courts come through a **config-driven Socrata
 adapter** (`scripts/lib/socrata-outdoor.js` + `scripts/cities/nyc.js`) — adding
 another Socrata-portal city (e.g. Chicago) is config-only; an ArcGIS city
-(Seattle/LA) needs a new adapter. See `CLAUDE.md` → *Multi-city* for the full
-contributor notes.
+(Seattle/LA) needs a new adapter.
+
+Everything NYC-specific beyond that adapter is a separate build that joins back
+to those pins through the park key the adapter now emits (`key` = the city's
+`gispropnum`), so no name or distance matching is involved:
+`build-nyc-reservations` (permits + tennis + dusk + floodlights),
+`build-nyc-directory` (NYC Parks' own facility directories + the pickleball
+page + community colour) and `build-nyc-pools`. Occupancy lands in the **same
+`reserved` contract** SF's rec.us snapshot uses, so one render path serves both
+cities. See `CLAUDE.md` → *Multi-city* for the full contributor notes.
 
 ## Run it
 
@@ -137,9 +168,12 @@ sport / opens ⭐ Favorites. It's shown once and then never again (persisted und
 | `data/manual-courts.js` | **Hand-curated** fully-static courts; merged in at runtime, never regenerated |
 | `data/sanbruno-court.js` | **Generated** San Bruno RAC court (drop-in hours from a city Google Sheet) |
 | `lib/cities.js` | **City registry** (center/zoom/tz/bbox/feature-flags/boroughs) + `nearestCity` / `inSubregions` |
-| `data/cities/index.js` · `data/cities/<id>/*` | **Per-city generated data** (NYC outdoor/indoor courts + classes) + the aggregator that merges them |
+| `data/cities/index.js` · `data/cities/<id>/*` | **Per-city generated data** (NYC outdoor/indoor courts, classes, occupancy, directory, pools) + the aggregator that merges them — it also applies NYC's dusk/floodlight hours, expands run-length-encoded occupancy, and unions in sports the official directory adds |
 | `scripts/lib/socrata-outdoor.js` · `scripts/cities/nyc.js` | **Config-driven Socrata adapter** + NYC config (run via `scripts/build-city-outdoor.js`) |
 | `scripts/build-nyc-indoor.js` · `scripts/build-nyc-classes.js` | NYC rec-center schedules + NYC Parks programs feed builders |
+| `scripts/build-nyc-reservations.js` | NYC occupancy: citywide **field/court permits** + the 8 online **tennis** sites, plus the real **dusk** and floodlight times the hours model uses |
+| `scripts/build-nyc-directory.js` | NYC Parks' own facility directories (tennis surface/phone/notes), the **official pickleball page** (the one source allowed to add a sport to a pin), and **nycpickleball.com** community colour (nets/BYON, open play, Slack/TeamReach) |
+| `scripts/build-nyc-pools.js` | NYC's 79 free outdoor + 13 indoor rec-center pools, season-aware |
 | `scripts/lib/courts-common.js` · `scripts/lib/translate-titles.js` | Shared builder helpers (cache/slug/time; Claude title translation) |
 | `scripts/build-indoor-courts.js` | Builds the SF data files; scrapes live schedules |
 | `scripts/build-sanbruno-court.js` | Builds the San Bruno court; parses the city gym Google Sheet |
@@ -169,7 +203,7 @@ sport / opens ⭐ Favorites. It's shown once and then never again (persisted und
 | `components/ClassDetail.js` | Class/activity detail sheet (schedule, location, cost, ages, availability + Register on ActiveNet) |
 | `data/classes.js` · `scripts/build-classes.js` | **Generated** classes catalog + its ActiveNet scraper (with build-time title translation) |
 | `lib/classesLive.js` | Runtime ActiveNet fetch for "right now" class openings (native only; CORS-blocked on web) |
-| `lib/poolCourts.js` · `components/PoolDetail.js` | Pools as **swimming courts** on the map: `poolCourts` shapes `data/pools.js` into court records (open-now from public-swim sessions), `PoolDetail` renders the schedule/fees/PDF block in the court card |
+| `lib/poolCourts.js` · `components/PoolDetail.js` | Pools as **swimming courts** on the map: `poolCourts` shapes **each city's** pools (SF `data/pools.js` + NYC `data/cities/nyc/pools.js`) into court records (open-now from public-swim sessions), `PoolDetail` renders the schedule/fees/PDF block in the court card. Fees travel on the pool record, so SF's per-visit prices and NYC's free/membership model both render |
 | `data/pools.js` · `scripts/build-pools.js` | **Generated** pools + schedules parsed from seasonal PDFs (`pdfjs-dist`) |
 | `components/SettingsScreen.js` | Settings sheet — language switch (en/zh/es), Legal & Support links, activity-sharing toggle, delete account |
 | `docs/privacy-nutrition-label.md` | Reconciles the Privacy Policy with the App Store Connect privacy label (2.1 reference) |
@@ -330,6 +364,20 @@ The schedules are **seasonal**, so they're refreshed automatically:
   **validation gate** aborts the run (leaving the old data in place) if fewer
   than `MIN_LIVE_OK` centers scrape — so a site redesign **fails the Action and
   notifies you** instead of silently publishing empty schedules.
+
+Four crons run on cadences matched to how fast each source actually moves:
+
+| Workflow | Every | Covers |
+| --- | --- | --- |
+| `refresh-schedules.yml` | weekly | `build:data` — all SF + NYC builders |
+| `refresh-classes.yml` | 6h | SF **and** NYC class openings |
+| `refresh-reservations.yml` | 3h | rec.us bookings (they change hourly) |
+| `refresh-nyc-reservations.yml` | daily | NYC permits + tennis + dusk |
+
+NYC permits are issued to leagues **weeks** ahead, so they barely move hour to
+hour — but the snapshot only covers the next 7 days, so the window has to roll
+forward daily or its far end goes dark. Adding a generated file? **Add it and its
+cache to the workflow's `FILES` list**, or the cron will run and never commit it.
 
 ### Reviews
 
@@ -703,8 +751,8 @@ checked, and tokens aren't pruned when a device unregisters at the OS level
 ## 🏊 Swimming pools
 
 Swimming is a **sport on the map** (not a separate tab): SF's **9 public pools**
-show as pins in the Swimming view, judged "open now" for their public-swim
-sessions like any court. `lib/poolCourts.js` shapes each pool (`data/pools.js`)
+and NYC's **92** show as pins in the Swimming view, judged "open now" for their
+public-swim sessions like any court. `lib/poolCourts.js` shapes each pool (`data/pools.js`)
 into a court record — a `dropins.swimming` week built from the public-swim
 sessions (lap/family/senior/water-exercise/parent-tot, so lessons/camps/rentals
 don't count as "open swim") plus a `pool` block the card renders. Because it's a
@@ -734,6 +782,28 @@ resilience (`scripts/pools-cache.json`). `pdfjs-dist` is a **build-only** depend
 
 > The schedules are machine-parsed from PDFs, so dense multi-lane grids can miss the
 > odd concurrent session — the card always links the official PDF to confirm.
+
+**NYC's 92 pools** (`scripts/build-nyc-pools.js`) reach the same records by a much
+shorter road — no PDF geometry, because NYC publishes its schedules plainly:
+
+- **79 free outdoor pools** share ONE citywide schedule, stated in prose on the
+  pools page: **11 a.m.–7 p.m. daily with a 3–4 p.m. cleaning break**, so two
+  blocks a day, everywhere, free and with no membership. The build parses that
+  sentence rather than hardcoding it.
+- **13 indoor pools** have a real per-facility weekly grid, in the `#Pool-schedule`
+  table on each rec center's schedule page — year-round, rec-center membership.
+- **Season is read, not assumed.** NYC publishes no machine-readable opening date,
+  only a live "Pools are open!… through Labor Day weekend" banner, so the build
+  ships what the site says *now* and records when it checked. Out of season the
+  outdoor pools carry **no sessions at all**, so they read as closed instead of
+  advertising swim hours in February.
+- An indoor pool with an empty grid is **real data, not a broken parse** — 6 of 13
+  are closed for reconstruction, a mechanical failure, or summer lifeguard
+  reassignment. The build lifts the page's own notice onto the card, so you get
+  *"closed for reconstruction"* rather than a blank week.
+
+Fees travel **on the pool record**, so SF's per-visit prices and NYC's
+free-outdoor / membership-indoor model both render from one component.
 
 ## ✨ Assistant (optional)
 
