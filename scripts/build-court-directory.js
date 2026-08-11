@@ -291,16 +291,24 @@ function ourCourts() {
 function matchCourt(facility, sport, courts) {
   const fn = norm(facility);
   if (ALIASES[fn]) return courts.find((c) => c.id === ALIASES[fn]) || null;
-  const pool = courts.filter((c) => c.sports.includes(sport));
+  // Prefer courts already known to offer the sport — that gate disambiguates
+  // parks whose names overlap. But it can't be a hard requirement: a court's
+  // sports come from DataSF, and SFRP's directory is the better authority on
+  // what it runs, so gating on DataSF made SFRP's own pickleball rows for Alta
+  // Plaza, Goldman, States Street and Willie "Woo Woo" Wong unmatchable — the
+  // directory said pickleball, we discarded it for not being in DataSF first.
+  // Fall back to the full list only when the gated pass finds nothing, so no
+  // existing match can change.
+  return pickBest(fn, courts.filter((c) => c.sports.includes(sport))) || pickBest(fn, courts);
+}
+
+function pickBest(fn, pool) {
   let best = null,
     bestScore = Infinity;
   for (const c of pool) {
     if (c.n === fn) return c; // exact
     const contains =
-      c.n === fn ||
-      c.n.startsWith(fn + ' ') ||
-      c.n.endsWith(' ' + fn) ||
-      c.n.includes(' ' + fn + ' ');
+      c.n.startsWith(fn + ' ') || c.n.endsWith(' ' + fn) || c.n.includes(' ' + fn + ' ');
     if (!contains || fn.length < 4) continue;
     const extra = c.n.split(' ').length - fn.split(' ').length; // fewer extra words = closer
     if (extra < bestScore) {
@@ -417,6 +425,10 @@ const PBSF_API = 'https://pickleballsf.com/wp-json/wp/v2/posts';
 const PBSF_VENUES = {
   'buena-vista-park': 'buena-vista-park-outdoor',
   'christopher-playground': 'george-christopher-playground-outdoor',
+  // Reachable only since SFRP's directory rows for these two started matching
+  // (see matchCourt) — before that they had no pickleball entry to attach to.
+  'golden-gate-park-tennis-complex': 'goldman-tennis-center-outdoor',
+  'states-street-playground': 'states-street-playground-outdoor',
   'crocker-amazon': 'crocker-amazon-playground-outdoor',
   'jackson-playground': 'jackson-playground-outdoor',
   'larsen-playground-pb-court-hub': 'carl-larsen-park-outdoor',
@@ -610,7 +622,11 @@ function pbsfDesc(sections) {
     // Drop a lead sentence that references the source page's own layout
     // ("Dedicated hours for pickleball below. …") — meaningless in our card.
     const cleaned = desc
-      .replace(/^[^.!?]*\b(below|above)\b[^.!?]*[.!?]\s*/i, '')
+      // Only when below/above ENDS the sentence ("Dedicated hours for
+      // pickleball below."), which is what a page-layout reference looks like.
+      // Matching it anywhere ate real geography — States Street's "just below
+      // Randall Museum" left the card describing nothing but its parking.
+      .replace(/^[^.!?]*\b(below|above)\s*[.!?]\s*/i, '')
       // ...and a trailing lead-in that ran into a list on the source page
       // ("Open play hours are:") — a dangling colon reads broken in our card.
       .replace(/\s*[^.!?]*:$/, '');

@@ -49,6 +49,14 @@
           "crowded": 2.8,
           "matches": 332
         }
+      },
+      "pickleball": {
+        "total": 2,
+        "reservable": 0,
+        "walkup": 2,
+        "lights": false,
+        "restrooms": false,
+        "nets": "Provided (2 rolling nets)"
       }
     },
     "aptos-playground-outdoor": {
@@ -266,6 +274,15 @@
         "walkup": 0,
         "lights": true,
         "restrooms": true
+      },
+      "pickleball": {
+        "total": 5,
+        "reservable": 5,
+        "walkup": 0,
+        "lights": true,
+        "restrooms": true,
+        "nets": "Provided",
+        "desc": "Five permanent mini-courts for Pickleball. Lighted. Court fees. Open DAILY - from 8AM - 10PM"
       }
     },
     "grattan-playground-outdoor": {
@@ -936,6 +953,15 @@
         "walkup": 2,
         "lights": false,
         "restrooms": false
+      },
+      "pickleball": {
+        "total": 2,
+        "reservable": 0,
+        "walkup": 2,
+        "lights": false,
+        "restrooms": false,
+        "nets": "Bring your own (1 rolling net)",
+        "desc": "Dual lined courts on the volleyball court located in the center of San Francisco, just below Randall Museum. Street parking only - no parking in the driveway, or at the Museum Parking Lot."
       }
     },
     "sigmund-stern-recreation-grove-outdoor": {
@@ -1075,6 +1101,16 @@
         "desc": "Louis Sutter Pickleball Hub is an excellent facility with 6 outdoor dedicated Pickleball courts next to the basketball court below the pond. There are lots of parking spaces around the park, and the primary entrance driveway is at the corner of University and Woolsey Sts."
       }
     },
+    "willie-woo-woo-wong-playground-outdoor": {
+      "pickleball": {
+        "total": 1,
+        "reservable": 0,
+        "walkup": 1,
+        "lights": true,
+        "restrooms": false,
+        "nets": "Bring your own"
+      }
+    },
     "sunset-rec-center-outdoor": {
       "tennis": {
         "wall": true,
@@ -1158,5 +1194,5 @@
       }
     }
   },
-  "fetchedAt": "2026-08-11T04:55:20.771Z"
+  "fetchedAt": "2026-08-11T17:45:32.970Z"
 }
