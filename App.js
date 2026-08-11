@@ -2379,6 +2379,15 @@ function CourtDetail({
           </Text>
         )}
         {!!dir?.note && <Text style={styles.openPlayLine}>ℹ️ {dir.note}</Text>}
+        {/* These hours came from players, not the city — SFRP lists pickleball
+            at these gyms as an amenity but never posts its times. Say so: the
+            source gets the day and start right but its end times run up to an
+            hour off in either direction, so it must not read as posted hours. */}
+        {!!dir?.communitySrc && (
+          <Text style={styles.openPlayLine}>
+            ⚠️ {t('court.communityHours', { src: dir.communitySrc })}
+          </Text>
+        )}
         {!!dir?.desc && <Text style={styles.notes}>{dir.desc}</Text>}
 
         {/* tennissf.com community ratings (tennis entries only) — advisory

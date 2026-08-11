@@ -430,6 +430,35 @@ const PBSF_VENUES = {
   'upper-noe-recreation-center': 'upper-noe-rec-center-outdoor',
 };
 
+// Indoor rec-center pickleball, where pickleballsf is the ONLY source. SFRP
+// lists "Pickleball (Indoor)" as a facility amenity at these gyms but publishes
+// no drop-in row for it, so build-indoor-courts.js correctly scrapes an empty
+// week and the sessions are invisible app-wide (build-classes.js skips map-sport
+// drop-ins too, so they can't surface there either).
+//
+// This is the one place a community schedule is allowed into the data, and only
+// because SFRP is silent — `communityWeek` is merged by lib/useCourts.js ONLY
+// into a sport whose week is empty, so it can never override SFRP.
+//
+// Trust it exactly as far as it has earned. Against the 8 sessions where SFRP
+// also publishes (Glen Park, Eureka Valley, Richmond), this source got the DAY
+// right 8/8 and the START time 7/8, but the END time only 3/8 — missing by -90,
+// -60, -30, -30 and +60 minutes. It is wrong in BOTH directions, so the blocks
+// are tagged 'community' and the card labels them rather than presenting them
+// as posted hours.
+const PBSF_INDOOR = {
+  'hamilton-recreation-center': 'hamilton-recreation-center',
+  'minnie-lovie-ward-rec-center': 'minnie-lovie-ward-recreation-center',
+  // Upper Noe stays listed but is currently rejected by the stale-year guard
+  // below: its own schedule is captioned "(2022)". Left in the map deliberately
+  // so it starts working by itself if they ever refresh the page.
+  'upper-noe-recreation-center': 'upper-noe-recreation-center',
+};
+
+// A schedule the page itself dates ("DROP-IN SESSIONS: (2022)") is not a
+// schedule. Reject anything captioned with a year this far in the past.
+const PBSF_SCHEDULE_MAX_AGE_YEARS = 2;
+
 // Last-resort descriptions, used only if a venue page stops yielding one at all
 // (pbsfDesc now composes bulleted pages from their own bullets, which is where
 // both of these came from). Kept as a safety net against a page redesign.
@@ -595,8 +624,42 @@ function pbsfDesc(sections) {
 const clampDesc = (s) =>
   s.length > 340 ? s.slice(0, 337).replace(/[,;\s]+\S*$/, '') + '…' : s;
 
+// Parse a venue's Play Schedule section into a dropins-style week. Each line is
+// one day-plus-range ("Wednesdays 10:30 AM - 1:30 PM", "Wed evenings 4 PM -
+// 6:30 PM"), so weekFromText handles a line at a time and the results union.
+// Returns { week, staleYear } — staleYear set when the section captions itself
+// with an old year, which disqualifies the whole schedule.
+function pbsfIndoorWeek(sections) {
+  const lines = (sections.schedule || []).map((b) => b.text);
+  const thisYear = new Date().getFullYear();
+  let staleYear = null;
+  for (const line of lines) {
+    const m = line.match(/\((19|20)\d{2}\)/);
+    if (m) {
+      const y = +m[0].slice(1, -1);
+      if (thisYear - y >= PBSF_SCHEDULE_MAX_AGE_YEARS) staleYear = y;
+    }
+  }
+  const week = Array.from({ length: 7 }, () => []);
+  let found = 0;
+  for (const line of lines) {
+    const w = weekFromText(line);
+    if (!w) continue;
+    for (let d = 0; d < 7; d++) {
+      for (const range of w[d]) {
+        if (week[d].some((b) => b[0] === range[0] && b[1] === range[1])) continue;
+        week[d].push([range[0], range[1], 'community']);
+        found++;
+      }
+    }
+  }
+  if (!found) return { week: null, staleYear };
+  for (const d of week) d.sort((a, b) => a[0] - b[0]);
+  return { week, staleYear };
+}
+
 async function pbsfEnrich(out) {
-  const slugs = Object.keys(PBSF_VENUES);
+  const slugs = [...Object.keys(PBSF_VENUES), ...Object.keys(PBSF_INDOOR)];
   let posts;
   try {
     posts = await pbsfFetch(slugs);
@@ -649,6 +712,35 @@ async function pbsfEnrich(out) {
     }
   }
   console.log(`  pickleballsf: descriptions for ${added} courts`);
+
+  // Indoor rec centers: the community schedule is the only one there is.
+  let weeks = 0;
+  for (const [slug, courtId] of Object.entries(PBSF_INDOOR)) {
+    const post = posts.get(slug);
+    if (!post) continue;
+    const sections = pbsfSections(post.content.rendered);
+    const { week, staleYear } = pbsfIndoorWeek(sections);
+    if (staleYear) {
+      console.log(`  ⊘ pickleballsf ${slug}: schedule captioned "(${staleYear})" — too old to publish`);
+      continue;
+    }
+    if (!week) {
+      console.log(`  ⊘ pickleballsf ${slug}: no parseable drop-in times`);
+      continue;
+    }
+    const raw = pbsfDesc(sections);
+    const entry = (out[courtId] = out[courtId] || {});
+    entry.pickleball = {
+      ...(entry.pickleball || {}),
+      communityWeek: week,
+      communitySrc: 'pickleballsf.com',
+      ...(raw ? { desc: clampDesc(pbsfFreshen(raw, post.modified)) } : {}),
+    };
+    const days = week.filter((d) => d.length).length;
+    console.log(`  + pickleballsf indoor week for ${courtId}: ${days} day(s) (page ${post.modified.slice(0, 10)})`);
+    weeks++;
+  }
+  if (weeks) console.log(`  pickleballsf: ${weeks} indoor community schedule(s) SFRP doesn't publish`);
 }
 
 function loadCache() {

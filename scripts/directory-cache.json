@@ -31,7 +31,7 @@
           "overall": 3,
           "surface": 2.2,
           "crowded": 3.5,
-          "matches": 503
+          "matches": 504
         }
       }
     },
@@ -340,7 +340,7 @@
           "overall": 4,
           "surface": 4.3,
           "crowded": 2.3,
-          "matches": 664
+          "matches": 668
         }
       }
     },
@@ -761,7 +761,7 @@
           "overall": 4,
           "surface": 3,
           "crowded": 3.5,
-          "matches": 282
+          "matches": 283
         }
       },
       "pickleball": {
@@ -1086,7 +1086,54 @@
           "matches": 252
         }
       }
+    },
+    "hamilton-recreation-center": {
+      "pickleball": {
+        "communityWeek": [
+          [],
+          [],
+          [],
+          [
+            [
+              630,
+              810,
+              "community"
+            ]
+          ],
+          [],
+          [
+            [
+              630,
+              810,
+              "community"
+            ]
+          ],
+          []
+        ],
+        "communitySrc": "pickleballsf.com"
+      }
+    },
+    "minnie-lovie-ward-recreation-center": {
+      "pickleball": {
+        "communityWeek": [
+          [],
+          [],
+          [],
+          [
+            [
+              960,
+              1110,
+              "community"
+            ]
+          ],
+          [],
+          [],
+          []
+        ],
+        "communitySrc": "pickleballsf.com",
+        "desc": "Reserved for scheduled drop-in play - portable nets provided. Loaner paddles available. Street parking."
+      }
     }
   },
-  "fetchedAt": "2026-08-10T23:23:53.340Z"
+  "fetchedAt": "2026-08-11T04:19:48.022Z"
 }
