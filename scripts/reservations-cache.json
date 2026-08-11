@@ -629,7 +629,7 @@
     "buena-vista-park-outdoor": {
       "tennis": {
         "v": 2,
-        "pct": 87,
+        "pct": 89,
         "courts": 1,
         "slots": {
           "2026-08-11 07:30": 1,
@@ -647,9 +647,9 @@
           "2026-08-11 13:30": 0,
           "2026-08-11 14:00": 0,
           "2026-08-11 14:30": 0,
-          "2026-08-11 15:00": 0,
-          "2026-08-11 15:30": 0,
-          "2026-08-11 16:00": 0,
+          "2026-08-11 15:00": 1,
+          "2026-08-11 15:30": 1,
+          "2026-08-11 16:00": 1,
           "2026-08-11 16:30": 1,
           "2026-08-11 17:00": 1,
           "2026-08-11 17:30": 1,
@@ -866,7 +866,7 @@
       "guidelines": "Welcome to Buena Vista Park Tennis Courts! This site can be found on the Eastern side of the park, and features two lovely courts tucked away in the woods with a gorgeous view east towards downtown.\n\n**Reservation Policy**\n- Any individual may reserve a court, but may not book more than 1 court in a day or 3 courts in a calendar week.\n- Reservation requests are for individual play only. No lessons, team practices, clinics or league matches.\n- Courts left vacant 15 minutes after reservation time are available for walk-up play.\n- Please **[click here](https://sfrecpark.org/1188/Tennis-Pickleball-Reservations)** to view the full San Francisco Rec and Park reservation policy.\n\n**Reservation Overview:**\n\n*Court 1*\n- Court 1 is reservable for Tennis 7 days in advance.\n- Reservations open at 8:00am.\n- Reservations are 90 minutes and start at 7:30am, 9:00am, 10:30am, 12:00pm, 1:30pm, 3:00pm, 4:30pm (6:00pm during Daylight Saving Time).\n- Court 2 is available for walk-up Tennis on a first-come, first-serve basis.\n\n*Courts A, B, C, D* \n- Courts A, B, C, and D are reservable for Pickleball 7 days in advance.\n- Reservations open at 8:00am.\n- Reservations are 90 minutes and start at 7:30am, 9:00am, 10:30am, 12:00pm, 1:30pm, 3:00pm, 4:30pm (6:00pm during Daylight Saving Time). \n\n**Location Features**\n- 2 tennis courts\n- 4 pickleball courts. Players must provide their own nets.",
       "pickleball": {
         "v": 2,
-        "pct": 73,
+        "pct": 74,
         "courts": 4,
         "slots": {
           "2026-08-11 07:30": 0,
@@ -1044,6 +1044,9 @@
           "2026-08-11 08:30": 4,
           "2026-08-11 12:00": 4,
           "2026-08-11 12:30": 4,
+          "2026-08-11 15:00": 4,
+          "2026-08-11 15:30": 4,
+          "2026-08-11 16:00": 4,
           "2026-08-11 16:30": 4,
           "2026-08-11 17:00": 4,
           "2026-08-11 17:30": 4,
@@ -2768,7 +2771,7 @@
     "hamilton-rec-center-outdoor": {
       "tennis": {
         "v": 2,
-        "pct": 57,
+        "pct": 58,
         "courts": 2,
         "slots": {
           "2026-08-11 07:30": 0,
@@ -2786,9 +2789,9 @@
           "2026-08-11 13:30": 1,
           "2026-08-11 14:00": 1,
           "2026-08-11 14:30": 1,
-          "2026-08-11 15:00": 1,
-          "2026-08-11 15:30": 1,
-          "2026-08-11 16:00": 1,
+          "2026-08-11 15:00": 2,
+          "2026-08-11 15:30": 2,
+          "2026-08-11 16:00": 2,
           "2026-08-11 16:30": 2,
           "2026-08-11 17:00": 2,
           "2026-08-11 17:30": 2,
@@ -3665,7 +3668,7 @@
     "j-p-murphy-playground-outdoor": {
       "tennis": {
         "v": 2,
-        "pct": 51,
+        "pct": 52,
         "courts": 3,
         "slots": {
           "2026-08-11 07:30": 0,
@@ -3710,9 +3713,9 @@
           "2026-08-12 15:00": 2,
           "2026-08-12 15:30": 2,
           "2026-08-12 16:00": 2,
-          "2026-08-12 16:30": 2,
-          "2026-08-12 17:00": 2,
-          "2026-08-12 17:30": 2,
+          "2026-08-12 16:30": 3,
+          "2026-08-12 17:00": 3,
+          "2026-08-12 17:30": 3,
           "2026-08-12 18:00": 3,
           "2026-08-12 18:30": 3,
           "2026-08-12 19:00": 3,
@@ -3779,9 +3782,9 @@
           "2026-08-15 13:30": 2,
           "2026-08-15 14:00": 2,
           "2026-08-15 14:30": 2,
-          "2026-08-15 15:00": 1,
-          "2026-08-15 15:30": 1,
-          "2026-08-15 16:00": 1,
+          "2026-08-15 15:00": 2,
+          "2026-08-15 15:30": 2,
+          "2026-08-15 16:00": 2,
           "2026-08-15 16:30": 0,
           "2026-08-15 17:00": 0,
           "2026-08-15 17:30": 0,
@@ -6813,7 +6816,7 @@
     "presidio-wall-playground-outdoor": {
       "tennis": {
         "v": 2,
-        "pct": 61,
+        "pct": 63,
         "courts": 4,
         "slots": {
           "2026-08-11 07:30": 2,
@@ -6843,9 +6846,9 @@
           "2026-08-11 10:30": 2,
           "2026-08-11 11:00": 2,
           "2026-08-11 11:30": 2,
-          "2026-08-11 12:00": 1,
-          "2026-08-11 12:30": 1,
-          "2026-08-11 13:00": 1,
+          "2026-08-11 12:00": 2,
+          "2026-08-11 12:30": 2,
+          "2026-08-11 13:00": 2,
           "2026-08-11 13:30": 0,
           "2026-08-11 14:00": 0,
           "2026-08-11 14:30": 0,
@@ -6960,9 +6963,9 @@
           "2026-08-16 16:30": 1,
           "2026-08-16 17:00": 1,
           "2026-08-16 17:30": 1,
-          "2026-08-16 18:00": 0,
-          "2026-08-16 18:30": 0,
-          "2026-08-16 19:00": 0,
+          "2026-08-16 18:00": 1,
+          "2026-08-16 18:30": 1,
+          "2026-08-16 19:00": 1,
           "2026-08-17 09:00": 0,
           "2026-08-17 09:30": 0,
           "2026-08-17 10:00": 0,
@@ -7446,5 +7449,5 @@
       }
     }
   },
-  "fetchedAt": "2026-08-11T07:17:19.790Z"
+  "fetchedAt": "2026-08-11T10:04:48.176Z"
 }
