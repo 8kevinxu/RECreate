@@ -242,6 +242,10 @@ const AMENITIES = [
     id: 'nets',
     test: (c, s) => /provided/i.test(c.directory?.[s]?.nets || ''),
   },
+  // Loaner paddles — "can I turn up with nothing?", which is the question a
+  // beginner actually has. Only the indoor rec centers lend gear and only
+  // pickleballsf records it, so the chip self-hides in every other view.
+  { id: 'loaner', test: (c, s) => !!c.directory?.[s]?.loaner },
   // Hitting wall (tennis): only tennis directory entries carry `wall`, so the
   // chip self-hides in other sport views.
   { id: 'wall', test: (c, s) => c.directory?.[s]?.wall === true },
@@ -2386,6 +2390,14 @@ function CourtDetail({
         {!!dir?.communitySrc && (
           <Text style={styles.openPlayLine}>
             ⚠️ {t('court.communityHours', { src: dir.communitySrc })}
+          </Text>
+        )}
+        {/* Lends gear, so you can show up empty-handed — no official feed
+            records this, and it's the thing that decides whether a beginner
+            comes at all. */}
+        {!!dir?.loaner && (
+          <Text style={styles.openPlayLine}>
+            🏓 {t(dir.loaner === 'paddles-balls' ? 'court.loanerBoth' : 'court.loanerPaddles')}
           </Text>
         )}
         {!!dir?.desc && <Text style={styles.notes}>{dir.desc}</Text>}

@@ -1110,11 +1110,13 @@
           ],
           []
         ],
-        "communitySrc": "pickleballsf.com"
+        "communitySrc": "pickleballsf.com",
+        "desc": "Hamilton Recreation Center and Playground is a large multi-use facility located at the corner of Geary Bouelvard and Steiner Streets. Two large structures house a community pool and gymnasium. Street parking is metered along Geary and Post, free on most nearby cross streets."
       }
     },
     "minnie-lovie-ward-recreation-center": {
       "pickleball": {
+        "loaner": "paddles",
         "communityWeek": [
           [],
           [],
@@ -1133,7 +1135,28 @@
         "communitySrc": "pickleballsf.com",
         "desc": "Reserved for scheduled drop-in play - portable nets provided. Loaner paddles available. Street parking."
       }
+    },
+    "upper-noe-recreation-center": {
+      "pickleball": {
+        "loaner": "paddles-balls",
+        "desc": "The Rec Center space also houses a full-size gym with four courts painted with pickleball court lines. Portable nets are set up for drop-in play at scheduled times in the gym. Loaner paddles and balls are available."
+      }
+    },
+    "glen-park-recreation-center": {
+      "pickleball": {
+        "loaner": "paddles-balls"
+      }
+    },
+    "eureka-valley-recreation-center": {
+      "pickleball": {
+        "loaner": "paddles-balls"
+      }
+    },
+    "richmond-recreation-center": {
+      "pickleball": {
+        "loaner": "paddles-balls"
+      }
     }
   },
-  "fetchedAt": "2026-08-11T04:19:48.022Z"
+  "fetchedAt": "2026-08-11T04:55:20.771Z"
 }

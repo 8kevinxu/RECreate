@@ -446,14 +446,38 @@ const PBSF_VENUES = {
 // -60, -30, -30 and +60 minutes. It is wrong in BOTH directions, so the blocks
 // are tagged 'community' and the card labels them rather than presenting them
 // as posted hours.
+// `schedule: true` = SFRP publishes no drop-in row for this gym, so the
+// community week is the only one there is. The other three DO have SFRP hours
+// and take facts only — emitting a communityWeek for them would be discarded at
+// runtime anyway, but it would also light up the card's "times reported by…"
+// warning over hours that actually came from the city, which would be a lie.
 const PBSF_INDOOR = {
-  'hamilton-recreation-center': 'hamilton-recreation-center',
-  'minnie-lovie-ward-rec-center': 'minnie-lovie-ward-recreation-center',
+  'hamilton-recreation-center': { id: 'hamilton-recreation-center', schedule: true },
+  'minnie-lovie-ward-rec-center': { id: 'minnie-lovie-ward-recreation-center', schedule: true },
   // Upper Noe stays listed but is currently rejected by the stale-year guard
   // below: its own schedule is captioned "(2022)". Left in the map deliberately
   // so it starts working by itself if they ever refresh the page.
-  'upper-noe-recreation-center': 'upper-noe-recreation-center',
+  'upper-noe-recreation-center': { id: 'upper-noe-recreation-center', schedule: true },
+  'glen-park-rec-center': { id: 'glen-park-recreation-center' },
+  'eureka-valley-recreation-center': { id: 'eureka-valley-recreation-center' },
+  'richmond-recreation-center': { id: 'richmond-recreation-center' },
 };
+
+// Whether a venue lends gear, which decides if a beginner can turn up with
+// nothing — the single most useful fact this source carries, and one no
+// official feed publishes. Five of the six indoor gyms lend paddles; four of
+// those lend balls too. Normalized to an enum rather than kept as scraped
+// English so the card can localize it like everything else.
+function pbsfLoaner(sections) {
+  for (const b of sections.header || []) {
+    for (const sent of b.text.split(/(?<=[.!?])\s+/)) {
+      if (!/\b(loaner|borrow|check ?out)\b/i.test(sent)) continue;
+      if (!/\bpaddles?\b/i.test(sent)) continue;
+      return /\bballs?\b/i.test(sent) ? 'paddles-balls' : 'paddles';
+    }
+  }
+  return null;
+}
 
 // A schedule the page itself dates ("DROP-IN SESSIONS: (2022)") is not a
 // schedule. Reject anything captioned with a year this far in the past.
@@ -611,14 +635,23 @@ function pbsfDesc(sections) {
     // refer to a schedule table our card doesn't show.
     .map((b) => b.text.replace(/\s*\((?:see\s+)?(?:below|above)\)/gi, '').trim())
     .filter((p) => p.length >= 12 && !/^\d+\s+\S+.*\b(st|ave|avenue|blvd|street|way|rd)\b\.?,?\s*/i.test(p));
-  if (!bullets.length) return null;
-  let joined = '';
-  for (const b of bullets) {
-    const piece = /[.!?]$/.test(b) ? b : b + '.';
-    if (joined && (joined + ' ' + piece).length > 300) break;
-    joined = joined ? `${joined} ${piece}` : piece;
+  if (bullets.length) {
+    let joined = '';
+    for (const b of bullets) {
+      const piece = /[.!?]$/.test(b) ? b : b + '.';
+      if (joined && (joined + ' ' + piece).length > 300) break;
+      joined = joined ? `${joined} ${piece}` : piece;
+    }
+    if (joined) return joined;
   }
-  return joined || null;
+
+  // Neither court-specific prose nor bullets: take the longest usable block.
+  // Reached only by pages that describe the venue without naming the sport
+  // (Hamilton opens "…a large multi-use facility…"), which otherwise ended up
+  // with no description at all. Last in the chain so it can't pre-empt the
+  // better two — Moscone's bullets still beat its parking paragraph.
+  const longest = candidates.sort((a, b) => b.length - a.length)[0];
+  return longest ? clampDesc(longest) : null;
 }
 
 const clampDesc = (s) =>
@@ -713,34 +746,47 @@ async function pbsfEnrich(out) {
   }
   console.log(`  pickleballsf: descriptions for ${added} courts`);
 
-  // Indoor rec centers: the community schedule is the only one there is.
+  // Indoor rec centers: facts for all of them, plus a schedule for the ones
+  // where SFRP publishes none.
   let weeks = 0;
-  for (const [slug, courtId] of Object.entries(PBSF_INDOOR)) {
+  let loaners = 0;
+  for (const [slug, { id: courtId, schedule }] of Object.entries(PBSF_INDOOR)) {
     const post = posts.get(slug);
     if (!post) continue;
     const sections = pbsfSections(post.content.rendered);
-    const { week, staleYear } = pbsfIndoorWeek(sections);
-    if (staleYear) {
-      console.log(`  ⊘ pickleballsf ${slug}: schedule captioned "(${staleYear})" — too old to publish`);
-      continue;
+    const facts = {};
+
+    const loaner = pbsfLoaner(sections);
+    if (loaner) {
+      facts.loaner = loaner;
+      loaners++;
     }
-    if (!week) {
-      console.log(`  ⊘ pickleballsf ${slug}: no parseable drop-in times`);
-      continue;
+
+    if (schedule) {
+      const { week, staleYear } = pbsfIndoorWeek(sections);
+      if (staleYear) {
+        console.log(`  ⊘ pickleballsf ${slug}: schedule captioned "(${staleYear})" — too old to publish`);
+      } else if (!week) {
+        console.log(`  ⊘ pickleballsf ${slug}: no parseable drop-in times`);
+      } else {
+        facts.communityWeek = week;
+        facts.communitySrc = 'pickleballsf.com';
+        const days = week.filter((d) => d.length).length;
+        console.log(`  + pickleballsf indoor week for ${courtId}: ${days} day(s) (page ${post.modified.slice(0, 10)})`);
+        weeks++;
+      }
+      // Only these gyms have no description from anywhere else; the other three
+      // already carry SFRP-backed cards.
+      const raw = pbsfDesc(sections);
+      if (raw) facts.desc = clampDesc(pbsfFreshen(raw, post.modified));
     }
-    const raw = pbsfDesc(sections);
+
+    if (!Object.keys(facts).length) continue;
     const entry = (out[courtId] = out[courtId] || {});
-    entry.pickleball = {
-      ...(entry.pickleball || {}),
-      communityWeek: week,
-      communitySrc: 'pickleballsf.com',
-      ...(raw ? { desc: clampDesc(pbsfFreshen(raw, post.modified)) } : {}),
-    };
-    const days = week.filter((d) => d.length).length;
-    console.log(`  + pickleballsf indoor week for ${courtId}: ${days} day(s) (page ${post.modified.slice(0, 10)})`);
-    weeks++;
+    entry.pickleball = { ...(entry.pickleball || {}), ...facts };
   }
   if (weeks) console.log(`  pickleballsf: ${weeks} indoor community schedule(s) SFRP doesn't publish`);
+  if (loaners) console.log(`  pickleballsf: loaner gear at ${loaners} indoor gym(s)`);
 }
 
 function loadCache() {
