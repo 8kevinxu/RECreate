@@ -231,9 +231,13 @@ async function main() {
   });
 
   // ---- 4. Classes -----------------------------------------------------------
-  const { CLASSES, CLASS_CATEGORIES } = await load('data/classes.js');
+  const { CLASS_CATEGORIES } = await load('data/classes.js');
+  // SF = ActiveNet classes + Rec & Park volunteer workparties, merged exactly as
+  // the app merges them, so the assistant answers from the same catalog the user
+  // is looking at.
+  const { SF_CLASSES } = await load('data/sf-classes.js');
   const classes = [
-    ...withCity(CLASSES, 'sf'),
+    ...withCity(SF_CLASSES, 'sf'),
     ...Object.entries(CITY_CLASSES).flatMap(([city, list]) => withCity(list, city)),
   ];
 

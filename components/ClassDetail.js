@@ -41,9 +41,10 @@ function spaceText(t, c) {
   if (n == null) return c.dropIn ? t('classes.lotsSpots') : null;
   if (n <= 0) return t('classes.full');
   if (n <= 5) return t('classes.left', { n });
-  // SF ActiveNet reports big numbers → collapse to "lots"; NYC Parks reports a
-  // real small capacity → show the exact count the user can act on.
-  if (n >= 20 && c.source !== 'nycparks') return t('classes.lotsSpots');
+  // SF ActiveNet reports big numbers → collapse to "lots"; the sourced feeds
+  // (NYC Parks, the SF volunteer calendar) report a real per-session capacity →
+  // show the exact count the user can act on.
+  if (n >= 20 && !c.source) return t('classes.lotsSpots');
   return t('classes.openings', { n });
 }
 
@@ -70,6 +71,11 @@ export default function ClassDetail({ item, onClose }) {
   const spots = spaceText(t, c);
   const dates = formatDateRange(c.start, c.end);
   const regModel = regModelText(t, c);
+  // Volunteer workparties come from SF Rec & Park's own volunteer calendar, NOT
+  // ActiveNet: no ActiveNet account is involved and the generic copy would send
+  // someone to a site their opportunity isn't on. The org running the workparty
+  // is a host, not an instructor.
+  const isVolunteer = c.source === 'sfrpd-volunteer';
 
   return (
     <Modal visible transparent animationType="slide" onRequestClose={onClose}>
@@ -122,7 +128,11 @@ export default function ClassDetail({ item, onClose }) {
               <Row icon="📍" label={t('cls.location')} value={c.location} />
               <Row icon="💵" label={t('cls.cost')} value={c.cost} />
               <Row icon="🎂" label={t('cls.ages')} value={c.ages} />
-              <Row icon="🧑‍🏫" label={t('cls.instructor')} value={c.instructor} />
+              <Row
+                icon={isVolunteer ? '🤝' : '🧑‍🏫'}
+                label={t(isVolunteer ? 'cls.hostedBy' : 'cls.instructor')}
+                value={c.instructor}
+              />
               <Row icon="🎟️" label={t('cls.availability')} value={spots} />
               <Row
                 icon="🔁"
@@ -177,13 +187,21 @@ export default function ClassDetail({ item, onClose }) {
               <Text style={styles.ctaText}>
                 {c.noOnlineReg
                   ? t('cls.viewOnSite')
-                  : t(c.source === 'nycparks' ? 'cls.registerNyc' : 'cls.register')}
+                  : t(
+                      isVolunteer
+                        ? 'cls.signUpVolunteer'
+                        : c.source === 'nycparks'
+                          ? 'cls.registerNyc'
+                          : 'cls.register'
+                    )}
               </Text>
               <Ionicons name="open-outline" size={16} color="#fff" />
             </Pressable>
           )}
           <Text style={styles.note}>
-            {t(c.source === 'nycparks' ? 'cls.nycNote' : 'cls.activeNetNote')}
+            {t(
+              isVolunteer ? 'cls.volunteerNote' : c.source === 'nycparks' ? 'cls.nycNote' : 'cls.activeNetNote'
+            )}
           </Text>
         </View>
       </View>

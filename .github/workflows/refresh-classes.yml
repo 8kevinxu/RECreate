@@ -34,6 +34,13 @@ jobs:
           # Absent → build still succeeds, titles stay English. Cache keeps cost ~0.
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
+      # Volunteer workparties carry a live "still needed" count and a rolling set
+      # of shift dates, so they go stale exactly like enrollments. Self-gates.
+      - name: Re-scrape SF volunteer opportunities
+        run: npm run build:volunteer
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
       # NYC's feed is a rolling ~14-day events window, so it goes stale on the
       # same cadence as ActiveNet enrollments. Self-gates like build:classes.
       - name: Re-scrape NYC Parks programs
@@ -45,7 +52,7 @@ jobs:
         run: |
           # i18n cache only exists once a key-enabled run has translated something,
           # so stage just the files that are present; staging catches new files too.
-          for f in data/classes.js scripts/classes-cache.json scripts/classes-pass2-cache.json scripts/classes-i18n-cache.json data/cities/nyc/classes.js scripts/cities/nyc-classes-cache.json scripts/cities/nyc-classes-cost-cache.json scripts/cities/nyc-classes-desc-cache.json scripts/cities/nyc-classes-i18n-cache.json; do
+          for f in data/classes.js data/volunteer.js scripts/sf-volunteer-cache.json scripts/sf-volunteer-i18n-cache.json scripts/classes-cache.json scripts/classes-pass2-cache.json scripts/classes-i18n-cache.json data/cities/nyc/classes.js scripts/cities/nyc-classes-cache.json scripts/cities/nyc-classes-cost-cache.json scripts/cities/nyc-classes-desc-cache.json scripts/cities/nyc-classes-i18n-cache.json; do
             [ -e "$f" ] && git add "$f"
           done
           if git diff --cached --quiet; then

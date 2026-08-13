@@ -150,6 +150,9 @@ const DATA_FLOORS = [
   // NYC classes are a rolling ~14-day events window — floor loose for seasonal shrink.
   ['data/cities/nyc/classes.js', 'NYC_CLASSES', 100],
   ['data/classes.js', 'CLASSES', 100],
+  // SF volunteer workparties. Loose floor: the calendar genuinely thins out, and
+  // its seasonal non-gardening programs only exist in Oct–Dec.
+  ['data/volunteer.js', 'VOLUNTEER', 8],
   ['data/pools.js', 'POOLS', 5],
   ['data/manual-courts.js', 'MANUAL_COURTS', 1],
   ['data/sanbruno-court.js', 'SANBRUNO_COURTS', 1],

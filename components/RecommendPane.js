@@ -8,7 +8,8 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { PanResponder, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { buildRecommendations } from '../lib/recommend';
-import { CLASS_CATEGORIES, CLASSES } from '../data/classes';
+import { CLASS_CATEGORIES } from '../data/classes';
+import { SF_CLASSES } from '../data/sf-classes';
 import { sportMeta } from '../lib/sports';
 import { fmtClock } from '../lib/datetime';
 import { useI18n, sportLabel } from '../lib/i18n';
@@ -44,7 +45,7 @@ export default function RecommendPane({
   sports = [],
   categories = [],
   age = null,
-  classes = CLASSES, // the active city's class list (SF ActiveNet by default)
+  classes = SF_CLASSES, // the active city's class list (SF: ActiveNet + volunteer, by default)
   onPickCourt,
 }) {
   const { t, lang } = useI18n();

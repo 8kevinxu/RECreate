@@ -18,7 +18,8 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { CLASSES, CLASS_CATEGORIES } from '../data/classes';
+import { CLASS_CATEGORIES } from '../data/classes';
+import { SF_CLASSES } from '../data/sf-classes';
 import { CITY_CLASSES } from '../data/cities';
 import { inSubregions } from '../lib/cities';
 import { haversineMiles, formatDistance } from '../lib/distance';
@@ -115,7 +116,11 @@ function spaceInfo(c) {
   if (n == null) return c.dropIn ? { key: 'classes.lotsSpots', tone: 'good' } : null;
   if (n <= 0) return { key: 'classes.full', tone: 'bad' };
   if (n <= 5) return { key: 'classes.left', n, tone: 'warn' };
-  if (n >= 20) return { key: 'classes.lotsSpots', tone: 'good' };
+  // Only ActiveNet's counts get collapsed to "lots": it reports a whole term's
+  // seat pool, so an exact 40 is noise. NYC Parks and the volunteer calendar
+  // report a real per-session capacity ("28 volunteers still needed"), which is
+  // the number someone acts on — keep it exact.
+  if (n >= 20 && !c.source) return { key: 'classes.lotsSpots', tone: 'good' };
   return { key: 'classes.openings', n, tone: 'good' };
 }
 
@@ -215,7 +220,7 @@ export default function ClassesScreen({ userLocation = null, city = 'sf', subreg
   // react-native-web), so it gets an explicit button instead — see reloadWeb.
   const isWeb = Platform.OS === 'web';
   const catalog = useMemo(
-    () => (isSF ? CLASSES : (CITY_CLASSES[city] || []).filter((c) => inSubregions(c, subregions))),
+    () => (isSF ? SF_CLASSES : (CITY_CLASSES[city] || []).filter((c) => inSubregions(c, subregions))),
     [isSF, city, subregions]
   );
   // Bundled title translation (build-classes.js); falls back to the English name.
@@ -382,11 +387,19 @@ export default function ClassesScreen({ userLocation = null, city = 'sf', subreg
     const q = query.trim().toLowerCase();
     // ActiveNet delists cancelled/ended classes, so a class missing from a *healthy*
     // live catalog fetch is no longer offered — hide it (real-time on native; web
-    // falls back to the baseline). The size guard avoids mass-hiding on a thin fetch.
+    // falls back to the baseline). The size guard avoids mass-hiding on a thin fetch,
+    // and counts only the records the live fetch can actually vouch for: the SF
+    // catalog also carries volunteer workparties (data/volunteer.js, `source` set),
+    // which are not in ActiveNet at all, so measuring against them would drag the
+    // ratio down — and delisting them would hide EVERY ONE of them on native.
+    const fromActiveNet = (c) => !c.source;
     const liveComplete =
-      isSF && liveStatus === 'ok' && live && Object.keys(live).length >= catalog.length * 0.8;
+      isSF &&
+      liveStatus === 'ok' &&
+      live &&
+      Object.keys(live).length >= catalog.filter(fromActiveNet).length * 0.8;
     const filtered = catalog.filter((c) => {
-      if (liveComplete && !live[c.id]) return false;
+      if (liveComplete && fromActiveNet(c) && !live[c.id]) return false;
       // A class matches the selection if ANY chosen category equals its primary
       // `category` OR is one of its secondary `tags` (a philanthropy-tagged event
       // still shows under 'social'). Empty selection = show all categories.

@@ -56,7 +56,11 @@ const { OUTDOOR_COURTS } = loadModule('data/outdoor-courts.js');
 const { MANUAL_COURTS } = loadModule('data/manual-courts.js');
 const { SANBRUNO_COURTS } = loadModule('data/sanbruno-court.js');
 const { POOLS, POOL_FEES } = loadModule('data/pools.js');
-const { CLASSES, CLASS_CATEGORIES } = loadModule('data/classes.js');
+// SF's catalog is ActiveNet + the Rec & Park volunteer workparties, merged the
+// same way the app merges them (data/sf-classes.js) so the prerendered /classes
+// page lists exactly what the app does.
+const { CLASS_CATEGORIES } = loadModule('data/classes.js');
+const { SF_CLASSES } = loadModule('data/sf-classes.js');
 const { DIRECTORY } = loadModule('data/court-directory.js');
 const { RESERVATIONS } = loadModule('data/reservations.js');
 const { SPORTS } = loadModule('lib/sports.js');
@@ -236,7 +240,7 @@ const CITY_CFG = [
     region: 'CA',
     locality: () => 'San Francisco',
     courts: SF_COURTS,
-    classes: CLASSES,
+    classes: SF_CLASSES,
     classSource: 'SF Rec & Parks',
     classesH1: 'Rec center classes in San Francisco',
     attribution: { name: 'SF Recreation & Parks', url: 'https://sfrecpark.org' },

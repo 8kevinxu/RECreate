@@ -200,8 +200,10 @@ sport / opens ⭐ Favorites. It's shown once and then never again (persisted und
 | `components/NearbyList.js` | Nearby courts ranked by distance, with a min-open filter |
 | `components/BottomNav.js` | Four-tab bottom bar (Home / Classes / Social / Profile) |
 | `components/ClassesScreen.js` | **Classes tab** — browse drop-in programs by category, with filters + live openings |
-| `components/ClassDetail.js` | Class/activity detail sheet (schedule, location, cost, ages, availability + Register on ActiveNet) |
+| `components/ClassDetail.js` | Class/activity detail sheet (schedule, location, cost, ages, availability + a source-aware CTA: ActiveNet, NYC Parks, or the SF volunteer calendar) |
 | `data/classes.js` · `scripts/build-classes.js` | **Generated** classes catalog + its ActiveNet scraper (with build-time title translation) |
+| `data/volunteer.js` · `scripts/build-sf-volunteer.js` | **Generated** SF Rec & Park volunteer workparties, from the Salesforce Aura endpoint behind their JS-only calendar (one card per recurring job) |
+| `data/sf-classes.js` | Hand-written aggregator merging the ActiveNet catalog + volunteer workparties into SF's one program list |
 | `lib/classesLive.js` | Runtime ActiveNet fetch for "right now" class openings (native only; CORS-blocked on web) |
 | `lib/poolCourts.js` · `components/PoolDetail.js` | Pools as **swimming courts** on the map: `poolCourts` shapes **each city's** pools (SF `data/pools.js` + NYC `data/cities/nyc/pools.js`) into court records (open-now from public-swim sessions), `PoolDetail` renders the schedule/fees/PDF block in the court card. Fees travel on the pool record, so SF's per-visit prices and NYC's free/membership model both render |
 | `data/pools.js` · `scripts/build-pools.js` | **Generated** pools + schedules parsed from seasonal PDFs (`pdfjs-dist`) |
