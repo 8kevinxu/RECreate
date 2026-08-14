@@ -311,6 +311,22 @@ function travelEta(miles) {
   };
 }
 
+// Credit line for content the app didn't write. The community sites
+// (pickleballsf.com, tennissf.com) are the source of some court descriptions and
+// ratings; the app renders their words, so it names them and links back.
+function SourceCredit({ site, url, t }) {
+  return (
+    <Text
+      style={styles.srcCredit}
+      onPress={() => Linking.openURL(url).catch(() => {})}
+      accessibilityRole="link"
+      accessibilityLabel={t('court.srcVia', { site })}
+    >
+      {t('court.srcVia', { site })}
+    </Text>
+  );
+}
+
 function formatUpdated(iso) {
   const d = new Date(iso);
   if (isNaN(d)) return '';
@@ -2400,20 +2416,34 @@ function CourtDetail({
             🏓 {t(dir.loaner === 'paddles-balls' ? 'court.loanerBoth' : 'court.loanerPaddles')}
           </Text>
         )}
-        {!!dir?.desc && <Text style={styles.notes}>{dir.desc}</Text>}
+        {/* This description is pickleballsf.com's own writing, not ours, so it
+            carries a visible credit linking back to them. Same for the
+            tennissf ratings below — attribution rides with the content, not
+            just in a build script's comments. `descSrc`/`tsf.src` are the exact
+            venue pages when a directory build has captured them; before that
+            the credit still shows and links to the site. */}
+        {!!dir?.desc && (
+          <>
+            <Text style={styles.notes}>{dir.desc}</Text>
+            <SourceCredit site="pickleballsf.com" url={dir.descSrc || 'https://pickleballsf.com'} t={t} />
+          </>
+        )}
 
         {/* tennissf.com community ratings (tennis entries only) — advisory
             player-sourced color no official source publishes. */}
         {!!dir?.tsf && (
-          <Text style={styles.openPlayLine}>
-            🎾{' '}
-            {t('court.tsfLine', {
-              overall: dir.tsf.overall,
-              surface: dir.tsf.surface ?? '–',
-              crowded: dir.tsf.crowded ?? '–',
-              n: dir.tsf.ratings,
-            })}
-          </Text>
+          <>
+            <Text style={styles.openPlayLine}>
+              🎾{' '}
+              {t('court.tsfLine', {
+                overall: dir.tsf.overall,
+                surface: dir.tsf.surface ?? '–',
+                crowded: dir.tsf.crowded ?? '–',
+                n: dir.tsf.ratings,
+              })}
+            </Text>
+            <SourceCredit site="tennissf.com" url={dir.tsf.src || 'https://www.tennissf.com'} t={t} />
+          </>
         )}
 
         {/* NYC Parks' own prose about this facility (build-nyc-directory.js) —
@@ -3043,6 +3073,7 @@ const styles = StyleSheet.create({
   openPlayLine: { fontSize: 13, color: '#2a3a4a', marginTop: 8, paddingHorizontal: 8 },
 
   notes: { fontSize: 13, color: '#5b6b7b', marginTop: 8, lineHeight: 18 },
+  srcCredit: { fontSize: 11, color: '#2f74d6', marginTop: 3, paddingHorizontal: 8 },
   disclaimer: {
     fontSize: 11,
     color: '#9aa7b4',

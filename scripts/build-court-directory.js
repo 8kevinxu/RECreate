@@ -397,6 +397,9 @@ async function tsfRatings(out, courts) {
         ...(surface != null ? { surface } : {}),
         ...(crowded != null ? { crowded } : {}),
         ...(matches ? { matches } : {}),
+        // The court_detail page these numbers came from — the card credits
+        // tennissf and links here (App.js SourceCredit).
+        src: 'https://www.tennissf.com' + slug,
       };
       rated++;
     }
@@ -522,7 +525,9 @@ const dehtmlText = (s) =>
 // Fetch every mapped venue in ONE request (the slug filter takes a comma list),
 // rather than a page load apiece.
 async function pbsfFetch(slugs) {
-  const url = `${PBSF_API}?per_page=100&slug=${slugs.join(',')}&_fields=slug,modified,content`;
+  // `link` is the venue's canonical page — carried through to descSrc so the
+  // credit shown beside their description points at the page it came from.
+  const url = `${PBSF_API}?per_page=100&slug=${slugs.join(',')}&_fields=slug,modified,content,link`;
   const res = await fetchT(url, { headers: { 'User-Agent': BROWSER_UA } });
   if (!res.ok) throw new Error(`HTTP ${res.status} for pickleballsf API`);
   const posts = await res.json();
@@ -747,6 +752,9 @@ async function pbsfEnrich(out) {
       }
       if (desc) {
         entry.desc = clampDesc(desc);
+        // Attribution travels with the text — the card credits pickleballsf and
+        // links here (App.js SourceCredit).
+        if (post.link) entry.descSrc = post.link;
         added++;
       }
     }
