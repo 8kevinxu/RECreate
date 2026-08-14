@@ -393,7 +393,7 @@ function navFor(cfg, currentPath) {
 }
 
 function pageHtml(page) {
-  const { path: pagePath, title, description, h1, intro, cta, body, jsonLd, cfg } = page;
+  const { path: pagePath, title, description, h1, intro, cta, body, jsonLd, cfg, noindex } = page;
   const canonical = `${SITE}${pagePath}`;
   const otherNav = CITY_CFG.filter((c) => c.id !== cfg.id && ALL_PAGES.some((p) => p.cfg.id === c.id))
     .map((c) => navFor(c, null))
@@ -405,7 +405,7 @@ function pageHtml(page) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
-<link rel="canonical" href="${canonical}">
+${noindex ? '<meta name="robots" content="noindex">' : `<link rel="canonical" href="${canonical}">`}
 <meta name="apple-itunes-app" content="app-id=${APP_STORE_ID}, app-argument=${canonical}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="${SITE_NAME}">
@@ -1016,6 +1016,39 @@ for (const cfg of CITY_CFG) {
 // Footer nav references every page, so collect them all before rendering any.
 ALL_PAGES.push(...pages);
 for (const p of pages) writePage(p);
+
+// --- 404 -------------------------------------------------------------------------
+//
+// vercel.json deliberately has NO catch-all rewrite to /index.html. The app
+// routes entirely on query params (lib/urlState.web.js: tab/sport/fav/court/
+// add/city), so it only ever loads at "/" — a catch-all bought nothing and made
+// every unknown path answer 200 with the app shell. That is a soft 404: Google
+// flags them, and with ~800 generated URLs whose entities come and go (a rec
+// center whose open-gym schedule empties out loses its page on the next scrape)
+// stale links must 404 honestly instead of resolving to a decoy. Vercel serves
+// this file, with a real 404 status, for anything that doesn't match a file.
+const indexPages = ALL_PAGES.filter((p) => p.kind === 'sport' || p.kind === 'index');
+fs.writeFileSync(
+  path.join(DIST, '404.html'),
+  pageHtml({
+    cfg: SF,
+    path: '/404',
+    noindex: true,
+    title: `Page not found | ${SITE_NAME}`,
+    description: 'That page is not here. Browse every free public court, pool, and rec class in San Francisco and New York City.',
+    h1: "That page isn't here",
+    intro:
+      'The link may be mistyped — or the spot may have closed, or dropped off the city\'s published schedule since the page was made. Everything below still works, and the live map always shows what\'s open right now.',
+    cta: { href: '/', label: 'Open the live map' },
+    body: CITY_CFG.map((c) => {
+      const mine = indexPages.filter((p) => p.cfg.id === c.id);
+      if (!mine.length) return '';
+      return `<h2>${esc(c.name)}</h2><p class="more">${mine
+        .map((p) => `<a href="${p.path}">${esc(p.short)}</a>`)
+        .join(' · ')}</p>`;
+    }).join('\n'),
+  })
+);
 
 // --- patch dist/index.html (the SPA shell) -------------------------------------
 
