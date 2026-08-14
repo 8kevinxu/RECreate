@@ -26,7 +26,7 @@ const esbuild = require('esbuild');
 
 const ROOT = path.join(__dirname, '..');
 const DIST = path.join(ROOT, 'dist');
-const SITE = 'https://www.playrecreate.com';
+const SITE = 'https://playrecreate.com';
 const SITE_NAME = 'RECreate';
 const APP_STORE_ID = '6786438986';
 const APP_STORE_URL = `https://apps.apple.com/us/app/recreate-recreation-made-easy/id${APP_STORE_ID}`;

@@ -1,5 +1,5 @@
 # 🏀 RECreate
-https://www.playrecreate.com/
+https://playrecreate.com/
 
 Find somewhere to play **right now** — in **San Francisco** or **New York City**.
 RECreate started as an SF indoor-basketball finder and has grown into a

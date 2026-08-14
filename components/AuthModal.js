@@ -24,7 +24,7 @@ import { useAuth } from '../lib/auth';
 // Account creation requires agreeing to a EULA (App Store rule for UGC apps). The
 // Terms link points at Apple's standard EULA; swap PRIVACY_URL for your hosted page.
 const TERMS_URL = 'https://www.apple.com/legal/internet-services/itunes/dev/stdeula/';
-const PRIVACY_URL = 'https://www.playrecreate.com/privacy.html';
+const PRIVACY_URL = 'https://playrecreate.com/privacy.html';
 import { SPORTS } from '../lib/sports';
 import { CLASS_CATEGORIES } from '../data/classes';
 import { loadMyStats } from '../lib/playerCheckins';
