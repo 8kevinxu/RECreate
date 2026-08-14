@@ -1,31 +1,6 @@
 {
   "entries": [
     {
-      "id": "vol-a07Pi00003zjg0EIAQ",
-      "source": "sfrpd-volunteer",
-      "name": "White Crowned Sparrow Habitat Restoration at the Bison Paddock",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "GGP Sec 5 Bison Paddock",
-      "when": "Sat · 9:00 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 18,
-      "unlimited": false,
-      "start": "2026-08-15",
-      "end": "2026-12-19",
-      "instructor": "Golden Gate Bird Alliance",
-      "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nVolunteer with the Golden Gate Bird Alliance at the Bison Paddock of Golden Gate Park and help to restore the habitat of the White-crowned sparrow. Lend a hand with weeding and tending a garden of native plants that comprise a critical nesting and feeding area for this sparrow. Please wear appropriate attire: closed-toe shoes, long pants and layers of clothing.\n\nMeet at the middle of the Bison Paddock fence located on John F Kennedy Drive between 36th Avenue and Chain of Lakes Drive East.",
-      "lat": 37.7702,
-      "lng": -122.4917,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a074U00001AcPv7QAF",
       "source": "sfrpd-volunteer",
       "name": "Buena Vista Neighborhood Association Volunteer Workparty",
@@ -52,6 +27,31 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
+      "id": "vol-a07Pi00003zjg0EIAQ",
+      "source": "sfrpd-volunteer",
+      "name": "White Crowned Sparrow Habitat Restoration at the Bison Paddock",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "GGP Sec 5 Bison Paddock",
+      "when": "Sat · 9:00 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 18,
+      "unlimited": false,
+      "start": "2026-08-15",
+      "end": "2026-12-19",
+      "instructor": "Golden Gate Bird Alliance",
+      "activity": "Habitat Restoration",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nVolunteer with the Golden Gate Bird Alliance at the Bison Paddock of Golden Gate Park and help to restore the habitat of the White-crowned sparrow. Lend a hand with weeding and tending a garden of native plants that comprise a critical nesting and feeding area for this sparrow. Please wear appropriate attire: closed-toe shoes, long pants and layers of clothing.\n\nMeet at the middle of the Bison Paddock fence located on John F Kennedy Drive between 36th Avenue and Chain of Lakes Drive East.",
+      "lat": 37.7702,
+      "lng": -122.4917,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
       "id": "vol-a074U00001Aed5KQAR",
       "source": "sfrpd-volunteer",
       "name": "Mountain Lake Park Volunteer Workparty",
@@ -74,32 +74,6 @@
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the Mountain Lake Park Volunteers and RPD gardeners in beautifying this large neighborhood park with many recreational amenities: children's playground, tennis courts, green lawns, a natural lake and extensive walking paths. Volunteer gardening tasks include native plant restoration, pulling invasive weeds, cleaning up the dog run, and occasional planting of trees. Tools and gloves are provided. Please wear closed-toed shoes, long pants and layers. The event will occur rain or shine. Meet at the Children's Playground near the Lake St & 12th Ave entrance to the park.\n\nMeet: at the Children's Playground near the Lake St & 12th Ave entrance to the park",
       "lat": 37.787139,
       "lng": -122.468146,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
-      "id": "vol-a074U00001JrFmAQAV",
-      "source": "sfrpd-volunteer",
-      "name": "EcoCenter Volunteer Workparty",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "Heron's Head Park",
-      "when": "Sat · 10:00 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 30,
-      "unlimited": false,
-      "start": "2026-08-15",
-      "end": "2026-08-15",
-      "oneDay": true,
-      "instructor": "Friends of Heron's Head Park",
-      "activity": "Horticultural Maintenance",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group. You can only sign-up a group of 4. If you have a group size of 5 or more, please email us at recparkvolunteer@sfgov.org.\n\nJoin the SF Rec & Park Dept and the Port of San Francisco on the 3rd Saturday monthly in the stewardship of the outdoor play spaces of the EcoCenter at Heron's Head Park. The Nature Exploration Area at Heron's Head Park is an outdoor play space that engages children with nature.  Assist with the horticultural maintenance of this innovative playground and its environs. Tasks include invasive species removal, mulching, watering, pathway maintenance and planting. Please wear closed-toe shoes and dress in layers. No experience necessary. Tools are provided.\n\nMeet in front of the entrance porch of the EcoCenter",
-      "lat": 37.73832,
-      "lng": -122.37481,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -190,7 +164,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 8,
+      "spots": 7,
       "unlimited": false,
       "start": "2026-08-20",
       "end": "2026-11-19",
@@ -226,30 +200,6 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
-      "id": "vol-a07Pi00003ys1mGIAQ",
-      "source": "sfrpd-volunteer",
-      "name": "Mount Davidson Volunteer Workparty",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "Mt. Davidson Park",
-      "when": "Sat · 9:30 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 9,
-      "unlimited": false,
-      "start": "2026-08-22",
-      "end": "2026-09-26",
-      "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nExplore Mount Davidson Park. Join the Natural Resource Division enhancing the most diverse native scrub community in the City. This recurring monthly volunteer project is on the 4th Saturday of each month from 9:30-12noon. Mount Davidson is the highest peak in San Francisco offering spectacular views of San Francisco’s skyline, bay, and the surrounding coastal mountains. This park offers habitat for numerous resident and migratory birds, butterflies, and insects - awe inspiring all year. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Everyone 14 years old and older is invited; anyone under 14 yo must be accompanied by a guardian. Tools and gloves will be provided. Please be punctual. \n\nMeet at fire road gate entrance opposite 45 Dalewood Way",
-      "lat": 37.7383,
-      "lng": -122.45437,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a074U00001QocKOQAZ",
       "source": "sfrpd-volunteer",
       "name": "San Francisco Botanical Garden Volunteer Event",
@@ -272,6 +222,30 @@
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nPlease join the San Francisco Botanical Garden’s Horticulture team as they maintain San Francisco’s wonderful 55 acres of both landscaped gardens and open spaces, showcasing more than 8,000 different kinds of plants from around the world. At this volunteer event, you will assist SFRPD staff with collections maintenance and complete tasks such as weeding, raking, and mulching to keep the Botanical Garden beautiful for our community. This is a fun event to jump in and help out with friends and family. While you are welcome to bring your tools and gloves, all supplies will be provided by SFRPD. Volunteers aged 14-17 must be accompanied by an adult. We do not have opportunities for volunteers younger than 14 at this time.\n\nRain and high winds may cancel this event.\n\nPlease wear closed-toed shoes, long pants, layers and appropriate weather protection such as sunscreen, hat, and sunglasses.\n\nMeet at the San Francisco Botanical Garden Bookstore.",
       "lat": 37.76744,
       "lng": -122.46896,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a07Pi00003ys1mGIAQ",
+      "source": "sfrpd-volunteer",
+      "name": "Mount Davidson Volunteer Workparty",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "Mt. Davidson Park",
+      "when": "Sat · 9:30 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 9,
+      "unlimited": false,
+      "start": "2026-08-22",
+      "end": "2026-09-26",
+      "activity": "Habitat Restoration",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nExplore Mount Davidson Park. Join the Natural Resource Division enhancing the most diverse native scrub community in the City. This recurring monthly volunteer project is on the 4th Saturday of each month from 9:30-12noon. Mount Davidson is the highest peak in San Francisco offering spectacular views of San Francisco’s skyline, bay, and the surrounding coastal mountains. This park offers habitat for numerous resident and migratory birds, butterflies, and insects - awe inspiring all year. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Everyone 14 years old and older is invited; anyone under 14 yo must be accompanied by a guardian. Tools and gloves will be provided. Please be punctual. \n\nMeet at fire road gate entrance opposite 45 Dalewood Way",
+      "lat": 37.7383,
+      "lng": -122.45437,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -313,7 +287,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 12,
+      "spots": 11,
       "unlimited": false,
       "start": "2026-08-22",
       "end": "2026-08-22",
@@ -339,7 +313,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 28,
+      "spots": 27,
       "unlimited": false,
       "start": "2026-08-24",
       "end": "2026-12-07",
@@ -479,6 +453,30 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
+      "id": "vol-a07Pi000066UawwIAC",
+      "source": "sfrpd-volunteer",
+      "name": "Alamo Square Volunteer Workparty",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "Alamo Square Park",
+      "when": "Sat · 9:00 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 10,
+      "unlimited": false,
+      "start": "2026-09-05",
+      "end": "2027-02-06",
+      "activity": "Horticultural Maintenance",
+      "desc": "Volunteers needed for Park Greening Day! Come out and join the RPD Gardeners and Alamo Square Neighbors Association in their recurring volunteering workparty. Activities include planting, gardening, weeding, general park maintenance. Please wear long pants and closed-toed shoes. Event takes place rain or shine. Meet at the Hayes and Steiner Tennis Courts near the restrooms.",
+      "lat": 37.776277,
+      "lng": -122.434184,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
       "id": "vol-a07Pi00003ysll6IAA",
       "source": "sfrpd-volunteer",
       "name": "Clean & Green with the Friends of Lafayette Park",
@@ -502,30 +500,6 @@
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nPlease join the Friends of Lafayette Park for a \"Cleaning and Greening\" workday on the first Saturday of the month. Help to maintain the park and get to know your neighbors. We install new plants, weed, sweep and more. We meet beforehand for coffee and pastries, lively conversation, and then head-out with the SFRPD gardeners to help beautify our park.  Please wear closed-toe shoes, long pants and a long-sleeve shirt. All tools and gloves provided. (NOTE: If the first Saturday of the month is a major holiday, then the workday will happen on the following Saturday.)\n\nMeet at the picnic tables at the south end of the Children's Playground",
       "lat": 37.791378,
       "lng": -122.427006,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
-      "id": "vol-a07Pi000066UawwIAC",
-      "source": "sfrpd-volunteer",
-      "name": "Alamo Square Volunteer Workparty",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "Alamo Square Park",
-      "when": "Sat · 9:00 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 10,
-      "unlimited": false,
-      "start": "2026-09-05",
-      "end": "2027-02-06",
-      "activity": "Horticultural Maintenance",
-      "desc": "Volunteers needed for Park Greening Day! Come out and join the RPD Gardeners and Alamo Square Neighbors Association in their recurring volunteering workparty. Activities include planting, gardening, weeding, general park maintenance. Please wear long pants and closed-toed shoes. Event takes place rain or shine. Meet at the Hayes and Steiner Tennis Courts near the restrooms.",
-      "lat": 37.776277,
-      "lng": -122.434184,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -734,32 +708,6 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
-      "id": "vol-a074U00001JoniHQAR",
-      "source": "sfrpd-volunteer",
-      "name": "Coastal Cleanup Marina Yacht Harbor",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "Yacht Harbor and Marina Green",
-      "when": "Sat · 9:00 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 0,
-      "unlimited": false,
-      "start": "2026-09-19",
-      "end": "2026-09-19",
-      "oneDay": true,
-      "instructor": "California Coastal Commission",
-      "activity": "Habitat Restoration",
-      "desc": "Please come join SF Rec & Park and the CA Coastal Commission for a cleanup event at Marina Yacht Harbor located in the Marina District of San Francisco. The Marina Yacht Harbor is a 35-acre facility with 727 berths, 15 end ties for guest berthing vessels, free pump out stations and a commercial fuel dock. The marina is the oldest recreational marina operating in San Francisco and is a destination sought by thousands of boaters from all over the world.",
-      "lat": 37.806649,
-      "lng": -122.436099,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a074U00001JPWEFQA5",
       "source": "sfrpd-volunteer",
       "name": "Coastal Cleanup Heron's Head Park",
@@ -783,6 +731,32 @@
       "desc": "Please come join SF Rec & Park and the CA Coastal Commission for a cleanup event at Herons Head Park in the Bayview Neighborhood of SF.  HHP is one of San Francisco’s ecological treasures a 22-acre open space and thriving wildlife habitat located in the City’s Southeast Sector. Teeming with native plants and a wide variety of birds, Heron’s Head Park is one of the few wetlands on San Francisco’s shoreline, and is an example of restoration success. Onsite leaders from the Greenager Program will be hosting public members in a trash and debris collection event along the bay.",
       "lat": 37.73832,
       "lng": -122.37481,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a074U00001JoniHQAR",
+      "source": "sfrpd-volunteer",
+      "name": "Coastal Cleanup Marina Yacht Harbor",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "Yacht Harbor and Marina Green",
+      "when": "Sat · 9:00 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 0,
+      "unlimited": false,
+      "start": "2026-09-19",
+      "end": "2026-09-19",
+      "oneDay": true,
+      "instructor": "California Coastal Commission",
+      "activity": "Habitat Restoration",
+      "desc": "Please come join SF Rec & Park and the CA Coastal Commission for a cleanup event at Marina Yacht Harbor located in the Marina District of San Francisco. The Marina Yacht Harbor is a 35-acre facility with 727 berths, 15 end ties for guest berthing vessels, free pump out stations and a commercial fuel dock. The marina is the oldest recreational marina operating in San Francisco and is a destination sought by thousands of boaters from all over the world.",
+      "lat": 37.806649,
+      "lng": -122.436099,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -828,8 +802,7 @@
       "spots": 13,
       "unlimited": false,
       "start": "2026-09-19",
-      "end": "2026-09-19",
-      "oneDay": true,
+      "end": "2026-12-12",
       "instructor": "Lakeview Nature Stewards",
       "activity": "Horticultural Maintenance",
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the Lakeview Nature stewards and the Natural Resources Gardeners in a habitat restoration volunteer workparty at Lakeview Ashton Park. Tools and gloves provided. Meet at the east end of Shields St. across from 1 Shields St",
@@ -942,5 +915,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-08-13T19:02:19.838Z"
+  "fetchedAt": "2026-08-14T01:45:45.746Z"
 }
