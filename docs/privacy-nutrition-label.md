@@ -6,7 +6,7 @@ so the nutrition label matches the policy. Reviewers under a Guideline 2.1 hold
 compare these two directly.
 
 **Source of truth for the policy:** `public/privacy.html` (hosted at
-`https://recreate-sf.vercel.app/privacy.html`).
+`https://www.playrecreate.com/privacy.html`).
 **On-device manifest:** `app.json` → `ios.privacyManifests` (written into
 `PrivacyInfo.xcprivacy` at build/prebuild; the `ios/` dir is CNG-generated and
 git-ignored, so `app.json` is the source of truth).

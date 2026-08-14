@@ -30,8 +30,8 @@ const CONFIRM_CODE = 'DELETE';
 // Legal + support destinations. Terms is Apple's standard EULA (same as the
 // signup screen's terms link); privacy + support are the hosted static pages.
 const TERMS_URL = 'https://www.apple.com/legal/internet-services/itunes/dev/stdeula/';
-const PRIVACY_URL = 'https://recreate-sf.vercel.app/privacy.html';
-const SUPPORT_URL = 'https://recreate-sf.vercel.app/support.html';
+const PRIVACY_URL = 'https://www.playrecreate.com/privacy.html';
+const SUPPORT_URL = 'https://www.playrecreate.com/support.html';
 
 export default function SettingsScreen({
   visible,

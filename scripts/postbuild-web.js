@@ -26,7 +26,7 @@ const esbuild = require('esbuild');
 
 const ROOT = path.join(__dirname, '..');
 const DIST = path.join(ROOT, 'dist');
-const SITE = 'https://recreate-sf.vercel.app';
+const SITE = 'https://www.playrecreate.com';
 const SITE_NAME = 'RECreate';
 const APP_STORE_ID = '6786438986';
 const APP_STORE_URL = `https://apps.apple.com/us/app/recreate-recreation-made-easy/id${APP_STORE_ID}`;
@@ -1023,7 +1023,14 @@ const HOME_TITLE = 'RECreate — Basketball, Pickleball & Tennis Courts, Pools &
 const HOME_DESC =
   'Free live map of every public place to play in San Francisco and New York City: basketball, pickleball, tennis, volleyball, soccer and more, plus pool schedules and rec classes. See what’s open now, check in, and find your game.';
 
+// The injected block is fenced by markers and stripped before re-injecting, so
+// running this pass twice over one export is a no-op rather than appending a
+// second canonical/og:url/JSON-LD. A CI build exports fresh and patches once, so
+// this only bites locally — but two conflicting canonicals mean Google ignores
+// both, which is not a failure worth risking to save four lines.
+const MARK = ['<!-- recreate:seo -->', '<!-- /recreate:seo -->'];
 let html = fs.readFileSync(path.join(DIST, 'index.html'), 'utf8');
+html = html.replace(new RegExp(`${MARK[0]}[\\s\\S]*?${MARK[1]}`, 'g'), '');
 const headTags = `
 <title>${esc(HOME_TITLE)}</title>
 <meta name="description" content="${esc(HOME_DESC)}">
@@ -1048,7 +1055,7 @@ const headTags = `
   sameAs: [APP_STORE_URL],
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
 })}</script>`;
-html = html.replace(/<title>.*?<\/title>/s, '').replace('</head>', `${headTags}\n</head>`);
+html = html.replace(/<title>.*?<\/title>/s, '').replace('</head>', `${MARK[0]}${headTags}\n${MARK[1]}\n</head>`);
 if (!/<html[^>]*\slang=/.test(html)) html = html.replace(/<html/, '<html lang="en"');
 fs.writeFileSync(path.join(DIST, 'index.html'), html);
 
