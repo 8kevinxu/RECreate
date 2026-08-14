@@ -413,7 +413,9 @@ ${noindex ? '<meta name="robots" content="noindex">' : `<link rel="canonical" hr
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${canonical}">
 <meta property="og:image" content="${SITE}/og.png">
-<meta name="twitter:card" content="summary">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico">
 <style>${CSS}</style>
 ${jsonLd ? `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` : ''}
@@ -1075,7 +1077,9 @@ const headTags = `
 <meta property="og:description" content="${esc(HOME_DESC)}">
 <meta property="og:url" content="${SITE}/">
 <meta property="og:image" content="${SITE}/og.png">
-<meta name="twitter:card" content="summary">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">${JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
@@ -1094,8 +1098,17 @@ fs.writeFileSync(path.join(DIST, 'index.html'), html);
 
 // --- og image, sitemap, robots ---------------------------------------------------
 
-const icon = path.join(ROOT, 'assets', 'icon.png');
-if (fs.existsSync(icon)) fs.copyFileSync(icon, path.join(DIST, 'og.png'));
+// The share card is a purpose-built 1200x630 (assets/og-card.html renders it —
+// see that file to regenerate). The app icon used to fill this slot, but it is
+// square: every share surface center-cropped it, and Twitter/Slack rendered a
+// small thumbnail rather than the wide card. Fail loudly if it's missing —
+// silently shipping no og:image is worse than a broken build.
+const ogSrc = path.join(ROOT, 'assets', 'og.png');
+if (!fs.existsSync(ogSrc)) {
+  console.error('✗ assets/og.png missing — regenerate it from assets/og-card.html');
+  process.exit(1);
+}
+fs.copyFileSync(ogSrc, path.join(DIST, 'og.png'));
 
 const today = new Date().toISOString().slice(0, 10);
 const urls = ['/', ...pages.map((p) => p.path)];
