@@ -802,7 +802,12 @@ async function pbsfEnrich(out) {
       // Only these gyms have no description from anywhere else; the other three
       // already carry SFRP-backed cards.
       const raw = pbsfDesc(sections);
-      if (raw) facts.desc = clampDesc(pbsfFreshen(raw, post.modified));
+      if (raw) {
+        facts.desc = clampDesc(pbsfFreshen(raw, post.modified));
+        // Same attribution the outdoor venues get — the card credits
+        // pickleballsf and links to this venue page.
+        if (post.link) facts.descSrc = post.link;
+      }
     }
 
     if (!Object.keys(facts).length) continue;
