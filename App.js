@@ -76,6 +76,7 @@ import {
   LEVELS,
   LEVEL_META,
 } from './lib/crowd';
+import { maybeAskForReview } from './lib/rateApp';
 import { loadReviews, addReview, MAX_BODY, MAX_NAME, isShared as reviewsShared } from './lib/reviews';
 import { reportContent, confirmReportData } from './lib/reports';
 import { liveBooked, bookedAt, bookableFrom, slotKeyOf } from './lib/reservations';
@@ -534,6 +535,12 @@ export default function App() {
       // sport (deduped server-side window) — feeds the account check-in stats.
       // Silent: the crowd report above already handled any friend notification.
       if (user) logVisit(user.id, courtId, sport);
+      // Ask for an App Store rating here and nowhere else: a report just landed,
+      // which is the app working. Self-gating (see lib/rateApp.js) — it declines
+      // for anyone who hasn't reported a few times already. Deliberately not
+      // awaited, so the prompt can never delay or fail the check-in; the small
+      // delay lets the card's own state settle before the sheet animates in.
+      setTimeout(() => { maybeAskForReview(); }, 1200);
       return res;
     }
     return res;
