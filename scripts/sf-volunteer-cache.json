@@ -14,7 +14,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 28,
+      "spots": 27,
       "unlimited": false,
       "start": "2026-08-15",
       "end": "2026-08-15",
@@ -40,7 +40,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 18,
+      "spots": 16,
       "unlimited": false,
       "start": "2026-08-15",
       "end": "2026-12-19",
@@ -200,6 +200,30 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
+      "id": "vol-a07Pi00003ys1mGIAQ",
+      "source": "sfrpd-volunteer",
+      "name": "Mount Davidson Volunteer Workparty",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "Mt. Davidson Park",
+      "when": "Sat · 9:30 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 9,
+      "unlimited": false,
+      "start": "2026-08-22",
+      "end": "2026-09-26",
+      "activity": "Habitat Restoration",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nExplore Mount Davidson Park. Join the Natural Resource Division enhancing the most diverse native scrub community in the City. This recurring monthly volunteer project is on the 4th Saturday of each month from 9:30-12noon. Mount Davidson is the highest peak in San Francisco offering spectacular views of San Francisco’s skyline, bay, and the surrounding coastal mountains. This park offers habitat for numerous resident and migratory birds, butterflies, and insects - awe inspiring all year. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Everyone 14 years old and older is invited; anyone under 14 yo must be accompanied by a guardian. Tools and gloves will be provided. Please be punctual. \n\nMeet at fire road gate entrance opposite 45 Dalewood Way",
+      "lat": 37.7383,
+      "lng": -122.45437,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
       "id": "vol-a074U00001QocKOQAZ",
       "source": "sfrpd-volunteer",
       "name": "San Francisco Botanical Garden Volunteer Event",
@@ -222,30 +246,6 @@
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nPlease join the San Francisco Botanical Garden’s Horticulture team as they maintain San Francisco’s wonderful 55 acres of both landscaped gardens and open spaces, showcasing more than 8,000 different kinds of plants from around the world. At this volunteer event, you will assist SFRPD staff with collections maintenance and complete tasks such as weeding, raking, and mulching to keep the Botanical Garden beautiful for our community. This is a fun event to jump in and help out with friends and family. While you are welcome to bring your tools and gloves, all supplies will be provided by SFRPD. Volunteers aged 14-17 must be accompanied by an adult. We do not have opportunities for volunteers younger than 14 at this time.\n\nRain and high winds may cancel this event.\n\nPlease wear closed-toed shoes, long pants, layers and appropriate weather protection such as sunscreen, hat, and sunglasses.\n\nMeet at the San Francisco Botanical Garden Bookstore.",
       "lat": 37.76744,
       "lng": -122.46896,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
-      "id": "vol-a07Pi00003ys1mGIAQ",
-      "source": "sfrpd-volunteer",
-      "name": "Mount Davidson Volunteer Workparty",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "Mt. Davidson Park",
-      "when": "Sat · 9:30 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 9,
-      "unlimited": false,
-      "start": "2026-08-22",
-      "end": "2026-09-26",
-      "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nExplore Mount Davidson Park. Join the Natural Resource Division enhancing the most diverse native scrub community in the City. This recurring monthly volunteer project is on the 4th Saturday of each month from 9:30-12noon. Mount Davidson is the highest peak in San Francisco offering spectacular views of San Francisco’s skyline, bay, and the surrounding coastal mountains. This park offers habitat for numerous resident and migratory birds, butterflies, and insects - awe inspiring all year. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Everyone 14 years old and older is invited; anyone under 14 yo must be accompanied by a guardian. Tools and gloves will be provided. Please be punctual. \n\nMeet at fire road gate entrance opposite 45 Dalewood Way",
-      "lat": 37.7383,
-      "lng": -122.45437,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -708,29 +708,23 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
-      "id": "vol-a074U00001JPWEFQA5",
+      "id": "vol-a07Pi00006EZxrXIAT",
       "source": "sfrpd-volunteer",
-      "name": "Coastal Cleanup Heron's Head Park",
+      "name": "Nature Resource Fair",
       "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "Heron's Head Park",
-      "when": "Sat · 9:00 AM - 12:00 PM",
+      "location": "The Randall Museum",
+      "when": "Wed · 3:00 PM - 5:30 PM",
       "dropIn": false,
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 45,
+      "spots": 14,
       "unlimited": false,
-      "start": "2026-09-19",
-      "end": "2026-09-19",
-      "oneDay": true,
-      "instructor": "California Coastal Commission",
-      "activity": "Litter Abatement",
-      "desc": "Please come join SF Rec & Park and the CA Coastal Commission for a cleanup event at Herons Head Park in the Bayview Neighborhood of SF.  HHP is one of San Francisco’s ecological treasures a 22-acre open space and thriving wildlife habitat located in the City’s Southeast Sector. Teeming with native plants and a wide variety of birds, Heron’s Head Park is one of the few wetlands on San Francisco’s shoreline, and is an example of restoration success. Onsite leaders from the Greenager Program will be hosting public members in a trash and debris collection event along the bay.",
-      "lat": 37.73832,
-      "lng": -122.37481,
+      "start": "2026-09-16",
+      "end": "2026-09-16",
+      "instructor": "San Francisco Children and Nature",
+      "activity": "Community/Special Event",
+      "desc": "Show your support for SFUSD educators and help us bring to life a fun, educational Nature Resource Fair at the Randall Museum!\n\nWe’re looking for enthusiastic volunteers to help make this event welcoming, engaging, and smooth-running. Two volunteer shifts are available:\n\n• 3:00 pm – 5:30 pm\n\n• 5:00 pm – 7:00 pm\n\nVolunteer roles include:\n\n• Greeting and directing guests at the sign‑in table\n\n• Leading the nature cart activity\n\n• Serving as a parking monitor\n\n• Assisting exhibitors with loading and unloading materials\n\n• Supporting event set-up and clean-up\n\n• Helping maintain the light refreshments table\n\nThis event gives educators and administrators the chance to connect with more than 30 outdoor education providers, explore programs that extend learning beyond the classroom, and enjoy complimentary refreshments, appetizers, and child-friendly activities.",
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -747,7 +741,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 0,
+      "spots": 50,
       "unlimited": false,
       "start": "2026-09-19",
       "end": "2026-09-19",
@@ -783,6 +777,32 @@
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the SF Recreation and Parks’ Natural Resources Division and Sutro Stewards to complete habitat restoration at the Interior Greenbelt on Mount Sutro. Help to restore this spectacular habitat that harbors sensitive plants including fairy bells and thimbleberry. Everyone 12 years and older is invited. A variety of volunteer tasks is available, at times on steep slopes. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Tools and gloves will be provided. Please be punctual\n\nMeet at Woods Lot at 100 Medical Center Way, San Francisco, CA 9414",
       "lat": 37.75993,
       "lng": -122.45635,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a074U00001JPWEFQA5",
+      "source": "sfrpd-volunteer",
+      "name": "Coastal Cleanup Heron's Head Park",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "Heron's Head Park",
+      "when": "Sat · 9:00 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 45,
+      "unlimited": false,
+      "start": "2026-09-19",
+      "end": "2026-09-19",
+      "oneDay": true,
+      "instructor": "California Coastal Commission",
+      "activity": "Litter Abatement",
+      "desc": "Please come join SF Rec & Park and the CA Coastal Commission for a cleanup event at Herons Head Park in the Bayview Neighborhood of SF.  HHP is one of San Francisco’s ecological treasures a 22-acre open space and thriving wildlife habitat located in the City’s Southeast Sector. Teeming with native plants and a wide variety of birds, Heron’s Head Park is one of the few wetlands on San Francisco’s shoreline, and is an example of restoration success. Onsite leaders from the Greenager Program will be hosting public members in a trash and debris collection event along the bay.",
+      "lat": 37.73832,
+      "lng": -122.37481,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -915,5 +935,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-08-14T18:52:06.590Z"
+  "fetchedAt": "2026-08-15T01:06:37.984Z"
 }
