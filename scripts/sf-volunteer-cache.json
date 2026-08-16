@@ -648,7 +648,7 @@
       "end": "2026-09-16",
       "instructor": "San Francisco Children and Nature",
       "activity": "Community/Special Event",
-      "desc": "Show your support for SFUSD educators and help us bring to life a fun, educational Nature Resource Fair at the Randall Museum!\n\nWe’re looking for enthusiastic volunteers to help make this event welcoming, engaging, and smooth-running. We have two volunteer shifts available, and you’re welcome to sign up for both if you’d like to contribute more time.\n\nShift 1: 3:00 pm – 5:30 pm\n\nShift 2: 5:00 pm – 7:00 pm\n\nVolunteer roles include:\n\n• Greeting and directing guests at the sign‑in table\n\n• Leading the nature cart activity\n\n• Serving as a parking monitor\n\n• Assisting exhibitors with loading and unloading materials\n\n• Supporting event set-up and clean-up\n\n• Helping maintain the light refreshments table\n\nThis event gives educators and administrators the chance to connect with more than 30 outdoor education providers, explore programs that extend learning beyond the classroom, and enjoy complimentary refreshments, appetizers, and child-friendly activities. The main event runs from 4pm - 6 pm. To attend the event (not volunteering), register as an educator or administration here: Attend the Nature Resource Fair",
+      "desc": "Show your support for educators and help us bring to life a fun, educational Nature Resource Fair at the Randall Museum!\n\nWe’re looking for enthusiastic volunteers to help make this event welcoming, engaging, and smooth-running. We have two volunteer shifts available, and you’re welcome to sign up for both if you’d like to contribute more time.\n\nShift 1: 3:00 pm – 5:30 pm\n\nShift 2: 5:00 pm – 7:00 pm\n\nVolunteer roles include:\n\n• Greeting and directing guests at the sign‑in table\n\n• Leading the nature cart activity\n\n• Serving as a parking monitor\n\n• Assisting exhibitors with loading and unloading materials\n\n• Supporting event set-up and clean-up\n\n• Helping maintain the light refreshments table\n\nThis event gives educators and administrators the chance to connect with more than 30 outdoor education providers, explore programs that extend learning beyond the classroom, and enjoy complimentary refreshments, appetizers, and child-friendly activities. The main event runs from 4pm - 6 pm. To attend the event (not volunteering), register as an educator or administration here: Attend the Nature Resource Fair",
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -690,7 +690,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 50,
+      "spots": 49,
       "unlimited": false,
       "start": "2026-09-19",
       "end": "2026-09-19",
@@ -910,5 +910,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-08-15T18:26:37.569Z"
+  "fetchedAt": "2026-08-16T01:10:29.734Z"
 }
