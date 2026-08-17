@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-10T15:55:36.419Z",
+  "generatedAt": "2026-08-17T15:19:45.907Z",
   "season": "Summer",
   "courts": [
     {
@@ -372,12 +372,7 @@
         "pingpong": [
           [],
           [],
-          [
-            [
-              1080,
-              1170
-            ]
-          ],
+          [],
           [],
           [],
           [],
@@ -413,7 +408,7 @@
       },
       "scheduleSource": "live",
       "source": "sfrecpark",
-      "notes": "Clubhouse hosting camps, Zumba and yoga; drop-in ping pong Tuesday evenings."
+      "notes": "Clubhouse hosting camps, Zumba and yoga."
     },
     {
       "id": "eureka-valley-recreation-center",

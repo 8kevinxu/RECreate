@@ -369,7 +369,7 @@
           "overall": 4,
           "surface": 4.3,
           "crowded": 2.3,
-          "matches": 671,
+          "matches": 679,
           "src": "https://www.tennissf.com/court_detail/sf-j-p-murphy-playground"
         }
       }
@@ -485,7 +485,7 @@
           "overall": 4.3,
           "surface": 4,
           "crowded": 3.9,
-          "matches": 577,
+          "matches": 578,
           "src": "https://www.tennissf.com/court_detail/sf-mclaren-park"
         }
       }
@@ -529,7 +529,7 @@
           "overall": 2.7,
           "surface": 4.3,
           "crowded": 2.3,
-          "matches": 476,
+          "matches": 477,
           "src": "https://www.tennissf.com/court_detail/sf-mission-playground"
         }
       }
@@ -803,7 +803,7 @@
           "overall": 4,
           "surface": 3,
           "crowded": 3.5,
-          "matches": 283,
+          "matches": 284,
           "src": "https://www.tennissf.com/court_detail/sf-julius-kahn-park"
         }
       },
@@ -1156,7 +1156,7 @@
           "overall": 3.7,
           "surface": 3,
           "crowded": 3.3,
-          "matches": 253,
+          "matches": 255,
           "src": "https://www.tennissf.com/court_detail/sf-sunset"
         }
       }
@@ -1235,5 +1235,5 @@
       }
     }
   },
-  "fetchedAt": "2026-08-15T08:36:52.589Z"
+  "fetchedAt": "2026-08-17T15:23:48.348Z"
 }
