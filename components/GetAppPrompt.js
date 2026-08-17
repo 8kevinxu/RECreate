@@ -22,11 +22,15 @@ import { useI18n } from '../lib/i18n';
 import { APP_STORE_URL } from '../lib/getApp';
 import QRCode from './QRCode';
 
-// App.js reads this to lift the floating nav and the recenter button clear of
-// the bar — exported so the two numbers can never drift apart.
-export const GET_APP_BAR_H = 60;
+// The bar floats in the gap directly above the nav pill, so the two read as one
+// stack. App.js adds this (plus a gap) to navClearance — what the recenter
+// button, the Nearby button and the court card measure against — so those move
+// up instead. Exported so the two numbers can never drift apart.
+export const GET_APP_BAR_H = 66;
 
-export default function GetAppPrompt({ surface, onDismiss, bottomInset = 0 }) {
+// `navOffset` is the floating nav pill's own footprint (its height plus the home
+// indicator inset): the height both surfaces have to sit above.
+export default function GetAppPrompt({ surface, onDismiss, navOffset = 16 }) {
   const { t } = useI18n();
   if (!surface) return null;
 
@@ -37,7 +41,9 @@ export default function GetAppPrompt({ surface, onDismiss, bottomInset = 0 }) {
 
   if (surface === 'qr') {
     return (
-      <View style={styles.card}>
+      // Clears the floating nav pill, which is full-width on a desktop viewport
+      // and would otherwise crop the code — the one part that has to be scannable.
+      <View style={[styles.card, { bottom: navOffset + 12 }]}>
         <Pressable
           style={styles.cardClose}
           onPress={onDismiss}
@@ -56,11 +62,16 @@ export default function GetAppPrompt({ surface, onDismiss, bottomInset = 0 }) {
   }
 
   return (
-    <View style={[styles.bar, { bottom: Math.max(bottomInset, 8) }]}>
+    <View style={[styles.bar, { bottom: navOffset }]}>
       <Text style={styles.barIcon}>🏀</Text>
-      <Text style={styles.barText} numberOfLines={2}>
-        {t('getapp.barText')}
-      </Text>
+      <View style={styles.barCopy}>
+        <Text style={styles.barTitle} numberOfLines={1}>
+          {t('getapp.barTitle')}
+        </Text>
+        <Text style={styles.barSub} numberOfLines={1}>
+          {t('getapp.barSub')}
+        </Text>
+      </View>
       <Pressable style={styles.barCta} onPress={open} accessibilityRole="button">
         <Text style={styles.barCtaText}>{t('getapp.cta')}</Text>
       </Pressable>
@@ -77,9 +88,9 @@ export default function GetAppPrompt({ surface, onDismiss, bottomInset = 0 }) {
 }
 
 const styles = StyleSheet.create({
-  // Sits directly above BottomNav's floating pill. App.js pushes the nav and the
-  // recenter button up by GET_APP_BAR_H while this is mounted, so nothing here
-  // needs to dodge them.
+  // Floats in the gap above BottomNav's pill, matching its side margins so the
+  // two edges line up. App.js lifts the recenter/Nearby buttons and the court
+  // card by GET_APP_BAR_H while this is mounted, so nothing here has to dodge.
   bar: {
     position: 'absolute',
     left: 14,
@@ -100,8 +111,12 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 6 },
     elevation: 10,
   },
-  barIcon: { fontSize: 19 },
-  barText: { flex: 1, color: '#fff', fontSize: 13, fontWeight: '600', lineHeight: 17 },
+  barIcon: { fontSize: 20 },
+  // Two deliberate lines — what it is, then why. One line long enough to say
+  // both wraps on a 390pt screen and reads as an accident.
+  barCopy: { flex: 1, gap: 1 },
+  barTitle: { color: '#fff', fontSize: 13.5, fontWeight: '800' },
+  barSub: { color: '#9fb3c6', fontSize: 11.5, fontWeight: '600' },
   barCta: {
     backgroundColor: '#e8730c',
     borderRadius: 999,
@@ -113,7 +128,6 @@ const styles = StyleSheet.create({
   card: {
     position: 'absolute',
     right: 20,
-    bottom: 20,
     width: 272,
     alignItems: 'center',
     gap: 10,

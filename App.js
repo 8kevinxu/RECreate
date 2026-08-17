@@ -27,6 +27,7 @@ import NearbyList from './components/NearbyList';
 import TimeSlider from './components/TimeSlider';
 import BottomNav from './components/BottomNav';
 import AssistantHost from './components/AssistantHost';
+import GetAppPrompt, { GET_APP_BAR_H } from './components/GetAppPrompt';
 import ClassesScreen from './components/ClassesScreen';
 import PoolDetail from './components/PoolDetail';
 import { useAuth } from './lib/auth';
@@ -56,6 +57,7 @@ import { MAP_SPORTS, DEFAULT_SPORT, sportMeta, isPlayableSport } from './lib/spo
 import { DEFAULT_CITY, getCity, nearestCity, inSubregions } from './lib/cities';
 import { CITY_CLASSES } from './data/cities';
 import { useFavorites } from './lib/favorites';
+import { useGetAppPrompt } from './lib/getApp';
 import { readUrlState, writeUrlState } from './lib/urlState';
 import { parseInviteCode } from './lib/invite';
 import { loadLocalInterests, saveLocalInterests } from './lib/interests';
@@ -374,9 +376,17 @@ export default function App() {
   const [pickerOpen, setPickerOpen] = useState(false);
   const { enabled: authEnabled, user, displayName, profile, updateProfile } = useAuth();
   const insets = useSafeAreaInsets(); // device notch / home-indicator insets (edge-to-edge)
+  // Web-only "get the iPhone app" prompt (null on native, and on the browsers that
+  // already show Apple's smart banner — see lib/getApp.web.js).
+  const [getAppSurface, dismissGetApp] = useGetAppPrompt();
+  // The floating nav pill's own footprint. The prompt sits in the gap directly
+  // above it, so the nav itself never moves — the map overlays do.
+  const navOffset = insets.bottom + 86;
+  const getAppBar = getAppSurface === 'bar' ? GET_APP_BAR_H + 8 : 0;
   // The map fills the whole screen with the nav floating over it; this is how far up
-  // map overlays (zoom, recenter, Nearby, court card) must sit to clear the nav pill.
-  const navClearance = insets.bottom + 86;
+  // map overlays (zoom, recenter, Nearby, court card) must sit to clear the nav pill
+  // — plus the install bar, when it's showing.
+  const navClearance = navOffset + getAppBar;
   const [tab, setTab] = useState(() =>
     urlInit && ['classes', 'social', 'profile'].includes(urlInit.tab)
       ? urlInit.tab
@@ -1550,6 +1560,12 @@ export default function App() {
           hidden={[...(cityFeatures.classes ? [] : ['classes'])]}
         />
       </View>
+
+      {/* Web only, and never over the first-run overlay — someone who hasn't seen
+          the app yet has nothing to install it for. */}
+      {onboarded !== false && (
+        <GetAppPrompt surface={getAppSurface} onDismiss={dismissGetApp} navOffset={navOffset} />
+      )}
 
       {onboarded === false && (
         <Onboarding onFinish={finishOnboarding} onEnableLocation={requestLocation} />
