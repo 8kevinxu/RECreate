@@ -146,6 +146,12 @@ Output is three JSON files in `chatbot/data/` (courts, classes, reference), with
 a loose sanity gate that exits non-zero if too few courts survive — the same
 live → cache → curated resilience posture the build scripts use.
 
+`classes.json` for SF is **both** of the city's program sources — the ActiveNet
+catalog and the Rec & Park volunteer workparties — read through `data/sf-classes.js`,
+the same merge the app renders. Reading `data/classes.js` directly instead would
+silently drop every volunteer opportunity, so the assistant would answer "nothing
+like that" to "how can I volunteer in a park?" while the app was showing three dozen.
+
 ---
 
 ## Before this ever leaves localhost
