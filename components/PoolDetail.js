@@ -85,7 +85,7 @@ export default function PoolDetail({ pool, poolId }) {
       {/* NYC Parks' own explanation when a pool publishes no sessions — e.g.
           "closed for reconstruction". Shown instead of leaving the empty
           weekly grid above to speak for itself. */}
-      {!!pool.notice && <Text style={styles.notice}>ℹ️ {pool.notice}</Text>}
+      {!!pool.notice && <Text style={styles.notice}>ⓘ {pool.notice}</Text>}
 
       <Pressable style={styles.feesToggle} onPress={() => setShowFees((v) => !v)}>
         <Ionicons name={showFees ? 'chevron-up' : 'cash-outline'} size={15} color="#2f74d6" />

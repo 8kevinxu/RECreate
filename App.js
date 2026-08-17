@@ -2405,7 +2405,7 @@ function CourtDetail({
             🟢 {t('court.openPlay')}: {dir.openPlayTimes}
           </Text>
         )}
-        {!!dir?.note && <Text style={styles.openPlayLine}>ℹ️ {dir.note}</Text>}
+        {!!dir?.note && <Text style={styles.openPlayLine}>ⓘ {dir.note}</Text>}
         {/* These hours came from players, not the city — SFRP lists pickleball
             at these gyms as an amenity but never posts its times. Say so: the
             source gets the day and start right but its end times run up to an

@@ -29,8 +29,10 @@ multi-city architecture works.
   a personal map of just your spots, each shown open or closed for the sport you
   favorited it for.
 - **📅 Classes** — SF Rec & Park's full ActiveNet program catalog (fitness, dance,
-  music, arts, photography, social games, aquatics & swim lessons, sports & rec,
-  camps, youth & after-school) with real prices and live openings.
+  music, arts, social games, aquatics & swim lessons, sports & rec, camps, youth &
+  after-school) with real prices and live openings — plus the city's **volunteer
+  workparties** (habitat restoration, park stewardship), free and filed under the
+  🤝 Volunteer chip.
 - **🏊 Swimming** — the 9 public pools are a **sport on the map**: pick Swimming
   from the sport dial to see them, "open now" for public-swim sessions, with the
   full weekly schedule (lap / family / senior / lessons …), fees, and PDF on the
@@ -199,7 +201,7 @@ sport / opens ⭐ Favorites. It's shown once and then never again (persisted und
 | `lib/push.js` | Expo push-token registration + notification-tap handling |
 | `components/NearbyList.js` | Nearby courts ranked by distance, with a min-open filter |
 | `components/BottomNav.js` | Four-tab bottom bar (Home / Classes / Social / Profile) |
-| `components/ClassesScreen.js` | **Classes tab** — browse drop-in programs by category, with filters + live openings |
+| `components/ClassesScreen.js` | **Classes tab** — browse programs, classes & volunteer workparties by category, with filters + live openings |
 | `components/ClassDetail.js` | Class/activity detail sheet (schedule, location, cost, ages, availability + a source-aware CTA: ActiveNet, NYC Parks, or the SF volunteer calendar) |
 | `data/classes.js` · `scripts/build-classes.js` | **Generated** classes catalog + its ActiveNet scraper (with build-time title translation) |
 | `data/volunteer.js` · `scripts/build-sf-volunteer.js` | **Generated** SF Rec & Park volunteer workparties, from the Salesforce Aura endpoint behind their JS-only calendar (one card per recurring job) |
@@ -224,7 +226,7 @@ sport / opens ⭐ Favorites. It's shown once and then never again (persisted und
 | `components/AssistantHost.js` · `AssistantThread.js` | Floating ✨ launcher + sheet (owns the conversation, carries on-screen context) and the thread UI inside it |
 | `components/WebAnalytics.js` · `.web.js` | Vercel Analytics, mounted web-only via the `.web.js` platform split |
 | `components/ScrollTopFab.js` | Shared back-to-top arrow (`useScrollTop` hook + FAB) used by Classes / feed |
-| `vercel.json` · `scripts/postbuild-web.js` | Web static-export deploy config (build → SEO postbuild → `dist` → SPA rewrite) |
+| `vercel.json` · `scripts/postbuild-web.js` | Web static-export deploy config (build → SEO postbuild → `dist`; no catch-all rewrite — unknown paths 404) |
 
 ## Court data (SF Rec & Parks indoor gyms)
 
@@ -333,9 +335,11 @@ by `id`, so `npm run build:courts` never touches them. Two flavors:
   (`anc.apm.activecommunities.com/sfrecpark`). It does the ActiveNet CSRF + session
   handshake, pages the activity-search API **one category id at a time** (ActiveNet's
   multi-id search silently drops categories) across the full catalog (33 source
-  categories), and re-buckets every item by keyword into **ten** app categories
-  (fitness, dance, music, arts & crafts, photography, social & games, aquatics,
-  sports & rec, camps, youth & after school), writing `data/classes.js` — each class
+  categories), and re-buckets every item by keyword into the app's canonical category
+  set (fitness, dance, music, arts & crafts, sports & rec, aquatics, nature, learn,
+  camps, performances, social & games, plus the youth / volunteer / accessible facet
+  tags — **14** in all, shared with NYC so the filter row is identical in every city),
+  writing `data/classes.js` — each class
   `{ name, category, location, when, dropIn, cost, ages, url, name_zh?, name_es? }`.
   Drop-in series published as one row per date are collapsed into a single card
   spanning the term (keyed by the latest instance id, so delist-hiding doesn't eat
@@ -350,6 +354,32 @@ by `id`, so `npm run build:courts` never touches them. Two flavors:
   now" openings are refreshed in-app by `lib/classesLive.js` (a second, more frequent
   ActiveNet fetch; native only — browsers block it via CORS, so web shows the bundled
   baseline).
+- **Volunteer opportunities** share the Classes tab with those classes, from a very
+  different kind of source. SFRPD's volunteer calendar renders **nothing** server-side
+  — the page is a 3KB Visualforce shell that boots a Lightning Out component — so
+  `scripts/build-sf-volunteer.js` reads the public Apex controller (`SFRPCalendar`)
+  behind Salesforce's **Aura endpoint** instead. It needs no auth and doesn't validate
+  the framework nonce, so there's nothing to scrape off the page first; only its READ
+  methods are called (the same controller exposes the signup write path). The feed is
+  an **archive, not a calendar** — ~87% of its ~1,700 rows are shifts that already
+  happened, back to 2020 — and each recurring workparty emits one row per date, padded
+  with placeholder instances as far out as 2030. The build keeps upcoming shifts inside
+  a 180-day horizon and collapses them to one card per job, the same way the ActiveNet
+  drop-in series are collapsed, writing ~36 entries to `data/volunteer.js`. They file
+  under the `philanthropy` category (the app's **Volunteer** chip) with a secondary
+  `nature`/`social` tag, are free, and carry a live "volunteers still needed" count.
+  `npm run build:volunteer`, same last-good cache + gate resilience
+  (`scripts/sf-volunteer-cache.json`), titles translated like class titles. Park coords
+  come from the bundled court data plus a curated table in the script — the feed has a
+  street address but no lat/lng, and uses internal park names (`GGP Sec 2 Rhododendron
+  Dell`) the public court data has no row for.
+- `data/sf-classes.js` merges those two generated files into the one SF catalog every
+  consumer reads (Classes tab, recommendations, the prerendered `/classes` page, the
+  assistant export). Merging there rather than inside either generated file keeps each
+  build owning exactly one output, so a failed volunteer scrape can't blank the class
+  catalog. Volunteer records carry `source: 'sfrpd-volunteer'`, which the live-ActiveNet
+  delist check skips (they aren't in ActiveNet) and which swaps `ClassDetail`'s
+  "Register on ActiveNet" CTA for the volunteer calendar.
 
 An optional `disclaimer` field on a court overrides the default "verify on
 sfrecpark.org" footnote on the court detail screen.
@@ -660,7 +690,7 @@ read state + hidden threads are tracked locally (`AsyncStorage`). Code lives in
 
 The top of the **Social** tab shows an auto-revolving card of suggestions tailored
 to your **interests** — your **favorite sports** and **class categories** (any of
-the Classes tab's ten), both set on your profile. It mixes
+the Classes tab's fourteen), both set on your profile. It mixes
 **open-gym games** happening today for your sports (“Play basketball at Palega ·
 2:00 PM” — tap to open that court **on the matching sport**) with **rec-center
 classes that have openings** in your categories (“Zumba at Sunset Rec · Openings” —
@@ -898,8 +928,11 @@ The web build is a **static SPA export** — `npm run build:web` (= `expo export
 --platform web` → `dist/`, then `scripts/postbuild-web.js`, which injects SEO
 metadata into `index.html` and prerenders crawlable landing pages, sitemap, and
 robots.txt from the bundled data). `vercel.json` configures that build command,
-`dist` as the publish dir, and an SPA rewrite of all routes to `index.html`; set the
-three `EXPO_PUBLIC_*` vars in the Vercel dashboard since a CI build has no local `.env`.
+`dist` as the publish dir; set the three `EXPO_PUBLIC_*` vars in the Vercel dashboard
+since a CI build has no local `.env`. There is deliberately **no catch-all rewrite**
+to `index.html` — the app routes on query params so it only loads at `/`, and a
+catch-all made every unknown path answer 200 with the app shell (a soft 404).
+Unmatched paths hit a generated `404.html` instead.
 
 The landing pages are generated **per city** from `CITY_CFG` in
 `scripts/postbuild-web.js`: one page per sport that city has courts for, plus its

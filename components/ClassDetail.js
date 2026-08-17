@@ -160,7 +160,7 @@ export default function ClassDetail({ item, onClose }) {
 
             {c.noOnlineReg && (
               <View style={styles.notice}>
-                <Text style={styles.noticeIcon}>ℹ️</Text>
+                <Text style={styles.noticeIcon}>ⓘ</Text>
                 <Text style={styles.noticeText}>{t('cls.noOnlineReg')}</Text>
               </View>
             )}
@@ -274,7 +274,7 @@ const styles = StyleSheet.create({
     padding: 12,
     marginBottom: 14,
   },
-  noticeIcon: { fontSize: 15, marginTop: 1 },
+  noticeIcon: { fontSize: 15, marginTop: 1, color: '#7a5a12', fontWeight: '700' },
   noticeText: { flex: 1, fontSize: 13, color: '#7a5a12', fontWeight: '600', lineHeight: 18 },
   dirBtn: {
     flexDirection: 'row',
