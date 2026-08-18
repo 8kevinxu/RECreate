@@ -1452,16 +1452,29 @@ export default function App() {
           </View>
         )}
 
-        {userLocation && (
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel={t('a11y.recenter')}
-            style={[styles.recenterBtn, { bottom: navClearance }]}
-            onPress={recenter}
-          >
-            <Ionicons name="locate" size={22} color="#2f74d6" />
-          </Pressable>
-        )}
+        {/* One control, two jobs. With a fix it recenters; without one it *asks* for
+            location — the slot sat empty in exactly the case where the ask matters,
+            and this puts it where the eye already goes for "where am I", next to
+            Nearby. Unlike the banner it never dismisses, so it stays findable. */}
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={userLocation ? t('a11y.recenter') : t('a11y.enableLoc')}
+          disabled={locating}
+          style={[
+            styles.recenterBtn,
+            { bottom: navClearance },
+            // Stays neutral while the first fix is still in flight, so it doesn't
+            // flash "turn on location" at someone who is about to have it.
+            !userLocation && !locating && styles.recenterBtnAsk,
+          ]}
+          onPress={userLocation ? recenter : requestLocation}
+        >
+          <Ionicons
+            name={userLocation ? 'locate' : 'locate-outline'}
+            size={22}
+            color={!userLocation && !locating ? '#ffffff' : '#2f74d6'}
+          />
+        </Pressable>
 
         <Pressable
           style={[styles.nearbyBtn, { bottom: navClearance }]}
@@ -2891,16 +2904,18 @@ const styles = StyleSheet.create({
 
   locBanner: {
     position: 'absolute',
-    left: 14,
-    right: 14,
+    // Auto-width and centred rather than full-bleed: it's a nudge over someone's
+    // map, and the recenter button carries the ask once this is dismissed.
     alignSelf: 'center',
+    maxWidth: '86%',
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 9,
+    gap: 7,
     backgroundColor: '#fff',
-    paddingHorizontal: 14,
-    paddingVertical: 11,
-    borderRadius: 14,
+    paddingLeft: 12,
+    paddingRight: 10,
+    paddingVertical: 9,
+    borderRadius: 20,
     zIndex: 1000,
     shadowColor: '#000',
     shadowOpacity: 0.12,
@@ -2908,7 +2923,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     elevation: 4,
   },
-  locBannerText: { flex: 1, fontSize: 13, fontWeight: '700', color: '#2a3a4a' },
+  locBannerText: { flexShrink: 1, fontSize: 12.5, fontWeight: '700', color: '#2a3a4a' },
 
   recenterBtn: {
     position: 'absolute',
@@ -2927,6 +2942,8 @@ const styles = StyleSheet.create({
     elevation: 4,
     zIndex: 1000,
   },
+  // "No fix yet" state: filled blue reads as an invitation, not a neutral control.
+  recenterBtnAsk: { backgroundColor: '#2f74d6' },
 
   nearbyBtn: {
     position: 'absolute',
