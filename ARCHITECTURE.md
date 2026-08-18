@@ -116,7 +116,18 @@ sport rather than a tab: `lib/poolCourts.js` shapes **every city's** pools (SF's
 + NYC's 92) into `swimming` court records whose open-now comes from their
 public-swim sessions. Handball is NYC-only — 1,853 courts there, more than
 basketball, and effectively nonexistent in SF — which costs SF nothing because
-filters and landing pages self-hide where no record qualifies.
+filters, landing pages and the sport pickers themselves self-hide where no record
+qualifies. That last one is `sportsInCourts(list, courts, keep)`: a sport counts
+for a city when some court in view carries drop-in hours for it, so the map's
+sport dial, the interest pickers (onboarding + profile favorites) and the three
+social composers all offer only what the active city has — SF never lists
+handball, NYC never lists golf, and switching cities off a sport the new one
+lacks falls back to `DEFAULT_SPORT` rather than stranding the map on empty. The
+composers derive it from the city-filtered `courts` they already receive; the
+dial and interest pickers key off the active city's slice of `courtData`. `keep`
+forces ids in regardless, for the two cases where hiding one would be the bug: a
+saved favorite (else a pick made in NYC couldn't be undone in SF) and a signal's
+own sport (a signal can arrive from another metro).
 It also exports `WEIGHT_ROOM`, `GOLF`, and `MAP_SPORTS` (`SPORTS` + both): each is
 a *facility view* — the **weight room** spans rec-center weight rooms plus DataSF
 outdoor fitness courts, scraped into `dropins.weightroom` like a sport; **golf** is

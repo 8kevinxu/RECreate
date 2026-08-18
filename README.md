@@ -12,7 +12,8 @@ multi-city architecture works.
 - **🏀 Map** — every rec-center gym, outdoor court, and field, across **10 sports**
   (basketball, volleyball, ping pong, badminton, pickleball, tennis, soccer,
   baseball, swimming, and **handball** — NYC's biggest court sport, which SF
-  doesn't have) plus a **weight room** view (rec-center weight rooms + outdoor
+  doesn't have; every sport picker offers only what the city you're in actually
+  has courts for) plus a **weight room** view (rec-center weight rooms + outdoor
   fitness courts) and a **⛳ golf** view (all 6 SFRPD courses with holes/par/yardage, green
   fees, 9/18-hole & beginner filters, and tee-time booking links), with weekly
   **open-gym schedules**, **"open now"** filtering, live
@@ -109,7 +110,9 @@ record carries a `city` field (SF ids are unchanged, so existing check-ins /
 reviews / favorites keep working). Per-city data lives in `data/cities/<id>/`,
 aggregated by `data/cities/index.js`. Sport and class filter chips **self-hide
 when a city has no matching data**, so NYC-only filters never show for SF and
-vice-versa. NYC's outdoor courts come through a **config-driven Socrata
+vice-versa — and the same rule drives the sport lists themselves
+(`sportsInCourts()`), so the map's sport dial, the interest pickers and the
+social composers offer only the sports the active city has courts for. NYC's outdoor courts come through a **config-driven Socrata
 adapter** (`scripts/lib/socrata-outdoor.js` + `scripts/cities/nyc.js`) — adding
 another Socrata-portal city (e.g. Chicago) is config-only; an ArcGIS city
 (Seattle/LA) needs a new adapter.
