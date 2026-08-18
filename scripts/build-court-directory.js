@@ -134,6 +134,17 @@ const num = (s) => {
   return Number.isFinite(n) ? n : 0;
 };
 const yes = (s) => /^\s*y/i.test(String(s || ''));
+// Three-state for a column the card asserts on. Both directory tables fill
+// Lights for every row today (tennis 24 Yes / 40 No, pickleball 7 / 10), but
+// yes() maps a blank to false, so a column that ever goes sparse would ship
+// "No lights" onto courts nobody checked. Absent stays absent.
+const yesNo = (s) => {
+  const v = String(s ?? '').trim();
+  if (!v) return undefined;
+  return /^y/i.test(v);
+};
+// Only emit a key the source actually answered.
+const opt = (k, v) => (v === undefined ? {} : { [k]: v });
 
 async function getHtml(url) {
   const res = await fetchT(url, { headers: { 'User-Agent': BROWSER_UA } });
@@ -846,7 +857,7 @@ async function build() {
       total,
       reservable: num(r['Reservable courts']),
       walkup: num(r['Walk-up courts']),
-      lights: yes(r['Lights']),
+      ...opt('lights', yesNo(r['Lights'])),
       restrooms: yes(r['Restrooms']),
       ...(tAdj && tAdj.playWeek ? { playWeek: tAdj.playWeek } : {}),
       ...(tAdj && tAdj.note ? { note: tAdj.note } : {}),
@@ -902,7 +913,7 @@ async function build() {
       total,
       reservable: num(r['Reservable']),
       walkup: num(r['Walk-up shared use']),
-      lights: yes(r['Lights']),
+      ...opt('lights', yesNo(r['Lights'])),
       restrooms: yes(r['Restrooms']),
       nets: nets || null,
       ...(openPlayCourts > 0 ? { openPlayCourts } : {}),

@@ -1727,6 +1727,13 @@ function CourtDetail({
   // bookable courts, so without this a single booking on the one bookable court reads
   // as "fully booked" while the walk-up / open-play courts sit empty.
   const dir = court.directory?.[vSport];
+  // Lighting, resolved once. It is three-state and the states are not
+  // interchangeable: SF's directory (an explicit Yes/No column) and NYC's
+  // dataset both record it for the courts they cover, and `null` means no
+  // source has said. `??` rather than `||` so a recorded `false` survives —
+  // claiming "no lights" where nobody looked would send someone home at dusk
+  // for no reason, and claiming "unknown" where the city says no is just wrong.
+  const lit = dir?.lights ?? court.facts?.[vSport]?.lit ?? null;
   const live = isPicked
     ? (() => {
         const b = bookedAt(booked, viewTime, dir);
@@ -2051,11 +2058,6 @@ function CourtDetail({
               <Text style={styles.facText}>{meta.emoji} {courtCountLabel(dir)}</Text>
             </View>
           )}
-          {dir.lights && (
-            <View style={styles.facChip}>
-              <Text style={styles.facText}>{t('amenity.lights')}</Text>
-            </View>
-          )}
           {dir.restrooms && (
             <View style={styles.facChip}>
               <Text style={styles.facText}>{t('amenity.restrooms')}</Text>
@@ -2097,11 +2099,6 @@ function CourtDetail({
                   n: court.facts[vSport].n,
                 })}
               </Text>
-            </View>
-          )}
-          {court.facts?.[vSport]?.lit && (
-            <View style={styles.facChip}>
-              <Text style={styles.facText}>{t('amenity.lights')}</Text>
             </View>
           )}
           {court.accessible && (
@@ -2203,12 +2200,19 @@ function CourtDetail({
           official schedule PDF (see lib/poolCourts.js + components/PoolDetail.js). */}
       {court.pool && <PoolDetail pool={court.pool} poolId={court.id} />}
 
-      {/* SF Rec & Park publishes lights for tennis/pickleball courts but not basketball,
-          so be honest about it rather than imply anything. */}
-      {vSport === 'basketball' && court.indoor === false && (
+      {/* Lighting, in one place for every sport and city. Outdoor only — an
+          indoor gym's lighting is not a question anyone asks. Both sources cover
+          only some courts (SF's directory is tennis and pickleball; NYC's
+          dataset carries no end time for ~85 lit pins), so the unknown state is
+          common and is said plainly rather than left to read as "no". */}
+      {court.indoor === false && (
         <View style={styles.facRow}>
           <View style={styles.facChip}>
-            <Text style={styles.facTextMuted}>{t('court.lightsUnknown')}</Text>
+            {lit == null ? (
+              <Text style={styles.facTextMuted}>{t('court.lightsUnknown')}</Text>
+            ) : (
+              <Text style={styles.facText}>{t(lit ? 'amenity.lights' : 'amenity.noLights')}</Text>
+            )}
           </View>
         </View>
       )}
