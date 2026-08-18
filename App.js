@@ -2901,7 +2901,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 14,
     paddingVertical: 11,
     borderRadius: 14,
-    zIndex: 26,
+    zIndex: 1000,
     shadowColor: '#000',
     shadowOpacity: 0.12,
     shadowRadius: 8,
@@ -2989,7 +2989,7 @@ const styles = StyleSheet.create({
   etaText: { color: '#46586a', fontWeight: '800', fontSize: 13 },
   cardHeadActions: { flexDirection: 'row', alignItems: 'center', gap: 10, paddingLeft: 4 },
 
-  favEmpty: { position: 'absolute', left: 32, right: 32, top: '40%', alignItems: 'center' },
+  favEmpty: { position: 'absolute', left: 32, right: 32, top: '40%', alignItems: 'center', zIndex: 1000 },
   favEmptyStar: { fontSize: 44, color: '#f5a623', marginBottom: 10 },
   favEmptyText: {
     fontSize: 15,

@@ -396,7 +396,12 @@ const CourtMap = forwardRef(function CourtMap(
   }));
 
   return (
-    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+    // `isolation` is load-bearing: Leaflet gives its panes z-index 200–700 (and its
+    // controls 800–1000), and without a stacking context of its own they compete
+    // directly with the app chrome App.js layers over the map — which is how the
+    // "turn on location" banner (z-index 26) ended up painted behind the tiles.
+    // Isolating confines every leaflet layer below any sibling overlay.
+    <div style={{ position: 'relative', isolation: 'isolate', width: '100%', height: '100%' }}>
       <div
         ref={elRef}
         style={{ width: '100%', height: '100%', backgroundColor: '#aadaf0' }}
