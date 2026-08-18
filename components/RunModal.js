@@ -88,7 +88,7 @@ export default function RunModal({
   // Day/time options are constrained to the chosen court, or to the (place-filtered)
   // sport courts when none is chosen yet (pick a time first, then a court open then).
   const candidates = useMemo(() => (court ? [court] : placeCourts), [court, placeCourts]);
-  const daysWithHoops = useMemo(() => {
+  const daysWithPlay = useMemo(() => {
     const set = new Set();
     for (const c of candidates) for (const wd of dropinWeekdays(c, sport)) set.add(wd);
     return set;
@@ -101,8 +101,8 @@ export default function RunModal({
     return [...set].sort((a, b) => a - b);
   };
   const firstOpenDay = useMemo(
-    () => days.find((d) => daysWithHoops.has(d.getDay())) || null,
-    [days, daysWithHoops]
+    () => days.find((d) => daysWithPlay.has(d.getDay())) || null,
+    [days, daysWithPlay]
   );
 
   // (Re)initialize each time the sheet opens: seed the time from the map's picker
@@ -350,7 +350,7 @@ export default function RunModal({
                       {active ? (
                         <Text style={styles.courtRowCheck}>✓</Text>
                       ) : disabled ? (
-                        <Text style={styles.courtRowClosed}>{t('run.noHoopsThen')}</Text>
+                        <Text style={styles.courtRowClosed}>{t('run.noneOpenThen')}</Text>
                       ) : null}
                     </View>
                   </Pressable>
@@ -365,7 +365,7 @@ export default function RunModal({
               contentContainerStyle={styles.chipRow}
             >
               {days.map((d) => {
-                const open = daysWithHoops.has(d.getDay());
+                const open = daysWithPlay.has(d.getDay());
                 const active = d.getTime() === selDayTs && !!picked;
                 return (
                   <Pressable
@@ -386,7 +386,7 @@ export default function RunModal({
                       ]}
                     >
                       {dayChipLabel(d)}
-                      {open ? '' : ` · ${t('home.noHoops')}`}
+                      {open ? '' : ` · ${t('home.noneOpen')}`}
                     </Text>
                   </Pressable>
                 );

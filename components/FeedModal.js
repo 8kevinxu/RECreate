@@ -83,7 +83,7 @@ export default function FeedModal({
       key: `signal:${s.id}`,
       kind: 'signal',
       signalId: s.id,
-      title: s.mine ? t('feed.yourHoop') : t('feed.theirHoop', { name: s.name }),
+      title: s.mine ? t('feed.yourSignal') : t('feed.theirSignal', { name: s.name }),
       subtitle: s.plannedAt
         ? t('feed.subSession')
         : s.isNow

@@ -301,7 +301,7 @@ export default function SessionModal({
                               ]}
                             >
                               {dayChipLabel(d)}
-                              {open ? '' : ` · ${t('home.noHoops')}`}
+                              {open ? '' : ` · ${t('home.noneOpen')}`}
                             </Text>
                           </Pressable>
                         );

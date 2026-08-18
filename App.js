@@ -1351,7 +1351,7 @@ export default function App() {
                       ]}
                     >
                       {dayChipLabel(d)}
-                      {open ? '' : ` · ${t('home.noHoops')}`}
+                      {open ? '' : ` · ${t('home.noneOpen')}`}
                     </Text>
                   </Pressable>
                 );
