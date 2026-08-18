@@ -25,7 +25,9 @@ const SLIDES = [
 
 const toggle = (arr, id) => (arr.includes(id) ? arr.filter((x) => x !== id) : [...arr, id]);
 
-export default function Onboarding({ onFinish, onEnableLocation }) {
+// `sports` is the active city's playable sports (App.js) — a first-run picker
+// shouldn't offer an interest the city around you has nowhere to play.
+export default function Onboarding({ sports = SPORTS, onFinish, onEnableLocation }) {
   const { t } = useI18n();
   const { user } = useAuth();
   const insets = useSafeAreaInsets();
@@ -105,7 +107,7 @@ export default function Onboarding({ onFinish, onEnableLocation }) {
           >
             <Text style={styles.section}>{t('onb.int.sports')}</Text>
             <View style={styles.chipWrap}>
-              {SPORTS.map((s) => {
+              {sports.map((s) => {
                 const on = selSports.includes(s.id);
                 return (
                   <Pressable

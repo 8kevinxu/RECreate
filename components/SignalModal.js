@@ -14,14 +14,16 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { createSignal } from '../lib/signals';
 import { startOfDay, dayChipLabel, fmtClock } from '../lib/datetime';
-import { PLAN_SPORTS, ANY_SPORT, sportMeta } from '../lib/sports';
+import { PLAN_SPORTS, ANY_SPORT, sportMeta, sportsInCourts } from '../lib/sports';
 import { haversineMiles, formatDistance } from '../lib/distance';
 import { sportLabel, useI18n } from '../lib/i18n';
 import { useAuth } from '../lib/auth';
 import { resolveNotify } from '../lib/activityShare';
 
-// "Anything" (just down for rec) first, then the specific sports + weight room.
-const SPORT_OPTS = [{ id: ANY_SPORT, emoji: sportMeta(ANY_SPORT).emoji }, ...PLAN_SPORTS];
+// "Anything" (just down for rec) first, then the specific sports + weight room —
+// narrowed to what the courts in view (the active city) actually offer, so an SF
+// signal never advertises handball. "Anything" is city-less and always first.
+const ANY_OPT = { id: ANY_SPORT, emoji: sportMeta(ANY_SPORT).emoji };
 
 export default function SignalModal({ visible, courts = [], userLocation, onClose, onPosted }) {
   const { t } = useI18n();
@@ -34,6 +36,8 @@ export default function SignalModal({ visible, courts = [], userLocation, onClos
   const [note, setNote] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(null);
+
+  const sportOpts = useMemo(() => [ANY_OPT, ...sportsInCourts(PLAN_SPORTS, courts)], [courts]);
 
   // Courts offering the chosen sport (all courts when "Anything"), then narrowed by
   // the optional Indoor/Outdoor filter, ranked by proximity. All of this is optional
@@ -181,7 +185,7 @@ export default function SignalModal({ visible, courts = [], userLocation, onClos
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={styles.chipRow}
             >
-              {SPORT_OPTS.map((s) => {
+              {sportOpts.map((s) => {
                 const active = s.id === sport;
                 return (
                   <Pressable

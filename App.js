@@ -53,7 +53,7 @@ import {
   getDropinWeek,
   getDropinRemaining,
 } from './lib/hours';
-import { MAP_SPORTS, DEFAULT_SPORT, sportMeta, isPlayableSport } from './lib/sports';
+import { MAP_SPORTS, SPORTS, DEFAULT_SPORT, sportMeta, isPlayableSport, sportsInCourts } from './lib/sports';
 import { DEFAULT_CITY, getCity, nearestCity, inSubregions } from './lib/cities';
 import { CITY_CLASSES } from './data/cities';
 import { useFavorites } from './lib/favorites';
@@ -780,6 +780,32 @@ export default function App() {
     [courtData, activeCity, activeSubs]
   );
 
+  // The sports the active city actually has courts for. The sport dial shows
+  // these rather than every MAP_SPORT, the same "filters self-hide by data
+  // presence" rule the amenity and class-category chips follow: handball is a
+  // northeast sport SF has none of, and golf is 6 SFRPD courses NYC has no
+  // analogue for, so neither city offers a view that opens onto an empty map.
+  // Keyed off the city alone, not the borough selection, so narrowing Areas
+  // doesn't reshuffle the dial under you.
+  const citySports = useMemo(
+    () => sportsInCourts(MAP_SPORTS, courtData.filter((c) => (c.city || 'sf') === activeCity)),
+    [courtData, activeCity]
+  );
+
+  // The playable half of that, for the interest pickers (onboarding + profile
+  // favorites), which offer sports rather than the map's facility views.
+  const cityPlayableSports = useMemo(
+    () => sportsInCourts(SPORTS, [], citySports.map((s) => s.id)),
+    [citySports]
+  );
+
+  // Switching cities off a sport the new one doesn't have (SF → NYC on golf,
+  // NYC → SF on handball) falls back to the default rather than stranding the
+  // map on a sport with no pins.
+  useEffect(() => {
+    if (!citySports.some((s) => s.id === sport)) setSport(DEFAULT_SPORT);
+  }, [citySports, sport]);
+
   // The active city's class catalog: SF keeps its bundled ActiveNet list (the
   // default inside the consumers), other cities use theirs (or none), narrowed
   // to the selected sub-areas (boroughs).
@@ -1145,7 +1171,7 @@ export default function App() {
                 active sport (or Favorites) is highlighted rather than hidden, so the
                 grid keeps a stable layout and shows the current selection. */}
             <View style={styles.sportGrid}>
-              {MAP_SPORTS.map((s) => {
+              {citySports.map((s) => {
                 const active = !favoritesMode && s.id === sport;
                 return (
                   <Pressable
@@ -1517,6 +1543,7 @@ export default function App() {
             visible
             onClose={() => {}}
             courtsById={courtsById}
+            sports={cityPlayableSports}
             onFriends={user ? () => setFriendsOpen(true) : undefined}
             cityId={activeCity}
             onSelectCity={(id) => setActiveCity(id)}
@@ -1568,7 +1595,11 @@ export default function App() {
       )}
 
       {onboarded === false && (
-        <Onboarding onFinish={finishOnboarding} onEnableLocation={requestLocation} />
+        <Onboarding
+          sports={cityPlayableSports}
+          onFinish={finishOnboarding}
+          onEnableLocation={requestLocation}
+        />
       )}
     </View>
   );

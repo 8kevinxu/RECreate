@@ -25,7 +25,7 @@ import { useAuth } from '../lib/auth';
 // Terms link points at Apple's standard EULA; swap PRIVACY_URL for your hosted page.
 const TERMS_URL = 'https://www.apple.com/legal/internet-services/itunes/dev/stdeula/';
 const PRIVACY_URL = 'https://playrecreate.com/privacy.html';
-import { SPORTS } from '../lib/sports';
+import { SPORTS, sportsInCourts } from '../lib/sports';
 import { CLASS_CATEGORIES } from '../data/classes';
 import { loadMyStats } from '../lib/playerCheckins';
 import { loadMyReportCount } from '../lib/crowd';
@@ -38,6 +38,11 @@ export default function AuthModal({
   asPage = false, // render inline as the Profile tab page instead of a modal
   onFriends, // open the Friends sheet (shown in the signed-in panel)
   courtsById = {},
+  // The active city's playable sports (App.js): the favorites picker offers
+  // these rather than every tracked sport, so an SF user is never asked to
+  // favorite handball. Sports they already saved stay listed regardless (see
+  // editSports) — otherwise a pick made in another city couldn't be undone.
+  sports = SPORTS,
   initialMode = 'signin', // 'signin' | 'signup' — start the form on this tab
   cityId, // active metro + switcher, threaded into Settings (profile page only)
   onSelectCity,
@@ -323,6 +328,7 @@ export default function AuthModal({
   const favCourtNames = favCourtIds.map((id) => courtsById[id]).filter(Boolean);
   const favParkLabel = favCourtNames.join(t('listSep'));
   const favSportsList = SPORTS.filter((s) => (profile?.favorite_sports || []).includes(s.id));
+  const editSports = sportsInCourts(SPORTS, [], [...sports.map((s) => s.id), ...pSports]);
   const favCategoriesList = CLASS_CATEGORIES.filter((c) =>
     (profile?.favorite_categories || []).includes(c.id)
   );
@@ -542,7 +548,7 @@ export default function AuthModal({
 
                   <Text style={styles.fieldLabel}>{t('auth.favoriteSports')}</Text>
                   <View style={styles.sportWrap}>
-                    {SPORTS.map((s) => {
+                    {editSports.map((s) => {
                       const active = pSports.includes(s.id);
                       return (
                         <Pressable

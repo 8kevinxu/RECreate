@@ -17,7 +17,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { createRun, MAX_NOTE } from '../lib/runs';
 import { startOfDay, dayChipLabel, fmtClock } from '../lib/datetime';
 import { dropinWeekdays, openGymSlots } from '../lib/hours';
-import { PLAN_SPORTS } from '../lib/sports';
+import { PLAN_SPORTS, sportsInCourts } from '../lib/sports';
 import { haversineMiles, formatDistance } from '../lib/distance';
 import { useI18n, sportLabel } from '../lib/i18n';
 import { useAuth } from '../lib/auth';
@@ -41,6 +41,14 @@ export default function RunModal({
 }) {
   const { t } = useI18n();
   const { profile } = useAuth();
+
+  // Only what the courts in view (the active city, see App.js) actually offer,
+  // plus whatever sport the map handed us — planning a session for a sport with
+  // no courts here would open onto an empty court list.
+  const planSports = useMemo(
+    () => sportsInCourts(PLAN_SPORTS, courts, [sportProp]),
+    [courts, sportProp]
+  );
   // Seeded from the map's current sport, but switchable here so you can plan a
   // run for either sport regardless of what the map is showing.
   const [sport, setSport] = useState(sportProp);
@@ -259,7 +267,7 @@ export default function RunModal({
             showsVerticalScrollIndicator={false}
           >
             <View style={styles.sportRow}>
-              {PLAN_SPORTS.map((s) => {
+              {planSports.map((s) => {
                 const active = s.id === sport;
                 return (
                   <Pressable

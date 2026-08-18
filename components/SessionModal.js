@@ -19,7 +19,7 @@ import {
 } from '../lib/signals';
 import { startOfDay, dayChipLabel, fmtClock, viewLabel } from '../lib/datetime';
 import { dropinWeekdays, openGymSlots } from '../lib/hours';
-import { SPORTS, sportMeta, ANY_SPORT, DEFAULT_SPORT } from '../lib/sports';
+import { SPORTS, sportMeta, ANY_SPORT, DEFAULT_SPORT, sportsInCourts } from '../lib/sports';
 import { sportLabel, useI18n } from '../lib/i18n';
 
 export default function SessionModal({
@@ -37,6 +37,13 @@ export default function SessionModal({
   // that scopes the court + open-gym time options below.
   const displaySport = signal?.sport || sportProp;
   const [selSport, setSelSport] = useState(DEFAULT_SPORT);
+  // Activities you can suggest: what the courts in view (the active city) offer,
+  // plus the signal's own sport and the current pick so neither can vanish from
+  // the row it's selected in (a signal can arrive from another metro).
+  const suggestSports = useMemo(
+    () => sportsInCourts(SPORTS, courts, [displaySport, selSport]),
+    [courts, displaySport, selSport]
+  );
   const days = useMemo(() => {
     const base = startOfDay(new Date());
     return Array.from({ length: 7 }, (_, i) => {
@@ -246,7 +253,7 @@ export default function SessionModal({
                 </Text>
                 {/* Activity → place → time. Pick the sport first (it scopes the courts). */}
                 <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chipRow}>
-                  {SPORTS.map((s) => {
+                  {suggestSports.map((s) => {
                     const active = s.id === selSport;
                     return (
                       <Pressable
