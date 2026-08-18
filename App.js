@@ -68,6 +68,8 @@ import {
   removeCheckIn,
   subscribe as subscribeCrowd,
   mergeCheckIn,
+  crowdKey,
+  historyFor,
   loadMyVotes,
   saveMyVotes,
   currentLevel,
@@ -370,8 +372,10 @@ export default function App() {
   const [userLocation, setUserLocation] = useState(null);
   const [locating, setLocating] = useState(true);
   const [now, setNow] = useState(new Date());
-  const [crowd, setCrowd] = useState({}); // { courtId: [{ id, level, ts }] }
-  const [myVotes, setMyVotes] = useState({}); // { courtId: { id, level, ts } }
+  // Crowd reports are per court AND per sport ("courtId|sport" keys — see crowdKey):
+  // one pin can be a gym, a tennis court and a ball field, and they fill up separately.
+  const [crowd, setCrowd] = useState({}); // { "courtId|sport": [{ id, level, ts }] }
+  const [myVotes, setMyVotes] = useState({}); // { "courtId|sport": { id, level, ts } }
   const [pickedTime, setPickedTime] = useState(null); // null = live "now"
   const [pickerOpen, setPickerOpen] = useState(false);
   const { enabled: authEnabled, user, displayName, profile, updateProfile } = useAuth();
@@ -513,11 +517,11 @@ export default function App() {
     return unsubscribe;
   }, []);
 
-  const persistMyVote = (courtId, vote) => {
+  const persistMyVote = (key, vote) => {
     setMyVotes((prev) => {
       const next = { ...prev };
-      if (vote) next[courtId] = vote;
-      else delete next[courtId];
+      if (vote) next[key] = vote;
+      else delete next[key];
       saveMyVotes(next);
       return next;
     });
@@ -525,26 +529,27 @@ export default function App() {
 
   // Tap a level: check in, switch your vote, or (tapping your current pick) undo.
   // Returns a result so the card can show feedback.
-  const handleVote = async (courtId, level) => {
-    const mine = myVotes[courtId];
+  const handleVote = async (courtId, vSport, level) => {
+    const key = crowdKey(courtId, vSport);
+    const mine = myVotes[key];
     if (mine && mine.level === level) {
-      await removeCheckIn(courtId, mine.id); // toggle off
-      persistMyVote(courtId, null);
+      await removeCheckIn(courtId, vSport, mine.id); // toggle off
+      persistMyVote(key, null);
       setCrowd(await loadCrowd());
       return { removed: true };
     }
     // Whether to broadcast this crowd report to friends (share_activity setting,
     // or a one-off prompt when it's off). Only relevant for signed-in users.
     const notify = user ? await resolveNotify(profile?.share_activity) : false;
-    const res = await recordCheckIn(courtId, level, notify);
+    const res = await recordCheckIn(courtId, vSport, level, notify);
     if (res && res.id) {
-      if (mine) await removeCheckIn(courtId, mine.id); // replace previous vote
-      persistMyVote(courtId, { id: res.id, level, ts: Date.now() });
+      if (mine) await removeCheckIn(courtId, vSport, mine.id); // replace previous vote
+      persistMyVote(key, { id: res.id, level, ts: Date.now() });
       setCrowd(await loadCrowd());
       // A signed-in crowd report also logs a personal visit for the selected
       // sport (deduped server-side window) — feeds the account check-in stats.
       // Silent: the crowd report above already handled any friend notification.
-      if (user) logVisit(user.id, courtId, sport);
+      if (user) logVisit(user.id, courtId, vSport);
       // Ask for an App Store rating here and nowhere else: a report just landed,
       // which is the app working. Self-gating (see lib/rateApp.js) — it declines
       // for anyone who hasn't reported a few times already. Deliberately not
@@ -557,9 +562,9 @@ export default function App() {
   };
 
   // Dedicated "I played here" check-in for the selected sport (court detail).
-  const handleLogVisit = async (courtId) => {
+  const handleLogVisit = async (courtId, vSport) => {
     const notify = user ? await resolveNotify(profile?.share_activity) : false;
-    return logVisit(user?.id, courtId, sport, notify);
+    return logVisit(user?.id, courtId, vSport, notify);
   };
 
   // Refresh "open now" status every minute.
@@ -1038,8 +1043,11 @@ export default function App() {
             ? getDropinStatus(c, favoriteSport(c.id), viewTime).open
             : c.dropin.open,
           booked: favoritesMode ? null : booked,
-          // Crowd is a live signal; hide it when viewing a future time.
-          crowd: isPicked ? null : currentLevel(crowd[c.id], nowMs),
+          // Crowd is a live signal; hide it when viewing a future time. Read for the
+          // sport this pin is drawn as, so a packed gym doesn't tint its tennis pin.
+          crowd: isPicked
+            ? null
+            : currentLevel(historyFor(crowd, c.id, favoritesMode ? favoriteSport(c.id) : sport), nowMs),
         };
       }),
     [visibleCourts, sport, favoritesMode, favoriteSport, crowd, nowMs, isPicked, viewTime]
@@ -1470,8 +1478,8 @@ export default function App() {
           sport={detailSport}
           favSport={favoriteSport(selected.id)}
           onToggleFav={(sp) => toggleFavorite(selected.id, sp)}
-          history={crowd[selected.id] || []}
-          myVote={myVotes[selected.id]}
+          history={historyFor(crowd, selected.id, detailSport)}
+          myVote={myVotes[crowdKey(selected.id, detailSport)]}
           now={nowMs}
           viewTime={viewTime}
           isPicked={isPicked}
@@ -1776,7 +1784,7 @@ function CourtDetail({
   }, [note]);
 
   const doVote = async (lv) => {
-    const res = await onVote(court.id, lv);
+    const res = await onVote(court.id, vSport, lv);
     if (res && res.removed) {
       setNote(t('court.checkinRemoved'));
     } else if (res && res.id) {
@@ -1787,7 +1795,7 @@ function CourtDetail({
   };
 
   const doLogVisit = async () => {
-    const res = await onLogVisit(court.id);
+    const res = await onLogVisit(court.id, vSport);
     if (res && res.logged) {
       setNote(t('court.visitLogged', { sport: sportName }));
     } else if (res && res.skipped) {
@@ -2322,7 +2330,9 @@ function CourtDetail({
       ) : (
       <View style={styles.crowdBox}>
         <View style={styles.crowdStatusRow}>
-          <Text style={styles.sectionLabel}>{t('court.howCrowded')}</Text>
+          <Text style={[styles.sectionLabel, styles.crowdLabel]}>
+            {t('court.howCrowded', { sport: sportName })}
+          </Text>
           {level ? (
             <Text style={[styles.crowdStatus, { color: LEVEL_META[level].color }]}>
               {LEVEL_META[level].dot} {t('crowd.' + level)} · {timeAgo(last.ts, now)}
@@ -3066,6 +3076,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 8,
   },
+  // Named for the sport, so it can be long — let it shrink before the status does.
+  crowdLabel: { flexShrink: 1, marginRight: 8 },
   crowdStatus: { fontSize: 12, fontWeight: '700' },
   crowdStatusMuted: { fontSize: 12, color: '#9aa7b4', fontStyle: 'italic' },
   crowdButtons: { flexDirection: 'row', gap: 8 },

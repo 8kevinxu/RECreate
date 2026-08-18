@@ -1,18 +1,25 @@
 -- RECreate — crowd check-ins (anonymous "how busy is this court right now").
 -- Apply the schema/ files in numeric order; see supabase/README.md.
 
+-- One row per report. `court_id` is a whole facility (a pin can carry a gym, tennis
+-- courts and a ball diamond), so a report is only meaningful paired with the SPORT
+-- it is about — reporting the hoops packed says nothing about the diamond. `sport`
+-- is nullable for rows written before check-ins went per-sport (migration 024);
+-- the client treats those as pin-wide until they age out of its 24h window.
 create table if not exists public.check_ins (
   id          bigint generated always as identity primary key,
   court_id    text        not null,
+  sport       text        constraint check_ins_sport_len
+                          check (sport is null or char_length(sport) <= 40),
   level       text        not null check (level in ('empty', 'moderate', 'packed')),
   ip          text,        -- captured server-side by the rate-limit trigger
   notify      boolean     not null default false,  -- opt-in "tell my friends I voted" (see 07_push.sql)
   created_at  timestamptz not null default now()
 );
 
--- Fast "recent check-ins per court" lookups.
-create index if not exists check_ins_court_time_idx
-  on public.check_ins (court_id, created_at desc);
+-- Fast "recent check-ins per court + sport" lookups.
+create index if not exists check_ins_court_sport_time_idx
+  on public.check_ins (court_id, sport, created_at desc);
 
 -- Anonymous, public check-ins: anyone can read and add, nobody can edit/delete.
 alter table public.check_ins enable row level security;

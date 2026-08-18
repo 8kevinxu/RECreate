@@ -285,39 +285,45 @@ drop trigger if exists player_check_ins_notify on public.player_check_ins;
 create trigger player_check_ins_notify after insert on public.player_check_ins
   for each row execute function public.notify_player_checkin();
 
--- Per-voter-per-court cooldown log for crowd pushes. Switching levels / re-tapping
--- inserts a new check-in each time (and deletes the previous row), so without this
--- a friend gets a push on every tap. Server-only: RLS on with no policies — only the
--- SECURITY DEFINER trigger below writes it.
+-- Per-voter-per-court-per-sport cooldown log for crowd pushes. Switching levels /
+-- re-tapping inserts a new check-in each time (and deletes the previous row), so
+-- without this a friend gets a push on every tap. Sport is part of the key: the gym
+-- being packed and the tennis courts being empty are two facts, and the window must
+-- not swallow the second. Server-only: RLS on with no policies — only the SECURITY
+-- DEFINER trigger below writes it.
 create table if not exists public.crowd_notify_log (
   voter_id uuid        not null references public.profiles (id) on delete cascade,
   court_id text        not null,
+  sport    text        not null default '',
   sent_at  timestamptz not null default now(),
-  primary key (voter_id, court_id)
+  primary key (voter_id, court_id, sport)
 );
 alter table public.crowd_notify_log enable row level security;
 
 -- A friend reports how busy a court is → notify their accepted friends. Crowd
 -- check-ins are otherwise anonymous, so we take the voter from the JWT (auth.uid())
 -- — never a client-supplied id — and only send when they opted in (new.notify) and
--- are actually signed in. Rate-limited to one push per voter+court per 10 minutes.
+-- are actually signed in. Rate-limited to one push per voter+court+sport per 10 min.
 create or replace function public.notify_crowd()
 returns trigger language plpgsql security definer set search_path = public as $$
-declare voter uuid; who text; recipients uuid[]; level_word text; last_sent timestamptz;
+declare
+  voter uuid; who text; recipients uuid[];
+  level_word text; sport_word text; last_sent timestamptz;
 begin
   voter := auth.uid();
   if not new.notify or voter is null then return new; end if;
 
-  -- Anti-spam: skip if this voter already pushed a crowd update for this court in
+  -- Anti-spam: skip if this voter already pushed an update for this court+sport in
   -- the last 10 min (stops spam-tapping / rapidly switching levels).
   select sent_at into last_sent from public.crowd_notify_log
-    where voter_id = voter and court_id = new.court_id;
+    where voter_id = voter and court_id = new.court_id
+      and sport = coalesce(new.sport, '');
   if last_sent is not null and last_sent > now() - interval '10 minutes' then
     return new;
   end if;
-  insert into public.crowd_notify_log (voter_id, court_id, sent_at)
-    values (voter, new.court_id, now())
-    on conflict (voter_id, court_id) do update set sent_at = excluded.sent_at;
+  insert into public.crowd_notify_log (voter_id, court_id, sport, sent_at)
+    values (voter, new.court_id, coalesce(new.sport, ''), now())
+    on conflict (voter_id, court_id, sport) do update set sent_at = excluded.sent_at;
 
   select display_name into who from public.profiles where id = voter;
   select array_agg(fid) into recipients
@@ -326,11 +332,23 @@ begin
     when 'empty'    then 'wide open 🟢'
     when 'moderate' then 'moderately busy 🟡'
     else                 'packed 🔴' end;
+  -- Not every tracked sport is played on a "court" (and an unknown/absent sport
+  -- falls back to the generic noun rather than inventing one).
+  sport_word := case coalesce(new.sport, '')
+    when ''           then 'court'
+    when 'any'        then 'court'
+    when 'pingpong'   then 'ping pong table'
+    when 'weightroom' then 'weight room'
+    when 'swimming'   then 'pool'
+    when 'golf'       then 'golf course'
+    when 'soccer'     then 'soccer field'
+    when 'baseball'   then 'ball field'
+    else new.sport || ' court' end;
   perform public.send_push(
     recipients,
     coalesce(who, 'A friend') || ' shared a crowd update 👀',
-    'A court looks ' || level_word || ' — tap to see',
-    jsonb_build_object('type', 'crowd', 'courtId', new.court_id)
+    'A ' || sport_word || ' looks ' || level_word || ' — tap to see',
+    jsonb_build_object('type', 'crowd', 'courtId', new.court_id, 'sport', new.sport)
   );
   return new;
 end; $$;

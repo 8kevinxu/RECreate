@@ -159,7 +159,7 @@ pattern.
 | `auth.js` | `AuthProvider` context: session + profile; sign up/in/out, update, delete |
 | `useCourts.js` | Launch-time court loader: bundled → cached → remote; merges `reserved`/`directory` |
 | `hours.js` | Open-now / open-gym schedule logic (shared by map, Nearby, time pickers) |
-| `crowd.js` | Anonymous "how busy" check-ins (Supabase shared + realtime, or local) |
+| `crowd.js` | Anonymous "how busy" check-ins, keyed **court + sport** (Supabase shared + realtime, or local) |
 | `playerCheckins.js` | Personal "I played here" log (per-sport stats, feed) |
 | `reservations.js` / `reservationsLive.js` | rec.us booking occupancy: snapshot helpers + live per-court fetch |
 | `reviews.js`, `favorites.js` | Court reviews (anonymous); on-device favorites (court→sport) |
