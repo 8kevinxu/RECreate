@@ -7,6 +7,7 @@ import {
   AppState,
   Dimensions,
   Linking,
+  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -688,41 +689,71 @@ export default function App() {
     });
   }, [goTab]);
 
-  // Ask for location (on mount, and again if the user taps "enable location").
-  const requestLocation = useCallback(async () => {
-    setLocating(true);
-    try {
-      let perm = await Location.getForegroundPermissionsAsync();
-      // Only the OS can show its prompt, and only while permission is undetermined
-      // (canAskAgain). If it's already been denied, requesting again is a silent
-      // no-op — so route the user to Settings instead.
-      if (perm.status !== 'granted' && perm.canAskAgain) {
-        perm = await Location.requestForegroundPermissionsAsync();
-      }
-      if (perm.status === 'granted') {
-        const pos = await Location.getCurrentPositionAsync({
-          accuracy: Location.Accuracy.Balanced,
-        });
-        setUserLocation({ lat: pos.coords.latitude, lng: pos.coords.longitude });
-        // Auto-select the metro the user is actually in — unless they've picked
-        // one manually. No map jump: the one-time auto-center on the fix
-        // already frames their neighborhood, which beats a city-wide overview.
+  // Ask for location. `interactive` marks a deliberate tap (the map's locate
+  // button, the banner, Nearby, onboarding) as opposed to the silent attempt on
+  // launch: a tap must never dead-end, so when we can't get a fix it explains
+  // where the switch is, while the launch attempt stays quiet.
+  const requestLocation = useCallback(
+    async ({ interactive = false } = {}) => {
+      setLocating(true);
+      // Auto-select the metro the user is actually in — unless they've picked one
+      // manually. No map jump: the one-time auto-center on the fix already frames
+      // their neighborhood, which beats a city-wide overview.
+      const applyFix = (lat, lng) => {
+        setUserLocation({ lat, lng });
         if (!cityChosenRef.current) {
-          const near = nearestCity(pos.coords.latitude, pos.coords.longitude);
+          const near = nearestCity(lat, lng);
           if (near) setActiveCity(near.id, { chosen: false, moveMap: false });
         }
-      } else if (!perm.canAskAgain) {
-        Alert.alert(t('loc.deniedTitle'), t('loc.deniedBody'), [
-          { text: t('loc.cancel'), style: 'cancel' },
-          { text: t('loc.openSettings'), onPress: () => Linking.openSettings() },
-        ]);
+      };
+      try {
+        if (Platform.OS === 'web') {
+          // The browser owns this prompt, and *asking for a position is* the
+          // prompt — there is no separate permission request to make. Going
+          // through a permission query first only adds a state ("denied") that
+          // silently swallows the tap, so ask outright and let the rejection
+          // tell us it's blocked.
+          const pos = await new Promise((resolve, reject) => {
+            if (!navigator.geolocation) return reject(new Error('unsupported'));
+            navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 15000 });
+          });
+          applyFix(pos.coords.latitude, pos.coords.longitude);
+          return;
+        }
+        let perm = await Location.getForegroundPermissionsAsync();
+        // Only the OS can show its prompt, and only while permission is undetermined
+        // (canAskAgain). If it's already been denied, requesting again is a silent
+        // no-op — so route the user to Settings instead.
+        if (perm.status !== 'granted' && perm.canAskAgain) {
+          perm = await Location.requestForegroundPermissionsAsync();
+        }
+        if (perm.status === 'granted') {
+          const pos = await Location.getCurrentPositionAsync({
+            accuracy: Location.Accuracy.Balanced,
+          });
+          applyFix(pos.coords.latitude, pos.coords.longitude);
+        } else if (interactive) {
+          Alert.alert(t('loc.deniedTitle'), t('loc.deniedBody'), [
+            { text: t('loc.cancel'), style: 'cancel' },
+            { text: t('loc.openSettings'), onPress: () => Linking.openSettings() },
+          ]);
+        }
+      } catch (e) {
+        // Blocked, dismissed, or timed out. Nothing the app can re-prompt for —
+        // on web only the browser's own site settings can undo a block — so the
+        // most useful thing left is saying where that switch is. Map still works
+        // centered on the city.
+        if (interactive) {
+          const body = Platform.OS === 'web' ? t('loc.deniedBodyWeb') : t('loc.deniedBody');
+          if (Platform.OS === 'web') window.alert(`${t('loc.deniedTitle')}\n\n${body}`);
+          else Alert.alert(t('loc.deniedTitle'), body);
+        }
+      } finally {
+        setLocating(false);
       }
-    } catch (e) {
-      // Ignore — map still works centered on San Francisco.
-    } finally {
-      setLocating(false);
-    }
-  }, [t]);
+    },
+    [t]
+  );
 
   // First-launch gate: returning users skip straight in and we request location
   // immediately (as before); brand-new users see onboarding first, which primes
@@ -1430,7 +1461,7 @@ export default function App() {
           !controlsVisible && (
             <Pressable
               style={[styles.locBanner, { top: insets.top + 56 }]}
-              onPress={requestLocation}
+              onPress={() => requestLocation({ interactive: true })}
             >
               <Ionicons name="location-outline" size={17} color="#2f74d6" />
               <Text style={styles.locBannerText}>{t('loc.banner')}</Text>
@@ -1467,7 +1498,7 @@ export default function App() {
             // flash "turn on location" at someone who is about to have it.
             !userLocation && !locating && styles.recenterBtnAsk,
           ]}
-          onPress={userLocation ? recenter : requestLocation}
+          onPress={userLocation ? recenter : () => requestLocation({ interactive: true })}
         >
           <Ionicons
             name={userLocation ? 'locate' : 'locate-outline'}
@@ -1519,7 +1550,7 @@ export default function App() {
           setNearbyOpen(false);
           handleSelect(id);
         }}
-        onRequestLocation={requestLocation}
+        onRequestLocation={() => requestLocation({ interactive: true })}
         onClose={() => setNearbyOpen(false)}
       />
           </>
@@ -1619,7 +1650,7 @@ export default function App() {
         <Onboarding
           sports={cityPlayableSports}
           onFinish={finishOnboarding}
-          onEnableLocation={requestLocation}
+          onEnableLocation={() => requestLocation({ interactive: true })}
         />
       )}
     </View>
