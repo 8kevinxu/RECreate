@@ -1,55 +1,6 @@
 {
   "entries": [
     {
-      "id": "vol-a07Pi00003zJscrIAC",
-      "source": "sfrpd-volunteer",
-      "name": "GGP Conservatory Valley Volunteer Workparty",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "GGP Conservatory Valley",
-      "when": "Wed · 9:30 AM - 11:30 AM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 0,
-      "unlimited": false,
-      "start": "2026-08-19",
-      "end": "2026-09-30",
-      "instructor": "Friends of Conservatory Valley",
-      "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the RPD gardeners in a weekly recurring volunteer workparty at the Valley of the Conservatory of Flowers. Volunteer tasks include the maintenance of ornamental planting beds. All tools provided by RPD. Children 13 years and older accompanied by an adult are welcome. No school groups.\n\nMeet on the steps of the Conservatory of Flowers, 100 JFK Drive.",
-      "lat": 37.77153,
-      "lng": -122.4601,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
-      "id": "vol-a07Pi00005PqdCTIAZ",
-      "source": "sfrpd-volunteer",
-      "name": "Golden Gate Park Rhododendron Dell",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "GGP Sec 2 Rhododendron Dell",
-      "when": "Wed · 10:00 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 16,
-      "unlimited": false,
-      "start": "2026-08-19",
-      "end": "2027-02-03",
-      "activity": "Horticultural Maintenance",
-      "desc": "Join us for volunteering at the Golden Gate Park Rhododendron Dell every 1st and 3rd Wednesday of the month! Come spend the morning with some light weeding, mulching, or pruning.Please RSVP by selecting group sign-up even when you are not registering as a group. We limit to four people per group sign-up, if you have more than four people, please email us at Recparkvolunteer@sfgov.org. Thank you!",
-      "lat": 37.7699,
-      "lng": -122.46429,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a074U00001PQCT5QAP",
       "source": "sfrpd-volunteer",
       "name": "CNPS  Glen Canyon",
@@ -88,7 +39,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 7,
+      "spots": 6,
       "unlimited": false,
       "start": "2026-08-20",
       "end": "2026-11-19",
@@ -211,7 +162,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 11,
+      "spots": 10,
       "unlimited": false,
       "start": "2026-08-22",
       "end": "2026-08-22",
@@ -246,6 +197,31 @@
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.  You can only sign-up a group of 4. If you have a group size of 5 or more, please email us at recparkvolunteer@sfgov.org.\n\nJoin the Friends of the De Young Museum for a twice-a-month volunteer workparty. A variety of gardening tasks are available. All tools and supplies are supplied by the gardeners. Volunteers receive a free guest pass to the De Young after volunteering.\n\nMeet at deYoung Museum entrance",
       "lat": 37.77147,
       "lng": -122.46864,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a07Pi00003zJscrIAC",
+      "source": "sfrpd-volunteer",
+      "name": "GGP Conservatory Valley Volunteer Workparty",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "GGP Conservatory Valley",
+      "when": "Wed · 9:30 AM - 11:30 AM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 10,
+      "unlimited": false,
+      "start": "2026-08-26",
+      "end": "2026-09-30",
+      "instructor": "Friends of Conservatory Valley",
+      "activity": "Habitat Restoration",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the RPD gardeners in a weekly recurring volunteer workparty at the Valley of the Conservatory of Flowers. Volunteer tasks include the maintenance of ornamental planting beds. All tools provided by RPD. Children 13 years and older accompanied by an adult are welcome. No school groups.\n\nMeet on the steps of the Conservatory of Flowers, 100 JFK Drive.",
+      "lat": 37.77153,
+      "lng": -122.4601,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -322,6 +298,30 @@
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the Friends Gambier Plaza and the RPD Gardeners in a habitat restoration volunteer workparty. Tools and gloves provided. Meet at Burrows and Gambier streets.",
       "lat": 37.71889,
       "lng": -122.41396,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a07Pi00005PqdCTIAZ",
+      "source": "sfrpd-volunteer",
+      "name": "Golden Gate Park Rhododendron Dell",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "GGP Sec 2 Rhododendron Dell",
+      "when": "Wed · 10:00 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 20,
+      "unlimited": false,
+      "start": "2026-09-02",
+      "end": "2027-02-03",
+      "activity": "Horticultural Maintenance",
+      "desc": "Join us for volunteering at the Golden Gate Park Rhododendron Dell every 1st and 3rd Wednesday of the month! Come spend the morning with some light weeding, mulching, or pruning.Please RSVP by selecting group sign-up even when you are not registering as a group. We limit to four people per group sign-up, if you have more than four people, please email us at Recparkvolunteer@sfgov.org. Thank you!",
+      "lat": 37.7699,
+      "lng": -122.46429,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -910,5 +910,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-08-19T12:42:03.527Z"
+  "fetchedAt": "2026-08-19T18:32:42.792Z"
 }
