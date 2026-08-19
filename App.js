@@ -693,6 +693,10 @@ export default function App() {
   // button, the banner, Nearby, onboarding) as opposed to the silent attempt on
   // launch: a tap must never dead-end, so when we can't get a fix it explains
   // where the switch is, while the launch attempt stays quiet.
+  //
+  // Resolves to { located, city }: `located` is whether we got a fix at all, and
+  // `city` is the metro it lands in — null when it's outside every one we cover.
+  // Onboarding's city step is the only caller that reads it.
   const requestLocation = useCallback(
     async ({ interactive = false } = {}) => {
       setLocating(true);
@@ -701,10 +705,11 @@ export default function App() {
       // their neighborhood, which beats a city-wide overview.
       const applyFix = (lat, lng) => {
         setUserLocation({ lat, lng });
-        if (!cityChosenRef.current) {
-          const near = nearestCity(lat, lng);
-          if (near) setActiveCity(near.id, { chosen: false, moveMap: false });
+        const near = nearestCity(lat, lng);
+        if (near && !cityChosenRef.current) {
+          setActiveCity(near.id, { chosen: false, moveMap: false });
         }
+        return { located: true, city: near ? near.id : null };
       };
       try {
         if (Platform.OS === 'web') {
@@ -717,8 +722,7 @@ export default function App() {
             if (!navigator.geolocation) return reject(new Error('unsupported'));
             navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 15000 });
           });
-          applyFix(pos.coords.latitude, pos.coords.longitude);
-          return;
+          return applyFix(pos.coords.latitude, pos.coords.longitude);
         }
         let perm = await Location.getForegroundPermissionsAsync();
         // Only the OS can show its prompt, and only while permission is undetermined
@@ -731,13 +735,15 @@ export default function App() {
           const pos = await Location.getCurrentPositionAsync({
             accuracy: Location.Accuracy.Balanced,
           });
-          applyFix(pos.coords.latitude, pos.coords.longitude);
-        } else if (interactive) {
+          return applyFix(pos.coords.latitude, pos.coords.longitude);
+        }
+        if (interactive) {
           Alert.alert(t('loc.deniedTitle'), t('loc.deniedBody'), [
             { text: t('loc.cancel'), style: 'cancel' },
             { text: t('loc.openSettings'), onPress: () => Linking.openSettings() },
           ]);
         }
+        return { located: false, city: null };
       } catch (e) {
         // Blocked, dismissed, or timed out. Nothing the app can re-prompt for —
         // on web only the browser's own site settings can undo a block — so the
@@ -748,6 +754,7 @@ export default function App() {
           if (Platform.OS === 'web') window.alert(`${t('loc.deniedTitle')}\n\n${body}`);
           else Alert.alert(t('loc.deniedTitle'), body);
         }
+        return { located: false, city: null };
       } finally {
         setLocating(false);
       }
@@ -789,9 +796,11 @@ export default function App() {
         }
       }
       setOnboarded(true);
-      // Location is requested in context from the location slide (onEnableLocation);
-      // if they skipped it, clear the "Finding you…" pill. Dismissing onboarding
-      // just reveals the map (home) underneath — no navigation needed.
+      // Location is requested in context from the city slide (onEnableLocation);
+      // someone who picked their metro by hand instead is never prompted here —
+      // the map's own location banner is the second ask. Clear the "Finding you…"
+      // pill for them. Dismissing onboarding just reveals the map (home)
+      // underneath — no navigation needed.
       if (!enabledLocation) setLocating(false);
     },
     [user, updateProfile]
@@ -1649,8 +1658,10 @@ export default function App() {
       {onboarded === false && (
         <Onboarding
           sports={cityPlayableSports}
+          courts={courtData}
           onFinish={finishOnboarding}
           onEnableLocation={() => requestLocation({ interactive: true })}
+          onPickCity={(id) => setActiveCity(id, { chosen: true })}
         />
       )}
     </View>

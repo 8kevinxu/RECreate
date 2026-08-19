@@ -136,16 +136,22 @@ npx expo start     # then press 'i' (iOS sim), 'a' (Android), or scan the QR in 
 ## First-launch onboarding
 
 On first launch the app shows a short, skippable onboarding flow
-(`components/Onboarding.js`, a full-screen overlay): value-prop slides → **pick
-interests** (favorite sports + class activities) → a **location primer** → an
-optional **Create account** step. It's shown once, gated on the
+(`components/Onboarding.js`, a full-screen overlay): a welcome slide → **pick your
+metro** → two more value-prop slides → **pick interests** (favorite sports + class
+activities) → an optional **Create account** step. It's shown once, gated on the
 `recreate.onboarded.v1` AsyncStorage flag; returning users skip straight to the
 map. Navigation is a top-left back button (no swipe).
 
-Two things make it more than a splash:
-- The **location prompt fires in context** — declining a slide never triggers the
-  OS dialog, so tapping "Enable location" later still shows the real prompt. If you
-  skip it, the map just stays centered on San Francisco and everything else works.
+Three things make it more than a splash:
+- **The city step is second, and it is also the location ask.** Second because
+  everything after it is city-scoped — the interests picker offers the active
+  city's playable sports, so asking later meant a new NYC user picked from SF's
+  list. Merged with location because a fix names the metro by itself. The button
+  reads "Use my location" until you tap a city by hand, then "Continue".
+- **A location miss doesn't strand you.** Deny the prompt, or turn out to be in a
+  city RECreate doesn't cover yet, and you stay on the step with a note pointing
+  at the two-city list — rather than being advanced silently onto San Francisco.
+  Picking by hand is sticky (a later fix won't move you); auto-detection isn't.
 - **Interests picked here work signed-out** — they're stored on-device
   (`lib/interests.js`) and drive "Recommended for you" immediately; the signed-in
   profile's favorites take over once you have an account. **Create account** opens
@@ -222,7 +228,7 @@ sport / opens ⭐ Favorites. It's shown once and then never again (persisted und
 | `lib/recommend.js` · `components/RecommendPane.js` | "Recommended for you" — interest-based games + classes in the Social tab |
 | `lib/playerCheckins.js` | Per-user visit stats (per-sport counts, favorite park) |
 | `lib/i18n.js` | i18n: `STRINGS` dict (en/zh/es), `I18nProvider`, `useI18n()`, and `tg()` for non-React modules |
-| `components/Onboarding.js` · `lib/interests.js` | First-launch onboarding overlay (slides → interests → location → account) + on-device interest store |
+| `components/Onboarding.js` · `lib/interests.js` | First-launch onboarding overlay (welcome → city/location → slides → interests → account) + on-device interest store |
 | `chatbot/` | **The assistant service** (Python/FastAPI) — deterministic retrieval + a model that only picks tools and phrases results; see its own README |
 | `scripts/export-chatbot-data.js` | Exports the app's merged court/class data to `chatbot/data/*.json` (`npm run export:chatbot`) |
 | `lib/assistant.js` · `lib/assistantFallback.js` | The app's only link to the service (gated on `EXPO_PUBLIC_ASSISTANT_URL`) + on-device answers for app questions when it's down |
