@@ -1,31 +1,6 @@
 {
   "entries": [
     {
-      "id": "vol-a074U00001PQCT5QAP",
-      "source": "sfrpd-volunteer",
-      "name": "CNPS  Glen Canyon",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "Glen Canyon Park",
-      "when": "Wed · 12:00 PM - 2:30 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 13,
-      "unlimited": false,
-      "start": "2026-08-19",
-      "end": "2026-09-16",
-      "instructor": "California Native Plant Society",
-      "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin SF Recreation and Parks’ Natural Resources Division and the California Native Plant Society for their weekly Wednesday habitat restoration project. Learn from our staff naturalists about the ecology of the canyon while helping to preserve its diverse habitats. We will be restoring portions of Islais Creek, riparian, scrub, or grassland communities. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Everyone 14 years old and older is invited; anyone under 14 yo must be accompanied by a guardian. Tools and gloves will be provided. Please be punctual. \n\n \n\nMeet us across the creek from Glenridge Cooperative Nursery, 1500 feet (approx. 7-minute walk) north of the Glen Canyon Recreation Center. For help with locating the project, the recreation center is at 70 Elk Street.",
-      "lat": 37.735996,
-      "lng": -122.440573,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a074U00001AcWr7QAF",
       "source": "sfrpd-volunteer",
       "name": "Mission Dolores Volunteer Workparty",
@@ -632,6 +607,32 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
+      "id": "vol-a074U00001PQCT5QAP",
+      "source": "sfrpd-volunteer",
+      "name": "CNPS  Glen Canyon",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "Glen Canyon Park",
+      "when": "Wed · 12:00 PM - 2:30 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 15,
+      "unlimited": false,
+      "start": "2026-09-16",
+      "end": "2026-09-16",
+      "oneDay": true,
+      "instructor": "California Native Plant Society",
+      "activity": "Habitat Restoration",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin SF Recreation and Parks’ Natural Resources Division and the California Native Plant Society for their weekly Wednesday habitat restoration project. Learn from our staff naturalists about the ecology of the canyon while helping to preserve its diverse habitats. We will be restoring portions of Islais Creek, riparian, scrub, or grassland communities. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Everyone 14 years old and older is invited; anyone under 14 yo must be accompanied by a guardian. Tools and gloves will be provided. Please be punctual. \n\n \n\nMeet us across the creek from Glenridge Cooperative Nursery, 1500 feet (approx. 7-minute walk) north of the Glen Canyon Recreation Center. For help with locating the project, the recreation center is at 70 Elk Street.",
+      "lat": 37.735996,
+      "lng": -122.440573,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
       "id": "vol-a07Pi00006EZxrXIAT",
       "source": "sfrpd-volunteer",
       "name": "Nature Resource Fair",
@@ -910,5 +911,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-08-19T18:32:42.792Z"
+  "fetchedAt": "2026-08-20T01:06:54.401Z"
 }
