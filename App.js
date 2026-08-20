@@ -19,7 +19,7 @@ import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import CourtMap from './components/CourtMap';
-import SportGlyph from './components/SportGlyph';
+import SportGlyph, { SportTag } from './components/SportGlyph';
 import Onboarding from './components/Onboarding';
 import AuthModal from './components/AuthModal';
 import FriendsModal from './components/FriendsModal';
@@ -53,8 +53,11 @@ import {
   getDropinStatus,
   getDropinWeek,
   getDropinRemaining,
+  openPlayState,
+  dayName,
+  fmt as fmtMins,
 } from './lib/hours';
-import { MAP_SPORTS, SPORTS, DEFAULT_SPORT, sportMeta, isPlayableSport, sportsInCourts } from './lib/sports';
+import { MAP_SPORTS, SPORTS, DEFAULT_SPORT, isPlayableSport, sportsInCourts } from './lib/sports';
 import { DEFAULT_CITY, getCity, nearestCity, inSubregions } from './lib/cities';
 import { CITY_CLASSES } from './data/cities';
 import { useFavorites } from './lib/favorites';
@@ -110,11 +113,20 @@ function courtCountLabel(d) {
   // "all …" only when the count actually covers every court — Presidio Wall is
   // 6 total / 3 reservable / 0 walk-up (the other 3 are open-play only), which
   // must read "3 reservable", not "all reservable".
+  //
+  // The three SFRP columns (Reservable | Walk-up shared use | Dedicated open
+  // play) are mutually exclusive slices of Total, so open play belongs here
+  // alongside the other two. Without it a dedicated hub read a bare "6 courts"
+  // next to a separate "Open play · 6 courts" chip — two facts that look like
+  // they describe different courts. When it covers every court the chip below
+  // is suppressed, so this line is the only place the number appears.
   if (n && d.reservable === n) return `${n} ${unit} · ${tg('court.allReservable')}`;
   if (n && d.walkup === n) return `${n} ${unit} · ${tg('court.allWalkup')}`;
+  if (n && d.openPlayCourts === n) return `${n} ${unit} · ${tg('court.allOpenPlay')}`;
   const parts = [];
   if (d.reservable) parts.push(tg('court.nReservable', { n: d.reservable }));
   if (d.walkup) parts.push(tg('court.nWalkup', { n: d.walkup }));
+  if (d.openPlayCourts) parts.push(tg('court.openPlayCourts', { n: d.openPlayCourts }));
   return parts.length ? `${n} ${unit} · ${parts.join(', ')}` : `${n} ${unit}`;
 }
 // Sport-scoped facility note. Outdoor notes list every sport at the park
@@ -1695,7 +1707,6 @@ function CourtDetail({
   useEffect(() => setVSport(sport), [court.id, sport]);
   const isFav = favSport != null && favSport === vSport;
   const dropin = getDropinStatus(court, vSport, viewTime);
-  const meta = sportMeta(vSport);
   const sportName = sportLabel(t, vSport);
   // rec.us reservations for this sport, if this court is reservable, plus the live
   // "% booked right now" reading derived from the point-in-time slot map. We prefer
@@ -1738,6 +1749,29 @@ function CourtDetail({
   // bookable courts, so without this a single booking on the one bookable court reads
   // as "fully booked" while the walk-up / open-play courts sit empty.
   const dir = court.directory?.[vSport];
+  // The open-play chip speaks in the card's "right now" vocabulary, like every
+  // other badge on it. Three shapes of source data, in trust order: a posted
+  // openPlayWeek resolves to where the viewer stands in it (the interesting
+  // case — Rossi, Upper Noe, where open play is a window carved out of
+  // otherwise-reservable courts); a dedicated court count the count chip above
+  // hasn't already absorbed keeps the count form; an openPlayTimes string the
+  // build couldn't parse into a week falls back to the bare assertion.
+  const opState = dir?.openPlayWeek ? openPlayState(dir.openPlayWeek, viewTime) : null;
+  const openPlayChip = opState
+    ? {
+        live: opState.kind === 'now',
+        label:
+          opState.kind === 'now'
+            ? t('court.openPlayNow', { t: fmtMins(opState.end) })
+            : opState.kind === 'today'
+            ? t('court.openPlayLater', { a: fmtMins(opState.start), b: fmtMins(opState.end) })
+            : t('court.openPlayNext', { d: dayName(opState.dow), t: fmtMins(opState.start) }),
+      }
+    : dir?.openPlayCourts && dir.openPlayCourts !== dir.total
+    ? { live: false, label: t('court.openPlayChip', { n: dir.openPlayCourts }) }
+    : dir?.openPlayTimes
+    ? { live: false, label: t('court.openPlay') }
+    : null;
   // Lighting, resolved once. It is three-state and the states are not
   // interchangeable: SF's directory (an explicit Yes/No column) and NYC's
   // dataset both record it for the courts they cover, and `null` means no
@@ -2018,11 +2052,13 @@ function CourtDetail({
           doesn't shrink fixed siblings — same gotcha as ClassDetail's sheet). */}
       <ScrollView style={styles.cardScroll} keyboardShouldPersistTaps="handled">
       <View style={styles.badgeRow}>
-        <View
+        <SportTag
+          id={vSport}
           style={[styles.badge, dropin.open ? styles.badgeOpen : styles.badgeClosed]}
+          textStyle={styles.badgeText}
         >
-          <Text style={styles.badgeText}>{meta.emoji} {dropin.label}</Text>
-        </View>
+          {dropin.label}
+        </SportTag>
         <View
           style={[styles.badge, status.open ? styles.badgeFacOpen : styles.badgeFacClosed]}
         >
@@ -2065,9 +2101,9 @@ function CourtDetail({
       {dir && (
         <View style={styles.facRow}>
           {!!dir.total && (
-            <View style={styles.facChip}>
-              <Text style={styles.facText}>{meta.emoji} {courtCountLabel(dir)}</Text>
-            </View>
+            <SportTag id={vSport} size={12} style={styles.facChip} textStyle={styles.facText}>
+              {courtCountLabel(dir)}
+            </SportTag>
           )}
           {dir.restrooms && (
             <View style={styles.facChip}>
@@ -2084,12 +2120,21 @@ function CourtDetail({
               <Text style={styles.facText}>{t('amenity.wall')}</Text>
             </View>
           )}
-          {(dir.openPlayCourts || dir.openPlayWeek || dir.openPlayTimes) && (
-            <View style={styles.facChip}>
-              <Text style={styles.facText}>
-                🟢 {dir.openPlayCourts
-                  ? t('court.openPlayCourts', { n: dir.openPlayCourts })
-                  : t('court.openPlay')}
+          {openPlayChip && (
+            <View
+              style={[
+                styles.facChip,
+                styles.facChipRow,
+                openPlayChip.live && styles.facChipLive,
+              ]}
+            >
+              <Ionicons
+                name="time-outline"
+                size={12}
+                color={openPlayChip.live ? '#1a7a44' : '#46586a'}
+              />
+              <Text style={[styles.facText, openPlayChip.live && styles.facTextLive]}>
+                {openPlayChip.label}
               </Text>
             </View>
           )}
@@ -2103,14 +2148,11 @@ function CourtDetail({
       {!dir && (court.facts?.[vSport] || court.accessible || court.restrooms || court.water) && (
         <View style={styles.facRow}>
           {court.facts?.[vSport]?.n > 0 && (
-            <View style={styles.facChip}>
-              <Text style={styles.facText}>
-                {meta.emoji}{' '}
-                {t(court.facts[vSport].n === 1 ? 'court.courtsCountOne' : 'court.courtsCountMany', {
-                  n: court.facts[vSport].n,
-                })}
-              </Text>
-            </View>
+            <SportTag id={vSport} size={12} style={styles.facChip} textStyle={styles.facText}>
+              {t(court.facts[vSport].n === 1 ? 'court.courtsCountOne' : 'court.courtsCountMany', {
+                n: court.facts[vSport].n,
+              })}
+            </SportTag>
           )}
           {court.accessible && (
             <View style={styles.facChip}>
@@ -2374,9 +2416,9 @@ function CourtDetail({
 
       {canLogVisit && !isPicked && (
         <Pressable style={styles.checkInBtn} onPress={doLogVisit}>
-          <Text style={styles.checkInBtnText}>
-            {meta.emoji} {t('court.imHere')}
-          </Text>
+          <SportTag id={vSport} size={14} textStyle={styles.checkInBtnText}>
+            {t('court.imHere')}
+          </SportTag>
         </Pressable>
       )}
 
@@ -2455,9 +2497,9 @@ function CourtDetail({
           {runs.map((run) => (
             <View key={run.id} style={styles.runRow}>
               <View style={{ flex: 1 }}>
-                <Text style={styles.runWhen}>
-                  {sportMeta(run.sport).emoji} {formatRunTime(run.startsAt)}
-                </Text>
+                <SportTag id={run.sport} size={14} textStyle={styles.runWhen}>
+                  {formatRunTime(run.startsAt)}
+                </SportTag>
                 <Text style={styles.runMeta}>
                   {run.mine ? t('feed.you') : run.hostName} · {t('feed.going', { n: run.count })}
                   {run.note ? ` · ${run.note}` : ''}
@@ -3086,6 +3128,11 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
   },
   facText: { fontSize: 12, fontWeight: '600', color: '#46586a' },
+  facChipRow: { flexDirection: 'row', alignItems: 'center', gap: 4 },
+  // Open play happening right now borrows the drop-in badge's green, so "you can
+  // turn up this minute" reads the same wherever it appears on the card.
+  facChipLive: { backgroundColor: '#d4f3df' },
+  facTextLive: { color: '#1a7a44', fontWeight: '700' },
   facTextMuted: { fontSize: 12, fontWeight: '600', color: '#9aa7b4', fontStyle: 'italic' },
   bookedNote: { fontSize: 12, color: '#7a6a55', marginBottom: 8, lineHeight: 16 },
   bookedNoteFull: { color: '#c0392b', fontWeight: '700' },
