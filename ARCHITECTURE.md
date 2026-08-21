@@ -157,7 +157,7 @@ pattern.
 |---|---|
 | `supabase.js` | The client or `null` (the seam) |
 | `auth.js` | `AuthProvider` context: session + profile; sign up/in/out, update, delete |
-| `useCourts.js` | Launch-time court loader: bundled → cached → remote; merges `reserved`/`directory` |
+| `useCourts.js` | Court + occupancy loader: bundled → cached → remote (occupancy also on foreground); merges `reserved`/`directory` |
 | `hours.js` | Open-now / open-gym schedule logic (shared by map, Nearby, time pickers) |
 | `crowd.js` | Anonymous "how busy" check-ins, keyed **court + sport** (Supabase shared + realtime, or local) |
 | `playerCheckins.js` | Personal "I played here" log (per-sport stats, feed) |
@@ -175,12 +175,38 @@ pattern.
 
 ### Court availability: snapshot + live
 Reservation occupancy (tennis/pickleball on rec.us) is bundled as a **snapshot**
-(`data/reservations.js`) for instant/offline render, then, on native, upgraded to
-a **live** reading when a court card opens: `reservationsLive.js` fetches that one
-rec.us location and recomputes per-slot booked% with the same math as the build
-script. Web can't reach rec.us (CORS) and keeps the snapshot. The card labels
-freshness ("Live from rec.us" vs "as of M/D") and only asserts a hard "Fully
-booked" when the reading is live or the snapshot is <6h old.
+(`data/reservations.js`) for instant/offline render, then upgraded to a **live**
+reading when a court card opens: `reservationsLive.js` fetches that one rec.us
+location and recomputes per-slot booked% with the same math as the build script.
+`api.rec.us` sends `access-control-allow-origin: *`, so this works in the browser
+too — the card is live on both platforms. The card labels freshness ("Live from
+rec.us" vs "as of M/D") and only asserts a hard "Fully booked" when the reading is
+live or the snapshot is <6h old.
+
+**The snapshot itself refreshes over the wire** (`EXPO_PUBLIC_RESERVATIONS_URL` →
+`data/reservations.json`), and it is the one dataset where that is mandatory
+rather than nice to have. Court hours are weekday-indexed (`dropins[sport][dow]`)
+and stay correct forever; reservation slots are keyed to **absolute dates** on a
+rolling 7-day window, so the copy compiled into a build stops resolving about a
+week after it ships — `liveBooked()` returns null for every court and the map,
+Nearby list and card go quiet at once. Before this path existed, only a store
+release could move it, and the 1.1.0 build ran dark for two weeks.
+
+Same bundled → cached → remote ladder as the court list, with two differences.
+It refreshes **on launch and on foreground** (at most hourly): iOS resumes a
+suspended app without remounting, so launch alone lets a long-lived process
+expire with the network right there. And an incoming payload must be **strictly
+newer** than what's held — a CDN can serve a stale copy, and downgrading a live
+snapshot to an expired one is the failure the whole path exists to prevent.
+
+When a snapshot does outlive its window, `snapshotExpired()` says so on the card
+("Booking data is out of date"). Absence and expiry are indistinguishable to every
+other caller, and falling through to the generic reservable line read as "nothing
+is booked" when the truth was "we no longer know".
+
+The live per-card fetch only covers the **card**. Map marker rings, the Nearby
+list's fully-booked badge and RunModal's court picker all read the snapshot, which
+is why refreshing it is what makes the map agree with the card.
 
 **NYC feeds the same `reserved` contract from two unrelated systems**
 (`data/cities/nyc/reservations.js`), so one render path serves both cities — the
@@ -266,6 +292,31 @@ The `data/*.js` datasets are **generated — never hand-edited**. Each
 each source falls back **live → cache (`scripts/*-cache.json`) → curated**, with a
 validation gate that aborts the build (keeping old data) if too few records
 scrape — so an upstream redesign fails loudly instead of publishing empty data.
+
+**Select records by identity, never by heuristic**, and gate on *erosion* as well
+as collapse. `build-reservations.js` learned both the expensive way. rec.us's
+location list is global and alphabetical, and the build paged a hardcoded 80 pages
+(2000 rows) — fine against the ~1.6k rows that existed when it was written, a
+silent alphabetical cutoff once the list passed 3000. Eight SF Rec & Park venues
+fell off the end over two weeks, a few at a time. Meanwhile venues were chosen by
+bounding box plus a name regex for test facilities, and rec.us runs a **demo org
+geocoded inside SF whose locations are named after real parks** ("Lincoln Park",
+"Balboa Parkette"; one court is called `SortaLooksLikeSlots POC`). With the real
+Rossi paged out, that fixture sat 470 ft away and the nearest-neighbour matcher
+handed it Rossi's pin — shipping a POC court's availability, the demo org's
+booking guidelines, and a reserve link to the wrong venue.
+
+Both close the same way: page to the **end** of the list (`ceil(total/pageSize)`,
+never a literal page number) and select on **`organizationId`**, which every list
+row already carries (SFRP is `17380e28-…`; `/v1/organizations/<id>` resolves the
+slug). An identity match can't be fooled by a name or a coordinate. The bounding
+box survives only as a tripwire that warns instead of filtering.
+
+The gates were the other half of the failure: a floor of 10 readings against ~37
+was set to catch total collapse, so it never fired while a third of the data
+drained away. Floors should sit near the real number, with a **relative** check
+(>20% drop from the last good run) beside them, because erosion — not collapse —
+is how a scraped source usually breaks.
 
 **Multi-city:** `data/cities/index.js` aggregates the per-city modules into
 `CITY_COURTS` / `CITY_CLASSES` / `CITY_RESERVATIONS`, merged into the app by
@@ -392,8 +443,9 @@ pre-translated at build time, and **weekday tokens** in class schedule strings
   `scripts/postbuild-web.js` SEO pass), a static SPA served by Vercel
   (`vercel.json`), rewriting all paths to `index.html` after real files. Set the
   three `EXPO_PUBLIC_*` vars in the Vercel dashboard. The web
-  build can't do the rec.us / ActiveNet live fetches (CORS) and falls back to the
-  bundled snapshots — expected; native isn't bound by CORS.
+  build can't do the ActiveNet live class fetch (CORS) and falls back to the
+  bundled baseline — expected; native isn't bound by CORS. The rec.us live fetch
+  *does* work on web (`api.rec.us` allows all origins).
 
 - **Assistant**: not deployed. The web/native builds ship it inert (no
   `EXPO_PUBLIC_ASSISTANT_URL`), and `chatbot/` runs on a laptop for now. It is

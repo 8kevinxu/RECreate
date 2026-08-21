@@ -309,7 +309,12 @@ by `id`, so `npm run build:courts` never touches them. Two flavors:
   next 7 days (rec.us only lists future-free times, so this captures who's reserved
   when), geo-matches each rec.us location to one of our courts by proximity + sport
   (closest wins), and writes a court id → `{ sport: { pct, courts, slots, url } }` map
-  (`data/reservations.js`, `npm run build:reservations`). `slots` is **point-in-time**
+  (`data/reservations.js` + a hostable `data/reservations.json` for the runtime
+  refresh above, `npm run build:reservations`). Venues are selected by rec.us
+  **organization id** (SF Rec & Park), not by a bounding box — rec.us runs a demo
+  org geocoded inside SF whose locations are *named after real parks*, and one of
+  them spent two weeks feeding a proof-of-concept court's availability onto Rossi
+  Playground's card. `slots` is **point-in-time**
   booked% keyed by actual SF-local datetime (`"YYYY-MM-DD HH:MM"`) — the fraction of the
   location's courts reserved at that 30-min slot — `pct` is the window average, and `url`
   is the court's rec.us page. `lib/useCourts.js` merges it onto courts as `reserved`: the
@@ -326,9 +331,13 @@ by `id`, so `npm run build:courts` never touches them. Two flavors:
   offers multi-select **amenity filters** (Bookable / Lights / Restrooms / Nets provided)
   for tennis + pickleball, each shown only when some court qualifies (see `AMENITIES` in
   `App.js`, fed by the directory + reservation data). Because the slots are
-  date-keyed they cover today through the window end, then go stale — so the **weekly cron
-  refresh matters** to keep "right now" accurate. Same last-good cache + gate resilience
-  (`scripts/reservations-cache.json`).
+  date-keyed they cover today through the window end and then **expire outright** —
+  every reading becomes null, so the 3-hourly cron plus the runtime refresh above
+  are what keep "right now" accurate, and an expired snapshot says so rather than
+  looking empty. Same last-good cache + gate resilience
+  (`scripts/reservations-cache.json`), with the gate checking both an absolute
+  floor and a >20% drop from the last good run — venue loss here has historically
+  been gradual, which an absolute floor alone never catches.
 - **Court directory facts** (court counts, lights, restrooms, nets) for tennis + pickleball
   come from `scripts/build-court-directory.js`, which scrapes SF Rec & Park's public
   [tennis](https://sfrecpark.org/1446/Tennis-Court-Directory) and
@@ -470,6 +479,25 @@ bundled data (instant, offline)  →  cached copy (last good)  →  remote fetch
    fetch just keeps the last good data — it never blocks or crashes.
 
 Until `EXPO_PUBLIC_COURTS_URL` is set, the app simply uses the bundled data.
+
+### Reservation occupancy refreshes the same way — and has to
+
+```
+EXPO_PUBLIC_RESERVATIONS_URL=https://raw.githubusercontent.com/<user>/RECreate/main/data/reservations.json
+```
+
+Court hours are stored per weekday, so a bundled copy stays correct indefinitely.
+Reservation slots are keyed to **absolute dates** on a rolling 7-day window, so
+the snapshot compiled into a build simply **expires** about a week after it ships:
+every reading becomes null and the booking indicators disappear from the map,
+the Nearby list and the court card at once. Leaving this unset means each release
+shows occupancy for a week and then goes quiet until the next store build.
+
+It refreshes on launch **and on foreground** (at most hourly), because iOS resumes
+a suspended app without remounting — a process that lives a week would otherwise
+fetch exactly once. A payload is only accepted if it's strictly newer than what's
+already held. If a snapshot does outlive its window, the card says *"Booking data
+is out of date"* rather than rendering as though nothing is booked.
 
 ### Data caveat
 
