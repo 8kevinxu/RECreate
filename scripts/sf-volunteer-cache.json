@@ -14,7 +14,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 13,
+      "spots": 12,
       "unlimited": false,
       "start": "2026-08-22",
       "end": "2027-01-23",
@@ -62,7 +62,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 10,
+      "spots": 9,
       "unlimited": false,
       "start": "2026-08-22",
       "end": "2026-12-13",
@@ -87,7 +87,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 9,
+      "spots": 8,
       "unlimited": false,
       "start": "2026-08-22",
       "end": "2026-12-26",
@@ -267,7 +267,7 @@
       "spots": 20,
       "unlimited": false,
       "start": "2026-09-02",
-      "end": "2027-02-03",
+      "end": "2027-02-17",
       "activity": "Horticultural Maintenance",
       "desc": "Join us for volunteering at the Golden Gate Park Rhododendron Dell every 1st and 3rd Wednesday of the month! Come spend the morning with some light weeding, mulching, or pruning.Please RSVP by selecting group sign-up even when you are not registering as a group. We limit to four people per group sign-up, if you have more than four people, please email us at Recparkvolunteer@sfgov.org. Thank you!",
       "lat": 37.7699,
@@ -569,7 +569,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 20,
+      "spots": 19,
       "unlimited": false,
       "start": "2026-09-13",
       "end": "2026-09-13",
@@ -911,5 +911,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-08-21T12:42:57.456Z"
+  "fetchedAt": "2026-08-21T18:34:48.288Z"
 }
