@@ -14,6 +14,9 @@ const fail = (msg) => {
   console.error('✗ ' + msg);
 };
 const ok = (msg) => console.log('✓ ' + msg);
+// Non-fatal: something is drifting but the tree is still shippable, and failing
+// here would block unrelated work on a problem no PR introduced.
+const warn = (msg) => console.warn('⚠ ' + msg);
 
 // --- 1. Every app .js file parses (esbuild, jsx loader) ---------------------
 
@@ -189,6 +192,37 @@ for (const [file, name, floor] of DATA_FLOORS) {
     else ok(`data: ${file} ${name} = ${size} entries`);
   } catch (e) {
     fail(`data: ${file} failed to load — ${e.message}`);
+  }
+}
+
+// The hostable occupancy payload the app refetches at runtime
+// (EXPO_PUBLIC_RESERVATIONS_URL) must stay in lockstep with the bundled module.
+// They are written by the same build, so a mismatch means one of them didn't get
+// committed — and the failure is invisible at runtime: the app would keep
+// serving whichever snapshot it has until its absolute-dated slots expire.
+{
+  const file = 'data/reservations.json';
+  try {
+    const payload = JSON.parse(fs.readFileSync(path.join(ROOT, file), 'utf8'));
+    const mod = loaded['data/reservations.js'] || {};
+    const jsIds = Object.keys(mod.RESERVATIONS || {});
+    const jsonIds = Object.keys(payload.reservations || {});
+    if (!jsonIds.length) fail(`data: ${file} has no reservations`);
+    else if (payload.generatedAt !== mod.GENERATED_AT)
+      fail(`data: ${file} generatedAt ${payload.generatedAt} != module ${mod.GENERATED_AT} — rebuild/commit both`);
+    else if (jsonIds.length !== jsIds.length)
+      fail(`data: ${file} has ${jsonIds.length} courts, module has ${jsIds.length} — rebuild/commit both`);
+    else ok(`data: ${file} matches data/reservations.js (${jsonIds.length} courts)`);
+    // Occupancy expires ~7 days after the build that produced it (absolute-dated
+    // slots), and the cron refreshes every 3h — so a snapshot more than a day old
+    // means the refresh has stopped, roughly a week before anyone would notice
+    // the app go quiet. A warning, not a failure: the tree is still shippable and
+    // no PR caused it.
+    const ageH = (Date.now() - Date.parse(payload.generatedAt)) / 3.6e6;
+    if (Number.isFinite(ageH) && ageH > 24)
+      warn(`data: ${file} is ${Math.round(ageH)}h old — is refresh-reservations.yml still running?`);
+  } catch (e) {
+    fail(`data: ${file} missing or unreadable — ${e.message}`);
   }
 }
 

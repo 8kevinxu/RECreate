@@ -28,6 +28,7 @@ const { fetchT } = require('./fetch-timeout');
 const API = 'https://api.rec.us';
 const CACHE_FILE = path.join(__dirname, 'reservations-cache.json');
 const OUT_FILE = path.join(__dirname, '..', 'data', 'reservations.js');
+const JSON_FILE = path.join(__dirname, '..', 'data', 'reservations.json');
 const BROWSER_UA =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
 const HEADERS = { 'User-Agent': BROWSER_UA, Origin: 'https://www.rec.us', Accept: 'application/json' };
@@ -454,9 +455,27 @@ async function main() {
   }
 
   const generatedAt = new Date().toISOString();
+
+  // Bundled module (offline fallback baked into the app).
   fs.writeFileSync(OUT_FILE, render(reservations, generatedAt, win.length));
+
+  // Hostable JSON the app re-fetches at launch (EXPO_PUBLIC_RESERVATIONS_URL),
+  // mirroring data/courts.json. This one matters more than the courts payload:
+  // slots are keyed to ABSOLUTE dates on a rolling window, so a snapshot
+  // compiled into a build stops resolving WINDOW_DAYS later and the app
+  // goes from "correct" to "no reading at all". Refetching is what keeps an
+  // installed app showing today's occupancy between store releases.
+  // Written compact: it's fetched on every launch and pretty-printing the slot
+  // maps multiplies the transfer for nothing.
+  fs.writeFileSync(
+    JSON_FILE,
+    JSON.stringify({ generatedAt, windowDays: win.length, reservations }) + '\n'
+  );
+
   const n = Object.keys(reservations).length;
-  console.log(`\n✅ Wrote ${n} courts to data/reservations.js (${source})`);
+  console.log(
+    `\n✅ Wrote ${n} courts to data/reservations.js + data/reservations.json (${source})`
+  );
 }
 
 function render(reservations, generatedAt, windowDays) {

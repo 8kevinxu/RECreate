@@ -87,8 +87,7 @@ import {
 import { maybeAskForReview } from './lib/rateApp';
 import { loadReviews, addReview, MAX_BODY, MAX_NAME, isShared as reviewsShared } from './lib/reviews';
 import { reportContent, confirmReportData } from './lib/reports';
-import { liveBooked, bookedAt, bookableFrom, slotKeyOf } from './lib/reservations';
-import { GENERATED_AT as RES_GENERATED_AT } from './data/reservations';
+import { liveBooked, bookedAt, bookableFrom, slotKeyOf, snapshotExpired } from './lib/reservations';
 import { fetchLiveReservations, locationIdFromUrl } from './lib/reservationsLive';
 import { openDirections } from './lib/maps';
 import { logVisit } from './lib/playerCheckins';
@@ -827,7 +826,7 @@ export default function App() {
   }, [userLocation]);
 
   // Court data: bundled → cached → freshly fetched (see useCourts).
-  const { courts: courtData, generatedAt } = useCourts();
+  const { courts: courtData, generatedAt, reservationsGeneratedAt } = useCourts();
 
   // The map/lists/social suggestions show one metro at a time. courtData stays
   // unfiltered for resolving ids that arrive from outside the active city
@@ -1552,6 +1551,7 @@ export default function App() {
           onVote={handleVote}
           onLogVisit={handleLogVisit}
           canLogVisit={!!user}
+          reservationsGeneratedAt={reservationsGeneratedAt}
           onClose={() => setSelectedId(null)}
           onNeedSignIn={() => {
             setSelectedId(null);
@@ -1696,6 +1696,7 @@ function CourtDetail({
   canLogVisit,
   onClose,
   onNeedSignIn,
+  reservationsGeneratedAt,
 }) {
   const { t } = useI18n();
   const { user } = useAuth();
@@ -1735,12 +1736,18 @@ function CourtDetail({
   // reserve it, and turning up means waiting. Same numbers, different words —
   // calling that "reserved" would tell people to go book something they can't.
   const isPermit = booked?.kind === 'permit';
-  // Each source stamps its own build time; fall back to SF's module-level one.
-  const resGeneratedAt = booked?.generatedAt || RES_GENERATED_AT;
+  // Each source stamps its own build time; fall back to the SF snapshot's,
+  // which useCourts refreshes — so this dates the data actually in use, not
+  // whatever was compiled into the build.
+  const resGeneratedAt = booked?.generatedAt || reservationsGeneratedAt;
   const resAgeMs = resIsLive ? 0 : Date.now() - Date.parse(resGeneratedAt);
   // A build snapshot older than this can't be trusted for a definitive "fully
   // booked" — say "100% booked (as of …)" instead of "🔴 Fully booked".
   const resFresh = resIsLive || (Number.isFinite(resAgeMs) && resAgeMs < 6 * 60 * 60 * 1000);
+  // The snapshot's window has passed, so it can no longer answer for any time.
+  // A live reading supersedes it entirely (native refetches when the card opens),
+  // which is why this is only consulted when there's nothing live to show.
+  const resExpired = !resIsLive && snapshotExpired(booked);
   // Booked reading shown on the card: at the picked date+time when one is set
   // (e.g. "0% booked at 6 PM"), otherwise the live "right now" reading.
   const atLabel = isPicked ? fmtClock(viewTime.getHours(), viewTime.getMinutes()) : null;
@@ -2325,6 +2332,8 @@ function CourtDetail({
                     src: resSrc,
                   }
                 )
+              : resExpired
+              ? t('court.resExpired', { src: resSrc })
               : isPicked && !isPermit
               ? t('court.noSlotLine', { when: viewLabel(viewTime), src: resSrc })
               : t(isPermit ? 'court.permittedNoneLine' : 'court.reservationsLine', {
