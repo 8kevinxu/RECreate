@@ -31,8 +31,8 @@
           "2026-08-21 18:30": 4,
           "2026-08-21 19:00": 3,
           "2026-08-22 07:30": 3,
-          "2026-08-22 08:00": 3,
-          "2026-08-22 08:30": 3,
+          "2026-08-22 08:00": 4,
+          "2026-08-22 08:30": 4,
           "2026-08-22 09:00": 4,
           "2026-08-22 09:30": 4,
           "2026-08-22 10:00": 4,
@@ -268,7 +268,7 @@
     "balboa-park-outdoor": {
       "tennis": {
         "v": 2,
-        "pct": 49,
+        "pct": 50,
         "courts": 4,
         "slots": {
           "2026-08-21 07:30": 0,
@@ -284,8 +284,8 @@
           "2026-08-21 12:30": 1,
           "2026-08-21 13:00": 1,
           "2026-08-21 13:30": 0,
-          "2026-08-21 14:00": 0,
-          "2026-08-21 14:30": 0,
+          "2026-08-21 14:00": 1,
+          "2026-08-21 14:30": 1,
           "2026-08-21 15:00": 4,
           "2026-08-21 15:30": 4,
           "2026-08-21 16:00": 4,
@@ -314,8 +314,8 @@
           "2026-08-22 15:30": 4,
           "2026-08-22 16:00": 4,
           "2026-08-22 16:30": 3,
-          "2026-08-22 17:00": 2,
-          "2026-08-22 17:30": 2,
+          "2026-08-22 17:00": 3,
+          "2026-08-22 17:30": 3,
           "2026-08-22 18:00": 0,
           "2026-08-22 18:30": 0,
           "2026-08-22 19:00": 0,
@@ -533,7 +533,7 @@
     "buena-vista-park-outdoor": {
       "tennis": {
         "v": 2,
-        "pct": 84,
+        "pct": 82,
         "courts": 1,
         "slots": {
           "2026-08-21 07:30": 1,
@@ -560,9 +560,9 @@
           "2026-08-21 18:00": 0,
           "2026-08-21 18:30": 0,
           "2026-08-21 19:00": 0,
-          "2026-08-22 07:30": 1,
-          "2026-08-22 08:00": 1,
-          "2026-08-22 08:30": 1,
+          "2026-08-22 07:30": 0,
+          "2026-08-22 08:00": 0,
+          "2026-08-22 08:30": 0,
           "2026-08-22 09:00": 0,
           "2026-08-22 09:30": 0,
           "2026-08-22 10:00": 0,
@@ -730,7 +730,7 @@
       "guidelines": "Welcome to Buena Vista Park Tennis Courts! This site can be found on the Eastern side of the park, and features two lovely courts tucked away in the woods with a gorgeous view east towards downtown.\n\n**Reservation Policy**\n- Any individual may reserve a court, but may not book more than 1 court in a day or 3 courts in a calendar week.\n- Reservation requests are for individual play only. No lessons, team practices, clinics or league matches.\n- Courts left vacant 15 minutes after reservation time are available for walk-up play.\n- Please **[click here](https://sfrecpark.org/1188/Tennis-Pickleball-Reservations)** to view the full San Francisco Rec and Park reservation policy.\n\n**Reservation Overview:**\n\n*Court 1*\n- Court 1 is reservable for Tennis 7 days in advance.\n- Reservations open at 8:00am.\n- Reservations are 90 minutes and start at 7:30am, 9:00am, 10:30am, 12:00pm, 1:30pm, 3:00pm, 4:30pm (6:00pm during Daylight Saving Time).\n- Court 2 is available for walk-up Tennis on a first-come, first-serve basis.\n\n*Courts A, B, C, D* \n- Courts A, B, C, and D are reservable for Pickleball 7 days in advance.\n- Reservations open at 8:00am.\n- Reservations are 90 minutes and start at 7:30am, 9:00am, 10:30am, 12:00pm, 1:30pm, 3:00pm, 4:30pm (6:00pm during Daylight Saving Time). \n\n**Location Features**\n- 2 tennis courts\n- 4 pickleball courts. Players must provide their own nets.",
       "pickleball": {
         "v": 2,
-        "pct": 80,
+        "pct": 78,
         "courts": 4,
         "slots": {
           "2026-08-21 07:30": 0,
@@ -896,9 +896,6 @@
           "2026-08-21 16:30": 4,
           "2026-08-21 17:00": 4,
           "2026-08-21 17:30": 4,
-          "2026-08-22 07:30": 4,
-          "2026-08-22 08:00": 4,
-          "2026-08-22 08:30": 4,
           "2026-08-22 13:30": 4,
           "2026-08-22 14:00": 4,
           "2026-08-22 14:30": 4,
@@ -967,10 +964,9 @@
     "crocker-amazon-playground-outdoor": {
       "tennis": {
         "v": 2,
-        "pct": 25,
+        "pct": 24,
         "courts": 3,
         "slots": {
-          "2026-08-20 20:30": 3,
           "2026-08-21 07:30": 0,
           "2026-08-21 08:00": 0,
           "2026-08-21 08:30": 0,
@@ -1271,10 +1267,9 @@
       "guidelines": "Welcome to tennis at Crocker Amazon Park! Courts are in the Southwest corner of the park near the intersection of Geneva Ave and Moscow Street. There are three dedicated tennis courts and four pickleball courts.\n\n**Reservation Policy**\n- Any individual may reserve a court, but may not book more than 1 court in a day or 3 courts in a calendar week.\n- Reservation requests are for individual play only. No lessons, team practices, clinics or league matches.\n- Courts left vacant 15 minutes after reservation time are available for walk-up play\n- Please **[click here](https://sfrecpark.org/1188/Tennis-Pickleball-Reservations)** to view the full San Francisco Rec and Park reservation policy.\n\n**Reservation Overview**\n\n*Courts 1 and 2*\n- Courts 1 and 2 are reservable for Tennis 7 days in advance.\n- Reservations open at 8 AM. \n- All slots are 90 minutes, starting at 7:30am, 9:00am, 10:30am, 12:00pm, 1:30pm, 3:00pm, 4:30pm, 6:00pm, and 7:30pm. \n\n*Court 3*\n- Court 3 is reservable for Tennis 2 days in advance. \n- Reservations open at 12 PM. \n- All slots are 60 minutes and start on the hour. \n\n**Location Features**\n- 3 tennis courts\n- 4 pickleball courts\n- Lights\n- Bathroom access",
       "pickleball": {
         "v": 2,
-        "pct": 14,
+        "pct": 13,
         "courts": 4,
         "slots": {
-          "2026-08-20 20:30": 2,
           "2026-08-21 07:00": 0,
           "2026-08-21 07:30": 0,
           "2026-08-21 08:00": 0,
@@ -1564,10 +1559,9 @@
     "mission-dolores-park-outdoor": {
       "tennis": {
         "v": 2,
-        "pct": 87,
+        "pct": 88,
         "courts": 3,
         "slots": {
-          "2026-08-20 20:30": 3,
           "2026-08-21 07:30": 2,
           "2026-08-21 08:00": 2,
           "2026-08-21 08:30": 2,
@@ -1595,7 +1589,7 @@
           "2026-08-21 19:30": 3,
           "2026-08-21 20:00": 3,
           "2026-08-21 20:30": 3,
-          "2026-08-22 07:30": 2,
+          "2026-08-22 07:30": 3,
           "2026-08-22 08:00": 3,
           "2026-08-22 08:30": 3,
           "2026-08-22 09:00": 3,
@@ -1620,8 +1614,8 @@
           "2026-08-22 18:30": 3,
           "2026-08-22 19:00": 3,
           "2026-08-22 19:30": 3,
-          "2026-08-22 20:00": 2,
-          "2026-08-22 20:30": 2,
+          "2026-08-22 20:00": 3,
+          "2026-08-22 20:30": 3,
           "2026-08-23 07:30": 2,
           "2026-08-23 08:00": 2,
           "2026-08-23 08:30": 2,
@@ -1731,7 +1725,7 @@
           "2026-08-26 20:00": 2,
           "2026-08-26 20:30": 2,
           "2026-08-21 07:00": 1,
-          "2026-08-22 07:00": 0
+          "2026-08-22 07:00": 1
         },
         "open": {
           "2026-08-21 07:00": 1,
@@ -1858,7 +1852,7 @@
     "dupont-tennis-courts-outdoor": {
       "tennis": {
         "v": 2,
-        "pct": 57,
+        "pct": 58,
         "courts": 4,
         "slots": {
           "2026-08-21 07:30": 0,
@@ -1873,9 +1867,9 @@
           "2026-08-21 12:00": 4,
           "2026-08-21 12:30": 4,
           "2026-08-21 13:00": 3,
-          "2026-08-21 13:30": 1,
-          "2026-08-21 14:00": 1,
-          "2026-08-21 14:30": 1,
+          "2026-08-21 13:30": 2,
+          "2026-08-21 14:00": 2,
+          "2026-08-21 14:30": 2,
           "2026-08-21 15:00": 4,
           "2026-08-21 15:30": 4,
           "2026-08-21 16:00": 4,
@@ -1885,7 +1879,7 @@
           "2026-08-21 18:00": 4,
           "2026-08-21 18:30": 4,
           "2026-08-21 19:00": 3,
-          "2026-08-22 07:30": 3,
+          "2026-08-22 07:30": 4,
           "2026-08-22 08:00": 3,
           "2026-08-22 08:30": 3,
           "2026-08-22 09:00": 4,
@@ -2006,7 +2000,7 @@
           "2026-08-26 18:30": 3,
           "2026-08-26 19:00": 3,
           "2026-08-21 07:00": 0,
-          "2026-08-22 07:00": 0
+          "2026-08-22 07:00": 1
         },
         "open": {
           "2026-08-21 19:00": 3,
@@ -2182,10 +2176,9 @@
     "george-christopher-playground-outdoor": {
       "tennis": {
         "v": 2,
-        "pct": 89,
+        "pct": 92,
         "courts": 1,
         "slots": {
-          "2026-08-20 20:30": 1,
           "2026-08-21 07:00": 1,
           "2026-08-21 07:30": 1,
           "2026-08-21 08:00": 1,
@@ -2214,8 +2207,8 @@
           "2026-08-21 19:30": 1,
           "2026-08-21 20:00": 1,
           "2026-08-21 20:30": 1,
-          "2026-08-22 07:00": 0,
-          "2026-08-22 07:30": 0,
+          "2026-08-22 07:00": 1,
+          "2026-08-22 07:30": 1,
           "2026-08-22 08:00": 1,
           "2026-08-22 08:30": 1,
           "2026-08-22 09:00": 1,
@@ -2350,8 +2343,8 @@
           "2026-08-26 17:30": 1,
           "2026-08-26 18:00": 1,
           "2026-08-26 18:30": 1,
-          "2026-08-26 19:00": 0,
-          "2026-08-26 19:30": 0,
+          "2026-08-26 19:00": 1,
+          "2026-08-26 19:30": 1,
           "2026-08-26 20:00": 0,
           "2026-08-26 20:30": 0
         },
@@ -2362,10 +2355,9 @@
     "hamilton-rec-center-outdoor": {
       "tennis": {
         "v": 2,
-        "pct": 81,
+        "pct": 82,
         "courts": 2,
         "slots": {
-          "2026-08-20 20:30": 2,
           "2026-08-21 07:30": 2,
           "2026-08-21 08:00": 2,
           "2026-08-21 08:30": 2,
@@ -2384,9 +2376,9 @@
           "2026-08-21 15:00": 2,
           "2026-08-21 15:30": 2,
           "2026-08-21 16:00": 2,
-          "2026-08-21 16:30": 1,
-          "2026-08-21 17:00": 1,
-          "2026-08-21 17:30": 1,
+          "2026-08-21 16:30": 2,
+          "2026-08-21 17:00": 2,
+          "2026-08-21 17:30": 2,
           "2026-08-21 18:00": 2,
           "2026-08-21 18:30": 2,
           "2026-08-21 19:00": 2,
@@ -2805,10 +2797,9 @@
     "jackson-playground-outdoor": {
       "pickleball": {
         "v": 2,
-        "pct": 95,
+        "pct": 100,
         "courts": 2,
         "slots": {
-          "2026-08-20 20:30": 0,
           "2026-08-21 07:30": 0,
           "2026-08-21 08:00": 0,
           "2026-08-21 08:30": 0,
@@ -2865,7 +2856,6 @@
           "2026-08-22 20:30": 0
         },
         "blk": {
-          "2026-08-20 20:30": 2,
           "2026-08-21 07:30": 2,
           "2026-08-21 08:00": 2,
           "2026-08-21 08:30": 2,
@@ -2878,6 +2868,9 @@
           "2026-08-21 12:00": 2,
           "2026-08-21 12:30": 2,
           "2026-08-21 13:00": 2,
+          "2026-08-21 13:30": 2,
+          "2026-08-21 14:00": 2,
+          "2026-08-21 14:30": 2,
           "2026-08-21 15:00": 2,
           "2026-08-21 15:30": 2,
           "2026-08-21 16:00": 2,
@@ -2924,10 +2917,9 @@
       "guidelines": "Welcome to Jackson Park in Potrero Hill! One tennis court (or two pickleball courts) can be found at the Southwest corner of the park. \n\n**Reservation Policy**\n- Any individual may reserve a court, but may not book more than 1 court in a day or 3 courts in a calendar week.\n- Reservation requests are for individual play only. No lessons, team practices, clinics or league matches.\n- Courts left vacant 15 minutes after reservation time are available for walk-up play\n- Please **[click here](https://sfrecpark.org/1188/Tennis-Pickleball-Reservations)** to view the full San Francisco Rec and Park reservation policy.\n\n**Reservation Overview**\n\n*Court 1*\n- Court 1 is reservable for Tennis 2 days in advance\n- Reservations open at noon. \n- Slots are 90 minutes and start at 7:30am, 9:00am, 10:30am, 12:00pm, 1:30pm, 3:00pm, 4:30pm, 6:00pm, 7:30pm.\n\n*Courts A and B*\n- Courts A and B are reservable for Pickleball 2 days in advance\n- Reservations open at noon.\n- Slots are 90 minutes and start at 7:30am, 9:00am, 10:30am, 12:00pm, 1:30pm, 3:00pm, 4:30pm, 6:00pm, 7:30pm.\n\n**Location Features** \n- 1 Tennis Court\n- 2 Pickleball Courts. Players must provide their own nets.\n- Lights",
       "tennis": {
         "v": 2,
-        "pct": 95,
+        "pct": 100,
         "courts": 1,
         "slots": {
-          "2026-08-20 20:30": 1,
           "2026-08-21 07:30": 1,
           "2026-08-21 08:00": 1,
           "2026-08-21 08:30": 1,
@@ -2940,9 +2932,9 @@
           "2026-08-21 12:00": 1,
           "2026-08-21 12:30": 1,
           "2026-08-21 13:00": 1,
-          "2026-08-21 13:30": 0,
-          "2026-08-21 14:00": 0,
-          "2026-08-21 14:30": 0,
+          "2026-08-21 13:30": 1,
+          "2026-08-21 14:00": 1,
+          "2026-08-21 14:30": 1,
           "2026-08-21 15:00": 1,
           "2026-08-21 15:30": 1,
           "2026-08-21 16:00": 1,
@@ -2992,7 +2984,6 @@
         "pct": 77,
         "courts": 1,
         "slots": {
-          "2026-08-20 20:30": 1,
           "2026-08-21 07:30": 1,
           "2026-08-21 08:00": 1,
           "2026-08-21 08:30": 1,
@@ -3163,7 +3154,7 @@
     "j-p-murphy-playground-outdoor": {
       "tennis": {
         "v": 2,
-        "pct": 65,
+        "pct": 67,
         "courts": 3,
         "slots": {
           "2026-08-21 07:30": 0,
@@ -3175,9 +3166,9 @@
           "2026-08-21 10:30": 3,
           "2026-08-21 11:00": 3,
           "2026-08-21 11:30": 3,
-          "2026-08-21 12:00": 0,
-          "2026-08-21 12:30": 0,
-          "2026-08-21 13:00": 0,
+          "2026-08-21 12:00": 1,
+          "2026-08-21 12:30": 1,
+          "2026-08-21 13:00": 1,
           "2026-08-21 13:30": 1,
           "2026-08-21 14:00": 1,
           "2026-08-21 14:30": 1,
@@ -3205,9 +3196,9 @@
           "2026-08-22 13:30": 3,
           "2026-08-22 14:00": 3,
           "2026-08-22 14:30": 3,
-          "2026-08-22 15:00": 2,
-          "2026-08-22 15:30": 2,
-          "2026-08-22 16:00": 2,
+          "2026-08-22 15:00": 3,
+          "2026-08-22 15:30": 3,
+          "2026-08-22 16:00": 3,
           "2026-08-22 16:30": 2,
           "2026-08-22 17:00": 2,
           "2026-08-22 17:30": 2,
@@ -3420,7 +3411,7 @@
     "lafayette-park-outdoor": {
       "tennis": {
         "v": 2,
-        "pct": 94,
+        "pct": 95,
         "courts": 2,
         "slots": {
           "2026-08-21 07:00": 1,
@@ -3467,8 +3458,8 @@
           "2026-08-22 15:30": 2,
           "2026-08-22 16:00": 2,
           "2026-08-22 16:30": 2,
-          "2026-08-22 17:00": 1,
-          "2026-08-22 17:30": 1,
+          "2026-08-22 17:00": 2,
+          "2026-08-22 17:30": 2,
           "2026-08-22 18:00": 2,
           "2026-08-22 18:30": 2,
           "2026-08-23 07:30": 1,
@@ -4159,7 +4150,6 @@
         "pct": 84,
         "courts": 4,
         "slots": {
-          "2026-08-20 20:30": 4,
           "2026-08-21 07:30": 2,
           "2026-08-21 08:00": 2,
           "2026-08-21 08:30": 2,
@@ -4670,7 +4660,7 @@
     "mountain-lake-park-outdoor": {
       "tennis": {
         "v": 2,
-        "pct": 72,
+        "pct": 74,
         "courts": 4,
         "slots": {
           "2026-08-21 07:00": 0,
@@ -4686,9 +4676,9 @@
           "2026-08-21 12:00": 3,
           "2026-08-21 12:30": 3,
           "2026-08-21 13:00": 4,
-          "2026-08-21 13:30": 3,
-          "2026-08-21 14:00": 3,
-          "2026-08-21 14:30": 3,
+          "2026-08-21 13:30": 4,
+          "2026-08-21 14:00": 4,
+          "2026-08-21 14:30": 4,
           "2026-08-21 15:00": 4,
           "2026-08-21 15:30": 4,
           "2026-08-21 16:00": 4,
@@ -4707,16 +4697,16 @@
           "2026-08-22 10:30": 4,
           "2026-08-22 11:00": 4,
           "2026-08-22 11:30": 4,
-          "2026-08-22 12:00": 3,
-          "2026-08-22 12:30": 3,
+          "2026-08-22 12:00": 4,
+          "2026-08-22 12:30": 4,
           "2026-08-22 13:00": 4,
           "2026-08-22 13:30": 4,
           "2026-08-22 14:00": 4,
           "2026-08-22 14:30": 4,
-          "2026-08-22 15:00": 3,
-          "2026-08-22 15:30": 3,
-          "2026-08-22 16:00": 3,
-          "2026-08-22 16:30": 3,
+          "2026-08-22 15:00": 4,
+          "2026-08-22 15:30": 4,
+          "2026-08-22 16:00": 4,
+          "2026-08-22 16:30": 4,
           "2026-08-22 17:00": 3,
           "2026-08-22 17:30": 3,
           "2026-08-22 18:00": 3,
@@ -5621,5 +5611,5 @@
       }
     }
   },
-  "fetchedAt": "2026-08-21T03:54:54.038Z"
+  "fetchedAt": "2026-08-21T06:56:46.607Z"
 }
