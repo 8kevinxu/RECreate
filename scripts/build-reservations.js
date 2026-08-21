@@ -47,21 +47,45 @@ const PAGE_HEADERS = {
   'Sec-Fetch-Site': 'same-site',
 };
 
-// SF bounding box (rec.us serves many cities; the list endpoint is global).
+// SF Rec & Park's rec.us organization — the identity the venue list is selected
+// by. Confirmed via /v1/organizations/<id>, which returns slug
+// "san-francisco-rec-park". Every list row carries organizationId, so this costs
+// no extra request.
+//
+// This REPLACED a bounding box plus a name regex for test facilities, and the
+// swap is the point: rec.us runs a demo org whose locations are geocoded inside
+// SF and NAMED AFTER REAL PARKS ("Lincoln Park", "Balboa Parkette", one of whose
+// courts is called "SortaLooksLikeSlots POC"). A name regex cannot see those, and
+// a bounding box actively lets them in — "Lincoln Park" sits 470 ft from Rossi
+// Playground, close enough for the proximity matcher to hand it Rossi's pin. It
+// did exactly that: Rossi shipped a POC fixture's availability, that org's
+// booking guidelines, and a reserve link to the wrong venue. An exact org match
+// cannot be fooled by a name or a coordinate.
+const SFRP_ORG = '17380e28-7e02-4b52-82c5-fab18557fd7a';
+
+// SF bounding box — no longer how venues are chosen, only a tripwire. Every SFRP
+// location is inside it today, so one outside means the org's footprint changed
+// and someone should look, rather than it being silently dropped.
 const SF_BBOX = { minLat: 37.70, maxLat: 37.83, minLng: -122.52, maxLng: -122.35 };
 const inSF = (l) => l.lat > SF_BBOX.minLat && l.lat < SF_BBOX.maxLat &&
   l.lng > SF_BBOX.minLng && l.lng < SF_BBOX.maxLng;
-
-// Skip rec.us internal / test facilities.
-const IS_TEST = /\btest\b|ops team|conference|ankur home|pv test|fixed timeslot/i;
 
 // How far ahead to measure occupancy, and how close a rec.us location must be to
 // one of our courts (parks are big, so the centroid can be a few hundred ft off).
 const WINDOW_DAYS = 7;
 const MATCH_MAX_FEET = 1320;
 
-// Abort (keep last-good data) if fewer than this many courts get a reading.
-const MIN_COURTS_OK = 10;
+// Abort (keep last-good data) if fewer than this many court+sport readings land.
+// SFRP publishes ~37 (27 tennis + 10 pickleball). The old floor of 10 was set to
+// catch a total scrape failure and so never fired while a paging bug quietly ate
+// 12 of them over two weeks — a gate you can lose a third of your data through is
+// not a gate. Still loose enough for a genuine closure or two.
+const MIN_COURTS_OK = 28;
+
+// …and abort on a sharp drop from the last good run even when the absolute floor
+// holds. Erosion is the failure mode this source actually has: venues disappear a
+// few at a time, each step small enough to look like noise.
+const MAX_DROP_PCT = 20;
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -315,21 +339,48 @@ function ourCourts() {
   }));
 }
 
+const PAGE_SIZE = 25;
+const HARD_PAGE_CAP = 400; // only to stop a runaway loop if the API misreports
+
+// Every SF Rec & Park venue on rec.us. The list endpoint ignores org filter
+// params (?organizationId= still returns all ~3k), so we page the whole thing and
+// filter client-side on organizationId.
+//
+// Page to the END of the list, computed from totalResults. It used to stop at a
+// hardcoded 80 pages = 2000 locations, which was comfortably past the ~1.6k the
+// list held when this was written. The list is alphabetical and now holds 3004,
+// so the cap became a silent alphabetical cutoff that walked backwards through
+// the SFRP venues as rec.us grew: everything after "Parkside Square" — Potrero
+// Hill, Presidio Wall, Richmond, Rossi, Stern Grove, St. Mary's, Sunset, Upper
+// Noe — stopped being scraped between Aug 5 and Aug 17 2026, taking 12 readings
+// with them. Never bound this by a page number.
 async function fetchSfLocations() {
   const sf = [];
-  let page = 1, total = Infinity;
-  while ((page - 1) * 25 < total && page <= 80) {
+  const outside = [];
+  let page = 1, total = Infinity, scanned = 0;
+  while ((page - 1) * PAGE_SIZE < total && page <= HARD_PAGE_CAP) {
     const d = await getJson(`${API}/v1/locations?page=${page}`);
     total = d.meta?.pg?.totalResults ?? 0;
-    for (const l of d.data || []) {
-      if (l.lat && l.lng && inSF(l) && !IS_TEST.test(l.name || '')) {
-        sf.push({ id: l.id, name: l.name, lat: l.lat, lng: l.lng });
-      }
+    const rows = d.data || [];
+    scanned += rows.length;
+    for (const l of rows) {
+      if (l.organizationId !== SFRP_ORG || l.archivedAt) continue;
+      if (!l.lat || !l.lng) continue;
+      const loc = { id: l.id, name: l.name, lat: Number(l.lat), lng: Number(l.lng) };
+      (inSF(loc) ? sf : outside).push(loc);
     }
-    if ((d.data || []).length < 25) break;
+    if (rows.length < PAGE_SIZE) break;
     page++;
     await sleep(120); // be polite
   }
+  const pages = Math.ceil(total / PAGE_SIZE);
+  if (page < pages) console.log(`  ⚠ stopped at page ${page} of ${pages} (hard cap) — some venues unscanned`);
+  // Tripwire, not a filter: keep them, but say so.
+  for (const l of outside) {
+    console.log(`  ⚠ ${l.name} is SFRP but outside the SF bounding box (${l.lat}, ${l.lng}) — keeping it`);
+    sf.push(l);
+  }
+  console.log(`  scanned ${scanned} of ${total} rec.us locations across ${page} pages`);
   return sf;
 }
 
@@ -345,7 +396,8 @@ async function main() {
   try {
     const sportMap = await fetchSportMap();
     const sfLocations = await fetchSfLocations();
-    console.log(`  scanned rec.us locations → ${sfLocations.length} inside SF`);
+    console.log(`  → ${sfLocations.length} SF Rec & Park venues`);
+    const unmatched = [];
 
     // courtId -> { sport: { pct, courts } }
     const out = {};
@@ -368,6 +420,10 @@ async function main() {
       }
       await sleep(120);
       const bySport = locationBookedBySport(detail, win, sportMap, nowKey, now, sched);
+      // An SFRP venue whose reading lands nowhere is a gap in OUR court data, not
+      // a rec.us problem — McLaren has 6 tennis courts and no pin within
+      // MATCH_MAX_FEET of it. Silent before; say it so the gap is fixable.
+      let landed = false;
       for (const [sport, agg] of Object.entries(bySport)) {
         // Attach to the nearest of our courts that offers this sport. If another
         // rec.us location already claimed that court+sport, keep the closer one
@@ -379,6 +435,7 @@ async function main() {
           if (ft < bestFt) { bestFt = ft; best = c; }
         }
         if (!best || bestFt > MATCH_MAX_FEET) continue;
+        landed = true;
         const prev = out[best.id]?.[sport];
         if (prev && prev._ft <= bestFt) continue;
         const pct = agg.total ? Math.round((agg.reserved / agg.total) * 100) : 0;
@@ -424,6 +481,12 @@ async function main() {
         }
         console.log(`  ✓ ${loc.name} ${sport} → ${pct}% booked → ${best.name}`);
       }
+      if (!landed && Object.keys(bySport).length) {
+        unmatched.push(loc.name);
+      }
+    }
+    if (unmatched.length) {
+      console.log(`  ⚠ no court within ${MATCH_MAX_FEET}ft for: ${unmatched.join(', ')}`);
     }
 
     // Drop match-bookkeeping fields; count final readings (skip the court-level
@@ -440,6 +503,21 @@ async function main() {
     }
     if (readings < MIN_COURTS_OK) {
       throw new Error(`only ${readings} readings (min ${MIN_COURTS_OK}) — rec.us shape may have changed`);
+    }
+    // Relative gate: the absolute floor can't see erosion that starts from a
+    // healthy number. Counted against the last good run, so a few venues going
+    // missing fails the build instead of quietly shipping.
+    const prev = loadCache();
+    const prevReadings = prev?.reservations
+      ? Object.values(prev.reservations).reduce(
+          (n, sports) => n + Object.keys(sports).filter((k) => k !== 'guidelines').length,
+          0
+        )
+      : 0;
+    if (prevReadings && readings < prevReadings * (1 - MAX_DROP_PCT / 100)) {
+      throw new Error(
+        `${readings} readings, down from ${prevReadings} last run (>${MAX_DROP_PCT}% drop) — venues are going missing`
+      );
     }
     reservations = out;
     source = 'live';
