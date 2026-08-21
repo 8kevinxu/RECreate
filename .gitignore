@@ -48,3 +48,4 @@ chatbot/__pycache__/
 chatbot/**/__pycache__/
 chatbot/.pytest_cache/
 chatbot/.env
+.vercel
