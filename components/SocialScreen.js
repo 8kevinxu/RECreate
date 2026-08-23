@@ -27,6 +27,7 @@ export default function SocialScreen({
   classes, // the active city's class list (undefined = SF default)
   onPickCourt,
   onOpenFriends, // signed-in only: opens the Friends sheet (App.js owns it)
+  onUndoCheckin, // undo one of your own check-ins from the activity feed
   requestCount = 0, // incoming friend requests — badge on the Friends button
   onSignIn, // signed-out: route to the Profile tab to create an account
 }) {
@@ -111,6 +112,7 @@ export default function SocialScreen({
             userLocation={userLocation}
             onPickCourt={onPickCourt}
             onOpenFriends={onOpenFriends}
+            onUndoCheckin={onUndoCheckin}
           />
         ) : (
           <View style={styles.chatsWrap}>

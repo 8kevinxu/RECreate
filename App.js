@@ -90,7 +90,13 @@ import { reportContent, confirmReportData } from './lib/reports';
 import { liveBooked, bookedAt, bookableFrom, slotKeyOf, snapshotExpired } from './lib/reservations';
 import { fetchLiveReservations, locationIdFromUrl } from './lib/reservationsLive';
 import { openDirections } from './lib/maps';
-import { logVisit } from './lib/playerCheckins';
+import {
+  logVisit,
+  removeVisit,
+  loadMyVisits,
+  saveMyVisits,
+  VISIT_WINDOW_MS,
+} from './lib/playerCheckins';
 import { resolveNotify } from './lib/activityShare';
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -388,6 +394,10 @@ export default function App() {
   // one pin can be a gym, a tennis court and a ball field, and they fill up separately.
   const [crowd, setCrowd] = useState({}); // { "courtId|sport": [{ id, level, ts }] }
   const [myVotes, setMyVotes] = useState({}); // { "courtId|sport": { id, level, ts } }
+  // Your own live "I'm here" per court+sport, so the card can show it and take it
+  // back. `via` records what created it — the button, or a crowd report's silent
+  // piggyback — which is what makes undoing a report safe (see handleVote).
+  const [myVisits, setMyVisits] = useState({}); // { "courtId|sport": { id, ts, via } }
   const [pickedTime, setPickedTime] = useState(null); // null = live "now"
   const [pickerOpen, setPickerOpen] = useState(false);
   const { enabled: authEnabled, user, displayName, profile, updateProfile } = useAuth();
@@ -517,11 +527,12 @@ export default function App() {
     ? profile.favorite_categories
     : localInterests.categories;
 
-  // Load check-ins + my votes on mount; (when shared) live-update by merging
-  // new check-ins incrementally and refetching on deletes.
+  // Load check-ins + my own votes/visits on mount; (when shared) live-update by
+  // merging new check-ins incrementally and refetching on deletes.
   useEffect(() => {
     loadCrowd().then(setCrowd);
     loadMyVotes().then(setMyVotes);
+    loadMyVisits().then(setMyVisits);
     const unsubscribe = subscribeCrowd(
       (rec) => setCrowd((prev) => mergeCheckIn(prev, rec)),
       () => loadCrowd().then(setCrowd)
@@ -539,6 +550,16 @@ export default function App() {
     });
   };
 
+  const persistMyVisit = (key, visit) => {
+    setMyVisits((prev) => {
+      const next = { ...prev };
+      if (visit) next[key] = visit;
+      else delete next[key];
+      saveMyVisits(next);
+      return next;
+    });
+  };
+
   // Tap a level: check in, switch your vote, or (tapping your current pick) undo.
   // Returns a result so the card can show feedback.
   const handleVote = async (courtId, vSport, level) => {
@@ -547,6 +568,15 @@ export default function App() {
     if (mine && mine.level === level) {
       await removeCheckIn(courtId, vSport, mine.id); // toggle off
       persistMyVote(key, null);
+      // A crowd report also logs a personal visit (below), which the user never
+      // explicitly asked for — so undoing the report takes that visit back too.
+      // Only when this report is what created it: if an explicit "I'm here" came
+      // first, the piggyback was deduped away and what's left is something they meant.
+      const visit = myVisits[key];
+      if (visit && visit.via === 'crowd') {
+        await removeVisit(visit.id);
+        persistMyVisit(key, null);
+      }
       setCrowd(await loadCrowd());
       return { removed: true };
     }
@@ -561,7 +591,10 @@ export default function App() {
       // A signed-in crowd report also logs a personal visit for the selected
       // sport (deduped server-side window) — feeds the account check-in stats.
       // Silent: the crowd report above already handled any friend notification.
-      if (user) logVisit(user.id, courtId, vSport);
+      if (user) {
+        const visit = await logVisit(user.id, courtId, vSport);
+        if (visit && visit.logged) persistMyVisit(key, { id: visit.id, ts: Date.now(), via: 'crowd' });
+      }
       // Ask for an App Store rating here and nowhere else: a report just landed,
       // which is the app working. Self-gating (see lib/rateApp.js) — it declines
       // for anyone who hasn't reported a few times already. Deliberately not
@@ -576,7 +609,27 @@ export default function App() {
   // Dedicated "I played here" check-in for the selected sport (court detail).
   const handleLogVisit = async (courtId, vSport) => {
     const notify = user ? await resolveNotify(profile?.share_activity) : false;
-    return logVisit(user?.id, courtId, vSport, notify);
+    const res = await logVisit(user?.id, courtId, vSport, notify);
+    if (res && res.logged) {
+      persistMyVisit(crowdKey(courtId, vSport), { id: res.id, ts: Date.now(), via: 'button' });
+    }
+    return res;
+  };
+
+  // Take back an "I'm here": the row goes, so it stops counting toward the profile
+  // stats and drops out of friends' feeds, which read live. The push that already
+  // fired can't be recalled, which is why the card says "tap to undo" and not that
+  // nobody saw it. The feed passes the row id (it knows which one); the card omits
+  // it and the live mirror answers.
+  const handleUndoVisit = async (courtId, vSport, id) => {
+    const key = crowdKey(courtId, vSport);
+    const rowId = id || myVisits[key]?.id;
+    if (!rowId) return { skipped: true };
+    const res = await removeVisit(rowId);
+    // Clear the mirror only when it's the row we just deleted — undoing an older
+    // check-in from the feed must not retire the newer one the card is showing.
+    if (res && res.removed && myVisits[key]?.id === rowId) persistMyVisit(key, null);
+    return res;
   };
 
   // Refresh "open now" status every minute.
@@ -1575,6 +1628,8 @@ export default function App() {
           bottomInset={navClearance}
           onVote={handleVote}
           onLogVisit={handleLogVisit}
+          onUndoVisit={handleUndoVisit}
+          myVisits={myVisits}
           canLogVisit={!!user}
           reservationsGeneratedAt={reservationsGeneratedAt}
           onClose={() => setSelectedId(null)}
@@ -1618,6 +1673,7 @@ export default function App() {
             interestSports={interestSports}
             interestCategories={interestCategories}
             onOpenFriends={authEnabled && user ? () => setFriendsOpen(true) : undefined}
+            onUndoCheckin={handleUndoVisit}
             requestCount={requestCount}
             onSignIn={() => goTab('profile')}
             onPickCourt={(id, pickSport) => {
@@ -1730,6 +1786,10 @@ function CourtDetail({
   bottomInset = 16,
   onVote,
   onLogVisit,
+  onUndoVisit,
+  // Keyed by court+sport rather than resolved by the caller, because the card can
+  // switch sports under you (the Favorites view opens on the favorited one).
+  myVisits = {},
   canLogVisit,
   onClose,
   onNeedSignIn,
@@ -1908,6 +1968,9 @@ function CourtDetail({
 
   // Your own (still-fresh) vote drives which button is highlighted/toggleable.
   const myLevel = myVote && now - myVote.ts <= FRESH_WINDOW_MS ? myVote.level : null;
+  // Your check-in for the sport on screen, while it's still inside the undo window.
+  const visitRec = myVisits[crowdKey(court.id, vSport)];
+  const myVisit = visitRec && now - visitRec.ts <= VISIT_WINDOW_MS ? visitRec : null;
 
   const [note, setNote] = useState(null);
   const [expanded, setExpanded] = useState(false); // peek by default
@@ -1937,12 +2000,20 @@ function CourtDetail({
   const doLogVisit = async () => {
     const res = await onLogVisit(court.id, vSport);
     if (res && res.logged) {
-      setNote(t('court.visitLogged', { sport: sportName }));
+      // No note: the button itself now says "checked in" and holds that state, so
+      // a line below repeating it is two claims about the same thing. Notes stay
+      // for the cases the button can't show — a dedupe, or a failure.
+      setNote('');
     } else if (res && res.skipped) {
       setNote(t('court.visitDup'));
     } else {
       setNote(t('court.visitFail'));
     }
+  };
+
+  const doUndoVisit = async () => {
+    const res = await onUndoVisit(court.id, vSport);
+    setNote(res && res.removed ? t('court.visitRemoved') : t('court.visitRemoveFail'));
   };
 
   // Upcoming planned games at this court (rec_runs — public + RLS-visible
@@ -2460,13 +2531,37 @@ function CourtDetail({
         </Text>
       )}
 
-      {canLogVisit && !isPicked && (
-        <Pressable style={styles.checkInBtn} onPress={doLogVisit}>
-          <SportTag id={vSport} size={14} textStyle={styles.checkInBtnText}>
-            {t('court.imHere')}
-          </SportTag>
-        </Pressable>
-      )}
+      {canLogVisit && !isPicked &&
+        (myVisit ? (
+          // Checked in: the same button takes it back, the way tapping your crowd
+          // level again does one box below. Outlined rather than filled, so the
+          // card reads at a glance as "you've already said this".
+          <>
+            <Pressable
+              style={[styles.checkInBtn, styles.checkInBtnDone]}
+              onPress={doUndoVisit}
+              accessibilityRole="button"
+              accessibilityLabel={t('a11y.undoCheckin')}
+            >
+              <SportTag
+                id={vSport}
+                size={14}
+                textStyle={[styles.checkInBtnText, styles.checkInBtnTextDone]}
+              >
+                {t('court.checkedIn')}
+              </SportTag>
+            </Pressable>
+            <Text style={styles.checkInUndoHint}>
+              {t('court.visitUndoHint', { t: timeAgo(myVisit.ts, now) })}
+            </Text>
+          </>
+        ) : (
+          <Pressable style={styles.checkInBtn} onPress={doLogVisit}>
+            <SportTag id={vSport} size={14} textStyle={styles.checkInBtnText}>
+              {t('court.imHere')}
+            </SportTag>
+          </Pressable>
+        ))}
 
       {isPicked ? (
         <View style={styles.futureBox}>
@@ -3218,6 +3313,9 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   checkInBtnText: { color: '#fff', fontWeight: '800', fontSize: 14 },
+  checkInBtnDone: { backgroundColor: '#fff', borderWidth: 1.5, borderColor: '#1f9d55', marginBottom: 5 },
+  checkInBtnTextDone: { color: '#1f9d55' },
+  checkInUndoHint: { fontSize: 11, color: '#5b6b7b', textAlign: 'center', marginBottom: 10 },
   badgeText: { fontSize: 12, fontWeight: '700', color: '#2a3a4a' },
 
   crowdBox: {

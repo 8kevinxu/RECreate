@@ -33,6 +33,7 @@ import SessionModal from './SessionModal';
 import RunModal from './RunModal';
 import ChatThread from './ChatThread';
 import ScrollTopFab, { useScrollTop } from './ScrollTopFab';
+import SwipeRow from './SwipeRow';
 
 // Compact relative time for check-in rows. Shares the app's localized time keys.
 function timeAgo(iso) {
@@ -55,6 +56,7 @@ export default function FeedModal({
   userLocation = null,
   onPickCourt, // open a court (its card, on a sport) on the map tab
   onOpenFriends, // open the Friends sheet (signed-in only; App.js owns it)
+  onUndoCheckin, // take back one of YOUR OWN check-ins (App.js owns the mirror)
 }) {
   const { t } = useI18n();
   const { user } = useAuth();
@@ -299,7 +301,27 @@ export default function FeedModal({
   };
 
   // Tapping a check-in opens that court on the map, on the check-in's sport.
-  const renderCheckin = (c) => (
+  // Your own rows also swipe away — the second place to undo a check-in, for the
+  // one you notice after leaving the court, where the card's own button is a trip
+  // back. A friend's row never swipes; only `mine` rows are yours to delete.
+  const renderCheckin = (c) =>
+    c.mine && onUndoCheckin ? (
+      <SwipeRow
+        key={`checkin:${c.id}`}
+        actionLabel={t('feed.undoCheckin')}
+        actionColor="#e5484d"
+        onAction={async () => {
+          await onUndoCheckin(c.courtId, c.sport, c.id);
+          refresh(); // the realtime subscription only fires on INSERT
+        }}
+      >
+        {checkinRow(c)}
+      </SwipeRow>
+    ) : (
+      checkinRow(c)
+    );
+
+  const checkinRow = (c) => (
     <Pressable
       key={`checkin:${c.id}`}
       style={styles.row}
