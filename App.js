@@ -831,9 +831,17 @@ export default function App() {
   // The map/lists/social suggestions show one metro at a time. courtData stays
   // unfiltered for resolving ids that arrive from outside the active city
   // (friends' runs/signals, push payloads, shared links).
+  // Every court in the active city. The map narrows this by the Areas filter
+  // below, but a court reached DIRECTLY — a friend's check-in in the feed, a
+  // shared link, a recommendation — has to open its card even when its borough
+  // is filtered out, so the card resolves against this list rather than that one.
+  const cityCourtsAll = useMemo(
+    () => courtData.filter((c) => (c.city || 'sf') === activeCity),
+    [courtData, activeCity]
+  );
   const cityCourtData = useMemo(
-    () => courtData.filter((c) => (c.city || 'sf') === activeCity && inSubregions(c, activeSubs)),
-    [courtData, activeCity, activeSubs]
+    () => cityCourtsAll.filter((c) => inSubregions(c, activeSubs)),
+    [cityCourtsAll, activeSubs]
   );
 
   // The sports the active city actually has courts for. The sport dial shows
@@ -989,8 +997,8 @@ export default function App() {
 
   // Annotated with facility status, the selected sport's open-gym status, minutes
   // of open-gym left, and distance from the user (when location is available).
-  const courts = useMemo(() => {
-    return cityCourtData.map((c) => ({
+  const decorateCourt = useCallback(
+    (c) => ({
       ...c,
       status: getOpenStatus(c, viewTime),
       dropin: getDropinStatus(c, sport, viewTime),
@@ -1001,8 +1009,22 @@ export default function App() {
       distanceMi: userLocation
         ? haversineMiles(userLocation.lat, userLocation.lng, c.lat, c.lng)
         : null,
-    }));
-  }, [cityCourtData, sport, viewTime, userLocation]);
+    }),
+    [sport, viewTime, userLocation]
+  );
+
+  const courts = useMemo(() => cityCourtData.map(decorateCourt), [cityCourtData, decorateCourt]);
+
+  // The open court card. Falls back to the unfiltered city list so a court you
+  // navigated to still opens when the Areas filter would hide it — otherwise the
+  // map flies to the right spot and no card ever appears.
+  const selected = useMemo(() => {
+    if (!selectedId) return null;
+    const inView = courts.find((c) => c.id === selectedId);
+    if (inView) return inView;
+    const outside = cityCourtsAll.find((c) => c.id === selectedId);
+    return outside ? decorateCourt(outside) : null;
+  }, [courts, cityCourtsAll, selectedId, decorateCourt]);
 
   // Does the selected sport have both indoor and outdoor courts? If so, offer the
   // secondary Indoor/Outdoor toggle (today that's pickleball).
@@ -1054,6 +1076,14 @@ export default function App() {
     );
   }, [courts, sport, favoritesMode, favoriteSport, viewTime, openOnly, placeFilter, showPlaceToggle, activeAmenities.join(',')]);
 
+  // The court whose card is open always keeps its marker, whatever the filters
+  // say. Open-now, an amenity chip or a sport it doesn't run would otherwise hide
+  // the one pin the map was just flown to, leaving the card pointing at bare street.
+  const pinnedCourts = useMemo(() => {
+    if (!selected || visibleCourts.some((c) => c.id === selected.id)) return visibleCourts;
+    return [...visibleCourts, selected];
+  }, [visibleCourts, selected]);
+
   // "indoor"/"outdoor" qualifier for the header — only when the sport's courts are
   // uniformly one or the other (e.g. tennis = all outdoor); blank when mixed.
   const placeWord = useMemo(() => {
@@ -1068,7 +1098,7 @@ export default function App() {
   const nowMs = now.getTime();
   const mapCourts = useMemo(
     () =>
-      visibleCourts.map((c) => {
+      pinnedCourts.map((c) => {
         // Booked% used to tint the marker: at the picked date+time when one is set,
         // otherwise "right now". Null when not reservable or no slot at that time.
         const res = c.reserved?.[sport];
@@ -1101,12 +1131,7 @@ export default function App() {
             : currentLevel(historyFor(crowd, c.id, favoritesMode ? favoriteSport(c.id) : sport), nowMs),
         };
       }),
-    [visibleCourts, sport, favoritesMode, favoriteSport, crowd, nowMs, isPicked, viewTime]
-  );
-
-  const selected = useMemo(
-    () => courts.find((c) => c.id === selectedId) || null,
-    [courts, selectedId]
+    [pinnedCourts, sport, favoritesMode, favoriteSport, crowd, nowMs, isPicked, viewTime]
   );
 
   // A court restored from the URL gets focused once the map + courts are up
@@ -1596,15 +1621,27 @@ export default function App() {
             requestCount={requestCount}
             onSignIn={() => goTab('profile')}
             onPickCourt={(id, pickSport) => {
-              // A recommendation carries the sport it was for — switch the map to it
-              // (and leave Favorites view) so the court card opens on the right sport.
-              if (pickSport) {
-                setSport(pickSport);
+              const court = courtData.find((c) => c.id === id);
+              // A recommendation or a friend's check-in carries the sport it was
+              // for — switch the map to it (and leave Favorites view) so the card
+              // opens on the right sport. But only when this court actually runs
+              // it: a check-in row outlives the data it points at (schedules empty
+              // out between scrapes, and every outdoor pin carries a key for every
+              // sport whether or not it has hours), and switching to a sport with
+              // no blocks opens a card with nothing in it. Fall back to a sport the
+              // court does run, in dial order.
+              const runs = (sp) => !!sp && (court?.dropins?.[sp] || []).some((d) => d && d.length);
+              const nextSport = pickSport
+                ? runs(pickSport)
+                  ? pickSport
+                  : MAP_SPORTS.find((s) => runs(s.id))?.id || pickSport
+                : null;
+              if (nextSport) {
+                setSport(nextSport);
                 setFavoritesMode(false);
               }
               setSelectedId(id);
               goTab('home');
-              const court = courtData.find((c) => c.id === id);
               if (court) setTimeout(() => mapRef.current?.focusCourt(court), 250);
             }}
           />
