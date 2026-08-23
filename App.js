@@ -95,6 +95,7 @@ import {
   removeVisit,
   loadMyVisits,
   saveMyVisits,
+  loadCourtVisits,
   VISIT_WINDOW_MS,
 } from './lib/playerCheckins';
 import { resolveNotify } from './lib/activityShare';
@@ -1963,14 +1964,38 @@ function CourtDetail({
   const week = getDropinWeek(court, vSport, viewTime, dir?.openPlayWeek);
   const level = currentLevel(history, now); // community's latest
   const last = latest(history);
-  const lastHour = countWithin(history, 60 * 60 * 1000, now);
-  const recent = history.slice(0, 4);
 
   // Your own (still-fresh) vote drives which button is highlighted/toggleable.
   const myLevel = myVote && now - myVote.ts <= FRESH_WINDOW_MS ? myVote.level : null;
   // Your check-in for the sport on screen, while it's still inside the undo window.
   const visitRec = myVisits[crowdKey(court.id, vSport)];
   const myVisit = visitRec && now - visitRec.ts <= VISIT_WINDOW_MS ? visitRec : null;
+
+  // "I'm here" check-ins at this court+sport in the last hour, counted alongside
+  // the crowd's busyness reports below. Own + friends' only — see loadCourtVisits.
+  // `visitsSeq` re-runs it after you check in or take one back.
+  const [visits, setVisits] = useState([]);
+  const [visitsSeq, setVisitsSeq] = useState(0);
+  useEffect(() => {
+    let alive = true;
+    setVisits([]);
+    loadCourtVisits(court.id, vSport).then((v) => alive && setVisits(v));
+    return () => {
+      alive = false;
+    };
+  }, [court.id, vSport, user?.id, visitsSeq]);
+
+  const HOUR = 60 * 60 * 1000;
+  const freshVisits = visits.filter((v) => now - v.ts <= HOUR);
+  const lastHour = countWithin(history, HOUR, now) + freshVisits.length;
+  // One list, newest first: a busyness report says how full it was, an "I'm here"
+  // says who turned up. Both are check-ins, so both belong under the same count.
+  const recent = [
+    ...history.map((e) => ({ kind: 'level', ts: e.ts, level: e.level, key: `c${e.id}-${e.ts}` })),
+    ...freshVisits.map((v) => ({ kind: 'here', ts: v.ts, name: v.name, mine: v.mine, key: `v${v.id}` })),
+  ]
+    .sort((a, b) => b.ts - a.ts)
+    .slice(0, 5);
 
   const [note, setNote] = useState(null);
   const [expanded, setExpanded] = useState(false); // peek by default
@@ -1995,6 +2020,7 @@ function CourtDetail({
     } else {
       setNote(t('court.checkinFail'));
     }
+    setVisitsSeq((n) => n + 1); // a crowd report logs a visit too (see handleVote)
   };
 
   const doLogVisit = async () => {
@@ -2009,11 +2035,13 @@ function CourtDetail({
     } else {
       setNote(t('court.visitFail'));
     }
+    setVisitsSeq((n) => n + 1);
   };
 
   const doUndoVisit = async () => {
     const res = await onUndoVisit(court.id, vSport);
     setNote(res && res.removed ? t('court.visitRemoved') : t('court.visitRemoveFail'));
+    setVisitsSeq((n) => n + 1);
   };
 
   // Upcoming planned games at this court (rec_runs — public + RLS-visible
@@ -2617,11 +2645,17 @@ function CourtDetail({
             <Text style={styles.historyHead}>
               {t(lastHour === 1 ? 'court.historyHeadOne' : 'court.historyHeadMany', { n: lastHour })}
             </Text>
-            {recent.map((e, i) => (
-              <View key={e.ts + '-' + i} style={styles.historyRow}>
-                <Text style={[styles.historyLevel, { color: LEVEL_META[e.level].color }]}>
-                  {LEVEL_META[e.level].dot} {t('crowd.' + e.level)}
-                </Text>
+            {recent.map((e) => (
+              <View key={e.key} style={styles.historyRow}>
+                {e.kind === 'here' ? (
+                  <Text style={styles.historyHere}>
+                    🙋 {e.mine ? t('feed.you') : e.name}
+                  </Text>
+                ) : (
+                  <Text style={[styles.historyLevel, { color: LEVEL_META[e.level].color }]}>
+                    {LEVEL_META[e.level].dot} {t('crowd.' + e.level)}
+                  </Text>
+                )}
                 <Text style={styles.historyAgo}>{timeAgo(e.ts, now)}</Text>
               </View>
             ))}
@@ -3362,6 +3396,7 @@ const styles = StyleSheet.create({
   runBtnOffText: { color: '#5b6b7b', fontWeight: '700', fontSize: 13 },
   history: { marginTop: 10, borderTopWidth: 1, borderTopColor: '#e3e8ec', paddingTop: 8 },
   historyHead: { fontSize: 12, fontWeight: '700', color: '#46586a', marginBottom: 5 },
+  historyHere: { fontSize: 12, fontWeight: '700', color: '#2a3a4a' },
   historyRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
