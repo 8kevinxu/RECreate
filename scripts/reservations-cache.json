@@ -3,7 +3,7 @@
     "alice-marble-tennis-courts-outdoor": {
       "tennis": {
         "v": 2,
-        "pct": 64,
+        "pct": 63,
         "courts": 4,
         "slots": {
           "2026-08-24 08:30": 2,
@@ -28,9 +28,9 @@
           "2026-08-24 18:00": 4,
           "2026-08-24 18:30": 4,
           "2026-08-24 19:00": 3,
-          "2026-08-25 07:30": 2,
-          "2026-08-25 08:00": 2,
-          "2026-08-25 08:30": 2,
+          "2026-08-25 07:30": 1,
+          "2026-08-25 08:00": 1,
+          "2026-08-25 08:30": 1,
           "2026-08-25 09:00": 0,
           "2026-08-25 09:30": 0,
           "2026-08-25 10:00": 0,
@@ -5102,7 +5102,7 @@
     "mountain-lake-park-outdoor": {
       "tennis": {
         "v": 2,
-        "pct": 62,
+        "pct": 63,
         "courts": 4,
         "slots": {
           "2026-08-24 08:30": 0,
@@ -5238,9 +5238,9 @@
           "2026-08-29 15:00": 3,
           "2026-08-29 15:30": 3,
           "2026-08-29 16:00": 3,
-          "2026-08-29 16:30": 1,
-          "2026-08-29 17:00": 1,
-          "2026-08-29 17:30": 1,
+          "2026-08-29 16:30": 2,
+          "2026-08-29 17:00": 2,
+          "2026-08-29 17:30": 2,
           "2026-08-29 18:00": 0,
           "2026-08-29 18:30": 0,
           "2026-08-30 07:30": 1,
@@ -7683,7 +7683,7 @@
       "guidelines": "Welcome to Rossi Park! At Arguello Boulevard and Edward Street, this is a lovely place to play tennis and pickleball. \n\n**Reservation Policy**\n- Any individual may reserve a court, but may not book more than 1 court in a day or 3 courts in a calendar week.\n- Reservation requests are for individual play only. No lessons, team practices, clinics or league matches.\n- Courts left vacant 15 minutes after reservation time are available for walk-up play\n- Please **[click here](https://sfrecpark.org/1188/Tennis-Pickleball-Reservations)** to view the full San Francisco Rec and Park reservation policy.\n\n**Reservation Overview**\n\n**Courts 1&2**\n- Reservable slots are on WEEKENDS ONLY, 7:30am-1:30pm. All other times and days remain available for walk-up Tennis on a first-come, first-serve basis.\n- Courts 1 and 2 are reservable for Tennis 7 days in advance.\n-  Reservations open at 8:00am.\n- Slots are 90 minutes and start at 7:30am, 9:00am, 10:30am and 12:00pm.\n\n**Court 3**\n- Court 3 is reservable for Tennis 7 days in advance\n- Reservations open at 8:00am\n- Most slots are 90 minutes and start at 7:30am, 9:00am, 10:30am, 12:00pm, 1:30pm, 3:00pm, and 4:30pm (6:00pm during Daylight Saving Time). \n\n**Courts A, B, C, D, and E**\n- Courts A, B, C, D, and E are reservable for Pickleball 7 days in advance and up to 90 minute slots. \n- Reservations open at 8:00am \n- Most slots are 90 minutes and start at 7:30am, 9:00am, 10:30am, 12:00pm, 1:30pm, 3:00pm, and 4:30pm (6:00pm during Daylight Saving Time). \n\n**Location Features**\n- 3 tennis courts\n- 5 pickleball courts. Four rolling nets are provided. Court E has a permanent net. \n- Bathroom access",
       "pickleball": {
         "v": 2,
-        "pct": 82,
+        "pct": 83,
         "courts": 5,
         "slots": {
           "2026-08-24 08:30": 0,
@@ -7696,9 +7696,9 @@
           "2026-08-24 12:00": 0,
           "2026-08-24 12:30": 0,
           "2026-08-24 13:00": 0,
-          "2026-08-24 13:30": 0,
-          "2026-08-24 14:00": 0,
-          "2026-08-24 14:30": 0,
+          "2026-08-24 13:30": 1,
+          "2026-08-24 14:00": 1,
+          "2026-08-24 14:30": 1,
           "2026-08-24 15:00": 1,
           "2026-08-24 15:30": 1,
           "2026-08-24 16:00": 1,
@@ -8898,5 +8898,5 @@
       }
     }
   },
-  "fetchedAt": "2026-08-24T15:37:18.891Z"
+  "fetchedAt": "2026-08-24T15:45:36.933Z"
 }
