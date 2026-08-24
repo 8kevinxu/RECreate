@@ -1,31 +1,6 @@
 {
   "entries": [
     {
-      "id": "vol-a074U00001Qpon9QAB",
-      "source": "sfrpd-volunteer",
-      "name": "Friends of De Young Museum",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "The de Young Museum",
-      "when": "Mon · 9:30 AM - 1:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 25,
-      "unlimited": false,
-      "start": "2026-08-24",
-      "end": "2026-12-07",
-      "instructor": "Friends of the de Young Museum",
-      "activity": "Horticultural Maintenance",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.  You can only sign-up a group of 4. If you have a group size of 5 or more, please email us at recparkvolunteer@sfgov.org.\n\nJoin the Friends of the De Young Museum for a twice-a-month volunteer workparty. A variety of gardening tasks are available. All tools and supplies are supplied by the gardeners. Volunteers receive a free guest pass to the De Young after volunteering.\n\nMeet at deYoung Museum entrance",
-      "lat": 37.77147,
-      "lng": -122.46864,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a07Pi00003zJscrIAC",
       "source": "sfrpd-volunteer",
       "name": "GGP Conservatory Valley Volunteer Workparty",
@@ -884,7 +859,32 @@
       "lat": 37.7712,
       "lng": -122.39312,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a074U00001Qpon9QAB",
+      "source": "sfrpd-volunteer",
+      "name": "Friends of De Young Museum",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "The de Young Museum",
+      "when": "Mon · 9:30 AM - 1:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 30,
+      "unlimited": false,
+      "start": "2026-10-19",
+      "end": "2026-12-07",
+      "instructor": "Friends of the de Young Museum",
+      "activity": "Horticultural Maintenance",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.  You can only sign-up a group of 4. If you have a group size of 5 or more, please email us at recparkvolunteer@sfgov.org.\n\nJoin the Friends of the De Young Museum for a twice-a-month volunteer workparty. A variety of gardening tasks are available. All tools and supplies are supplied by the gardeners. Volunteers receive a free guest pass to the De Young after volunteering.\n\nMeet at deYoung Museum entrance",
+      "lat": 37.77147,
+      "lng": -122.46864,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-08-24T15:39:43.634Z"
+  "fetchedAt": "2026-08-24T18:37:57.634Z"
 }
