@@ -76,6 +76,7 @@ new:
 | `023_report_data_issues.sql` | Allow `content_reports.kind` `'data'` ("looks wrong" flags on court/class/pool cards) + `'issue'` (free-text "Report a problem" in Settings) |
 | `024_check_ins_sport.sql` | Crowd check-ins scoped to court **+ sport** (`check_ins.sport`, per-sport push cooldown/wording) |
 | `025_court_checkin_count.sql` | `court_checkin_count()`: SECURITY DEFINER **aggregate** so the court card can show a community check-in count without reopening `017`'s row-level privacy (+ court/sport index) |
+| `026_player_checkins_lockdown_repair.sql` | **URGENT** — re-asserts `017`'s privacy lockdown, which was not live: the anon key could read `player_check_ins` rows (user id + court). Enables RLS as well as replacing the policies, since `017` assumed RLS was already on |
 
 > Note: migrations 001–009 were authored before the RECreate rebrand and still
 > reference the old `hoop_*` table names. Apply them **in order** — `010` renames
