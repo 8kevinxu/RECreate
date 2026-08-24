@@ -96,6 +96,7 @@ import {
   loadMyVisits,
   saveMyVisits,
   loadCourtVisits,
+  countCourtVisits,
   VISIT_WINDOW_MS,
 } from './lib/playerCheckins';
 import { resolveNotify } from './lib/activityShare';
@@ -1972,14 +1973,19 @@ function CourtDetail({
   const myVisit = visitRec && now - visitRec.ts <= VISIT_WINDOW_MS ? visitRec : null;
 
   // "I'm here" check-ins at this court+sport in the last hour, counted alongside
-  // the crowd's busyness reports below. Own + friends' only — see loadCourtVisits.
-  // `visitsSeq` re-runs it after you check in or take one back.
+  // the crowd's busyness reports below. Two queries because they answer different
+  // questions: `visits` is who we can name (you + friends, per RLS), `visitCount`
+  // is how many there are in total (the community aggregate, migration 025).
+  // `visitsSeq` re-runs both after you check in or take one back.
   const [visits, setVisits] = useState([]);
+  const [visitCount, setVisitCount] = useState(null); // null = aggregate unavailable
   const [visitsSeq, setVisitsSeq] = useState(0);
   useEffect(() => {
     let alive = true;
     setVisits([]);
+    setVisitCount(null);
     loadCourtVisits(court.id, vSport).then((v) => alive && setVisits(v));
+    countCourtVisits(court.id, vSport).then((n) => alive && setVisitCount(n));
     return () => {
       alive = false;
     };
@@ -1987,7 +1993,15 @@ function CourtDetail({
 
   const HOUR = 60 * 60 * 1000;
   const freshVisits = visits.filter((v) => now - v.ts <= HOUR);
-  const lastHour = countWithin(history, HOUR, now) + freshVisits.length;
+  // The community total when the aggregate answers, else just what we can name —
+  // never fewer than the rows we're about to list. (The aggregate windows from the
+  // server's clock and the list from the device's, so they can disagree by a
+  // moment; the heading must not undercount its own list.)
+  const hereCount =
+    visitCount != null ? Math.max(visitCount, freshVisits.length) : freshVisits.length;
+  // People here we can't name — everyone who isn't you or a friend.
+  const hereOthers = Math.max(0, hereCount - freshVisits.length);
+  const lastHour = countWithin(history, HOUR, now) + hereCount;
   // One list, newest first: a busyness report says how full it was, an "I'm here"
   // says who turned up. Both are check-ins, so both belong under the same count.
   const recent = [
@@ -2640,7 +2654,7 @@ function CourtDetail({
           <Text style={styles.checkinHint}>{t('court.tapAgain')}</Text>
         ) : null}
 
-        {expanded && recent.length > 0 && (
+        {expanded && (recent.length > 0 || hereOthers > 0) && (
           <View style={styles.history}>
             <Text style={styles.historyHead}>
               {t(lastHour === 1 ? 'court.historyHeadOne' : 'court.historyHeadMany', { n: lastHour })}
@@ -2659,6 +2673,17 @@ function CourtDetail({
                 <Text style={styles.historyAgo}>{timeAgo(e.ts, now)}</Text>
               </View>
             ))}
+            {hereOthers > 0 && (
+              // The count is everyone's; the rows above are only the people we're
+              // allowed to name. Saying so beats a heading that doesn't add up.
+              // With nobody named — signed out, or none of them a friend — there is
+              // no "more" to be more than, so it states the number plainly instead.
+              <Text style={styles.historyOthers}>
+                {freshVisits.length
+                  ? t('court.hereOthers', { n: hereOthers })
+                  : t(hereOthers === 1 ? 'court.hereAnonOne' : 'court.hereAnonMany', { n: hereOthers })}
+              </Text>
+            )}
           </View>
         )}
       </View>
@@ -3397,6 +3422,7 @@ const styles = StyleSheet.create({
   history: { marginTop: 10, borderTopWidth: 1, borderTopColor: '#e3e8ec', paddingTop: 8 },
   historyHead: { fontSize: 12, fontWeight: '700', color: '#46586a', marginBottom: 5 },
   historyHere: { fontSize: 12, fontWeight: '700', color: '#2a3a4a' },
+  historyOthers: { fontSize: 11.5, color: '#5b6b7b', marginTop: 3 },
   historyRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',

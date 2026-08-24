@@ -122,6 +122,11 @@ create table if not exists public.player_check_ins (
 create index if not exists player_check_ins_user_idx
   on public.player_check_ins (user_id, created_at desc);
 
+-- The court card counts check-ins per court+sport on every open; the user-keyed
+-- index above can't serve that access path (see court_checkin_count below).
+create index if not exists player_check_ins_court_idx
+  on public.player_check_ins (court_id, sport, created_at desc);
+
 alter table public.player_check_ins enable row level security;
 
 -- Check-ins are a location history, so reads are private: your own rows here,
@@ -135,3 +140,37 @@ create policy "users log their own check-ins"
 
 create policy "users delete their own check-ins"
   on public.player_check_ins for delete using (auth.uid() = user_id);
+
+-- Community count for the court card ("3 check-ins in the last hour"), reading
+-- past the row-level privacy above without undoing it: a number names nobody —
+-- no user id, no per-visit timestamp, no way to attribute a visit to a person.
+-- The named rows the card lists ("You", "Sam") still come through RLS, so you
+-- see WHO only among your own friends. Three limits keep the aggregate from
+-- being walked back into a history: the window is clamped to 24h (no all-time
+-- popularity dataset, no aiming at a past day), it returns a scalar and never
+-- rows, and court AND sport are required so it can't sweep the table.
+create or replace function public.court_checkin_count(
+  p_court_id text,
+  p_sport    text,
+  p_minutes  int default 60
+)
+returns integer
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select count(*)::int
+  from public.player_check_ins
+  where court_id = p_court_id
+    and sport = p_sport
+    and created_at >= now()
+      - make_interval(mins => least(greatest(coalesce(p_minutes, 60), 1), 1440));
+$$;
+
+-- Granted to everyone the card renders for, signed in or not — the same class of
+-- fact the anonymous crowd reports already publish. Unlike send_push() /
+-- accepted_friend_ids() (revoked from clients in 07_push.sql), there is nothing
+-- here to abuse: no rows, no identities, no writes.
+revoke all on function public.court_checkin_count(text, text, int) from public;
+grant execute on function public.court_checkin_count(text, text, int) to anon, authenticated;
