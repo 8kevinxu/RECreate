@@ -241,6 +241,37 @@ friendships, chat, device tokens, blocks) scopes writes to `auth.uid()`.
 Friends-only visibility (signals, friends-only runs) is enforced by RLS subqueries
 against the `friendships` table.
 
+**Check-ins are two different things** that meet on the court card. A **crowd
+report** (`check_ins`) is anonymous, world-readable and says how busy a court+sport
+is. An **"I'm here"** (`player_check_ins`) is identified, belongs to a user, feeds
+the profile counters, and is a *location history* — so `017` scoped its reads to
+your own rows plus accepted friends'. Both undo: tapping your crowd level again
+removes it, and a check-in is taken back from the card's button or by swiping your
+own row in the activity feed. Neither can recall a push that already fired, which
+is why the copy says "tap to undo" and never that nobody saw it. A crowd report
+silently logs an "I'm here" too, so undoing the report retracts that visit — but
+only when the report created it (`via: 'crowd'` in the on-device mirror
+`recreate.myvisits.v1`); when an explicit check-in came first the piggyback was
+deduped away, so there is nothing to retract and no special case to write.
+
+**The card counts both, which needs an aggregate rather than looser RLS.** Showing
+"N check-ins in the last hour" community-wide can't come from reading rows —
+that's exactly what `017` closed. `court_checkin_count()` (`025`) is a
+SECURITY DEFINER **aggregate**: reading past RLS is safe precisely because it
+returns a scalar — no user id, no per-visit timestamp, nothing attributable. Three
+limits keep it from being walked back into a history: the window clamps to 24h, it
+returns a number and never rows, and court **and** sport are both required so it
+can't sweep the table. It's granted to `anon` as well as `authenticated` (the card
+renders signed-out, and this is the class of fact the crowd reports already
+publish), which is the opposite call from `send_push()`/`accepted_friend_ids()` —
+those enable push spam and friend enumeration; a count enables neither. The card
+runs both queries because they answer different questions — *who* (RLS rows it may
+name) and *how many* (the aggregate) — and where they differ it says so ("+2 more
+checked in here") rather than printing a heading that doesn't add up against its
+own list. `countCourtVisits` returns **null, not 0**, when the RPC is missing, so a
+database that hasn't run `025` falls back to what it can see instead of claiming an
+empty court.
+
 **Trust & safety** (App Store UGC requirement): `blocks.js` filters a blocked
 user's content out of every social loader app-wide; `reports.js` files content
 reports; Settings has a block manager and account self-deletion
@@ -470,8 +501,19 @@ copy server-side.
 - **Anonymous data** (crowd check-ins, reviews) has server-side per-IP rate limits
   as an abuse backstop.
 - **SECURITY DEFINER functions** set `search_path` and are revoked from
-  anon/authenticated unless they must be client-callable (only `delete_account()`
-  is, and it acts solely on the caller).
+  anon/authenticated unless they must be client-callable. Two are:
+  `delete_account()` (acts solely on the caller) and `court_checkin_count()`,
+  which is safe to expose *because it returns a scalar* — an aggregate is how you
+  publish a number over private rows without unscoping the rows (see §5).
+- **Verify RLS with the anon key, don't assume a migration took.** On 2026-08-23
+  the anon key could read `player_check_ins` rows — the location history `017`
+  exists to prevent — because `017` had never taken effect on the live database
+  (`018` and `019` had, so nothing in the app's behaviour hinted at it). The app is
+  always signed in, so it never sees what anon sees; one `curl` per table with the
+  key from `.env` is the only check that does. Repaired by `026`, which also
+  `enable`s RLS and re-asserts the write policies — re-running `017` alone would
+  not necessarily have helped, since it only drops and creates policies and assumes
+  RLS is already on, and with RLS off anonymous *writes* were accepted too.
 - **No secrets in the repo** (`.env` gitignored); no `eval`/`dangerouslySetInnerHTML`;
   all network endpoints are HTTPS (so no iOS ATS exceptions needed).
 - **The assistant defends money, not data** — it holds no user records, but every

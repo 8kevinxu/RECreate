@@ -521,6 +521,32 @@ recent votes), and animates the map marker:
 Check-ins expire after `FRESH_WINDOW_MS` (2h) — after that the gym's current
 state is "unknown" again (no animation), though the last report time still shows.
 
+### "I'm here" — and taking it back
+
+Signed in, the card also offers **"I'm here"**: a personal check-in for the sport
+you're viewing, which feeds your profile's per-sport counters and most-visited
+park. It's a different record from the crowd vote above — that one is anonymous
+and says *how busy* the court is; this one is yours and says *you turned up*.
+
+Both undo. Tap your crowd level again to remove it; for a check-in, the button
+itself **holds the state** — it turns outlined and reads "tap to undo" — and your
+own rows in the Activity feed swipe away, for the one you notice after leaving the
+court. A crowd report quietly logs an "I'm here" too, so undoing the report takes
+that visit back with it, unless you'd already checked in deliberately.
+
+Undo can't recall a push that already went out (it fires the moment the check-in
+lands). The row does disappear from friends' feeds, which read live — so the app
+says "tap to undo", never that nobody saw it.
+
+The card's **"👥 N check-ins in the last hour"** counts both kinds, community-wide.
+That number comes from a Postgres aggregate (`court_checkin_count()`, migration
+`025`) rather than from reading rows, because check-ins are a location history and
+stay private per [`017`](supabase/migrations/017_player_checkins_friends_only.sql):
+a count names nobody, so it can be public while the rows can't. The card lists the
+people it *may* name (you and your friends) and accounts for the rest as "+2 more
+checked in here". Without migration `025` applied, it falls back to counting only
+what it can see rather than claiming an empty court.
+
 **Storage is pluggable** (`lib/crowd.js`): it uses **Supabase** (shared across
 all users + real-time) when configured, and falls back to **on-device storage**
 otherwise. No UI changes between the two.
