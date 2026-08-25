@@ -14,7 +14,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 9,
+      "spots": 8,
       "unlimited": false,
       "start": "2026-08-26",
       "end": "2026-09-30",
@@ -102,6 +102,30 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
+      "id": "vol-a07Pi00005PqdCTIAZ",
+      "source": "sfrpd-volunteer",
+      "name": "Golden Gate Park Rhododendron Dell",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "GGP Sec 2 Rhododendron Dell",
+      "when": "Wed · 10:00 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 19,
+      "unlimited": false,
+      "start": "2026-09-02",
+      "end": "2027-02-17",
+      "activity": "Horticultural Maintenance",
+      "desc": "Join us for volunteering at the Golden Gate Park Rhododendron Dell every 1st and 3rd Wednesday of the month! Come spend the morning with some light weeding, mulching, or pruning.Please RSVP by selecting group sign-up even when you are not registering as a group. We limit to four people per group sign-up, if you have more than four people, please email us at Recparkvolunteer@sfgov.org. Thank you!",
+      "lat": 37.7699,
+      "lng": -122.46429,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
       "id": "vol-a07Pi00003xn9F3IAI",
       "source": "sfrpd-volunteer",
       "name": "Heron's Head Park Volunteer Workparty",
@@ -125,30 +149,6 @@
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group. You can only sign-up a group of 4. If you have a group size of 5 or more, please email us at recparkvolunteer@sfgov.org.\n\nJoin the San Francisco Recreation and Parks Department, the Port of San Francisco and Golden Gate Bird Alliance in our joint stewardship of Heron's Head Park! Heron's Head Park is home to over 100 species of birds and an off-the grid sustainable learning center. Join us every 1st Wednesday of the month and learn about the EcoCenter and Park's robust ecosystem. Volunteer tasks include non-native invasive plant removal, mulch application, watering and planting (seasonally). Come prepared with closed-toe shoes and dress in layers. No experience necessary. Tools are provided. Meet in front of the EcoCenter, in the middle of the nature play area.\n\nIf you are registering to volunteer within 24 hours prior to the workday, please contact Jadd Correia at 415-244-2548.",
       "lat": 37.73832,
       "lng": -122.37481,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
-      "id": "vol-a07Pi00005PqdCTIAZ",
-      "source": "sfrpd-volunteer",
-      "name": "Golden Gate Park Rhododendron Dell",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "GGP Sec 2 Rhododendron Dell",
-      "when": "Wed · 10:00 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 20,
-      "unlimited": false,
-      "start": "2026-09-02",
-      "end": "2027-02-17",
-      "activity": "Horticultural Maintenance",
-      "desc": "Join us for volunteering at the Golden Gate Park Rhododendron Dell every 1st and 3rd Wednesday of the month! Come spend the morning with some light weeding, mulching, or pruning.Please RSVP by selecting group sign-up even when you are not registering as a group. We limit to four people per group sign-up, if you have more than four people, please email us at Recparkvolunteer@sfgov.org. Thank you!",
-      "lat": 37.7699,
-      "lng": -122.46429,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -331,6 +331,32 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
+      "id": "vol-a07Pi00006B5tmHIAR",
+      "source": "sfrpd-volunteer",
+      "name": "CNPS Balboa Natural Area September 9, 2026",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "Balboa Natural Area",
+      "when": "Wed · 12:00 PM - 2:30 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 15,
+      "unlimited": false,
+      "start": "2026-09-09",
+      "end": "2026-09-09",
+      "oneDay": true,
+      "instructor": "California Native Plant Society",
+      "activity": "Habitat Restoration",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin SF Recreation and Parks’ Natural Resources Division and the California Native Plant Society for their weekly Wednesday habitat restoration project.\n\nJoin our habitat restoration event at a beautiful San Francisco haven for native beach dune plants. See how nature can rebound if given the chance! This neglected plot of land was restored by SF Rec and Park and now is home to a diverse array of plants and animals. We will be working to protect the area from invasives. Tools and gloves provided, water and snacks served at the end of the work party.\n\nWe will also be participating in the iNaturalist biodiversity challenge where we'll be looking to find 30 species.\n\nSign up at: https://www.inaturalist.org/projects/find-30-species-for-ca-biodiversity-day-2026\n\nThe Balboa Natural Area is one of only a few foredune communities in San Francisco and the only one within the Natural Areas System. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Everyone 14 years old and older is invited; anyone under 14 yo must be accompanied by a guardian. Tools and gloves will be provided. Please be punctual. \n\nMeet at the northernmost boardwalk entrance.",
+      "lat": 37.72165,
+      "lng": -122.4593,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
       "id": "vol-a07Pi00003ysll6IAA",
       "source": "sfrpd-volunteer",
       "name": "Clean & Green with the Friends of Lafayette Park",
@@ -395,7 +421,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 10,
+      "spots": 9,
       "unlimited": false,
       "start": "2026-09-12",
       "end": "2026-11-14",
@@ -430,31 +456,6 @@
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group. You can only sign-up a group of 4. If you have a group size of 5 or more, please email us at recparkvolunteer@sfgov.org.\n\nJoin the RPD Gardeners in a horticultural maintenance volunteer workparty. Tools and gloves provided. \n\nMeet at the Corner of Mission Bay Blvd North and Bridgeview",
       "lat": 37.77037,
       "lng": -122.39121,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
-      "id": "vol-a074U00001QocKOQAZ",
-      "source": "sfrpd-volunteer",
-      "name": "San Francisco Botanical Garden Volunteer Event",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "GGP Sec 3 Botanical Gardens",
-      "when": "Sun, Sat · 9:30 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 15,
-      "unlimited": false,
-      "start": "2026-09-13",
-      "end": "2026-12-13",
-      "instructor": "SF Botanical Staff",
-      "activity": "Horticultural Maintenance",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nPlease join the San Francisco Botanical Garden’s Horticulture team as they maintain San Francisco’s wonderful 55 acres of both landscaped gardens and open spaces, showcasing more than 8,000 different kinds of plants from around the world. At this volunteer event, you will assist SFRPD staff with collections maintenance and complete tasks such as weeding, raking, and mulching to keep the Botanical Garden beautiful for our community. This is a fun event to jump in and help out with friends and family. While you are welcome to bring your tools and gloves, all supplies will be provided by SFRPD. Volunteers aged 14-17 must be accompanied by an adult. We do not have opportunities for volunteers younger than 14 at this time.\n\nRain and high winds may cancel this event.\n\nPlease wear closed-toed shoes, long pants, layers and appropriate weather protection such as sunscreen, hat, and sunglasses.\n\nMeet at the San Francisco Botanical Garden Bookstore.",
-      "lat": 37.76744,
-      "lng": -122.46896,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -554,6 +555,32 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
+      "id": "vol-a074U00001JPWEFQA5",
+      "source": "sfrpd-volunteer",
+      "name": "Coastal Cleanup Heron's Head Park",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "Heron's Head Park",
+      "when": "Sat · 9:00 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 45,
+      "unlimited": false,
+      "start": "2026-09-19",
+      "end": "2026-09-19",
+      "oneDay": true,
+      "instructor": "California Coastal Commission",
+      "activity": "Litter Abatement",
+      "desc": "Please come join SF Rec & Park and the CA Coastal Commission for a cleanup event at Herons Head Park in the Bayview Neighborhood of SF.  HHP is one of San Francisco’s ecological treasures a 22-acre open space and thriving wildlife habitat located in the City’s Southeast Sector. Teeming with native plants and a wide variety of birds, Heron’s Head Park is one of the few wetlands on San Francisco’s shoreline, and is an example of restoration success. Onsite leaders from the Greenager Program will be hosting public members in a trash and debris collection event along the bay.",
+      "lat": 37.73832,
+      "lng": -122.37481,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
       "id": "vol-a074U00001JoniHQAR",
       "source": "sfrpd-volunteer",
       "name": "Coastal Cleanup Marina Yacht Harbor",
@@ -603,32 +630,6 @@
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the SF Recreation and Parks’ Natural Resources Division and Sutro Stewards to complete habitat restoration at the Interior Greenbelt on Mount Sutro. Help to restore this spectacular habitat that harbors sensitive plants including fairy bells and thimbleberry. Everyone 12 years and older is invited. A variety of volunteer tasks is available, at times on steep slopes. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Tools and gloves will be provided. Please be punctual\n\nMeet at Woods Lot at 100 Medical Center Way, San Francisco, CA 9414",
       "lat": 37.75993,
       "lng": -122.45635,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
-      "id": "vol-a074U00001JPWEFQA5",
-      "source": "sfrpd-volunteer",
-      "name": "Coastal Cleanup Heron's Head Park",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "Heron's Head Park",
-      "when": "Sat · 9:00 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 45,
-      "unlimited": false,
-      "start": "2026-09-19",
-      "end": "2026-09-19",
-      "oneDay": true,
-      "instructor": "California Coastal Commission",
-      "activity": "Litter Abatement",
-      "desc": "Please come join SF Rec & Park and the CA Coastal Commission for a cleanup event at Herons Head Park in the Bayview Neighborhood of SF.  HHP is one of San Francisco’s ecological treasures a 22-acre open space and thriving wildlife habitat located in the City’s Southeast Sector. Teeming with native plants and a wide variety of birds, Heron’s Head Park is one of the few wetlands on San Francisco’s shoreline, and is an example of restoration success. Onsite leaders from the Greenager Program will be hosting public members in a trash and debris collection event along the bay.",
-      "lat": 37.73832,
-      "lng": -122.37481,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -730,6 +731,31 @@
       "desc": "Join us for volunteering at the Golden Gate Park Rose Garden every 4th Saturday of the month! Come spend the morning helping care for the roses, beautifying the garden, and connecting with your community. Whether you’re a seasoned gardener or just want to lend a hand, all are welcome. Things can get thorny, so wear a long sleeve or a sweatshirt for your protection.Please RSVP by selecting group sign-up even when you are not registering as a group. You can only sign-up a group of 4. If you have a group size of 5 or more, please email us at recparkvolunteer@sfgov.org.",
       "lat": 37.77179,
       "lng": -122.47016,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a074U00001QocKOQAZ",
+      "source": "sfrpd-volunteer",
+      "name": "San Francisco Botanical Garden Volunteer Event",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "GGP Sec 3 Botanical Gardens",
+      "when": "Sun, Sat · 9:30 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 15,
+      "unlimited": false,
+      "start": "2026-09-26",
+      "end": "2026-12-13",
+      "instructor": "SF Botanical Staff",
+      "activity": "Horticultural Maintenance",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nPlease join the San Francisco Botanical Garden’s Horticulture team as they maintain San Francisco’s wonderful 55 acres of both landscaped gardens and open spaces, showcasing more than 8,000 different kinds of plants from around the world. At this volunteer event, you will assist SFRPD staff with collections maintenance and complete tasks such as weeding, raking, and mulching to keep the Botanical Garden beautiful for our community. This is a fun event to jump in and help out with friends and family. While you are welcome to bring your tools and gloves, all supplies will be provided by SFRPD. Volunteers aged 14-17 must be accompanied by an adult. We do not have opportunities for volunteers younger than 14 at this time.\n\nRain and high winds may cancel this event.\n\nPlease wear closed-toed shoes, long pants, layers and appropriate weather protection such as sunscreen, hat, and sunglasses.\n\nMeet at the San Francisco Botanical Garden Bookstore.",
+      "lat": 37.76744,
+      "lng": -122.46896,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -886,5 +912,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-08-25T12:43:25.533Z"
+  "fetchedAt": "2026-08-25T18:37:35.140Z"
 }
