@@ -102,30 +102,6 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
-      "id": "vol-a07Pi00005PqdCTIAZ",
-      "source": "sfrpd-volunteer",
-      "name": "Golden Gate Park Rhododendron Dell",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "GGP Sec 2 Rhododendron Dell",
-      "when": "Wed · 10:00 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 20,
-      "unlimited": false,
-      "start": "2026-09-02",
-      "end": "2027-02-17",
-      "activity": "Horticultural Maintenance",
-      "desc": "Join us for volunteering at the Golden Gate Park Rhododendron Dell every 1st and 3rd Wednesday of the month! Come spend the morning with some light weeding, mulching, or pruning.Please RSVP by selecting group sign-up even when you are not registering as a group. We limit to four people per group sign-up, if you have more than four people, please email us at Recparkvolunteer@sfgov.org. Thank you!",
-      "lat": 37.7699,
-      "lng": -122.46429,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a07Pi00003xn9F3IAI",
       "source": "sfrpd-volunteer",
       "name": "Heron's Head Park Volunteer Workparty",
@@ -149,6 +125,30 @@
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group. You can only sign-up a group of 4. If you have a group size of 5 or more, please email us at recparkvolunteer@sfgov.org.\n\nJoin the San Francisco Recreation and Parks Department, the Port of San Francisco and Golden Gate Bird Alliance in our joint stewardship of Heron's Head Park! Heron's Head Park is home to over 100 species of birds and an off-the grid sustainable learning center. Join us every 1st Wednesday of the month and learn about the EcoCenter and Park's robust ecosystem. Volunteer tasks include non-native invasive plant removal, mulch application, watering and planting (seasonally). Come prepared with closed-toe shoes and dress in layers. No experience necessary. Tools are provided. Meet in front of the EcoCenter, in the middle of the nature play area.\n\nIf you are registering to volunteer within 24 hours prior to the workday, please contact Jadd Correia at 415-244-2548.",
       "lat": 37.73832,
       "lng": -122.37481,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a07Pi00005PqdCTIAZ",
+      "source": "sfrpd-volunteer",
+      "name": "Golden Gate Park Rhododendron Dell",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "GGP Sec 2 Rhododendron Dell",
+      "when": "Wed · 10:00 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 20,
+      "unlimited": false,
+      "start": "2026-09-02",
+      "end": "2027-02-17",
+      "activity": "Horticultural Maintenance",
+      "desc": "Join us for volunteering at the Golden Gate Park Rhododendron Dell every 1st and 3rd Wednesday of the month! Come spend the morning with some light weeding, mulching, or pruning.Please RSVP by selecting group sign-up even when you are not registering as a group. We limit to four people per group sign-up, if you have more than four people, please email us at Recparkvolunteer@sfgov.org. Thank you!",
+      "lat": 37.7699,
+      "lng": -122.46429,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -199,32 +199,6 @@
       "desc": "Volunteers needed for Park Greening Day! Come out and join the RPD Gardeners and Alamo Square Neighbors Association in their recurring volunteering workparty. Activities include planting, gardening, weeding, general park maintenance. Please wear long pants and closed-toed shoes. Event takes place rain or shine. Meet at the Hayes and Steiner Tennis Courts near the restrooms.",
       "lat": 37.776277,
       "lng": -122.434184,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
-      "id": "vol-a07Pi00003ysll6IAA",
-      "source": "sfrpd-volunteer",
-      "name": "Clean & Green with the Friends of Lafayette Park",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "Lafayette Park",
-      "when": "Sat · 9:00 AM - 11:00 AM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 10,
-      "unlimited": false,
-      "start": "2026-09-05",
-      "end": "2026-09-05",
-      "oneDay": true,
-      "instructor": "Friends of Lafayette Park [FOLP]",
-      "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nPlease join the Friends of Lafayette Park for a \"Cleaning and Greening\" workday on the first Saturday of the month. Help to maintain the park and get to know your neighbors. We install new plants, weed, sweep and more. We meet beforehand for coffee and pastries, lively conversation, and then head-out with the SFRPD gardeners to help beautify our park.  Please wear closed-toe shoes, long pants and a long-sleeve shirt. All tools and gloves provided. (NOTE: If the first Saturday of the month is a major holiday, then the workday will happen on the following Saturday.)\n\nMeet at the picnic tables at the south end of the Children's Playground",
-      "lat": 37.791378,
-      "lng": -122.427006,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -354,6 +328,32 @@
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin SF Recreation and Parks’ Natural Resources Division and the California Native Plant Society for their weekly Wednesday habitat restoration project. The Balboa Natural Area is one of only a few foredune communities in San Francisco and the only one within the Natural Areas System. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Everyone 14 years old and older is invited; anyone under 14 yo must be accompanied by a guardian. Tools and gloves will be provided. Please be punctual. \n\nMeet at the northernmost boardwalk entrance.",
       "lat": 37.72165,
       "lng": -122.4593,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a07Pi00003ysll6IAA",
+      "source": "sfrpd-volunteer",
+      "name": "Clean & Green with the Friends of Lafayette Park",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "Lafayette Park",
+      "when": "Sat · 9:00 AM - 11:00 AM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 10,
+      "unlimited": false,
+      "start": "2026-09-12",
+      "end": "2026-09-12",
+      "oneDay": true,
+      "instructor": "Friends of Lafayette Park [FOLP]",
+      "activity": "Habitat Restoration",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nPlease join the Friends of Lafayette Park for a \"Cleaning and Greening\" workday on the first Saturday of the month. Help to maintain the park and get to know your neighbors. We install new plants, weed, sweep and more. We meet beforehand for coffee and pastries, lively conversation, and then head-out with the SFRPD gardeners to help beautify our park.  Please wear closed-toe shoes, long pants and a long-sleeve shirt. All tools and gloves provided. (NOTE: If the first Saturday of the month is a major holiday, then the workday will happen on the following Saturday.)\n\nMeet at the picnic tables at the south end of the Children's Playground",
+      "lat": 37.791378,
+      "lng": -122.427006,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -886,5 +886,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-08-24T18:37:57.634Z"
+  "fetchedAt": "2026-08-25T01:08:17.242Z"
 }
