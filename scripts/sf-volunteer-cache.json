@@ -1,57 +1,6 @@
 {
   "entries": [
     {
-      "id": "vol-a07Pi00003zJscrIAC",
-      "source": "sfrpd-volunteer",
-      "name": "GGP Conservatory Valley Volunteer Workparty",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "GGP Conservatory Valley",
-      "when": "Wed · 9:30 AM - 11:30 AM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 7,
-      "unlimited": false,
-      "start": "2026-08-26",
-      "end": "2026-09-30",
-      "instructor": "Friends of Conservatory Valley",
-      "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the RPD gardeners in a weekly recurring volunteer workparty at the Valley of the Conservatory of Flowers. Volunteer tasks include the maintenance of ornamental planting beds. All tools provided by RPD. Children 13 years and older accompanied by an adult are welcome. No school groups.\n\nMeet on the steps of the Conservatory of Flowers, 100 JFK Drive.",
-      "lat": 37.77153,
-      "lng": -122.4601,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
-      "id": "vol-a07Pi00005zaGcvIAE",
-      "source": "sfrpd-volunteer",
-      "name": "CNPS Pine Lake Park -Stern Grove",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "Pine Lake Park",
-      "when": "Wed · 12:00 PM - 2:30 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 13,
-      "unlimited": false,
-      "start": "2026-08-26",
-      "end": "2026-08-26",
-      "oneDay": true,
-      "instructor": "Yerba Buena CNPS",
-      "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin SF Recreation and Parks’ Natural Resources Division and the California Native Plant Society for their weekly Wednesday habitat restoration project. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Everyone 14 years old and older is invited; anyone under 14 yo must be accompanied by a guardian. Tools and gloves will be provided. Please be punctual. \n\nMeet downhill from trailhead gate near 580 Crestlake Drive.",
-      "lat": 37.73386,
-      "lng": -122.49419,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a07Pi00003RhgW4IAJ",
       "source": "sfrpd-volunteer",
       "name": "Heron's Head Park Volunteer Workparty 4th Thursday",
@@ -99,6 +48,31 @@
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the Friends Gambier Plaza and the RPD Gardeners in a habitat restoration volunteer workparty. Tools and gloves provided. Meet at Burrows and Gambier streets.",
       "lat": 37.71889,
       "lng": -122.41396,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a07Pi00003zJscrIAC",
+      "source": "sfrpd-volunteer",
+      "name": "GGP Conservatory Valley Volunteer Workparty",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "GGP Conservatory Valley",
+      "when": "Wed · 9:30 AM - 11:30 AM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 12,
+      "unlimited": false,
+      "start": "2026-09-02",
+      "end": "2026-09-30",
+      "instructor": "Friends of Conservatory Valley",
+      "activity": "Habitat Restoration",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the RPD gardeners in a weekly recurring volunteer workparty at the Valley of the Conservatory of Flowers. Volunteer tasks include the maintenance of ornamental planting beds. All tools provided by RPD. Children 13 years and older accompanied by an adult are welcome. No school groups.\n\nMeet on the steps of the Conservatory of Flowers, 100 JFK Drive.",
+      "lat": 37.77153,
+      "lng": -122.4601,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -912,5 +886,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-08-26T12:47:45.802Z"
+  "fetchedAt": "2026-08-26T19:46:08.630Z"
 }
