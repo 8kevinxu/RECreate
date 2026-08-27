@@ -169,7 +169,7 @@ const DATA_FLOORS = [
   ['data/cities/nyc/directory.js', 'NYC_DIRECTORY', 25],
   // 79 outdoor + 13 indoor. Floor is a gutted-scrape guard, not a seasonal one:
   // out of season the outdoor pools still ship, just with no sessions.
-  ['data/cities/nyc/pools.js', 'NYC_POOLS', 60],
+  ['data/cities/nyc/pools.js', 'NYC_POOLS', 50],
 ];
 
 const loaded = {}; // file -> module exports, reused by the price gate below

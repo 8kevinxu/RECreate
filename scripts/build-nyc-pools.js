@@ -29,12 +29,25 @@
  *
  * Resilience mirrors the other builds: live -> last-good cache -> abort keeping
  * the existing data file.
+ *
+ * ONE RECORD PER SITE, NOT PER BASIN. NYC's feeds list a row per basin, so a
+ * site with a swimming pool and a wading pool arrives as two rows — and the id
+ * is derived from the site name, so both got the SAME id (24 sites did; Fort
+ * Totten has three). Two courts sharing an id is not something the app can hold:
+ * lib/useCourts.js only dedupes EXTRA_COURTS against the bundled list, not
+ * against itself, so both reached the map under one id — colliding React keys,
+ * and a favorite or crowd check-in on the wading pool indistinguishable from one
+ * on the pool beside it. They are also one place you go swimming, so the fix is
+ * to merge them: `mergeSites()` emits one record per id, keeping the swimming
+ * basin's name/coords/description and listing every basin in `basins`. Ids are
+ * unchanged by this (they were always site-derived), so existing favorites and
+ * check-ins keep resolving.
  */
 
 const fs = require('fs');
 const path = require('path');
 const { fetchT } = require('./fetch-timeout');
-const { slug, loadCache, saveCache } = require('./lib/courts-common');
+const { slug, loadCache, saveCache, reportStale } = require('./lib/courts-common');
 
 const BASE = 'https://www.nycgovparks.org';
 const UA =
@@ -50,6 +63,7 @@ const CONCURRENCY = 2;
 const PACE_MS = 350;
 
 // Abort (keep last-good data) below this many pools.
+// Basin rows as scraped (~92); mergeSites() then collapses them to ~67 sites.
 const MIN_POOLS_OK = 60;
 
 // Fallback citywide outdoor hours, used only if the page's prose stops parsing.
@@ -254,14 +268,58 @@ function baseRecord(r, indoor) {
   };
 }
 
+// Which basin speaks for the site: the one you would actually go there to swim
+// in. A site's name and coordinates should point at its Olympic pool, not at the
+// toddler wading pool 60 feet away.
+const BASIN_RANK = ['olympic', 'intermediate', 'diving', 'mini', 'wading'];
+const basinRank = (p) => {
+  const i = BASIN_RANK.findIndex((k) => new RegExp(k, 'i').test(p.desc || ''));
+  return i === -1 ? BASIN_RANK.length : i;
+};
+
+// Collapse the per-basin rows into one record per site. See the header note.
+function mergeSites(pools) {
+  const bySite = new Map();
+  for (const p of pools) {
+    if (!bySite.has(p.id)) bySite.set(p.id, []);
+    bySite.get(p.id).push(p);
+  }
+  return [...bySite.values()].map((group) => {
+    if (group.length === 1) return group[0];
+    const [primary] = [...group].sort((a, b) => basinRank(a) - basinRank(b));
+    const notice = group.find((p) => p.notice)?.notice;
+    return {
+      ...primary,
+      // Accessible if ANY basin is: the site has an accessible pool.
+      accessible: group.some((p) => p.accessible),
+      // Every basin, best first — the card can say what is actually here.
+      basins: [...group].sort((a, b) => basinRank(a) - basinRank(b)).map((p) => p.desc).filter(Boolean),
+      programs: [...new Set(group.flatMap((p) => p.programs || []))],
+      // Basins at one site can publish the same session (the outdoor week is
+      // citywide, so every basin carries an identical copy of it).
+      sessions: Array.from({ length: 7 }, (_, d) => {
+        const seen = new Set();
+        return group
+          .flatMap((p) => p.sessions?.[d] || [])
+          .filter((x) => {
+            const k = `${x.kind}-${x.start}-${x.end}`;
+            return !seen.has(k) && seen.add(k);
+          });
+      }),
+      ...(notice ? { notice } : {}),
+    };
+  });
+}
+
 const inNyc = (p) => Number.isFinite(p.lat) && Number.isFinite(p.lng) && p.lat > 40.4 && p.lat < 41 && p.lng > -74.3 && p.lng < -73.6;
 
 async function main() {
   console.log('Building NYC pools…');
 
-  let pools;
+  let rows; // one per basin, the shape both the feeds and the cache use
   let season;
   let source;
+  let staleCache = null;
   try {
     const [outdoorRows, indoorRows] = await Promise.all([
       getJson(`${BASE}/bigapps/DPR_Pools_outdoor_001.json`),
@@ -345,27 +403,37 @@ async function main() {
       })
     );
 
-    pools = [...out, ...indoorOut].filter((p) => inNyc(p)).sort((a, b) => a.name.localeCompare(b.name));
-    if (pools.length < MIN_POOLS_OK) {
-      throw new Error(`only ${pools.length} pools (min ${MIN_POOLS_OK}) — feed shape may have changed`);
+    rows = [...out, ...indoorOut].filter((p) => inNyc(p));
+    if (rows.length < MIN_POOLS_OK) {
+      throw new Error(`only ${rows.length} pools (min ${MIN_POOLS_OK}) — feed shape may have changed`);
     }
     source = 'live';
-    saveCache(CACHE_FILE, { pools, season, fetchedAt: new Date().toISOString() });
-    console.log(`  ${pools.length} pools (${out.length} outdoor, ${indoorOut.length} indoor)`);
+    // The cache holds the SOURCE shape (one row per basin); mergeSites runs
+    // after the fallback so a cached run gets merged records too — merging
+    // before would have left an old cache shipping the colliding ids.
+    saveCache(CACHE_FILE, { pools: rows, season, fetchedAt: new Date().toISOString() });
   } catch (e) {
     const cache = loadCache(CACHE_FILE);
     if (!cache || !cache.pools) {
       throw new Error(`fetch failed (${e.message}) and no cache — ${OUT_FILE} left unchanged`);
     }
-    pools = cache.pools;
+    rows = cache.pools;
     season = cache.season;
     source = 'cache';
+    staleCache = cache;
     console.log(`  ↺ ${e.message}; using cache from ${cache.fetchedAt || 'unknown'}`);
   }
+
+  const pools = mergeSites(rows).sort((a, b) => a.name.localeCompare(b.name));
+  console.log(
+    `  ${rows.length} basin rows → ${pools.length} sites ` +
+      `(${pools.filter((p) => !p.indoor).length} outdoor, ${pools.filter((p) => p.indoor).length} indoor)`
+  );
 
   fs.mkdirSync(OUT_DIR, { recursive: true });
   fs.writeFileSync(OUT_FILE, render(pools, season, new Date().toISOString(), source));
   console.log(`\n✅ Wrote ${pools.length} pools to data/cities/nyc/pools.js (${source})`);
+  reportStale(source, staleCache, { label: 'NYC pools', maxHours: 240 });
 }
 
 function render(pools, season, generatedAt, source) {
