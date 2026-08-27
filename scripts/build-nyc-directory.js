@@ -47,7 +47,7 @@
 const fs = require('fs');
 const path = require('path');
 const { fetchT } = require('./fetch-timeout');
-const { loadCache, saveCache } = require('./lib/courts-common');
+const { loadCache, saveCache, reportStale } = require('./lib/courts-common');
 
 const BASE = 'https://www.nycgovparks.org/bigapps';
 const UA =
@@ -436,6 +436,7 @@ async function main() {
 
   let directory;
   let source;
+  let staleCache = null;
   try {
     const [tennis, basketball, handball, recCenters] = await Promise.all([
       getJson('DPR_Tennis_001'),
@@ -481,12 +482,14 @@ async function main() {
     }
     directory = cache.directory;
     source = 'cache';
+    staleCache = cache;
     console.log(`  ↺ ${e.message}; using cache from ${cache.fetchedAt || 'unknown'}`);
   }
 
   fs.mkdirSync(OUT_DIR, { recursive: true });
   fs.writeFileSync(OUT_FILE, render(directory, new Date().toISOString(), source));
   console.log(`\n✅ Wrote ${Object.keys(directory).length} courts to data/cities/nyc/directory.js (${source})`);
+  reportStale(source, staleCache, { label: 'NYC directory', maxHours: 240 });
 }
 
 function render(directory, generatedAt, source) {

@@ -48,7 +48,7 @@ const fs = require('fs');
 const path = require('path');
 const cheerio = require('cheerio');
 const { fetchT } = require('./fetch-timeout');
-const { loadCache, saveCache } = require('./lib/courts-common');
+const { loadCache, saveCache, reportStale } = require('./lib/courts-common');
 
 const BASE = 'https://www.nycgovparks.org';
 const PERMIT_MAP_URL = `${BASE}/permits/field-and-court/map`;
@@ -542,6 +542,7 @@ async function main() {
   let lights;
   let window;
   let source;
+  let staleCache = null;
   try {
     const { bySystem, counts, rows } = await fetchFacilities();
     console.log(`  ${rows} active facilities → ${bySystem.size} permittable systems on tracked sports`);
@@ -608,12 +609,17 @@ async function main() {
     lights = cache.lights || {};
     window = cache.window || [null, null];
     source = 'cache';
+    staleCache = cache;
     console.log(`  ↺ ${e.message}; using cache from ${cache.fetchedAt || 'unknown'}`);
   }
 
   fs.mkdirSync(OUT_DIR, { recursive: true });
   fs.writeFileSync(OUT_FILE, render(reservations, dusk, lights, window, new Date().toISOString(), source));
   console.log(`\n✅ Wrote ${Object.keys(reservations).length} courts to data/cities/nyc/reservations.js (${source})`);
+  // Tighter than the weekly builds: the permit payload is keyed to absolute
+  // dates on a rolling 7-day window, so a stale snapshot does not merely age —
+  // it stops resolving and every occupancy indicator goes blank.
+  reportStale(source, staleCache, { label: 'NYC permits & tennis', maxHours: 48 });
 }
 
 function render(reservations, dusk, lights, window, generatedAt, source) {

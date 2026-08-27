@@ -40,7 +40,7 @@
 const fs = require('fs');
 const path = require('path');
 const { fetchT } = require('./fetch-timeout');
-const { slug, loadCache, saveCache } = require('./lib/courts-common');
+const { slug, loadCache, saveCache, reportStale } = require('./lib/courts-common');
 const { applyTranslations } = require('./lib/translate-titles');
 
 const FEED = 'https://www.nycgovparks.org/xml/events_300_rss.xml';
@@ -571,6 +571,7 @@ async function main() {
   console.log('Fetching NYC Parks events feed…');
   let classes;
   let source;
+  let staleCache = null;
   try {
     const res = await fetchT(FEED, { headers: { 'User-Agent': UA } }, 60000);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -601,6 +602,7 @@ async function main() {
     }
     classes = cache.classes;
     source = 'cache';
+    staleCache = cache;
     console.log(`  ↺ fetch failed (${e.message}); using cache from ${cache.fetchedAt || 'unknown'}`);
   }
 
@@ -613,6 +615,7 @@ async function main() {
   fs.mkdirSync(path.dirname(OUT_FILE), { recursive: true });
   fs.writeFileSync(OUT_FILE, render(classes, new Date().toISOString(), source));
   console.log(`\n✅ Wrote ${classes.length} NYC classes to data/cities/nyc/classes.js (${source})`);
+  reportStale(source, staleCache, { label: 'NYC classes', maxHours: 48 });
 }
 
 main().catch((e) => {

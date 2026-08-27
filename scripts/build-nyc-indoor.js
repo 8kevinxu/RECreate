@@ -37,7 +37,7 @@
 const fs = require('fs');
 const path = require('path');
 const { fetchT } = require('./fetch-timeout');
-const { slug, emptyWeek, ALL_SPORTS, loadCache, saveCache } = require('./lib/courts-common');
+const { slug, emptyWeek, ALL_SPORTS, loadCache, saveCache, reportStale } = require('./lib/courts-common');
 
 const BASE = 'https://www.nycgovparks.org';
 const LIST_URL = `${BASE}/facilities/recreationcenters`;
@@ -391,6 +391,7 @@ async function main() {
 
   let courts;
   let scheduleSource;
+  let staleCache = null;
   try {
     const listing = await get(LIST_URL);
     const centers = [];
@@ -459,12 +460,14 @@ async function main() {
     }
     courts = cache.courts;
     scheduleSource = 'cache';
+    staleCache = cache;
     console.log(`  ↺ scrape failed (${e.message}); using cache from ${cache.fetchedAt || 'unknown'}`);
   }
 
   fs.mkdirSync(path.dirname(OUT_FILE), { recursive: true });
   fs.writeFileSync(OUT_FILE, render(courts, new Date().toISOString(), scheduleSource));
   console.log(`\n✅ Wrote ${courts.length} NYC indoor centers to data/cities/nyc/indoor-courts.js (${scheduleSource})`);
+  reportStale(scheduleSource, staleCache, { label: 'NYC indoor open gym', maxHours: 240 });
 }
 
 main().catch((e) => {
