@@ -48,30 +48,6 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
-      "id": "vol-a07Pi00005PqdCTIAZ",
-      "source": "sfrpd-volunteer",
-      "name": "Golden Gate Park Rhododendron Dell",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "GGP Sec 2 Rhododendron Dell",
-      "when": "Wed · 10:00 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 18,
-      "unlimited": false,
-      "start": "2026-09-02",
-      "end": "2027-02-17",
-      "activity": "Horticultural Maintenance",
-      "desc": "Join us for volunteering at the Golden Gate Park Rhododendron Dell every 1st and 3rd Wednesday of the month! Come spend the morning with some light weeding, mulching, or pruning.Please RSVP by selecting group sign-up even when you are not registering as a group. We limit to four people per group sign-up, if you have more than four people, please email us at Recparkvolunteer@sfgov.org. Thank you!",
-      "lat": 37.7699,
-      "lng": -122.46429,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a07Pi00003xn9F3IAI",
       "source": "sfrpd-volunteer",
       "name": "Heron's Head Park Volunteer Workparty",
@@ -98,6 +74,30 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
+      "id": "vol-a07Pi00005PqdCTIAZ",
+      "source": "sfrpd-volunteer",
+      "name": "Golden Gate Park Rhododendron Dell",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "GGP Sec 2 Rhododendron Dell",
+      "when": "Wed · 10:00 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 18,
+      "unlimited": false,
+      "start": "2026-09-02",
+      "end": "2027-02-17",
+      "activity": "Horticultural Maintenance",
+      "desc": "Join us for volunteering at the Golden Gate Park Rhododendron Dell every 1st and 3rd Wednesday of the month! Come spend the morning with some light weeding, mulching, or pruning.Please RSVP by selecting group sign-up even when you are not registering as a group. We limit to four people per group sign-up, if you have more than four people, please email us at Recparkvolunteer@sfgov.org. Thank you!",
+      "lat": 37.7699,
+      "lng": -122.46429,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
       "id": "vol-a074U00001SKMwTQAX",
       "source": "sfrpd-volunteer",
       "name": "CNPS - Sharp Park",
@@ -121,6 +121,31 @@
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin SF Recreation and Parks’ Natural Resources Division and the California Native Plant Society for their weekly Wednesday habitat restoration project. Sharp Park natural area is habitat for the magnificent and endangered San Francisco garter snake, as well as its preferred prey, the California red-legged frog. Sharp Park is part of an expansive and contiguous natural area, immediately adjacent to the Golden Gate National Recreation Area. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Everyone 14 years old and older is invited; anyone under 14 yo must be accompanied by a guardian. Tools and gloves will be provided. Please be punctual. \n\nMeet at the western end of Fairway Drive, near 207 Fairway Drive, Pacifica, CA 94044",
       "lat": 37.62766,
       "lng": -122.4903,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a07Pi00006LcvZ4IAJ",
+      "source": "sfrpd-volunteer",
+      "name": "Rhododendron Dell Volunteer Workparty",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "GGP Sec 2 Rhododendron Dell",
+      "when": "Thu · 10:00 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 30,
+      "unlimited": false,
+      "start": "2026-09-03",
+      "end": "2027-02-04",
+      "instructor": "Friends of the Tree Fern Dell",
+      "activity": "Habitat Restoration",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the Friends of the Rhododendron Dell and the RPD Gardeners in a recurring monthly volunteer workparty. All tools and gloves provided.\n\nMeet at the entrance to the Rhododendron Dell on 7th Ave and John F Kennedy Drive",
+      "lat": 37.7699,
+      "lng": -122.46429,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -476,31 +501,6 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
-      "id": "vol-a07Pi00003zjg0EIAQ",
-      "source": "sfrpd-volunteer",
-      "name": "White Crowned Sparrow Habitat Restoration at the Bison Paddock",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "GGP Sec 5 Bison Paddock",
-      "when": "Sat · 9:00 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 25,
-      "unlimited": false,
-      "start": "2026-09-19",
-      "end": "2026-12-19",
-      "instructor": "Golden Gate Bird Alliance",
-      "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nVolunteer with the Golden Gate Bird Alliance at the Bison Paddock of Golden Gate Park and help to restore the habitat of the White-crowned sparrow. Lend a hand with weeding and tending a garden of native plants that comprise a critical nesting and feeding area for this sparrow. Please wear appropriate attire: closed-toe shoes, long pants and layers of clothing.\n\nMeet at the middle of the Bison Paddock fence located on John F Kennedy Drive between 36th Avenue and Chain of Lakes Drive East.",
-      "lat": 37.7702,
-      "lng": -122.4917,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a074U00001JPWEFQA5",
       "source": "sfrpd-volunteer",
       "name": "Coastal Cleanup Heron's Head Park",
@@ -524,6 +524,32 @@
       "desc": "Please come join SF Rec & Park and the CA Coastal Commission for a cleanup event at Herons Head Park in the Bayview Neighborhood of SF.  HHP is one of San Francisco’s ecological treasures a 22-acre open space and thriving wildlife habitat located in the City’s Southeast Sector. Teeming with native plants and a wide variety of birds, Heron’s Head Park is one of the few wetlands on San Francisco’s shoreline, and is an example of restoration success. Onsite leaders from the Greenager Program will be hosting public members in a trash and debris collection event along the bay.",
       "lat": 37.73832,
       "lng": -122.37481,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a074U00001QmwtoQAB",
+      "source": "sfrpd-volunteer",
+      "name": "Interior Greenbelt Volunteer Workparty",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "Interior Greenbelt",
+      "when": "Sat · 9:00 AM - 12:30 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 15,
+      "unlimited": false,
+      "start": "2026-09-19",
+      "end": "2026-09-19",
+      "oneDay": true,
+      "instructor": "Sutro Stewards",
+      "activity": "Habitat Restoration",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the SF Recreation and Parks’ Natural Resources Division and Sutro Stewards to complete habitat restoration at the Interior Greenbelt on Mount Sutro. Help to restore this spectacular habitat that harbors sensitive plants including fairy bells and thimbleberry. Everyone 12 years and older is invited. A variety of volunteer tasks is available, at times on steep slopes. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Tools and gloves will be provided. Please be punctual\n\nMeet at Woods Lot at 100 Medical Center Way, San Francisco, CA 9414",
+      "lat": 37.75993,
+      "lng": -122.45635,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -553,29 +579,28 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
-      "id": "vol-a074U00001QmwtoQAB",
+      "id": "vol-a07Pi00003zjg0EIAQ",
       "source": "sfrpd-volunteer",
-      "name": "Interior Greenbelt Volunteer Workparty",
+      "name": "White Crowned Sparrow Habitat Restoration at the Bison Paddock",
       "category": "philanthropy",
       "tags": [
         "nature"
       ],
-      "location": "Interior Greenbelt",
-      "when": "Sat · 9:00 AM - 12:30 PM",
+      "location": "GGP Sec 5 Bison Paddock",
+      "when": "Sat · 9:00 AM - 12:00 PM",
       "dropIn": false,
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 15,
+      "spots": 25,
       "unlimited": false,
       "start": "2026-09-19",
-      "end": "2026-09-19",
-      "oneDay": true,
-      "instructor": "Sutro Stewards",
+      "end": "2026-12-19",
+      "instructor": "Golden Gate Bird Alliance",
       "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the SF Recreation and Parks’ Natural Resources Division and Sutro Stewards to complete habitat restoration at the Interior Greenbelt on Mount Sutro. Help to restore this spectacular habitat that harbors sensitive plants including fairy bells and thimbleberry. Everyone 12 years and older is invited. A variety of volunteer tasks is available, at times on steep slopes. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Tools and gloves will be provided. Please be punctual\n\nMeet at Woods Lot at 100 Medical Center Way, San Francisco, CA 9414",
-      "lat": 37.75993,
-      "lng": -122.45635,
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nVolunteer with the Golden Gate Bird Alliance at the Bison Paddock of Golden Gate Park and help to restore the habitat of the White-crowned sparrow. Lend a hand with weeding and tending a garden of native plants that comprise a critical nesting and feeding area for this sparrow. Please wear appropriate attire: closed-toe shoes, long pants and layers of clothing.\n\nMeet at the middle of the Bison Paddock fence located on John F Kennedy Drive between 36th Avenue and Chain of Lakes Drive East.",
+      "lat": 37.7702,
+      "lng": -122.4917,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -696,7 +721,7 @@
       "spots": 15,
       "unlimited": false,
       "start": "2026-09-26",
-      "end": "2026-12-13",
+      "end": "2027-02-14",
       "instructor": "SF Botanical Staff",
       "activity": "Horticultural Maintenance",
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nPlease join the San Francisco Botanical Garden’s Horticulture team as they maintain San Francisco’s wonderful 55 acres of both landscaped gardens and open spaces, showcasing more than 8,000 different kinds of plants from around the world. At this volunteer event, you will assist SFRPD staff with collections maintenance and complete tasks such as weeding, raking, and mulching to keep the Botanical Garden beautiful for our community. This is a fun event to jump in and help out with friends and family. While you are welcome to bring your tools and gloves, all supplies will be provided by SFRPD. Volunteers aged 14-17 must be accompanied by an adult. We do not have opportunities for volunteers younger than 14 at this time.\n\nRain and high winds may cancel this event.\n\nPlease wear closed-toed shoes, long pants, layers and appropriate weather protection such as sunscreen, hat, and sunglasses.\n\nMeet at the San Francisco Botanical Garden Bookstore.",
@@ -858,5 +883,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-08-28T09:31:39.536Z"
+  "fetchedAt": "2026-08-28T21:45:36.593Z"
 }
