@@ -5,6 +5,16 @@ name: Refresh open-gym schedules
 # are seasonal/weekly, so weekly is plenty; the run also self-alerts — if too few
 # centers scrape or the San Bruno sheet won't parse, a build script's validation
 # gate fails the job and GitHub notifies you.
+#
+# SF and NYC are scraped in SEPARATE steps, and every NYC source gets a step of its
+# own, because `reportStale()` exits non-zero on a stale cache fallback while still
+# shipping usable data. Chained with `&&` that exit code short-circuited everything
+# behind it: in Aug 2026 nycgovparks.org's WAF started 405ing GitHub's runner IPs,
+# and one stale NYC source silently skipped the 8 builds after it — including every
+# SF one, which was scraping fine. Separate steps + `!cancelled()` mean a stale or
+# blocked source fails the run loudly (the whole point of the gate) without taking
+# healthy sources down with it. SF stays one chained step: no SF build calls
+# reportStale, so a non-zero exit there is a genuine crash worth stopping on.
 
 on:
   schedule:
@@ -17,7 +27,7 @@ permissions:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 15 # scrapes are ~1-2 min; hard-cap so a hung fetch can't burn the runner
+    timeout-minutes: 30 # scrapes are ~5-10 min; hard-cap so a hung fetch can't burn the runner
     steps:
       - uses: actions/checkout@v4
 
@@ -26,17 +36,54 @@ jobs:
           node-version: 20
           cache: npm
 
+      # Guard for every step below: a failed install means there is nothing to
+      # run, but a failed *scrape* must not skip the rest.
       - run: npm ci
+        id: deps
 
-      - name: Scrape + rebuild court data
-        run: npm run build:data
+      - name: Scrape + rebuild SF court data
+        if: ${{ !cancelled() && steps.deps.outcome == 'success' }}
+        run: npm run build:data:sf
         env:
-          # Optional: classifies ambiguous NYC rec-center gym programs and
-          # translates new class titles (Claude Haiku). Absent → builds still
-          # succeed with conservative/English fallbacks.
+          # Optional: translates new class titles (Claude Haiku). Absent → builds
+          # still succeed with English fallbacks.
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
+      - name: Scrape NYC outdoor courts
+        if: ${{ !cancelled() && steps.deps.outcome == 'success' }}
+        run: npm run build:nyc
+
+      - name: Scrape NYC rec-center open gym
+        if: ${{ !cancelled() && steps.deps.outcome == 'success' }}
+        run: npm run build:nyc-indoor
+        env:
+          # Optional: classifies ambiguous open-gym vs class programs (Claude
+          # Haiku). Absent → the ambiguous ones are excluded.
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      - name: Scrape NYC permits and tennis availability
+        if: ${{ !cancelled() && steps.deps.outcome == 'success' }}
+        run: npm run build:nyc-reservations
+
+      - name: Scrape NYC facility directories
+        if: ${{ !cancelled() && steps.deps.outcome == 'success' }}
+        run: npm run build:nyc-directory
+
+      - name: Scrape NYC pools
+        if: ${{ !cancelled() && steps.deps.outcome == 'success' }}
+        run: npm run build:nyc-pools
+
+      - name: Scrape NYC Parks programs
+        if: ${{ !cancelled() && steps.deps.outcome == 'success' }}
+        run: npm run build:nyc-classes
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      # Runs even when a scrape above failed: the stale-cache fallback still wrote
+      # usable data, and the healthy sources' output must not be thrown away. The
+      # job still reports failure — a failed step sets the conclusion regardless.
       - name: Commit refreshed data if it changed
+        if: ${{ !cancelled() && steps.deps.outcome == 'success' }}
         run: |
           FILES="data/courts.js data/courts.json scripts/schedule-cache.json data/sanbruno-court.js scripts/sanbruno-cache.json data/outdoor-courts.js scripts/outdoor-courts-cache.json data/cities/nyc/outdoor-courts.js scripts/cities/nyc-cache.json data/cities/nyc/indoor-courts.js scripts/cities/nyc-indoor-cache.json scripts/cities/nyc-indoor-class-cache.json data/cities/nyc/classes.js scripts/cities/nyc-classes-cache.json scripts/cities/nyc-classes-cost-cache.json scripts/cities/nyc-classes-desc-cache.json scripts/cities/nyc-classes-i18n-cache.json data/cities/nyc/reservations.js scripts/cities/nyc-reservations-cache.json data/cities/nyc/directory.js scripts/cities/nyc-directory-cache.json data/cities/nyc/pools.js scripts/cities/nyc-pools-cache.json data/reservations.js data/reservations.json scripts/reservations-cache.json data/court-directory.js scripts/directory-cache.json data/classes.js scripts/classes-cache.json scripts/classes-pass2-cache.json data/volunteer.js scripts/sf-volunteer-cache.json scripts/sf-volunteer-i18n-cache.json data/pools.js scripts/pools-cache.json"
           if git diff --quiet -- $FILES; then

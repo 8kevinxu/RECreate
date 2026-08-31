@@ -33,11 +33,18 @@ jobs:
           cache: npm
 
       - run: npm ci
+        id: deps
 
       - name: Re-scrape NYC permits and tennis availability
+        if: ${{ !cancelled() && steps.deps.outcome == 'success' }}
         run: npm run build:nyc-reservations
 
+      # Runs even when the scrape above failed: `reportStale()` exits non-zero on a
+      # stale cache fallback but the data written is still the best available, and
+      # the tennis/permit halves fall back independently — one may be fresh. The job
+      # still reports failure.
       - name: Commit refreshed NYC reservations if they changed
+        if: ${{ !cancelled() && steps.deps.outcome == 'success' }}
         run: |
           FILES="data/cities/nyc/reservations.js scripts/cities/nyc-reservations-cache.json"
           if git diff --quiet -- $FILES; then

@@ -49,7 +49,9 @@
     "build:classes": "node scripts/build-classes.js",
     "build:volunteer": "node scripts/build-sf-volunteer.js",
     "build:pools": "node scripts/build-pools.js",
-    "build:data": "npm run build:courts && npm run build:sanbruno && npm run build:outdoor && npm run build:nyc && npm run build:nyc-indoor && npm run build:nyc-reservations && npm run build:nyc-directory && npm run build:nyc-pools && npm run build:reservations && npm run build:directory && npm run build:classes && npm run build:volunteer && npm run build:nyc-classes && npm run build:pools",
+    "build:data:sf": "npm run build:courts && npm run build:sanbruno && npm run build:outdoor && npm run build:reservations && npm run build:directory && npm run build:classes && npm run build:volunteer && npm run build:pools",
+    "build:data:nyc": "npm run build:nyc && npm run build:nyc-indoor && npm run build:nyc-reservations && npm run build:nyc-directory && npm run build:nyc-pools && npm run build:nyc-classes",
+    "build:data": "npm run build:data:sf && npm run build:data:nyc",
     "update:prod": "eas update --channel production",
     "export:chatbot": "node scripts/export-chatbot-data.js",
     "check": "node scripts/check-app.js"

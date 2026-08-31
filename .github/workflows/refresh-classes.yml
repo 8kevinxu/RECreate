@@ -4,6 +4,11 @@ name: Refresh class availability
 # the ActiveNet class catalog is re-scraped on its own frequent cadence — separate
 # from the weekly full data refresh — committing only the classes data when it
 # changes. build:classes self-gates (keeps last-good on a bad/short scrape).
+#
+# SF and NYC scrape in separate steps guarded by `!cancelled()`. NYC's build calls
+# `reportStale()`, which exits non-zero on a stale cache fallback while still
+# shipping usable data; without the guard that exit code skipped the commit step
+# and threw away SF's perfectly good scrape along with it.
 
 on:
   schedule:
@@ -25,9 +30,13 @@ jobs:
           node-version: 20
           cache: npm
 
+      # Guard for every step below: a failed install means there is nothing to
+      # run, but a failed *scrape* must not skip the rest.
       - run: npm ci
+        id: deps
 
       - name: Re-scrape class availability
+        if: ${{ !cancelled() && steps.deps.outcome == 'success' }}
         run: npm run build:classes
         env:
           # Optional: pre-translates any *new* class titles to zh/es (Claude Haiku).
@@ -37,6 +46,7 @@ jobs:
       # Volunteer workparties carry a live "still needed" count and a rolling set
       # of shift dates, so they go stale exactly like enrollments. Self-gates.
       - name: Re-scrape SF volunteer opportunities
+        if: ${{ !cancelled() && steps.deps.outcome == 'success' }}
         run: npm run build:volunteer
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -44,11 +54,17 @@ jobs:
       # NYC's feed is a rolling ~14-day events window, so it goes stale on the
       # same cadence as ActiveNet enrollments. Self-gates like build:classes.
       - name: Re-scrape NYC Parks programs
+        if: ${{ !cancelled() && steps.deps.outcome == 'success' }}
         run: npm run build:nyc-classes
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
+      # Runs even when a scrape above failed, so a stale NYC source can't discard
+      # SF's fresh catalog. The job still reports failure. Committing the i18n
+      # caches here also stops a failed run from re-translating the same titles
+      # through Haiku every 6 hours.
       - name: Commit refreshed classes if they changed
+        if: ${{ !cancelled() && steps.deps.outcome == 'success' }}
         run: |
           # i18n cache only exists once a key-enabled run has translated something,
           # so stage just the files that are present; staging catches new files too.
