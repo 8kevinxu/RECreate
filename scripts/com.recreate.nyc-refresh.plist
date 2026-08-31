@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Daily local refresh of the NYC data. See scripts/refresh-nyc-local.sh for why
+  this exists (nycgovparks.org 405s GitHub's runner IPs; this machine's egress
+  is not blocked, so it feeds CI a fresh cache).
+
+  A LaunchAgent, deliberately NOT a LaunchDaemon: pushes authenticate through
+  the osxkeychain credential helper, and the keychain is unlocked in the user's
+  login session. A daemon runs outside that session and the push would fail.
+
+  Install:   cp scripts/com.recreate.nyc-refresh.plist ~/Library/LaunchAgents/
+             launchctl bootstrap gui/$UID ~/Library/LaunchAgents/com.recreate.nyc-refresh.plist
+  Run now:   launchctl kickstart -p gui/$UID/com.recreate.nyc-refresh
+  Status:    launchctl print gui/$UID/com.recreate.nyc-refresh
+  Remove:    launchctl bootout gui/$UID/com.recreate.nyc-refresh
+  Log:       ~/Library/Logs/recreate-nyc-refresh.log
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.recreate.nyc-refresh</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/kevin/code/RECreate/scripts/refresh-nyc-local.sh</string>
+    </array>
+
+    <!-- Daily. The tightest staleness budget is 48h, so this leaves room to miss
+         one run; launchd re-fires a missed interval once on wake, which is what
+         makes a laptop a viable host. 09:15 rather than a round hour to avoid
+         piling onto everything else that runs on the hour. -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key><integer>9</integer>
+        <key>Minute</key><integer>15</integer>
+    </dict>
+
+    <!-- Off on purpose: this would otherwise fire a ~10 minute scrape on every
+         login, and the daily schedule plus wake-catchup already covers it. -->
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/kevin/Library/Logs/recreate-nyc-refresh.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/kevin/Library/Logs/recreate-nyc-refresh.log</string>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/kevin/code/RECreate</string>
+</dict>
+</plist>
