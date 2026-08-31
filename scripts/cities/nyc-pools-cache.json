@@ -9782,80 +9782,6 @@
       ]
     },
     {
-      "id": "nyc-pool-asser-levy-recreation-center-pool",
-      "name": "Asser Levy Recreation Center Pool",
-      "address": "Asser Levy Place and E. 23rd Street",
-      "lat": 40.736,
-      "lng": -73.9753,
-      "phone": "(212) 447-2020",
-      "indoor": true,
-      "accessible": true,
-      "desc": "Intermediate pool · 66' x 26' x 8'",
-      "season": "No pool sessions currently published",
-      "seasonal": false,
-      "notice": "In observance of Labor Day, all recreation centers will be closed on Monday, September 7, 2026. Beginning Monday, June 15, 2026, the indoor pool at Asser Levy Recreation Center will be closed for the duration of summer through mid-September. We encourage all members to use the Asser Levy Outdoor Pool during this time.",
-      "programs": [],
-      "fees": {
-        "effective": "2026-01-01",
-        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
-        "note": "Recreation center membership — indoor pools are members-only",
-        "groups": [
-          {
-            "id": "youth",
-            "label": "Ages 24 and under",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                0
-              ]
-            ]
-          },
-          {
-            "id": "adult",
-            "label": "Adults (25–61)",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                150
-              ],
-              [
-                "Six months",
-                75
-              ]
-            ]
-          },
-          {
-            "id": "senior",
-            "label": "Seniors 62+, veterans, people with disabilities",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                25
-              ]
-            ]
-          }
-        ]
-      },
-      "scheduleUrls": [
-        {
-          "label": "Pool schedule",
-          "url": "https://www.nycgovparks.org/facilities/recreationcenters/M164/schedule#Pool-schedule"
-        }
-      ],
-      "sessions": [
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
-      ]
-    },
-    {
       "id": "nyc-pool-st-john-s-recreation-center-pool",
       "name": "St. John's Recreation Center Pool",
       "address": "Prospect Place, between Troy and Schenectady Avenues",
@@ -9940,6 +9866,11 @@
             "kind": "lap",
             "start": 825,
             "end": 885
+          },
+          {
+            "kind": "other",
+            "start": 900,
+            "end": 975
           },
           {
             "kind": "other",
@@ -10120,6 +10051,153 @@
       ]
     },
     {
+      "id": "nyc-pool-asser-levy-recreation-center-pool",
+      "name": "Asser Levy Recreation Center Pool",
+      "address": "Asser Levy Place and E. 23rd Street",
+      "lat": 40.736,
+      "lng": -73.9753,
+      "phone": "(212) 447-2020",
+      "indoor": true,
+      "accessible": true,
+      "desc": "Intermediate pool · 66' x 26' x 8'",
+      "season": "No pool sessions currently published",
+      "seasonal": false,
+      "notice": "In observance of Labor Day, all recreation centers will be closed on Monday, September 7, 2026. Beginning Monday, June 15, 2026, the indoor pool at Asser Levy Recreation Center will be closed for the duration of summer through mid-September. We encourage all members to use the Asser Levy Outdoor Pool during this time.",
+      "programs": [],
+      "fees": {
+        "effective": "2026-01-01",
+        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
+        "note": "Recreation center membership — indoor pools are members-only",
+        "groups": [
+          {
+            "id": "youth",
+            "label": "Ages 24 and under",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                0
+              ]
+            ]
+          },
+          {
+            "id": "adult",
+            "label": "Adults (25–61)",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                150
+              ],
+              [
+                "Six months",
+                75
+              ]
+            ]
+          },
+          {
+            "id": "senior",
+            "label": "Seniors 62+, veterans, people with disabilities",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                25
+              ]
+            ]
+          }
+        ]
+      },
+      "scheduleUrls": [
+        {
+          "label": "Pool schedule",
+          "url": "https://www.nycgovparks.org/facilities/recreationcenters/M164/schedule#Pool-schedule"
+        }
+      ],
+      "sessions": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    {
+      "id": "nyc-pool-chelsea-recreation-center-pool",
+      "name": "Chelsea Recreation Center Pool",
+      "address": "West 25th St. between 9th & 10th Aves",
+      "lat": 40.7483,
+      "lng": -74.0022,
+      "phone": "(212) 255-3705",
+      "indoor": true,
+      "accessible": true,
+      "desc": "Intermediate pool · 75' x 43' x 10'",
+      "season": "No pool sessions currently published",
+      "seasonal": false,
+      "programs": [],
+      "fees": {
+        "effective": "2026-01-01",
+        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
+        "note": "Recreation center membership — indoor pools are members-only",
+        "groups": [
+          {
+            "id": "youth",
+            "label": "Ages 24 and under",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                0
+              ]
+            ]
+          },
+          {
+            "id": "adult",
+            "label": "Adults (25–61)",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                150
+              ],
+              [
+                "Six months",
+                75
+              ]
+            ]
+          },
+          {
+            "id": "senior",
+            "label": "Seniors 62+, veterans, people with disabilities",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                25
+              ]
+            ]
+          }
+        ]
+      },
+      "scheduleUrls": [
+        {
+          "label": "Pool schedule",
+          "url": "https://www.nycgovparks.org/facilities/recreationcenters/M260/schedule#Pool-schedule"
+        }
+      ],
+      "sessions": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    {
       "id": "nyc-pool-tony-dapolito-recreation-center-indoor-pool",
       "name": "Tony Dapolito Recreation Center Indoor Pool",
       "address": "Clarkson St. and Seventh Ave. South",
@@ -10191,191 +10269,6 @@
         [],
         [],
         []
-      ]
-    },
-    {
-      "id": "nyc-pool-chelsea-recreation-center-pool",
-      "name": "Chelsea Recreation Center Pool",
-      "address": "West 25th St. between 9th & 10th Aves",
-      "lat": 40.7483,
-      "lng": -74.0022,
-      "phone": "(212) 255-3705",
-      "indoor": true,
-      "accessible": true,
-      "desc": "Intermediate pool · 75' x 43' x 10'",
-      "season": "Year-round (recreation center members)",
-      "seasonal": false,
-      "notice": "There are no programs at this pool today.",
-      "programs": [
-        "lap",
-        "exercise",
-        "family",
-        "other"
-      ],
-      "fees": {
-        "effective": "2026-01-01",
-        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
-        "note": "Recreation center membership — indoor pools are members-only",
-        "groups": [
-          {
-            "id": "youth",
-            "label": "Ages 24 and under",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                0
-              ]
-            ]
-          },
-          {
-            "id": "adult",
-            "label": "Adults (25–61)",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                150
-              ],
-              [
-                "Six months",
-                75
-              ]
-            ]
-          },
-          {
-            "id": "senior",
-            "label": "Seniors 62+, veterans, people with disabilities",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                25
-              ]
-            ]
-          }
-        ]
-      },
-      "scheduleUrls": [
-        {
-          "label": "Pool schedule",
-          "url": "https://www.nycgovparks.org/facilities/recreationcenters/M260/schedule#Pool-schedule"
-        }
-      ],
-      "sessions": [
-        [],
-        [
-          {
-            "kind": "lap",
-            "start": 600,
-            "end": 780
-          },
-          {
-            "kind": "exercise",
-            "start": 795,
-            "end": 855
-          },
-          {
-            "kind": "family",
-            "start": 870,
-            "end": 990
-          },
-          {
-            "kind": "lap",
-            "start": 1005,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 600,
-            "end": 825
-          },
-          {
-            "kind": "family",
-            "start": 840,
-            "end": 990
-          },
-          {
-            "kind": "lap",
-            "start": 1005,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 600,
-            "end": 780
-          },
-          {
-            "kind": "exercise",
-            "start": 795,
-            "end": 855
-          },
-          {
-            "kind": "family",
-            "start": 870,
-            "end": 990
-          },
-          {
-            "kind": "other",
-            "start": 990,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 600,
-            "end": 825
-          },
-          {
-            "kind": "family",
-            "start": 840,
-            "end": 990
-          },
-          {
-            "kind": "lap",
-            "start": 1005,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "exercise",
-            "start": 795,
-            "end": 855
-          },
-          {
-            "kind": "family",
-            "start": 870,
-            "end": 990
-          },
-          {
-            "kind": "lap",
-            "start": 1005,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 480,
-            "end": 630
-          },
-          {
-            "kind": "family",
-            "start": 645,
-            "end": 780
-          },
-          {
-            "kind": "other",
-            "start": 795,
-            "end": 945
-          }
-        ]
       ]
     },
     {
@@ -10633,7 +10526,6 @@
       "seasonal": false,
       "notice": "There are no programs at this pool today.",
       "programs": [
-        "exercise",
         "lap",
         "family"
       ],
@@ -10691,96 +10583,91 @@
         [],
         [
           {
-            "kind": "exercise",
-            "start": 660,
-            "end": 720
+            "kind": "lap",
+            "start": 0,
+            "end": 180
           },
           {
             "kind": "lap",
-            "start": 720,
-            "end": 885
+            "start": 660,
+            "end": 840
+          },
+          {
+            "kind": "family",
+            "start": 855,
+            "end": 1005
+          },
+          {
+            "kind": "lap",
+            "start": 1020,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 660,
+            "end": 840
+          },
+          {
+            "kind": "family",
+            "start": 855,
+            "end": 1005
+          },
+          {
+            "kind": "lap",
+            "start": 1020,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 0,
+            "end": 180
+          },
+          {
+            "kind": "lap",
+            "start": 660,
+            "end": 840
+          },
+          {
+            "kind": "family",
+            "start": 855,
+            "end": 1005
+          },
+          {
+            "kind": "lap",
+            "start": 1020,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 660,
+            "end": 840
+          },
+          {
+            "kind": "family",
+            "start": 855,
+            "end": 1005
+          },
+          {
+            "kind": "lap",
+            "start": 1020,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 660,
+            "end": 900
           },
           {
             "kind": "family",
             "start": 900,
-            "end": 1005
-          },
-          {
-            "kind": "lap",
-            "start": 1020,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 660,
-            "end": 840
-          },
-          {
-            "kind": "family",
-            "start": 855,
-            "end": 1005
-          },
-          {
-            "kind": "lap",
-            "start": 1020,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "exercise",
-            "start": 660,
-            "end": 720
-          },
-          {
-            "kind": "lap",
-            "start": 720,
-            "end": 840
-          },
-          {
-            "kind": "family",
-            "start": 855,
-            "end": 1005
-          },
-          {
-            "kind": "lap",
-            "start": 1020,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 660,
-            "end": 840
-          },
-          {
-            "kind": "family",
-            "start": 855,
-            "end": 1005
-          },
-          {
-            "kind": "lap",
-            "start": 1020,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "exercise",
-            "start": 660,
-            "end": 720
-          },
-          {
-            "kind": "lap",
-            "start": 720,
-            "end": 915
-          },
-          {
-            "kind": "family",
-            "start": 930,
             "end": 1140
           }
         ],
@@ -10881,9 +10768,43 @@
             "kind": "family",
             "start": 930,
             "end": 1005
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 660,
+            "end": 780
+          },
+          {
+            "kind": "family",
+            "start": 795,
+            "end": 900
+          },
+          {
+            "kind": "family",
+            "start": 930,
+            "end": 1005
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 660,
+            "end": 780
+          },
+          {
+            "kind": "family",
+            "start": 795,
+            "end": 900
           },
           {
             "kind": "lap",
+            "start": 930,
+            "end": 1005
+          },
+          {
+            "kind": "family",
             "start": 1020,
             "end": 1140
           }
@@ -10903,23 +10824,6 @@
             "kind": "family",
             "start": 930,
             "end": 1005
-          },
-          {
-            "kind": "lap",
-            "start": 1020,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 660,
-            "end": 780
-          },
-          {
-            "kind": "family",
-            "start": 795,
-            "end": 900
           }
         ],
         [
@@ -10934,26 +10838,14 @@
             "end": 900
           },
           {
-            "kind": "family",
+            "kind": "lap",
             "start": 930,
             "end": 1005
           },
           {
-            "kind": "lap",
+            "kind": "family",
             "start": 1020,
             "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 660,
-            "end": 780
-          },
-          {
-            "kind": "family",
-            "start": 795,
-            "end": 900
           }
         ],
         [
@@ -10961,6 +10853,11 @@
             "kind": "lap",
             "start": 480,
             "end": 720
+          },
+          {
+            "kind": "family",
+            "start": 750,
+            "end": 885
           }
         ]
       ]
@@ -10979,11 +10876,8 @@
       "seasonal": false,
       "notice": "There are no programs at this pool today.",
       "programs": [
-        "lap",
         "family",
-        "other",
-        "exercise",
-        "lessons"
+        "lap"
       ],
       "fees": {
         "effective": "2026-01-01",
@@ -11036,14 +10930,15 @@
         }
       ],
       "sessions": [
+        [],
         [
           {
-            "kind": "lap",
+            "kind": "family",
             "start": 420,
             "end": 900
           },
           {
-            "kind": "family",
+            "kind": "lap",
             "start": 420,
             "end": 900
           }
@@ -11058,16 +10953,6 @@
             "kind": "lap",
             "start": 420,
             "end": 900
-          },
-          {
-            "kind": "other",
-            "start": 600,
-            "end": 720
-          },
-          {
-            "kind": "exercise",
-            "start": 690,
-            "end": 750
           }
         ],
         [
@@ -11080,38 +10965,6 @@
             "kind": "lap",
             "start": 420,
             "end": 900
-          },
-          {
-            "kind": "other",
-            "start": 600,
-            "end": 720
-          },
-          {
-            "kind": "lessons",
-            "start": 690,
-            "end": 720
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 420,
-            "end": 900
-          },
-          {
-            "kind": "other",
-            "start": 600,
-            "end": 720
-          },
-          {
-            "kind": "exercise",
-            "start": 690,
-            "end": 750
           }
         ],
         [
@@ -11124,16 +10977,6 @@
             "kind": "lap",
             "start": 420,
             "end": 900
-          },
-          {
-            "kind": "other",
-            "start": 600,
-            "end": 720
-          },
-          {
-            "kind": "lessons",
-            "start": 690,
-            "end": 720
           }
         ],
         [
@@ -11146,16 +10989,6 @@
             "kind": "family",
             "start": 420,
             "end": 900
-          },
-          {
-            "kind": "other",
-            "start": 600,
-            "end": 720
-          },
-          {
-            "kind": "exercise",
-            "start": 690,
-            "end": 750
           }
         ],
         []
@@ -11175,10 +11008,9 @@
       "seasonal": false,
       "notice": "There are no programs at this pool today.",
       "programs": [
-        "lap",
         "family",
         "other",
-        "exercise"
+        "lap"
       ],
       "fees": {
         "effective": "2026-01-01",
@@ -11231,33 +11063,12 @@
         }
       ],
       "sessions": [
+        [],
         [
-          {
-            "kind": "lap",
-            "start": 480,
-            "end": 645
-          },
           {
             "kind": "family",
             "start": 720,
-            "end": 795
-          },
-          {
-            "kind": "family",
-            "start": 810,
             "end": 885
-          },
-          {
-            "kind": "other",
-            "start": 900,
-            "end": 960
-          }
-        ],
-        [
-          {
-            "kind": "exercise",
-            "start": 720,
-            "end": 780
           },
           {
             "kind": "other",
@@ -11301,12 +11112,7 @@
           {
             "kind": "family",
             "start": 660,
-            "end": 705
-          },
-          {
-            "kind": "exercise",
-            "start": 720,
-            "end": 780
+            "end": 885
           },
           {
             "kind": "other",
@@ -11350,12 +11156,7 @@
           {
             "kind": "family",
             "start": 660,
-            "end": 705
-          },
-          {
-            "kind": "exercise",
-            "start": 720,
-            "end": 780
+            "end": 765
           },
           {
             "kind": "family",
@@ -11380,8 +11181,8 @@
   "season": {
     "open": true,
     "label": "Open daily through Labor Day (9/7)",
-    "checked": "2026-08-26",
+    "checked": "2026-08-31",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-08-26T07:23:14.065Z"
+  "fetchedAt": "2026-08-31T18:18:36.390Z"
 }
