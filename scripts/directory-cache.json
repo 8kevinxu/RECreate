@@ -31,7 +31,7 @@
           "overall": 3,
           "surface": 2.2,
           "crowded": 3.5,
-          "matches": 504,
+          "matches": 505,
           "src": "https://www.tennissf.com/court_detail/sf-alice-marble-rc"
         }
       }
@@ -48,7 +48,7 @@
           "overall": 3.6,
           "surface": 3.7,
           "crowded": 2.8,
-          "matches": 334,
+          "matches": 335,
           "src": "https://www.tennissf.com/court_detail/sf-alta-plaza"
         }
       },
@@ -108,7 +108,7 @@
           "overall": 4,
           "surface": 4.6,
           "crowded": 2.8,
-          "matches": 277,
+          "matches": 279,
           "src": "https://www.tennissf.com/court_detail/sf-buena-vista-park"
         }
       },
@@ -234,7 +234,7 @@
           "overall": 2,
           "surface": 2,
           "crowded": 2,
-          "matches": 66,
+          "matches": 67,
           "src": "https://www.tennissf.com/court_detail/sf-fulton-playground"
         }
       }
@@ -369,7 +369,7 @@
           "overall": 4,
           "surface": 4.3,
           "crowded": 2.3,
-          "matches": 691,
+          "matches": 700,
           "src": "https://www.tennissf.com/court_detail/sf-j-p-murphy-playground"
         }
       }
@@ -423,7 +423,7 @@
           "overall": 4,
           "surface": 4.3,
           "crowded": 2.3,
-          "matches": 603,
+          "matches": 604,
           "src": "https://www.tennissf.com/court_detail/sf-north-beach"
         }
       }
@@ -485,7 +485,7 @@
           "overall": 4.3,
           "surface": 4,
           "crowded": 3.9,
-          "matches": 583,
+          "matches": 585,
           "src": "https://www.tennissf.com/court_detail/sf-mclaren-park"
         }
       }
@@ -529,7 +529,7 @@
           "overall": 2.7,
           "surface": 4.3,
           "crowded": 2.3,
-          "matches": 477,
+          "matches": 478,
           "src": "https://www.tennissf.com/court_detail/sf-mission-playground"
         }
       }
@@ -546,7 +546,7 @@
           "overall": 4,
           "surface": 3.7,
           "crowded": 3.7,
-          "matches": 40,
+          "matches": 41,
           "src": "https://www.tennissf.com/court_detail/sf-mission-creek-park"
         }
       }
@@ -803,7 +803,7 @@
           "overall": 4,
           "surface": 3,
           "crowded": 3.5,
-          "matches": 284,
+          "matches": 286,
           "src": "https://www.tennissf.com/court_detail/sf-julius-kahn-park"
         }
       },
@@ -1034,7 +1034,7 @@
           "overall": 3.8,
           "surface": 3.8,
           "crowded": 4,
-          "matches": 299,
+          "matches": 302,
           "src": "https://www.tennissf.com/court_detail/sf-upper-noe-recreation-center"
         }
       },
@@ -1156,7 +1156,7 @@
           "overall": 3.7,
           "surface": 3,
           "crowded": 3.3,
-          "matches": 257,
+          "matches": 259,
           "src": "https://www.tennissf.com/court_detail/sf-sunset"
         }
       }
@@ -1235,5 +1235,5 @@
       }
     }
   },
-  "fetchedAt": "2026-08-24T15:37:56.221Z"
+  "fetchedAt": "2026-08-31T18:10:11.784Z"
 }
