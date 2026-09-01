@@ -7,6 +7,7 @@ import React, {
 } from 'react';
 import L from 'leaflet';
 import { useI18n } from '../lib/i18n';
+import { ATTRIB_CSS, TILE_ATTRIB, TILE_OPTS, TILE_URL } from '../lib/basemap';
 
 // Web build of the map: Leaflet rendered directly in the DOM (no WebView).
 // Mirrors components/CourtMap.js so native + web look identical.
@@ -163,7 +164,7 @@ function ensureStyles() {
       .clus { display: flex; align-items: center; justify-content: center; border-radius: 50%; font: 700 13px/1 -apple-system, sans-serif; color: #fff; border: 2px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.35); }
       .clus.has-open { background: #ee7d1b; }
       .clus.no-open { background: #9aa4af; }
-    `;
+    ` + ATTRIB_CSS;
     document.head.appendChild(style);
   }
 }
@@ -249,7 +250,18 @@ function renderMarkers(map, layer, courts, sport, onSelect) {
 }
 
 const CourtMap = forwardRef(function CourtMap(
-  { courts, sport = 'basketball', userLocation, onSelectCourt, initialCenter, initialZoom = 12 },
+  {
+    courts,
+    sport = 'basketball',
+    userLocation,
+    onSelectCourt,
+    initialCenter,
+    initialZoom = 12,
+    // Lifts the attribution clear of the Nearby pill, which App.js floats at
+    // this same offset. A fixed value would collide on a device whose
+    // safe-area inset differs from the browser's zero.
+    bottomInset = 0,
+  },
   ref
 ) {
   const { t } = useI18n();
@@ -287,24 +299,22 @@ const CourtMap = forwardRef(function CourtMap(
 
   useEffect(() => {
     ensureStyles();
-    // No +/- buttons (pinch/scroll to zoom). zoomSnap 0 keeps zoom continuous;
-    // attribution control hidden for a clean map.
+    // No +/- buttons (pinch/scroll to zoom). zoomSnap 0 keeps zoom continuous.
     const map = L.map(elRef.current, {
       zoomControl: false,
-      attributionControl: false,
+      // Attribution stays ON — it is a condition of CARTO's free basemap key,
+      // not a style choice (see lib/basemap.js). Styled small and low-contrast
+      // by ATTRIB_CSS instead of hidden.
+      attributionControl: true,
       zoomSnap: 0,
       zoomDelta: 0.4,
       wheelPxPerZoomLevel: 90,
     }).setView(initialCenter ? [initialCenter.lat, initialCenter.lng] : SF, initialZoom);
-    const tiles = L.tileLayer(
-      'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
-      {
-        maxZoom: 20,
-        subdomains: 'abcd',
-        detectRetina: true,
-        attribution: '&copy; OpenStreetMap &copy; CARTO',
-      }
-    ).addTo(map);
+    map.attributionControl.setPrefix(false).setPosition('bottomleft');
+    const tiles = L.tileLayer(TILE_URL, {
+      ...TILE_OPTS,
+      attribution: TILE_ATTRIB,
+    }).addTo(map);
     // Offline / tile-failure hint: a few failed tile fetches (no network, CDN
     // down) surface a banner; one successful load clears it. Mirrors CourtMap.js.
     let tileErrs = 0;
@@ -404,7 +414,12 @@ const CourtMap = forwardRef(function CourtMap(
     <div style={{ position: 'relative', isolation: 'isolate', width: '100%', height: '100%' }}>
       <div
         ref={elRef}
-        style={{ width: '100%', height: '100%', backgroundColor: '#aadaf0' }}
+        style={{
+          width: '100%',
+          height: '100%',
+          backgroundColor: '#aadaf0',
+          '--attrib-bottom': `${bottomInset + 48}px`,
+        }}
       />
       {offline && (
         <div

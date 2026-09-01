@@ -9,16 +9,18 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { WebView } from 'react-native-webview';
 import { useI18n } from '../lib/i18n';
+import { ATTRIB_CSS, TILE_ATTRIB, TILE_OPTS, TILE_URL } from '../lib/basemap';
 
 // San Francisco center, used as the initial map view.
 const SF_CENTER = { lat: 37.7749, lng: -122.4194 };
 
-// Leaflet + OpenStreetMap rendered inside a WebView. No API key required.
+// Leaflet + OpenStreetMap rendered inside a WebView. The basemap tiles (and the
+// CARTO key they now need) come from lib/basemap.js, shared with CourtMap.web.js.
 // We use circleMarkers (pure vector) so there are no broken marker-image paths.
 // The HTML is built per-instance so the initial view is the active city's
 // (the map remounts on tab switches — a fixed SF start would strand another
 // city's user on an empty SF viewport). Keep in sync with CourtMap.web.js.
-const buildHtml = (center, zoom) => `
+const buildHtml = (center, zoom, attribBottom) => `
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +30,8 @@ const buildHtml = (center, zoom) => `
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <style>
     html, body, #map { height: 100%; margin: 0; padding: 0; }
-    .leaflet-container { background: #aadaf0; }
+    .leaflet-container { background: #aadaf0; --attrib-bottom: ${attribBottom}px; }
+    ${ATTRIB_CSS}
     .ballwrap { position: relative; width: 26px; height: 26px; }
     .bball {
       position: relative;
@@ -128,19 +131,17 @@ const buildHtml = (center, zoom) => `
     };
 
     // No +/- buttons (pinch to zoom, like Google/Apple Maps). zoomSnap 0 keeps
-    // pinch/scroll zoom continuous; attribution control hidden for a clean map.
-    var map = L.map('map', { zoomControl: false, attributionControl: false, zoomSnap: 0, zoomDelta: 0.4, wheelPxPerZoomLevel: 90 })
+    // pinch/scroll zoom continuous.
+    // Attribution stays ON — a condition of CARTO's free basemap key, not a
+    // style choice (see lib/basemap.js). Styled small by ATTRIB_CSS, not hidden.
+    var map = L.map('map', { zoomControl: false, attributionControl: true, zoomSnap: 0, zoomDelta: 0.4, wheelPxPerZoomLevel: 90 })
       .setView([${center.lat}, ${center.lng}], ${zoom});
 
-    // CARTO Voyager: colorful but clean basemap (green parks, blue water, soft
-    // roads) with no mountain/peak symbols. Free, no API key. detectRetina
-    // pulls @2x tiles for crisp phone display.
-    var tiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-      maxZoom: 20,
-      subdomains: 'abcd',
-      detectRetina: true,
-      attribution: '&copy; OpenStreetMap &copy; CARTO'
-    }).addTo(map);
+    map.attributionControl.setPrefix(false).setPosition('bottomleft');
+    var tiles = L.tileLayer(${JSON.stringify(TILE_URL)}, Object.assign(
+      ${JSON.stringify(TILE_OPTS)},
+      { attribution: ${JSON.stringify(TILE_ATTRIB)} }
+    )).addTo(map);
 
     // Offline / tile-failure hint: after a few tile fetches fail (no network,
     // CDN down), tell the native layer to show a banner. A single successful
@@ -418,14 +419,27 @@ const buildHtml = (center, zoom) => `
 `;
 
 const CourtMap = forwardRef(function CourtMap(
-  { courts, sport = 'basketball', userLocation, onSelectCourt, initialCenter = SF_CENTER, initialZoom = 12 },
+  {
+    courts,
+    sport = 'basketball',
+    userLocation,
+    onSelectCourt,
+    initialCenter = SF_CENTER,
+    initialZoom = 12,
+    // Lifts the attribution clear of the Nearby pill, which App.js floats at
+    // this same offset. A fixed value would collide on a notched device,
+    // whose safe-area inset pushes that pill higher.
+    bottomInset = 0,
+  },
   ref
 ) {
   const { t } = useI18n();
   const webRef = useRef(null);
   const [ready, setReady] = useState(false);
   // Initial view captured at mount; later city switches go through setCity().
-  const [html] = useState(() => buildHtml(initialCenter, initialZoom));
+  // The HTML is built once, so the inset is read at mount like the initial
+  // view is — safe-area insets are known by first render and don't change.
+  const [html] = useState(() => buildHtml(initialCenter, initialZoom, bottomInset + 48));
   // City view requested before the WebView finished loading (e.g. the persisted
   // city restoring on launch) — replayed once the map reports ready.
   const pendingCityRef = useRef(null);

@@ -1,5 +1,5 @@
-// CI sanity check (npm run check) — not a test suite. Three cheap gates that
-// catch the realistic failure modes of this repo: a bad merge that breaks a
+// CI sanity check (npm run check) — not a test suite. A handful of cheap gates
+// that catch the realistic failure modes of this repo: a bad merge that breaks a
 // file's syntax, a language drifting out of key parity in lib/i18n.js, and a
 // scraper/refresh committing gutted generated data. Runs in a few seconds;
 // wired into .github/workflows/ci.yml on every push.
@@ -139,7 +139,82 @@ if (langKeys.en && langKeys.zh && langKeys.es) {
   }
 }
 
-// --- 4. Generated data modules load and are non-trivially populated ---------
+// --- 4. The basemap attribution stays visible -------------------------------
+// CARTO's free basemap key (EXPO_PUBLIC_CARTO_KEY) is granted in exchange for
+// exactly one thing: "CARTO and OpenStreetMap attribution must stay on your
+// maps." This gate is here because that is a licence condition rather than a
+// runtime bug, so nothing else in the repo notices when it breaks — the map
+// still works, the tiles still arrive unwatermarked, and the first real signal
+// would be CARTO revoking the key.
+//
+// The failure mode is not hypothetical: both map files spent months passing an
+// `attribution` string while setting `attributionControl: false`, i.e.
+// rendering it nowhere, and it is exactly what a well-meaning "clean up the map
+// chrome" change lands back in. Hiding it via CSS is the same violation by
+// another route, so ATTRIB_CSS is checked too.
+//
+// Text inspection, not rendering: one map is Leaflet in a WebView and the other
+// Leaflet in a DOM, and standing either up in CI to count pixels costs far more
+// than this is worth. It therefore only catches the obvious ways to remove the
+// credit, which are the ways it has actually been removed.
+
+{
+  const basemap = fs.readFileSync(path.join(ROOT, 'lib/basemap.js'), 'utf8');
+  let bad = false;
+
+  // Scoped to the assignment so a passing mention in the file's comments (there
+  // are several) can't satisfy the check on its own.
+  // Terminate on a semicolon that ends a line: the attribution text contains
+  // "&copy;", whose own semicolon truncates a plain non-greedy /;/ match.
+  const attrib = (basemap.match(/export const TILE_ATTRIB\s*=([\s\S]*?);[ \t]*\n/) || [])[1] || '';
+  const missing = ['OpenStreetMap', 'CARTO'].filter((c) => !attrib.includes(c));
+  if (missing.length) {
+    bad = true;
+    fail(
+      `basemap: lib/basemap.js TILE_ATTRIB no longer credits ${missing.join(' + ')}. ` +
+        'Both are required by the CARTO free-tier terms.',
+    );
+  }
+
+  // Matched to the closing backtick, not a semicolon — every CSS declaration
+  // inside the template literal ends in one.
+  const css = (basemap.match(/export const ATTRIB_CSS\s*=\s*`([\s\S]*?)`/) || [])[1] || '';
+  const hidden = /display:\s*none|visibility:\s*hidden|opacity:\s*0(?![.\d])/.exec(css);
+  if (hidden) {
+    bad = true;
+    fail(
+      `basemap: ATTRIB_CSS hides the attribution ("${hidden[0]}"). Styling it small ` +
+        'is fine; making it invisible is the same licence violation as removing it.',
+    );
+  }
+
+  for (const rel of ['components/CourtMap.js', 'components/CourtMap.web.js']) {
+    const src = fs.readFileSync(path.join(ROOT, rel), 'utf8');
+    if (/attributionControl:\s*false/.test(src)) {
+      bad = true;
+      fail(`basemap: ${rel} sets attributionControl: false — the credit renders nowhere.`);
+    } else if (!/attributionControl:\s*true/.test(src)) {
+      bad = true;
+      fail(`basemap: ${rel} no longer turns the attribution control on.`);
+    }
+    // Anchored to the tileLayer option, not a bare mention: the import at the
+    // top of the file keeps satisfying a substring test long after the call
+    // site has been changed to a hardcoded string. Matches both shapes — the
+    // web map's `attribution: TILE_ATTRIB` and the native map's
+    // `attribution: ${JSON.stringify(TILE_ATTRIB)}` inside its WebView HTML.
+    if (!/attribution:\s*(\$\{[^}]*)?TILE_ATTRIB/.test(src)) {
+      bad = true;
+      fail(
+        `basemap: ${rel} does not pass TILE_ATTRIB to its tile layer — a hardcoded ` +
+          'attribution here is how the two maps drift apart.',
+      );
+    }
+  }
+
+  if (!bad) ok('basemap: OpenStreetMap + CARTO attribution rendered by both maps');
+}
+
+// --- 5. Generated data modules load and are non-trivially populated ---------
 // Floors are ~half of current size — loose enough for seasonal shrink, tight
 // enough to catch a scrape that published near-empty data. (The build scripts
 // have their own live→cache→curated gates; this catches what slips through,
@@ -226,7 +301,7 @@ for (const [file, name, floor] of DATA_FLOORS) {
   }
 }
 
-// --- 5. Class fees actually got resolved ------------------------------------
+// --- 6. Class fees actually got resolved ------------------------------------
 // Neither catalog gets a price from its listing. Both seed a placeholder label
 // and fill it from a second request — ActiveNet's estimateprice endpoint, and
 // each NYC event page's <h3>Cost</h3>. Those passes fail SILENTLY: the

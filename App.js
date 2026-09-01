@@ -1545,6 +1545,9 @@ export default function App() {
           // returning to Home never resets another city's view to SF.
           initialCenter={getCity(activeCity).center}
           initialZoom={getCity(activeCity).zoom}
+          // Same offset the Nearby pill and recenter sit at, so the basemap
+          // attribution rides just above them instead of underneath.
+          bottomInset={navClearance}
         />
 
         {locating && (
