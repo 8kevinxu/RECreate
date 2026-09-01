@@ -175,7 +175,8 @@
           "2026-09-07 18:30": 3,
           "2026-09-07 19:00": 3,
           "2026-09-01 07:00": 0,
-          "2026-09-02 07:00": 0
+          "2026-09-02 07:00": 0,
+          "2026-09-03 07:00": 0
         },
         "open": {
           "2026-09-01 19:00": 3,
@@ -186,7 +187,8 @@
           "2026-09-06 19:00": 3,
           "2026-09-07 19:00": 3,
           "2026-09-01 07:00": 1,
-          "2026-09-02 07:00": 1
+          "2026-09-02 07:00": 1,
+          "2026-09-03 07:00": 1
         },
         "released": {
           "2026-09-03 07:30": 3,
@@ -488,7 +490,8 @@
           "2026-09-07 18:30": 0,
           "2026-09-07 19:00": 0,
           "2026-09-01 07:00": 0,
-          "2026-09-02 07:00": 0
+          "2026-09-02 07:00": 0,
+          "2026-09-03 07:00": 0
         },
         "open": {
           "2026-09-01 19:00": 3,
@@ -499,7 +502,8 @@
           "2026-09-06 19:00": 3,
           "2026-09-07 19:00": 3,
           "2026-09-01 07:00": 1,
-          "2026-09-02 07:00": 1
+          "2026-09-02 07:00": 1,
+          "2026-09-03 07:00": 1
         },
         "released": {
           "2026-09-03 07:30": 3,
@@ -1144,7 +1148,7 @@
     "crocker-amazon-playground-outdoor": {
       "tennis": {
         "v": 2,
-        "pct": 12,
+        "pct": 13,
         "courts": 3,
         "slots": {
           "2026-09-01 07:30": 0,
@@ -1489,7 +1493,6 @@
           "2026-09-07 19:30": 2,
           "2026-09-07 20:00": 2,
           "2026-09-07 20:30": 2,
-          "2026-09-03 07:00": 1,
           "2026-09-04 07:00": 1,
           "2026-09-05 07:00": 1,
           "2026-09-06 07:00": 1,
@@ -1504,7 +1507,7 @@
       "guidelines": "Welcome to tennis at Crocker Amazon Park! Courts are in the Southwest corner of the park near the intersection of Geneva Ave and Moscow Street. There are three dedicated tennis courts and four pickleball courts.\n\n**Reservation Policy**\n- Any individual may reserve a court, but may not book more than 1 court in a day or 3 courts in a calendar week.\n- Reservation requests are for individual play only. No lessons, team practices, clinics or league matches.\n- Courts left vacant 15 minutes after reservation time are available for walk-up play\n- Please **[click here](https://sfrecpark.org/1188/Tennis-Pickleball-Reservations)** to view the full San Francisco Rec and Park reservation policy.\n\n**Reservation Overview**\n\n*Courts 1 and 2*\n- Courts 1 and 2 are reservable for Tennis 7 days in advance.\n- Reservations open at 8 AM. \n- All slots are 90 minutes, starting at 7:30am, 9:00am, 10:30am, 12:00pm, 1:30pm, 3:00pm, 4:30pm, 6:00pm, and 7:30pm. \n\n*Court 3*\n- Court 3 is reservable for Tennis 2 days in advance. \n- Reservations open at 12 PM. \n- All slots are 60 minutes and start on the hour. \n\n**Location Features**\n- 3 tennis courts\n- 4 pickleball courts\n- Lights\n- Bathroom access",
       "pickleball": {
         "v": 2,
-        "pct": 6,
+        "pct": 7,
         "courts": 4,
         "slots": {
           "2026-09-01 07:00": 0,
@@ -1563,6 +1566,7 @@
           "2026-09-02 19:30": 0,
           "2026-09-02 20:00": 0,
           "2026-09-02 20:30": 0,
+          "2026-09-03 07:00": 0,
           "2026-09-03 07:30": 0,
           "2026-09-03 08:00": 0,
           "2026-09-03 08:30": 0,
@@ -1701,7 +1705,8 @@
         },
         "open": {
           "2026-09-01 07:00": 2,
-          "2026-09-02 07:00": 2
+          "2026-09-02 07:00": 2,
+          "2026-09-03 07:00": 2
         },
         "released": {
           "2026-09-03 07:30": 2,
@@ -2043,11 +2048,13 @@
           "2026-09-07 20:00": 2,
           "2026-09-07 20:30": 2,
           "2026-09-01 07:00": 1,
-          "2026-09-02 07:00": 1
+          "2026-09-02 07:00": 1,
+          "2026-09-03 07:00": 0
         },
         "open": {
           "2026-09-01 07:00": 1,
-          "2026-09-02 07:00": 1
+          "2026-09-02 07:00": 1,
+          "2026-09-03 07:00": 1
         },
         "released": {
           "2026-09-03 07:30": 2,
@@ -2197,7 +2204,7 @@
     "dupont-tennis-courts-outdoor": {
       "tennis": {
         "v": 2,
-        "pct": 38,
+        "pct": 39,
         "courts": 4,
         "slots": {
           "2026-09-01 07:30": 0,
@@ -2369,7 +2376,8 @@
           "2026-09-07 18:30": 0,
           "2026-09-07 19:00": 0,
           "2026-09-01 07:00": 0,
-          "2026-09-02 07:00": 0
+          "2026-09-02 07:00": 0,
+          "2026-09-03 07:00": 0
         },
         "open": {
           "2026-09-01 19:00": 3,
@@ -2380,7 +2388,8 @@
           "2026-09-06 19:00": 3,
           "2026-09-07 19:00": 3,
           "2026-09-01 07:00": 1,
-          "2026-09-02 07:00": 1
+          "2026-09-02 07:00": 1,
+          "2026-09-03 07:00": 1
         },
         "released": {
           "2026-09-03 07:30": 3,
@@ -2569,7 +2578,7 @@
     "george-christopher-playground-outdoor": {
       "tennis": {
         "v": 2,
-        "pct": 81,
+        "pct": 82,
         "courts": 1,
         "slots": {
           "2026-09-01 07:00": 1,
@@ -2684,8 +2693,8 @@
           "2026-09-04 19:30": 1,
           "2026-09-04 20:00": 1,
           "2026-09-04 20:30": 1,
-          "2026-09-05 07:00": 0,
-          "2026-09-05 07:30": 0,
+          "2026-09-05 07:00": 1,
+          "2026-09-05 07:30": 1,
           "2026-09-05 08:00": 1,
           "2026-09-05 08:30": 1,
           "2026-09-05 09:00": 1,
@@ -4026,6 +4035,7 @@
           "2026-09-02 17:30": 2,
           "2026-09-02 18:00": 2,
           "2026-09-02 18:30": 2,
+          "2026-09-03 07:00": 0,
           "2026-09-03 07:30": 1,
           "2026-09-03 08:00": 1,
           "2026-09-03 08:30": 1,
@@ -4152,6 +4162,7 @@
         "open": {
           "2026-09-01 07:00": 1,
           "2026-09-02 07:00": 1,
+          "2026-09-03 07:00": 1,
           "2026-09-01 19:00": 1,
           "2026-09-02 19:00": 1,
           "2026-09-03 19:00": 1,
@@ -4652,7 +4663,7 @@
     "moscone-rec-center-outdoor": {
       "tennis": {
         "v": 2,
-        "pct": 81,
+        "pct": 82,
         "courts": 4,
         "slots": {
           "2026-09-01 07:30": 2,
@@ -4826,9 +4837,9 @@
           "2026-09-07 10:30": 2,
           "2026-09-07 11:00": 2,
           "2026-09-07 11:30": 2,
-          "2026-09-07 12:00": 0,
-          "2026-09-07 12:30": 0,
-          "2026-09-07 13:00": 0,
+          "2026-09-07 12:00": 1,
+          "2026-09-07 12:30": 1,
+          "2026-09-07 13:00": 1,
           "2026-09-07 13:30": 2,
           "2026-09-07 14:00": 2,
           "2026-09-07 14:30": 2,
@@ -5246,6 +5257,7 @@
           "2026-09-02 17:30": 4,
           "2026-09-02 18:00": 4,
           "2026-09-02 18:30": 4,
+          "2026-09-03 07:00": 0,
           "2026-09-03 07:30": 0,
           "2026-09-03 08:00": 0,
           "2026-09-03 08:30": 0,
@@ -5359,19 +5371,20 @@
           "2026-09-07 16:30": 0,
           "2026-09-07 17:00": 0,
           "2026-09-07 17:30": 0,
-          "2026-09-07 18:00": 2,
-          "2026-09-07 18:30": 2,
+          "2026-09-07 18:00": 1,
+          "2026-09-07 18:30": 1,
           "2026-09-01 19:00": 3,
           "2026-09-02 19:00": 3,
           "2026-09-03 19:00": 3,
           "2026-09-04 19:00": 3,
           "2026-09-05 19:00": 0,
           "2026-09-06 19:00": 0,
-          "2026-09-07 19:00": 2
+          "2026-09-07 19:00": 1
         },
         "open": {
           "2026-09-01 07:00": 1,
           "2026-09-02 07:00": 1,
+          "2026-09-03 07:00": 1,
           "2026-09-01 19:00": 3,
           "2026-09-02 19:00": 3,
           "2026-09-03 19:00": 3,
@@ -5559,6 +5572,7 @@
           "2026-09-02 17:30": 3,
           "2026-09-02 18:00": 2,
           "2026-09-02 18:30": 2,
+          "2026-09-03 07:00": 1,
           "2026-09-03 07:30": 2,
           "2026-09-03 08:00": 2,
           "2026-09-03 08:30": 2,
@@ -5706,6 +5720,7 @@
         "open": {
           "2026-09-01 07:00": 1,
           "2026-09-02 07:00": 1,
+          "2026-09-03 07:00": 1,
           "2026-09-01 19:00": 3,
           "2026-09-02 19:00": 3,
           "2026-09-03 19:00": 3,
@@ -6012,7 +6027,8 @@
           "2026-09-07 18:30": 0,
           "2026-09-07 19:00": 0,
           "2026-09-01 07:00": 0,
-          "2026-09-02 07:00": 0
+          "2026-09-02 07:00": 0,
+          "2026-09-03 07:00": 0
         },
         "blk": {
           "2026-09-01 07:30": 4,
@@ -6131,7 +6147,8 @@
           "2026-09-07 15:30": 4,
           "2026-09-07 16:00": 4,
           "2026-09-01 07:00": 2,
-          "2026-09-02 07:00": 2
+          "2026-09-02 07:00": 2,
+          "2026-09-03 07:00": 2
         },
         "overlapSport": "tennis",
         "open": {
@@ -6143,7 +6160,8 @@
           "2026-09-06 19:00": 6,
           "2026-09-07 19:00": 6,
           "2026-09-01 07:00": 2,
-          "2026-09-02 07:00": 2
+          "2026-09-02 07:00": 2,
+          "2026-09-03 07:00": 2
         },
         "released": {
           "2026-09-03 07:30": 6,
@@ -6272,7 +6290,7 @@
     "potrero-hill-rec-center-outdoor": {
       "tennis": {
         "v": 2,
-        "pct": 82,
+        "pct": 83,
         "courts": 2,
         "slots": {
           "2026-09-01 07:30": 2,
@@ -6465,11 +6483,13 @@
           "2026-09-07 20:00": 1,
           "2026-09-07 20:30": 1,
           "2026-09-01 07:00": 1,
-          "2026-09-02 07:00": 1
+          "2026-09-02 07:00": 1,
+          "2026-09-03 07:00": 0
         },
         "open": {
           "2026-09-01 07:00": 1,
-          "2026-09-02 07:00": 1
+          "2026-09-02 07:00": 1,
+          "2026-09-03 07:00": 1
         },
         "released": {
           "2026-09-03 07:30": 1,
@@ -7071,7 +7091,7 @@
       "guidelines": "Welcome to Presidio Wall Playground! We have four courts here, two of which are dedicated to tennis and two of which are dual-lined for tennis and pickleball.\n\n**Reservation Policy**\n- Any individual may reserve a court, but may not book more than 1 court in a day or 3 courts in a calendar week.\n- Reservation requests are for individual play only. No lessons, team practices, clinics or league matches.\n- Courts left vacant 15 minutes after reservation time are available for walk-up play\n- Please **[click here](https://sfrecpark.org/1188/Tennis-Pickleball-Reservations)** to view the full San Francisco Rec and Park reservation policy.\n\n**Reservation Overview**\n\n*Courts 1&2*\n\n- Courts 1&2 are reservable for Tennis 7 days in advance\n- Reservations open at 8:00am\n- Slots are 90 minutes at 7:30am\n\n*Court 3*\n- Court 3 is reservable for Tennis 7 days in advance\n- Reservations open at 8:00am. \n- Slots are 90 minutes at 7:30am, 9:00am, 10:30am, 12:00pm, 1:30pm, 3:00pm, and 4:30pm (6:00pm during Daylight Saving Time).\n\n*Court 4 \n- Court 4 is reservable for Tennis 2 days in advance   \n- Reservations open at noon. \n- Slots are 90 minutes at 7:30am, 9:00am, 10:30am, 12:00pm, 1:30pm, 3:00pm, and 4:30pm (6:00pm during Daylight Saving Time).\n\n*Courts A, C, and E*\n- Courts A, C, and E  are reservable for Pickleball 7 days in advance\n- Reservations open at 8:00am\n- Slots are 60 minutes and start at the top of the hour. \n- Courts B, D, and F are available for use during Pickleball open-play hours.\n\n**Location Features**\n- 4 tennis courts\n- 6 pickleball courts. Nets provided (storage box).\n- Bathroom access",
       "pickleball": {
         "v": 2,
-        "pct": 82,
+        "pct": 83,
         "courts": 3,
         "slots": {
           "2026-09-01 09:00": 3,
@@ -7202,8 +7222,8 @@
           "2026-09-07 11:30": 3,
           "2026-09-07 12:00": 3,
           "2026-09-07 12:30": 3,
-          "2026-09-07 13:00": 2,
-          "2026-09-07 13:30": 2,
+          "2026-09-07 13:00": 3,
+          "2026-09-07 13:30": 3,
           "2026-09-07 14:00": 2,
           "2026-09-07 14:30": 2,
           "2026-09-07 15:00": 1,
@@ -9029,5 +9049,5 @@
       }
     }
   },
-  "fetchedAt": "2026-09-01T08:30:55.954Z"
+  "fetchedAt": "2026-09-01T14:04:23.893Z"
 }
