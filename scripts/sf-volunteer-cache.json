@@ -742,7 +742,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 26,
+      "spots": 16,
       "unlimited": false,
       "start": "2026-09-26",
       "end": "2026-09-26",
@@ -907,5 +907,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-09-01T03:34:28.777Z"
+  "fetchedAt": "2026-09-01T11:06:49.526Z"
 }
