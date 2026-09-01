@@ -1,6 +1,29 @@
 {
   "entries": [
     {
+      "id": "vol-a074U00001UJGuJQAX",
+      "source": "sfrpd-volunteer",
+      "name": "Tree Fern Dell Volunteer Workparty",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "GGP Sec 2 Tree Fern Dell",
+      "when": "Tue · 12:30 PM - 2:30 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 15,
+      "unlimited": false,
+      "start": "2026-09-01",
+      "end": "2027-02-02",
+      "instructor": "Friends of the Tree Fern Dell",
+      "activity": "Habitat Restoration",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the Friends of the Tree Fern Dell and the RPD Gardeners in a weekly volunteer workparty. Enjoy this historic site in Golden Gate Park while delivering care to extraordinary horticultural specimens that date back 200 million years. All tools and gloves provided.\n\nMeet at the entrance to the Tree Fern Dell at Conservatory Drive West and JFK Drive.",
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
       "id": "vol-a07Pi00003zJscrIAC",
       "source": "sfrpd-volunteer",
       "name": "GGP Conservatory Valley Volunteer Workparty",
@@ -138,7 +161,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 5,
+      "spots": 4,
       "unlimited": false,
       "start": "2026-09-05",
       "end": "2027-02-06",
@@ -252,32 +275,6 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
-      "id": "vol-a074U00001JrHLLQA3",
-      "source": "sfrpd-volunteer",
-      "name": "CNPS Balboa Natural Area",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "Balboa Natural Area",
-      "when": "Wed · 12:00 PM - 2:30 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 14,
-      "unlimited": false,
-      "start": "2026-09-09",
-      "end": "2026-09-09",
-      "oneDay": true,
-      "instructor": "California Native Plant Society",
-      "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin SF Recreation and Parks’ Natural Resources Division and the California Native Plant Society for their weekly Wednesday habitat restoration project. The Balboa Natural Area is one of only a few foredune communities in San Francisco and the only one within the Natural Areas System. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Everyone 14 years old and older is invited; anyone under 14 yo must be accompanied by a guardian. Tools and gloves will be provided. Please be punctual. \n\nMeet at the northernmost boardwalk entrance.",
-      "lat": 37.72165,
-      "lng": -122.4593,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a07Pi00006B5tmHIAR",
       "source": "sfrpd-volunteer",
       "name": "CNPS Balboa Natural Area September 9, 2026",
@@ -299,6 +296,32 @@
       "instructor": "California Native Plant Society",
       "activity": "Habitat Restoration",
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin SF Recreation and Parks’ Natural Resources Division and the California Native Plant Society for their weekly Wednesday habitat restoration project.\n\nJoin our habitat restoration event at a beautiful San Francisco haven for native beach dune plants. See how nature can rebound if given the chance! This neglected plot of land was restored by SF Rec and Park and now is home to a diverse array of plants and animals. We will be working to protect the area from invasives. Tools and gloves provided, water and snacks served at the end of the work party.\n\nWe will also be participating in the iNaturalist biodiversity challenge where we'll be looking to find 30 species.\n\nSign up at: https://www.inaturalist.org/projects/find-30-species-for-ca-biodiversity-day-2026\n\nThe Balboa Natural Area is one of only a few foredune communities in San Francisco and the only one within the Natural Areas System. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Everyone 14 years old and older is invited; anyone under 14 yo must be accompanied by a guardian. Tools and gloves will be provided. Please be punctual. \n\nMeet at the northernmost boardwalk entrance.",
+      "lat": 37.72165,
+      "lng": -122.4593,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a074U00001JrHLLQA3",
+      "source": "sfrpd-volunteer",
+      "name": "CNPS Balboa Natural Area",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "Balboa Natural Area",
+      "when": "Wed · 12:00 PM - 2:30 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 14,
+      "unlimited": false,
+      "start": "2026-09-09",
+      "end": "2026-09-09",
+      "oneDay": true,
+      "instructor": "California Native Plant Society",
+      "activity": "Habitat Restoration",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin SF Recreation and Parks’ Natural Resources Division and the California Native Plant Society for their weekly Wednesday habitat restoration project. The Balboa Natural Area is one of only a few foredune communities in San Francisco and the only one within the Natural Areas System. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Everyone 14 years old and older is invited; anyone under 14 yo must be accompanied by a guardian. Tools and gloves will be provided. Please be punctual. \n\nMeet at the northernmost boardwalk entrance.",
       "lat": 37.72165,
       "lng": -122.4593,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
@@ -368,7 +391,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 9,
+      "spots": 7,
       "unlimited": false,
       "start": "2026-09-12",
       "end": "2026-11-14",
@@ -477,6 +500,31 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
+      "id": "vol-a07Pi00003zjg0EIAQ",
+      "source": "sfrpd-volunteer",
+      "name": "White Crowned Sparrow Habitat Restoration at the Bison Paddock",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "GGP Sec 5 Bison Paddock",
+      "when": "Sat · 9:00 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 25,
+      "unlimited": false,
+      "start": "2026-09-19",
+      "end": "2026-12-19",
+      "instructor": "Golden Gate Bird Alliance",
+      "activity": "Habitat Restoration",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nVolunteer with the Golden Gate Bird Alliance at the Bison Paddock of Golden Gate Park and help to restore the habitat of the White-crowned sparrow. Lend a hand with weeding and tending a garden of native plants that comprise a critical nesting and feeding area for this sparrow. Please wear appropriate attire: closed-toe shoes, long pants and layers of clothing.\n\nMeet at the middle of the Bison Paddock fence located on John F Kennedy Drive between 36th Avenue and Chain of Lakes Drive East.",
+      "lat": 37.7702,
+      "lng": -122.4917,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
       "id": "vol-a074U00001JPWEFQA5",
       "source": "sfrpd-volunteer",
       "name": "Coastal Cleanup Heron's Head Park",
@@ -500,32 +548,6 @@
       "desc": "Please come join SF Rec & Park and the CA Coastal Commission for a cleanup event at Herons Head Park in the Bayview Neighborhood of SF.  HHP is one of San Francisco’s ecological treasures a 22-acre open space and thriving wildlife habitat located in the City’s Southeast Sector. Teeming with native plants and a wide variety of birds, Heron’s Head Park is one of the few wetlands on San Francisco’s shoreline, and is an example of restoration success. Onsite leaders from the Greenager Program will be hosting public members in a trash and debris collection event along the bay.",
       "lat": 37.73832,
       "lng": -122.37481,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
-      "id": "vol-a074U00001QmwtoQAB",
-      "source": "sfrpd-volunteer",
-      "name": "Interior Greenbelt Volunteer Workparty",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "Interior Greenbelt",
-      "when": "Sat · 9:00 AM - 12:30 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 15,
-      "unlimited": false,
-      "start": "2026-09-19",
-      "end": "2026-09-19",
-      "oneDay": true,
-      "instructor": "Sutro Stewards",
-      "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the SF Recreation and Parks’ Natural Resources Division and Sutro Stewards to complete habitat restoration at the Interior Greenbelt on Mount Sutro. Help to restore this spectacular habitat that harbors sensitive plants including fairy bells and thimbleberry. Everyone 12 years and older is invited. A variety of volunteer tasks is available, at times on steep slopes. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Tools and gloves will be provided. Please be punctual\n\nMeet at Woods Lot at 100 Medical Center Way, San Francisco, CA 9414",
-      "lat": 37.75993,
-      "lng": -122.45635,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -555,28 +577,29 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
-      "id": "vol-a07Pi00003zjg0EIAQ",
+      "id": "vol-a074U00001QmwtoQAB",
       "source": "sfrpd-volunteer",
-      "name": "White Crowned Sparrow Habitat Restoration at the Bison Paddock",
+      "name": "Interior Greenbelt Volunteer Workparty",
       "category": "philanthropy",
       "tags": [
         "nature"
       ],
-      "location": "GGP Sec 5 Bison Paddock",
-      "when": "Sat · 9:00 AM - 12:00 PM",
+      "location": "Interior Greenbelt",
+      "when": "Sat · 9:00 AM - 12:30 PM",
       "dropIn": false,
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 25,
+      "spots": 15,
       "unlimited": false,
       "start": "2026-09-19",
-      "end": "2026-12-19",
-      "instructor": "Golden Gate Bird Alliance",
+      "end": "2026-09-19",
+      "oneDay": true,
+      "instructor": "Sutro Stewards",
       "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nVolunteer with the Golden Gate Bird Alliance at the Bison Paddock of Golden Gate Park and help to restore the habitat of the White-crowned sparrow. Lend a hand with weeding and tending a garden of native plants that comprise a critical nesting and feeding area for this sparrow. Please wear appropriate attire: closed-toe shoes, long pants and layers of clothing.\n\nMeet at the middle of the Bison Paddock fence located on John F Kennedy Drive between 36th Avenue and Chain of Lakes Drive East.",
-      "lat": 37.7702,
-      "lng": -122.4917,
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the SF Recreation and Parks’ Natural Resources Division and Sutro Stewards to complete habitat restoration at the Interior Greenbelt on Mount Sutro. Help to restore this spectacular habitat that harbors sensitive plants including fairy bells and thimbleberry. Everyone 12 years and older is invited. A variety of volunteer tasks is available, at times on steep slopes. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Tools and gloves will be provided. Please be punctual\n\nMeet at Woods Lot at 100 Medical Center Way, San Francisco, CA 9414",
+      "lat": 37.75993,
+      "lng": -122.45635,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -884,5 +907,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-08-31T22:27:33.357Z"
+  "fetchedAt": "2026-09-01T03:34:28.777Z"
 }
