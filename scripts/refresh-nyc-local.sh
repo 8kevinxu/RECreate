@@ -14,17 +14,28 @@
 # nothing about the 405 itself. If it stops running, nothing here alerts you —
 # the stale gate in CI does, by going red within 48h. That is the monitor.
 #
+# IT WORKS IN ITS OWN CLONE, NOT YOUR CHECKOUT. The first version guarded on a
+# clean working tree and skipped instead, which was the wrong shape: the build
+# rewrites tracked files under data/cities/nyc and scripts/cities, and a second
+# Claude session works in this repo continuously, so "dirty" is the normal state
+# and the job skipped every single run without ever doing its work. Worse, two
+# of that session's in-progress files (data/cities/nyc/outdoor-courts.js,
+# scripts/cities/nyc-cache.json) sat inside the paths this script stages, so
+# without the guard it would have committed someone's half-finished work. A
+# dedicated clone removes both problems: nothing else ever touches it, so it can
+# hard-reset to origin/main every run and never has to reason about local edits.
+#
 # Scheduled daily by ~/Library/LaunchAgents/com.recreate.nyc-refresh.plist.
 # Daily is the slowest cadence that works: the tightest staleness budget is 48h
 # (NYC classes, NYC permits) and the permit window is a rolling 7 days of
-# ABSOLUTE dates, so it expires rather than merely ageing. Once a day leaves
-# room to miss one run. launchd re-fires a missed StartCalendarInterval once on
-# wake, and will not start a second instance while one is still running, so no
-# lockfile is needed here.
+# ABSOLUTE dates, so it expires rather than merely ageing. launchd re-fires a
+# missed StartCalendarInterval once on wake, and will not start a second
+# instance while one is still running, so no lockfile is needed here.
 
 set -uo pipefail
 
-REPO="/Users/kevin/code/RECreate"
+REPO_URL="https://github.com/8kevinxu/RECreate.git"
+WORKDIR="$HOME/.local/share/recreate-nyc-refresh"
 BRANCH="main"
 
 # launchd hands an agent a minimal PATH with no node in it. fnm's `which node`
@@ -33,48 +44,50 @@ BRANCH="main"
 export PATH="$HOME/.local/share/fnm/aliases/default/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 # Optional: lets the build translate new class titles to zh/es. Without it they
-# stay English and the build still succeeds. Put `export ANTHROPIC_API_KEY=...`
-# in this file if you want them filled in at scrape time rather than waiting for
-# a CI run to do it.
+# stay English and the build still succeeds — CI has the key and fills in
+# anything missed on its next run, so this is genuinely optional.
 [ -f "$HOME/.config/recreate/refresh.env" ] && . "$HOME/.config/recreate/refresh.env"
 
 echo "=== $(date '+%Y-%m-%d %H:%M:%S %Z') — NYC refresh ==="
-cd "$REPO" || { echo "FAIL: no repo at $REPO"; exit 1; }
 
 command -v node >/dev/null || { echo "FAIL: node not on PATH ($PATH)"; exit 1; }
+command -v git  >/dev/null || { echo "FAIL: git not on PATH"; exit 1; }
 
-# Never run over work in progress. The build rewrites tracked data files, and the
-# rebase and commit below would tangle with anything half-finished. Untracked
-# files (design/, flyers/, scratch dirs) are ignored — the `git add` below names
-# explicit paths, so they can never be swept in. Skipping is the safe outcome: if
-# the tree stays dirty long enough for the cache to age out, CI goes red and says
-# so, which is exactly the signal we want.
-if [ -n "$(git status --porcelain --untracked-files=no)" ]; then
-  echo "SKIP: working tree has uncommitted changes."
-  exit 0
+# This script hard-resets and cleans its checkout. Refuse to do that anywhere
+# near a directory a human works in — a mistyped WORKDIR must not eat your repo.
+case "$WORKDIR" in
+  */.local/share/recreate-nyc-refresh) ;;
+  *) echo "FAIL: WORKDIR '$WORKDIR' is not the dedicated clone path."; exit 1 ;;
+esac
+
+if [ ! -d "$WORKDIR/.git" ]; then
+  echo "-- first run: cloning into $WORKDIR"
+  mkdir -p "$(dirname "$WORKDIR")"
+  git clone --quiet "$REPO_URL" "$WORKDIR" || { echo "FAIL: clone"; exit 1; }
 fi
 
-branch=$(git rev-parse --abbrev-ref HEAD)
-if [ "$branch" != "$BRANCH" ]; then
-  echo "SKIP: on '$branch', not '$BRANCH'."
-  exit 0
-fi
+cd "$WORKDIR" || { echo "FAIL: cannot cd to $WORKDIR"; exit 1; }
 
-# The refresh crons commit to main several times a day, so land on top of them
-# rather than racing them at push time.
-git pull --rebase --quiet || { echo "FAIL: git pull"; exit 1; }
+# Start from exactly origin/main every run. Safe here in a way it would never be
+# in your checkout: this clone holds nothing but the last run's regenerated data,
+# which we are about to regenerate anyway. This also replaces the pull --rebase
+# the old version did, which could conflict; a reset cannot.
+git fetch --quiet origin || { echo "FAIL: git fetch"; exit 1; }
+git checkout --quiet "$BRANCH" 2>/dev/null || git checkout --quiet -b "$BRANCH" "origin/$BRANCH"
+git reset --hard --quiet "origin/$BRANCH" || { echo "FAIL: git reset"; exit 1; }
+git clean -fdq   # strays from an interrupted run; node_modules is gitignored, so untouched
 
 # Only reinstall when the lockfile actually moved; a daily npm ci is minutes of
 # work for nothing.
 if [ ! -d node_modules ] || [ package-lock.json -nt node_modules/.package-lock.json ]; then
-  echo "-- npm ci (lockfile changed)"
+  echo "-- npm ci (lockfile changed or first run)"
   npm ci --silent || { echo "FAIL: npm ci"; exit 1; }
 fi
 
 # All six NYC builds. Each self-gates: a short or failed scrape keeps last-good
 # data, so a partial upstream outage degrades instead of publishing junk.
 if ! npm run build:data:nyc; then
-  echo "FAIL: build:data:nyc — nothing committed, cache left as it was."
+  echo "FAIL: build:data:nyc — nothing committed, origin left as it was."
   exit 1
 fi
 
@@ -93,10 +106,16 @@ if git diff --cached --quiet; then
   exit 0
 fi
 
-git commit -q -m "chore(data): refresh NYC sources from local egress
+git -c user.name="recreate-nyc-refresh" \
+    -c user.email="8kevinxu@users.noreply.github.com" \
+    commit -q -m "chore(data): refresh NYC sources from local egress
 
 Scraped from a machine nycgovparks.org does not 405. Keeps the caches
 inside their staleness budgets so CI's fallback stays green."
-git pull --rebase --quiet || { echo "FAIL: git pull before push"; exit 1; }
+
+# Another job may have pushed while we scraped (~10 min). Rebase onto it; this
+# clone has nothing else in flight, so a conflict here is not survivable and
+# should fail loudly rather than be forced past.
+git pull --rebase --quiet origin "$BRANCH" || { echo "FAIL: rebase onto origin/$BRANCH"; exit 1; }
 git push --quiet origin "$BRANCH" || { echo "FAIL: git push"; exit 1; }
 echo "OK: pushed $(git rev-parse --short HEAD)"
