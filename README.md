@@ -419,7 +419,7 @@ Four crons run on cadences matched to how fast each source actually moves:
 
 | Workflow | Every | Covers |
 | --- | --- | --- |
-| `refresh-schedules.yml` | weekly | `build:data` — all SF + NYC builders |
+| `refresh-schedules.yml` | weekly | SF builders in one step, each NYC source in its own |
 | `refresh-classes.yml` | 6h | SF **and** NYC class openings |
 | `refresh-reservations.yml` | 3h | rec.us bookings (they change hourly) |
 | `refresh-nyc-reservations.yml` | daily | NYC permits + tennis + dusk |
@@ -428,6 +428,36 @@ NYC permits are issued to leagues **weeks** ahead, so they barely move hour to
 hour — but the snapshot only covers the next 7 days, so the window has to roll
 forward daily or its far end goes dark. Adding a generated file? **Add it and its
 cache to the workflow's `FILES` list**, or the cron will run and never commit it.
+
+**One stale source must not discard the healthy ones.** `reportStale()` exits
+non-zero when a build falls back to a cache past its budget, and the builds used
+to be chained with `&&` inside a single step — so when nycgovparks.org began
+answering GitHub's runner IPs with HTTP 405 in Aug 2026 and the NYC caches aged
+out, the first stale source short-circuited the eight builds behind it *and*
+skipped the commit, discarding SF's live scrape every 6 hours while its scraper
+worked perfectly. `build:data` is now `build:data:sf && build:data:nyc`, the
+weekly workflow runs SF as one step and **each NYC source as its own**, and every
+scrape and commit step is guarded `if: !cancelled() && steps.deps.outcome ==
+'success'`. A bare `if` is implicitly ANDed with `success()`, so only a status
+function runs a step after an earlier failure; the `deps` half still skips
+everything when `npm ci` fails. The job **still reports failure** — a failed step
+sets the conclusion regardless of what runs after it — so the gate stays loud, it
+just no longer costs the sources that are fine.
+
+**The 405 is routed around, not fixed.** The block is by request origin:
+identical code and User-Agent gets 200 from a residential IP and 405 from Azure
+space, so no header tweak or retry defeats it, and five of the six NYC builds
+need that host (only `build:nyc` reads Socrata, which is unaffected). There is no
+alternate source to migrate to — the Socrata events dataset is dead (newest event
+Dec 2019) and the Parks Pools dataset carries locations but no schedules. So
+`scripts/refresh-nyc-local.sh`, on a daily LaunchAgent
+(`scripts/com.recreate.nyc-refresh.plist`, install/remove commands in its
+header), scrapes NYC from an unblocked machine and pushes the refreshed caches.
+CI then checks out a fresh cache, still 405s, still falls back — but finds
+`fetchedAt` recent, so `reportStale` stays quiet and the run goes green with **no
+workflow change at all**. It is a *cache feeder, not a second pipeline*, and
+nothing monitors it because nothing needs to: if it stops, the cache ages past
+its budget and the stale gate goes red, which is the alert.
 
 ### Reviews
 

@@ -383,10 +383,25 @@ key it degrades to English — which means the CI key must be set for new titles
 localize automatically.
 
 **Refresh crons** (`.github/workflows/`): `refresh-schedules.yml` runs the full
-build weekly; `refresh-classes.yml` re-scrapes classes every 6h; and
+build weekly; `refresh-classes.yml` re-scrapes classes every 6h;
 `refresh-reservations.yml` re-scrapes rec.us occupancy every 3h (bookings change
-hourly). Each commits only when the generated data changed. When adding a new
-generated file, also add it to the workflow's commit `FILES` list.
+hourly); and `refresh-nyc-reservations.yml` re-sweeps NYC permits + tennis daily.
+Each commits only when the generated data changed. When adding a new generated
+file, also add it to the workflow's commit `FILES` list.
+
+Each source is **its own workflow step**. `reportStale()` exits non-zero when a
+build serves a cache past its staleness budget, and chaining the builds with `&&`
+in one step meant the first stale source short-circuited every build behind it
+and skipped the commit — discarding healthy sources' fresh data. Steps are
+guarded `if: !cancelled() && ...` so a failure stops nothing but itself; the job
+still reports failure, so the gate stays loud.
+
+nycgovparks.org **405s GitHub's runner IPs by request origin**, so five of the six
+NYC builds can never scrape live in CI. `scripts/refresh-nyc-local.sh` (daily
+LaunchAgent, working in its own clone) scrapes from an unblocked machine and
+pushes the refreshed caches; CI still 405s and still falls back, but now onto a
+fresh cache, so `reportStale` stays quiet. A cache feeder, not a second pipeline —
+and if it stops, the stale gate going red is the alert.
 
 At launch, `useCourts.js` loads **bundled (instant) → cached → remote**
 (`EXPO_PUBLIC_COURTS_URL`), so the app renders offline immediately then
