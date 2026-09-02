@@ -10513,179 +10513,6 @@
       ]
     },
     {
-      "id": "nyc-pool-roy-wilkins-recreation-center-pool",
-      "name": "Roy Wilkins Recreation Center Pool",
-      "address": "177th Street and Baisley Boulevard",
-      "lat": 40.6873,
-      "lng": -73.7695,
-      "phone": "(718) 276-8686",
-      "indoor": true,
-      "accessible": true,
-      "desc": "Intermediate pool · 75' x 30' x 9'",
-      "season": "Year-round (recreation center members)",
-      "seasonal": false,
-      "notice": "There are no programs at this pool today.",
-      "programs": [
-        "lap",
-        "family"
-      ],
-      "fees": {
-        "effective": "2026-01-01",
-        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
-        "note": "Recreation center membership — indoor pools are members-only",
-        "groups": [
-          {
-            "id": "youth",
-            "label": "Ages 24 and under",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                0
-              ]
-            ]
-          },
-          {
-            "id": "adult",
-            "label": "Adults (25–61)",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                150
-              ],
-              [
-                "Six months",
-                75
-              ]
-            ]
-          },
-          {
-            "id": "senior",
-            "label": "Seniors 62+, veterans, people with disabilities",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                25
-              ]
-            ]
-          }
-        ]
-      },
-      "scheduleUrls": [
-        {
-          "label": "Pool schedule",
-          "url": "https://www.nycgovparks.org/facilities/recreationcenters/Q448/schedule#Pool-schedule"
-        }
-      ],
-      "sessions": [
-        [],
-        [
-          {
-            "kind": "lap",
-            "start": 0,
-            "end": 180
-          },
-          {
-            "kind": "lap",
-            "start": 660,
-            "end": 840
-          },
-          {
-            "kind": "family",
-            "start": 855,
-            "end": 1005
-          },
-          {
-            "kind": "lap",
-            "start": 1020,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 660,
-            "end": 840
-          },
-          {
-            "kind": "family",
-            "start": 855,
-            "end": 1005
-          },
-          {
-            "kind": "lap",
-            "start": 1020,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 0,
-            "end": 180
-          },
-          {
-            "kind": "lap",
-            "start": 660,
-            "end": 840
-          },
-          {
-            "kind": "family",
-            "start": 855,
-            "end": 1005
-          },
-          {
-            "kind": "lap",
-            "start": 1020,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 660,
-            "end": 840
-          },
-          {
-            "kind": "family",
-            "start": 855,
-            "end": 1005
-          },
-          {
-            "kind": "lap",
-            "start": 1020,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 900,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 480,
-            "end": 705
-          },
-          {
-            "kind": "family",
-            "start": 720,
-            "end": 960
-          }
-        ]
-      ]
-    },
-    {
       "id": "nyc-pool-constance-baker-motley-pool",
       "name": "Constance Baker Motley Pool",
       "address": "E. 54th St. bet. First and Second Aves.",
@@ -10863,6 +10690,179 @@
       ]
     },
     {
+      "id": "nyc-pool-roy-wilkins-recreation-center-pool",
+      "name": "Roy Wilkins Recreation Center Pool",
+      "address": "177th Street and Baisley Boulevard",
+      "lat": 40.6873,
+      "lng": -73.7695,
+      "phone": "(718) 276-8686",
+      "indoor": true,
+      "accessible": true,
+      "desc": "Intermediate pool · 75' x 30' x 9'",
+      "season": "Year-round (recreation center members)",
+      "seasonal": false,
+      "notice": "There are no programs at this pool today.",
+      "programs": [
+        "lap",
+        "family"
+      ],
+      "fees": {
+        "effective": "2026-01-01",
+        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
+        "note": "Recreation center membership — indoor pools are members-only",
+        "groups": [
+          {
+            "id": "youth",
+            "label": "Ages 24 and under",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                0
+              ]
+            ]
+          },
+          {
+            "id": "adult",
+            "label": "Adults (25–61)",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                150
+              ],
+              [
+                "Six months",
+                75
+              ]
+            ]
+          },
+          {
+            "id": "senior",
+            "label": "Seniors 62+, veterans, people with disabilities",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                25
+              ]
+            ]
+          }
+        ]
+      },
+      "scheduleUrls": [
+        {
+          "label": "Pool schedule",
+          "url": "https://www.nycgovparks.org/facilities/recreationcenters/Q448/schedule#Pool-schedule"
+        }
+      ],
+      "sessions": [
+        [],
+        [
+          {
+            "kind": "lap",
+            "start": 0,
+            "end": 180
+          },
+          {
+            "kind": "lap",
+            "start": 660,
+            "end": 840
+          },
+          {
+            "kind": "family",
+            "start": 855,
+            "end": 1005
+          },
+          {
+            "kind": "lap",
+            "start": 1020,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 660,
+            "end": 840
+          },
+          {
+            "kind": "family",
+            "start": 855,
+            "end": 1005
+          },
+          {
+            "kind": "lap",
+            "start": 1020,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 0,
+            "end": 180
+          },
+          {
+            "kind": "lap",
+            "start": 660,
+            "end": 840
+          },
+          {
+            "kind": "family",
+            "start": 855,
+            "end": 1005
+          },
+          {
+            "kind": "lap",
+            "start": 1020,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 660,
+            "end": 840
+          },
+          {
+            "kind": "family",
+            "start": 855,
+            "end": 1005
+          },
+          {
+            "kind": "lap",
+            "start": 1020,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 660,
+            "end": 900
+          },
+          {
+            "kind": "family",
+            "start": 900,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 480,
+            "end": 705
+          },
+          {
+            "kind": "family",
+            "start": 720,
+            "end": 960
+          }
+        ]
+      ]
+    },
+    {
       "id": "nyc-pool-flushing-meadows-aquatics-center",
       "name": "Flushing Meadows Aquatics Center",
       "address": "Avery Avenue and 131 Street",
@@ -11008,9 +11008,9 @@
       "seasonal": false,
       "notice": "There are no programs at this pool today.",
       "programs": [
+        "lap",
         "family",
-        "other",
-        "lap"
+        "other"
       ],
       "fees": {
         "effective": "2026-01-01",
@@ -11063,7 +11063,23 @@
         }
       ],
       "sessions": [
-        [],
+        [
+          {
+            "kind": "lap",
+            "start": 480,
+            "end": 705
+          },
+          {
+            "kind": "family",
+            "start": 720,
+            "end": 795
+          },
+          {
+            "kind": "family",
+            "start": 810,
+            "end": 885
+          }
+        ],
         [
           {
             "kind": "family",
@@ -11181,8 +11197,8 @@
   "season": {
     "open": true,
     "label": "Open daily through Labor Day (9/7)",
-    "checked": "2026-08-31",
+    "checked": "2026-09-02",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-08-31T18:18:36.390Z"
+  "fetchedAt": "2026-09-02T05:46:28.570Z"
 }
