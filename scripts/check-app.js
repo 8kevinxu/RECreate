@@ -338,6 +338,37 @@ for (const [file, name] of [
   }
 }
 
+// --- 7. The generated SEO pages hold together -------------------------------
+//
+// ~850 landing pages are the site's acquisition channel, and every invariant
+// they depend on — one clear intent per page, a canonical that resolves, no
+// orphans, no thin stubs, breadcrumbs whose crumbs exist — fails silently:
+// nothing notices when one breaks, because the pages keep building and keep
+// serving while the ranking quietly goes.
+//
+// SEO_AUDIT=1 builds and renders the whole page set in memory from the same
+// bundled data/ modules the real build uses, asserts over the rendered HTML,
+// and writes nothing — so this needs no `expo export` and costs a few seconds.
+// scripts/postbuild-web.js runs the identical assertions on the real build.
+const { spawnSync } = require('child_process');
+
+const seo = spawnSync(process.execPath, [path.join(ROOT, 'scripts/postbuild-web.js')], {
+  env: { ...process.env, SEO_AUDIT: '1' },
+  encoding: 'utf8',
+});
+for (const line of String(seo.stderr || '').split('\n')) {
+  if (line.startsWith('⚠')) warn(line.slice(2));
+  else if (line.startsWith('✗')) fail(line.slice(2));
+  else if (line.trim()) console.error(line);
+}
+if (seo.status === 0) {
+  const summary = String(seo.stdout || '').split('\n').filter((l) => l.startsWith('✓ seo:')).pop();
+  ok(summary ? summary.slice(2) : 'seo: pages pass');
+} else if (!seo.stderr) {
+  // A crash with no findings is a broken generator, not a clean page set.
+  fail(`seo: the page audit exited ${seo.status ?? 'on a signal'} without reporting findings`);
+}
+
 if (failed) {
   console.error('\ncheck failed');
   process.exit(1);

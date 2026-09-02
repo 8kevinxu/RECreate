@@ -24,6 +24,7 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const esbuild = require('esbuild');
+const { auditSeo } = require('./lib/seo-audit');
 
 const ROOT = path.join(__dirname, '..');
 const DIST = path.join(ROOT, 'dist');
@@ -32,7 +33,14 @@ const SITE_NAME = 'RECreate';
 const APP_STORE_ID = '6786438986';
 const APP_STORE_URL = `https://apps.apple.com/us/app/recreate-recreation-made-easy/id${APP_STORE_ID}`;
 
-if (!fs.existsSync(path.join(DIST, 'index.html'))) {
+// SEO_AUDIT=1 builds and renders every page in memory, runs the assertions in
+// scripts/lib/seo-audit.js, and writes nothing. That is what `npm run check`
+// runs: the page set is derived entirely from the bundled data/ modules, so the
+// gate does not need `expo export` and stays a few-seconds check rather than a
+// multi-minute one. The real build runs the same assertions after writing.
+const AUDIT = process.env.SEO_AUDIT === '1';
+
+if (!AUDIT && !fs.existsSync(path.join(DIST, 'index.html'))) {
   console.error('✗ dist/index.html not found — run `npx expo export --platform web` first');
   process.exit(1);
 }
@@ -534,10 +542,18 @@ ${otherNav}
 `;
 }
 
+// Rendered HTML by path, for the SEO assertions — they check what a crawler
+// actually receives rather than what the page object intended, which is the
+// same reason the post-deploy pass reads production HTML.
+const RENDERED = new Map();
+
 function writePage(page) {
+  const html = pageHtml(page);
+  RENDERED.set(page.path, html);
+  if (AUDIT) return;
   const dir = path.join(DIST, page.path.replace(/^\//, ''));
   fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(path.join(dir, 'index.html'), pageHtml(page));
+  fs.writeFileSync(path.join(dir, 'index.html'), html);
 }
 
 // --- build the page list -------------------------------------------------------
@@ -1392,6 +1408,10 @@ for (const cfg of CITY_CFG) {
       title,
       description,
       h1: c.name,
+      // For the name-collision pass below: both strings start with the court's
+      // name, so a suffix can be spliced in without rebuilding either.
+      courtName: c.name,
+      courtAddress: c.address,
       intro,
       cta: { href: appUrl(cfg, { sport: primary, court: c.id }), label: 'Open this court in the app' },
       body:
@@ -1416,6 +1436,42 @@ for (const cfg of CITY_CFG) {
         breadcrumb(trail),
       ],
     });
+  }
+}
+
+// --- two parks, one name --------------------------------------------------------
+//
+// NYC reuses park names, across boroughs and even within one: Classon
+// Playground is two separate playgrounds three quarters of a mile apart in
+// Brooklyn, each its own GIS facility. They are NOT the merged-facility case
+// above — different addresses, different coordinates, genuinely different
+// places — so merging them would claim two parks are one. But publishing them
+// under one identical title is the cannibalization that merge exists to
+// prevent, arriving by the other door: Google picks one and files the other
+// under "Duplicate", and neither ranks for the name they share.
+//
+// The check is on the finished TITLE, not on the name: a rec center and the
+// courts out back share a name and are already told apart by their titles ("…
+// Open Gym Hours" vs "… drop-in hours"), and suffixing those would make two
+// working titles longer for nothing. A pin with no address gets no suffix —
+// "(Brooklyn)" on both is two identical titles again, spelled longer.
+//
+// Addresses arrive from NYC's GIS layer in caps ("400 DE KALB AVENUE") — fine
+// in a facts table, shouty in a title.
+const titleCase = (s) => String(s).toLowerCase().replace(/\b[a-z]/g, (ch) => ch.toUpperCase());
+const byCourtTitle = new Map();
+for (const p of pages) {
+  if (p.kind !== 'court') continue;
+  byCourtTitle.set(p.title, (byCourtTitle.get(p.title) || []).concat(p));
+}
+for (const group of byCourtTitle.values()) {
+  if (group.length < 2) continue;
+  for (const p of group) {
+    if (!p.courtAddress) continue;
+    const named = `${p.courtName} (${titleCase(p.courtAddress)})`;
+    p.title = named + p.title.slice(p.courtName.length);
+    p.h1 = named;
+    p.short = named;
   }
 }
 
@@ -1551,27 +1607,26 @@ for (const p of pages) {
 // stale links must 404 honestly instead of resolving to a decoy. Vercel serves
 // this file, with a real 404 status, for anything that doesn't match a file.
 const indexPages = ALL_PAGES.filter((p) => p.kind === 'sport' || p.kind === 'index');
-fs.writeFileSync(
-  path.join(DIST, '404.html'),
-  pageHtml({
-    cfg: SF,
-    path: '/404',
-    noindex: true,
-    title: `Page not found | ${SITE_NAME}`,
-    description: 'That page is not here. Browse every free public court, pool, and rec class in San Francisco and New York City.',
-    h1: "That page isn't here",
-    intro:
-      'The link may be mistyped — or the spot may have closed, or dropped off the city\'s published schedule since the page was made. Everything below still works, and the live map always shows what\'s open right now.',
-    cta: { href: '/', label: 'Open the live map' },
-    body: CITY_CFG.map((c) => {
-      const mine = indexPages.filter((p) => p.cfg.id === c.id);
-      if (!mine.length) return '';
-      return `<h2>${esc(c.name)}</h2><p class="more">${mine
-        .map((p) => `<a href="${p.path}">${esc(p.short)}</a>`)
-        .join(' · ')}</p>`;
-    }).join('\n'),
-  })
-);
+const notFoundHtml = pageHtml({
+  cfg: SF,
+  path: '/404',
+  noindex: true,
+  title: `Page not found | ${SITE_NAME}`,
+  description: 'That page is not here. Browse every free public court, pool, and rec class in San Francisco and New York City.',
+  h1: "That page isn't here",
+  intro:
+    'The link may be mistyped — or the spot may have closed, or dropped off the city\'s published schedule since the page was made. Everything below still works, and the live map always shows what\'s open right now.',
+  cta: { href: '/', label: 'Open the live map' },
+  body: CITY_CFG.map((c) => {
+    const mine = indexPages.filter((p) => p.cfg.id === c.id);
+    if (!mine.length) return '';
+    return `<h2>${esc(c.name)}</h2><p class="more">${mine
+      .map((p) => `<a href="${p.path}">${esc(p.short)}</a>`)
+      .join(' · ')}</p>`;
+  }).join('\n'),
+});
+RENDERED.set('/404', notFoundHtml);
+if (!AUDIT) fs.writeFileSync(path.join(DIST, '404.html'), notFoundHtml);
 
 // --- patch dist/index.html (the SPA shell) -------------------------------------
 
@@ -1585,37 +1640,39 @@ const HOME_DESC =
 // this only bites locally — but two conflicting canonicals mean Google ignores
 // both, which is not a failure worth risking to save four lines.
 const MARK = ['<!-- recreate:seo -->', '<!-- /recreate:seo -->'];
-let html = fs.readFileSync(path.join(DIST, 'index.html'), 'utf8');
-html = html.replace(new RegExp(`${MARK[0]}[\\s\\S]*?${MARK[1]}`, 'g'), '');
-const headTags = `
-<title>${esc(HOME_TITLE)}</title>
-<meta name="description" content="${esc(HOME_DESC)}">
-<link rel="canonical" href="${SITE}/">
-<meta name="apple-itunes-app" content="app-id=${APP_STORE_ID}, app-argument=${SITE}/">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="${SITE_NAME}">
-<meta property="og:title" content="${esc(HOME_TITLE)}">
-<meta property="og:description" content="${esc(HOME_DESC)}">
-<meta property="og:url" content="${SITE}/">
-<meta property="og:image" content="${SITE}/og.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">${JSON.stringify({
-  '@context': 'https://schema.org',
-  '@type': 'WebApplication',
-  name: SITE_NAME,
-  url: `${SITE}/`,
-  description: HOME_DESC,
-  applicationCategory: 'SportsApplication',
-  operatingSystem: 'Web, iOS',
-  installUrl: APP_STORE_URL,
-  sameAs: [APP_STORE_URL],
-  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-})}</script>`;
-html = html.replace(/<title>.*?<\/title>/s, '').replace('</head>', `${MARK[0]}${headTags}\n${MARK[1]}\n</head>`);
-if (!/<html[^>]*\slang=/.test(html)) html = html.replace(/<html/, '<html lang="en"');
-fs.writeFileSync(path.join(DIST, 'index.html'), html);
+if (!AUDIT) {
+  let html = fs.readFileSync(path.join(DIST, 'index.html'), 'utf8');
+  html = html.replace(new RegExp(`${MARK[0]}[\\s\\S]*?${MARK[1]}`, 'g'), '');
+  const headTags = `
+  <title>${esc(HOME_TITLE)}</title>
+  <meta name="description" content="${esc(HOME_DESC)}">
+  <link rel="canonical" href="${SITE}/">
+  <meta name="apple-itunes-app" content="app-id=${APP_STORE_ID}, app-argument=${SITE}/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="${SITE_NAME}">
+  <meta property="og:title" content="${esc(HOME_TITLE)}">
+  <meta property="og:description" content="${esc(HOME_DESC)}">
+  <meta property="og:url" content="${SITE}/">
+  <meta property="og:image" content="${SITE}/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">${JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: SITE_NAME,
+    url: `${SITE}/`,
+    description: HOME_DESC,
+    applicationCategory: 'SportsApplication',
+    operatingSystem: 'Web, iOS',
+    installUrl: APP_STORE_URL,
+    sameAs: [APP_STORE_URL],
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  })}</script>`;
+  html = html.replace(/<title>.*?<\/title>/s, '').replace('</head>', `${MARK[0]}${headTags}\n${MARK[1]}\n</head>`);
+  if (!/<html[^>]*\slang=/.test(html)) html = html.replace(/<html/, '<html lang="en"');
+  fs.writeFileSync(path.join(DIST, 'index.html'), html);
+}
 
 // --- og image, sitemap, robots ---------------------------------------------------
 
@@ -1629,7 +1686,7 @@ if (!fs.existsSync(ogSrc)) {
   console.error('✗ assets/og.png missing — regenerate it from assets/og-card.html');
   process.exit(1);
 }
-fs.copyFileSync(ogSrc, path.join(DIST, 'og.png'));
+if (!AUDIT) fs.copyFileSync(ogSrc, path.join(DIST, 'og.png'));
 
 // --- sitemap, with a lastmod that means something --------------------------------
 //
@@ -1672,6 +1729,36 @@ async function loadPrevManifest() {
     console.warn(`⚠ ${MANIFEST}: no previous manifest (${err.message}) — sitemap ships without lastmod`);
     return null;
   }
+}
+
+// Files served outside the page generator, so an internal link to one resolves.
+const STATIC_PATHS = new Set(['/', '/privacy.html', '/support.html', '/og.png', '/favicon.ico', '/sitemap.xml', '/robots.txt']);
+
+// Assert before anything is published. In a real build the pages are already on
+// disk by now — the gate is Vercel's build step failing, so the deploy never
+// goes live, which is the same "don't ship it" outcome and keeps the audit
+// reading the exact bytes that would have been served.
+function runAudit() {
+  const { errors, warnings, stats } = auditSeo({
+    pages,
+    rendered: RENDERED,
+    site: SITE,
+    staticPaths: STATIC_PATHS,
+  });
+  for (const w of warnings) console.warn(`⚠ seo: ${w}`);
+  if (errors.length) {
+    for (const e of errors) console.error(`✗ seo: ${e}`);
+    console.error(`✗ seo: ${errors.length} assertion${errors.length === 1 ? '' : 's'} failed across ${stats.rendered} rendered pages`);
+    return false;
+  }
+  console.log(
+    `✓ seo: ${stats.pages} pages pass (unique titles + descriptions, one h1, canonical, no orphans, no thin pages, ${stats.links} internal links resolve)`
+  );
+  return true;
+}
+
+if (AUDIT) {
+  process.exit(runAudit() ? 0 : 1);
 }
 
 (async () => {
@@ -1723,4 +1810,6 @@ async function loadPrevManifest() {
       ? `✓ sitemap.xml (${urls.length} urls, ${changed} with a new lastmod) + ${MANIFEST} + robots.txt + og.png`
       : `✓ sitemap.xml (${urls.length} urls, no lastmod) + ${MANIFEST} + robots.txt + og.png`
   );
+
+  if (!runAudit()) process.exit(1);
 })();
