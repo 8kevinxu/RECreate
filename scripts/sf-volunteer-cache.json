@@ -67,7 +67,7 @@
       "end": "2027-02-03",
       "instructor": "Golden Gate Bird Alliance",
       "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group. You can only sign-up a group of 4. If you have a group size of 5 or more, please email us at recparkvolunteer@sfgov.org.\n\nJoin the San Francisco Recreation and Parks Department, the Port of San Francisco and Golden Gate Bird Alliance in our joint stewardship of Heron's Head Park! Heron's Head Park is home to over 100 species of birds and an off-the grid sustainable learning center. Join us every 1st Wednesday of the month and learn about the EcoCenter and Park's robust ecosystem. Volunteer tasks include non-native invasive plant removal, mulch application, watering and planting (seasonally). Come prepared with closed-toe shoes and dress in layers. No experience necessary. Tools are provided. Meet in front of the EcoCenter, in the middle of the nature play area.\n\nIf you are registering to volunteer within 24 hours prior to the workday, please contact Jadd Correia at 415-244-2548.",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group. You can only sign-up a group of 4. If you have a group size of 5 or more, please email us at recparkvolunteer@sfgov.org.\n\nJoin the San Francisco Recreation and Parks Department, the Port of San Francisco and Golden Gate Bird Alliance in our joint stewardship of Heron's Head Park! Heron's Head Park is home to over 100 species of birds and an off-the grid sustainable learning center. Join us every 1st Wednesday of the month and learn about the EcoCenter and Park's robust ecosystem. Volunteer tasks include non-native invasive plant removal, mulch application, watering and planting (seasonally). Come prepared with closed-toe shoes and dress in layers. No experience necessary. Tools are provided. Meet in front of the EcoCenter at the entrance porch",
       "lat": 37.73832,
       "lng": -122.37481,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
@@ -650,7 +650,7 @@
       "end": "2027-02-25",
       "instructor": "Literacy for Environmental Justice",
       "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the San Francisco Recreation and Parks Department, the Port of San Francisco and Literacy for Environmental Justice [LEJ] on the 4th Thursday of the month in the stewardship of Heron's Head Park.\n\nHeron's Head Park is home to over 100 species of birds and an off-the grid sustainable learning center. LEJ is a Bay View Hunter's Point environmental justice non-profit focusing on workforce development for local youth, providing free outdoor education for K-12 public schools, and land stewardship in their urban community\n\nVolunteer tasks include non-native invasive plant removal, horticultural maintenance, watering and planting (seasonally). Please wear closed-toe shoes and dress in layers. No experience necessary. All ages welcome. Children under 12-years old must be accompanied by an adult. Tools are provided.\n\nMeet at the entrance front porch of the EcoCenter",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the San Francisco Recreation and Parks Department, the Port of San Francisco and Literacy for Environmental Justice [LEJ] on the 4th Thursday of the month in the stewardship of Heron's Head Park. Heron's Head Park is home to over 100 species of birds and an off-the grid sustainable learning center. LEJ is a Bay View Hunter's Point environmental justice non-profit focusing on workforce development for local youth, providing free outdoor education for K-12 public schools, and land stewardship in their urban community Volunteer tasks include non-native invasive plant removal, horticultural maintenance, watering and planting (seasonally). Please wear closed-toe shoes and dress in layers. No experience necessary. All ages welcome. Children under 12-years old must be accompanied by an adult. Tools are provided.\n\nMeet at the entrance front porch of the EcoCenter",
       "lat": 37.73832,
       "lng": -122.37481,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
@@ -931,5 +931,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-09-01T20:34:06.639Z"
+  "fetchedAt": "2026-09-02T02:52:32.623Z"
 }
