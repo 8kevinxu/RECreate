@@ -49,3 +49,7 @@ chatbot/**/__pycache__/
 chatbot/.pytest_cache/
 chatbot/.env
 .vercel
+
+# Search Console snapshot (npm run seo:gsc) — personal analytics, point-in-time,
+# and it churns daily. Same posture as chatbot/data/: regenerate, don't commit.
+scripts/gsc-cache.json

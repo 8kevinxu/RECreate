@@ -54,6 +54,8 @@
     "build:data": "npm run build:data:sf && npm run build:data:nyc",
     "update:prod": "eas update --channel production",
     "export:chatbot": "node scripts/export-chatbot-data.js",
+    "seo:gsc": "node scripts/build-gsc-snapshot.js",
+    "seo:report": "node scripts/seo-report.js",
     "check": "node scripts/check-app.js"
   },
   "private": true,

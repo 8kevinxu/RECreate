@@ -33,14 +33,17 @@ const SITE_NAME = 'RECreate';
 const APP_STORE_ID = '6786438986';
 const APP_STORE_URL = `https://apps.apple.com/us/app/recreate-recreation-made-easy/id${APP_STORE_ID}`;
 
-// SEO_AUDIT=1 builds and renders every page in memory, runs the assertions in
-// scripts/lib/seo-audit.js, and writes nothing. That is what `npm run check`
-// runs: the page set is derived entirely from the bundled data/ modules, so the
-// gate does not need `expo export` and stays a few-seconds check rather than a
-// multi-minute one. The real build runs the same assertions after writing.
+// Two dry modes, neither of which writes anything or needs an expo export —
+// the page set derives entirely from the bundled data/ modules.
+//   SEO_AUDIT=1  build + render every page in memory and run the assertions in
+//                scripts/lib/seo-audit.js. This is what `npm run check` runs,
+//                so the gate costs ~0.5s instead of a multi-minute export.
+//   SEO_PAGES=<f> write the page set to <f> as JSON, for scripts/seo-report.js.
+// The real build runs the same assertions after writing.
 const AUDIT = process.env.SEO_AUDIT === '1';
+const DRY = AUDIT || !!process.env.SEO_PAGES;
 
-if (!AUDIT && !fs.existsSync(path.join(DIST, 'index.html'))) {
+if (!DRY && !fs.existsSync(path.join(DIST, 'index.html'))) {
   console.error('✗ dist/index.html not found — run `npx expo export --platform web` first');
   process.exit(1);
 }
@@ -550,7 +553,7 @@ const RENDERED = new Map();
 function writePage(page) {
   const html = pageHtml(page);
   RENDERED.set(page.path, html);
-  if (AUDIT) return;
+  if (DRY) return;
   const dir = path.join(DIST, page.path.replace(/^\//, ''));
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(path.join(dir, 'index.html'), html);
@@ -1626,7 +1629,7 @@ const notFoundHtml = pageHtml({
   }).join('\n'),
 });
 RENDERED.set('/404', notFoundHtml);
-if (!AUDIT) fs.writeFileSync(path.join(DIST, '404.html'), notFoundHtml);
+if (!DRY) fs.writeFileSync(path.join(DIST, '404.html'), notFoundHtml);
 
 // --- patch dist/index.html (the SPA shell) -------------------------------------
 
@@ -1640,7 +1643,7 @@ const HOME_DESC =
 // this only bites locally — but two conflicting canonicals mean Google ignores
 // both, which is not a failure worth risking to save four lines.
 const MARK = ['<!-- recreate:seo -->', '<!-- /recreate:seo -->'];
-if (!AUDIT) {
+if (!DRY) {
   let html = fs.readFileSync(path.join(DIST, 'index.html'), 'utf8');
   html = html.replace(new RegExp(`${MARK[0]}[\\s\\S]*?${MARK[1]}`, 'g'), '');
   const headTags = `
@@ -1686,7 +1689,7 @@ if (!fs.existsSync(ogSrc)) {
   console.error('✗ assets/og.png missing — regenerate it from assets/og-card.html');
   process.exit(1);
 }
-if (!AUDIT) fs.copyFileSync(ogSrc, path.join(DIST, 'og.png'));
+if (!DRY) fs.copyFileSync(ogSrc, path.join(DIST, 'og.png'));
 
 // --- sitemap, with a lastmod that means something --------------------------------
 //
@@ -1755,6 +1758,21 @@ function runAudit() {
     `✓ seo: ${stats.pages} pages pass (unique titles + descriptions, one h1, canonical, no orphans, no thin pages, ${stats.links} internal links resolve)`
   );
   return true;
+}
+
+// SEO_PAGES=1 prints the page set as JSON and exits — scripts/seo-report.js
+// joins Search Console rows against it, and this file is the only thing that
+// knows what pages exist. A second list would drift on the first change.
+// To a file, not stdout: the payload is ~200 KB and a pipe write is async, so
+// the exit below truncated it mid-JSON at the 64 KB pipe buffer.
+if (process.env.SEO_PAGES) {
+  fs.writeFileSync(
+    process.env.SEO_PAGES,
+    JSON.stringify(
+      pages.map((p) => ({ path: p.path, title: p.title, kind: p.kind, city: p.cfg.id, aliases: p.aliasPaths || [] }))
+    )
+  );
+  process.exit(0);
 }
 
 if (AUDIT) {
