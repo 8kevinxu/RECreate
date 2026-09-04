@@ -38,7 +38,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 13,
+      "spots": 12,
       "unlimited": false,
       "start": "2026-09-05",
       "end": "2026-09-05",
@@ -267,7 +267,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 7,
+      "spots": 6,
       "unlimited": false,
       "start": "2026-09-12",
       "end": "2026-11-14",
@@ -321,7 +321,7 @@
       "spots": 20,
       "unlimited": false,
       "start": "2026-09-16",
-      "end": "2027-02-17",
+      "end": "2027-03-03",
       "activity": "Horticultural Maintenance",
       "desc": "Join us for volunteering at the Golden Gate Park Rhododendron Dell every 1st and 3rd Wednesday of the month! Come spend the morning with some light weeding, mulching, or pruning.Please RSVP by selecting group sign-up even when you are not registering as a group. We limit to four people per group sign-up, if you have more than four people, please email us at Recparkvolunteer@sfgov.org. Thank you!",
       "lat": 37.7699,
@@ -794,7 +794,7 @@
       "spots": 30,
       "unlimited": false,
       "start": "2026-10-07",
-      "end": "2027-02-03",
+      "end": "2027-03-03",
       "instructor": "Golden Gate Bird Alliance",
       "activity": "Habitat Restoration",
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group. You can only sign-up a group of 4. If you have a group size of 5 or more, please email us at recparkvolunteer@sfgov.org.\n\nJoin the San Francisco Recreation and Parks Department, the Port of San Francisco and Golden Gate Bird Alliance in our joint stewardship of Heron's Head Park! Heron's Head Park is home to over 100 species of birds and an off-the grid sustainable learning center. Join us every 1st Wednesday of the month and learn about the EcoCenter and Park's robust ecosystem. Volunteer tasks include non-native invasive plant removal, mulch application, watering and planting (seasonally). Come prepared with closed-toe shoes and dress in layers. No experience necessary. Tools are provided. Meet in front of the EcoCenter at the entrance porch",
@@ -905,5 +905,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-09-04T15:46:32.791Z"
+  "fetchedAt": "2026-09-04T20:17:31.510Z"
 }
