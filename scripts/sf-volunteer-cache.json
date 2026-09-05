@@ -51,32 +51,6 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
-      "id": "vol-a07Pi00003zJ3cYIAS",
-      "source": "sfrpd-volunteer",
-      "name": "Palou Phelps Park Volunteer Workparty",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "Palou & Phelps Park",
-      "when": "Sat · 10:00 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 12,
-      "unlimited": false,
-      "start": "2026-09-05",
-      "end": "2026-09-05",
-      "oneDay": true,
-      "instructor": "Friends of Palou Phelps",
-      "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the SFRPD gardeners in a recurring habitat restoration volunteer project at Palou Phelps Park. Volunteer tasks include litter pick-up, weeding, mulching, habitat restoration and occasional planting. Please wear closed-toed shoes, long pants and layers. The event will occur rain or shine.\n\nMeet on Palou Ave at the intersection with Phelps St",
-      "lat": 37.73395,
-      "lng": -122.38995,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a07Pi00003zIOHmIAO",
       "source": "sfrpd-volunteer",
       "name": "Friends of the Park Presidio Pollinator Garden",
@@ -100,6 +74,32 @@
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the RPD Gardeners and the Friends of the Park Presidio Pollinator Garden in a recurring volunteer workparty on the first Saturday monthly at the Park Presidio Boulevard. All are welcome. Please wear closed-toed shoes, long pants and layers. All supplies, tools, and gloves are provided by RPD. The event will occur rain or shine.\n\nMeet at the pollinator garden sign located at the Southwest corner of Cabrillo Ave and 14th Ave.",
       "lat": 37.77596,
       "lng": -122.47269,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a07Pi00003zJ3cYIAS",
+      "source": "sfrpd-volunteer",
+      "name": "Palou Phelps Park Volunteer Workparty",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "Palou & Phelps Park",
+      "when": "Sat · 10:00 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 12,
+      "unlimited": false,
+      "start": "2026-09-05",
+      "end": "2026-09-05",
+      "oneDay": true,
+      "instructor": "Friends of Palou Phelps",
+      "activity": "Habitat Restoration",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the SFRPD gardeners in a recurring habitat restoration volunteer project at Palou Phelps Park. Volunteer tasks include litter pick-up, weeding, mulching, habitat restoration and occasional planting. Please wear closed-toed shoes, long pants and layers. The event will occur rain or shine.\n\nMeet on Palou Ave at the intersection with Phelps St",
+      "lat": 37.73395,
+      "lng": -122.38995,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -151,32 +151,6 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
-      "id": "vol-a07Pi00006B5tmHIAR",
-      "source": "sfrpd-volunteer",
-      "name": "CNPS Balboa Natural Area September 9, 2026",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "Balboa Natural Area",
-      "when": "Wed · 12:00 PM - 2:30 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 15,
-      "unlimited": false,
-      "start": "2026-09-09",
-      "end": "2026-09-09",
-      "oneDay": true,
-      "instructor": "California Native Plant Society",
-      "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin SF Recreation and Parks’ Natural Resources Division and the California Native Plant Society for their weekly Wednesday habitat restoration project.\n\nJoin our habitat restoration event at a beautiful San Francisco haven for native beach dune plants. See how nature can rebound if given the chance! This neglected plot of land was restored by SF Rec and Park and now is home to a diverse array of plants and animals. We will be working to protect the area from invasives. Tools and gloves provided, water and snacks served at the end of the work party.\n\nWe will also be participating in the iNaturalist biodiversity challenge where we'll be looking to find 30 species.\n\nSign up at: https://www.inaturalist.org/projects/find-30-species-for-ca-biodiversity-day-2026\n\nThe Balboa Natural Area is one of only a few foredune communities in San Francisco and the only one within the Natural Areas System. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Everyone 14 years old and older is invited; anyone under 14 yo must be accompanied by a guardian. Tools and gloves will be provided. Please be punctual. \n\nMeet at the northernmost boardwalk entrance.",
-      "lat": 37.72165,
-      "lng": -122.4593,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a074U00001JrHLLQA3",
       "source": "sfrpd-volunteer",
       "name": "CNPS Balboa Natural Area",
@@ -198,6 +172,32 @@
       "instructor": "California Native Plant Society",
       "activity": "Habitat Restoration",
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin SF Recreation and Parks’ Natural Resources Division and the California Native Plant Society for their weekly Wednesday habitat restoration project. The Balboa Natural Area is one of only a few foredune communities in San Francisco and the only one within the Natural Areas System. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Everyone 14 years old and older is invited; anyone under 14 yo must be accompanied by a guardian. Tools and gloves will be provided. Please be punctual. \n\nMeet at the northernmost boardwalk entrance.",
+      "lat": 37.72165,
+      "lng": -122.4593,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a07Pi00006B5tmHIAR",
+      "source": "sfrpd-volunteer",
+      "name": "CNPS Balboa Natural Area September 9, 2026",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "Balboa Natural Area",
+      "when": "Wed · 12:00 PM - 2:30 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 15,
+      "unlimited": false,
+      "start": "2026-09-09",
+      "end": "2026-09-09",
+      "oneDay": true,
+      "instructor": "California Native Plant Society",
+      "activity": "Habitat Restoration",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin SF Recreation and Parks’ Natural Resources Division and the California Native Plant Society for their weekly Wednesday habitat restoration project.\n\nJoin our habitat restoration event at a beautiful San Francisco haven for native beach dune plants. See how nature can rebound if given the chance! This neglected plot of land was restored by SF Rec and Park and now is home to a diverse array of plants and animals. We will be working to protect the area from invasives. Tools and gloves provided, water and snacks served at the end of the work party.\n\nWe will also be participating in the iNaturalist biodiversity challenge where we'll be looking to find 30 species.\n\nSign up at: https://www.inaturalist.org/projects/find-30-species-for-ca-biodiversity-day-2026\n\nThe Balboa Natural Area is one of only a few foredune communities in San Francisco and the only one within the Natural Areas System. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Everyone 14 years old and older is invited; anyone under 14 yo must be accompanied by a guardian. Tools and gloves will be provided. Please be punctual. \n\nMeet at the northernmost boardwalk entrance.",
       "lat": 37.72165,
       "lng": -122.4593,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
@@ -242,7 +242,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 29,
+      "spots": 28,
       "unlimited": false,
       "start": "2026-09-12",
       "end": "2026-12-12",
@@ -426,29 +426,28 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
-      "id": "vol-a074U00001JoniHQAR",
+      "id": "vol-a07Pi00003zjg0EIAQ",
       "source": "sfrpd-volunteer",
-      "name": "Coastal Cleanup Marina Yacht Harbor",
+      "name": "White Crowned Sparrow Habitat Restoration at the Bison Paddock",
       "category": "philanthropy",
       "tags": [
         "nature"
       ],
-      "location": "Yacht Harbor and Marina Green",
+      "location": "GGP Sec 5 Bison Paddock",
       "when": "Sat · 9:00 AM - 12:00 PM",
       "dropIn": false,
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 0,
+      "spots": 25,
       "unlimited": false,
       "start": "2026-09-19",
-      "end": "2026-09-19",
-      "oneDay": true,
-      "instructor": "California Coastal Commission",
+      "end": "2026-12-19",
+      "instructor": "Golden Gate Bird Alliance",
       "activity": "Habitat Restoration",
-      "desc": "Please come join SF Rec & Park and the CA Coastal Commission for a cleanup event at Marina Yacht Harbor located in the Marina District of San Francisco. The Marina Yacht Harbor is a 35-acre facility with 727 berths, 15 end ties for guest berthing vessels, free pump out stations and a commercial fuel dock. The marina is the oldest recreational marina operating in San Francisco and is a destination sought by thousands of boaters from all over the world.",
-      "lat": 37.806649,
-      "lng": -122.436099,
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nVolunteer with the Golden Gate Bird Alliance at the Bison Paddock of Golden Gate Park and help to restore the habitat of the White-crowned sparrow. Lend a hand with weeding and tending a garden of native plants that comprise a critical nesting and feeding area for this sparrow. Please wear appropriate attire: closed-toe shoes, long pants and layers of clothing.\n\nMeet at the middle of the Bison Paddock fence located on John F Kennedy Drive between 36th Avenue and Chain of Lakes Drive East.",
+      "lat": 37.7702,
+      "lng": -122.4917,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -478,28 +477,29 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
-      "id": "vol-a07Pi00003zjg0EIAQ",
+      "id": "vol-a074U00001JoniHQAR",
       "source": "sfrpd-volunteer",
-      "name": "White Crowned Sparrow Habitat Restoration at the Bison Paddock",
+      "name": "Coastal Cleanup Marina Yacht Harbor",
       "category": "philanthropy",
       "tags": [
         "nature"
       ],
-      "location": "GGP Sec 5 Bison Paddock",
+      "location": "Yacht Harbor and Marina Green",
       "when": "Sat · 9:00 AM - 12:00 PM",
       "dropIn": false,
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 25,
+      "spots": 0,
       "unlimited": false,
       "start": "2026-09-19",
-      "end": "2026-12-19",
-      "instructor": "Golden Gate Bird Alliance",
+      "end": "2026-09-19",
+      "oneDay": true,
+      "instructor": "California Coastal Commission",
       "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nVolunteer with the Golden Gate Bird Alliance at the Bison Paddock of Golden Gate Park and help to restore the habitat of the White-crowned sparrow. Lend a hand with weeding and tending a garden of native plants that comprise a critical nesting and feeding area for this sparrow. Please wear appropriate attire: closed-toe shoes, long pants and layers of clothing.\n\nMeet at the middle of the Bison Paddock fence located on John F Kennedy Drive between 36th Avenue and Chain of Lakes Drive East.",
-      "lat": 37.7702,
-      "lng": -122.4917,
+      "desc": "Please come join SF Rec & Park and the CA Coastal Commission for a cleanup event at Marina Yacht Harbor located in the Marina District of San Francisco. The Marina Yacht Harbor is a 35-acre facility with 727 berths, 15 end ties for guest berthing vessels, free pump out stations and a commercial fuel dock. The marina is the oldest recreational marina operating in San Francisco and is a destination sought by thousands of boaters from all over the world.",
+      "lat": 37.806649,
+      "lng": -122.436099,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -577,31 +577,6 @@
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the SF Recreation and Parks Department Natural Resources Division, and the California Native Plant Society for their weekly Wednesday habitat restoration project. Help restore this important remnant dune community while enjoying amazing views of the Pacific Ocean, Golden Gate Park, the Outer Sunset, and the Marin Headlands. Grandview Park is also part of the Green Hairstreak Butterfly corridor! Please wear closed-toed shoes and dress in appropriate clothing for physical work. Everyone 14 years old and older is invited; anyone under 14 yo must be accompanied by a guardian. Tools and gloves will be provided. Please be punctual. \n\nMeet at the stairs on Noriega St. near 748 Noriega St",
       "lat": 37.75609,
       "lng": -122.4744,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
-      "id": "vol-a07Pi00003RhgW4IAJ",
-      "source": "sfrpd-volunteer",
-      "name": "Heron's Head Park Volunteer Workparty 4th Thursday",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "Heron's Head Park",
-      "when": "Thu · 10:00 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 20,
-      "unlimited": false,
-      "start": "2026-09-24",
-      "end": "2027-02-25",
-      "instructor": "Literacy for Environmental Justice",
-      "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the San Francisco Recreation and Parks Department, the Port of San Francisco and Literacy for Environmental Justice [LEJ] on the 4th Thursday of the month in the stewardship of Heron's Head Park. Heron's Head Park is home to over 100 species of birds and an off-the grid sustainable learning center. LEJ is a Bay View Hunter's Point environmental justice non-profit focusing on workforce development for local youth, providing free outdoor education for K-12 public schools, and land stewardship in their urban community Volunteer tasks include non-native invasive plant removal, horticultural maintenance, watering and planting (seasonally). Please wear closed-toe shoes and dress in layers. No experience necessary. All ages welcome. Children under 12-years old must be accompanied by an adult. Tools are provided.\n\nMeet at the entrance front porch of the EcoCenter",
-      "lat": 37.73832,
-      "lng": -122.37481,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -880,6 +855,31 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
+      "id": "vol-a07Pi00003RhgW4IAJ",
+      "source": "sfrpd-volunteer",
+      "name": "Heron's Head Park Volunteer Workparty 4th Thursday",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "Heron's Head Park",
+      "when": "Thu · 10:00 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 20,
+      "unlimited": false,
+      "start": "2026-10-22",
+      "end": "2027-02-25",
+      "instructor": "Literacy for Environmental Justice",
+      "activity": "Habitat Restoration",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the San Francisco Recreation and Parks Department, the Port of San Francisco and Literacy for Environmental Justice [LEJ] on the 4th Thursday of the month in the stewardship of Heron's Head Park. Heron's Head Park is home to over 100 species of birds and an off-the grid sustainable learning center. LEJ is a Bay View Hunter's Point environmental justice non-profit focusing on workforce development for local youth, providing free outdoor education for K-12 public schools, and land stewardship in their urban community Volunteer tasks include non-native invasive plant removal, horticultural maintenance, watering and planting (seasonally). Please wear closed-toe shoes and dress in layers. No experience necessary. All ages welcome. Children under 12-years old must be accompanied by an adult. Tools are provided.\n\nMeet at the entrance front porch of the EcoCenter",
+      "lat": 37.73832,
+      "lng": -122.37481,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
       "id": "vol-a07Pi00004eFoLJIA0",
       "source": "sfrpd-volunteer",
       "name": "McLaren Park Gambier Plaza Volunteer Workparty",
@@ -905,5 +905,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-09-04T20:17:31.510Z"
+  "fetchedAt": "2026-09-05T02:57:49.337Z"
 }
