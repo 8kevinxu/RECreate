@@ -32,7 +32,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { fetchT } = require('../fetch-timeout');
+const { fetchTR } = require('../fetch-timeout');
 const { slug, loadCache, saveCache } = require('./courts-common');
 
 const UA = { 'User-Agent': 'RECreate/1.0', Accept: 'application/json' };
@@ -74,7 +74,7 @@ async function fetchAllRows(domain, datasetId, params) {
     // skip rows across pages (seen in practice: ~30% of lookup rows missing).
     const qs = new URLSearchParams({ ...params, $order: ':id', $limit: String(PAGE), $offset: String(offset) });
     const url = `https://${domain}/resource/${datasetId}.json?${qs}`;
-    const res = await fetchT(url, { headers: UA }, 60000);
+    const res = await fetchTR(url, { headers: UA }, 60000);
     if (!res.ok) throw new Error(`HTTP ${res.status} from ${datasetId}`);
     const page = await res.json();
     rows.push(...page);

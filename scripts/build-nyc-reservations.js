@@ -47,7 +47,7 @@
 const fs = require('fs');
 const path = require('path');
 const cheerio = require('cheerio');
-const { fetchT } = require('./fetch-timeout');
+const { fetchT, fetchTR } = require('./fetch-timeout');
 const { loadCache, saveCache, reportStale } = require('./lib/courts-common');
 
 const BASE = 'https://www.nycgovparks.org';
@@ -129,7 +129,10 @@ const ymd = (d) => `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDat
 const slotKey = (date, min) => `${date} ${pad2(Math.floor(min / 60))}:${pad2(min % 60)}`;
 
 async function getJson(url) {
-  const res = await fetchT(url, { headers: HEADERS }, 30000);
+  // Retried: the permit sweep is ~217 of these, and one timing out used to
+  // discard the whole citywide reading. A 405 is NOT retried (see fetchTR) —
+  // that is the WAF's IP block, and CI must keep falling back immediately.
+  const res = await fetchTR(url, { headers: HEADERS }, 30000);
   if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
   return res.json();
 }
