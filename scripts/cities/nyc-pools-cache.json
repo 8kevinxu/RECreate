@@ -10761,11 +10761,6 @@
         [
           {
             "kind": "lap",
-            "start": 0,
-            "end": 180
-          },
-          {
-            "kind": "lap",
             "start": 660,
             "end": 840
           },
@@ -10798,11 +10793,6 @@
           }
         ],
         [
-          {
-            "kind": "lap",
-            "start": 0,
-            "end": 180
-          },
           {
             "kind": "lap",
             "start": 660,
@@ -10872,13 +10862,9 @@
       "indoor": true,
       "accessible": true,
       "desc": "Olympic pool · 164' x 82' x 7.5'",
-      "season": "Year-round (recreation center members)",
+      "season": "No pool sessions currently published",
       "seasonal": false,
-      "notice": "There are no programs at this pool today.",
-      "programs": [
-        "family",
-        "lap"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
@@ -10931,66 +10917,11 @@
       ],
       "sessions": [
         [],
-        [
-          {
-            "kind": "family",
-            "start": 420,
-            "end": 900
-          },
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 900
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 420,
-            "end": 900
-          },
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 900
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 420,
-            "end": 900
-          },
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 900
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 420,
-            "end": 900
-          },
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 900
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 420,
-            "end": 900
-          }
-        ],
+        [],
+        [],
+        [],
+        [],
+        [],
         []
       ]
     },
@@ -11197,8 +11128,8 @@
   "season": {
     "open": true,
     "label": "Open daily through Labor Day (9/7)",
-    "checked": "2026-09-02",
+    "checked": "2026-09-06",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-09-02T16:21:24.646Z"
+  "fetchedAt": "2026-09-06T04:25:32.804Z"
 }
