@@ -25,12 +25,15 @@
 # dedicated clone removes both problems: nothing else ever touches it, so it can
 # hard-reset to origin/main every run and never has to reason about local edits.
 #
-# Scheduled daily by ~/Library/LaunchAgents/com.recreate.nyc-refresh.plist.
-# Daily is the slowest cadence that works: the tightest staleness budget is 48h
-# (NYC classes, NYC permits) and the permit window is a rolling 7 days of
-# ABSOLUTE dates, so it expires rather than merely ageing. launchd re-fires a
-# missed StartCalendarInterval once on wake, and will not start a second
-# instance while one is still running, so no lockfile is needed here.
+# Scheduled TWICE daily (09:15 / 21:15) by
+# ~/Library/LaunchAgents/com.recreate.nyc-refresh.plist. The tightest staleness
+# budget is 48h (NYC classes, NYC permits), and the permit window is a rolling 7
+# days of ABSOLUTE dates, so it expires rather than merely ageing. Daily looks
+# like it fits that budget but leaves no slack: it tolerates exactly one failed
+# run, and these scrapes fail routinely on transient timeouts, so two bad days
+# in a row take CI red. At 12h apart three consecutive failures still fit.
+# launchd re-fires a missed StartCalendarInterval once on wake, and will not
+# start a second instance while one is still running, so no lockfile is needed.
 
 set -uo pipefail
 

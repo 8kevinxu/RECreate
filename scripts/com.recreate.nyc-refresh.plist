@@ -27,15 +27,31 @@
         <string>/Users/kevin/code/RECreate/scripts/refresh-nyc-local.sh</string>
     </array>
 
-    <!-- Daily. The tightest staleness budget is 48h, so this leaves room to miss
-         one run; launchd re-fires a missed interval once on wake, which is what
-         makes a laptop a viable host. 09:15 rather than a round hour to avoid
-         piling onto everything else that runs on the hour. -->
+    <!-- TWICE daily against a 48h budget, because daily had no slack at all.
+         A calendar job that runs every 24h tolerates exactly ONE failure: miss
+         two in a row and the cache is 48h old the moment the second one ends.
+         That is not a theoretical margin — 09-03 failed on `npm run check`,
+         09-04 and 09-05 on single transient fetch timeouts, and CI went red on
+         the second one. Every scrape here is best-effort against sources that
+         occasionally stall, so the schedule has to assume a run will fail.
+         At 12h apart, three consecutive failures still land inside the budget.
+
+         launchd will not start a second instance while one is still running, so
+         the ~10 minute scrape cannot overlap itself, and it re-fires a missed
+         interval once on wake — which is what makes a laptop a viable host.
+         :15 rather than a round hour to avoid piling onto everything else that
+         runs on the hour. -->
     <key>StartCalendarInterval</key>
-    <dict>
-        <key>Hour</key><integer>9</integer>
-        <key>Minute</key><integer>15</integer>
-    </dict>
+    <array>
+        <dict>
+            <key>Hour</key><integer>9</integer>
+            <key>Minute</key><integer>15</integer>
+        </dict>
+        <dict>
+            <key>Hour</key><integer>21</integer>
+            <key>Minute</key><integer>15</integer>
+        </dict>
+    </array>
 
     <!-- Off on purpose: this would otherwise fire a ~10 minute scrape on every
          login, and the daily schedule plus wake-catchup already covers it. -->
