@@ -93,5 +93,19 @@ jobs:
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git add $FILES
             git commit -m "chore: refresh open-gym schedules"
-            git push
+            # Another refresh job may have pushed while this one scraped.
+            # refresh-classes (0 */6) and refresh-reservations (0 */3) fire on
+            # the same minute every 6h, and the local NYC feeder pushes twice a
+            # day, so without this the loser of a race throws away a scrape it
+            # had already finished — the run goes red with the data on the floor.
+            # Every one of these jobs stages only its own generated files, so a
+            # genuine conflict is not expected; it fails loudly rather than being
+            # forced past.
+            pushed=""
+            for attempt in 1 2 3; do
+              if git push; then pushed=1; break; fi
+              echo "push rejected (attempt $attempt) — rebasing onto origin/main"
+              git pull --rebase origin main || { echo "rebase failed"; exit 1; }
+            done
+            [ -n "$pushed" ] || { echo "push still rejected after 3 attempts"; exit 1; }
           fi
