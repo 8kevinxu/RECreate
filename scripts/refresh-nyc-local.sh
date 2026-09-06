@@ -84,16 +84,35 @@ if [ ! -d node_modules ] || [ package-lock.json -nt node_modules/.package-lock.j
   npm ci --silent || { echo "FAIL: npm ci"; exit 1; }
 fi
 
-# All six NYC builds. Each self-gates: a short or failed scrape keeps last-good
-# data, so a partial upstream outage degrades instead of publishing junk.
-if ! npm run build:data:nyc; then
-  echo "FAIL: build:data:nyc — nothing committed, origin left as it was."
-  exit 1
+# All six NYC builds, EACH RUN SEPARATELY AND EVERY ONE OF THEM RUN. They used
+# to be a single `npm run build:data:nyc`, which is an `&&` chain — so the first
+# source to exit non-zero short-circuited the five behind it AND skipped the
+# commit entirely. That is fatal here rather than merely wasteful, because
+# reportStale() exits 1 while still shipping perfectly usable data: on 2026-09-04
+# outdoor and indoor both scraped LIVE and were thrown away because the
+# reservations cache had aged out. Two runs like that in a row is all a 48h
+# budget can absorb, which is exactly how the caches got stuck at 09-02 with CI
+# red from 09-04 on. The weekly workflow already runs each NYC source as its own
+# step for this same reason; the feeder never got the same treatment.
+#
+# Each build still self-gates internally: a short or failed scrape keeps its own
+# last-good data, so a partial upstream outage degrades instead of publishing
+# junk. What changed is that one source's bad day no longer suppresses the rest.
+failed=""
+for b in build:nyc build:nyc-indoor build:nyc-reservations \
+         build:nyc-directory build:nyc-pools build:nyc-classes; do
+  npm run "$b" || failed="$failed $b"
+done
+
+if [ -n "$failed" ]; then
+  echo "-- did NOT refresh:$failed — committing whatever else did"
 fi
 
 # The repo's own sanity gate: every file parses, i18n stays at parity, and the
 # generated modules load with non-trivial entry counts. Committing a gutted
-# scrape is worse than committing nothing.
+# scrape is worse than committing nothing. Unlike a single source failing, this
+# one DOES abort the commit — it runs over the merged result, so it cannot say
+# which source poisoned it and there is nothing safe to keep.
 if ! npm run check; then
   echo "FAIL: npm run check — refusing to commit this build."
   exit 1
@@ -103,6 +122,7 @@ fi
 git add data/cities/nyc scripts/cities/*.json
 if git diff --cached --quiet; then
   echo "No NYC changes."
+  [ -n "$failed" ] && exit 1
   exit 0
 fi
 
@@ -119,3 +139,12 @@ inside their staleness budgets so CI's fallback stays green."
 git pull --rebase --quiet origin "$BRANCH" || { echo "FAIL: rebase onto origin/$BRANCH"; exit 1; }
 git push --quiet origin "$BRANCH" || { echo "FAIL: git push"; exit 1; }
 echo "OK: pushed $(git rev-parse --short HEAD)"
+
+# Report a partial failure only now that the good sources are safely pushed —
+# the same posture as the workflow's `if: !cancelled()` steps. The run still goes
+# red, so the stale gate stays loud; it just no longer costs the sources that
+# were fine.
+if [ -n "$failed" ]; then
+  echo "FAIL: some sources did not refresh:$failed"
+  exit 1
+fi
