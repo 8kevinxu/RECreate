@@ -308,7 +308,7 @@ const CourtMap = forwardRef(function CourtMap(
       attributionControl: true,
       zoomSnap: 0,
       zoomDelta: 0.4,
-      wheelPxPerZoomLevel: 90,
+      wheelPxPerZoomLevel: 3,
     }).setView(initialCenter ? [initialCenter.lat, initialCenter.lng] : SF, initialZoom);
     map.attributionControl.setPrefix(false).setPosition('bottomleft');
     const tiles = L.tileLayer(TILE_URL, {
