@@ -644,7 +644,7 @@
       "spots": 8,
       "unlimited": false,
       "start": "2026-10-03",
-      "end": "2027-02-06",
+      "end": "2027-03-06",
       "activity": "Horticultural Maintenance",
       "desc": "Volunteers needed for Park Greening Day! Come out and join the RPD Gardeners and Alamo Square Neighbors Association in their recurring volunteering workparty. Activities include planting, gardening, weeding, general park maintenance. Please wear long pants and closed-toed shoes. Event takes place rain or shine. Meet at the Hayes and Steiner Tennis Courts near the restrooms.",
       "lat": 37.776277,
@@ -852,5 +852,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-09-07T11:35:39.375Z"
+  "fetchedAt": "2026-09-07T17:15:20.122Z"
 }
