@@ -137,7 +137,7 @@ const buildHtml = (center, zoom, attribBottom) => `
     var map = L.map('map', { zoomControl: false, attributionControl: true, zoomSnap: 0, zoomDelta: 0.4, wheelPxPerZoomLevel: 90 })
       .setView([${center.lat}, ${center.lng}], ${zoom});
 
-    map.attributionControl.setPrefix(false).setPosition('bottomleft');
+    map.attributionControl.setPrefix(false).setPosition('bottomright');
     var tiles = L.tileLayer(${JSON.stringify(TILE_URL)}, Object.assign(
       ${JSON.stringify(TILE_OPTS)},
       { attribution: ${JSON.stringify(TILE_ATTRIB)} }
