@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Expo version
 
-This project is on **Expo SDK 54 / React Native 0.81 / React 19**. Expo's APIs change between major versions — read the exact versioned docs at https://docs.expo.dev/versions/v56.0.0/ before writing native/Expo code (per `AGENTS.md`).
+This project is on **Expo SDK 57 / React Native 0.86 / React 19**. Expo's APIs change between major versions — read the exact versioned docs at https://docs.expo.dev/versions/v57.0.0/ before writing native/Expo code (per `AGENTS.md`).
 
 ## Commands
 
