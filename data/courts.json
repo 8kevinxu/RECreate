@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T20:35:42.264Z",
+  "generatedAt": "2026-09-07T18:57:33.115Z",
   "season": "Summer",
   "courts": [
     {
@@ -353,11 +353,36 @@
         "pingpong": [
           [],
           [],
-          [],
-          [],
-          [],
-          [],
-          []
+          [
+            [
+              780,
+              1080
+            ]
+          ],
+          [
+            [
+              780,
+              1080
+            ]
+          ],
+          [
+            [
+              780,
+              1080
+            ]
+          ],
+          [
+            [
+              780,
+              1080
+            ]
+          ],
+          [
+            [
+              780,
+              1080
+            ]
+          ]
         ],
         "badminton": [
           [],
@@ -389,7 +414,7 @@
       },
       "scheduleSource": "live",
       "source": "sfrecpark",
-      "notes": "Clubhouse hosting camps, Zumba and yoga."
+      "notes": "Clubhouse hosting camps, Zumba and yoga; drop-in ping pong Tuesday–Saturday afternoons."
     },
     {
       "id": "eureka-valley-recreation-center",
@@ -691,15 +716,10 @@
           [
             [
               690,
-              1080
+              930
             ]
           ],
-          [
-            [
-              960,
-              1080
-            ]
-          ],
+          [],
           [
             [
               960,
@@ -714,7 +734,7 @@
           ],
           [
             [
-              750,
+              540,
               900
             ],
             [
@@ -735,7 +755,7 @@
           ],
           [
             [
-              1080,
+              960,
               1200
             ]
           ],
@@ -828,7 +848,7 @@
           [
             [
               600,
-              1170
+              1050
             ]
           ],
           [

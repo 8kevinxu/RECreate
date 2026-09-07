@@ -261,7 +261,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 11,
+      "spots": 10,
       "unlimited": false,
       "start": "2026-09-17",
       "end": "2026-11-19",
@@ -443,7 +443,7 @@
       "spots": 15,
       "unlimited": false,
       "start": "2026-09-19",
-      "end": "2027-02-20",
+      "end": "2027-03-06",
       "instructor": "Friends of Heron's Head Park",
       "activity": "Horticultural Maintenance",
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin us for a monthly habitat restoration volunteer workparty at Heron's Head Park, a coastal site of San Francisco Bay in the SE District.  Volunteers will contribute to an ecological project started by community-based organizations in partnership with the Port of San Francisco. Volunteers will assist in the preservation and restoration of a native landscape and bird sanctuary. Tasks will include invasive species removal, landscape maintenance and planting.\n\nAll tools and materials provided. Minimum volunteer age of 6 years old. Children under 12 years old must be accompanied by an adult chaperone. Please wear close-toe shoes, long pants, long-sleeve shirts and bring a water bottle and sun hat.\n\nMeet at the front porch of the EcoCenter",
@@ -852,5 +852,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-09-07T17:15:20.122Z"
+  "fetchedAt": "2026-09-07T19:00:35.487Z"
 }
