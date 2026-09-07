@@ -125,7 +125,9 @@
           "organization": "recreate-o6",
           "project": "recreate"
         }
-      ]
+      ],
+      "expo-font",
+      "expo-status-bar"
     ],
     "owner": "8kevinxu",
     "extra": {
