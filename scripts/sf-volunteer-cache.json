@@ -342,7 +342,6 @@
       "start": "2026-09-19",
       "end": "2026-09-19",
       "oneDay": true,
-      "instructor": "California Coastal Commission",
       "activity": "Litter Abatement",
       "desc": "Please come join SF Rec & Park and the CA Coastal Commission for a cleanup event at Herons Head Park in the Bayview Neighborhood of SF.  HHP is one of San Francisco’s ecological treasures a 22-acre open space and thriving wildlife habitat located in the City’s Southeast Sector. Teeming with native plants and a wide variety of birds, Heron’s Head Park is one of the few wetlands on San Francisco’s shoreline, and is an example of restoration success. Onsite leaders from the Greenager Program will be hosting public members in a trash and debris collection event along the bay.",
       "lat": 37.73832,
@@ -852,5 +851,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-09-08T15:59:54.654Z"
+  "fetchedAt": "2026-09-08T20:44:25.267Z"
 }
