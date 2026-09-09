@@ -10026,7 +10026,7 @@
       "desc": "Intermediate pool · 66' x 26' x 8'",
       "season": "No pool sessions currently published",
       "seasonal": false,
-      "notice": "Beginning Monday, June 15, 2026, the indoor pool at Asser Levy Recreation Center will be closed for the duration of summer through mid-September. We encourage all members to use the Asser Levy Outdoor Pool during this time.",
+      "notice": "The indoor pool at Asser Levy Recreation Center will open on Monday, September 21, updated Fall schedules will be posted on the website and at the facility. Beginning Monday, June 15, 2026, the indoor pool at Asser Levy Recreation Center will be closed for the duration of summer through mid-September. We encourage all members to use the Asser Levy Outdoor Pool during this time.",
       "programs": [],
       "fees": {
         "effective": "2026-01-01",
@@ -10076,80 +10076,6 @@
         {
           "label": "Pool schedule",
           "url": "https://www.nycgovparks.org/facilities/recreationcenters/M164/schedule#Pool-schedule"
-        }
-      ],
-      "sessions": [
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
-      ]
-    },
-    {
-      "id": "nyc-pool-tony-dapolito-recreation-center-indoor-pool",
-      "name": "Tony Dapolito Recreation Center Indoor Pool",
-      "address": "Clarkson St. and Seventh Ave. South",
-      "lat": 40.7297,
-      "lng": -74.0055,
-      "phone": "(646) 300-2271",
-      "indoor": true,
-      "accessible": true,
-      "desc": "Intermediate pool · 70' x 21' x 8'",
-      "season": "No pool sessions currently published",
-      "seasonal": false,
-      "notice": "The Tony Dapolito Recreation Center and Outdoor Pool are closed due to the building’s structural condition. Visit the Clarkson Street Corridor Input Portal and our Capital Project Tracker for updates on the site.",
-      "programs": [],
-      "fees": {
-        "effective": "2026-01-01",
-        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
-        "note": "Recreation center membership — indoor pools are members-only",
-        "groups": [
-          {
-            "id": "youth",
-            "label": "Ages 24 and under",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                0
-              ]
-            ]
-          },
-          {
-            "id": "adult",
-            "label": "Adults (25–61)",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                150
-              ],
-              [
-                "Six months",
-                75
-              ]
-            ]
-          },
-          {
-            "id": "senior",
-            "label": "Seniors 62+, veterans, people with disabilities",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                25
-              ]
-            ]
-          }
-        ]
-      },
-      "scheduleUrls": [
-        {
-          "label": "Pool schedule",
-          "url": "https://www.nycgovparks.org/facilities/recreationcenters/M103/schedule#Pool-schedule"
         }
       ],
       "sessions": [
@@ -10237,18 +10163,18 @@
       ]
     },
     {
-      "id": "nyc-pool-hansborough-recreation-center-pool",
-      "name": "Hansborough Recreation Center Pool",
-      "address": "134th St. between Fifth & Lenox Aves.",
-      "lat": 40.8129,
-      "lng": -73.9394,
-      "phone": "(212) 234-9603",
+      "id": "nyc-pool-tony-dapolito-recreation-center-indoor-pool",
+      "name": "Tony Dapolito Recreation Center Indoor Pool",
+      "address": "Clarkson St. and Seventh Ave. South",
+      "lat": 40.7297,
+      "lng": -74.0055,
+      "phone": "(646) 300-2271",
       "indoor": true,
       "accessible": true,
-      "desc": "Intermediate pool · 75' x 35' x 9'",
+      "desc": "Intermediate pool · 70' x 21' x 8'",
       "season": "No pool sessions currently published",
       "seasonal": false,
-      "notice": "Hansborough Recreation Center is closed for reconstruction. Visit our Capital Tracker page for updates on this project.",
+      "notice": "The Tony Dapolito Recreation Center and Outdoor Pool are closed due to the building’s structural condition. Visit the Clarkson Street Corridor Input Portal and our Capital Project Tracker for updates on the site.",
       "programs": [],
       "fees": {
         "effective": "2026-01-01",
@@ -10297,7 +10223,7 @@
       "scheduleUrls": [
         {
           "label": "Pool schedule",
-          "url": "https://www.nycgovparks.org/facilities/recreationcenters/M131/schedule#Pool-schedule"
+          "url": "https://www.nycgovparks.org/facilities/recreationcenters/M103/schedule#Pool-schedule"
         }
       ],
       "sessions": [
@@ -10460,6 +10386,80 @@
             "end": 930
           }
         ]
+      ]
+    },
+    {
+      "id": "nyc-pool-hansborough-recreation-center-pool",
+      "name": "Hansborough Recreation Center Pool",
+      "address": "134th St. between Fifth & Lenox Aves.",
+      "lat": 40.8129,
+      "lng": -73.9394,
+      "phone": "(212) 234-9603",
+      "indoor": true,
+      "accessible": true,
+      "desc": "Intermediate pool · 75' x 35' x 9'",
+      "season": "No pool sessions currently published",
+      "seasonal": false,
+      "notice": "Hansborough Recreation Center is closed for reconstruction. Visit our Capital Tracker page for updates on this project.",
+      "programs": [],
+      "fees": {
+        "effective": "2026-01-01",
+        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
+        "note": "Recreation center membership — indoor pools are members-only",
+        "groups": [
+          {
+            "id": "youth",
+            "label": "Ages 24 and under",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                0
+              ]
+            ]
+          },
+          {
+            "id": "adult",
+            "label": "Adults (25–61)",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                150
+              ],
+              [
+                "Six months",
+                75
+              ]
+            ]
+          },
+          {
+            "id": "senior",
+            "label": "Seniors 62+, veterans, people with disabilities",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                25
+              ]
+            ]
+          }
+        ]
+      },
+      "scheduleUrls": [
+        {
+          "label": "Pool schedule",
+          "url": "https://www.nycgovparks.org/facilities/recreationcenters/M131/schedule#Pool-schedule"
+        }
+      ],
+      "sessions": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -11009,5 +11009,5 @@
     "checked": "2026-09-09",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-09-09T05:01:11.978Z"
+  "fetchedAt": "2026-09-09T16:27:40.749Z"
 }
