@@ -1612,7 +1612,13 @@ export default function App() {
 
         <Pressable
           style={[styles.nearbyBtn, { bottom: navClearance }]}
-          onPress={() => setNearbyOpen(true)}
+          onPress={() => {
+            setNearbyOpen(true);
+            // Same reason as handleSelect: don't leave the dial / filter bar
+            // sitting under the sheet.
+            setSportPickerOpen(false);
+            setControlsVisible(false);
+          }}
         >
           <Text style={styles.nearbyBtnText}>{t('home.nearby')}</Text>
         </Pressable>
@@ -1652,6 +1658,10 @@ export default function App() {
         viewTime={viewTime}
         isPicked={isPicked}
         hasLocation={!!userLocation}
+        placeFilter={placeFilter}
+        showPlaceToggle={showPlaceToggle}
+        favoritesMode={favoritesMode}
+        onPlaceFilterChange={setPlaceFilter}
         onSelect={(id) => {
           setNearbyOpen(false);
           handleSelect(id);
