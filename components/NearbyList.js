@@ -21,6 +21,7 @@ const MIN_OPTIONS = [
   { label: '30m+', value: 30 },
   { label: '1h+', value: 60 },
 ];
+const PLACE_OPTS = ['all', 'indoor', 'outdoor'];
 const CLOSING_SOON = 30; // minutes — highlight courts closing within this
 
 export default function NearbyList({
@@ -30,12 +31,24 @@ export default function NearbyList({
   viewTime = null,
   isPicked = false,
   hasLocation,
+  favoritesMode = false,
+  placeFilter = 'all',
+  showPlaceToggle = false,
+  onPlaceFilterChange,
   onSelect,
   onRequestLocation,
   onClose,
 }) {
   const { t } = useI18n();
   const [minOpen, setMinOpen] = useState(0);
+  // Name what's actually listed. Favorites mixes sports (each court is favorited
+  // for its own sport), so it keeps the generic title.
+  const title = useMemo(() => {
+    if (favoritesMode) return t('nearby.title');
+    const kind = t('nearbyKind.' + sport);
+    if (kind === 'nearbyKind.' + sport) return t('nearby.title');
+    return t('nearby.titleSport', { sport: kind });
+  }, [t, sport, favoritesMode]);
 
   const rows = useMemo(() => {
     const filtered = courts.filter((c) => (minOpen ? c.remaining >= minOpen : true));
@@ -51,7 +64,7 @@ export default function NearbyList({
       <Pressable style={styles.backdrop} onPress={onClose}>
         <Pressable style={styles.sheet} onPress={() => {}}>
           <View style={styles.header}>
-            <Text style={styles.title}>{t('nearby.title')}</Text>
+            <Text style={styles.title}>{title}</Text>
             <Pressable hitSlop={10} onPress={onClose}>
               <Ionicons name="close" size={20} color="#90a0b0" />
             </Pressable>
@@ -80,6 +93,25 @@ export default function NearbyList({
               );
             })}
           </View>
+
+          {showPlaceToggle && (
+            <View style={styles.filterRow}>
+              {PLACE_OPTS.map((id) => {
+                const active = placeFilter === id;
+                return (
+                  <Pressable
+                    key={id}
+                    onPress={() => onPlaceFilterChange && onPlaceFilterChange(id)}
+                    style={[styles.chip, active && styles.chipActive]}
+                  >
+                    <Text style={[styles.chipText, active && styles.chipTextActive]}>
+                      {t('place.' + id)}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+          )}
 
           <ScrollView style={styles.list}>
             {rows.length === 0 ? (
