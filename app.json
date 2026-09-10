@@ -16,6 +16,11 @@
       "infoPlist": {
         "NSLocationWhenInUseUsageDescription": "RECreate uses your location to show nearby courts, pools, and drop-in classes.",
         "ITSAppUsesNonExemptEncryption": false,
+        "CFBundleLocalizations": [
+          "en",
+          "zh-Hans",
+          "es"
+        ],
         "LSApplicationQueriesSchemes": [
           "comgooglemaps"
         ]
@@ -127,7 +132,8 @@
         }
       ],
       "expo-font",
-      "expo-status-bar"
+      "expo-status-bar",
+      "expo-localization"
     ],
     "owner": "8kevinxu",
     "extra": {

@@ -4,10 +4,10 @@
 // onFinish reports the picks/intent back so App.js can persist interests
 // (locally, so recs personalize even signed-out) and route to sign-up if asked.
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Modal, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useI18n, sportLabel } from '../lib/i18n';
+import { useI18n, sportLabel, LANGUAGES } from '../lib/i18n';
 import { useAuth } from '../lib/auth';
 import { SPORTS } from '../lib/sports';
 import { CITIES } from '../lib/cities';
@@ -45,7 +45,7 @@ export default function Onboarding({
   onEnableLocation,
   onPickCity,
 }) {
-  const { t } = useI18n();
+  const { t, lang, setLang } = useI18n();
   const { user } = useAuth();
   const insets = useSafeAreaInsets();
   const [idx, setIdx] = useState(0);
@@ -55,6 +55,7 @@ export default function Onboarding({
   const [selCity, setSelCity] = useState(null);
   const [locMiss, setLocMiss] = useState(null); // 'nofix' | 'outside' after a failed attempt
   const [authOpen, setAuthOpen] = useState(false); // inline sign-up sheet
+  const [langOpen, setLangOpen] = useState(false); // language picker dialog
 
   const len = SLIDES.length;
   const slide = SLIDES[idx];
@@ -110,6 +111,9 @@ export default function Onboarding({
   }, [user]);
 
   const nSel = selSports.length + selCats.length;
+  // Falls back to the first entry rather than optional-chaining to undefined:
+  // the button renders its native name unconditionally.
+  const activeLang = LANGUAGES.find((l) => l.id === lang) || LANGUAGES[0];
 
   return (
     <View style={[styles.overlay, { paddingTop: insets.top + 8, paddingBottom: insets.bottom + 20 }]}>
@@ -119,7 +123,23 @@ export default function Onboarding({
             <Ionicons name="chevron-back" size={26} color="#5b7a9a" />
           </Pressable>
         ) : (
-          <View style={styles.topSpacer} />
+          // Slide 0's left slot is otherwise empty (topSpacer holds it open for
+          // the back chevron), so the language control costs no layout. It's a
+          // correction, not a question — lib/i18n.js already picked the phone's
+          // language before the first frame — so it reads as chrome opposite
+          // Skip rather than as a step. Only here: from slide 1 on, Back owns
+          // the slot, and Settings is the second way in.
+          <Pressable
+            hitSlop={12}
+            style={styles.langBtn}
+            onPress={() => setLangOpen(true)}
+            accessibilityRole="button"
+            accessibilityLabel={t('onb.lang.a11y', { name: activeLang.native })}
+          >
+            <Ionicons name="globe-outline" size={15} color="#7a8ba0" />
+            <Text style={styles.langBtnText}>{activeLang.native}</Text>
+            <Ionicons name="chevron-down" size={11} color="#7a8ba0" />
+          </Pressable>
         )}
         {slide.type === 'info' ? (
           <Pressable hitSlop={12} onPress={finish}>
@@ -280,6 +300,49 @@ export default function Onboarding({
           only closes it (back to the account slide); a successful sign-up is caught
           by the sign-in effect above, which finishes onboarding onto the map. */}
       {authOpen && <AuthModal visible onClose={() => setAuthOpen(false)} initialMode="signup" />}
+
+      {/* Language picker. Deliberately NOT SettingsScreen — that's a full-screen
+          Modal carrying account, legal and the delete-account danger zone, none
+          of which belongs mid-onboarding. What's shared is the row (native name
+          + English label + ✓), so the two entry points still look like one
+          control. The shape is the app's own dialog idiom: transparent + fade
+          over a backdrop Pressable, as in SettingsScreen's confirm/report.
+          The inner empty-onPress Pressable is what stops a tap on the card from
+          reaching the backdrop; safe here because nothing inside scrolls (a
+          Pressable ancestor would otherwise swallow a ScrollView's pan on
+          device — see ClassDetail). */}
+      <Modal
+        visible={langOpen}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setLangOpen(false)}
+      >
+        <Pressable style={styles.langBackdrop} onPress={() => setLangOpen(false)}>
+          <Pressable style={styles.langDialog} onPress={() => {}}>
+            <Text style={styles.langTitle}>{t('language')}</Text>
+            {LANGUAGES.map((l) => {
+              const on = l.id === lang;
+              return (
+                <Pressable
+                  key={l.id}
+                  style={[styles.langRow, on && styles.langRowOn]}
+                  accessibilityRole="button"
+                  onPress={() => {
+                    // Writes recreate.lang, so this outranks device detection
+                    // from here on — the same contract as picking a city by hand.
+                    setLang(l.id);
+                    setLangOpen(false);
+                  }}
+                >
+                  <Text style={[styles.langNative, on && styles.langTextOn]}>{l.native}</Text>
+                  <Text style={[styles.langLabel, on && styles.langTextOn]}>{l.label}</Text>
+                  {on && <Text style={styles.langCheck}>✓</Text>}
+                </Pressable>
+              );
+            })}
+          </Pressable>
+        </Pressable>
+      </Modal>
     </View>
   );
 }
@@ -299,6 +362,33 @@ const styles = StyleSheet.create({
   },
   topSpacer: { width: 26 },
   skip: { fontSize: 15, fontWeight: '700', color: '#7a8ba0' },
+  // Language control (slide 0 only). Sized to sit level with Skip opposite it.
+  langBtn: { flexDirection: 'row', alignItems: 'center', gap: 5 },
+  langBtnText: { fontSize: 15, fontWeight: '700', color: '#7a8ba0' },
+  langBackdrop: {
+    flex: 1,
+    backgroundColor: 'rgba(13,27,42,0.6)',
+    justifyContent: 'center',
+    paddingHorizontal: 24,
+  },
+  langDialog: { backgroundColor: '#fff', borderRadius: 16, padding: 18, gap: 8 },
+  langTitle: { fontSize: 18, fontWeight: '800', color: '#0d1b2a', marginBottom: 2 },
+  // Row styling mirrors SettingsScreen's langRow so the two pickers read as one.
+  langRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#f4f6f8',
+    borderRadius: 12,
+    paddingHorizontal: 14,
+    paddingVertical: 13,
+    borderWidth: 1,
+    borderColor: '#eef1f4',
+  },
+  langRowOn: { backgroundColor: '#eaf1fb', borderColor: '#2f74d6' },
+  langNative: { fontSize: 16, fontWeight: '800', color: '#0d1b2a' },
+  langLabel: { fontSize: 13, color: '#7a8a9a', marginLeft: 10 },
+  langTextOn: { color: '#2f74d6' },
+  langCheck: { marginLeft: 'auto', fontSize: 16, fontWeight: '800', color: '#2f74d6' },
   body: { flex: 1, alignItems: 'center', justifyContent: 'center' },
   emoji: { fontSize: 84, marginBottom: 28 },
   title: {
