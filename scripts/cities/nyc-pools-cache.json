@@ -9560,80 +9560,6 @@
       ]
     },
     {
-      "id": "nyc-pool-st-mary-s-recreation-center-pool",
-      "name": "St. Mary's Recreation Center Pool",
-      "address": "St. Ann's Avenue and E. 145th Street",
-      "lat": 40.8114,
-      "lng": -73.9141,
-      "phone": "(718) 402-5157",
-      "indoor": true,
-      "accessible": true,
-      "desc": "Intermediate pool · 72' x 39' x 9'",
-      "season": "No pool sessions currently published",
-      "seasonal": false,
-      "notice": "St. Mary's Recreation Center is closed for reconstruction. Visit our Capital Tracker page for updates on this project.",
-      "programs": [],
-      "fees": {
-        "effective": "2026-01-01",
-        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
-        "note": "Recreation center membership — indoor pools are members-only",
-        "groups": [
-          {
-            "id": "youth",
-            "label": "Ages 24 and under",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                0
-              ]
-            ]
-          },
-          {
-            "id": "adult",
-            "label": "Adults (25–61)",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                150
-              ],
-              [
-                "Six months",
-                75
-              ]
-            ]
-          },
-          {
-            "id": "senior",
-            "label": "Seniors 62+, veterans, people with disabilities",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                25
-              ]
-            ]
-          }
-        ]
-      },
-      "scheduleUrls": [
-        {
-          "label": "Pool schedule",
-          "url": "https://www.nycgovparks.org/facilities/recreationcenters/X045/schedule#Pool-schedule"
-        }
-      ],
-      "sessions": [
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
-      ]
-    },
-    {
       "id": "nyc-pool-brownsville-recreation-center-pool",
       "name": "Brownsville Recreation Center Pool",
       "address": "Linden and Mother Gaston Blvds. and Christopher Avenue",
@@ -9695,6 +9621,80 @@
         {
           "label": "Pool schedule",
           "url": "https://www.nycgovparks.org/facilities/recreationcenters/B270/schedule#Pool-schedule"
+        }
+      ],
+      "sessions": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    {
+      "id": "nyc-pool-st-mary-s-recreation-center-pool",
+      "name": "St. Mary's Recreation Center Pool",
+      "address": "St. Ann's Avenue and E. 145th Street",
+      "lat": 40.8114,
+      "lng": -73.9141,
+      "phone": "(718) 402-5157",
+      "indoor": true,
+      "accessible": true,
+      "desc": "Intermediate pool · 72' x 39' x 9'",
+      "season": "No pool sessions currently published",
+      "seasonal": false,
+      "notice": "St. Mary's Recreation Center is closed for reconstruction. Visit our Capital Tracker page for updates on this project.",
+      "programs": [],
+      "fees": {
+        "effective": "2026-01-01",
+        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
+        "note": "Recreation center membership — indoor pools are members-only",
+        "groups": [
+          {
+            "id": "youth",
+            "label": "Ages 24 and under",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                0
+              ]
+            ]
+          },
+          {
+            "id": "adult",
+            "label": "Adults (25–61)",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                150
+              ],
+              [
+                "Six months",
+                75
+              ]
+            ]
+          },
+          {
+            "id": "senior",
+            "label": "Seniors 62+, veterans, people with disabilities",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                25
+              ]
+            ]
+          }
+        ]
+      },
+      "scheduleUrls": [
+        {
+          "label": "Pool schedule",
+          "url": "https://www.nycgovparks.org/facilities/recreationcenters/X045/schedule#Pool-schedule"
         }
       ],
       "sessions": [
@@ -10928,6 +10928,11 @@
             "kind": "family",
             "start": 810,
             "end": 885
+          },
+          {
+            "kind": "other",
+            "start": 900,
+            "end": 960
           }
         ],
         [],
@@ -10955,9 +10960,19 @@
         ],
         [
           {
+            "kind": "family",
+            "start": 660,
+            "end": 885
+          },
+          {
             "kind": "other",
             "start": 900,
             "end": 960
+          },
+          {
+            "kind": "family",
+            "start": 960,
+            "end": 1065
           },
           {
             "kind": "lap",
@@ -10994,9 +11009,19 @@
             "end": 765
           },
           {
+            "kind": "family",
+            "start": 780,
+            "end": 885
+          },
+          {
             "kind": "other",
             "start": 900,
             "end": 960
+          },
+          {
+            "kind": "family",
+            "start": 960,
+            "end": 1140
           }
         ],
         []
@@ -11006,8 +11031,8 @@
   "season": {
     "open": true,
     "label": "Open daily through Labor Day (9/7)",
-    "checked": "2026-09-09",
+    "checked": "2026-09-10",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-09-09T16:27:40.749Z"
+  "fetchedAt": "2026-09-10T04:41:33.581Z"
 }
