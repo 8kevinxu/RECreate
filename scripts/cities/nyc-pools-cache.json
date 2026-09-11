@@ -11026,8 +11026,8 @@
   "season": {
     "open": true,
     "label": "Open daily through Labor Day (9/7)",
-    "checked": "2026-09-10",
+    "checked": "2026-09-11",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-09-10T16:59:19.147Z"
+  "fetchedAt": "2026-09-11T04:45:33.052Z"
 }
