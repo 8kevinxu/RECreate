@@ -10620,7 +10620,18 @@
             "end": 1140
           }
         ],
-        []
+        [
+          {
+            "kind": "lap",
+            "start": 480,
+            "end": 720
+          },
+          {
+            "kind": "family",
+            "start": 750,
+            "end": 885
+          }
+        ]
       ]
     },
     {
@@ -11029,5 +11040,5 @@
     "checked": "2026-09-13",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-09-13T04:21:21.758Z"
+  "fetchedAt": "2026-09-13T16:50:44.606Z"
 }
