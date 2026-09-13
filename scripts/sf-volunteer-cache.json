@@ -1,32 +1,6 @@
 {
   "entries": [
     {
-      "id": "vol-a07Pi00004h1QlGIAU",
-      "source": "sfrpd-volunteer",
-      "name": "Mission Bay Commons Park Volunteer Workparty",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "Mission Bay Commons Park",
-      "when": "Sun · 9:00 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 19,
-      "unlimited": false,
-      "start": "2026-09-13",
-      "end": "2026-09-13",
-      "oneDay": true,
-      "instructor": "Friends of Mission Bay Parks",
-      "activity": "Horticultural Maintenance",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group. You can only sign-up a group of 4. If you have a group size of 5 or more, please email us at recparkvolunteer@sfgov.org.\n\nJoin the RPD Gardeners in a horticultural maintenance volunteer workparty. Tools and gloves provided. \n\nMeet at the Corner of Mission Bay Blvd North and Bridgeview",
-      "lat": 37.77037,
-      "lng": -122.39121,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a07Pi00003zJscrIAC",
       "source": "sfrpd-volunteer",
       "name": "GGP Conservatory Valley Volunteer Workparty",
@@ -997,5 +971,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-09-13T15:37:32.654Z"
+  "fetchedAt": "2026-09-13T20:20:03.210Z"
 }
