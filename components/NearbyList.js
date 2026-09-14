@@ -21,6 +21,7 @@ const MIN_OPTIONS = [
   { label: '30m+', value: 30 },
   { label: '1h+', value: 60 },
 ];
+const PLACE_OPTS = ['all', 'indoor', 'outdoor'];
 const CLOSING_SOON = 30; // minutes — highlight courts closing within this
 
 export default function NearbyList({
@@ -30,13 +31,16 @@ export default function NearbyList({
   viewTime = null,
   isPicked = false,
   hasLocation,
+  favoritesMode = false,
+  placeFilter = 'all',
+  showPlaceToggle = false,
+  onPlaceFilterChange,
   onSelect,
   onRequestLocation,
   onClose,
 }) {
   const { t } = useI18n();
   const [minOpen, setMinOpen] = useState(0);
-
   const rows = useMemo(() => {
     const filtered = courts.filter((c) => (minOpen ? c.remaining >= minOpen : true));
     return filtered.sort((a, b) => {
@@ -80,6 +84,25 @@ export default function NearbyList({
               );
             })}
           </View>
+
+          {showPlaceToggle && !favoritesMode && (
+            <View style={styles.filterRow}>
+              {PLACE_OPTS.map((id) => {
+                const active = placeFilter === id;
+                return (
+                  <Pressable
+                    key={id}
+                    onPress={() => onPlaceFilterChange && onPlaceFilterChange(id)}
+                    style={[styles.chip, active && styles.chipActive]}
+                  >
+                    <Text style={[styles.chipText, active && styles.chipTextActive]}>
+                      {t('place.' + id)}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+          )}
 
           <ScrollView style={styles.list}>
             {rows.length === 0 ? (
