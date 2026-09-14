@@ -41,15 +41,6 @@ export default function NearbyList({
 }) {
   const { t } = useI18n();
   const [minOpen, setMinOpen] = useState(0);
-  // Name what's actually listed. Favorites mixes sports (each court is favorited
-  // for its own sport), so it keeps the generic title.
-  const title = useMemo(() => {
-    if (favoritesMode) return t('nearby.title');
-    const kind = t('nearbyKind.' + sport);
-    if (kind === 'nearbyKind.' + sport) return t('nearby.title');
-    return t('nearby.titleSport', { sport: kind });
-  }, [t, sport, favoritesMode]);
-
   const rows = useMemo(() => {
     const filtered = courts.filter((c) => (minOpen ? c.remaining >= minOpen : true));
     return filtered.sort((a, b) => {
@@ -64,7 +55,7 @@ export default function NearbyList({
       <Pressable style={styles.backdrop} onPress={onClose}>
         <Pressable style={styles.sheet} onPress={() => {}}>
           <View style={styles.header}>
-            <Text style={styles.title}>{title}</Text>
+            <Text style={styles.title}>{t('nearby.title')}</Text>
             <Pressable hitSlop={10} onPress={onClose}>
               <Ionicons name="close" size={20} color="#90a0b0" />
             </Pressable>
@@ -94,7 +85,7 @@ export default function NearbyList({
             })}
           </View>
 
-          {showPlaceToggle && (
+          {showPlaceToggle && !favoritesMode && (
             <View style={styles.filterRow}>
               {PLACE_OPTS.map((id) => {
                 const active = placeFilter === id;
