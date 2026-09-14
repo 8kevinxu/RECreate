@@ -267,6 +267,12 @@ const CITY_CFG = [
     // indoor ones. NYC's are a synthetic park-hours window — see `parkHours`.
     parkHours: null,
     subregionLabel: 'neighborhood',
+    // Link each rec center straight from "/". They are searched by name ("palega
+    // rec center hours") and were half of SF's never-crawled court pages: in
+    // Search Console on 2026-09-03, 51 of 104 SF court pages sat in "Discovered –
+    // currently not indexed", including 8 of these centers. One click from the
+    // most-crawled page instead of two.
+    homeRecCenters: true,
     golf: true,
     pools: {
       list: POOLS,
@@ -1409,6 +1415,7 @@ for (const cfg of CITY_CFG) {
       aliasPaths: members.filter((m) => m !== c).map(courtPath),
       short: c.name,
       hideFromNav: true,
+      onHome: !!cfg.homeRecCenters && REC_CENTERS.get(cfg.id).includes(c),
       title,
       description,
       h1: c.name,
@@ -1640,7 +1647,8 @@ if (!DRY) fs.writeFileSync(path.join(DIST, '404.html'), notFoundHtml);
 // nowhere, and the ~850 landing pages were reachable only through sitemap.xml.
 //
 // The fix links the index layer (city hubs, sport pages, rec centers, pools,
-// classes, area hubs), which in turn links every detail page. It sits BESIDE
+// classes, area hubs), which in turn links every detail page — plus any detail
+// page marked `onHome` (a city's rec centers, when `cfg.homeRecCenters`). It sits BESIDE
 // #root, never inside it: React replaces #root's children on mount, and Google
 // indexes the rendered DOM, so links inside it would vanish from the version
 // that counts. Visually it is screen-reader-only (the standard clip pattern) —
@@ -1655,7 +1663,8 @@ ${CITY_CFG.map((c) => {
   const list = (label, ps) =>
     ps.length ? `<ul aria-label="${esc(label)}">${ps.map((p) => `<li><a href="${p.path}">${esc(p.h1)}</a></li>`).join('')}</ul>` : '';
   return list(c.name, mine.filter((p) => p.kind !== 'area')) +
-    list(`${c.name} by ${c.subregionLabel}`, mine.filter((p) => p.kind === 'area'));
+    list(`${c.name} by ${c.subregionLabel}`, mine.filter((p) => p.kind === 'area')) +
+    list(`${c.name} recreation centers`, pages.filter((p) => p.cfg.id === c.id && p.onHome));
 }).join('\n')}
 </nav>`;
 

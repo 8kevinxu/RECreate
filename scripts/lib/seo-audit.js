@@ -33,6 +33,7 @@ const DESC_SNIPPET = 155;
 const BODY_MIN_CHARS = 600;
 
 // Page kinds the homepage must link: the index layer that links everything else.
+// A page of any other kind can opt in with `onHome` (postbuild-web.js).
 const HOME_KINDS = new Set(['index', 'sport', 'area']);
 
 const one = (n, s) => `${n} ${s}${n === 1 ? '' : 's'}`;
@@ -233,9 +234,9 @@ function auditSeo({ pages, rendered, site, staticPaths = new Set(), home = null 
         fromHome.add(to);
       }
     }
-    const missing = pages.filter((p) => HOME_KINDS.has(p.kind) && !fromHome.has(p.path)).map((p) => p.path);
+    const missing = pages.filter((p) => (HOME_KINDS.has(p.kind) || p.onHome) && !fromHome.has(p.path)).map((p) => p.path);
     if (missing.length)
-      err(`home: / does not link to ${one(missing.length, 'index page')} — ${missing.slice(0, 4).join(', ')}${missing.length > 4 ? ', …' : ''}`);
+      err(`home: / does not link to ${one(missing.length, 'required page')} — ${missing.slice(0, 4).join(', ')}${missing.length > 4 ? ', …' : ''}`);
   }
 
   // --- 6. no orphans --------------------------------------------------------
