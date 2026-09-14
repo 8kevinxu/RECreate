@@ -4,7 +4,8 @@
 //   1. Injects real <head> metadata into dist/index.html (title, description,
 //      canonical, OpenGraph/Twitter cards, JSON-LD, App Store smart banner) —
 //      the raw Expo export ships an empty-bodied SPA shell that gives crawlers
-//      nothing to index.
+//      nothing to index — plus a screen-reader-only link index beside #root, so
+//      the page every backlink lands on links the rest of the site.
 //   2. Emits static, crawlable landing pages from the bundled data, per city —
 //      SF at /basketball, /pickleball, …, /golf, /pools, /classes and NYC under
 //      the /nyc prefix — each a real HTML document (h1, court list with
@@ -24,7 +25,7 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const esbuild = require('esbuild');
-const { auditSeo } = require('./lib/seo-audit');
+const { auditSeo, HOME_KINDS } = require('./lib/seo-audit');
 
 const ROOT = path.join(__dirname, '..');
 const DIST = path.join(ROOT, 'dist');
@@ -1631,6 +1632,33 @@ const notFoundHtml = pageHtml({
 RENDERED.set('/404', notFoundHtml);
 if (!DRY) fs.writeFileSync(path.join(DIST, '404.html'), notFoundHtml);
 
+// --- homepage link index ---------------------------------------------------------
+//
+// "/" is the SPA shell: until this existed its HTML carried a title, a
+// description and zero links. It is the page brand searches, the App Store
+// listing and every backlink land on, so whatever standing it earns went
+// nowhere, and the ~850 landing pages were reachable only through sitemap.xml.
+//
+// The fix links the index layer (city hubs, sport pages, rec centers, pools,
+// classes, area hubs), which in turn links every detail page. It sits BESIDE
+// #root, never inside it: React replaces #root's children on mount, and Google
+// indexes the rendered DOM, so links inside it would vanish from the version
+// that counts. Visually it is screen-reader-only (the standard clip pattern) —
+// the map is the page for sighted users and a visible list would flash before
+// the bundle paints — but it is a real, labelled site index for assistive tech,
+// and every link in it is a page any visitor can reach.
+const homeIndexHtml = `<nav id="site-index" aria-label="Browse ${SITE_NAME}">
+<style>#site-index{position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}</style>
+${CITY_CFG.map((c) => {
+  const mine = pages.filter((p) => p.cfg.id === c.id && HOME_KINDS.has(p.kind));
+  if (!mine.length) return '';
+  const list = (label, ps) =>
+    ps.length ? `<ul aria-label="${esc(label)}">${ps.map((p) => `<li><a href="${p.path}">${esc(p.h1)}</a></li>`).join('')}</ul>` : '';
+  return list(c.name, mine.filter((p) => p.kind !== 'area')) +
+    list(`${c.name} by ${c.subregionLabel}`, mine.filter((p) => p.kind === 'area'));
+}).join('\n')}
+</nav>`;
+
 // --- patch dist/index.html (the SPA shell) -------------------------------------
 
 const HOME_TITLE = 'RECreate — Basketball, Pickleball & Tennis Courts, Pools & Rec Classes in SF and NYC';
@@ -1643,9 +1671,19 @@ const HOME_DESC =
 // this only bites locally — but two conflicting canonicals mean Google ignores
 // both, which is not a failure worth risking to save four lines.
 const MARK = ['<!-- recreate:seo -->', '<!-- /recreate:seo -->'];
+const INDEX_MARK = ['<!-- recreate:index -->', '<!-- /recreate:index -->'];
 if (!DRY) {
   let html = fs.readFileSync(path.join(DIST, 'index.html'), 'utf8');
   html = html.replace(new RegExp(`${MARK[0]}[\\s\\S]*?${MARK[1]}`, 'g'), '');
+  html = html.replace(new RegExp(`\\n?${INDEX_MARK[0]}[\\s\\S]*?${INDEX_MARK[1]}`, 'g'), '');
+  // Fail rather than ship a homepage with no links: if Expo's template stops
+  // emitting this exact element, the index silently wouldn't be injected.
+  const ROOT_DIV = '<div id="root"></div>';
+  if (!html.includes(ROOT_DIV)) {
+    console.error(`✗ dist/index.html has no ${ROOT_DIV} — cannot place the homepage link index`);
+    process.exit(1);
+  }
+  html = html.replace(ROOT_DIV, `${ROOT_DIV}\n${INDEX_MARK[0]}${homeIndexHtml}${INDEX_MARK[1]}`);
   const headTags = `
   <title>${esc(HOME_TITLE)}</title>
   <meta name="description" content="${esc(HOME_DESC)}">
@@ -1747,6 +1785,9 @@ function runAudit() {
     rendered: RENDERED,
     site: SITE,
     staticPaths: STATIC_PATHS,
+    // The real build audits the shell as served; the in-memory audit has no
+    // export to read, so it checks the fragment that would be injected.
+    home: DRY ? homeIndexHtml : fs.readFileSync(path.join(DIST, 'index.html'), 'utf8'),
   });
   for (const w of warnings) console.warn(`⚠ seo: ${w}`);
   if (errors.length) {
@@ -1793,7 +1834,7 @@ if (AUDIT) {
     manifest[p.path] = { hash, lastmod };
   }
   // The SPA shell. Its indexable content is the head this script patches in.
-  const homeHash = crypto.createHash('sha1').update(HOME_TITLE + HOME_DESC).digest('hex').slice(0, 16);
+  const homeHash = crypto.createHash('sha1').update(HOME_TITLE + HOME_DESC + homeIndexHtml).digest('hex').slice(0, 16);
   manifest['/'] = {
     hash: homeHash,
     lastmod: prev?.['/']?.hash === homeHash ? prev['/'].lastmod : today,

@@ -32,6 +32,9 @@ const DESC_SNIPPET = 155;
 // indexable page today renders ~674 chars (a golf course), the median ~1,800.
 const BODY_MIN_CHARS = 600;
 
+// Page kinds the homepage must link: the index layer that links everything else.
+const HOME_KINDS = new Set(['index', 'sport', 'area']);
+
 const one = (n, s) => `${n} ${s}${n === 1 ? '' : 's'}`;
 
 // Strip query/hash: an internal link may carry app URL state (/?sport=…&city=…)
@@ -76,9 +79,10 @@ const RE = {
  * @param {Map}      o.rendered     path -> rendered HTML (includes aliases + /404)
  * @param {string}   o.site         origin, e.g. https://playrecreate.com
  * @param {Set}      o.staticPaths  paths served by real files outside the generator
+ * @param {string}   [o.home]       HTML of "/" (the SPA shell, or its link index)
  * @returns {{ errors: string[], warnings: string[], stats: object }}
  */
-function auditSeo({ pages, rendered, site, staticPaths = new Set() }) {
+function auditSeo({ pages, rendered, site, staticPaths = new Set(), home = null }) {
   const errors = [];
   const warnings = [];
   const err = (m) => errors.push(m);
@@ -213,7 +217,28 @@ function auditSeo({ pages, rendered, site, staticPaths = new Set() }) {
     }
   }
 
-  // --- 5. no orphans --------------------------------------------------------
+  // --- 5. the homepage links the index layer ---------------------------------
+  //
+  // "/" is the SPA shell, so it isn't in `rendered` and none of the checks above
+  // see it. It shipped for months with zero links: the page every backlink and
+  // brand search lands on passed nothing on. Every city hub, sport page, index
+  // page and area hub must be linked from it; those pages link everything else.
+  if (home != null) {
+    const fromHome = new Set();
+    for (const m of home.matchAll(RE.href)) {
+      const to = linkPath(m[1]);
+      if (!servable.has(to)) err(`link: / links to ${to}, which nothing serves`);
+      else {
+        link(to, '/');
+        fromHome.add(to);
+      }
+    }
+    const missing = pages.filter((p) => HOME_KINDS.has(p.kind) && !fromHome.has(p.path)).map((p) => p.path);
+    if (missing.length)
+      err(`home: / does not link to ${one(missing.length, 'index page')} — ${missing.slice(0, 4).join(', ')}${missing.length > 4 ? ', …' : ''}`);
+  }
+
+  // --- 6. no orphans --------------------------------------------------------
   //
   // A page reachable only from sitemap.xml gets crawled and reads as
   // unimportant. The footer nav covers the index pages; everything marked
@@ -237,4 +262,4 @@ function auditSeo({ pages, rendered, site, staticPaths = new Set() }) {
   };
 }
 
-module.exports = { auditSeo, BODY_MIN_CHARS, TITLE_MAX, DESC_MIN, DESC_MAX, DESC_SNIPPET };
+module.exports = { auditSeo, HOME_KINDS, BODY_MIN_CHARS, TITLE_MAX, DESC_MIN, DESC_MAX, DESC_SNIPPET };
