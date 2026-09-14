@@ -46,7 +46,7 @@ const CACHE_FILE = path.join(__dirname, 'outdoor-courts-cache.json');
 const OUT_FILE = path.join(__dirname, '..', 'data', 'outdoor-courts.js');
 
 const DATASF =
-  'https://data.sfgov.org/resource/ib5c-xgwu.json?' +
+  'https://data.sf.gov/resource/ib5c-xgwu.json?' +
   '$select=property_name,facility_type,address,analysis_neighborhood,latitude,longitude&' +
   "$where=facility_type in('Basketball Court','Tennis Court','Tennis/Pickleball Court','Pickleball Courts','Volleyball Court','Soccer Field','Multi-Use Turf','Ball Field','Adult Fitness Court/Course')&$limit=500";
 

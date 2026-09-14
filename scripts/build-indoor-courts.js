@@ -30,7 +30,7 @@ const BROWSER_UA =
 const MIN_LIVE_OK = 10;
 
 const DATASF =
-  'https://data.sfgov.org/resource/ib5c-xgwu.json?' +
+  'https://data.sf.gov/resource/ib5c-xgwu.json?' +
   "$select=property_name,facility_type,address,analysis_neighborhood,latitude,longitude&" +
   "$where=facility_type in('Rec Center','Fieldhouse','Rec Center/Pool')&$limit=200";
 
@@ -475,9 +475,11 @@ function loadCache() {
 
 async function main() {
   console.log('Fetching rec-center coordinates from DataSF…');
-  const rows = await (await fetchT(DATASF, {
+  const dsRes = await fetchT(DATASF, {
     headers: { 'User-Agent': 'RECreateSF/1.0', Accept: '*/*' },
-  })).json();
+  });
+  if (!dsRes.ok) throw new Error(`DataSF HTTP ${dsRes.status} (${DATASF.split('?')[0]})`);
+  const rows = await dsRes.json();
 
   // Lookup by property name; prefer a "Rec Center" row, else first with coords.
   const byProp = {};
