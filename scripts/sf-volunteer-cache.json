@@ -37,7 +37,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 18,
+      "spots": 17,
       "unlimited": false,
       "start": "2026-09-16",
       "end": "2027-03-03",
@@ -84,7 +84,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 10,
+      "spots": 9,
       "unlimited": false,
       "start": "2026-09-16",
       "end": "2026-09-16",
@@ -810,7 +810,7 @@
       "spots": 25,
       "unlimited": false,
       "start": "2026-10-10",
-      "end": "2027-02-13",
+      "end": "2027-03-13",
       "instructor": "Friends of Strawberry Hill",
       "activity": "Habitat Restoration",
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nIf you love your parks, and are looking for a meaningful and substantive way to make a positive difference, come on out and volunteer with the Friends of Strawberry Hill and the San Francisco Recreation and Park Department! On the second Saturday of every month, we enhance habitat on Strawberry Hill in Golden Gate Park. We remove invasive weeds, and put in plant species that Swallowtails and other butterflies need to thrive. This is an ongoing program – we’re looking for both occasional volunteers, and those who would like to be involved on a regular basis. To sign-up for this volunteer opportunity, please email do so by the Wednesday prior to the workday. All instruction and needed tools are provided. Please wear closed toe shoes and clothes you don’t mind getting dirty. Dress in layers, and bring a bottle of water. If you’re sensitive to sun, don’t forget your sun block lotion and hat. Meet at the Blue Heron Lake Boat House.\n\nMeet: at the Stow Lake Boat House",
@@ -971,5 +971,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-09-14T17:42:32.462Z"
+  "fetchedAt": "2026-09-14T21:29:33.223Z"
 }
