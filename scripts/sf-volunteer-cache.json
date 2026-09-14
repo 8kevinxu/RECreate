@@ -37,7 +37,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 19,
+      "spots": 18,
       "unlimited": false,
       "start": "2026-09-16",
       "end": "2027-03-03",
@@ -61,7 +61,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 15,
+      "spots": 14,
       "unlimited": false,
       "start": "2026-09-16",
       "end": "2026-09-16",
@@ -84,7 +84,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 11,
+      "spots": 10,
       "unlimited": false,
       "start": "2026-09-16",
       "end": "2026-09-16",
@@ -107,7 +107,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 10,
+      "spots": 9,
       "unlimited": false,
       "start": "2026-09-17",
       "end": "2026-11-19",
@@ -760,7 +760,7 @@
       "spots": 15,
       "unlimited": false,
       "start": "2026-10-10",
-      "end": "2027-02-13",
+      "end": "2027-03-13",
       "instructor": "Legion of Honor Volunteers",
       "activity": "Horticultural Maintenance",
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nVolunteering with the Friends of the Legion of Honor offers a unique opportunity to beautify and maintain the outside landscaping of one of the most visited museums on the West Coast. Volunteer tasks include litter pick-up, weeding, mulching, habitat restoration and occasional planting. Please wear closed-toed shoes, long pants and layers. The event will occur rain or shine. Meet on the stairs of the entrance plaza of the Legion of Honor.\n\nMeet: on the stairs of the entrance plaza of the Legion of Honor",
@@ -785,7 +785,7 @@
       "spots": 26,
       "unlimited": false,
       "start": "2026-10-10",
-      "end": "2027-02-13",
+      "end": "2027-03-13",
       "instructor": "Friends of the Oak Woodlands",
       "activity": "Habitat Restoration",
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin this knowledgeable group of volunteers and San Francisco Recreation and Park Natural Resource Division in restoring Golden Gate Park’s native oak woodlands. Learn about the importance of our oak woodlands, the wildlife they support and meet some of the oldest trees in the city. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Everyone 14 years old and older is invited; anyone under 14 yo must be accompanied by a guardian. Tools and gloves will be provided. Please be punctual.  \n\n(For more information regarding the volunteer project please contact Friends of Oak Woodlands site steward Robert Bakewell at 415-710-9617 or rcbakewell@gmail.com)\n\nmeet at the Horseshoe Courts entrance on East Conservatory Drive\n\nMeet: at the intersection of Arguello Blvd. and Conservatory Drive",
@@ -971,5 +971,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-09-14T11:48:37.054Z"
+  "fetchedAt": "2026-09-14T17:42:32.462Z"
 }
