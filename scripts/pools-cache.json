@@ -1870,8 +1870,8 @@
       ],
       "scheduleUrls": [
         {
-          "label": "Sava_Pool_Fall2_2026_Aug29 toDec12",
-          "url": "https://sfrecpark.org/DocumentCenter/View/29805"
+          "label": "Sava_Pool_Fall2_2026___Aug29toDec12",
+          "url": "https://sfrecpark.org/DocumentCenter/View/30037"
         }
       ],
       "sessions": [
@@ -1968,6 +1968,11 @@
             "end": 570
           },
           {
+            "kind": "other",
+            "start": 690,
+            "end": 720
+          },
+          {
             "kind": "lessons",
             "start": 720,
             "end": 840
@@ -1976,6 +1981,16 @@
             "kind": "other",
             "start": 720,
             "end": 840
+          },
+          {
+            "kind": "lap",
+            "start": 750,
+            "end": 900
+          },
+          {
+            "kind": "lessons",
+            "start": 750,
+            "end": 900
           },
           {
             "kind": "lap",
@@ -1993,6 +2008,21 @@
             "kind": "lap",
             "start": 390,
             "end": 540
+          },
+          {
+            "kind": "family",
+            "start": 1080,
+            "end": 1170
+          },
+          {
+            "kind": "lap",
+            "start": 1080,
+            "end": 1170
+          },
+          {
+            "kind": "lessons",
+            "start": 1080,
+            "end": 1170
           }
         ],
         [
@@ -2005,11 +2035,6 @@
             "kind": "lessons",
             "start": 540,
             "end": 660
-          },
-          {
-            "kind": "family",
-            "start": 690,
-            "end": 780
           },
           {
             "kind": "family",
@@ -2137,5 +2162,5 @@
       "label": "Independence Day"
     }
   ],
-  "fetchedAt": "2026-09-07T19:00:42.586Z"
+  "fetchedAt": "2026-09-14T23:30:58.386Z"
 }

@@ -108,7 +108,7 @@
           "overall": 4,
           "surface": 4.6,
           "crowded": 2.8,
-          "matches": 279,
+          "matches": 280,
           "src": "https://www.tennissf.com/court_detail/sf-buena-vista-park"
         }
       },
@@ -333,7 +333,7 @@
           "overall": 2.5,
           "surface": 3,
           "crowded": 3.5,
-          "matches": 66,
+          "matches": 67,
           "src": "https://www.tennissf.com/court_detail/sf-hayes-valley-playground"
         }
       }
@@ -369,7 +369,7 @@
           "overall": 4,
           "surface": 4.3,
           "crowded": 2.3,
-          "matches": 707,
+          "matches": 714,
           "src": "https://www.tennissf.com/court_detail/sf-j-p-murphy-playground"
         }
       }
@@ -423,7 +423,7 @@
           "overall": 4,
           "surface": 4.3,
           "crowded": 2.3,
-          "matches": 606,
+          "matches": 608,
           "src": "https://www.tennissf.com/court_detail/sf-north-beach"
         }
       }
@@ -485,7 +485,7 @@
           "overall": 4.3,
           "surface": 4,
           "crowded": 3.9,
-          "matches": 587,
+          "matches": 589,
           "src": "https://www.tennissf.com/court_detail/sf-mclaren-park"
         }
       }
@@ -669,7 +669,7 @@
           "overall": 4,
           "surface": 3.4,
           "crowded": 2.2,
-          "matches": 546,
+          "matches": 547,
           "src": "https://www.tennissf.com/court_detail/sf-mountain-lake"
         }
       }
@@ -741,7 +741,7 @@
           "overall": 2.8,
           "surface": 2.5,
           "crowded": 4.3,
-          "matches": 484,
+          "matches": 487,
           "src": "https://www.tennissf.com/court_detail/potrero-hill-recreation-center"
         }
       }
@@ -1034,7 +1034,7 @@
           "overall": 3.8,
           "surface": 3.8,
           "crowded": 4,
-          "matches": 303,
+          "matches": 304,
           "src": "https://www.tennissf.com/court_detail/sf-upper-noe-recreation-center"
         }
       },
@@ -1156,7 +1156,7 @@
           "overall": 3.7,
           "surface": 3,
           "crowded": 3.3,
-          "matches": 259,
+          "matches": 261,
           "src": "https://www.tennissf.com/court_detail/sf-sunset"
         }
       }
@@ -1235,5 +1235,5 @@
       }
     }
   },
-  "fetchedAt": "2026-09-07T18:58:51.989Z"
+  "fetchedAt": "2026-09-14T23:29:20.296Z"
 }
