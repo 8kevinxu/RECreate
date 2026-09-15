@@ -35,9 +35,10 @@ multi-city architecture works.
   workparties** (habitat restoration, park stewardship), free and filed under the
   🤝 Volunteer chip.
 - **🏊 Swimming** — the 9 public pools are a **sport on the map**: pick Swimming
-  from the sport dial to see them, "open now" for public-swim sessions, with the
-  full weekly schedule (lap / family / senior / lessons …), fees, and PDF on the
-  card. Filter by session type, and favorite / plan / signal a swim like any sport.
+  from the sport dial to see them, "open now" for public-swim sessions. The card
+  names what's on right now ("Now: Lap Swim until 11 AM"), and **Schedule &
+  reviews** opens the full weekly schedule (lap / family / senior / lessons …)
+  starting today, plus fees and the PDF. Filter by session type, and favorite / plan / signal a swim like any sport.
 - **👥 Social** — accounts, friends, "down to play" signals, planned games, an
   activity feed, and chat.
 - **👤 Profile** — your profile/stats, plus **Settings** (language, legal &
@@ -216,7 +217,7 @@ sport / opens ⭐ Favorites. It's shown once and then never again (persisted und
 | `data/volunteer.js` · `scripts/build-sf-volunteer.js` | **Generated** SF Rec & Park volunteer workparties, from the Salesforce Aura endpoint behind their JS-only calendar (one card per recurring job) |
 | `data/sf-classes.js` | Hand-written aggregator merging the ActiveNet catalog + volunteer workparties into SF's one program list |
 | `lib/classesLive.js` | Runtime ActiveNet fetch for "right now" class openings (native only; CORS-blocked on web) |
-| `lib/poolCourts.js` · `components/PoolDetail.js` | Pools as **swimming courts** on the map: `poolCourts` shapes **each city's** pools (SF `data/pools.js` + NYC `data/cities/nyc/pools.js`) into court records (open-now from public-swim sessions), `PoolDetail` renders the schedule/fees/PDF block in the court card. Fees travel on the pool record, so SF's per-visit prices and NYC's free/membership model both render |
+| `lib/poolCourts.js` · `components/PoolDetail.js` | Pools as **swimming courts** on the map: `poolCourts` shapes **each city's** pools (SF `data/pools.js` + NYC `data/cities/nyc/pools.js`) into court records (open-now from public-swim sessions), `PoolDetail` renders the tap-state "Now:" line and, behind "Schedule & reviews", the schedule/fees/PDF block in the court card. Fees travel on the pool record, so SF's per-visit prices and NYC's free/membership model both render |
 | `data/pools.js` · `scripts/build-pools.js` | **Generated** pools + schedules parsed from seasonal PDFs (`pdfjs-dist`) |
 | `components/SettingsScreen.js` | Settings sheet — language switch (en/zh/es), Legal & Support links, activity-sharing toggle, delete account |
 | `docs/privacy-nutrition-label.md` | Reconciles the Privacy Policy with the App Store Connect privacy label (2.1 reference) |
@@ -897,7 +898,11 @@ and render as separately labeled ♨️/❄️ groups.
 
 Session kinds (**lap / family / senior / lessons / adult lessons / parent-child /
 water exercise / camps / rentals**) render as color-coded, localized pills in the
-court card (`components/PoolDetail.js`): the full **weekly schedule**, a
+court card (`components/PoolDetail.js`). Tapping a pool opens the same compact
+card as any court, plus a **"Now:"** line naming the sessions on (or starting
+later today) and any closure notice; **Schedule & reviews** expands to the full
+**weekly schedule** starting from today — in place of the generic week rows, which
+would repeat it flattened to bare times — a
 collapsible **fees** table (city-wide aquatics prices), the blurb, and a link to
 the **official PDF** (the source of truth). Pool coordinates, addresses, phones, season labels, fees, and
 holiday closures are **curated** in the build script (the facility pages have no

@@ -30,7 +30,7 @@ import BottomNav from './components/BottomNav';
 import AssistantHost from './components/AssistantHost';
 import GetAppPrompt, { GET_APP_BAR_H } from './components/GetAppPrompt';
 import ClassesScreen from './components/ClassesScreen';
-import PoolDetail from './components/PoolDetail';
+import PoolDetail, { PoolPeek } from './components/PoolDetail';
 import { useAuth } from './lib/auth';
 import { useCourts } from './lib/useCourts';
 import { fmtClock, startOfDay, viewLabel, dayChipLabel, fmtDuration } from './lib/datetime';
@@ -2419,9 +2419,10 @@ function CourtDetail({
         </>
       )}
 
-      {/* Swimming pool: full weekly schedule (by session type), fees, and the
-          official schedule PDF (see lib/poolCourts.js + components/PoolDetail.js). */}
-      {court.pool && <PoolDetail pool={court.pool} poolId={court.id} />}
+      {/* Swimming pool, tap state: a closure notice and which sessions are on
+          now. The full schedule sits behind "Schedule & reviews" like every
+          other sport's (see components/PoolDetail.js). */}
+      {court.pool && <PoolPeek pool={court.pool} date={viewTime} isPicked={isPicked} />}
 
       {/* Lighting, in one place for every sport and city. Outdoor only — an
           indoor gym's lighting is not a question anyone asks. Both sources cover
@@ -2746,6 +2747,12 @@ function CourtDetail({
 
       {expanded && (
       <View>
+        {/* A pool's session pills replace the generic week rows, which would
+            repeat the same schedule flattened to bare times. */}
+        {court.pool ? (
+          <PoolDetail pool={court.pool} date={viewTime} />
+        ) : (
+        <>
         <Text style={styles.sectionLabel}>{t('court.openGymSport', { sport: sportName })}</Text>
         {week.map((d) => (
           <View
@@ -2767,6 +2774,8 @@ function CourtDetail({
             </Text>
           </View>
         ))}
+        </>
+        )}
 
         {/* Structured open-play blocks merge into the week rows above (tagged
             "(open play)"). Below: unstructurable posted times, plus the poster's
@@ -2862,7 +2871,9 @@ function CourtDetail({
         {/* "This data looks wrong" flag — one per surface (court/class/pool),
             all through the shared confirmReportData flow. */}
         <Pressable
-          onPress={() => confirmReportData(`court:${court.id}:${vSport}`)}
+          onPress={() =>
+            confirmReportData(court.pool ? `pool:${court.id}` : `court:${court.id}:${vSport}`)
+          }
           accessibilityRole="button"
           accessibilityLabel={t('report.schedule')}
         >
