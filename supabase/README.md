@@ -10,6 +10,7 @@ to enable the shared + social features.
 ```
 schema/      Canonical, current-state DDL — split by domain, numbered for run order.
 migrations/  Ordered deltas to bring an EXISTING database up to the latest schema.
+queries/     Read-only SQL for the dashboard's SQL Editor (reviewing reports).
 ```
 
 ## Fresh project
@@ -82,3 +83,13 @@ new:
 > reference the old `hoop_*` table names. Apply them **in order** — `010` renames
 > the tables at the end, so the earlier deltas line up. A fresh DB built from
 > `schema/` is already fully `rec_*` and skips all of this.
+
+## Reviewing reports
+
+Everything a user reports — "looks wrong" flags on the court/class/pool cards,
+Settings → Report a problem, and reported messages/reviews/signals/profiles/runs
+— lands in `content_reports`, which the app can only insert into. Read it with
+`queries/reports.sql`: paste each query into the SQL Editor and save it as a
+snippet. Query 1 groups the data flags by entity (ranked by distinct reporters,
+with a link that opens the app on that court); query 2 lists everything else,
+newest first.
