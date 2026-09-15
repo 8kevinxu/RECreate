@@ -19,16 +19,21 @@ const KIND_TONE = {
   lap: { bg: '#e3effb', fg: '#1f5fa8' },
   family: { bg: '#e7f5ec', fg: '#1f8a4c' },
   senior: { bg: '#f3ecfb', fg: '#6b3fa0' },
+  youth: { bg: '#e7f5ec', fg: '#1f8a4c' },
   lessons: { bg: '#fdf2e0', fg: '#b56a14' },
   adult_lessons: { bg: '#fdf2e0', fg: '#b56a14' },
   parent_child: { bg: '#fde9f1', fg: '#b03a73' },
   exercise: { bg: '#e0f5f3', fg: '#1f8a86' },
   camp: { bg: '#eef1f4', fg: '#5b6b7b' },
+  school: { bg: '#eef1f4', fg: '#5b6b7b' },
   rental: { bg: '#eef1f4', fg: '#5b6b7b' },
   other: { bg: '#eef1f4', fg: '#5b6b7b' },
 };
 const tone = (k) => KIND_TONE[k] || KIND_TONE.other;
 const fmtMin = (m) => fmtClock(Math.floor(m / 60), m % 60);
+// A session the build couldn't classify carries the poster's own words
+// (`label`), which say far more than a generic "Other".
+const kindLabel = (s, t) => (s.kind === 'other' && s.label) || t('pool.kind.' + s.kind);
 
 // North Beach has warm + cool pools under one roof; its sessions carry
 // pool: "warm" | "cool". Single-pool facilities yield one anonymous group.
@@ -52,7 +57,7 @@ function SessionPills({ sessions, t }) {
       <View style={styles.sessRow}>
         {group.map((s, i) => (
           <View key={i} style={[styles.sess, { backgroundColor: tone(s.kind).bg }]}>
-            <Text style={[styles.sessKind, { color: tone(s.kind).fg }]}>{t('pool.kind.' + s.kind)}</Text>
+            <Text style={[styles.sessKind, { color: tone(s.kind).fg }]}>{kindLabel(s, t)}</Text>
             <Text style={[styles.sessTime, { color: tone(s.kind).fg }]}>
               {fmtMin(s.start)}–{fmtMin(s.end)}
             </Text>
@@ -64,8 +69,9 @@ function SessionPills({ sessions, t }) {
 }
 
 // Sessions that say nothing to someone deciding whether to go now: a private
-// rental, a camp, or an unclassified PDF cell. Lessons stay — they occupy lanes.
-const NOW_HIDDEN = new Set(['rental', 'camp', 'other']);
+// rental, a camp, a school group, or an unclassified PDF cell. Lessons stay —
+// they occupy lanes.
+const NOW_HIDDEN = new Set(['rental', 'camp', 'school', 'other']);
 
 // The tap-state lines. For a pool, *which* session is on matters more than
 // open/closed (a lap swimmer arriving during Parent & Tot is turned away), so
@@ -107,7 +113,7 @@ export function PoolPeek({ pool, date, isPicked }) {
           {pills.map((s) => (
             <View key={s.kind} style={[styles.nowPill, { backgroundColor: tone(s.kind).bg }]}>
               <Text style={[styles.nowPillText, { color: tone(s.kind).fg }]}>
-                {t('pool.kind.' + s.kind)}
+                {kindLabel(s, t)}
                 {active.length && !sharedEnd ? ' · ' + t('pool.until', { t: fmtMin(s.end) }) : ''}
               </Text>
             </View>

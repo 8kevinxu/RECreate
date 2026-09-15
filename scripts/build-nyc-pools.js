@@ -100,19 +100,24 @@ const OUTDOOR_FEES = {
 };
 
 // NYC pool program title -> the session kind PoolDetail already labels.
-// Order matters: "Adult Lap Swim" must hit `lap` before any generic swim rule.
+// Order matters: "Adult Lap Swim" must hit `lap` before any generic swim rule,
+// and the water-workout names before `camp` ("Bootcamp in the Pool" is an
+// exercise class, not a day camp).
 const KIND_RULES = [
   [/lap\s*swim|masters/i, 'lap'],
-  [/learn\s*to\s*swim|swim\s*(lesson|instruction)|beginner|stroke/i, 'lessons'],
   [/adult\s*(swim\s*)?(lesson|instruction)/i, 'adult_lessons'],
+  [/learn\s*to\s*swim|swim\s*(lesson|instruction)|beginner|stroke|swim\s*team|competitive|practice/i, 'lessons'],
   [/parent|tot\b|toddler|mommy|caregiver/i, 'parent_child'],
   [/senior|55\+|60\+/i, 'senior'],
-  [/aqua|water\s*(aerobic|exercise|fitness|walking)|arthritis/i, 'exercise'],
-  [/camp/i, 'camp'],
+  [/aqua|hydro|water\s*(aerobic|exercise|fitness|walking)|high\s*impact\s*water|in\s*the\s*pool|arthritis/i, 'exercise'],
+  [/child|teen|youth|kids?\b/i, 'youth'],
+  [/\bcamp\b/i, 'camp'],
   [/rental|party/i, 'rental'],
-  [/swim\s*team|competitive|practice/i, 'other'],
   [/open\s*swim|general\s*swim|rec(reation(al)?)?\s*swim|family|public\s*swim|free\s*swim/i, 'family'],
 ];
+// The grid also lists the pool's own downtime ("Closed for Cleaning") as a
+// program. That's a gap in the day, not a session anyone attends.
+const isClosure = (title) => /\bclosed?\b|cleaning|maintenance/i.test(title);
 const kindFor = (title) => KIND_RULES.find(([re]) => re.test(title))?.[1] || 'other';
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -233,7 +238,11 @@ function parsePoolSchedule(html) {
       const start = toMin(pm[1]);
       const end = toMin(pm[2]);
       if (start == null || end == null || end <= start) continue;
-      sessions[dow].push({ kind: kindFor(title), start, end });
+      if (isClosure(title)) continue;
+      const kind = kindFor(title);
+      // An unrecognised program keeps its own name, so the card can say what
+      // it is rather than "Other".
+      sessions[dow].push(kind === 'other' ? { kind, label: title, start, end } : { kind, start, end });
     }
   });
   for (const day of sessions) day.sort((a, b) => a.start - b.start || a.end - b.end);
@@ -302,7 +311,7 @@ function mergeSites(pools) {
         return group
           .flatMap((p) => p.sessions?.[d] || [])
           .filter((x) => {
-            const k = `${x.kind}-${x.start}-${x.end}`;
+            const k = `${x.kind}-${x.label || ''}-${x.start}-${x.end}`;
             return !seen.has(k) && seen.add(k);
           });
       }),

@@ -74,30 +74,54 @@ const CLOSURES = [
   { date: '2026-07-04', label: 'Independence Day' },
 ];
 
-const KIND_ORDER = ['lap', 'family', 'senior', 'lessons', 'adult_lessons', 'parent_child', 'exercise', 'camp', 'rental', 'other'];
+const KIND_ORDER = ['lap', 'family', 'senior', 'youth', 'lessons', 'adult_lessons', 'parent_child', 'exercise', 'camp', 'school', 'rental', 'other'];
 
 // ---- PDF schedule parsing -------------------------------------------------
 
 const DOW = { SUNDAY: 0, MONDAY: 1, TUESDAY: 2, WEDNESDAY: 3, THURSDAY: 4, FRIDAY: 5, SATURDAY: 6 };
-const TIME = /(\d{1,2})(?::(\d{2}))?\s*(a\.?m\.?|p\.?m\.?)?\s*[-–]\s*((\d{1,2})(?::(\d{2}))?\s*(a\.?m\.?|p\.?m\.?)|noon)/i;
+// A bare "p"/"a" meridiem counts too — North Beach prints "1:45pm-4:30p".
+const TIME = /(\d{1,2})(?::(\d{2}))?\s*(a\.?m\.?|p\.?m\.?|[ap](?![a-z]))?\s*[-–]\s*((\d{1,2})(?::(\d{2}))?\s*(a\.?m\.?|p\.?m\.?|[ap](?![a-z]))|noon)/i;
 const KINDS = [
-  [/parent\s*(&|and)?\s*tot|piranha|parent.?child/i, 'parent_child'],
+  [/parent\s*(&|and|\/)?\s*tots?|piranha|parent.?child/i, 'parent_child'],
   [/adult\s*(swim\s*)?lesson/i, 'adult_lessons'],
-  [/learn\s*to\s*swim|\blts\b|swim\s*lesson|youth\s*lesson|pre-?school|swim\s*team|youth\s*team|special\s*olympic/i, 'lessons'],
+  [/learn\s*-?\s*to\s*-?\s*swim|\blts\b|swim\s*lesson|youth\s*lesson|pre-?school|swim\s*team|special\s*olympic/i, 'lessons'],
   [/water\s*exercise|self.?guided|deep\s*water/i, 'exercise'],
   [/senior|therapy/i, 'senior'],
   [/rec\/?family|family|recreation|rec\s*swim/i, 'family'],
   [/lap/i, 'lap'],
-  [/rental|masters|synchro|hockey/i, 'rental'],
-  [/sfrpd|camp/i, 'camp'],
+  // SFUSD classes / school groups hold the pool for a school — not public swim,
+  // but worth naming: it's why the pool is busy with nobody you can join.
+  [/sfusd|school\s*group/i, 'school'],
+  [/rental|masters|synchro|hockey|youth\s*team/i, 'rental'],
+  [/sfrpd|\bcamp\b/i, 'camp'],
 ];
-const kindOf = (s) => {
-  for (const [re, k] of KINDS) if (re.test(s)) return k;
-  return 'other';
+// Every kind a label names. One PDF cell often lists several programs sharing
+// the slot in different lanes ("Parent & Tot(1)/ Senior Swim(3)", "Family/Lap
+// Swim", "Sfusd/Rec Swim"), and taking only the first match dropped the rest.
+// Parentheticals are lane annotations, not programs — "Lap Swim (Lap/Therapy)"
+// is lap swim, not senior therapy, and "Rental (Youth Teams)" is a rental, not
+// a swim team — so they're stripped before matching.
+const kindsOf = (s) => {
+  const bare = s.replace(/\([^)]*\)?/g, ' ');
+  const ks = KINDS.filter(([re]) => re.test(bare)).map(([, k]) => k);
+  // "Adult Swim Lessons" is adult lessons, not also kids' lessons, and "Senior
+  // Lap Swim" is a senior session, not lap swim anyone can join.
+  const drop = new Set();
+  if (ks.includes('adult_lessons')) drop.add('lessons');
+  if (/senior\s*lap/i.test(bare)) drop.add('lap');
+  return ks.filter((k) => !drop.has(k));
 };
+// Closure and staffing notes printed inside the grid ("Closed every 4th
+// Thursday of / the Month for Training / 8/27, 9/24, 10/22", "All city pools
+// will be closed on December 12", a supervisor's name). They
+// sit above a time like any label, so without this each fragment became its
+// own "Other" session — a phantom session at the very hour the pool is shut.
+const CLOSURE_NOTE =
+  /closed|in-?service|training|\bstaff\b|supervisor|will be|of the month|^(the )?month\b|^\d{1,2}\/\d{1,2}|^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s*\d|^(from|for|on|and)\b|^((from|for|on|and)\s*)+$/i;
 // Cells that are notes/legend/footer, not activity labels.
 const isNote = (s) =>
-  /^\(|notes?:|pool info|^_+$|^•|lanes?\)$|^\(shallow|^\(deep|^\(main|^\(small|^\(water|^\(1 |^\(advanced|^\(beg|temperature|@|\.org|francisco|\bave\b|\bblvd\b|\bstreet\b|treat|geary|lombard|arguello|wawona/i.test(s) ||
+  /^\(|notes?:|pool info|^_+$|^•|^\(shallow|^\(deep|^\(main|^\(small|^\(water|^\(1 |^\(advanced|^\(beg|temperature|@|\.org|francisco|\bave\b|\bblvd\b|\bstreet\b|treat|geary|lombard|arguello|wawona/i.test(s) ||
+  CLOSURE_NOTE.test(s) ||
   s.length < 3;
 
 const toMin = (h, m, ap, nextAp) => {
@@ -105,6 +129,7 @@ const toMin = (h, m, ap, nextAp) => {
   m = m ? +m : 0;
   ap = (ap || '').replace(/\./g, '').toLowerCase();
   if (!ap && nextAp) ap = nextAp;
+  if (ap.length === 1) ap += 'm';
   if (ap === 'pm' && h < 12) h += 12;
   if (ap === 'am' && h === 12) h = 0;
   return h * 60 + m;
@@ -129,7 +154,13 @@ function parseTime(s) {
 
 // Merge per-glyph text fragments on the same line into row cells (dropping the
 // right-side notes panel at x>760), so split words/times become whole strings.
-function mergeRows(items) {
+// Once the day columns are known, `sameCol` stops a merge across a column
+// boundary: on tightly set posters (MLK, Sava, Garfield) neighbouring days sit
+// 12–35pt apart, so a gap threshold alone fused the same session in four day
+// columns into one cell, parsed it once, and the other days silently lost it.
+// Gaps use each item's real rendered width, not a per-character estimate.
+const MERGE_GAP = 20;
+function mergeRows(items, sameCol = () => true) {
   const rows = [];
   items
     .slice()
@@ -146,14 +177,16 @@ function mergeRows(items) {
     r.its.sort((a, b) => a.x - b.x);
     const cells = [];
     let cur = null;
+    let prev = null;
     let lastEnd = null;
     for (const it of r.its) {
-      if (cur && it.x - lastEnd < 45) cur.s += (it.x - lastEnd > 8 ? ' ' : '') + it.s;
+      if (cur && it.x - lastEnd < MERGE_GAP && sameCol(prev, it)) cur.s += (it.x - lastEnd > 3 ? ' ' : '') + it.s;
       else {
         cur = { x: it.x, s: it.s };
         cells.push(cur);
       }
-      lastEnd = it.x + it.s.length * 5.5;
+      prev = it;
+      lastEnd = it.x + (it.w || it.s.length * 5.5);
     }
     return { y: r.y, cells: cells.filter((c) => c.x < 760) };
   });
@@ -161,10 +194,19 @@ function mergeRows(items) {
 
 // One PDF's positioned text -> { dow: [{kind,start,end}] }.
 function parseGrid(items) {
-  const rows = mergeRows(items);
   const dkey = (s) => DOW[s.toUpperCase().replace(/[^A-Z]/g, '')];
-  const hdr = rows.find((r) => r.cells.filter((c) => dkey(c.s) !== undefined).length >= 2);
-  if (!hdr) return null;
+  // Day names are single items, so the header is found before columns exist.
+  const heads = items.filter((it) => dkey(it.s) !== undefined);
+  const hdrY = mergeRows(heads).find((r) => r.cells.length >= 2)?.y;
+  if (hdrY == null) return null;
+  const hdrItems = heads.filter((it) => Math.abs(it.y - hdrY) <= 4).sort((a, b) => a.x - b.x);
+  // Column bands split at the midpoints between header centres; text is
+  // centred in its cell, so an item's centre says which day it belongs to.
+  const centre = (it) => it.x + (it.w || it.s.length * 5.5) / 2;
+  const cuts = hdrItems.slice(1).map((h, i) => (centre(hdrItems[i]) + centre(h)) / 2);
+  const band = (it) => cuts.filter((c) => centre(it) > c).length;
+  const rows = mergeRows(items, (a, b) => band(a) === band(b));
+  const hdr = rows.find((r) => Math.abs(r.y - hdrY) <= 4);
   const cols = hdr.cells
     .filter((c) => dkey(c.s) !== undefined)
     .map((c) => ({ dow: dkey(c.s), x: c.x }))
@@ -197,9 +239,17 @@ function parseGrid(items) {
     for (const cell of cells) {
       const t = parseTime(cell.s);
       if (t) {
-        const inline = cell.s.replace(TIME, '').replace(/noon/gi, '').trim();
-        const labels = [...buf.map((b) => b.s), inline].filter((x) => x && !isNote(x));
-        for (const L of [...new Set(labels)]) sess.push({ kind: kindOf(L), start: t.start, end: t.end });
+        // Strip EVERY time on the cell, not just the one parsed — a leftover
+        // "12:30pm – 3:30pm" was being read as an unclassifiable label.
+        const inline = cell.s.replace(new RegExp(TIME.source, 'gi'), '').replace(/noon/gi, '').trim();
+        const labels = [...new Set([...buf.map((b) => b.s), inline])].filter((x) => x && !isNote(x) && /[a-z]{3}/i.test(x));
+        const kinds = new Set(labels.flatMap(kindsOf));
+        for (const k of kinds) sess.push({ kind: k, start: t.start, end: t.end });
+        // A label nothing recognises is usually the tail of one that was
+        // ("Senior/Therapy/ Access" + "Swim"), so it only becomes an "other"
+        // session when the slot has no recognised program at all — and then it
+        // keeps its own text, so the card can show what the poster says.
+        if (!kinds.size) for (const L of labels) sess.push({ kind: 'other', label: L, start: t.start, end: t.end });
         buf = [];
       } else buf.push({ s: cell.s });
     }
@@ -212,7 +262,7 @@ function parseGrid(items) {
           console.warn(`    ⚠ dropping implausible session dow=${c.dow} ${s.kind} ${s.start}–${s.end}`);
           return false;
         }
-        const k = s.kind + s.start + s.end;
+        const k = s.kind + (s.label || '') + s.start + s.end;
         if (seen.has(k)) return false;
         seen.add(k);
         return true;
@@ -270,7 +320,7 @@ async function pdfItems(url) {
   const tc = await page.getTextContent();
   return tc.items
     .filter((i) => i.str.trim())
-    .map((i) => ({ x: Math.round(i.transform[4]), y: Math.round(i.transform[5]), s: i.str.trim() }));
+    .map((i) => ({ x: Math.round(i.transform[4]), y: Math.round(i.transform[5]), w: i.width, s: i.str.trim() }));
 }
 
 // The season label the app shows must describe the SAME poster the sessions were
@@ -313,7 +363,7 @@ async function scrapePool(m) {
     const grid = parseGrid(await pdfItems(d.url)) || {};
     for (const dow of Object.keys(grid))
       for (const s of grid[dow]) {
-        const k = (tag || '') + s.kind + s.start + s.end;
+        const k = (tag || '') + s.kind + (s.label || '') + s.start + s.end;
         if (!seen[dow].has(k)) {
           seen[dow].add(k);
           week[dow].push(tag ? { ...s, pool: tag } : s);

@@ -15,9 +15,10 @@
         "senior",
         "lessons",
         "adult_lessons",
+        "parent_child",
         "exercise",
-        "rental",
-        "other"
+        "school",
+        "rental"
       ],
       "scheduleUrls": [
         {
@@ -35,12 +36,12 @@
             "end": 480
           },
           {
-            "kind": "other",
+            "kind": "school",
             "start": 510,
             "end": 600
           },
           {
-            "kind": "other",
+            "kind": "parent_child",
             "start": 630,
             "end": 660
           },
@@ -60,12 +61,22 @@
             "end": 930
           },
           {
+            "kind": "lap",
+            "start": 870,
+            "end": 930
+          },
+          {
             "kind": "adult_lessons",
             "start": 930,
             "end": 960
           },
           {
             "kind": "family",
+            "start": 960,
+            "end": 1050
+          },
+          {
+            "kind": "lap",
             "start": 960,
             "end": 1050
           },
@@ -114,17 +125,17 @@
             "end": 480
           },
           {
-            "kind": "other",
+            "kind": "school",
             "start": 510,
             "end": 600
           },
           {
-            "kind": "lap",
-            "start": 690,
-            "end": 840
+            "kind": "senior",
+            "start": 600,
+            "end": 660
           },
           {
-            "kind": "other",
+            "kind": "lap",
             "start": 690,
             "end": 840
           },
@@ -141,14 +152,9 @@
         ],
         [
           {
-            "kind": "other",
+            "kind": "school",
             "start": 510,
             "end": 600
-          },
-          {
-            "kind": "other",
-            "start": 630,
-            "end": 720
           },
           {
             "kind": "senior",
@@ -222,8 +228,8 @@
         "adult_lessons",
         "parent_child",
         "exercise",
-        "rental",
-        "other"
+        "school",
+        "rental"
       ],
       "scheduleUrls": [
         {
@@ -256,7 +262,7 @@
             "end": 780
           },
           {
-            "kind": "adult_lessons",
+            "kind": "family",
             "start": 840,
             "end": 960
           },
@@ -293,8 +299,18 @@
             "end": 870
           },
           {
+            "kind": "school",
+            "start": 810,
+            "end": 870
+          },
+          {
             "kind": "lessons",
             "start": 930,
+            "end": 1050
+          },
+          {
+            "kind": "adult_lessons",
+            "start": 1020,
             "end": 1050
           },
           {
@@ -335,9 +351,9 @@
             "end": 960
           },
           {
-            "kind": "other",
-            "start": 870,
-            "end": 960
+            "kind": "rental",
+            "start": 990,
+            "end": 1140
           }
         ],
         [
@@ -384,16 +400,6 @@
             "end": 660
           },
           {
-            "kind": "other",
-            "start": 540,
-            "end": 780
-          },
-          {
-            "kind": "other",
-            "start": 540,
-            "end": 840
-          },
-          {
             "kind": "senior",
             "start": 705,
             "end": 765
@@ -436,8 +442,8 @@
         "senior",
         "lessons",
         "exercise",
-        "rental",
-        "other"
+        "school",
+        "rental"
       ],
       "scheduleUrls": [
         {
@@ -523,6 +529,11 @@
             "kind": "family",
             "start": 1050,
             "end": 1140
+          },
+          {
+            "kind": "lap",
+            "start": 1050,
+            "end": 1140
           }
         ],
         [
@@ -552,6 +563,11 @@
             "end": 780
           },
           {
+            "kind": "exercise",
+            "start": 675,
+            "end": 735
+          },
+          {
             "kind": "family",
             "start": 840,
             "end": 930
@@ -560,6 +576,11 @@
             "kind": "lap",
             "start": 840,
             "end": 930
+          },
+          {
+            "kind": "lessons",
+            "start": 945,
+            "end": 1050
           },
           {
             "kind": "rental",
@@ -574,7 +595,17 @@
             "end": 525
           },
           {
+            "kind": "lap",
+            "start": 420,
+            "end": 525
+          },
+          {
             "kind": "exercise",
+            "start": 540,
+            "end": 645
+          },
+          {
+            "kind": "senior",
             "start": 540,
             "end": 645
           },
@@ -594,9 +625,14 @@
             "end": 945
           },
           {
-            "kind": "other",
+            "kind": "school",
             "start": 840,
             "end": 945
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1035
           },
           {
             "kind": "family",
@@ -616,9 +652,9 @@
             "end": 525
           },
           {
-            "kind": "other",
-            "start": 540,
-            "end": 645
+            "kind": "lap",
+            "start": 420,
+            "end": 525
           },
           {
             "kind": "senior",
@@ -626,7 +662,17 @@
             "end": 645
           },
           {
+            "kind": "exercise",
+            "start": 570,
+            "end": 630
+          },
+          {
             "kind": "family",
+            "start": 660,
+            "end": 780
+          },
+          {
+            "kind": "lap",
             "start": 660,
             "end": 780
           },
@@ -641,9 +687,9 @@
             "end": 930
           },
           {
-            "kind": "other",
-            "start": 840,
-            "end": 930
+            "kind": "lessons",
+            "start": 945,
+            "end": 1050
           },
           {
             "kind": "rental",
@@ -670,8 +716,7 @@
         "lessons",
         "parent_child",
         "exercise",
-        "rental",
-        "other"
+        "rental"
       ],
       "scheduleUrls": [
         {
@@ -695,11 +740,6 @@
           },
           {
             "kind": "lap",
-            "start": 660,
-            "end": 750
-          },
-          {
-            "kind": "other",
             "start": 660,
             "end": 750
           },
@@ -736,9 +776,19 @@
             "end": 510
           },
           {
+            "kind": "exercise",
+            "start": 540,
+            "end": 660
+          },
+          {
             "kind": "lap",
             "start": 540,
             "end": 660
+          },
+          {
+            "kind": "lap",
+            "start": 660,
+            "end": 750
           },
           {
             "kind": "family",
@@ -773,6 +823,11 @@
             "end": 495
           },
           {
+            "kind": "exercise",
+            "start": 540,
+            "end": 660
+          },
+          {
             "kind": "lap",
             "start": 540,
             "end": 660
@@ -815,6 +870,11 @@
             "end": 510
           },
           {
+            "kind": "exercise",
+            "start": 540,
+            "end": 660
+          },
+          {
             "kind": "lap",
             "start": 540,
             "end": 660
@@ -846,6 +906,11 @@
           }
         ],
         [
+          {
+            "kind": "lap",
+            "start": 540,
+            "end": 630
+          },
           {
             "kind": "lessons",
             "start": 540,
@@ -886,10 +951,10 @@
       "programs": [
         "lap",
         "family",
+        "senior",
         "lessons",
         "exercise",
-        "rental",
-        "other"
+        "rental"
       ],
       "scheduleUrls": [
         {
@@ -912,7 +977,7 @@
             "end": 720
           },
           {
-            "kind": "other",
+            "kind": "senior",
             "start": 540,
             "end": 720
           },
@@ -927,27 +992,12 @@
             "end": 930
           },
           {
-            "kind": "other",
-            "start": 750,
-            "end": 930
-          },
-          {
             "kind": "lap",
             "start": 930,
             "end": 1050
           },
           {
             "kind": "lessons",
-            "start": 930,
-            "end": 1080
-          },
-          {
-            "kind": "other",
-            "start": 930,
-            "end": 1050
-          },
-          {
-            "kind": "other",
             "start": 930,
             "end": 1080
           },
@@ -960,11 +1010,6 @@
             "kind": "lap",
             "start": 1080,
             "end": 1140
-          },
-          {
-            "kind": "other",
-            "start": 1140,
-            "end": 1230
           },
           {
             "kind": "rental",
@@ -975,20 +1020,18 @@
         [
           {
             "kind": "lap",
-            "start": 630,
-            "end": 750
+            "start": 540,
+            "end": 720
+          },
+          {
+            "kind": "senior",
+            "start": 540,
+            "end": 630
           },
           {
             "kind": "lessons",
             "start": 630,
             "end": 750
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 450,
-            "end": 540
           },
           {
             "kind": "family",
@@ -1001,9 +1044,56 @@
             "end": 930
           },
           {
-            "kind": "other",
+            "kind": "lap",
+            "start": 930,
+            "end": 1050
+          },
+          {
+            "kind": "lessons",
+            "start": 930,
+            "end": 1080
+          },
+          {
+            "kind": "rental",
+            "start": 1080,
+            "end": 1200
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 450,
+            "end": 540
+          },
+          {
+            "kind": "lap",
+            "start": 540,
+            "end": 720
+          },
+          {
+            "kind": "senior",
+            "start": 540,
+            "end": 720
+          },
+          {
+            "kind": "family",
             "start": 750,
             "end": 930
+          },
+          {
+            "kind": "lap",
+            "start": 750,
+            "end": 930
+          },
+          {
+            "kind": "lap",
+            "start": 930,
+            "end": 1050
+          },
+          {
+            "kind": "lessons",
+            "start": 930,
+            "end": 1080
           },
           {
             "kind": "exercise",
@@ -1016,24 +1106,24 @@
             "end": 1140
           },
           {
-            "kind": "lessons",
-            "start": 1080,
-            "end": 1140
+            "kind": "rental",
+            "start": 1140,
+            "end": 1230
           }
         ],
         [
           {
             "kind": "lap",
-            "start": 630,
-            "end": 750
+            "start": 540,
+            "end": 720
+          },
+          {
+            "kind": "senior",
+            "start": 540,
+            "end": 630
           },
           {
             "kind": "lessons",
-            "start": 630,
-            "end": 750
-          },
-          {
-            "kind": "other",
             "start": 630,
             "end": 750
           },
@@ -1046,6 +1136,21 @@
             "kind": "lap",
             "start": 750,
             "end": 930
+          },
+          {
+            "kind": "lap",
+            "start": 930,
+            "end": 1050
+          },
+          {
+            "kind": "lessons",
+            "start": 930,
+            "end": 1080
+          },
+          {
+            "kind": "rental",
+            "start": 1080,
+            "end": 1200
           }
         ],
         [
@@ -1055,14 +1160,24 @@
             "end": 510
           },
           {
+            "kind": "lessons",
+            "start": 540,
+            "end": 720
+          },
+          {
+            "kind": "rental",
+            "start": 540,
+            "end": 660
+          },
+          {
             "kind": "family",
             "start": 810,
             "end": 900
           },
           {
-            "kind": "lessons",
-            "start": 810,
-            "end": 900
+            "kind": "lap",
+            "start": 930,
+            "end": 1020
           }
         ]
       ]
@@ -1080,8 +1195,7 @@
         "family",
         "senior",
         "lessons",
-        "parent_child",
-        "other"
+        "parent_child"
       ],
       "scheduleUrls": [
         {
@@ -1099,12 +1213,12 @@
             "end": 540
           },
           {
-            "kind": "other",
+            "kind": "parent_child",
             "start": 555,
             "end": 660
           },
           {
-            "kind": "parent_child",
+            "kind": "senior",
             "start": 555,
             "end": 660
           },
@@ -1163,12 +1277,12 @@
             "end": 540
           },
           {
-            "kind": "other",
+            "kind": "parent_child",
             "start": 555,
             "end": 660
           },
           {
-            "kind": "parent_child",
+            "kind": "senior",
             "start": 555,
             "end": 660
           },
@@ -1178,17 +1292,7 @@
             "end": 810
           },
           {
-            "kind": "other",
-            "start": 690,
-            "end": 810
-          },
-          {
             "kind": "lap",
-            "start": 840,
-            "end": 930
-          },
-          {
-            "kind": "other",
             "start": 840,
             "end": 930
           },
@@ -1213,6 +1317,11 @@
             "kind": "senior",
             "start": 555,
             "end": 660
+          },
+          {
+            "kind": "lap",
+            "start": 690,
+            "end": 810
           },
           {
             "kind": "lap",
@@ -1265,7 +1374,7 @@
         "lessons",
         "adult_lessons",
         "exercise",
-        "other"
+        "school"
       ],
       "scheduleUrls": [
         {
@@ -1288,7 +1397,7 @@
             "pool": "cool"
           },
           {
-            "kind": "senior",
+            "kind": "lap",
             "start": 450,
             "end": 540,
             "pool": "warm"
@@ -1300,19 +1409,19 @@
             "pool": "warm"
           },
           {
-            "kind": "other",
+            "kind": "school",
             "start": 630,
             "end": 690,
             "pool": "cool"
           },
           {
-            "kind": "other",
+            "kind": "school",
             "start": 630,
             "end": 690,
             "pool": "warm"
           },
           {
-            "kind": "exercise",
+            "kind": "lap",
             "start": 720,
             "end": 900,
             "pool": "warm"
@@ -1324,16 +1433,16 @@
             "pool": "cool"
           },
           {
+            "kind": "family",
+            "start": 930,
+            "end": 1050,
+            "pool": "warm"
+          },
+          {
             "kind": "lap",
             "start": 930,
             "end": 1110,
             "pool": "cool"
-          },
-          {
-            "kind": "senior",
-            "start": 930,
-            "end": 1050,
-            "pool": "warm"
           },
           {
             "kind": "lap",
@@ -1356,15 +1465,21 @@
             "pool": "warm"
           },
           {
-            "kind": "other",
+            "kind": "school",
             "start": 630,
             "end": 690,
             "pool": "cool"
           },
           {
-            "kind": "other",
+            "kind": "school",
             "start": 630,
             "end": 690,
+            "pool": "warm"
+          },
+          {
+            "kind": "exercise",
+            "start": 705,
+            "end": 765,
             "pool": "warm"
           },
           {
@@ -1372,6 +1487,12 @@
             "start": 705,
             "end": 915,
             "pool": "cool"
+          },
+          {
+            "kind": "lap",
+            "start": 770,
+            "end": 915,
+            "pool": "warm"
           },
           {
             "kind": "lessons",
@@ -1412,7 +1533,7 @@
             "pool": "cool"
           },
           {
-            "kind": "senior",
+            "kind": "lap",
             "start": 450,
             "end": 540,
             "pool": "warm"
@@ -1430,7 +1551,7 @@
             "pool": "cool"
           },
           {
-            "kind": "senior",
+            "kind": "lap",
             "start": 675,
             "end": 840,
             "pool": "warm"
@@ -1498,15 +1619,21 @@
             "pool": "warm"
           },
           {
-            "kind": "other",
+            "kind": "school",
             "start": 630,
             "end": 690,
             "pool": "cool"
           },
           {
-            "kind": "other",
+            "kind": "school",
             "start": 630,
             "end": 690,
+            "pool": "warm"
+          },
+          {
+            "kind": "exercise",
+            "start": 705,
+            "end": 765,
             "pool": "warm"
           },
           {
@@ -1516,13 +1643,7 @@
             "pool": "cool"
           },
           {
-            "kind": "lessons",
-            "start": 705,
-            "end": 765,
-            "pool": "warm"
-          },
-          {
-            "kind": "senior",
+            "kind": "lap",
             "start": 770,
             "end": 915,
             "pool": "warm"
@@ -1572,33 +1693,21 @@
             "pool": "warm"
           },
           {
-            "kind": "other",
-            "start": 540,
-            "end": 720,
-            "pool": "cool"
-          },
-          {
-            "kind": "other",
-            "start": 540,
-            "end": 660,
-            "pool": "cool"
-          },
-          {
-            "kind": "other",
-            "start": 540,
-            "end": 720,
-            "pool": "warm"
-          },
-          {
-            "kind": "other",
-            "start": 540,
-            "end": 570,
+            "kind": "lessons",
+            "start": 585,
+            "end": 615,
             "pool": "warm"
           },
           {
             "kind": "lessons",
-            "start": 585,
-            "end": 615,
+            "start": 630,
+            "end": 660,
+            "pool": "warm"
+          },
+          {
+            "kind": "family",
+            "start": 720,
+            "end": 795,
             "pool": "warm"
           },
           {
@@ -1608,7 +1717,13 @@
             "pool": "cool"
           },
           {
-            "kind": "senior",
+            "kind": "lap",
+            "start": 825,
+            "end": 990,
+            "pool": "cool"
+          },
+          {
+            "kind": "lap",
             "start": 825,
             "end": 900,
             "pool": "warm"
@@ -1621,18 +1736,6 @@
           },
           {
             "kind": "adult_lessons",
-            "start": 990,
-            "end": 1020,
-            "pool": "cool"
-          },
-          {
-            "kind": "lap",
-            "start": 990,
-            "end": 1020,
-            "pool": "cool"
-          },
-          {
-            "kind": "other",
             "start": 990,
             "end": 1020,
             "pool": "cool"
@@ -1656,8 +1759,7 @@
         "adult_lessons",
         "parent_child",
         "exercise",
-        "rental",
-        "other"
+        "rental"
       ],
       "scheduleUrls": [
         {
@@ -1715,6 +1817,11 @@
             "end": 690
           },
           {
+            "kind": "senior",
+            "start": 720,
+            "end": 810
+          },
+          {
             "kind": "lap",
             "start": 825,
             "end": 945
@@ -1794,11 +1901,6 @@
             "end": 930
           },
           {
-            "kind": "other",
-            "start": 840,
-            "end": 930
-          },
-          {
             "kind": "lessons",
             "start": 960,
             "end": 1050
@@ -1819,6 +1921,11 @@
             "kind": "lap",
             "start": 450,
             "end": 585
+          },
+          {
+            "kind": "senior",
+            "start": 615,
+            "end": 720
           },
           {
             "kind": "exercise",
@@ -1865,8 +1972,8 @@
         "senior",
         "lessons",
         "adult_lessons",
-        "rental",
-        "other"
+        "school",
+        "rental"
       ],
       "scheduleUrls": [
         {
@@ -1879,14 +1986,9 @@
         [],
         [
           {
-            "kind": "other",
+            "kind": "school",
             "start": 450,
             "end": 540
-          },
-          {
-            "kind": "other",
-            "start": 570,
-            "end": 690
           },
           {
             "kind": "senior",
@@ -1899,22 +2001,12 @@
             "end": 870
           },
           {
-            "kind": "other",
-            "start": 720,
-            "end": 870
-          },
-          {
             "kind": "family",
             "start": 900,
             "end": 1020
           },
           {
-            "kind": "lessons",
-            "start": 1050,
-            "end": 1140
-          },
-          {
-            "kind": "other",
+            "kind": "rental",
             "start": 1050,
             "end": 1140
           },
@@ -1931,6 +2023,16 @@
             "end": 540
           },
           {
+            "kind": "senior",
+            "start": 570,
+            "end": 690
+          },
+          {
+            "kind": "lap",
+            "start": 720,
+            "end": 840
+          },
+          {
             "kind": "family",
             "start": 870,
             "end": 930
@@ -1941,12 +2043,12 @@
             "end": 930
           },
           {
-            "kind": "adult_lessons",
-            "start": 1050,
-            "end": 1080
+            "kind": "lessons",
+            "start": 960,
+            "end": 1050
           },
           {
-            "kind": "lessons",
+            "kind": "adult_lessons",
             "start": 1050,
             "end": 1080
           },
@@ -1963,32 +2065,17 @@
         ],
         [
           {
-            "kind": "other",
+            "kind": "school",
             "start": 450,
             "end": 570
           },
           {
-            "kind": "other",
-            "start": 690,
+            "kind": "senior",
+            "start": 600,
             "end": 720
           },
           {
-            "kind": "lessons",
-            "start": 720,
-            "end": 840
-          },
-          {
-            "kind": "other",
-            "start": 720,
-            "end": 840
-          },
-          {
             "kind": "lap",
-            "start": 750,
-            "end": 900
-          },
-          {
-            "kind": "lessons",
             "start": 750,
             "end": 900
           },
@@ -1998,9 +2085,9 @@
             "end": 1050
           },
           {
-            "kind": "other",
-            "start": 930,
-            "end": 1050
+            "kind": "rental",
+            "start": 1050,
+            "end": 1140
           }
         ],
         [
@@ -2010,17 +2097,27 @@
             "end": 540
           },
           {
-            "kind": "family",
-            "start": 1080,
-            "end": 1170
-          },
-          {
-            "kind": "lap",
-            "start": 1080,
-            "end": 1170
+            "kind": "senior",
+            "start": 570,
+            "end": 690
           },
           {
             "kind": "lessons",
+            "start": 690,
+            "end": 720
+          },
+          {
+            "kind": "lap",
+            "start": 720,
+            "end": 930
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1050
+          },
+          {
+            "kind": "family",
             "start": 1080,
             "end": 1170
           }
@@ -2038,8 +2135,18 @@
           },
           {
             "kind": "family",
+            "start": 690,
+            "end": 780
+          },
+          {
+            "kind": "family",
             "start": 810,
             "end": 900
+          },
+          {
+            "kind": "lap",
+            "start": 930,
+            "end": 1020
           }
         ]
       ]
@@ -2162,5 +2269,5 @@
       "label": "Independence Day"
     }
   ],
-  "fetchedAt": "2026-09-14T23:30:58.386Z"
+  "fetchedAt": "2026-09-15T02:21:42.590Z"
 }
