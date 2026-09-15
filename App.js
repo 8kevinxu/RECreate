@@ -1497,10 +1497,15 @@ export default function App() {
                       }
                       style={[styles.amenityChip, active && styles.amenityChipActive]}
                     >
+                      {active && (
+                        <Text style={[styles.amenityChipText, styles.amenityChipTextActive]}>✓</Text>
+                      )}
+                      {/* Open play is pickleball-only; its icon is the drawn ball,
+                          which as an <Image> can't sit inside the label's <Text>. */}
+                      {a.id === 'openplay' && <SportGlyph id="pickleball" size={12} />}
                       <Text
                         style={[styles.amenityChipText, active && styles.amenityChipTextActive]}
                       >
-                        {active ? '✓ ' : ''}
                         {t('amenity.' + a.id)}
                       </Text>
                     </Pressable>
@@ -2923,9 +2928,9 @@ function CourtDetail({
             "(open play)"). Below: unstructurable posted times, plus the poster's
             court-split / reservation nuance (directory `note`). */}
         {!!dir?.openPlayTimes && (
-          <Text style={styles.openPlayLine}>
-            🟢 {t('court.openPlay')}: {dir.openPlayTimes}
-          </Text>
+          <SportTag id="pickleball" style={styles.openPlayRow} textStyle={styles.openPlayText}>
+            {t('court.openPlay')}: {dir.openPlayTimes}
+          </SportTag>
         )}
         {!!dir?.note && <Text style={styles.openPlayLine}>ⓘ {dir.note}</Text>}
         {/* These hours came from players, not the city — SFRP lists pickleball
@@ -3277,6 +3282,9 @@ const styles = StyleSheet.create({
   placeChipTextActive: { color: '#2f74d6' },
   amenityRow: { gap: 6, paddingRight: 12 },
   amenityChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 999,
@@ -3622,6 +3630,8 @@ const styles = StyleSheet.create({
   weekClosed: { color: '#aab4bd' },
   weekTodayText: { color: '#e8730c', fontWeight: '700' },
   openPlayLine: { fontSize: 13, color: '#2a3a4a', marginTop: 8, paddingHorizontal: 8 },
+  openPlayRow: { marginTop: 8, paddingHorizontal: 8, alignItems: 'flex-start' },
+  openPlayText: { fontSize: 13, color: '#2a3a4a' },
 
   notes: { fontSize: 13, color: '#5b6b7b', marginTop: 8, lineHeight: 18 },
   srcCredit: { fontSize: 11, color: '#2f74d6', marginTop: 3, paddingHorizontal: 8 },

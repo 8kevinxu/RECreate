@@ -19,7 +19,8 @@ import {
 } from '../lib/signals';
 import { startOfDay, dayChipLabel, fmtClock, viewLabel } from '../lib/datetime';
 import { dropinWeekdays, openGymSlots } from '../lib/hours';
-import { SPORTS, sportMeta, ANY_SPORT, DEFAULT_SPORT, sportsInCourts } from '../lib/sports';
+import { SPORTS, ANY_SPORT, DEFAULT_SPORT, sportsInCourts } from '../lib/sports';
+import SportGlyph, { SportTag } from './SportGlyph';
 import { sportLabel, useI18n } from '../lib/i18n';
 
 export default function SessionModal({
@@ -173,13 +174,13 @@ export default function SessionModal({
             </Pressable>
           </View>
 
-          <Text style={styles.sub}>
-            {sportMeta(displaySport).emoji} {sportLabel(t, displaySport)} ·{' '}
+          <SportTag id={displaySport} style={styles.subRow} textStyle={styles.sub}>
+            {sportLabel(t, displaySport)} ·{' '}
             {signal.isNow
               ? t('session.downNow')
               : t('session.downAt', { when: viewLabel(signal.startsAt) })}
             {signal.note ? ` · ${signal.note}` : ''}
-          </Text>
+          </SportTag>
 
           {(signal.place || signal.prefCourtId) && (
             <Text style={styles.pref}>
@@ -218,11 +219,13 @@ export default function SessionModal({
                 </Text>
                 {p.proposedAt ? (
                   <View style={styles.pRight}>
-                    <Text style={styles.pSuggest}>
-                      {p.proposedSport ? `${sportMeta(p.proposedSport).emoji} ` : ''}
-                      {viewLabel(p.proposedAt)}
-                      {courtAt(p.proposedCourtId)}
-                    </Text>
+                    <View style={styles.pSuggestRow}>
+                      {!!p.proposedSport && <SportGlyph id={p.proposedSport} size={12} />}
+                      <Text style={styles.pSuggest}>
+                        {viewLabel(p.proposedAt)}
+                        {courtAt(p.proposedCourtId)}
+                      </Text>
+                    </View>
                     {mine && (
                       <Pressable
                         style={styles.confirmBtn}
@@ -261,9 +264,9 @@ export default function SessionModal({
                         onPress={() => selectSport(s.id)}
                         style={[styles.chip, active && styles.chipActive]}
                       >
-                        <Text style={[styles.chipText, active && styles.chipTextActive]}>
-                          {s.emoji} {sportLabel(t, s.id)}
-                        </Text>
+                        <SportTag id={s.id} textStyle={[styles.chipText, active && styles.chipTextActive]}>
+                          {sportLabel(t, s.id)}
+                        </SportTag>
                       </Pressable>
                     );
                   })}
@@ -400,7 +403,8 @@ const styles = StyleSheet.create({
   },
   header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   title: { fontSize: 18, fontWeight: '800', color: '#0d1b2a' },
-  sub: { fontSize: 13, color: '#5b6b7b', marginTop: 2 },
+  subRow: { marginTop: 2, alignItems: 'flex-start' },
+  sub: { fontSize: 13, color: '#5b6b7b' },
   pref: { fontSize: 13, color: '#2f74d6', fontWeight: '700', marginTop: 4 },
 
   banner: { borderRadius: 10, paddingVertical: 10, paddingHorizontal: 12, marginTop: 12 },
@@ -429,6 +433,7 @@ const styles = StyleSheet.create({
   },
   pName: { fontSize: 14, color: '#1a2a3a', fontWeight: '600', flex: 1 },
   pRight: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  pSuggestRow: { flexDirection: 'row', alignItems: 'center', gap: 4 },
   pSuggest: { fontSize: 12, color: '#5b6b7b', maxWidth: 150, textAlign: 'right' },
   confirmBtn: { backgroundColor: '#1f9d55', borderRadius: 8, paddingHorizontal: 10, paddingVertical: 5 },
   confirmText: { color: '#fff', fontWeight: '700', fontSize: 12 },

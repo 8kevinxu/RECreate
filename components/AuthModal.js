@@ -26,6 +26,7 @@ import { useAuth } from '../lib/auth';
 const TERMS_URL = 'https://www.apple.com/legal/internet-services/itunes/dev/stdeula/';
 const PRIVACY_URL = 'https://playrecreate.com/privacy.html';
 import { SPORTS, sportsInCourts } from '../lib/sports';
+import { SportTag } from './SportGlyph';
 import { CLASS_CATEGORIES } from '../data/classes';
 import { loadMyStats } from '../lib/playerCheckins';
 import { loadMyReportCount } from '../lib/crowd';
@@ -556,9 +557,12 @@ export default function AuthModal({
                           onPress={() => toggleSport(s.id)}
                           style={[styles.sportChip, active && styles.sportChipActive]}
                         >
-                          <Text style={[styles.sportChipText, active && styles.sportChipTextActive]}>
-                            {s.emoji} {sportLabel(t, s.id)}
-                          </Text>
+                          <SportTag
+                            id={s.id}
+                            textStyle={[styles.sportChipText, active && styles.sportChipTextActive]}
+                          >
+                            {sportLabel(t, s.id)}
+                          </SportTag>
                         </Pressable>
                       );
                     })}
@@ -616,9 +620,9 @@ export default function AuthModal({
                     <View style={styles.viewSportWrap}>
                       {favSportsList.map((s) => (
                         <View key={s.id} style={styles.viewSportChip}>
-                          <Text style={styles.viewSportText}>
-                            {s.emoji} {sportLabel(t, s.id)}
-                          </Text>
+                          <SportTag id={s.id} textStyle={styles.viewSportText}>
+                            {sportLabel(t, s.id)}
+                          </SportTag>
                         </View>
                       ))}
                       {favCategoriesList.map((c) => (
@@ -643,9 +647,9 @@ export default function AuthModal({
                       <View style={styles.statWrap}>
                         {SPORTS.filter((s) => stats.perSport[s.id]).map((s) => (
                           <View key={s.id} style={styles.statChip}>
-                            <Text style={styles.statChipText}>
-                              {s.emoji} {stats.perSport[s.id]}
-                            </Text>
+                            <SportTag id={s.id} size={14} textStyle={styles.statChipText}>
+                              {stats.perSport[s.id]}
+                            </SportTag>
                           </View>
                         ))}
                       </View>

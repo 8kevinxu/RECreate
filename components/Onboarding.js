@@ -10,6 +10,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useI18n, sportLabel, LANGUAGES } from '../lib/i18n';
 import { useAuth } from '../lib/auth';
 import { SPORTS } from '../lib/sports';
+import { SportTag } from './SportGlyph';
 import { CITIES } from '../lib/cities';
 import { CLASS_CATEGORIES } from '../data/classes';
 import AuthModal from './AuthModal';
@@ -217,9 +218,9 @@ export default function Onboarding({
                     style={[styles.chip, on && styles.chipOn]}
                     onPress={() => setSelSports((a) => toggle(a, s.id))}
                   >
-                    <Text style={[styles.chipText, on && styles.chipTextOn]}>
-                      {s.emoji} {sportLabel(t, s.id)}
-                    </Text>
+                    <SportTag id={s.id} size={14} textStyle={[styles.chipText, on && styles.chipTextOn]}>
+                      {sportLabel(t, s.id)}
+                    </SportTag>
                   </Pressable>
                 );
               })}

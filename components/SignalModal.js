@@ -15,6 +15,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { createSignal } from '../lib/signals';
 import { startOfDay, dayChipLabel, fmtClock } from '../lib/datetime';
 import { PLAN_SPORTS, ANY_SPORT, sportMeta, sportsInCourts } from '../lib/sports';
+import { SportTag } from './SportGlyph';
 import { haversineMiles, formatDistance } from '../lib/distance';
 import { sportLabel, useI18n } from '../lib/i18n';
 import { useAuth } from '../lib/auth';
@@ -193,9 +194,9 @@ export default function SignalModal({ visible, courts = [], userLocation, onClos
                     onPress={() => changeSport(s.id)}
                     style={[styles.chip, active && styles.chipActive]}
                   >
-                    <Text style={[styles.chipText, active && styles.chipTextActive]}>
-                      {s.emoji} {sportLabel(t, s.id)}
-                    </Text>
+                    <SportTag id={s.id} textStyle={[styles.chipText, active && styles.chipTextActive]}>
+                      {sportLabel(t, s.id)}
+                    </SportTag>
                   </Pressable>
                 );
               })}

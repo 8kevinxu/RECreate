@@ -10,7 +10,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { buildRecommendations } from '../lib/recommend';
 import { CLASS_CATEGORIES } from '../data/classes';
 import { SF_CLASSES } from '../data/sf-classes';
-import { sportMeta } from '../lib/sports';
+import SportGlyph from './SportGlyph';
 import { fmtClock } from '../lib/datetime';
 import { useI18n, sportLabel } from '../lib/i18n';
 import { useAuth } from '../lib/auth';
@@ -136,12 +136,12 @@ export default function RecommendPane({
   let sub;
   let chip;
   if (r.kind === 'sport') {
-    emoji = sportMeta(r.sport).emoji;
+    emoji = <SportGlyph id={r.sport} size={36} />;
     title = t('rec.playAt', { sport: sportLabel(t, r.sport), court: r.courtName });
     sub = r.distanceMi != null ? t('rec.miAway', { mi: r.distanceMi.toFixed(1) }) : '';
     chip = r.ongoing ? t('rec.now') : fmtClock(Math.floor(r.startMin / 60), r.startMin % 60);
   } else {
-    emoji = CAT_EMOJI[r.category] || '✨';
+    emoji = <Text style={styles.emoji}>{CAT_EMOJI[r.category] || '✨'}</Text>;
     title = r['name_' + lang] || r.name;
     sub = r.location;
     chip = t('rec.openings');
@@ -155,7 +155,7 @@ export default function RecommendPane({
         <Text style={styles.head}>{t('rec.title')}</Text>
       </View>
       <View style={styles.row}>
-        <Text style={styles.emoji}>{emoji}</Text>
+        {emoji}
         <View style={styles.textCol}>
           <Text style={styles.title} numberOfLines={2}>
             {title}

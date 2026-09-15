@@ -21,7 +21,7 @@ import { subscribeSignals } from '../lib/signals';
 import { subscribeCheckins } from '../lib/playerCheckins';
 import { joinRun, leaveRun, cancelRun, formatRunTime, subscribeRuns } from '../lib/runs';
 import { sendMessage } from '../lib/chat';
-import { sportMeta } from '../lib/sports';
+import SportGlyph from './SportGlyph';
 import { viewLabel } from '../lib/datetime';
 import { haversineMiles, formatDistance } from '../lib/distance';
 import { reportContent } from '../lib/reports';
@@ -203,8 +203,8 @@ export default function FeedModal({
       ? t('feed.nowWhen')
       : viewLabel(s.startsAt);
     // A confirmed session (court + time locked in) gets a ✅ to stand out;
-    // otherwise the signal's sport emoji.
-    const lead = s.plannedAt ? '✅' : sportMeta(s.sport).emoji;
+    // otherwise the signal's sport glyph.
+    const lead = s.plannedAt ? <Text style={styles.leadEmoji}>✅</Text> : <SportGlyph id={s.sport} size={15} />;
     return (
       <Pressable
         key={`signal:${s.id}`}
@@ -224,9 +224,12 @@ export default function FeedModal({
         }
       >
         <View style={{ flex: 1 }}>
-          <Text style={styles.rowName}>
-            {lead} {s.mine ? t('feed.you') : s.name} · <Text style={styles.when}>{when}</Text>
-          </Text>
+          <View style={styles.nameRow}>
+            {lead}
+            <Text style={styles.rowName}>
+              {s.mine ? t('feed.you') : s.name} · <Text style={styles.when}>{when}</Text>
+            </Text>
+          </View>
           <Text style={styles.note}>
             {t('feed.countIn', { n: s.count })}
             {s.note ? ` · ${s.note}` : ''}
@@ -263,9 +266,11 @@ export default function FeedModal({
                 })
         }
       >
-        <Text style={styles.rowName}>
-          📅 {sportMeta(run.sport).emoji} {courtsById[run.courtId] || t('feed.aCourtCap')}
-        </Text>
+        <View style={styles.nameRow}>
+          <Text style={styles.leadEmoji}>📅</Text>
+          <SportGlyph id={run.sport} size={15} />
+          <Text style={styles.rowName}>{courtsById[run.courtId] || t('feed.aCourtCap')}</Text>
+        </View>
         <Text style={styles.note}>
           {/* Public runs are visible beyond the host's friends — mark them as
               open pickup anyone can join, with how far away the court is. */}
@@ -328,13 +333,15 @@ export default function FeedModal({
       onPress={onPickCourt ? () => onPickCourt(c.courtId, c.sport) : undefined}
     >
       <View style={{ flex: 1 }}>
-        <Text style={styles.rowName}>
-          {sportMeta(c.sport).emoji}{' '}
-          {t('feed.checkedInto', {
-            who: c.mine ? t('feed.you') : c.name,
-            court: courtsById[c.courtId] || t('feed.aCourt'),
-          })}
-        </Text>
+        <View style={styles.nameRow}>
+          <SportGlyph id={c.sport} size={15} />
+          <Text style={styles.rowName}>
+            {t('feed.checkedInto', {
+              who: c.mine ? t('feed.you') : c.name,
+              court: courtsById[c.courtId] || t('feed.aCourt'),
+            })}
+          </Text>
+        </View>
         <Text style={styles.note}>{timeAgo(c.createdAt)}</Text>
       </View>
       {!!onPickCourt && <Text style={styles.chevron}>›</Text>}
@@ -520,6 +527,8 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: '#eef1f4',
   },
+  nameRow: { flexDirection: 'row', alignItems: 'center', gap: 5 },
+  leadEmoji: { fontSize: 15 },
   rowName: { fontSize: 15, color: '#1a2a3a', fontWeight: '600', flex: 1 },
   when: { color: '#1f9d55', fontWeight: '700' },
   note: { fontSize: 13, color: '#5b6b7b', marginTop: 1 },

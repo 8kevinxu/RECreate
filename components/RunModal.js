@@ -18,6 +18,7 @@ import { createRun, MAX_NOTE } from '../lib/runs';
 import { startOfDay, dayChipLabel, fmtClock } from '../lib/datetime';
 import { dropinWeekdays, openGymSlots } from '../lib/hours';
 import { PLAN_SPORTS, sportsInCourts } from '../lib/sports';
+import { SportTag } from './SportGlyph';
 import { haversineMiles, formatDistance } from '../lib/distance';
 import { useI18n, sportLabel } from '../lib/i18n';
 import { useAuth } from '../lib/auth';
@@ -275,9 +276,12 @@ export default function RunModal({
                     onPress={() => changeSport(s.id)}
                     style={[styles.sportChip, active && styles.sportChipActive]}
                   >
-                    <Text style={[styles.sportChipText, active && styles.sportChipTextActive]}>
-                      {s.emoji} {sportLabel(t, s.id)}
-                    </Text>
+                    <SportTag
+                      id={s.id}
+                      textStyle={[styles.sportChipText, active && styles.sportChipTextActive]}
+                    >
+                      {sportLabel(t, s.id)}
+                    </SportTag>
                   </Pressable>
                 );
               })}
