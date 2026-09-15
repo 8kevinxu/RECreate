@@ -78,6 +78,7 @@ new:
 | `024_check_ins_sport.sql` | Crowd check-ins scoped to court **+ sport** (`check_ins.sport`, per-sport push cooldown/wording) |
 | `025_court_checkin_count.sql` | `court_checkin_count()`: SECURITY DEFINER **aggregate** so the court card can show a community check-in count without reopening `017`'s row-level privacy (+ court/sport index) |
 | `026_player_checkins_lockdown_repair.sql` | **URGENT** — re-asserts `017`'s privacy lockdown, which was not live: the anon key could read `player_check_ins` rows (user id + court). Enables RLS as well as replacing the policies, since `017` assumed RLS was already on |
+| `028_report_email.sql` | Email each new `content_reports` row to the support inbox (trigger → Resend via `pg_net`); inert until the `resend_api_key` Vault secret is set — see *Reviewing reports* |
 
 > Note: migrations 001–009 were authored before the RECreate rebrand and still
 > reference the old `hoop_*` table names. Apply them **in order** — `010` renames
@@ -93,3 +94,20 @@ Settings → Report a problem, and reported messages/reviews/signals/profiles/ru
 snippet. Query 1 groups the data flags by entity (ranked by distinct reporters,
 with a link that opens the app on that court); query 2 lists everything else,
 newest first.
+
+Each new report is also **emailed to support.recreate@gmail.com** by the
+`content_reports_email` trigger (`028`), through Resend's API. It does nothing
+until you give it a key — in the SQL Editor:
+
+```sql
+select vault.create_secret('re_…', 'resend_api_key');
+```
+
+Without a verified domain, Resend's shared sender (`onboarding@resend.dev`) only
+delivers to the address that owns the Resend account, so either sign up to Resend
+as support.recreate@gmail.com or verify playrecreate.com there and set a real
+sender: `select vault.create_secret('RECreate Reports <reports@playrecreate.com>', 'report_email_from');`.
+Emails stop past 5 reports per reporter per hour or 50 reports per day (the rows
+are still stored), and a failed send never blocks the report itself — look for
+`email_content_report` warnings in the Postgres logs, and the delivery attempts
+in `net._http_response`.

@@ -52,6 +52,9 @@ noted).
   favorites, read-state)** are described in the policy but are either server-side
   moderation records tied to your account (covered by User ID / User Content) or
   stored only on-device (not collected). No separate label category is required.
+  Reports are also emailed to the support inbox through Resend (migration `028`)
+  — a service provider acting for us, carrying ids and the report text only, so
+  it is neither tracking nor a new data type.
 
 ## On-device privacy manifest (`app.json` → `ios.privacyManifests`)
 
