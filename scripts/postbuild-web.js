@@ -934,7 +934,7 @@ ${(g.fees || []).map((f) => `<div class="hrs">💵 ${esc(f)}</div>`).join('')}
 // A city's pools: one index, plus a page for each pool that has something of
 // its own to say. Both cities' records are the same POOLS shape (see
 // lib/poolCourts.js), so this generates for either.
-const KIND_LABEL = { lap: 'lap swim', family: 'family swim', senior: 'senior swim', youth: 'youth swim', lessons: 'swim lessons', adult_lessons: 'adult lessons', parent_child: 'parent & child', exercise: 'water exercise', camp: 'day camp', school: 'school groups', rental: 'rentals', other: 'programs' };
+const KIND_LABEL = { lap: 'lap swim', family: 'family swim', senior: 'senior swim', youth: 'youth swim', lessons: 'swim lessons', adult_lessons: 'adult lessons', parent_child: 'parent & child', special_olympics: 'Special Olympics', exercise: 'water exercise', camp: 'day camp', school: 'school groups', rental: 'rentals', other: 'programs' };
 const KIND_ORDER = ['lap', 'family', 'senior', 'exercise', 'parent_child', 'adult_lessons', 'lessons', 'camp', 'rental', 'other'];
 
 // A site's basins (NYC records an Olympic pool and its wading pool as separate

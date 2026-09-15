@@ -209,6 +209,64 @@
             "end": 1020
           }
         ]
+      ],
+      "closures": [
+        {
+          "from": "2026-08-22",
+          "to": "2026-08-22",
+          "reason": "training"
+        },
+        {
+          "from": "2026-08-27",
+          "to": "2026-08-27",
+          "start": 690,
+          "end": 840,
+          "reason": "training"
+        },
+        {
+          "from": "2026-09-07",
+          "to": "2026-09-07",
+          "reason": "holiday"
+        },
+        {
+          "from": "2026-09-24",
+          "to": "2026-09-24",
+          "start": 690,
+          "end": 840,
+          "reason": "training"
+        },
+        {
+          "from": "2026-10-12",
+          "to": "2026-10-12",
+          "reason": "holiday"
+        },
+        {
+          "from": "2026-10-22",
+          "to": "2026-10-22",
+          "start": 690,
+          "end": 840,
+          "reason": "training"
+        },
+        {
+          "from": "2026-11-11",
+          "to": "2026-11-11",
+          "reason": "holiday"
+        },
+        {
+          "from": "2026-11-26",
+          "to": "2026-11-26",
+          "reason": "holiday"
+        },
+        {
+          "from": "2026-11-27",
+          "to": "2026-11-27",
+          "reason": "holiday"
+        },
+        {
+          "from": "2026-12-12",
+          "to": "2026-12-12",
+          "reason": "training"
+        }
       ]
     },
     {
@@ -425,6 +483,55 @@
             "end": 1020
           }
         ]
+      ],
+      "closures": [
+        {
+          "from": "2026-08-22",
+          "to": "2026-08-22",
+          "start": 540,
+          "end": 780,
+          "reason": "training"
+        },
+        {
+          "from": "2026-08-27",
+          "to": "2026-08-27",
+          "start": 690,
+          "end": 780,
+          "reason": "training"
+        },
+        {
+          "from": "2026-09-24",
+          "to": "2026-09-24",
+          "start": 690,
+          "end": 780,
+          "reason": "training"
+        },
+        {
+          "from": "2026-10-22",
+          "to": "2026-10-22",
+          "start": 690,
+          "end": 780,
+          "reason": "training"
+        },
+        {
+          "from": "2026-11-11",
+          "to": "2026-11-11",
+          "reason": "holiday",
+          "name": "Veterans Day"
+        },
+        {
+          "from": "2026-11-26",
+          "to": "2026-11-27",
+          "reason": "holiday",
+          "name": "Thanksgiving"
+        },
+        {
+          "from": "2026-12-12",
+          "to": "2026-12-12",
+          "start": 540,
+          "end": 840,
+          "reason": "training"
+        }
       ]
     },
     {
@@ -699,6 +806,46 @@
         ],
         [],
         []
+      ],
+      "closures": [
+        {
+          "from": "2026-09-24",
+          "to": "2026-09-24",
+          "start": 660,
+          "end": 840,
+          "reason": "training"
+        },
+        {
+          "from": "2026-10-12",
+          "to": "2026-10-12",
+          "reason": "holiday",
+          "name": "Indigenous Peoples' Day"
+        },
+        {
+          "from": "2026-10-22",
+          "to": "2026-10-22",
+          "start": 660,
+          "end": 840,
+          "reason": "training"
+        },
+        {
+          "from": "2026-11-11",
+          "to": "2026-11-11",
+          "reason": "holiday",
+          "name": "Veterans Day"
+        },
+        {
+          "from": "2026-11-26",
+          "to": "2026-11-26",
+          "reason": "holiday",
+          "name": "Thanksgiving"
+        },
+        {
+          "from": "2026-11-27",
+          "to": "2026-11-27",
+          "reason": "holiday",
+          "name": "Thanksgiving"
+        }
       ]
     },
     {
@@ -937,6 +1084,66 @@
             "end": 1020
           }
         ]
+      ],
+      "closures": [
+        {
+          "from": "2026-08-22",
+          "to": "2026-08-22",
+          "start": 510,
+          "end": 750,
+          "reason": "training"
+        },
+        {
+          "from": "2026-08-27",
+          "to": "2026-08-27",
+          "start": 720,
+          "end": 840,
+          "reason": "training"
+        },
+        {
+          "from": "2026-09-07",
+          "to": "2026-09-07",
+          "reason": "holiday",
+          "name": "Labor Day"
+        },
+        {
+          "from": "2026-09-24",
+          "to": "2026-09-24",
+          "start": 720,
+          "end": 840,
+          "reason": "training"
+        },
+        {
+          "from": "2026-10-12",
+          "to": "2026-10-12",
+          "reason": "holiday",
+          "name": "Indigenous Peoples' Day"
+        },
+        {
+          "from": "2026-10-22",
+          "to": "2026-10-22",
+          "start": 720,
+          "end": 840,
+          "reason": "training"
+        },
+        {
+          "from": "2026-11-11",
+          "to": "2026-11-11",
+          "reason": "holiday",
+          "name": "Veterans Day"
+        },
+        {
+          "from": "2026-11-23",
+          "to": "2026-11-29",
+          "reason": "maintenance"
+        },
+        {
+          "from": "2026-12-12",
+          "to": "2026-12-12",
+          "start": 510,
+          "end": 750,
+          "reason": "training"
+        }
       ]
     },
     {
@@ -1180,6 +1387,32 @@
             "end": 1020
           }
         ]
+      ],
+      "closures": [
+        {
+          "from": "2026-08-22",
+          "to": "2026-08-22",
+          "reason": "training"
+        },
+        {
+          "from": "2026-08-27",
+          "to": "2026-08-27",
+          "start": 750,
+          "end": 930,
+          "reason": null
+        },
+        {
+          "from": "2026-09-07",
+          "to": "2026-09-07",
+          "reason": "holiday"
+        },
+        {
+          "from": "2026-09-24",
+          "to": "2026-09-24",
+          "start": 750,
+          "end": 930,
+          "reason": null
+        }
       ]
     },
     {
@@ -1356,6 +1589,41 @@
             "end": 1050
           }
         ]
+      ],
+      "closures": [
+        {
+          "from": "2026-08-22",
+          "to": "2026-08-22",
+          "start": 540,
+          "end": 660,
+          "reason": "training"
+        },
+        {
+          "from": "2026-08-27",
+          "to": "2026-08-27",
+          "start": 720,
+          "end": 840,
+          "reason": "training"
+        },
+        {
+          "from": "2026-09-07",
+          "to": "2026-09-07",
+          "reason": "holiday",
+          "name": "Labor Day"
+        },
+        {
+          "from": "2026-09-24",
+          "to": "2026-09-24",
+          "start": 720,
+          "end": 840,
+          "reason": "training"
+        },
+        {
+          "from": "2026-10-12",
+          "to": "2026-10-12",
+          "reason": "holiday",
+          "name": "Indigenous Peoples' Day"
+        }
       ]
     },
     {
@@ -1741,6 +2009,39 @@
             "pool": "cool"
           }
         ]
+      ],
+      "closures": [
+        {
+          "from": "2026-09-24",
+          "to": "2026-09-24",
+          "start": 720,
+          "end": 840,
+          "reason": "training"
+        },
+        {
+          "from": "2026-10-13",
+          "to": "2026-10-31",
+          "reason": "maintenance"
+        },
+        {
+          "from": "2026-11-11",
+          "to": "2026-11-11",
+          "reason": "holiday",
+          "name": "Veterans Day"
+        },
+        {
+          "from": "2026-11-26",
+          "to": "2026-11-27",
+          "reason": "holiday",
+          "name": "Thanksgiving"
+        },
+        {
+          "from": "2026-12-12",
+          "to": "2026-12-12",
+          "start": 540,
+          "end": 720,
+          "reason": "training"
+        }
       ]
     },
     {
@@ -1955,6 +2256,59 @@
         ],
         [],
         []
+      ],
+      "closures": [
+        {
+          "from": "2026-08-27",
+          "to": "2026-08-27",
+          "start": 720,
+          "end": 840,
+          "reason": "training"
+        },
+        {
+          "from": "2026-09-07",
+          "to": "2026-09-07",
+          "reason": "holiday"
+        },
+        {
+          "from": "2026-09-24",
+          "to": "2026-09-24",
+          "start": 720,
+          "end": 840,
+          "reason": "training"
+        },
+        {
+          "from": "2026-10-12",
+          "to": "2026-10-12",
+          "reason": "holiday"
+        },
+        {
+          "from": "2026-10-22",
+          "to": "2026-10-22",
+          "start": 720,
+          "end": 840,
+          "reason": "training"
+        },
+        {
+          "from": "2026-11-02",
+          "to": "2026-11-21",
+          "reason": "maintenance"
+        },
+        {
+          "from": "2026-11-11",
+          "to": "2026-11-11",
+          "reason": "holiday"
+        },
+        {
+          "from": "2026-11-26",
+          "to": "2026-11-26",
+          "reason": "holiday"
+        },
+        {
+          "from": "2026-11-27",
+          "to": "2026-11-27",
+          "reason": "holiday"
+        }
       ]
     },
     {
@@ -1972,6 +2326,7 @@
         "senior",
         "lessons",
         "adult_lessons",
+        "special_olympics",
         "school",
         "rental"
       ],
@@ -2011,7 +2366,7 @@
             "end": 1140
           },
           {
-            "kind": "lessons",
+            "kind": "special_olympics",
             "start": 1140,
             "end": 1230
           }
@@ -2149,6 +2504,64 @@
             "end": 1020
           }
         ]
+      ],
+      "closures": [
+        {
+          "from": "2026-09-07",
+          "to": "2026-09-07",
+          "reason": "holiday",
+          "name": "Labor Day"
+        },
+        {
+          "from": "2026-09-24",
+          "to": "2026-09-24",
+          "start": 720,
+          "end": 840,
+          "reason": "training"
+        },
+        {
+          "from": "2026-10-12",
+          "to": "2026-10-12",
+          "reason": "holiday",
+          "name": "Indigenous Peoples' Day"
+        },
+        {
+          "from": "2026-10-22",
+          "to": "2026-10-22",
+          "start": 720,
+          "end": 840,
+          "reason": "training"
+        },
+        {
+          "from": "2026-11-11",
+          "to": "2026-11-11",
+          "reason": "holiday",
+          "name": "Veterans Day"
+        },
+        {
+          "from": "2026-11-26",
+          "to": "2026-11-26",
+          "reason": "holiday",
+          "name": "Thanksgiving"
+        },
+        {
+          "from": "2026-11-27",
+          "to": "2026-11-27",
+          "reason": "holiday",
+          "name": "Thanksgiving"
+        },
+        {
+          "from": "2026-12-01",
+          "to": "2026-12-19",
+          "reason": "maintenance"
+        },
+        {
+          "from": "2026-12-22",
+          "to": "2026-12-22",
+          "start": 540,
+          "end": 660,
+          "reason": "training"
+        }
       ]
     }
   ],
@@ -2259,15 +2672,5 @@
       }
     ]
   },
-  "closures": [
-    {
-      "date": "2026-06-19",
-      "label": "Juneteenth"
-    },
-    {
-      "date": "2026-07-04",
-      "label": "Independence Day"
-    }
-  ],
-  "fetchedAt": "2026-09-15T02:21:42.590Z"
+  "fetchedAt": "2026-09-15T03:19:57.102Z"
 }

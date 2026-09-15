@@ -68,13 +68,7 @@ const FEES = {
   ],
 };
 
-// All-pool closures (from the PDFs' notes). Update per year.
-const CLOSURES = [
-  { date: '2026-06-19', label: 'Juneteenth' },
-  { date: '2026-07-04', label: 'Independence Day' },
-];
-
-const KIND_ORDER = ['lap', 'family', 'senior', 'youth', 'lessons', 'adult_lessons', 'parent_child', 'exercise', 'camp', 'school', 'rental', 'other'];
+const KIND_ORDER = ['lap', 'family', 'senior', 'youth', 'lessons', 'adult_lessons', 'parent_child', 'special_olympics', 'exercise', 'camp', 'school', 'rental', 'other'];
 
 // ---- PDF schedule parsing -------------------------------------------------
 
@@ -84,7 +78,10 @@ const TIME = /(\d{1,2})(?::(\d{2}))?\s*(a\.?m\.?|p\.?m\.?|[ap](?![a-z]))?\s*[-�
 const KINDS = [
   [/parent\s*(&|and|\/)?\s*tots?|piranha|parent.?child/i, 'parent_child'],
   [/adult\s*(swim\s*)?lesson/i, 'adult_lessons'],
-  [/learn\s*-?\s*to\s*-?\s*swim|\blts\b|swim\s*lesson|youth\s*lesson|pre-?school|swim\s*team|special\s*olympic/i, 'lessons'],
+  [/learn\s*-?\s*to\s*-?\s*swim|\blts\b|swim\s*lesson|youth\s*lesson|pre-?school|swim\s*team/i, 'lessons'],
+  // Team training for registered athletes with intellectual disabilities —
+  // neither lessons nor drop-in, so it gets its own name.
+  [/special\s*olympic/i, 'special_olympics'],
   [/water\s*exercise|self.?guided|deep\s*water/i, 'exercise'],
   [/senior|therapy/i, 'senior'],
   [/rec\/?family|family|recreation|rec\s*swim/i, 'family'],
@@ -160,7 +157,7 @@ function parseTime(s) {
 // columns into one cell, parsed it once, and the other days silently lost it.
 // Gaps use each item's real rendered width, not a per-character estimate.
 const MERGE_GAP = 20;
-function mergeRows(items, sameCol = () => true) {
+function mergeRows(items, sameCol = () => true, maxX = 760) {
   const rows = [];
   items
     .slice()
@@ -188,7 +185,7 @@ function mergeRows(items, sameCol = () => true) {
       prev = it;
       lastEnd = it.x + (it.w || it.s.length * 5.5);
     }
-    return { y: r.y, cells: cells.filter((c) => c.x < 760) };
+    return { y: r.y, cells: cells.filter((c) => c.x < maxX) };
   });
 }
 
@@ -224,6 +221,7 @@ function parseGrid(items) {
     return best;
   };
   const body = rows.filter((r) => r.y < hdr.y - 6);
+  const notes = [];
   const perCol = {};
   cols.forEach((c) => (perCol[c.dow] = []));
   for (const r of body)
@@ -234,6 +232,7 @@ function parseGrid(items) {
   const out = {};
   for (const c of cols) {
     const cells = perCol[c.dow].sort((a, b) => b.y - a.y);
+    notes.push(...gridClosureNotes(cells));
     const sess = [];
     let buf = [];
     for (const cell of cells) {
@@ -269,8 +268,290 @@ function parseGrid(items) {
       })
       .sort((a, b) => a.start - b.start);
   }
+  // The notes panel right of the grid, split into bullets.
+  const notesHead = items.find((it) => /^notes\s*:?$/i.test(it.s.trim()));
+  if (notesHead) notes.push(...panelNotes(items.filter((it) => it.x >= notesHead.x - 2)));
+  return { sessions: out, notes };
+}
+
+
+// ---- Closures -------------------------------------------------------------
+//
+// Every poster lists the dates a pool is shut — holidays, a multi-week
+// maintenance window, a 12–2 staff training on the 4th Thursday — and none of
+// it reaches the weekly `sessions` grid, which is weekday-shaped and knows no
+// dates. So the card said "Open" on Labor Day and all through North Beach's
+// three-week maintenance closure. Closures come from two places on the page:
+// the notes panel (bullets) and notes printed inside grid cells, which often
+// carry dates the panel doesn't (Coffman's in-service Saturdays, Sava's
+// training Thursdays). Output per pool:
+//   closures: [{ from: 'YYYY-MM-DD', to: 'YYYY-MM-DD', start?, end?, reason }]
+// start/end are minutes-from-midnight for a partial closure (absent = all day);
+// reason is 'holiday' | 'maintenance' | 'training' | null.
+
+// No word boundaries: poster text arrives glued together ("will beclosedon").
+const CLOSURE_WORD = /clos(ed|ure|ing)|in-?service|mainten|maintence/i;
+// Re-space glued text ("onOctober", "CLOSEDDecember", "from9am", "8/22/26and")
+// so dates and words can be matched at all.
+const respace = (t) =>
+  t
+    .replace(/([a-z])([A-Z])/g, '$1 $2')
+    .replace(/([A-Z])([A-Z][a-z])/g, '$1 $2')
+    .replace(/([a-z])(\d)/gi, '$1 $2')
+    .replace(/(\d[ap])(for|on|to|and|in)\b/gi, '$1 $2') // "12p-2pfor"
+    .replace(/(\d)([a-z]{2,})/gi, '$1 $2');
+const HOLIDAY_NAMES = [
+  [/labor\s*day/i, 'Labor Day'],
+  [/indigenous/i, "Indigenous Peoples' Day"],
+  [/veteran/i, 'Veterans Day'],
+  [/thanksgiving/i, 'Thanksgiving'],
+  [/christmas/i, 'Christmas'],
+  [/new\s*year/i, "New Year's Day"],
+  [/juneteenth/i, 'Juneteenth'],
+  [/independence/i, 'Independence Day'],
+  [/memorial\s*day/i, 'Memorial Day'],
+];
+const MONTH_IDX = { jan: 1, feb: 2, mar: 3, apr: 4, may: 5, jun: 6, jul: 7, aug: 8, sep: 9, oct: 10, nov: 11, dec: 12 };
+const DOW_IDX = { sun: 0, mon: 1, tue: 2, wed: 3, thu: 4, fri: 5, sat: 6 };
+// "Sept. 7", "November 26th", "September 7, 2026", "8/27", "12/12/26".
+const DATE_TOKEN =
+  /\b(?:(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s*(\d{1,2})(?:\s?(?:st|nd|rd|th)\b)?(?:,?\s*(20\d\d))?|(\d{1,2})\/(\d{1,2})(?:\/(\d{2,4}))?)(?![\d:])/gi;
+const TIME_G = new RegExp(TIME.source, 'gi');
+const iso = (d) => d.toISOString().slice(0, 10);
+const utc = (y, m, d) => new Date(Date.UTC(y, m - 1, d));
+const DAY_MS = 86400000;
+const timeOnly = (s) =>
+  !!parseTime(s) && !s.replace(TIME_G, '').replace(/\([^)]*\)|noon|[\s.\-–]/gi, '');
+const dateList = (s) => /^\(?[\d\s\/,&]*(and)?[\d\s\/,&]*\)?$/i.test(s.trim()) && /\d\/\d/.test(s);
+
+// The poster's own season as UTC dates ("Sep 1 – Dec 12" + the year printed
+// on the page), so a bare "9/24" gets a year and a stray number far outside
+// the season is rejected rather than published.
+function seasonBounds(label, items) {
+  const posted = seasonFromLabel(label);
+  const yearHit = [String(label || ''), ...items.map((i) => i.s)].join(" ").match(/(?<!\d)(20\d\d)(?!\d)/);
+  const year = yearHit ? +yearHit[1] : new Date().getFullYear();
+  if (!posted) return null;
+  const [a, b] = posted.split(' – ').map((x) => {
+    const [mon, day] = x.split(' ');
+    return [MONTH_IDX[mon.toLowerCase()], +day];
+  });
+  const from = utc(year, a[0], a[1]);
+  let to = utc(year, b[0], b[1]);
+  if (to < from) to = utc(year + 1, b[0], b[1]);
+  return { from, to };
+}
+
+// Panel text -> one note per bullet. A new bullet starts at "•", at a heading,
+// or after a tall vertical gap (Rossi prints its maintenance closure as a
+// free-standing line under the contact block).
+function panelNotes(items) {
+  const rows = mergeRows(items.filter((i) => !/^(st|nd|rd|th)$/i.test(i.s.trim())), undefined, Infinity);
+  const notes = [];
+  let cur = null;
+  let lastY = null;
+  for (const r of rows) {
+    const text = r.cells.map((c) => c.s).join(' ').trim();
+    const heading = /^(cost|notes|pool info)\s*:?/i.test(text);
+    if (!cur || heading || text.startsWith('•') || lastY - r.y > 22) {
+      cur = { text: '' };
+      notes.push(cur);
+    }
+    cur.text += ' ' + text.replace(/^•\s*/, '');
+    lastY = r.y;
+  }
+  return notes.map((n) => ({ text: n.text.trim() })).filter((n) => CLOSURE_WORD.test(n.text));
+}
+
+// Notes inside one day column's cells. The note's hours are either written in
+// it ("Closed for In-Service August 22, 9am-1pm"), or they are the time of the
+// session it annotates — printed just below the note ("Lap Swim / Closed every
+// 4th Thursday / 11:30am-2:00pm") or just above it ("Lap Swim / 11:30am-1:00pm
+// / Closed every 4th Thursday"). A note under a session label is `borrowed`:
+// it closes that session, and the pool may say more precisely elsewhere when.
+function gridClosureNotes(cells) {
+  const notes = [];
+  const isLabel = (s) => kindsOf(s).length > 0;
+  const skippable = (s) => isNote(s) && !CLOSURE_WORD.test(s) && !timeOnly(s);
+  for (let i = 0; i < cells.length; i++) {
+    if (!CLOSURE_WORD.test(cells[i].s)) continue;
+    let j = i + 1;
+    while (j < cells.length && !isLabel(cells[j].s) && !timeOnly(cells[j].s)) j++;
+    let text = cells.slice(i, j).map((c) => c.s).join(' ');
+    let time = null;
+    let borrowed = false;
+    if (!TIME.test(text)) {
+      let k = i - 1;
+      while (k >= 0 && skippable(cells[k].s)) k--;
+      if (j < cells.length && timeOnly(cells[j].s)) {
+        time = parseTime(cells[j].s);
+        borrowed = k >= 0 && isLabel(cells[k].s);
+        j++;
+        while (j < cells.length && dateList(cells[j].s)) text += ' ' + cells[j++].s;
+      } else if (k >= 0 && timeOnly(cells[k].s)) {
+        time = parseTime(cells[k].s);
+        borrowed = true;
+      }
+    }
+    notes.push({ text, time, borrowed });
+    i = j - 1;
+  }
+  return notes;
+}
+
+// One note -> closure entries.
+function closuresFromNote({ text, time: cellTime = null, borrowed = false }, season) {
+  if (!season || !CLOSURE_WORD.test(text)) return [];
+  const s = respace(text)
+    .replace(/(\d{1,2})\/\s+(\d{1,2})/g, '$1/$2') // "11/ 26"
+    .replace(/(\d{1,2}\/\d{1,2})\s*\/\s*(\d{2,4})\b/g, '$1/$2') // "10/12 / 26"
+    .replace(/\breopen\w*\s*(on\s*)?\S+/gi, ' '); // "reopen 11/22" is not a closure
+  const reason = HOLIDAY_NAMES.some(([re]) => re.test(s)) || /holiday/i.test(s)
+    ? 'holiday'
+    : /mainten|maintence/i.test(s)
+    ? 'maintenance'
+    : /training|in-?service/i.test(s)
+    ? 'training'
+    : null;
+  const times = [...s.matchAll(TIME_G)].map((m) => ({ i: m.index, t: parseTime(m[0]) })).filter((x) => x.t);
+  const noteTime = times[0]?.t || cellTime;
+
+  const place = (month, day, yr) => {
+    if (!(month >= 1 && month <= 12 && day >= 1 && day <= 31)) return null;
+    let y = yr || season.from.getUTCFullYear();
+    let d = utc(y, month, day);
+    if (!yr && d < season.from - 60 * DAY_MS) d = utc(y + 1, month, day);
+    const inReach = d >= season.from - 60 * DAY_MS && d <= +season.to + 60 * DAY_MS;
+    return inReach ? d : null;
+  };
+  const toks = [];
+  for (const m of s.matchAll(DATE_TOKEN)) {
+    const month = m[1] ? MONTH_IDX[m[1].slice(0, 3).toLowerCase()] : +m[4];
+    const day = m[1] ? +m[2] : +m[5];
+    const yr = m[3] ? +m[3] : m[6] ? (+m[6] < 100 ? 2000 + +m[6] : +m[6]) : null;
+    toks.push({ i: m.index, end: m.index + m[0].length, month, day, yr });
+  }
+  // Group tokens into [from, to] spans: "12/1-12/19", "October 13 - October
+  // 31", and a same-month tail — "November 26-27" (a span), "Nov. 26 and 27".
+  const spans = [];
+  for (let k = 0; k < toks.length; k++) {
+    const a = toks[k];
+    const b = toks[k + 1];
+    if (b && /^\s*(-|–|to|through|thru)\s*$/i.test(s.slice(a.end, b.i))) {
+      spans.push({ i: a.i, end: b.end, from: a, to: b });
+      k++;
+      continue;
+    }
+    const tail = s.slice(a.end).match(/^\s*(-|–|to|and|&)\s*(\d{1,2})(?:\s?(?:st|nd|rd|th)\b)?(?![\d\/:])/i);
+    if (tail) {
+      const second = { ...a, day: +tail[2] };
+      const end = a.end + tail[0].length;
+      if (/and|&/i.test(tail[1])) spans.push({ i: a.i, end: a.end, from: a, to: a }, { i: a.i, end, from: second, to: second });
+      else spans.push({ i: a.i, end, from: a, to: second });
+      continue;
+    }
+    spans.push({ i: a.i, end: a.end, from: a, to: a });
+  }
+
+  const out = [];
+  const push = (from, to, t, segment) => {
+    const name = HOLIDAY_NAMES.find(([re]) => re.test(segment))?.[1];
+    out.push({
+      from: iso(from),
+      to: iso(to),
+      ...(t ? { start: t.start, end: t.end } : {}),
+      reason,
+      ...(name ? { name } : {}),
+      ...(borrowed ? { borrowed } : {}),
+    });
+  };
+  spans.forEach((sp, n) => {
+    const from = place(sp.from.month, sp.from.day, sp.from.yr);
+    const to = place(sp.to.month, sp.to.day, sp.to.yr || sp.from.yr);
+    if (!from || !to || to < from || to - from > 120 * DAY_MS) return;
+    // A time written after this date (and before the next) is this date's;
+    // otherwise the note's hours apply to every date in it.
+    const nextI = spans.slice(n + 1).find((x) => x.i > sp.i)?.i ?? s.length;
+    const own = times.find((x) => x.i >= sp.end && x.i < nextI)?.t;
+    push(from, to, own || noteTime, s.slice(sp.i, nextI));
+  });
+
+  // "Closed every 4th Thursday of the month" with no dates listed: every such
+  // weekday inside the season.
+  const every = !out.length && s.match(/every\s*(\d)\s*(?:st|nd|rd|th)?\s*(sun|mon|tue|wed|thu|fri|sat)/i);
+  if (every) {
+    const nth = +every[1];
+    const dow = DOW_IDX[every[2].toLowerCase()];
+    for (let d = new Date(season.from); d <= season.to; d = new Date(+d + DAY_MS)) {
+      if (d.getUTCDay() === dow && Math.ceil(d.getUTCDate() / 7) === nth) push(d, d, noteTime, s);
+    }
+  }
   return out;
 }
+
+// All of a pool's notes -> its closure list, deduped. A note that only closes
+// the session it's printed under yields to the pool's own statement for that
+// date (Mission's grid closes its 11:15 lap swim; its notes say 12–2).
+function mergeClosures(entries) {
+  const stated = new Set(entries.filter((e) => !e.borrowed && e.from === e.to).map((e) => e.from));
+  const kept = entries.filter((e) => !(e.borrowed && e.from === e.to && stated.has(e.from)));
+  const allDay = kept.filter((e) => e.start == null);
+  const byKey = new Map();
+  for (const e of kept) {
+    // A partial closure inside an all-day one says nothing more.
+    if (e.start != null && allDay.some((a) => a.from <= e.from && a.to >= e.to)) continue;
+    const k = `${e.from}|${e.to}`;
+    const list = byKey.get(k) || [];
+    const hit = list.find((x) => (x.start == null && e.start == null) || (x.start != null && e.start != null && e.start <= x.end && x.start <= e.end));
+    if (!hit) list.push({ ...e });
+    else {
+      if (e.start != null) Object.assign(hit, { start: Math.min(hit.start, e.start), end: Math.max(hit.end, e.end) });
+      hit.reason = hit.reason || e.reason;
+      hit.name = hit.name || e.name;
+    }
+    byKey.set(k, list);
+  }
+  return [...byKey.values()]
+    .flat()
+    .map(({ borrowed, name, ...e }) => (name ? { ...e, name } : e))
+    .sort((a, b) => a.from.localeCompare(b.from) || (a.start ?? -1) - (b.start ?? -1));
+}
+
+// City-wide holidays for POOL_CLOSURES (the assistant's closure topic): an
+// all-day holiday closure printed on at least two pools' posters.
+function cityHolidays(pools) {
+  const seen = new Map();
+  for (const p of pools)
+    for (const c of p.closures || []) {
+      if (c.reason !== 'holiday' || c.start != null || c.from !== c.to) continue;
+      const e = seen.get(c.from) || { pools: 0, names: {} };
+      e.pools++;
+      if (c.name) e.names[c.name] = (e.names[c.name] || 0) + 1;
+      seen.set(c.from, e);
+    }
+  return [...seen]
+    .filter(([, e]) => e.pools >= 2)
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([date, e]) => ({ date, label: Object.entries(e.names).sort((x, y) => y[1] - x[1])[0]?.[0] || 'Holiday' }));
+}
+
+// Several posters say "All city pools will be closed on…", but each lists only
+// the holidays it has room for (Coffman's omits Labor Day). A holiday two or
+// more posters agree on is applied to every pool whose season it falls in.
+function withCityHolidays(pools) {
+  const holidays = cityHolidays(pools);
+  for (const p of pools) {
+    const b = seasonBoundsFromText(p.season, p.scheduleUrls);
+    if (!b) continue;
+    const extra = holidays
+      .filter((h) => utc(...h.date.split('-').map(Number)) >= b.from && utc(...h.date.split('-').map(Number)) <= b.to)
+      .filter((h) => !(p.closures || []).some((c) => c.start == null && c.from <= h.date && c.to >= h.date))
+      .map((h) => ({ from: h.date, to: h.date, reason: 'holiday', ...(h.label !== 'Holiday' ? { name: h.label } : {}) }));
+    if (extra.length) p.closures = mergeClosures([...(p.closures || []), ...extra]);
+  }
+}
+const seasonBoundsFromText = (season, urls) =>
+  seasonBounds(`${season} ${(urls || []).map((u) => u.label).join(' ')}`, []);
 
 // ---- Scraping -------------------------------------------------------------
 
@@ -358,9 +639,13 @@ async function scrapePool(m) {
   const tagPdfs = tags.has('warm') && tags.has('cool');
   const week = [[], [], [], [], [], [], []];
   const seen = week.map(() => new Set());
+  const closureEntries = [];
   for (const d of scheduleUrls) {
     const tag = tagPdfs ? poolTag(d.label) : null;
-    const grid = parseGrid(await pdfItems(d.url)) || {};
+    const items = await pdfItems(d.url);
+    const { sessions: grid = {}, notes = [] } = parseGrid(items) || {};
+    const bounds = seasonBounds(d.label, items);
+    for (const n of notes) closureEntries.push(...closuresFromNote(n, bounds));
     for (const dow of Object.keys(grid))
       for (const s of grid[dow]) {
         const k = (tag || '') + s.kind + (s.label || '') + s.start + s.end;
@@ -397,6 +682,7 @@ async function scrapePool(m) {
     programs: KIND_ORDER.filter((k) => kinds.has(k)),
     scheduleUrls,
     sessions: week,
+    closures: mergeClosures(closureEntries),
   };
 }
 
@@ -420,7 +706,7 @@ export const POOL_SESSION_KINDS = ${JSON.stringify(KIND_ORDER)};
 
 export const POOL_FEES = ${JSON.stringify(FEES, null, 2)};
 
-export const POOL_CLOSURES = ${JSON.stringify(CLOSURES)};
+export const POOL_CLOSURES = ${JSON.stringify(cityHolidays(pools))};
 
 export const POOLS = [
 ${pools.map((p) => '  ' + JSON.stringify(p)).join(',\n')}
@@ -455,7 +741,7 @@ async function main() {
       throw new Error(`only ${withSessions} pools parsed sessions (min ${MIN_OK_POOLS}) — PDF layout may have changed`);
     }
     source = 'live';
-    fs.writeFileSync(CACHE_FILE, JSON.stringify({ pools, fees: FEES, closures: CLOSURES, fetchedAt: new Date().toISOString() }, null, 2) + '\n');
+    fs.writeFileSync(CACHE_FILE, JSON.stringify({ pools, fees: FEES, fetchedAt: new Date().toISOString() }, null, 2) + '\n');
   } catch (e) {
     const cache = loadCache();
     if (!cache || !cache.pools) throw new Error(`fetch failed (${e.message}) and no cache — data/pools.js left unchanged`);
@@ -464,6 +750,7 @@ async function main() {
     console.log(`  ↺ ${e.message}; using cache from ${cache.fetchedAt || 'unknown'}`);
   }
 
+  withCityHolidays(pools);
   fs.writeFileSync(OUT_FILE, render(pools));
   console.log(`\n✅ Wrote ${pools.length} pools to data/pools.js (${source})`);
 }
