@@ -277,6 +277,31 @@ user's content out of every social loader app-wide; `reports.js` files content
 reports; Settings has a block manager and account self-deletion
 (`delete_account()` SECURITY DEFINER RPC that cascades all user data).
 
+**Where a report goes.** Every report — reported messages/reviews/signals/profiles/
+runs, the "looks wrong? report it" data flags on court/class/pool cards, and
+Settings → Report a problem — is one insert into `content_reports`, which clients
+can write but never read. Two things read it:
+
+- **Email.** The `content_reports_email` trigger (`028`) sends each new row to
+  support.recreate@gmail.com through Resend's HTTP API via `pg_net` — the same
+  Postgres-calls-an-API shape as push. The sender is `reports@playrecreate.com`
+  (domain verified in Resend; DNS at Porkbun), and the Resend key lives in
+  **Supabase Vault** (`resend_api_key`, plus `report_email_from`), never in the
+  repo. No key means no email, and reports are stored as before. Sends stop past 5
+  per reporter per hour or 50 per day (inside Resend's free 100/day), and the send
+  is wrapped in its own exception block so a failure can never lose the report.
+  The message carries ids only, no names or emails.
+- **Dashboard.** `supabase/queries/reports.sql` — data flags grouped per entity and
+  ranked by *distinct* reporters (reports aren't deduped), with an app deep link;
+  everything else newest first.
+
+Nothing acts on a report automatically: the scrapers don't consult them.
+
+The report button is also where the web build's worst silent failure surfaced:
+**`Alert.alert` is a no-op in react-native-web**, so a dialog built on it never
+appears and nothing behind its buttons runs. `confirmReportData` uses
+`window.confirm`/`window.alert` on web; the remaining call sites are in `TODO.md`.
+
 ### Notifications
 Server push (while the app is closed) is handled entirely in Postgres:
 `schema/07_push.sql` triggers call Expo's push API via `pg_net` (`send_push()`).
@@ -520,6 +545,10 @@ copy server-side.
   `delete_account()` (acts solely on the caller) and `court_checkin_count()`,
   which is safe to expose *because it returns a scalar* — an aggregate is how you
   publish a number over private rows without unscoping the rows (see §5).
+- **Third-party keys used by the database live in Supabase Vault**, read by the
+  SECURITY DEFINER trigger that needs them (`email_content_report()` reads
+  `resend_api_key`). Clients can't read Vault, and the trigger function is revoked
+  from anon/authenticated.
 - **Verify RLS with the anon key, don't assume a migration took.** On 2026-08-23
   the anon key could read `player_check_ins` rows — the location history `017`
   exists to prevent — because `017` had never taken effect on the live database
