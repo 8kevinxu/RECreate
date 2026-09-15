@@ -7,9 +7,10 @@ react-native-web ships `class Alert { static alert() {} }` — so every dialog b
 on it silently never appears in the web build. Anything behind a button in that
 dialog never runs either, and there is no error to notice. iOS is unaffected.
 
-`confirmReportData` (`lib/reports.js`, the "looks wrong? report it" button on the
-court/class/pool cards) was the first one fixed: on web it uses `window.confirm` /
-`window.alert`. `App.js`'s location-denied message already did the same.
+`lib/dialog.js` + `lib/dialog.web.js` now exist (`confirm()` → Promise<boolean>,
+`notify()`; native `Alert.alert`, web `window.confirm` / `window.alert`).
+`confirmReportData` (class card), the closure-report dialogs and review reporting
+are on it. `App.js`'s location-denied message still branches on `Platform.OS` itself.
 
 Still broken, worst first:
 
@@ -24,19 +25,13 @@ Still broken, worst first:
   ("sign in first") is silent.
 - [ ] **`components/ChatThread.js`** — same Report / Block menu on chat messages,
   plus its outcome messages.
-- [ ] **`App.js` → `reportReview`** — reporting a review: no confirm, so the report
-  is never filed.
+- [x] **`App.js` → `reportReview`** — moved onto `lib/dialog.js`.
 - [ ] **`components/AuthModal.js` → `cancelEdit`** — cancelling a profile edit with
   unsaved changes: the "Discard changes?" prompt never shows, so Cancel does
   nothing and the only way out is Save.
-- [ ] **Closure reports** (`App.js`, in-progress work) — "Remove your report?" and
-  the vote-failure message use `Alert.alert` too.
+- [x] **Closure reports** — moved onto `lib/dialog.js`.
 
-**Suggested fix:** one small platform-split helper rather than a `Platform.OS`
-branch at every call site — e.g. `lib/dialog.js` (native: `Alert.alert`) +
-`lib/dialog.web.js` (`window.confirm` / `window.alert`), the same `.web.js` split
-as `lib/crash.js` and `lib/getApp.js`. Two things to handle: `window.confirm` only
-has OK/Cancel, so multi-choice menus (FeedModal/ChatThread's Report · Block ·
-Cancel) need either sequential confirms or a small in-app Modal; and "cancel" must
-still resolve `resolveNotify`'s Promise (`false`). `confirmReportData` should move
-onto the helper once it exists.
+**Remaining fix:** move the unchecked items onto `lib/dialog.js`. Two things to
+handle: `window.confirm` only has OK/Cancel, so multi-choice menus (FeedModal/
+ChatThread's Report · Block · Cancel) need either sequential confirms or a small
+in-app Modal; and "cancel" must still resolve `resolveNotify`'s Promise (`false`).

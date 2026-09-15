@@ -22,7 +22,7 @@ noted).
 |---|---|---|---|---|---|
 | **Contact Info → Email Address** | Yes | Yes | No | App Functionality | Account creation ("Account information") |
 | **Contact Info → Name** | Yes | Yes | No | App Functionality | Display name / profile ("Account information") |
-| **User Content → Other User Content** | Yes | Yes | No | App Functionality | Reviews, chats, signals, runs, check-ins ("Content you create") |
+| **User Content → Other User Content** | Yes | Yes | No | App Functionality | Reviews, chats, signals, runs, check-ins, closure reports ("Content you create") |
 | **Identifiers → User ID** | Yes | Yes | No | App Functionality | Supabase account id linking your content |
 | **Identifiers → Device ID** | Yes | Yes | No | App Functionality, Notifications | Expo push token ("Push token") |
 | **Diagnostics → Crash Data** | Yes | **No** | No | App Functionality | Sentry crash reports ("Crash data") — the one label item **not** linked to identity |

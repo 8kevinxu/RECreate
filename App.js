@@ -86,7 +86,17 @@ import {
 } from './lib/crowd';
 import { maybeAskForReview } from './lib/rateApp';
 import { loadReviews, addReview, MAX_BODY, MAX_NAME, isShared as reviewsShared } from './lib/reviews';
-import { reportContent, confirmReportData } from './lib/reports';
+import { reportContent } from './lib/reports';
+import { confirm, notify } from './lib/dialog';
+import {
+  closuresEnabled,
+  loadClosures,
+  pickClosure,
+  voteClosure,
+  removeClosure,
+} from './lib/closures';
+import ClosureBanner from './components/ClosureBanner';
+import CardReportSheet from './components/CardReportSheet';
 import { liveBooked, bookedAt, bookableFrom, slotKeyOf, snapshotExpired } from './lib/reservations';
 import { fetchLiveReservations, locationIdFromUrl } from './lib/reservationsLive';
 import { openDirections } from './lib/maps';
@@ -686,6 +696,25 @@ export default function App() {
     setTab(nextTab);
     if (nextTab === 'social') markFeedSeen().then(() => setUnread(0));
   }, []);
+
+  // The court card sends a signed-out tap (report, vote, join a run) to the
+  // Profile tab, which closes the card. Remember the court, and once they're
+  // signed in — sign-in or sign-up, same transition — put them back on it.
+  // Leaving Profile without signing in drops it: jumping to a court they
+  // walked away from, whenever they do sign in later, would be a surprise.
+  const signInReturnRef = useRef(null);
+  useEffect(() => {
+    if (tab !== 'profile') signInReturnRef.current = null;
+  }, [tab]);
+  useEffect(() => {
+    const back = signInReturnRef.current;
+    if (!user || !back) return;
+    signInReturnRef.current = null;
+    goTab('home');
+    setSelectedId(back.id);
+    // The map remounts when its tab comes back; give it a beat before flying.
+    setTimeout(() => mapRef.current?.focusCourt(back), 400);
+  }, [user?.id, goTab]);
 
   // Mirror the view into the URL (web only); defaults drop their param so the
   // starting view keeps a bare URL.
@@ -1645,6 +1674,7 @@ export default function App() {
           reservationsGeneratedAt={reservationsGeneratedAt}
           onClose={() => setSelectedId(null)}
           onNeedSignIn={() => {
+            signInReturnRef.current = selected;
             setSelectedId(null);
             goTab('profile');
           }}
@@ -2024,6 +2054,60 @@ function CourtDetail({
     .sort((a, b) => b.ts - a.ts)
     .slice(0, 5);
 
+  // Player-reported closures (lib/closures.js): a soft banner, never a schedule
+  // change. Reloads after your own vote/report and after a check-in, since
+  // checking in here counts against a closure report.
+  const [closureRows, setClosureRows] = useState([]);
+  const [closureSeq, setClosureSeq] = useState(0);
+  const [closureBusy, setClosureBusy] = useState(false);
+  const [reportSheet, setReportSheet] = useState(false);
+  useEffect(() => {
+    if (!closuresEnabled) return;
+    let alive = true;
+    setClosureRows([]);
+    loadClosures(court.id, vSport).then((r) => alive && setClosureRows(r));
+    return () => {
+      alive = false;
+    };
+  }, [court.id, vSport, user?.id, closureSeq, visitsSeq]);
+  const closure = pickClosure(closureRows, viewTime, now);
+  const withSignIn = (fn) => (...args) => (user ? fn(...args) : onNeedSignIn && onNeedSignIn());
+  const doVoteClosure = withSignIn(async (vote) => {
+    setClosureBusy(true);
+    const { error } = await voteClosure(closure.id, vote);
+    setClosureBusy(false);
+    if (error) notify(t('closure.voteFail'));
+    setClosureSeq((n) => n + 1);
+  });
+  const doRemoveClosure = async () => {
+    const ok = await confirm({
+      title: t('closure.removeTitle'),
+      confirmText: t('closure.remove'),
+      cancelText: t('cancel'),
+      destructive: true,
+    });
+    if (!ok) return;
+    setClosureBusy(true);
+    const { error } = await removeClosure(closure.id);
+    setClosureBusy(false);
+    if (error) notify(t('closure.voteFail'));
+    setClosureSeq((n) => n + 1);
+  };
+  // The note is user-written and shown to everyone, so it's reportable like a
+  // review (App Store UGC rule).
+  const reportClosureNote = async () => {
+    const ok = await confirm({
+      title: t('mod.reportTitle'),
+      message: t('mod.reportBody'),
+      confirmText: t('mod.report'),
+      cancelText: t('cancel'),
+      destructive: true,
+    });
+    if (!ok) return;
+    const { error } = await reportContent({ kind: 'closure', refId: closure.id });
+    notify(error ? error.message || t('mod.fail') : t('mod.reported'));
+  };
+
   const [note, setNote] = useState(null);
   const [expanded, setExpanded] = useState(false); // peek by default
   const [bookingHelp, setBookingHelp] = useState(false); // "how booking works" explainer
@@ -2113,18 +2197,17 @@ function CourtDetail({
 
   // Report an objectionable review (App Store UGC requirement). Reviews carry no
   // user id (free-text author), so this is a content report, not a user block.
-  const reportReview = (r) => {
-    Alert.alert(t('mod.reportTitle'), t('mod.reportBody'), [
-      { text: t('cancel'), style: 'cancel' },
-      {
-        text: t('mod.report'),
-        style: 'destructive',
-        onPress: async () => {
-          const { error } = await reportContent({ kind: 'review', refId: r.id });
-          Alert.alert(error ? t('mod.fail') : t('mod.reported'));
-        },
-      },
-    ]);
+  const reportReview = async (r) => {
+    const ok = await confirm({
+      title: t('mod.reportTitle'),
+      message: t('mod.reportBody'),
+      confirmText: t('mod.report'),
+      cancelText: t('cancel'),
+      destructive: true,
+    });
+    if (!ok) return;
+    const { error } = await reportContent({ kind: 'review', refId: r.id });
+    notify(error ? t('mod.fail') : t('mod.reported'));
   };
 
   const submitReview = async () => {
@@ -2221,6 +2304,21 @@ function CourtDetail({
           schedule/reviews ScrollView to zero height when expanded (native Yoga
           doesn't shrink fixed siblings — same gotcha as ClassDetail's sheet). */}
       <ScrollView style={styles.cardScroll} keyboardShouldPersistTaps="handled">
+      {/* Above the badges on purpose: the badges keep saying what the posted
+          schedule says, and this is the one thing on the card that might
+          contradict them. */}
+      {closure && (
+        <ClosureBanner
+          closure={closure}
+          now={now}
+          busy={closureBusy}
+          onVote={doVoteClosure}
+          onRemove={doRemoveClosure}
+          onReportNote={reportClosureNote}
+          signedIn={!!user}
+          onNeedSignIn={onNeedSignIn}
+        />
+      )}
       <View style={styles.badgeRow}>
         <SportTag
           id={vSport}
@@ -2703,6 +2801,40 @@ function CourtDetail({
       </View>
       )}
 
+      {/* The card's one report entry (CardReportSheet): closures, wrong hours,
+          other wrong info. In the peek rather than behind "Schedule & reviews"
+          because the person most likely to use it is standing at a locked gym.
+          Every branch needs a backend, so it hides without one. Signed out it
+          says up front that reporting needs an account, rather than letting the
+          tap be the first anyone hears of it. */}
+      {closuresEnabled &&
+        (user ? (
+          <Pressable
+            style={styles.reportLink}
+            hitSlop={6}
+            onPress={() => setReportSheet(true)}
+            accessibilityRole="button"
+            accessibilityLabel={t('report.entry')}
+          >
+            <Ionicons name="flag-outline" size={13} color="#6b7a8a" />
+            <Text style={styles.reportLinkText}>{t('report.entry')}</Text>
+          </Pressable>
+        ) : (
+          <Pressable
+            style={styles.reportLink}
+            hitSlop={6}
+            onPress={onNeedSignIn}
+            accessibilityRole="button"
+            accessibilityLabel={t('report.signInToReport')}
+          >
+            <Ionicons name="lock-closed-outline" size={13} color="#6b7a8a" />
+            <Text style={styles.reportLinkText}>
+              {t('report.entryLead')}{' '}
+              <Text style={styles.reportLinkCta}>{t('report.signInToReport')}</Text>
+            </Text>
+          </Pressable>
+        ))}
+
       {/* Planned games here — shown in the peek (rare enough not to clutter,
           timely enough that hiding them behind "details" would bury them). */}
       {runs.length > 0 && (
@@ -2720,13 +2852,23 @@ function CourtDetail({
                 </Text>
               </View>
               <Pressable
-                style={[styles.runBtn, run.mine || run.joined ? styles.runBtnOff : styles.runBtnOn]}
+                style={[styles.runBtn, !user || run.mine || run.joined ? styles.runBtnOff : styles.runBtnOn]}
                 disabled={runBusy === run.id}
                 onPress={() => toggleRun(run)}
               >
-                <Text style={run.mine || run.joined ? styles.runBtnOffText : styles.runBtnOnText}>
+                <Text
+                  style={
+                    !user
+                      ? styles.runBtnSignInText
+                      : run.mine || run.joined
+                      ? styles.runBtnOffText
+                      : styles.runBtnOnText
+                  }
+                >
                   {runBusy === run.id
                     ? '…'
+                    : !user
+                    ? t('auth.signIn')
                     : run.mine
                     ? t('cancel')
                     : run.joined
@@ -2868,17 +3010,6 @@ function CourtDetail({
         <Text style={styles.disclaimer}>
           {court.disclaimer || t('court.disclaimerDefault')}
         </Text>
-        {/* "This data looks wrong" flag — one per surface (court/class/pool),
-            all through the shared confirmReportData flow. */}
-        <Pressable
-          onPress={() =>
-            confirmReportData(court.pool ? `pool:${court.id}` : `court:${court.id}:${vSport}`)
-          }
-          accessibilityRole="button"
-          accessibilityLabel={t('report.schedule')}
-        >
-          <Text style={styles.scheduleReport}>{t('report.schedule')}</Text>
-        </Pressable>
 
         <Text style={[styles.sectionLabel, styles.reviewsLabel]}>{t('court.reviews')}</Text>
         {reviews === null ? (
@@ -2955,6 +3086,20 @@ function CourtDetail({
         </View>
       </View>
       ) : null}
+
+      {closuresEnabled && (
+        <CardReportSheet
+          visible={reportSheet}
+          court={court}
+          sport={vSport}
+          sportName={sportName}
+          onClose={() => setReportSheet(false)}
+          onFiled={(topic) => {
+            setReportSheet(false);
+            if (topic === 'closure') setClosureSeq((n) => n + 1);
+          }}
+        />
+      )}
     </View>
   );
 }
@@ -3441,6 +3586,7 @@ const styles = StyleSheet.create({
   runBtn: { borderRadius: 8, paddingHorizontal: 12, paddingVertical: 7 },
   runBtnOn: { backgroundColor: '#1f9d55' },
   runBtnOnText: { color: '#fff', fontWeight: '700', fontSize: 13 },
+  runBtnSignInText: { color: '#2f74d6', fontWeight: '800', fontSize: 13 },
   runBtnOff: { backgroundColor: '#eef1f4' },
   runBtnOffText: { color: '#5b6b7b', fontWeight: '700', fontSize: 13 },
   history: { marginTop: 10, borderTopWidth: 1, borderTopColor: '#e3e8ec', paddingTop: 8 },
@@ -3499,13 +3645,9 @@ const styles = StyleSheet.create({
   reviewAuthor: { fontSize: 13, fontWeight: '700', color: '#2a3a4a' },
   reviewAgo: { fontSize: 11, color: '#9aa7b4' },
   reviewReport: { fontSize: 11, color: '#9aa7b4', fontWeight: '700', marginTop: 4 },
-  scheduleReport: {
-    fontSize: 11,
-    color: '#9aa7b4',
-    fontWeight: '700',
-    marginTop: 6,
-    paddingHorizontal: 8,
-  },
+  reportLink: { flexDirection: 'row', alignItems: 'center', gap: 6, paddingHorizontal: 2, marginBottom: 2 },
+  reportLinkText: { fontSize: 12, fontWeight: '600', color: '#6b7a8a' },
+  reportLinkCta: { color: '#2f74d6', fontWeight: '800' },
   reviewBody: { fontSize: 13, color: '#46586a', lineHeight: 18 },
 
   reviewForm: { marginTop: 10, borderTopWidth: 1, borderTopColor: '#e3e8ec', paddingTop: 10 },

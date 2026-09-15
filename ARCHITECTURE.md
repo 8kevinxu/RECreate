@@ -278,9 +278,13 @@ reports; Settings has a block manager and account self-deletion
 (`delete_account()` SECURITY DEFINER RPC that cascades all user data).
 
 **Where a report goes.** Every report — reported messages/reviews/signals/profiles/
-runs, the "looks wrong? report it" data flags on court/class/pool cards, and
-Settings → Report a problem — is one insert into `content_reports`, which clients
-can write but never read. Two things read it:
+runs, wrong-info reports (court and pool cards' "Something wrong here?" sheet,
+`CardReportSheet.js`, and the class card's one-tap flag), and Settings → Report a
+problem — is one insert into `content_reports`, which clients can write but never
+read. The exception is a **closure** ("closed for maintenance"), filed from the
+same sheet: it is public, so it lives in `closure_reports` (`027`) and shows on
+the card, and its own `closure_reports_email` trigger mails it. Two things read
+`content_reports`:
 
 - **Email.** The `content_reports_email` trigger (`028`) sends each new row to
   support.recreate@gmail.com through Resend's HTTP API via `pg_net` — the same
@@ -299,8 +303,8 @@ Nothing acts on a report automatically: the scrapers don't consult them.
 
 The report button is also where the web build's worst silent failure surfaced:
 **`Alert.alert` is a no-op in react-native-web**, so a dialog built on it never
-appears and nothing behind its buttons runs. `confirmReportData` uses
-`window.confirm`/`window.alert` on web; the remaining call sites are in `TODO.md`.
+appears and nothing behind its buttons runs. `lib/dialog.js` / `lib/dialog.web.js`
+wrap `confirm`/`notify` for both; the call sites not yet moved are in `TODO.md`.
 
 ### Notifications
 Server push (while the app is closed) is handled entirely in Postgres:

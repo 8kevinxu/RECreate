@@ -16,7 +16,7 @@ queries/     Read-only SQL for the dashboard's SQL Editor (reviewing reports).
 ## Fresh project
 
 In the Supabase dashboard → **SQL Editor**, run the `schema/` files **in numeric
-order** (01 → 10). Order matters: later domains reference earlier tables
+order** (01 → 11). Order matters: later domains reference earlier tables
 (e.g. runs/friends/signals depend on profiles; push depends on all of them).
 
 | File | What it adds | Depends on |
@@ -31,6 +31,7 @@ order** (01 → 10). Order matters: later domains reference earlier tables
 | `08_chat.sql` | Chat: run/signal group chats + 1:1 friend DMs | 03, 04, 05, 06 |
 | `09_account_deletion.sql` | `delete_account()` RPC (Settings → Delete account) | 03 |
 | `10_moderation.sql` | Trust & safety: user blocking + content reports | 03 |
+| `11_closure_reports.sql` | Player-reported closures ("under maintenance until…") + support/incorrect votes, RPC-only | 03, 10 |
 
 To run them all at once, concatenate in order:
 
@@ -78,6 +79,7 @@ new:
 | `024_check_ins_sport.sql` | Crowd check-ins scoped to court **+ sport** (`check_ins.sport`, per-sport push cooldown/wording) |
 | `025_court_checkin_count.sql` | `court_checkin_count()`: SECURITY DEFINER **aggregate** so the court card can show a community check-in count without reopening `017`'s row-level privacy (+ court/sport index) |
 | `026_player_checkins_lockdown_repair.sql` | **URGENT** — re-asserts `017`'s privacy lockdown, which was not live: the anon key could read `player_check_ins` rows (user id + court). Enables RLS as well as replacing the policies, since `017` assumed RLS was already on |
+| `027_closure_reports.sql` | Player-reported closures on the court card: `closure_reports` + `closure_votes` (no client policies — read via `court_closures()`, write via `file_closure_report()` / `vote_closure_report()` / `remove_closure_report()`), `content_reports.kind 'closure'` for reporting a closure's note, and a `closure_reports_email` trigger that mails each new closure like `028` does (same Vault secrets; inert without them) |
 | `028_report_email.sql` | Email each new `content_reports` row to the support inbox (trigger → Resend via `pg_net`); inert until the `resend_api_key` Vault secret is set — see *Reviewing reports* |
 
 > Note: migrations 001–009 were authored before the RECreate rebrand and still
@@ -87,7 +89,7 @@ new:
 
 ## Reviewing reports
 
-Everything a user reports — "looks wrong" flags on the court/class/pool cards,
+Everything a user reports — wrong-info reports on the court/class/pool cards,
 Settings → Report a problem, and reported messages/reviews/signals/profiles/runs
 — lands in `content_reports`, which the app can only insert into. Read it with
 `queries/reports.sql`: paste each query into the SQL Editor and save it as a
@@ -111,3 +113,7 @@ Emails stop past 5 reports per reporter per hour or 50 reports per day (the rows
 are still stored), and a failed send never blocks the report itself — look for
 `email_content_report` warnings in the Postgres logs, and the delivery attempts
 in `net._http_response`.
+
+Closures (`027`) are the exception: they're public, live in `closure_reports`,
+and are mailed by their own `closure_reports_email` trigger using the same two
+secrets. That email includes the `delete` statement that takes one down.
