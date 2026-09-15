@@ -37,7 +37,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 17,
+      "spots": 18,
       "unlimited": false,
       "start": "2026-09-16",
       "end": "2027-03-03",
@@ -119,31 +119,6 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
-      "id": "vol-a07Pi00003zjg0EIAQ",
-      "source": "sfrpd-volunteer",
-      "name": "White Crowned Sparrow Habitat Restoration at the Bison Paddock",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "GGP Sec 5 Bison Paddock",
-      "when": "Sat · 9:00 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 14,
-      "unlimited": false,
-      "start": "2026-09-19",
-      "end": "2027-02-20",
-      "instructor": "Golden Gate Bird Alliance",
-      "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nVolunteer with the Golden Gate Bird Alliance at the Bison Paddock of Golden Gate Park and help to restore the habitat of the White-crowned sparrow. Lend a hand with weeding and tending a garden of native plants that comprise a critical nesting and feeding area for this sparrow. Please wear appropriate attire: closed-toe shoes, long pants and layers of clothing.\n\nMeet at the middle of the Bison Paddock fence located on John F Kennedy Drive between 36th Avenue and Chain of Lakes Drive East.",
-      "lat": 37.7702,
-      "lng": -122.4917,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a074U00001QmwtoQAB",
       "source": "sfrpd-volunteer",
       "name": "Interior Greenbelt Volunteer Workparty",
@@ -218,6 +193,31 @@
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the SFRPD gardeners and the Buena Vista Neighborhood Association in a monthly volunteer workparty focused on planting, gardening and maintenance projects throughout the park. Please wear closed-toed shoes and dress in layers. Event takes place rain or shine. Meet at the children's playground at Buena Vista West and Waller St.\n\nMeet: at the Children's Playground at Buena Vista West and Waller St",
       "lat": 37.769496,
       "lng": -122.439376,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a07Pi00003zjg0EIAQ",
+      "source": "sfrpd-volunteer",
+      "name": "White Crowned Sparrow Habitat Restoration at the Bison Paddock",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "GGP Sec 5 Bison Paddock",
+      "when": "Sat · 9:00 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 20,
+      "unlimited": false,
+      "start": "2026-09-19",
+      "end": "2027-02-20",
+      "instructor": "Golden Gate Bird Alliance",
+      "activity": "Habitat Restoration",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nVolunteer with the Golden Gate Bird Alliance at the Bison Paddock of Golden Gate Park and help to restore the habitat of the White-crowned sparrow. Lend a hand with weeding and tending a garden of native plants that comprise a critical nesting and feeding area for this sparrow. Please wear appropriate attire: closed-toe shoes, long pants and layers of clothing.\n\nMeet at the middle of the Bison Paddock fence located on John F Kennedy Drive between 36th Avenue and Chain of Lakes Drive East.",
+      "lat": 37.7702,
+      "lng": -122.4917,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -321,31 +321,6 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
-      "id": "vol-a074U00001UJ6W9QAL",
-      "source": "sfrpd-volunteer",
-      "name": "SF Bay Coastal Habitat Restoration",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "Heron's Head Park",
-      "when": "Sat · 10:00 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 15,
-      "unlimited": false,
-      "start": "2026-09-19",
-      "end": "2027-03-06",
-      "instructor": "Friends of Heron's Head Park",
-      "activity": "Horticultural Maintenance",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin us for a monthly habitat restoration volunteer workparty at Heron's Head Park, a coastal site of San Francisco Bay in the SE District.  Volunteers will contribute to an ecological project started by community-based organizations in partnership with the Port of San Francisco. Volunteers will assist in the preservation and restoration of a native landscape and bird sanctuary. Tasks will include invasive species removal, landscape maintenance and planting.\n\nAll tools and materials provided. Minimum volunteer age of 6 years old. Children under 12 years old must be accompanied by an adult chaperone. Please wear close-toe shoes, long pants, long-sleeve shirts and bring a water bottle and sun hat.\n\nMeet at the front porch of the EcoCenter",
-      "lat": 37.73832,
-      "lng": -122.37481,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a074U00001JrFmAQAV",
       "source": "sfrpd-volunteer",
       "name": "EcoCenter Volunteer Workparty 3rd Saturday",
@@ -366,6 +341,31 @@
       "instructor": "Friends of Heron's Head Park",
       "activity": "Horticultural Maintenance",
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group. You can only sign-up a group of 4. If you have a group size of 5 or more, please email us at recparkvolunteer@sfgov.org.\n\nJoin the SF Rec & Park Dept and the Port of San Francisco on the 3rd Saturday monthly in the stewardship of the outdoor play spaces of the EcoCenter at Heron's Head Park. The Nature Exploration Area at Heron's Head Park is an outdoor play space that engages children with nature.  Assist with the horticultural maintenance of this innovative playground and its environs. Tasks include invasive species removal, mulching, watering, pathway maintenance and planting. Please wear closed-toe shoes and dress in layers. No experience necessary. Tools are provided.\n\nMeet in front of the entrance porch of the EcoCenter",
+      "lat": 37.73832,
+      "lng": -122.37481,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a074U00001UJ6W9QAL",
+      "source": "sfrpd-volunteer",
+      "name": "SF Bay Coastal Habitat Restoration",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "Heron's Head Park",
+      "when": "Sat · 10:00 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 15,
+      "unlimited": false,
+      "start": "2026-09-19",
+      "end": "2027-03-06",
+      "instructor": "Friends of Heron's Head Park",
+      "activity": "Horticultural Maintenance",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin us for a monthly habitat restoration volunteer workparty at Heron's Head Park, a coastal site of San Francisco Bay in the SE District.  Volunteers will contribute to an ecological project started by community-based organizations in partnership with the Port of San Francisco. Volunteers will assist in the preservation and restoration of a native landscape and bird sanctuary. Tasks will include invasive species removal, landscape maintenance and planting.\n\nAll tools and materials provided. Minimum volunteer age of 6 years old. Children under 12 years old must be accompanied by an adult chaperone. Please wear close-toe shoes, long pants, long-sleeve shirts and bring a water bottle and sun hat.\n\nMeet at the front porch of the EcoCenter",
       "lat": 37.73832,
       "lng": -122.37481,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
@@ -462,7 +462,7 @@
       "spots": 15,
       "unlimited": false,
       "start": "2026-09-26",
-      "end": "2027-02-27",
+      "end": "2027-03-14",
       "instructor": "SF Botanical Staff",
       "activity": "Horticultural Maintenance",
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nPlease join the San Francisco Botanical Garden’s Horticulture team as they maintain San Francisco’s wonderful 55 acres of both landscaped gardens and open spaces, showcasing more than 8,000 different kinds of plants from around the world. At this volunteer event, you will assist SFRPD staff with collections maintenance and complete tasks such as weeding, raking, and mulching to keep the Botanical Garden beautiful for our community. This is a fun event to jump in and help out with friends and family. While you are welcome to bring your tools and gloves, all supplies will be provided by SFRPD. Volunteers aged 14-17 must be accompanied by an adult. We do not have opportunities for volunteers younger than 14 at this time.\n\nRain and high winds may cancel this event.\n\nPlease wear closed-toed shoes, long pants, layers and appropriate weather protection such as sunscreen, hat, and sunglasses.\n\nMeet at the San Francisco Botanical Garden Bookstore.",
@@ -484,7 +484,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 11,
+      "spots": 7,
       "unlimited": false,
       "start": "2026-09-26",
       "end": "2027-02-27",
@@ -618,31 +618,6 @@
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nPlease join the Friends of Lafayette Park for a \"Cleaning and Greening\" workday on the first Saturday of the month. Help to maintain the park and get to know your neighbors. We install new plants, weed, sweep and more. We meet beforehand for coffee and pastries, lively conversation, and then head-out with the SFRPD gardeners to help beautify our park.  Please wear closed-toe shoes, long pants and a long-sleeve shirt. All tools and gloves provided. (NOTE: If the first Saturday of the month is a major holiday, then the workday will happen on the following Saturday.)\n\nMeet at the picnic tables at the south end of the Children's Playground",
       "lat": 37.791378,
       "lng": -122.427006,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
-      "id": "vol-a07Pi00003zJ3cYIAS",
-      "source": "sfrpd-volunteer",
-      "name": "Palou Phelps Park Volunteer Workparty",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "Palou & Phelps Park",
-      "when": "Sat · 10:00 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 12,
-      "unlimited": false,
-      "start": "2026-10-03",
-      "end": "2027-03-06",
-      "instructor": "Friends of Palou Phelps",
-      "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the SFRPD gardeners in a recurring habitat restoration volunteer project at Palou Phelps Park. Volunteer tasks include litter pick-up, weeding, mulching, habitat restoration and occasional planting. Please wear closed-toed shoes, long pants and layers. The event will occur rain or shine.\n\nMeet on Palou Ave at the intersection with Phelps St",
-      "lat": 37.73395,
-      "lng": -122.38995,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -794,31 +769,6 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
-      "id": "vol-a074U00001AcPFYQA3",
-      "source": "sfrpd-volunteer",
-      "name": "Strawberry Hill Butterfly Habitat Restoration Project",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "GGP Sec 4 Blue Heron Lake Boathouse",
-      "when": "Sat · 10:00 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 25,
-      "unlimited": false,
-      "start": "2026-10-10",
-      "end": "2027-03-13",
-      "instructor": "Friends of Strawberry Hill",
-      "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nIf you love your parks, and are looking for a meaningful and substantive way to make a positive difference, come on out and volunteer with the Friends of Strawberry Hill and the San Francisco Recreation and Park Department! On the second Saturday of every month, we enhance habitat on Strawberry Hill in Golden Gate Park. We remove invasive weeds, and put in plant species that Swallowtails and other butterflies need to thrive. This is an ongoing program – we’re looking for both occasional volunteers, and those who would like to be involved on a regular basis. To sign-up for this volunteer opportunity, please email do so by the Wednesday prior to the workday. All instruction and needed tools are provided. Please wear closed toe shoes and clothes you don’t mind getting dirty. Dress in layers, and bring a bottle of water. If you’re sensitive to sun, don’t forget your sun block lotion and hat. Meet at the Blue Heron Lake Boat House.\n\nMeet: at the Stow Lake Boat House",
-      "lat": 37.76861,
-      "lng": -122.47588,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a074U00001AcWx1QAF",
       "source": "sfrpd-volunteer",
       "name": "Alta Plaza Volunteer Workparty",
@@ -842,6 +792,31 @@
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the Friends of Alta Plaza Park and RPD gardeners in beautifying one of The City’s most beautiful and well-loved neighborhood parks. We offer spectacular views and many recreational amenities: children's playground, sports and tennis courts, expansive green lawns, and donors circle overlook bench. Volunteer gardening tasks include plant restoration and maintenance, invasive weeds eradication, mulching, and litter abatement. Tools and gloves are provided. Please wear closed-toed shoes, long pants and layers. The event will occur rain or shine. Meet at the Children’s Playground accessible from the Jackson and Scott Sts entrance.\n\nMeet: at the Children’s Playground accessible from the Jackson and Scott Sts entrance",
       "lat": 37.791367,
       "lng": -122.43703,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a074U00001AcPFYQA3",
+      "source": "sfrpd-volunteer",
+      "name": "Strawberry Hill Butterfly Habitat Restoration Project",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "GGP Sec 4 Blue Heron Lake Boathouse",
+      "when": "Sat · 10:00 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 25,
+      "unlimited": false,
+      "start": "2026-10-10",
+      "end": "2027-03-13",
+      "instructor": "Friends of Strawberry Hill",
+      "activity": "Habitat Restoration",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nIf you love your parks, and are looking for a meaningful and substantive way to make a positive difference, come on out and volunteer with the Friends of Strawberry Hill and the San Francisco Recreation and Park Department! On the second Saturday of every month, we enhance habitat on Strawberry Hill in Golden Gate Park. We remove invasive weeds, and put in plant species that Swallowtails and other butterflies need to thrive. This is an ongoing program – we’re looking for both occasional volunteers, and those who would like to be involved on a regular basis. To sign-up for this volunteer opportunity, please email do so by the Wednesday prior to the workday. All instruction and needed tools are provided. Please wear closed toe shoes and clothes you don’t mind getting dirty. Dress in layers, and bring a bottle of water. If you’re sensitive to sun, don’t forget your sun block lotion and hat. Meet at the Blue Heron Lake Boat House.\n\nMeet: at the Stow Lake Boat House",
+      "lat": 37.76861,
+      "lng": -122.47588,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -969,7 +944,32 @@
       "lat": 37.71889,
       "lng": -122.41396,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a07Pi00003zJ3cYIAS",
+      "source": "sfrpd-volunteer",
+      "name": "Palou Phelps Park Volunteer Workparty",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "Palou & Phelps Park",
+      "when": "Sat · 10:00 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 12,
+      "unlimited": false,
+      "start": "2026-11-07",
+      "end": "2027-03-06",
+      "instructor": "Friends of Palou Phelps",
+      "activity": "Habitat Restoration",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the SFRPD gardeners in a recurring habitat restoration volunteer project at Palou Phelps Park. Volunteer tasks include litter pick-up, weeding, mulching, habitat restoration and occasional planting. Please wear closed-toed shoes, long pants and layers. The event will occur rain or shine.\n\nMeet on Palou Ave at the intersection with Phelps St",
+      "lat": 37.73395,
+      "lng": -122.38995,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-09-15T16:15:33.352Z"
+  "fetchedAt": "2026-09-15T20:53:40.923Z"
 }
