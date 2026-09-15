@@ -9795,7 +9795,9 @@
       "seasonal": false,
       "notice": "There are no programs at this pool today.",
       "programs": [
-        "other"
+        "lap",
+        "family",
+        "youth"
       ],
       "fees": {
         "effective": "2026-01-01",
@@ -9851,16 +9853,201 @@
         [],
         [
           {
-            "kind": "other",
+            "kind": "lap",
+            "start": 660,
+            "end": 735
+          },
+          {
+            "kind": "family",
+            "start": 750,
+            "end": 810
+          },
+          {
+            "kind": "lap",
+            "start": 825,
+            "end": 885
+          },
+          {
+            "kind": "youth",
             "start": 900,
             "end": 975
+          },
+          {
+            "kind": "youth",
+            "start": 900,
+            "end": 975
+          },
+          {
+            "kind": "family",
+            "start": 990,
+            "end": 1065
+          },
+          {
+            "kind": "family",
+            "start": 1080,
+            "end": 1140
           }
         ],
-        [],
-        [],
-        [],
-        [],
-        []
+        [
+          {
+            "kind": "family",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "lap",
+            "start": 735,
+            "end": 825
+          },
+          {
+            "kind": "family",
+            "start": 840,
+            "end": 885
+          },
+          {
+            "kind": "youth",
+            "start": 900,
+            "end": 975
+          },
+          {
+            "kind": "family",
+            "start": 990,
+            "end": 1065
+          },
+          {
+            "kind": "lap",
+            "start": 1080,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 660,
+            "end": 735
+          },
+          {
+            "kind": "family",
+            "start": 750,
+            "end": 810
+          },
+          {
+            "kind": "lap",
+            "start": 825,
+            "end": 885
+          },
+          {
+            "kind": "youth",
+            "start": 900,
+            "end": 975
+          },
+          {
+            "kind": "family",
+            "start": 990,
+            "end": 1065
+          },
+          {
+            "kind": "family",
+            "start": 1080,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "family",
+            "start": 660,
+            "end": 735
+          },
+          {
+            "kind": "lap",
+            "start": 750,
+            "end": 825
+          },
+          {
+            "kind": "family",
+            "start": 840,
+            "end": 885
+          },
+          {
+            "kind": "youth",
+            "start": 900,
+            "end": 975
+          },
+          {
+            "kind": "family",
+            "start": 990,
+            "end": 1065
+          },
+          {
+            "kind": "lap",
+            "start": 1080,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 660,
+            "end": 735
+          },
+          {
+            "kind": "family",
+            "start": 750,
+            "end": 810
+          },
+          {
+            "kind": "lap",
+            "start": 825,
+            "end": 885
+          },
+          {
+            "kind": "youth",
+            "start": 900,
+            "end": 975
+          },
+          {
+            "kind": "family",
+            "start": 990,
+            "end": 1065
+          },
+          {
+            "kind": "family",
+            "start": 1080,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 480,
+            "end": 555
+          },
+          {
+            "kind": "family",
+            "start": 570,
+            "end": 630
+          },
+          {
+            "kind": "family",
+            "start": 645,
+            "end": 720
+          },
+          {
+            "kind": "youth",
+            "start": 735,
+            "end": 810
+          },
+          {
+            "kind": "family",
+            "start": 840,
+            "end": 885
+          },
+          {
+            "kind": "lap",
+            "start": 900,
+            "end": 960
+          }
+        ]
       ]
     },
     {
@@ -10789,9 +10976,7 @@
       "seasonal": false,
       "programs": [
         "family",
-        "other",
         "lap",
-        "camp",
         "exercise"
       ],
       "fees": {
@@ -10851,11 +11036,6 @@
             "kind": "family",
             "start": 660,
             "end": 885
-          },
-          {
-            "kind": "other",
-            "start": 900,
-            "end": 960
           }
         ],
         [
@@ -10863,11 +11043,6 @@
             "kind": "lap",
             "start": 660,
             "end": 885
-          },
-          {
-            "kind": "other",
-            "start": 900,
-            "end": 960
           },
           {
             "kind": "family",
@@ -10887,11 +11062,6 @@
             "end": 885
           },
           {
-            "kind": "other",
-            "start": 900,
-            "end": 960
-          },
-          {
             "kind": "family",
             "start": 960,
             "end": 1065
@@ -10907,11 +11077,6 @@
             "kind": "lap",
             "start": 660,
             "end": 885
-          },
-          {
-            "kind": "other",
-            "start": 900,
-            "end": 960
           },
           {
             "kind": "family",
@@ -10936,11 +11101,6 @@
             "end": 885
           },
           {
-            "kind": "other",
-            "start": 900,
-            "end": 960
-          },
-          {
             "kind": "family",
             "start": 960,
             "end": 1140
@@ -10948,17 +11108,17 @@
         ],
         [
           {
-            "kind": "camp",
+            "kind": "exercise",
             "start": 615,
             "end": 660
           },
           {
-            "kind": "other",
+            "kind": "exercise",
             "start": 675,
             "end": 720
           },
           {
-            "kind": "other",
+            "kind": "exercise",
             "start": 735,
             "end": 780
           },
@@ -10977,5 +11137,5 @@
     "checked": "2026-09-15",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-09-15T04:18:24.246Z"
+  "fetchedAt": "2026-09-15T23:16:37.567Z"
 }
