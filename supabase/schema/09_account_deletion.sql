@@ -7,8 +7,10 @@
 -- Every app table foreign-keys to profiles ON DELETE CASCADE, and profiles
 -- foreign-keys to auth.users ON DELETE CASCADE — so deleting the auth row
 -- cascades away all of the user's data (profile, runs, signals, friends,
--- chat, push tokens, personal check-ins). Anonymous rows that carry no
--- user id (crowd check-ins, reviews) are intentionally left untouched.
+-- chat, push tokens, personal check-ins) — including their reviews, which
+-- carry a user_id as of migration 029 and cascade from auth.users. Rows that
+-- carry no user id (crowd check-ins, reviews written before 029) are
+-- intentionally left untouched.
 
 create or replace function public.delete_account()
 returns void

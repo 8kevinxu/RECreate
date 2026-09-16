@@ -22,7 +22,7 @@ order** (01 → 11). Order matters: later domains reference earlier tables
 | File | What it adds | Depends on |
 |------|--------------|------------|
 | `01_crowd_check_ins.sql` | Anonymous crowd-level check-ins + rate limit | — |
-| `02_reviews.sql` | Per-court text reviews + rate limit | — |
+| `02_reviews.sql` | Per-court text reviews (owner-deletable) + rate limit | auth |
 | `03_profiles.sql` | Accounts: profiles, friend codes, personal check-ins | auth |
 | `04_runs.sql` | "Plan a run" scheduled games | 03 |
 | `05_friends.sql` | Friend requests + friends-only run visibility | 03, 04 |
@@ -81,6 +81,7 @@ new:
 | `026_player_checkins_lockdown_repair.sql` | **URGENT** — re-asserts `017`'s privacy lockdown, which was not live: the anon key could read `player_check_ins` rows (user id + court). Enables RLS as well as replacing the policies, since `017` assumed RLS was already on |
 | `027_closure_reports.sql` | Player-reported closures on the court card: `closure_reports` + `closure_votes` (no client policies — read via `court_closures()`, write via `file_closure_report()` / `vote_closure_report()` / `remove_closure_report()`), `content_reports.kind 'closure'` for reporting a closure's note, and a `closure_reports_email` trigger that mails each new closure like `028` does (same Vault secrets; inert without them) |
 | `028_report_email.sql` | Email each new `content_reports` row to the support inbox (trigger → Resend via `pg_net`); inert until the `resend_api_key` Vault secret is set — see *Reviewing reports* |
+| `029_reviews_owner_delete.sql` | `reviews.user_id` (defaulted from `auth.uid()`), a delete policy so a user can remove their own review, and `my_review_ids()` so the card knows which are theirs — plus a column-list `select` grant that stops clients reading `user_id`/`ip` (a readable owner id would deanonymize a review signed "Anonymous") |
 
 > Note: migrations 001–009 were authored before the RECreate rebrand and still
 > reference the old `hoop_*` table names. Apply them **in order** — `010` renames

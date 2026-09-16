@@ -85,7 +85,14 @@ import {
   LEVEL_META,
 } from './lib/crowd';
 import { maybeAskForReview } from './lib/rateApp';
-import { loadReviews, addReview, MAX_BODY, MAX_NAME, isShared as reviewsShared } from './lib/reviews';
+import {
+  loadReviews,
+  addReview,
+  deleteReview,
+  MAX_BODY,
+  MAX_NAME,
+  isShared as reviewsShared,
+} from './lib/reviews';
 import { reportContent } from './lib/reports';
 import { confirm, notify } from './lib/dialog';
 import {
@@ -2200,8 +2207,9 @@ function CourtDetail({
     };
   }, [court.id]);
 
-  // Report an objectionable review (App Store UGC requirement). Reviews carry no
-  // user id (free-text author), so this is a content report, not a user block.
+  // Report an objectionable review (App Store UGC requirement). A review's
+  // author is free text and its owner id is never sent to the client, so this
+  // is a content report, not a user block.
   const reportReview = async (r) => {
     const ok = await confirm({
       title: t('mod.reportTitle'),
@@ -2213,6 +2221,22 @@ function CourtDetail({
     if (!ok) return;
     const { error } = await reportContent({ kind: 'review', refId: r.id });
     notify(error ? t('mod.fail') : t('mod.reported'));
+  };
+
+  // Delete your own review. `r.mine` comes from the server (my_review_ids) on
+  // the shared path and is always true on the local one, so the button only
+  // appears on reviews RLS will actually let go.
+  const removeReview = async (r) => {
+    const ok = await confirm({
+      title: t('court.reviewDeleteTitle'),
+      message: t('court.reviewDeleteBody'),
+      confirmText: t('delete'),
+      cancelText: t('cancel'),
+      destructive: true,
+    });
+    if (!ok) return;
+    if (await deleteReview(r.id)) setReviews((prev) => (prev || []).filter((x) => x.id !== r.id));
+    else setNote(t('court.reviewDeleteFail'));
   };
 
   const submitReview = async () => {
@@ -3029,16 +3053,30 @@ function CourtDetail({
                 <Text style={styles.reviewAgo}>{timeAgo(r.ts, now)}</Text>
               </View>
               <Text style={styles.reviewBody}>{r.body}</Text>
-              {reviewsShared && (
-                <Pressable
-                  hitSlop={6}
-                  onPress={() => reportReview(r)}
-                  accessibilityRole="button"
-                  accessibilityLabel={t('mod.report')}
-                >
-                  <Text style={styles.reviewReport}>{t('mod.report')}</Text>
-                </Pressable>
-              )}
+              <View style={styles.reviewActions}>
+                {r.mine && (
+                  <Pressable
+                    hitSlop={6}
+                    onPress={() => removeReview(r)}
+                    accessibilityRole="button"
+                    accessibilityLabel={t('court.reviewDelete')}
+                  >
+                    <Text style={[styles.reviewAction, styles.reviewDelete]}>
+                      {t('court.reviewDelete')}
+                    </Text>
+                  </Pressable>
+                )}
+                {reviewsShared && !r.mine && (
+                  <Pressable
+                    hitSlop={6}
+                    onPress={() => reportReview(r)}
+                    accessibilityRole="button"
+                    accessibilityLabel={t('mod.report')}
+                  >
+                    <Text style={styles.reviewAction}>{t('mod.report')}</Text>
+                  </Pressable>
+                )}
+              </View>
             </View>
           ))
         )}
@@ -3654,7 +3692,9 @@ const styles = StyleSheet.create({
   reviewHead: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 2 },
   reviewAuthor: { fontSize: 13, fontWeight: '700', color: '#2a3a4a' },
   reviewAgo: { fontSize: 11, color: '#9aa7b4' },
-  reviewReport: { fontSize: 11, color: '#9aa7b4', fontWeight: '700', marginTop: 4 },
+  reviewActions: { flexDirection: 'row', gap: 14, marginTop: 4 },
+  reviewAction: { fontSize: 11, color: '#9aa7b4', fontWeight: '700' },
+  reviewDelete: { color: '#c2483c' },
   reportLink: { flexDirection: 'row', alignItems: 'center', gap: 6, paddingHorizontal: 2, marginBottom: 2 },
   reportLinkText: { fontSize: 12, fontWeight: '600', color: '#6b7a8a' },
   reportLinkCta: { color: '#2f74d6', fontWeight: '800' },

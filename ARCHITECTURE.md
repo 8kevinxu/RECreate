@@ -162,7 +162,7 @@ pattern.
 | `crowd.js` | Anonymous "how busy" check-ins, keyed **court + sport** (Supabase shared + realtime, or local) |
 | `playerCheckins.js` | Personal "I played here" log (per-sport stats, feed) |
 | `reservations.js` / `reservationsLive.js` | rec.us booking occupancy: snapshot helpers + live per-court fetch |
-| `reviews.js`, `favorites.js` | Court reviews (anonymous); on-device favorites (court→sport) |
+| `reviews.js`, `favorites.js` | Court reviews (signed-in to post, anonymous to readers, owner-deletable); on-device favorites (court→sport) |
 | `runs.js`, `signals.js`, `friends.js`, `feed.js`, `chat.js` | Social graph + activities |
 | `push.js` | Device push-token registration + tap routing |
 | `recommend.js` / `localNotify.js` | "Recommended for you" + interest-based local reminders |
@@ -231,13 +231,16 @@ the card's court-count chip can't contradict each other.
 ## 5. Accounts, social & trust/safety (Supabase)
 
 Auth is Supabase email+password; `handle_new_user` auto-creates a `profiles` row.
-The DDL lives in `supabase/schema/` (canonical, numbered `01→10`, run in order)
+The DDL lives in `supabase/schema/` (canonical, numbered `01→11`, run in order)
 with `supabase/migrations/` as deltas for existing databases.
 
 **Row-Level Security is the security boundary** — the anon key ships in the client,
-so every table has RLS: public/anonymous data (crowd check-ins, reviews) allows
+so every table has RLS: public/anonymous data (crowd check-ins) allows
 read+insert with server-side rate limits; owned data (profiles, runs, signals,
-friendships, chat, device tokens, blocks) scopes writes to `auth.uid()`.
+friendships, chat, device tokens, blocks, reviews) scopes writes to `auth.uid()`.
+**Reviews sit between the two** — world-readable, but posted and deleted only by
+their owner, and *readably* anonymous: `user_id` is on the row and off the wire
+(see §10).
 Friends-only visibility (signals, friends-only runs) is enforced by RLS subqueries
 against the `friendships` table.
 
@@ -546,13 +549,24 @@ copy server-side.
 
 - **Anon key is public by design** — RLS is the real boundary; every table has
   policies, and writes are scoped to `auth.uid()`.
-- **Anonymous data** (crowd check-ins, reviews) has server-side per-IP rate limits
-  as an abuse backstop.
+- **Anonymous data** (crowd check-ins) and reviews have server-side per-IP rate
+  limits as an abuse backstop.
+- **Column-level grants hide a column the row is still public** — the one place
+  this pattern appears. `reviews` is world-readable, but profiles are readable by
+  every signed-in user, so a selectable `user_id` would deanonymize a review
+  signed "Anonymous" with one join. Postgres can't revoke a single column out of
+  a table-wide grant, so the table `select` is restated as a column list omitting
+  `user_id` and `ip`. Consequence: `select=*` on `reviews` **401s** for
+  anon/authenticated — name your columns (an empty supabase-js `.select()`, and a
+  write with `return=representation` and no explicit columns, both mean `*`).
 - **SECURITY DEFINER functions** set `search_path` and are revoked from
   anon/authenticated unless they must be client-callable. Two are:
   `delete_account()` (acts solely on the caller) and `court_checkin_count()`,
   which is safe to expose *because it returns a scalar* — an aggregate is how you
-  publish a number over private rows without unscoping the rows (see §5).
+  publish a number over private rows without unscoping the rows (see §5). A third,
+  `my_review_ids()`, exists to read past the column grant above: it returns ids,
+  and only the caller's own, so the card can offer Delete without anyone learning
+  who wrote what.
 - **Third-party keys used by the database live in Supabase Vault**, read by the
   SECURITY DEFINER trigger that needs them (`email_content_report()` reads
   `resend_api_key`). Clients can't read Vault, and the trigger function is revoked

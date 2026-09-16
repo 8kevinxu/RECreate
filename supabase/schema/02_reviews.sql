@@ -1,11 +1,14 @@
--- RECreate — reviews (free-text comments per court). Anonymous + public, like
--- crowd check-ins. Depends on: nothing.
+-- RECreate — reviews (free-text comments per court). Public, and anonymous to
+-- readers: the display name is free text and the owner id is not selectable
+-- (see the grants below). Depends on: auth (reviews.user_id).
 
 create table if not exists public.reviews (
   id          bigint generated always as identity primary key,
   court_id    text        not null,
   author      text,                                   -- optional display name
   body        text        not null check (char_length(body) between 1 and 1000),
+  user_id     uuid        references auth.users(id) on delete cascade
+                          default auth.uid(),          -- owner; see 029
   rating      int         check (rating between 1 and 5), -- optional (future stars)
   ip          text,
   created_at  timestamptz not null default now()
@@ -14,10 +17,21 @@ create table if not exists public.reviews (
 create index if not exists reviews_court_time_idx
   on public.reviews (court_id, created_at desc);
 
+create index if not exists reviews_user_idx on public.reviews (user_id);
+
 alter table public.reviews enable row level security;
 
 create policy "anyone can read reviews"
   on public.reviews for select using (true);
+
+-- ...but not every column. Profiles are readable by any signed-in user, so a
+-- selectable user_id would deanonymize a review posted as "Anonymous" with one
+-- join; `ip` is the rate limiter's business and nobody else's. Postgres can't
+-- revoke one column out of a table-wide grant, so the grant is restated as a
+-- column list. (See migration 029.)
+revoke select on public.reviews from anon, authenticated;
+grant select (id, court_id, author, body, rating, created_at)
+  on public.reviews to anon, authenticated;
 
 -- Insert requires a signed-in account (spam guardrail + UGC accountability):
 -- every review is tied to an authenticated user who agreed to the terms and can
@@ -28,13 +42,39 @@ create policy "signed-in users can add a review"
   on public.reviews for insert
   to authenticated
   with check (
-    auth.uid() is not null
+    user_id = auth.uid()
     and char_length(body) between 1 and 1000
     and (author is null or char_length(author) <= 50)
   );
 
--- No client deletes: moderate via the Supabase dashboard (Table Editor) if
--- needed. (A real moderation/auth flow is future work.)
+-- A user may delete their own review, and only their own. Rows written before
+-- 029 carry a null user_id and are nobody's: still readable, not deletable from
+-- the app — moderate those via the dashboard (Table Editor), as before.
+create policy "users delete their own reviews"
+  on public.reviews for delete
+  to authenticated
+  using (user_id = auth.uid());
+
+-- Which of a court's reviews belong to the caller, so the card can offer Delete
+-- on them. Definer because user_id is not selectable by the calling role; safe
+-- because it returns ids, and only ever the caller's own (the shape
+-- court_checkin_count() uses in 03).
+create or replace function public.my_review_ids(p_court_id text)
+returns setof bigint
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select id
+  from public.reviews
+  where court_id = p_court_id
+    and auth.uid() is not null
+    and user_id = auth.uid();
+$$;
+
+revoke all on function public.my_review_ids(text) from public, anon;
+grant execute on function public.my_review_ids(text) to authenticated;
 
 alter publication supabase_realtime add table public.reviews;
 
