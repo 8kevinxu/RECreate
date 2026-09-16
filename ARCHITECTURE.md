@@ -305,6 +305,10 @@ The report button is also where the web build's worst silent failure surfaced:
 **`Alert.alert` is a no-op in react-native-web**, so a dialog built on it never
 appears and nothing behind its buttons runs. `lib/dialog.js` / `lib/dialog.web.js`
 wrap `confirm`/`notify` for both; the call sites not yet moved are in `TODO.md`.
+A menu with more than two choices can't be a `confirm` at all — `window.confirm`
+is OK/Cancel and nothing else — so the feed's long-press Report · Block · Cancel
+is `components/ActionSheet.js`, an in-app sheet rendered the same way on both
+platforms, in the same idiom as `CardReportSheet`.
 
 ### Notifications
 Server push (while the app is closed) is handled entirely in Postgres:

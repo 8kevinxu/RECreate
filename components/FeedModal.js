@@ -5,7 +5,6 @@
 import React, { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
-  Alert,
   Modal,
   Pressable,
   RefreshControl,
@@ -32,6 +31,8 @@ import SignalModal from './SignalModal';
 import SessionModal from './SessionModal';
 import RunModal from './RunModal';
 import ChatThread from './ChatThread';
+import ActionSheet from './ActionSheet';
+import { confirm, notify } from '../lib/dialog';
 import ScrollTopFab, { useScrollTop } from './ScrollTopFab';
 import SwipeRow from './SwipeRow';
 
@@ -70,6 +71,8 @@ export default function FeedModal({
   const [runOpen, setRunOpen] = useState(false);
   const [selectedSignal, setSelectedSignal] = useState(null); // signal id for the session sheet
   const [chatThread, setChatThread] = useState(null); // open group-chat thread
+  const [modTarget, setModTarget] = useState(null); // post whose Report/Block menu is open
+  const [modBusy, setModBusy] = useState(false);
 
   const openRunChat = (run) =>
     setChatThread({
@@ -146,42 +149,45 @@ export default function FeedModal({
       const res = await joinRun(run.id);
       // Signed-out joins fail silently otherwise — say why (public runs are
       // visible without an account, but joining one needs it).
-      if (res?.error) Alert.alert(res.error.message);
+      if (res?.error) notify(res.error.message);
     }
     await refresh();
     setRunBusy(null);
   };
 
   // Long-press someone else's post → report it or block them (same App-Store
-  // UGC moderation pattern as chat messages in ChatThread).
-  const moderate = ({ name, reportKey, kind, refId, userId }) => {
-    Alert.alert(name, undefined, [
-      { text: t(reportKey), onPress: () => doReport({ kind, refId, userId }) },
-      {
-        text: t('mod.blockUser', { name }),
-        style: 'destructive',
-        onPress: () => confirmBlock({ name, userId }),
-      },
-      { text: t('cancel'), style: 'cancel' },
-    ]);
+  // UGC moderation pattern as chat messages in ChatThread). The menu is an
+  // in-app sheet on both platforms: the native action sheet renders nothing on
+  // web, and a three-way choice has no window.confirm equivalent (see TODO.md).
+  const moderate = (target) => setModTarget(target);
+  const onModerate = async (choice) => {
+    const target = modTarget;
+    if (!target) return;
+    setModBusy(true);
+    if (choice === 'report') await doReport(target);
+    else if (choice === 'block') await confirmBlock(target);
+    setModBusy(false);
   };
   const doReport = async ({ kind, refId, userId }) => {
     const { error } = await reportContent({ kind, refId, reportedUser: userId });
-    Alert.alert(error ? t('mod.fail') : t('mod.reported'));
+    notify(error ? t('mod.fail') : t('mod.reported'));
+    setModTarget(null);
   };
-  const confirmBlock = ({ name, userId }) => {
-    Alert.alert(t('mod.blockTitle', { name }), t('mod.blockBody'), [
-      { text: t('cancel'), style: 'cancel' },
-      {
-        text: t('mod.block'),
-        style: 'destructive',
-        onPress: async () => {
-          const { error } = await blockUser(userId);
-          if (error) return Alert.alert(t('mod.fail'));
-          refresh(); // feed loaders filter blocked users at source
-        },
-      },
-    ]);
+  // Cancelling here leaves the menu open — they backed out of blocking, not out
+  // of the menu, and reporting is still right there.
+  const confirmBlock = async ({ name, userId }) => {
+    const ok = await confirm({
+      title: t('mod.blockTitle', { name }),
+      message: t('mod.blockBody'),
+      confirmText: t('mod.block'),
+      cancelText: t('cancel'),
+      destructive: true,
+    });
+    if (!ok) return;
+    const { error } = await blockUser(userId);
+    if (error) return notify(t('mod.fail'));
+    setModTarget(null);
+    refresh(); // feed loaders filter blocked users at source
   };
 
   // Straight-line distance to a court, for run rows ("is this open run near me?").
@@ -459,6 +465,30 @@ export default function FeedModal({
         visible={!!chatThread}
         thread={chatThread}
         onClose={() => setChatThread(null)}
+      />
+      <ActionSheet
+        visible={!!modTarget}
+        title={modTarget?.name || t('mod.someone')}
+        busy={modBusy}
+        options={[
+          {
+            key: 'report',
+            label: t(modTarget?.reportKey || 'mod.report'),
+            desc: t('mod.reportDesc'),
+            icon: 'flag-outline',
+            iconBg: '#fdf1d6',
+          },
+          {
+            key: 'block',
+            label: t('mod.blockUser', { name: modTarget?.name || t('mod.someone') }),
+            desc: t('mod.blockDesc'),
+            icon: 'ban-outline',
+            iconBg: '#fbe6e6',
+            destructive: true,
+          },
+        ]}
+        onSelect={onModerate}
+        onClose={() => setModTarget(null)}
       />
     </>
   );

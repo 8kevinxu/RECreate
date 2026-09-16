@@ -16,20 +16,22 @@ dialog never runs either, and there is no error to notice. iOS is unaffected.
 Still broken, worst first:
 
 - [x] **`lib/activityShare.js` → `resolveNotify`** — moved onto `lib/dialog.js`.
-- [ ] **`components/FeedModal.js` → `moderate` / `doReport` / `confirmBlock`** —
-  long-press on someone's post: the Report / Block menu never opens, so web users
-  can't report or block from the feed. Also `onToggleRun`'s join-error message
-  ("sign in first") is silent.
+- [x] **`components/FeedModal.js` → `moderate` / `doReport` / `confirmBlock`** —
+  moved onto `components/ActionSheet.js` + `lib/dialog.js`; `onToggleRun`'s
+  join error now uses `notify`.
 - [ ] **`components/ChatThread.js`** — same Report / Block menu on chat messages,
-  plus its outcome messages.
+  plus its outcome messages. `ActionSheet` now exists, so this is the same wiring
+  FeedModal just got (report key `mod.reportMessage`, and the direct-thread close
+  after a block).
 - [x] **`App.js` → `reportReview`** — moved onto `lib/dialog.js`.
 - [ ] **`components/AuthModal.js` → `cancelEdit`** — cancelling a profile edit with
   unsaved changes: the "Discard changes?" prompt never shows, so Cancel does
   nothing and the only way out is Save.
 - [x] **Closure reports** — moved onto `lib/dialog.js`.
 
-**Remaining fix:** move the unchecked items onto `lib/dialog.js`. The thing to
-handle: `window.confirm` only has OK/Cancel, so multi-choice menus (FeedModal/
-ChatThread's Report · Block · Cancel) need either sequential confirms or a small
-in-app Modal. Note also that web drops the custom button labels, so any prompt
-moved over has to read as a yes/no question in its title and body.
+**Remaining fix:** move the unchecked items onto `lib/dialog.js`. The multi-choice
+problem is settled — `window.confirm` is OK/Cancel only, so the Report · Block ·
+Cancel menu became `components/ActionSheet.js`, an in-app sheet on both platforms
+(the CardReportSheet idiom); the two-way confirms underneath it still go through
+`confirm()`. Note that web drops the custom button labels, so any prompt moved
+over has to read as a yes/no question in its title and body.
