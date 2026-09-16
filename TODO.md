@@ -9,16 +9,13 @@ dialog never runs either, and there is no error to notice. iOS is unaffected.
 
 `lib/dialog.js` + `lib/dialog.web.js` now exist (`confirm()` → Promise<boolean>,
 `notify()`; native `Alert.alert`, web `window.confirm` / `window.alert`).
-`confirmReportData` (class card), the closure-report dialogs and review reporting
-are on it. `App.js`'s location-denied message still branches on `Platform.OS` itself.
+`confirmReportData` (class card), the closure-report dialogs, review reporting and
+`resolveNotify` are on it. `App.js`'s location-denied message still branches on
+`Platform.OS` itself.
 
 Still broken, worst first:
 
-- [ ] **`lib/activityShare.js` → `resolveNotify`** — with Settings → "Share
-  activity with friends" **off**, it returns a Promise that only the dialog's
-  buttons resolve. On web that Promise never settles, so a check-in, crowd vote,
-  "down to play" signal or planned run **hangs forever** rather than just skipping
-  the prompt.
+- [x] **`lib/activityShare.js` → `resolveNotify`** — moved onto `lib/dialog.js`.
 - [ ] **`components/FeedModal.js` → `moderate` / `doReport` / `confirmBlock`** —
   long-press on someone's post: the Report / Block menu never opens, so web users
   can't report or block from the feed. Also `onToggleRun`'s join-error message
@@ -31,7 +28,8 @@ Still broken, worst first:
   nothing and the only way out is Save.
 - [x] **Closure reports** — moved onto `lib/dialog.js`.
 
-**Remaining fix:** move the unchecked items onto `lib/dialog.js`. Two things to
+**Remaining fix:** move the unchecked items onto `lib/dialog.js`. The thing to
 handle: `window.confirm` only has OK/Cancel, so multi-choice menus (FeedModal/
 ChatThread's Report · Block · Cancel) need either sequential confirms or a small
-in-app Modal; and "cancel" must still resolve `resolveNotify`'s Promise (`false`).
+in-app Modal. Note also that web drops the custom button labels, so any prompt
+moved over has to read as a yes/no question in its title and body.
