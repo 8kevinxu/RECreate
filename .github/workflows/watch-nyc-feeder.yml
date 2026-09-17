@@ -1,0 +1,39 @@
+name: Watch NYC feeder
+
+# Is the machine that scrapes NYC still doing it?
+#
+# nycgovparks.org answers GitHub's runner IPs with HTTP 405, so CI can never
+# scrape NYC live — a Mac on a residential connection does it twice a day and
+# pushes the refreshed caches (scripts/refresh-nyc-local.sh). That machine is
+# the single point of failure for every NYC source, and until now nothing
+# watched it: on 2026-09-15 a conflicted rebase wedged its clone, five runs in a
+# row scraped for ten minutes and died, and the first anybody knew was two red
+# refresh crons two and a half days later.
+#
+# This has to run HERE rather than on that machine, because the failure this is
+# most likely to catch is the machine being off or asleep, and a watcher living
+# there is asleep with it. The feeder reports into the repo; CI reads the report.
+#
+# It is deliberately NOT part of `npm run check`: that gate runs on pull
+# requests, and a PR has no business failing because someone's laptop was shut
+# for a day.
+
+on:
+  schedule:
+    # 18:00 UTC daily = 10:00 PST / 11:00 PDT, comfortably after the feeder's
+    # 09:15 local run either side of a DST change.
+    - cron: '0 18 * * *'
+  workflow_dispatch: {} # so you can confirm a fix without waiting a day
+
+permissions:
+  contents: read
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # No npm install: the check reads one JSON file with node's own stdlib, so
+      # it needs nothing from the lockfile and runs in about a second.
+      - name: Check that the feeder is still alive
+        run: node scripts/check-feeder.js

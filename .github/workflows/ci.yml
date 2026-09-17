@@ -8,6 +8,13 @@ name: CI
 on:
   push:
     branches: [main]
+    # The NYC feeder pushes a liveness heartbeat on its own commit twice a day
+    # (see watch-nyc-feeder.yml). It is metadata about a job, cannot affect
+    # anything this gate checks, and arrives as a push containing nothing else —
+    # so running the full sweep on it is pure noise. Any push that also touches
+    # real files still runs.
+    paths-ignore:
+      - scripts/nyc-feeder-status.json
   pull_request:
   workflow_dispatch: {}
 

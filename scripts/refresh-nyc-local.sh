@@ -11,8 +11,17 @@
 # recent, stays quiet, and the workflow goes green.
 #
 # So this is a CACHE FEEDER, not a replacement for the workflows, and it fixes
-# nothing about the 405 itself. If it stops running, nothing here alerts you —
-# the stale gate in CI does, by going red within 48h. That is the monitor.
+# nothing about the 405 itself.
+#
+# IT REPORTS ITS OWN LIVENESS. Every run writes scripts/nyc-feeder-status.json
+# and pushes it on its own commit — success or failure, at whatever stage it got
+# to — and .github/workflows/watch-nyc-feeder.yml goes red when no run has
+# SUCCEEDED in 26h. The stale gate in CI used to be the only monitor and it is
+# the wrong instrument for this: it watches the DATA, so it cannot fire until a
+# cache passes 48h. On 2026-09-15 a conflicted rebase left this clone mid-rebase
+# and five consecutive runs each scraped for ten minutes and died on it; nothing
+# said so for two and a half days, while `launchctl print` showed "last exit
+# status = 1" the entire time with nobody looking at it.
 #
 # IT WORKS IN ITS OWN CLONE, NOT YOUR CHECKOUT. The first version guarded on a
 # clean working tree and skipped instead, which was the wrong shape: the build
@@ -71,6 +80,60 @@ fi
 
 cd "$WORKDIR" || { echo "FAIL: cannot cd to $WORKDIR"; exit 1; }
 
+# --- Liveness heartbeat ------------------------------------------------------
+# An EXIT trap, so it reports the runs that never reach the bottom of this file —
+# which is the whole point, since those are the ones nobody hears about. It is a
+# SEPARATE commit on a SEPARATE path for the same reason: a run that shipped no
+# data cannot report itself inside the data commit that did not happen. That also
+# keeps it clear of $OWNED, so the replay loop below never touches it.
+#
+# Failures before this point (no node, no git, a bad WORKDIR, a failed clone)
+# write nothing, deliberately: there is no working clone to push from. The
+# watcher reads that as "has not run", which is exactly right.
+STAGE="startup"
+failed=""
+HEARTBEAT="scripts/nyc-feeder-status.json"
+
+write_heartbeat() {
+  local code=$?
+  command -v node >/dev/null 2>&1 || return 0
+  cd "$WORKDIR" 2>/dev/null || return 0
+
+  for attempt in 1 2 3; do
+    git fetch --quiet origin || return 0
+    # Report against origin as it stands now. Resetting is safe in the way it
+    # always is here: this clone holds nothing but regenerated data, and if the
+    # data push above failed, that commit is worth less than the report saying so.
+    git reset --hard --quiet "origin/$BRANCH" || return 0
+    HB_FILE="$HEARTBEAT" HB_STAGE="$STAGE" HB_CODE="$code" HB_FAILED="${failed# }" node -e '
+      const fs = require("fs");
+      const f = process.env.HB_FILE;
+      let prev = {};
+      try { prev = JSON.parse(fs.readFileSync(f, "utf8")); } catch {}
+      const ok = process.env.HB_CODE === "0";
+      const now = new Date().toISOString();
+      fs.writeFileSync(f, JSON.stringify({
+        lastRunAt: now,
+        lastRunOk: ok,
+        lastRunStage: process.env.HB_STAGE || "unknown",
+        // Held from the previous report when this run failed, so the watcher can
+        // measure the gap since the last run that actually worked.
+        lastSuccessAt: ok ? now : (prev.lastSuccessAt || null),
+        sourcesFailed: process.env.HB_FAILED || null,
+      }, null, 2) + "\n");
+    ' || return 0
+    git add "$HEARTBEAT"
+    git diff --cached --quiet && return 0
+    git -c user.name="recreate-nyc-refresh" \
+        -c user.email="8kevinxu@users.noreply.github.com" \
+        commit -q -m "chore(data): NYC feeder heartbeat"
+    git push --quiet origin "$BRANCH" && return 0
+    echo "-- heartbeat push rejected (attempt $attempt) — retrying onto origin/$BRANCH"
+  done
+  echo "WARN: could not push the liveness heartbeat"
+}
+trap write_heartbeat EXIT
+
 # Clear any rebase/merge an earlier run left half-finished. Neither reset --hard
 # nor clean -fd clears one: they rewrite the index and worktree but leave
 # .git/rebase-merge standing, so git refuses every later rebase with "there is
@@ -85,6 +148,7 @@ git merge  --abort 2>/dev/null || true
 # in your checkout: this clone holds nothing but the last run's regenerated data,
 # which we are about to regenerate anyway. This also replaces the pull --rebase
 # the old version did, which could conflict; a reset cannot.
+STAGE="git setup"
 git fetch --quiet origin || { echo "FAIL: git fetch"; exit 1; }
 git checkout --quiet "$BRANCH" 2>/dev/null || git checkout --quiet -b "$BRANCH" "origin/$BRANCH"
 git reset --hard --quiet "origin/$BRANCH" || { echo "FAIL: git reset"; exit 1; }
@@ -94,6 +158,7 @@ git clean -fdq   # strays from an interrupted run; node_modules is gitignored, s
 # work for nothing.
 if [ ! -d node_modules ] || [ package-lock.json -nt node_modules/.package-lock.json ]; then
   echo "-- npm ci (lockfile changed or first run)"
+  STAGE="npm ci"
   npm ci --silent || { echo "FAIL: npm ci"; exit 1; }
 fi
 
@@ -111,9 +176,9 @@ fi
 # Each build still self-gates internally: a short or failed scrape keeps its own
 # last-good data, so a partial upstream outage degrades instead of publishing
 # junk. What changed is that one source's bad day no longer suppresses the rest.
-failed=""
 for b in build:nyc build:nyc-indoor build:nyc-reservations \
          build:nyc-directory build:nyc-pools build:nyc-classes; do
+  STAGE="$b"
   npm run "$b" || failed="$failed $b"
 done
 
@@ -126,6 +191,7 @@ fi
 # scrape is worse than committing nothing. Unlike a single source failing, this
 # one DOES abort the commit — it runs over the merged result, so it cannot say
 # which source poisoned it and there is nothing safe to keep.
+STAGE="npm run check"
 if ! npm run check; then
   echo "FAIL: npm run check — refusing to commit this build."
   exit 1
@@ -133,6 +199,7 @@ fi
 
 # Explicit paths: this job has no business committing anything else. Held in one
 # place because publishing below replays exactly this set onto a moved origin.
+STAGE="publish"
 OWNED=(data/cities/nyc 'scripts/cities/*.json')
 git add "${OWNED[@]}"
 if git diff --cached --quiet; then
@@ -192,3 +259,5 @@ if [ -n "$failed" ]; then
   echo "FAIL: some sources did not refresh:$failed"
   exit 1
 fi
+
+STAGE="done"
