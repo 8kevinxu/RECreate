@@ -6,8 +6,10 @@
 import React, { useState } from 'react';
 import {
   ActivityIndicator,
+  KeyboardAvoidingView,
   Linking,
   Modal,
+  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -312,8 +314,20 @@ export default function SettingsScreen({
 
       {/* Confirmation dialog: warning + type-to-confirm. */}
       <Modal visible={confirmOpen} transparent animationType="fade" onRequestClose={closeConfirm}>
-        <Pressable style={styles.backdrop} onPress={closeConfirm}>
-          <Pressable style={styles.dialog} onPress={() => {}}>
+        {/* autoFocus opens the keyboard with the dialog, so it has to lift: the
+            Cancel / Delete row is what the keyboard covered. Backdrop is a sibling
+            behind the dialog, never a wrapper (see ClassDetail). */}
+        <KeyboardAvoidingView
+          style={styles.backdrop}
+          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        >
+          <Pressable
+            style={StyleSheet.absoluteFill}
+            onPress={closeConfirm}
+            accessibilityRole="button"
+            accessibilityLabel={t('a11y.close')}
+          />
+          <View style={styles.dialog}>
             <Text style={styles.dialogTitle}>{t('deleteAccount')}</Text>
             <Text style={styles.warning}>{t('deleteWarning')}</Text>
             <Text style={styles.confirmPrompt}>{t('deleteConfirm', { code: CONFIRM_CODE })}</Text>
@@ -344,14 +358,23 @@ export default function SettingsScreen({
                 )}
               </Pressable>
             </View>
-          </Pressable>
-        </Pressable>
+          </View>
+        </KeyboardAvoidingView>
       </Modal>
 
       {/* Report a problem: free text -> content report (kind 'issue'). */}
       <Modal visible={reportOpen} transparent animationType="fade" onRequestClose={closeReport}>
-        <Pressable style={styles.backdrop} onPress={closeReport}>
-          <Pressable style={styles.dialog} onPress={() => {}}>
+        <KeyboardAvoidingView
+          style={styles.backdrop}
+          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        >
+          <Pressable
+            style={StyleSheet.absoluteFill}
+            onPress={closeReport}
+            accessibilityRole="button"
+            accessibilityLabel={t('a11y.close')}
+          />
+          <View style={styles.dialog}>
             <Text style={styles.reportTitle}>{t('report.problem')}</Text>
             {reportSent ? (
               <>
@@ -399,8 +422,8 @@ export default function SettingsScreen({
                 </View>
               </>
             )}
-          </Pressable>
-        </Pressable>
+          </View>
+        </KeyboardAvoidingView>
       </Modal>
 
       {/* Blocked users: review + unblock. */}

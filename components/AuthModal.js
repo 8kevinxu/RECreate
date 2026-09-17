@@ -8,8 +8,11 @@ import React, { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
   Alert,
+  Dimensions,
+  KeyboardAvoidingView,
   Linking,
   Modal,
+  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -339,18 +342,35 @@ export default function AuthModal({
 
   const wrap = (inner) =>
     asPage ? (
-      <View
-        style={[styles.page, { paddingTop: insets.top + 14, paddingBottom: insets.bottom + 84 }]}
+      <KeyboardAvoidingView
+        style={styles.pageAvoider}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       >
-        {inner}
-      </View>
+        <View
+          style={[styles.page, { paddingTop: insets.top + 14, paddingBottom: insets.bottom + 84 }]}
+        >
+          {inner}
+        </View>
+      </KeyboardAvoidingView>
     ) : (
       <Modal visible={visible} transparent animationType="fade" onRequestClose={close}>
-        <Pressable style={styles.backdrop} onPress={close}>
-          <Pressable style={styles.sheet} onPress={() => {}}>
-            {inner}
-          </Pressable>
-        </Pressable>
+        {/* The backdrop is a sibling BEHIND the dialog, never a wrapper — a
+            Pressable ancestor swallows the ScrollView's pan gesture on device (see
+            ClassDetail). The KeyboardAvoidingView doubles as the backdrop so the
+            dialog lifts instead of leaving the password field and the submit
+            button under the keyboard. */}
+        <KeyboardAvoidingView
+          style={styles.backdrop}
+          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        >
+          <Pressable
+            style={StyleSheet.absoluteFill}
+            onPress={close}
+            accessibilityRole="button"
+            accessibilityLabel={t('a11y.close')}
+          />
+          <View style={styles.sheet}>{inner}</View>
+        </KeyboardAvoidingView>
       </Modal>
     );
 
@@ -391,7 +411,11 @@ export default function AuthModal({
           </View>
 
           {mode === 'reset' ? (
-            <>
+            <ScrollView
+              style={[styles.formScroll, asPage && styles.pageScroll]}
+              keyboardShouldPersistTaps="handled"
+              keyboardDismissMode="on-drag"
+            >
               {resetStep === 'email' ? (
                 <>
                   <Text style={styles.resetHint}>{t('auth.resetHint')}</Text>
@@ -491,7 +515,7 @@ export default function AuthModal({
               >
                 <Text style={styles.switch}>{t('auth.backToSignIn')}</Text>
               </Pressable>
-            </>
+            </ScrollView>
           ) : user ? (
             <ScrollView
               style={[styles.accountScroll, asPage && styles.pageScroll]}
@@ -706,7 +730,11 @@ export default function AuthModal({
               )}
             </ScrollView>
           ) : (
-            <>
+            <ScrollView
+              style={[styles.formScroll, asPage && styles.pageScroll]}
+              keyboardShouldPersistTaps="handled"
+              keyboardDismissMode="on-drag"
+            >
               {mode === 'signup' && (
                 <TextInput
                   style={styles.input}
@@ -821,13 +849,14 @@ export default function AuthModal({
                   <Text style={styles.forgotLink}>{t('auth.forgotPw')}</Text>
                 </Pressable>
               )}
-            </>
+            </ScrollView>
           )}
     </>
   );
 }
 
 const styles = StyleSheet.create({
+  pageAvoider: { flex: 1, backgroundColor: '#fff' },
   page: { flex: 1, backgroundColor: '#fff', paddingHorizontal: 18, paddingTop: 14 },
   backdrop: {
     flex: 1,
@@ -839,7 +868,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 16,
     padding: 18,
-    maxHeight: '85%',
+    // Static numeric cap in StyleSheet.create — the only form native Yoga honours
+    // for letting the form ScrollView shrink and scroll (see ClassDetail).
+    maxHeight: Dimensions.get('window').height * 0.85,
     shadowColor: '#000',
     shadowOpacity: 0.25,
     shadowRadius: 16,
@@ -847,6 +878,12 @@ const styles = StyleSheet.create({
     elevation: 10,
   },
   accountScroll: { flexGrow: 0 },
+  // In the dialog the form hugs its content; as the Profile page it also takes
+  // pageScroll (flexGrow: 1) so the blank space under the form belongs to the
+  // ScrollView. That is what makes tapping anywhere empty dismiss the keyboard —
+  // keyboardShouldPersistTaps="handled" dismisses on any tap no child handled, and
+  // while that space was owned by a plain View the return key was the only way out.
+  formScroll: { flexGrow: 0, flexShrink: 1 },
   pageScroll: { flexGrow: 1 },
   header: {
     flexDirection: 'row',

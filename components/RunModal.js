@@ -5,7 +5,10 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import {
   ActivityIndicator,
+  Dimensions,
+  KeyboardAvoidingView,
   Modal,
+  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -250,8 +253,21 @@ export default function RunModal({
 
   return (
     <Modal visible={visible} transparent animationType="slide" onRequestClose={onClose}>
-      <Pressable style={styles.backdrop} onPress={onClose}>
-        <Pressable style={styles.sheet} onPress={() => {}}>
+      {/* The backdrop is a sibling BEHIND the sheet, never a wrapper — a Pressable
+          ancestor swallows the ScrollView's pan gesture on device (see ClassDetail).
+          The KeyboardAvoidingView doubles as the backdrop so the sheet rides up on
+          the keyboard instead of leaving the note field and the submit button under it. */}
+      <KeyboardAvoidingView
+        style={styles.backdrop}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      >
+        <Pressable
+          style={StyleSheet.absoluteFill}
+          onPress={onClose}
+          accessibilityRole="button"
+          accessibilityLabel={t('a11y.close')}
+        />
+        <View style={styles.sheet}>
           <View style={styles.header}>
             <Text style={styles.title}>{t('run.title')}</Text>
             <Pressable hitSlop={10} onPress={onClose}>
@@ -265,6 +281,7 @@ export default function RunModal({
           <ScrollView
             style={styles.body}
             keyboardShouldPersistTaps="handled"
+            keyboardDismissMode="on-drag"
             showsVerticalScrollIndicator={false}
           >
             <View style={styles.sportRow}>
@@ -483,16 +500,21 @@ export default function RunModal({
               </Pressable>
             </View>
 
-            <TextInput
-              style={styles.note}
-              placeholder={t('run.notePh')}
-              placeholderTextColor="#9aa7b4"
-              value={note}
-              onChangeText={setNote}
-              maxLength={MAX_NOTE}
-              multiline
-            />
           </ScrollView>
+
+          {/* The note lives OUTSIDE the scroll, beside the submit button it belongs
+              with. Lifting the sheet is not enough on its own: with the keyboard up the
+              sheet shrinks to what is left above it, and a field at the end of a scrolled
+              list is still off-screen — you end up typing blind into a box you can't see. */}
+          <TextInput
+            style={styles.note}
+            placeholder={t('run.notePh')}
+            placeholderTextColor="#9aa7b4"
+            value={note}
+            onChangeText={setNote}
+            maxLength={MAX_NOTE}
+            multiline
+          />
 
           {!!error && <Text style={styles.error}>{error}</Text>}
 
@@ -507,8 +529,8 @@ export default function RunModal({
               <Text style={styles.submitText}>{t('run.postPlan')}</Text>
             )}
           </Pressable>
-        </Pressable>
-      </Pressable>
+        </View>
+      </KeyboardAvoidingView>
     </Modal>
   );
 }
@@ -525,7 +547,9 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 18,
     padding: 18,
     paddingBottom: 28,
-    maxHeight: '92%',
+    // Static numeric cap in StyleSheet.create — the only form native Yoga honours
+    // for letting the body ScrollView shrink and scroll (see ClassDetail).
+    maxHeight: Dimensions.get('window').height * 0.92,
   },
   header: {
     flexDirection: 'row',

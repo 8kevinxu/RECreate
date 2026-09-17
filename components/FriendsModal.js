@@ -6,7 +6,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
   ActivityIndicator,
+  Dimensions,
+  KeyboardAvoidingView,
   Modal,
+  Platform,
   Pressable,
   ScrollView,
   Share,
@@ -119,8 +122,21 @@ export default function FriendsModal({ visible, onClose, inviteCode, onInviteCon
 
   return (
     <Modal visible={visible} transparent animationType="slide" onRequestClose={onClose}>
-      <Pressable style={styles.backdrop} onPress={onClose}>
-        <Pressable style={styles.sheet} onPress={() => {}}>
+      {/* The backdrop is a sibling BEHIND the sheet, never a wrapper — a Pressable
+          ancestor swallows the ScrollView's pan gesture on device (see ClassDetail).
+          The KeyboardAvoidingView doubles as the backdrop so the sheet rides up on
+          the keyboard instead of leaving the "add by code" row under it. */}
+      <KeyboardAvoidingView
+        style={styles.backdrop}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      >
+        <Pressable
+          style={StyleSheet.absoluteFill}
+          onPress={onClose}
+          accessibilityRole="button"
+          accessibilityLabel={t('a11y.close')}
+        />
+        <View style={styles.sheet}>
           <View style={styles.header}>
             <Text style={styles.title}>{t('friends.title')}</Text>
             <Pressable hitSlop={10} onPress={onClose}>
@@ -133,7 +149,7 @@ export default function FriendsModal({ visible, onClose, inviteCode, onInviteCon
               <ActivityIndicator color="#2f74d6" />
             </View>
           ) : (
-            <ScrollView keyboardShouldPersistTaps="handled">
+            <ScrollView keyboardShouldPersistTaps="handled" keyboardDismissMode="on-drag">
               {/* Your code */}
               <Text style={styles.label}>{t('friends.yourCode')}</Text>
               <View style={styles.codeRow}>
@@ -229,8 +245,8 @@ export default function FriendsModal({ visible, onClose, inviteCode, onInviteCon
               )}
             </ScrollView>
           )}
-        </Pressable>
-      </Pressable>
+        </View>
+      </KeyboardAvoidingView>
     </Modal>
   );
 }
@@ -243,7 +259,9 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 18,
     padding: 18,
     paddingBottom: 28,
-    maxHeight: '85%',
+    // Static numeric cap in StyleSheet.create — the only form native Yoga honours
+    // for letting the body ScrollView shrink and scroll (see ClassDetail).
+    maxHeight: Dimensions.get('window').height * 0.85,
   },
   header: {
     flexDirection: 'row',
