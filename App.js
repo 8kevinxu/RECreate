@@ -89,8 +89,6 @@ import {
   loadReviews,
   addReview,
   deleteReview,
-  MAX_BODY,
-  MAX_NAME,
   isShared as reviewsShared,
 } from './lib/reviews';
 import { reportContent } from './lib/reports';
@@ -104,6 +102,7 @@ import {
 } from './lib/closures';
 import ClosureBanner from './components/ClosureBanner';
 import CardReportSheet from './components/CardReportSheet';
+import ReviewSheet from './components/ReviewSheet';
 import { liveBooked, bookedAt, bookableFrom, slotKeyOf, snapshotExpired } from './lib/reservations';
 import { fetchLiveReservations, locationIdFromUrl } from './lib/reservationsLive';
 import { openDirections } from './lib/maps';
@@ -2195,6 +2194,7 @@ function CourtDetail({
   const [reviewName, setReviewName] = useState('');
   const [reviewBody, setReviewBody] = useState('');
   const [posting, setPosting] = useState(false);
+  const [reviewSheet, setReviewSheet] = useState(false);
   useEffect(() => {
     let alive = true;
     setReviews(null);
@@ -2248,6 +2248,7 @@ function CourtDetail({
     if (rec) {
       setReviews((prev) => [rec, ...(prev || [])]);
       setReviewBody('');
+      setReviewSheet(false);
     } else {
       setNote(t('court.reviewFail'));
     }
@@ -3097,38 +3098,31 @@ function CourtDetail({
           <Text style={styles.reviewSignInCta}>{t('auth.signIn')} ›</Text>
         </Pressable>
       ) : expanded ? (
-      <View style={styles.reviewForm}>
-        <TextInput
-          style={styles.reviewNameInput}
-          placeholder={t('court.namePh')}
-          placeholderTextColor="#9aa7b4"
-          value={reviewName}
-          onChangeText={setReviewName}
-          maxLength={MAX_NAME}
-        />
-        <View style={styles.reviewInputRow}>
-          <TextInput
-            style={styles.reviewBodyInput}
-            placeholder={t('court.reviewPh')}
-            placeholderTextColor="#9aa7b4"
-            value={reviewBody}
-            onChangeText={setReviewBody}
-            maxLength={MAX_BODY}
-            multiline
-          />
-          <Pressable
-            onPress={submitReview}
-            disabled={!reviewBody.trim() || posting}
-            style={[
-              styles.reviewPost,
-              (!reviewBody.trim() || posting) && styles.reviewPostDisabled,
-            ]}
-          >
-            <Text style={styles.reviewPostText}>{posting ? '…' : t('court.post')}</Text>
-          </Pressable>
-        </View>
-      </View>
+        // The form itself lives in ReviewSheet: the card is position: absolute, so
+        // nothing can lift it off the keyboard, and this sits outside cardScroll, so
+        // there was nothing to scroll either.
+        <Pressable
+          style={styles.reviewOpen}
+          onPress={() => setReviewSheet(true)}
+          accessibilityRole="button"
+        >
+          <Ionicons name="create-outline" size={15} color="#2f74d6" />
+          <Text style={styles.reviewOpenText}>{t('court.writeReview')}</Text>
+        </Pressable>
       ) : null}
+
+      <ReviewSheet
+        visible={reviewSheet}
+        court={court}
+        sportName={sportName}
+        name={reviewName}
+        onChangeName={setReviewName}
+        body={reviewBody}
+        onChangeBody={setReviewBody}
+        posting={posting}
+        onSubmit={submitReview}
+        onClose={() => setReviewSheet(false)}
+      />
 
       {closuresEnabled && (
         <CardReportSheet
@@ -3700,7 +3694,17 @@ const styles = StyleSheet.create({
   reportLinkCta: { color: '#2f74d6', fontWeight: '800' },
   reviewBody: { fontSize: 13, color: '#46586a', lineHeight: 18 },
 
-  reviewForm: { marginTop: 10, borderTopWidth: 1, borderTopColor: '#e3e8ec', paddingTop: 10 },
+  reviewOpen: {
+    marginTop: 10,
+    borderTopWidth: 1,
+    borderTopColor: '#e3e8ec',
+    paddingTop: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
+  },
+  reviewOpenText: { fontSize: 14, fontWeight: '800', color: '#2f74d6' },
   reviewSignIn: {
     marginTop: 10,
     borderTopWidth: 1,
@@ -3713,32 +3717,4 @@ const styles = StyleSheet.create({
   },
   reviewSignInText: { flex: 1, fontSize: 13, color: '#6b7a8a' },
   reviewSignInCta: { fontSize: 13, fontWeight: '800', color: '#2f74d6' },
-  reviewNameInput: {
-    fontSize: 13,
-    color: '#0d1b2a',
-    backgroundColor: '#f4f6f8',
-    borderRadius: 8,
-    paddingHorizontal: 10,
-    paddingVertical: 8,
-    marginBottom: 6,
-  },
-  reviewInputRow: { flexDirection: 'row', alignItems: 'flex-end', gap: 8 },
-  reviewBodyInput: {
-    flex: 1,
-    fontSize: 13,
-    color: '#0d1b2a',
-    backgroundColor: '#f4f6f8',
-    borderRadius: 8,
-    paddingHorizontal: 10,
-    paddingVertical: 8,
-    maxHeight: 80,
-  },
-  reviewPost: {
-    backgroundColor: '#2f74d6',
-    borderRadius: 8,
-    paddingHorizontal: 16,
-    paddingVertical: 9,
-  },
-  reviewPostDisabled: { backgroundColor: '#bcc8d4' },
-  reviewPostText: { color: '#fff', fontWeight: '700', fontSize: 13 },
 });
