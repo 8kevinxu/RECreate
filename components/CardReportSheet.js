@@ -21,6 +21,7 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useI18n } from '../lib/i18n';
+import DoneBar, { doneProps } from './DoneBar';
 import { dayChipLabel, startOfDay } from '../lib/datetime';
 import { fileClosure, ymd, NOTE_MAX, MAX_DAYS_AHEAD } from '../lib/closures';
 import { reportContent } from '../lib/reports';
@@ -212,6 +213,7 @@ export default function CardReportSheet({ visible, court, sport, sportName, onCl
             <ScrollView
               style={styles.scroll}
               keyboardShouldPersistTaps="handled"
+              keyboardDismissMode="on-drag"
               showsVerticalScrollIndicator={false}
             >
               <Text style={[styles.label, styles.labelFirst]}>{t('report.whatsWrong')}</Text>
@@ -294,6 +296,7 @@ export default function CardReportSheet({ visible, court, sport, sportName, onCl
 
                   <Text style={styles.label}>{t('closure.noteLabel')}</Text>
                   <TextInput
+                    {...doneProps('closureNote')}
                     style={styles.note}
                     placeholder={t('closure.notePh')}
                     placeholderTextColor="#9aa7b4"
@@ -302,6 +305,7 @@ export default function CardReportSheet({ visible, court, sport, sportName, onCl
                     maxLength={NOTE_MAX}
                     multiline
                   />
+                  <DoneBar id="closureNote" />
                   <Text style={styles.count}>
                     {note.length} / {NOTE_MAX}
                   </Text>
@@ -331,7 +335,9 @@ export default function CardReportSheet({ visible, court, sport, sportName, onCl
                     onChangeText={setDetail}
                     maxLength={DETAIL_MAX}
                     multiline
+                    {...doneProps('dataNote')}
                   />
+                  <DoneBar id="dataNote" />
                   <Text style={styles.count}>
                     {detail.length} / {DETAIL_MAX}
                   </Text>

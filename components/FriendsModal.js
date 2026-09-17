@@ -180,6 +180,8 @@ export default function FriendsModal({ visible, onClose, inviteCode, onInviteCon
                   autoCapitalize="characters"
                   autoCorrect={false}
                   maxLength={6}
+                  returnKeyType="done"
+                  onSubmitEditing={onAdd}
                 />
                 <Pressable
                   style={[styles.addBtn, (busy || !addInput.trim()) && styles.btnDisabled]}

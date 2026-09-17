@@ -601,6 +601,8 @@ export default function ClassesScreen({ userLocation = null, city = 'sf', subreg
         style={styles.list}
         contentContainerStyle={{ paddingBottom: insets.bottom + 96 }}
         showsVerticalScrollIndicator={false}
+        keyboardDismissMode="on-drag"
+        keyboardShouldPersistTaps="handled"
         onScroll={onListScroll}
         scrollEventThrottle={16}
         initialNumToRender={8}

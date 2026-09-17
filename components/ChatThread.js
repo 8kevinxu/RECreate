@@ -176,8 +176,12 @@ export default function ChatThread({ visible, thread, onClose, onActivity }) {
               <ActivityIndicator color="#2f74d6" />
             </View>
           ) : (
+            // Chat composers get drag-to-dismiss rather than a Done bar: the send
+            // button is right there, and an accessory bar between the composer and
+            // the keyboard is not what a messaging app looks like.
             <ScrollView
               ref={scrollRef}
+              keyboardDismissMode="interactive"
               style={styles.list}
               contentContainerStyle={styles.listContent}
               onContentSizeChange={() => scrollRef.current?.scrollToEnd({ animated: false })}

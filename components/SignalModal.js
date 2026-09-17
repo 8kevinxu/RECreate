@@ -19,6 +19,7 @@ import { createSignal } from '../lib/signals';
 import { startOfDay, dayChipLabel, fmtClock } from '../lib/datetime';
 import { PLAN_SPORTS, ANY_SPORT, sportMeta, sportsInCourts } from '../lib/sports';
 import { SportTag } from './SportGlyph';
+import DoneBar, { doneProps } from './DoneBar';
 import { haversineMiles, formatDistance } from '../lib/distance';
 import { sportLabel, useI18n } from '../lib/i18n';
 import { useAuth } from '../lib/auth';
@@ -339,6 +340,7 @@ export default function SignalModal({ visible, courts = [], userLocation, onClos
               sheet shrinks to what is left above it, and a field at the end of a scrolled
               list is still off-screen — you end up typing blind into a box you can't see. */}
           <TextInput
+            {...doneProps('signalNote')}
             style={styles.note}
             placeholder={t('signal.notePh')}
             placeholderTextColor="#9aa7b4"
@@ -347,6 +349,7 @@ export default function SignalModal({ visible, courts = [], userLocation, onClos
             maxLength={200}
             multiline
           />
+          <DoneBar id="signalNote" />
 
           {!!error && <Text style={styles.error}>{error}</Text>}
 

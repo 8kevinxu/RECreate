@@ -21,6 +21,7 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAuth } from '../lib/auth';
+import DoneBar, { doneProps } from './DoneBar';
 import { listBlockedUsers, unblockUser } from '../lib/blocks';
 import { reportContent } from '../lib/reports';
 import { useI18n, LANGUAGES } from '../lib/i18n';
@@ -390,6 +391,7 @@ export default function SettingsScreen({
               <>
                 <Text style={styles.warning}>{t('report.problemHint')}</Text>
                 <TextInput
+                  {...doneProps('issue')}
                   style={styles.reportInput}
                   placeholder={t('report.placeholder')}
                   placeholderTextColor="#9aa7b4"

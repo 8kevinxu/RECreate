@@ -23,6 +23,7 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useI18n } from '../lib/i18n';
+import DoneBar, { doneProps } from './DoneBar';
 import { MAX_BODY, MAX_NAME } from '../lib/reviews';
 
 export default function ReviewSheet({
@@ -94,6 +95,7 @@ export default function ReviewSheet({
               returnKeyType="next"
             />
             <TextInput
+              {...doneProps('review')}
               style={styles.bodyInput}
               placeholder={t('court.reviewPh')}
               placeholderTextColor="#9aa7b4"
@@ -103,6 +105,7 @@ export default function ReviewSheet({
               multiline
               autoFocus
             />
+            <DoneBar id="review" />
           </ScrollView>
 
           <Pressable

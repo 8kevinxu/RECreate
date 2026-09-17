@@ -143,7 +143,12 @@ export default function ChatsScreen({ courtsById = {} }) {
         {deleted.length === 0 ? (
           <Text style={styles.empty}>{tr('chat.noDeleted')}</Text>
         ) : (
-          <ScrollView style={styles.list} contentContainerStyle={{ paddingBottom: 24 }}>
+          <ScrollView
+          style={styles.list}
+          contentContainerStyle={{ paddingBottom: 24 }}
+          keyboardDismissMode="on-drag"
+          keyboardShouldPersistTaps="handled"
+        >
             {deleted.map((t) => (
               <View key={t.key} style={styles.delRow}>
                 <Pressable style={styles.delTap} onPress={() => setOpen(t)}>
@@ -206,7 +211,12 @@ export default function ChatsScreen({ courtsById = {} }) {
       ) : active.length === 0 && deleted.length === 0 ? (
         <Text style={styles.empty}>{tr('chat.empty')}</Text>
       ) : (
-        <ScrollView style={styles.list} contentContainerStyle={{ paddingBottom: 24 }}>
+        <ScrollView
+          style={styles.list}
+          contentContainerStyle={{ paddingBottom: 24 }}
+          keyboardDismissMode="on-drag"
+          keyboardShouldPersistTaps="handled"
+        >
           {active.map((t) => (
             <SwipeRow key={t.key} actionLabel={tr('delete')} actionColor="#e5484d" onAction={() => onDelete(t.key)}>
               <Pressable style={styles.row} onPress={() => setOpen(t)}>

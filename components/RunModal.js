@@ -22,6 +22,7 @@ import { startOfDay, dayChipLabel, fmtClock } from '../lib/datetime';
 import { dropinWeekdays, openGymSlots } from '../lib/hours';
 import { PLAN_SPORTS, sportsInCourts } from '../lib/sports';
 import { SportTag } from './SportGlyph';
+import DoneBar, { doneProps } from './DoneBar';
 import { haversineMiles, formatDistance } from '../lib/distance';
 import { useI18n, sportLabel } from '../lib/i18n';
 import { useAuth } from '../lib/auth';
@@ -507,6 +508,7 @@ export default function RunModal({
               sheet shrinks to what is left above it, and a field at the end of a scrolled
               list is still off-screen — you end up typing blind into a box you can't see. */}
           <TextInput
+            {...doneProps('runNote')}
             style={styles.note}
             placeholder={t('run.notePh')}
             placeholderTextColor="#9aa7b4"
@@ -515,6 +517,7 @@ export default function RunModal({
             maxLength={MAX_NOTE}
             multiline
           />
+          <DoneBar id="runNote" />
 
           {!!error && <Text style={styles.error}>{error}</Text>}
 

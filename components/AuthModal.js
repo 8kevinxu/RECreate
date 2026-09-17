@@ -30,6 +30,7 @@ const TERMS_URL = 'https://www.apple.com/legal/internet-services/itunes/dev/stde
 const PRIVACY_URL = 'https://playrecreate.com/privacy.html';
 import { SPORTS, sportsInCourts } from '../lib/sports';
 import { SportTag } from './SportGlyph';
+import DoneBar, { doneProps } from './DoneBar';
 import { CLASS_CATEGORIES } from '../data/classes';
 import { loadMyStats } from '../lib/playerCheckins';
 import { loadMyReportCount } from '../lib/crowd';
@@ -440,12 +441,14 @@ export default function AuthModal({
                     value={code}
                     onChangeText={(v) => setCode(v.replace(/[^0-9]/g, ''))}
                     keyboardType="number-pad"
+                    {...doneProps('code')}
                     // Supabase's email OTP length is a project setting (6–10
                     // digits), so don't assume 6.
                     maxLength={10}
                     autoComplete="one-time-code"
                     textContentType="oneTimeCode"
                   />
+                  <DoneBar id="code" />
                   <TextInput
                     style={styles.input}
                     placeholder={t('auth.newPassword')}
@@ -520,6 +523,7 @@ export default function AuthModal({
             <ScrollView
               style={[styles.accountScroll, asPage && styles.pageScroll]}
               keyboardShouldPersistTaps="handled"
+              keyboardDismissMode="on-drag"
             >
               <Text style={styles.signedInAs}>
                 {t('auth.signedInAs')}{' '}
@@ -549,7 +553,9 @@ export default function AuthModal({
                     onChangeText={(v) => setPAge(v.replace(/[^0-9]/g, ''))}
                     keyboardType="number-pad"
                     maxLength={3}
+                    {...doneProps('age')}
                   />
+                  <DoneBar id="age" />
                   <Text style={styles.fieldHint}>{t('auth.hintNeighborhood')}</Text>
                   <TextInput
                     style={styles.input}
@@ -562,6 +568,7 @@ export default function AuthModal({
                   />
                   <Text style={styles.fieldHint}>{t('auth.hintBio')}</Text>
                   <TextInput
+                    {...doneProps('bio')}
                     style={[styles.input, styles.inputMultiline]}
                     placeholder={t('auth.bioPh')}
                     placeholderTextColor="#9aa7b4"
@@ -570,6 +577,7 @@ export default function AuthModal({
                     maxLength={280}
                     multiline
                   />
+                  <DoneBar id="bio" />
 
                   <Text style={styles.fieldLabel}>{t('auth.favoriteSports')}</Text>
                   <View style={styles.sportWrap}>
