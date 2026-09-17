@@ -19,6 +19,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { CLASS_CATEGORIES } from '../data/classes';
 import { confirmReportData } from '../lib/reports';
 import { openDirections } from '../lib/maps';
+import { dismissOrClose } from '../lib/keyboard';
 import { localizeWhen, formatDateRange } from '../lib/datetime';
 import { useI18n } from '../lib/i18n';
 
@@ -87,7 +88,7 @@ export default function ClassDetail({ item, onClose }) {
       <View style={styles.backdrop}>
         <Pressable
           style={StyleSheet.absoluteFill}
-          onPress={onClose}
+          onPress={dismissOrClose(onClose)}
           accessibilityRole="button"
           accessibilityLabel={t('a11y.close')}
         />

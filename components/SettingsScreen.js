@@ -21,6 +21,7 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAuth } from '../lib/auth';
+import { dismissOrClose } from '../lib/keyboard';
 import DoneBar, { doneProps } from './DoneBar';
 import { listBlockedUsers, unblockUser } from '../lib/blocks';
 import { reportContent } from '../lib/reports';
@@ -324,7 +325,7 @@ export default function SettingsScreen({
         >
           <Pressable
             style={StyleSheet.absoluteFill}
-            onPress={closeConfirm}
+            onPress={dismissOrClose(closeConfirm)}
             accessibilityRole="button"
             accessibilityLabel={t('a11y.close')}
           />
@@ -371,7 +372,7 @@ export default function SettingsScreen({
         >
           <Pressable
             style={StyleSheet.absoluteFill}
-            onPress={closeReport}
+            onPress={dismissOrClose(closeReport)}
             accessibilityRole="button"
             accessibilityLabel={t('a11y.close')}
           />

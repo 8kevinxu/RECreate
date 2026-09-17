@@ -29,6 +29,7 @@ import {
 } from '../lib/friends';
 import { inviteUrl } from '../lib/invite';
 import { useI18n } from '../lib/i18n';
+import { dismissOrClose } from '../lib/keyboard';
 import QRCode from './QRCode';
 
 export default function FriendsModal({ visible, onClose, inviteCode, onInviteConsumed }) {
@@ -132,7 +133,7 @@ export default function FriendsModal({ visible, onClose, inviteCode, onInviteCon
       >
         <Pressable
           style={StyleSheet.absoluteFill}
-          onPress={onClose}
+          onPress={dismissOrClose(onClose)}
           accessibilityRole="button"
           accessibilityLabel={t('a11y.close')}
         />

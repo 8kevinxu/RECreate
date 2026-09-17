@@ -21,6 +21,7 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useI18n } from '../lib/i18n';
+import { dismissOrClose } from '../lib/keyboard';
 import DoneBar, { doneProps } from './DoneBar';
 import { dayChipLabel, startOfDay } from '../lib/datetime';
 import { fileClosure, ymd, NOTE_MAX, MAX_DAYS_AHEAD } from '../lib/closures';
@@ -189,7 +190,7 @@ export default function CardReportSheet({ visible, court, sport, sportName, onCl
         <View style={styles.backdrop}>
           <Pressable
             style={StyleSheet.absoluteFill}
-            onPress={onClose}
+            onPress={dismissOrClose(onClose)}
             accessibilityRole="button"
             accessibilityLabel={t('a11y.close')}
           />

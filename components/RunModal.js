@@ -27,6 +27,7 @@ import { haversineMiles, formatDistance } from '../lib/distance';
 import { useI18n, sportLabel } from '../lib/i18n';
 import { useAuth } from '../lib/auth';
 import { resolveNotify } from '../lib/activityShare';
+import { dismissOrClose } from '../lib/keyboard';
 import { bookedAt } from '../lib/reservations';
 
 const minutesOf = (d) => d.getHours() * 60 + d.getMinutes();
@@ -264,7 +265,7 @@ export default function RunModal({
       >
         <Pressable
           style={StyleSheet.absoluteFill}
-          onPress={onClose}
+          onPress={dismissOrClose(onClose)}
           accessibilityRole="button"
           accessibilityLabel={t('a11y.close')}
         />

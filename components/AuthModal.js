@@ -23,6 +23,7 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useAuth } from '../lib/auth';
+import { dismissOrClose } from '../lib/keyboard';
 
 // Account creation requires agreeing to a EULA (App Store rule for UGC apps). The
 // Terms link points at Apple's standard EULA; swap PRIVACY_URL for your hosted page.
@@ -366,7 +367,7 @@ export default function AuthModal({
         >
           <Pressable
             style={StyleSheet.absoluteFill}
-            onPress={close}
+            onPress={dismissOrClose(close)}
             accessibilityRole="button"
             accessibilityLabel={t('a11y.close')}
           />

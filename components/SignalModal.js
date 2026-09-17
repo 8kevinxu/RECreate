@@ -24,6 +24,7 @@ import { haversineMiles, formatDistance } from '../lib/distance';
 import { sportLabel, useI18n } from '../lib/i18n';
 import { useAuth } from '../lib/auth';
 import { resolveNotify } from '../lib/activityShare';
+import { dismissOrClose } from '../lib/keyboard';
 
 // "Anything" (just down for rec) first, then the specific sports + weight room —
 // narrowed to what the courts in view (the active city) actually offer, so an SF
@@ -159,7 +160,7 @@ export default function SignalModal({ visible, courts = [], userLocation, onClos
       >
         <Pressable
           style={StyleSheet.absoluteFill}
-          onPress={onClose}
+          onPress={dismissOrClose(onClose)}
           accessibilityRole="button"
           accessibilityLabel={t('a11y.close')}
         />

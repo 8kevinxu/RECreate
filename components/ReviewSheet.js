@@ -23,6 +23,7 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useI18n } from '../lib/i18n';
+import { dismissOrClose } from '../lib/keyboard';
 import DoneBar, { doneProps } from './DoneBar';
 import { MAX_BODY, MAX_NAME } from '../lib/reviews';
 
@@ -54,7 +55,7 @@ export default function ReviewSheet({
       >
         <Pressable
           style={StyleSheet.absoluteFill}
-          onPress={onClose}
+          onPress={dismissOrClose(onClose)}
           accessibilityRole="button"
           accessibilityLabel={t('a11y.close')}
         />

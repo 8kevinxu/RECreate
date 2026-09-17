@@ -17,6 +17,7 @@ import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useI18n } from '../lib/i18n';
+import { dismissOrClose } from '../lib/keyboard';
 
 // options: [{ key, label, desc?, icon, iconBg?, destructive? }]
 export default function ActionSheet({ visible, title, options = [], onSelect, onClose, busy = false }) {
@@ -30,7 +31,7 @@ export default function ActionSheet({ visible, title, options = [], onSelect, on
       <View style={styles.backdrop}>
         <Pressable
           style={StyleSheet.absoluteFill}
-          onPress={onClose}
+          onPress={dismissOrClose(onClose)}
           accessibilityRole="button"
           accessibilityLabel={t('a11y.close')}
         />
