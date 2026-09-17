@@ -231,8 +231,20 @@ async function fetchEventPage(url) {
   const html = await res.text();
   const costM = html.match(/<h3>Cost<\/h3>\s*<p>([\s\S]*?)<\/p>/i);
   const regM = html.match(/class="registration-details"[^>]*>([\s\S]*?)<\/p>/i);
+  // A 200 with no Cost block is a DEGRADED RESPONSE, not a free event, and the
+  // difference is invisible from the status code: nycgovparks' WAF answers a
+  // heavy caller with an empty 200 rather than an error. Returning cost:'' for
+  // it read as "this page lists no fee", so the page was never retried, never
+  // counted in `failed`, and the class shipped priced "See event page" — 48 of
+  // 449 on 2026-09-17, past check-app's 5% ceiling, from a sweep that logged
+  // "449/449 fetched (0 failed)". Every one of 60 live pages sampled by hand
+  // carries the block, so treat its absence as a failed fetch and let the retry
+  // passes below deal with it. If a genuinely cost-less page ever appears it
+  // surfaces in `failed`, which is loud, instead of as a wrong price, which is
+  // not.
+  if (!costM) throw new Error('no Cost block (degraded response?)');
   return {
-    cost: costM ? stripHtml(costM[1]) : '',
+    cost: stripHtml(costM[1]),
     regClosed: regM ? /closed/i.test(stripHtml(regM[1])) : false,
   };
 }
@@ -249,9 +261,10 @@ async function enrichFromPages(seriesList) {
   const urls = [...new Set(seriesList.map((s) => s.url).filter(Boolean))].slice(0, MAX_PAGE_FETCHES);
   const pageByUrl = {};
   let missed = [];
-  const drain = async (queue) => {
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  const drain = async (queue, concurrency = PAGE_CONCURRENCY, pace = 0) => {
     const out = [];
-    const workers = Array.from({ length: PAGE_CONCURRENCY }, async () => {
+    const workers = Array.from({ length: concurrency }, async () => {
       for (;;) {
         const url = queue.shift();
         if (!url) return;
@@ -260,21 +273,37 @@ async function enrichFromPages(seriesList) {
         } catch {
           out.push(url);
         }
+        if (pace) await sleep(pace);
       }
     });
     await Promise.all(workers);
     return out;
   };
   missed = await drain([...urls]);
-  // Retry the failures once. A dropped fetch here doesn't merely lose a cost, it
+  // Retry the failures. A dropped fetch here doesn't merely lose a cost, it
   // publishes a WRONG one: an uncached page falls through to "See event page" on
-  // a feed where 564 of 572 known costs are literally "Free". One retry pass
-  // costs a few seconds and recovered 12 mispriced programs.
-  if (missed.length) {
-    await new Promise((r) => setTimeout(r, 1000));
-    const again = await drain([...missed]);
-    console.log(`  ↻ retried ${missed.length} failed event page(s), ${missed.length - again.length} recovered`);
-    missed = again;
+  // a feed where 564 of 572 known costs are literally "Free".
+  //
+  // The retry escalates rather than repeating, because what fails this sweep is
+  // the WAF throttling ~450 pages: one flat retry pass at the same concurrency
+  // asks the same way that just got refused. Each pass slows down and narrows,
+  // which is what actually recovers the pages — the 70 lost on 2026-09-17 were
+  // re-fetched by hand at concurrency 1 / 300ms and 20 of 22 sampled returned a
+  // cost first try (the other two were genuine 404s of events that had passed).
+  const PASSES = [
+    { concurrency: 2, pace: 300, backoff: 2000 },
+    { concurrency: 1, pace: 500, backoff: 5000 },
+    { concurrency: 1, pace: 1000, backoff: 10000 },
+  ];
+  for (const pass of PASSES) {
+    if (!missed.length) break;
+    await sleep(pass.backoff);
+    const before = missed.length;
+    missed = await drain([...missed], pass.concurrency, pass.pace);
+    console.log(
+      `  ↻ retried ${before} failed event page(s) at concurrency ${pass.concurrency}, ` +
+        `${before - missed.length} recovered`
+    );
   }
   const failed = missed.length;
 

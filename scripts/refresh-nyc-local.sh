@@ -71,6 +71,16 @@ fi
 
 cd "$WORKDIR" || { echo "FAIL: cannot cd to $WORKDIR"; exit 1; }
 
+# Clear any rebase/merge an earlier run left half-finished. Neither reset --hard
+# nor clean -fd clears one: they rewrite the index and worktree but leave
+# .git/rebase-merge standing, so git refuses every later rebase with "there is
+# already a rebase-merge directory". That is how one conflict on 2026-09-15
+# became five dead runs and a cache that aged out of its 48h budget — the job
+# kept scraping for ten minutes and kept dying on the same line. A run must cost
+# at most itself, so recovery happens here rather than waiting for a human.
+git rebase --abort 2>/dev/null || true
+git merge  --abort 2>/dev/null || true
+
 # Start from exactly origin/main every run. Safe here in a way it would never be
 # in your checkout: this clone holds nothing but the last run's regenerated data,
 # which we are about to regenerate anyway. This also replaces the pull --rebase
@@ -121,8 +131,10 @@ if ! npm run check; then
   exit 1
 fi
 
-# Explicit paths: this job has no business committing anything else.
-git add data/cities/nyc scripts/cities/*.json
+# Explicit paths: this job has no business committing anything else. Held in one
+# place because publishing below replays exactly this set onto a moved origin.
+OWNED=(data/cities/nyc 'scripts/cities/*.json')
+git add "${OWNED[@]}"
 if git diff --cached --quiet; then
   echo "No NYC changes."
   [ -n "$failed" ] && exit 1
@@ -136,11 +148,40 @@ git -c user.name="recreate-nyc-refresh" \
 Scraped from a machine nycgovparks.org does not 405. Keeps the caches
 inside their staleness budgets so CI's fallback stays green."
 
-# Another job may have pushed while we scraped (~10 min). Rebase onto it; this
-# clone has nothing else in flight, so a conflict here is not survivable and
-# should fail loudly rather than be forced past.
-git pull --rebase --quiet origin "$BRANCH" || { echo "FAIL: rebase onto origin/$BRANCH"; exit 1; }
-git push --quiet origin "$BRANCH" || { echo "FAIL: git push"; exit 1; }
+# Another job may have pushed while we scraped (~10 min), so a rejected push is
+# routine. What is NOT routine — and what the old `pull --rebase` here assumed —
+# is that the conflict would be rare: refresh-classes.yml regenerates
+# data/cities/nyc/classes.js and the scripts/cities/*.json caches from the same
+# feed we do, every 6h. Two independent regenerations of one generated file
+# differ in content by definition, so that rebase conflicted on schedule.
+#
+# So don't merge generated files: replay ours on top of whatever landed. We
+# scraped from a working egress; CI, still 405'd, wrote its files from a cache
+# fallback, so ours is strictly the fresher of the two and simply wins. Only the
+# paths this job owns are replayed — everything else keeps origin's version, so
+# a concurrent SF refresh is never reverted.
+pushed=""
+for attempt in 1 2 3; do
+  if git push --quiet origin "$BRANCH"; then pushed=1; break; fi
+  echo "push rejected (attempt $attempt) — replaying our files onto origin/$BRANCH"
+  ours=$(git rev-parse HEAD)
+  git fetch --quiet origin           || { echo "FAIL: git fetch during replay"; exit 1; }
+  git reset --hard --quiet "origin/$BRANCH" || { echo "FAIL: git reset during replay"; exit 1; }
+  git checkout --quiet "$ours" -- "${OWNED[@]}" || { echo "FAIL: replay checkout"; exit 1; }
+  git add "${OWNED[@]}"
+  if git diff --cached --quiet; then
+    echo "OK: origin already carries this data — nothing to push."
+    pushed=1
+    break
+  fi
+  git -c user.name="recreate-nyc-refresh" \
+      -c user.email="8kevinxu@users.noreply.github.com" \
+      commit -q -m "chore(data): refresh NYC sources from local egress
+
+Scraped from a machine nycgovparks.org does not 405. Keeps the caches
+inside their staleness budgets so CI's fallback stays green."
+done
+[ -n "$pushed" ] || { echo "FAIL: push still rejected after 3 attempts"; exit 1; }
 echo "OK: pushed $(git rev-parse --short HEAD)"
 
 # Report a partial failure only now that the good sources are safely pushed —
