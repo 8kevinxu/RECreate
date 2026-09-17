@@ -48,14 +48,26 @@ jobs:
             # the same minute every 6h, and the local NYC feeder pushes twice a
             # day, so without this the loser of a race throws away a scrape it
             # had already finished — the run goes red with the data on the floor.
-            # Every one of these jobs stages only its own generated files, so a
-            # genuine conflict is not expected; it fails loudly rather than being
-            # forced past.
+            # These jobs do NOT all stage disjoint files, which this comment
+            # used to claim: refresh-classes, refresh-schedules and the local
+            # NYC feeder all regenerate data/cities/nyc/classes.js and the
+            # scripts/cities caches. Two independent regenerations of one
+            # generated file differ in content by definition, so a conflict here
+            # is routine, and a plain rebase fails on it — red run, finished
+            # scrape on the floor, which is the exact outcome the retry exists
+            # to prevent (it wedged the feeder for five runs on 2026-09-15).
+            # -X ours resolves conflicts in favour of whatever is already on
+            # origin. In a rebase our commits replay ON TOP of upstream, so
+            # "ours" is origin's side. That is the right winner for these paths:
+            # nycgovparks.org 405s GitHub's runners, so this job's NYC output is
+            # a cache fallback, while whoever pushed ahead of us (the feeder,
+            # scraping from an unblocked egress) has the live data. Files nobody
+            # else writes never conflict, so this job's own scrape still lands.
             pushed=""
             for attempt in 1 2 3; do
               if git push; then pushed=1; break; fi
               echo "push rejected (attempt $attempt) — rebasing onto origin/main"
-              git pull --rebase origin main || { echo "rebase failed"; exit 1; }
+              git pull --rebase -X ours origin main || { echo "rebase failed"; exit 1; }
             done
             [ -n "$pushed" ] || { echo "push still rejected after 3 attempts"; exit 1; }
           fi
