@@ -1,4 +1,7 @@
-{ "lastRunAt": "2026-09-17T20:52:05.297Z",
-  "lastRunOk": false, "lastRunStage": "publish",
-  "lastSuccessAt": "2026-09-15T10:52:05.318Z",
-  "sourcesFailed": null }
+{
+  "lastRunAt": "2026-09-17T22:29:16.000Z",
+  "lastRunOk": true,
+  "lastRunStage": "done",
+  "lastSuccessAt": "2026-09-17T22:29:16.000Z",
+  "sourcesFailed": null
+}
