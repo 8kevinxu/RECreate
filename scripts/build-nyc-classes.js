@@ -63,6 +63,19 @@ const MIN_ITEMS_OK = 100;
 // the cap is a runaway guard, not a target).
 const MAX_PAGE_FETCHES = 700;
 const PAGE_CONCURRENCY = 5;
+// A real event page is ~50 KB; the WAF's throttle reply is 0. Anything this
+// short is that reply, whatever status it carries.
+const MIN_EVENT_PAGE_BYTES = 2000;
+// Waits between retry passes for uncached pages, and the two are doing different
+// jobs. The short one catches a transient per-request failure (a timeout, a
+// dropped connection) — that is the pass the original single retry was, and it
+// recovered 12 mispriced programs. The long one is the only thing that can clear
+// a WAF cooldown, and it is sized against a measured one: probing a single
+// throttled URL once every 30s, it answered 202/empty for 331s and then served
+// the full 50 KB page. 330s is that number; see the note in enrichFromPages().
+// Worst case adds ~5.5 min, and only on a run that actually lost an uncached
+// page.
+const RETRY_BACKOFFS_MS = [5000, 330000];
 
 // NYC Parks category strings -> the app's class categories (data/classes.js
 // CLASS_CATEGORIES ids). First match wins, so more specific buckets first;
@@ -229,22 +242,26 @@ async function fetchEventPage(url) {
   const res = await fetchT(url, { headers: { 'User-Agent': UA } }, 15000);
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const html = await res.text();
+  // nycgovparks' WAF throttles a heavy caller by answering "202 Accepted" with
+  // an EMPTY BODY. fetch reports that as ok — 202 is a success status — so it
+  // sailed past the check above, parsed to cost:'' and was indistinguishable
+  // from a page that genuinely lists no fee: never retried, never counted in
+  // `failed`, and the class shipped priced "See event page". That is how a sweep
+  // logging "449/449 fetched (0 failed)" produced 48 mispriced classes on
+  // 2026-09-17 and failed check-app's 5% ceiling. Measured directly: a healthy
+  // page is 200 and ~50 KB, a throttled one is 202 and 0 bytes.
+  //
+  // Match on that signature rather than on a missing Cost block. Absence of the
+  // block is a symptom shared with a legitimately cost-less page, and treating
+  // the two alike would turn an honest "no fee listed" into a permanent entry in
+  // `failed` — a health signal that is always red tells you nothing.
+  if (res.status === 202 || html.length < MIN_EVENT_PAGE_BYTES) {
+    throw new Error(`throttled (HTTP ${res.status}, ${html.length} bytes)`);
+  }
   const costM = html.match(/<h3>Cost<\/h3>\s*<p>([\s\S]*?)<\/p>/i);
   const regM = html.match(/class="registration-details"[^>]*>([\s\S]*?)<\/p>/i);
-  // A 200 with no Cost block is a DEGRADED RESPONSE, not a free event, and the
-  // difference is invisible from the status code: nycgovparks' WAF answers a
-  // heavy caller with an empty 200 rather than an error. Returning cost:'' for
-  // it read as "this page lists no fee", so the page was never retried, never
-  // counted in `failed`, and the class shipped priced "See event page" — 48 of
-  // 449 on 2026-09-17, past check-app's 5% ceiling, from a sweep that logged
-  // "449/449 fetched (0 failed)". Every one of 60 live pages sampled by hand
-  // carries the block, so treat its absence as a failed fetch and let the retry
-  // passes below deal with it. If a genuinely cost-less page ever appears it
-  // surfaces in `failed`, which is loud, instead of as a wrong price, which is
-  // not.
-  if (!costM) throw new Error('no Cost block (degraded response?)');
   return {
-    cost: stripHtml(costM[1]),
+    cost: costM ? stripHtml(costM[1]) : '',
     regClosed: regM ? /closed/i.test(stripHtml(regM[1])) : false,
   };
 }
@@ -280,30 +297,47 @@ async function enrichFromPages(seriesList) {
     return out;
   };
   missed = await drain([...urls]);
-  // Retry the failures. A dropped fetch here doesn't merely lose a cost, it
-  // publishes a WRONG one: an uncached page falls through to "See event page" on
-  // a feed where 564 of 572 known costs are literally "Free".
+
+  // Retry ONLY the pages whose failure costs us something. A URL already in the
+  // cost cache falls back to it, so re-fetching it buys nothing and spends the
+  // request budget that the uncached ones need; an uncached one is the case that
+  // actually ships a wrong price, falling through to "See event page" on a feed
+  // where 564 of 572 known costs are literally "Free". On 2026-09-17 that split
+  // 46 failures into 15 worth retrying and 31 already covered.
   //
-  // The retry escalates rather than repeating, because what fails this sweep is
-  // the WAF throttling ~450 pages: one flat retry pass at the same concurrency
-  // asks the same way that just got refused. Each pass slows down and narrows,
-  // which is what actually recovers the pages — the 70 lost on 2026-09-17 were
-  // re-fetched by hand at concurrency 1 / 300ms and 20 of 22 sampled returned a
-  // cost first try (the other two were genuine 404s of events that had passed).
-  const PASSES = [
-    { concurrency: 2, pace: 300, backoff: 2000 },
-    { concurrency: 1, pace: 500, backoff: 5000 },
-    { concurrency: 1, pace: 1000, backoff: 10000 },
-  ];
-  for (const pass of PASSES) {
-    if (!missed.length) break;
-    await sleep(pass.backoff);
-    const before = missed.length;
-    missed = await drain([...missed], pass.concurrency, pass.pace);
+  // Backoff is in minutes because the cooldown is. Measured on 2026-09-17 by
+  // polling one throttled URL every 30s with nothing else running: 202/empty for
+  // 331 seconds, then a clean 200 with the full page. An earlier version here
+  // escalated concurrency down (2 → 1 → 1) over 2s/5s/10s and recovered exactly
+  // 0 of 46 — pacing does not help when the cooldown outlasts every pass, and
+  // those three passes together waited 17s against a ~5.5 minute block. Going
+  // gently and waiting is the only thing that works.
+  //
+  // What this deliberately does NOT do is keep trying until it wins. Whatever is
+  // still missing at the end costs one build's price accuracy, is bounded by
+  // check-app's 5% ceiling, and is picked up by the next run in a few hours with
+  // its cache intact — so a long tail is a reason to stop, not to keep hammering
+  // the source that is already asking us to slow down.
+  const worthRetrying = missed.filter((u) => !costCache[u]);
+  const covered = missed.length - worthRetrying.length;
+  if (worthRetrying.length) {
     console.log(
-      `  ↻ retried ${before} failed event page(s) at concurrency ${pass.concurrency}, ` +
-        `${before - missed.length} recovered`
+      `  ↻ ${missed.length} event page(s) failed; retrying ${worthRetrying.length} with no cached cost` +
+        (covered ? ` (${covered} fall back to cache)` : '')
     );
+    let queue = worthRetrying;
+    for (const backoff of RETRY_BACKOFFS_MS) {
+      await sleep(backoff);
+      const before = queue.length;
+      queue = await drain([...queue], 1, 500);
+      console.log(
+        `  ↻ after ${Math.round(backoff / 1000)}s: ${before - queue.length}/${before} recovered`
+      );
+      if (!queue.length) break;
+    }
+    missed = urls.filter((u) => !pageByUrl[u]);
+  } else if (missed.length) {
+    console.log(`  ↻ ${missed.length} event page(s) failed; all have a cached cost, not retrying`);
   }
   const failed = missed.length;
 
