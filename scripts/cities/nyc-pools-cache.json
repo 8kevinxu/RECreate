@@ -9793,7 +9793,6 @@
       "desc": "Intermediate pool · 75' x 42' x 9'",
       "season": "Year-round (recreation center members)",
       "seasonal": false,
-      "notice": "There are no programs at this pool today.",
       "programs": [
         "lap",
         "family",
@@ -9850,7 +9849,33 @@
         }
       ],
       "sessions": [
-        [],
+        [
+          {
+            "kind": "lap",
+            "start": 495,
+            "end": 585
+          },
+          {
+            "kind": "family",
+            "start": 600,
+            "end": 675
+          },
+          {
+            "kind": "family",
+            "start": 690,
+            "end": 795
+          },
+          {
+            "kind": "youth",
+            "start": 810,
+            "end": 870
+          },
+          {
+            "kind": "lap",
+            "start": 885,
+            "end": 975
+          }
+        ],
         [
           {
             "kind": "lap",
@@ -10975,8 +11000,8 @@
       "season": "Year-round (recreation center members)",
       "seasonal": false,
       "programs": [
-        "family",
         "lap",
+        "family",
         "exercise"
       ],
       "fees": {
@@ -11030,7 +11055,23 @@
         }
       ],
       "sessions": [
-        [],
+        [
+          {
+            "kind": "lap",
+            "start": 480,
+            "end": 660
+          },
+          {
+            "kind": "family",
+            "start": 675,
+            "end": 780
+          },
+          {
+            "kind": "family",
+            "start": 795,
+            "end": 885
+          }
+        ],
         [
           {
             "kind": "family",
@@ -11134,8 +11175,8 @@
   "season": {
     "open": true,
     "label": "Open daily through Labor Day (9/7)",
-    "checked": "2026-09-15",
+    "checked": "2026-09-17",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-09-15T23:16:37.567Z"
+  "fetchedAt": "2026-09-17T22:27:05.616Z"
 }
