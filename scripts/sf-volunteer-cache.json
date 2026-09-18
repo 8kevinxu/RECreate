@@ -266,10 +266,10 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 9,
+      "spots": 8,
       "unlimited": false,
       "start": "2026-09-23",
-      "end": "2027-03-10",
+      "end": "2027-03-17",
       "instructor": "Friends of Conservatory Valley",
       "activity": "Habitat Restoration",
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the RPD gardeners in a weekly recurring volunteer workparty at the Valley of the Conservatory of Flowers. Volunteer tasks include the maintenance of ornamental planting beds. All tools provided by RPD. Children 13 years and older accompanied by an adult are welcome. No school groups.\n\nMeet on the steps of the Conservatory of Flowers, 100 JFK Drive.",
@@ -364,7 +364,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 15,
+      "spots": 14,
       "unlimited": false,
       "start": "2026-09-26",
       "end": "2027-03-14",
@@ -615,7 +615,7 @@
       "spots": 6,
       "unlimited": false,
       "start": "2026-10-07",
-      "end": "2027-03-03",
+      "end": "2027-03-17",
       "activity": "Horticultural Maintenance",
       "desc": "Join us for volunteering at the Golden Gate Park Rhododendron Dell every 1st and 3rd Wednesday of the month! Come spend the morning with some light weeding, mulching, or pruning.Please RSVP by selecting group sign-up even when you are not registering as a group. We limit to four people per group sign-up, if you have more than four people, please email us at Recparkvolunteer@sfgov.org. Thank you!",
       "lat": 37.7699,
@@ -737,7 +737,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 25,
+      "spots": 23,
       "unlimited": false,
       "start": "2026-10-10",
       "end": "2027-03-13",
@@ -925,5 +925,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-09-18T15:50:44.469Z"
+  "fetchedAt": "2026-09-18T20:25:10.853Z"
 }
