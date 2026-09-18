@@ -10087,7 +10087,7 @@
       "desc": "Intermediate pool · 66' x 26' x 8'",
       "season": "No pool sessions currently published",
       "seasonal": false,
-      "notice": "The indoor pool at Asser Levy Recreation Center will open on Monday, September 21, updated Fall schedules will be posted on the website and at the facility. Beginning Monday, June 15, 2026, the indoor pool at Asser Levy Recreation Center will be closed for the duration of summer through mid-September. We encourage all members to use the Asser Levy Outdoor Pool during this time.",
+      "notice": "The indoor pool at Asser Levy Recreation Center will open on Monday, September 21, updated Fall schedules will be posted on the website and at the facility.",
       "programs": [],
       "fees": {
         "effective": "2026-01-01",
@@ -11175,8 +11175,8 @@
   "season": {
     "open": true,
     "label": "Open daily through Labor Day (9/7)",
-    "checked": "2026-09-17",
+    "checked": "2026-09-18",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-09-17T22:27:05.616Z"
+  "fetchedAt": "2026-09-18T04:29:49.199Z"
 }
