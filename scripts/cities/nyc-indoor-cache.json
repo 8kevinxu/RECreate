@@ -668,6 +668,141 @@
       "disclaimer": "Schedules change weekly — verify on nycgovparks.org."
     },
     {
+      "id": "nyc-brownsville-recreation-center",
+      "city": "nyc",
+      "name": "Brownsville Recreation Center",
+      "address": "1555 Linden Boulevard",
+      "neighborhood": "Brooklyn",
+      "lat": 40.656403,
+      "lng": -73.902821,
+      "indoor": true,
+      "schedule": [
+        [
+          480,
+          960
+        ],
+        [
+          420,
+          1320
+        ],
+        [
+          420,
+          1320
+        ],
+        [
+          420,
+          1320
+        ],
+        [
+          420,
+          1320
+        ],
+        [
+          420,
+          1320
+        ],
+        [
+          480,
+          0
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "handball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "nycparks-indoor",
+      "notes": "NYC Parks recreation center — drop-in open-play times from this week’s posted schedule. NYC Parks membership required for entry (free for 24 and under; see nycgovparks.org).",
+      "disclaimer": "Schedules change weekly — verify on nycgovparks.org."
+    },
+    {
       "id": "nyc-chelsea-recreation-center",
       "city": "nyc",
       "name": "Chelsea Recreation Center",
@@ -970,7 +1105,7 @@
           [
             [
               420,
-              600
+              630
             ],
             [
               900,
@@ -1001,7 +1136,7 @@
           [
             [
               420,
-              600
+              630
             ],
             [
               900,
@@ -1069,14 +1204,14 @@
           ],
           [
             [
-              735,
+              660,
               900
             ]
           ],
           [],
           [
             [
-              735,
+              660,
               900
             ]
           ],
@@ -2805,7 +2940,13 @@
             ]
           ],
           [],
-          [],
+          [
+            [
+              960,
+              1080,
+              "55+"
+            ]
+          ],
           []
         ],
         "tennis": [
@@ -5409,5 +5550,5 @@
       "lng": -73.842543
     }
   },
-  "fetchedAt": "2026-09-18T16:24:13.260Z"
+  "fetchedAt": "2026-09-19T04:26:42.974Z"
 }
