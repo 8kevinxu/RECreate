@@ -1,0 +1,163 @@
+{
+  "configVersion": 0,
+  "apple": {
+    "version": "1.3.0",
+    "copyright": "2026 Kevin Xu",
+    "release": {
+      "automaticRelease": true
+    },
+    "info": {
+      "en-US": {
+        "description": "RECreate is the fastest way to find somewhere to play, dance, create, or stretch — now in San Francisco and New York City.\n\nSee what's open right now across the city — indoor gyms, outdoor basketball, tennis and pickleball courts, and public pools — with real-time \"how busy is it\" check-ins from other players, so you're not showing up to a packed gym or an empty court.\n\nFIND A PLACE TO PLAY\n- Live map of courts, rec-center gyms, and pools across SF and all five NYC boroughs\n- Open-now filtering and drop-in hours for basketball, volleyball, ping pong, badminton, pickleball, tennis, soccer, baseball, and swimming — plus weight rooms and golf\n- Real-time crowd levels — see if a spot is empty, moderate, or packed before you go\n- See how booked up tennis and pickleball courts already are, and skip the full ones\n- Save your favorite spots for the sports you play\n\nDROP-IN CLASSES & ACTIVITIES\n- Hundreds of SF Rec & Park drop-in classes with schedules, costs, ages, and live openings\n- Free NYC Parks programs, filterable by borough\n- Public pool swim schedules, fees, and closures\n- SF public golf courses with green fees, course details, and tee-time booking\n\nPLAY WITH PEOPLE\n- Post that you're \"down to play\" and see who else is up for a game\n- Plan a session, join others, and chat with the group\n- Get recommendations based on your interests and where you've played\n\nRECreate is free, and you can browse without an account. Fully localized in English, Spanish, and Chinese. Pools, golf, and court booking data are San Francisco only for now. More cities on the way.",
+        "keywords": [
+          "basketball",
+          "pickleball",
+          "tennis",
+          "volleyball",
+          "handball",
+          "soccer",
+          "pickup",
+          "swim",
+          "badminton",
+          "dropin",
+          "open",
+          "nyc",
+          "sf"
+        ],
+        "marketingUrl": "https://playrecreate.com",
+        "supportUrl": "https://playrecreate.com/support.html",
+        "title": "RECreate: Recreation Made Easy",
+        "subtitle": "Courts, gyms, pools, classes",
+        "privacyPolicyUrl": "https://playrecreate.com/privacy.html",
+        "screenshots": {
+          "APP_IPHONE_67": [
+            "store/apple/screenshot/en-US/APP_IPHONE_67/01map.png",
+            "store/apple/screenshot/en-US/APP_IPHONE_67/03sports.png",
+            "store/apple/screenshot/en-US/APP_IPHONE_67/07pickle.png",
+            "store/apple/screenshot/en-US/APP_IPHONE_67/02court.png",
+            "store/apple/screenshot/en-US/APP_IPHONE_67/08crowd.png",
+            "store/apple/screenshot/en-US/APP_IPHONE_67/04bclassesverbs.png"
+          ]
+        },
+        "promoText": "Now in your language: English, Español, and 中文. Plus player-reported court closures, so you know before you go.",
+        "releaseNotes": "Now in your language — RECreate follows your phone's language in English, 中文, and Español. Change it any time in Settings.\n\nNEW\n• Report a closed court. If the gym is locked or the courts are being resurfaced, tell other players — and confirm or dispute what others report.\n• Delete your own reviews.\n\nPOOLS\n• Pool cards now open compact with a \"Now\" line, so you can see at a glance whether it's lap swim, family swim, or water exercise.\n• Schedules start from today instead of always starting on Sunday.\n• Posted closures are honored — no more \"open\" on a day the pool is shut.\n• Fixed a bug that filed real swim sessions under \"Other.\"\n\nFIXES\n• The keyboard no longer covers what you're typing, every field has a way to dismiss it, and closing a sheet no longer throws away your draft.\n• Writing a review opens in its own sheet.\n• Nearby has Indoor/Outdoor filters.\n• Pickleball draws its own ball instead of a green dot.\n• Daily reminders arrive once a day instead of all at once."
+      },
+      "es-MX": {
+        "title": "RECreate: Dónde Jugar Hoy",
+        "subtitle": "Canchas, gimnasios y clases",
+        "promoText": "Ahora en tu idioma: español, inglés y chino. Además, cierres de canchas reportados por jugadores.",
+        "keywords": [
+          "baloncesto",
+          "tenis",
+          "pickleball",
+          "voleibol",
+          "futbol",
+          "canchas",
+          "piscina",
+          "natacion",
+          "gimnasio",
+          "badminton",
+          "clases",
+          "nyc"
+        ],
+        "marketingUrl": "https://playrecreate.com",
+        "supportUrl": "https://playrecreate.com/support.html",
+        "privacyPolicyUrl": "https://playrecreate.com/privacy.html",
+        "screenshots": {
+          "APP_IPHONE_67": [
+            "store/apple/screenshot/en-US/APP_IPHONE_67/01map.png",
+            "store/apple/screenshot/en-US/APP_IPHONE_67/03sports.png",
+            "store/apple/screenshot/en-US/APP_IPHONE_67/07pickle.png",
+            "store/apple/screenshot/en-US/APP_IPHONE_67/02court.png",
+            "store/apple/screenshot/en-US/APP_IPHONE_67/08crowd.png",
+            "store/apple/screenshot/en-US/APP_IPHONE_67/04bclassesverbs.png"
+          ]
+        },
+        "description": "RECreate es la forma más rápida de encontrar dónde jugar, bailar, crear o estirarte — ahora en San Francisco y Nueva York.\n\nMira qué está abierto ahora mismo en toda la ciudad — gimnasios cubiertos, canchas de baloncesto al aire libre, canchas de tenis y pickleball, y piscinas públicas — con reportes en tiempo real de otros jugadores sobre qué tan lleno está, para que no llegues a un gimnasio repleto ni a una cancha vacía.\n\nENCUENTRA DÓNDE JUGAR\n- Mapa en vivo de canchas, gimnasios de centros recreativos y piscinas en SF y los cinco condados de Nueva York\n- Filtro de \"abierto ahora\" y horarios sin cita para baloncesto, vóleibol, ping pong, bádminton, pickleball, tenis, fútbol, béisbol y natación — además de salas de pesas y golf\n- Nivel de gente en tiempo real — mira si un lugar está vacío, moderado o lleno antes de ir\n- Consulta qué tan reservadas están las canchas de tenis y pickleball, y evita las llenas\n- Guarda tus lugares favoritos para los deportes que practicas\n\nCLASES Y ACTIVIDADES SIN CITA\n- Cientos de clases sin cita de SF Rec & Park con horarios, costos, edades y cupos en vivo\n- Programas gratuitos de NYC Parks, filtrables por condado\n- Horarios de piscinas públicas, tarifas y cierres\n- Campos de golf públicos de SF con tarifas, detalles del campo y reserva de salida\n\nJUEGA CON GENTE\n- Publica que estás \"listo para jugar\" y mira quién se apunta\n- Organiza una sesión, únete a otras y chatea con el grupo\n- Recibe recomendaciones según tus intereses y dónde has jugado\n\nRECreate es gratis y puedes explorar sin cuenta. Totalmente traducida al inglés, español y chino. Los datos de piscinas, golf y reservas de canchas son solo de San Francisco por ahora. Más ciudades en camino.",
+        "releaseNotes": "Ahora en tu idioma — RECreate sigue el idioma de tu teléfono en inglés, español y chino. Cámbialo cuando quieras en Ajustes.\n\nNUEVO\n• Reporta una cancha cerrada. Si el gimnasio está cerrado con llave o están renovando las canchas, avísale a los demás jugadores — y confirma o cuestiona lo que otros reportan.\n• Borra tus propias reseñas.\n\nPISCINAS\n• Las fichas de piscinas ahora abren compactas con una línea \"Ahora\", para ver de un vistazo si toca natación libre, familiar o ejercicio en agua.\n• Los horarios empiezan desde hoy en vez de empezar siempre en domingo.\n• Se respetan los cierres publicados — ya no dice \"abierto\" un día que la piscina está cerrada.\n• Corregido un error que clasificaba sesiones reales como \"Otro\".\n\nCORRECCIONES\n• El teclado ya no tapa lo que escribes, cada campo tiene forma de cerrarlo, y cerrar una hoja ya no borra tu borrador.\n• Escribir una reseña abre su propia hoja.\n• Cerca tiene filtros de Interior/Exterior.\n• Pickleball dibuja su propia pelota en vez de un punto verde.\n• Los recordatorios llegan una vez al día en vez de todos juntos."
+      },
+      "zh-Hans": {
+        "title": "RECreate：附近运动场馆",
+        "subtitle": "球场、泳池、课程一键查",
+        "promoText": "现已支持中文、英文和西班牙文。还可查看球友报告的场地关闭情况，出门前先知道。",
+        "keywords": [
+          "篮球",
+          "网球",
+          "匹克球",
+          "排球",
+          "羽毛球",
+          "足球",
+          "游泳",
+          "泳池",
+          "球场",
+          "健身房",
+          "课程",
+          "手球",
+          "乒乓球",
+          "高尔夫",
+          "免预约",
+          "纽约",
+          "旧金山"
+        ],
+        "marketingUrl": "https://playrecreate.com",
+        "supportUrl": "https://playrecreate.com/support.html",
+        "privacyPolicyUrl": "https://playrecreate.com/privacy.html",
+        "screenshots": {
+          "APP_IPHONE_67": [
+            "store/apple/screenshot/en-US/APP_IPHONE_67/01map.png",
+            "store/apple/screenshot/en-US/APP_IPHONE_67/03sports.png",
+            "store/apple/screenshot/en-US/APP_IPHONE_67/07pickle.png",
+            "store/apple/screenshot/en-US/APP_IPHONE_67/02court.png",
+            "store/apple/screenshot/en-US/APP_IPHONE_67/08crowd.png",
+            "store/apple/screenshot/en-US/APP_IPHONE_67/04bclassesverbs.png"
+          ]
+        },
+        "description": "RECreate 是最快找到运动场地的方式——现已覆盖旧金山和纽约市。\n\n查看全城此刻开放的场地——室内体育馆、户外篮球场、网球和匹克球场，以及公共泳池——并有其他球友实时报告的「人多不多」，让你不会白跑一趟。\n\n找地方运动\n- 旧金山与纽约五大区的球场、活动中心体育馆和泳池实时地图\n- 篮球、排球、乒乓球、羽毛球、匹克球、网球、足球、棒球、游泳的免预约时段与「现在开放」筛选，另有健身房和高尔夫\n- 实时人流——出门前就知道场地是空闲、适中还是拥挤\n- 查看网球和匹克球场的预订率，避开已满的场地\n- 收藏你常去的场地\n\n免预约课程与活动\n- 数百门旧金山公园局免预约课程，含时间、费用、年龄和实时名额\n- 纽约公园局免费项目，可按区筛选\n- 公共泳池时刻表、费用与休馆安排\n- 旧金山公立高尔夫球场的果岭费、球场资料与预约开球时间\n\n和大家一起玩\n- 发布「想打球」，看看谁有空\n- 发起活动、加入他人，并与小组聊天\n- 根据兴趣和你去过的地方获得推荐\n\nRECreate 完全免费，无需注册即可浏览。支持英文、西班牙文和中文。泳池、高尔夫和场地预订数据目前仅限旧金山。更多城市即将上线。",
+        "releaseNotes": "现在支持你的语言——RECreate 会跟随手机语言，支持英文、中文和西班牙文。可随时在「设置」中更改。\n\n新功能\n• 报告场地关闭。如果体育馆锁门或球场在翻修，告诉其他球友——也可以确认或质疑别人的报告。\n• 删除自己发布的评价。\n\n泳池\n• 泳池卡片现在以精简视图打开，并有「当前」一行，一眼看出是自由泳、亲子还是水中健身时段。\n• 时刻表从今天开始显示，不再总是从周日开始。\n• 尊重官方公布的休馆安排——休馆当天不会再显示「开放」。\n• 修复了把真实场次归入「其他」的解析错误。\n\n修复\n• 键盘不再遮挡输入内容，每个输入框都有关闭方式，关闭面板也不会丢失草稿。\n• 撰写评价会在独立面板中打开。\n• 「附近」新增室内/室外筛选。\n• 匹克球改为绘制专属球形图标，不再是绿点。\n• 每日推荐提醒改为一天一条，不再一次全部推送。"
+      }
+    },
+    "categories": [
+      "SPORTS",
+      "HEALTH_AND_FITNESS"
+    ],
+    "advisory": {
+      "ageRatingOverride": "NONE",
+      "alcoholTobaccoOrDrugUseOrReferences": "NONE",
+      "contests": "NONE",
+      "gambling": false,
+      "gamblingSimulated": "NONE",
+      "horrorOrFearThemes": "NONE",
+      "kidsAgeBand": null,
+      "koreaAgeRatingOverride": "NONE",
+      "lootBox": false,
+      "matureOrSuggestiveThemes": "NONE",
+      "medicalOrTreatmentInformation": "NONE",
+      "profanityOrCrudeHumor": "NONE",
+      "sexualContentGraphicAndNudity": "NONE",
+      "sexualContentOrNudity": "NONE",
+      "unrestrictedWebAccess": false,
+      "violenceCartoonOrFantasy": "NONE",
+      "violenceRealistic": "NONE",
+      "violenceRealisticProlongedGraphicOrSadistic": "NONE",
+      "advertising": true,
+      "ageAssurance": false,
+      "ageRatingOverrideV2": "THIRTEEN_PLUS",
+      "developerAgeRatingInfoUrl": null,
+      "gunsOrOtherWeapons": "NONE",
+      "healthOrWellnessTopics": false,
+      "messagingAndChat": true,
+      "parentalControls": false,
+      "userGeneratedContent": true
+    },
+    "review": {
+      "firstName": "Kevin",
+      "lastName": "Xu",
+      "email": "support.recreate@gmail.com",
+      "phone": "4155833489",
+      "demoUsername": "support.recreate+review@gmail.com",
+      "demoPassword": "review123",
+      "demoRequired": true,
+      "notes": "RECreate helps people find places to play sports and join recreation programs. It covers San Francisco and New York City.\n\nCITIES\nThe app auto-detects the nearest supported city from a location fix, and defaults to San Francisco without one. To review NYC coverage: Profile > Settings > City > New York City. NYC has courts, rec-center open-gym schedules, and free NYC Parks programs; pools, golf, and court booking data are San Francisco only.\n\nWORKS SIGNED OUT\nMost of the app needs no account: browse the map of courts/gyms/pools, filter by \"open now,\" view drop-in classes, pool and golf schedules, and both report and view real-time crowd levels (stored on-device when signed out).\n\nREQUIRES AN ACCOUNT (demo login provided in Sign-In Information)\nFriends, group and direct chat, \"down to play\" posts, planned sessions, posting and deleting reviews, and reporting a court closure.\n\nUSER-GENERATED CONTENT / MODERATION\nChat messages, reviews, and session posts are user-generated. Controls:\n- Block: long-press any chat message > Block user. Blocked users' content is hidden app-wide.\n- Manage blocks: Profile > Settings > Blocked users (reversible).\n- Report content: long-press a chat message > Report; reviews have a Report action.\n- Report bad data: \"Something wrong here? Report it\" on court, class, and pool cards.\n- Court closures (new in 1.3.0): the same report link > \"Closed or under maintenance\" posts a closure others can see, confirm, or dispute. The note is user-generated and reportable from the banner. It never changes the city's posted hours.\n- Delete your own review (new in 1.3.0): a Delete action appears on reviews you wrote.\n- Report a problem: Profile > Settings > Report a problem (free text).\n- Account creation requires agreeing to the EULA and Privacy Policy, both linked in Settings.\n\nACCOUNT DELETION\nProfile > Settings > Delete account. Deletes the account and its content immediately, in-app, with no email required.\n\nPERMISSIONS\n- Location is OPTIONAL, used only on-device to sort nearby places and show distances. The app is fully usable without it.\n- Notifications are optional and only used for friend activity and session reminders.\n\nThe app is free with no in-app purchases. Court, class, and pool data comes from public sources (SF Rec & Park, DataSF, NYC Open Data, NYC Parks).\n\nLANGUAGE (new in 1.3.0)\nThe app follows the device language in English, Spanish, and Simplified Chinese. To change it in-app: Profile > Settings > Language. On first launch the language control is in the top-left of the welcome screen."
+    }
+  }
+}
