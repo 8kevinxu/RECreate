@@ -283,7 +283,11 @@ export default function RunModal({
           <ScrollView
             style={styles.body}
             keyboardShouldPersistTaps="handled"
-            keyboardDismissMode="on-drag"
+            // interactive, not on-drag: you write the note with the court and time
+            // still above it in this scroll, and on-drag drops the keyboard the
+            // instant you scroll back to check one. Interactive follows the finger
+            // and lets you drag back to cancel.
+            keyboardDismissMode="interactive"
             showsVerticalScrollIndicator={false}
           >
             <View style={styles.sportRow}>
