@@ -14,7 +14,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 6,
+      "spots": 5,
       "unlimited": false,
       "start": "2026-09-23",
       "end": "2027-03-17",
@@ -37,7 +37,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 14,
+      "spots": 13,
       "unlimited": false,
       "start": "2026-09-23",
       "end": "2026-09-23",
@@ -52,7 +52,7 @@
     {
       "id": "vol-a07Pi000056anEwIAI",
       "source": "sfrpd-volunteer",
-      "name": "Golden Gate Park Rose Garden Worparty",
+      "name": "Golden Gate Park Rose Garden Workparty",
       "category": "philanthropy",
       "tags": [
         "nature"
@@ -849,5 +849,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-09-21T19:53:44.183Z"
+  "fetchedAt": "2026-09-22T03:18:52.187Z"
 }
