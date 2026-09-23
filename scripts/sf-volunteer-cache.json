@@ -63,7 +63,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 18,
+      "spots": 16,
       "unlimited": false,
       "start": "2026-09-26",
       "end": "2027-02-27",
@@ -71,31 +71,6 @@
       "desc": "Join us for volunteering at the Golden Gate Park Rose Garden every 4th Saturday of the month! Come spend the morning helping care for the roses, beautifying the garden, and connecting with your community. Whether you’re a seasoned gardener or just want to lend a hand, all are welcome. Things can get thorny, so wear a long sleeve or a sweatshirt for your protection.Please RSVP by selecting group sign-up even when you are not registering as a group. You can only sign-up a group of 4. If you have a group size of 5 or more, please email us at recparkvolunteer@sfgov.org.",
       "lat": 37.77179,
       "lng": -122.47016,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
-      "id": "vol-a074U00001QocKOQAZ",
-      "source": "sfrpd-volunteer",
-      "name": "San Francisco Botanical Garden Volunteer Event",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "GGP Sec 3 Botanical Gardens",
-      "when": "Sun, Sat · 9:30 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 14,
-      "unlimited": false,
-      "start": "2026-09-26",
-      "end": "2027-03-14",
-      "instructor": "SF Botanical Staff",
-      "activity": "Horticultural Maintenance",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nPlease join the San Francisco Botanical Garden’s Horticulture team as they maintain San Francisco’s wonderful 55 acres of both landscaped gardens and open spaces, showcasing more than 8,000 different kinds of plants from around the world. At this volunteer event, you will assist SFRPD staff with collections maintenance and complete tasks such as weeding, raking, and mulching to keep the Botanical Garden beautiful for our community. This is a fun event to jump in and help out with friends and family. While you are welcome to bring your tools and gloves, all supplies will be provided by SFRPD. Volunteers aged 14-17 must be accompanied by an adult. We do not have opportunities for volunteers younger than 14 at this time.\n\nRain and high winds may cancel this event.\n\nPlease wear closed-toed shoes, long pants, layers and appropriate weather protection such as sunscreen, hat, and sunglasses.\n\nMeet at the San Francisco Botanical Garden Bookstore.",
-      "lat": 37.76744,
-      "lng": -122.46896,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -121,6 +96,31 @@
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nExplore Mount Davidson Park. Join the Natural Resource Division enhancing the most diverse native scrub community in the City. This recurring monthly volunteer project is on the 4th Saturday of each month from 9:30-12noon. Mount Davidson is the highest peak in San Francisco offering spectacular views of San Francisco’s skyline, bay, and the surrounding coastal mountains. This park offers habitat for numerous resident and migratory birds, butterflies, and insects - awe inspiring all year. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Everyone 14 years old and older is invited; anyone under 14 yo must be accompanied by a guardian. Tools and gloves will be provided. Please be punctual. \n\nMeet at the bus stop at Myra and Dalewood",
       "lat": 37.7383,
       "lng": -122.45437,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a074U00001QocKOQAZ",
+      "source": "sfrpd-volunteer",
+      "name": "San Francisco Botanical Garden Volunteer Event",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "GGP Sec 3 Botanical Gardens",
+      "when": "Sun, Sat · 9:30 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 14,
+      "unlimited": false,
+      "start": "2026-09-26",
+      "end": "2027-03-14",
+      "instructor": "SF Botanical Staff",
+      "activity": "Horticultural Maintenance",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nPlease join the San Francisco Botanical Garden’s Horticulture team as they maintain San Francisco’s wonderful 55 acres of both landscaped gardens and open spaces, showcasing more than 8,000 different kinds of plants from around the world. At this volunteer event, you will assist SFRPD staff with collections maintenance and complete tasks such as weeding, raking, and mulching to keep the Botanical Garden beautiful for our community. This is a fun event to jump in and help out with friends and family. While you are welcome to bring your tools and gloves, all supplies will be provided by SFRPD. Volunteers aged 14-17 must be accompanied by an adult. We do not have opportunities for volunteers younger than 14 at this time.\n\nRain and high winds may cancel this event.\n\nPlease wear closed-toed shoes, long pants, layers and appropriate weather protection such as sunscreen, hat, and sunglasses.\n\nMeet at the San Francisco Botanical Garden Bookstore.",
+      "lat": 37.76744,
+      "lng": -122.46896,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -274,31 +274,6 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
-      "id": "vol-a074U00001UJ6W9QAL",
-      "source": "sfrpd-volunteer",
-      "name": "SF Bay Coastal Habitat Restoration",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "Heron's Head Park",
-      "when": "Sat · 10:00 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 15,
-      "unlimited": false,
-      "start": "2026-10-03",
-      "end": "2027-03-20",
-      "instructor": "Friends of Heron's Head Park",
-      "activity": "Horticultural Maintenance",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin us for a monthly habitat restoration volunteer workparty at Heron's Head Park, a coastal site of San Francisco Bay in the SE District.  Volunteers will contribute to an ecological project started by community-based organizations in partnership with the Port of San Francisco. Volunteers will assist in the preservation and restoration of a native landscape and bird sanctuary. Tasks will include invasive species removal, landscape maintenance and planting.\n\nAll tools and materials provided. Minimum volunteer age of 6 years old. Children under 12 years old must be accompanied by an adult chaperone. Please wear close-toe shoes, long pants, long-sleeve shirts and bring a water bottle and sun hat.\n\nMeet at the front porch of the EcoCenter",
-      "lat": 37.73832,
-      "lng": -122.37481,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a07Pi00003zIOHmIAO",
       "source": "sfrpd-volunteer",
       "name": "Friends of the Park Presidio Pollinator Garden",
@@ -321,6 +296,31 @@
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the RPD Gardeners and the Friends of the Park Presidio Pollinator Garden in a recurring volunteer workparty on the first Saturday monthly at the Park Presidio Boulevard. All are welcome. Please wear closed-toed shoes, long pants and layers. All supplies, tools, and gloves are provided by RPD. The event will occur rain or shine.\n\nMeet at the pollinator garden sign located at the Southwest corner of Cabrillo Ave and 14th Ave.",
       "lat": 37.77596,
       "lng": -122.47269,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a074U00001UJ6W9QAL",
+      "source": "sfrpd-volunteer",
+      "name": "SF Bay Coastal Habitat Restoration",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "Heron's Head Park",
+      "when": "Sat · 10:00 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 15,
+      "unlimited": false,
+      "start": "2026-10-03",
+      "end": "2027-03-20",
+      "instructor": "Friends of Heron's Head Park",
+      "activity": "Horticultural Maintenance",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin us for a monthly habitat restoration volunteer workparty at Heron's Head Park, a coastal site of San Francisco Bay in the SE District.  Volunteers will contribute to an ecological project started by community-based organizations in partnership with the Port of San Francisco. Volunteers will assist in the preservation and restoration of a native landscape and bird sanctuary. Tasks will include invasive species removal, landscape maintenance and planting.\n\nAll tools and materials provided. Minimum volunteer age of 6 years old. Children under 12 years old must be accompanied by an adult chaperone. Please wear close-toe shoes, long pants, long-sleeve shirts and bring a water bottle and sun hat.\n\nMeet at the front porch of the EcoCenter",
+      "lat": 37.73832,
+      "lng": -122.37481,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -372,30 +372,6 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
-      "id": "vol-a07Pi00005PqdCTIAZ",
-      "source": "sfrpd-volunteer",
-      "name": "Golden Gate Park Rhododendron Dell",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "GGP Sec 2 Rhododendron Dell",
-      "when": "Wed · 10:00 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 5,
-      "unlimited": false,
-      "start": "2026-10-07",
-      "end": "2027-03-17",
-      "activity": "Horticultural Maintenance",
-      "desc": "Join us for volunteering at the Golden Gate Park Rhododendron Dell every 1st and 3rd Wednesday of the month! Come spend the morning with some light weeding, mulching, or pruning.Please RSVP by selecting group sign-up even when you are not registering as a group. We limit to four people per group sign-up, if you have more than four people, please email us at Recparkvolunteer@sfgov.org. Thank you!",
-      "lat": 37.7699,
-      "lng": -122.46429,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a07Pi00003xn9F3IAI",
       "source": "sfrpd-volunteer",
       "name": "Heron's Head Park Volunteer Workparty",
@@ -418,6 +394,30 @@
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group. You can only sign-up a group of 4. If you have a group size of 5 or more, please email us at recparkvolunteer@sfgov.org.\n\nJoin the San Francisco Recreation and Parks Department, the Port of San Francisco and Golden Gate Bird Alliance in our joint stewardship of Heron's Head Park! Heron's Head Park is home to over 100 species of birds and an off-the grid sustainable learning center. Join us every 1st Wednesday of the month and learn about the EcoCenter and Park's robust ecosystem. Volunteer tasks include non-native invasive plant removal, mulch application, watering and planting (seasonally). Come prepared with closed-toe shoes and dress in layers. No experience necessary. Tools are provided. Meet in front of the EcoCenter at the entrance porch",
       "lat": 37.73832,
       "lng": -122.37481,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a07Pi00005PqdCTIAZ",
+      "source": "sfrpd-volunteer",
+      "name": "Golden Gate Park Rhododendron Dell",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "GGP Sec 2 Rhododendron Dell",
+      "when": "Wed · 10:00 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 5,
+      "unlimited": false,
+      "start": "2026-10-07",
+      "end": "2027-03-17",
+      "activity": "Horticultural Maintenance",
+      "desc": "Join us for volunteering at the Golden Gate Park Rhododendron Dell every 1st and 3rd Wednesday of the month! Come spend the morning with some light weeding, mulching, or pruning.Please RSVP by selecting group sign-up even when you are not registering as a group. We limit to four people per group sign-up, if you have more than four people, please email us at Recparkvolunteer@sfgov.org. Thank you!",
+      "lat": 37.7699,
+      "lng": -122.46429,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -468,6 +468,31 @@
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin this knowledgeable group of volunteers and San Francisco Recreation and Park Natural Resource Division in restoring Golden Gate Park’s native oak woodlands. Learn about the importance of our oak woodlands, the wildlife they support and meet some of the oldest trees in the city. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Everyone 14 years old and older is invited; anyone under 14 yo must be accompanied by a guardian. Tools and gloves will be provided. Please be punctual.  \n\n(For more information regarding the volunteer project please contact Friends of Oak Woodlands site steward Robert Bakewell at 415-710-9617 or rcbakewell@gmail.com)\n\nmeet at the Horseshoe Courts entrance on East Conservatory Drive\n\nMeet: at the intersection of Arguello Blvd. and Conservatory Drive",
       "lat": 37.77132,
       "lng": -122.4655,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a074U00001AcWpxQAF",
+      "source": "sfrpd-volunteer",
+      "name": "Duboce Park Volunteer Workparty",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "Duboce Park",
+      "when": "Sat · 10:00 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 8,
+      "unlimited": false,
+      "start": "2026-10-10",
+      "end": "2026-11-14",
+      "instructor": "Friends of Duboce Park",
+      "activity": "Habitat Restoration",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the Friends of Duboce Park at a monthly volunteer workparty from 10 am- 12 noon.  Meet your neighbors and make new friends at this recently renovated park shared by the Lower Haight and Castro neighborhoods. 30 minutes or an hour of your time makes a big difference in the health and appearance of the park. All supplies, tools, and gloves are provided by SFRPD. Please wear closed-toed shoes, long pants and layers. The event will occur rain or shine. Meet at the rear stairs of the Harvey Milk Center next to the Photo Center.\n\nMeet: at the rear stairs of the Harvey Milk Center next to the Photo Center",
+      "lat": 37.769438,
+      "lng": -122.434219,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -522,31 +547,6 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
-      "id": "vol-a074U00001AcWpxQAF",
-      "source": "sfrpd-volunteer",
-      "name": "Duboce Park Volunteer Workparty",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "Duboce Park",
-      "when": "Sat · 10:00 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 8,
-      "unlimited": false,
-      "start": "2026-10-10",
-      "end": "2026-11-14",
-      "instructor": "Friends of Duboce Park",
-      "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the Friends of Duboce Park at a monthly volunteer workparty from 10 am- 12 noon.  Meet your neighbors and make new friends at this recently renovated park shared by the Lower Haight and Castro neighborhoods. 30 minutes or an hour of your time makes a big difference in the health and appearance of the park. All supplies, tools, and gloves are provided by SFRPD. Please wear closed-toed shoes, long pants and layers. The event will occur rain or shine. Meet at the rear stairs of the Harvey Milk Center next to the Photo Center.\n\nMeet: at the rear stairs of the Harvey Milk Center next to the Photo Center",
-      "lat": 37.769438,
-      "lng": -122.434219,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a07Pi00004h2FuUIAU",
       "source": "sfrpd-volunteer",
       "name": "Mission Bay Kids Park Volunteer Workparty",
@@ -598,6 +598,31 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
+      "id": "vol-a074U00001AcPv7QAF",
+      "source": "sfrpd-volunteer",
+      "name": "Buena Vista Neighborhood Association Volunteer Workparty",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "Buena Vista Park",
+      "when": "Sat · 9:00 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 30,
+      "unlimited": false,
+      "start": "2026-10-17",
+      "end": "2027-03-20",
+      "instructor": "Buena Vista Neighborhood Association",
+      "activity": "Habitat Restoration",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the SFRPD gardeners and the Buena Vista Neighborhood Association in a monthly volunteer workparty focused on planting, gardening and maintenance projects throughout the park. Please wear closed-toed shoes and dress in layers. Event takes place rain or shine. Meet at the children's playground at Buena Vista West and Waller St.\n\nMeet: at the Children's Playground at Buena Vista West and Waller St",
+      "lat": 37.769496,
+      "lng": -122.439376,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
       "id": "vol-a07Pi00003zjg0EIAQ",
       "source": "sfrpd-volunteer",
       "name": "White Crowned Sparrow Habitat Restoration at the Bison Paddock",
@@ -623,28 +648,29 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
-      "id": "vol-a074U00001AcPv7QAF",
+      "id": "vol-a074U00001JplqbQAB",
       "source": "sfrpd-volunteer",
-      "name": "Buena Vista Neighborhood Association Volunteer Workparty",
+      "name": "Franklin Square Park Volunteer Workparty",
       "category": "philanthropy",
       "tags": [
         "nature"
       ],
-      "location": "Buena Vista Park",
-      "when": "Sat · 9:00 AM - 12:00 PM",
+      "location": "Franklin Square",
+      "when": "Sat · 9:30 AM - 12:30 PM",
       "dropIn": false,
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 30,
+      "spots": 20,
       "unlimited": false,
       "start": "2026-10-17",
-      "end": "2027-03-20",
-      "instructor": "Buena Vista Neighborhood Association",
-      "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the SFRPD gardeners and the Buena Vista Neighborhood Association in a monthly volunteer workparty focused on planting, gardening and maintenance projects throughout the park. Please wear closed-toed shoes and dress in layers. Event takes place rain or shine. Meet at the children's playground at Buena Vista West and Waller St.\n\nMeet: at the Children's Playground at Buena Vista West and Waller St",
-      "lat": 37.769496,
-      "lng": -122.439376,
+      "end": "2026-10-17",
+      "oneDay": true,
+      "instructor": "Friends of Franklin Square Park",
+      "activity": "Horticultural Maintenance",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the Friends of Franklin Square Park and RPD gardeners in beautifying this neighborhood park. Volunteer gardening tasks include playground clean-up, pulling invasive weeds, litter abatement and planting. Tools and gloves are provided. Please wear closed-toed shoes, long pants and layers. The event will occur rain or shine. Meet at the Children's Play Area on the corner of 17th and Bryant Streets",
+      "lat": 37.764563,
+      "lng": -122.410094,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -673,31 +699,6 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
-      "id": "vol-a074U00001Aed5KQAR",
-      "source": "sfrpd-volunteer",
-      "name": "Mountain Lake Park Volunteer Workparty",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "Mountain Lake Park",
-      "when": "Sat · 10:00 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 7,
-      "unlimited": false,
-      "start": "2026-10-17",
-      "end": "2027-03-20",
-      "instructor": "Friends of Mountain Lake Park",
-      "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the Mountain Lake Park Volunteers and RPD gardeners in beautifying this large neighborhood park with many recreational amenities: children's playground, tennis courts, green lawns, a natural lake and extensive walking paths. Volunteer gardening tasks include native plant restoration, pulling invasive weeds, cleaning up the dog run, and occasional planting of trees. Tools and gloves are provided. Please wear closed-toed shoes, long pants and layers. The event will occur rain or shine. Meet at the Children's Playground near the Lake St & 12th Ave entrance to the park.\n\nMeet: at the Children's Playground near the Lake St & 12th Ave entrance to the park",
-      "lat": 37.787139,
-      "lng": -122.468146,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a074U00001JrFmAQAV",
       "source": "sfrpd-volunteer",
       "name": "EcoCenter Volunteer Workparty 3rd Saturday",
@@ -720,6 +721,31 @@
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group. You can only sign-up a group of 4. If you have a group size of 5 or more, please email us at recparkvolunteer@sfgov.org.\n\nJoin the SF Rec & Park Dept and the Port of San Francisco on the 3rd Saturday monthly in the stewardship of the outdoor play spaces of the EcoCenter at Heron's Head Park. The Nature Exploration Area at Heron's Head Park is an outdoor play space that engages children with nature.  Assist with the horticultural maintenance of this innovative playground and its environs. Tasks include invasive species removal, mulching, watering, pathway maintenance and planting. Please wear closed-toe shoes and dress in layers. No experience necessary. Tools are provided.\n\nMeet in front of the entrance porch of the EcoCenter",
       "lat": 37.73832,
       "lng": -122.37481,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a074U00001Aed5KQAR",
+      "source": "sfrpd-volunteer",
+      "name": "Mountain Lake Park Volunteer Workparty",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "Mountain Lake Park",
+      "when": "Sat · 10:00 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 7,
+      "unlimited": false,
+      "start": "2026-10-17",
+      "end": "2027-03-20",
+      "instructor": "Friends of Mountain Lake Park",
+      "activity": "Habitat Restoration",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the Mountain Lake Park Volunteers and RPD gardeners in beautifying this large neighborhood park with many recreational amenities: children's playground, tennis courts, green lawns, a natural lake and extensive walking paths. Volunteer gardening tasks include native plant restoration, pulling invasive weeds, cleaning up the dog run, and occasional planting of trees. Tools and gloves are provided. Please wear closed-toed shoes, long pants and layers. The event will occur rain or shine. Meet at the Children's Playground near the Lake St & 12th Ave entrance to the park.\n\nMeet: at the Children's Playground near the Lake St & 12th Ave entrance to the park",
+      "lat": 37.787139,
+      "lng": -122.468146,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -849,5 +875,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-09-22T20:54:31.148Z"
+  "fetchedAt": "2026-09-23T03:19:47.755Z"
 }
