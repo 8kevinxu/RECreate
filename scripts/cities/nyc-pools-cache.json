@@ -10925,7 +10925,7 @@
       "desc": "Intermediate pool · 54' x 50' x 12'",
       "season": "Year-round (recreation center members)",
       "seasonal": false,
-      "notice": "Membership Extensions During the summer, we had to temporarily reduce operating hours at several of our indoor pools. We understand the impact this has had on our members, and we want to ensure that our members have as much pool time and access as possible. That said, we are offering qualifying individuals the opportunity to extend their membership by three months for free. Please visit this webpage to learn more and submit a membership extension request. The deadline to opt-in for the extension is October 8, 2026.",
+      "notice": "The indoor pool at Constance Baker Motley Recreation Center is temporarily closed for maintenance on Friday, September 25 from 10:30 a.m. - 12:30 p.m. Membership Extensions During the summer, we had to temporarily reduce operating hours at several of our indoor pools. We understand the impact this has had on our members, and we want to ensure that our members have as much pool time and access as possible. That said, we are offering qualifying individuals the opportunity to extend their membership by three months for free. Please visit this webpage to learn more and submit a membership extension request. The deadline to opt-in for the extension is October 8, 2026.",
       "programs": [
         "lap",
         "family"
@@ -11571,8 +11571,8 @@
   "season": {
     "open": true,
     "label": "Open daily through Labor Day (9/7)",
-    "checked": "2026-09-24",
+    "checked": "2026-09-25",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-09-24T16:30:34.594Z"
+  "fetchedAt": "2026-09-25T04:17:57.292Z"
 }
