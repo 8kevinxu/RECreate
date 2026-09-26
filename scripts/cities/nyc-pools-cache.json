@@ -10360,80 +10360,6 @@
       ]
     },
     {
-      "id": "nyc-pool-tony-dapolito-recreation-center-indoor-pool",
-      "name": "Tony Dapolito Recreation Center Indoor Pool",
-      "address": "Clarkson St. and Seventh Ave. South",
-      "lat": 40.7297,
-      "lng": -74.0055,
-      "phone": "(646) 300-2271",
-      "indoor": true,
-      "accessible": true,
-      "desc": "Intermediate pool · 70' x 21' x 8'",
-      "season": "No pool sessions currently published",
-      "seasonal": false,
-      "notice": "The Tony Dapolito Recreation Center and Outdoor Pool are closed due to the building’s structural condition. Visit the Clarkson Street Corridor Input Portal and our Capital Project Tracker for updates on the site.",
-      "programs": [],
-      "fees": {
-        "effective": "2026-01-01",
-        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
-        "note": "Recreation center membership — indoor pools are members-only",
-        "groups": [
-          {
-            "id": "youth",
-            "label": "Ages 24 and under",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                0
-              ]
-            ]
-          },
-          {
-            "id": "adult",
-            "label": "Adults (25–61)",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                150
-              ],
-              [
-                "Six months",
-                75
-              ]
-            ]
-          },
-          {
-            "id": "senior",
-            "label": "Seniors 62+, veterans, people with disabilities",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                25
-              ]
-            ]
-          }
-        ]
-      },
-      "scheduleUrls": [
-        {
-          "label": "Pool schedule",
-          "url": "https://www.nycgovparks.org/facilities/recreationcenters/M103/schedule#Pool-schedule"
-        }
-      ],
-      "sessions": [
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
-      ]
-    },
-    {
       "id": "nyc-pool-chelsea-recreation-center-pool",
       "name": "Chelsea Recreation Center Pool",
       "address": "West 25th St. between 9th & 10th Aves",
@@ -10669,6 +10595,80 @@
             "end": 945
           }
         ]
+      ]
+    },
+    {
+      "id": "nyc-pool-tony-dapolito-recreation-center-indoor-pool",
+      "name": "Tony Dapolito Recreation Center Indoor Pool",
+      "address": "Clarkson St. and Seventh Ave. South",
+      "lat": 40.7297,
+      "lng": -74.0055,
+      "phone": "(646) 300-2271",
+      "indoor": true,
+      "accessible": true,
+      "desc": "Intermediate pool · 70' x 21' x 8'",
+      "season": "No pool sessions currently published",
+      "seasonal": false,
+      "notice": "The Tony Dapolito Recreation Center and Outdoor Pool are closed due to the building’s structural condition. Visit the Clarkson Street Corridor Input Portal and our Capital Project Tracker for updates on the site.",
+      "programs": [],
+      "fees": {
+        "effective": "2026-01-01",
+        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
+        "note": "Recreation center membership — indoor pools are members-only",
+        "groups": [
+          {
+            "id": "youth",
+            "label": "Ages 24 and under",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                0
+              ]
+            ]
+          },
+          {
+            "id": "adult",
+            "label": "Adults (25–61)",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                150
+              ],
+              [
+                "Six months",
+                75
+              ]
+            ]
+          },
+          {
+            "id": "senior",
+            "label": "Seniors 62+, veterans, people with disabilities",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                25
+              ]
+            ]
+          }
+        ]
+      },
+      "scheduleUrls": [
+        {
+          "label": "Pool schedule",
+          "url": "https://www.nycgovparks.org/facilities/recreationcenters/M103/schedule#Pool-schedule"
+        }
+      ],
+      "sessions": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -11571,8 +11571,8 @@
   "season": {
     "open": true,
     "label": "Open daily through Labor Day (9/7)",
-    "checked": "2026-09-25",
+    "checked": "2026-09-26",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-09-25T22:48:38.822Z"
+  "fetchedAt": "2026-09-26T04:51:00.670Z"
 }
