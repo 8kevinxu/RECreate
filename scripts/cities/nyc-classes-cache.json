@@ -167,56 +167,6 @@
       "url": "https://www.nycgovparks.org/events/2026/10/10/andalusian-music-event"
     },
     {
-      "id": "nycp-anthotype-workshop-with-flor-khan-clifton-place-memorial-garden-720",
-      "source": "nycparks",
-      "name": "Anthotype Workshop with Flor Khan",
-      "category": "learn",
-      "tags": [
-        "arts"
-      ],
-      "location": "Clifton Place Memorial Garden",
-      "when": "Sat · 12:00 PM - 3:30 PM",
-      "dropIn": true,
-      "noOnlineReg": true,
-      "cost": "$40 per person All sales revenue will go towards the facilitating artist & community garden",
-      "ages": "",
-      "minAge": 0,
-      "spots": 0,
-      "unlimited": true,
-      "start": "2026-09-26",
-      "end": "2026-09-26",
-      "oneDay": true,
-      "desc": "Join the Clifton Place Memorial Garden & Park garden group with artist Flor Khan as we create a communal space, learning about natural dyeing, anthotypes and the significance of turmeric South Asian communities. Attendees will help to create a community altar & produce their own piece all while learning about our garden & how to get involved.\n\nRSVP here",
-      "lat": 40.688571,
-      "lng": -73.954667,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/anthotype-workshop-with-flor-khan"
-    },
-    {
-      "id": "nycp-art-in-the-garden-plants-and-portraiture-patchen-community-square-630",
-      "source": "nycparks",
-      "name": "Art in the Garden: Plants and Portraiture",
-      "category": "nature",
-      "tags": [
-        "arts"
-      ],
-      "location": "Patchen Community Square",
-      "when": "Sat · 10:30 AM - 1:30 PM",
-      "dropIn": false,
-      "noOnlineReg": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": null,
-      "unlimited": false,
-      "start": "2026-09-26",
-      "end": "2026-09-26",
-      "oneDay": true,
-      "desc": "Free artmaking for all ages! Drop in anytime between 10:30am-1:30pm. An RSVP is helpful to us for planning, but not at all required.\n\nNo prior artmaking experience needed -- all skill levels and age groups welcome! Supplies, prompts, and guidance provided.\n\n✨ September theme: plants & portraiture\nWe&#x27;ll explore multiple different techniques and ways of composing a self- and/or plant-portrait through drawing, collage, and photography.\n\n🌱 While you&#x27;re here... learn more about PCSG, check out the plants that are growing, grab a book from our little free library, or simply hang out and meet your neighbors\n\nHope to see you in the garden!",
-      "lat": 40.686505,
-      "lng": -73.927241,
-      "url": "https://partiful.com/e/QxzjoVCEorwmz5RvvWB2"
-    },
-    {
       "id": "nycp-art-in-the-park-kids-playground-large-in-washington-square-park-900",
       "source": "nycparks",
       "name": "Art in the Park",
@@ -246,6 +196,32 @@
       "lat": 40.730795,
       "lng": -73.996736,
       "url": "https://www.nycgovparks.org/events/2026/09/30/art-in-the-park"
+    },
+    {
+      "id": "nycp-arts-crafts-showcase-carmine-carro-community-center-in-marine-park-720",
+      "source": "nycparks",
+      "name": "Arts & Crafts Showcase",
+      "category": "learn",
+      "tags": [
+        "arts"
+      ],
+      "borough": "Brooklyn",
+      "location": "Carmine Carro Community Center (in Marine Park)",
+      "when": "Sun · 12:00 PM - 3:00 PM",
+      "dropIn": true,
+      "noOnlineReg": true,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 0,
+      "unlimited": true,
+      "start": "2026-10-11",
+      "end": "2026-10-11",
+      "oneDay": true,
+      "desc": "Feast your eyes on the creativity of local artisans at this annual event.",
+      "lat": 40.607944,
+      "lng": -73.937465,
+      "url": "https://www.nycgovparks.org/events/2026/10/11/arts-crafts-showcase1"
     },
     {
       "id": "nycp-author-talk-with-david-rocco-fireboats-of-the-fdny-bayside-historical-society-in-fort-totten-park-1170",
@@ -323,30 +299,29 @@
       "url": "https://www.nycgovparks.org/events/2026/10/03/autumn-open-mic"
     },
     {
-      "id": "nycp-autumn-wildflower-id-walk-lawn-area-in-bushwick-inlet-park-780",
+      "id": "nycp-autumn-volunteer-day-el-coqui-community-garden-720",
       "source": "nycparks",
-      "name": "Autumn Wildflower ID Walk",
+      "name": "Autumn Volunteer Day",
       "category": "nature",
       "tags": [
-        "youth"
+        "philanthropy"
       ],
-      "borough": "Brooklyn",
-      "location": "Lawn Area (in Bushwick Inlet Park)",
-      "when": "Sun · 1:00 PM - 2:00 PM",
+      "location": "El Coqui Community Garden",
+      "when": "Sun · 12:00 PM - 4:00 PM",
       "dropIn": true,
       "noOnlineReg": true,
       "cost": "Free",
-      "ages": "Best for kids",
+      "ages": "",
       "minAge": 0,
       "spots": 0,
       "unlimited": true,
-      "start": "2026-09-27",
-      "end": "2026-09-27",
+      "start": "2026-10-11",
+      "end": "2026-10-11",
       "oneDay": true,
-      "desc": "Join the Urban Park Rangers on a walk through Bushwick Inlet Park in search of autumn wildflowers. Watch pollinators preparing for winter and learn about how asters and other fall flowers are beneficial and beautiful parts of our local ecosystem.",
-      "lat": 40.722801,
-      "lng": -73.961998,
-      "url": "https://www.nycgovparks.org/events/2026/09/27/autumn-wildflower-id-walk"
+      "desc": "Join the garden group for a volunteer day at El Coqui Liberation Community Garden to prepare for winter. Help weed, harvest, prune and mulch the garden and prepare for winter crops.",
+      "lat": 40.825276,
+      "lng": -73.912984,
+      "url": "https://www.nycgovparks.org/events/2026/10/11/autumn-volunteer-day"
     },
     {
       "id": "nycp-basic-bootcamp-greenbelt-recreation-center-in-blood-root-valley-1140",
@@ -427,29 +402,6 @@
       "lat": 40.842602,
       "lng": -73.934303,
       "url": "https://www.nycgovparks.org/events/2026/10/03/basketball-clinic-at-highbridge-recreation-center-ages-5-to-7"
-    },
-    {
-      "id": "nycp-beginner-fishing-crotona-nature-center-in-crotona-park-780",
-      "source": "nycparks",
-      "name": "Beginner Fishing",
-      "category": "nature",
-      "borough": "Bronx",
-      "location": "Crotona Nature Center (in Crotona Park)",
-      "when": "Sun · 1:00 PM - 2:30 PM",
-      "dropIn": true,
-      "noOnlineReg": true,
-      "cost": "Free",
-      "ages": "8 yrs +",
-      "minAge": 8,
-      "spots": 0,
-      "unlimited": true,
-      "start": "2026-09-27",
-      "end": "2026-09-27",
-      "oneDay": true,
-      "desc": "Want to go fishing but don't know how or where to start? Join our Urban Park Rangers for free lessons! Learn how to properly use a fishing rod or cast a net. Our experienced Rangers teach the ethics of fishing and the ecology of our waterways. All equipment will be provided. Recommended for ages 8 and older.",
-      "lat": 40.837002,
-      "lng": -73.893402,
-      "url": "https://www.nycgovparks.org/events/2026/09/27/beginner-fishing"
     },
     {
       "id": "nycp-benefits-of-using-herbs-for-healthy-living-green-valley-community-garden-1020",
@@ -549,29 +501,6 @@
       "lat": 40.851662,
       "lng": -73.82469,
       "url": "https://www.nycgovparks.org/events/2026/10/04/birding-fall-migration"
-    },
-    {
-      "id": "nycp-birding-fall-migration-west-116th-street-and-riverside-drive-in-riverside-park-780",
-      "source": "nycparks",
-      "name": "Birding: Fall Migration",
-      "category": "nature",
-      "borough": "Manhattan",
-      "location": "West 116th Street and Riverside Drive (in Riverside Park)",
-      "when": "Sun · 1:00 PM - 2:30 PM",
-      "dropIn": true,
-      "noOnlineReg": true,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 0,
-      "unlimited": true,
-      "start": "2026-09-27",
-      "end": "2026-09-27",
-      "oneDay": true,
-      "desc": "Our Urban Park Rangers will guide you to the best viewing spots in New York City to see fall migratory birds. Birding programs are appropriate for all skill levels and beginners are welcome. Join the Urban Park Rangers on a birding adventure around Riverside Park to look for fall migrants that include warblers, raptors and more!",
-      "lat": 40.8088,
-      "lng": -73.966003,
-      "url": "https://www.nycgovparks.org/events/2026/09/27/birding-fall-migration"
     },
     {
       "id": "nycp-birding-hawk-watch-pelham-bay-nature-center-in-pelham-bay-park-660",
@@ -715,17 +644,17 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 19,
+      "spots": 20,
       "unlimited": false,
-      "regDeadline": "Registration ends on September 26th, 2026 at 10:30 AM",
-      "start": "2026-09-26",
+      "regDeadline": "Registration ends on October 3rd, 2026 at 10:30 AM",
+      "start": "2026-10-03",
       "end": "2026-10-10",
       "oneDay": false,
       "instructor": "Jasmine Sturgis",
       "desc": " A bodyweight circuit class combining cardio, strength, and core-focused movements for a dynamic full-body workout! This class welcomes all fitness levels. ",
       "lat": 40.695695,
       "lng": -73.991196,
-      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=b2ac95e2-118b-403e-97ff-fc58ccb480ff&occurrenceDate=20260926"
+      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=b2ac95e2-118b-403e-97ff-fc58ccb480ff&occurrenceDate=20261003"
     },
     {
       "id": "nycp-bodyweight-circuit-training-brooklyn-public-library-new-utrecht-1050",
@@ -767,18 +696,18 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 3,
-        "first": "Sep 26",
+        "count": 2,
+        "first": "Oct 3",
         "last": "Oct 10"
       },
-      "start": "2026-09-26",
+      "start": "2026-10-03",
       "end": "2026-10-10",
       "oneDay": false,
       "instructor": "Rachel Prozeller",
       "desc": "This circuit training class combines bodyweight resistance training and conditioning to provide you with a dynamic full-body workout. Whether you are a beginner who wants to learn proper form or know your way around the gym and looking for a challenge- this class is for you! Come engage in exercises that target all muscle groups and will get your heart pumping.",
       "lat": 40.748299,
       "lng": -74.002197,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/bodyweight-circuit-training"
+      "url": "https://www.nycgovparks.org/events/2026/10/03/bodyweight-circuit-training"
     },
     {
       "id": "nycp-bodyweight-circuit-training-dance-room-in-highbridge-park-1095",
@@ -1049,17 +978,17 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 17,
+      "spots": 20,
       "unlimited": false,
-      "regDeadline": "Registration ends on September 26th, 2026 at 10:00 AM",
-      "start": "2026-09-26",
+      "regDeadline": "Registration ends on October 3rd, 2026 at 10:00 AM",
+      "start": "2026-10-03",
       "end": "2026-10-10",
       "oneDay": false,
       "instructor": "Anushya Mani",
       "desc": "BollyX is a Bollywood inspired cardio dance fitness class inspired and is driven by the heart-pumping, energetic rhythms of cultural music from all parts of India. The class embodies dynamic choreography and easy-to-follow dance aerobics. Choreography and workout routines have been set so everyone can enjoy the class (modifications for individual steps can be provided in class). No dance experience or Bollywood familiarity is required - just come with comfortable shoes, water, and your smiles!",
       "lat": 40.7201,
       "lng": -73.949997,
-      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=4d838749-531a-4048-a31f-bbf96cf87d57&occurrenceDate=20260926"
+      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=4d838749-531a-4048-a31f-bbf96cf87d57&occurrenceDate=20261003"
     },
     {
       "id": "nycp-boo-bash-in-the-bronx-st-james-park-720",
@@ -1159,18 +1088,13 @@
       "minAge": 0,
       "spots": 0,
       "unlimited": true,
-      "sessions": {
-        "count": 2,
-        "first": "Sep 26",
-        "last": "Oct 10"
-      },
-      "start": "2026-09-26",
+      "start": "2026-10-10",
       "end": "2026-10-10",
-      "oneDay": false,
-      "desc": "Join the Fort Tryon Park Conservancy and NYC Parks for cleaning in Fort Tryon Park! Help beautify the park along the Broadway Promenade. Meet at the Broadway Greeting Garden at the Arden Street/Broadway entrance. Wear long pants, sturdy shoes, and get ready to improve the park's ecology by removing debris and helping site preparations.  Tools and gloves will be provided but please bring a filled water bottle.\n\nGroups of 5+ must RSVP by emailing john.kelly@parks.nyc.gov 2 weeks in advance.\n\nVolunteers under age 18 must be accompanied by an adult.\n\nBeautification Days along the eastern expanse of the park take place on the 2nd & 4th Saturdays of each month from March to November. The Fort Tryon Park Conservancy supports these volunteer opportunities by underwriting tools, horticultural supplies, and NYC Parks staffing to oversee projects.",
+      "oneDay": true,
+      "desc": "Join the Fort Tryon Park Conservancy and NYC Parks for some cleaning in Fort Tryon Park! Help beautify the park along the Broadway Promenade. Meet at the Broadway Greeting Garden at the Arden Street/Broadway entrance. Wear long pants, sturdy shoes, and get ready to improve the park's ecology by removing debris and helping site preparations.  Tools and gloves will be provided but please bring a filled water bottle.\n\nGroups of 5+ must RSVP by emailing info@FortTryonParkTrust.org 2 weeks in advance.\n\nVolunteers under age 18 must be accompanied by an adult.\n\nBeautification Days along the eastern expanse of the park take place on the 2nd & 4th Saturdays of each month from March to November. The Fort Tryon Park Conservancy supports these volunteer opportunities by underwriting tools, horticultural supplies, and NYC Parks staffing to oversee projects.",
       "lat": 40.86463,
       "lng": -73.929124,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/broadway-beautification"
+      "url": "https://www.nycgovparks.org/events/2026/10/10/broadway-beautification"
     },
     {
       "id": "nycp-bronx-green-up-new-roots-harvest-fair-new-date-new-roots-community-farm-840",
@@ -1200,29 +1124,6 @@
       "lat": 40.821155,
       "lng": -73.925004,
       "url": "https://www.nycgovparks.org/events/2026/09/29/bronx-greenup-new-roots-harvest-fair-new-date"
-    },
-    {
-      "id": "nycp-brooklyn-pop-up-traditional-makers-fair-old-stone-house-in-washington-park-600",
-      "source": "nycparks",
-      "name": "Brooklyn Pop-Up: Traditional Makers Fair",
-      "category": "arts",
-      "borough": "Brooklyn",
-      "location": "Old Stone House (in Washington Park)",
-      "when": "Sat · 10:00 AM - 5:00 PM",
-      "dropIn": true,
-      "noOnlineReg": true,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 0,
-      "unlimited": true,
-      "start": "2026-09-26",
-      "end": "2026-09-26",
-      "oneDay": true,
-      "desc": "Brooklyn Pop-Up produces curated storefront and outdoor retail events with a revolving group of artisans and vendors. They host contemporary fashion, accessories, home goods, beauty and wellness, handmade jewelry vendors, ceramic artists, pet accessories, boutique kids collections, as well as fine artists, and artisanal distillers. They emphasize local craftspeople, sustainable design, and handmade wares.\n\nThis month they will host the Traditional Makers Fair, spotlighting textile arts, print design, glassblowing, ceramics, woodworking, weaving, knitting, crochet & more",
-      "lat": 40.672939,
-      "lng": -73.984604,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/brooklyn-popup-traditional-makers-fair"
     },
     {
       "id": "nycp-built-to-move-circuit-training-brooklyn-public-library-flatbush-1080",
@@ -1313,15 +1214,15 @@
       "minAge": 18,
       "spots": 59,
       "unlimited": false,
-      "regDeadline": "Registration ends on September 26th, 2026 at 10:00 AM",
-      "start": "2026-09-26",
+      "regDeadline": "Registration ends on October 3rd, 2026 at 10:00 AM",
+      "start": "2026-10-03",
       "end": "2026-10-10",
       "oneDay": false,
       "instructor": "Chris Patt",
       "desc": "This high-energy total body workout will keep you moving with challenging yet fun bodyweight circuits. Cardio Circuit Blast is a heart-pumping, high-intensity class that is open to all levels and the perfect way to increase your overall endurance!  \\r\n\\r\nParticipants must bring locks to lock up their bags. The center does not allow anyone to bring their bags to the dance room except: towel, water and phone. ",
       "lat": 40.793499,
       "lng": -73.936699,
-      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=61a15d75-daee-4c52-86a4-f9624bafbec0&occurrenceDate=20260926"
+      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=61a15d75-daee-4c52-86a4-f9624bafbec0&occurrenceDate=20261003"
     },
     {
       "id": "nycp-cardio-dance-dance-room-in-jackie-robinson-park-990",
@@ -1506,55 +1407,6 @@
       "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=71388b7f-5452-4c59-a458-2c8887b90c2c&occurrenceDate=20260930"
     },
     {
-      "id": "nycp-celebrate-50-years-through-the-five-boroughs-with-open-run-astoria-park-astoria-park-525",
-      "source": "nycparks",
-      "name": "Celebrate 50 Years Through the Five Boroughs with Open Run: Astoria Park",
-      "category": "fitness",
-      "borough": "Queens",
-      "location": "Astoria Park",
-      "when": "Sat · 8:45 AM - 11:00 AM",
-      "dropIn": false,
-      "noOnlineReg": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": null,
-      "unlimited": false,
-      "start": "2026-09-26",
-      "end": "2026-09-26",
-      "oneDay": true,
-      "desc": "5 Boroughs. 5 Celebrations!\n\nIn honor of the 50th anniversary of the 5-boro New York City Marathon, we're hosting special Open Run events in each of the five boroughs. Join us to celebrate the unique community spirit and culture of each borough, united by Open Run and the transformative power of movement.\n\nNYRR Open Run brings free, 5K weekly community-led runs, to neighborhood parks across the greater New York City area. The program is free and open to runners and walkers of all ages, abilities, and experience levels.\n\nAstoria Park is home to the oldest and largest pool in New York City. The park features views of Manhattan and a newly renovated track funded by the Anchor Parks initiative.",
-      "lat": 40.779102,
-      "lng": -73.922378,
-      "url": "https://www.nyrr.org/openrun/parks/astoria-park?utm_source=NYC+Gov+Parks&utm_medium=Website+&utm_campaign=Astoria+Park"
-    },
-    {
-      "id": "nycp-celebrate-autumn-with-us-chestnut-street-garden-840",
-      "source": "nycparks",
-      "name": "Celebrate Autumn with Us!",
-      "category": "nature",
-      "tags": [
-        "learn",
-        "arts"
-      ],
-      "location": "Chestnut Street Garden",
-      "when": "Sat · 2:00 PM - 6:00 PM",
-      "dropIn": true,
-      "noOnlineReg": true,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 0,
-      "unlimited": true,
-      "start": "2026-09-26",
-      "end": "2026-09-26",
-      "oneDay": true,
-      "desc": "Join us for a joyful afternoon as we celebrate the changing season, the beauty of autumn, and the strength of our community! Enjoy different types of fresh herbal infusions made with herbs from the garden, hot pumpkin colada with grilled semolina bread, and grilled chicken with pesto salad.",
-      "lat": 40.687401,
-      "lng": -73.876503,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/celebrate-autumn-with-us"
-    },
-    {
       "id": "nycp-chair-yoga-ballroom-in-john-j-carty-park-720",
       "source": "nycparks",
       "name": "Chair Yoga",
@@ -1679,9 +1531,14 @@
       "minAge": 0,
       "spots": 0,
       "unlimited": true,
+      "sessions": {
+        "count": 2,
+        "first": "Oct 4",
+        "last": "Oct 11"
+      },
       "start": "2026-10-04",
-      "end": "2026-10-04",
-      "oneDay": true,
+      "end": "2026-10-11",
+      "oneDay": false,
       "desc": "Riverside Park Conservancy and our generous supporters present the Fall 2026 edition of Charlotte Mayerson's Overlook Concert series, featuring talent from Brownstone Brass, The Manhattan School of Music's Center for Career Readiness & Community Impact, and French Cookin' Blues Band. October 4: Brownstone Brass Quintet - Classic brass quintet repertoire, original arrangements and compositions, new music and more.October 11: A Jazz Ensemble from the Manhattan School of Music – A glorious sound floats over the park as these student musicians play traditional and contemporary music.October 18: French Cookin' Blues – This Blues Hall of Fame band plays authentic Blues from around the country for a special New York sound.",
       "lat": 40.809299,
       "lng": -73.966904,
@@ -2369,32 +2226,6 @@
       "url": "https://bronxriver.org/event/community-paddle-at-the-bronx-zoo"
     },
     {
-      "id": "nycp-community-work-day-wyckoff-farmhouse-museum-in-fidler-wyckoff-house-park-660",
-      "source": "nycparks",
-      "name": "Community Work Day",
-      "category": "nature",
-      "tags": [
-        "philanthropy"
-      ],
-      "borough": "Brooklyn",
-      "location": "Wyckoff Farmhouse Museum (in Fidler-Wyckoff House Park)",
-      "when": "Sat · 11:00 AM - 1:00 PM",
-      "dropIn": false,
-      "noOnlineReg": false,
-      "cost": "Free",
-      "ages": "10 yrs +",
-      "minAge": 10,
-      "spots": null,
-      "unlimited": false,
-      "start": "2026-09-26",
-      "end": "2026-09-26",
-      "oneDay": true,
-      "desc": "Roll up your sleeves and get your hands dirty at an upcoming volunteer day!\n\nStop by the Wyckoff Urban Farm on the fourth Saturday of every month from April-October between 11AM-1PM to to volunteer alongside our farm staff to care for our space and participate in special work projects. Learn about what we're growing, get to know our farmers, and get your hands dirty with farm projects!\n\nTickets are not required to attend, but it's always helpful to RSVP so we can plan projects accordingly.\n\nTHINGS TO KNOW:This event is family-friendly (ages 10+). We welcome individuals and families with kids ages 10 and over but children must be accompanied by an adult for the duration of their stay.Dress for the mess! Make sure to wear clothes that you don't mind getting messy in and wear close toed shoes to protect your feet.Come Prepared: We will provide all the tools and protective gear for your projects but coming prepared with a hat, long sleeved shirt, sunscreen, and bug spray is always a good idea.Facilities: Water fountain and public restrooms are available on-site. We recommend bringing snacks and a refillable water bottle.Weather: Community Work Days are rain or shine. If extreme weather is expected, we will update this page and contact those on the RSVP list to cancel.Volunteer Groups: This event is intended for individuals, families, and small groups of 5 or fewer participants. Community organizations and corporate volunteer groups are welcome to make advance reservations by emailing info@wyckoffmuseum.org to discuss scheduling options and availability.",
-      "lat": 40.644318,
-      "lng": -73.920776,
-      "url": "https://www.eventbrite.com/e/community-work-day-on-the-wyckoff-urban-farm-tickets-1986552191080?aff=oddtdtcreator"
-    },
-    {
       "id": "nycp-compost-workshop-with-marisa-dedominicis-citizens-for-a-better-community-garden-720",
       "source": "nycparks",
       "name": "Compost Workshop with Marisa DeDominicis",
@@ -2468,6 +2299,29 @@
       "lat": 40.560899,
       "lng": -74.100719,
       "url": "https://www.nycgovparks.org/events/2026/10/04/creatures-of-the-night-bats"
+    },
+    {
+      "id": "nycp-creatures-of-the-night-bats-entrance-215th-place-and-33rd-road-in-crocheron-park-1080",
+      "source": "nycparks",
+      "name": "Creatures of the Night: Bats",
+      "category": "nature",
+      "borough": "Queens",
+      "location": "Entrance - 215th Place and 33rd Road (in Crocheron Park)",
+      "when": "Sun · 6:00 PM - 7:30 PM",
+      "dropIn": true,
+      "noOnlineReg": true,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 0,
+      "unlimited": true,
+      "start": "2026-10-11",
+      "end": "2026-10-11",
+      "oneDay": true,
+      "desc": "As the night falls, our fuzzy bat companion rises. Let the Urban Park Rangers be your guide as we learn more about these precious winged friends.",
+      "lat": 40.772099,
+      "lng": -73.769402,
+      "url": "https://www.nycgovparks.org/events/2026/10/11/creatures-of-the-night-bats"
     },
     {
       "id": "nycp-crotona-park-work-together-wednesday-crotona-tennis-house-in-crotona-park-600",
@@ -2770,12 +2624,12 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 3,
+        "count": 4,
         "first": "Oct 3",
-        "last": "Oct 10"
+        "last": "Oct 11"
       },
       "start": "2026-10-03",
-      "end": "2026-10-10",
+      "end": "2026-10-11",
       "oneDay": false,
       "desc": "Take a docent led tour of the Conference House Museum also known as the Billiopp House located on Staten Island, New York and overlooking the Raritan Bay. This two-story grand fieldstone house was built by powerful landowner Royal Navy Captain Christopher Billopp About 1680. He wanted a home that would be an expression of his massive wealth, as well as a symbol of the stability of the colonies.  Nearly a century later the Billopp House had become a center of colonial hospitality. Billopp's great-grandson, loyal to the crown, offered his ancestral family home as the site of a meeting of great importance.\n\nIt is Named The Conference House because it is the site of the only Peace Conference of the American Revolution. Continental Congress representatives Benjamin Franklin, John Adams and Edward Rutledge met here with British Admiral Lord Howe at his request on September 11,1776 in an unsuccessful effort to stop the American Revolution. The Americans had already written and signed the Declaration of Independence on July 4,1776 and their course would not be altered. Though the group discusses options for a peaceful cessation of hostilities, no agreement was reached and the fighting continued for seven years.\n\nToday the Conference House Museum presents an interpretation of an 18th century colonial manor to the general public. The building is owned by NYC Parks and operated by the Conference House Association as a historic house museum in partnership with the Historic Trust of NYC.",
       "lat": 40.501999,
@@ -2918,6 +2772,34 @@
       "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=44d94a1a-fa91-40fa-8cb1-48ab509ead14&occurrenceDate=20260929"
     },
     {
+      "id": "nycp-ensemble-in-process-the-medieval-chronicles-old-stone-house-in-washington-park-930",
+      "source": "nycparks",
+      "name": "Ensemble in Process: The Medieval Chronicles",
+      "category": "learn",
+      "tags": [
+        "music",
+        "arts",
+        "performances"
+      ],
+      "borough": "Brooklyn",
+      "location": "Old Stone House (in Washington Park)",
+      "when": "Sun · 3:30 PM - 5:00 PM",
+      "dropIn": false,
+      "noOnlineReg": false,
+      "cost": "$18 - $25 + fees",
+      "ages": "",
+      "minAge": 0,
+      "spots": null,
+      "unlimited": false,
+      "start": "2026-10-11",
+      "end": "2026-10-11",
+      "oneDay": true,
+      "desc": "Part concert, part theatrical experience, Ensemble in Process presents The Medieval Chronicles which will take the audience through one's journey of 'The Dark Night of The Soul', weaving together a narrative of poetry, music and dance of the Medieval, Renaissance and Contemporary Eras. As we enter our own era unknown, join us for a celebration of some of the most beautiful and wise voices of the past and present as we seek to shine a little light in the dark.\n\nThe Medieval Chronicles will feature music by Hildegard von Bingen, Thomas Tallis, William Purcell, Adam de la Halle, Derek David, Brian Mark, Missy Mazzoli, and Bjork, with texts integrated by poets William Blake, Maya Angelou, Rumi, Dylan Thomas, and Dante, among others. Performances by Brian Mark, Allyson Clare, Seth Gilman, Rose Hegele, Nick Pauly, Nathaniel Grohmann, and Andres Guerra. Narration: Seth Gilman. Dancers: Charlotte Aucella and Carol Chave.\n\nPlease note, weather permitting, the beginning of the performance in Act I will commence on the outside stage, as the audience will accompany the narrator back inside the concert hall. At the end of Act III, the audience will follow the performers outside as the concert will therefore finish outdoors.",
+      "lat": 40.672939,
+      "lng": -73.984604,
+      "url": "https://www.tickettailor.com/events/ensembleinprocess/2238072"
+    },
+    {
       "id": "nycp-epa-presentation-impacts-of-tire-pollution-on-the-bronx-river-virtual-online-events-1050",
       "source": "nycparks",
       "name": "EPA Presentation: Impacts of Tire Pollution on the Bronx River",
@@ -2984,17 +2866,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 3,
-        "first": "Sep 26",
+        "count": 2,
+        "first": "Oct 3",
         "last": "Oct 10"
       },
-      "start": "2026-09-26",
+      "start": "2026-10-03",
       "end": "2026-10-10",
       "oneDay": false,
       "desc": "The field is set, the stands are waiting to be filled with cheers, and the countdown clock has officially begun. This season, boys in the 10 U (8 – 10 yrs.), 12 U (10 – 12 yrs.), 14 U (12 – 14 yrs.), age divisions are invited to join NYC Parks Flag Football league. Join us as we celebrate not just the touchdowns,\nbut the teamwork, the laughter, and the friendships that make flag football special.\n\nPlease take note of our participating recreation centers:\nSt. James Recreation Center | 2530 Jerome Ave., Bronx, N.Y.\nEmail Daijuan.Perez@parks.nyc.gov or call (646) 477-2642\n\nKwame Ture Recreation Center | 1527 Jesup Ave., Bronx, N.Y.\nEmail Pharon.Hickman@parks.nyc.gov, Veshnu.Moorleedhar@parks.nyc.gov or call (718) 293-5934\n\nHunts Point Recreation Center | 765 Manida St., Bronx, N.Y.\nEmail Chris.Johnson@parks.nyc.gov, Joshua.Coleman@parks.nyc.gov or call (718) 860-8844\n\nAll games will be held at Starlight Park every Saturday beginning September 26, 2026",
       "lat": 40.833639,
       "lng": -73.882293,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/every-play-counts-every-player-matters"
+      "url": "https://www.nycgovparks.org/events/2026/10/03/every-play-counts-every-player-matters"
     },
     {
       "id": "nycp-extend-your-growing-season-with-low-tunnels-karol-s-urban-farm-castle-hill-nycha-660",
@@ -3059,7 +2941,7 @@
       ],
       "borough": "Bronx",
       "location": "Wave Hill",
-      "when": "Sun & Sat · 10:00 AM - 1:00 PM",
+      "when": "Sun · 10:00 AM - 1:00 PM",
       "dropIn": true,
       "noOnlineReg": true,
       "cost": "Free with admission to the grounds.",
@@ -3067,18 +2949,13 @@
       "minAge": 0,
       "spots": 0,
       "unlimited": true,
-      "sessions": {
-        "count": 2,
-        "first": "Sep 26",
-        "last": "Sep 27"
-      },
-      "start": "2026-09-26",
+      "start": "2026-09-27",
       "end": "2026-09-27",
-      "oneDay": false,
+      "oneDay": true,
       "desc": "Ever wanted to see the world through an animal's eyes? Join us for a project in collaboration with Wave Hill Winter Workspace artist Sari Carel, where families will have the opportunity to create their own map from the perspective of the many creatures that can be found on our grounds.\n\nRegistration not required.\n\nWave Hill House is wheelchair-accessible. There is an accessible, ground-level entrance at the front of the building with a power-assist door. The restroom on the ground level is all-gender and ADA-compliant. Additional ADA-compliant restrooms are available on the lower level, which can be accessed by elevator.",
       "lat": 40.898701,
       "lng": -73.912498,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/family-art-project-animal-mapmaking"
+      "url": "https://www.nycgovparks.org/events/2026/09/27/family-art-project-animal-mapmaking"
     },
     {
       "id": "nycp-family-art-project-corn-husk-dolls-wave-hill-600",
@@ -3091,7 +2968,7 @@
       ],
       "borough": "Bronx",
       "location": "Wave Hill",
-      "when": "Sat · 10:00 AM - 1:00 PM",
+      "when": "Sun & Sat · 10:00 AM - 1:00 PM",
       "dropIn": true,
       "noOnlineReg": true,
       "cost": "Free with admission to the grounds.",
@@ -3099,9 +2976,14 @@
       "minAge": 0,
       "spots": 0,
       "unlimited": true,
+      "sessions": {
+        "count": 2,
+        "first": "Oct 10",
+        "last": "Oct 11"
+      },
       "start": "2026-10-10",
-      "end": "2026-10-10",
-      "oneDay": true,
+      "end": "2026-10-11",
+      "oneDay": false,
       "desc": "Join us in celebrating Indigenous People's Day. Explore corn's role in indigenous cultures and learn about its versatility as a food and art material.\n\nAt 11:30am families can enjoy a storytime program in the Gund Theater, all ages welcome. We will be celebrating Indigenous People's Day with the book When the Shadbush Blooms by Carla Messinger and Susan Katz.\n\nRegistration not required.\n\nWave Hill House is wheelchair-accessible. There is an accessible, ground-level entrance at the front of the building with a power-assist door. The restroom on the ground level is all-gender and ADA-compliant. Additional ADA-compliant restrooms are available on the lower level, which can be accessed by elevator.",
       "lat": 40.898701,
       "lng": -73.912498,
@@ -3141,30 +3023,6 @@
       "url": "https://www.nycgovparks.org/events/2026/10/03/family-art-project-whimsical-windchimes"
     },
     {
-      "id": "nycp-family-bingo-at-j-hood-wright-j-hood-wright-recreation-center-in-j-hood-wright-park-660",
-      "source": "nycparks",
-      "name": "Family Bingo at J. Hood Wright",
-      "category": "social",
-      "borough": "Manhattan",
-      "location": "J. Hood Wright Recreation Center (in J. Hood Wright Park)",
-      "when": "Sat · 11:00 AM - 1:00 PM",
-      "dropIn": false,
-      "noOnlineReg": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 0,
-      "unlimited": false,
-      "start": "2026-09-26",
-      "end": "2026-09-26",
-      "oneDay": true,
-      "instructor": "Carol Smith",
-      "desc": "Bring the Family & Join Us for a Fun-Filled Afternoon. Come out and enjoy an exciting afternoon of Bingo with family and Friends and your community!",
-      "lat": 40.846576,
-      "lng": -73.940826,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/family-bingo-at-j-hood-wright"
-    },
-    {
       "id": "nycp-family-camping-overnight-at-the-unisphere-unisphere-in-flushing-meadows-corona-park-1080",
       "source": "nycparks",
       "name": "Family Camping: Overnight at the Unisphere",
@@ -3172,13 +3030,13 @@
       "borough": "Queens",
       "location": "Unisphere (in Flushing Meadows Corona Park)",
       "when": "Fri · 6:00 PM - 7:00 AM",
-      "dropIn": true,
-      "noOnlineReg": true,
+      "dropIn": false,
+      "noOnlineReg": false,
       "cost": "Free",
       "ages": "",
       "minAge": 0,
       "spots": 0,
-      "unlimited": true,
+      "unlimited": false,
       "start": "2026-10-09",
       "end": "2026-10-09",
       "oneDay": true,
@@ -3186,6 +3044,29 @@
       "lat": 40.746387,
       "lng": -73.845016,
       "url": "https://www.nycgovparks.org/events/2026/10/09/family-camping-overnight-at-the-unisphere"
+    },
+    {
+      "id": "nycp-family-camping-staten-island-blue-heron-nature-center-in-blue-heron-park-1080",
+      "source": "nycparks",
+      "name": "Family Camping: Staten Island",
+      "category": "nature",
+      "borough": "Staten Island",
+      "location": "Blue Heron Nature Center (in Blue Heron Park)",
+      "when": "Sun · 6:00 PM - 7:00 AM",
+      "dropIn": true,
+      "noOnlineReg": true,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 0,
+      "unlimited": true,
+      "start": "2026-10-11",
+      "end": "2026-10-11",
+      "oneDay": true,
+      "desc": "We camp to create lasting memories, connect with the natural world, and bond with our families. The Urban Park Rangers celebrate the tradition of camping and we look forward to welcoming your family. Families are chosen by lottery. Lottery registration opens on Monday September 28.",
+      "lat": 40.530857,
+      "lng": -74.177864,
+      "url": "https://www.nycgovparks.org/events/2026/10/11/family-camping-staten-island"
     },
     {
       "id": "nycp-farm-stand-powell-street-garden-540",
@@ -3366,11 +3247,11 @@
       "spots": null,
       "unlimited": false,
       "sessions": {
-        "count": 3,
-        "first": "Sep 26",
+        "count": 2,
+        "first": "Oct 3",
         "last": "Oct 10"
       },
-      "start": "2026-09-26",
+      "start": "2026-10-03",
       "end": "2026-10-10",
       "oneDay": false,
       "desc": "Join us for a free, year-round \"Fitness at the Fort\" exercise program on Tuesdays, Thursdays, and Saturdays!\n\nThis fitness class incorporates climbing multiple staircases, stretches and strengthening exercises, notable tree identification, and forest bathing. Led by instructor, Nancy Bruning, BA, MPH, PAPHS.\n\nClasses are structured so that all levels of fitness will be accommodated; however, all classes involve relatively brisk walking and some stairs because of the layout of the park itself. Classes vary according to the season, path conditions, and the weather, but always meet at the Heather Garden entrance.\n\nTuesday and Thursday classes end at various points near the starting point, including the volleyball courts. Saturday class ends at the Anne Loftus Playground, using the various pieces of equipment, and offers optional after-class group walk to the Greenmarket on Isham Street. All classes end with closing with stretches.\n\n(Note: Fitness Walking does not meet if it is raining or if the actual temperature or wind chill is below 20 degrees F.)",
@@ -3403,33 +3284,6 @@
       "lat": 40.701336,
       "lng": -73.841577,
       "url": "https://www.nycgovparks.org/reg/forest-highland/20691"
-    },
-    {
-      "id": "nycp-forest-stewardship-with-friends-of-inwood-hill-park-seaman-avenue-and-isham-street-entrance-in-inwood-hill-park-600",
-      "source": "nycparks",
-      "name": "Forest Stewardship with Friends of Inwood Hill Park",
-      "category": "social",
-      "tags": [
-        "philanthropy"
-      ],
-      "borough": "Manhattan",
-      "location": "Seaman Avenue and Isham Street Entrance (in Inwood Hill Park)",
-      "when": "Sat · 10:00 AM - 12:00 PM",
-      "dropIn": true,
-      "noOnlineReg": true,
-      "cost": "Free",
-      "ages": "Under 13",
-      "minAge": 0,
-      "maxAge": 12,
-      "spots": 0,
-      "unlimited": true,
-      "start": "2026-09-26",
-      "end": "2026-09-26",
-      "oneDay": true,
-      "desc": "Join FIHP as we work to protect the forested areas of Inwood Hill Park! Volunteers will contribute to ongoing restoration work while learning about the importance of ecosystem health.\n\nPlease bring water, long-sleeved clothing that can get dirty, and sturdy, comfortable shoes. All other supplies will be provided. Children under 13 are welcome if accompanied by an adult.",
-      "lat": 40.869999,
-      "lng": -73.921097,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/forest-stewardship-with-friends-of-inwood-hill-park"
     },
     {
       "id": "nycp-fort-totten-fall-festival-parade-grounds-in-fort-totten-park-780",
@@ -3485,31 +3339,6 @@
       "lat": 40.832798,
       "lng": -73.882916,
       "url": "https://bronxriver.org/visit-the-river/calendar"
-    },
-    {
-      "id": "nycp-from-seed-to-stitch-hand-embroidery-and-communal-stitching-clifton-place-memorial-garden-960",
-      "source": "nycparks",
-      "name": "From Seed to Stitch: Hand Embroidery and Communal Stitching",
-      "category": "learn",
-      "tags": [
-        "arts"
-      ],
-      "location": "Clifton Place Memorial Garden",
-      "when": "Sat · 4:00 PM - 6:30 PM",
-      "dropIn": false,
-      "noOnlineReg": false,
-      "cost": "$40 suggested 100% of proceeds from this workshop will be donated to support communities affected by the floods in Nepal.",
-      "ages": "",
-      "minAge": 0,
-      "spots": null,
-      "unlimited": false,
-      "start": "2026-09-26",
-      "end": "2026-09-26",
-      "oneDay": true,
-      "desc": "Join artist and facilitator Roji Maharjan (they/them) for the second workshop of Sun & Stitch, a day of art, community, and collective making at Clifton Place Memorial Garden.\n\nIn this hands-on embroidery workshop, we’ll be introduced to the many possibilities of embroidery as an art form. Roji will share their practice, introduce different embroidery techniques, and guide participants through creating their own small embroidered piece. No prior embroidery experience is needed. Whether you’re completely new to stitching or already familiar with a needle and thread, this workshop is an opportunity to slow down, learn something new, and make alongside others.\n\nWe’ll spend time getting grounded together, learning about Roji’s practice, and exploring the history and possibilities of embroidery before diving into hands-on making. Roji will demonstrate a few techniques and then offer guidance as everyone works on their own piece.\n\nThis workshop is part of Sun & Stitch, a series of workshops bringing artists, plants, craft, and community together at Clifton Place Memorial Garden.",
-      "lat": 40.688571,
-      "lng": -73.954667,
-      "url": "https://partiful.com/e/HvrVdy7237Ia3VpNAnOS?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAcGRvZgJzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAae-8_44I484L01dNalqaVO6yQyC_DEi0pMJrHSEKLXEOKeXqy87QO1bxDH7dA_aem_kf8Wnbv8Y38tYKfC0NW"
     },
     {
       "id": "nycp-full-body-circuit-training-dance-room-in-chelsea-recreation-center-1110",
@@ -3656,12 +3485,12 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 2,
+        "count": 3,
         "first": "Sep 27",
-        "last": "Oct 4"
+        "last": "Oct 11"
       },
       "start": "2026-09-27",
-      "end": "2026-10-04",
+      "end": "2026-10-11",
       "oneDay": false,
       "desc": "Join a knowledgeable Wave Hill Garden Guide for a leisurely stroll in the gardens. Topics vary by season and the expertise of the Guide--come back for an encore; each walk varies with the Guide leading it.\n\nThis walk lasts a half-hour to 45 minutes. Public Garden Walks are most appropriate for adults or young adults. Not intended for groups; groups should sign-up for Private Garden Tours.\n\nSevere weather cancels. Registration not required for this drop-in event.\n\nQuestions? Please email us at information@wavehill.org or call 718.549.3200 x251.\n\nGarden Highlights Walks follow a variety of routes along mixed-material pathways and varying elevations. Accessible routes are available as requested; please indicate your need to the Garden Guide.",
       "lat": 40.898701,
@@ -3760,12 +3589,12 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 2,
+        "count": 3,
         "first": "Sep 27",
-        "last": "Oct 4"
+        "last": "Oct 11"
       },
       "start": "2026-09-27",
-      "end": "2026-10-04",
+      "end": "2026-10-11",
       "oneDay": false,
       "desc": "Are you looking to learn how to play softball or hoping to improve your game during the offseason? This all-girls softball program will help you keep the rust off your game and get you ready for the softball season. Participants will be able to hit, throw, and catch throughout the fall at Flushing Meadows Corona Park Field 11.\n\nThis clinic is free and open to the public. Membership for people ages 24 and under are free.",
       "lat": 40.741389,
@@ -3818,44 +3647,17 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 24,
+      "spots": 25,
       "unlimited": false,
-      "regDeadline": "Registration ends on September 26th, 2026 at 11:00 AM",
-      "start": "2026-09-26",
+      "regDeadline": "Registration ends on October 10th, 2026 at 11:00 AM",
+      "start": "2026-10-10",
       "end": "2026-10-10",
-      "oneDay": false,
+      "oneDay": true,
       "instructor": "Erica Zhang",
       "desc": "Bringing good vibes and great movement this cardio dance class blends K-pop beats, funk \\r\ngrooves, and feel-good choreography to help you sweat, smile, and glow. All levels welcome—\\r\njust bring your energy!",
       "lat": 40.727315,
       "lng": -73.980384,
-      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=ef944de8-c68b-46f3-89ad-d1870e14bebb&occurrenceDate=20260926"
-    },
-    {
-      "id": "nycp-guided-estuary-paddle-concrete-park-boat-launch-in-concrete-plant-park-600",
-      "source": "nycparks",
-      "name": "Guided Estuary Paddle",
-      "category": "fitness",
-      "tags": [
-        "nature",
-        "learn"
-      ],
-      "borough": "Bronx",
-      "location": "Concrete Park Boat Launch (in Concrete Plant Park)",
-      "when": "Sat · 10:00 AM - 1:00 PM",
-      "dropIn": false,
-      "noOnlineReg": false,
-      "cost": "Please note that the Bronx River Alliance is unable to provide refunds for individual cancellations. However, if the paddle is cancelled due to unsafe weather or river conditions, all ticket holders will receive a full refund.",
-      "ages": "14 yrs +",
-      "minAge": 14,
-      "spots": null,
-      "unlimited": false,
-      "start": "2026-09-26",
-      "end": "2026-09-26",
-      "oneDay": true,
-      "desc": "Join us for a guided Estuary Paddle on the Bronx River!\n\nThis guided canoe tour starts and ends at the Concrete Plant Park boat launch. It takes paddlers through the lower saltwater portion of the river (to the river mouth and back), featuring a duality of estuarine and urban habitat. A great opportunity for birders to see a wide variety of shorebirds that call the Bronx home!\n\n*Please note that this section of the river is influenced by tides, current, and winds. Due to variable river conditions and the possibility of encountering some boat traffic, we limit this paddle to participants aged 14 years or older. This is an intermediate level paddle and we recommend that paddlers have some basic canoe or kayak experience for this particular trip.\n\nWe will provide boats, paddles, PFDs, and a basic paddling safety orientation prior to getting on the water.",
-      "lat": 40.824452,
-      "lng": -73.88527,
-      "url": "https://bronxriver.org/event/9-26-guided-estuary-paddle"
+      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=ef944de8-c68b-46f3-89ad-d1870e14bebb&occurrenceDate=20261010"
     },
     {
       "id": "nycp-harlem-run-monday-night-run-marcus-garvey-park-1125",
@@ -3887,33 +3689,6 @@
       "lat": 40.804508,
       "lng": -73.943665,
       "url": "https://heylo.group/harlem-run"
-    },
-    {
-      "id": "nycp-harlem-street-tree-care-145th-street-and-malcolm-x-entrance-in-brigadier-general-charles-young-playground-540",
-      "source": "nycparks",
-      "name": "Harlem Street Tree Care",
-      "category": "nature",
-      "tags": [
-        "philanthropy"
-      ],
-      "borough": "Manhattan",
-      "location": "145th Street and Malcolm X entrance (in Brigadier General Charles Young Playground)",
-      "when": "Sat · 9:00 AM - 12:00 PM",
-      "dropIn": false,
-      "noOnlineReg": false,
-      "cost": "Free",
-      "ages": "Under 18",
-      "minAge": 0,
-      "maxAge": 17,
-      "spots": null,
-      "unlimited": false,
-      "start": "2026-09-26",
-      "end": "2026-09-26",
-      "oneDay": true,
-      "desc": "Come work with NYC Parks Stewardship to care for local street trees! Volunteers will learn how to aerate, cultivate, mulch, and identify street trees. They will also learn about the important roles street trees play in New York City. Volunteers should dress in clothes that can get dirty and closed toe shoes. Face masks may be worn at your discretion. Space is limited and registration is required. Volunteers under 18 must be accompanied by a chaperone. To sign up a group of 10 or more volunteers please reach out to stewardship@parks.nyc.gov. Schedule: Day of week Start time End time Saturday 9:00 a.m. 12:00 p.m. This program is full.",
-      "lat": 40.820147,
-      "lng": -73.93611,
-      "url": "https://www.nycgovparks.org/reg/stewardship/20436"
     },
     {
       "id": "nycp-hart-island-tour-south-island-hart-island-600",
@@ -4073,15 +3848,12 @@
       "url": "https://www.nycgovparks.org/events/2026/10/04/hispanic-heritage-month-luminous-luminarias"
     },
     {
-      "id": "nycp-hispanic-heritage-month-monarch-migration-arthur-kill-road-and-brookfield-avenue-in-brookfield-park-660",
+      "id": "nycp-hispanic-heritage-month-revolutions-across-the-americas-central-lawn-in-sunset-park-660",
       "source": "nycparks",
-      "name": "Hispanic Heritage Month: Monarch Migration",
-      "category": "learn",
-      "tags": [
-        "nature"
-      ],
-      "borough": "Staten Island",
-      "location": "Arthur Kill Road and Brookfield Avenue (in Brookfield Park)",
+      "name": "Hispanic Heritage Month: Revolutions Across the Americas",
+      "category": "nature",
+      "borough": "Brooklyn",
+      "location": "Central Lawn (in Sunset Park)",
       "when": "Sun · 11:00 AM - 12:30 PM",
       "dropIn": true,
       "noOnlineReg": true,
@@ -4090,13 +3862,39 @@
       "minAge": 0,
       "spots": 0,
       "unlimited": true,
-      "start": "2026-09-27",
-      "end": "2026-09-27",
+      "start": "2026-10-11",
+      "end": "2026-10-11",
       "oneDay": true,
-      "desc": "Celebrate Hispanic Heritage Month with NYC Parks! The Urban Park Rangers lead the way as we interpret the journey of the monarch butterfly. This species has a very significant connection to Hispanic culture and heritage. Its annual journey through Canada and the United States to Mexico spans amost 3,000 miles.",
-      "lat": 40.561667,
-      "lng": -74.159996,
-      "url": "https://www.nycgovparks.org/events/2026/09/27/hispanic-heritage-month-monarch-migration"
+      "desc": "Join the Urban Park Rangers for a discussion on the history of independence movements throughout the Americas in honor of Hispanic Heritage Month. Explore the chronology of Latin American revolutions, the evolving identity of American Latinx, and the connections between these stories and New York City. Standing near the site of the first sparks of the Battle of Brooklyn, we'll reflect on how struggles for sovereignty–from the past to the present–continue to shape communities locally and globally.",
+      "lat": 40.648375,
+      "lng": -74.004422,
+      "url": "https://www.nycgovparks.org/events/2026/10/11/hispanic-heritage-month-revolutions-across-the-americas"
+    },
+    {
+      "id": "nycp-historic-harlem-parks-super-hike-manhattan-avenue-and-west-110th-street-in-morningside-park-780",
+      "source": "nycparks",
+      "name": "Historic Harlem Parks Super Hike",
+      "category": "learn",
+      "tags": [
+        "nature"
+      ],
+      "borough": "Manhattan",
+      "location": "Manhattan Avenue and West 110th Street (in Morningside Park)",
+      "when": "Sun · 1:00 PM - 3:00 PM",
+      "dropIn": true,
+      "noOnlineReg": true,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 0,
+      "unlimited": true,
+      "start": "2026-10-11",
+      "end": "2026-10-11",
+      "oneDay": true,
+      "desc": "Join the Urban Park Rangers on a hike from Morningside Park through St. Nicholas Park and ending at the Northern tip of Jackie Robinson Park. Learn about the history, geology, and ecology of these beautiful parks.",
+      "lat": 40.801437,
+      "lng": -73.95986,
+      "url": "https://www.nycgovparks.org/events/2026/10/11/historic-harlem-parks-super-hike"
     },
     {
       "id": "nycp-historic-new-york-downtown-brooklyn-history-super-hike-fort-greene-park-visitor-center-in-fort-greene-park-660",
@@ -4149,6 +3947,32 @@
       "lat": 40.711201,
       "lng": -73.993202,
       "url": "https://www.nycgovparks.org/events/2026/10/04/historic-new-york-from-streets-to-skateparks"
+    },
+    {
+      "id": "nycp-historic-new-york-vaudeville-stars-of-the-evergreens-cemetery-evergreen-cemetery-entrance-in-highland-park-780",
+      "source": "nycparks",
+      "name": "Historic New York: Vaudeville Stars of the Evergreens Cemetery",
+      "category": "nature",
+      "tags": [
+        "learn"
+      ],
+      "borough": "Queens",
+      "location": "Evergreen Cemetery Entrance (in Highland Park)",
+      "when": "Sun · 1:00 PM - 2:00 PM",
+      "dropIn": true,
+      "noOnlineReg": true,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 0,
+      "unlimited": true,
+      "start": "2026-10-11",
+      "end": "2026-10-11",
+      "oneDay": true,
+      "desc": "Join the Urban Park Rangers in exploring one of Brooklyn's hidden gems, the Evergreens Cemetery. Learn about the many famous performers from the vaudeville era onwards buried here, and the fascinating history of why they came to rest here.",
+      "lat": 40.680753,
+      "lng": -73.90264,
+      "url": "https://www.nycgovparks.org/events/2026/10/11/historic-new-york-vaudeville-stars-of-the-evergreens-cemetery"
     },
     {
       "id": "nycp-hoop-jam-in-herald-square-park-herald-square-1080",
@@ -4247,7 +4071,7 @@
       ],
       "borough": "Bronx",
       "location": "Wave Hill",
-      "when": "Sat · 10:00 AM - 5:00 PM",
+      "when": "Sun & Sat · 10:00 AM - 5:00 PM",
       "dropIn": true,
       "noOnlineReg": true,
       "cost": "All activities free with admission unless noted in the description",
@@ -4255,9 +4079,14 @@
       "minAge": 0,
       "spots": 0,
       "unlimited": true,
+      "sessions": {
+        "count": 2,
+        "first": "Oct 10",
+        "last": "Oct 11"
+      },
       "start": "2026-10-10",
-      "end": "2026-10-10",
-      "oneDay": true,
+      "end": "2026-10-11",
+      "oneDay": false,
       "desc": "Celebrate Indigenous Peoples' Weekend, as we honor Indigenous communities and recognize their cultures and contributions through nature programming, hands-on activities, and a walking tour highlighting female Lenape Saunksquas (Chieftains) and their role in the 15th century Dutch-Indigenous alliance. Through family-friendly programs, learn about the important role of plants and food in Indigenous cultures.\n\nWe are open for the holiday on Monday, October 12 and admission is free to all visitors. Please check the event schedule as not all activities are available throughout the weekend.",
       "lat": 40.898701,
       "lng": -73.912498,
@@ -4317,6 +4146,32 @@
       "lat": 40.867225,
       "lng": -73.929348,
       "url": "https://www.nycgovparks.org/reg/stewardship/20576"
+    },
+    {
+      "id": "nycp-it-s-a-horse-of-course-hike-and-greet-crotona-nature-center-in-crotona-park-660",
+      "source": "nycparks",
+      "name": "It's A Horse of Course Hike and Greet",
+      "category": "learn",
+      "tags": [
+        "nature"
+      ],
+      "borough": "Bronx",
+      "location": "Crotona Nature Center (in Crotona Park)",
+      "when": "Sun · 11:00 AM - 12:00 PM",
+      "dropIn": true,
+      "noOnlineReg": true,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 0,
+      "unlimited": true,
+      "start": "2026-10-11",
+      "end": "2026-10-11",
+      "oneDay": true,
+      "desc": "Join the Urban Park Rangers for a meet-up with our Mounted Unit and their horses! Meet a real horse officer at the Horse of Course program and discover the vital role of horses in city parks enforcement. Learn about how the NYC Parks Mounted Unit cares for the horses, where they live, what they eat, and how the Rangers and Mounted Rangers work together to keep the parks safe. The visit will be followed by horse related crafts in the nature center.",
+      "lat": 40.837002,
+      "lng": -73.893402,
+      "url": "https://www.nycgovparks.org/events/2026/10/11/its-a-horse-of-course-hike-and-greet"
     },
     {
       "id": "nycp-it-s-my-park-at-marine-park-marine-park-570",
@@ -4502,12 +4357,12 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 2,
+        "count": 3,
         "first": "Sep 27",
-        "last": "Oct 4"
+        "last": "Oct 11"
       },
       "start": "2026-09-27",
-      "end": "2026-10-04",
+      "end": "2026-10-11",
       "oneDay": false,
       "desc": "Berta Indeed presents \"Let the Music Play\", community jazz concerts featuring an array of local musicians and vocalists.",
       "lat": 40.830348,
@@ -4550,33 +4405,6 @@
       "url": "https://cityparksfoundation.org/track-field/"
     },
     {
-      "id": "nycp-jones-woods-park-forest-restoration-postponed-to-10-31-entrance-franklin-avenue-and-arnold-avenue-in-jones-woods-park-600",
-      "source": "nycparks",
-      "name": "Jones Woods Park Forest Restoration- POSTPONED TO 10/31",
-      "category": "nature",
-      "tags": [
-        "philanthropy"
-      ],
-      "borough": "Staten Island",
-      "location": "Entrance – Franklin Avenue and Arnold Avenue (in Jones Woods Park)",
-      "when": "Sat · 10:00 AM - 12:00 PM",
-      "dropIn": false,
-      "noOnlineReg": false,
-      "cost": "Free",
-      "ages": "Under 18",
-      "minAge": 0,
-      "maxAge": 17,
-      "spots": null,
-      "unlimited": false,
-      "start": "2026-09-26",
-      "end": "2026-09-26",
-      "oneDay": true,
-      "desc": "THIS EVENT IS BEING POSTPONED DUE TO WEATHER. PLEASE DO NOT ATTEND 09/26. THE EVENT WILL BE RESCHEDULED FOR SATURDAY, OCTOBER 31. PLEASE FEEL FREE TO REGISTER FOR OUR 10/3 BRAD'S POND PARK FOREST RESTORATION EVENT FOR NOW. Volunteer with the Stewardship team to protect the forested areas in Jones Woods Park! Volunteers will contribute to ongoing restoration work and learn the importance of species diversity to ecosystem health. Come dressed in sturdy boots or shoes, long sleeves, long pants, and clothing that can get dirty. Face masks may be worn at your discretion. Space is limited and registration is required. Volunteers under 18 must be accompanied by a chaperone. This event has been funded in part by NYC Service. To sign up a group of 10 or more volunteers please reach out to stewardship@parks.nyc.gov.",
-      "lat": 40.6385,
-      "lng": -74.090797,
-      "url": "https://www.nycgovparks.org/reg/stewardship/20424"
-    },
-    {
       "id": "nycp-juggling-in-greeley-square-park-greeley-square-park-840",
       "source": "nycparks",
       "name": "Juggling in Greeley Square Park",
@@ -4605,34 +4433,6 @@
       "url": "https://www.nycgovparks.org/events/2026/10/02/juggling-in-greeley-square-park"
     },
     {
-      "id": "nycp-just-for-kids-owl-loves-angeline-carmine-carro-community-center-in-marine-park-660",
-      "source": "nycparks",
-      "name": "Just for Kids: Owl Loves Angeline",
-      "category": "arts",
-      "tags": [
-        "youth",
-        "accessible",
-        "performances"
-      ],
-      "borough": "Brooklyn",
-      "location": "Carmine Carro Community Center (in Marine Park)",
-      "when": "Sat · 11:00 AM - 12:00 PM",
-      "dropIn": true,
-      "noOnlineReg": true,
-      "cost": "Free",
-      "ages": "Best for kids",
-      "minAge": 0,
-      "spots": 0,
-      "unlimited": true,
-      "start": "2026-09-26",
-      "end": "2026-09-26",
-      "oneDay": true,
-      "desc": "Puppeteer Emmanuel Elpenord performs Owl Loves Angeline, a piece that draws on Haitian folklore and storytelling traditions to explore themes of love, longing, and connection. Told through puppetry and simple, poetic narration, the story follows an owl who becomes captivated by a woman named Angeline. The performance reflects Elpenord's Haitian heritage and his passion for stories that resonate across cultures.",
-      "lat": 40.607944,
-      "lng": -73.937465,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/just-for-kids-owl-loves-angeline"
-    },
-    {
       "id": "nycp-kids-in-motion-al-quinones-playground-play-area-in-al-qui-ones-playground-900",
       "source": "nycparks",
       "name": "Kids in Motion: Al Quinones Playground",
@@ -4652,17 +4452,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 10,
-        "first": "Sep 26",
+        "count": 9,
+        "first": "Sep 29",
         "last": "Oct 9"
       },
-      "start": "2026-09-26",
+      "start": "2026-09-29",
       "end": "2026-10-09",
       "oneDay": false,
       "desc": "The Kids in Motion Program engages children in active, outdoor play. A NYC Parks staff member leads four to seven hours of free activities in NYC's playgrounds, including organized sports. games, fitness, demos, board games, water games, and more!\n\nKids in Motion is a free, drop-in program without registration. Children can head to the playground during the listed hours of operation to participate. Occasionally a Kids in motion program may be cancelled due to harsh weather or other conditions.\n\nPlease note: We recommend that guardians accompany children participating in this program. Kids in Motion is not a childcare program and NYC Parks is not responsible for the well-being of attendees.",
       "lat": 40.815413,
       "lng": -73.901275,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/kids-in-motion-al-quinones-playground"
+      "url": "https://www.nycgovparks.org/events/2026/09/29/kids-in-motion-al-quinones-playground"
     },
     {
       "id": "nycp-kids-in-motion-alley-springfield-playground-alley-springfield-playground-in-alley-pond-park-600",
@@ -4747,17 +4547,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 11,
-        "first": "Sep 26",
+        "count": 10,
+        "first": "Sep 29",
         "last": "Oct 10"
       },
-      "start": "2026-09-26",
+      "start": "2026-09-29",
       "end": "2026-10-10",
       "oneDay": false,
       "desc": "​Vega, Shayr (Parks)​\nThe Kids in Motion program engages children in active, outdoor play. A NYC Parks staff member leads four to seven hours of free activities in NYC's playgrounds, including organized sports, games, fitness demos, board games, water games, and more!\n\nKias in Motion is a free, drop-in program without registration. Children can head to the playground during the listed hours of operation to participate. Occasionally a Kids in Motion program may be cancelled due to harsh weather or other conditions.\n\nPlease note: We recommend that guardians accompany children participating in this program.\n\nKids in Motion is not a childcare program and NYC Parks is not responsible for the well-being of attendees.",
       "lat": 40.597699,
       "lng": -74.071126,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/kids-in-motion-arrochar"
+      "url": "https://www.nycgovparks.org/events/2026/09/29/kids-in-motion-arrochar"
     },
     {
       "id": "nycp-kids-in-motion-austin-j-mcdonald-s-playground-austin-j-mcdonald-playground-fieldhouse-in-austin-j-mcdonald-playground-600",
@@ -4778,17 +4578,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 11,
-        "first": "Sep 26",
+        "count": 10,
+        "first": "Sep 29",
         "last": "Oct 10"
       },
-      "start": "2026-09-26",
+      "start": "2026-09-29",
       "end": "2026-10-10",
       "oneDay": false,
       "desc": "The Kids in Motion program engages children in active, outdoor play. A NYC Parks staff member leads four to seven hours of free activities in NYC's playgrounds, including organized sports, games, fitness demos, board games, water games, and more!\n\nKias in Motion is a free, drop-in program without registration. Children can head to the playground during the listed hours of operation to participate. Occasionally a Kids in Motion program may be cancelled due to harsh weather or other conditions.\n\nPlease note: We recommend that guardians accompany children participating in this program.\n\nKids in Motion is not a childcare program and NYC Parks is not responsible for the well-being of attendees.",
       "lat": 40.629101,
       "lng": -74.115501,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/kids-in-motion-austin-j-mcdonalds-playground"
+      "url": "https://www.nycgovparks.org/events/2026/09/29/kids-in-motion-austin-j-mcdonalds-playground"
     },
     {
       "id": "nycp-kids-in-motion-beach-59th-street-playground-beach-59th-street-playground-in-rockaway-beach-and-boardwalk-600",
@@ -4843,17 +4643,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 10,
-        "first": "Sep 26",
+        "count": 9,
+        "first": "Sep 29",
         "last": "Oct 9"
       },
-      "start": "2026-09-26",
+      "start": "2026-09-29",
       "end": "2026-10-09",
       "oneDay": false,
       "desc": "The Kids in Motion Program engages children in active, outdoor play. A NYC Parks staff member leads four to seven hours of free activities in NYC's playgrounds, including organized sports. games, fitness, demos, board games, water games, and more!\n\nKids in Motion is a free, drop-in program without registration. Children can head to the playground during the listed hours of operation to participate. Occasionally a Kids in motion program may be cancelled due to harsh weather or other conditions.\n\nPlease note: We recommend that guardians accompany children participating in this program. Kids in Motion is not a childcare program and NYC Parks is not responsible for the well-being of attendees.",
       "lat": 40.8545,
       "lng": -73.870102,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/kids-in-motion-ben-abrams-playground"
+      "url": "https://www.nycgovparks.org/events/2026/09/29/kids-in-motion-ben-abrams-playground"
     },
     {
       "id": "nycp-kids-in-motion-bloomingdale-playground-play-area-in-bloomingdale-playground-840",
@@ -4930,7 +4730,7 @@
       ],
       "borough": "Brooklyn",
       "location": "Brevoort Playground",
-      "when": "Tue & Wed & Sat · 10:00 AM - 6:00 PM",
+      "when": "Tue & Wed · 10:00 AM - 6:00 PM",
       "dropIn": true,
       "noOnlineReg": true,
       "cost": "Free",
@@ -4939,17 +4739,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 3,
-        "first": "Sep 26",
+        "count": 2,
+        "first": "Sep 29",
         "last": "Sep 30"
       },
-      "start": "2026-09-26",
+      "start": "2026-09-29",
       "end": "2026-09-30",
       "oneDay": false,
       "desc": "The Kids In Motion programs engage children in active, outdoor play. An NYC parks staff member leads four to seven hours of free activities in NYC's playgrounds, including organized sports, games, fitness demos, board games, water games and more",
       "lat": 40.6805,
       "lng": -73.922699,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/kids-in-motion-breevort-playground"
+      "url": "https://www.nycgovparks.org/events/2026/09/29/kids-in-motion-breevort-playground"
     },
     {
       "id": "nycp-kids-in-motion-brookville-park-brookville-playground-in-brookville-park-600",
@@ -4994,7 +4794,7 @@
       ],
       "borough": "Brooklyn",
       "location": "Brownsville Playground",
-      "when": "Tue & Wed & Sat · 10:00 AM - 6:00 PM",
+      "when": "Tue & Wed · 10:00 AM - 6:00 PM",
       "dropIn": true,
       "noOnlineReg": true,
       "cost": "Free",
@@ -5003,17 +4803,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 3,
-        "first": "Sep 26",
+        "count": 2,
+        "first": "Sep 29",
         "last": "Sep 30"
       },
-      "start": "2026-09-26",
+      "start": "2026-09-29",
       "end": "2026-09-30",
       "oneDay": false,
       "desc": "The Kids In Motion programs engage children in active, outdoor play. An NYC parks staff member leads four to seven hours of free activities in NYC's playgrounds, including organized sports, games, fitness demos, board games, water games and more",
       "lat": 40.656709,
       "lng": -73.90174,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/kids-in-motion-brownsville-playground"
+      "url": "https://www.nycgovparks.org/events/2026/09/29/kids-in-motion-brownsville-playground"
     },
     {
       "id": "nycp-kids-in-motion-carl-schruz-park-catbird-playground-in-carl-schurz-park-600",
@@ -5127,17 +4927,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 11,
-        "first": "Sep 26",
+        "count": 10,
+        "first": "Sep 29",
         "last": "Oct 10"
       },
-      "start": "2026-09-26",
+      "start": "2026-09-29",
       "end": "2026-10-10",
       "oneDay": false,
       "desc": "The Kids in Motion program engages children in active, outdoor play. A NYC Parks staff member leads four to seven hours of free activities in NYC's playgrounds, including organized sports, games, fitness demos, board games, water games, and more!\n\nKias in Motion is a free, drop-in program without registration. Children can head to the playground during the listed hours of operation to participate. Occasionally a Kids in Motion program may be cancelled due to harsh weather or other conditions.\n\nPlease note: We recommend that guardians accompany children participating in this program.\n\nKids in Motion is not a childcare program and NYC Parks is not responsible for the well-being of attendees.",
       "lat": 40.614498,
       "lng": -74.074203,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/kids-in-motion-de-matti-playground"
+      "url": "https://www.nycgovparks.org/events/2026/09/29/kids-in-motion-de-matti-playground"
     },
     {
       "id": "nycp-kids-in-motion-faber-outdoors-at-faber-park-recreation-center-in-faber-pool-and-park-600",
@@ -5158,17 +4958,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 11,
-        "first": "Sep 26",
+        "count": 10,
+        "first": "Sep 29",
         "last": "Oct 10"
       },
-      "start": "2026-09-26",
+      "start": "2026-09-29",
       "end": "2026-10-10",
       "oneDay": false,
       "desc": "The Kids in Motion program engages children in active, outdoor play. A NYC Parks staff member leads four to seven hours of free activities in NYC's playgrounds, including organized sports, games, fitness demos, board games, water games, and more!\n\nKias in Motion is a free, drop-in program without registration. Children can head to the playground during the listed hours of operation to participate. Occasionally a Kids in Motion program may be cancelled due to harsh weather or other conditions.\n\nPlease note: We recommend that guardians accompany children participating in this program.\n\nKids in Motion is not a childcare program and NYC Parks is not responsible for the well-being of attendees.",
       "lat": 40.640936,
       "lng": -74.135396,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/kids-in-motion-faber"
+      "url": "https://www.nycgovparks.org/events/2026/09/29/kids-in-motion-faber"
     },
     {
       "id": "nycp-kids-in-motion-grover-cleveland-playground-play-area-in-grover-cleveland-playground-600",
@@ -5190,12 +4990,12 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 3,
+        "count": 4,
         "first": "Oct 3",
-        "last": "Oct 10"
+        "last": "Oct 11"
       },
       "start": "2026-10-03",
-      "end": "2026-10-10",
+      "end": "2026-10-11",
       "oneDay": false,
       "desc": "The Kids In Motion Program engages children in active outdoor play. A NYC Parks staff member leads four to seven hours of free activities in NYC's playgrounds, including organized sports, games, fitness demos, board games, water games, and more!\n\nKids In Motion is a free, drop-in program without registration. Children can head to the playground during the listed hours of operation to participate. Occasionally, a Kids In Motion program may be cancelled due to harsh weather or other conditions.\n\nPlease note: We recommend that guardians accompany children participating in this program. Kids In Motion is not a childcare program and NYC Parks is not responsible for the well-being of attendees.",
       "lat": 40.7108,
@@ -5222,17 +5022,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 10,
-        "first": "Sep 26",
+        "count": 9,
+        "first": "Sep 29",
         "last": "Oct 9"
       },
-      "start": "2026-09-26",
+      "start": "2026-09-29",
       "end": "2026-10-09",
       "oneDay": false,
       "desc": "The Kids in Motion Program engages children in active, outdoor play. A NYC Parks staff member leads four to seven hours of free activities in NYC's playgrounds, including organized sports. games, fitness, demos, board games, water games, and more!\n\nKids in Motion is a free, drop-in program without registration. Children can head to the playground during the listed hours of operation to participate. Occasionally a Kids in motion program may be cancelled due to harsh weather or other conditions.\n\nPlease note: We recommend that guardians accompany children participating in this program. Kids in Motion is not a childcare program and NYC Parks is not responsible for the well-being of attendees.",
       "lat": 40.814041,
       "lng": -73.886042,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/kids-in-motion-hunts-point-playground"
+      "url": "https://www.nycgovparks.org/events/2026/09/29/kids-in-motion-hunts-point-playground"
     },
     {
       "id": "nycp-kids-in-motion-jesse-owens-playground-patrick-van-doren-pocket-park-600",
@@ -5244,7 +5044,7 @@
         "youth"
       ],
       "location": "Patrick Van Doren Pocket Park",
-      "when": "Tue & Wed & Sat · 10:00 AM - 6:00 PM",
+      "when": "Tue & Wed · 10:00 AM - 6:00 PM",
       "dropIn": true,
       "noOnlineReg": true,
       "cost": "Free",
@@ -5253,17 +5053,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 3,
-        "first": "Sep 26",
+        "count": 2,
+        "first": "Sep 29",
         "last": "Sep 30"
       },
-      "start": "2026-09-26",
+      "start": "2026-09-29",
       "end": "2026-09-30",
       "oneDay": false,
       "desc": "The Kids In Motion programs engage children in active, outdoor play. An NYC parks staff member leads four to seven hours of free activities in NYC's playgrounds, including organized sports, games, fitness demos, board games, water games and more",
       "lat": 40.68944,
       "lng": -73.930065,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/kids-in-motion-jesse-owens-playground"
+      "url": "https://www.nycgovparks.org/events/2026/09/29/kids-in-motion-jesse-owens-playground"
     },
     {
       "id": "nycp-kids-in-motion-john-j-carty-park-playground-in-john-j-carty-park-600",
@@ -5276,7 +5076,7 @@
       ],
       "borough": "Brooklyn",
       "location": "Playground (in John J Carty Park)",
-      "when": "Tue & Wed & Sat · 10:00 AM - 6:00 PM",
+      "when": "Tue & Wed · 10:00 AM - 6:00 PM",
       "dropIn": true,
       "noOnlineReg": true,
       "cost": "Free",
@@ -5285,17 +5085,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 3,
-        "first": "Sep 26",
+        "count": 2,
+        "first": "Sep 29",
         "last": "Sep 30"
       },
-      "start": "2026-09-26",
+      "start": "2026-09-29",
       "end": "2026-09-30",
       "oneDay": false,
       "desc": "The Kids In Motion programs engage children in active, outdoor play. An NYC parks staff member leads four to seven hours of free activities in NYC's playgrounds, including organized sports, games, fitness demos, board games, water games and more",
       "lat": 40.614699,
       "lng": -74.029097,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/kids-in-motion-john-j-carty-park"
+      "url": "https://www.nycgovparks.org/events/2026/09/29/kids-in-motion-john-j-carty-park"
     },
     {
       "id": "nycp-kids-in-motion-lawrence-virgilio-playground-play-area-in-lawrence-virgilio-playground-600",
@@ -5348,17 +5148,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 11,
-        "first": "Sep 26",
+        "count": 10,
+        "first": "Sep 29",
         "last": "Oct 10"
       },
-      "start": "2026-09-26",
+      "start": "2026-09-29",
       "end": "2026-10-10",
       "oneDay": false,
       "desc": "The Kids in Motion program engages children in active, outdoor play. A NYC Parks staff member leads four to seven hours of free activities in NYC's playgrounds, including organized sports, games, fitness demos, board games, water games, and more!\n\nKias in Motion is a free, drop-in program without registration. Children can head to the playground during the listed hours of operation to participate. Occasionally a Kids in Motion program may be cancelled due to harsh weather or other conditions.\n\nPlease note: We recommend that guardians accompany children participating in this program.\n\nKids in Motion is not a childcare program and NYC Parks is not responsible for the well-being of attendees.",
       "lat": 40.633883,
       "lng": -74.128953,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/kids-in-motion-levy"
+      "url": "https://www.nycgovparks.org/events/2026/09/29/kids-in-motion-levy"
     },
     {
       "id": "nycp-kids-in-motion-loreto-playground-loreto-playground-900",
@@ -5380,17 +5180,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 10,
-        "first": "Sep 26",
+        "count": 9,
+        "first": "Sep 29",
         "last": "Oct 9"
       },
-      "start": "2026-09-26",
+      "start": "2026-09-29",
       "end": "2026-10-09",
       "oneDay": false,
       "desc": "The Kids in Motion Program engages children in active, outdoor play. A NYC Parks staff member leads four to seven hours of free activities in NYC's playgrounds, including organized sports. games, fitness, demos, board games, water games, and more!\n\nKids in Motion is a free, drop-in program without registration. Children can head to the playground during the listed hours of operation to participate. Occasionally a Kids in motion program may be cancelled due to harsh weather or other conditions.\n\nPlease note: We recommend that guardians accompany children participating in this program. Kids in Motion is not a childcare program and NYC Parks is not responsible for the well-being of attendees.",
       "lat": 40.848902,
       "lng": -73.851939,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/kids-in-motion-loreto-playground"
+      "url": "https://www.nycgovparks.org/events/2026/09/29/kids-in-motion-loreto-playground"
     },
     {
       "id": "nycp-kids-in-motion-metcalf-playground-metcalf-playground-in-soundview-park-900",
@@ -5412,17 +5212,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 11,
-        "first": "Sep 26",
+        "count": 10,
+        "first": "Sep 29",
         "last": "Oct 10"
       },
-      "start": "2026-09-26",
+      "start": "2026-09-29",
       "end": "2026-10-10",
       "oneDay": false,
       "desc": "The Kids in Motion Program engages children in active, outdoor play. A NYC Parks staff member leads four to seven hours of free activities in NYC's playgrounds, including organized sports. games, fitness, demos, board games, water games, and more!\n\nKids in Motion is a free, drop-in program without registration. Children can head to the playground during the listed hours of operation to participate. Occasionally a Kids in motion program may be cancelled due to harsh weather or other conditions.\n\nPlease note: We recommend that guardians accompany children participating in this program. Kids in Motion is not a childcare program and NYC Parks is not responsible for the well-being of attendees.",
       "lat": 40.817744,
       "lng": -73.870593,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/kids-in-motion-metcalf-playground"
+      "url": "https://www.nycgovparks.org/events/2026/09/29/kids-in-motion-metcalf-playground"
     },
     {
       "id": "nycp-kids-in-motion-nostrand-playground-nostrand-playground-600",
@@ -5443,17 +5243,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 11,
-        "first": "Sep 26",
+        "count": 10,
+        "first": "Sep 29",
         "last": "Oct 10"
       },
-      "start": "2026-09-26",
+      "start": "2026-09-29",
       "end": "2026-10-10",
       "oneDay": false,
       "desc": "The Kids In Motion program engages children in active, outdoor play. An NYC parks staff member leads four to steven hours of free activities in NYC'S playgrounds, including organized sports, games, fitness demos, board games, water games, and more.",
       "lat": 40.638288,
       "lng": -73.946925,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/kids-in-motion-nostrand-playground"
+      "url": "https://www.nycgovparks.org/events/2026/09/29/kids-in-motion-nostrand-playground"
     },
     {
       "id": "nycp-kids-in-motion-p-s-55-p-s-55-in-lieutenant-john-h-martinson-playground-600",
@@ -5474,17 +5274,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 11,
-        "first": "Sep 26",
+        "count": 10,
+        "first": "Sep 29",
         "last": "Oct 10"
       },
-      "start": "2026-09-26",
+      "start": "2026-09-29",
       "end": "2026-10-10",
       "oneDay": false,
       "desc": "The Kids in Motion program engages children in active, outdoor play. A NYC Parks staff member leads four to seven hours of free activities in NYC's playgrounds, including organized sports, games, fitness demos, board games, water games, and more!\n\nKias in Motion is a free, drop-in program without registration. Children can head to the playground during the listed hours of operation to participate. Occasionally a Kids in Motion program may be cancelled due to harsh weather or other conditions.\n\nPlease note: We recommend that guardians accompany children participating in this program.\n\nKids in Motion is not a childcare program and NYC Parks is not responsible for the well-being of attendees.",
       "lat": 40.536369,
       "lng": -74.163441,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/kids-in-motion-ps-55"
+      "url": "https://www.nycgovparks.org/events/2026/09/29/kids-in-motion-ps-55"
     },
     {
       "id": "nycp-kids-in-motion-poor-richard-s-playground-poor-richard-s-playground-600",
@@ -5539,12 +5339,12 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 10,
+        "count": 11,
         "first": "Sep 27",
-        "last": "Oct 10"
+        "last": "Oct 11"
       },
       "start": "2026-09-27",
-      "end": "2026-10-10",
+      "end": "2026-10-11",
       "oneDay": false,
       "desc": "The Kids in Motion program engages children in active, outdoors play. A NYC Parks staff member leads four to seven hours of free activities in NYC's playgrounds, including organized sports, games, fitness demos, board games, and more!\n\nKids in Motion is a free, drop-in program without registration. Children can head to the playground during the listed hours of operation to participate. Occasionally a Kids in Motion program may be cancelled due to harsh weather or other conditions.\n\nPlease note: We recommend that guardians accompany children participating in this program. Kids in Motion is not a childcare program and NYC parks is not responsible for the well-being of attendees.",
       "lat": 40.704479,
@@ -5581,32 +5381,6 @@
       "lat": 40.7854,
       "lng": -73.950798,
       "url": "https://www.nycgovparks.org/events/2026/09/29/kids-in-motion-samuel-seabury-playground"
-    },
-    {
-      "id": "nycp-kids-in-motion-schmul-playground-in-schmul-park-600",
-      "source": "nycparks",
-      "name": "Kids In Motion: Schmul",
-      "category": "arts",
-      "tags": [
-        "youth"
-      ],
-      "borough": "Staten Island",
-      "location": "Playground (in Schmul Park)",
-      "when": "Sat · 10:00 AM - 6:00 PM",
-      "dropIn": true,
-      "noOnlineReg": true,
-      "cost": "Free",
-      "ages": "Best for kids",
-      "minAge": 0,
-      "spots": 0,
-      "unlimited": true,
-      "start": "2026-09-26",
-      "end": "2026-09-26",
-      "oneDay": true,
-      "desc": "​Vega, Shayr (Parks)​\nThe Kids in Motion program engages children in active, outdoor play. A NYC Parks staff member leads four to seven hours of free activities in NYC's playgrounds, including organized sports, games, fitness demos, board games, water games, and more!\n\nKias in Motion is a free, drop-in program without registration. Children can head to the playground during the listed hours of operation to participate. Occasionally a Kids in Motion program may be cancelled due to harsh weather or other conditions.\n\nPlease note: We recommend that guardians accompany children participating in this program.\n\nKids in Motion is not a childcare program and NYC Parks is not responsible for the well-being of attendees.",
-      "lat": 40.590108,
-      "lng": -74.188181,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/kids-in-motion-schmul"
     },
     {
       "id": "nycp-kids-in-motion-seward-park-entrance-east-broadway-essex-st-in-seward-park-600",
@@ -5692,17 +5466,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 10,
-        "first": "Sep 26",
+        "count": 9,
+        "first": "Sep 29",
         "last": "Oct 9"
       },
-      "start": "2026-09-26",
+      "start": "2026-09-29",
       "end": "2026-10-09",
       "oneDay": false,
       "desc": "The Kids in Motion Program engages children in active, outdoor play. A NYC Parks staff member leads four to seven hours of free activities in NYC's playgrounds, including organized sports. games, fitness, demos, board games, water games, and more!\n\nKids in Motion is a free, drop-in program without registration. Children can head to the playground during the listed hours of operation to participate. Occasionally a Kids in motion program may be cancelled due to harsh weather or other conditions.\n\nPlease note: We recommend that guardians accompany children participating in this program. Kids in Motion is not a childcare program and NYC Parks is not responsible for the well-being of attendees.",
       "lat": 40.887226,
       "lng": -73.916396,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/kids-in-motion-spuyten-duyvil-playground"
+      "url": "https://www.nycgovparks.org/events/2026/09/29/kids-in-motion-spuyten-duyvil-playground"
     },
     {
       "id": "nycp-kids-in-motion-st-james-playground-st-james-park-playground-in-st-james-park-900",
@@ -5724,17 +5498,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 10,
-        "first": "Sep 26",
+        "count": 9,
+        "first": "Sep 29",
         "last": "Oct 9"
       },
-      "start": "2026-09-26",
+      "start": "2026-09-29",
       "end": "2026-10-09",
       "oneDay": false,
       "desc": "The Kids in Motion Program engages children in active, outdoor play. A NYC Parks staff member leads four to seven hours of free activities in NYC's playgrounds, including organized sports. games, fitness, demos, board games, water games, and more!\n\nKids in Motion is a free, drop-in program without registration. Children can head to the playground during the listed hours of operation to participate. Occasionally a Kids in motion program may be cancelled due to harsh weather or other conditions.\n\nPlease note: We recommend that guardians accompany children participating in this program. Kids in Motion is not a childcare program and NYC Parks is not responsible for the well-being of attendees.",
       "lat": 40.866019,
       "lng": -73.898196,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/kids-in-motion-st-james-playground"
+      "url": "https://www.nycgovparks.org/events/2026/09/29/kids-in-motion-st-james-playground"
     },
     {
       "id": "nycp-kids-in-motion-st-john-s-park-playground-in-st-john-s-park-600",
@@ -5756,17 +5530,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 11,
-        "first": "Sep 26",
+        "count": 10,
+        "first": "Sep 29",
         "last": "Oct 10"
       },
-      "start": "2026-09-26",
+      "start": "2026-09-29",
       "end": "2026-10-10",
       "oneDay": false,
       "desc": "The Kids In Motion programs engage children in active, outdoor play. An NYC parks staff member leads four to seven hours of free activities in NYC's playgrounds, including organized sports, games, fitness demos, board games, water games and more",
       "lat": 40.673876,
       "lng": -73.935839,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/kids-in-motion-st-johns-park"
+      "url": "https://www.nycgovparks.org/events/2026/09/29/kids-in-motion-st-johns-park"
     },
     {
       "id": "nycp-kids-in-motion-st-mary-s-park-west-playground-west-play-area-in-st-mary-s-park-900",
@@ -5788,17 +5562,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 10,
-        "first": "Sep 26",
+        "count": 9,
+        "first": "Sep 29",
         "last": "Oct 9"
       },
-      "start": "2026-09-26",
+      "start": "2026-09-29",
       "end": "2026-10-09",
       "oneDay": false,
       "desc": "The Kids in Motion Program engages children in active, outdoor play. A NYC Parks staff member leads four to seven hours of free activities in NYC's playgrounds, including organized sports. games, fitness, demos, board games, water games, and more!\n\nKids in Motion is a free, drop-in program without registration. Children can head to the playground during the listed hours of operation to participate. Occasionally a Kids in motion program may be cancelled due to harsh weather or other conditions.\n\nPlease note: We recommend that guardians accompany children participating in this program. Kids in Motion is not a childcare program and NYC Parks is not responsible for the well-being of attendees.",
       "lat": 40.812815,
       "lng": -73.913263,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/kids-in-motion-st-marys-park-west"
+      "url": "https://www.nycgovparks.org/events/2026/09/29/kids-in-motion-st-marys-park-west"
     },
     {
       "id": "nycp-kids-in-motion-the-big-park-entrance-continental-place-and-grandview-avenue-in-the-big-park-600",
@@ -5819,17 +5593,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 11,
-        "first": "Sep 26",
+        "count": 10,
+        "first": "Sep 29",
         "last": "Oct 10"
       },
-      "start": "2026-09-26",
+      "start": "2026-09-29",
       "end": "2026-10-10",
       "oneDay": false,
       "desc": "The Kids in Motion program engages children in active, outdoor play. A NYC Parks staff member leads four to seven hours of free activities in NYC's playgrounds, including organized sports, games, fitness demos, board games, water games, and more!\n\nKias in Motion is a free, drop-in program without registration. Children can head to the playground during the listed hours of operation to participate. Occasionally a Kids in Motion program may be cancelled due to harsh weather or other conditions.\n\nPlease note: We recommend that guardians accompany children participating in this program.\n\nKids in Motion is not a childcare program and NYC Parks is not responsible for the well-being of attendees.",
       "lat": 40.630373,
       "lng": -74.165228,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/kids-in-motion-the-big-park"
+      "url": "https://www.nycgovparks.org/events/2026/09/29/kids-in-motion-the-big-park"
     },
     {
       "id": "nycp-kids-in-motion-tompkins-square-park-avenue-a-and-st-marks-place-in-tompkins-square-park-600",
@@ -5883,17 +5657,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 10,
-        "first": "Sep 26",
+        "count": 9,
+        "first": "Sep 29",
         "last": "Oct 9"
       },
-      "start": "2026-09-26",
+      "start": "2026-09-29",
       "end": "2026-10-09",
       "oneDay": false,
       "desc": "The Kids in Motion Program engages children in active, outdoor play. A NYC Parks staff member leads four to seven hours of free activities in NYC's playgrounds, including organized sports. games, fitness, demos, board games, water games, and more!\n\nKids in Motion is a free, drop-in program without registration. Children can head to the playground during the listed hours of operation to participate. Occasionally a Kids in motion program may be cancelled due to harsh weather or other conditions.\n\nPlease note: We recommend that guardians accompany children participating in this program. Kids in Motion is not a childcare program and NYC Parks is not responsible for the well-being of attendees.",
       "lat": 40.877219,
       "lng": -73.878662,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/kids-in-motion-williamsbridge-oval-playground-west"
+      "url": "https://www.nycgovparks.org/events/2026/09/29/kids-in-motion-williamsbridge-oval-playground-west"
     },
     {
       "id": "nycp-kids-in-motion-yellowstone-park-katzman-playground-in-yellowstone-park-600",
@@ -6222,7 +5996,7 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 19,
+      "spots": 18,
       "unlimited": false,
       "regDeadline": "Registration ends on September 28th, 2026 at 06:00 PM",
       "start": "2026-09-28",
@@ -6336,32 +6110,6 @@
       "lat": 40.685555,
       "lng": -73.941171,
       "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=4e5cdc8d-fca8-45e5-9eb7-1025a995a090&occurrenceDate=20260930"
-    },
-    {
-      "id": "nycp-mat-pilates-with-bien-good-well-bella-abzug-park-fountains-in-bella-abzug-park-630",
-      "source": "nycparks",
-      "name": "Mat Pilates with Bien Good Well",
-      "category": "fitness",
-      "tags": [
-        "nature"
-      ],
-      "borough": "Manhattan",
-      "location": "Bella Abzug Park Fountains (in Bella Abzug Park)",
-      "when": "Sat · 10:30 AM - 11:15 AM",
-      "dropIn": false,
-      "noOnlineReg": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": null,
-      "unlimited": false,
-      "start": "2026-09-26",
-      "end": "2026-09-26",
-      "oneDay": true,
-      "desc": "Join Bien Good Well for free yoga classes in Bella Abzug Park, bring your own mat!\n\nMay–September 2026\n\nMondays 6:00-6:45 PM (yoga flow)\n\nWednesdays 5:00-5:45 PM (yoga flow)\n\nSaturdays at 10:30 AM (mat Pilates)\n\nMove, breathe, and reconnect in this 45-minute outdoor yoga class–offered in both English and Spanish.\n\nVeronica guides a welcoming flow rooted in joy, presence, and intuitive movement. Classes include breathwork, gentle yoga postures, and mindful transitions that support grounding, balance, and inner connection.\n\nWhether you're new to yoga or a seasoned mover, you'll be encouraged to listen to your body and move at your own pace.\n\n✨ All levels welcome\n\n✨ Bring a mat, water, and comfy clothes\n\n✨ Class taught in English and Spanish\n\n? Location: Bella Abzug Park – meet by the fountains, between W 34th & W 35th Streets, and 10th & 11th Avenues",
-      "lat": 40.755607,
-      "lng": -74.00059,
-      "url": "https://www.eventbrite.com/e/yoga-with-bien-good-well-in-bella-abzug-park-tickets-1990913250125"
     },
     {
       "id": "nycp-meet-the-artists-tarik-jeremiah-brown-and-camille-cooper-wave-hill-840",
@@ -6750,29 +6498,6 @@
       "url": "https://www.nycgovparks.org/events/2026/10/03/movies-under-the-stars-hocus-pocus-pg"
     },
     {
-      "id": "nycp-movies-under-the-stars-in-the-heights-lawn-area-bay-street-and-school-road-in-von-briesen-park-1140",
-      "source": "nycparks",
-      "name": "Movies Under the Stars: In The Heights",
-      "category": "performances",
-      "borough": "Staten Island",
-      "location": "Lawn Area - Bay Street and School Road (in Von Briesen Park)",
-      "when": "Sat · 7:00 PM - 9:30 PM",
-      "dropIn": false,
-      "noOnlineReg": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 0,
-      "unlimited": false,
-      "start": "2026-09-26",
-      "end": "2026-09-26",
-      "oneDay": true,
-      "desc": "Grab a blanket and come enjoy a movie in a neighborhood park or playground! This summer, NYC Parks and The Mayor's Office of Media and Entertainment will host family-friendly movie showings across the five boroughs.\n\nUsnavi is a bodega owner who longs to go back to his native Dominican Republic. In the meantime, he spends his time in a small neighborhood in Washington Heights pining after Vanessa, a beautiful lady working at the beauty salon and looking after Abuela Claudia, the elderly Cuban lady living next door who raised him, among many others. One day, Usnavi's childhood friend Nina comes back from college with a secret, and Abuela Claudia wins the lottery.\n\nRated PG\n\nThe following movie has been rated PG. Some material may not be suitable for children. The film should be investigated further by parents before they let their younger children attend.\n\nMovies begin at dusk. This event is FREE and open to the public. Glass bottles and alcoholic beverages are strictly prohibited. In the event of heavy rain or extreme weather, the screening may be canceled. The decision to cancel the event will be made prior to the screening and will be prominently posted on our website.\n\nFor more information visit nyc.gov/parks or call 311. Contact (212) 360-1430 or accessibility@parks.nyc.gov for more information regarding accessibility.",
-      "lat": 40.607437,
-      "lng": -74.06011,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/movies-under-the-stars-in-the-heights"
-    },
-    {
       "id": "nycp-movies-under-the-stars-lilo-and-stitch-2025-play-area-in-noble-playground-1200",
       "source": "nycparks",
       "name": "Movies Under the Stars: Lilo and Stitch (2025)",
@@ -6844,6 +6569,29 @@
       "lat": 40.736584,
       "lng": -73.989876,
       "url": "https://www.nycgovparks.org/events/2026/10/08/movies-under-the-stars-shrek-2001"
+    },
+    {
+      "id": "nycp-movies-under-the-stars-sister-midnight-oval-lawn-in-police-officer-edward-byrne-park-1125",
+      "source": "nycparks",
+      "name": "Movies Under the Stars: Sister Midnight",
+      "category": "performances",
+      "borough": "Queens",
+      "location": "Oval Lawn (in Police Officer Edward Byrne Park)",
+      "when": "Sun · 6:45 PM - 8:45 PM",
+      "dropIn": true,
+      "noOnlineReg": true,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 0,
+      "unlimited": true,
+      "start": "2026-10-11",
+      "end": "2026-10-11",
+      "oneDay": true,
+      "desc": "Grab a blanket and come enjoy a movie in a neighborhood park or playground! This summer, NYC Parks and The Mayor's Office of Media and Entertainment will host family-friendly movie showings across the five boroughs.\n\nAn arranged marriage in Mumbai: the husband is limp and spineless and, once the wife arrives in the marital hovel, she assumes a particularly crude form of misanthropy. Trapped in the hell of coupledom, Uma is transformed into a disturbing and ruthless figure, giving free rein to her own feral impulses.\n\nRated NR\n\nThis film has not been rated. The film should be investigated further by parents before they let their children attend.\n\nMovies begin at dusk. This event is FREE and open to the public. Glass bottles and alcoholic beverages are strictly prohibited. In the event of heavy rain or extreme weather, the screening may be canceled. The decision to cancel the event will be made prior to the screening and will be promptly posted on our website.\n\nFor more information visit nyc.gov/parks or call 311. Contact (212) 360-1430 or accessibility@parks.nyc.gov for more information regarding accessibility.",
+      "lat": 40.66726,
+      "lng": -73.806197,
+      "url": "https://www.nycgovparks.org/events/2026/10/11/movies-under-the-stars-sister-midnight"
     },
     {
       "id": "nycp-movies-under-the-stars-supergirl-2026-athletic-field-in-julio-carballo-fields-1200",
@@ -6973,33 +6721,6 @@
       "url": "https://www.nycgovparks.org/events/2026/10/02/movies-under-the-stars-toy-story-5-pg"
     },
     {
-      "id": "nycp-natural-dyeing-workshop-horticulture-compound-in-randall-s-island-park-780",
-      "source": "nycparks",
-      "name": "Natural Dyeing Workshop",
-      "category": "nature",
-      "tags": [
-        "learn",
-        "arts"
-      ],
-      "borough": "Manhattan",
-      "location": "Horticulture Compound (in Randall's Island Park)",
-      "when": "Sat · 1:00 PM - 3:00 PM",
-      "dropIn": false,
-      "noOnlineReg": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": null,
-      "unlimited": false,
-      "start": "2026-09-26",
-      "end": "2026-09-26",
-      "oneDay": true,
-      "desc": "Join us for a hands-on workshop where you'll create beautiful, eco-friendly dyes using natural materials from our gardens!\n\nThen, we'll transform textiles into works of art. This class is open to all ages; perfect for beginners and those looking to expand their crafting skills.\n\nRegistration is required; opens Saturday, 9/12 at 1 PM\n\nLocation: Icahn Stadium\n\nFor inquiries about accessibility, to request an accommodation, or for event information, please email publicprograms@randallsisland.org.",
-      "lat": 40.786351,
-      "lng": -73.926534,
-      "url": "https://www.eventbrite.com/e/1998960607989?aff=oddtdtcreator"
-    },
-    {
       "id": "nycp-nature-book-club-west-218th-street-and-indian-road-in-inwood-hill-park-1020",
       "source": "nycparks",
       "name": "Nature Book Club",
@@ -7021,6 +6742,32 @@
       "lat": 40.873013,
       "lng": -73.918453,
       "url": "https://www.nycgovparks.org/events/2026/10/07/nature-book-club"
+    },
+    {
+      "id": "nycp-nature-in-a-warming-world-west-218th-street-and-indian-road-in-inwood-hill-park-780",
+      "source": "nycparks",
+      "name": "Nature In A Warming World",
+      "category": "nature",
+      "tags": [
+        "philanthropy"
+      ],
+      "borough": "Manhattan",
+      "location": "West 218th Street and Indian Road (in Inwood Hill Park)",
+      "when": "Sun · 1:00 PM - 2:30 PM",
+      "dropIn": true,
+      "noOnlineReg": true,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 0,
+      "unlimited": true,
+      "start": "2026-10-11",
+      "end": "2026-10-11",
+      "oneDay": true,
+      "desc": "Join the Urban Park Rangers for a focused walk through Inwood Hill Park to explore how climate change is affecting local plants and wildlife. Learn how shifting temperatures and extreme weather influence the insects, trees, birds, and mammals we see every day, and discover the changes already underway in this unique urban forest.",
+      "lat": 40.873013,
+      "lng": -73.918453,
+      "url": "https://www.nycgovparks.org/events/2026/10/11/nature-in-a-warming-world"
     },
     {
       "id": "nycp-new-dendrology-at-the-arsenal-gallery-arsenal-in-central-park-540",
@@ -7067,17 +6814,17 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 14,
+      "spots": 19,
       "unlimited": false,
-      "regDeadline": "Registration ends on September 26th, 2026 at 09:00 AM",
-      "start": "2026-09-26",
+      "regDeadline": "Registration ends on October 3rd, 2026 at 09:00 AM",
+      "start": "2026-10-03",
       "end": "2026-10-10",
       "oneDay": false,
       "instructor": "Gail Madison",
       "desc": "A high-energy beginner-friendly workout that combines strength and endurance exercises performed in timed stations with minimal rest. Participants rotate through movements targeting different muscle groups to improve fitness. Our goals are to increase stamina, build strength, and enhance overall body conditioning in an efficient, full-body training session while connecting with your community! \\r\n\\r\nParticipants must sign in at the front desk and bring locks to lock up their bags. The center does not allow anyone to bring their bags to the dance room except: towel, water and phone. ",
       "lat": 40.6735,
       "lng": -73.934799,
-      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=55ae0fb4-518e-4fba-b1d1-43b8aa9c0eeb&occurrenceDate=20260926"
+      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=55ae0fb4-518e-4fba-b1d1-43b8aa9c0eeb&occurrenceDate=20261003"
     },
     {
       "id": "nycp-nyc-day-of-flow-brooklyn-bridge-park-840",
@@ -7198,29 +6945,6 @@
       "url": "https://www.nyrr.org/openrun/parks/baisley-pond-park?utm_source=NYC+Gov+Parks&utm_medium=Website+&utm_campaign=Baisley+Pond+Park"
     },
     {
-      "id": "nycp-nyrr-open-run-baisley-pond-park-back-to-school-chalk-challenge-baisley-pond-park-house-in-baisley-pond-park-540",
-      "source": "nycparks",
-      "name": "NYRR Open Run: Baisley Pond Park Back to School Chalk Challenge",
-      "category": "fitness",
-      "borough": "Queens",
-      "location": "Baisley Pond Park House (in Baisley Pond Park)",
-      "when": "Sat · 9:00 AM - 12:00 PM",
-      "dropIn": false,
-      "noOnlineReg": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": null,
-      "unlimited": false,
-      "start": "2026-09-26",
-      "end": "2026-09-26",
-      "oneDay": true,
-      "desc": "Show off your creativity by decorating the start and finish with colorful chalk!\n\nNYRR Open Run brings free, 5K weekly community-led runs, to neighborhood parks across the greater New York City area. The program is free and open to runners and walkers of all ages, abilities, and experience levels.\n\nBaisley Pond Park is located near JFK Airport in Springfield Gardens, Queens on the border of NYC and Nassau County. The park features tennis, handball, and basketball courts; peaceful, shady alcoves for picnicking; and plenty of plant and animal wildlife.",
-      "lat": 40.673,
-      "lng": -73.786697,
-      "url": "https://www.nyrr.org/openrun/parks/baisley-pond-park?utm_source=NYC+Gov+Parks&utm_medium=Website+&utm_campaign=Baisley+Pond+Park"
-    },
-    {
       "id": "nycp-nyrr-open-run-baisley-pond-park-hispanic-heritage-month-celebration-run-baisley-pond-park-house-in-baisley-pond-park-540",
       "source": "nycparks",
       "name": "NYRR Open Run: Baisley Pond Park Hispanic Heritage Month Celebration Run",
@@ -7287,11 +7011,11 @@
       "spots": null,
       "unlimited": false,
       "sessions": {
-        "count": 3,
-        "first": "Sep 26",
+        "count": 2,
+        "first": "Oct 3",
         "last": "Oct 10"
       },
-      "start": "2026-09-26",
+      "start": "2026-10-03",
       "end": "2026-10-10",
       "oneDay": false,
       "desc": "NYRR Open Run Brings free, 5K weekly community-led runs, to neighborhood parks across the greater New York City area. The program is free and open to runners and walkers of all ages, abilities, and experience levels.\n\nCanarsie Park serves the neighborhoods of Canarsie and nearby Flatlands, Mill Basin, Marine Park, and Bergen Beach. Home to baseball fields and cricket pitches, it's bordered by the Belt Parkway and Paerdegat Basin.",
@@ -7314,9 +7038,14 @@
       "minAge": 0,
       "spots": null,
       "unlimited": false,
+      "sessions": {
+        "count": 2,
+        "first": "Oct 4",
+        "last": "Oct 11"
+      },
       "start": "2026-10-04",
-      "end": "2026-10-04",
-      "oneDay": true,
+      "end": "2026-10-11",
+      "oneDay": false,
       "desc": "NYRR Open Run Brings free, 5K weekly community-led runs, to neighborhood parks across the greater New York City area. The program is free and open to runners and walkers of all ages, abilities, and experience levels.\n\nLocated at the southernmost point of New York state, Conference House Park features four historic buildings that trace Staten Island's 300+ year history, breathtaking views of the Raritan Bay, extensive hiking and biking trails, and more.",
       "lat": 40.502602,
       "lng": -74.251801,
@@ -7360,14 +7089,9 @@
       "minAge": 0,
       "spots": null,
       "unlimited": false,
-      "sessions": {
-        "count": 2,
-        "first": "Sep 26",
-        "last": "Oct 3"
-      },
-      "start": "2026-09-26",
+      "start": "2026-10-03",
       "end": "2026-10-03",
-      "oneDay": false,
+      "oneDay": true,
       "desc": "NYRR Open Run brings free, 5K weekly community-led runs, to neighborhood parks across the greater New York City area. The program is free and open to runners and walkers of all ages, abilities, and experience levels.\n\nWidely known for its history with the Crocheron Family and summer house, Crocheron Park is home to running paths, baseball fields, and a 4-court tennis center.",
       "lat": 40.773002,
       "lng": -73.769996,
@@ -7411,9 +7135,14 @@
       "minAge": 0,
       "spots": null,
       "unlimited": false,
+      "sessions": {
+        "count": 2,
+        "first": "Oct 4",
+        "last": "Oct 11"
+      },
       "start": "2026-10-04",
-      "end": "2026-10-04",
-      "oneDay": true,
+      "end": "2026-10-11",
+      "oneDay": false,
       "desc": "NYRR Open Run brings free, 5K weekly community-led runs, to neighborhood parks across the greater New York City area. The program is free and open to runners and walkers of all ages, abilities, and experience levels.\n\nOne of the largest parks in Queens, Cunningham Park was built between 1928 and 1944 and offers culture, sports (including a large tennis facility), and nature activities and facilities.",
       "lat": 40.7309,
       "lng": -73.774002,
@@ -7486,11 +7215,11 @@
       "spots": null,
       "unlimited": false,
       "sessions": {
-        "count": 3,
-        "first": "Sep 26",
+        "count": 2,
+        "first": "Oct 3",
         "last": "Oct 10"
       },
-      "start": "2026-09-26",
+      "start": "2026-10-03",
       "end": "2026-10-10",
       "oneDay": false,
       "desc": "NYRR Open Run Brings free, 5K weekly community-led runs, to neighborhood parks across the greater New York City area. The program is free and open to runners and walkers of all ages, abilities, and experience levels.\n\nLocated in the Cypress Hills section of Brooklyn, Highland Park is close to East New York and Bushwick in Brooklyn and the Woodhaven, Ridgewood, and Glendale neighborhoods in Queens. It's home to over 150 species of birds and to the Ridgewood Reservoir.",
@@ -7527,29 +7256,6 @@
       "url": "https://www.nyrr.org/openrun/parks/inwood-hill-park?utm_source=NYC+Gov+Parks&utm_medium=Website+&utm_campaign=Inwood+Hill+Park"
     },
     {
-      "id": "nycp-nyrr-open-run-inwood-hill-park-hispanic-heritage-month-celebration-run-seaman-avenue-and-isham-street-entrance-in-inwood-hill-park-525",
-      "source": "nycparks",
-      "name": "NYRR Open Run: Inwood Hill Park Hispanic Heritage Month Celebration Run",
-      "category": "fitness",
-      "borough": "Manhattan",
-      "location": "Seaman Avenue and Isham Street Entrance (in Inwood Hill Park)",
-      "when": "Sat · 8:45 AM - 10:30 AM",
-      "dropIn": false,
-      "noOnlineReg": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": null,
-      "unlimited": false,
-      "start": "2026-09-26",
-      "end": "2026-09-26",
-      "oneDay": true,
-      "desc": "Celebrate Hispanic Heritage with Open Run! Wear your home country's colors!\n\nNYRR Open Run Brings free, 5K weekly community-led runs, to neighborhood parks across the greater New York City area. The program is free and open to runners and walkers of all ages, abilities, and experience levels.\n\nEvidence of Inwood Hill Park's formation exists as caves, valleys, and ridges left as the result of shifting glaciers. Evidence of its uninhabited state afterward remains as its forest and salt marsh (the last natural one in Manhattan), and evidence of its use by Native Americans continues to be discovered. Most of the park was largely untouched by wars and development. The park features a hiking trail and the Hudson River Bike Trail, and is one of the best places in NYC to spot a bald eagle. It also includes athletic fields, playgrounds, dog runs, and a barbecue area.\n\nThe course is three loops on hilly trails and walkways through woods and along a salt marsh.",
-      "lat": 40.869999,
-      "lng": -73.921097,
-      "url": "https://www.nyrr.org/openrun/parks/inwood-hill-park?utm_source=NYC+Gov+Parks&utm_medium=Website+&utm_campaign=Inwood+Hill+Park"
-    },
-    {
       "id": "nycp-nyrr-open-run-marine-park-carmine-carro-community-center-in-marine-park-525",
       "source": "nycparks",
       "name": "NYRR Open Run: Marine Park",
@@ -7564,9 +7270,14 @@
       "minAge": 0,
       "spots": null,
       "unlimited": false,
+      "sessions": {
+        "count": 2,
+        "first": "Oct 4",
+        "last": "Oct 11"
+      },
       "start": "2026-10-04",
-      "end": "2026-10-04",
-      "oneDay": true,
+      "end": "2026-10-11",
+      "oneDay": false,
       "desc": "NYRR Open Run Brings free, 5K weekly community-led runs, to neighborhood parks across the greater New York City area. The program is free and open to runners and walkers of all ages, abilities, and experience levels.\n\nMarine Park serves the nearby communities of Canarsie, Flatlands, Mill Basin, Bergen Beach, and others. The course is flat and includes no sharp turns.",
       "lat": 40.607944,
       "lng": -73.937465,
@@ -7611,11 +7322,11 @@
       "spots": null,
       "unlimited": false,
       "sessions": {
-        "count": 3,
-        "first": "Sep 26",
+        "count": 2,
+        "first": "Oct 3",
         "last": "Oct 10"
       },
-      "start": "2026-09-26",
+      "start": "2026-10-03",
       "end": "2026-10-10",
       "oneDay": false,
       "desc": "NYRR Open Run Brings free, 5K weekly community-led runs, to neighborhood parks across the greater New York City area. The program is free and open to runners and walkers of all ages, abilities, and experience levels.\n\nShore Road Park, located in Bay Ridge, Brooklyn, is one of our longer Open Run courses. The park serves residents of Bay Ridge, Sunset Park, Dyker Heights, Fort Hamilton, and other surrounding neighborhoods.\n\nThe course is three loops alongside Shore Road with stunning views of the Verrazzano-Narrows Bridge.",
@@ -7638,14 +7349,9 @@
       "minAge": 0,
       "spots": null,
       "unlimited": false,
-      "sessions": {
-        "count": 2,
-        "first": "Sep 26",
-        "last": "Oct 10"
-      },
-      "start": "2026-09-26",
+      "start": "2026-10-10",
       "end": "2026-10-10",
-      "oneDay": false,
+      "oneDay": true,
       "desc": "NYRR Open Run brings free, 5K weekly community-led runs, to neighborhood parks across the greater New York City area. The program is free and open to runners and walkers of all ages, abilities, and experience levels.\n\nCalled the \"Gateway to the Bronx River,\" 205-acre Soundview Park is located where the Bronx River opens into the East River. This urban green space is filled with grassy baseball and soccer fields, a cricket pitch, basketball courts, a running track, walking/biking paths, picnic fields, and more! With its extensive views of the water, Soundview Park celebrates the beauty of both the Bronx and East Rivers. The back part of our Open Run course has beautiful views of the Bronx River waterfront for participants to enjoy!",
       "lat": 40.820099,
       "lng": -73.872398,
@@ -7697,28 +7403,6 @@
       "url": "https://www.nyrr.org/openrun/parks/st-marys-park?utm_source=NYC+Gov+Parks&utm_medium=Website+&utm_campaign=St+Marys+Park"
     },
     {
-      "id": "nycp-nyrr-open-run-st-marys-park-back-to-school-chalk-challenge-st-mary-s-annual-5k-start-540",
-      "source": "nycparks",
-      "name": "NYRR Open Run: St. Marys Park Back to School Chalk Challenge",
-      "category": "fitness",
-      "location": "St. Mary's Annual 5K Start",
-      "when": "Sat · 9:00 AM - 12:00 PM",
-      "dropIn": false,
-      "noOnlineReg": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": null,
-      "unlimited": false,
-      "start": "2026-09-26",
-      "end": "2026-09-26",
-      "oneDay": true,
-      "desc": "Show off your creativity by decorating the start and finish with colorful chalk!\n\nNYRR Open Run brings free, 5K weekly community-led runs, to neighborhood parks across the greater New York City area. The program is free and open to runners and walkers of all ages, abilities, and experience levels.\n\nSt. Mary's Park offers a wonderful respite from the hustle and bustle of urban life. Located in the Mott Haven neighborhood in the South Bronx, the park features rolling hills, expanses of green grass, and grand old trees. The site was once part of the estate of Jonas Bronck (1600-43), for whom the Bronx is named. It is one of the largest parks in the area with a pool, playground, basketball courts, an indoor recreation center, picnic seating areas, and more. In the winter, the hills are perfect for sledding. St. Mary's Park received $30 million from NYC's Anchor Parks initiative, which will renovate the park's ballfields, pathways, and amphitheater.",
-      "lat": 40.813805,
-      "lng": -73.911804,
-      "url": "https://www.nyrr.org/openrun/parks/st-marys-park?utm_source=NYC+Gov+Parks&utm_medium=Website+&utm_campaign=St+Marys+Park"
-    },
-    {
       "id": "nycp-nyrr-open-run-st-marys-park-hispanic-heritage-month-celebration-run-st-mary-s-annual-5k-start-540",
       "source": "nycparks",
       "name": "NYRR Open Run: St. Marys Park Hispanic Heritage Month Celebration Run",
@@ -7763,31 +7447,6 @@
       "url": "https://bronxriver.org/event/october-nyc-food-forests-coalition-meeting"
     },
     {
-      "id": "nycp-ok-10k-with-lorendra-mable-shoelace-park-600",
-      "source": "nycparks",
-      "name": "OK! 10K with Lorendra Mable",
-      "category": "nature",
-      "tags": [
-        "youth"
-      ],
-      "location": "Shoelace Park",
-      "when": "Sat · 10:00 AM - 12:00 PM",
-      "dropIn": false,
-      "noOnlineReg": false,
-      "cost": "Free",
-      "ages": "Best for kids",
-      "minAge": 0,
-      "spots": null,
-      "unlimited": false,
-      "start": "2026-09-26",
-      "end": "2026-09-26",
-      "oneDay": true,
-      "desc": "Join community members in a morning walk to help reach a goal of 10K steps a day! All ages welcome. Participants will follow Community Member Lorenda in a walk to and from local Nefer Bookcafe to show some love to community shop before returning to starting point. Raindate will be the following Saturday, October 3rd. *Note: this is a part of our 2026 Community Grant Program. Sign Up Now! Stay up to date with our e-newsletter, The Current! The Bronx River Alliance serves as a coordinated voice for the river and works in harmonious partnership to protect, improve and restore the Bronx River corridor so that it can be a healthy ecological, recreational, educational and economic resource for the communities through which the river flows.",
-      "lat": 40.882301,
-      "lng": -73.867104,
-      "url": "https://bronxriver.org/event/ok-10k"
-    },
-    {
       "id": "nycp-old-stone-house-open-hours-old-stone-house-in-washington-park-720",
       "source": "nycparks",
       "name": "Old Stone House: Open Hours",
@@ -7807,16 +7466,16 @@
       "unlimited": true,
       "sessions": {
         "count": 7,
-        "first": "Sep 26",
-        "last": "Oct 10"
+        "first": "Sep 27",
+        "last": "Oct 11"
       },
-      "start": "2026-09-26",
-      "end": "2026-10-10",
+      "start": "2026-09-27",
+      "end": "2026-10-11",
       "oneDay": false,
       "desc": "Come visit the Old Stone House during our public Open Hours!\n\nSuggested donation for entry is $3, but no one is turned away for lack of funds. No reservation is necessary for entry.\n\nPlease note that while our typical hours are Friday-Sunday, 12-4 PM, we host private or ticketed events that may limit public access to the exhibitions. The times listed here are the most accurate reflection of when the House is open to the public.\n\nJoin us in the upstairs Great Room for new Contemporary Art Exhibits every season.\n\nDownstairs we host our permanent exhibit: The Old Stone House: Witness to War: An Exhibit Exploring Conflict from Kieft's War through the Battle of Brooklyn and the Occupation, 1643-1783Old Stone House: Witness to War is a self-directed exhibit that takes visitors on a journey from the Lenape village of Marechkawick through Dutch colonization and the Revolutionary War era in Brooklyn. Ten themed areas allow visitors to explore this history and consider how war and displacement impacted the community, what choices people had to make at the time, battle strategies, and what makes these issues relevant in today's world.\n\n ACCESSIBILITYThe contemporary art gallery is on display in our Great Room which is up 18 steps with a railing on one side.\n\nWitness to War is on the ground floor. The doorway has a 1.5 inch threshold.\n\nPublic park bathrooms are on the South side of the building. They are on the ground floor but are not currently wheelchair accessible.\n\nYou will find many oppurtunities to sit and rest throughout the House.\n\nThe history and art on display should be considered \"PG\" for complex themes.The atmosphere is always family-friendly and visiting us is a great way for children to practice respectful museum behavior.\n\nTours and walk throughs outside our usual open hours are available by appointment, we'd love to accomidate you! Please contact us with any questions.",
       "lat": 40.672939,
       "lng": -73.984604,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/old-stone-house-open-hours"
+      "url": "https://www.nycgovparks.org/events/2026/09/27/old-stone-house-open-hours"
     },
     {
       "id": "nycp-ongoing-museum-exhibit-new-york-s-brick-terra-cotta-industries-h-h-biddle-house-in-conference-house-park-660",
@@ -7902,17 +7561,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 13,
-        "first": "Sep 26",
+        "count": 12,
+        "first": "Sep 28",
         "last": "Oct 10"
       },
-      "start": "2026-09-26",
+      "start": "2026-09-28",
       "end": "2026-10-10",
       "oneDay": false,
       "desc": "The Conference House Association and NYC Parks invite you to explore this America 250 Exhibit!\n\nStop by the Lenape Gallery in the Conference House Park Visitor Center and explore \"Voices of 1776: The People and Events Surrounding the Historic Staten Island Peace Conference of the American Revolution\".",
       "lat": 40.501999,
       "lng": -74.251404,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/ongoing-museum-exhibit-voices-of-1776"
+      "url": "https://www.nycgovparks.org/events/2026/09/28/ongoing-museum-exhibit-voices-of-1776"
     },
     {
       "id": "nycp-ongoing-outdoor-museum-exhibit-alice-s-terracotta-garden-h-h-biddle-house-in-conference-house-park-660",
@@ -7935,67 +7594,16 @@
       "unlimited": true,
       "sessions": {
         "count": 15,
-        "first": "Sep 26",
-        "last": "Oct 10"
+        "first": "Sep 27",
+        "last": "Oct 11"
       },
-      "start": "2026-09-26",
-      "end": "2026-10-10",
+      "start": "2026-09-27",
+      "end": "2026-10-11",
       "oneDay": false,
       "desc": "Terra cotta sculpture garden featuring antique architectural ornaments from Tottenville's Atlantic Terra Cotta Company (west side lawn of Biddle House).\n\nNYC Parks and the Tottenville Historical Society invite you to visit a unique collection of terracotta artifacts that chronicle turn-of-the-twentieth-century architectural styles common in New York City and across the United States.",
       "lat": 40.505546,
       "lng": -74.254194,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/ongoing-outdoor-museum-exhibit-alices-terracotta-garden"
-    },
-    {
-      "id": "nycp-open-bluegrass-jam-sessions-east-fourth-street-community-garden-780",
-      "source": "nycparks",
-      "name": "Open Bluegrass Jam Sessions",
-      "category": "nature",
-      "tags": [
-        "music",
-        "performances"
-      ],
-      "location": "East Fourth Street Community Garden",
-      "when": "Sat · 1:00 PM - 3:00 PM",
-      "dropIn": true,
-      "noOnlineReg": true,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 0,
-      "unlimited": true,
-      "start": "2026-09-26",
-      "end": "2026-09-26",
-      "oneDay": true,
-      "desc": "Come to East 4th Street Community Garden for an Open Bluegrass Jam Session, weather permitting. Bring your guitar, ukulele, banjo, etc., and join in! All skill levels and ages are welcome. Kids are invited to dance along and possibly even touch the instruments after the session.",
-      "lat": 40.648205,
-      "lng": -73.977356,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/open-bluegrass-jam-sessions"
-    },
-    {
-      "id": "nycp-open-garden-block-party-urban-meadow-community-garden-720",
-      "source": "nycparks",
-      "name": "Open Garden Block Party",
-      "category": "nature",
-      "tags": [
-        "arts"
-      ],
-      "location": "Urban Meadow Community Garden",
-      "when": "Sat · 12:00 PM - 2:00 PM",
-      "dropIn": true,
-      "noOnlineReg": true,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 0,
-      "unlimited": true,
-      "start": "2026-09-26",
-      "end": "2026-09-26",
-      "oneDay": true,
-      "desc": "The Urban Meadow will be hosting a community event to coincide with the President Street Block Party. All neighbors are welcome to join us for family friendly activities including pumpkin painting, leaf rubbing, and garden exploration!",
-      "lat": 40.684235,
-      "lng": -74.005081,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/open-garden-block-party"
+      "url": "https://www.nycgovparks.org/events/2026/09/27/ongoing-outdoor-museum-exhibit-alices-terracotta-garden"
     },
     {
       "id": "nycp-open-play-table-tennis-gymnasium-in-gertrude-ederle-recreation-center-720",
@@ -8010,7 +7618,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": null,
+      "spots": 0,
       "unlimited": false,
       "sessions": {
         "count": 2,
@@ -8020,10 +7628,10 @@
       "start": "2026-09-29",
       "end": "2026-10-06",
       "oneDay": false,
-      "desc": "Open Play Table Tennis More Programs and InformationFind a Recreation Center ProgramSearch all Programs, Events, and ClassesLearn How to Create an Account and Register for ProgramsContact Us © City of New York. 2021 All Rights Reserved, NYC is a trademark and service mark of the City of New York Skip to main content NYC Parks Memberships & Registrations Login Course Dates Every Tue DayDateDurationFacilityTue9/22/2612:00 PM - 02:00 PMGymnasium Load more...",
+      "desc": "Open Play Table Tennis",
       "lat": 40.7715,
       "lng": -73.988502,
-      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=090af771-06ba-4409-b111-e1a86d6c0067"
+      "url": "https://www.nycgovparks.org/events/2026/09/29/open-play-table-tennis"
     },
     {
       "id": "nycp-opening-reception-van-cortlandt-park-in-pictures-by-billy-cleary-van-cortlandt-house-museum-in-van-cortlandt-park-900",
@@ -8070,17 +7678,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 7,
-        "first": "Sep 26",
+        "count": 6,
+        "first": "Oct 1",
         "last": "Oct 10"
       },
-      "start": "2026-09-26",
+      "start": "2026-10-01",
       "end": "2026-10-10",
       "oneDay": false,
       "desc": "Led by a local teaching artist, this drop-in class invites participants to explore creativity through hands-on artmaking under the shade of Scrabble Plaza's trees. Past mediums have included plein-air drawing, printmaking, cyanotypes, and more. All materials are provided by the Washington Square Park Conservancy.",
       "lat": 40.732022,
       "lng": -73.998528,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/park-open-studio"
+      "url": "https://www.nycgovparks.org/events/2026/10/01/park-open-studio"
     },
     {
       "id": "nycp-p-tanque-in-the-park-p-tanque-court-in-washington-square-park-720",
@@ -8162,17 +7770,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 3,
-        "first": "Sep 26",
+        "count": 2,
+        "first": "Oct 3",
         "last": "Oct 10"
       },
-      "start": "2026-09-26",
+      "start": "2026-10-03",
       "end": "2026-10-10",
       "oneDay": false,
       "desc": "Phoenix Community Garden's Farm Stand is open for the season, every Saturday rain or shine until mid-November. Each bag contains local farm fresh fruit, salad greens, the best seasonal vegetables, and aromatics and herbs for flavor.\n\nThere is sliding scale pricing. Cards, tap to pay and EBT are accepted at the register. Learn more and pre-order on the garden's website here.\n\nPick up at Phoenix Community Garden, 24 Somers Street, between 11:00 a.m. and 3:00 p.m.",
       "lat": 40.678398,
       "lng": -73.913101,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/phoenix-community-garden-farm-stand"
+      "url": "https://www.nycgovparks.org/events/2026/10/03/phoenix-community-garden-farm-stand"
     },
     {
       "id": "nycp-piano-in-bryant-park-upper-terrace-in-bryant-park-750",
@@ -8275,17 +7883,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 5,
-        "first": "Sep 26",
+        "count": 4,
+        "first": "Oct 1",
         "last": "Oct 10"
       },
-      "start": "2026-09-26",
+      "start": "2026-10-01",
       "end": "2026-10-10",
       "oneDay": false,
       "desc": "Solo and group exhibitions at Glyndor Gallery explore the dynamic relationships between nature, culture, and site. When exhibitions are on view in the spring, summer, and fall, Gallery Greeters lead public exhibition tours on Thursdays and Saturdays at 2PM, certain dates excluded. Visitors can expect an in-depth look at artworks on view in Glyndor Gallery and in the Sunroom Project Space, showcasing the work of both emerging and established artists in the unique context of a public garden.\n\nEach tour lasts approximately 45 minutes. Registration is not required for this drop-in event. Today's tour features current exhibitions.\n\nQuestions? Please email us at information@wavehill.org or call 718.549.3200 x251.\n\nGlyndor Gallery is wheelchair-accessible. There is an accessible, ground-level entrance at the front of the building with an elevator that provides access to the gallery level. The Sunroom Project Space can be accessed with an ADA-compliant ramp. The restroom on the gallery level is all-gender and ADA-compliant.",
       "lat": 40.898701,
       "lng": -73.912498,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/public-gallery-tour"
+      "url": "https://www.nycgovparks.org/events/2026/10/01/public-gallery-tour"
     },
     {
       "id": "nycp-r-b-beats-dance-queens-public-library-cambria-heights-615",
@@ -8302,17 +7910,17 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 14,
+      "spots": 15,
       "unlimited": false,
-      "regDeadline": "Registration ends on September 26th, 2026 at 10:15 AM",
-      "start": "2026-09-26",
+      "regDeadline": "Registration ends on October 3rd, 2026 at 10:15 AM",
+      "start": "2026-10-03",
       "end": "2026-10-10",
       "oneDay": false,
       "instructor": "Ifeoma Emeh",
       "desc": "You’re cordially invited to a dance fitness party! This class is an exciting fusion of R\\u0026B and Afrobeats paired with high-energy choreography to give you a great workout. Come sweat it out and have fun! This class is open to all levels. ",
       "lat": 40.6957,
       "lng": -73.741208,
-      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=04902c54-f2ca-436e-be7c-8149efc4bd96&occurrenceDate=20260926"
+      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=04902c54-f2ca-436e-be7c-8149efc4bd96&occurrenceDate=20261003"
     },
     {
       "id": "nycp-retro-dance-fitness-rock-climbing-wall-room-in-gertrude-ederle-recreation-center-1110",
@@ -8379,17 +7987,17 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 19,
+      "spots": 20,
       "unlimited": false,
-      "regDeadline": "Registration ends on September 26th, 2026 at 10:00 AM",
-      "start": "2026-09-26",
+      "regDeadline": "Registration ends on October 3rd, 2026 at 10:00 AM",
+      "start": "2026-10-03",
       "end": "2026-10-10",
       "oneDay": false,
       "instructor": "Ashley Cabrera",
       "desc": "This circuit training class combines bodyweight resistance training and conditioning to provide you with a dynamic full body workout. Whether you are a beginner or looking for a challenge; this class for all fitness levels and modifications are always provided. Come engage in exercises that target all muscle groups, get your heart pumping, and connect with people in your community!",
       "lat": 40.842602,
       "lng": -73.934303,
-      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=c0a398c8-e8d0-4c97-955d-59a702b576bf&occurrenceDate=20260926"
+      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=c0a398c8-e8d0-4c97-955d-59a702b576bf&occurrenceDate=20261003"
     },
     {
       "id": "nycp-rising-vibes-group-yoga-at-upper-highland-park-upper-highland-lawn-600",
@@ -8523,29 +8131,6 @@
       "url": "https://www.nycgovparks.org/events/2026/10/10/saltwater-fishing"
     },
     {
-      "id": "nycp-seining-and-shore-exploration-beach-32-and-the-boardwalk-in-rockaway-beach-720",
-      "source": "nycparks",
-      "name": "Seining and Shore Exploration",
-      "category": "nature",
-      "borough": "Queens",
-      "location": "Beach 32 and the Boardwalk (in Rockaway Beach)",
-      "when": "Sun · 12:00 PM - 1:00 PM",
-      "dropIn": true,
-      "noOnlineReg": true,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 0,
-      "unlimited": true,
-      "start": "2026-09-27",
-      "end": "2026-09-27",
-      "oneDay": true,
-      "desc": "Join the Urban Park Rangers to explore the hidden life along New York City's shoreline. Using a seine net, we will sample the shallow waters to discover fish, crabs, and other marine creatures living just offshore. In late summer we may even encounter colorful tropical visitors known as \"Gulf Stream Orphans,\" young fish carried hundreds of miles north by the Gulf Stream. Learn how ocean currents connect New York City to the Caribbean and how scientists study coastal ecosystems.",
-      "lat": 40.591839,
-      "lng": -73.763924,
-      "url": "https://www.nycgovparks.org/events/2026/09/27/seining-and-shore-exploration"
-    },
-    {
       "id": "nycp-senior-cardio-sculpt-sunnyside-community-services-540",
       "source": "nycparks",
       "name": "Senior Cardio Sculpt",
@@ -8674,29 +8259,6 @@
       "lat": 40.648752,
       "lng": -73.957267,
       "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=32b6a159-be98-4c77-94f0-eddfa69829a9&occurrenceDate=20261002"
-    },
-    {
-      "id": "nycp-sketch-at-st-nick-west-135th-street-plaza-in-st-nicholas-park-630",
-      "source": "nycparks",
-      "name": "Sketch at St. Nick!",
-      "category": "arts",
-      "borough": "Manhattan",
-      "location": "West 135th Street Plaza (in St. Nicholas Park)",
-      "when": "Sat · 10:30 AM - 12:00 PM",
-      "dropIn": false,
-      "noOnlineReg": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": null,
-      "unlimited": false,
-      "start": "2026-09-26",
-      "end": "2026-09-26",
-      "oneDay": true,
-      "desc": "In celebration of Climate Week, we're inviting neighbors to slow down and spend some time looking closely at the natural and built environment of St. Nicholas Park through sketching. Find a spot and draw whatever catches your attention–from trees and landscapes to people, architecture, and the little details you might normally walk past.\n\nNo drawing experience necessary–all ages and skill levels are welcome. Just bring a sketchbook and a pencil/pen. Not sure where to start? We'll be there with a few prompts and some guidance to help you get going.\n\nWe'll sketch together around the 135th St. Plaza, with the option to wander nearby, and regroup at the end for an informal share.",
-      "lat": 40.817294,
-      "lng": -73.94834,
-      "url": "https://www.eventbrite.com/e/sketch-at-st-nick-tickets-2001414464540"
     },
     {
       "id": "nycp-soundview-park-forest-restoration-lacombe-ave-rosedale-ave-in-soundview-park-540",
@@ -8969,11 +8531,11 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 18,
+      "spots": 16,
       "unlimited": false,
       "regDeadline": "Registration ends on September 27th, 2026 at 09:30 AM",
       "start": "2026-09-27",
-      "end": "2026-10-04",
+      "end": "2026-10-11",
       "oneDay": false,
       "instructor": "Chelsie Reid",
       "desc": " This circuit training class combines bodyweight resistance training and conditioning to provide you with a dynamic full body workout. Whether you are a beginneror looking for a challenge; this class for all fitness levels and modifications are always provided. Come engage in exercises that target all muscle groups, get your heart pumping, and connect with people in your community!",
@@ -9090,7 +8652,7 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 15,
+      "spots": 14,
       "unlimited": false,
       "regDeadline": "Registration ends on October 3rd, 2026 at 01:00 PM",
       "start": "2026-10-03",
@@ -9115,17 +8677,17 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 5,
+      "spots": 10,
       "unlimited": false,
-      "regDeadline": "Registration ends on September 26th, 2026 at 10:30 AM",
-      "start": "2026-09-26",
+      "regDeadline": "Registration ends on October 3rd, 2026 at 10:30 AM",
+      "start": "2026-10-03",
       "end": "2026-10-03",
-      "oneDay": false,
+      "oneDay": true,
       "instructor": "Tony Sadiku",
       "desc": "STRONG Nation® combines body weight, muscle conditioning, cardio and plyometric training moves synced to original music that has been specifically designed to match every single move. Every squat, every lunge, every burpee is driven by the music, helping you make it to that last rep, and maybe even five more.  \\r\n\\r\n*Participants must bring a lock and lock up all personal belongings. ",
       "lat": 40.7715,
       "lng": -73.988502,
-      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=747934aa-4c9d-4233-8564-99921bc5dcac&occurrenceDate=20260926"
+      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=747934aa-4c9d-4233-8564-99921bc5dcac&occurrenceDate=20261003"
     },
     {
       "id": "nycp-summer-on-the-hudson-billion-oyster-project-presentation-on-the-pier-in-west-harlem-piers-720",
@@ -9260,32 +8822,6 @@
       "url": "https://www.nycgovparks.org/events/2026/10/03/summer-on-the-hudson-little-red-lighthouse-festival"
     },
     {
-      "id": "nycp-summer-on-the-hudson-locomotive-open-house-locomotive-lawn-in-riverside-park-south-600",
-      "source": "nycparks",
-      "name": "Summer on the Hudson: Locomotive Open House",
-      "category": "learn",
-      "tags": [
-        "nature"
-      ],
-      "borough": "Manhattan",
-      "location": "Locomotive Lawn (in Riverside Park South)",
-      "when": "Sat · 10:00 AM - 1:00 PM",
-      "dropIn": false,
-      "noOnlineReg": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": null,
-      "unlimited": false,
-      "start": "2026-09-26",
-      "end": "2026-09-26",
-      "oneDay": true,
-      "desc": "Visit the renovated locomotive in Riverside Park South and learn about the rail history of Manhattan's West Side.",
-      "lat": 40.77472,
-      "lng": -73.992537,
-      "url": "https://www.eventbrite.com/e/summer-on-the-hudson-forest-bathing-tickets-1981769228109?utm-campaign=social&utm-content=attendeeshare&utm-medium=discovery&utm-term=listing&utm-source=cp&aff=ebdsshcopyurl"
-    },
-    {
       "id": "nycp-summer-on-the-hudson-sketch-jam-w-72nd-street-and-riverside-drive-in-riverside-park-660",
       "source": "nycparks",
       "name": "Summer on the Hudson: Sketch Jam",
@@ -9310,52 +8846,6 @@
       "lat": 40.780399,
       "lng": -73.985703,
       "url": "https://www.nycgovparks.org/events/2026/10/04/summer-on-the-hudson-sketch-jam"
-    },
-    {
-      "id": "nycp-summer-on-the-hudson-star-gaze-saturdays-pier-i-in-riverside-park-south-1200",
-      "source": "nycparks",
-      "name": "Summer on the Hudson: Star Gaze Saturdays",
-      "category": "learn",
-      "borough": "Manhattan",
-      "location": "Pier I (in Riverside Park South)",
-      "when": "Sat · 8:00 PM - 11:00 PM",
-      "dropIn": true,
-      "noOnlineReg": true,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 0,
-      "unlimited": true,
-      "start": "2026-09-26",
-      "end": "2026-09-26",
-      "oneDay": true,
-      "desc": "Join the Amateur Astronomers Association for views of the evening skies through their telescopes at Pier i on Manhattan's West Side. Events are free; may be canceled due to clouds and bad weather. Check our social media channels and our events calendar for updates.",
-      "lat": 40.779701,
-      "lng": -73.988899,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/summer-on-the-hudson-star-gaze-saturdays"
-    },
-    {
-      "id": "nycp-summer-on-the-hudson-story-hour-102nd-street-field-house-in-riverside-park-900",
-      "source": "nycparks",
-      "name": "Summer on the Hudson: Story Hour!",
-      "category": "youth",
-      "borough": "Manhattan",
-      "location": "102nd Street Field House (in Riverside Park)",
-      "when": "Sat · 3:00 PM - 4:00 PM",
-      "dropIn": true,
-      "noOnlineReg": true,
-      "cost": "Free",
-      "ages": "Best for kids",
-      "minAge": 0,
-      "spots": 0,
-      "unlimited": true,
-      "start": "2026-09-26",
-      "end": "2026-09-26",
-      "oneDay": true,
-      "desc": "Weekly story time for kids featuring rotating books and guest readers. Events take place on Saturdays in May, June, August and September. No events May 16 or September 12.",
-      "lat": 40.800692,
-      "lng": -73.973306,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/summer-on-the-hudson-story-hour"
     },
     {
       "id": "nycp-summer-on-the-hudson-tai-chi-soldiers-and-sailors-monument-in-riverside-park-480",
@@ -9393,7 +8883,7 @@
       ],
       "borough": "Manhattan",
       "location": "Locomotive Lawn (in Riverside Park South)",
-      "when": "Sun & Sat · 5:30 PM - 6:30 PM",
+      "when": "Sun · 5:30 PM - 6:30 PM",
       "dropIn": true,
       "noOnlineReg": true,
       "cost": "Free",
@@ -9401,18 +8891,13 @@
       "minAge": 0,
       "spots": 0,
       "unlimited": true,
-      "sessions": {
-        "count": 2,
-        "first": "Sep 26",
-        "last": "Sep 27"
-      },
-      "start": "2026-09-26",
+      "start": "2026-09-27",
       "end": "2026-09-27",
-      "oneDay": false,
+      "oneDay": true,
       "desc": "Join Kinesis Project in our sparkling experiment as we bring THREAD to life along the pathways of Riverside Park South. Enjoy this brand new, large scale work as it leads, surprises and meanders up the River's side.\n\n5:30pm: Audience Gathers at Locomotive Lawn\n\n5:45pm: Performance Begins\n\nTHREAD is the company's third dance work based on research by Dr. Missy Eppes and her colleagues, Dr Stephen Laubach and Dr. Jill A. Marshall.",
       "lat": 40.77472,
       "lng": -73.992537,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/summer-on-the-hudson-thread-a-dance-performance-by-kinesis-project"
+      "url": "https://www.nycgovparks.org/events/2026/09/27/summer-on-the-hudson-thread-a-dance-performance-by-kinesis-project"
     },
     {
       "id": "nycp-summer-on-the-hudson-yoga-evening-salute-to-the-sun-the-plaza-at-66th-street-in-riverside-park-south-1110",
@@ -9469,16 +8954,17 @@
       "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=8c1081e7-7846-4d98-b76b-578e7bec3b28&occurrenceDate=20260929"
     },
     {
-      "id": "nycp-summer-sports-experience-basketball-skills-and-drills-basketball-courts-in-j-hood-wright-park-600",
+      "id": "nycp-summer-sports-experience-basketball-skills-and-drills-west-174-street-and-amsterdam-avenue-in-highbridge-park-660",
       "source": "nycparks",
       "name": "Summer Sports Experience: Basketball: Skills and Drills",
       "category": "sports",
       "tags": [
-        "arts"
+        "fitness",
+        "youth"
       ],
       "borough": "Manhattan",
-      "location": "Basketball Courts (in J. Hood Wright Park)",
-      "when": "Sat · 10:00 AM - 1:00 PM",
+      "location": "West 174 Street and Amsterdam Avenue (in Highbridge Park)",
+      "when": "Tue · 11:00 AM - 1:00 PM",
       "dropIn": true,
       "noOnlineReg": true,
       "cost": "Free",
@@ -9487,26 +8973,31 @@
       "maxAge": 14,
       "spots": 0,
       "unlimited": true,
-      "start": "2026-09-26",
-      "end": "2026-09-26",
-      "oneDay": true,
-      "instructor": "Kendell Grant",
-      "desc": "Summer Sports Experience is an instructional youth program that teaches sports skills. Our knowledgeable NYC Parks staff train kids in sports such as basketball, ball hockey, kickball, flag football, pickleball, soccer, team handball, track and field, and volleyball. This program covers basic and more advanced techniques.\n\nSummer Sports Experience is a drop-in program recommended for children ages 8-14. Participants can stop by for one or more sessions, but kids who stay for the whole program will get the most benefit from it. Occasionally a Summer Sports Experience program may be cancelled due to harsh weather or other conditions.\n\nPlease note: We recommend that guardians accompany children participating in this program. Summer Sports Experience is not a childcare program, and NYC Parks is not responsible for the well-being of attendees.\n\nFor more information, please visit nyc.gov/parks.\n\nContact accessibility@parks.nyc.gov or (212) 360-1430 for more information regarding accessibility.",
-      "lat": 40.846587,
-      "lng": -73.940634,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/summer-sports-experience-basketball-skills-and-drills"
+      "sessions": {
+        "count": 2,
+        "first": "Sep 29",
+        "last": "Oct 6"
+      },
+      "start": "2026-09-29",
+      "end": "2026-10-06",
+      "oneDay": false,
+      "desc": "Summer Sports Experience\n\nSummer Sports Experience is an instructional youth program that teaches sports skills. Our knowledgeable NYC Parks staff train kids in sports such as basketball, ball hockey, kickball, flag football, pickleball, soccer, team handball, track and field, and volleyball. This program covers basic and more advanced techniques.\n\nSummer Sports Experience is a drop-in program recommended for children ages 8-14. Participants can stop by for one or more sessions, but kids who stay for the whole program will get the most benefit from it. Occasionally a Summer Sports Experience program may be cancelled due to harsh weather or other conditions.\n\nPlease note: We recommend that guardians accompany children participating in this program. Summer Sports Experience is not a childcare program, and NYC Parks is not responsible for the well-being of attendees.\n\nFor more information, please visit nyc.gov/parks.\n\nContact accessibility@parks.nyc.gov or (212) 360-1430 for more information regarding accessibility.",
+      "lat": 40.843102,
+      "lng": -73.934303,
+      "url": "https://www.nycgovparks.org/events/2026/09/29/summer-sports-experience-basketball-skills-and-drills1"
     },
     {
-      "id": "nycp-summer-sports-experience-flag-football-basketball-courts-in-j-hood-wright-park-840",
+      "id": "nycp-summer-sports-experience-basketball-skills-and-drills-west-174-street-and-amsterdam-avenue-in-highbridge-park-840",
       "source": "nycparks",
-      "name": "Summer Sports Experience: Flag Football",
+      "name": "Summer Sports Experience: Basketball: Skills and Drills",
       "category": "sports",
       "tags": [
-        "arts"
+        "fitness",
+        "youth"
       ],
       "borough": "Manhattan",
-      "location": "Basketball Courts (in J. Hood Wright Park)",
-      "when": "Sat · 2:00 PM - 6:00 PM",
+      "location": "West 174 Street and Amsterdam Avenue (in Highbridge Park)",
+      "when": "Tue & Wed & Thu & Fri & Sat · 2:00 PM - 6:00 PM",
       "dropIn": true,
       "noOnlineReg": true,
       "cost": "Free",
@@ -9515,14 +9006,51 @@
       "maxAge": 14,
       "spots": 0,
       "unlimited": true,
-      "start": "2026-09-26",
-      "end": "2026-09-26",
-      "oneDay": true,
-      "instructor": "Kendell Grant",
-      "desc": "Summer Sports Experience is an instructional youth program that teaches sports skills. Our knowledgeable NYC Parks staff train kids in sports such as basketball, ball hockey, kickball, flag football, pickleball, soccer, team handball, track and field, and volleyball. This program covers basic and more advanced techniques.\n\nSummer Sports Experience is a drop-in program recommended for children ages 8-14. Participants can stop by for one or more sessions, but kids who stay for the whole program will get the most benefit from it. Occasionally a Summer Sports Experience program may be cancelled due to harsh weather or other conditions.\n\nPlease note: We recommend that guardians accompany children participating in this program. Summer Sports Experience is not a childcare program, and NYC Parks is not responsible for the well-being of attendees.\n\nFor more information, please visit nyc.gov/parks.\n\nContact accessibility@parks.nyc.gov or (212) 360-1430 for more information regarding accessibility.",
-      "lat": 40.846587,
-      "lng": -73.940634,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/summer-sports-experience-flag-football"
+      "sessions": {
+        "count": 7,
+        "first": "Sep 29",
+        "last": "Oct 7"
+      },
+      "start": "2026-09-29",
+      "end": "2026-10-07",
+      "oneDay": false,
+      "desc": "Summer Sports Experience\n\nSummer Sports Experience is an instructional youth program that teaches sports skills. Our knowledgeable NYC Parks staff train kids in sports such as basketball, ball hockey, kickball, flag football, pickleball, soccer, team handball, track and field, and volleyball. This program covers basic and more advanced techniques.\n\nSummer Sports Experience is a drop-in program recommended for children ages 8-14. Participants can stop by for one or more sessions, but kids who stay for the whole program will get the most benefit from it. Occasionally a Summer Sports Experience program may be cancelled due to harsh weather or other conditions.\n\nPlease note: We recommend that guardians accompany children participating in this program. Summer Sports Experience is not a childcare program, and NYC Parks is not responsible for the well-being of attendees.\n\nFor more information, please visit nyc.gov/parks.\n\nContact accessibility@parks.nyc.gov or (212) 360-1430 for more information regarding accessibility.",
+      "lat": 40.843102,
+      "lng": -73.934303,
+      "url": "https://www.nycgovparks.org/events/2026/09/29/summer-sports-experience-basketball-skills-and-drills"
+    },
+    {
+      "id": "nycp-summer-sports-experience-soccer-and-flag-football-west-174-street-and-amsterdam-avenue-in-highbridge-park-600",
+      "source": "nycparks",
+      "name": "Summer Sports Experience: Soccer and Flag Football",
+      "category": "sports",
+      "tags": [
+        "fitness",
+        "youth"
+      ],
+      "borough": "Manhattan",
+      "location": "West 174 Street and Amsterdam Avenue (in Highbridge Park)",
+      "when": "Wed & Thu & Fri · 10:00 AM - 1:00 PM",
+      "dropIn": true,
+      "noOnlineReg": true,
+      "cost": "Free",
+      "ages": "8-14 yrs",
+      "minAge": 8,
+      "maxAge": 14,
+      "spots": 0,
+      "unlimited": true,
+      "sessions": {
+        "count": 4,
+        "first": "Sep 30",
+        "last": "Oct 7"
+      },
+      "start": "2026-09-30",
+      "end": "2026-10-07",
+      "oneDay": false,
+      "desc": "Summer Sports Experience\n\nSummer Sports Experience is an instructional youth program that teaches sports skills. Our knowledgeable NYC Parks staff train kids in sports such as basketball, ball hockey, kickball, flag football, pickleball, soccer, team handball, track and field, and volleyball. This program covers basic and more advanced techniques.\n\nSummer Sports Experience is a drop-in program recommended for children ages 8-14. Participants can stop by for one or more sessions, but kids who stay for the whole program will get the most benefit from it. Occasionally a Summer Sports Experience program may be cancelled due to harsh weather or other conditions.\n\nPlease note: We recommend that guardians accompany children participating in this program. Summer Sports Experience is not a childcare program, and NYC Parks is not responsible for the well-being of attendees.\n\nFor more information, please visit nyc.gov/parks.\n\nContact accessibility@parks.nyc.gov or (212) 360-1430 for more information regarding accessibility.",
+      "lat": 40.843102,
+      "lng": -73.934303,
+      "url": "https://www.nycgovparks.org/events/2026/09/30/summer-sports-experience-soccer-and-flag-football"
     },
     {
       "id": "nycp-sunset-celebration-250th-peace-conference-anniversary-fundraiser-almer-g-pavilion-in-conference-house-park-960",
@@ -9551,32 +9079,6 @@
       "lat": 40.502399,
       "lng": -74.254189,
       "url": "https://sunsetcelebration.eventbrite.com"
-    },
-    {
-      "id": "nycp-sunset-cove-wetland-cleanup-postponed-sunset-cove-600",
-      "source": "nycparks",
-      "name": "Sunset Cove Wetland Cleanup- POSTPONED",
-      "category": "nature",
-      "tags": [
-        "philanthropy"
-      ],
-      "location": "Sunset Cove",
-      "when": "Sat · 10:00 AM - 12:00 PM",
-      "dropIn": false,
-      "noOnlineReg": false,
-      "cost": "Free",
-      "ages": "Under 18",
-      "minAge": 0,
-      "maxAge": 17,
-      "spots": null,
-      "unlimited": false,
-      "start": "2026-09-26",
-      "end": "2026-09-26",
-      "oneDay": true,
-      "desc": "THIS EVENT IS BEING POSTPONED DUE TO WEATHER. PLEASE DO NOT ATTEND 09/26. PLEASE FEEL FREE TO REGISTER FOR OUR 10/03 IDLEWILD PARK NATURE WALK AND 10/17 IDLEWILD PARK FOREST RESTORATION EVENTS FOR NOW. Volunteer with the Stewardship team to protect coastal areas in Sunset Cove Park! Volunteers will help us remove debris from the park, creating a healthier ecosystem. Please come dressed in sturdy boots or shoes, long sleeves, long pants and clothing that can get dirty. Space is limited and registration is required. Volunteers under 18 must be accompanied by a chaperone. To sign up a group of 10 or more volunteers, please reach out to stewardship@parks.nyc.gov.",
-      "lat": 40.597549,
-      "lng": -73.821784,
-      "url": "https://www.nycgovparks.org/reg/stewardship/20457"
     },
     {
       "id": "nycp-swing-salsa-samba-with-jazz-power-initiative-anne-loftus-playground-in-fort-tryon-park-1020",
@@ -9710,6 +9212,29 @@
       "url": "https://www.eventbrite.com/e/the-foliage-ride-2026-tickets-1997096158370"
     },
     {
+      "id": "nycp-the-history-of-the-ouija-board-visitor-information-booth-in-snug-harbor-cultural-center-1140",
+      "source": "nycparks",
+      "name": "The History of the Ouija Board",
+      "category": "learn",
+      "borough": "Staten Island",
+      "location": "Visitor Information Booth (in Snug Harbor Cultural Center)",
+      "when": "Sun · 7:00 PM - 9:00 PM",
+      "dropIn": false,
+      "noOnlineReg": false,
+      "cost": "General Admission: $30.00\nStudent/Senior: $30.00\nSnug Harbor Member: $25.00 (With Promo Code)",
+      "ages": "",
+      "minAge": 0,
+      "spots": null,
+      "unlimited": false,
+      "start": "2026-10-11",
+      "end": "2026-10-11",
+      "oneDay": true,
+      "desc": "Dive into the history of the enigmatic Ouija board, and learn how spirit communication became a phenomenon that swept the nation.\n\nToday a trademarked game owned and manufactured by Hasbro, Ouija has a history that stretches back to the 19th century. At one time, the \"talking board\" outsold Monopoly–appearing in silent films, Valentine's Day greeting cards, popular sheet music, and even a Norman Rockwell illustration. \n\nGet an up-close look at more than a dozen vintage boards–all with their own unique design and aesthetic–that have dazzled the curious and mystified skeptics for more than one hundred years. \n\nWhen:\nOctober 11 | 7:00 pm - 9:00 pm\n\nWhere: Carpenter's Shop (View Site Map and Directions)\n\nAdmission:\nGeneral Admission: $30.00\nStudent/Senior: $30.00\nSnug Harbor Member: $25.00 (With Promo Code)",
+      "lat": 40.643577,
+      "lng": -74.10317,
+      "url": "https://snugharbor.my.salesforce-sites.com/ticket/#/events/a0SQg000009uN6PMAU"
+    },
+    {
       "id": "nycp-the-medicinal-value-of-herbs-and-vegetables-commitment-garden-780",
       "source": "nycparks",
       "name": "The Medicinal Value of Herbs and Vegetables",
@@ -9734,6 +9259,32 @@
       "lat": 40.666,
       "lng": -73.887199,
       "url": "https://www.nycgovparks.org/events/2026/10/03/the-medicinal-value-of-herbs-and-vegetables"
+    },
+    {
+      "id": "nycp-the-myth-of-joe-two-trees-section-2-orchard-beach-in-pelham-bay-park-780",
+      "source": "nycparks",
+      "name": "The Myth of Joe Two Trees",
+      "category": "learn",
+      "tags": [
+        "nature"
+      ],
+      "borough": "Bronx",
+      "location": "Section 2 Orchard Beach (in Pelham Bay Park)",
+      "when": "Sun · 1:00 PM - 2:30 PM",
+      "dropIn": true,
+      "noOnlineReg": true,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 0,
+      "unlimited": true,
+      "start": "2026-10-11",
+      "end": "2026-10-11",
+      "oneDay": true,
+      "desc": "Join the Urban Park Rangers in a discussion about the Bronx classic The Last Algonquin while hiking through where the book is set, Pelham Bay Park! Participants will explore the facts and fiction surrounding the story of Joe Two Trees, purportedly the last Lenape person who lived in New York City. All participants welcome, even those who haven't read the book!",
+      "lat": 40.870399,
+      "lng": -73.786697,
+      "url": "https://www.nycgovparks.org/events/2026/10/11/the-myth-of-joe-two-trees"
     },
     {
       "id": "nycp-third-united-lenape-lun-apeew-nations-pow-wow-lefrak-center-at-lakeside-720",
@@ -9924,32 +9475,6 @@
       "url": "https://www.eventbrite.com/e/trail-work-thursdays-tickets-1988013995376?aff=oddtdtcreator"
     },
     {
-      "id": "nycp-uncovering-uptown-history-a-guided-walking-tour-morris-jumel-mansion-in-roger-morris-park-630",
-      "source": "nycparks",
-      "name": "Uncovering Uptown History: A Guided Walking Tour",
-      "category": "learn",
-      "tags": [
-        "nature"
-      ],
-      "borough": "Manhattan",
-      "location": "Morris-Jumel Mansion (in Roger Morris Park)",
-      "when": "Sat · 10:30 AM - 3:00 PM",
-      "dropIn": false,
-      "noOnlineReg": false,
-      "cost": "$25 per person, $20 per person for groups of 6 or more",
-      "ages": "",
-      "minAge": 0,
-      "spots": null,
-      "unlimited": false,
-      "start": "2026-09-26",
-      "end": "2026-09-26",
-      "oneDay": true,
-      "desc": "The Morris-Jumel Mansion brings New York history to life in the brand-new \"Uncovering Uptown History\" guided walking tour!\n\nManhattan's oldest residence, the Morris-Jumel Mansion, brings Uptown Manhattan history to life in the brand-new \"Uncovering Uptown History\" guided walking tour!\n\nMorris-Jumel Mansion guides bring you along a series of hidden historic gems of New York history in the brand-new \"Uncovering Uptown History\" guided walking tour: a 90-minute, one-mile mobile experience beginning at the Morris-Jumel Mansion and ending at Trinity Cemetery on Broadway and 155th. Spanning over 260 years, this tour illuminates little-known corners of the Revolutionary War, the Gilded and Industrial Ages, the Harlem Renaissance, and more, connecting the paths of legendary figures with the ones we walk today. Perfect for locals, hard to impress history buffs, and tourists looking beyond well-known sites of New York City.\n\nDress seasonably and wear your walking shoes. The walk is considered easy to moderately challenging.\n\nAll tours will begin at the Morris-Jumel Mansion (65 Jumel Terrace, New York, New York 10032) in the Colonial Era Kitchen (Basement Entrance)\n\nSeptember 2026 Tours\n\n9/5\n\n9/12 (NO 1:30 PM tour due to Family and Community Day)\n\n9/19\n\n9/26\n\nTwo tour times to choose from!\n\nTour 1: 10:30 AM – 12:00 PM\n\nTour 2: 1:30 PM – 3:00 PM (No 1:30 PM tour on 2nd Saturday of each month, please be sure to check in advance to see if tours are running. Tours shift with the MJM programming schedule as needed, but will always be done with advance notice.)",
-      "lat": 40.834499,
-      "lng": -73.938499,
-      "url": "https://www.eventbrite.com/e/uncovering-uptown-history-a-guided-walking-tour-tickets-1975194307344"
-    },
-    {
       "id": "nycp-uplifted-dance-fitness-multi-use-room-2nd-fl-in-sorrentino-recreation-center-1095",
       "source": "nycparks",
       "name": "Uplifted Dance Fitness",
@@ -10061,17 +9586,17 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 84,
+      "spots": 92,
       "unlimited": false,
-      "regDeadline": "Registration ends on September 26th, 2026 at 09:00 AM",
-      "start": "2026-09-26",
+      "regDeadline": "Registration ends on October 3rd, 2026 at 09:00 AM",
+      "start": "2026-10-03",
       "end": "2026-10-10",
       "oneDay": false,
       "instructor": "Gretchen Simmons",
       "desc": "Start your day with a guided meditation and gentle yoga flow. We will sync mindful movement with our breathing through a variety of poses (asanas) that will certainly awaken your mind, body and senses. All levels welcomed. Modifications will be offered. \\r\n\\r\nPlease register at least one hour prior to the start of class. The Zoom link will be sent out shortly before the class starts to registered participants. ",
       "lat": 40.758326,
       "lng": -73.993517,
-      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=e349bcb3-e813-412b-9cd9-c738432d7428&occurrenceDate=20260926"
+      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=e349bcb3-e813-412b-9cd9-c738432d7428&occurrenceDate=20261003"
     },
     {
       "id": "nycp-virtual-yoga-virtual-online-events-1170",
@@ -10173,17 +9698,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 3,
-        "first": "Sep 26",
+        "count": 2,
+        "first": "Oct 3",
         "last": "Oct 10"
       },
-      "start": "2026-09-26",
+      "start": "2026-10-03",
       "end": "2026-10-10",
       "oneDay": false,
       "desc": "Join NYC Parks and the Conference House Park Conservancy for our ongoing beach and park clean-up initiative!\n\nPick up a trash grabber and a bucket and help to beautify our park by picking up litter and debris!\n\nStop by the park Visitor's Center at 298 Satterlee Street, corner of Hylan Boulevard, Staten Island, NY, to meet our staff and borrow a bucket and grabber!\n\nDrop-ins welcome. No RSVP required. Blue Wave clean-ups are self-led by the volunteer stewards themselves.\n\nFor group volunteer opportunities and volunteering at additional Staten Island South Shore sites, please contact the South Shore Parks Programs and Events Manager at 646-406-2155, or carmine.raimondi@parks.nyc.gov.",
       "lat": 40.501999,
       "lng": -74.251404,
-      "url": "https://www.nycgovparks.org/events/2026/09/26/volunteering-at-conference-house-park-the-blue-wave"
+      "url": "https://www.nycgovparks.org/events/2026/10/03/volunteering-at-conference-house-park-the-blue-wave"
     },
     {
       "id": "nycp-watercolors-in-the-garden-lentol-garden-840",
@@ -10534,17 +10059,17 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 25,
+      "spots": 30,
       "unlimited": false,
-      "regDeadline": "Registration ends on September 26th, 2026 at 12:15 PM",
-      "start": "2026-09-26",
+      "regDeadline": "Registration ends on October 3rd, 2026 at 12:15 PM",
+      "start": "2026-10-03",
       "end": "2026-10-10",
       "oneDay": false,
       "instructor": "Gretchen Simmons",
       "desc": "This open level class is designed to awaken your mind, body and senses through controlled breathing, simple meditation, and the adoption of specific bodily postures. Please bring a mat and a lock to lock up your bag. The center does not allow anyone to bring their bags to the dance room except: towel, water and phone.",
       "lat": 40.864771,
       "lng": -73.899219,
-      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=748da9ea-8689-43ca-a6c2-a4427415aeb9&occurrenceDate=20260926"
+      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=748da9ea-8689-43ca-a6c2-a4427415aeb9&occurrenceDate=20261003"
     },
     {
       "id": "nycp-yoga-en-espa-ol-yoga-in-spanish-dance-room-in-highbridge-park-600",
@@ -10737,17 +10262,17 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 94,
+      "spots": 98,
       "unlimited": false,
-      "regDeadline": "Registration ends on September 26th, 2026 at 09:00 AM",
-      "start": "2026-09-26",
+      "regDeadline": "Registration ends on October 3rd, 2026 at 09:00 AM",
+      "start": "2026-10-03",
       "end": "2026-10-10",
       "oneDay": false,
       "instructor": "Shizuyo Kakigi-Perez",
       "desc": "Zumba is a fusion of Latin, International and popular music dance themes creating a dynamic, exciting, effective fitness system! The routines feature aerobic fitness interval training with a combination of fast and slow rhythms that challenge both the heart and muscles. With fun music and easy-to-follow steps, you can’t go wrong!  ",
       "lat": 40.751499,
       "lng": -73.834396,
-      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=c0795cb6-7ca9-4490-b085-833994c8eed6&occurrenceDate=20260926"
+      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=c0795cb6-7ca9-4490-b085-833994c8eed6&occurrenceDate=20261003"
     },
     {
       "id": "nycp-zumba-gymnasium-in-highbridge-park-1080",
@@ -10793,17 +10318,17 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 18,
+      "spots": 17,
       "unlimited": false,
-      "regDeadline": "Registration ends on September 26th, 2026 at 10:00 AM",
-      "start": "2026-09-26",
+      "regDeadline": "Registration ends on October 3rd, 2026 at 10:00 AM",
+      "start": "2026-10-03",
       "end": "2026-10-10",
       "oneDay": false,
       "instructor": "Cynthia Fauvette",
       "desc": "Zumba is a fusion of Latin, International and popular music dance themes creating a dynamic, exciting, effective fitness system! The routines feature aerobic, fitness interval training with a combination of fast and slow rhythms that tone and sculpt the body with easy to follow dance steps.",
       "lat": 40.6735,
       "lng": -73.934799,
-      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=6edc4046-45b9-4a97-a35d-954f987e5978&occurrenceDate=20260926"
+      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=6edc4046-45b9-4a97-a35d-954f987e5978&occurrenceDate=20261003"
     },
     {
       "id": "nycp-zumba-midland-beach-splash-plaza-in-franklin-d-roosevelt-boardwalk-and-beach-540",
@@ -10882,7 +10407,7 @@
       "unlimited": false,
       "regDeadline": "Registration ends on September 27th, 2026 at 11:00 AM",
       "start": "2026-09-27",
-      "end": "2026-10-04",
+      "end": "2026-10-11",
       "oneDay": false,
       "instructor": "Ashley Thompson",
       "desc": "Zumba is a fusion of Latin, International and popular music dance themes creating a dynamic, exciting, effective fitness system! The routines feature aerobic, fitness interval training with a combination of fast and slow rhythms that tone and sculpt the body with easy to follow dance steps. \\r\n\\r\nParticipants must sign in at the front desk and bring locks to lock up their bags. The center does not allow anyone to bring their bags to the dance room except: towel, water and phone. ",
@@ -10955,15 +10480,15 @@
       "minAge": 18,
       "spots": 20,
       "unlimited": false,
-      "regDeadline": "Registration ends on September 26th, 2026 at 10:00 AM",
-      "start": "2026-09-26",
+      "regDeadline": "Registration ends on October 3rd, 2026 at 10:00 AM",
+      "start": "2026-10-03",
       "end": "2026-10-10",
       "oneDay": false,
       "instructor": "Marisol Castellanos",
       "desc": "Zumba is a fusion of Latin, International and popular music dance themes creating a dynamic, exciting, effective fitness system! The routines feature aerobic, fitness interval training with a combination of fast and slow rhythms that tone and sculpt the body with easy to follow dance steps. ",
       "lat": 40.755225,
       "lng": -73.874204,
-      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=84c41b00-0c71-4570-8b9f-1286d551abb5&occurrenceDate=20260926"
+      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=84c41b00-0c71-4570-8b9f-1286d551abb5&occurrenceDate=20261003"
     },
     {
       "id": "nycp-zumba-queens-public-library-broadway-1080",
@@ -11130,5 +10655,5 @@
       "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=6a211de9-891d-4447-a3cf-39e42575a1df&occurrenceDate=20260928"
     }
   ],
-  "fetchedAt": "2026-09-26T05:16:58.970Z"
+  "fetchedAt": "2026-09-27T04:29:15.689Z"
 }
