@@ -10171,8 +10171,8 @@
       "season": "Year-round (recreation center members)",
       "seasonal": false,
       "programs": [
-        "lap",
-        "family"
+        "family",
+        "lap"
       ],
       "fees": {
         "effective": "2026-01-01",
@@ -10227,11 +10227,6 @@
       "sessions": [
         [],
         [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 660
-          },
           {
             "kind": "family",
             "start": 660,
@@ -10666,79 +10661,6 @@
       ]
     },
     {
-      "id": "nyc-pool-hansborough-recreation-center-pool",
-      "name": "Hansborough Recreation Center Pool",
-      "address": "134th St. between Fifth & Lenox Aves.",
-      "lat": 40.8129,
-      "lng": -73.9394,
-      "phone": "(212) 234-9603",
-      "indoor": true,
-      "accessible": true,
-      "desc": "Intermediate pool · 75' x 35' x 9'",
-      "season": "No pool sessions currently published",
-      "seasonal": false,
-      "programs": [],
-      "fees": {
-        "effective": "2026-01-01",
-        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
-        "note": "Recreation center membership — indoor pools are members-only",
-        "groups": [
-          {
-            "id": "youth",
-            "label": "Ages 24 and under",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                0
-              ]
-            ]
-          },
-          {
-            "id": "adult",
-            "label": "Adults (25–61)",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                150
-              ],
-              [
-                "Six months",
-                75
-              ]
-            ]
-          },
-          {
-            "id": "senior",
-            "label": "Seniors 62+, veterans, people with disabilities",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                25
-              ]
-            ]
-          }
-        ]
-      },
-      "scheduleUrls": [
-        {
-          "label": "Pool schedule",
-          "url": "https://www.nycgovparks.org/facilities/recreationcenters/M131/schedule#Pool-schedule"
-        }
-      ],
-      "sessions": [
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
-      ]
-    },
-    {
       "id": "nyc-pool-gertrude-ederle-recreation-center-pool",
       "name": "Gertrude Ederle Recreation Center Pool",
       "address": "232 West 60th Street",
@@ -10903,6 +10825,79 @@
             "end": 930
           }
         ]
+      ]
+    },
+    {
+      "id": "nyc-pool-hansborough-recreation-center-pool",
+      "name": "Hansborough Recreation Center Pool",
+      "address": "134th St. between Fifth & Lenox Aves.",
+      "lat": 40.8129,
+      "lng": -73.9394,
+      "phone": "(212) 234-9603",
+      "indoor": true,
+      "accessible": true,
+      "desc": "Intermediate pool · 75' x 35' x 9'",
+      "season": "No pool sessions currently published",
+      "seasonal": false,
+      "programs": [],
+      "fees": {
+        "effective": "2026-01-01",
+        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
+        "note": "Recreation center membership — indoor pools are members-only",
+        "groups": [
+          {
+            "id": "youth",
+            "label": "Ages 24 and under",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                0
+              ]
+            ]
+          },
+          {
+            "id": "adult",
+            "label": "Adults (25–61)",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                150
+              ],
+              [
+                "Six months",
+                75
+              ]
+            ]
+          },
+          {
+            "id": "senior",
+            "label": "Seniors 62+, veterans, people with disabilities",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                25
+              ]
+            ]
+          }
+        ]
+      },
+      "scheduleUrls": [
+        {
+          "label": "Pool schedule",
+          "url": "https://www.nycgovparks.org/facilities/recreationcenters/M131/schedule#Pool-schedule"
+        }
+      ],
+      "sessions": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -11561,8 +11556,8 @@
   "season": {
     "open": true,
     "label": "Open daily through Labor Day (9/7)",
-    "checked": "2026-09-27",
+    "checked": "2026-09-28",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-09-27T17:20:52.238Z"
+  "fetchedAt": "2026-09-28T09:35:18.486Z"
 }
