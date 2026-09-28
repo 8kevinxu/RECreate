@@ -1161,12 +1161,17 @@
         "senior",
         "lessons",
         "exercise",
-        "rental"
+        "rental",
+        "other"
       ],
       "scheduleUrls": [
         {
           "label": "MLK Pool_Fall2026_pt1_Aug 18_Sep26",
           "url": "https://sfrecpark.org/DocumentCenter/View/29802"
+        },
+        {
+          "label": "MLK Pool_Fall2026_pt2_Sep29_Dec 12",
+          "url": "https://sfrecpark.org/DocumentCenter/View/30210"
         }
       ],
       "sessions": [
@@ -1205,6 +1210,18 @@
           },
           {
             "kind": "lessons",
+            "start": 930,
+            "end": 1080
+          },
+          {
+            "kind": "other",
+            "label": "Bayview Safety Swim",
+            "start": 930,
+            "end": 1080
+          },
+          {
+            "kind": "other",
+            "label": "& Splash (10)",
             "start": 930,
             "end": 1080
           },
@@ -1257,6 +1274,18 @@
           },
           {
             "kind": "lessons",
+            "start": 930,
+            "end": 1080
+          },
+          {
+            "kind": "other",
+            "label": "Bayview Safety Swim",
+            "start": 930,
+            "end": 1080
+          },
+          {
+            "kind": "other",
+            "label": "& Splash (10)",
             "start": 930,
             "end": 1080
           },
@@ -1303,6 +1332,18 @@
             "end": 1080
           },
           {
+            "kind": "other",
+            "label": "Bayview Safety Swim",
+            "start": 930,
+            "end": 1080
+          },
+          {
+            "kind": "other",
+            "label": "& Splash (10)",
+            "start": 930,
+            "end": 1080
+          },
+          {
             "kind": "exercise",
             "start": 1080,
             "end": 1140
@@ -1351,6 +1392,18 @@
           },
           {
             "kind": "lessons",
+            "start": 930,
+            "end": 1080
+          },
+          {
+            "kind": "other",
+            "label": "Bayview Safety Swim",
+            "start": 930,
+            "end": 1080
+          },
+          {
+            "kind": "other",
+            "label": "& Splash (10)",
             "start": 930,
             "end": 1080
           },
@@ -1412,6 +1465,33 @@
           "start": 750,
           "end": 930,
           "reason": null
+        },
+        {
+          "from": "2026-10-22",
+          "to": "2026-10-22",
+          "start": 750,
+          "end": 930,
+          "reason": null
+        },
+        {
+          "from": "2026-11-11",
+          "to": "2026-11-11",
+          "reason": "holiday"
+        },
+        {
+          "from": "2026-11-26",
+          "to": "2026-11-26",
+          "reason": "holiday"
+        },
+        {
+          "from": "2026-11-27",
+          "to": "2026-11-27",
+          "reason": "holiday"
+        },
+        {
+          "from": "2026-12-12",
+          "to": "2026-12-12",
+          "reason": "training"
         }
       ]
     },
@@ -2672,5 +2752,5 @@
       }
     ]
   },
-  "fetchedAt": "2026-09-21T19:53:51.162Z"
+  "fetchedAt": "2026-09-28T21:04:33.503Z"
 }

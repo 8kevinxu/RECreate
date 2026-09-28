@@ -39,16 +39,16 @@
     "alta-plaza-park-outdoor": {
       "tennis": {
         "total": 3,
-        "reservable": 0,
-        "walkup": 3,
+        "reservable": 1,
+        "walkup": 2,
         "lights": false,
-        "restrooms": false,
+        "restrooms": true,
         "tsf": {
           "ratings": 2,
           "overall": 3.6,
           "surface": 3.7,
           "crowded": 2.8,
-          "matches": 336,
+          "matches": 340,
           "src": "https://www.tennissf.com/court_detail/sf-alta-plaza"
         }
       },
@@ -108,7 +108,7 @@
           "overall": 4,
           "surface": 4.6,
           "crowded": 2.8,
-          "matches": 282,
+          "matches": 285,
           "src": "https://www.tennissf.com/court_detail/sf-buena-vista-park"
         }
       },
@@ -234,7 +234,7 @@
           "overall": 2,
           "surface": 2,
           "crowded": 2,
-          "matches": 68,
+          "matches": 69,
           "src": "https://www.tennissf.com/court_detail/sf-fulton-playground"
         }
       }
@@ -333,7 +333,7 @@
           "overall": 2.5,
           "surface": 3,
           "crowded": 3.5,
-          "matches": 67,
+          "matches": 69,
           "src": "https://www.tennissf.com/court_detail/sf-hayes-valley-playground"
         }
       }
@@ -369,7 +369,7 @@
           "overall": 4,
           "surface": 4.3,
           "crowded": 2.3,
-          "matches": 719,
+          "matches": 726,
           "src": "https://www.tennissf.com/court_detail/sf-j-p-murphy-playground"
         }
       }
@@ -386,7 +386,7 @@
           "overall": 3.5,
           "surface": 3.3,
           "crowded": 3.3,
-          "matches": 160,
+          "matches": 161,
           "src": "https://www.tennissf.com/court_detail/sf-jackson-park"
         }
       },
@@ -423,7 +423,7 @@
           "overall": 4,
           "surface": 4.3,
           "crowded": 2.3,
-          "matches": 610,
+          "matches": 614,
           "src": "https://www.tennissf.com/court_detail/sf-north-beach"
         }
       }
@@ -485,7 +485,7 @@
           "overall": 4.3,
           "surface": 4,
           "crowded": 3.9,
-          "matches": 590,
+          "matches": 593,
           "src": "https://www.tennissf.com/court_detail/sf-mclaren-park"
         }
       }
@@ -669,7 +669,7 @@
           "overall": 4,
           "surface": 3.4,
           "crowded": 2.2,
-          "matches": 549,
+          "matches": 553,
           "src": "https://www.tennissf.com/court_detail/sf-mountain-lake"
         }
       }
@@ -741,7 +741,7 @@
           "overall": 2.8,
           "surface": 2.5,
           "crowded": 4.3,
-          "matches": 489,
+          "matches": 493,
           "src": "https://www.tennissf.com/court_detail/potrero-hill-recreation-center"
         }
       }
@@ -803,7 +803,7 @@
           "overall": 4,
           "surface": 3,
           "crowded": 3.5,
-          "matches": 287,
+          "matches": 288,
           "src": "https://www.tennissf.com/court_detail/sf-julius-kahn-park"
         }
       },
@@ -1034,7 +1034,7 @@
           "overall": 3.8,
           "surface": 3.8,
           "crowded": 4,
-          "matches": 305,
+          "matches": 306,
           "src": "https://www.tennissf.com/court_detail/sf-upper-noe-recreation-center"
         }
       },
@@ -1156,7 +1156,7 @@
           "overall": 3.7,
           "surface": 3,
           "crowded": 3.3,
-          "matches": 263,
+          "matches": 265,
           "src": "https://www.tennissf.com/court_detail/sf-sunset"
         }
       }
@@ -1235,5 +1235,5 @@
       }
     }
   },
-  "fetchedAt": "2026-09-21T19:52:04.179Z"
+  "fetchedAt": "2026-09-28T21:02:50.125Z"
 }
