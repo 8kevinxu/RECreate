@@ -28,7 +28,7 @@ order** (01 → 11). Order matters: later domains reference earlier tables
 | `05_friends.sql` | Friend requests + friends-only run visibility | 03, 04 |
 | `06_signals.sql` | "Down to hoop" availability signals | 03, 05 |
 | `07_push.sql` | Expo push tokens + notification triggers | all above |
-| `08_chat.sql` | Chat: run/signal group chats + 1:1 friend DMs | 03, 04, 05, 06 |
+| `08_chat.sql` | Chat: run/signal group chats + 1:1 friend DMs, per-thread mutes, message push | 03, 04, 05, 06, 07 (10 at send time) |
 | `09_account_deletion.sql` | `delete_account()` RPC (Settings → Delete account) | 03 |
 | `10_moderation.sql` | Trust & safety: user blocking + content reports | 03 |
 | `11_closure_reports.sql` | Player-reported closures ("under maintenance until…") + support/incorrect votes, RPC-only | 03, 10 |
@@ -83,6 +83,7 @@ new:
 | `028_report_email.sql` | Email each new `content_reports` row to the support inbox (trigger → Resend via `pg_net`); inert until the `resend_api_key` Vault secret is set — see *Reviewing reports* |
 | `029_reviews_owner_delete.sql` | `reviews.user_id` (defaulted from `auth.uid()`), a delete policy so a user can remove their own review, and `my_review_ids()` so the card knows which are theirs — plus a column-list `select` grant that stops clients reading `user_id`/`ip` (a readable owner id would deanonymize a review signed "Anonymous") |
 | `030_run_fixes.sql` | `rec_runs.sport`: replace 003's five-sport enum (which failed badminton/soccer/baseball/swimming/handball/weightroom/golf runs) with a length cap; joining a run requires being able to see it (a participant row grants the run's chat) |
+| `031_chat_push.sql` | Push on every new chat message (run, signal, 1:1) via one `chat_messages` trigger — coalesced per recipient per thread (5 min group, 30 s direct) with `chat_notify_log`, skipping blocked senders and muted threads (`chat_mutes`, owner-only RLS); a failed push never fails the insert |
 
 > Note: migrations 001–009 were authored before the RECreate rebrand and still
 > reference the old `hoop_*` table names. Apply them **in order** — `010` renames

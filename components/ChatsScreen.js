@@ -56,7 +56,7 @@ function Avatar({ name, kind, size = 50 }) {
   );
 }
 
-export default function ChatsScreen({ courtsById = {} }) {
+export default function ChatsScreen({ courtsById = {}, openKey, onOpened }) {
   const { t: tr } = useI18n();
   const [threads, setThreads] = useState([]);
   const [friends, setFriends] = useState([]);
@@ -74,6 +74,16 @@ export default function ChatsScreen({ courtsById = {} }) {
     return unsub;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Open the thread a push pointed at, once the list has loaded it. A thread
+  // that isn't there (left the run, signal expired) just lands on the list.
+  useEffect(() => {
+    if (!openKey || loading) return;
+    const t = threads.find((x) => x.key === openKey);
+    if (t) setOpen(t);
+    onOpened && onOpened();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [openKey, loading, threads]);
 
   const q = query.trim().toLowerCase();
   const active = threads.filter((t) => !t.deleted && (!q || (t.title || '').toLowerCase().includes(q)));

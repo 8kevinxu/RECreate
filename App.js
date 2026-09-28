@@ -698,6 +698,9 @@ export default function App() {
   }, [authEnabled, user?.id, friendsOpen]);
 
   // Switching tabs; entering Social marks the feed as seen and clears the badge.
+  // A chat thread to open once the Chats list has it (set by a push tap).
+  const [openThreadKey, setOpenThreadKey] = useState(null);
+
   const goTab = useCallback((nextTab) => {
     setTab(nextTab);
     if (nextTab === 'social') markFeedSeen().then(() => setUnread(0));
@@ -772,11 +775,15 @@ export default function App() {
     registerForPush(user.id);
   }, [authEnabled, user?.id]);
 
-  // Tapping a push deep-links: run/run-join → open that court; friend-accept →
-  // the Friends sheet; signals/sessions → the Activity feed.
+  // Tapping a push deep-links: a chat message → that thread; run/run-join → open
+  // that court; friend-accept → the Friends sheet; signals/sessions → the
+  // Activity feed.
   useEffect(() => {
     return onNotificationTap((data) => {
-      if (data.courtId) {
+      if (data.type === 'chat' && data.thread) {
+        setOpenThreadKey(data.thread);
+        goTab('social');
+      } else if (data.courtId) {
         if (data.sport) {
           setSport(data.sport);
           setFavoritesMode(false);
@@ -1732,6 +1739,8 @@ export default function App() {
             onUndoCheckin={handleUndoVisit}
             requestCount={requestCount}
             onSignIn={() => goTab('profile')}
+            openThreadKey={openThreadKey}
+            onThreadOpened={() => setOpenThreadKey(null)}
             onPickCourt={(id, pickSport) => {
               const court = courtData.find((c) => c.id === id);
               // A recommendation or a friend's check-in carries the sport it was

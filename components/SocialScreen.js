@@ -5,7 +5,7 @@
 // (components/AssistantHost.js, mounted in App.js), so keeping an entry point
 // here as well would be two doors into one room — and the floating one arrives
 // knowing what's on screen, which this one never could.
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -30,11 +30,16 @@ export default function SocialScreen({
   onUndoCheckin, // undo one of your own check-ins from the activity feed
   requestCount = 0, // incoming friend requests — badge on the Friends button
   onSignIn, // signed-out: route to the Profile tab to create an account
+  openThreadKey, // a push was tapped: switch to Chats and open this thread
+  onThreadOpened,
 }) {
   const insets = useSafeAreaInsets();
   const { t } = useI18n();
   const { enabled: authEnabled, user, profile } = useAuth();
   const [seg, setSeg] = useState('activity'); // 'activity' | 'chats'
+  useEffect(() => {
+    if (openThreadKey) setSeg('chats');
+  }, [openThreadKey]);
 
   return (
     <View style={[styles.page, { paddingTop: insets.top + 12 }]}>
@@ -116,7 +121,7 @@ export default function SocialScreen({
           />
         ) : (
           <View style={styles.chatsWrap}>
-            <ChatsScreen courtsById={courtsById} />
+            <ChatsScreen courtsById={courtsById} openKey={openThreadKey} onOpened={onThreadOpened} />
           </View>
         )}
       </View>

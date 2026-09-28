@@ -17,7 +17,15 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { loadMessages, sendMessage, subscribeChat, markThreadRead } from '../lib/chat';
+import {
+  loadMessages,
+  sendMessage,
+  subscribeChat,
+  markThreadRead,
+  loadMutedKeys,
+  setThreadMuted,
+  setActiveThread,
+} from '../lib/chat';
 import { reportContent } from '../lib/reports';
 import { blockUser } from '../lib/blocks';
 import { fmtClock } from '../lib/datetime';
@@ -75,6 +83,7 @@ export default function ChatThread({ visible, thread, onClose, onActivity }) {
   const [loading, setLoading] = useState(true);
   const [draft, setDraft] = useState('');
   const [sending, setSending] = useState(false);
+  const [muted, setMuted] = useState(false);
   const scrollRef = useRef(null);
 
   const refresh = () =>
@@ -91,6 +100,25 @@ export default function ChatThread({ visible, thread, onClose, onActivity }) {
     return unsub;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible, thread?.key]);
+
+  // While this thread is on screen, a push for it is dropped (lib/push.js).
+  useEffect(() => {
+    if (!visible || !thread) return;
+    setActiveThread(thread.key);
+    let alive = true;
+    loadMutedKeys().then((keys) => alive && setMuted(keys.has(thread.key)));
+    return () => {
+      alive = false;
+      setActiveThread(null);
+    };
+  }, [visible, thread?.key]);
+
+  const toggleMute = async () => {
+    const next = !muted;
+    setMuted(next);
+    const { error } = await setThreadMuted(thread.key, next);
+    if (error) setMuted(!next);
+  };
 
   const onSend = async () => {
     const text = draft.trim();
@@ -164,6 +192,16 @@ export default function ChatThread({ visible, thread, onClose, onActivity }) {
               </Text>
             )}
           </View>
+          <Pressable
+            hitSlop={10}
+            onPress={toggleMute}
+            style={styles.backBtn}
+            accessibilityRole="button"
+            accessibilityState={{ selected: muted }}
+            accessibilityLabel={t(muted ? 'a11y.unmuteChat' : 'a11y.muteChat')}
+          >
+            <Ionicons name={muted ? 'notifications-off-outline' : 'notifications-outline'} size={22} color={muted ? '#9aa7b4' : '#2f74d6'} />
+          </Pressable>
         </View>
 
         <KeyboardAvoidingView
