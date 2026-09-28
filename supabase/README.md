@@ -82,6 +82,7 @@ new:
 | `027_closure_reports.sql` | Player-reported closures on the court card: `closure_reports` + `closure_votes` (no client policies — read via `court_closures()`, write via `file_closure_report()` / `vote_closure_report()` / `remove_closure_report()`), `content_reports.kind 'closure'` for reporting a closure's note, and a `closure_reports_email` trigger that mails each new closure like `028` does (same Vault secrets; inert without them) |
 | `028_report_email.sql` | Email each new `content_reports` row to the support inbox (trigger → Resend via `pg_net`); inert until the `resend_api_key` Vault secret is set — see *Reviewing reports* |
 | `029_reviews_owner_delete.sql` | `reviews.user_id` (defaulted from `auth.uid()`), a delete policy so a user can remove their own review, and `my_review_ids()` so the card knows which are theirs — plus a column-list `select` grant that stops clients reading `user_id`/`ip` (a readable owner id would deanonymize a review signed "Anonymous") |
+| `030_run_fixes.sql` | `rec_runs.sport`: replace 003's five-sport enum (which failed badminton/soccer/baseball/swimming/handball/weightroom/golf runs) with a length cap; joining a run requires being able to see it (a participant row grants the run's chat) |
 
 > Note: migrations 001–009 were authored before the RECreate rebrand and still
 > reference the old `hoop_*` table names. Apply them **in order** — `010` renames

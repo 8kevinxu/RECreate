@@ -9,7 +9,7 @@ create table if not exists public.rec_runs (
   court_id    text        not null check (char_length(court_id) <= 128),
   starts_at   timestamptz not null,
   sport       text        not null default 'basketball'
-                          check (sport in ('basketball', 'volleyball', 'pingpong', 'pickleball', 'tennis')),
+                          constraint rec_runs_sport_len check (char_length(sport) <= 40), -- tracked sport id (lib/sports.js); length only, not an enum (030)
   note        text        check (note is null or char_length(note) <= 200),
   visibility  text        not null default 'public' check (visibility in ('public', 'friends')),
   status      text        not null default 'open'   check (status in ('open', 'cancelled')),
@@ -53,8 +53,14 @@ create policy "see your own participation and rosters of visible runs"
     or exists (select 1 from public.rec_runs r where r.id = run_id)
   );
 
-create policy "users can join as themselves"
-  on public.rec_run_participants for insert with check (user_id = auth.uid());
+-- Join only runs you can see (rec_runs RLS applies inside the subquery) — a
+-- participant row grants the run's chat, so it must follow visibility (030).
+create policy "join visible runs as yourself"
+  on public.rec_run_participants for insert
+  with check (
+    user_id = auth.uid()
+    and exists (select 1 from public.rec_runs r where r.id = run_id)
+  );
 
 create policy "users can leave their own row"
   on public.rec_run_participants for delete using (user_id = auth.uid());
