@@ -1073,6 +1073,11 @@
             [
               420,
               540
+            ],
+            [
+              960,
+              1080,
+              "teen"
             ]
           ],
           [
@@ -1115,6 +1120,10 @@
             [
               600,
               780
+            ],
+            [
+              1095,
+              1185
             ]
           ],
           [],
@@ -2436,6 +2445,143 @@
       "disclaimer": "Schedules change weekly — verify on nycgovparks.org."
     },
     {
+      "id": "nyc-hunts-point-recreation-center",
+      "city": "nyc",
+      "name": "Hunts Point Recreation Center",
+      "address": "765 Manida Street",
+      "neighborhood": "Bronx",
+      "lat": 40.814967,
+      "lng": -73.889239,
+      "indoor": true,
+      "schedule": [
+        null,
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "volleyball": [
+          [],
+          [
+            [
+              1140,
+              1200
+            ]
+          ],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "handball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "nycparks-indoor",
+      "notes": "NYC Parks recreation center — drop-in open-play times from this week’s posted schedule. NYC Parks membership required for entry (free for 24 and under; see nycgovparks.org).",
+      "disclaimer": "Schedules change weekly — verify on nycgovparks.org."
+    },
+    {
       "id": "nyc-j-hood-wright-recreation-center",
       "city": "nyc",
       "name": "J. Hood Wright Recreation Center",
@@ -2739,6 +2885,304 @@
       "disclaimer": "Schedules change weekly — verify on nycgovparks.org."
     },
     {
+      "id": "nyc-kwame-ture-recreation-center",
+      "city": "nyc",
+      "name": "Kwame Ture Recreation Center",
+      "address": "1527 Jesup Avenue",
+      "neighborhood": "Bronx",
+      "lat": 40.844023,
+      "lng": -73.91897,
+      "indoor": true,
+      "schedule": [
+        [
+          480,
+          960
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "handball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "nycparks-indoor",
+      "notes": "NYC Parks recreation center — drop-in open-play times from this week’s posted schedule. NYC Parks membership required for entry (free for 24 and under; see nycgovparks.org).",
+      "disclaimer": "Schedules change weekly — verify on nycgovparks.org."
+    },
+    {
+      "id": "nyc-lyons-pool-recreation-center",
+      "city": "nyc",
+      "name": "Lyons Pool Recreation Center",
+      "address": "",
+      "neighborhood": "Staten Island",
+      "lat": 40.637242,
+      "lng": -74.074283,
+      "indoor": true,
+      "schedule": [
+        [
+          420,
+          900
+        ],
+        [
+          390,
+          1230
+        ],
+        [
+          390,
+          1230
+        ],
+        [
+          390,
+          1230
+        ],
+        [
+          390,
+          1230
+        ],
+        [
+          390,
+          1230
+        ],
+        [
+          420,
+          900
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "handball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
+          [],
+          [
+            [
+              420,
+              1200,
+              "55+"
+            ]
+          ],
+          [
+            [
+              420,
+              1200
+            ]
+          ],
+          [
+            [
+              420,
+              1200
+            ]
+          ],
+          [
+            [
+              420,
+              1200,
+              "55+"
+            ]
+          ],
+          [
+            [
+              420,
+              1200,
+              "55+"
+            ]
+          ],
+          []
+        ]
+      },
+      "source": "nycparks-indoor",
+      "notes": "NYC Parks recreation center — drop-in open-play times from this week’s posted schedule. NYC Parks membership required for entry (free for 24 and under; see nycgovparks.org).",
+      "disclaimer": "Schedules change weekly — verify on nycgovparks.org."
+    },
+    {
       "id": "nyc-mccarren-play-center",
       "city": "nyc",
       "name": "McCarren Play Center",
@@ -2813,6 +3257,141 @@
               660
             ]
           ]
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "handball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "nycparks-indoor",
+      "notes": "NYC Parks recreation center — drop-in open-play times from this week’s posted schedule. NYC Parks membership required for entry (free for 24 and under; see nycgovparks.org).",
+      "disclaimer": "Schedules change weekly — verify on nycgovparks.org."
+    },
+    {
+      "id": "nyc-ocean-breeze-track-field-athletic-complex",
+      "city": "nyc",
+      "name": "Ocean Breeze Track & Field Athletic Complex",
+      "address": "",
+      "neighborhood": "Staten Island",
+      "lat": 40.583069,
+      "lng": -74.07516,
+      "indoor": true,
+      "schedule": [
+        [
+          390,
+          810
+        ],
+        [
+          330,
+          1170
+        ],
+        [
+          330,
+          1170
+        ],
+        [
+          330,
+          1170
+        ],
+        [
+          330,
+          1170
+        ],
+        [
+          390,
+          810
+        ],
+        [
+          390,
+          810
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
         ],
         "volleyball": [
           [],
@@ -3826,6 +4405,138 @@
       "disclaimer": "Schedules change weekly — verify on nycgovparks.org."
     },
     {
+      "id": "nyc-st-james-recreation-center",
+      "city": "nyc",
+      "name": "St. James Recreation Center",
+      "address": "2530 Jerome Avenue",
+      "neighborhood": "Bronx",
+      "lat": 40.864542,
+      "lng": -73.899043,
+      "indoor": true,
+      "schedule": [
+        null,
+        [
+          600,
+          1080
+        ],
+        [
+          600,
+          1080
+        ],
+        [
+          600,
+          1080
+        ],
+        [
+          600,
+          1080
+        ],
+        [
+          600,
+          1080
+        ],
+        [
+          600,
+          1080
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "handball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "nycparks-indoor",
+      "notes": "NYC Parks recreation center — drop-in open-play times from this week’s posted schedule. NYC Parks membership required for entry (free for 24 and under; see nycgovparks.org).",
+      "disclaimer": "Schedules change weekly — verify on nycgovparks.org."
+    },
+    {
       "id": "nyc-st-john-s-recreation-center",
       "city": "nyc",
       "name": "St. John's Recreation Center",
@@ -3869,21 +4580,52 @@
           [],
           [
             [
-              420,
-              540,
-              "55+"
-            ]
-          ],
-          [],
-          [
+              360,
+              690
+            ],
             [
               420,
               540,
               "55+"
             ]
           ],
-          [],
-          [],
+          [
+            [
+              360,
+              480
+            ],
+            [
+              660,
+              870
+            ]
+          ],
+          [
+            [
+              360,
+              690
+            ],
+            [
+              420,
+              540,
+              "55+"
+            ]
+          ],
+          [
+            [
+              360,
+              480
+            ],
+            [
+              660,
+              870
+            ]
+          ],
+          [
+            [
+              360,
+              690
+            ]
+          ],
           []
         ],
         "volleyball": [
@@ -4479,5 +5221,5 @@
       "lng": -73.842543
     }
   },
-  "fetchedAt": "2026-09-28T05:10:54.731Z"
+  "fetchedAt": "2026-09-28T16:15:25.902Z"
 }
