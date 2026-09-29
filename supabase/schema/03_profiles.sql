@@ -174,3 +174,57 @@ $$;
 -- here to abuse: no rows, no identities, no writes.
 revoke all on function public.court_checkin_count(text, text, int) from public;
 grant execute on function public.court_checkin_count(text, text, int) to anon, authenticated;
+
+-- ---------------------------------------------------------------------------
+-- Column-level reads (032 + 033). Clients may read only other people's id and
+-- display_name; their own full row comes from my_profile(), and a friend-code
+-- lookup from find_by_friend_code(). The grant list is positive, so any column
+-- added later is private by default. See migrations/032 and 033 for why.
+-- ---------------------------------------------------------------------------
+create or replace function public.my_profile()
+returns table (
+  id                  uuid,
+  display_name        text,
+  age                 int,
+  bio                 text,
+  neighborhood        text,
+  favorite_sports     text[],
+  favorite_categories text[],
+  share_activity      boolean,
+  friend_code         text
+)
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select p.id, p.display_name, p.age, p.bio, p.neighborhood,
+         p.favorite_sports, p.favorite_categories, p.share_activity, p.friend_code
+  from public.profiles p
+  where p.id = auth.uid();
+$$;
+
+revoke all on function public.my_profile() from public, anon;
+grant execute on function public.my_profile() to authenticated;
+
+-- Look one person up by the exact code they shared. Returns id + name only,
+-- and only on an exact match, so codes can't be listed or searched — reading
+-- the whole friend_code column is the thing 033 takes away.
+create or replace function public.find_by_friend_code(code text)
+returns table (id uuid, display_name text)
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select p.id, p.display_name
+  from public.profiles p
+  where auth.uid() is not null
+    and p.friend_code = upper(btrim(code));
+$$;
+
+revoke all on function public.find_by_friend_code(text) from public, anon;
+grant execute on function public.find_by_friend_code(text) to authenticated;
+
+revoke select on public.profiles from anon, authenticated;
+grant select (id, display_name) on public.profiles to authenticated;

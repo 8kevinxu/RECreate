@@ -17,8 +17,8 @@ so they land first, in this order, and Groups builds on them.
 |---|---|---|---|---|
 | 1 | `030_run_fixes.sql` | (a) `rec_runs.sport` is still migration 003's 5-sport enum, so planning a soccer/baseball/swimming/handball/badminton/weightroom/golf run fails the insert. Replace it with the `char_length(sport) <= 40` cap every other sport column uses (020). (b) The participant insert policy only checks `user_id = auth.uid()`, so anyone holding a run id can join a friends-only run, and joining grants its chat. Add a **restrictive** insert policy requiring the run to be visible to the caller (`exists (select 1 from rec_runs r where r.id = run_id)` — RLS applies inside the subquery, the pattern 019 already uses for rosters). | None | DB only, today |
 | 2 | `031_chat_push.sql` | Chat messages push nowhere today. One `notify_chat_message()` trigger covering **run, signal and direct** threads (and `group` later): recipients = thread members minus the sender, minus anyone who muted the thread or blocks the sender; **coalesced** to one push per recipient per thread per 5 min (`chat_notify_log`, the `crowd_notify_log` shape), body = sender + latest message. New `chat_mutes (user_id, thread_key)` table, own-rows RLS — mute has to be server-side because the push is. | `onNotificationTap` routes `type: 'chat'` to the thread; a Mute toggle in `ChatThread`'s header | DB + JS (OTA-able, but see the fingerprint note) |
-| 3 | `032_profile_columns.sql` | Any signed-in user can read **every column of every profile** (age, bio, neighborhood, interests, friend code): one scripted `select *` dumps them all. The app itself only ever reads **other** people's `id` + `display_name`, so the fix costs no feature. Replace the table-wide select grant with a column grant of `(id, display_name)` — the 029 reviews technique — and add two SECURITY DEFINER RPCs: `my_profile()` (own row, all columns) and `find_by_friend_code(code)` (returns `id, display_name` for one exact code, so codes can't be enumerated). | `lib/auth.js` reads via `my_profile()` and stops asking the upsert to return a row; `lib/friends.js` uses the two RPCs. **Must ship before the migration**, or `select PROFILE_COLS` 401s on every launch. | Store build, **then** DB |
-| 4 | `033_groups.sql` | This spec. | — | — |
+| 3 | `032_profile_rpcs.sql` + `033_profile_columns.sql` | Any signed-in user can read **every column of every profile** (age, bio, neighborhood, interests, friend code): one scripted `select *` dumps them all. The app itself only ever reads **other** people's `id` + `display_name`, so the fix costs no feature. Replace the table-wide select grant with a column grant of `(id, display_name)` — the 029 reviews technique — and add two SECURITY DEFINER RPCs: `my_profile()` (own row, all columns) and `find_by_friend_code(code)` (returns `id, display_name` for one exact code, so codes can't be enumerated). | `lib/auth.js` reads via `my_profile()` and stops asking the upsert to return a row; `lib/friends.js` uses the two RPCs. Profile saves become update-then-insert. `032` (the functions) is safe any time; **the build must ship before `033`**, or older builds fail to load the profile. | `032` now → store build → `033` |
+| 4 | `034_groups.sql` | This spec. | — | — |
 
 After each: verify with the anon key and a signed-in second account (CLAUDE.md:
 `017` once silently didn't take on the live DB).
@@ -98,7 +98,7 @@ deleted.
 All new dialogs go through `lib/dialog.js` / `ActionSheet`, never `Alert.alert`
 (dead on web). Every string gets `groups.*` keys in en/zh/es.
 
-## Data model — migration `033_groups.sql` + schema `12_groups.sql`
+## Data model — migration `034_groups.sql` + schema `12_groups.sql`
 
 ```sql
 -- Age: birth_year replaces age for gating. Keep `age` readable for old
@@ -215,7 +215,7 @@ messages, can't insert a participant row on a group run by id, and can't
   Consequence worth knowing: DMs already require friendship, so this also
   closes adult↔minor DMs for new pairs.
 - A minor's profile, as seen by a non-friend, shows display name only
-  (hide `bio`, `neighborhood`, `age/birth_year`). Prerequisite `032`
+  (hide `bio`, `neighborhood`, `age/birth_year`). Prerequisite `033`
   already does this for **everyone**, since the app never shows those fields
   to anyone but their owner — so there is no minor-specific work left here.
   `birth_year` joins the columns excluded from the grant.
@@ -295,8 +295,8 @@ QR is shown and push is native-only.
 
 ## Build order
 
-0. Prerequisites `030`, `031`, `032` (above), each verified before the next.
-1. Migration `033` + schema `12_groups.sql` + README table rows; apply to a
+0. Prerequisites `030`–`033` (above), each verified before the next.
+1. Migration `034` + schema `12_groups.sql` + README table rows; apply to a
    branch DB; RLS checks above with anon + two test accounts
    (dev tester + "Alex Rivera").
 2. `lib/groups.js` + birth-year field; create/join by code works end to end.
@@ -326,7 +326,7 @@ QR is shown and push is native-only.
       friends-only run you can't see by id fails.
 - [ ] (031) A run, signal and direct message each push once; ten rapid
       messages ⇒ ≤ 2 pushes per recipient; muted thread gets none.
-- [ ] (032) Signed-in `select *` on `profiles` fails; `select id, display_name`
+- [ ] (033) Signed-in `select *` on `profiles` fails; `select id, display_name`
       works; friend-code add still works.
 - [ ] `npm run check` passes; en/zh/es parity.
 

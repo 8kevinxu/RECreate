@@ -1,0 +1,32 @@
+-- Step 2 of 2: stop clients reading other people's private profile columns.
+--
+-- !! DO NOT APPLY until the app build that uses my_profile() and
+-- !! find_by_friend_code() (032) is what nearly everyone runs. An older build
+-- !! still selects age/bio/… and friend_code directly; after this migration
+-- !! that read fails, and that build can no longer load the signed-in user's
+-- !! profile or add a friend by code.
+--
+-- Before: `profiles` was readable column-for-column by any signed-in user, so
+-- one `select *` dumped every user's age, bio, neighborhood, interests and
+-- friend code. After: a client can read only `id` and `display_name` — the only
+-- columns the app ever shows about someone else — and reaches its own full row
+-- and friend-code lookups through the 032 functions.
+--
+-- Same technique as 029 (reviews): Postgres can't revoke one column out of a
+-- table-wide grant, so revoke the table grant and re-grant a column list. The
+-- list is deliberately positive, so a column added later (birth_year, for
+-- Groups) is private by default. RLS is unchanged: the row policy still
+-- requires a signed-in user. INSERT/UPDATE grants are untouched, and an
+-- `update … where id = me` needs SELECT only on `id`, which stays granted.
+--
+-- Consequences worth knowing:
+--   * `select=*` on profiles now 401s for clients — name the columns.
+--   * An upsert (insert … on conflict do update) may need SELECT on the
+--     columns it writes; lib/auth.js uses update-then-insert instead.
+--   * The dashboard runs as service_role and still sees everything.
+--
+-- Apply once in the Supabase SQL editor. Idempotent. Folded into
+-- schema/03_profiles.sql.
+
+revoke select on public.profiles from anon, authenticated;
+grant select (id, display_name) on public.profiles to authenticated;
