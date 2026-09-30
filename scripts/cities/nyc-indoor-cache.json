@@ -969,7 +969,7 @@
           [
             [
               690,
-              810
+              840
             ]
           ],
           [],
@@ -3166,8 +3166,7 @@
           [
             [
               420,
-              1200,
-              "55+"
+              1200
             ]
           ],
           [
@@ -3649,7 +3648,13 @@
       "dropins": {
         "basketball": [
           [],
-          [],
+          [
+            [
+              1080,
+              1230,
+              "wheelchair"
+            ]
+          ],
           [],
           [],
           [],
@@ -4732,6 +4737,141 @@
       "disclaimer": "Schedules change weekly — verify on nycgovparks.org."
     },
     {
+      "id": "nyc-st-mary-s-recreation-center",
+      "city": "nyc",
+      "name": "St. Mary's Recreation Center",
+      "address": "450 Saint Ann's Avenue",
+      "neighborhood": "Bronx",
+      "lat": 40.811496,
+      "lng": -73.914094,
+      "indoor": true,
+      "schedule": [
+        [
+          480,
+          960
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ],
+        [
+          480,
+          1200
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "handball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "nycparks-indoor",
+      "notes": "NYC Parks recreation center — drop-in open-play times from this week’s posted schedule. NYC Parks membership required for entry (free for 24 and under; see nycgovparks.org).",
+      "disclaimer": "Schedules change weekly — verify on nycgovparks.org."
+    },
+    {
       "id": "nyc-thomas-jefferson-recreation-center",
       "city": "nyc",
       "name": "Thomas Jefferson Recreation Center",
@@ -5238,5 +5378,5 @@
       "lng": -73.842543
     }
   },
-  "fetchedAt": "2026-09-29T16:40:51.737Z"
+  "fetchedAt": "2026-09-30T04:50:59.404Z"
 }
