@@ -9560,6 +9560,163 @@
       ]
     },
     {
+      "id": "nyc-pool-st-mary-s-recreation-center-pool",
+      "name": "St. Mary's Recreation Center Pool",
+      "address": "St. Ann's Avenue and E. 145th Street",
+      "lat": 40.8114,
+      "lng": -73.9141,
+      "phone": "(718) 402-5157",
+      "indoor": true,
+      "accessible": true,
+      "desc": "Intermediate pool · 72' x 39' x 9'",
+      "season": "Year-round (recreation center members)",
+      "seasonal": false,
+      "programs": [
+        "lap",
+        "family",
+        "youth"
+      ],
+      "fees": {
+        "effective": "2026-01-01",
+        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
+        "note": "Recreation center membership — indoor pools are members-only",
+        "groups": [
+          {
+            "id": "youth",
+            "label": "Ages 24 and under",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                0
+              ]
+            ]
+          },
+          {
+            "id": "adult",
+            "label": "Adults (25–61)",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                150
+              ],
+              [
+                "Six months",
+                75
+              ]
+            ]
+          },
+          {
+            "id": "senior",
+            "label": "Seniors 62+, veterans, people with disabilities",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                25
+              ]
+            ]
+          }
+        ]
+      },
+      "scheduleUrls": [
+        {
+          "label": "Pool schedule",
+          "url": "https://www.nycgovparks.org/facilities/recreationcenters/X045/schedule#Pool-schedule"
+        }
+      ],
+      "sessions": [
+        [
+          {
+            "kind": "lap",
+            "start": 480,
+            "end": 570
+          },
+          {
+            "kind": "family",
+            "start": 585,
+            "end": 705
+          },
+          {
+            "kind": "family",
+            "start": 720,
+            "end": 930
+          }
+        ],
+        [],
+        [],
+        [
+          {
+            "kind": "family",
+            "start": 840,
+            "end": 1065
+          },
+          {
+            "kind": "lap",
+            "start": 1080,
+            "end": 1200
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 480,
+            "end": 885
+          },
+          {
+            "kind": "youth",
+            "start": 900,
+            "end": 1065
+          },
+          {
+            "kind": "lap",
+            "start": 1080,
+            "end": 1200
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 480,
+            "end": 885
+          },
+          {
+            "kind": "youth",
+            "start": 900,
+            "end": 990
+          },
+          {
+            "kind": "family",
+            "start": 990,
+            "end": 1110
+          },
+          {
+            "kind": "lap",
+            "start": 1125,
+            "end": 1200
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 480,
+            "end": 600
+          },
+          {
+            "kind": "family",
+            "start": 630,
+            "end": 945
+          },
+          {
+            "kind": "youth",
+            "start": 960,
+            "end": 1080
+          }
+        ]
+      ]
+    },
+    {
       "id": "nyc-pool-brownsville-recreation-center-pool",
       "name": "Brownsville Recreation Center Pool",
       "address": "Linden and Mother Gaston Blvds. and Christopher Avenue",
@@ -9621,79 +9778,6 @@
         {
           "label": "Pool schedule",
           "url": "https://www.nycgovparks.org/facilities/recreationcenters/B270/schedule#Pool-schedule"
-        }
-      ],
-      "sessions": [
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
-      ]
-    },
-    {
-      "id": "nyc-pool-st-mary-s-recreation-center-pool",
-      "name": "St. Mary's Recreation Center Pool",
-      "address": "St. Ann's Avenue and E. 145th Street",
-      "lat": 40.8114,
-      "lng": -73.9141,
-      "phone": "(718) 402-5157",
-      "indoor": true,
-      "accessible": true,
-      "desc": "Intermediate pool · 72' x 39' x 9'",
-      "season": "No pool sessions currently published",
-      "seasonal": false,
-      "programs": [],
-      "fees": {
-        "effective": "2026-01-01",
-        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
-        "note": "Recreation center membership — indoor pools are members-only",
-        "groups": [
-          {
-            "id": "youth",
-            "label": "Ages 24 and under",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                0
-              ]
-            ]
-          },
-          {
-            "id": "adult",
-            "label": "Adults (25–61)",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                150
-              ],
-              [
-                "Six months",
-                75
-              ]
-            ]
-          },
-          {
-            "id": "senior",
-            "label": "Seniors 62+, veterans, people with disabilities",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                25
-              ]
-            ]
-          }
-        ]
-      },
-      "scheduleUrls": [
-        {
-          "label": "Pool schedule",
-          "url": "https://www.nycgovparks.org/facilities/recreationcenters/X045/schedule#Pool-schedule"
         }
       ],
       "sessions": [
@@ -9778,6 +9862,387 @@
         [],
         [],
         []
+      ]
+    },
+    {
+      "id": "nyc-pool-st-john-s-recreation-center-pool",
+      "name": "St. John's Recreation Center Pool",
+      "address": "Prospect Place, between Troy and Schenectady Avenues",
+      "lat": 40.674,
+      "lng": -73.9349,
+      "phone": "(718) 771-2787",
+      "indoor": true,
+      "accessible": true,
+      "desc": "Intermediate pool · 75' x 42' x 9'",
+      "season": "Year-round (recreation center members)",
+      "seasonal": false,
+      "notice": "Membership Extensions During the summer, we had to temporarily reduce operating hours at several of our indoor pools. We understand the impact this has had on our members, and we want to ensure that our members have as much pool time and access as possible. That said, we are offering qualifying individuals the opportunity to extend their membership by three months for free. Please visit this webpage to learn more and submit a membership extension request. The deadline to opt-in for the extension is October 8, 2026.",
+      "programs": [
+        "lap",
+        "family",
+        "youth",
+        "exercise"
+      ],
+      "fees": {
+        "effective": "2026-01-01",
+        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
+        "note": "Recreation center membership — indoor pools are members-only",
+        "groups": [
+          {
+            "id": "youth",
+            "label": "Ages 24 and under",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                0
+              ]
+            ]
+          },
+          {
+            "id": "adult",
+            "label": "Adults (25–61)",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                150
+              ],
+              [
+                "Six months",
+                75
+              ]
+            ]
+          },
+          {
+            "id": "senior",
+            "label": "Seniors 62+, veterans, people with disabilities",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                25
+              ]
+            ]
+          }
+        ]
+      },
+      "scheduleUrls": [
+        {
+          "label": "Pool schedule",
+          "url": "https://www.nycgovparks.org/facilities/recreationcenters/B245/schedule#Pool-schedule"
+        }
+      ],
+      "sessions": [
+        [
+          {
+            "kind": "lap",
+            "start": 495,
+            "end": 585
+          },
+          {
+            "kind": "family",
+            "start": 600,
+            "end": 675
+          },
+          {
+            "kind": "family",
+            "start": 690,
+            "end": 795
+          },
+          {
+            "kind": "youth",
+            "start": 810,
+            "end": 870
+          },
+          {
+            "kind": "lap",
+            "start": 885,
+            "end": 975
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 510
+          },
+          {
+            "kind": "exercise",
+            "start": 525,
+            "end": 555
+          },
+          {
+            "kind": "family",
+            "start": 570,
+            "end": 660
+          },
+          {
+            "kind": "lap",
+            "start": 675,
+            "end": 780
+          },
+          {
+            "kind": "family",
+            "start": 795,
+            "end": 885
+          },
+          {
+            "kind": "youth",
+            "start": 900,
+            "end": 945
+          },
+          {
+            "kind": "youth",
+            "start": 960,
+            "end": 1005
+          },
+          {
+            "kind": "family",
+            "start": 1020,
+            "end": 1110
+          },
+          {
+            "kind": "family",
+            "start": 1125,
+            "end": 1170
+          },
+          {
+            "kind": "lap",
+            "start": 1185,
+            "end": 1290
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 510
+          },
+          {
+            "kind": "exercise",
+            "start": 525,
+            "end": 555
+          },
+          {
+            "kind": "family",
+            "start": 570,
+            "end": 660
+          },
+          {
+            "kind": "lap",
+            "start": 675,
+            "end": 780
+          },
+          {
+            "kind": "family",
+            "start": 795,
+            "end": 885
+          },
+          {
+            "kind": "youth",
+            "start": 900,
+            "end": 945
+          },
+          {
+            "kind": "youth",
+            "start": 960,
+            "end": 1005
+          },
+          {
+            "kind": "family",
+            "start": 1020,
+            "end": 1110
+          },
+          {
+            "kind": "family",
+            "start": 1125,
+            "end": 1170
+          },
+          {
+            "kind": "lap",
+            "start": 1185,
+            "end": 1290
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 510
+          },
+          {
+            "kind": "exercise",
+            "start": 525,
+            "end": 555
+          },
+          {
+            "kind": "family",
+            "start": 570,
+            "end": 660
+          },
+          {
+            "kind": "lap",
+            "start": 675,
+            "end": 780
+          },
+          {
+            "kind": "youth",
+            "start": 900,
+            "end": 945
+          },
+          {
+            "kind": "youth",
+            "start": 960,
+            "end": 1005
+          },
+          {
+            "kind": "family",
+            "start": 1020,
+            "end": 1110
+          },
+          {
+            "kind": "family",
+            "start": 1125,
+            "end": 1170
+          },
+          {
+            "kind": "lap",
+            "start": 1185,
+            "end": 1290
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 510
+          },
+          {
+            "kind": "exercise",
+            "start": 525,
+            "end": 555
+          },
+          {
+            "kind": "family",
+            "start": 570,
+            "end": 660
+          },
+          {
+            "kind": "lap",
+            "start": 675,
+            "end": 780
+          },
+          {
+            "kind": "family",
+            "start": 795,
+            "end": 885
+          },
+          {
+            "kind": "youth",
+            "start": 900,
+            "end": 945
+          },
+          {
+            "kind": "youth",
+            "start": 960,
+            "end": 1005
+          },
+          {
+            "kind": "family",
+            "start": 1020,
+            "end": 1110
+          },
+          {
+            "kind": "family",
+            "start": 1125,
+            "end": 1170
+          },
+          {
+            "kind": "lap",
+            "start": 1185,
+            "end": 1290
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 510
+          },
+          {
+            "kind": "exercise",
+            "start": 525,
+            "end": 555
+          },
+          {
+            "kind": "family",
+            "start": 570,
+            "end": 660
+          },
+          {
+            "kind": "lap",
+            "start": 675,
+            "end": 780
+          },
+          {
+            "kind": "family",
+            "start": 795,
+            "end": 885
+          },
+          {
+            "kind": "youth",
+            "start": 900,
+            "end": 945
+          },
+          {
+            "kind": "youth",
+            "start": 960,
+            "end": 1005
+          },
+          {
+            "kind": "family",
+            "start": 1020,
+            "end": 1110
+          },
+          {
+            "kind": "family",
+            "start": 1125,
+            "end": 1170
+          },
+          {
+            "kind": "lap",
+            "start": 1185,
+            "end": 1290
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 540,
+            "end": 630
+          },
+          {
+            "kind": "family",
+            "start": 645,
+            "end": 825
+          },
+          {
+            "kind": "family",
+            "start": 840,
+            "end": 945
+          },
+          {
+            "kind": "youth",
+            "start": 960,
+            "end": 1110
+          },
+          {
+            "kind": "youth",
+            "start": 1140,
+            "end": 1200
+          }
+        ]
       ]
     },
     {
@@ -11180,387 +11645,6 @@
           }
         ]
       ]
-    },
-    {
-      "id": "nyc-pool-st-john-s-recreation-center-pool",
-      "name": "St. John's Recreation Center Pool",
-      "address": "Prospect Place, between Troy and Schenectady Avenues",
-      "lat": 40.674,
-      "lng": -73.9349,
-      "phone": "(718) 771-2787",
-      "indoor": true,
-      "accessible": true,
-      "desc": "Intermediate pool · 75' x 42' x 9'",
-      "season": "Year-round (recreation center members)",
-      "seasonal": false,
-      "notice": "Membership Extensions During the summer, we had to temporarily reduce operating hours at several of our indoor pools. We understand the impact this has had on our members, and we want to ensure that our members have as much pool time and access as possible. That said, we are offering qualifying individuals the opportunity to extend their membership by three months for free. Please visit this webpage to learn more and submit a membership extension request. The deadline to opt-in for the extension is October 8, 2026.",
-      "programs": [
-        "lap",
-        "family",
-        "youth",
-        "exercise"
-      ],
-      "fees": {
-        "effective": "2026-01-01",
-        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
-        "note": "Recreation center membership — indoor pools are members-only",
-        "groups": [
-          {
-            "id": "youth",
-            "label": "Ages 24 and under",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                0
-              ]
-            ]
-          },
-          {
-            "id": "adult",
-            "label": "Adults (25–61)",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                150
-              ],
-              [
-                "Six months",
-                75
-              ]
-            ]
-          },
-          {
-            "id": "senior",
-            "label": "Seniors 62+, veterans, people with disabilities",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                25
-              ]
-            ]
-          }
-        ]
-      },
-      "scheduleUrls": [
-        {
-          "label": "Pool schedule",
-          "url": "https://www.nycgovparks.org/facilities/recreationcenters/B245/schedule#Pool-schedule"
-        }
-      ],
-      "sessions": [
-        [
-          {
-            "kind": "lap",
-            "start": 495,
-            "end": 585
-          },
-          {
-            "kind": "family",
-            "start": 600,
-            "end": 675
-          },
-          {
-            "kind": "family",
-            "start": 690,
-            "end": 795
-          },
-          {
-            "kind": "youth",
-            "start": 810,
-            "end": 870
-          },
-          {
-            "kind": "lap",
-            "start": 885,
-            "end": 975
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 510
-          },
-          {
-            "kind": "exercise",
-            "start": 525,
-            "end": 555
-          },
-          {
-            "kind": "family",
-            "start": 570,
-            "end": 660
-          },
-          {
-            "kind": "lap",
-            "start": 675,
-            "end": 780
-          },
-          {
-            "kind": "family",
-            "start": 795,
-            "end": 885
-          },
-          {
-            "kind": "youth",
-            "start": 900,
-            "end": 945
-          },
-          {
-            "kind": "youth",
-            "start": 960,
-            "end": 1005
-          },
-          {
-            "kind": "family",
-            "start": 1020,
-            "end": 1110
-          },
-          {
-            "kind": "family",
-            "start": 1125,
-            "end": 1170
-          },
-          {
-            "kind": "lap",
-            "start": 1185,
-            "end": 1290
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 510
-          },
-          {
-            "kind": "exercise",
-            "start": 525,
-            "end": 555
-          },
-          {
-            "kind": "family",
-            "start": 570,
-            "end": 660
-          },
-          {
-            "kind": "lap",
-            "start": 675,
-            "end": 780
-          },
-          {
-            "kind": "family",
-            "start": 795,
-            "end": 885
-          },
-          {
-            "kind": "youth",
-            "start": 900,
-            "end": 945
-          },
-          {
-            "kind": "youth",
-            "start": 960,
-            "end": 1005
-          },
-          {
-            "kind": "family",
-            "start": 1020,
-            "end": 1110
-          },
-          {
-            "kind": "family",
-            "start": 1125,
-            "end": 1170
-          },
-          {
-            "kind": "lap",
-            "start": 1185,
-            "end": 1290
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 510
-          },
-          {
-            "kind": "exercise",
-            "start": 525,
-            "end": 555
-          },
-          {
-            "kind": "family",
-            "start": 570,
-            "end": 660
-          },
-          {
-            "kind": "lap",
-            "start": 675,
-            "end": 780
-          },
-          {
-            "kind": "youth",
-            "start": 900,
-            "end": 945
-          },
-          {
-            "kind": "youth",
-            "start": 960,
-            "end": 1005
-          },
-          {
-            "kind": "family",
-            "start": 1020,
-            "end": 1110
-          },
-          {
-            "kind": "family",
-            "start": 1125,
-            "end": 1170
-          },
-          {
-            "kind": "lap",
-            "start": 1185,
-            "end": 1290
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 510
-          },
-          {
-            "kind": "exercise",
-            "start": 525,
-            "end": 555
-          },
-          {
-            "kind": "family",
-            "start": 570,
-            "end": 660
-          },
-          {
-            "kind": "lap",
-            "start": 675,
-            "end": 780
-          },
-          {
-            "kind": "family",
-            "start": 795,
-            "end": 885
-          },
-          {
-            "kind": "youth",
-            "start": 900,
-            "end": 945
-          },
-          {
-            "kind": "youth",
-            "start": 960,
-            "end": 1005
-          },
-          {
-            "kind": "family",
-            "start": 1020,
-            "end": 1110
-          },
-          {
-            "kind": "family",
-            "start": 1125,
-            "end": 1170
-          },
-          {
-            "kind": "lap",
-            "start": 1185,
-            "end": 1290
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 510
-          },
-          {
-            "kind": "exercise",
-            "start": 525,
-            "end": 555
-          },
-          {
-            "kind": "family",
-            "start": 570,
-            "end": 660
-          },
-          {
-            "kind": "lap",
-            "start": 675,
-            "end": 780
-          },
-          {
-            "kind": "family",
-            "start": 795,
-            "end": 885
-          },
-          {
-            "kind": "youth",
-            "start": 900,
-            "end": 945
-          },
-          {
-            "kind": "youth",
-            "start": 960,
-            "end": 1005
-          },
-          {
-            "kind": "family",
-            "start": 1020,
-            "end": 1110
-          },
-          {
-            "kind": "family",
-            "start": 1125,
-            "end": 1170
-          },
-          {
-            "kind": "lap",
-            "start": 1185,
-            "end": 1290
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 540,
-            "end": 630
-          },
-          {
-            "kind": "family",
-            "start": 645,
-            "end": 825
-          },
-          {
-            "kind": "family",
-            "start": 840,
-            "end": 945
-          },
-          {
-            "kind": "youth",
-            "start": 960,
-            "end": 1110
-          },
-          {
-            "kind": "youth",
-            "start": 1140,
-            "end": 1200
-          }
-        ]
-      ]
     }
   ],
   "season": {
@@ -11569,5 +11653,5 @@
     "checked": "2026-09-30",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-09-30T05:57:02.299Z"
+  "fetchedAt": "2026-09-30T17:20:35.168Z"
 }
