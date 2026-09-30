@@ -1,29 +1,6 @@
 {
   "entries": [
     {
-      "id": "vol-a07Pi00003zJscrIAC",
-      "source": "sfrpd-volunteer",
-      "name": "GGP Conservatory Valley Volunteer Workparty",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "GGP Sec 1 Conservatory Valley",
-      "when": "Wed · 9:30 AM - 11:30 AM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 8,
-      "unlimited": false,
-      "start": "2026-09-30",
-      "end": "2027-03-24",
-      "instructor": "Friends of Conservatory Valley",
-      "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the RPD gardeners in a weekly recurring volunteer workparty at the Valley of the Conservatory of Flowers. Volunteer tasks include the maintenance of ornamental planting beds. All tools provided by RPD. Children 13 years and older accompanied by an adult are welcome. No school groups.\n\nMeet on the steps of the Conservatory of Flowers, 100 JFK Drive.",
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a074U00001QnCv3QAF",
       "source": "sfrpd-volunteer",
       "name": "CNPS Mount Davidson Volunteer Workparty- Fire Road Entrance",
@@ -194,6 +171,29 @@
       "instructor": "Friends of the Tree Fern Dell",
       "activity": "Habitat Restoration",
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the Friends of the Tree Fern Dell and the RPD Gardeners in a weekly volunteer workparty. Enjoy this historic site in Golden Gate Park while delivering care to extraordinary horticultural specimens that date back 200 million years. All tools and gloves provided.\n\nMeet at the entrance to the Tree Fern Dell at Conservatory Drive West and JFK Drive.",
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a07Pi00003zJscrIAC",
+      "source": "sfrpd-volunteer",
+      "name": "GGP Conservatory Valley Volunteer Workparty",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "GGP Sec 1 Conservatory Valley",
+      "when": "Wed · 9:30 AM - 11:30 AM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 12,
+      "unlimited": false,
+      "start": "2026-10-07",
+      "end": "2027-03-24",
+      "instructor": "Friends of Conservatory Valley",
+      "activity": "Habitat Restoration",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the RPD gardeners in a weekly recurring volunteer workparty at the Valley of the Conservatory of Flowers. Volunteer tasks include the maintenance of ornamental planting beds. All tools provided by RPD. Children 13 years and older accompanied by an adult are welcome. No school groups.\n\nMeet on the steps of the Conservatory of Flowers, 100 JFK Drive.",
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -846,5 +846,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-09-30T11:56:36.419Z"
+  "fetchedAt": "2026-09-30T17:37:42.909Z"
 }
