@@ -1,32 +1,6 @@
 {
   "entries": [
     {
-      "id": "vol-a074U00001QnCv3QAF",
-      "source": "sfrpd-volunteer",
-      "name": "CNPS Mount Davidson Volunteer Workparty- Fire Road Entrance",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "Mt. Davidson Park",
-      "when": "Wed · 12:00 PM - 2:30 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 14,
-      "unlimited": false,
-      "start": "2026-09-30",
-      "end": "2026-09-30",
-      "oneDay": true,
-      "instructor": "California Native Plant Society",
-      "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin SF Recreation and Parks’ Natural Resources Division and the California Native Plant Society for their weekly Wednesday habitat restoration project. Mount Davidson is the highest peak in San Francisco offering spectacular views of San Francisco’s skyline, bay, and the surrounding coastal mountains. This park offers habitat for numerous resident and migratory birds, butterflies, and insects - awe inspiring all year. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Everyone 14 years old and older is invited; anyone under 14 yo must be accompanied by a guardian. Tools and gloves will be provided. Please be punctual. \n\nMeet at the fire road entrance opposite 39 Dalewood Way.",
-      "lat": 37.7383,
-      "lng": -122.45437,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a07Pi00006LcvZ4IAJ",
       "source": "sfrpd-volunteer",
       "name": "Rhododendron Dell Volunteer Workparty",
@@ -90,7 +64,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 13,
+      "spots": 10,
       "unlimited": false,
       "start": "2026-10-03",
       "end": "2027-03-20",
@@ -235,7 +209,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 5,
+      "spots": 4,
       "unlimited": false,
       "start": "2026-10-07",
       "end": "2027-03-17",
@@ -334,7 +308,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 17,
+      "spots": 15,
       "unlimited": false,
       "start": "2026-10-10",
       "end": "2027-03-13",
@@ -511,7 +485,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 15,
+      "spots": 13,
       "unlimited": false,
       "start": "2026-10-17",
       "end": "2027-03-20",
@@ -846,5 +820,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-09-30T17:37:42.909Z"
+  "fetchedAt": "2026-09-30T21:53:16.504Z"
 }
