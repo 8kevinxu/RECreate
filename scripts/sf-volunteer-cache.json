@@ -1,31 +1,6 @@
 {
   "entries": [
     {
-      "id": "vol-a07Pi00006LcvZ4IAJ",
-      "source": "sfrpd-volunteer",
-      "name": "Rhododendron Dell Volunteer Workparty",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "GGP Sec 2 Rhododendron Dell",
-      "when": "Thu · 10:00 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 22,
-      "unlimited": false,
-      "start": "2026-10-01",
-      "end": "2027-03-04",
-      "instructor": "Friends of the Tree Fern Dell",
-      "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the Friends of the Rhododendron Dell and the RPD Gardeners in a recurring monthly volunteer workparty. All tools and gloves provided.\n\nMeet at the entrance to the Rhododendron Dell on 7th Ave and John F Kennedy Drive",
-      "lat": 37.7699,
-      "lng": -122.46429,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a07Pi00003ysll6IAA",
       "source": "sfrpd-volunteer",
       "name": "Clean & Green with the Friends of Lafayette Park",
@@ -39,7 +14,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 11,
+      "spots": 10,
       "unlimited": false,
       "start": "2026-10-03",
       "end": "2027-03-06",
@@ -113,7 +88,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 18,
+      "spots": 17,
       "unlimited": false,
       "start": "2026-10-03",
       "end": "2026-12-05",
@@ -138,7 +113,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 15,
+      "spots": 9,
       "unlimited": false,
       "start": "2026-10-06",
       "end": "2027-03-02",
@@ -722,6 +697,31 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
+      "id": "vol-a07Pi00006LcvZ4IAJ",
+      "source": "sfrpd-volunteer",
+      "name": "Rhododendron Dell Volunteer Workparty",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "GGP Sec 2 Rhododendron Dell",
+      "when": "Thu · 10:00 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 26,
+      "unlimited": false,
+      "start": "2026-11-05",
+      "end": "2027-03-04",
+      "instructor": "Friends of the Tree Fern Dell",
+      "activity": "Habitat Restoration",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the Friends of the Rhododendron Dell and the RPD Gardeners in a recurring monthly volunteer workparty. All tools and gloves provided.\n\nMeet at the entrance to the Rhododendron Dell on 7th Ave and John F Kennedy Drive",
+      "lat": 37.7699,
+      "lng": -122.46429,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
       "id": "vol-a07Pi00006YJG2lIAH",
       "source": "sfrpd-volunteer",
       "name": "Candlestick Point State Recreation Area Volunteer Workparty",
@@ -820,5 +820,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-10-01T12:27:50.476Z"
+  "fetchedAt": "2026-10-01T22:21:33.359Z"
 }
