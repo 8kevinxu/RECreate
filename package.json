@@ -61,7 +61,7 @@
   },
   "private": true,
   "engines": {
-    "node": "20.x"
+    "node": "24.x"
   },
   "overrides": {
     "expo-font": "~57.0.3"
