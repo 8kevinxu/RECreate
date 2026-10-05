@@ -11460,9 +11460,12 @@
       "indoor": true,
       "accessible": true,
       "desc": "Olympic pool · 164' x 82' x 7.5'",
-      "season": "No pool sessions currently published",
+      "season": "Year-round (recreation center members)",
       "seasonal": false,
-      "programs": [],
+      "programs": [
+        "family",
+        "lap"
+      ],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
@@ -11514,13 +11517,115 @@
         }
       ],
       "sessions": [
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
+        [
+          {
+            "kind": "family",
+            "start": 540,
+            "end": 1170
+          },
+          {
+            "kind": "lap",
+            "start": 540,
+            "end": 1170
+          }
+        ],
+        [
+          {
+            "kind": "family",
+            "start": 360,
+            "end": 600
+          },
+          {
+            "kind": "lap",
+            "start": 360,
+            "end": 1290
+          },
+          {
+            "kind": "family",
+            "start": 840,
+            "end": 1290
+          }
+        ],
+        [
+          {
+            "kind": "family",
+            "start": 360,
+            "end": 660
+          },
+          {
+            "kind": "lap",
+            "start": 360,
+            "end": 1290
+          },
+          {
+            "kind": "family",
+            "start": 840,
+            "end": 1290
+          }
+        ],
+        [
+          {
+            "kind": "family",
+            "start": 360,
+            "end": 600
+          },
+          {
+            "kind": "lap",
+            "start": 360,
+            "end": 1290
+          },
+          {
+            "kind": "family",
+            "start": 840,
+            "end": 1290
+          }
+        ],
+        [
+          {
+            "kind": "family",
+            "start": 360,
+            "end": 660
+          },
+          {
+            "kind": "lap",
+            "start": 360,
+            "end": 1290
+          },
+          {
+            "kind": "family",
+            "start": 840,
+            "end": 1290
+          }
+        ],
+        [
+          {
+            "kind": "family",
+            "start": 360,
+            "end": 600
+          },
+          {
+            "kind": "lap",
+            "start": 360,
+            "end": 1290
+          },
+          {
+            "kind": "family",
+            "start": 840,
+            "end": 1290
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 540,
+            "end": 1290
+          },
+          {
+            "kind": "family",
+            "start": 540,
+            "end": 1290
+          }
+        ]
       ]
     },
     {
@@ -11718,5 +11823,5 @@
     "checked": "2026-10-05",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-10-05T04:37:52.389Z"
+  "fetchedAt": "2026-10-05T16:49:38.432Z"
 }
