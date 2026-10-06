@@ -1,29 +1,6 @@
 {
   "entries": [
     {
-      "id": "vol-a074U00001UJGuJQAX",
-      "source": "sfrpd-volunteer",
-      "name": "Tree Fern Dell Volunteer Workparty",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "GGP Sec 2 Tree Fern Dell",
-      "when": "Tue · 12:30 PM - 2:30 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 6,
-      "unlimited": false,
-      "start": "2026-10-06",
-      "end": "2027-03-02",
-      "instructor": "Friends of the Tree Fern Dell",
-      "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the Friends of the Tree Fern Dell and the RPD Gardeners in a weekly volunteer workparty. Enjoy this historic site in Golden Gate Park while delivering care to extraordinary horticultural specimens that date back 200 million years. All tools and gloves provided.\n\nMeet at the entrance to the Tree Fern Dell at Conservatory Drive West and JFK Drive.",
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a07Pi00003zJscrIAC",
       "source": "sfrpd-volunteer",
       "name": "GGP Conservatory Valley Volunteer Workparty",
@@ -37,7 +14,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 9,
+      "spots": 8,
       "unlimited": false,
       "start": "2026-10-07",
       "end": "2027-03-31",
@@ -235,7 +212,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 19,
+      "spots": 18,
       "unlimited": false,
       "start": "2026-10-11",
       "end": "2026-10-11",
@@ -337,7 +314,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 30,
+      "spots": 29,
       "unlimited": false,
       "start": "2026-10-17",
       "end": "2027-03-20",
@@ -362,7 +339,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 8,
+      "spots": 7,
       "unlimited": false,
       "start": "2026-10-17",
       "end": "2027-03-20",
@@ -725,6 +702,29 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
+      "id": "vol-a074U00001UJGuJQAX",
+      "source": "sfrpd-volunteer",
+      "name": "Tree Fern Dell Volunteer Workparty",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "GGP Sec 2 Tree Fern Dell",
+      "when": "Tue · 12:30 PM - 2:30 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 10,
+      "unlimited": false,
+      "start": "2026-11-03",
+      "end": "2027-03-02",
+      "instructor": "Friends of the Tree Fern Dell",
+      "activity": "Habitat Restoration",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the Friends of the Tree Fern Dell and the RPD Gardeners in a weekly volunteer workparty. Enjoy this historic site in Golden Gate Park while delivering care to extraordinary horticultural specimens that date back 200 million years. All tools and gloves provided.\n\nMeet at the entrance to the Tree Fern Dell at Conservatory Drive West and JFK Drive.",
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
       "id": "vol-a07Pi00006LcvZ4IAJ",
       "source": "sfrpd-volunteer",
       "name": "Rhododendron Dell Volunteer Workparty",
@@ -946,5 +946,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-10-06T12:46:28.837Z"
+  "fetchedAt": "2026-10-06T22:21:38.359Z"
 }
