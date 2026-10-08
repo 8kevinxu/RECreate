@@ -56,6 +56,10 @@
           ],
           [
             [
+              360,
+              705
+            ],
+            [
               1185,
               1305,
               "wheelchair"
@@ -67,7 +71,12 @@
               615
             ]
           ],
-          [],
+          [
+            [
+              360,
+              660
+            ]
+          ],
           [
             [
               360,
@@ -3139,6 +3148,138 @@
       "disclaimer": "Schedules change weekly — verify on nycgovparks.org."
     },
     {
+      "id": "nyc-lost-battalion-hall-recreation-center",
+      "city": "nyc",
+      "name": "Lost Battalion Hall Recreation Center",
+      "address": "93-29 Queens Boulevard",
+      "neighborhood": "Queens",
+      "lat": 40.731825,
+      "lng": -73.865503,
+      "indoor": true,
+      "schedule": [
+        null,
+        [
+          360,
+          1260
+        ],
+        [
+          360,
+          1260
+        ],
+        [
+          360,
+          1260
+        ],
+        [
+          360,
+          1260
+        ],
+        [
+          360,
+          1260
+        ],
+        [
+          540,
+          1260
+        ]
+      ],
+      "dropins": {
+        "basketball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "volleyball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pingpong": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "badminton": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "pickleball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "tennis": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "soccer": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "baseball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "handball": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "weightroom": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "source": "nycparks-indoor",
+      "notes": "NYC Parks recreation center — drop-in open-play times from this week’s posted schedule. NYC Parks membership required for entry (free for 24 and under; see nycgovparks.org).",
+      "disclaimer": "Schedules change weekly — verify on nycgovparks.org."
+    },
+    {
       "id": "nyc-lyons-pool-recreation-center",
       "city": "nyc",
       "name": "Lyons Pool Recreation Center",
@@ -5654,5 +5795,5 @@
       "lng": -73.842543
     }
   },
-  "fetchedAt": "2026-10-08T04:20:45.678Z"
+  "fetchedAt": "2026-10-08T16:41:55.697Z"
 }
