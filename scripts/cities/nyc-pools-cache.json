@@ -11231,11 +11231,6 @@
             "kind": "lap",
             "start": 480,
             "end": 720
-          },
-          {
-            "kind": "family",
-            "start": 750,
-            "end": 885
           }
         ]
       ]
@@ -11638,12 +11633,10 @@
       "indoor": true,
       "accessible": true,
       "desc": "Intermediate pool",
-      "season": "Year-round (recreation center members)",
+      "season": "No pool sessions currently published",
       "seasonal": false,
       "notice": "Beginning Sunday, October 4 through Saturday, October 17 the indoor pool at Shirley Chisholm Recreation Center will be closed to allow for necessary repairs to be made to the pool basin. Membership Extensions During the summer, we had to temporarily reduce operating hours at several of our indoor pools. We understand the impact this has had on our members, and we want to ensure that our members have as much pool time and access as possible. That said, we are offering qualifying individuals the opportunity to extend their membership by three months for free. Please visit this webpage to learn more and submit a membership extension request. The deadline to opt-in for the extension is October 8, 2026.",
-      "programs": [
-        "exercise"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
@@ -11697,21 +11690,9 @@
       "sessions": [
         [],
         [],
-        [
-          {
-            "kind": "exercise",
-            "start": 780,
-            "end": 840
-          }
-        ],
         [],
-        [
-          {
-            "kind": "exercise",
-            "start": 780,
-            "end": 840
-          }
-        ],
+        [],
+        [],
         [],
         []
       ]
@@ -11720,8 +11701,8 @@
   "season": {
     "open": true,
     "label": "Open daily through Labor Day (9/7)",
-    "checked": "2026-10-08",
+    "checked": "2026-10-09",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-10-08T17:03:40.452Z"
+  "fetchedAt": "2026-10-09T04:41:14.369Z"
 }
