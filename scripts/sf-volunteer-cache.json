@@ -1,57 +1,6 @@
 {
   "entries": [
     {
-      "id": "vol-a07Pi00004h2FuUIAU",
-      "source": "sfrpd-volunteer",
-      "name": "Mission Bay Kids Park Volunteer Workparty",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "Mission Bay Kids Park",
-      "when": "Sun · 9:00 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 17,
-      "unlimited": false,
-      "start": "2026-10-11",
-      "end": "2026-10-11",
-      "oneDay": true,
-      "instructor": "Friends of Mission Bay Parks",
-      "activity": "Horticultural Maintenance",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group. You can only sign-up a group of 4. If you have a group size of 5 or more, please email us at recparkvolunteer@sfgov.org.\n\nJoin the RPD Gardeners in a horticultural maintenance volunteer workparty. Tools and gloves provided. \n\nMeet at the Corner of Long Bridge and China Basin Streets",
-      "lat": 37.7712,
-      "lng": -122.39312,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
-      "id": "vol-a074U00001QocKOQAZ",
-      "source": "sfrpd-volunteer",
-      "name": "San Francisco Botanical Garden Volunteer Event",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "GGP Sec 3 Botanical Gardens",
-      "when": "Sun, Sat · 9:30 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 12,
-      "unlimited": false,
-      "start": "2026-10-11",
-      "end": "2027-03-27",
-      "instructor": "SF Botanical Staff",
-      "activity": "Horticultural Maintenance",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nPlease join the San Francisco Botanical Garden’s Horticulture team as they maintain San Francisco’s wonderful 55 acres of both landscaped gardens and open spaces, showcasing more than 8,000 different kinds of plants from around the world. At this volunteer event, you will assist SFRPD staff with collections maintenance and complete tasks such as weeding, raking, and mulching to keep the Botanical Garden beautiful for our community. This is a fun event to jump in and help out with friends and family. While you are welcome to bring your tools and gloves, all supplies will be provided by SFRPD. Volunteers aged 14-17 must be accompanied by an adult. We do not have opportunities for volunteers younger than 14 at this time.\n\nRain and high winds may cancel this event.\n\nPlease wear closed-toed shoes, long pants, layers and appropriate weather protection such as sunscreen, hat, and sunglasses.\n\nMeet at the San Francisco Botanical Garden Bookstore.",
-      "lat": 37.76744,
-      "lng": -122.46896,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a07Pi00003zJscrIAC",
       "source": "sfrpd-volunteer",
       "name": "GGP Conservatory Valley Volunteer Workparty",
@@ -471,6 +420,31 @@
       "instructor": "Urban Ag.",
       "activity": "Community Garden Support",
       "desc": "General community event support - including but not limited to set-up and clean-up, kitchen support and food prep, and supporting activity stations.",
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a074U00001QocKOQAZ",
+      "source": "sfrpd-volunteer",
+      "name": "San Francisco Botanical Garden Volunteer Event",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "GGP Sec 3 Botanical Gardens",
+      "when": "Sun, Sat · 9:30 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 11,
+      "unlimited": false,
+      "start": "2026-10-24",
+      "end": "2027-03-27",
+      "instructor": "SF Botanical Staff",
+      "activity": "Horticultural Maintenance",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nPlease join the San Francisco Botanical Garden’s Horticulture team as they maintain San Francisco’s wonderful 55 acres of both landscaped gardens and open spaces, showcasing more than 8,000 different kinds of plants from around the world. At this volunteer event, you will assist SFRPD staff with collections maintenance and complete tasks such as weeding, raking, and mulching to keep the Botanical Garden beautiful for our community. This is a fun event to jump in and help out with friends and family. While you are welcome to bring your tools and gloves, all supplies will be provided by SFRPD. Volunteers aged 14-17 must be accompanied by an adult. We do not have opportunities for volunteers younger than 14 at this time.\n\nRain and high winds may cancel this event.\n\nPlease wear closed-toed shoes, long pants, layers and appropriate weather protection such as sunscreen, hat, and sunglasses.\n\nMeet at the San Francisco Botanical Garden Bookstore.",
+      "lat": 37.76744,
+      "lng": -122.46896,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -906,7 +880,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 14,
+      "spots": 13,
       "unlimited": false,
       "start": "2026-12-12",
       "end": "2026-12-12",
@@ -967,5 +941,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-10-11T12:08:57.270Z"
+  "fetchedAt": "2026-10-11T21:30:53.442Z"
 }
