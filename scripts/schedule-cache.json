@@ -147,7 +147,7 @@
       ]
     },
     "season": "Mission Rec Center Fall Schedule",
-    "scrapedAt": "2026-10-05T21:47:03.041Z"
+    "scrapedAt": "2026-10-12T22:21:39.100Z"
   },
   "Moscone-Rec-Center-101": {
     "dropins": {
@@ -257,7 +257,7 @@
       ]
     },
     "season": "Moscone Rec Center Fall Schedule",
-    "scrapedAt": "2026-10-05T21:47:04.633Z"
+    "scrapedAt": "2026-10-12T22:21:39.603Z"
   },
   "St-Marys-Rec-Center-109": {
     "dropins": {
@@ -342,7 +342,7 @@
       ]
     },
     "season": "St. Mary's Rec Center Summer Schedule",
-    "scrapedAt": "2026-10-05T21:47:05.369Z"
+    "scrapedAt": "2026-10-12T22:21:40.090Z"
   },
   "Upper-Noe-Rec-Center-112": {
     "dropins": {
@@ -465,15 +465,25 @@
       ]
     },
     "season": "Upper Noe Rec Center Fall Schedule",
-    "scrapedAt": "2026-10-05T21:47:05.906Z"
+    "scrapedAt": "2026-10-12T22:21:40.642Z"
   },
   "Hamilton-Rec-Center-93": {
     "dropins": {
       "basketball": [
         [],
         [],
-        [],
-        [],
+        [
+          [
+            840,
+            1230
+          ]
+        ],
+        [
+          [
+            780,
+            1215
+          ]
+        ],
         [
           [
             630,
@@ -482,8 +492,8 @@
         ],
         [
           [
-            630,
-            810
+            810,
+            1215
           ]
         ],
         [
@@ -580,7 +590,7 @@
       ]
     },
     "season": "Hamilton Rec Center Fall Schedule",
-    "scrapedAt": "2026-10-05T21:47:06.409Z"
+    "scrapedAt": "2026-10-12T22:21:41.113Z"
   },
   "Eureka-Valley-Rec-Center-86": {
     "dropins": {
@@ -685,7 +695,7 @@
       ]
     },
     "season": "Eureka Valley Rec Center Fall Schedule",
-    "scrapedAt": "2026-10-05T21:47:07.015Z"
+    "scrapedAt": "2026-10-12T22:21:41.808Z"
   },
   "Richmond-Rec-Center-105": {
     "dropins": {
@@ -823,7 +833,7 @@
       ]
     },
     "season": "Richmond Rec Center Fall Schedule",
-    "scrapedAt": "2026-10-05T21:47:08.015Z"
+    "scrapedAt": "2026-10-12T22:21:42.725Z"
   },
   "Sunset-Rec-Center-110": {
     "dropins": {
@@ -943,7 +953,7 @@
       ]
     },
     "season": "Sunset Rec Center Fall Schedule",
-    "scrapedAt": "2026-10-05T21:47:08.570Z"
+    "scrapedAt": "2026-10-12T22:21:43.252Z"
   },
   "Palega-Rec-Center-103": {
     "dropins": {
@@ -1084,7 +1094,7 @@
       ]
     },
     "season": "Palega Rec Center Fall Schedule",
-    "scrapedAt": "2026-10-05T21:47:09.037Z"
+    "scrapedAt": "2026-10-12T22:21:43.711Z"
   },
   "Joseph-Lee-Rec-Center-95": {
     "dropins": {
@@ -1319,7 +1329,7 @@
       ]
     },
     "season": "Minnie & Lovie Ward Rec Center Fall Schedule",
-    "scrapedAt": "2026-10-05T21:47:09.958Z"
+    "scrapedAt": "2026-10-12T22:21:44.722Z"
   },
   "Bernal-Heights-Rec-Center-83": {
     "dropins": {
@@ -1385,7 +1395,7 @@
       ]
     },
     "season": "Bernal Heights Rec Center Fall Schedule",
-    "scrapedAt": "2026-10-05T21:47:10.582Z"
+    "scrapedAt": "2026-10-12T22:21:45.220Z"
   },
   "Betty-Ann-Ong-Recreation-Center-84": {
     "dropins": {
@@ -1540,7 +1550,7 @@
       ]
     },
     "season": "Betty Ann Ong Chinese Rec Center Fall Schedule",
-    "scrapedAt": "2026-10-05T21:47:11.041Z"
+    "scrapedAt": "2026-10-12T22:21:45.688Z"
   },
   "Glen-Canyon-Park-Recreation-Center-89": {
     "dropins": {
@@ -1700,7 +1710,7 @@
       ]
     },
     "season": "Glen Canyon Rec Center Fall Schedule",
-    "scrapedAt": "2026-10-05T21:47:12.208Z"
+    "scrapedAt": "2026-10-12T22:21:46.625Z"
   },
   "Herz-Recreation-Center-471": {
     "dropins": {
@@ -1785,7 +1795,7 @@
       ]
     },
     "season": "Herz Rec Center Fall Schedule",
-    "scrapedAt": "2026-10-05T21:47:12.895Z"
+    "scrapedAt": "2026-10-12T22:21:47.100Z"
   },
   "Potrero-Hill-Rec-Center-275": {
     "dropins": {
@@ -1881,7 +1891,7 @@
       ]
     },
     "season": "Potrero Hill Rec Center Fall Schedule",
-    "scrapedAt": "2026-10-05T21:47:13.533Z"
+    "scrapedAt": "2026-10-12T22:21:47.610Z"
   },
   "Gene-Friend-Rec-Center-88": {
     "dropins": {
@@ -1995,7 +2005,7 @@
       ]
     },
     "season": "Gene Friend Recreation Center Fall Schedule",
-    "scrapedAt": "2026-10-05T21:47:07.492Z"
+    "scrapedAt": "2026-10-12T22:21:42.254Z"
   },
   "Crocker-Amazon-Playground-236": {
     "dropins": {
@@ -2022,7 +2032,12 @@
         [],
         [],
         [],
-        [],
+        [
+          [
+            600,
+            1080
+          ]
+        ],
         [],
         []
       ],
@@ -2055,6 +2070,6 @@
       ]
     },
     "season": "Crocker Amazon Playground Summer Schedule",
-    "scrapedAt": "2026-10-05T21:47:11.587Z"
+    "scrapedAt": "2026-10-12T22:21:46.164Z"
   }
 }
