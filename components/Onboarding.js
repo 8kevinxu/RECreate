@@ -350,7 +350,7 @@ export default function Onboarding({
 
 const styles = StyleSheet.create({
   overlay: {
-    ...StyleSheet.absoluteFillObject,
+    ...StyleSheet.absoluteFill,
     backgroundColor: '#eef5fc',
     zIndex: 100,
     paddingHorizontal: 28,

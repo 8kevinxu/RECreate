@@ -189,11 +189,11 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 4 },
     elevation: 6,
   },
-  overlay: { ...StyleSheet.absoluteFillObject, zIndex: 60 },
+  overlay: { ...StyleSheet.absoluteFill, zIndex: 60 },
   // Above App's navWrap (zIndex 50). The sheet is modal, so the floating nav
   // pill belongs under the scrim like everything else — left below it, the pill
   // sits on top of the composer and silently eats taps meant for the input.
-  backdrop: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(13,27,42,0.34)', zIndex: 60 },
+  backdrop: { ...StyleSheet.absoluteFill, backgroundColor: 'rgba(13,27,42,0.34)', zIndex: 60 },
   sheet: {
     position: 'absolute',
     left: 0,
