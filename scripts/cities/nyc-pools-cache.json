@@ -10830,6 +10830,12 @@
             "end": 720
           },
           {
+            "kind": "other",
+            "label": "Swim For Life at Chelsea Class C Thursday - P 12x 045",
+            "start": 720,
+            "end": 780
+          },
+          {
             "kind": "family",
             "start": 795,
             "end": 945
@@ -12199,12 +12205,12 @@
         ],
         [
           {
-            "kind": "family",
+            "kind": "lap",
             "start": 540,
             "end": 1290
           },
           {
-            "kind": "lap",
+            "kind": "family",
             "start": 540,
             "end": 1290
           },
@@ -12323,8 +12329,8 @@
   "season": {
     "open": true,
     "label": "Open daily through Labor Day (9/7)",
-    "checked": "2026-10-13",
+    "checked": "2026-10-14",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-10-13T16:33:34.134Z"
+  "fetchedAt": "2026-10-14T04:52:13.864Z"
 }
