@@ -1,7 +1,7 @@
 {
-  "lastRunAt": "2026-10-13T16:41:54.094Z",
-  "lastRunOk": false,
-  "lastRunStage": "publish",
-  "lastSuccessAt": "2026-10-11T04:24:44.007Z",
-  "sourcesFailed": "build:nyc-reservations"
+  "lastRunAt": "2026-10-14T04:53:10.189Z",
+  "lastRunOk": true,
+  "lastRunStage": "done",
+  "lastSuccessAt": "2026-10-14T04:53:10.189Z",
+  "sourcesFailed": null
 }
