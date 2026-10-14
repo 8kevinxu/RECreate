@@ -1,32 +1,6 @@
 {
   "entries": [
     {
-      "id": "vol-a074U00001PquvNQAR",
-      "source": "sfrpd-volunteer",
-      "name": "CNPS Mount Davidson",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "Mt. Davidson Park",
-      "when": "Wed · 12:00 PM - 2:30 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 15,
-      "unlimited": false,
-      "start": "2026-10-14",
-      "end": "2026-10-14",
-      "oneDay": true,
-      "instructor": "California Native Plant Society",
-      "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin SF Recreation and Parks’ Natural Resources Division and the California Native Plant Society for their weekly Wednesday habitat restoration project. Mount Davidson is the highest peak in San Francisco offering spectacular views of San Francisco’s skyline, bay, and the surrounding coastal mountains. This park offers habitat for numerous resident and migratory birds, butterflies, and insects - awe inspiring all year. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Everyone 14 years old and older is invited; anyone under 14 yo must be accompanied by a guardian. Tools and gloves will be provided. Please be punctual. \n\nMeet at top of mountain at the memorial cross",
-      "lat": 37.7383,
-      "lng": -122.45437,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a074U00001AcWr7QAF",
       "source": "sfrpd-volunteer",
       "name": "Mission Dolores Volunteer Workparty",
@@ -216,7 +190,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 15,
+      "spots": 13,
       "unlimited": false,
       "start": "2026-10-17",
       "end": "2027-04-03",
@@ -941,5 +915,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-10-14T16:34:04.819Z"
+  "fetchedAt": "2026-10-14T21:19:51.649Z"
 }
