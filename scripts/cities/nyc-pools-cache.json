@@ -9651,6 +9651,7 @@
         "senior",
         "other",
         "lessons",
+        "youth",
         "exercise"
       ],
       "fees": {
@@ -9849,6 +9850,11 @@
             "end": 930
           },
           {
+            "kind": "youth",
+            "start": 930,
+            "end": 1020
+          },
+          {
             "kind": "family",
             "start": 1035,
             "end": 1125
@@ -9901,6 +9907,11 @@
         ],
         [
           {
+            "kind": "family",
+            "start": 555,
+            "end": 630
+          },
+          {
             "kind": "lessons",
             "start": 720,
             "end": 780
@@ -9909,6 +9920,11 @@
             "kind": "lessons",
             "start": 840,
             "end": 930
+          },
+          {
+            "kind": "youth",
+            "start": 960,
+            "end": 1170
           }
         ]
       ]
@@ -12168,11 +12184,6 @@
           },
           {
             "kind": "lessons",
-            "start": 960,
-            "end": 1080
-          },
-          {
-            "kind": "lessons",
             "start": 1080,
             "end": 1200
           }
@@ -12257,11 +12268,6 @@
           {
             "kind": "lessons",
             "start": 660,
-            "end": 780
-          },
-          {
-            "kind": "lessons",
-            "start": 720,
             "end": 780
           },
           {
@@ -12367,5 +12373,5 @@
     "checked": "2026-10-15",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-10-15T04:26:53.060Z"
+  "fetchedAt": "2026-10-15T17:17:34.042Z"
 }
