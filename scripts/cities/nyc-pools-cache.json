@@ -10009,6 +10009,423 @@
       ]
     },
     {
+      "id": "nyc-pool-st-john-s-recreation-center-pool",
+      "name": "St. John's Recreation Center Pool",
+      "address": "Prospect Place, between Troy and Schenectady Avenues",
+      "lat": 40.674,
+      "lng": -73.9349,
+      "phone": "(718) 771-2787",
+      "indoor": true,
+      "accessible": true,
+      "desc": "Intermediate pool · 75' x 42' x 9'",
+      "season": "Year-round (recreation center members)",
+      "seasonal": false,
+      "notice": "Beginning Thursday, October 22 through Monday, November 2, 2026 the gymnasium at St. John’s Recreation Center will be closed for voting preparation and Early Voting.",
+      "programs": [
+        "lap",
+        "family",
+        "youth",
+        "exercise",
+        "senior",
+        "other",
+        "lessons"
+      ],
+      "fees": {
+        "effective": "2026-01-01",
+        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
+        "note": "Recreation center membership — indoor pools are members-only",
+        "groups": [
+          {
+            "id": "youth",
+            "label": "Ages 24 and under",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                0
+              ]
+            ]
+          },
+          {
+            "id": "adult",
+            "label": "Adults (25–61)",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                150
+              ],
+              [
+                "Six months",
+                75
+              ]
+            ]
+          },
+          {
+            "id": "senior",
+            "label": "Seniors 62+, veterans, people with disabilities",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                25
+              ]
+            ]
+          }
+        ]
+      },
+      "scheduleUrls": [
+        {
+          "label": "Pool schedule",
+          "url": "https://www.nycgovparks.org/facilities/recreationcenters/B245/schedule#Pool-schedule"
+        }
+      ],
+      "sessions": [
+        [
+          {
+            "kind": "lap",
+            "start": 495,
+            "end": 585
+          },
+          {
+            "kind": "family",
+            "start": 600,
+            "end": 675
+          },
+          {
+            "kind": "family",
+            "start": 690,
+            "end": 795
+          },
+          {
+            "kind": "youth",
+            "start": 810,
+            "end": 870
+          },
+          {
+            "kind": "lap",
+            "start": 885,
+            "end": 975
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 510
+          },
+          {
+            "kind": "exercise",
+            "start": 525,
+            "end": 555
+          },
+          {
+            "kind": "family",
+            "start": 570,
+            "end": 660
+          },
+          {
+            "kind": "lap",
+            "start": 675,
+            "end": 780
+          },
+          {
+            "kind": "family",
+            "start": 795,
+            "end": 885
+          },
+          {
+            "kind": "youth",
+            "start": 900,
+            "end": 945
+          },
+          {
+            "kind": "youth",
+            "start": 960,
+            "end": 1005
+          },
+          {
+            "kind": "family",
+            "start": 1020,
+            "end": 1110
+          },
+          {
+            "kind": "family",
+            "start": 1125,
+            "end": 1170
+          },
+          {
+            "kind": "lap",
+            "start": 1185,
+            "end": 1290
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 495
+          },
+          {
+            "kind": "senior",
+            "start": 510,
+            "end": 570
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at St. John's Class A Tuesday - PS 5",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at St. John's Class B Tuesday - PS 372K",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at St. John's Class C Tuesday - PS 282",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "lap",
+            "start": 795,
+            "end": 885
+          },
+          {
+            "kind": "youth",
+            "start": 900,
+            "end": 1005
+          },
+          {
+            "kind": "other",
+            "label": "St. John's: Swim Prep",
+            "start": 1020,
+            "end": 1110
+          },
+          {
+            "kind": "family",
+            "start": 1125,
+            "end": 1170
+          },
+          {
+            "kind": "lap",
+            "start": 1185,
+            "end": 1290
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 495
+          },
+          {
+            "kind": "senior",
+            "start": 510,
+            "end": 570
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at St. John's Class A Wednesday - The Bedford Village School",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at St. John's Class B Wednesday - PS 114",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at St. John's Class C Wednesday - PS 270",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "youth",
+            "start": 900,
+            "end": 945
+          },
+          {
+            "kind": "lessons",
+            "start": 1020,
+            "end": 1110
+          },
+          {
+            "kind": "exercise",
+            "start": 1125,
+            "end": 1170
+          },
+          {
+            "kind": "lap",
+            "start": 1185,
+            "end": 1290
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 495
+          },
+          {
+            "kind": "lessons",
+            "start": 510,
+            "end": 570
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at St. John's Class A Thursday - PS 308",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at St. John's Class B Thursday - PS 114",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at St. John's Class C Thursday - PS 282",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "lap",
+            "start": 795,
+            "end": 885
+          },
+          {
+            "kind": "youth",
+            "start": 900,
+            "end": 1005
+          },
+          {
+            "kind": "family",
+            "start": 1020,
+            "end": 1095
+          },
+          {
+            "kind": "exercise",
+            "start": 1110,
+            "end": 1155
+          },
+          {
+            "kind": "family",
+            "start": 1170,
+            "end": 1215
+          },
+          {
+            "kind": "lap",
+            "start": 1230,
+            "end": 1290
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 495
+          },
+          {
+            "kind": "lessons",
+            "start": 510,
+            "end": 570
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at St. John's Class A Friday - Brooklyn Charter School",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at St. John's Class B Friday - PS 372K",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at St. John's Class C Friday - PS 16",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "family",
+            "start": 795,
+            "end": 825
+          },
+          {
+            "kind": "lap",
+            "start": 840,
+            "end": 885
+          },
+          {
+            "kind": "youth",
+            "start": 900,
+            "end": 945
+          },
+          {
+            "kind": "exercise",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "family",
+            "start": 1035,
+            "end": 1110
+          },
+          {
+            "kind": "family",
+            "start": 1125,
+            "end": 1170
+          },
+          {
+            "kind": "lap",
+            "start": 1185,
+            "end": 1290
+          }
+        ],
+        [
+          {
+            "kind": "lessons",
+            "start": 540,
+            "end": 630
+          },
+          {
+            "kind": "lap",
+            "start": 645,
+            "end": 705
+          },
+          {
+            "kind": "lessons",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "family",
+            "start": 840,
+            "end": 945
+          },
+          {
+            "kind": "youth",
+            "start": 960,
+            "end": 1110
+          },
+          {
+            "kind": "youth",
+            "start": 1140,
+            "end": 1200
+          }
+        ]
+      ]
+    },
+    {
       "id": "nyc-pool-asser-levy-recreation-center-pool",
       "name": "Asser Levy Recreation Center Pool",
       "address": "Asser Levy Place and E. 23rd Street",
@@ -10283,7 +10700,7 @@
       "desc": "Intermediate pool · 75' x 43' x 10'",
       "season": "Year-round (recreation center members)",
       "seasonal": false,
-      "notice": "Beginning Thursday, October 22 through Monday, November 2, 2026, the gymnasium at Chelsea Recreation Center will be closed for voting preparation and Early Voting.",
+      "notice": "The elevator will be temporarily out of service on October 19, 2026, for monthly maintenance. Please call the center for more details on exact timing. Beginning Thursday, October 22 through Monday, November 2, 2026, the gymnasium at Chelsea Recreation Center will be closed for voting preparation and Early Voting.",
       "programs": [
         "lap",
         "other",
@@ -10567,79 +10984,6 @@
       ]
     },
     {
-      "id": "nyc-pool-st-john-s-recreation-center-pool",
-      "name": "St. John's Recreation Center Pool",
-      "address": "Prospect Place, between Troy and Schenectady Avenues",
-      "lat": 40.674,
-      "lng": -73.9349,
-      "phone": "(718) 771-2787",
-      "indoor": true,
-      "accessible": true,
-      "desc": "Intermediate pool · 75' x 42' x 9'",
-      "season": "No pool sessions currently published",
-      "seasonal": false,
-      "programs": [],
-      "fees": {
-        "effective": "2026-01-01",
-        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
-        "note": "Recreation center membership — indoor pools are members-only",
-        "groups": [
-          {
-            "id": "youth",
-            "label": "Ages 24 and under",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                0
-              ]
-            ]
-          },
-          {
-            "id": "adult",
-            "label": "Adults (25–61)",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                150
-              ],
-              [
-                "Six months",
-                75
-              ]
-            ]
-          },
-          {
-            "id": "senior",
-            "label": "Seniors 62+, veterans, people with disabilities",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                25
-              ]
-            ]
-          }
-        ]
-      },
-      "scheduleUrls": [
-        {
-          "label": "Pool schedule",
-          "url": "https://www.nycgovparks.org/facilities/recreationcenters/B245/schedule#Pool-schedule"
-        }
-      ],
-      "sessions": [
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
-      ]
-    },
-    {
       "id": "nyc-pool-tony-dapolito-recreation-center-indoor-pool",
       "name": "Tony Dapolito Recreation Center Indoor Pool",
       "address": "Clarkson St. and Seventh Ave. South",
@@ -10711,6 +11055,278 @@
         [],
         [],
         []
+      ]
+    },
+    {
+      "id": "nyc-pool-gertrude-ederle-recreation-center-pool",
+      "name": "Gertrude Ederle Recreation Center Pool",
+      "address": "232 West 60th Street",
+      "lat": 40.7715,
+      "lng": -73.9888,
+      "phone": "(212) 397-3159",
+      "indoor": true,
+      "accessible": true,
+      "desc": "Intermediate pool · 60' x 35' x 8'",
+      "season": "Year-round (recreation center members)",
+      "seasonal": false,
+      "programs": [
+        "lap",
+        "family",
+        "other",
+        "exercise",
+        "lessons"
+      ],
+      "fees": {
+        "effective": "2026-01-01",
+        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
+        "note": "Recreation center membership — indoor pools are members-only",
+        "groups": [
+          {
+            "id": "youth",
+            "label": "Ages 24 and under",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                0
+              ]
+            ]
+          },
+          {
+            "id": "adult",
+            "label": "Adults (25–61)",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                150
+              ],
+              [
+                "Six months",
+                75
+              ]
+            ]
+          },
+          {
+            "id": "senior",
+            "label": "Seniors 62+, veterans, people with disabilities",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                25
+              ]
+            ]
+          }
+        ]
+      },
+      "scheduleUrls": [
+        {
+          "label": "Pool schedule",
+          "url": "https://www.nycgovparks.org/facilities/recreationcenters/M063/schedule#Pool-schedule"
+        }
+      ],
+      "sessions": [
+        [],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 765
+          },
+          {
+            "kind": "family",
+            "start": 855,
+            "end": 1005
+          },
+          {
+            "kind": "lap",
+            "start": 1020,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 585
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Gertrude Ederle Class A Tuesday - PS 85",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Gertrude Ederle Class B Tuesday - PS 138",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Gertrude Ederle Class C Tuesday - PS 12x 045",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "exercise",
+            "start": 780,
+            "end": 825
+          },
+          {
+            "kind": "family",
+            "start": 855,
+            "end": 1005
+          },
+          {
+            "kind": "lessons",
+            "start": 1020,
+            "end": 1110
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 585
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Gertrude Ederle Class A Wednesday - PS 85",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Gertrude Ederle Class B Wednesday - PS 138",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Gertrude Ederle Class C Wednesday - PS 92",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "exercise",
+            "start": 780,
+            "end": 825
+          },
+          {
+            "kind": "family",
+            "start": 855,
+            "end": 1005
+          },
+          {
+            "kind": "lap",
+            "start": 1020,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 585
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Gertrude Ederle Class A Thursday - P12x 045",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Gertrude Ederle Class B Thursday - PS 140",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Gertrude Ederle Class C Thursday - P12x 045",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "lessons",
+            "start": 780,
+            "end": 840
+          },
+          {
+            "kind": "family",
+            "start": 855,
+            "end": 1005
+          },
+          {
+            "kind": "lessons",
+            "start": 1020,
+            "end": 1110
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 585
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Gertrude Ederle Class A Friday - Thurgood Marshall",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Gertrude Ederle Class B Friday - PS 140",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Gertrude Ederle Class C Friday - PS 140",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "exercise",
+            "start": 780,
+            "end": 825
+          },
+          {
+            "kind": "family",
+            "start": 855,
+            "end": 945
+          },
+          {
+            "kind": "exercise",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lap",
+            "start": 1035,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lessons",
+            "start": 480,
+            "end": 570
+          },
+          {
+            "kind": "lessons",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "family",
+            "start": 795,
+            "end": 930
+          }
+        ]
       ]
     },
     {
@@ -10865,6 +11481,11 @@
             "end": 705
           },
           {
+            "kind": "lap",
+            "start": 420,
+            "end": 705
+          },
+          {
             "kind": "family",
             "start": 720,
             "end": 930
@@ -10876,6 +11497,11 @@
           }
         ],
         [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 705
+          },
           {
             "kind": "lap",
             "start": 420,
@@ -10909,6 +11535,11 @@
             "end": 705
           },
           {
+            "kind": "lap",
+            "start": 420,
+            "end": 705
+          },
+          {
             "kind": "family",
             "start": 720,
             "end": 870
@@ -10925,6 +11556,11 @@
           }
         ],
         [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 705
+          },
           {
             "kind": "lap",
             "start": 420,
@@ -10952,6 +11588,11 @@
           }
         ],
         [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 705
+          },
           {
             "kind": "lap",
             "start": 420,
@@ -11325,278 +11966,6 @@
       ]
     },
     {
-      "id": "nyc-pool-gertrude-ederle-recreation-center-pool",
-      "name": "Gertrude Ederle Recreation Center Pool",
-      "address": "232 West 60th Street",
-      "lat": 40.7715,
-      "lng": -73.9888,
-      "phone": "(212) 397-3159",
-      "indoor": true,
-      "accessible": true,
-      "desc": "Intermediate pool · 60' x 35' x 8'",
-      "season": "Year-round (recreation center members)",
-      "seasonal": false,
-      "programs": [
-        "lap",
-        "family",
-        "other",
-        "exercise",
-        "lessons"
-      ],
-      "fees": {
-        "effective": "2026-01-01",
-        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
-        "note": "Recreation center membership — indoor pools are members-only",
-        "groups": [
-          {
-            "id": "youth",
-            "label": "Ages 24 and under",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                0
-              ]
-            ]
-          },
-          {
-            "id": "adult",
-            "label": "Adults (25–61)",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                150
-              ],
-              [
-                "Six months",
-                75
-              ]
-            ]
-          },
-          {
-            "id": "senior",
-            "label": "Seniors 62+, veterans, people with disabilities",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                25
-              ]
-            ]
-          }
-        ]
-      },
-      "scheduleUrls": [
-        {
-          "label": "Pool schedule",
-          "url": "https://www.nycgovparks.org/facilities/recreationcenters/M063/schedule#Pool-schedule"
-        }
-      ],
-      "sessions": [
-        [],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 765
-          },
-          {
-            "kind": "family",
-            "start": 855,
-            "end": 1005
-          },
-          {
-            "kind": "lap",
-            "start": 1020,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 585
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Gertrude Ederle Class A Tuesday - PS 85",
-            "start": 600,
-            "end": 660
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Gertrude Ederle Class B Tuesday - PS 138",
-            "start": 660,
-            "end": 720
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Gertrude Ederle Class C Tuesday - PS 12x 045",
-            "start": 720,
-            "end": 780
-          },
-          {
-            "kind": "exercise",
-            "start": 780,
-            "end": 825
-          },
-          {
-            "kind": "family",
-            "start": 855,
-            "end": 1005
-          },
-          {
-            "kind": "lessons",
-            "start": 1020,
-            "end": 1110
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 585
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Gertrude Ederle Class A Wednesday - PS 85",
-            "start": 600,
-            "end": 660
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Gertrude Ederle Class B Wednesday - PS 138",
-            "start": 660,
-            "end": 720
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Gertrude Ederle Class C Wednesday - PS 92",
-            "start": 720,
-            "end": 780
-          },
-          {
-            "kind": "exercise",
-            "start": 780,
-            "end": 825
-          },
-          {
-            "kind": "family",
-            "start": 855,
-            "end": 1005
-          },
-          {
-            "kind": "lap",
-            "start": 1020,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 585
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Gertrude Ederle Class A Thursday - P12x 045",
-            "start": 600,
-            "end": 660
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Gertrude Ederle Class B Thursday - PS 140",
-            "start": 660,
-            "end": 720
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Gertrude Ederle Class C Thursday - P12x 045",
-            "start": 720,
-            "end": 780
-          },
-          {
-            "kind": "lessons",
-            "start": 780,
-            "end": 840
-          },
-          {
-            "kind": "family",
-            "start": 855,
-            "end": 1005
-          },
-          {
-            "kind": "lessons",
-            "start": 1020,
-            "end": 1110
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 585
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Gertrude Ederle Class A Friday - Thurgood Marshall",
-            "start": 600,
-            "end": 660
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Gertrude Ederle Class B Friday - PS 140",
-            "start": 660,
-            "end": 720
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Gertrude Ederle Class C Friday - PS 140",
-            "start": 720,
-            "end": 780
-          },
-          {
-            "kind": "exercise",
-            "start": 780,
-            "end": 825
-          },
-          {
-            "kind": "family",
-            "start": 855,
-            "end": 1005
-          },
-          {
-            "kind": "exercise",
-            "start": 960,
-            "end": 1020
-          },
-          {
-            "kind": "lap",
-            "start": 1035,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "lessons",
-            "start": 480,
-            "end": 570
-          },
-          {
-            "kind": "lessons",
-            "start": 720,
-            "end": 780
-          },
-          {
-            "kind": "family",
-            "start": 795,
-            "end": 960
-          }
-        ]
-      ]
-    },
-    {
       "id": "nyc-pool-flushing-meadows-aquatics-center",
       "name": "Flushing Meadows Aquatics Center",
       "address": "Avery Avenue and 131 Street",
@@ -11884,13 +12253,13 @@
             "end": 600
           },
           {
-            "kind": "exercise",
+            "kind": "other",
+            "label": "Swim For Life at FMAC Class A Friday - PS 24Q",
             "start": 600,
             "end": 660
           },
           {
-            "kind": "other",
-            "label": "Swim For Life at FMAC Class A Friday - PS 24Q",
+            "kind": "exercise",
             "start": 600,
             "end": 660
           },
@@ -11929,12 +12298,12 @@
         ],
         [
           {
-            "kind": "family",
+            "kind": "lap",
             "start": 540,
             "end": 1290
           },
           {
-            "kind": "lap",
+            "kind": "family",
             "start": 540,
             "end": 1290
           },
@@ -11973,8 +12342,9 @@
       "desc": "Intermediate pool",
       "season": "Year-round (recreation center members)",
       "seasonal": false,
-      "notice": "Beginning Sunday, October 4 through Saturday, October 17 the indoor pool at Shirley Chisholm Recreation Center will be closed to allow for necessary repairs to be made to the pool basin.",
+      "notice": "Beginning Thursday, October 22 through Monday, November 2, 2026 the dance room at Shirley Chisholm Recreation Center will be closed for voting preparation and Early Voting. Beginning Sunday, October 4 through Saturday, October 17 the indoor pool at Shirley Chisholm Recreation Center will be closed to allow for necessary repairs to be made to the pool basin.",
       "programs": [
+        "lap",
         "lessons",
         "other",
         "exercise"
@@ -12031,6 +12401,11 @@
       ],
       "sessions": [
         [
+          {
+            "kind": "lap",
+            "start": 480,
+            "end": 600
+          },
           {
             "kind": "lessons",
             "start": 600,
@@ -12151,8 +12526,8 @@
   "season": {
     "open": true,
     "label": "Open daily through Labor Day (9/7)",
-    "checked": "2026-10-16",
+    "checked": "2026-10-17",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-10-16T05:28:10.455Z"
+  "fetchedAt": "2026-10-17T04:30:31.210Z"
 }
