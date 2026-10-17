@@ -2870,5 +2870,21 @@
   "Ballroom Dance - Beginner": {
     "zh": "社交舞 - 初级",
     "es": "Baile de Salón - Principiante"
+  },
+  "Knitting - Beginning/Intermediate": {
+    "zh": "编织 - 初级/中级",
+    "es": "Tejido - Principiante/Intermedio"
+  },
+  "Ceramics - Inro to Bas-Relief": {
+    "zh": "陶艺 - 浅浮雕入门",
+    "es": "Cerámica - Introducción al Bajo Relieve"
+  },
+  "Woodworking: Making Musical Instruments": {
+    "zh": "木工：制作乐器",
+    "es": "Carpintería: Construcción de Instrumentos Musicales"
+  },
+  "Flingy Thingies": {
+    "zh": "飞盘游戏",
+    "es": "Juegos de Disco Volador"
   }
 }
