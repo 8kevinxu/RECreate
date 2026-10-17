@@ -11637,11 +11637,6 @@
           },
           {
             "kind": "family",
-            "start": 750,
-            "end": 885
-          },
-          {
-            "kind": "family",
             "start": 795,
             "end": 885
           },
@@ -12253,13 +12248,13 @@
             "end": 600
           },
           {
-            "kind": "other",
-            "label": "Swim For Life at FMAC Class A Friday - PS 24Q",
+            "kind": "exercise",
             "start": 600,
             "end": 660
           },
           {
-            "kind": "exercise",
+            "kind": "other",
+            "label": "Swim For Life at FMAC Class A Friday - PS 24Q",
             "start": 600,
             "end": 660
           },
@@ -12529,5 +12524,5 @@
     "checked": "2026-10-17",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-10-17T04:30:31.210Z"
+  "fetchedAt": "2026-10-17T17:38:17.287Z"
 }
