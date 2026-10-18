@@ -9560,6 +9560,80 @@
       ]
     },
     {
+      "id": "nyc-pool-brownsville-recreation-center-pool",
+      "name": "Brownsville Recreation Center Pool",
+      "address": "Linden and Mother Gaston Blvds. and Christopher Avenue",
+      "lat": 40.6563,
+      "lng": -73.9027,
+      "phone": "(718) 485-4633",
+      "indoor": true,
+      "accessible": false,
+      "desc": "Intermediate pool · 75' x 30' x 8'",
+      "season": "No pool sessions currently published",
+      "seasonal": false,
+      "notice": "Brownsville Recreation Center is open with limited access due to construction. The Golden Age side of the building is open, while the main side of the building is closed. There will be no access to the indoor pool and gymnasium at this time.",
+      "programs": [],
+      "fees": {
+        "effective": "2026-01-01",
+        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
+        "note": "Recreation center membership — indoor pools are members-only",
+        "groups": [
+          {
+            "id": "youth",
+            "label": "Ages 24 and under",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                0
+              ]
+            ]
+          },
+          {
+            "id": "adult",
+            "label": "Adults (25–61)",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                150
+              ],
+              [
+                "Six months",
+                75
+              ]
+            ]
+          },
+          {
+            "id": "senior",
+            "label": "Seniors 62+, veterans, people with disabilities",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                25
+              ]
+            ]
+          }
+        ]
+      },
+      "scheduleUrls": [
+        {
+          "label": "Pool schedule",
+          "url": "https://www.nycgovparks.org/facilities/recreationcenters/B270/schedule#Pool-schedule"
+        }
+      ],
+      "sessions": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    {
       "id": "nyc-pool-st-mary-s-recreation-center-pool",
       "name": "St. Mary's Recreation Center Pool",
       "address": "St. Ann's Avenue and E. 145th Street",
@@ -9858,80 +9932,6 @@
             "end": 1170
           }
         ]
-      ]
-    },
-    {
-      "id": "nyc-pool-brownsville-recreation-center-pool",
-      "name": "Brownsville Recreation Center Pool",
-      "address": "Linden and Mother Gaston Blvds. and Christopher Avenue",
-      "lat": 40.6563,
-      "lng": -73.9027,
-      "phone": "(718) 485-4633",
-      "indoor": true,
-      "accessible": false,
-      "desc": "Intermediate pool · 75' x 30' x 8'",
-      "season": "No pool sessions currently published",
-      "seasonal": false,
-      "notice": "Brownsville Recreation Center is open with limited access due to construction. The Golden Age side of the building is open, while the main side of the building is closed. There will be no access to the indoor pool and gymnasium at this time.",
-      "programs": [],
-      "fees": {
-        "effective": "2026-01-01",
-        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
-        "note": "Recreation center membership — indoor pools are members-only",
-        "groups": [
-          {
-            "id": "youth",
-            "label": "Ages 24 and under",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                0
-              ]
-            ]
-          },
-          {
-            "id": "adult",
-            "label": "Adults (25–61)",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                150
-              ],
-              [
-                "Six months",
-                75
-              ]
-            ]
-          },
-          {
-            "id": "senior",
-            "label": "Seniors 62+, veterans, people with disabilities",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                25
-              ]
-            ]
-          }
-        ]
-      },
-      "scheduleUrls": [
-        {
-          "label": "Pool schedule",
-          "url": "https://www.nycgovparks.org/facilities/recreationcenters/B270/schedule#Pool-schedule"
-        }
-      ],
-      "sessions": [
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
       ]
     },
     {
@@ -10517,11 +10517,6 @@
             "kind": "family",
             "start": 960,
             "end": 1005
-          },
-          {
-            "kind": "lap",
-            "start": 1020,
-            "end": 1140
           }
         ],
         [
@@ -10674,11 +10669,6 @@
             "kind": "lessons",
             "start": 510,
             "end": 600
-          },
-          {
-            "kind": "lap",
-            "start": 540,
-            "end": 660
           },
           {
             "kind": "lessons",
@@ -12341,6 +12331,7 @@
       "programs": [
         "lap",
         "lessons",
+        "family",
         "other",
         "exercise"
       ],
@@ -12415,6 +12406,11 @@
             "kind": "lessons",
             "start": 720,
             "end": 780
+          },
+          {
+            "kind": "family",
+            "start": 780,
+            "end": 900
           },
           {
             "kind": "other",
@@ -12524,5 +12520,5 @@
     "checked": "2026-10-18",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-10-18T04:41:31.071Z"
+  "fetchedAt": "2026-10-18T16:24:51.444Z"
 }
