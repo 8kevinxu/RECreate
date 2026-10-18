@@ -1,7 +1,14 @@
-// Social tab shell: a segmented toggle between the Activity feed and Chats.
-// Keeps both mounted-on-demand; each manages its own data/subscriptions.
+// Social tab shell: a segmented toggle between Discover (strangers' public
+// signals), the Activity feed (you + friends) and Chats. Each is mounted on
+// demand and manages its own data/subscriptions.
 //
-// The Assistant used to be a third segment here. It now floats over every tab
+// Discover is the default because it is the only one with anything on it before
+// you have friends — Activity stays empty until a friend code changes hands, and
+// a new account landing on an empty feed had no way forward. Without Supabase
+// there are no shared signals at all, so the segment is hidden and Activity
+// (which falls back to on-device check-ins) leads instead.
+//
+// The Assistant used to be a segment here. It now floats over every tab
 // (components/AssistantHost.js, mounted in App.js), so keeping an entry point
 // here as well would be two doors into one room — and the floating one arrives
 // knowing what's on screen, which this one never could.
@@ -12,6 +19,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useI18n } from '../lib/i18n';
 import { useAuth } from '../lib/auth';
 import FeedModal from './FeedModal';
+import DiscoverPane from './DiscoverPane';
 import ChatsScreen from './ChatsScreen';
 import RecommendPane from './RecommendPane';
 
@@ -36,7 +44,7 @@ export default function SocialScreen({
   const insets = useSafeAreaInsets();
   const { t } = useI18n();
   const { enabled: authEnabled, user, profile } = useAuth();
-  const [seg, setSeg] = useState('activity'); // 'activity' | 'chats'
+  const [seg, setSeg] = useState(authEnabled ? 'discover' : 'activity'); // 'discover' | 'activity' | 'chats'
   useEffect(() => {
     if (openThreadKey) setSeg('chats');
   }, [openThreadKey]);
@@ -56,20 +64,23 @@ export default function SocialScreen({
       <View style={styles.segRow}>
         <View style={styles.segment}>
           {[
+            authEnabled && { id: 'discover', label: t('social.discover') },
             { id: 'activity', label: t('social.activity') },
             { id: 'chats', label: t('social.chats') },
-          ].map((s) => {
-            const on = seg === s.id;
-            return (
-              <Pressable
-                key={s.id}
-                style={[styles.segBtn, on && styles.segBtnOn]}
-                onPress={() => setSeg(s.id)}
-              >
-                <Text style={[styles.segText, on && styles.segTextOn]}>{s.label}</Text>
-              </Pressable>
-            );
-          })}
+          ]
+            .filter(Boolean)
+            .map((s) => {
+              const on = seg === s.id;
+              return (
+                <Pressable
+                  key={s.id}
+                  style={[styles.segBtn, on && styles.segBtnOn]}
+                  onPress={() => setSeg(s.id)}
+                >
+                  <Text style={[styles.segText, on && styles.segTextOn]}>{s.label}</Text>
+                </Pressable>
+              );
+            })}
         </View>
         {!!onOpenFriends && (
           <Pressable
@@ -105,7 +116,14 @@ export default function SocialScreen({
       )}
 
       <View style={styles.body}>
-        {seg === 'activity' ? (
+        {seg === 'discover' ? (
+          <DiscoverPane
+            courtsById={courtsById}
+            courts={courts}
+            sport={sport}
+            userLocation={userLocation}
+          />
+        ) : seg === 'activity' ? (
           <FeedModal
             asPage
             embedded

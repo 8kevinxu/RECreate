@@ -102,6 +102,8 @@ revoke all on function public.send_push(uuid[], text, text, jsonb) from public, 
 -- A friend posts a "down to hoop" signal → notify their accepted friends, but only
 -- when they chose to broadcast it (new.notify, set by the client from the poster's
 -- share_activity setting / per-post prompt).
+-- Friends only, even for a public signal (rec_signals.visibility, 034): public
+-- widens who can SEE a post in Discover, never who gets a push. Keep it that way.
 create or replace function public.notify_signal()
 returns trigger language plpgsql security definer set search_path = public as $$
 declare host_name text; recipients uuid[];

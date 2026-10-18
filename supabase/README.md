@@ -86,6 +86,7 @@ new:
 | `031_chat_push.sql` | Push on every new chat message (run, signal, 1:1) via one `chat_messages` trigger — coalesced per recipient per thread (5 min group, 30 s direct) with `chat_notify_log`, skipping blocked senders and muted threads (`chat_mutes`, owner-only RLS); a failed push never fails the insert |
 | `032_profile_rpcs.sql` | `my_profile()` (your own full row) + `find_by_friend_code()` (exact-code lookup → id, name). Adds only; safe any time. The app reads through these from the build after 1.3.0 |
 | `033_profile_columns.sql` | PRIVACY: clients can read only `profiles.id` + `display_name` (column grant, as in `029`), ending the `select *` dump of every user's age/bio/neighborhood/interests/friend code. **Apply only once the build using `032` is what nearly everyone runs** — older builds read those columns directly and would fail to load the signed-in profile |
+| `034_signal_visibility.sql` | `rec_signals.visibility` (`'friends'` default \| `'public'`) + a SELECT policy letting any signed-in user read public signals — the Discover feed. Defaults to friends so no existing signal is published retroactively; joining/chat widen with visibility automatically; push still goes to friends only. Additive, safe for older builds (they'll show strangers' public signals in Activity, as they already do public runs) |
 
 > Note: migrations 001–009 were authored before the RECreate rebrand and still
 > reference the old `hoop_*` table names. Apply them **in order** — `010` renames
