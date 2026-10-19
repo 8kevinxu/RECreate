@@ -2212,7 +2212,7 @@
     "dupont-tennis-courts-outdoor": {
       "tennis": {
         "v": 2,
-        "pct": 53,
+        "pct": 54,
         "courts": 4,
         "slots": {
           "2026-10-19 13:00": 4,
@@ -2225,8 +2225,8 @@
           "2026-10-19 16:30": 4,
           "2026-10-19 17:00": 4,
           "2026-10-19 17:30": 4,
-          "2026-10-19 18:00": 2,
-          "2026-10-19 18:30": 2,
+          "2026-10-19 18:00": 3,
+          "2026-10-19 18:30": 3,
           "2026-10-19 19:00": 2,
           "2026-10-20 07:30": 0,
           "2026-10-20 08:00": 0,
@@ -7078,7 +7078,7 @@
     "angelo-j-rossi-playground-outdoor": {
       "pickleball": {
         "v": 2,
-        "pct": 87,
+        "pct": 88,
         "courts": 5,
         "slots": {
           "2026-10-19 15:00": 1,
@@ -7167,8 +7167,8 @@
           "2026-10-24 18:00": 0,
           "2026-10-24 18:30": 0,
           "2026-10-24 19:00": 0,
-          "2026-10-25 17:00": 0,
-          "2026-10-25 17:30": 0,
+          "2026-10-25 17:00": 1,
+          "2026-10-25 17:30": 1,
           "2026-10-25 18:00": 0,
           "2026-10-25 18:30": 0,
           "2026-10-25 19:00": 0,
@@ -7237,7 +7237,7 @@
           "2026-10-25 15:00": 1,
           "2026-10-25 15:30": 1,
           "2026-10-25 16:00": 1,
-          "2026-10-25 16:30": 0
+          "2026-10-25 16:30": 1
         },
         "blk": {
           "2026-10-19 15:00": 4,
@@ -7731,9 +7731,9 @@
         "courts": 4,
         "slots": {
           "2026-10-19 13:00": 4,
-          "2026-10-19 13:30": 3,
-          "2026-10-19 14:00": 3,
-          "2026-10-19 14:30": 3,
+          "2026-10-19 13:30": 4,
+          "2026-10-19 14:00": 4,
+          "2026-10-19 14:30": 4,
           "2026-10-19 15:00": 0,
           "2026-10-19 15:30": 0,
           "2026-10-19 16:00": 0,
@@ -8533,7 +8533,7 @@
       "guidelines": "Come on out to Upper Noe, where pickleball and tennis are always welcome! There is one dedicated tennis court with space for two temporary pickleball courts. \n\n**Reservation Policy**\n- Any individual may reserve a court, but may not book more than 1 court in a day or 3 courts in a calendar week.\n- Reservation requests are for individual play only. No lessons, team practices, clinics or league matches.\n- Courts left vacant 15 minutes after reservation time are available for walk-up play\n- Please **[click here](https://sfrecpark.org/1188/Tennis-Pickleball-Reservations)** to view the full San Francisco Rec and Park reservation policy.\n\n**Reservation Overview**\n\n*Court 1*\n- Court 1 is reservable for Tennis 2 days in advance.\n- Reservations open at noon. \n- All slots are 90 minutes, starting at 7:30am, 9:00am, 10:30am, 12:00pm, 1:30pm, 3:00pm, 4:30pm, 6:00pm, and 7:30pm. \n\n*Courts A and B*\n- Courts A and B are reservable for Pickleball 2 days in advance. \n- Reservations open at noon.\n- All slots are 90 minutes, starting at 10:30am and 12:00pm.\n\n**Location Features**\n- 1 tennis court\n- 2 pickleball courts. Pickleball net, paddles and balls available to borrow Tuesday-Friday, 10am-7pm and Saturday 9am-4pm.\n- Lights\n- Bathroom access",
       "tennis": {
         "v": 2,
-        "pct": 69,
+        "pct": 71,
         "courts": 1,
         "slots": {
           "2026-10-19 13:00": 0,
@@ -8605,5 +8605,5 @@
       }
     }
   },
-  "fetchedAt": "2026-10-19T20:20:33.917Z"
+  "fetchedAt": "2026-10-19T20:30:06.706Z"
 }
