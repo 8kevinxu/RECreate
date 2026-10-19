@@ -9725,26 +9725,54 @@
         [
           {
             "kind": "senior",
-            "start": 480,
-            "end": 600
+            "start": 510,
+            "end": 570
           },
           {
-            "kind": "lap",
-            "start": 615,
-            "end": 885
+            "kind": "other",
+            "label": "Swim For Life at St. Mary's Class A Monday - PS 16",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at St. Mary's Class B Monday - PS 72",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at St. Mary's Class C Monday - PS 16",
+            "start": 720,
+            "end": 780
           },
           {
             "kind": "family",
-            "start": 900,
-            "end": 1065
+            "start": 810,
+            "end": 960
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 1020,
+            "end": 1110
           },
           {
             "kind": "lap",
-            "start": 1080,
+            "start": 1140,
             "end": 1200
           }
         ],
         [
+          {
+            "kind": "lap",
+            "start": 480,
+            "end": 600
+          },
           {
             "kind": "other",
             "label": "Swim For Life at St. Mary's Class A Tuesday - PS 12x314",
@@ -9773,6 +9801,11 @@
             "label": "St. Mary's: Swim Prep",
             "start": 1020,
             "end": 1110
+          },
+          {
+            "kind": "family",
+            "start": 1140,
+            "end": 1200
           }
         ],
         [
@@ -9918,8 +9951,23 @@
           },
           {
             "kind": "lessons",
-            "start": 720,
+            "start": 630,
+            "end": 690
+          },
+          {
+            "kind": "lessons",
+            "start": 690,
+            "end": 750
+          },
+          {
+            "kind": "lessons",
+            "start": 750,
             "end": 780
+          },
+          {
+            "kind": "lessons",
+            "start": 780,
+            "end": 840
           },
           {
             "kind": "lessons",
@@ -10025,10 +10073,10 @@
         "lap",
         "family",
         "youth",
-        "exercise",
         "senior",
         "other",
-        "lessons"
+        "lessons",
+        "exercise"
       ],
       "fees": {
         "effective": "2026-01-01",
@@ -10112,25 +10160,33 @@
           {
             "kind": "lap",
             "start": 420,
-            "end": 510
+            "end": 495
           },
           {
-            "kind": "exercise",
-            "start": 525,
-            "end": 555
+            "kind": "senior",
+            "start": 510,
+            "end": 570
           },
           {
-            "kind": "family",
-            "start": 570,
+            "kind": "other",
+            "label": "Swim For Life at St. John's Class A Monday - PS 282",
+            "start": 600,
             "end": 660
           },
           {
-            "kind": "lap",
-            "start": 675,
+            "kind": "other",
+            "label": "Swim For Life at St. John's Class B Monday - PS 372K",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at St. John's Class C Monday - PS 282",
+            "start": 720,
             "end": 780
           },
           {
-            "kind": "family",
+            "kind": "lap",
             "start": 795,
             "end": 885
           },
@@ -10140,17 +10196,17 @@
             "end": 945
           },
           {
-            "kind": "youth",
+            "kind": "lessons",
             "start": 960,
-            "end": 1005
+            "end": 1020
           },
           {
-            "kind": "family",
+            "kind": "lessons",
             "start": 1020,
             "end": 1110
           },
           {
-            "kind": "family",
+            "kind": "exercise",
             "start": 1125,
             "end": 1170
           },
@@ -10249,6 +10305,11 @@
             "kind": "youth",
             "start": 900,
             "end": 945
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
           },
           {
             "kind": "lessons",
@@ -10361,11 +10422,6 @@
             "end": 825
           },
           {
-            "kind": "lap",
-            "start": 840,
-            "end": 885
-          },
-          {
             "kind": "youth",
             "start": 900,
             "end": 945
@@ -10398,23 +10454,33 @@
             "end": 630
           },
           {
-            "kind": "lap",
-            "start": 645,
-            "end": 705
+            "kind": "lessons",
+            "start": 630,
+            "end": 690
           },
           {
             "kind": "lessons",
-            "start": 720,
+            "start": 750,
             "end": 780
           },
           {
+            "kind": "lessons",
+            "start": 780,
+            "end": 840
+          },
+          {
             "kind": "family",
-            "start": 840,
+            "start": 855,
             "end": 945
           },
           {
-            "kind": "youth",
+            "kind": "lessons",
             "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "youth",
+            "start": 1035,
             "end": 1110
           },
           {
@@ -10438,12 +10504,11 @@
       "season": "Year-round (recreation center members)",
       "seasonal": false,
       "programs": [
-        "lap",
-        "family",
         "other",
         "exercise",
-        "youth",
-        "lessons"
+        "lessons",
+        "lap",
+        "youth"
       ],
       "fees": {
         "effective": "2026-01-01",
@@ -10499,32 +10564,45 @@
         [],
         [
           {
-            "kind": "lap",
-            "start": 420,
+            "kind": "other",
+            "label": "Swim For Life at Asser Levy Class A Monday - PS 19",
+            "start": 600,
             "end": 660
           },
           {
-            "kind": "family",
+            "kind": "other",
+            "label": "Swim For Life at Asser Levy Class B Monday - PS 19",
             "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Asser Levy Class C Monday - P 12X 045",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "exercise",
+            "start": 780,
             "end": 840
           },
           {
-            "kind": "lap",
-            "start": 870,
-            "end": 945
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
           },
           {
-            "kind": "family",
-            "start": 960,
-            "end": 1005
+            "kind": "lessons",
+            "start": 1020,
+            "end": 1110
+          },
+          {
+            "kind": "lap",
+            "start": 1020,
+            "end": 1140
           }
         ],
         [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 660
-          },
           {
             "kind": "other",
             "label": "Swim For Life at Asser Levy Class A Tuesday - PS 20 (Clinton Hill School)",
@@ -10538,11 +10616,6 @@
             "end": 720
           },
           {
-            "kind": "family",
-            "start": 660,
-            "end": 840
-          },
-          {
             "kind": "other",
             "label": "Swim For Life at Asser Levy Class C Tuesday - PS 12x 045",
             "start": 720,
@@ -10552,11 +10625,6 @@
             "kind": "exercise",
             "start": 780,
             "end": 840
-          },
-          {
-            "kind": "lap",
-            "start": 870,
-            "end": 945
           },
           {
             "kind": "lap",
@@ -10590,6 +10658,11 @@
           },
           {
             "kind": "youth",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
             "start": 960,
             "end": 1020
           },
@@ -10671,9 +10744,29 @@
             "end": 600
           },
           {
+            "kind": "lap",
+            "start": 540,
+            "end": 660
+          },
+          {
+            "kind": "lessons",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "lessons",
+            "start": 660,
+            "end": 720
+          },
+          {
             "kind": "lessons",
             "start": 720,
-            "end": 780
+            "end": 750
+          },
+          {
+            "kind": "lessons",
+            "start": 750,
+            "end": 810
           }
         ]
       ]
@@ -10694,9 +10787,9 @@
       "programs": [
         "lap",
         "other",
-        "family",
         "exercise",
-        "lessons"
+        "lessons",
+        "family"
       ],
       "fees": {
         "effective": "2026-01-01",
@@ -10769,8 +10862,21 @@
             "end": 585
           },
           {
-            "kind": "family",
-            "start": 615,
+            "kind": "other",
+            "label": "Swim For Life at Chelsea Class A Monday - P 12x 045",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Chelsea Class B Monday - P12x 045",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Chelsea Class C Monday - P12x 045",
+            "start": 720,
             "end": 780
           },
           {
@@ -10779,14 +10885,24 @@
             "end": 855
           },
           {
-            "kind": "family",
+            "kind": "lessons",
             "start": 870,
-            "end": 1005
+            "end": 930
           },
           {
-            "kind": "lap",
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
             "start": 1020,
-            "end": 1140
+            "end": 1110
+          },
+          {
+            "kind": "lessons",
+            "start": 1020,
+            "end": 1110
           }
         ],
         [
@@ -10857,6 +10973,11 @@
             "kind": "lessons",
             "start": 870,
             "end": 930
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
           },
           {
             "kind": "lessons",
@@ -10957,6 +11078,21 @@
           },
           {
             "kind": "lessons",
+            "start": 570,
+            "end": 630
+          },
+          {
+            "kind": "lessons",
+            "start": 630,
+            "end": 690
+          },
+          {
+            "kind": "lessons",
+            "start": 690,
+            "end": 720
+          },
+          {
+            "kind": "lessons",
             "start": 720,
             "end": 780
           },
@@ -10964,6 +11100,11 @@
             "kind": "family",
             "start": 795,
             "end": 930
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
           },
           {
             "kind": "lessons",
@@ -11061,9 +11202,9 @@
       "seasonal": false,
       "programs": [
         "lap",
-        "family",
         "other",
         "exercise",
+        "family",
         "lessons"
       ],
       "fees": {
@@ -11122,7 +11263,30 @@
           {
             "kind": "lap",
             "start": 420,
-            "end": 765
+            "end": 585
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Gertrude Ederle Class A Monday - P12x 045",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Gertrude Ederle Class B Monday - PS 138M@30",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Gertrude Ederle Class C Monday - P12x 045",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "exercise",
+            "start": 780,
+            "end": 825
           },
           {
             "kind": "family",
@@ -11167,7 +11331,12 @@
           {
             "kind": "family",
             "start": 855,
-            "end": 1005
+            "end": 945
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
           },
           {
             "kind": "lessons",
@@ -11247,7 +11416,12 @@
           {
             "kind": "family",
             "start": 855,
-            "end": 1005
+            "end": 945
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
           },
           {
             "kind": "lessons",
@@ -11305,6 +11479,21 @@
             "kind": "lessons",
             "start": 480,
             "end": 570
+          },
+          {
+            "kind": "lessons",
+            "start": 570,
+            "end": 630
+          },
+          {
+            "kind": "lessons",
+            "start": 630,
+            "end": 690
+          },
+          {
+            "kind": "lessons",
+            "start": 690,
+            "end": 720
           },
           {
             "kind": "lessons",
@@ -11406,8 +11595,8 @@
       "season": "Year-round (recreation center members)",
       "seasonal": false,
       "programs": [
-        "lap",
         "family",
+        "lap",
         "exercise",
         "lessons",
         "other"
@@ -11466,31 +11655,9 @@
         [],
         [
           {
-            "kind": "lap",
-            "start": 420,
-            "end": 705
-          },
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 705
-          },
-          {
             "kind": "family",
-            "start": 720,
-            "end": 930
-          },
-          {
-            "kind": "lap",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 705
+            "start": 0,
+            "end": 150
           },
           {
             "kind": "lap",
@@ -11510,6 +11677,33 @@
           {
             "kind": "lap",
             "start": 960,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "family",
+            "start": 0,
+            "end": 150
+          },
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 705
+          },
+          {
+            "kind": "family",
+            "start": 720,
+            "end": 870
+          },
+          {
+            "kind": "exercise",
+            "start": 870,
+            "end": 930
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
             "end": 1020
           },
           {
@@ -11520,9 +11714,9 @@
         ],
         [
           {
-            "kind": "lap",
-            "start": 420,
-            "end": 705
+            "kind": "family",
+            "start": 0,
+            "end": 150
           },
           {
             "kind": "lap",
@@ -11547,9 +11741,9 @@
         ],
         [
           {
-            "kind": "lap",
-            "start": 420,
-            "end": 705
+            "kind": "family",
+            "start": 0,
+            "end": 150
           },
           {
             "kind": "lap",
@@ -11567,7 +11761,7 @@
             "end": 930
           },
           {
-            "kind": "lap",
+            "kind": "lessons",
             "start": 960,
             "end": 1020
           },
@@ -11579,9 +11773,9 @@
         ],
         [
           {
-            "kind": "lap",
-            "start": 420,
-            "end": 705
+            "kind": "family",
+            "start": 0,
+            "end": 150
           },
           {
             "kind": "lap",
@@ -11616,9 +11810,19 @@
             "end": 570
           },
           {
-            "kind": "lap",
-            "start": 600,
-            "end": 705
+            "kind": "lessons",
+            "start": 570,
+            "end": 630
+          },
+          {
+            "kind": "lessons",
+            "start": 630,
+            "end": 690
+          },
+          {
+            "kind": "lessons",
+            "start": 690,
+            "end": 720
           },
           {
             "kind": "lessons",
@@ -11654,8 +11858,8 @@
       "programs": [
         "lap",
         "family",
-        "senior",
         "other",
+        "senior",
         "lessons",
         "exercise",
         "youth"
@@ -11737,17 +11941,35 @@
           {
             "kind": "lap",
             "start": 420,
-            "end": 750
+            "end": 585
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Roy Wilkins Class A Monday - PS 118Q",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Roy Wilkins Class B Monday - PS 176",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Roy Wilkins Class C Monday - Goldie Maple Academy 27Q333",
+            "start": 720,
+            "end": 780
           },
           {
             "kind": "family",
-            "start": 765,
-            "end": 1005
+            "start": 795,
+            "end": 870
           },
           {
-            "kind": "lap",
-            "start": 1020,
-            "end": 1290
+            "kind": "senior",
+            "start": 870,
+            "end": 930
           },
           {
             "kind": "lap",
@@ -11786,9 +12008,9 @@
             "end": 945
           },
           {
-            "kind": "family",
+            "kind": "lessons",
             "start": 960,
-            "end": 1005
+            "end": 1020
           },
           {
             "kind": "lessons",
@@ -11874,6 +12096,11 @@
             "kind": "lessons",
             "start": 1020,
             "end": 1110
+          },
+          {
+            "kind": "lessons",
+            "start": 1140,
+            "end": 1200
           }
         ],
         [
@@ -11916,9 +12143,9 @@
             "end": 1020
           },
           {
-            "kind": "family",
+            "kind": "lessons",
             "start": 1035,
-            "end": 1080
+            "end": 1095
           },
           {
             "kind": "lap",
@@ -11939,12 +12166,32 @@
           },
           {
             "kind": "lessons",
-            "start": 720,
+            "start": 630,
+            "end": 690
+          },
+          {
+            "kind": "lessons",
+            "start": 750,
             "end": 780
           },
           {
-            "kind": "youth",
+            "kind": "lessons",
+            "start": 780,
+            "end": 840
+          },
+          {
+            "kind": "family",
+            "start": 855,
+            "end": 945
+          },
+          {
+            "kind": "lessons",
             "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "youth",
+            "start": 1020,
             "end": 1170
           }
         ]
@@ -11963,10 +12210,10 @@
       "season": "Year-round (recreation center members)",
       "seasonal": false,
       "programs": [
-        "family",
         "lap",
-        "other",
+        "family",
         "exercise",
+        "other",
         "lessons"
       ],
       "fees": {
@@ -12022,12 +12269,12 @@
       "sessions": [
         [
           {
-            "kind": "family",
+            "kind": "lap",
             "start": 540,
             "end": 1170
           },
           {
-            "kind": "lap",
+            "kind": "family",
             "start": 540,
             "end": 1170
           }
@@ -12044,9 +12291,43 @@
             "end": 1290
           },
           {
+            "kind": "exercise",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at FMAC Class A Monday - PS 24Q",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at FMAC Class B Monday - PS 81",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at FMAC Class C Monday - PS 124",
+            "start": 720,
+            "end": 780
+          },
+          {
             "kind": "family",
             "start": 840,
             "end": 1290
+          },
+          {
+            "kind": "other",
+            "label": "FMAC: Artistic Swimming",
+            "start": 960,
+            "end": 1050
+          },
+          {
+            "kind": "exercise",
+            "start": 1080,
+            "end": 1140
           }
         ],
         [
@@ -12065,6 +12346,11 @@
             "label": "Swim For Life at FMAC Class A Tuesday - PS 24Q",
             "start": 600,
             "end": 660
+          },
+          {
+            "kind": "lessons",
+            "start": 660,
+            "end": 720
           },
           {
             "kind": "other",
@@ -12095,13 +12381,14 @@
           },
           {
             "kind": "lessons",
-            "start": 960,
-            "end": 1080
+            "start": 1080,
+            "end": 1140
           },
           {
-            "kind": "lessons",
+            "kind": "other",
+            "label": "FMAC: Learn to Dive",
             "start": 1080,
-            "end": 1200
+            "end": 1170
           }
         ],
         [
@@ -12146,17 +12433,7 @@
           {
             "kind": "lessons",
             "start": 960,
-            "end": 1080
-          },
-          {
-            "kind": "lessons",
-            "start": 960,
             "end": 1170
-          },
-          {
-            "kind": "lessons",
-            "start": 1080,
-            "end": 1200
           }
         ],
         [
@@ -12177,6 +12454,11 @@
             "end": 660
           },
           {
+            "kind": "lessons",
+            "start": 660,
+            "end": 720
+          },
+          {
             "kind": "other",
             "label": "Swim For Life at FMAC Class B Thursday - PS 24Q",
             "start": 660,
@@ -12187,6 +12469,16 @@
             "label": "Swim For Life at FMAC Class C Thursday - PS 124",
             "start": 720,
             "end": 780
+          },
+          {
+            "kind": "lessons",
+            "start": 780,
+            "end": 840
+          },
+          {
+            "kind": "lessons",
+            "start": 780,
+            "end": 840
           },
           {
             "kind": "exercise",
@@ -12210,14 +12502,15 @@
             "end": 1080
           },
           {
-            "kind": "lessons",
-            "start": 960,
-            "end": 1080
+            "kind": "other",
+            "label": "FMAC: Learn to Dive",
+            "start": 1080,
+            "end": 1170
           },
           {
-            "kind": "lessons",
-            "start": 1080,
-            "end": 1200
+            "kind": "lap",
+            "start": 1200,
+            "end": 1260
           }
         ],
         [
@@ -12293,9 +12586,10 @@
             "end": 1290
           },
           {
-            "kind": "lessons",
-            "start": 600,
-            "end": 720
+            "kind": "other",
+            "label": "FMAC: Learn to Dive",
+            "start": 570,
+            "end": 660
           },
           {
             "kind": "lessons",
@@ -12305,12 +12599,23 @@
           {
             "kind": "lessons",
             "start": 720,
-            "end": 780
+            "end": 750
           },
           {
             "kind": "lessons",
-            "start": 720,
-            "end": 780
+            "start": 765,
+            "end": 795
+          },
+          {
+            "kind": "other",
+            "label": "FMAC: Work Learn Grow",
+            "start": 900,
+            "end": 960
+          },
+          {
+            "kind": "exercise",
+            "start": 900,
+            "end": 960
           }
         ]
       ]
@@ -12333,7 +12638,8 @@
         "lessons",
         "family",
         "other",
-        "exercise"
+        "exercise",
+        "youth"
       ],
       "fees": {
         "effective": "2026-01-01",
@@ -12419,8 +12725,47 @@
             "end": 960
           }
         ],
-        [],
         [
+          {
+            "kind": "lap",
+            "start": 390,
+            "end": 585
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Shirley Chisholm Class A Monday -",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Shirley Chisholm Class B Monday -",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Shirley Chisholm Class C Monday -",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "family",
+            "start": 960,
+            "end": 1065
+          },
+          {
+            "kind": "lap",
+            "start": 1080,
+            "end": 1290
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 390,
+            "end": 585
+          },
           {
             "kind": "other",
             "label": "Swim For Life at Shirley Chisholm Class A Tuesday -",
@@ -12443,9 +12788,39 @@
             "kind": "exercise",
             "start": 780,
             "end": 840
+          },
+          {
+            "kind": "family",
+            "start": 840,
+            "end": 930
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 1020,
+            "end": 1110
+          },
+          {
+            "kind": "exercise",
+            "start": 1125,
+            "end": 1170
+          },
+          {
+            "kind": "lap",
+            "start": 1185,
+            "end": 1290
           }
         ],
         [
+          {
+            "kind": "lap",
+            "start": 390,
+            "end": 585
+          },
           {
             "kind": "other",
             "label": "Swim For Life at Shirley Chisholm Class A Wednesday -",
@@ -12463,9 +12838,34 @@
             "label": "Swim For Life at Shirley Chisholm Class C Wednesday -",
             "start": 720,
             "end": 780
+          },
+          {
+            "kind": "family",
+            "start": 780,
+            "end": 885
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "family",
+            "start": 1020,
+            "end": 1065
+          },
+          {
+            "kind": "lap",
+            "start": 1080,
+            "end": 1290
           }
         ],
         [
+          {
+            "kind": "lap",
+            "start": 390,
+            "end": 585
+          },
           {
             "kind": "other",
             "label": "Swim For Life at Shirley Chisholm Class A Thursday -",
@@ -12488,9 +12888,40 @@
             "kind": "exercise",
             "start": 780,
             "end": 840
+          },
+          {
+            "kind": "other",
+            "label": "Synchronized Swimming",
+            "start": 840,
+            "end": 930
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 1020,
+            "end": 1110
+          },
+          {
+            "kind": "exercise",
+            "start": 1125,
+            "end": 1170
+          },
+          {
+            "kind": "lap",
+            "start": 1185,
+            "end": 1290
           }
         ],
         [
+          {
+            "kind": "lap",
+            "start": 390,
+            "end": 585
+          },
           {
             "kind": "other",
             "label": "Swim For Life at Shirley Chisholm Class A Friday -",
@@ -12508,17 +12939,68 @@
             "label": "Swim For Life at Shirley Chisholm Class C Friday -",
             "start": 720,
             "end": 780
+          },
+          {
+            "kind": "family",
+            "start": 780,
+            "end": 885
+          },
+          {
+            "kind": "family",
+            "start": 960,
+            "end": 1065
+          },
+          {
+            "kind": "exercise",
+            "start": 1080,
+            "end": 1140
+          },
+          {
+            "kind": "family",
+            "start": 1140,
+            "end": 1290
           }
         ],
-        []
+        [
+          {
+            "kind": "lap",
+            "start": 480,
+            "end": 600
+          },
+          {
+            "kind": "lessons",
+            "start": 600,
+            "end": 690
+          },
+          {
+            "kind": "lessons",
+            "start": 690,
+            "end": 720
+          },
+          {
+            "kind": "family",
+            "start": 720,
+            "end": 900
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "youth",
+            "start": 1020,
+            "end": 1170
+          }
+        ]
       ]
     }
   ],
   "season": {
     "open": true,
     "label": "Open daily through Labor Day (9/7)",
-    "checked": "2026-10-18",
+    "checked": "2026-10-19",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-10-18T16:24:51.444Z"
+  "fetchedAt": "2026-10-19T04:39:46.424Z"
 }
