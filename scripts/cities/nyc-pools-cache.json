@@ -9560,80 +9560,6 @@
       ]
     },
     {
-      "id": "nyc-pool-brownsville-recreation-center-pool",
-      "name": "Brownsville Recreation Center Pool",
-      "address": "Linden and Mother Gaston Blvds. and Christopher Avenue",
-      "lat": 40.6563,
-      "lng": -73.9027,
-      "phone": "(718) 485-4633",
-      "indoor": true,
-      "accessible": false,
-      "desc": "Intermediate pool · 75' x 30' x 8'",
-      "season": "No pool sessions currently published",
-      "seasonal": false,
-      "notice": "Brownsville Recreation Center is open with limited access due to construction. The Golden Age side of the building is open, while the main side of the building is closed. There will be no access to the indoor pool and gymnasium at this time.",
-      "programs": [],
-      "fees": {
-        "effective": "2026-01-01",
-        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
-        "note": "Recreation center membership — indoor pools are members-only",
-        "groups": [
-          {
-            "id": "youth",
-            "label": "Ages 24 and under",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                0
-              ]
-            ]
-          },
-          {
-            "id": "adult",
-            "label": "Adults (25–61)",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                150
-              ],
-              [
-                "Six months",
-                75
-              ]
-            ]
-          },
-          {
-            "id": "senior",
-            "label": "Seniors 62+, veterans, people with disabilities",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                25
-              ]
-            ]
-          }
-        ]
-      },
-      "scheduleUrls": [
-        {
-          "label": "Pool schedule",
-          "url": "https://www.nycgovparks.org/facilities/recreationcenters/B270/schedule#Pool-schedule"
-        }
-      ],
-      "sessions": [
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
-      ]
-    },
-    {
       "id": "nyc-pool-st-mary-s-recreation-center-pool",
       "name": "St. Mary's Recreation Center Pool",
       "address": "St. Ann's Avenue and E. 145th Street",
@@ -9980,6 +9906,80 @@
             "end": 1170
           }
         ]
+      ]
+    },
+    {
+      "id": "nyc-pool-brownsville-recreation-center-pool",
+      "name": "Brownsville Recreation Center Pool",
+      "address": "Linden and Mother Gaston Blvds. and Christopher Avenue",
+      "lat": 40.6563,
+      "lng": -73.9027,
+      "phone": "(718) 485-4633",
+      "indoor": true,
+      "accessible": false,
+      "desc": "Intermediate pool · 75' x 30' x 8'",
+      "season": "No pool sessions currently published",
+      "seasonal": false,
+      "notice": "Brownsville Recreation Center is open with limited access due to construction. The Golden Age side of the building is open, while the main side of the building is closed. There will be no access to the indoor pool and gymnasium at this time.",
+      "programs": [],
+      "fees": {
+        "effective": "2026-01-01",
+        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
+        "note": "Recreation center membership — indoor pools are members-only",
+        "groups": [
+          {
+            "id": "youth",
+            "label": "Ages 24 and under",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                0
+              ]
+            ]
+          },
+          {
+            "id": "adult",
+            "label": "Adults (25–61)",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                150
+              ],
+              [
+                "Six months",
+                75
+              ]
+            ]
+          },
+          {
+            "id": "senior",
+            "label": "Seniors 62+, veterans, people with disabilities",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                25
+              ]
+            ]
+          }
+        ]
+      },
+      "scheduleUrls": [
+        {
+          "label": "Pool schedule",
+          "url": "https://www.nycgovparks.org/facilities/recreationcenters/B270/schedule#Pool-schedule"
+        }
+      ],
+      "sessions": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -10786,10 +10786,10 @@
       "notice": "The elevator will be temporarily out of service on October 19, 2026, for monthly maintenance. Please call the center for more details on exact timing. Beginning Thursday, October 22 through Monday, November 2, 2026, the gymnasium at Chelsea Recreation Center will be closed for voting preparation and Early Voting.",
       "programs": [
         "lap",
+        "family",
         "other",
         "exercise",
-        "lessons",
-        "family"
+        "lessons"
       ],
       "fees": {
         "effective": "2026-01-01",
@@ -10846,12 +10846,17 @@
           {
             "kind": "lap",
             "start": 480,
-            "end": 660
+            "end": 585
+          },
+          {
+            "kind": "family",
+            "start": 600,
+            "end": 690
           },
           {
             "kind": "other",
             "label": "Water Polo - Open Play",
-            "start": 675,
+            "start": 705,
             "end": 825
           }
         ],
@@ -11595,8 +11600,8 @@
       "season": "Year-round (recreation center members)",
       "seasonal": false,
       "programs": [
-        "family",
         "lap",
+        "family",
         "exercise",
         "lessons",
         "other"
@@ -11655,11 +11660,6 @@
         [],
         [
           {
-            "kind": "family",
-            "start": 0,
-            "end": 150
-          },
-          {
             "kind": "lap",
             "start": 420,
             "end": 705
@@ -11681,11 +11681,6 @@
           }
         ],
         [
-          {
-            "kind": "family",
-            "start": 0,
-            "end": 150
-          },
           {
             "kind": "lap",
             "start": 420,
@@ -11714,11 +11709,6 @@
         ],
         [
           {
-            "kind": "family",
-            "start": 0,
-            "end": 150
-          },
-          {
             "kind": "lap",
             "start": 420,
             "end": 705
@@ -11740,11 +11730,6 @@
           }
         ],
         [
-          {
-            "kind": "family",
-            "start": 0,
-            "end": 150
-          },
           {
             "kind": "lap",
             "start": 420,
@@ -11772,11 +11757,6 @@
           }
         ],
         [
-          {
-            "kind": "family",
-            "start": 0,
-            "end": 150
-          },
           {
             "kind": "lap",
             "start": 420,
@@ -11855,6 +11835,7 @@
       "desc": "Intermediate pool · 75' x 30' x 9'",
       "season": "Year-round (recreation center members)",
       "seasonal": false,
+      "notice": "Beginning Thursday, October 22 through Monday, November 2, 2026, the gymnasium at Roy Wilkins Recreation Center will be closed for voting preparation and Early Voting.",
       "programs": [
         "lap",
         "family",
@@ -12751,6 +12732,11 @@
           },
           {
             "kind": "family",
+            "start": 780,
+            "end": 885
+          },
+          {
+            "kind": "family",
             "start": 960,
             "end": 1065
           },
@@ -13002,5 +12988,5 @@
     "checked": "2026-10-19",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-10-19T04:39:46.424Z"
+  "fetchedAt": "2026-10-19T17:05:35.729Z"
 }
