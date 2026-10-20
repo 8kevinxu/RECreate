@@ -11312,12 +11312,6 @@
           },
           {
             "kind": "other",
-            "label": "Swim For Life at Gertrude Ederle Class A Tuesday - PS 85",
-            "start": 600,
-            "end": 660
-          },
-          {
-            "kind": "other",
             "label": "Swim For Life at Gertrude Ederle Class B Tuesday - PS 138",
             "start": 660,
             "end": 720
@@ -12305,15 +12299,40 @@
             "end": 1290
           },
           {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
             "kind": "other",
             "label": "FMAC: Artistic Swimming",
             "start": 960,
             "end": 1050
           },
           {
+            "kind": "lessons",
+            "start": 1020,
+            "end": 1080
+          },
+          {
             "kind": "exercise",
             "start": 1080,
             "end": 1140
+          },
+          {
+            "kind": "lessons",
+            "start": 1140,
+            "end": 1200
           }
         ],
         [
@@ -12335,12 +12354,6 @@
           },
           {
             "kind": "lessons",
-            "start": 660,
-            "end": 720
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at FMAC Class B Tuesday - PS 81",
             "start": 660,
             "end": 720
           },
@@ -12993,5 +13006,5 @@
     "checked": "2026-10-20",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-10-20T04:19:10.471Z"
+  "fetchedAt": "2026-10-20T16:24:31.893Z"
 }
