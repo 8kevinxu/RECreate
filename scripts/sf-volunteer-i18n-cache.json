@@ -222,5 +222,33 @@
   "Ina Coolbrith Pk/ Russian Hill Neighbors": {
     "zh": "伊娜·库尔布里斯公园/俄罗斯山邻里",
     "es": "Parque Ina Coolbrith / Vecinos de Russian Hill"
+  },
+  "Archery": {
+    "zh": "射箭",
+    "es": "Tiro con Arco"
+  },
+  "Arts and Crafts": {
+    "zh": "美术和手工艺",
+    "es": "Artes y Manualidades"
+  },
+  "Bookmobile and DeYoung Activity Station": {
+    "zh": "流动图书馆和德杨美术馆活动站",
+    "es": "Biblioteca Móvil y Estación de Actividades del Museo de Young"
+  },
+  "Haunted House Actors": {
+    "zh": "鬼屋演员",
+    "es": "Actores de Casa Embrujada"
+  },
+  "Haunted House Line Goblins": {
+    "zh": "鬼屋排队妖怪",
+    "es": "Goblins de Fila de Casa Embrujada"
+  },
+  "Haunted Maze": {
+    "zh": "鬼屋迷宫",
+    "es": "Laberinto Embrujado"
+  },
+  "Rock Wall": {
+    "zh": "攀岩墙",
+    "es": "Pared de Escalada"
   }
 }

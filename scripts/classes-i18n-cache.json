@@ -2914,5 +2914,21 @@
   "Intro to Pilates - Yoga Fusion": {
     "zh": "普拉提瑜伽融合 - 入门",
     "es": "Introducción a Pilates - Fusión con Yoga"
+  },
+  "Guitar - Beginner": {
+    "zh": "吉他 - 初级",
+    "es": "Guitarra - Principiante"
+  },
+  "Guitar - New Beginner": {
+    "zh": "吉他 - 新手初级",
+    "es": "Guitarra - Principiante Nuevo"
+  },
+  "Guitar - Beginner/Intermediate": {
+    "zh": "吉他 - 初级/中级",
+    "es": "Guitarra - Principiante/Intermedio"
+  },
+  "Guitar - Intermediate": {
+    "zh": "吉他 - 中级",
+    "es": "Guitarra - Intermedio"
   }
 }
