@@ -1514,6 +1514,10 @@
         {
           "label": "Mission_Pool_Fall2026_Aug18_toOct17 (1) (2)",
           "url": "https://sfrecpark.org/DocumentCenter/View/30001"
+        },
+        {
+          "label": "Mission_Pool_Fall2026_Oct20_toNov21",
+          "url": "https://sfrecpark.org/DocumentCenter/View/30319"
         }
       ],
       "sessions": [
@@ -1526,14 +1530,34 @@
             "end": 540
           },
           {
+            "kind": "lap",
+            "start": 480,
+            "end": 540
+          },
+          {
             "kind": "parent_child",
+            "start": 555,
+            "end": 660
+          },
+          {
+            "kind": "parent_child",
+            "start": 555,
+            "end": 615
+          },
+          {
+            "kind": "senior",
             "start": 555,
             "end": 660
           },
           {
             "kind": "senior",
             "start": 555,
-            "end": 660
+            "end": 615
+          },
+          {
+            "kind": "lap",
+            "start": 630,
+            "end": 720
           },
           {
             "kind": "lap",
@@ -1563,9 +1587,24 @@
             "end": 540
           },
           {
+            "kind": "lap",
+            "start": 480,
+            "end": 540
+          },
+          {
             "kind": "senior",
             "start": 555,
             "end": 660
+          },
+          {
+            "kind": "senior",
+            "start": 555,
+            "end": 615
+          },
+          {
+            "kind": "lap",
+            "start": 630,
+            "end": 720
           },
           {
             "kind": "lap",
@@ -1590,6 +1629,11 @@
             "end": 540
           },
           {
+            "kind": "lap",
+            "start": 480,
+            "end": 570
+          },
+          {
             "kind": "parent_child",
             "start": 555,
             "end": 660
@@ -1598,6 +1642,16 @@
             "kind": "senior",
             "start": 555,
             "end": 660
+          },
+          {
+            "kind": "parent_child",
+            "start": 585,
+            "end": 705
+          },
+          {
+            "kind": "senior",
+            "start": 585,
+            "end": 705
           },
           {
             "kind": "lap",
@@ -1627,9 +1681,24 @@
             "end": 540
           },
           {
+            "kind": "lap",
+            "start": 480,
+            "end": 540
+          },
+          {
             "kind": "senior",
             "start": 555,
             "end": 660
+          },
+          {
+            "kind": "senior",
+            "start": 555,
+            "end": 615
+          },
+          {
+            "kind": "lap",
+            "start": 630,
+            "end": 720
           },
           {
             "kind": "lap",
@@ -1652,6 +1721,16 @@
             "kind": "lessons",
             "start": 540,
             "end": 660
+          },
+          {
+            "kind": "lap",
+            "start": 600,
+            "end": 675
+          },
+          {
+            "kind": "family",
+            "start": 690,
+            "end": 840
           },
           {
             "kind": "lap",
@@ -1703,6 +1782,20 @@
           "to": "2026-10-12",
           "reason": "holiday",
           "name": "Indigenous Peoples' Day"
+        },
+        {
+          "from": "2026-10-20",
+          "to": "2026-10-20",
+          "start": 555,
+          "end": 615,
+          "reason": null
+        },
+        {
+          "from": "2026-10-20",
+          "to": "2026-10-20",
+          "start": 630,
+          "end": 720,
+          "reason": null
         }
       ]
     },
@@ -2752,5 +2845,5 @@
       }
     ]
   },
-  "fetchedAt": "2026-10-12T22:25:58.368Z"
+  "fetchedAt": "2026-10-19T20:24:31.105Z"
 }

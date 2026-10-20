@@ -2870,5 +2870,65 @@
   "Ballroom Dance - Beginner": {
     "zh": "社交舞 - 初级",
     "es": "Baile de Salón - Principiante"
+  },
+  "Knitting - Beginning/Intermediate": {
+    "zh": "编织 - 初级/中级",
+    "es": "Tejido - Principiante/Intermedio"
+  },
+  "Ceramics - Inro to Bas-Relief": {
+    "zh": "陶艺 - 浅浮雕入门",
+    "es": "Cerámica - Introducción al Bajo Relieve"
+  },
+  "Woodworking: Making Musical Instruments": {
+    "zh": "木工：制作乐器",
+    "es": "Carpintería: Construcción de Instrumentos Musicales"
+  },
+  "Flingy Thingies": {
+    "zh": "飞盘游戏",
+    "es": "Juegos de Disco Volador"
+  },
+  "Jewelry Making - Intermediate Level": {
+    "zh": "珠宝制作 - 中级",
+    "es": "Joyería - Nivel Intermedio"
+  },
+  "B&W Printing - Intermediate": {
+    "zh": "黑白摄影冲印 - 中级",
+    "es": "Impresión en Blanco y Negro - Intermedio"
+  },
+  "Ceramics - Intro to Bas-Relief": {
+    "zh": "陶艺 - 浅浮雕入门",
+    "es": "Cerámica - Introducción al Bajorrelieve"
+  },
+  "Jewelry Independent Study - Beginner": {
+    "zh": "珠宝独立研究 - 初级",
+    "es": "Estudio Independiente de Joyería - Principiante"
+  },
+  "Watercolor: Landscapes - Intermediate": {
+    "zh": "水彩画：风景 - 中级",
+    "es": "Acuarela: Paisajes - Intermedio"
+  },
+  "Adul Ballet - Intermediate/Advanced": {
+    "zh": "成人芭蕾 - 中级/高级",
+    "es": "Ballet para Adultos - Intermedio/Avanzado"
+  },
+  "Intro to Pilates - Yoga Fusion": {
+    "zh": "普拉提瑜伽融合 - 入门",
+    "es": "Introducción a Pilates - Fusión con Yoga"
+  },
+  "Guitar - Beginner": {
+    "zh": "吉他 - 初级",
+    "es": "Guitarra - Principiante"
+  },
+  "Guitar - New Beginner": {
+    "zh": "吉他 - 新手初级",
+    "es": "Guitarra - Principiante Nuevo"
+  },
+  "Guitar - Beginner/Intermediate": {
+    "zh": "吉他 - 初级/中级",
+    "es": "Guitarra - Principiante/Intermedio"
+  },
+  "Guitar - Intermediate": {
+    "zh": "吉他 - 中级",
+    "es": "Guitarra - Intermedio"
   }
 }
