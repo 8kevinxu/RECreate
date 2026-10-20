@@ -10783,7 +10783,7 @@
       "desc": "Intermediate pool · 75' x 43' x 10'",
       "season": "Year-round (recreation center members)",
       "seasonal": false,
-      "notice": "The elevator will be temporarily out of service on October 19, 2026, for monthly maintenance. Please call the center for more details on exact timing. Beginning Thursday, October 22 through Monday, November 2, 2026, the gymnasium at Chelsea Recreation Center will be closed for voting preparation and Early Voting.",
+      "notice": "The elevator will be temporarily out of service on October 20, 2026, for monthly maintenance. Please call the center for more details on exact timing. Beginning Thursday, October 22 through Monday, November 2, 2026, the gymnasium at Chelsea Recreation Center will be closed for voting preparation and Early Voting.",
       "programs": [
         "lap",
         "family",
@@ -12295,6 +12295,11 @@
             "end": 780
           },
           {
+            "kind": "lessons",
+            "start": 780,
+            "end": 840
+          },
+          {
             "kind": "family",
             "start": 840,
             "end": 1290
@@ -12985,8 +12990,8 @@
   "season": {
     "open": true,
     "label": "Open daily through Labor Day (9/7)",
-    "checked": "2026-10-19",
+    "checked": "2026-10-20",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-10-19T17:05:35.729Z"
+  "fetchedAt": "2026-10-20T04:19:10.471Z"
 }
