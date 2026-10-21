@@ -10225,7 +10225,7 @@
           {
             "kind": "senior",
             "start": 510,
-            "end": 570
+            "end": 555
           },
           {
             "kind": "other",
@@ -10783,7 +10783,7 @@
       "desc": "Intermediate pool · 75' x 43' x 10'",
       "season": "Year-round (recreation center members)",
       "seasonal": false,
-      "notice": "The elevator will be temporarily out of service on October 20, 2026, for monthly maintenance. Please call the center for more details on exact timing. Beginning Thursday, October 22 through Monday, November 2, 2026, the gymnasium at Chelsea Recreation Center will be closed for voting preparation and Early Voting.",
+      "notice": "Beginning Thursday, October 22 through Monday, November 2, 2026, the gymnasium at Chelsea Recreation Center will be closed for voting preparation and Early Voting.",
       "programs": [
         "lap",
         "family",
@@ -11309,6 +11309,12 @@
             "kind": "lap",
             "start": 420,
             "end": 585
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Gertrude Ederle Class A Tuesday - PS 85",
+            "start": 600,
+            "end": 660
           },
           {
             "kind": "other",
@@ -12359,12 +12365,33 @@
           },
           {
             "kind": "other",
+            "label": "Swim For Life at FMAC Class B Tuesday - PS 81",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
             "label": "Swim For Life at FMAC Class C Tuesday - PS 124",
             "start": 720,
             "end": 780
           },
           {
+            "kind": "lessons",
+            "start": 720,
+            "end": 780
+          },
+          {
             "kind": "exercise",
+            "start": 780,
+            "end": 840
+          },
+          {
+            "kind": "lessons",
+            "start": 780,
+            "end": 840
+          },
+          {
+            "kind": "lessons",
             "start": 780,
             "end": 840
           },
@@ -12376,6 +12403,31 @@
           {
             "kind": "lessons",
             "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1080
+          },
+          {
+            "kind": "lessons",
+            "start": 1020,
             "end": 1080
           },
           {
@@ -12388,6 +12440,11 @@
             "label": "FMAC: Learn to Dive",
             "start": 1080,
             "end": 1170
+          },
+          {
+            "kind": "lessons",
+            "start": 1140,
+            "end": 1200
           }
         ],
         [
@@ -12425,6 +12482,16 @@
             "end": 780
           },
           {
+            "kind": "lessons",
+            "start": 780,
+            "end": 840
+          },
+          {
+            "kind": "lessons",
+            "start": 780,
+            "end": 840
+          },
+          {
             "kind": "family",
             "start": 840,
             "end": 1290
@@ -12432,7 +12499,37 @@
           {
             "kind": "lessons",
             "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
             "end": 1170
+          },
+          {
+            "kind": "lessons",
+            "start": 1020,
+            "end": 1080
+          },
+          {
+            "kind": "lessons",
+            "start": 1080,
+            "end": 1140
+          },
+          {
+            "kind": "lessons",
+            "start": 1140,
+            "end": 1200
           }
         ],
         [
@@ -12471,6 +12568,11 @@
           },
           {
             "kind": "lessons",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "lessons",
             "start": 780,
             "end": 840
           },
@@ -12498,13 +12600,48 @@
           {
             "kind": "lessons",
             "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
             "end": 1080
+          },
+          {
+            "kind": "lessons",
+            "start": 1020,
+            "end": 1080
+          },
+          {
+            "kind": "lessons",
+            "start": 1080,
+            "end": 1140
           },
           {
             "kind": "other",
             "label": "FMAC: Learn to Dive",
             "start": 1080,
             "end": 1170
+          },
+          {
+            "kind": "lessons",
+            "start": 1140,
+            "end": 1200
           },
           {
             "kind": "lap",
@@ -12553,6 +12690,16 @@
             "end": 780
           },
           {
+            "kind": "lessons",
+            "start": 780,
+            "end": 840
+          },
+          {
+            "kind": "lessons",
+            "start": 780,
+            "end": 840
+          },
+          {
             "kind": "family",
             "start": 840,
             "end": 1290
@@ -12568,12 +12715,37 @@
             "end": 1170
           },
           {
+            "kind": "lessons",
+            "start": 1020,
+            "end": 1080
+          },
+          {
+            "kind": "lessons",
+            "start": 1020,
+            "end": 1080
+          },
+          {
             "kind": "exercise",
             "start": 1080,
             "end": 1140
           }
         ],
         [
+          {
+            "kind": "lessons",
+            "start": 540,
+            "end": 600
+          },
+          {
+            "kind": "lessons",
+            "start": 540,
+            "end": 600
+          },
+          {
+            "kind": "lessons",
+            "start": 540,
+            "end": 600
+          },
           {
             "kind": "lap",
             "start": 540,
@@ -12592,6 +12764,26 @@
           },
           {
             "kind": "lessons",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "lessons",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "lessons",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "lessons",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "lessons",
             "start": 660,
             "end": 780
           },
@@ -12606,6 +12798,31 @@
             "end": 795
           },
           {
+            "kind": "lessons",
+            "start": 795,
+            "end": 840
+          },
+          {
+            "kind": "lessons",
+            "start": 795,
+            "end": 840
+          },
+          {
+            "kind": "lessons",
+            "start": 840,
+            "end": 900
+          },
+          {
+            "kind": "lessons",
+            "start": 840,
+            "end": 900
+          },
+          {
+            "kind": "lessons",
+            "start": 840,
+            "end": 900
+          },
+          {
             "kind": "other",
             "label": "FMAC: Work Learn Grow",
             "start": 900,
@@ -12613,6 +12830,11 @@
           },
           {
             "kind": "exercise",
+            "start": 900,
+            "end": 960
+          },
+          {
+            "kind": "lessons",
             "start": 900,
             "end": 960
           }
@@ -13003,8 +13225,8 @@
   "season": {
     "open": true,
     "label": "Open daily through Labor Day (9/7)",
-    "checked": "2026-10-20",
+    "checked": "2026-10-21",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-10-20T16:24:31.893Z"
+  "fetchedAt": "2026-10-21T05:13:57.735Z"
 }
