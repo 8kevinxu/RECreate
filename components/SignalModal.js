@@ -1,5 +1,6 @@
 // "Down to play" composer: choose Now or a day/time (no location), optionally pick
-// a sport (or leave it "Anything" — just down for rec), add a note, broadcast.
+// a sport (or leave it "Anything" — just down for rec), add a note, and choose
+// who sees it: friends (the default) or anyone, which lists it in Discover.
 import React, { useEffect, useMemo, useState } from 'react';
 import {
   ActivityIndicator,
@@ -31,7 +32,16 @@ import { dismissOrClose } from '../lib/keyboard';
 // signal never advertises handball. "Anything" is city-less and always first.
 const ANY_OPT = { id: ANY_SPORT, emoji: sportMeta(ANY_SPORT).emoji };
 
-export default function SignalModal({ visible, courts = [], userLocation, onClose, onPosted }) {
+export default function SignalModal({
+  visible,
+  courts = [],
+  userLocation,
+  onClose,
+  onPosted,
+  // Who the post goes to when the sheet opens. Friends unless the caller is an
+  // explicit "Post to Discover" button, where choosing public IS the tap.
+  defaultVisibility = 'friends',
+}) {
   const { t } = useI18n();
   const { profile } = useAuth();
   const [mode, setMode] = useState('now'); // 'now' | 'time'
@@ -40,6 +50,7 @@ export default function SignalModal({ visible, courts = [], userLocation, onClos
   const [place, setPlace] = useState('all'); // 'all' | 'indoor' | 'outdoor' (optional)
   const [courtId, setCourtId] = useState(null); // optional preferred court ('Anywhere' = null)
   const [note, setNote] = useState('');
+  const [visibility, setVisibility] = useState(defaultVisibility); // 'friends' | 'public'
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(null);
 
@@ -96,6 +107,7 @@ export default function SignalModal({ visible, courts = [], userLocation, onClos
     setPlace('all');
     setCourtId(null);
     setNote('');
+    setVisibility(defaultVisibility);
     setError(null);
     setBusy(false);
     const d = new Date(days[0]);
@@ -138,6 +150,7 @@ export default function SignalModal({ visible, courts = [], userLocation, onClos
       prefCourtId: courtId,
       note,
       notify,
+      visibility,
     });
     setBusy(false);
     if (error) {
@@ -338,6 +351,29 @@ export default function SignalModal({ visible, courts = [], userLocation, onClos
               </>
             )}
 
+            {/* Who sees it. Public is opt-in per post, and the hint says what that
+                costs (your name in front of strangers) — and what it doesn't
+                (push still goes to friends only). */}
+            <Text style={styles.label}>{t('run.whoCanSee')}</Text>
+            <View style={styles.toggle}>
+              {[
+                { id: 'friends', label: t('run.visFriends') },
+                { id: 'public', label: t('run.visAnyone') },
+              ].map((v) => (
+                <Pressable
+                  key={v.id}
+                  style={[styles.toggleItem, visibility === v.id && styles.toggleActive]}
+                  onPress={() => setVisibility(v.id)}
+                >
+                  <Text style={[styles.toggleText, visibility === v.id && styles.toggleTextActive]}>
+                    {v.label}
+                  </Text>
+                </Pressable>
+              ))}
+            </View>
+            <Text style={styles.visHint}>
+              {visibility === 'public' ? t('signal.visPublicHint') : t('signal.visFriendsHint')}
+            </Text>
           </ScrollView>
 
           {/* The note lives OUTSIDE the scroll, beside the submit button it belongs
@@ -367,7 +403,11 @@ export default function SignalModal({ visible, courts = [], userLocation, onClos
               <ActivityIndicator color="#fff" />
             ) : (
               <Text style={styles.submitText}>
-                {mode === 'now' ? t('signal.tellFriends') : t('court.post')}
+                {mode !== 'now'
+                  ? t('court.post')
+                  : visibility === 'public'
+                  ? t('signal.tellEveryone')
+                  : t('signal.tellFriends')}
               </Text>
             )}
           </Pressable>
@@ -411,6 +451,7 @@ const styles = StyleSheet.create({
   toggleActive: { backgroundColor: '#2f74d6' },
   toggleText: { color: '#5b6b7b', fontWeight: '700', fontSize: 14 },
   toggleTextActive: { color: '#fff' },
+  visHint: { fontSize: 12.5, color: '#5b6b7b', marginTop: 2 },
 
   label: {
     fontSize: 12,

@@ -1,7 +1,9 @@
 -- RECreate — social: "down to hoop" signals (location-less availability pings to
 -- friends). A signal with no starts_at means "right now"; with starts_at it's "at
 -- a time, no place yet". Friends can join, suggest a time/court, and the host
--- confirms one (planned_at / planned_court_id). Friends-only via RLS, auto-expiring.
+-- confirms one (planned_at / planned_court_id). Friends-only by default; a signal
+-- posted with visibility = 'public' is also readable by any signed-in user (the
+-- Discover feed). Auto-expiring.
 -- Depends on: 03_profiles.sql, 05_friends.sql (the SELECT policy is friend-scoped).
 
 create table if not exists public.rec_signals (
@@ -15,20 +17,38 @@ create table if not exists public.rec_signals (
   planned_at       timestamptz,                                   -- host-confirmed time (null until confirmed)
   planned_court_id text        check (planned_court_id is null or char_length(planned_court_id) <= 128), -- host-confirmed court (matches data/courts.js ids)
   notify           boolean     not null default false,            -- notify friends on post (gated by share_activity; see 07_push.sql)
+  -- 'friends' (default) | 'public'. Defaults the OPPOSITE way from rec_runs: every
+  -- signal predating this column was posted under a friends-only expectation, so
+  -- adding it must not publish them. Public is opt-in per post.
+  -- `notify` is unaffected and must stay that way: notify_signal() (07_push.sql)
+  -- fans out to the poster's accepted friends only. Going public widens who can
+  -- SEE a signal, never who gets a push — strangers find it by opening Discover.
+  visibility       text        not null default 'friends' check (visibility in ('public', 'friends')),
   created_at       timestamptz not null default now(),
   expires_at       timestamptz not null                          -- set by the client
 );
 
 create index if not exists rec_signals_expires_idx on public.rec_signals (expires_at);
 create index if not exists rec_signals_user_idx on public.rec_signals (user_id);
+-- Discover reads across every poster by expiry, not by user id.
+create index if not exists rec_signals_visibility_idx on public.rec_signals (visibility, expires_at);
 
 alter table public.rec_signals enable row level security;
 
--- You can see your own signals and those of accepted friends.
-create policy "see your own and friends' signals"
+-- You can see your own signals, those of accepted friends, and — when signed in —
+-- anyone's public ones. The public branch requires a session for the reason
+-- 03_profiles.sql gives: the anon key ships in the bundle, and a poster's name
+-- isn't readable signed-out anyway.
+--
+-- Joining and chat follow from this with no policy of their own: the participant
+-- insert below requires the signal to be visible to the caller, and chat
+-- membership is a participant row (08_chat.sql). So you can join exactly what you
+-- can see — the property 030 restored for runs.
+create policy "see your own, friends' and public signals"
   on public.rec_signals for select
   using (
-    user_id = auth.uid()
+    (visibility = 'public' and auth.uid() is not null)
+    or user_id = auth.uid()
     or exists (
       select 1 from public.friendships f
       where f.status = 'accepted'

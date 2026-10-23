@@ -1,5 +1,6 @@
 // "Down to play" session detail: see who's in, suggest a court + open-gym time,
-// and (as host) confirm one. Opened by tapping a signal in the Friends feed.
+// and (as host) confirm one. Opened by tapping a signal in the Activity feed or
+// in Discover (a stranger's public signal — joining it works the same way).
 import React, { useEffect, useMemo, useState } from 'react';
 import {
   ActivityIndicator,
@@ -22,6 +23,7 @@ import { dropinWeekdays, openGymSlots } from '../lib/hours';
 import { SPORTS, ANY_SPORT, DEFAULT_SPORT, sportsInCourts } from '../lib/sports';
 import SportGlyph, { SportTag } from './SportGlyph';
 import { sportLabel, useI18n } from '../lib/i18n';
+import { notify } from '../lib/dialog';
 
 export default function SessionModal({
   visible,
@@ -150,7 +152,9 @@ export default function SessionModal({
       : await joinSignal(signal.id);
     await onChanged?.();
     setBusy(false);
-    if (error) return;
+    // Say why a join failed rather than doing nothing — a public signal can be
+    // opened by someone the host has never met, and a failure was silent.
+    if (error) return notify(error.message);
     const body = withSuggestion
       ? t('signal.chatSuggested', {
           sport: sportLabel(t, selSport),
