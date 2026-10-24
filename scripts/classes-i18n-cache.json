@@ -2934,5 +2934,205 @@
   "Drop-in: Canyons, Paths and Prominade's": {
     "zh": "随到随学：峡谷、小径与滨河步道",
     "es": "Sin cita previa: Cañones, Senderos y Paseo"
+  },
+  "New Technologies - 3D Printed Robots": {
+    "zh": "新技术 - 3D打印机器人",
+    "es": "Nuevas Tecnologías - Robots Impresos en 3D"
+  },
+  "Baseball - SFYBL - Pony - Bruins": {
+    "zh": "棒球 - SFYBL - 小马级 - 小熊队",
+    "es": "Béisbol - SFYBL - Pony - Bruins"
+  },
+  "Baseball - SFYBL - Bronco - Buccaneers": {
+    "zh": "棒球 - SFYBL - 青铜马级 - 海盗队",
+    "es": "Béisbol - SFYBL - Bronco - Buccaneers"
+  },
+  "Baseball - SFYBL - Bronco - Crawford's": {
+    "zh": "棒球 - SFYBL - 青铜马级 - Crawford队",
+    "es": "Béisbol - SFYBL - Bronco - Crawford's"
+  },
+  "Baseball - SFYBL - Mustang - Gray Sox": {
+    "zh": "棒球 - SFYBL - 野马级 - 灰袜队",
+    "es": "Béisbol - SFYBL - Mustang - Gray Sox"
+  },
+  "Baseball - SFYBL - Pony - Bay Sox Girls": {
+    "zh": "棒球 - SFYBL - 小马级 - 湾区袜子女队",
+    "es": "Béisbol - SFYBL - Pony - Bay Sox Girls"
+  },
+  "Baseball - SFYBL - Bronco - Bay Sox Girls": {
+    "zh": "棒球 - SFYBL - 青铜马级 - 湾区袜子女队",
+    "es": "Béisbol - SFYBL - Bronco - Bay Sox Girls"
+  },
+  "Baseball - SFYBL - Mustang - Bay Sox Orange Girls": {
+    "zh": "棒球 - SFYBL - 野马级 - 湾区橙色袜子女队",
+    "es": "Béisbol - SFYBL - Mustang - Bay Sox Orange Girls"
+  },
+  "Baseball - SFYBL - Mustang - Bay Sox Gray Girls": {
+    "zh": "棒球 - SFYBL - 野马级 - 湾区灰色袜子女队",
+    "es": "Béisbol - SFYBL - Mustang - Bay Sox Gray Girls"
+  },
+  "Baseball - SFYBL - Pinto - Bay Sox Girls": {
+    "zh": "棒球 - SFYBL - 小马驹级 - 湾区袜子女队",
+    "es": "Béisbol - SFYBL - Pinto - Bay Sox Girls"
+  },
+  "Softball - SFRPD - 14U Girls - Crocker": {
+    "zh": "垒球 - SFRPD - 14岁女生 - Crocker",
+    "es": "Softbol - SFRPD - 14U Niñas - Crocker"
+  },
+  "Baseball - SFYBL - Shetland C.P. - Vipers": {
+    "zh": "棒球 - SFYBL - 谢特兰级 - 蛇队",
+    "es": "Béisbol - SFYBL - Shetland C.P. - Vipers"
+  },
+  "Baseball - SFYBL - Shetland T-Ball - Knights": {
+    "zh": "棒球 - SFYBL - 谢特兰T球 - 骑士队",
+    "es": "Béisbol - SFYBL - Shetland T-Ball - Knights"
+  },
+  "Softball - SFRPD - 10U Girls - Eureka Valley": {
+    "zh": "垒球 - SFRPD - 10岁女生 - Eureka Valley",
+    "es": "Softbol - SFRPD - 10U Niñas - Eureka Valley"
+  },
+  "Softball - SFRPD - 14U Girls - Eureka Valley": {
+    "zh": "垒球 - SFRPD - 14岁女生 - Eureka Valley",
+    "es": "Softbol - SFRPD - 14U Niñas - Eureka Valley"
+  },
+  "Baseball - SFYBL - Pony - Generals": {
+    "zh": "棒球 - SFYBL - 小马级 - 将军队",
+    "es": "Béisbol - SFYBL - Pony - Generals"
+  },
+  "Baseball - SFYBL - Bronco - Pirates": {
+    "zh": "棒球 - SFYBL - 青铜马级 - 海盗队",
+    "es": "Béisbol - SFYBL - Bronco - Pirates"
+  },
+  "Baseball - SFYBL - Mustang - Pioneers": {
+    "zh": "棒球 - SFYBL - 野马级 - 先锋队",
+    "es": "Béisbol - SFYBL - Mustang - Pioneers"
+  },
+  "Baseball - SFYBL - Pinto - Grizzlies": {
+    "zh": "棒球 - SFYBL - 小马驹级 - 灰熊队",
+    "es": "Béisbol - SFYBL - Pinto - Grizzlies"
+  },
+  "Baseball - SFYBL - Shetland C.P. - Gaels": {
+    "zh": "棒球 - SFYBL - 谢特兰级 - 盖尔队",
+    "es": "Béisbol - SFYBL - Shetland C.P. - Gaels"
+  },
+  "Baseball - SFYBL - Shetland T-Ball - Gophers": {
+    "zh": "棒球 - SFYBL - 谢特兰T球 - 地鼠队",
+    "es": "Béisbol - SFYBL - Shetland T-Ball - Gophers"
+  },
+  "Baseball - SFYBL - Pinto - Tigers": {
+    "zh": "棒球 - SFYBL - 小马驹级 - 老虎队",
+    "es": "Béisbol - SFYBL - Pinto - Tigers"
+  },
+  "Baseball - SFYBL - Shetland C.P. - Huskies": {
+    "zh": "棒球 - SFYBL - 谢特兰级 - 哈士奇队",
+    "es": "Béisbol - SFYBL - Shetland C.P. - Huskies"
+  },
+  "Baseball - SFYBL - Shetland T-Ball - Heroes": {
+    "zh": "棒球 - SFYBL - 谢特兰T球 - 英雄队",
+    "es": "Béisbol - SFYBL - Shetland T-Ball - Heroes"
+  },
+  "Softball - SFRPD - 10U Girls - Junipero Serra": {
+    "zh": "垒球 - SFRPD - 10岁女生 - Junipero Serra",
+    "es": "Softbol - SFRPD - 10U Niñas - Junipero Serra"
+  },
+  "Softball - SFRPD - 14U Girls - Junipero Serra": {
+    "zh": "垒球 - SFRPD - 14岁女生 - Junipero Serra",
+    "es": "Softbol - SFRPD - 14U Niñas - Junipero Serra"
+  },
+  "Baseball - SFYBL - Bronco - Climbers": {
+    "zh": "棒球 - SFYBL - 青铜马级 - 登山者队",
+    "es": "Béisbol - SFYBL - Bronco - Climbers"
+  },
+  "Baseball - SFYBL - Mustang - Blue Jays": {
+    "zh": "棒球 - SFYBL - 野马级 - 蓝鸟队",
+    "es": "Béisbol - SFYBL - Mustang - Blue Jays"
+  },
+  "Baseball - SFYBL - Pinto - Braves": {
+    "zh": "棒球 - SFYBL - 小马驹级 - 勇敢者队",
+    "es": "Béisbol - SFYBL - Pinto - Braves"
+  },
+  "Baseball - SFYBL - Shetland C.P. - Cougars": {
+    "zh": "棒球 - SFYBL - 谢特兰级 - 美洲狮队",
+    "es": "Béisbol - SFYBL - Shetland C.P. - Cougars"
+  },
+  "Baseball - SFYBL - Shetland T-Ball - Cardinals": {
+    "zh": "棒球 - SFYBL - 谢特兰T球 - 红雀队",
+    "es": "Béisbol - SFYBL - Shetland T-Ball - Cardinals"
+  },
+  "Baseball - SFYBL - Bronco - Pumas": {
+    "zh": "棒球 - SFYBL - 青铜马级 - 美洲狮队",
+    "es": "Béisbol - SFYBL - Bronco - Pumas"
+  },
+  "Baseball - SFYBL - Mustang - Panthers": {
+    "zh": "棒球 - SFYBL - 野马级 - 黑豹队",
+    "es": "Béisbol - SFYBL - Mustang - Panthers"
+  },
+  "Baseball - SFYBL - Pony - Padres": {
+    "zh": "棒球 - SFYBL - 小马级 - 教士队",
+    "es": "Béisbol - SFYBL - Pony - Padres"
+  },
+  "Baseball - SFYBL - Bronco - Black Barons": {
+    "zh": "棒球 - SFYBL - 青铜马级 - 黑男爵队",
+    "es": "Béisbol - SFYBL - Bronco - Black Barons"
+  },
+  "Baseball - SFYBL - Pinto - Miners": {
+    "zh": "棒球 - SFYBL - 小马驹级 - 矿工队",
+    "es": "Béisbol - SFYBL - Pinto - Miners"
+  },
+  "Softball - SFRPD - 10U Girls - Rossi": {
+    "zh": "垒球 - SFRPD - 10岁女生 - Rossi",
+    "es": "Softbol - SFRPD - 10U Niñas - Rossi"
+  },
+  "Softball - SFRPD - 14U Girls - Rossi": {
+    "zh": "垒球 - SFRPD - 14岁女生 - Rossi",
+    "es": "Softbol - SFRPD - 14U Niñas - Rossi"
+  },
+  "Baseball - SFYBL - Mustang - Spiders": {
+    "zh": "棒球 - SFYBL - 野马级 - 蜘蛛队",
+    "es": "Béisbol - SFYBL - Mustang - Spiders"
+  },
+  "Baseball - SFYBL - Pinto - Sliders": {
+    "zh": "棒球 - SFYBL - 小马驹级 - 滑块队",
+    "es": "Béisbol - SFYBL - Pinto - Sliders"
+  },
+  "Baseball - SFYBL - Shetland C.P. - Spartans": {
+    "zh": "棒球 - SFYBL - 设德兰小马 - 斯巴达人队",
+    "es": "Béisbol - SFYBL - Shetland C.P. - Spartans"
+  },
+  "Baseball - SFYBL - Shetland T-Ball - Slammers": {
+    "zh": "棒球 - SFYBL - 设德兰T球 - 砸击者队",
+    "es": "Béisbol - SFYBL - Shetland T-Ball - Slammers"
+  },
+  "Baseball - SFYBL - Pinto - Dragons": {
+    "zh": "棒球 - SFYBL - 小马 - 龙队",
+    "es": "Béisbol - SFYBL - Pinto - Dragons"
+  },
+  "Baseball - SFYBL - Shetland C.P. - Lizards": {
+    "zh": "棒球 - SFYBL - 设德兰小马 - 蜥蜴队",
+    "es": "Béisbol - SFYBL - Shetland C.P. - Lizards"
+  },
+  "Baseball - SFYBL - Shetland T-Ball - Eagles": {
+    "zh": "棒球 - SFYBL - 设德兰T球 - 鹰队",
+    "es": "Béisbol - SFYBL - Shetland T-Ball - Eagles"
+  },
+  "Baseball - SFYBL - Pony - Hawks": {
+    "zh": "棒球 - SFYBL - 中马 - 鹰队",
+    "es": "Béisbol - SFYBL - Pony - Hawks"
+  },
+  "Baseball - SFYBL - Pony - Wolves": {
+    "zh": "棒球 - SFYBL - 中马 - 狼队",
+    "es": "Béisbol - SFYBL - Pony - Wolves"
+  },
+  "Baseball - SFYBL - Pony - Reds": {
+    "zh": "棒球 - SFYBL - 中马 - 红队",
+    "es": "Béisbol - SFYBL - Pony - Reds"
+  },
+  "Baseball - SFYBL - Bronco - Cubs": {
+    "zh": "棒球 - SFYBL - 青马 - 幼虎队",
+    "es": "Béisbol - SFYBL - Bronco - Cubs"
+  },
+  "Baseball - SFYBL - Mustang - Wolf Pack": {
+    "zh": "棒球 - SFYBL - 野马 - 狼群队",
+    "es": "Béisbol - SFYBL - Mustang - Wolf Pack"
   }
 }
