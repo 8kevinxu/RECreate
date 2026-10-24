@@ -14,7 +14,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 15,
+      "spots": 14,
       "unlimited": false,
       "start": "2026-10-24",
       "end": "2027-03-27",
@@ -61,7 +61,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 14,
+      "spots": 13,
       "unlimited": false,
       "start": "2026-10-24",
       "end": "2027-03-27",
@@ -209,7 +209,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 10,
+      "spots": 9,
       "unlimited": false,
       "start": "2026-10-28",
       "end": "2027-04-21",
@@ -419,7 +419,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 12,
+      "spots": 11,
       "unlimited": false,
       "start": "2026-11-04",
       "end": "2027-04-21",
@@ -493,7 +493,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 12,
+      "spots": 11,
       "unlimited": false,
       "start": "2026-11-07",
       "end": "2027-04-03",
@@ -543,7 +543,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 13,
+      "spots": 9,
       "unlimited": false,
       "start": "2026-11-07",
       "end": "2027-04-17",
@@ -1028,5 +1028,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-10-23T21:00:52.703Z"
+  "fetchedAt": "2026-10-24T03:18:26.995Z"
 }
