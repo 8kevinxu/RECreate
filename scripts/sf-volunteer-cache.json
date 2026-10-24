@@ -110,7 +110,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 9,
+      "spots": 8,
       "unlimited": false,
       "start": "2026-10-24",
       "end": "2027-03-27",
@@ -640,7 +640,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 29,
+      "spots": 27,
       "unlimited": false,
       "start": "2026-11-09",
       "end": "2026-12-07",
@@ -1028,5 +1028,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-10-24T03:18:26.995Z"
+  "fetchedAt": "2026-10-24T10:19:13.088Z"
 }
