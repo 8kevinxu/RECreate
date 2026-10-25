@@ -1,31 +1,6 @@
 {
   "entries": [
     {
-      "id": "vol-a07Pi00004eFoLJIA0",
-      "source": "sfrpd-volunteer",
-      "name": "McLaren Park Gambier Plaza Volunteer Workparty",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "John McLaren Park Gambier Plaza",
-      "when": "Sun · 9:00 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 16,
-      "unlimited": false,
-      "start": "2026-10-25",
-      "end": "2026-10-25",
-      "oneDay": true,
-      "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the Friends Gambier Plaza and the RPD Gardeners in a habitat restoration volunteer workparty. Tools and gloves provided. Meet at Burrows and Gambier streets.",
-      "lat": 37.71889,
-      "lng": -122.41396,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a07Pi00003zJscrIAC",
       "source": "sfrpd-volunteer",
       "name": "GGP Conservatory Valley Volunteer Workparty",
@@ -298,7 +273,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 24,
+      "spots": 23,
       "unlimited": false,
       "start": "2026-11-05",
       "end": "2027-04-01",
@@ -470,7 +445,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 4,
+      "spots": 3,
       "unlimited": false,
       "start": "2026-11-08",
       "end": "2027-04-11",
@@ -981,5 +956,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-10-25T15:35:04.837Z"
+  "fetchedAt": "2026-10-25T20:25:13.763Z"
 }
