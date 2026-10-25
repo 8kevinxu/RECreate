@@ -12191,6 +12191,386 @@
       ]
     },
     {
+      "id": "nyc-pool-shirley-chisholm-recreation-center-pool",
+      "name": "Shirley Chisholm Recreation Center Pool",
+      "address": "Farragut Pl between E 31st Street and E 32nd Street",
+      "lat": 40.6381,
+      "lng": -73.9473,
+      "phone": "(718) 859-3937",
+      "indoor": true,
+      "accessible": true,
+      "desc": "Intermediate pool",
+      "season": "Year-round (recreation center members)",
+      "seasonal": false,
+      "notice": "Beginning Thursday, October 22 through Monday, November 2, 2026 the dance room at Shirley Chisholm Recreation Center will be closed for voting preparation and Early Voting.",
+      "programs": [
+        "lap",
+        "lessons",
+        "family",
+        "other",
+        "exercise",
+        "youth"
+      ],
+      "fees": {
+        "effective": "2026-01-01",
+        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
+        "note": "Recreation center membership — indoor pools are members-only",
+        "groups": [
+          {
+            "id": "youth",
+            "label": "Ages 24 and under",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                0
+              ]
+            ]
+          },
+          {
+            "id": "adult",
+            "label": "Adults (25–61)",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                150
+              ],
+              [
+                "Six months",
+                75
+              ]
+            ]
+          },
+          {
+            "id": "senior",
+            "label": "Seniors 62+, veterans, people with disabilities",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                25
+              ]
+            ]
+          }
+        ]
+      },
+      "scheduleUrls": [
+        {
+          "label": "Pool schedule",
+          "url": "https://www.nycgovparks.org/facilities/recreationcenters/B250/schedule#Pool-schedule"
+        }
+      ],
+      "sessions": [
+        [
+          {
+            "kind": "lap",
+            "start": 480,
+            "end": 600
+          },
+          {
+            "kind": "lessons",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "lessons",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "lessons",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "family",
+            "start": 780,
+            "end": 900
+          },
+          {
+            "kind": "other",
+            "label": "Shirley Chisholm: Swim Prep",
+            "start": 900,
+            "end": 960
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 390,
+            "end": 585
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Shirley Chisholm Class A Monday -",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Shirley Chisholm Class B Monday -",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Shirley Chisholm Class C Monday -",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "family",
+            "start": 780,
+            "end": 885
+          },
+          {
+            "kind": "family",
+            "start": 960,
+            "end": 1065
+          },
+          {
+            "kind": "lap",
+            "start": 1080,
+            "end": 1290
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 390,
+            "end": 585
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Shirley Chisholm Class A Tuesday -",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Shirley Chisholm Class B Tuesday -",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Shirley Chisholm Class C Tuesday -",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "exercise",
+            "start": 780,
+            "end": 840
+          },
+          {
+            "kind": "family",
+            "start": 840,
+            "end": 930
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 1020,
+            "end": 1110
+          },
+          {
+            "kind": "exercise",
+            "start": 1125,
+            "end": 1170
+          },
+          {
+            "kind": "lap",
+            "start": 1185,
+            "end": 1290
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 390,
+            "end": 585
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Shirley Chisholm Class A Wednesday -",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Shirley Chisholm Class B Wednesday -",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Shirley Chisholm Class C Wednesday -",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "family",
+            "start": 780,
+            "end": 885
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "family",
+            "start": 1020,
+            "end": 1065
+          },
+          {
+            "kind": "lap",
+            "start": 1080,
+            "end": 1290
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 390,
+            "end": 585
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Shirley Chisholm Class A Thursday -",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Shirley Chisholm Class B Thursday -",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Shirley Chisholm Class C Thursday -",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "exercise",
+            "start": 780,
+            "end": 840
+          },
+          {
+            "kind": "other",
+            "label": "Synchronized Swimming",
+            "start": 840,
+            "end": 930
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 1020,
+            "end": 1110
+          },
+          {
+            "kind": "exercise",
+            "start": 1125,
+            "end": 1170
+          },
+          {
+            "kind": "lap",
+            "start": 1185,
+            "end": 1290
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 390,
+            "end": 585
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Shirley Chisholm Class A Friday -",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Shirley Chisholm Class B Friday -",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Shirley Chisholm Class C Friday -",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "family",
+            "start": 780,
+            "end": 885
+          },
+          {
+            "kind": "family",
+            "start": 960,
+            "end": 1065
+          },
+          {
+            "kind": "exercise",
+            "start": 1080,
+            "end": 1140
+          },
+          {
+            "kind": "family",
+            "start": 1140,
+            "end": 1290
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 480,
+            "end": 600
+          },
+          {
+            "kind": "lessons",
+            "start": 600,
+            "end": 690
+          },
+          {
+            "kind": "lessons",
+            "start": 690,
+            "end": 720
+          },
+          {
+            "kind": "family",
+            "start": 720,
+            "end": 900
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "youth",
+            "start": 1020,
+            "end": 1170
+          }
+        ]
+      ]
+    },
+    {
       "id": "nyc-pool-flushing-meadows-aquatics-center",
       "name": "Flushing Meadows Aquatics Center",
       "address": "Avery Avenue and 131 Street",
@@ -12852,393 +13232,13 @@
           }
         ]
       ]
-    },
-    {
-      "id": "nyc-pool-shirley-chisholm-recreation-center-pool",
-      "name": "Shirley Chisholm Recreation Center Pool",
-      "address": "Farragut Pl between E 31st Street and E 32nd Street",
-      "lat": 40.6381,
-      "lng": -73.9473,
-      "phone": "(718) 859-3937",
-      "indoor": true,
-      "accessible": true,
-      "desc": "Intermediate pool",
-      "season": "Year-round (recreation center members)",
-      "seasonal": false,
-      "notice": "Beginning Thursday, October 22 through Monday, November 2, 2026 the dance room at Shirley Chisholm Recreation Center will be closed for voting preparation and Early Voting.",
-      "programs": [
-        "lap",
-        "lessons",
-        "family",
-        "other",
-        "exercise",
-        "youth"
-      ],
-      "fees": {
-        "effective": "2026-01-01",
-        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
-        "note": "Recreation center membership — indoor pools are members-only",
-        "groups": [
-          {
-            "id": "youth",
-            "label": "Ages 24 and under",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                0
-              ]
-            ]
-          },
-          {
-            "id": "adult",
-            "label": "Adults (25–61)",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                150
-              ],
-              [
-                "Six months",
-                75
-              ]
-            ]
-          },
-          {
-            "id": "senior",
-            "label": "Seniors 62+, veterans, people with disabilities",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                25
-              ]
-            ]
-          }
-        ]
-      },
-      "scheduleUrls": [
-        {
-          "label": "Pool schedule",
-          "url": "https://www.nycgovparks.org/facilities/recreationcenters/B250/schedule#Pool-schedule"
-        }
-      ],
-      "sessions": [
-        [
-          {
-            "kind": "lap",
-            "start": 480,
-            "end": 600
-          },
-          {
-            "kind": "lessons",
-            "start": 600,
-            "end": 660
-          },
-          {
-            "kind": "lessons",
-            "start": 660,
-            "end": 720
-          },
-          {
-            "kind": "lessons",
-            "start": 720,
-            "end": 780
-          },
-          {
-            "kind": "family",
-            "start": 780,
-            "end": 900
-          },
-          {
-            "kind": "other",
-            "label": "Shirley Chisholm: Swim Prep",
-            "start": 900,
-            "end": 960
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 390,
-            "end": 585
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Shirley Chisholm Class A Monday -",
-            "start": 600,
-            "end": 660
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Shirley Chisholm Class B Monday -",
-            "start": 660,
-            "end": 720
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Shirley Chisholm Class C Monday -",
-            "start": 720,
-            "end": 780
-          },
-          {
-            "kind": "family",
-            "start": 780,
-            "end": 885
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1065
-          },
-          {
-            "kind": "lap",
-            "start": 1080,
-            "end": 1290
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 390,
-            "end": 585
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Shirley Chisholm Class A Tuesday -",
-            "start": 600,
-            "end": 660
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Shirley Chisholm Class B Tuesday -",
-            "start": 660,
-            "end": 720
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Shirley Chisholm Class C Tuesday -",
-            "start": 720,
-            "end": 780
-          },
-          {
-            "kind": "exercise",
-            "start": 780,
-            "end": 840
-          },
-          {
-            "kind": "family",
-            "start": 840,
-            "end": 930
-          },
-          {
-            "kind": "lessons",
-            "start": 960,
-            "end": 1020
-          },
-          {
-            "kind": "lessons",
-            "start": 1020,
-            "end": 1110
-          },
-          {
-            "kind": "exercise",
-            "start": 1125,
-            "end": 1170
-          },
-          {
-            "kind": "lap",
-            "start": 1185,
-            "end": 1290
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 390,
-            "end": 585
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Shirley Chisholm Class A Wednesday -",
-            "start": 600,
-            "end": 660
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Shirley Chisholm Class B Wednesday -",
-            "start": 660,
-            "end": 720
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Shirley Chisholm Class C Wednesday -",
-            "start": 720,
-            "end": 780
-          },
-          {
-            "kind": "family",
-            "start": 780,
-            "end": 885
-          },
-          {
-            "kind": "lessons",
-            "start": 960,
-            "end": 1020
-          },
-          {
-            "kind": "family",
-            "start": 1020,
-            "end": 1065
-          },
-          {
-            "kind": "lap",
-            "start": 1080,
-            "end": 1290
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 390,
-            "end": 585
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Shirley Chisholm Class A Thursday -",
-            "start": 600,
-            "end": 660
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Shirley Chisholm Class B Thursday -",
-            "start": 660,
-            "end": 720
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Shirley Chisholm Class C Thursday -",
-            "start": 720,
-            "end": 780
-          },
-          {
-            "kind": "exercise",
-            "start": 780,
-            "end": 840
-          },
-          {
-            "kind": "other",
-            "label": "Synchronized Swimming",
-            "start": 840,
-            "end": 930
-          },
-          {
-            "kind": "lessons",
-            "start": 960,
-            "end": 1020
-          },
-          {
-            "kind": "lessons",
-            "start": 1020,
-            "end": 1110
-          },
-          {
-            "kind": "exercise",
-            "start": 1125,
-            "end": 1170
-          },
-          {
-            "kind": "lap",
-            "start": 1185,
-            "end": 1290
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 390,
-            "end": 585
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Shirley Chisholm Class A Friday -",
-            "start": 600,
-            "end": 660
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Shirley Chisholm Class B Friday -",
-            "start": 660,
-            "end": 720
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Shirley Chisholm Class C Friday -",
-            "start": 720,
-            "end": 780
-          },
-          {
-            "kind": "family",
-            "start": 780,
-            "end": 885
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1065
-          },
-          {
-            "kind": "exercise",
-            "start": 1080,
-            "end": 1140
-          },
-          {
-            "kind": "family",
-            "start": 1140,
-            "end": 1290
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 480,
-            "end": 600
-          },
-          {
-            "kind": "lessons",
-            "start": 600,
-            "end": 690
-          },
-          {
-            "kind": "lessons",
-            "start": 690,
-            "end": 720
-          },
-          {
-            "kind": "family",
-            "start": 720,
-            "end": 900
-          },
-          {
-            "kind": "lessons",
-            "start": 960,
-            "end": 1020
-          },
-          {
-            "kind": "youth",
-            "start": 1020,
-            "end": 1170
-          }
-        ]
-      ]
     }
   ],
   "season": {
     "open": true,
     "label": "Open daily through Labor Day (9/7)",
-    "checked": "2026-10-24",
+    "checked": "2026-10-25",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-10-24T18:10:56.880Z"
+  "fetchedAt": "2026-10-25T04:44:45.950Z"
 }
