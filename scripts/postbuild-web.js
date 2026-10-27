@@ -477,6 +477,8 @@ const CSS = `
   header.site a.get { margin-left: auto; font-size: 14px; white-space: nowrap; }
   h1 { font-size: 26px; line-height: 1.25; margin: 18px 0 6px; }
   h2 { font-size: 19px; margin: 28px 0 8px; }
+  h3 { font-size: 16px; margin: 18px 0 4px; }
+  .note { font-size: 14px; opacity: .75; margin: 6px 0 0; }
   .lede { margin: 0 0 14px; opacity: .85; }
   .ctas { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 6px 0 10px; }
   .cta { display: inline-block; background: #ff7a1a; color: #fff !important; font-weight: 700; text-decoration: none;
@@ -607,10 +609,11 @@ ${detailPath ? `<a class="map" href="${detailPath}">Hours &amp; details</a> · `
 </li>`;
 };
 
-// A label/value table — facility facts, fees, a pool's basins.
+// A label/value table — facility facts, fees, a pool's basins. A list value
+// renders one entry per line (a pool's day of time slots).
 const rows = (list) =>
   `<table style="border-collapse:collapse;font-size:14px;margin:4px 0 0">${list
-    .map(([k, v]) => `<tr><td style="padding:2px 12px 2px 0;opacity:.7;vertical-align:top;white-space:nowrap">${esc(k)}</td><td style="padding:2px 0">${esc(v)}</td></tr>`)
+    .map(([k, v]) => `<tr><td style="padding:2px 12px 2px 0;opacity:.7;vertical-align:top;white-space:nowrap">${esc(k)}</td><td style="padding:2px 0">${Array.isArray(v) ? v.map(esc).join('<br>') : esc(v)}</td></tr>`)
     .join('')}</table>`;
 
 const SPORT_BY_ID = new Map(SPORTS.map((s) => [s.id, s]));
@@ -970,6 +973,140 @@ for (const cfg of CITY_CFG) {
 
 const poolSessionCount = (p) => (p.sessions || []).reduce((n, d) => n + (d?.length || 0), 0);
 
+// When the pool build last read the official schedules successfully. The
+// cache's fetchedAt only moves on a live scrape; the generated file's header is
+// rewritten on every run, cache fallbacks included, so it would claim a check
+// that never happened.
+const cacheCheckedAt = (rel) => {
+  try {
+    return JSON.parse(fs.readFileSync(path.join(ROOT, rel), 'utf8')).fetchedAt || null;
+  } catch {
+    return null;
+  }
+};
+const POOLS_CHECKED_AT = { sf: cacheCheckedAt('scripts/pools-cache.json'), nyc: cacheCheckedAt('scripts/cities/nyc-pools-cache.json') };
+
+// The sessions someone can just turn up and swim in. Lessons, camps, rentals
+// and school bookings have their own sections; `other` is an unclassified
+// poster label, so it can't be promised as public swim.
+const PUBLIC_SWIM = new Set(['lap', 'family', 'senior', 'youth', 'exercise', 'parent_child']);
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const capFirst = (s) => String(s).charAt(0).toUpperCase() + String(s).slice(1);
+const fmtIsoDay = (iso) => {
+  const [y, m, d] = iso.split('-').map(Number);
+  return `${DAY_ABBR[new Date(Date.UTC(y, m - 1, d)).getUTCDay()]}, ${MONTHS[m - 1]} ${d}`;
+};
+const fmtIsoDate = (iso) => {
+  const [y, m, d] = iso.slice(0, 10).split('-').map(Number);
+  return `${MONTHS[m - 1]} ${d}, ${y}`;
+};
+
+// "Sep 8 – Dec 10" -> the ISO end date, so a season that has already run out
+// isn't described as "this season". NYC's "Year-round (…)" parses to null.
+// A season that wraps the new year ends next year once we're past its start.
+function seasonEndIso(label) {
+  const m = String(label || '').match(/^([A-Z][a-z]{2}) (\d{1,2}) – ([A-Z][a-z]{2}) (\d{1,2})$/);
+  if (!m) return null;
+  const [sm, em] = [MONTHS.indexOf(m[1]), MONTHS.indexOf(m[3])];
+  if (sm < 0 || em < 0) return null;
+  const year = Number(TODAY.slice(0, 4)) + (em < sm && Number(TODAY.slice(5, 7)) - 1 >= sm ? 1 : 0);
+  return `${year}-${String(em + 1).padStart(2, '0')}-${m[4].padStart(2, '0')}`;
+}
+
+// Display-ordered days -> "Mon–Thu, Sun" (or full names for prose).
+function dayRangeLabels(days, names = DAY_ABBR) {
+  const idx = days.map((d) => DAY_ORDER.indexOf(d)).sort((a, b) => a - b);
+  const runs = [];
+  for (const i of idx) {
+    const last = runs[runs.length - 1];
+    if (last && i === last[last.length - 1] + 1) last.push(i);
+    else runs.push([i]);
+  }
+  return runs.flatMap((r) =>
+    r.length > 2 ? [`${names[DAY_ORDER[r[0]]]}–${names[DAY_ORDER[r[r.length - 1]]]}`] : r.map((i) => names[DAY_ORDER[i]])
+  );
+}
+
+// One pool's public-swim sessions for a day, deduped (North Beach's warm and
+// cool pools can run the same kind at the same time) and grouped by time slot.
+function publicSlots(p, d) {
+  const slots = new Map();
+  for (const x of p.sessions?.[d] || []) {
+    if (!x || !PUBLIC_SWIM.has(x.kind)) continue;
+    const key = `${x.start}-${x.end}`;
+    if (!slots.has(key)) slots.set(key, { start: x.start, end: x.end, kinds: [] });
+    const label = `${KIND_LABEL[x.kind] || x.kind}${x.pool ? ` (${x.pool} pool)` : ''}`;
+    if (!slots.get(key).kinds.includes(label)) slots.get(key).kinds.push(label);
+  }
+  const rank = (label) => KIND_ORDER.findIndex((k) => label.startsWith(KIND_LABEL[k])) + 1 || 99;
+  for (const s of slots.values()) s.kinds.sort((a, b) => rank(a) - rank(b));
+  return [...slots.values()].sort((a, b) => a.start - b.start || a.end - b.end);
+}
+
+// Posted closures still ahead, with back-to-back days of one holiday folded
+// into a single row (Thanksgiving arrives as Thursday and Friday separately).
+function upcomingClosures(p) {
+  const list = (p.closures || []).filter((c) => c.to >= TODAY).sort((a, b) => a.from.localeCompare(b.from));
+  const out = [];
+  for (const c of list) {
+    const last = out[out.length - 1];
+    const nextDay = last && new Date(Date.parse(`${last.to}T00:00:00Z`) + 864e5).toISOString().slice(0, 10);
+    if (last && c.from === nextDay && c.reason === last.reason && c.name === last.name && c.start == null && last.start == null) {
+      last.to = c.to;
+    } else {
+      out.push({ ...c });
+    }
+  }
+  return out;
+}
+const CLOSURE_REASON = { holiday: 'Holiday', maintenance: 'Maintenance', training: 'Staff training' };
+const closureWhen = (c) => (c.from === c.to ? fmtIsoDay(c.from) : `${fmtIsoDay(c.from)} – ${fmtIsoDay(c.to)}`);
+// The summary's line about the nearest closure. One already under way is the
+// first thing a swimmer needs to know, so it reads as current, not as "next".
+function closureSentence(c) {
+  if (!c) return '';
+  const why = c.name || (c.reason === 'maintenance' ? 'maintenance' : c.reason === 'training' ? 'staff training' : 'a closure');
+  if (c.from <= TODAY) {
+    if (c.start != null && c.end != null) return `Today it closes ${fmtTime(c.start)}–${fmtTime(c.end)} for ${why}.`;
+    return `It is closed for ${why} through ${fmtIsoDay(c.to)}.`;
+  }
+  return `Next posted closure: ${capFirst(why)}, ${closureWhen(c)}.`;
+}
+const closureWhat = (c) =>
+  `${c.name || CLOSURE_REASON[c.reason] || 'Closure'} — ${c.start != null && c.end != null ? `closed ${fmtTime(c.start)}–${fmtTime(c.end)}` : 'closed all day'}`;
+
+// The official poster's file name ("Garfield Pool_FALL 2026_Sept 8 to Dec 10")
+// is not a link label. Keep the one distinction it carries that a reader needs.
+function scheduleLinkLabel(u, i, all, cfg) {
+  const which = /warm/i.test(u.label || '') ? ' — warm pool' : /cool/i.test(u.label || '') ? ' — cool pool' : all.length > 1 ? ` — part ${i + 1}` : '';
+  return `Official ${cfg.attribution.name} schedule (PDF)${which}`;
+}
+
+// Drop-in prices as a sentence: "$8 for adults, $2 for children and $7 for
+// seniors". Only where drop-in is how you pay — NYC's indoor pools are a
+// membership, where a $0 "drop-in" would wrongly read as free.
+function dropInSentence(fees) {
+  const groups = (fees.groups || []).filter((g) => g.dropIn > 0 && /adult|child|senior|youth/i.test(g.label));
+  if (!groups.length) return '';
+  const who = (g) => g.label.replace(/\s*\(.*\)\s*/, '').toLowerCase();
+  return `Drop-in swims cost ${andList(groups.map((g) => `$${g.dropIn} for ${who(g)}`))}.`;
+}
+
+// "Lap swim starts at 7 AM Mon–Thu and 8:30 AM Sun."
+function lapStartSentence(p) {
+  const byStart = new Map();
+  for (const d of DAY_ORDER) {
+    const laps = (p.sessions?.[d] || []).filter((x) => x?.kind === 'lap');
+    if (!laps.length) continue;
+    const first = Math.min(...laps.map((x) => x.start));
+    if (!byStart.has(first)) byStart.set(first, []);
+    byStart.get(first).push(d);
+  }
+  if (!byStart.size) return '';
+  const parts = [...byStart].map(([t, days]) => `${fmtTime(t)} on ${andList(dayRangeLabels(days))}`);
+  return `Lap swim starts at ${parts.join('; ')}.`;
+}
+
 for (const cfg of CITY_CFG) {
   if (!cfg.pools) continue;
   const sites = [...cfg.pools.list].sort((a, b) => a.name.localeCompare(b.name));
@@ -1085,32 +1222,114 @@ ${pageIds.has(id) ? `<a class="map" href="${poolPath(cfg, id)}">Schedule &amp; d
       return [type || 'Pool', size || '—'];
     });
 
+    // Answer-first. Someone searching "garfield pool" wants to know when they
+    // can swim and what it costs; the old intro was the city's own blurb,
+    // copied verbatim, which is the one paragraph Google already has from the
+    // original. Everything here is derived from the posted schedule, so the
+    // wording stays to what the poster says: "no public swim" on a day it lists
+    // nothing, never "closed", which the poster doesn't claim.
+    const slotsByDay = new Map(DAY_ORDER.map((d) => [d, publicSlots(p, d)]));
+    const swimDays = DAY_ORDER.filter((d) => slotsByDay.get(d).length);
+    const dryDays = DAY_ORDER.filter((d) => !slotsByDay.get(d).length);
+    const seasonEnd = seasonEndIso(p.season);
+    const seasonOver = !!seasonEnd && seasonEnd < TODAY;
+    const checkedAt = POOLS_CHECKED_AT[cfg.id];
+    const closuresAhead = upcomingClosures(p);
+    const priceLine = indoor ? dropInSentence(fees) || (p.fees?.note ? `${capFirst(p.fees.note)}.` : '') : 'Swimming is free, with no membership needed.';
+    const lapLine = lapStartSentence(p);
+    // The city's prose description, kept but demoted to an attributed section
+    // and trimmed to whole sentences (the scrape cuts it mid-clause with "…").
+    // NYC's `desc` is a basin size line, not prose, and stays a fact row.
+    const proseDesc = p.desc && !p.basins && !p.desc.includes('·')
+      ? (p.desc.endsWith('…') ? p.desc.slice(0, p.desc.lastIndexOf('.') + 1) : p.desc)
+      : '';
+    const basinFact = !proseDesc && basinRows.length === 1 ? basinsOf(p)[0] : '';
+    const where = p.address ? ` at ${p.address}${p.address.includes(cfg.name) ? '' : `, ${cfg.locality(p)}`}` : ` in ${cfg.name}`;
+    const scheduleWhen = seasonOver ? `On its posted schedule (${p.season})` : p.season && seasonEnd ? `This season (${p.season})` : 'On its current schedule';
+    const closingNow = closuresAhead[0] && closuresAhead[0].from <= TODAY;
+    const summary = [
+      `${p.name} is ${indoor ? 'an indoor' : 'a free outdoor'} public pool${where}.`,
+      closingNow ? closureSentence(closuresAhead[0]) : '',
+      swimDays.length
+        ? `${scheduleWhen} it has public swim ${andList(dayRangeLabels(swimDays, LD_DAYS))}${dryDays.length ? `, and none on ${andList(dayRangeLabels(dryDays, LD_DAYS))}` : ''}.`
+        : '',
+      lapLine,
+      priceLine,
+      closingNow ? '' : closureSentence(closuresAhead[0]),
+    ].filter(Boolean).join(' ');
+
+    const hoursRows = DAY_ORDER.map((d) => [
+      LD_DAYS[d],
+      slotsByDay.get(d).length ? slotsByDay.get(d).map((s) => `${fmtTime(s.start)}–${fmtTime(s.end)} · ${s.kinds.join(', ')}`) : 'No public swim',
+    ]);
+    const freshness = [
+      checkedAt ? `Checked against the official schedule on ${fmtIsoDate(checkedAt)}.` : '',
+      seasonOver ? `The posted season ended ${fmtIsoDay(seasonEnd)}, so the pool may have moved to a new schedule — confirm on the official PDF below.` : '',
+    ].filter(Boolean).join(' ');
+
+    const weekendDays = [6, 0].filter((d) => slotsByDay.get(d).length);
+    const span = (d) => {
+      const s = slotsByDay.get(d);
+      return `${fmtTime(Math.min(...s.map((x) => x.start)))}–${fmtTime(Math.max(...s.map((x) => x.end)))}`;
+    };
+    const lapCount = (p.sessions || []).reduce((n, day) => n + new Set((day || []).filter((x) => x?.kind === 'lap').map((x) => `${x.start}-${x.end}`)).size, 0);
+    const faq = swimDays.length
+      ? [
+          [
+            `Is ${p.name} open on weekends?`,
+            weekendDays.length
+              ? `Yes — public swim on ${andList(weekendDays.map((d) => `${LD_DAYS[d]} (${span(d)})`))}${weekendDays.length === 1 ? `, but none on ${LD_DAYS[weekendDays[0] === 6 ? 0 : 6]}` : ''}.`
+              : 'Not on the posted schedule — it has no public swim on Saturday or Sunday.',
+          ],
+          lapLine ? [`When is lap swim at ${p.name}?`, `${lapLine} There are ${lapCount} lap swim sessions a week; every time is in the lap swim schedule above.`] : null,
+          priceLine ? [`How much does it cost to swim at ${p.name}?`, `${priceLine}${feeRows.length > 1 ? ' Multi-visit and monthly passes are listed under Fees.' : ''}`] : null,
+        ].filter(Boolean)
+      : [];
+
     pages.push({
       kind: 'pool',
       cfg,
       path: path_,
       short: p.name,
       hideFromNav: true,
-      title: `${p.name} — ${indoor ? 'lap swim & schedule' : 'free outdoor pool & swim times'} | ${cfg.name} public pool | ${SITE_NAME}`,
-      description: `${p.name}${p.address ? ` at ${p.address}` : ''}, ${cfg.name}: ${bySeq.length ? `the full weekly schedule — ${bySeq.map(([k]) => KIND_LABEL[k] || k).join(', ')} — plus ` : ''}${feeRows.length ? 'fees, ' : ''}season dates and the official schedule.`,
+      title: indoor
+        ? `${p.name} Hours, Lap Swim Schedule & Fees — ${cfg.name} | ${SITE_NAME}`
+        : `${p.name} — Free Outdoor Pool Hours & Swim Times, ${cfg.name} | ${SITE_NAME}`,
+      description: swimDays.length
+        ? `${p.name}${p.address ? ` (${p.address.replace(/, [A-Z]{2} \d{5}$/, '')})` : ''}: public swim ${dayRangeLabels(swimDays).join(', ')}.${lapLine ? ` ${lapLine}` : ''}${priceLine ? ` ${priceLine}` : ''} Day-by-day hours, closures and fees.`
+        : `${p.name}${p.address ? ` at ${p.address}` : ''}, ${cfg.name}: ${p.notice ? `${String(p.notice).split(/(?<=\.)\s/)[0].slice(0, 160)} ` : ''}${p.notice ? 'Location' : 'location'}, fees and the official schedule.`,
       h1: p.name,
-      intro: `${esc(p.desc || `${p.name} is one of ${cfg.name}'s public pools.`)}${p.season ? ` Season ${esc(p.season)}.` : ''}${p.notice ? ` <strong>${esc(p.notice)}</strong>` : ''} The app shows today's sessions live.`,
+      intro: `${esc(summary)}${p.notice ? ` <strong>${esc(p.notice)}</strong>` : ''} The app shows today's sessions live.`,
       cta: { href: appUrl(cfg, { sport: 'swimming', court: p.id }), label: 'See today’s swim times' },
       body:
+        (swimDays.length
+          ? `<h2>Public swim hours by day</h2>${rows(hoursRows)}${freshness ? `<p class="note">${esc(freshness)}</p>` : ''}`
+          : '') +
+        (closuresAhead.length
+          ? `<h2>Upcoming closures</h2>${rows(closuresAhead.map((c) => [closureWhen(c), closureWhat(c)]))}`
+          : (p.closures || []).length && !seasonOver
+            ? `<h2>Upcoming closures</h2><p class="note">No more closures are posted for this season.</p>`
+            : '') +
         (bySeq.length
-          ? bySeq.map(([k, r]) => `<h2>${esc(KIND_LABEL[k] || k)}</h2>${rows(r)}`).join('\n')
+          ? bySeq.map(([k, r]) => `<h2>${esc(capFirst(KIND_LABEL[k] || k))} schedule</h2>${rows(r)}`).join('\n')
           : `<h2>Schedule</h2><p class="hrs">${esc(p.notice || 'No sessions are currently published for this pool.')}</p>`) +
         `<h2>Location</h2>${rows([
           ['Address', p.address || '—'],
           p.phone ? ['Phone', p.phone] : null,
           ['Type', indoor ? 'Indoor' : 'Outdoor · seasonal · free'],
+          basinFact ? ['Pool', basinFact] : null,
           p.season ? ['Season', p.season] : null,
           p.accessible ? ['Accessibility', 'Wheelchair accessible'] : null,
         ].filter(Boolean))}` +
         (basinRows.length > 1 ? `<h2>Pools at this site</h2>${rows(basinRows)}` : '') +
-        (feeRows.length ? `<h2>Fees</h2>${rows(feeRows)}<p class="meta">${esc(fees.note || `City-wide pool rates, effective ${fees.effective || ''}.`)}</p>` : '') +
+        // A record's own fees carry a note written for readers (NYC's "indoor
+        // pools are members-only"); SF's city-wide table carries a bookkeeping
+        // note ("FY26-27 CPI +2.18%"), so it gets the effective date instead.
+        (feeRows.length ? `<h2>Fees</h2>${rows(feeRows)}<p class="note">${esc(p.fees?.note || `City-wide pool rates${fees.effective ? `, effective ${fmtIsoDate(fees.effective)}` : ''}.`)}</p>` : '') +
         (p.lat && p.lng ? `<p class="more"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=${p.lat},${p.lng}" rel="noopener">Directions</a></p>` : '') +
-        (p.scheduleUrls || []).map((u) => `<p class="more"><a href="${esc(u.url)}" rel="noopener">${esc(u.label || 'Official schedule (PDF)')}</a></p>`).join('') +
+        (p.scheduleUrls || []).map((u, i, all) => `<p class="more"><a href="${esc(u.url)}" rel="noopener">${esc(scheduleLinkLabel(u, i, all, cfg))}</a></p>`).join('') +
+        (faq.length ? `<h2>Common questions</h2>${faq.map(([q, a]) => `<h3>${esc(q)}</h3><p>${esc(a)}</p>`).join('')}` : '') +
+        (proseDesc ? `<h2>About ${esc(p.name)}</h2><p>${esc(proseDesc)}</p><p class="note">Description from ${esc(cfg.attribution.name)}.</p>` : '') +
         (nearPools.length ? `<h2>Other pools nearby</h2><ul class="places">${nearPools.map(({ oid, o, d }) => `<li><a class="nm" href="${poolPath(cfg, oid)}">${esc(o.name)}</a> <span class="meta">${fmtMiles(d)} away</span><div class="meta">${esc(o.address || '')}</div></li>`).join('')}</ul>` : '') +
         `<p class="more"><a href="${poolsIndexPath(cfg)}">All ${esc(cfg.name)} public pools</a></p>`,
       jsonLd: [
@@ -1118,11 +1337,16 @@ ${pageIds.has(id) ? `<a class="map" href="${poolPath(cfg, id)}">Schedule &amp; d
           '@context': 'https://schema.org',
           '@type': 'PublicSwimmingPool',
           name: p.name,
-          description: p.desc || undefined,
+          description: summary || p.desc || undefined,
           address: { '@type': 'PostalAddress', streetAddress: p.address, addressLocality: cfg.locality(p), addressRegion: cfg.region },
           geo: p.lat && p.lng ? { '@type': 'GeoCoordinates', latitude: p.lat, longitude: p.lng } : undefined,
           telephone: p.phone || undefined,
           isAccessibleForFree: !indoor ? true : undefined,
+          // Public-swim windows only, and only while the posted season is
+          // current — stale hours in structured data are worse than none.
+          openingHoursSpecification: swimDays.length && !seasonOver
+            ? openingHours({ dropins: { swimming: Array.from({ length: 7 }, (_, d) => publicSlots(p, d).map((s) => [s.start, s.end])) } })
+            : undefined,
         },
         breadcrumb([[cfg.name, cfg.prefix || '/'], ['Pools', poolsIndexPath(cfg)], [p.name, path_]]),
       ],

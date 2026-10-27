@@ -182,8 +182,15 @@ function parseOutdoorPage(html) {
   };
   if (!hoursM) console.log('  ⚠ outdoor hours prose did not parse — using the documented default');
 
-  const open = /pools are open/i.test(text);
-  const end = laborDay(new Date().getFullYear());
+  // The banner's "pools are open" wording outlives the season — in late October
+  // the page still matched it, so every outdoor pool shipped daily swim hours
+  // and the label promised "through Labor Day (9/7)", seven weeks after it.
+  // NYC publishes the season as late June through Labor Day, so outside June 1
+  // to Labor Day the pools are closed whatever the page's prose says.
+  const now = new Date();
+  const end = laborDay(now.getFullYear());
+  const inWindow = now.getMonth() >= 5 && now <= new Date(end.getFullYear(), end.getMonth(), end.getDate() + 1);
+  const open = inWindow && /pools are open/i.test(text);
   return {
     hours,
     season: {
