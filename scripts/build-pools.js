@@ -629,6 +629,20 @@ function seasonFromLabel(label) {
   return `${a.mon} ${a.day} – ${b.mon} ${b.day}`;
 }
 
+// Of a pool's sequential posters, the one in force today; else the next to
+// start (a gap between posters, like Mission's Oct 18–19); else the most recent
+// to end, so a pool whose newer poster isn't up yet keeps its last real
+// schedule. Posters without dates can't be placed, so with any of those the
+// whole set is kept as before.
+function pickCurrentPoster(parsed) {
+  if (parsed.length < 2 || parsed.some((p) => !p.bounds)) return parsed;
+  const now = Date.now();
+  const current = parsed.find((p) => p.bounds.from <= now && now < +p.bounds.to + DAY_MS);
+  const next = parsed.filter((p) => p.bounds.from > now).sort((a, b) => a.bounds.from - b.bounds.from)[0];
+  const last = [...parsed].sort((a, b) => b.bounds.to - a.bounds.to)[0];
+  return [current || next || last];
+}
+
 async function scrapePool(m) {
   const { docs: scheduleUrls, desc } = await fetchFacilityPage(m.slug);
   // A facility with separate warm-pool and cool-pool PDFs (North Beach) gets each
@@ -640,12 +654,26 @@ async function scrapePool(m) {
   const week = [[], [], [], [], [], [], []];
   const seen = week.map(() => new Set());
   const closureEntries = [];
+  const parsed = [];
   for (const d of scheduleUrls) {
-    const tag = tagPdfs ? poolTag(d.label) : null;
     const items = await pdfItems(d.url);
     const { sessions: grid = {}, notes = [] } = parseGrid(items) || {};
     const bounds = seasonBounds(d.label, items);
+    // Closures are dated, so every poster's count, whichever schedule is live.
     for (const n of notes) closureEntries.push(...closuresFromNote(n, bounds));
+    parsed.push({ d, grid, bounds });
+  }
+  // Warm and cool pool posters run at the same time and are unioned. Anything
+  // else with dates on each poster is a SEQUENCE — Mission posts "Aug18_toOct17"
+  // then "Oct20_toNov21", MLK "pt1_Aug 18_Sep26" then "pt2_Sep29_Dec 12" — and
+  // unioning those stacked two schedules into one week (Mission's lap swim read
+  // 7:30–9 and 8–9 side by side) under the first poster's long-gone season.
+  const live = tagPdfs ? parsed : pickCurrentPoster(parsed);
+  if (live.length < parsed.length) {
+    console.log(`    ↻ ${m.name} — ${parsed.length} sequential posters; using "${live[0].d.label}"`);
+  }
+  for (const { d, grid } of live) {
+    const tag = tagPdfs ? poolTag(d.label) : null;
     for (const dow of Object.keys(grid))
       for (const s of grid[dow]) {
         const k = (tag || '') + s.kind + (s.label || '') + s.start + s.end;
@@ -661,7 +689,7 @@ async function scrapePool(m) {
   // Prefer the posted dates over the curated ones, and say so when they disagree —
   // a mismatch means the curated table is behind the poster (or SFRP changed a
   // label format and the parse needs a look).
-  const posted = scheduleUrls.map((d) => seasonFromLabel(d.label)).find(Boolean);
+  const posted = live.map(({ d }) => seasonFromLabel(d.label)).find(Boolean);
   const season = posted || m.season;
   if (posted && posted !== m.season) {
     console.log(`    ↻ ${m.name} — season from poster: ${posted} (curated said ${m.season})`);

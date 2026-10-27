@@ -1153,7 +1153,7 @@
       "lat": 37.725545,
       "lng": -122.393722,
       "phone": "(415) 288-2807",
-      "season": "Aug 18 – Sep 26",
+      "season": "Sep 29 – Dec 12",
       "desc": "Another hidden pool gem, MLK Pool features a 25-yard x 25-meter pool and a separate wading pool for tots.",
       "programs": [
         "lap",
@@ -1204,16 +1204,6 @@
             "end": 930
           },
           {
-            "kind": "lap",
-            "start": 930,
-            "end": 1050
-          },
-          {
-            "kind": "lessons",
-            "start": 930,
-            "end": 1080
-          },
-          {
             "kind": "other",
             "label": "Bayview Safety Swim",
             "start": 930,
@@ -1266,16 +1256,6 @@
             "kind": "lap",
             "start": 750,
             "end": 930
-          },
-          {
-            "kind": "lap",
-            "start": 930,
-            "end": 1050
-          },
-          {
-            "kind": "lessons",
-            "start": 930,
-            "end": 1080
           },
           {
             "kind": "other",
@@ -1322,16 +1302,6 @@
             "end": 930
           },
           {
-            "kind": "lap",
-            "start": 930,
-            "end": 1050
-          },
-          {
-            "kind": "lessons",
-            "start": 930,
-            "end": 1080
-          },
-          {
             "kind": "other",
             "label": "Bayview Safety Swim",
             "start": 930,
@@ -1384,16 +1354,6 @@
             "kind": "lap",
             "start": 750,
             "end": 930
-          },
-          {
-            "kind": "lap",
-            "start": 930,
-            "end": 1050
-          },
-          {
-            "kind": "lessons",
-            "start": 930,
-            "end": 1080
           },
           {
             "kind": "other",
@@ -1502,12 +1462,11 @@
       "lat": 37.759653,
       "lng": -122.422606,
       "phone": null,
-      "season": "Aug 18 – Oct 17",
+      "season": "Oct 20 – Nov 21",
       "programs": [
         "lap",
         "family",
         "senior",
-        "lessons",
         "parent_child"
       ],
       "scheduleUrls": [
@@ -1526,28 +1485,13 @@
         [
           {
             "kind": "lap",
-            "start": 450,
-            "end": 540
-          },
-          {
-            "kind": "lap",
             "start": 480,
             "end": 540
           },
           {
             "kind": "parent_child",
             "start": 555,
-            "end": 660
-          },
-          {
-            "kind": "parent_child",
-            "start": 555,
             "end": 615
-          },
-          {
-            "kind": "senior",
-            "start": 555,
-            "end": 660
           },
           {
             "kind": "senior",
@@ -1558,43 +1502,13 @@
             "kind": "lap",
             "start": 630,
             "end": 720
-          },
-          {
-            "kind": "lap",
-            "start": 675,
-            "end": 810
-          },
-          {
-            "kind": "lap",
-            "start": 840,
-            "end": 930
-          },
-          {
-            "kind": "family",
-            "start": 945,
-            "end": 1035
-          },
-          {
-            "kind": "lap",
-            "start": 1065,
-            "end": 1140
           }
         ],
         [
           {
             "kind": "lap",
-            "start": 450,
-            "end": 540
-          },
-          {
-            "kind": "lap",
             "start": 480,
             "end": 540
-          },
-          {
-            "kind": "senior",
-            "start": 555,
-            "end": 660
           },
           {
             "kind": "senior",
@@ -1605,29 +1519,9 @@
             "kind": "lap",
             "start": 630,
             "end": 720
-          },
-          {
-            "kind": "lap",
-            "start": 690,
-            "end": 810
-          },
-          {
-            "kind": "family",
-            "start": 870,
-            "end": 990
-          },
-          {
-            "kind": "lap",
-            "start": 1020,
-            "end": 1140
           }
         ],
         [
-          {
-            "kind": "lap",
-            "start": 450,
-            "end": 540
-          },
           {
             "kind": "lap",
             "start": 480,
@@ -1635,16 +1529,6 @@
           },
           {
             "kind": "parent_child",
-            "start": 555,
-            "end": 660
-          },
-          {
-            "kind": "senior",
-            "start": 555,
-            "end": 660
-          },
-          {
-            "kind": "parent_child",
             "start": 585,
             "end": 705
           },
@@ -1652,43 +1536,13 @@
             "kind": "senior",
             "start": 585,
             "end": 705
-          },
-          {
-            "kind": "lap",
-            "start": 675,
-            "end": 810
-          },
-          {
-            "kind": "lap",
-            "start": 840,
-            "end": 930
-          },
-          {
-            "kind": "family",
-            "start": 945,
-            "end": 1035
-          },
-          {
-            "kind": "lap",
-            "start": 1065,
-            "end": 1140
           }
         ],
         [
           {
             "kind": "lap",
-            "start": 450,
-            "end": 540
-          },
-          {
-            "kind": "lap",
             "start": 480,
             "end": 540
-          },
-          {
-            "kind": "senior",
-            "start": 555,
-            "end": 660
           },
           {
             "kind": "senior",
@@ -1699,29 +1553,9 @@
             "kind": "lap",
             "start": 630,
             "end": 720
-          },
-          {
-            "kind": "lap",
-            "start": 690,
-            "end": 810
-          },
-          {
-            "kind": "lap",
-            "start": 870,
-            "end": 990
-          },
-          {
-            "kind": "family",
-            "start": 1020,
-            "end": 1140
           }
         ],
         [
-          {
-            "kind": "lessons",
-            "start": 540,
-            "end": 660
-          },
           {
             "kind": "lap",
             "start": 600,
@@ -1731,21 +1565,6 @@
             "kind": "family",
             "start": 690,
             "end": 840
-          },
-          {
-            "kind": "lap",
-            "start": 690,
-            "end": 765
-          },
-          {
-            "kind": "family",
-            "start": 840,
-            "end": 930
-          },
-          {
-            "kind": "lap",
-            "start": 960,
-            "end": 1050
           }
         ]
       ],
@@ -2845,5 +2664,5 @@
       }
     ]
   },
-  "fetchedAt": "2026-10-26T20:21:15.555Z"
+  "fetchedAt": "2026-10-27T20:09:57.627Z"
 }
