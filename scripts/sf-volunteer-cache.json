@@ -1,53 +1,6 @@
 {
   "entries": [
     {
-      "id": "vol-a07Pi00003zJscrIAC",
-      "source": "sfrpd-volunteer",
-      "name": "GGP Conservatory Valley Volunteer Workparty",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "GGP Sec 1 Conservatory Valley",
-      "when": "Wed · 9:30 AM - 11:30 AM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 7,
-      "unlimited": false,
-      "start": "2026-10-28",
-      "end": "2027-04-21",
-      "instructor": "Friends of Conservatory Valley",
-      "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the RPD gardeners in a weekly recurring volunteer workparty at the Valley of the Conservatory of Flowers. Volunteer tasks include the maintenance of ornamental planting beds. All tools provided by RPD. Children 13 years and older accompanied by an adult are welcome. No school groups.\n\nMeet on the steps of the Conservatory of Flowers, 100 JFK Drive.",
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
-      "id": "vol-a074U00001TxzROQAZ",
-      "source": "sfrpd-volunteer",
-      "name": "CNPS Bayview Hill",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "NRD Bayview Hill",
-      "when": "Wed · 12:00 PM - 2:30 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 15,
-      "unlimited": false,
-      "start": "2026-10-28",
-      "end": "2026-10-28",
-      "oneDay": true,
-      "instructor": "California Native Plant Society",
-      "activity": "Horticultural Maintenance",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin SF Recreation and Parks’ Natural Resources Division and the California Native Plant Society for their weekly Wednesday habitat restoration project. Tucked away in the southeast corner of the city, Bayview Park supports a remarkably diverse population of plants and animals. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Everyone 14 years old and older is invited; anyone under 14 yo must be accompanied by a guardian. Tools and gloves will be provided. Please be punctual. \n\nMeet in front of 938 Key Ave. in front of the park entrance gate.",
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a07Pi00006U3bzpIAB",
       "source": "sfrpd-volunteer",
       "name": "Haunted Maze",
@@ -208,6 +161,29 @@
       "instructor": "Friends of the Tree Fern Dell",
       "activity": "Habitat Restoration",
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the Friends of the Tree Fern Dell and the RPD Gardeners in a weekly volunteer workparty. Enjoy this historic site in Golden Gate Park while delivering care to extraordinary horticultural specimens that date back 200 million years. All tools and gloves provided.\n\nMeet at the entrance to the Tree Fern Dell at Conservatory Drive West and JFK Drive.",
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a07Pi00003zJscrIAC",
+      "source": "sfrpd-volunteer",
+      "name": "GGP Conservatory Valley Volunteer Workparty",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "GGP Sec 1 Conservatory Valley",
+      "when": "Wed · 9:30 AM - 11:30 AM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 11,
+      "unlimited": false,
+      "start": "2026-11-04",
+      "end": "2027-04-21",
+      "instructor": "Friends of Conservatory Valley",
+      "activity": "Habitat Restoration",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the RPD gardeners in a weekly recurring volunteer workparty at the Valley of the Conservatory of Flowers. Volunteer tasks include the maintenance of ornamental planting beds. All tools provided by RPD. Children 13 years and older accompanied by an adult are welcome. No school groups.\n\nMeet on the steps of the Conservatory of Flowers, 100 JFK Drive.",
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -931,5 +907,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-10-28T12:09:13.103Z"
+  "fetchedAt": "2026-10-28T22:12:46.092Z"
 }
