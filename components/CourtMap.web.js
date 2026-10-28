@@ -173,6 +173,9 @@ function ensureStyles() {
 // distance) so dense areas — basketball especially — don't wall off the map;
 // zoom past DECLUSTER_ZOOM and every court shows on its own.
 const CLUSTER_RADIUS = 55; // px: courts closer than this on screen group together
+const WHEEL_PX_COARSE = 90; // mouse wheel — Leaflet's default is 60
+const WHEEL_PX_FINE = 2; // trackpad / pinch
+const WHEEL_COARSE_PX = 50; // |deltaY| at or above this reads as a mouse notch
 const DECLUSTER_ZOOM = 16; // at/after this zoom, always show individual courts
 
 function individualIcon(c, sport) {
@@ -328,6 +331,15 @@ const CourtMap = forwardRef(function CourtMap(
     });
     layerRef.current = L.layerGroup().addTo(map);
     mapRef.current = map;
+    const onWheel = (e) => {
+      // Trackpad pinch-zoom arrives as a wheel event with ctrlKey set.
+      const fine =
+        e.ctrlKey ||
+        (e.deltaMode === 0 && (Math.abs(e.deltaY) < WHEEL_COARSE_PX || e.deltaY % 1 !== 0));
+      map.options.wheelPxPerZoomLevel = fine ? WHEEL_PX_FINE : WHEEL_PX_COARSE;
+    };
+    // Capture phase so the value is set before Leaflet's own handler reads it.
+    elRef.current.addEventListener('wheel', onWheel, { capture: true, passive: true });
     // Re-cluster on zoom (grouping is a function of zoom + geography, so panning
     // needs no rebuild — the geo-anchored markers just move with the map).
     map.on('zoomend', () => {
@@ -341,7 +353,9 @@ const CourtMap = forwardRef(function CourtMap(
     });
     // Container may size after mount — make sure Leaflet measures correctly.
     setTimeout(() => map.invalidateSize(), 0);
+    const wheelEl = elRef.current;
     return () => {
+      if (wheelEl) wheelEl.removeEventListener('wheel', onWheel, { capture: true });
       map.remove();
       mapRef.current = null;
     };
