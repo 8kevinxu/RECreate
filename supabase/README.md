@@ -86,6 +86,7 @@ new:
 | `031_chat_push.sql` | Push on every new chat message (run, signal, 1:1) via one `chat_messages` trigger — coalesced per recipient per thread (5 min group, 30 s direct) with `chat_notify_log`, skipping blocked senders and muted threads (`chat_mutes`, owner-only RLS); a failed push never fails the insert |
 | `032_profile_rpcs.sql` | `my_profile()` (your own full row) + `find_by_friend_code()` (exact-code lookup → id, name). Adds only; safe any time. The app reads through these from the build after 1.3.0 |
 | `033_profile_columns.sql` | PRIVACY: clients can read only `profiles.id` + `display_name` (column grant, as in `029`), ending the `select *` dump of every user's age/bio/neighborhood/interests/friend code. **Apply only once the build using `032` is what nearly everyone runs** — older builds read those columns directly and would fail to load the signed-in profile |
+| `036_report_triage.sql` | Report triage: `content_reports.status` (open → waiting → resolved / dismissed) + `resolved_at` (auto-stamped) + `resolution` note; the insert policy requires a report to arrive open; the per-report email ends in the `update` that closes it; a `pg_cron` job `reports-digest-daily` (15:30 UTC) emails the open queue, overdue first, and sends nothing when the queue is empty. Needs `pg_cron`. Independent of `034`/`035` |
 
 > Note: migrations 001–009 were authored before the RECreate rebrand and still
 > reference the old `hoop_*` table names. Apply them **in order** — `010` renames
@@ -96,11 +97,30 @@ new:
 
 Everything a user reports — wrong-info reports on the court/class/pool cards,
 Settings → Report a problem, and reported messages/reviews/signals/profiles/runs
-— lands in `content_reports`, which the app can only insert into. Read it with
-`queries/reports.sql`: paste each query into the SQL Editor and save it as a
-snippet. Query 1 groups the data flags by entity (ranked by distinct reporters,
-with a link that opens the app on that court); query 2 lists everything else,
-newest first.
+— lands in `content_reports`, which the app can only insert into. It is worked
+as a **triage queue** (`036`):
+
+1. **Each report is emailed as it arrives** (below), ending in the one-line
+   `update` that closes it — and, for a wrong-info flag, the one that closes
+   every open flag on the same court/pool/class.
+2. **A digest arrives each morning** (`reports-digest-daily`, 15:30 UTC) when
+   anything is still `open`, listing it overdue-first: people reports and
+   problems after 24 hours, wrong-info flags after 7 days. An empty queue sends
+   nothing.
+3. **`queries/reports.sql` shows only what is open or waiting** — query 1 is
+   people & problems (check it first; App Store review expects prompt action),
+   query 2 groups wrong-info flags by entity, ranked by distinct reporters, with
+   a link into the app and how the last flag on that entity was closed. Closing
+   statements and a history query are at the bottom.
+
+A report leaves the queue when its `status` changes: `resolved` (fixed),
+`dismissed` (not actionable), or `waiting` (seen, fix pending upstream or in the
+next scrape — still listed and counted, but no longer nagged about).
+`resolved_at` is stamped automatically and cleared on reopen; put what you did
+in `resolution`, since a new report on the same entity arrives `open` and the
+queue shows it beside the last one. For a wrong-info flag the fix is rarely in
+the generated `data/` (the next scrape overwrites it) — it's a curated table in
+the build script, or a report upstream, which is what `waiting` is for.
 
 Each new report is also **emailed to support.recreate@gmail.com** by the
 `content_reports_email` trigger (`028`), through Resend's API. It does nothing
