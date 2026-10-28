@@ -10,11 +10,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Intermediate pool · 75' x 60' x 3.5'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -35,90 +33,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -131,11 +52,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Olympic pool · 330' x 120' x 4'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -156,90 +75,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -252,11 +94,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Intermediate pool · 75' x 60' x 3.5'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -277,90 +117,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -373,11 +136,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Intermediate pool · 75' x 60' x 3.5'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -398,90 +159,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -494,11 +178,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Intermediate pool · 75' x 60' x 3.5'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -519,90 +201,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -615,11 +220,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Olympic pool · 164' x 104' x 3.6'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -640,90 +243,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -736,11 +262,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Wading pool · 24' x 24' x 1'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -761,90 +285,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -857,11 +304,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Wading pool · 24' x 24 x 1'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -882,90 +327,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -978,11 +346,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Wading pool · 27' x 27' x 1'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -1003,90 +369,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -1099,11 +388,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Wading pool · 24' x 24' x 1'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -1124,90 +411,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -1220,11 +430,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Wading pool · 48' x 48' x 1'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -1245,90 +453,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -1341,11 +472,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Mini pool · 43' x 25.5' x 3'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -1366,90 +495,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -1462,11 +514,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Mini pool · 40' x 30' x 3'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -1487,90 +537,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -1583,11 +556,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Olympic pool · 330' x 165' x 4.25",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -1608,90 +579,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -1704,11 +598,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Intermediate pool · 75' x 60' x 3'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -1729,90 +621,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -1825,11 +640,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Intermediate pool · 75' x 60' x 3'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -1850,90 +663,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -1946,11 +682,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Intermediate pool · 75' x 60' x 3'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -1971,90 +705,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -2067,11 +724,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Intermediate pool · 75' x 60' x 3'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -2092,90 +747,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -2188,11 +766,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Olympic pool · 230' x 100' x 4'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -2213,90 +789,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -2309,11 +808,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Olympic pool · 330' x 130' x 4'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -2334,90 +831,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -2430,11 +850,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Olympic pool · 259' x 162' x 3.5'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -2455,90 +873,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -2551,11 +892,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Wading pool · 30' x 20' x 1'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -2576,90 +915,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -2672,11 +934,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Wading pool · 24' x 24' x 1'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -2697,90 +957,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -2793,11 +976,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Wading pool · 24' x 24' x 1'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -2818,90 +999,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -2914,11 +1018,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Wading pool · 30' x 20' x 1'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -2939,90 +1041,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -3035,11 +1060,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Wading pool · 42' x 52' x 1.5'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -3060,90 +1083,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -3156,11 +1102,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Mini pool · 40' x 20' x 3'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -3181,90 +1125,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -3277,11 +1144,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Mini pool · 40' x 20' x 3'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -3302,90 +1167,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -3398,11 +1186,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Mini pool · 55' x 30' x 2.5'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -3423,90 +1209,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -3519,11 +1228,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Mini pool · 40' x 20' x 3'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -3544,90 +1251,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -3640,11 +1270,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Mini pool · 40' x 20' x 3'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -3665,90 +1293,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -3761,11 +1312,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Intermediate pool · 120' x 45' x 4'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -3786,90 +1335,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -3882,11 +1354,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Intermediate pool · 100' x 50' x 9'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -3907,90 +1377,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -4003,11 +1396,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Intermediate pool · 75' x 60' x 3'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -4028,90 +1419,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -4124,11 +1438,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Olympic pool · 165' x 98' x 3.5'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -4149,90 +1461,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -4245,11 +1480,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Olympic pool · 220' x 162' x 10.5'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -4270,90 +1503,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -4366,11 +1522,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Olympic pool · 235' x 82' x 3.5'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -4391,90 +1545,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -4487,11 +1564,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Intermediate pool · 145' x 49' x 4'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -4512,90 +1587,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -4608,11 +1606,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Olympic pool",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -4633,90 +1629,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -4729,11 +1648,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Intermediate pool · 165' x 75' x 4'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -4754,90 +1671,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -4850,11 +1690,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Intermediate pool · 75' x 60' x 3.5'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -4875,90 +1713,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -4971,11 +1732,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Olympic pool · 239' x 97' x 4'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -4996,90 +1755,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -5092,11 +1774,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Intermediate pool · 75' x 60' x 3.5'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -5117,90 +1797,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -5213,11 +1816,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Wading pool · 41.67' x 25' x 1.5'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -5238,90 +1839,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -5334,11 +1858,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Wading pool · 30' x 20' x 1.5'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -5359,90 +1881,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -5455,11 +1900,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Wading pool · 67' x 98' x 2.5'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -5480,90 +1923,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -5576,11 +1942,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Wading pool · 220' x 92' x 2'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -5601,90 +1965,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -5697,11 +1984,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Wading pool · 30' x 20' x 1.5'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -5722,90 +2007,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -5818,11 +2026,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Wading pool · 48' x 97' x 1.5'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -5843,90 +2049,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -5939,11 +2068,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Wading pool · 24' x 24' x 9",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -5964,90 +2091,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -6060,11 +2110,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Mini pool · 50' x 30' x 3'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -6085,90 +2133,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -6181,11 +2152,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Mini pool · 40' x 20' x 3'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -6206,90 +2175,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -6302,11 +2194,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Mini pool · 43' x 25.5' x 3'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -6327,90 +2217,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -6423,11 +2236,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Mini pool · 40' x 20' x 3'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -6448,90 +2259,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -6544,11 +2278,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Diving pool · 35' x 47' x 9'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -6569,90 +2301,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -6665,11 +2320,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Diving pool · 60' x 40' x 8'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -6690,90 +2343,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -6786,11 +2362,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Olympic pool · 330' x 165' x 4'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -6811,90 +2385,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -6907,11 +2404,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Intermediate pool · 75' x 60' x 3.5'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -6932,90 +2427,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -7028,11 +2446,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Intermediate pool · 75' x 60' x 3'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -7053,90 +2469,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -7149,11 +2488,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Intermediate pool · 75' x 40' x 4'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -7174,90 +2511,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -7270,11 +2530,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Wading pool · 20' x 20' x 1'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -7295,90 +2553,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -7391,11 +2572,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Mini pool · 40' x 20' x 3'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -7416,90 +2595,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -7512,11 +2614,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Mini pool · 40' x 20' x 3'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -7537,90 +2637,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -7633,11 +2656,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Mini pool · 40' x 20' x 3'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -7658,90 +2679,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -7754,11 +2698,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Diving pool · 35' x 35' x 10.5'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -7779,90 +2721,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -7875,11 +2740,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Intermediate pool · 140' x 76' x 5'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -7900,90 +2763,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -7996,11 +2782,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Olympic pool · 165' x 100' x 3.5'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -8021,90 +2805,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -8117,11 +2824,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Intermediate pool · 75' x 60' x 3.5'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -8142,90 +2847,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -8238,11 +2866,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Intermediate pool · 75' x 60' x 3.5'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -8263,90 +2889,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -8359,11 +2908,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Wading pool · 24' X24' X 1.5'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -8384,90 +2931,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -8480,11 +2950,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Wading pool · 24' x 24' x 1.5'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -8505,90 +2973,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -8601,11 +2992,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Mini pool · 40' x 20' x 3'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -8626,90 +3015,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -8722,11 +3034,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Mini pool · 55' x 30' x 3'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -8747,90 +3057,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -8843,11 +3076,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Mini pool · 40' x 20' x 3'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -8868,90 +3099,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -8964,11 +3118,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Wading pool · 20' (round) x 1.5'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -8989,90 +3141,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -9085,11 +3160,9 @@
       "indoor": false,
       "accessible": false,
       "desc": "Wading pool · 20' x 20' x 1'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -9110,90 +3183,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -9206,11 +3202,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Intermediate pool · 82' x 52' x 4'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -9231,90 +3225,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -9327,11 +3244,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Olympic pool · 329' x 151' x 4.6'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -9352,90 +3267,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -9448,11 +3286,9 @@
       "indoor": false,
       "accessible": true,
       "desc": "Wading pool · 50' x 25' x 1'",
-      "season": "Open daily through Labor Day (9/7)",
+      "season": "Closed for the season — NYC outdoor pools run late June through Labor Day",
       "seasonal": true,
-      "programs": [
-        "family"
-      ],
+      "programs": [],
       "fees": {
         "effective": "2026-01-01",
         "source": "https://www.nycgovparks.org/facilities/outdoor-pools",
@@ -9473,90 +3309,13 @@
         }
       ],
       "sessions": [
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "family",
-            "start": 660,
-            "end": 900
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -11364,231 +5123,6 @@
       ]
     },
     {
-      "id": "nyc-pool-constance-baker-motley-pool",
-      "name": "Constance Baker Motley Pool",
-      "address": "E. 54th St. bet. First and Second Aves.",
-      "lat": 40.7565,
-      "lng": -73.9651,
-      "phone": "(212) 754-5411",
-      "indoor": true,
-      "accessible": true,
-      "desc": "Intermediate pool · 54' x 50' x 12'",
-      "season": "Year-round (recreation center members)",
-      "seasonal": false,
-      "notice": "On Wednesday, October 28, 2026, the weight room at Constance Baker Motley Recreation Center will be temporarily closed as we prepare the space for the installation of new fitness equipment. The weight room will remain closed on Thursday, October 29, 2026, from 7:00 a.m. until 12:00 p.m. while the new equipment is being installed. We apologize for any inconvenience.",
-      "programs": [
-        "lap",
-        "family",
-        "exercise",
-        "lessons"
-      ],
-      "fees": {
-        "effective": "2026-01-01",
-        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
-        "note": "Recreation center membership — indoor pools are members-only",
-        "groups": [
-          {
-            "id": "youth",
-            "label": "Ages 24 and under",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                0
-              ]
-            ]
-          },
-          {
-            "id": "adult",
-            "label": "Adults (25–61)",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                150
-              ],
-              [
-                "Six months",
-                75
-              ]
-            ]
-          },
-          {
-            "id": "senior",
-            "label": "Seniors 62+, veterans, people with disabilities",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                25
-              ]
-            ]
-          }
-        ]
-      },
-      "scheduleUrls": [
-        {
-          "label": "Pool schedule",
-          "url": "https://www.nycgovparks.org/facilities/recreationcenters/M130/schedule#Pool-schedule"
-        }
-      ],
-      "sessions": [
-        [],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 705
-          },
-          {
-            "kind": "family",
-            "start": 720,
-            "end": 870
-          },
-          {
-            "kind": "exercise",
-            "start": 870,
-            "end": 930
-          },
-          {
-            "kind": "lap",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 705
-          },
-          {
-            "kind": "family",
-            "start": 720,
-            "end": 870
-          },
-          {
-            "kind": "exercise",
-            "start": 870,
-            "end": 930
-          },
-          {
-            "kind": "lessons",
-            "start": 960,
-            "end": 1020
-          },
-          {
-            "kind": "lessons",
-            "start": 1020,
-            "end": 1110
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 705
-          },
-          {
-            "kind": "family",
-            "start": 720,
-            "end": 870
-          },
-          {
-            "kind": "exercise",
-            "start": 870,
-            "end": 930
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 705
-          },
-          {
-            "kind": "family",
-            "start": 720,
-            "end": 870
-          },
-          {
-            "kind": "lessons",
-            "start": 870,
-            "end": 930
-          },
-          {
-            "kind": "lessons",
-            "start": 960,
-            "end": 1020
-          },
-          {
-            "kind": "lessons",
-            "start": 1020,
-            "end": 1110
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 705
-          },
-          {
-            "kind": "family",
-            "start": 720,
-            "end": 870
-          },
-          {
-            "kind": "exercise",
-            "start": 870,
-            "end": 930
-          },
-          {
-            "kind": "exercise",
-            "start": 960,
-            "end": 1020
-          },
-          {
-            "kind": "lap",
-            "start": 1020,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "lessons",
-            "start": 480,
-            "end": 570
-          },
-          {
-            "kind": "lessons",
-            "start": 570,
-            "end": 630
-          },
-          {
-            "kind": "lessons",
-            "start": 690,
-            "end": 720
-          },
-          {
-            "kind": "lessons",
-            "start": 720,
-            "end": 780
-          },
-          {
-            "kind": "family",
-            "start": 795,
-            "end": 885
-          }
-        ]
-      ]
-    },
-    {
       "id": "nyc-pool-roy-wilkins-recreation-center-pool",
       "name": "Roy Wilkins Recreation Center Pool",
       "address": "177th Street and Baisley Boulevard",
@@ -11916,6 +5450,231 @@
             "kind": "youth",
             "start": 1020,
             "end": 1170
+          }
+        ]
+      ]
+    },
+    {
+      "id": "nyc-pool-constance-baker-motley-pool",
+      "name": "Constance Baker Motley Pool",
+      "address": "E. 54th St. bet. First and Second Aves.",
+      "lat": 40.7565,
+      "lng": -73.9651,
+      "phone": "(212) 754-5411",
+      "indoor": true,
+      "accessible": true,
+      "desc": "Intermediate pool · 54' x 50' x 12'",
+      "season": "Year-round (recreation center members)",
+      "seasonal": false,
+      "notice": "On Wednesday, October 28, 2026, the weight room at Constance Baker Motley Recreation Center will be temporarily closed as we prepare the space for the installation of new fitness equipment. The weight room will remain closed on Thursday, October 29, 2026, from 7:00 a.m. until 12:00 p.m. while the new equipment is being installed. We apologize for any inconvenience.",
+      "programs": [
+        "lap",
+        "family",
+        "exercise",
+        "lessons"
+      ],
+      "fees": {
+        "effective": "2026-01-01",
+        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
+        "note": "Recreation center membership — indoor pools are members-only",
+        "groups": [
+          {
+            "id": "youth",
+            "label": "Ages 24 and under",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                0
+              ]
+            ]
+          },
+          {
+            "id": "adult",
+            "label": "Adults (25–61)",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                150
+              ],
+              [
+                "Six months",
+                75
+              ]
+            ]
+          },
+          {
+            "id": "senior",
+            "label": "Seniors 62+, veterans, people with disabilities",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                25
+              ]
+            ]
+          }
+        ]
+      },
+      "scheduleUrls": [
+        {
+          "label": "Pool schedule",
+          "url": "https://www.nycgovparks.org/facilities/recreationcenters/M130/schedule#Pool-schedule"
+        }
+      ],
+      "sessions": [
+        [],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 705
+          },
+          {
+            "kind": "family",
+            "start": 720,
+            "end": 870
+          },
+          {
+            "kind": "exercise",
+            "start": 870,
+            "end": 930
+          },
+          {
+            "kind": "lap",
+            "start": 960,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 705
+          },
+          {
+            "kind": "family",
+            "start": 720,
+            "end": 870
+          },
+          {
+            "kind": "exercise",
+            "start": 870,
+            "end": 930
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 1020,
+            "end": 1110
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 705
+          },
+          {
+            "kind": "family",
+            "start": 720,
+            "end": 870
+          },
+          {
+            "kind": "exercise",
+            "start": 870,
+            "end": 930
+          },
+          {
+            "kind": "family",
+            "start": 960,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 705
+          },
+          {
+            "kind": "family",
+            "start": 720,
+            "end": 870
+          },
+          {
+            "kind": "lessons",
+            "start": 870,
+            "end": 930
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 1020,
+            "end": 1110
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 705
+          },
+          {
+            "kind": "family",
+            "start": 720,
+            "end": 870
+          },
+          {
+            "kind": "exercise",
+            "start": 870,
+            "end": 930
+          },
+          {
+            "kind": "exercise",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lap",
+            "start": 1020,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lessons",
+            "start": 480,
+            "end": 570
+          },
+          {
+            "kind": "lessons",
+            "start": 570,
+            "end": 630
+          },
+          {
+            "kind": "lessons",
+            "start": 690,
+            "end": 720
+          },
+          {
+            "kind": "lessons",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "family",
+            "start": 795,
+            "end": 885
           }
         ]
       ]
@@ -12777,10 +6536,10 @@
     }
   ],
   "season": {
-    "open": true,
-    "label": "Open daily through Labor Day (9/7)",
-    "checked": "2026-10-27",
+    "open": false,
+    "label": "Closed for the season — NYC outdoor pools run late June through Labor Day",
+    "checked": "2026-10-28",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-10-27T17:15:29.583Z"
+  "fetchedAt": "2026-10-28T04:43:32.187Z"
 }
