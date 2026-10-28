@@ -2,7 +2,7 @@
 -- content_reports (insert-only RLS), so this is where reports are worked: paste
 -- a query into the dashboard's SQL Editor and save it as a snippet.
 --
--- The loop (036): each report is emailed as it arrives, with the `update` that
+-- The loop (041): each report is emailed as it arrives, with the `update` that
 -- closes it; a digest email each morning lists whatever is still open, overdue
 -- first; queries 1 and 2 show only what is open or waiting. A report leaves
 -- the queue when you change its status:

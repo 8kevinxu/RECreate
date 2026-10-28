@@ -34,7 +34,7 @@ create table if not exists public.content_reports (
   ref_id           text,                                              -- id of the reported row (message/review/signal/run); 'data' reports name the entity ('court:<id>:<sport>' | 'class:<id>' | 'pool:<id>'); 'issue' reports carry free text in reason; 'closure' reports name a closure_reports id (its public note)
   reason           text        check (reason is null or char_length(reason) <= 500),
   created_at       timestamptz not null default now(),
-  -- Triage (036): open → waiting (seen, fix pending) → resolved | dismissed.
+  -- Triage (041): open → waiting (seen, fix pending) → resolved | dismissed.
   -- Only the dashboard / service role changes these; see queries/reports.sql.
   status           text        not null default 'open'
                                constraint content_reports_status_check check (status in ('open', 'waiting', 'resolved', 'dismissed')),
