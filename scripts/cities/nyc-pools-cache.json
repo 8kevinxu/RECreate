@@ -5123,6 +5123,231 @@
       ]
     },
     {
+      "id": "nyc-pool-constance-baker-motley-pool",
+      "name": "Constance Baker Motley Pool",
+      "address": "E. 54th St. bet. First and Second Aves.",
+      "lat": 40.7565,
+      "lng": -73.9651,
+      "phone": "(212) 754-5411",
+      "indoor": true,
+      "accessible": true,
+      "desc": "Intermediate pool · 54' x 50' x 12'",
+      "season": "Year-round (recreation center members)",
+      "seasonal": false,
+      "notice": "On Wednesday, October 28, 2026, the weight room at Constance Baker Motley Recreation Center will be temporarily closed as we prepare the space for the installation of new fitness equipment. The weight room will remain closed on Thursday, October 29, 2026, from 7:00 a.m. until 12:00 p.m. while the new equipment is being installed. We apologize for any inconvenience.",
+      "programs": [
+        "lap",
+        "family",
+        "exercise",
+        "lessons"
+      ],
+      "fees": {
+        "effective": "2026-01-01",
+        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
+        "note": "Recreation center membership — indoor pools are members-only",
+        "groups": [
+          {
+            "id": "youth",
+            "label": "Ages 24 and under",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                0
+              ]
+            ]
+          },
+          {
+            "id": "adult",
+            "label": "Adults (25–61)",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                150
+              ],
+              [
+                "Six months",
+                75
+              ]
+            ]
+          },
+          {
+            "id": "senior",
+            "label": "Seniors 62+, veterans, people with disabilities",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                25
+              ]
+            ]
+          }
+        ]
+      },
+      "scheduleUrls": [
+        {
+          "label": "Pool schedule",
+          "url": "https://www.nycgovparks.org/facilities/recreationcenters/M130/schedule#Pool-schedule"
+        }
+      ],
+      "sessions": [
+        [],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 705
+          },
+          {
+            "kind": "family",
+            "start": 720,
+            "end": 870
+          },
+          {
+            "kind": "exercise",
+            "start": 870,
+            "end": 930
+          },
+          {
+            "kind": "lap",
+            "start": 960,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 705
+          },
+          {
+            "kind": "family",
+            "start": 720,
+            "end": 870
+          },
+          {
+            "kind": "exercise",
+            "start": 870,
+            "end": 930
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 1020,
+            "end": 1110
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 705
+          },
+          {
+            "kind": "family",
+            "start": 720,
+            "end": 870
+          },
+          {
+            "kind": "exercise",
+            "start": 870,
+            "end": 930
+          },
+          {
+            "kind": "family",
+            "start": 960,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 705
+          },
+          {
+            "kind": "family",
+            "start": 720,
+            "end": 870
+          },
+          {
+            "kind": "lessons",
+            "start": 870,
+            "end": 930
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 1020,
+            "end": 1110
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 705
+          },
+          {
+            "kind": "family",
+            "start": 720,
+            "end": 870
+          },
+          {
+            "kind": "exercise",
+            "start": 870,
+            "end": 930
+          },
+          {
+            "kind": "exercise",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lap",
+            "start": 1020,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lessons",
+            "start": 480,
+            "end": 570
+          },
+          {
+            "kind": "lessons",
+            "start": 570,
+            "end": 630
+          },
+          {
+            "kind": "lessons",
+            "start": 690,
+            "end": 720
+          },
+          {
+            "kind": "lessons",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "family",
+            "start": 795,
+            "end": 885
+          }
+        ]
+      ]
+    },
+    {
       "id": "nyc-pool-roy-wilkins-recreation-center-pool",
       "name": "Roy Wilkins Recreation Center Pool",
       "address": "177th Street and Baisley Boulevard",
@@ -5450,231 +5675,6 @@
             "kind": "youth",
             "start": 1020,
             "end": 1170
-          }
-        ]
-      ]
-    },
-    {
-      "id": "nyc-pool-constance-baker-motley-pool",
-      "name": "Constance Baker Motley Pool",
-      "address": "E. 54th St. bet. First and Second Aves.",
-      "lat": 40.7565,
-      "lng": -73.9651,
-      "phone": "(212) 754-5411",
-      "indoor": true,
-      "accessible": true,
-      "desc": "Intermediate pool · 54' x 50' x 12'",
-      "season": "Year-round (recreation center members)",
-      "seasonal": false,
-      "notice": "On Wednesday, October 28, 2026, the weight room at Constance Baker Motley Recreation Center will be temporarily closed as we prepare the space for the installation of new fitness equipment. The weight room will remain closed on Thursday, October 29, 2026, from 7:00 a.m. until 12:00 p.m. while the new equipment is being installed. We apologize for any inconvenience.",
-      "programs": [
-        "lap",
-        "family",
-        "exercise",
-        "lessons"
-      ],
-      "fees": {
-        "effective": "2026-01-01",
-        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
-        "note": "Recreation center membership — indoor pools are members-only",
-        "groups": [
-          {
-            "id": "youth",
-            "label": "Ages 24 and under",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                0
-              ]
-            ]
-          },
-          {
-            "id": "adult",
-            "label": "Adults (25–61)",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                150
-              ],
-              [
-                "Six months",
-                75
-              ]
-            ]
-          },
-          {
-            "id": "senior",
-            "label": "Seniors 62+, veterans, people with disabilities",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                25
-              ]
-            ]
-          }
-        ]
-      },
-      "scheduleUrls": [
-        {
-          "label": "Pool schedule",
-          "url": "https://www.nycgovparks.org/facilities/recreationcenters/M130/schedule#Pool-schedule"
-        }
-      ],
-      "sessions": [
-        [],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 705
-          },
-          {
-            "kind": "family",
-            "start": 720,
-            "end": 870
-          },
-          {
-            "kind": "exercise",
-            "start": 870,
-            "end": 930
-          },
-          {
-            "kind": "lap",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 705
-          },
-          {
-            "kind": "family",
-            "start": 720,
-            "end": 870
-          },
-          {
-            "kind": "exercise",
-            "start": 870,
-            "end": 930
-          },
-          {
-            "kind": "lessons",
-            "start": 960,
-            "end": 1020
-          },
-          {
-            "kind": "lessons",
-            "start": 1020,
-            "end": 1110
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 705
-          },
-          {
-            "kind": "family",
-            "start": 720,
-            "end": 870
-          },
-          {
-            "kind": "exercise",
-            "start": 870,
-            "end": 930
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 705
-          },
-          {
-            "kind": "family",
-            "start": 720,
-            "end": 870
-          },
-          {
-            "kind": "lessons",
-            "start": 870,
-            "end": 930
-          },
-          {
-            "kind": "lessons",
-            "start": 960,
-            "end": 1020
-          },
-          {
-            "kind": "lessons",
-            "start": 1020,
-            "end": 1110
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 705
-          },
-          {
-            "kind": "family",
-            "start": 720,
-            "end": 870
-          },
-          {
-            "kind": "exercise",
-            "start": 870,
-            "end": 930
-          },
-          {
-            "kind": "exercise",
-            "start": 960,
-            "end": 1020
-          },
-          {
-            "kind": "lap",
-            "start": 1020,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "lessons",
-            "start": 480,
-            "end": 570
-          },
-          {
-            "kind": "lessons",
-            "start": 570,
-            "end": 630
-          },
-          {
-            "kind": "lessons",
-            "start": 690,
-            "end": 720
-          },
-          {
-            "kind": "lessons",
-            "start": 720,
-            "end": 780
-          },
-          {
-            "kind": "family",
-            "start": 795,
-            "end": 885
           }
         ]
       ]
@@ -6541,5 +6541,5 @@
     "checked": "2026-10-28",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-10-28T04:43:32.187Z"
+  "fetchedAt": "2026-10-28T16:25:58.923Z"
 }
