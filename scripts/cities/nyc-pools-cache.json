@@ -3531,7 +3531,7 @@
           {
             "kind": "lap",
             "start": 480,
-            "end": 600
+            "end": 585
           },
           {
             "kind": "other",
@@ -3612,7 +3612,7 @@
           {
             "kind": "lap",
             "start": 480,
-            "end": 600
+            "end": 585
           },
           {
             "kind": "other",
@@ -4262,282 +4262,6 @@
       ]
     },
     {
-      "id": "nyc-pool-asser-levy-recreation-center-pool",
-      "name": "Asser Levy Recreation Center Pool",
-      "address": "Asser Levy Place and E. 23rd Street",
-      "lat": 40.736,
-      "lng": -73.9753,
-      "phone": "(212) 447-2020",
-      "indoor": true,
-      "accessible": true,
-      "desc": "Intermediate pool · 66' x 26' x 8'",
-      "season": "Year-round (recreation center members)",
-      "seasonal": false,
-      "notice": "On Thursday, October 29, 2026, the weight room at Asser Levy Recreation Center will be temporarily closed while we install new fitness equipment from 7:00 a.m. until 12:00 p.m. We apologize for the inconvenience.",
-      "programs": [
-        "other",
-        "exercise",
-        "lessons",
-        "lap",
-        "youth"
-      ],
-      "fees": {
-        "effective": "2026-01-01",
-        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
-        "note": "Recreation center membership — indoor pools are members-only",
-        "groups": [
-          {
-            "id": "youth",
-            "label": "Ages 24 and under",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                0
-              ]
-            ]
-          },
-          {
-            "id": "adult",
-            "label": "Adults (25–61)",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                150
-              ],
-              [
-                "Six months",
-                75
-              ]
-            ]
-          },
-          {
-            "id": "senior",
-            "label": "Seniors 62+, veterans, people with disabilities",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                25
-              ]
-            ]
-          }
-        ]
-      },
-      "scheduleUrls": [
-        {
-          "label": "Pool schedule",
-          "url": "https://www.nycgovparks.org/facilities/recreationcenters/M164/schedule#Pool-schedule"
-        }
-      ],
-      "sessions": [
-        [],
-        [
-          {
-            "kind": "other",
-            "label": "Swim For Life at Asser Levy Class A Monday - PS 19",
-            "start": 600,
-            "end": 660
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Asser Levy Class B Monday - PS 19",
-            "start": 660,
-            "end": 720
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Asser Levy Class C Monday - P 12X 045",
-            "start": 720,
-            "end": 780
-          },
-          {
-            "kind": "exercise",
-            "start": 780,
-            "end": 840
-          },
-          {
-            "kind": "lessons",
-            "start": 960,
-            "end": 1020
-          },
-          {
-            "kind": "lessons",
-            "start": 1020,
-            "end": 1110
-          }
-        ],
-        [
-          {
-            "kind": "other",
-            "label": "Swim For Life at Asser Levy Class A Tuesday - PS 20 (Clinton Hill School)",
-            "start": 600,
-            "end": 660
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Asser Levy Class B Tuesday - PS 138",
-            "start": 660,
-            "end": 720
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Asser Levy Class C Tuesday - PS 12x 045",
-            "start": 720,
-            "end": 780
-          },
-          {
-            "kind": "exercise",
-            "start": 780,
-            "end": 840
-          },
-          {
-            "kind": "lap",
-            "start": 1020,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "other",
-            "label": "Swim For Life at Asser Levy Class A Wednesday - PS 1",
-            "start": 600,
-            "end": 660
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Asser Levy Class B Wednesday - PS 161",
-            "start": 660,
-            "end": 720
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Asser Levy Class C Wednesday - PS 46",
-            "start": 720,
-            "end": 780
-          },
-          {
-            "kind": "exercise",
-            "start": 780,
-            "end": 840
-          },
-          {
-            "kind": "youth",
-            "start": 960,
-            "end": 1020
-          },
-          {
-            "kind": "lessons",
-            "start": 960,
-            "end": 1020
-          },
-          {
-            "kind": "lessons",
-            "start": 1020,
-            "end": 1110
-          }
-        ],
-        [
-          {
-            "kind": "other",
-            "label": "Swim For Life at Asser Levy Class A Thursday - PS 20 (Clinton Hill School)",
-            "start": 600,
-            "end": 660
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Asser Levy Class B Thursday - PS 20 (Clinical Hill School)",
-            "start": 660,
-            "end": 720
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Asser Levy Class C Thursday - p 12X 045",
-            "start": 720,
-            "end": 780
-          },
-          {
-            "kind": "lessons",
-            "start": 780,
-            "end": 840
-          },
-          {
-            "kind": "lap",
-            "start": 1020,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "other",
-            "label": "Swim For Life at Asser Levy Class A Friday - PS 19",
-            "start": 600,
-            "end": 660
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Asser Levy Class B Friday - PS 19",
-            "start": 660,
-            "end": 720
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Asser Levy Class C Friday - PS 188",
-            "start": 720,
-            "end": 780
-          },
-          {
-            "kind": "exercise",
-            "start": 780,
-            "end": 840
-          },
-          {
-            "kind": "exercise",
-            "start": 960,
-            "end": 1020
-          },
-          {
-            "kind": "lap",
-            "start": 1020,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "lessons",
-            "start": 510,
-            "end": 600
-          },
-          {
-            "kind": "lap",
-            "start": 540,
-            "end": 660
-          },
-          {
-            "kind": "lessons",
-            "start": 600,
-            "end": 660
-          },
-          {
-            "kind": "lessons",
-            "start": 660,
-            "end": 720
-          },
-          {
-            "kind": "lessons",
-            "start": 720,
-            "end": 750
-          },
-          {
-            "kind": "lessons",
-            "start": 750,
-            "end": 810
-          }
-        ]
-      ]
-    },
-    {
       "id": "nyc-pool-chelsea-recreation-center-pool",
       "name": "Chelsea Recreation Center Pool",
       "address": "West 25th St. between 9th & 10th Aves",
@@ -4881,6 +4605,282 @@
             "kind": "lessons",
             "start": 960,
             "end": 1020
+          }
+        ]
+      ]
+    },
+    {
+      "id": "nyc-pool-asser-levy-recreation-center-pool",
+      "name": "Asser Levy Recreation Center Pool",
+      "address": "Asser Levy Place and E. 23rd Street",
+      "lat": 40.736,
+      "lng": -73.9753,
+      "phone": "(212) 447-2020",
+      "indoor": true,
+      "accessible": true,
+      "desc": "Intermediate pool · 66' x 26' x 8'",
+      "season": "Year-round (recreation center members)",
+      "seasonal": false,
+      "notice": "On Thursday, October 29, 2026, the weight room at Asser Levy Recreation Center will be temporarily closed while we install new fitness equipment from 7:00 a.m. until 12:00 p.m. We apologize for the inconvenience.",
+      "programs": [
+        "other",
+        "exercise",
+        "lessons",
+        "lap",
+        "youth"
+      ],
+      "fees": {
+        "effective": "2026-01-01",
+        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
+        "note": "Recreation center membership — indoor pools are members-only",
+        "groups": [
+          {
+            "id": "youth",
+            "label": "Ages 24 and under",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                0
+              ]
+            ]
+          },
+          {
+            "id": "adult",
+            "label": "Adults (25–61)",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                150
+              ],
+              [
+                "Six months",
+                75
+              ]
+            ]
+          },
+          {
+            "id": "senior",
+            "label": "Seniors 62+, veterans, people with disabilities",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                25
+              ]
+            ]
+          }
+        ]
+      },
+      "scheduleUrls": [
+        {
+          "label": "Pool schedule",
+          "url": "https://www.nycgovparks.org/facilities/recreationcenters/M164/schedule#Pool-schedule"
+        }
+      ],
+      "sessions": [
+        [],
+        [
+          {
+            "kind": "other",
+            "label": "Swim For Life at Asser Levy Class A Monday - PS 19",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Asser Levy Class B Monday - PS 19",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Asser Levy Class C Monday - P 12X 045",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "exercise",
+            "start": 780,
+            "end": 840
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 1020,
+            "end": 1110
+          }
+        ],
+        [
+          {
+            "kind": "other",
+            "label": "Swim For Life at Asser Levy Class A Tuesday - PS 20 (Clinton Hill School)",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Asser Levy Class B Tuesday - PS 138",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Asser Levy Class C Tuesday - PS 12x 045",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "exercise",
+            "start": 780,
+            "end": 840
+          },
+          {
+            "kind": "lap",
+            "start": 1020,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "other",
+            "label": "Swim For Life at Asser Levy Class A Wednesday - PS 1",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Asser Levy Class B Wednesday - PS 161",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Asser Levy Class C Wednesday - PS 46",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "exercise",
+            "start": 780,
+            "end": 840
+          },
+          {
+            "kind": "youth",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 1020,
+            "end": 1110
+          }
+        ],
+        [
+          {
+            "kind": "other",
+            "label": "Swim For Life at Asser Levy Class A Thursday - PS 20 (Clinton Hill School)",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Asser Levy Class B Thursday - PS 20 (Clinical Hill School)",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Asser Levy Class C Thursday - p 12X 045",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "lessons",
+            "start": 780,
+            "end": 840
+          },
+          {
+            "kind": "lap",
+            "start": 1020,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "other",
+            "label": "Swim For Life at Asser Levy Class A Friday - PS 19",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Asser Levy Class B Friday - PS 19",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Asser Levy Class C Friday - PS 188",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "exercise",
+            "start": 780,
+            "end": 840
+          },
+          {
+            "kind": "exercise",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lap",
+            "start": 1020,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lessons",
+            "start": 510,
+            "end": 600
+          },
+          {
+            "kind": "lap",
+            "start": 540,
+            "end": 660
+          },
+          {
+            "kind": "lessons",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "lessons",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "lessons",
+            "start": 720,
+            "end": 750
+          },
+          {
+            "kind": "lessons",
+            "start": 750,
+            "end": 810
           }
         ]
       ]
@@ -5903,11 +5903,6 @@
             "end": 165
           },
           {
-            "kind": "lap",
-            "start": 420,
-            "end": 585
-          },
-          {
             "kind": "other",
             "label": "Swim For Life at Roy Wilkins Class A Friday - PS 147Q",
             "start": 600,
@@ -6690,7 +6685,7 @@
       "desc": "Intermediate pool",
       "season": "Year-round (recreation center members)",
       "seasonal": false,
-      "notice": "Beginning Thursday, October 22 through Monday, November 2, 2026 the dance room at Shirley Chisholm Recreation Center will be closed for voting preparation and Early Voting.",
+      "notice": "On Friday, October 30, Shirley Chisholm Recreation Center's Indoor Pool will close at 1:00 PM for the Haunted House and Hallow Gala. The building will close at the end of the event at 7:00 PM. Beginning Thursday, October 22 through Monday, November 2, 2026 the dance room at Shirley Chisholm Recreation Center will be closed for voting preparation and Early Voting.",
       "programs": [
         "lap",
         "lessons",
@@ -7040,5 +7035,5 @@
     "checked": "2026-10-29",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-10-29T04:18:07.849Z"
+  "fetchedAt": "2026-10-29T17:03:22.696Z"
 }
