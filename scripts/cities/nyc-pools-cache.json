@@ -6698,7 +6698,7 @@
       "desc": "Intermediate pool",
       "season": "Year-round (recreation center members)",
       "seasonal": false,
-      "notice": "On Friday, October 30, Shirley Chisholm Recreation Center's Indoor Pool will close at 1:00 PM for the Haunted House and Hallow Gala. The building will close at the end of the event at 7:00 PM. Beginning Thursday, October 22 through Monday, November 2, 2026 the dance room at Shirley Chisholm Recreation Center will be closed for voting preparation and Early Voting.",
+      "notice": "Beginning Thursday, October 22 through Monday, November 2, 2026 the dance room at Shirley Chisholm Recreation Center will be closed for voting preparation and Early Voting.",
       "programs": [
         "lap",
         "lessons",
@@ -7045,8 +7045,8 @@
   "season": {
     "open": false,
     "label": "Closed for the season — NYC outdoor pools run late June through Labor Day",
-    "checked": "2026-10-30",
+    "checked": "2026-10-31",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-10-30T16:28:56.393Z"
+  "fetchedAt": "2026-10-31T04:32:13.970Z"
 }
