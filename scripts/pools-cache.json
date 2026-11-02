@@ -1166,10 +1166,6 @@
       ],
       "scheduleUrls": [
         {
-          "label": "MLK Pool_Fall2026_pt1_Aug 18_Sep26",
-          "url": "https://sfrecpark.org/DocumentCenter/View/29802"
-        },
-        {
           "label": "MLK Pool_Fall2026_pt2_Sep29_Dec 12",
           "url": "https://sfrecpark.org/DocumentCenter/View/30210"
         }
@@ -1402,30 +1398,6 @@
         ]
       ],
       "closures": [
-        {
-          "from": "2026-08-22",
-          "to": "2026-08-22",
-          "reason": "training"
-        },
-        {
-          "from": "2026-08-27",
-          "to": "2026-08-27",
-          "start": 750,
-          "end": 930,
-          "reason": null
-        },
-        {
-          "from": "2026-09-07",
-          "to": "2026-09-07",
-          "reason": "holiday"
-        },
-        {
-          "from": "2026-09-24",
-          "to": "2026-09-24",
-          "start": 750,
-          "end": 930,
-          "reason": null
-        },
         {
           "from": "2026-10-22",
           "to": "2026-10-22",
@@ -2326,6 +2298,10 @@
         {
           "label": "Sava_Pool_Fall2_2026___Aug29toDec12",
           "url": "https://sfrecpark.org/DocumentCenter/View/30037"
+        },
+        {
+          "label": "Sava_Pool_Fall3_2026_November3toDec1 (2)",
+          "url": "https://sfrecpark.org/DocumentCenter/View/30374"
         }
       ],
       "sessions": [
@@ -2664,5 +2640,5 @@
       }
     ]
   },
-  "fetchedAt": "2026-10-27T20:09:57.627Z"
+  "fetchedAt": "2026-11-02T23:01:58.595Z"
 }
