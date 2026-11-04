@@ -3632,7 +3632,7 @@
           {
             "kind": "family",
             "start": 480,
-            "end": 600
+            "end": 585
           },
           {
             "kind": "other",
@@ -6035,17 +6035,17 @@
             "end": 780
           },
           {
+            "kind": "lessons",
+            "start": 780,
+            "end": 840
+          },
+          {
+            "kind": "lessons",
+            "start": 780,
+            "end": 840
+          },
+          {
             "kind": "exercise",
-            "start": 780,
-            "end": 840
-          },
-          {
-            "kind": "lessons",
-            "start": 780,
-            "end": 840
-          },
-          {
-            "kind": "lessons",
             "start": 780,
             "end": 840
           },
@@ -6822,5 +6822,5 @@
     "checked": "2026-11-04",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-11-04T05:18:21.289Z"
+  "fetchedAt": "2026-11-04T17:43:36.933Z"
 }
