@@ -1,104 +1,6 @@
 {
   "entries": [
     {
-      "id": "vol-a07Pi00003zJscrIAC",
-      "source": "sfrpd-volunteer",
-      "name": "GGP Conservatory Valley Volunteer Workparty",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "GGP Sec 1 Conservatory Valley",
-      "when": "Wed · 9:30 AM - 11:30 AM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 6,
-      "unlimited": false,
-      "start": "2026-11-04",
-      "end": "2027-04-28",
-      "instructor": "Friends of Conservatory Valley",
-      "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the RPD gardeners in a weekly recurring volunteer workparty at the Valley of the Conservatory of Flowers. Volunteer tasks include the maintenance of ornamental planting beds. All tools provided by RPD. Children 13 years and older accompanied by an adult are welcome. No school groups.\n\nMeet on the steps of the Conservatory of Flowers, 100 JFK Drive.",
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
-      "id": "vol-a07Pi00005PqdCTIAZ",
-      "source": "sfrpd-volunteer",
-      "name": "Golden Gate Park Rhododendron Dell",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "GGP Sec 2 Rhododendron Dell",
-      "when": "Wed · 10:00 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 10,
-      "unlimited": false,
-      "start": "2026-11-04",
-      "end": "2027-04-21",
-      "activity": "Horticultural Maintenance",
-      "desc": "Join us for volunteering at the Golden Gate Park Rhododendron Dell every 1st and 3rd Wednesday of the month! Come spend the morning with some light weeding, mulching, or pruning.Please RSVP by selecting group sign-up even when you are not registering as a group. We limit to four people per group sign-up, if you have more than four people, please email us at Recparkvolunteer@sfgov.org. Thank you!",
-      "lat": 37.7699,
-      "lng": -122.46429,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
-      "id": "vol-a07Pi00003xn9F3IAI",
-      "source": "sfrpd-volunteer",
-      "name": "Heron's Head Park Volunteer Workparty",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "Heron's Head Park",
-      "when": "Wed · 10:00 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 19,
-      "unlimited": false,
-      "start": "2026-11-04",
-      "end": "2027-04-07",
-      "instructor": "Golden Gate Bird Alliance",
-      "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group. You can only sign-up a group of 4. If you have a group size of 5 or more, please email us at recparkvolunteer@sfgov.org.\n\nJoin the San Francisco Recreation and Parks Department, the Port of San Francisco and Golden Gate Bird Alliance in our joint stewardship of Heron's Head Park! Heron's Head Park is home to over 100 species of birds and an off-the grid sustainable learning center. Join us every 1st Wednesday of the month and learn about the EcoCenter and Park's robust ecosystem. Volunteer tasks include non-native invasive plant removal, mulch application, watering and planting (seasonally). Come prepared with closed-toe shoes and dress in layers. No experience necessary. Tools are provided. Meet in front of the EcoCenter at the entrance porch",
-      "lat": 37.73832,
-      "lng": -122.37481,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
-      "id": "vol-a07Pi00005pzTKKIA2",
-      "source": "sfrpd-volunteer",
-      "name": "CNPS Buena Vista Volunteer Workparty",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "Buena Vista Park",
-      "when": "Wed · 12:00 PM - 2:30 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 15,
-      "unlimited": false,
-      "start": "2026-11-04",
-      "end": "2026-11-04",
-      "oneDay": true,
-      "instructor": "California Native Plant Society Yerba Buena Chapter",
-      "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin SF Recreation and Parks’ Natural Resources Division and the California Native Plant Society for their weekly Wednesday habitat restoration project. Explore the biological diversity of San Francisco’s remnant oak woodland. Get to know one of our gems in the city. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Everyone 14 years old and older is invited; anyone under 14 years old must be accompanied by a guardian. Tools and gloves will be provided. Please be punctual. \n\nMeet at the children's playground on Buena Vista Ave West at Waller St.",
-      "lat": 37.769496,
-      "lng": -122.439376,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a07Pi00006LcvZ4IAJ",
       "source": "sfrpd-volunteer",
       "name": "Rhododendron Dell Volunteer Workparty",
@@ -137,7 +39,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 8,
+      "spots": 7,
       "unlimited": false,
       "start": "2026-11-07",
       "end": "2027-05-01",
@@ -238,7 +140,7 @@
       "end": "2027-05-01",
       "instructor": "Friends of Heron's Head Park",
       "activity": "Horticultural Maintenance",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin us for a monthly habitat restoration volunteer workparty at Heron's Head Park, a coastal site of San Francisco Bay in the SE District.  Volunteers will contribute to an ecological project started by community-based organizations in partnership with the Port of San Francisco. Volunteers will assist in the preservation and restoration of a native landscape and bird sanctuary. Tasks will include invasive species removal, landscape maintenance and planting.\n\nAll tools and materials provided. Minimum volunteer age of 6 years old. Children under 12 years old must be accompanied by an adult chaperone. Please wear close-toe shoes, long pants, long-sleeve shirts and bring a water bottle and sun hat.\n\nMeet at the front porch of the EcoCenter",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin us for a monthly habitat restoration volunteer workparty at Heron's Head Park, a coastal site of San Francisco Bay in the SE District. Volunteers will contribute to an ecological project started by community-based organizations in partnership with the Port of San Francisco. Volunteers will assist in the preservation and restoration of a native landscape and bird sanctuary. Tasks will include invasive species removal, landscape maintenance and planting.\n\nAll tools and materials provided.  Please wear close-toe shoes, long pants, long-sleeve shirts and bring a water bottle and sun hat. Minimum volunteer age of 6 years old. Children under 12 years old must be accompanied by an adult chaperone. \n\nIf you are a teacher interested in organizing a volunteer workparty for your school group, please submit your request by completing the Group Project Request Form: https://sfrpd.my.salesforce-sites.com/CaseIntakeForm. Alternatively, you may contact the RPD Volunteer Services Office by email at recparkvolunteer@sfgov.org.\n\nMeet at the entrance front porch of the EcoCenter",
       "lat": 37.73832,
       "lng": -122.37481,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
@@ -257,7 +159,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 16,
+      "spots": 15,
       "unlimited": false,
       "start": "2026-11-07",
       "end": "2026-12-05",
@@ -307,7 +209,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 27,
+      "spots": 18,
       "unlimited": false,
       "start": "2026-11-09",
       "end": "2026-12-07",
@@ -316,6 +218,29 @@
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.  You can only sign-up a group of 4. If you have a group size of 5 or more, please email us at recparkvolunteer@sfgov.org.\n\nJoin the Friends of the De Young Museum for a twice-a-month volunteer workparty. A variety of gardening tasks are available. All tools and supplies are supplied by the gardeners. Volunteers receive a free guest pass to the De Young after volunteering.\n\nMeet at deYoung Museum entrance",
       "lat": 37.77147,
       "lng": -122.46864,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a07Pi00003zJscrIAC",
+      "source": "sfrpd-volunteer",
+      "name": "GGP Conservatory Valley Volunteer Workparty",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "GGP Sec 1 Conservatory Valley",
+      "when": "Wed · 9:30 AM - 11:30 AM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 9,
+      "unlimited": false,
+      "start": "2026-11-11",
+      "end": "2027-04-28",
+      "instructor": "Friends of Conservatory Valley",
+      "activity": "Habitat Restoration",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the RPD gardeners in a weekly recurring volunteer workparty at the Valley of the Conservatory of Flowers. Volunteer tasks include the maintenance of ornamental planting beds. All tools provided by RPD. Children 13 years and older accompanied by an adult are welcome. No school groups.\n\nMeet on the steps of the Conservatory of Flowers, 100 JFK Drive.",
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -420,6 +345,30 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
+      "id": "vol-a07Pi00005PqdCTIAZ",
+      "source": "sfrpd-volunteer",
+      "name": "Golden Gate Park Rhododendron Dell",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "GGP Sec 2 Rhododendron Dell",
+      "when": "Wed · 10:00 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 20,
+      "unlimited": false,
+      "start": "2026-11-18",
+      "end": "2027-04-21",
+      "activity": "Horticultural Maintenance",
+      "desc": "Join us for volunteering at the Golden Gate Park Rhododendron Dell every 1st and 3rd Wednesday of the month! Come spend the morning with some light weeding, mulching, or pruning.Please RSVP by selecting group sign-up even when you are not registering as a group. We limit to four people per group sign-up, if you have more than four people, please email us at Recparkvolunteer@sfgov.org. Thank you!",
+      "lat": 37.7699,
+      "lng": -122.46429,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
       "id": "vol-a074U00001PquwaQAB",
       "source": "sfrpd-volunteer",
       "name": "CNPS GGP Oak Woodlands",
@@ -510,7 +459,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 24,
+      "spots": 23,
       "unlimited": false,
       "start": "2026-11-21",
       "end": "2027-04-17",
@@ -566,7 +515,7 @@
       "end": "2027-04-17",
       "instructor": "Friends of Heron's Head Park",
       "activity": "Horticultural Maintenance",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group. You can only sign-up a group of 4. If you have a group size of 5 or more, please email us at recparkvolunteer@sfgov.org.\n\nJoin the SF Rec & Park Dept and the Port of San Francisco on the 3rd Saturday monthly in the stewardship of the outdoor play spaces of the EcoCenter at Heron's Head Park. The Nature Exploration Area at Heron's Head Park is an outdoor play space that engages children with nature.  Assist with the horticultural maintenance of this innovative playground and its environs. Tasks include invasive species removal, mulching, watering, pathway maintenance and planting. Please wear closed-toe shoes and dress in layers. No experience necessary. Tools are provided.\n\nMeet in front of the entrance porch of the EcoCenter",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group. You can only sign-up a group of 4. If you have a group size of 5 or more, please email us at recparkvolunteer@sfgov.org.\n\nJoin the SF Rec & Park Dept and the Port of San Francisco on the 3rd Saturday monthly in the stewardship of the outdoor play spaces of the EcoCenter at Heron's Head Park. The Nature Exploration Area at Heron's Head Park is an outdoor play space that engages children with nature.  Assist with the horticultural maintenance of this innovative playground and its environs. Tasks include invasive species removal, mulching, watering, pathway maintenance and planting. Please wear closed-toe shoes and dress in layers. No experience necessary.\n\nAll tools and materials provided.  Please wear close-toe shoes, long pants, long-sleeve shirts and bring a water bottle and sun hat. Minimum volunteer age of 6 years old. Children under 12 years old must be accompanied by an adult chaperone. \n\nIf you are a teacher interested in organizing a volunteer workparty for your school group, please submit your request by completing the Group Project Request Form: https://sfrpd.my.salesforce-sites.com/CaseIntakeForm. Alternatively, you may contact the RPD Volunteer Services Office by email at recparkvolunteer@sfgov.org.\n\nMeet at the entrance front porch of the EcoCenter",
       "lat": 37.73832,
       "lng": -122.37481,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
@@ -616,7 +565,7 @@
       "end": "2027-04-22",
       "instructor": "Literacy for Environmental Justice",
       "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the San Francisco Recreation and Parks Department, the Port of San Francisco and Literacy for Environmental Justice [LEJ] on the 4th Thursday of the month in the stewardship of Heron's Head Park. Heron's Head Park is home to over 100 species of birds and an off-the grid sustainable learning center. LEJ is a Bay View Hunter's Point environmental justice non-profit focusing on workforce development for local youth, providing free outdoor education for K-12 public schools, and land stewardship in their urban community Volunteer tasks include non-native invasive plant removal, horticultural maintenance, watering and planting (seasonally). Please wear closed-toe shoes and dress in layers. No experience necessary. All ages welcome. Children under 12-years old must be accompanied by an adult. Tools are provided.\n\nMeet at the entrance front porch of the EcoCenter",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the San Francisco Recreation and Parks Department, the Port of San Francisco and Literacy for Environmental Justice [LEJ] on the 4th Thursday of the month in the stewardship of Heron's Head Park. Heron's Head Park is home to over 100 species of birds and an off-the grid sustainable learning center. LEJ is a Bay View Hunter's Point environmental justice non-profit focusing on workforce development for local youth, providing free outdoor education for K-12 public schools, and land stewardship in their urban community Volunteer tasks include non-native invasive plant removal, horticultural maintenance, watering and planting (seasonally). No experience necessary.\n\nAll tools and materials provided.  Please wear close-toe shoes, long pants, long-sleeve shirts and bring a water bottle and sun hat. Minimum volunteer age of 6 years old. Children under 12 years old must be accompanied by an adult chaperone. \n\nIf you are a teacher interested in organizing a volunteer workparty for your school group, please submit your request by completing the Group Project Request Form: https://sfrpd.my.salesforce-sites.com/CaseIntakeForm. Alternatively, you may contact the RPD Volunteer Services Office by email at recparkvolunteer@sfgov.org.\n\nMeet at the entrance front porch of the EcoCenter",
       "lat": 37.73832,
       "lng": -122.37481,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
@@ -692,6 +641,31 @@
       "instructor": "Friends of the Tree Fern Dell",
       "activity": "Habitat Restoration",
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the Friends of the Tree Fern Dell and the RPD Gardeners in a weekly volunteer workparty. Enjoy this historic site in Golden Gate Park while delivering care to extraordinary horticultural specimens that date back 200 million years. All tools and gloves provided.\n\nMeet at the entrance to the Tree Fern Dell at Conservatory Drive West and JFK Drive.",
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a07Pi00003xn9F3IAI",
+      "source": "sfrpd-volunteer",
+      "name": "Heron's Head Park Volunteer Workparty",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "Heron's Head Park",
+      "when": "Wed · 10:00 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 30,
+      "unlimited": false,
+      "start": "2026-12-02",
+      "end": "2027-04-07",
+      "instructor": "Golden Gate Bird Alliance",
+      "activity": "Habitat Restoration",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group. You can only sign-up a group of 4. If you have a group size of 5 or more, please email us at recparkvolunteer@sfgov.org.\n\nJoin the San Francisco Recreation and Parks Department, the Port of San Francisco and Golden Gate Bird Alliance in our joint stewardship of Heron's Head Park! Heron's Head Park is home to over 100 species of birds and an off-the grid sustainable learning center. Join us every 1st Wednesday of the month and learn about the EcoCenter and Park's robust ecosystem. Volunteer tasks include non-native invasive plant removal, mulch application, watering and planting (seasonally). Come prepared with closed-toe shoes and dress in layers. No experience necessary.\n\nAll tools and materials provided.  Please wear close-toe shoes, long pants, long-sleeve shirts and bring a water bottle and sun hat. Minimum volunteer age of 6 years old. Children under 12 years old must be accompanied by an adult chaperone. \n\nIf you are a teacher interested in organizing a volunteer workparty for your school group, please submit your request by completing the Group Project Request Form: https://sfrpd.my.salesforce-sites.com/CaseIntakeForm. Alternatively, you may contact the RPD Volunteer Services Office by email at recparkvolunteer@sfgov.org.\n\nMeet at the entrance front porch of the EcoCenter",
+      "lat": 37.73832,
+      "lng": -122.37481,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -842,5 +816,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-11-04T13:48:54.322Z"
+  "fetchedAt": "2026-11-04T23:14:19.335Z"
 }
