@@ -1,7 +1,7 @@
 {
-  "lastRunAt": "2026-11-05T05:20:00.317Z",
-  "lastRunOk": true,
-  "lastRunStage": "done",
+  "lastRunAt": "2026-11-05T17:39:47.534Z",
+  "lastRunOk": false,
+  "lastRunStage": "git setup",
   "lastSuccessAt": "2026-11-05T05:20:00.317Z",
   "sourcesFailed": null
 }
