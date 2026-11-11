@@ -76,8 +76,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-abc-playground-outdoor",
@@ -137,8 +136,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-abraham-lincoln-playground-outdoor",
@@ -285,8 +283,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-al-qui-ones-playground-outdoor",
@@ -448,8 +445,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-alfred-e-smith-playground-outdoor",
@@ -526,8 +522,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-alley-athletic-playground-outdoor",
@@ -676,8 +671,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-almeda-playground-outdoor",
@@ -769,8 +763,7 @@
       },
       "accessible": false,
       "lights": false,
-      "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "restrooms": true
+      "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "nyc-andries-playground-outdoor",
@@ -989,8 +982,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-arrochar-playground-outdoor",
@@ -1015,8 +1007,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor soccer — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-arverne-playground-outdoor",
@@ -1075,8 +1066,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-asser-levy-playground-outdoor",
@@ -1197,7 +1187,6 @@
       "lights": false,
       "notes": "Outdoor basketball & tennis & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -1328,8 +1317,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-augustus-st-gaudens-playground-outdoor",
@@ -1416,8 +1404,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-baisley-pond-park-outdoor",
@@ -1480,7 +1467,6 @@
       "lights": true,
       "notes": "Outdoor basketball & tennis & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -1637,8 +1623,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-baruch-playground-outdoor",
@@ -1832,8 +1817,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor soccer — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-bayside-playground-outdoor",
@@ -1948,8 +1932,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-beach-17-playground-outdoor",
@@ -2128,8 +2111,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-behagen-playground-outdoor",
@@ -2180,8 +2162,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-bellaire-playground-outdoor",
@@ -2215,8 +2196,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-bellerose-playground-outdoor",
@@ -2361,8 +2341,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-benson-playground-outdoor",
@@ -2396,8 +2375,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-bensonhurst-park-outdoor",
@@ -2459,7 +2437,6 @@
       "lights": false,
       "notes": "Outdoor basketball & tennis & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -2679,8 +2656,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-bill-bojangles-robinson-playground-outdoor",
@@ -2909,8 +2885,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-bloomingdale-playground-outdoor",
@@ -2944,8 +2919,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & soccer — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-blue-playground-outdoor",
@@ -3101,8 +3075,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-bowne-playground-outdoor",
@@ -3136,8 +3109,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-breukelen-ballfields-outdoor",
@@ -3223,8 +3195,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-briarwood-playground-outdoor",
@@ -3629,7 +3600,6 @@
       "lights": true,
       "notes": "Outdoor basketball & tennis & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -3667,8 +3637,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-brownsville-playground-outdoor",
@@ -3711,8 +3680,7 @@
       "accessible": false,
       "lights": true,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-bruckner-playground-outdoor",
@@ -4102,8 +4070,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-captain-rivera-playground-outdoor",
@@ -4198,8 +4165,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-carmansville-playground-outdoor",
@@ -4233,8 +4199,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-carroll-park-outdoor",
@@ -4269,8 +4234,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-carver-playground-outdoor",
@@ -4313,8 +4277,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-caserta-playground-outdoor",
@@ -4348,8 +4311,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-castle-hill-little-league-field-outdoor",
@@ -4408,8 +4370,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-castlewood-playground-outdoor",
@@ -4504,8 +4465,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-central-park-outdoor",
@@ -4665,8 +4625,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-challenge-playground-outdoor",
@@ -4818,8 +4777,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-cherry-clinton-playground-outdoor",
@@ -4931,8 +4889,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-christopher-j-igneri-playground-outdoor",
@@ -5000,8 +4957,7 @@
       "accessible": false,
       "lights": true,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-claremont-park-outdoor",
@@ -5044,8 +5000,7 @@
       "accessible": false,
       "lights": true,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-clark-playground-outdoor",
@@ -5071,8 +5026,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-classon-playground-b223na-outdoor",
@@ -5544,8 +5498,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-colonel-david-marcus-playground-outdoor",
@@ -5631,8 +5584,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-columbus-park-outdoor",
@@ -5676,8 +5628,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & volleyball & soccer — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-commodore-barry-park-outdoor",
@@ -5886,7 +5837,6 @@
       "lights": false,
       "notes": "Outdoor basketball & volleyball & tennis & handball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -5967,8 +5917,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & volleyball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-corporal-john-a-seravalli-playground-outdoor",
@@ -5995,8 +5944,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-cottages-hill-new-brighton-park-outdoor",
@@ -6308,8 +6256,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-cunningham-park-outdoor",
@@ -6363,7 +6310,6 @@
       "lights": true,
       "notes": "Outdoor basketball & tennis & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -6496,8 +6442,7 @@
       "accessible": false,
       "lights": true,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-de-hostos-playground-outdoor",
@@ -6596,8 +6541,7 @@
       "accessible": false,
       "lights": true,
       "notes": "Outdoor basketball & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-dean-playground-outdoor",
@@ -6802,7 +6746,6 @@
       "lights": false,
       "notes": "Outdoor basketball & tennis & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -6866,8 +6809,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-dimattina-playground-outdoor",
@@ -6892,8 +6834,7 @@
       "accessible": false,
       "lights": true,
       "notes": "Outdoor baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-ditmars-playground-outdoor",
@@ -7151,8 +7092,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-dry-dock-playground-outdoor",
@@ -7178,8 +7118,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-dunbar-playground-outdoor",
@@ -7344,7 +7283,6 @@
       "lights": true,
       "notes": "Outdoor basketball & tennis & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -7416,8 +7354,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-east-springfield-playground-outdoor",
@@ -7451,8 +7388,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-eastchester-playground-outdoor",
@@ -7486,8 +7422,7 @@
       "accessible": false,
       "lights": true,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-edenwald-playground-outdoor",
@@ -7529,8 +7464,7 @@
       "accessible": false,
       "lights": true,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-edmonds-playground-outdoor",
@@ -7557,8 +7491,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-ehrenreich-austin-playground-outdoor",
@@ -7729,8 +7662,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-elton-playground-outdoor",
@@ -7963,8 +7895,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-eugene-mccabe-field-outdoor",
@@ -8232,8 +8163,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-father-macris-park-outdoor",
@@ -8302,8 +8232,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-ferry-point-park-outdoor",
@@ -8653,8 +8582,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-fordham-landing-playground-outdoor",
@@ -8800,7 +8728,6 @@
       "lights": false,
       "notes": "Outdoor basketball & tennis — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -8882,8 +8809,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-fort-totten-park-outdoor",
@@ -9129,8 +9055,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-francis-lewis-playground-outdoor",
@@ -9173,8 +9098,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-frank-d-o-connor-playground-outdoor",
@@ -9208,8 +9132,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-frank-golden-park-outdoor",
@@ -9244,8 +9167,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-frank-principe-park-outdoor",
@@ -9407,8 +9329,7 @@
       "accessible": false,
       "lights": true,
       "notes": "Outdoor basketball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-fred-samuel-playground-outdoor",
@@ -9528,8 +9449,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-frederick-johnson-playground-outdoor",
@@ -9680,7 +9600,6 @@
       "lights": false,
       "notes": "Outdoor volleyball & tennis & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -10096,8 +10015,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor handball & soccer — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-goble-playground-outdoor",
@@ -10242,8 +10160,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & volleyball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-gouverneur-playground-outdoor",
@@ -10277,8 +10194,7 @@
       "accessible": false,
       "lights": true,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-grace-playground-outdoor",
@@ -10558,8 +10474,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-great-kills-veterans-playground-outdoor",
@@ -10688,8 +10603,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-greenwood-playground-outdoor",
@@ -10733,8 +10647,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-grove-hill-playground-outdoor",
@@ -10768,8 +10681,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-grover-cleveland-playground-outdoor",
@@ -10862,8 +10774,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-gutenberg-playground-outdoor",
@@ -10957,7 +10868,6 @@
       "lights": true,
       "notes": "Outdoor basketball & tennis & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -11005,8 +10915,7 @@
       "accessible": false,
       "lights": true,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-half-nelson-playground-outdoor",
@@ -11075,8 +10984,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-hamilton-fish-park-outdoor",
@@ -11161,8 +11069,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-hammel-playground-outdoor",
@@ -11196,8 +11103,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-happy-warrior-playground-outdoor",
@@ -11231,8 +11137,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-harding-park-outdoor",
@@ -11448,8 +11353,7 @@
       "accessible": false,
       "lights": true,
       "notes": "Outdoor soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-harry-maze-playground-outdoor",
@@ -11519,8 +11423,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-harvard-playground-outdoor",
@@ -11591,8 +11494,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-hattie-carthan-playground-outdoor",
@@ -11635,8 +11537,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-havemeyer-playground-outdoor",
@@ -11662,8 +11563,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-haviland-playground-outdoor",
@@ -11730,8 +11630,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-helen-marshall-playground-outdoor",
@@ -11872,8 +11771,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-henry-m-jackson-playground-outdoor",
@@ -11949,8 +11847,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-herman-dolgon-playground-outdoor",
@@ -11993,8 +11890,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-hermon-a-macneil-park-outdoor",
@@ -12246,8 +12142,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor volleyball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-hillside-playground-outdoor",
@@ -12399,8 +12294,7 @@
       "accessible": false,
       "lights": true,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-holcombe-rucker-park-outdoor",
@@ -12719,7 +12613,6 @@
       "lights": false,
       "notes": "Outdoor basketball & tennis & handball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -12886,8 +12779,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-i-am-park-outdoor",
@@ -13055,8 +12947,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & volleyball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-jack-breininger-park-outdoor",
@@ -13133,8 +13024,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-jackie-robinson-park-playground-outdoor",
@@ -13216,8 +13106,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-jacob-h-schiff-playground-outdoor",
@@ -13647,8 +13536,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & volleyball & handball & soccer — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-john-allen-payne-playground-outdoor",
@@ -13708,8 +13596,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-john-hancock-playground-outdoor",
@@ -13814,7 +13701,6 @@
       "lights": false,
       "notes": "Outdoor basketball & tennis & pickleball & handball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -13985,8 +13871,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-judge-moses-weinstein-playground-outdoor",
@@ -14153,7 +14038,6 @@
       "lights": false,
       "notes": "Outdoor basketball & tennis & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -14220,7 +14104,6 @@
       "lights": true,
       "notes": "Outdoor basketball & tennis & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -14349,8 +14232,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-kissena-corridor-park-q300-outdoor",
@@ -14516,7 +14398,6 @@
       "lights": false,
       "notes": "Outdoor basketball & tennis & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -15073,8 +14954,7 @@
       },
       "accessible": false,
       "lights": false,
-      "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule).",
-      "restrooms": true
+      "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule)."
     },
     {
       "id": "nyc-lillian-d-wald-playground-outdoor",
@@ -15253,7 +15133,6 @@
       "lights": true,
       "notes": "Outdoor basketball & tennis & pickleball & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -15301,8 +15180,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-linnaeus-park-outdoor",
@@ -15423,8 +15301,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-locust-manor-playground-outdoor",
@@ -15492,8 +15369,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-loreto-playground-outdoor",
@@ -15622,7 +15498,6 @@
       "lights": false,
       "notes": "Outdoor tennis & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -15693,8 +15568,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-lt-joseph-petrosino-park-outdoor",
@@ -15873,8 +15747,7 @@
       "accessible": false,
       "lights": true,
       "notes": "Outdoor basketball & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-mae-grant-playground-outdoor",
@@ -15996,8 +15869,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-mahoney-playground-outdoor",
@@ -16039,8 +15911,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-manhattan-beach-park-outdoor",
@@ -16154,8 +16025,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-marble-hill-playground-outdoor",
@@ -16207,8 +16077,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-marc-and-jason-s-playground-outdoor",
@@ -16286,8 +16155,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-marcus-garvey-park-outdoor",
@@ -16486,8 +16354,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & volleyball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-marie-curie-playground-outdoor",
@@ -16602,7 +16469,6 @@
       "lights": false,
       "notes": "Outdoor basketball & tennis & pickleball & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -16632,8 +16498,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-markham-playground-outdoor",
@@ -16676,8 +16541,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-marlboro-playground-outdoor",
@@ -16813,8 +16677,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-marx-brothers-playground-outdoor",
@@ -16994,8 +16857,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-mazzei-playground-outdoor",
@@ -17038,8 +16900,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-mccaffrey-playground-outdoor",
@@ -17065,8 +16926,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-mccarren-park-outdoor",
@@ -17129,7 +16989,6 @@
       "lights": true,
       "notes": "Outdoor basketball & tennis & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -17194,7 +17053,6 @@
       "lights": false,
       "notes": "Outdoor basketball & tennis & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -17307,7 +17165,6 @@
       "lights": false,
       "notes": "Outdoor basketball & tennis & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -17337,8 +17194,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-mclaughlin-park-outdoor",
@@ -17389,8 +17245,7 @@
       "accessible": false,
       "lights": true,
       "notes": "Outdoor basketball & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-mellett-playground-outdoor",
@@ -17432,8 +17287,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-melrose-commons-park-outdoor",
@@ -17615,7 +17469,6 @@
       "lights": false,
       "notes": "Outdoor basketball & tennis & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -17683,8 +17536,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-monsignor-crawford-field-outdoor",
@@ -17794,8 +17646,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-moore-homestead-playground-outdoor",
@@ -17955,8 +17806,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-mosholu-parkway-outdoor",
@@ -18016,8 +17866,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-mount-hope-playground-outdoor",
@@ -18161,8 +18010,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-naples-playground-outdoor",
@@ -18341,8 +18189,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-neptune-playground-outdoor",
@@ -18428,8 +18275,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-newtown-barge-playground-outdoor",
@@ -18539,8 +18385,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-north-rochdale-playground-outdoor",
@@ -18686,8 +18531,7 @@
       "accessible": false,
       "lights": true,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-notorious-lic-park-outdoor",
@@ -18810,8 +18654,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-ogden-plimpton-playground-outdoor",
@@ -18881,8 +18724,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-oracle-playground-outdoor",
@@ -18916,8 +18758,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & soccer — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-osborn-playground-outdoor",
@@ -18969,8 +18810,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-owl-s-head-park-outdoor",
@@ -19126,8 +18966,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-p-s-125-playground-outdoor",
@@ -19187,8 +19026,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-p-s-29-ballfield-outdoor",
@@ -19265,8 +19103,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-parade-ground-outdoor",
@@ -19465,8 +19302,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & soccer — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-parkside-playground-outdoor",
@@ -19500,8 +19336,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-pat-williams-playground-outdoor",
@@ -19988,8 +19823,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-pfc-norton-playground-outdoor",
@@ -20132,8 +19966,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-playground-103-ciii-outdoor",
@@ -20738,8 +20571,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-poppenhusen-playground-outdoor",
@@ -20824,8 +20656,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-powell-playground-outdoor",
@@ -20944,8 +20775,7 @@
       "accessible": false,
       "lights": true,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-prospect-park-outdoor",
@@ -21201,8 +21031,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-queens-farm-park-outdoor",
@@ -21303,8 +21132,7 @@
       "accessible": false,
       "lights": true,
       "notes": "Outdoor volleyball & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-railroad-playground-outdoor",
@@ -21356,8 +21184,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-rainbow-playground-outdoor",
@@ -21452,8 +21279,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-randall-s-island-park-outdoor",
@@ -21537,8 +21363,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-ravenswood-playground-outdoor",
@@ -21876,8 +21701,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-remsen-playground-outdoor",
@@ -21947,8 +21771,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-rev-j-polite-playground-outdoor",
@@ -22081,8 +21904,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-riverbend-playground-outdoor",
@@ -22107,8 +21929,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-riverdale-playground-outdoor",
@@ -22411,8 +22232,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-roberto-clemente-ballfield-outdoor",
@@ -22482,7 +22302,6 @@
       "lights": true,
       "notes": "Outdoor basketball & tennis & baseball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -22769,8 +22588,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-rory-staunton-field-outdoor",
@@ -22906,7 +22724,6 @@
       "lights": true,
       "notes": "Outdoor basketball & tennis & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -22944,8 +22761,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-russell-pedersen-playground-outdoor",
@@ -23209,8 +23025,7 @@
       "accessible": true,
       "lights": false,
       "notes": "Outdoor basketball & volleyball & handball & soccer — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-sarah-j-s-tompkins-garnet-playground-outdoor",
@@ -23363,8 +23178,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-sean-s-place-outdoor",
@@ -23561,7 +23375,6 @@
       "lights": false,
       "notes": "Outdoor basketball & tennis & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -23821,7 +23634,6 @@
       "lights": false,
       "notes": "Outdoor tennis & baseball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -23884,8 +23696,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-sol-bloom-playground-outdoor",
@@ -23928,8 +23739,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-sol-lain-plgd-outdoor",
@@ -24193,8 +24003,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-sperandeo-brothers-playground-outdoor",
@@ -24255,7 +24064,6 @@
       "lights": false,
       "notes": "Outdoor basketball & tennis & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -24359,7 +24167,6 @@
       "lights": false,
       "notes": "Outdoor basketball & tennis & baseball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -24474,8 +24281,7 @@
       "accessible": false,
       "lights": true,
       "notes": "Outdoor basketball & volleyball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-st-catherine-s-park-outdoor",
@@ -24525,7 +24331,6 @@
       "lights": false,
       "notes": "Outdoor basketball & tennis & handball & soccer — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -24819,8 +24624,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-st-nicholas-playground-south-outdoor",
@@ -24898,8 +24702,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-stanley-isaacs-playground-outdoor",
@@ -25097,7 +24900,6 @@
       "lights": true,
       "notes": "Outdoor basketball & tennis & handball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -25228,8 +25030,7 @@
       "accessible": false,
       "lights": true,
       "notes": "Outdoor basketball & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-steuben-playground-outdoor",
@@ -25305,8 +25106,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-story-playground-outdoor",
@@ -25358,8 +25158,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-sumner-playground-outdoor",
@@ -25470,8 +25269,7 @@
       "accessible": false,
       "lights": true,
       "notes": "Outdoor basketball & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-surf-playground-outdoor",
@@ -25506,8 +25304,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & soccer — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-sutter-ballfields-outdoor",
@@ -25618,8 +25415,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-tanahey-playground-outdoor",
@@ -25678,8 +25474,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-tecumseh-playground-outdoor",
@@ -25713,8 +25508,7 @@
       "accessible": true,
       "lights": false,
       "notes": "Outdoor basketball & soccer — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-telephone-playground-outdoor",
@@ -25808,8 +25602,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-the-big-park-outdoor",
@@ -25910,8 +25703,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-thomas-boyland-park-outdoor",
@@ -26049,8 +25841,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & volleyball & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-tiffany-playground-outdoor",
@@ -26084,8 +25875,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-tiger-playground-outdoor",
@@ -26128,8 +25918,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-tilden-playground-outdoor",
@@ -26174,7 +25963,6 @@
       "lights": false,
       "notes": "Outdoor basketball & tennis & handball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -26222,8 +26010,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-torsney-playground-outdoor",
@@ -26325,8 +26112,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & soccer — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-tudor-park-outdoor",
@@ -26709,8 +26495,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-vidalia-park-outdoor",
@@ -26744,8 +26529,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-vincent-f-albano-jr-playground-outdoor",
@@ -26942,8 +26726,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-wald-playground-outdoor",
@@ -27359,8 +27142,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-wayanda-park-outdoor",
@@ -27394,8 +27176,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-webster-playground-outdoor",
@@ -27429,8 +27210,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-west-186th-street-basketball-court-outdoor",
@@ -27799,8 +27579,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-williamsbridge-oval-outdoor",
@@ -27853,7 +27632,6 @@
       "lights": false,
       "notes": "Outdoor basketball & tennis & soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
       "water": true,
-      "restrooms": true,
       "booking": {
         "url": "https://www.nycgovparks.org/tennisreservation",
         "permit": true
@@ -27891,8 +27669,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-willoughby-playground-outdoor",
@@ -27934,8 +27711,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-willow-lake-playground-outdoor",
@@ -27995,8 +27771,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor soccer & baseball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-wilson-playground-outdoor",
@@ -28089,8 +27864,7 @@
       "accessible": false,
       "lights": true,
       "notes": "Outdoor basketball & handball & soccer — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-winthrop-playground-outdoor",
@@ -28243,8 +28017,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball & soccer — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-woodtree-playground-outdoor",
@@ -28278,8 +28051,7 @@
       "accessible": false,
       "lights": true,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-wright-brothers-playground-outdoor",
@@ -28347,8 +28119,7 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     },
     {
       "id": "nyc-yellowstone-park-outdoor",
@@ -28409,9 +28180,8 @@
       "accessible": false,
       "lights": false,
       "notes": "Outdoor basketball & handball — first-come, open during park hours (no posted drop-in schedule).",
-      "water": true,
-      "restrooms": true
+      "water": true
     }
   ],
-  "fetchedAt": "2026-11-10T17:28:01.737Z"
+  "fetchedAt": "2026-11-11T05:25:04.208Z"
 }
