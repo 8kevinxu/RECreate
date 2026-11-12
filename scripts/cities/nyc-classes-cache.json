@@ -43,34 +43,6 @@
       ],
       "borough": "Queens",
       "location": "Classroom A - Small (in Lost Battalion Hall Recreation Center)",
-      "when": "Wed · 2:30 PM - 4:00 PM",
-      "dropIn": true,
-      "noOnlineReg": true,
-      "cost": "Free",
-      "ages": "6-12 yrs",
-      "minAge": 6,
-      "maxAge": 12,
-      "spots": 0,
-      "unlimited": true,
-      "start": "2026-11-11",
-      "end": "2026-11-11",
-      "oneDay": true,
-      "desc": "Join us after school for fun games and active play. In this program youth ages 6 - 12 will have the opportunity to play various sports, compete against other kids while playing board games, and play an assortment of group games.",
-      "lat": 40.731924,
-      "lng": -73.865529,
-      "url": "https://www.nycgovparks.org/events/2026/11/11/after-school-youth-recreation"
-    },
-    {
-      "id": "nycp-after-school-youth-recreation-classroom-a-small-in-lost-battalion-hall-recreation-center-870-2",
-      "source": "nycparks",
-      "name": "After School Youth Recreation",
-      "category": "sports",
-      "tags": [
-        "fitness",
-        "youth"
-      ],
-      "borough": "Queens",
-      "location": "Classroom A - Small (in Lost Battalion Hall Recreation Center)",
       "when": "Thu · 2:30 PM - 5:00 PM",
       "dropIn": true,
       "noOnlineReg": true,
@@ -609,7 +581,7 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 18,
+      "spots": 17,
       "unlimited": false,
       "regDeadline": "Registration ends on November 14th, 2026 at 10:30 AM",
       "start": "2026-11-14",
@@ -899,34 +871,6 @@
       "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=4d838749-531a-4048-a31f-bbf96cf87d57&occurrenceDate=20261114"
     },
     {
-      "id": "nycp-boogie-down-service-project-williamsbridge-oval-recreation-center-in-williamsbridge-oval-660",
-      "source": "nycparks",
-      "name": "Boogie Down Service Project",
-      "category": "learn",
-      "tags": [
-        "arts",
-        "accessible"
-      ],
-      "borough": "Bronx",
-      "location": "Williamsbridge Oval Recreation Center (in Williamsbridge Oval)",
-      "when": "Wed · 11:00 AM - 3:00 PM",
-      "dropIn": true,
-      "noOnlineReg": true,
-      "cost": "Free",
-      "ages": "Seniors (55+)",
-      "minAge": 55,
-      "spots": 0,
-      "unlimited": true,
-      "start": "2026-11-11",
-      "end": "2026-11-11",
-      "oneDay": true,
-      "instructor": "Pamela Coleman",
-      "desc": "All ages are welcome to participate in boogie down impact at Williamsbridge Oval Recreation Center, where we will collaborate to support others.  This drop in community service event will feature activities such as composing letters for members of the armed forces, creating blankets for animals , gathering for a community art project.",
-      "lat": 40.876682,
-      "lng": -73.878545,
-      "url": "https://www.nycgovparks.org/events/2026/11/11/boogie-down-service-project"
-    },
-    {
       "id": "nycp-broadway-beautification-broadway-arden-entrance-in-fort-tryon-park-600",
       "source": "nycparks",
       "name": "Broadway Beautification",
@@ -1044,12 +988,12 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 2,
+        "count": 3,
         "first": "Nov 12",
-        "last": "Nov 19"
+        "last": "Nov 26"
       },
       "start": "2026-11-12",
-      "end": "2026-11-19",
+      "end": "2026-11-26",
       "oneDay": false,
       "instructor": "Shirley Franco",
       "desc": "Caliente Fitness is a Pilates-style workout that will strengthen the legs and tone the core. Be prepared to sweat and \"drop it like it's hot\" as you work your way to a new you. ¡Es muy caliente!",
@@ -1070,7 +1014,7 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 33,
+      "spots": 32,
       "unlimited": false,
       "regDeadline": "Registration ends on November 13th, 2026 at 06:00 PM",
       "start": "2026-11-13",
@@ -1347,18 +1291,18 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 3,
-        "first": "Nov 11",
+        "count": 2,
+        "first": "Nov 18",
         "last": "Nov 25"
       },
-      "start": "2026-11-11",
+      "start": "2026-11-18",
       "end": "2026-11-25",
       "oneDay": false,
       "instructor": "Shirley Franco",
       "desc": "Enjoy a great workout without leaving your seat. This class is excellent for those with limited mobility and those who are just starting their fitness journey.",
       "lat": 40.755894,
       "lng": -73.926241,
-      "url": "https://www.nycgovparks.org/events/2026/11/11/chair-aerobics"
+      "url": "https://www.nycgovparks.org/events/2026/11/18/chair-aerobics"
     },
     {
       "id": "nycp-chair-yoga-ballroom-in-john-j-carty-park-720",
@@ -1471,12 +1415,12 @@
       "spots": 0,
       "unlimited": false,
       "sessions": {
-        "count": 2,
+        "count": 3,
         "first": "Nov 12",
-        "last": "Nov 19"
+        "last": "Nov 26"
       },
       "start": "2026-11-12",
-      "end": "2026-11-19",
+      "end": "2026-11-26",
       "oneDay": false,
       "desc": "Enjoy a welcoming creative environment where they can explore a variety of artistic techniques and hands-on craft projects. Each session provides an opportunity to learn, create, and discover new interests while working with different materials and artistic styles. Whether you are an experienced artist or exploring your creative side for the first time, Craft & Chill offers an inclusive and supportive space for adults of all skill levels. More than simply a craft program, it is an opportunity to create, connect, and take time to unwind.",
       "lat": 40.701861,
@@ -1551,14 +1495,14 @@
       "maxAge": 30,
       "spots": 25,
       "unlimited": false,
-      "regDeadline": "Registration is closed.",
-      "start": "2026-11-11",
+      "regDeadline": "Registration ends on November 18th, 2026 at 11:00 AM",
+      "start": "2026-11-18",
       "end": "2026-11-25",
       "oneDay": false,
       "desc": "Turn your workout into a dance party! Dance Aerobics is a beat-fueled cardio experience that will have you sweating, smiling, and moving to the music. With easy choreography and a great playlist, you\\u0027ll burn calories, boost stamina and have so much fun you\\u0027ll forget you\\u0027re working out.",
       "lat": 40.701841,
       "lng": -73.783517,
-      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=28c4a11a-0333-485a-b38a-5227583cfc83&occurrenceDate=20261111"
+      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=28c4a11a-0333-485a-b38a-5227583cfc83&occurrenceDate=20261118"
     },
     {
       "id": "nycp-dance-fitness-brooklyn-public-library-bay-ridge-720",
@@ -2339,12 +2283,12 @@
       "spots": null,
       "unlimited": false,
       "sessions": {
-        "count": 4,
+        "count": 5,
         "first": "Nov 12",
-        "last": "Nov 24"
+        "last": "Nov 26"
       },
       "start": "2026-11-12",
-      "end": "2026-11-24",
+      "end": "2026-11-26",
       "oneDay": false,
       "desc": "Join us for a free, year-round \"Fitness at the Fort\" exercise program on Tuesdays, Thursdays, and Saturdays!\n\nThis fitness class incorporates climbing multiple staircases, stretches and strengthening exercises, notable tree identification, and forest bathing. Led by instructor, Nancy Bruning, BA, MPH, PAPHS.\n\nClasses are structured so that all levels of fitness will be accommodated; however, all classes involve relatively brisk walking and some stairs because of the layout of the park itself. Classes vary according to the season, path conditions, and the weather, but always meet at the Heather Garden entrance.\n\nTuesday and Thursday classes end at various points near the starting point, including the volleyball courts. Saturday class ends at the Anne Loftus Playground, using the various pieces of equipment, and offers optional after-class group walk to the Greenmarket on Isham Street. All classes end with closing with stretches.\n\n(Note: Fitness Walking does not meet if it is raining or if the actual temperature or wind chill is below 20 degrees F.)",
       "lat": 40.859412,
@@ -2517,7 +2461,7 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 18,
+      "spots": 17,
       "unlimited": false,
       "regDeadline": "Registration ends on November 12th, 2026 at 06:30 PM",
       "start": "2026-11-12",
@@ -3077,33 +3021,6 @@
       "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=1efbf72d-ba25-4a1b-a2df-7f0fed9b7b4f&occurrenceDate=20261121"
     },
     {
-      "id": "nycp-idlewild-park-forest-restoration-entrance-springfield-lane-and-149th-avenue-in-idlewild-park-600",
-      "source": "nycparks",
-      "name": "Idlewild Park Forest Restoration",
-      "category": "nature",
-      "tags": [
-        "philanthropy"
-      ],
-      "borough": "Queens",
-      "location": "Entrance - Springfield Lane and 149th Avenue (in Idlewild Park)",
-      "when": "Wed · 10:00 AM - 12:00 PM",
-      "dropIn": false,
-      "noOnlineReg": false,
-      "cost": "Free",
-      "ages": "Under 18",
-      "minAge": 0,
-      "maxAge": 17,
-      "spots": null,
-      "unlimited": false,
-      "start": "2026-11-11",
-      "end": "2026-11-11",
-      "oneDay": true,
-      "desc": "Volunteer with NYC Parks Stewardship to protect forested areas of Idlewild Park! Attendees will contribute to ongoing restoration efforts and learn the importance of species diversity for ecosystem health. Please come dressed in long pants, long sleeves and sturdy boots or closed-toe shoes that can get dirty. Please do NOT wear Crocs, shorts or sandals. Space is limited and registration is required. Volunteers under 18 must be accompanied by a chaperone. To sign up a group of 10 or more volunteers please reach out to stewardship@parks.nyc.gov. This event has been funded in part by the National Oceanic and Atmospheric Administration (NOAA) Schedule: Day of week Start time End time Wednesday 10:00 a.m.",
-      "lat": 40.657983,
-      "lng": -73.759943,
-      "url": "https://www.nycgovparks.org/reg/stewardship/20866"
-    },
-    {
       "id": "nycp-in-the-footsteps-of-bridget-murphy-the-life-of-an-irish-servant-merchant-s-house-museum-900",
       "source": "nycparks",
       "name": "In the Footsteps of Bridget Murphy: The Life of an Irish Servant",
@@ -3167,17 +3084,17 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 29,
+      "spots": 30,
       "unlimited": false,
-      "regDeadline": "Registration is closed.",
-      "start": "2026-11-11",
+      "regDeadline": "Registration ends on November 16th, 2026 at 09:00 AM",
+      "start": "2026-11-16",
       "end": "2026-11-25",
       "oneDay": false,
       "instructor": "Zarina Noor",
       "desc": "Interval Walking Sessions consist of three segments: brisk, slow and a bodyweight exercise. Each segment is timed to improve cardiovascular health as well as increasing strength. Class will begin with a brief dynamic warm-up exercise and end with a cool down with static stretches to improve the range of motion in the joints. \\r\n\\r\nMeet at the athletic courts. Class will be cancelled if temperatures fall below 35°F. ",
       "lat": 40.747337,
       "lng": -73.921119,
-      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=2703ace8-881d-4b5a-8b31-d721c6bbdb05&occurrenceDate=20261111"
+      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=2703ace8-881d-4b5a-8b31-d721c6bbdb05&occurrenceDate=20261116"
     },
     {
       "id": "nycp-introduction-to-fly-fishing-prospect-avenue-and-brentwood-avenue-in-allison-pond-park-660",
@@ -3305,32 +3222,6 @@
       "lat": 40.874001,
       "lng": -73.920097,
       "url": "https://www.nycgovparks.org/events/2026/11/15/inwood-interplay-arts-and-science-weekend"
-    },
-    {
-      "id": "nycp-it-s-my-park-at-alexander-hamilton-playground-hamilton-place-playground-in-alexander-hamilton-playground-600",
-      "source": "nycparks",
-      "name": "It's My Park at Alexander Hamilton Playground",
-      "category": "social",
-      "tags": [
-        "philanthropy"
-      ],
-      "borough": "Manhattan",
-      "location": "Hamilton Place Playground (in Alexander Hamilton Playground)",
-      "when": "Wed · 10:00 AM - 12:00 PM",
-      "dropIn": true,
-      "noOnlineReg": true,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 0,
-      "unlimited": true,
-      "start": "2026-11-11",
-      "end": "2026-11-11",
-      "oneDay": true,
-      "desc": "This It's My Park season, volunteer with Soaring Grounds, Inc. to do a general cleanup at Alexander Hamilton Playground. We look forward to cleaning up the park with you!",
-      "lat": 40.823101,
-      "lng": -73.951202,
-      "url": "https://www.nycgovparks.org/events/2026/11/11/its-my-park-at-alexander-hamilton-playground"
     },
     {
       "id": "nycp-it-s-my-park-at-alice-kornegay-triangle-alice-kornegay-triangle-780",
@@ -3605,32 +3496,6 @@
       "lat": 40.61997,
       "lng": -73.941229,
       "url": "https://www.nycgovparks.org/events/2026/11/13/its-my-park-at-fraser-square"
-    },
-    {
-      "id": "nycp-it-s-my-park-at-fresh-creek-nature-preserve-fresh-creek-nature-preserve-540",
-      "source": "nycparks",
-      "name": "It's My Park at Fresh Creek Nature Preserve",
-      "category": "social",
-      "tags": [
-        "philanthropy"
-      ],
-      "borough": "Brooklyn",
-      "location": "Fresh Creek Nature Preserve",
-      "when": "Wed · 9:00 AM - 11:00 AM",
-      "dropIn": true,
-      "noOnlineReg": true,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 0,
-      "unlimited": true,
-      "start": "2026-11-11",
-      "end": "2026-11-11",
-      "oneDay": true,
-      "desc": "This It's My Park season, volunteer with Fresh Creek Nature Association to add mulch and plant daffodil bulbs along the front of the Fresh Creek Nature Preserve. We looks forward to seeing you!",
-      "lat": 40.644264,
-      "lng": -73.8853,
-      "url": "https://www.nycgovparks.org/events/2026/11/11/its-my-park-at-fresh-creek-nature-preserve"
     },
     {
       "id": "nycp-it-s-my-park-at-glenwood-landing-glenwood-landing-garden-in-glenwood-landing-570",
@@ -4431,17 +4296,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 5,
-        "first": "Nov 11",
+        "count": 4,
+        "first": "Nov 16",
         "last": "Nov 25"
       },
-      "start": "2026-11-11",
+      "start": "2026-11-16",
       "end": "2026-11-25",
       "oneDay": false,
       "desc": "This fall, bring your kids to Le Carrousel for an extravaganza!\n\nIn November, on Mondays and Wednesdays from 11 am to noon, kiddos will enjoy an amazing magic show, have some fitness fun, or engage with a puppet show. There are also music events and more, all free to the public; no tickets or reservations required!Schedule: Music with Erin LeeMonday, November 2 Zing! Kids Fitness Monday, November 9  Repertorio Español/Scaramouches Puppet Theatre\nWednesday, November 4 and 11 Music with FunkyTown Playground\nMonday, November 16Magic with Lee BarrettWednesday, November 18 Music with Andy & Suzanna\nMonday, November 23 Magic with Looney LouieWednesday, November 25",
       "lat": 40.7533,
       "lng": -73.984001,
-      "url": "https://www.nycgovparks.org/events/2026/11/11/le-carrousel-extravaganza"
+      "url": "https://www.nycgovparks.org/events/2026/11/16/le-carrousel-extravaganza"
     },
     {
       "id": "nycp-leaf-no-trace-fort-greene-park-visitor-center-in-fort-greene-park-600",
@@ -4775,29 +4640,6 @@
       "lat": 40.898701,
       "lng": -73.912498,
       "url": "https://www.nycgovparks.org/events/2026/11/15/mindbuilders-creative-arts-center-stage-band"
-    },
-    {
-      "id": "nycp-monthly-nature-exploration-hike-series-west-218th-street-and-indian-road-in-inwood-hill-park-780",
-      "source": "nycparks",
-      "name": "Monthly Nature Exploration Hike Series",
-      "category": "nature",
-      "borough": "Manhattan",
-      "location": "West 218th Street and Indian Road (in Inwood Hill Park)",
-      "when": "Wed · 1:00 PM - 2:30 PM",
-      "dropIn": true,
-      "noOnlineReg": true,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 0,
-      "unlimited": true,
-      "start": "2026-11-11",
-      "end": "2026-11-11",
-      "oneDay": true,
-      "desc": "Join the Urban Park Rangers for a monthly hike exploring Inwood Hill Park. The hike will begin at the Inwood Hill Nature Center. This month's hike will focus on fall bird watching.",
-      "lat": 40.873013,
-      "lng": -73.918453,
-      "url": "https://www.nycgovparks.org/events/2026/11/11/monthly-nature-exploration-hike-series"
     },
     {
       "id": "nycp-my-vietnam-an-author-talk-with-joan-furey-rn-ma-bayside-historical-society-in-fort-totten-park-1170",
@@ -5260,33 +5102,6 @@
       "url": "https://www.nycgovparks.org/events/2026/11/14/nyc-parks-flag-football-citywide-playoffs-17u-division-semifinals"
     },
     {
-      "id": "nycp-nyc-parks-girls-flag-football-festival-beach-32nd-street-football-field-in-rockaway-beach-and-boardwalk-660",
-      "source": "nycparks",
-      "name": "NYC Parks Girls Flag Football Festival",
-      "category": "sports",
-      "tags": [
-        "youth"
-      ],
-      "borough": "Queens",
-      "location": "Beach 32nd Street Football Field (in Rockaway Beach and Boardwalk)",
-      "when": "Wed · 11:00 AM - 2:00 PM",
-      "dropIn": false,
-      "noOnlineReg": false,
-      "cost": "Free",
-      "ages": "Best for kids",
-      "minAge": 0,
-      "spots": 999,
-      "unlimited": false,
-      "regDeadline": "Registration is closed.",
-      "start": "2026-11-11",
-      "end": "2026-11-11",
-      "oneDay": true,
-      "desc": "Join us for a fun day of competition, drills, games, and other football activities at the Queens Recreation Flag Football Festival. Activities will include a 40-yard dash, quarterback accuracy challenges, a football-related obstacle courses, and more for participants ages 14 \\u0026 under to enjoy.\\r\n\\r\nWednesday, November 11th, 2026 | 11:00 a.m. - 2:00 p.m.\\r\nBeach 32 Football Field \\r\nBeach 32 St., Far Rockaway, NY 11691\\r\n\\r\nThis event is FREE and open to the public. For more information, please contact\\r\nCynthaly.Pinckney@parks.nyc.gov or (718) 393-7370. Contact accessibility@parks.nyc.gov or          (212) 360-1430 for more information regarding accessibility.",
-      "lat": 40.592539,
-      "lng": -73.763463,
-      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=7d1e1d83-354d-4b81-bb8e-6f2ebbbe9579&occurrenceDate=20261111"
-    },
-    {
       "id": "nycp-nyrr-open-run-astoria-park-astoria-park-525",
       "source": "nycparks",
       "name": "NYRR Open Run: Astoria Park",
@@ -5498,12 +5313,12 @@
       "spots": null,
       "unlimited": false,
       "sessions": {
-        "count": 2,
+        "count": 3,
         "first": "Nov 12",
-        "last": "Nov 19"
+        "last": "Nov 26"
       },
       "start": "2026-11-12",
-      "end": "2026-11-19",
+      "end": "2026-11-26",
       "oneDay": false,
       "desc": "NYRR Open Run Brings free, 5K weekly community-led runs, to neighborhood parks across the greater New York City area. The program is free and open to runners and walkers of all ages, abilities, and experience levels.\n\nOne of the city's most iconic parks, Flushing Meadows Corona Park was the site of two 20th-century World's Fairs. It features historic walks, scenic trails, sports venues, and facilities for activities including soccer, baseball, tennis, volleyball, cricket, and more, as well as a recreation center, an indoor pool, lakes, trails, and many cultural and civic institutions.",
       "lat": 40.742657,
@@ -5728,16 +5543,16 @@
       "unlimited": true,
       "sessions": {
         "count": 9,
-        "first": "Nov 11",
-        "last": "Nov 25"
+        "first": "Nov 12",
+        "last": "Nov 26"
       },
-      "start": "2026-11-11",
-      "end": "2026-11-25",
+      "start": "2026-11-12",
+      "end": "2026-11-26",
       "oneDay": false,
       "desc": "NYC Parks and the Tottenville Historical Society invite you to visit a unique collection of terracotta artifacts and masonry bricks that chronicle turn-of-the-twentieth-century architectural styles common in New York City and across the United States, and to learn about the area's rich terracotta and brick making tradition, including the famed former Atlantic Terra Cotta Company.",
       "lat": 40.505546,
       "lng": -74.254194,
-      "url": "https://www.nycgovparks.org/events/2026/11/11/ongoing-museum-exhibit-new-yorks-brick-terra-cotta-industries"
+      "url": "https://www.nycgovparks.org/events/2026/11/12/ongoing-museum-exhibit-new-yorks-brick-terra-cotta-industries"
     },
     {
       "id": "nycp-ongoing-museum-exhibit-still-waters-reflections-of-a-maritime-community-rutan-becket-house-in-conference-house-park-660",
@@ -5760,16 +5575,16 @@
       "unlimited": true,
       "sessions": {
         "count": 9,
-        "first": "Nov 11",
-        "last": "Nov 25"
+        "first": "Nov 12",
+        "last": "Nov 26"
       },
-      "start": "2026-11-11",
-      "end": "2026-11-25",
+      "start": "2026-11-12",
+      "end": "2026-11-26",
       "oneDay": false,
       "desc": "NYC Parks and the Tottenville Historical Society invite you to an exhibit celebrating the South Shore of Staten Island's maritime history and heritage, featuring the A.C. Brown & Sons Shipyard of Tottenville and spotlighting our recreational waterfront and more.\n\nNote location:  Rutan-Becket House, 6 Shore Rd. Open by chance or by appointment.",
       "lat": 40.504738,
       "lng": -74.254862,
-      "url": "https://www.nycgovparks.org/events/2026/11/11/ongoing-museum-exhibit-still-waters-reflections-of-a-maritime-community"
+      "url": "https://www.nycgovparks.org/events/2026/11/12/ongoing-museum-exhibit-still-waters-reflections-of-a-maritime-community"
     },
     {
       "id": "nycp-ongoing-museum-exhibit-voices-of-1776-conference-house-museum-in-conference-house-park-600",
@@ -5793,16 +5608,16 @@
       "unlimited": true,
       "sessions": {
         "count": 13,
-        "first": "Nov 11",
-        "last": "Nov 25"
+        "first": "Nov 12",
+        "last": "Nov 26"
       },
-      "start": "2026-11-11",
-      "end": "2026-11-25",
+      "start": "2026-11-12",
+      "end": "2026-11-26",
       "oneDay": false,
       "desc": "The Conference House Association and NYC Parks invite you to explore this America 250 Exhibit!\n\nStop by the Lenape Gallery in the Conference House Park Visitor Center and explore \"Voices of 1776: The People and Events Surrounding the Historic Staten Island Peace Conference of the American Revolution\".",
       "lat": 40.501999,
       "lng": -74.251404,
-      "url": "https://www.nycgovparks.org/events/2026/11/11/ongoing-museum-exhibit-voices-of-1776"
+      "url": "https://www.nycgovparks.org/events/2026/11/12/ongoing-museum-exhibit-voices-of-1776"
     },
     {
       "id": "nycp-ongoing-outdoor-museum-exhibit-alice-s-terracotta-garden-h-h-biddle-house-in-conference-house-park-660",
@@ -5825,16 +5640,16 @@
       "unlimited": true,
       "sessions": {
         "count": 15,
-        "first": "Nov 11",
-        "last": "Nov 25"
+        "first": "Nov 12",
+        "last": "Nov 26"
       },
-      "start": "2026-11-11",
-      "end": "2026-11-25",
+      "start": "2026-11-12",
+      "end": "2026-11-26",
       "oneDay": false,
       "desc": "Terra cotta sculpture garden featuring antique architectural ornaments from Tottenville's Atlantic Terra Cotta Company (west side lawn of Biddle House).\n\nNYC Parks and the Tottenville Historical Society invite you to visit a unique collection of terracotta artifacts that chronicle turn-of-the-twentieth-century architectural styles common in New York City and across the United States.",
       "lat": 40.505546,
       "lng": -74.254194,
-      "url": "https://www.nycgovparks.org/events/2026/11/11/ongoing-outdoor-museum-exhibit-alices-terracotta-garden"
+      "url": "https://www.nycgovparks.org/events/2026/11/12/ongoing-outdoor-museum-exhibit-alices-terracotta-garden"
     },
     {
       "id": "nycp-open-play-table-tennis-gymnasium-in-gertrude-ederle-recreation-center-720",
@@ -6114,12 +5929,12 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 4,
+        "count": 5,
         "first": "Nov 12",
-        "last": "Nov 21"
+        "last": "Nov 26"
       },
       "start": "2026-11-12",
-      "end": "2026-11-21",
+      "end": "2026-11-26",
       "oneDay": false,
       "desc": "Solo and group exhibitions at Glyndor Gallery explore the dynamic relationships between nature, culture, and site. When exhibitions are on view in the spring, summer, and fall, Gallery Greeters lead public exhibition tours on Thursdays and Saturdays at 2PM, certain dates excluded. Visitors can expect an in-depth look at artworks on view in Glyndor Gallery and in the Sunroom Project Space, showcasing the work of both emerging and established artists in the unique context of a public garden.\n\nEach tour lasts approximately 45 minutes. Registration is not required for this drop-in event. Today's tour features current exhibitions.\n\nQuestions? Please email us at information@wavehill.org or call 718.549.3200 x251.\n\nGlyndor Gallery is wheelchair-accessible. There is an accessible, ground-level entrance at the front of the building with an elevator that provides access to the gallery level. The Sunroom Project Space can be accessed with an ADA-compliant ramp. The restroom on the gallery level is all-gender and ADA-compliant.",
       "lat": 40.898701,
@@ -6389,18 +6204,13 @@
       "minAge": 0,
       "spots": 0,
       "unlimited": true,
-      "sessions": {
-        "count": 2,
-        "first": "Nov 11",
-        "last": "Nov 18"
-      },
-      "start": "2026-11-11",
+      "start": "2026-11-18",
       "end": "2026-11-18",
-      "oneDay": false,
+      "oneDay": true,
       "desc": "Join Yoga instructor Meg SantaMaria for a morning practice. Suitable for all fitness levels. Please wear loose, comfortable clothing and bring your own mat. No class November 25.\n\nThis event takes place in the newly-renovated 102nd Street Field House. Enter the Park at 102nd Street and Riverside Drive, then descend to the promenade level. The stairs to the Field House are across the promenade at 102nd Street.",
       "lat": 40.800692,
       "lng": -73.973306,
-      "url": "https://www.nycgovparks.org/events/2026/11/11/riverside-field-house-fall-yoga"
+      "url": "https://www.nycgovparks.org/events/2026/11/18/riverside-field-house-fall-yoga"
     },
     {
       "id": "nycp-running-group-broadway-and-251st-street-in-van-cortlandt-park-600",
@@ -6540,17 +6350,17 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 3,
-        "first": "Nov 11",
+        "count": 2,
+        "first": "Nov 18",
         "last": "Nov 25"
       },
-      "start": "2026-11-11",
+      "start": "2026-11-18",
       "end": "2026-11-25",
       "oneDay": false,
       "desc": "Our Senior Happy Hour is a time for socialization and fun. We will also have a space available where different table games can be played. Such as bridge, classic chess, Chinese chess, mahjong, and more..",
       "lat": 40.591983,
       "lng": -74.139472,
-      "url": "https://www.nycgovparks.org/events/2026/11/11/senior-happy-hour"
+      "url": "https://www.nycgovparks.org/events/2026/11/18/senior-happy-hour"
     },
     {
       "id": "nycp-shea-butter-grooves-fit4dance-nyc-1050",
@@ -7143,6 +6953,29 @@
       "url": "https://www.eventbrite.com/e/team-river-volunteers-tickets-1980281661758?aff=oddtdtcreator"
     },
     {
+      "id": "nycp-thanksgiving-wave-hill-is-closed-wave-hill-570",
+      "source": "nycparks",
+      "name": "Thanksgiving: Wave Hill is Closed",
+      "category": "social",
+      "borough": "Bronx",
+      "location": "Wave Hill",
+      "when": "Thu · 9:30 AM - 5:00 PM",
+      "dropIn": true,
+      "noOnlineReg": true,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 0,
+      "unlimited": true,
+      "start": "2026-11-26",
+      "end": "2026-11-26",
+      "oneDay": true,
+      "desc": "Wave Hill is Closed!",
+      "lat": 40.898701,
+      "lng": -73.912498,
+      "url": "https://www.nycgovparks.org/events/2026/11/26/thanksgiving-wave-hill-is-closed"
+    },
+    {
       "id": "nycp-the-music-of-croatia-at-the-bhs-castle-bayside-historical-society-in-fort-totten-park-900",
       "source": "nycparks",
       "name": "The Music of Croatia at the BHS Castle",
@@ -7213,12 +7046,12 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 4,
+        "count": 5,
         "first": "Nov 12",
-        "last": "Nov 24"
+        "last": "Nov 26"
       },
       "start": "2026-11-12",
-      "end": "2026-11-24",
+      "end": "2026-11-26",
       "oneDay": false,
       "instructor": "Eric Friedman",
       "desc": "Tiny Tots is an energetic learning experience fit for children ages 18 months to 3 years old. Parents work alongside their children to help them improve their fine motor skills and get them ready to start elementary education. Children will learn to socialize with other children and build independence.",
@@ -7247,12 +7080,12 @@
       "spots": 0,
       "unlimited": true,
       "sessions": {
-        "count": 4,
+        "count": 5,
         "first": "Nov 12",
-        "last": "Nov 24"
+        "last": "Nov 26"
       },
       "start": "2026-11-12",
-      "end": "2026-11-24",
+      "end": "2026-11-26",
       "oneDay": false,
       "instructor": "Eric Friedman",
       "desc": "Tiny Tots is an energetic learning experience fit for children ages 18 months to 3 years old. Parents work alongside their children to help them improve their fine motor skills and get them ready to start elementary education. Children will learn to socialize with other children and build independence.",
@@ -7402,7 +7235,7 @@
       "start": "2026-11-21",
       "end": "2026-11-21",
       "oneDay": true,
-      "desc": "Join NYC Parks and The Forest Park Trust for a trail restoration in Forest Park!Date: 11/21/2026 Location: Forest Park (Queens) (opens in new tab) Myrtle Ave, Union Tpke, Park Lane S, Queens Phone: 7182354100 Description: Join NYC Parks and The Forest Park Trust for a trail restoration in Forest Park! Volunteers will help restore part of a trail while learning about the importance of trails and trail maintenance. Registration is required. All tools will be provided, and no prior experience is needed. Just bring your enthusiasm. Please come dressed in sturdy, closed-toe shoes and bring your own water bottle. ProgramsPrograms by TypeRecreation CentersUrban Park RangersTeen ProgramsSenior Programs and ResourcesComputer ClassesSwim ProgramsAfterschool ProgramsAccessible ProgramsShape Up NYCSummer ProgramsYouth Sports Programs & Clinics Was this information helpful? Thank you for your feedback. (Optional) Please tell us how we can make this page more helpful. If you need a response, please use the Contact the Commissioner form instead.",
+      "desc": "Join NYC Parks and The Forest Park Trust for a trail restoration in Forest Park! Volunteers will help restore part of a trail while learning about the importance of trails and trail maintenance.\n\nRegistration is required. All tools will be provided, and no prior experience is needed. Just bring your enthusiasm. Please come dressed in sturdy, closed-toe shoes and bring your own water bottle.",
       "lat": 40.703765,
       "lng": -73.839665,
       "url": "https://www.nycgovparks.org/reg/forest-highland/20890"
@@ -7505,7 +7338,7 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 87,
+      "spots": 86,
       "unlimited": false,
       "regDeadline": "Registration ends on November 14th, 2026 at 09:00 AM",
       "start": "2026-11-14",
@@ -7529,7 +7362,7 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 184,
+      "spots": 183,
       "unlimited": false,
       "regDeadline": "Registration ends on November 16th, 2026 at 07:30 PM",
       "start": "2026-11-16",
@@ -7556,7 +7389,7 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 83,
+      "spots": 81,
       "unlimited": false,
       "regDeadline": "Registration ends on November 12th, 2026 at 07:30 PM",
       "start": "2026-11-12",
@@ -7594,56 +7427,6 @@
       "url": "https://www.nycgovparks.org/events/2026/11/21/volunteer-day-at-paradise-community-garden-ny"
     },
     {
-      "id": "nycp-volunteer-native-planting-george-washington-carver-community-garden-840",
-      "source": "nycparks",
-      "name": "Volunteer Native Planting",
-      "category": "nature",
-      "tags": [
-        "philanthropy"
-      ],
-      "location": "George Washington Carver Community Garden",
-      "when": "Wed · 2:00 PM - 4:00 PM",
-      "dropIn": true,
-      "noOnlineReg": true,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 0,
-      "unlimited": true,
-      "start": "2026-11-11",
-      "end": "2026-11-11",
-      "oneDay": true,
-      "desc": "Join Plant by Plant and George Washington Carver Community Garden for a volunteer planting event! Participants will learn how to care and restore our land through planting native species that support our local ecosystem. Food will be provided!\n\nThis event is co-led by Plant by Plant (PBP), a volunteer-run organization in New York City committed to restoring native ecosystems and connecting people to the land around them. They support our city's ecosystems and their caretakers– empowering land stewards with the plants and knowledge they need to foster habitat-rich hotspots of flourishing, native ecosystems on their lands around the city.",
-      "lat": 40.702751,
-      "lng": -73.947952,
-      "url": "https://www.nycgovparks.org/events/2026/11/11/volunteer-planting"
-    },
-    {
-      "id": "nycp-volunteer-work-day-flower-door-garden-flower-door-garden-720",
-      "source": "nycparks",
-      "name": "Volunteer Work Day: Flower Door Garden",
-      "category": "nature",
-      "tags": [
-        "philanthropy"
-      ],
-      "location": "Flower Door Garden",
-      "when": "Wed · 12:00 PM - 3:00 PM",
-      "dropIn": false,
-      "noOnlineReg": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": null,
-      "unlimited": false,
-      "start": "2026-11-11",
-      "end": "2026-11-11",
-      "oneDay": true,
-      "desc": "Grow With Us This Veterans Day!\n\nJoin us at Flower Door Garden for an afternoon of community, learning, and getting our hands in the soil! Give back to your neighborhood while learning how to build raised planting beds and care for a thriving garden. Whether you're a seasoned gardener or just starting to grow, there's a place for you here!\n\nPlease wear comfortable weather-appropriate clothing and bring water and snacks. Tools, gloves, and other supplies will be provided!\n\nRegister here!\n\nLocation: 135 Avenue C, New York, NY\n\nFor information about group volunteering, please contact the GreenThumb Volunteer Program at gt.volunteer@parks.nyc.gov or (332) 280-4408.\n\nThis event is co-hosted by NYC Parks GreenThumb. We are proud to be the nation's largest urban community gardening program, sustaining over 550 gardens throughout New York City. GreenThumb community gardens are organized, led, and cared for by dedicated volunteer gardeners who critically upkeep them as public green spaces. With GreenThumb's support, community gardens are centers of environmental justice, ensuring that our city is fairer, safer, and greener for all. GreenThumb's events are free and open to the public.",
-      "lat": 40.725045,
-      "lng": -73.978353,
-      "url": "https://www.nycgovparks.org/reg/greenthumb-volunteer-events/20912"
-    },
-    {
       "id": "nycp-volunteer-workday-fantasy-garden-fantasy-garden-750",
       "source": "nycparks",
       "name": "Volunteer Workday: Fantasy Garden",
@@ -7669,31 +7452,6 @@
       "url": "https://www.nycgovparks.org/reg/greenthumb-volunteer-events/20937"
     },
     {
-      "id": "nycp-volunteer-workday-krystal-community-garden-krystal-community-garden-600",
-      "source": "nycparks",
-      "name": "Volunteer Workday: Krystal Community Garden",
-      "category": "nature",
-      "tags": [
-        "philanthropy"
-      ],
-      "location": "Krystal Community Garden",
-      "when": "Wed · 10:00 AM - 2:00 PM",
-      "dropIn": false,
-      "noOnlineReg": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": null,
-      "unlimited": false,
-      "start": "2026-11-11",
-      "end": "2026-11-11",
-      "oneDay": true,
-      "desc": "Join Krystal Community Garden and NYC Parks GreenThumb for a volunteer day helping install a new garden pathway! This community garden is cared for by volunteers who are excited to meet you and share their rich history of environmental stewardship, urban gardening, and hosting community events. This is a great opportunity for anyone looking to join a growing garden!\n\nSignup here!\n\nAbout the Project: Installing garden pathways involves weeding, leveling soil, painting and setting bricks, and spreading sand. It's a great opportunity to learn about garden design and accessibility! We'll provide all the tools, training, and guidance to ensure a productive and safe volunteer day. Please wear sturdy work shoes and weather-appropriate clothing and bring water and snacks. Note some tasks will involve lifting heavy materials and extended periods of bending, squatting, and moving.\n\nRain Date: Saturday, November 14, 10:00 a.m.-2:00 p.m.\n\nFor information about group volunteering, please contact the GreenThumb Volunteer Program at gt.volunteer@parks.nyc.gov\n\nThis event is co-hosted by NYC Parks GreenThumb. We are proud to be the nation's largest urban community gardening program, sustaining over 550 gardens throughout New York City. GreenThumb community gardens are organized, led, and cared for by dedicated volunteer gardeners who critically upkeep them as public green spaces. With GreenThumb's support, community gardens are centers of environmental justice, ensuring that our city is fairer, safer, and greener for all. GreenThumb's events are free and open to the public.",
-      "lat": 40.84367,
-      "lng": -73.880941,
-      "url": "https://www.nycgovparks.org/reg/greenthumb-volunteer-events/20862"
-    },
-    {
       "id": "nycp-volunteering-at-conference-house-park-the-blue-wave-conference-house-museum-in-conference-house-park-600",
       "source": "nycparks",
       "name": "Volunteering at Conference House Park - The Blue Wave",
@@ -7713,16 +7471,16 @@
       "unlimited": true,
       "sessions": {
         "count": 9,
-        "first": "Nov 11",
-        "last": "Nov 25"
+        "first": "Nov 12",
+        "last": "Nov 26"
       },
-      "start": "2026-11-11",
-      "end": "2026-11-25",
+      "start": "2026-11-12",
+      "end": "2026-11-26",
       "oneDay": false,
       "desc": "Join NYC Parks and the Conference House Park Conservancy for our ongoing beach and park clean-up initiative!\n\nPick up a trash grabber and a bucket and help to beautify our park by picking up litter and debris!\n\nStop by the park Visitor's Center at 298 Satterlee Street, corner of Hylan Boulevard, Staten Island, NY, to meet our staff and borrow a bucket and grabber!\n\nDrop-ins welcome. No RSVP required. Blue Wave clean-ups are self-led by the volunteer stewards themselves.\n\nFor group volunteer opportunities and volunteering at additional Staten Island South Shore sites, please contact the South Shore Parks Programs and Events Manager at 646-406-2155, or carmine.raimondi@parks.nyc.gov.",
       "lat": 40.501999,
       "lng": -74.251404,
-      "url": "https://www.nycgovparks.org/events/2026/11/11/volunteering-at-conference-house-park-the-blue-wave"
+      "url": "https://www.nycgovparks.org/events/2026/11/12/volunteering-at-conference-house-park-the-blue-wave"
     },
     {
       "id": "nycp-wagner-college-children-s-learn-to-swim-level-1-wagner-college-pool-spiro-sports-center-1020",
@@ -8003,7 +7761,7 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 18,
+      "spots": 17,
       "unlimited": false,
       "regDeadline": "Registration ends on November 16th, 2026 at 06:15 PM",
       "start": "2026-11-16",
@@ -8185,15 +7943,15 @@
       "minAge": 18,
       "spots": 19,
       "unlimited": false,
-      "regDeadline": "Registration ends on November 11th, 2026 at 06:30 PM",
-      "start": "2026-11-11",
+      "regDeadline": "Registration ends on November 18th, 2026 at 06:30 PM",
+      "start": "2026-11-18",
       "end": "2026-11-18",
-      "oneDay": false,
+      "oneDay": true,
       "instructor": "Jessica Zamora",
       "desc": "Zumba is a fusion of Latin, International and popular music dance themes creating a dynamic, exciting, effective fitness system! The routines feature aerobic fitness interval training with a combination of fast and slow rhythms that challenge both the heart and muscles. With fun music and easy-to-follow steps, you can’t go wrong!  \\r\n",
       "lat": 40.793499,
       "lng": -73.936699,
-      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=38f924d9-f7fa-4e91-b7ed-478fe70c2b52&occurrenceDate=20261111"
+      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=38f924d9-f7fa-4e91-b7ed-478fe70c2b52&occurrenceDate=20261118"
     },
     {
       "id": "nycp-zumba-gymnasium-court-in-flushing-meadows-corona-park-540",
@@ -8237,17 +7995,17 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 16,
+      "spots": 20,
       "unlimited": false,
-      "regDeadline": "Registration ends on November 11th, 2026 at 06:00 PM",
-      "start": "2026-11-11",
+      "regDeadline": "Registration ends on November 18th, 2026 at 06:00 PM",
+      "start": "2026-11-18",
       "end": "2026-11-25",
       "oneDay": false,
       "instructor": "Yhajaira Muniz",
       "desc": "Zumba is a fusion of Latin, International and popular music dance themes creating a dynamic, exciting, effective fitness system! The routines feature aerobic, fitness interval training with a combination of fast and slow rhythms that tone and sculpt the body with easy to follow dance steps. \\r\n",
       "lat": 40.842602,
       "lng": -73.934303,
-      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=3eac4af3-1aa6-4505-8127-23c6d730315f&occurrenceDate=20261111"
+      "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=3eac4af3-1aa6-4505-8127-23c6d730315f&occurrenceDate=20261118"
     },
     {
       "id": "nycp-zumba-gymnasium-in-st-john-s-park-600",
@@ -8265,7 +8023,7 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 30,
+      "spots": 29,
       "unlimited": false,
       "regDeadline": "Registration ends on November 14th, 2026 at 10:00 AM",
       "start": "2026-11-14",
@@ -8449,7 +8207,7 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 29,
+      "spots": 28,
       "unlimited": false,
       "regDeadline": "Registration ends on November 12th, 2026 at 06:00 PM",
       "start": "2026-11-12",
@@ -8477,7 +8235,7 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 21,
+      "spots": 20,
       "unlimited": false,
       "regDeadline": "Registration ends on November 13th, 2026 at 09:00 AM",
       "start": "2026-11-13",
@@ -8545,5 +8303,5 @@
       "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=c4f995c0-ce19-43fb-96e3-4278b1c63d8c&occurrenceDate=20261116"
     }
   ],
-  "fetchedAt": "2026-11-11T18:16:29.272Z"
+  "fetchedAt": "2026-11-12T05:21:07.280Z"
 }
