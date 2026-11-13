@@ -166,7 +166,7 @@
       "spots": 8,
       "unlimited": false,
       "start": "2026-11-18",
-      "end": "2027-05-05",
+      "end": "2027-05-12",
       "instructor": "Friends of Conservatory Valley",
       "activity": "Habitat Restoration",
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the RPD gardeners in a weekly recurring volunteer workparty at the Valley of the Conservatory of Flowers. Volunteer tasks include the maintenance of ornamental planting beds. All tools provided by RPD. Children 13 years and older accompanied by an adult are welcome. No school groups.\n\nMeet on the steps of the Conservatory of Flowers, 100 JFK Drive.",
@@ -658,7 +658,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 10,
+      "spots": 9,
       "unlimited": false,
       "start": "2026-12-12",
       "end": "2026-12-12",
@@ -817,5 +817,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-11-13T13:57:23.235Z"
+  "fetchedAt": "2026-11-13T23:16:13.867Z"
 }
