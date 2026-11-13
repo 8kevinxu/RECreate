@@ -3540,7 +3540,7 @@
           },
           {
             "kind": "other",
-            "label": "Swim For Life at St. Mary's Class C Tuesday -",
+            "label": "Swim For Life at St. Mary's Class C Tuesday - Ps 277x",
             "start": 720,
             "end": 780
           },
@@ -4582,7 +4582,7 @@
           },
           {
             "kind": "other",
-            "label": "Swim For Life at Chelsea Class A Tuesday - Ps 12x 045",
+            "label": "Swim For Life at Chelsea Class A Tuesday -",
             "start": 600,
             "end": 660
           },
@@ -4659,7 +4659,7 @@
           },
           {
             "kind": "other",
-            "label": "Swim For Life at Chelsea Class A Thursday - Ps 12x 045",
+            "label": "Swim For Life at Chelsea Class A Thursday -",
             "start": 600,
             "end": 660
           },
@@ -4915,7 +4915,7 @@
           },
           {
             "kind": "other",
-            "label": "Swim For Life at Gertrude Ederle Class A Monday - P12x 045",
+            "label": "Swim For Life at Gertrude Ederle Class A Monday -",
             "start": 600,
             "end": 660
           },
@@ -4927,7 +4927,7 @@
           },
           {
             "kind": "other",
-            "label": "Swim For Life at Gertrude Ederle Class C Monday - P12x 045",
+            "label": "Swim For Life at Gertrude Ederle Class C Monday -",
             "start": 720,
             "end": 780
           },
@@ -5032,7 +5032,7 @@
           },
           {
             "kind": "other",
-            "label": "Swim For Life at Gertrude Ederle Class A Thursday - P12x 045",
+            "label": "Swim For Life at Gertrude Ederle Class A Thursday -",
             "start": 600,
             "end": 660
           },
@@ -6567,19 +6567,19 @@
           },
           {
             "kind": "other",
-            "label": "Swim For Life at Shirley Chisholm Class A Monday -",
+            "label": "Swim For Life at Shirley Chisholm Class A Monday - Ps 161",
             "start": 600,
             "end": 660
           },
           {
             "kind": "other",
-            "label": "Swim For Life at Shirley Chisholm Class B Monday -",
+            "label": "Swim For Life at Shirley Chisholm Class B Monday - PS 40",
             "start": 660,
             "end": 720
           },
           {
             "kind": "other",
-            "label": "Swim For Life at Shirley Chisholm Class C Monday -",
+            "label": "Swim For Life at Shirley Chisholm Class C Monday - Ps 245",
             "start": 720,
             "end": 780
           },
@@ -6607,19 +6607,19 @@
           },
           {
             "kind": "other",
-            "label": "Swim For Life at Shirley Chisholm Class A Tuesday -",
+            "label": "Swim For Life at Shirley Chisholm Class A Tuesday - Ps 361",
             "start": 600,
             "end": 660
           },
           {
             "kind": "other",
-            "label": "Swim For Life at Shirley Chisholm Class B Tuesday -",
+            "label": "Swim For Life at Shirley Chisholm Class B Tuesday - P.S/I.S 109",
             "start": 660,
             "end": 720
           },
           {
             "kind": "other",
-            "label": "Swim For Life at Shirley Chisholm Class C Tuesday -",
+            "label": "Swim For Life at Shirley Chisholm Class C Tuesday - Ps 238",
             "start": 720,
             "end": 780
           },
@@ -6689,19 +6689,19 @@
           },
           {
             "kind": "other",
-            "label": "Swim For Life at Shirley Chisholm Class A Thursday -",
+            "label": "Swim For Life at Shirley Chisholm Class A Thursday - Cultural Arts Academy Charter School",
             "start": 600,
             "end": 660
           },
           {
             "kind": "other",
-            "label": "Swim For Life at Shirley Chisholm Class B Thursday -",
+            "label": "Swim For Life at Shirley Chisholm Class B Thursday - Ps 399",
             "start": 660,
             "end": 720
           },
           {
             "kind": "other",
-            "label": "Swim For Life at Shirley Chisholm Class C Thursday -",
+            "label": "Swim For Life at Shirley Chisholm Class C Thursday - Ps 92",
             "start": 720,
             "end": 780
           },
@@ -6802,8 +6802,8 @@
   "season": {
     "open": false,
     "label": "Closed for the season — NYC outdoor pools run late June through Labor Day",
-    "checked": "2026-11-12",
+    "checked": "2026-11-13",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-11-12T17:36:39.793Z"
+  "fetchedAt": "2026-11-13T17:39:20.709Z"
 }
