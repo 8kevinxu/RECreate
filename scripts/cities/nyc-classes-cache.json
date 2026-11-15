@@ -2180,7 +2180,7 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 18,
+      "spots": 17,
       "unlimited": false,
       "regDeadline": "Registration ends on November 17th, 2026 at 06:00 PM",
       "start": "2026-11-17",
@@ -6367,7 +6367,7 @@
       "minAge": 18,
       "spots": 16,
       "unlimited": false,
-      "regDeadline": "Registration ends on November 15th, 2026 at 09:30 AM",
+      "regDeadline": "Registration is closed.",
       "start": "2026-11-15",
       "end": "2026-11-29",
       "oneDay": false,
@@ -7011,7 +7011,7 @@
       "cost": "Free",
       "ages": "18 yrs +",
       "minAge": 18,
-      "spots": 179,
+      "spots": 178,
       "unlimited": false,
       "regDeadline": "Registration ends on November 16th, 2026 at 07:30 PM",
       "start": "2026-11-16",
@@ -7702,7 +7702,7 @@
       "minAge": 18,
       "spots": 27,
       "unlimited": false,
-      "regDeadline": "Registration ends on November 15th, 2026 at 11:00 AM",
+      "regDeadline": "Registration is closed.",
       "start": "2026-11-15",
       "end": "2026-11-22",
       "oneDay": false,
@@ -7952,5 +7952,5 @@
       "url": "https://nycparks.perfectmind.com/24936/Clients/BookMe4LandingPages/Class?widgetId=15f6af07-39c5-473e-b053-96653f77a406&embed=False&redirectedFromEmbededMode=False&classId=c4f995c0-ce19-43fb-96e3-4278b1c63d8c&occurrenceDate=20261116"
     }
   ],
-  "fetchedAt": "2026-11-15T05:35:16.162Z"
+  "fetchedAt": "2026-11-15T18:26:58.791Z"
 }
