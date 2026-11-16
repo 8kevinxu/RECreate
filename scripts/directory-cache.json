@@ -31,7 +31,7 @@
           "overall": 3,
           "surface": 2.2,
           "crowded": 3.5,
-          "matches": 507,
+          "matches": 509,
           "src": "https://www.tennissf.com/court_detail/sf-alice-marble-rc"
         }
       }
@@ -369,7 +369,7 @@
           "overall": 4,
           "surface": 4.3,
           "crowded": 2.3,
-          "matches": 768,
+          "matches": 770,
           "src": "https://www.tennissf.com/court_detail/sf-j-p-murphy-playground"
         }
       }
@@ -669,7 +669,7 @@
           "overall": 4,
           "surface": 3.4,
           "crowded": 2.2,
-          "matches": 561,
+          "matches": 562,
           "src": "https://www.tennissf.com/court_detail/sf-mountain-lake"
         }
       }
@@ -1235,5 +1235,5 @@
       }
     }
   },
-  "fetchedAt": "2026-11-09T23:41:37.454Z"
+  "fetchedAt": "2026-11-16T23:39:05.235Z"
 }
