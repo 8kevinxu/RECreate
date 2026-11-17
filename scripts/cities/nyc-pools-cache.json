@@ -4907,80 +4907,6 @@
       ]
     },
     {
-      "id": "nyc-pool-hansborough-recreation-center-pool",
-      "name": "Hansborough Recreation Center Pool",
-      "address": "134th St. between Fifth & Lenox Aves.",
-      "lat": 40.8129,
-      "lng": -73.9394,
-      "phone": "(212) 234-9603",
-      "indoor": true,
-      "accessible": true,
-      "desc": "Intermediate pool · 75' x 35' x 9'",
-      "season": "No pool sessions currently published",
-      "seasonal": false,
-      "notice": "Hansborough Recreation Center is closed for reconstruction. Visit our Capital Tracker page for updates on this project.",
-      "programs": [],
-      "fees": {
-        "effective": "2026-01-01",
-        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
-        "note": "Recreation center membership — indoor pools are members-only",
-        "groups": [
-          {
-            "id": "youth",
-            "label": "Ages 24 and under",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                0
-              ]
-            ]
-          },
-          {
-            "id": "adult",
-            "label": "Adults (25–61)",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                150
-              ],
-              [
-                "Six months",
-                75
-              ]
-            ]
-          },
-          {
-            "id": "senior",
-            "label": "Seniors 62+, veterans, people with disabilities",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                25
-              ]
-            ]
-          }
-        ]
-      },
-      "scheduleUrls": [
-        {
-          "label": "Pool schedule",
-          "url": "https://www.nycgovparks.org/facilities/recreationcenters/M131/schedule#Pool-schedule"
-        }
-      ],
-      "sessions": [
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
-      ]
-    },
-    {
       "id": "nyc-pool-gertrude-ederle-recreation-center-pool",
       "name": "Gertrude Ederle Recreation Center Pool",
       "address": "232 West 60th Street",
@@ -5296,6 +5222,80 @@
             "end": 930
           }
         ]
+      ]
+    },
+    {
+      "id": "nyc-pool-hansborough-recreation-center-pool",
+      "name": "Hansborough Recreation Center Pool",
+      "address": "134th St. between Fifth & Lenox Aves.",
+      "lat": 40.8129,
+      "lng": -73.9394,
+      "phone": "(212) 234-9603",
+      "indoor": true,
+      "accessible": true,
+      "desc": "Intermediate pool · 75' x 35' x 9'",
+      "season": "No pool sessions currently published",
+      "seasonal": false,
+      "notice": "Hansborough Recreation Center is closed for reconstruction. Visit our Capital Tracker page for updates on this project.",
+      "programs": [],
+      "fees": {
+        "effective": "2026-01-01",
+        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
+        "note": "Recreation center membership — indoor pools are members-only",
+        "groups": [
+          {
+            "id": "youth",
+            "label": "Ages 24 and under",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                0
+              ]
+            ]
+          },
+          {
+            "id": "adult",
+            "label": "Adults (25–61)",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                150
+              ],
+              [
+                "Six months",
+                75
+              ]
+            ]
+          },
+          {
+            "id": "senior",
+            "label": "Seniors 62+, veterans, people with disabilities",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                25
+              ]
+            ]
+          }
+        ]
+      },
+      "scheduleUrls": [
+        {
+          "label": "Pool schedule",
+          "url": "https://www.nycgovparks.org/facilities/recreationcenters/M131/schedule#Pool-schedule"
+        }
+      ],
+      "sessions": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     {
@@ -5633,11 +5633,6 @@
         [
           {
             "kind": "lap",
-            "start": 0,
-            "end": 165
-          },
-          {
-            "kind": "lap",
             "start": 420,
             "end": 585
           },
@@ -5727,11 +5722,6 @@
           }
         ],
         [
-          {
-            "kind": "lap",
-            "start": 0,
-            "end": 165
-          },
           {
             "kind": "lap",
             "start": 420,
@@ -5827,11 +5817,6 @@
           }
         ],
         [
-          {
-            "kind": "lap",
-            "start": 0,
-            "end": 165
-          },
           {
             "kind": "lap",
             "start": 420,
@@ -6653,7 +6638,7 @@
           {
             "kind": "lap",
             "start": 480,
-            "end": 600
+            "end": 585
           },
           {
             "kind": "lessons",
@@ -6673,7 +6658,7 @@
           {
             "kind": "family",
             "start": 780,
-            "end": 900
+            "end": 885
           },
           {
             "kind": "other",
@@ -6909,12 +6894,12 @@
           {
             "kind": "lap",
             "start": 480,
-            "end": 600
+            "end": 585
           },
           {
             "kind": "lessons",
             "start": 600,
-            "end": 690
+            "end": 675
           },
           {
             "kind": "lessons",
@@ -6946,5 +6931,5 @@
     "checked": "2026-11-17",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-11-17T06:14:51.295Z"
+  "fetchedAt": "2026-11-17T17:47:37.771Z"
 }
