@@ -3134,5 +3134,41 @@
   "Baseball - SFYBL - Mustang - Wolf Pack": {
     "zh": "棒球 - SFYBL - 野马 - 狼群队",
     "es": "Béisbol - SFYBL - Mustang - Wolf Pack"
+  },
+  "Drop-In: Tai Chi": {
+    "zh": "随时参加：太极",
+    "es": "Abierto: Tai Chi"
+  },
+  "Drop-in: Community Meeting Space": {
+    "zh": "随时参加：社区聚集空间",
+    "es": "Abierto: Espacio de Reunión Comunitaria"
+  },
+  "Drop-in: Game Night": {
+    "zh": "随时参加：游戏之夜",
+    "es": "Abierto: Noche de Juegos"
+  },
+  "Drop-in: Pathways Microsoft & Google Skills Workshop": {
+    "zh": "随时参加：Pathways 微软与谷歌技能工作坊",
+    "es": "Abierto: Taller de Habilidades Pathways Microsoft y Google"
+  },
+  "Drop-in: The Spot": {
+    "zh": "随时参加：The Spot",
+    "es": "Abierto: The Spot"
+  },
+  "Drop-in: Homework": {
+    "zh": "随时参加：作业帮助",
+    "es": "Abierto: Ayuda con Tareas"
+  },
+  "Drop-in: Teen Building": {
+    "zh": "随时参加：青少年建设中心",
+    "es": "Abierto: Centro de Desarrollo para Adolescentes"
+  },
+  "Drop-in: Saturday Science Workshop": {
+    "zh": "随时参加：周六科学工作坊",
+    "es": "Abierto: Taller de Ciencias del Sábado"
+  },
+  "Drop-In: Storytime For Toddlers": {
+    "zh": "随时参加：幼儿故事时间",
+    "es": "Abierto: Hora de Cuentos para Niños Pequeños"
   }
 }
