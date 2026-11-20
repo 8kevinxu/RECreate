@@ -3804,604 +3804,6 @@
       ]
     },
     {
-      "id": "nyc-pool-asser-levy-recreation-center-pool",
-      "name": "Asser Levy Recreation Center Pool",
-      "address": "Asser Levy Place and E. 23rd Street",
-      "lat": 40.736,
-      "lng": -73.9753,
-      "phone": "(212) 447-2020",
-      "indoor": true,
-      "accessible": true,
-      "desc": "Intermediate pool · 66' x 26' x 8'",
-      "season": "Year-round (recreation center members)",
-      "seasonal": false,
-      "notice": "In observance of Thanksgiving Day, insert recreation center name will be closed on Thursday, November 26, 2026. On Wednesday, November 25th, this recreation center will be open at the regularly scheduled time but will close at 5:00 p.m.",
-      "programs": [
-        "other",
-        "exercise",
-        "lessons",
-        "lap",
-        "youth"
-      ],
-      "fees": {
-        "effective": "2026-01-01",
-        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
-        "note": "Recreation center membership — indoor pools are members-only",
-        "groups": [
-          {
-            "id": "youth",
-            "label": "Ages 24 and under",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                0
-              ]
-            ]
-          },
-          {
-            "id": "adult",
-            "label": "Adults (25–61)",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                150
-              ],
-              [
-                "Six months",
-                75
-              ]
-            ]
-          },
-          {
-            "id": "senior",
-            "label": "Seniors 62+, veterans, people with disabilities",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                25
-              ]
-            ]
-          }
-        ]
-      },
-      "scheduleUrls": [
-        {
-          "label": "Pool schedule",
-          "url": "https://www.nycgovparks.org/facilities/recreationcenters/M164/schedule#Pool-schedule"
-        }
-      ],
-      "sessions": [
-        [],
-        [
-          {
-            "kind": "other",
-            "label": "Swim For Life at Asser Levy Class A Monday - PS 19",
-            "start": 600,
-            "end": 660
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Asser Levy Class B Monday - PS 19",
-            "start": 660,
-            "end": 720
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Asser Levy Class C Monday - P 12X 045",
-            "start": 720,
-            "end": 780
-          },
-          {
-            "kind": "exercise",
-            "start": 780,
-            "end": 840
-          },
-          {
-            "kind": "lessons",
-            "start": 960,
-            "end": 1020
-          },
-          {
-            "kind": "lessons",
-            "start": 1020,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "other",
-            "label": "Swim For Life at Asser Levy Class A Tuesday - PS",
-            "start": 600,
-            "end": 660
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Asser Levy Class B Tuesday - Ps 161",
-            "start": 660,
-            "end": 720
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Asser Levy Class C Tuesday - PS 12x 045",
-            "start": 720,
-            "end": 780
-          },
-          {
-            "kind": "exercise",
-            "start": 780,
-            "end": 840
-          },
-          {
-            "kind": "lap",
-            "start": 1020,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "other",
-            "label": "Swim For Life at Asser Levy Class A Wednesday - PS 1",
-            "start": 600,
-            "end": 660
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Asser Levy Class B Wednesday - PS 161",
-            "start": 660,
-            "end": 720
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Asser Levy Class C Wednesday - PS 46",
-            "start": 720,
-            "end": 780
-          },
-          {
-            "kind": "exercise",
-            "start": 780,
-            "end": 840
-          },
-          {
-            "kind": "youth",
-            "start": 960,
-            "end": 1020
-          },
-          {
-            "kind": "lessons",
-            "start": 960,
-            "end": 1020
-          },
-          {
-            "kind": "lessons",
-            "start": 1020,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "other",
-            "label": "Swim For Life at Asser Levy Class A Thursday - Ps 133",
-            "start": 600,
-            "end": 660
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Asser Levy Class B Thursday - Ps 133",
-            "start": 660,
-            "end": 720
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Asser Levy Class C Thursday - p 12X 045",
-            "start": 720,
-            "end": 780
-          },
-          {
-            "kind": "lessons",
-            "start": 780,
-            "end": 840
-          },
-          {
-            "kind": "lap",
-            "start": 1020,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "exercise",
-            "start": 780,
-            "end": 840
-          },
-          {
-            "kind": "exercise",
-            "start": 960,
-            "end": 1020
-          },
-          {
-            "kind": "lap",
-            "start": 1020,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "lessons",
-            "start": 510,
-            "end": 600
-          },
-          {
-            "kind": "lap",
-            "start": 540,
-            "end": 660
-          },
-          {
-            "kind": "lessons",
-            "start": 600,
-            "end": 660
-          },
-          {
-            "kind": "lessons",
-            "start": 660,
-            "end": 720
-          },
-          {
-            "kind": "lessons",
-            "start": 720,
-            "end": 750
-          },
-          {
-            "kind": "lessons",
-            "start": 750,
-            "end": 810
-          }
-        ]
-      ]
-    },
-    {
-      "id": "nyc-pool-chelsea-recreation-center-pool",
-      "name": "Chelsea Recreation Center Pool",
-      "address": "West 25th St. between 9th & 10th Aves",
-      "lat": 40.7483,
-      "lng": -74.0022,
-      "phone": "(212) 255-3705",
-      "indoor": true,
-      "accessible": true,
-      "desc": "Intermediate pool · 75' x 43' x 10'",
-      "season": "Year-round (recreation center members)",
-      "seasonal": false,
-      "notice": "In observance of Thanksgiving Day, insert recreation center name will be closed on Thursday, November 26, 2026. On Wednesday, November 25th, this recreation center will be open at the regularly scheduled time but will close at 5:00 p.m.",
-      "programs": [
-        "lap",
-        "family",
-        "other",
-        "exercise",
-        "lessons"
-      ],
-      "fees": {
-        "effective": "2026-01-01",
-        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
-        "note": "Recreation center membership — indoor pools are members-only",
-        "groups": [
-          {
-            "id": "youth",
-            "label": "Ages 24 and under",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                0
-              ]
-            ]
-          },
-          {
-            "id": "adult",
-            "label": "Adults (25–61)",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                150
-              ],
-              [
-                "Six months",
-                75
-              ]
-            ]
-          },
-          {
-            "id": "senior",
-            "label": "Seniors 62+, veterans, people with disabilities",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                25
-              ]
-            ]
-          }
-        ]
-      },
-      "scheduleUrls": [
-        {
-          "label": "Pool schedule",
-          "url": "https://www.nycgovparks.org/facilities/recreationcenters/M260/schedule#Pool-schedule"
-        }
-      ],
-      "sessions": [
-        [
-          {
-            "kind": "lap",
-            "start": 480,
-            "end": 585
-          },
-          {
-            "kind": "family",
-            "start": 600,
-            "end": 690
-          },
-          {
-            "kind": "other",
-            "label": "Water Polo - Open Play",
-            "start": 705,
-            "end": 825
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 585
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Chelsea Class A Monday -",
-            "start": 600,
-            "end": 660
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Chelsea Class B Monday - P12x 045",
-            "start": 660,
-            "end": 720
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Chelsea Class C Monday - P12x 045",
-            "start": 720,
-            "end": 780
-          },
-          {
-            "kind": "exercise",
-            "start": 795,
-            "end": 855
-          },
-          {
-            "kind": "lessons",
-            "start": 870,
-            "end": 930
-          },
-          {
-            "kind": "lessons",
-            "start": 960,
-            "end": 1020
-          },
-          {
-            "kind": "lessons",
-            "start": 1020,
-            "end": 1110
-          },
-          {
-            "kind": "lessons",
-            "start": 1020,
-            "end": 1110
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 585
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Chelsea Class A Tuesday -",
-            "start": 600,
-            "end": 660
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Chelsea Class B Tuesday - PS 129",
-            "start": 660,
-            "end": 720
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Chelsea Class C Tuesday - P 12x 045",
-            "start": 720,
-            "end": 780
-          },
-          {
-            "kind": "exercise",
-            "start": 795,
-            "end": 855
-          },
-          {
-            "kind": "family",
-            "start": 870,
-            "end": 945
-          },
-          {
-            "kind": "lap",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 585
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Chelsea Class A Wednesday -",
-            "start": 600,
-            "end": 660
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Chelsea Class B Wednesday - PS 94K",
-            "start": 660,
-            "end": 720
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Chelsea Class C Wednesday -",
-            "start": 720,
-            "end": 780
-          },
-          {
-            "kind": "exercise",
-            "start": 795,
-            "end": 855
-          },
-          {
-            "kind": "lessons",
-            "start": 870,
-            "end": 930
-          },
-          {
-            "kind": "lessons",
-            "start": 960,
-            "end": 1020
-          },
-          {
-            "kind": "lessons",
-            "start": 1020,
-            "end": 1110
-          },
-          {
-            "kind": "lessons",
-            "start": 1020,
-            "end": 1110
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 585
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Chelsea Class A Thursday -",
-            "start": 600,
-            "end": 660
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Chelsea Class B Thursday - PS 94K",
-            "start": 660,
-            "end": 720
-          },
-          {
-            "kind": "other",
-            "label": "Swim For Life at Chelsea Class C Thursday - P 12x 045",
-            "start": 720,
-            "end": 780
-          },
-          {
-            "kind": "exercise",
-            "start": 795,
-            "end": 855
-          },
-          {
-            "kind": "family",
-            "start": 870,
-            "end": 945
-          },
-          {
-            "kind": "lap",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 585
-          },
-          {
-            "kind": "exercise",
-            "start": 795,
-            "end": 855
-          },
-          {
-            "kind": "exercise",
-            "start": 870,
-            "end": 930
-          },
-          {
-            "kind": "exercise",
-            "start": 960,
-            "end": 1020
-          },
-          {
-            "kind": "lap",
-            "start": 1035,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "lessons",
-            "start": 480,
-            "end": 570
-          },
-          {
-            "kind": "lessons",
-            "start": 480,
-            "end": 570
-          },
-          {
-            "kind": "lessons",
-            "start": 570,
-            "end": 630
-          },
-          {
-            "kind": "lessons",
-            "start": 630,
-            "end": 690
-          },
-          {
-            "kind": "lessons",
-            "start": 690,
-            "end": 720
-          },
-          {
-            "kind": "lessons",
-            "start": 720,
-            "end": 780
-          },
-          {
-            "kind": "family",
-            "start": 795,
-            "end": 930
-          },
-          {
-            "kind": "lessons",
-            "start": 960,
-            "end": 1020
-          }
-        ]
-      ]
-    },
-    {
       "id": "nyc-pool-st-john-s-recreation-center-pool",
       "name": "St. John's Recreation Center Pool",
       "address": "Prospect Place, between Troy and Schenectady Avenues",
@@ -4834,6 +4236,604 @@
       ]
     },
     {
+      "id": "nyc-pool-asser-levy-recreation-center-pool",
+      "name": "Asser Levy Recreation Center Pool",
+      "address": "Asser Levy Place and E. 23rd Street",
+      "lat": 40.736,
+      "lng": -73.9753,
+      "phone": "(212) 447-2020",
+      "indoor": true,
+      "accessible": true,
+      "desc": "Intermediate pool · 66' x 26' x 8'",
+      "season": "Year-round (recreation center members)",
+      "seasonal": false,
+      "notice": "In observance of Thanksgiving Day, Asser Levy Recreation Center will be closed on Thursday, November 26, 2026. On Wednesday, November 25th, this recreation center will be open at the regularly scheduled time but will close at 5:00 p.m.",
+      "programs": [
+        "other",
+        "exercise",
+        "lessons",
+        "lap",
+        "youth"
+      ],
+      "fees": {
+        "effective": "2026-01-01",
+        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
+        "note": "Recreation center membership — indoor pools are members-only",
+        "groups": [
+          {
+            "id": "youth",
+            "label": "Ages 24 and under",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                0
+              ]
+            ]
+          },
+          {
+            "id": "adult",
+            "label": "Adults (25–61)",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                150
+              ],
+              [
+                "Six months",
+                75
+              ]
+            ]
+          },
+          {
+            "id": "senior",
+            "label": "Seniors 62+, veterans, people with disabilities",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                25
+              ]
+            ]
+          }
+        ]
+      },
+      "scheduleUrls": [
+        {
+          "label": "Pool schedule",
+          "url": "https://www.nycgovparks.org/facilities/recreationcenters/M164/schedule#Pool-schedule"
+        }
+      ],
+      "sessions": [
+        [],
+        [
+          {
+            "kind": "other",
+            "label": "Swim For Life at Asser Levy Class A Monday - PS 19",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Asser Levy Class B Monday - PS 19",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Asser Levy Class C Monday - P 12X 045",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "exercise",
+            "start": 780,
+            "end": 840
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 1020,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "other",
+            "label": "Swim For Life at Asser Levy Class A Tuesday - PS",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Asser Levy Class B Tuesday - Ps 161",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Asser Levy Class C Tuesday - PS 12x 045",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "exercise",
+            "start": 780,
+            "end": 840
+          },
+          {
+            "kind": "lap",
+            "start": 1020,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "other",
+            "label": "Swim For Life at Asser Levy Class A Wednesday - PS 1",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Asser Levy Class B Wednesday - PS 161",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Asser Levy Class C Wednesday - PS 46",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "exercise",
+            "start": 780,
+            "end": 840
+          },
+          {
+            "kind": "youth",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 1020,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "other",
+            "label": "Swim For Life at Asser Levy Class A Thursday - Ps 133",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Asser Levy Class B Thursday - Ps 133",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Asser Levy Class C Thursday - p 12X 045",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "lessons",
+            "start": 780,
+            "end": 840
+          },
+          {
+            "kind": "lap",
+            "start": 1020,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "exercise",
+            "start": 780,
+            "end": 840
+          },
+          {
+            "kind": "exercise",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lap",
+            "start": 1020,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lessons",
+            "start": 510,
+            "end": 600
+          },
+          {
+            "kind": "lap",
+            "start": 540,
+            "end": 660
+          },
+          {
+            "kind": "lessons",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "lessons",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "lessons",
+            "start": 720,
+            "end": 750
+          },
+          {
+            "kind": "lessons",
+            "start": 750,
+            "end": 810
+          }
+        ]
+      ]
+    },
+    {
+      "id": "nyc-pool-chelsea-recreation-center-pool",
+      "name": "Chelsea Recreation Center Pool",
+      "address": "West 25th St. between 9th & 10th Aves",
+      "lat": 40.7483,
+      "lng": -74.0022,
+      "phone": "(212) 255-3705",
+      "indoor": true,
+      "accessible": true,
+      "desc": "Intermediate pool · 75' x 43' x 10'",
+      "season": "Year-round (recreation center members)",
+      "seasonal": false,
+      "notice": "In observance of Thanksgiving Day, Chelsea Recreation Center will be closed on Thursday, November 26, 2026. On Wednesday, November 25th, this recreation center will be open at the regularly scheduled time but will close at 5:00 p.m.",
+      "programs": [
+        "lap",
+        "family",
+        "other",
+        "exercise",
+        "lessons"
+      ],
+      "fees": {
+        "effective": "2026-01-01",
+        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
+        "note": "Recreation center membership — indoor pools are members-only",
+        "groups": [
+          {
+            "id": "youth",
+            "label": "Ages 24 and under",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                0
+              ]
+            ]
+          },
+          {
+            "id": "adult",
+            "label": "Adults (25–61)",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                150
+              ],
+              [
+                "Six months",
+                75
+              ]
+            ]
+          },
+          {
+            "id": "senior",
+            "label": "Seniors 62+, veterans, people with disabilities",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                25
+              ]
+            ]
+          }
+        ]
+      },
+      "scheduleUrls": [
+        {
+          "label": "Pool schedule",
+          "url": "https://www.nycgovparks.org/facilities/recreationcenters/M260/schedule#Pool-schedule"
+        }
+      ],
+      "sessions": [
+        [
+          {
+            "kind": "lap",
+            "start": 480,
+            "end": 585
+          },
+          {
+            "kind": "family",
+            "start": 600,
+            "end": 690
+          },
+          {
+            "kind": "other",
+            "label": "Water Polo - Open Play",
+            "start": 705,
+            "end": 825
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 585
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Chelsea Class A Monday -",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Chelsea Class B Monday - P12x 045",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Chelsea Class C Monday - P12x 045",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "exercise",
+            "start": 795,
+            "end": 855
+          },
+          {
+            "kind": "lessons",
+            "start": 870,
+            "end": 930
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 1020,
+            "end": 1110
+          },
+          {
+            "kind": "lessons",
+            "start": 1020,
+            "end": 1110
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 585
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Chelsea Class A Tuesday -",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Chelsea Class B Tuesday - PS 129",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Chelsea Class C Tuesday - P 12x 045",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "exercise",
+            "start": 795,
+            "end": 855
+          },
+          {
+            "kind": "family",
+            "start": 870,
+            "end": 945
+          },
+          {
+            "kind": "lap",
+            "start": 960,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 585
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Chelsea Class A Wednesday -",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Chelsea Class B Wednesday - PS 94K",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Chelsea Class C Wednesday -",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "exercise",
+            "start": 795,
+            "end": 855
+          },
+          {
+            "kind": "lessons",
+            "start": 870,
+            "end": 930
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 1020,
+            "end": 1110
+          },
+          {
+            "kind": "lessons",
+            "start": 1020,
+            "end": 1110
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 585
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Chelsea Class A Thursday -",
+            "start": 600,
+            "end": 660
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Chelsea Class B Thursday - PS 94K",
+            "start": 660,
+            "end": 720
+          },
+          {
+            "kind": "other",
+            "label": "Swim For Life at Chelsea Class C Thursday - P 12x 045",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "exercise",
+            "start": 795,
+            "end": 855
+          },
+          {
+            "kind": "family",
+            "start": 870,
+            "end": 945
+          },
+          {
+            "kind": "lap",
+            "start": 960,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 585
+          },
+          {
+            "kind": "exercise",
+            "start": 795,
+            "end": 855
+          },
+          {
+            "kind": "exercise",
+            "start": 870,
+            "end": 930
+          },
+          {
+            "kind": "exercise",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lap",
+            "start": 1035,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lessons",
+            "start": 480,
+            "end": 570
+          },
+          {
+            "kind": "lessons",
+            "start": 480,
+            "end": 570
+          },
+          {
+            "kind": "lessons",
+            "start": 570,
+            "end": 630
+          },
+          {
+            "kind": "lessons",
+            "start": 630,
+            "end": 690
+          },
+          {
+            "kind": "lessons",
+            "start": 690,
+            "end": 720
+          },
+          {
+            "kind": "lessons",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "family",
+            "start": 795,
+            "end": 930
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          }
+        ]
+      ]
+    },
+    {
       "id": "nyc-pool-tony-dapolito-recreation-center-indoor-pool",
       "name": "Tony Dapolito Recreation Center Indoor Pool",
       "address": "Clarkson St. and Seventh Ave. South",
@@ -4919,7 +4919,7 @@
       "desc": "Intermediate pool · 60' x 35' x 8'",
       "season": "Year-round (recreation center members)",
       "seasonal": false,
-      "notice": "In observance of Thanksgiving Day, insert recreation center name will be closed on Thursday, November 26, 2026. On Wednesday, November 25th, this recreation center will be open at the regularly scheduled time but will close at 5:00 p.m.",
+      "notice": "In observance of Thanksgiving Day, Gertrude Ederle Recreation Center will be closed on Thursday, November 26, 2026. On Wednesday, November 25th, this recreation center will be open at the regularly scheduled time but will close at 5:00 p.m.",
       "programs": [
         "lap",
         "other",
@@ -5300,6 +5300,243 @@
       ]
     },
     {
+      "id": "nyc-pool-constance-baker-motley-pool",
+      "name": "Constance Baker Motley Pool",
+      "address": "E. 54th St. bet. First and Second Aves.",
+      "lat": 40.7565,
+      "lng": -73.9651,
+      "phone": "(212) 754-5411",
+      "indoor": true,
+      "accessible": true,
+      "desc": "Intermediate pool · 54' x 50' x 12'",
+      "season": "Year-round (recreation center members)",
+      "seasonal": false,
+      "notice": "In observance of Thanksgiving Day, Constance Baker Motley Recreation Center will be closed on Thursday, November 26, 2026. On Wednesday, November 25th, this recreation center will be open at the regularly scheduled time but will close at 5:00 p.m.",
+      "programs": [
+        "lap",
+        "family",
+        "exercise",
+        "lessons",
+        "other"
+      ],
+      "fees": {
+        "effective": "2026-01-01",
+        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
+        "note": "Recreation center membership — indoor pools are members-only",
+        "groups": [
+          {
+            "id": "youth",
+            "label": "Ages 24 and under",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                0
+              ]
+            ]
+          },
+          {
+            "id": "adult",
+            "label": "Adults (25–61)",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                150
+              ],
+              [
+                "Six months",
+                75
+              ]
+            ]
+          },
+          {
+            "id": "senior",
+            "label": "Seniors 62+, veterans, people with disabilities",
+            "dropIn": 0,
+            "passes": [
+              [
+                "Annual membership",
+                25
+              ]
+            ]
+          }
+        ]
+      },
+      "scheduleUrls": [
+        {
+          "label": "Pool schedule",
+          "url": "https://www.nycgovparks.org/facilities/recreationcenters/M130/schedule#Pool-schedule"
+        }
+      ],
+      "sessions": [
+        [],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 705
+          },
+          {
+            "kind": "family",
+            "start": 720,
+            "end": 870
+          },
+          {
+            "kind": "exercise",
+            "start": 870,
+            "end": 930
+          },
+          {
+            "kind": "lap",
+            "start": 960,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 705
+          },
+          {
+            "kind": "family",
+            "start": 720,
+            "end": 870
+          },
+          {
+            "kind": "exercise",
+            "start": 870,
+            "end": 930
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 1020,
+            "end": 1110
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 705
+          },
+          {
+            "kind": "family",
+            "start": 720,
+            "end": 870
+          },
+          {
+            "kind": "exercise",
+            "start": 870,
+            "end": 930
+          },
+          {
+            "kind": "family",
+            "start": 960,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 705
+          },
+          {
+            "kind": "family",
+            "start": 720,
+            "end": 870
+          },
+          {
+            "kind": "lessons",
+            "start": 870,
+            "end": 930
+          },
+          {
+            "kind": "lessons",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lessons",
+            "start": 1020,
+            "end": 1110
+          }
+        ],
+        [
+          {
+            "kind": "lap",
+            "start": 420,
+            "end": 705
+          },
+          {
+            "kind": "family",
+            "start": 720,
+            "end": 870
+          },
+          {
+            "kind": "exercise",
+            "start": 870,
+            "end": 930
+          },
+          {
+            "kind": "exercise",
+            "start": 960,
+            "end": 1020
+          },
+          {
+            "kind": "lap",
+            "start": 1020,
+            "end": 1140
+          }
+        ],
+        [
+          {
+            "kind": "lessons",
+            "start": 480,
+            "end": 570
+          },
+          {
+            "kind": "lessons",
+            "start": 570,
+            "end": 630
+          },
+          {
+            "kind": "lessons",
+            "start": 630,
+            "end": 690
+          },
+          {
+            "kind": "lessons",
+            "start": 690,
+            "end": 720
+          },
+          {
+            "kind": "lessons",
+            "start": 720,
+            "end": 780
+          },
+          {
+            "kind": "family",
+            "start": 795,
+            "end": 885
+          },
+          {
+            "kind": "other",
+            "label": "Constance Baker Motley: Swim Prep",
+            "start": 900,
+            "end": 960
+          }
+        ]
+      ]
+    },
+    {
       "id": "nyc-pool-roy-wilkins-recreation-center-pool",
       "name": "Roy Wilkins Recreation Center Pool",
       "address": "177th Street and Baisley Boulevard",
@@ -5662,243 +5899,6 @@
             "kind": "youth",
             "start": 1020,
             "end": 1170
-          }
-        ]
-      ]
-    },
-    {
-      "id": "nyc-pool-constance-baker-motley-pool",
-      "name": "Constance Baker Motley Pool",
-      "address": "E. 54th St. bet. First and Second Aves.",
-      "lat": 40.7565,
-      "lng": -73.9651,
-      "phone": "(212) 754-5411",
-      "indoor": true,
-      "accessible": true,
-      "desc": "Intermediate pool · 54' x 50' x 12'",
-      "season": "Year-round (recreation center members)",
-      "seasonal": false,
-      "notice": "In observance of Thanksgiving Day, insert recreation center name will be closed on Thursday, November 26, 2026. On Wednesday, November 25th, this recreation center will be open at the regularly scheduled time but will close at 5:00 p.m.",
-      "programs": [
-        "lap",
-        "family",
-        "exercise",
-        "lessons",
-        "other"
-      ],
-      "fees": {
-        "effective": "2026-01-01",
-        "source": "https://www.nycgovparks.org/programs/recreation-centers/membership",
-        "note": "Recreation center membership — indoor pools are members-only",
-        "groups": [
-          {
-            "id": "youth",
-            "label": "Ages 24 and under",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                0
-              ]
-            ]
-          },
-          {
-            "id": "adult",
-            "label": "Adults (25–61)",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                150
-              ],
-              [
-                "Six months",
-                75
-              ]
-            ]
-          },
-          {
-            "id": "senior",
-            "label": "Seniors 62+, veterans, people with disabilities",
-            "dropIn": 0,
-            "passes": [
-              [
-                "Annual membership",
-                25
-              ]
-            ]
-          }
-        ]
-      },
-      "scheduleUrls": [
-        {
-          "label": "Pool schedule",
-          "url": "https://www.nycgovparks.org/facilities/recreationcenters/M130/schedule#Pool-schedule"
-        }
-      ],
-      "sessions": [
-        [],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 705
-          },
-          {
-            "kind": "family",
-            "start": 720,
-            "end": 870
-          },
-          {
-            "kind": "exercise",
-            "start": 870,
-            "end": 930
-          },
-          {
-            "kind": "lap",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 705
-          },
-          {
-            "kind": "family",
-            "start": 720,
-            "end": 870
-          },
-          {
-            "kind": "exercise",
-            "start": 870,
-            "end": 930
-          },
-          {
-            "kind": "lessons",
-            "start": 960,
-            "end": 1020
-          },
-          {
-            "kind": "lessons",
-            "start": 1020,
-            "end": 1110
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 705
-          },
-          {
-            "kind": "family",
-            "start": 720,
-            "end": 870
-          },
-          {
-            "kind": "exercise",
-            "start": 870,
-            "end": 930
-          },
-          {
-            "kind": "family",
-            "start": 960,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 705
-          },
-          {
-            "kind": "family",
-            "start": 720,
-            "end": 870
-          },
-          {
-            "kind": "lessons",
-            "start": 870,
-            "end": 930
-          },
-          {
-            "kind": "lessons",
-            "start": 960,
-            "end": 1020
-          },
-          {
-            "kind": "lessons",
-            "start": 1020,
-            "end": 1110
-          }
-        ],
-        [
-          {
-            "kind": "lap",
-            "start": 420,
-            "end": 705
-          },
-          {
-            "kind": "family",
-            "start": 720,
-            "end": 870
-          },
-          {
-            "kind": "exercise",
-            "start": 870,
-            "end": 930
-          },
-          {
-            "kind": "exercise",
-            "start": 960,
-            "end": 1020
-          },
-          {
-            "kind": "lap",
-            "start": 1020,
-            "end": 1140
-          }
-        ],
-        [
-          {
-            "kind": "lessons",
-            "start": 480,
-            "end": 570
-          },
-          {
-            "kind": "lessons",
-            "start": 570,
-            "end": 630
-          },
-          {
-            "kind": "lessons",
-            "start": 630,
-            "end": 690
-          },
-          {
-            "kind": "lessons",
-            "start": 690,
-            "end": 720
-          },
-          {
-            "kind": "lessons",
-            "start": 720,
-            "end": 780
-          },
-          {
-            "kind": "family",
-            "start": 795,
-            "end": 885
-          },
-          {
-            "kind": "other",
-            "label": "Constance Baker Motley: Swim Prep",
-            "start": 900,
-            "end": 960
           }
         ]
       ]
@@ -6925,8 +6925,8 @@
   "season": {
     "open": false,
     "label": "Closed for the season — NYC outdoor pools run late June through Labor Day",
-    "checked": "2026-11-19",
+    "checked": "2026-11-20",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-11-19T18:27:23.152Z"
+  "fetchedAt": "2026-11-20T05:18:56.064Z"
 }
