@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-16T23:37:34.001Z",
+  "generatedAt": "2026-11-21T00:23:51.278Z",
   "season": "Fall / Summer",
   "courts": [
     {
@@ -37,6 +37,7 @@
           1020
         ]
       ],
+      "hoursSource": "live",
       "dropins": {
         "basketball": [
           [],
@@ -116,10 +117,7 @@
       "lights": true,
       "schedule": [
         null,
-        [
-          840,
-          1080
-        ],
+        null,
         [
           600,
           1260
@@ -141,6 +139,7 @@
           1020
         ]
       ],
+      "hoursSource": "live",
       "dropins": {
         "basketball": [
           [],
@@ -309,28 +308,29 @@
       "lights": true,
       "schedule": [
         null,
+        null,
         [
-          510,
+          600,
           1200
         ],
         [
-          510,
+          600,
           1200
         ],
         [
-          510,
+          600,
           1200
         ],
         [
-          510,
+          600,
           1200
         ],
         [
-          510,
-          1200
-        ],
-        null
+          540,
+          1020
+        ]
       ],
+      "hoursSource": "live",
       "dropins": {
         "basketball": [
           [],
@@ -451,6 +451,7 @@
           1020
         ]
       ],
+      "hoursSource": "live",
       "dropins": {
         "basketball": [
           [],
@@ -572,25 +573,26 @@
         null,
         [
           600,
-          1260
+          1200
         ],
         [
           600,
-          1260
+          1200
         ],
         [
           600,
-          1260
+          1200
         ],
         [
           600,
-          1260
+          1200
         ],
         [
           540,
           1020
         ]
       ],
+      "hoursSource": "live",
       "dropins": {
         "basketball": [
           [],
@@ -740,6 +742,7 @@
           1020
         ]
       ],
+      "hoursSource": "curated",
       "dropins": {
         "basketball": [
           [],
@@ -935,6 +938,7 @@
           1020
         ]
       ],
+      "hoursSource": "live",
       "dropins": {
         "basketball": [
           [],
@@ -1073,13 +1077,10 @@
       "lights": true,
       "schedule": [
         null,
-        [
-          840,
-          1080
-        ],
+        null,
         [
           600,
-          1260
+          1200
         ],
         [
           600,
@@ -1098,6 +1099,7 @@
           1020
         ]
       ],
+      "hoursSource": "live",
       "dropins": {
         "basketball": [
           [],
@@ -1218,6 +1220,7 @@
           1020
         ]
       ],
+      "hoursSource": "live",
       "dropins": {
         "basketball": [
           [],
@@ -1343,6 +1346,7 @@
           1020
         ]
       ],
+      "hoursSource": "live",
       "dropins": {
         "basketball": [
           [],
@@ -1523,6 +1527,7 @@
           1020
         ]
       ],
+      "hoursSource": "live",
       "dropins": {
         "basketball": [
           [],
@@ -1708,6 +1713,7 @@
           1020
         ]
       ],
+      "hoursSource": "live",
       "dropins": {
         "basketball": [
           [],
@@ -1853,6 +1859,7 @@
           1020
         ]
       ],
+      "hoursSource": "live",
       "dropins": {
         "basketball": [
           [],
@@ -2014,21 +2021,22 @@
         ],
         [
           600,
-          1260
+          1200
         ],
         [
           600,
-          1260
+          1200
         ],
         [
           600,
-          1260
+          1200
         ],
         [
           540,
           1020
         ]
       ],
+      "hoursSource": "live",
       "dropins": {
         "basketball": [
           [],
@@ -2160,6 +2168,7 @@
           1020
         ]
       ],
+      "hoursSource": "live",
       "dropins": {
         "basketball": [
           [],
@@ -2333,6 +2342,7 @@
           1020
         ]
       ],
+      "hoursSource": "live",
       "dropins": {
         "basketball": [
           [],
@@ -2453,6 +2463,7 @@
           1020
         ]
       ],
+      "hoursSource": "live",
       "dropins": {
         "basketball": [
           [],
@@ -2608,6 +2619,7 @@
           1020
         ]
       ],
+      "hoursSource": "live",
       "dropins": {
         "basketball": [
           [],
