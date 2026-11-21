@@ -4,17 +4,22 @@
  * INDOOR basketball gym. Run with:  npm run build:courts
  *
  * Sources combined:
- *   1. Which rec centers have an indoor gym, facility hours, and the curated
- *      fallback open-gym blocks — the CENTERS table below.
+ *   1. Which rec centers have an indoor gym, plus curated FALLBACK facility hours
+ *      and open-gym blocks — the CENTERS table below.
  *   2. Exact coordinates / address / neighborhood — DataSF "Recreation and Parks
  *      Facilities" dataset (ib5c-xgwu), by property name.
- *   3. LIVE basketball open-gym schedules — scraped each run from the Gymnasium
- *      row of each center's sfrecpark.org facility page (see FID map + parser).
+ *   3. LIVE open-gym schedules — scraped each run from the room rows of each
+ *      center's sfrecpark.org facility page (see FID map + parser).
+ *   4. LIVE facility hours — the same page's sidebar Hours block, scraped each
+ *      run (parseFacilityHours). These drive the card's "Facility open/closed"
+ *      badge, so a change on sfrecpark.org reaches the app with the next weekly
+ *      refresh instead of waiting for someone to edit the CENTERS table.
  *
- * Resilience: each center falls back live-scrape -> last-good cache -> curated
- * blocks. A validation gate aborts the whole run (keeping the existing
- * data/courts.js) if too few centers scrape successfully, so a site redesign
- * can't silently publish empty schedules.
+ * Resilience: open-gym blocks and facility hours each fall back independently
+ * live-scrape -> last-good cache -> curated. A validation gate aborts the whole
+ * run (keeping the existing data/courts.js) if too few centers' open gym scrapes
+ * successfully, so a site redesign can't silently publish empty schedules. Any
+ * hours fallback prints a GitHub ::warning:: so it shows on the workflow run.
  */
 
 const fs = require('fs');
@@ -28,6 +33,10 @@ const BROWSER_UA =
 
 // Abort (keep last-good courts.js) if fewer than this many centers scrape live.
 const MIN_LIVE_OK = 10;
+// Warn (but still publish) if fewer than this many centers' facility hours parse
+// live — almost every page posts an Hours block, so a drop this far means the
+// sidebar markup changed and every center is coasting on cache.
+const MIN_HOURS_LIVE_OK = 12;
 
 const DATASF =
   'https://data.sf.gov/resource/ib5c-xgwu.json?' +
@@ -137,7 +146,7 @@ const CENTERS = [
   {
     prop: 'Eugene Friend Rec Center',
     name: 'Gene Friend Recreation Center',
-    sched: tueFriSat(10, 21),
+    sched: tueFriSat(10, 20),
     bball: bball({}), // facility page erroring — likely renovation
     notes: 'Gymnasium with basketball. Facility page is offline (renovation) — verify hours and open gym at sfrecpark.org.',
   },
@@ -217,7 +226,7 @@ const CENTERS = [
   {
     prop: 'Betty Ann Ong Chinese Rec Center',
     name: 'Betty Ann Ong Recreation Center',
-    sched: schedule({ mon: [14, 18], tue: [10, 21], wed: [10, 21], thu: [10, 21], fri: [10, 21], sat: [9, 17] }),
+    sched: tueFriSat(10, 21),
     bball: bball({
       tue: [[t(10), t(15, 30)]],
       wed: [[t(10), t(14)]],
@@ -230,8 +239,8 @@ const CENTERS = [
   {
     prop: 'Crocker Amazon Playground',
     name: 'Crocker Amazon Clubhouse',
-    // Clubhouse programming runs weekdays only (day camp 8:30–5:30 + evening drop-ins).
-    sched: schedule({ mon: [8.5, 20], tue: [8.5, 20], wed: [8.5, 20], thu: [8.5, 20], fri: [8.5, 20] }),
+    // Clubhouse is open Tue–Fri 10–8 and Sat 9–5 (sfrecpark.org Hours, Nov 2026); day camp runs inside those hours.
+    sched: tueFriSat(10, 20),
     bball: bball({}), // no gym — clubhouse only
     // The facility page's weekly schedule lists only camps/classes, so the drop-in
     // has to come from ActiveNet — and ActiveNet DATES it, so the curation carries
@@ -281,7 +290,7 @@ const CENTERS = [
   {
     prop: 'Herz Playground',
     name: 'Herz Recreation Center',
-    sched: schedule({ mon: [14, 18], tue: [10, 21], wed: [10, 21], thu: [10, 21], fri: [10, 21], sat: [9, 17] }),
+    sched: schedule({ tue: [10, 20], wed: [10, 21], thu: [10, 21], fri: [10, 21], sat: [9, 17] }),
     bball: bball({
       tue: [[t(14, 30), t(19, 45)]],
       wed: [[t(14, 30), t(20, 45)]],
@@ -294,7 +303,7 @@ const CENTERS = [
   {
     prop: 'Potrero Hill Rec Center',
     name: 'Potrero Hill Recreation Center',
-    sched: schedule({ tue: [10, 20], wed: [10, 21], thu: [10, 21], fri: [10, 21], sat: [9, 17] }),
+    sched: tueFriSat(10, 20),
     bball: bball({
       tue: [[t(10), t(19, 30)]],
       wed: [[t(10), t(17)]],
@@ -454,15 +463,85 @@ function parseGymDropins(html) {
   return { season, dropins, bballCount };
 }
 
-async function scrapeSchedule(fid, requireBball = true) {
+async function fetchFacilityPage(fid) {
   const url = `https://sfrecpark.org/Facilities/Facility/Details/${fid}`;
   const res = await fetchT(url, { headers: { 'User-Agent': BROWSER_UA } });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  const parsed = parseGymDropins(await res.text());
+  return res.text();
+}
+
+function parseSchedule(html, requireBball = true) {
+  const parsed = parseGymDropins(html);
   // Gate on basketball (broad coverage); volleyball/etc. are legitimately sparse.
   // Skipped for centers without a basketball gym (e.g. a ping-pong-only clubhouse).
   if (requireBball && parsed.bballCount === 0) throw new Error('no gym basketball blocks found');
   return parsed;
+}
+
+// ---- live facility hours ---------------------------------------------------
+
+// The facility page's sidebar posts the building's opening hours as
+//   <div class="section hours"><dl>
+//     <dt><abbr title="Monday">Mon</abbr></dt><dd class="closed"><span>Closed</span></dd>
+//     <dt><abbr title="Tuesday">Tue</abbr></dt><dd><span>10:00 AM</span> — <span>9:00 PM</span></dd>
+//     …
+// Returns a 7-slot schedule (0=Sun..6=Sat; [openMin, closeMin] or null when
+// closed), or null unless ALL seven days parse cleanly: a half-read week would
+// mark the building closed on the days we missed, which is worse than keeping
+// last week's good copy.
+function parseFacilityHours(html) {
+  const $ = cheerio.load(html);
+  const week = Array(7).fill(undefined);
+  $('.section.hours dl dt').each((_, dt) => {
+    const day = DAY_INDEX[$(dt).text().trim().slice(0, 3).toLowerCase()];
+    if (day == null) return;
+    const dd = $(dt).next('dd');
+    if (dd.hasClass('closed') || /^\s*closed\s*$/i.test(dd.text())) {
+      week[day] = null;
+      return;
+    }
+    const spans = dd.find('span').map((_, s) => $(s).text().trim()).get();
+    const range = spans.length === 2 ? parseRange(`${spans[0]}-${spans[1]}`) : null;
+    if (range) week[day] = range; // leaves undefined (= unparsed) otherwise
+  });
+  return week.every((d) => d !== undefined) ? week : null;
+}
+
+const sameWeek = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+const DAY_ABBR = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const clock = (m) => {
+  const h = Math.floor(m / 60), mm = m % 60;
+  return `${h % 12 || 12}${mm ? `:${String(mm).padStart(2, '0')}` : ''}${h < 12 ? 'am' : 'pm'}`;
+};
+const fmtWeek = (w) =>
+  w.map((d, i) => (d ? `${DAY_ABBR[i]} ${clock(d[0])}–${clock(d[1])}` : null)).filter(Boolean).join(', ') ||
+  'closed all week';
+
+// GitHub renders `::warning::` lines as annotations on the workflow run, so a
+// fallback is visible without failing the job (the SF builds are chained, and a
+// non-zero exit here would skip every SF build after this one).
+const warn = (msg) => console.log(`::warning::${msg}`);
+
+// Posted hours, else the last good posted hours, else the curated table.
+function resolveHours(c, fid, html, cache) {
+  const live = html ? parseFacilityHours(html) : null;
+  if (live) {
+    cache[fid] = { ...cache[fid], hours: live, hoursAt: new Date().toISOString() };
+    // Doubles as a change log: posted hours that drift from the curated
+    // fallback get named in the run, so the fallback can be kept current.
+    if (!sameWeek(live, c.sched)) {
+      console.log(`    ⓘ ${c.name} — posted hours differ from the curated fallback; using posted (${fmtWeek(live)})`);
+    }
+    return { hours: live, source: 'live' };
+  }
+  const why = !fid ? 'no facility page' : html ? 'no readable Hours block on its page' : 'its page failed to load';
+  const cached = fid && cache[fid] && cache[fid].hours;
+  if (cached) {
+    warn(`${c.name}: ${why}; using facility hours cached ${String(cache[fid].hoursAt).slice(0, 10)}`);
+    return { hours: cached, source: 'cache' };
+  }
+  warn(`${c.name}: ${why}; using curated facility hours (${fmtWeek(c.sched)}) — verify them`);
+  return { hours: c.sched, source: 'curated' };
 }
 
 function loadCache() {
@@ -494,17 +573,29 @@ async function main() {
   // Scrape each center's live open-gym schedule (sequential = polite to the site).
   const cache = loadCache();
   const stats = { live: 0, cache: 0, curated: 0 };
+  const hoursStats = { live: 0, cache: 0, curated: 0 };
   const seasons = new Set();
-  console.log('Scraping live open-gym schedules from sfrecpark.org…');
+  console.log('Scraping live open-gym schedules and facility hours from sfrecpark.org…');
 
   for (const c of CENTERS) {
     const fid = FID[c.name];
+    // One fetch per center feeds both parsers.
+    let html = null;
+    let fetchErr = new Error('no facility page');
+    if (fid) {
+      try {
+        html = await fetchFacilityPage(fid);
+      } catch (e) {
+        fetchErr = e;
+      }
+    }
     // Curated fallback covers basketball only (hand-maintained); other sports
     // have no curated source, so they start empty unless scraped.
     let chosen = { dropins: { ...emptyDropins(), basketball: c.bball }, source: 'curated' };
     if (fid) {
       try {
-        const live = await scrapeSchedule(fid, c.bball.some((d) => d.length));
+        if (html == null) throw fetchErr;
+        const live = parseSchedule(html, c.bball.some((d) => d.length));
         cache[fid] = { dropins: live.dropins, season: live.season, scrapedAt: new Date().toISOString() };
         chosen = { dropins: live.dropins, source: 'live' };
         const s = (live.season.match(/spring|summer|fall|autumn|winter/i) || [])[0];
@@ -524,9 +615,16 @@ async function main() {
       }
     }
     stats[chosen.source]++;
+    // Facility hours resolve independently of open gym: a page whose gym table
+    // won't parse can still have a perfectly good Hours block. Runs after the
+    // open-gym cache write above, which replaces this center's cache entry.
+    const hours = resolveHours(c, fid, html, cache);
+    c._hours = hours.hours;
+    c._hoursSource = hours.source;
+    hoursStats[hours.source]++;
     // Curated open-gym overrides for sports the city doesn't publish online.
     if (c.pingpongAllHours) {
-      chosen.dropins = { ...chosen.dropins, pingpong: allOpenHoursWeek(c.sched) };
+      chosen.dropins = { ...chosen.dropins, pingpong: allOpenHoursWeek(c._hours) };
       console.log(`    + ${c.name} — curated ping pong across all open hours`);
     }
     // Timed curated weeks for drop-ins the facility page omits but ActiveNet
@@ -564,6 +662,12 @@ async function main() {
         `Site markup may have changed — data/courts.js left unchanged.`
     );
   }
+  if (hoursStats.live < MIN_HOURS_LIVE_OK) {
+    warn(
+      `Only ${hoursStats.live}/${CENTERS.length} centers' facility hours read live (expected ${MIN_HOURS_LIVE_OK}+). ` +
+        `The sfrecpark.org Hours markup may have changed — the rest are on cached or curated hours.`
+    );
+  }
 
   const courts = CENTERS.map((c) => {
     const row = byProp[c.prop];
@@ -579,7 +683,8 @@ async function main() {
       indoor: true,
       hoops: 2,
       lights: true,
-      schedule: c.sched,
+      schedule: c._hours,
+      hoursSource: c._hoursSource,
       dropins: c._dropins,
       scheduleSource: c._scheduleSource,
       source: 'sfrecpark',
@@ -605,6 +710,7 @@ async function main() {
   console.log(
     `\n✅ Wrote ${courts.length} courts to data/courts.js + data/courts.json` +
       `\n   open-gym schedules: ${stats.live} live, ${stats.cache} cached, ${stats.curated} curated fallback` +
+      `\n   facility hours:     ${hoursStats.live} live, ${hoursStats.cache} cached, ${hoursStats.curated} curated fallback` +
       `\n   season: ${season}`
   );
 }
@@ -624,6 +730,7 @@ function render(courts, season, generatedAt) {
     hoops: ${c.hoops},
     lights: true,
     schedule: ${JSON.stringify(c.schedule)},
+    hoursSource: ${JSON.stringify(c.hoursSource)},
     dropins: ${JSON.stringify(c.dropins)},
     scheduleSource: ${JSON.stringify(c.scheduleSource)},
     source: "sfrecpark",
@@ -638,11 +745,12 @@ function render(courts, season, generatedAt) {
 // Schedule season (from sfrecpark.org): ${season}
 //
 // SF Recreation & Parks recreation centers with an INDOOR basketball gym.
-// Indoor-gym determination + facility hours: curated in the build script.
+// Indoor-gym determination: curated in the build script.
 // Coordinates/address/neighborhood: DataSF dataset ib5c-xgwu.
-// Open-gym basketball times: scraped live from each center's sfrecpark.org page.
+// Open-gym times + facility hours: scraped live from each center's sfrecpark.org page.
 //
 // schedule[]   = FACILITY hours, indexed 0=Sun..6=Sat; [openMin,closeMin] or null.
+// hoursSource  = where schedule[] came from: "live" | "cache" | "curated".
 // dropins      = { sportId: week } drop-in OPEN-GYM blocks per sport; each week is
 //   indexed 0=Sun..6=Sat and each day is an array of [startMin,closeMin] blocks
 //   (empty when none that day). Sports: basketball, volleyball, pingpong, badminton,
