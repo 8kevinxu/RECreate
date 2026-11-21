@@ -417,22 +417,123 @@ function mergeBlocks(blocks) {
   return out;
 }
 
+// ---- schedule table formats ------------------------------------------------
+//
+// A facility page can carry several schedule tables, and SFRP adds new shapes
+// without notice. Each shape the build understands is listed here by its CSS
+// class; every other table that looks like a schedule is reported by
+// findUnknownTables() so a new format is noticed the week it appears instead of
+// its data being silently dropped (which is how Joseph Lee's open gym went
+// unread from September to November 2026: the new table sat first on the page
+// and the old "first table with column headers" lookup parsed it as the grid).
+const TABLE_FORMATS = {
+  // Room × weekday grid of program items — every center has one.
+  'seasonal-schedule': 'room grid',
+  // Day → open-gym hours, dated by the note above it (Joseph Lee, Nov 2026).
+  'gym-schedule': 'gymnasium open-gym hours',
+  // Not a schedule: the facility's info/amenity table.
+  infoTable: null,
+};
+
+// Tables that look like schedules (column headers, or a schedule-ish class or
+// caption) in a format we don't parse. Returns short descriptions for logging.
+function findUnknownTables($) {
+  const out = [];
+  $('table').each((_, el) => {
+    const classes = ($(el).attr('class') || '').split(/\s+/).filter(Boolean);
+    if (classes.some((c) => c in TABLE_FORMATS)) return;
+    const caption = $(el).find('caption').first().text().replace(/\s+/g, ' ').trim();
+    const heading = $(el).prevAll('h2, h3').first().text().replace(/\s+/g, ' ').trim();
+    const looksLikeSchedule =
+      $(el).find('th[scope="col"]').length > 0 || /schedule|hours|open gym|drop-?in/i.test(`${classes} ${caption} ${heading}`);
+    if (looksLikeSchedule) {
+      out.push(`table.${classes.join('.') || '(no class)'} "${caption || heading || 'no caption'}"`);
+    }
+  });
+  return out;
+}
+
+const MONTH = { jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5, jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11 };
+// "September 1–December 31, 2026" | "Sept 8–Oct 20" -> { from, to } as YYYY-MM-DD,
+// or null when the text carries no readable range.
+function parseDateRange(text, defaultYear = new Date().getFullYear()) {
+  const m = String(text).match(
+    /(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+(\d{1,2})\s*[–—-]\s*(?:(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+)?(\d{1,2})(?:,?\s*(\d{4}))?/i
+  );
+  if (!m) return null;
+  const year = m[5] ? Number(m[5]) : defaultYear;
+  const m1 = MONTH[m[1].toLowerCase()];
+  const m2 = m[3] ? MONTH[m[3].toLowerCase()] : m1;
+  const iso = (y, mo, d) => `${y}-${String(mo + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+  // A range that wraps the new year ("Nov 1–Jan 15, 2027") starts the year before.
+  const y1 = m2 < m1 ? year - 1 : year;
+  return { from: iso(y1, m1, Number(m[2])), to: iso(year, m2, Number(m[4])) };
+}
+
+// table.gym-schedule: one row per weekday, each cell a list of span.time ranges
+// (or span.closed). The sport comes from the heading/caption; a bare
+// "Gymnasium Open Gym" names no sport and is general open gym, which the app
+// files under basketball like every other gym's open gym. Rows outside the
+// date range in the note above the table are dropped.
+function parseGymScheduleTables($, dropins, today) {
+  const notes = [];
+  $('table.gym-schedule').each((_, el) => {
+    const heading = $(el).prevAll('h2, h3').first().text().trim();
+    const caption = $(el).find('caption').text().trim();
+    const label = heading || caption || 'open gym table';
+    const sport =
+      SPORTS.find((s) => s.match.test(heading) || s.match.test(caption)) ||
+      (/gym/i.test(`${heading} ${caption}`) ? SPORTS.find((s) => s.id === 'basketball') : null);
+    if (!sport) {
+      notes.push(`"${label}" names no sport we track — skipped`);
+      return;
+    }
+    const range = parseDateRange($(el).prevAll('p.schedule-note').first().text());
+    if (range && (today < range.from || today > range.to)) {
+      notes.push(`"${label}" runs ${range.from}→${range.to}, not today — skipped`);
+      return;
+    }
+    let n = 0;
+    $(el).find('tbody tr').each((_, tr) => {
+      const day = DAY_INDEX[$(tr).find('th').first().text().trim().slice(0, 3).toLowerCase()];
+      if (day == null) return;
+      $(tr).find('.time').each((_, t) => {
+        const r = parseRange($(t).text());
+        if (r) {
+          dropins[sport.id][day].push(r);
+          n++;
+        }
+      });
+    });
+    notes.push(`"${label}" → ${n} ${sport.id} block(s)${range ? ` (${range.from}→${range.to})` : ' (undated)'}`);
+  });
+  return notes;
+}
+
 // Parse drop-in blocks for every tracked sport from a facility page's HTML.
 // Basketball/volleyball run in the Gymnasium, but table tennis lives in other
 // rooms (Multi Purpose Room, Auditorium), so we scan every room row and match
 // each activity to a sport. Returns { season, dropins: { sportId: [7][[s,e],...] },
-// bballCount } (day index 0=Sun..6=Sat).
-function parseGymDropins(html) {
+// bballCount, formatNotes, unknownTables } (day index 0=Sun..6=Sat).
+function parseGymDropins(html, today = new Date().toISOString().slice(0, 10)) {
   const $ = cheerio.load(html);
   const season = $('.schedule-title').first().text().trim();
 
-  const table = $('table')
-    .filter((_, el) => $(el).find('th[scope="col"]').length > 0)
-    .first();
+  // The room grid, by its class; older markup without the class is still found
+  // by its "Facility / Room" header. Never "the first table with headers" —
+  // other schedule tables can come first.
+  let table = $('table.seasonal-schedule').first();
+  if (!table.length) {
+    table = $('table')
+      .filter((_, el) => /facility\s*\/\s*room/i.test($(el).find('th[scope="col"]').first().text()))
+      .first();
+  }
   const cols = table.find('th[scope="col"]').map((_, th) => $(th).text().trim()).get();
   const colDay = cols.map((name) => DAY_INDEX[name.slice(0, 3).toLowerCase()]);
 
   const dropins = emptyDropins();
+  const formatNotes = parseGymScheduleTables($, dropins, today);
+  const unknownTables = findUnknownTables($);
   table.find('th[scope="row"]').each((_, th) => {
     $(th).closest('tr').find('td').each((i, td) => {
       const day = colDay[i + 1]; // cols[0] is "Facility / Room"; cells start at Monday
@@ -460,7 +561,7 @@ function parseGymDropins(html) {
   }
 
   const bballCount = dropins.basketball.reduce((n, d) => n + d.length, 0);
-  return { season, dropins, bballCount };
+  return { season, dropins, bballCount, formatNotes, unknownTables };
 }
 
 async function fetchFacilityPage(fid) {
@@ -520,7 +621,24 @@ const fmtWeek = (w) =>
 // GitHub renders `::warning::` lines as annotations on the workflow run, so a
 // fallback is visible without failing the job (the SF builds are chained, and a
 // non-zero exit here would skip every SF build after this one).
-const warn = (msg) => console.log(`::warning::${msg}`);
+// Every warning is also collected for the workflow run's summary page.
+const WARNINGS = [];
+const warn = (msg) => {
+  WARNINGS.push(msg);
+  console.log(`::warning::${msg}`);
+};
+
+// GitHub shows $GITHUB_STEP_SUMMARY on the run's summary page; locally it's unset.
+function writeRunSummary(lines) {
+  const file = process.env.GITHUB_STEP_SUMMARY;
+  if (!file) return;
+  const body = WARNINGS.length
+    ? `### SF rec centers: ${WARNINGS.length} item(s) need a look\n\n${WARNINGS.map((w) => `- ${w}`).join('\n')}\n`
+    : '### SF rec centers: every schedule and hours block read live\n';
+  fs.appendFileSync(file, `${body}\n${lines.map((l) => `    ${l}`).join('\n')}\n\n`);
+}
+
+const daysAgo = (iso) => Math.floor((Date.now() - new Date(iso).getTime()) / 86400000);
 
 // Posted hours, else the last good posted hours, else the curated table.
 function resolveHours(c, fid, html, cache) {
@@ -589,6 +707,14 @@ async function main() {
         fetchErr = e;
       }
     }
+    // A schedule table in a shape we don't parse means data on the page that
+    // the app isn't showing. Reported whether or not the rest of the scrape
+    // succeeded: a new table usually arrives beside the old grid, not instead.
+    if (html) {
+      for (const t of findUnknownTables(cheerio.load(html))) {
+        warn(`${c.name}: unrecognized schedule format ${t} — its times are not being read; add a parser (TABLE_FORMATS)`);
+      }
+    }
     // Curated fallback covers basketball only (hand-maintained); other sports
     // have no curated source, so they start empty unless scraped.
     let chosen = { dropins: { ...emptyDropins(), basketball: c.bball }, source: 'curated' };
@@ -602,15 +728,19 @@ async function main() {
         if (s) seasons.add(s[0].toUpperCase() + s.slice(1).toLowerCase());
         const counts = SPORTS.map((sp) => `${live.dropins[sp.id].reduce((n, d) => n + d.length, 0)} ${sp.id}`);
         console.log(`  ✓ ${c.name} — ${counts.join(', ')} (live)`);
+        for (const note of live.formatNotes) console.log(`    · ${note}`);
       } catch (e) {
         // Old caches stored a bare `basketball` week; wrap it into dropins shape.
         const cached = cache[fid] && (cache[fid].dropins ||
           (cache[fid].basketball && { ...emptyDropins(), basketball: cache[fid].basketball }));
+        // A fallback is right for one bad week and wrong for ten, so it is never
+        // silent: the warning carries the cache's age.
         if (cached) {
           chosen = { dropins: cached, source: 'cache' };
-          console.log(`  ↺ ${c.name} — scrape failed (${e.message}); using cached`);
+          const at = cache[fid].scrapedAt;
+          warn(`${c.name}: open-gym scrape failed (${e.message}); showing the schedule cached ${at ? `${String(at).slice(0, 10)} (${daysAgo(at)} days old)` : 'at an unknown date'}`);
         } else {
-          console.log(`  ⚠ ${c.name} — scrape failed (${e.message}); using curated fallback`);
+          warn(`${c.name}: open-gym scrape failed (${e.message}); showing curated open-gym times — verify them`);
         }
       }
     }
@@ -707,12 +837,13 @@ async function main() {
   const payload = { generatedAt, season, courts };
   fs.writeFileSync(path.join(dataDir, 'courts.json'), JSON.stringify(payload, null, 2) + '\n');
 
-  console.log(
-    `\n✅ Wrote ${courts.length} courts to data/courts.js + data/courts.json` +
-      `\n   open-gym schedules: ${stats.live} live, ${stats.cache} cached, ${stats.curated} curated fallback` +
-      `\n   facility hours:     ${hoursStats.live} live, ${hoursStats.cache} cached, ${hoursStats.curated} curated fallback` +
-      `\n   season: ${season}`
-  );
+  const summary = [
+    `open-gym schedules: ${stats.live} live, ${stats.cache} cached, ${stats.curated} curated fallback`,
+    `facility hours:     ${hoursStats.live} live, ${hoursStats.cache} cached, ${hoursStats.curated} curated fallback`,
+    `season: ${season}`,
+  ];
+  console.log(`\n✅ Wrote ${courts.length} courts to data/courts.js + data/courts.json\n   ${summary.join('\n   ')}`);
+  writeRunSummary(summary);
 }
 
 function render(courts, season, generatedAt) {
@@ -769,5 +900,7 @@ export default COURTS;
 
 main().catch((e) => {
   console.error('\n❌ Failed:', e.message);
+  WARNINGS.push(`Build failed, data/courts.js left unchanged: ${e.message}`);
+  writeRunSummary([]);
   process.exit(1);
 });

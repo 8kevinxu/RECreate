@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-21T00:23:51.278Z",
+  "generatedAt": "2026-11-21T00:31:18.235Z",
   "season": "Fall / Summer",
   "courts": [
     {
@@ -1228,36 +1228,51 @@
           [
             [
               600,
-              1020
-            ]
-          ],
-          [
-            [
-              600,
-              1080
+              900
             ],
             [
               1080,
-              1200,
-              "55+"
+              1260
             ]
           ],
           [
             [
               600,
-              1020
+              900
+            ],
+            [
+              1170,
+              1260
             ]
           ],
           [
             [
               600,
-              1200
+              900
+            ],
+            [
+              1170,
+              1260
             ]
           ],
           [
+            [
+              600,
+              900
+            ],
+            [
+              1080,
+              1260
+            ]
+          ],
+          [
+            [
+              540,
+              690
+            ],
             [
               840,
-              990
+              1020
             ]
           ]
         ],
@@ -1307,7 +1322,7 @@
           []
         ]
       },
-      "scheduleSource": "cache",
+      "scheduleSource": "live",
       "source": "sfrecpark",
       "notes": "Gymnasium — play basketball, ping-pong, tetherball or air hockey."
     },
