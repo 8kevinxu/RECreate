@@ -1370,6 +1370,29 @@ const CLASS_CAT_MIN = 12;
 // Above this the page stops being readable; the app has the searchable catalog.
 const CLASS_LIST_CAP = 150;
 const classCatPath = (cfg, catId) => `${cfg.prefix}/classes/${catId}`;
+// What a category page is called in its title/h1. The app's chip labels are
+// written for a filter row ("Aquatics", "Camps"); a searcher types "swimming
+// lessons", never "aquatics", and "Camps Classes" isn't a phrase at all. So
+// each page carries the noun phrase people search — `phrase` for the title and
+// h1, `noun` (lowercase) for sentences. Unlisted ids fall back to the label.
+const CLASS_CAT_SEO = {
+  fitness: { phrase: 'Fitness & Wellness Classes', noun: 'fitness and wellness classes' },
+  dance: { phrase: 'Dance Classes', noun: 'dance classes' },
+  music: { phrase: 'Music Lessons & Classes', noun: 'music lessons and classes' },
+  arts: { phrase: 'Art & Craft Classes', noun: 'art and craft classes' },
+  sports: { phrase: 'Sports Classes & Programs', noun: 'sports classes and programs' },
+  aquatics: { phrase: 'Swimming Lessons & Swim Classes', noun: 'swimming lessons and swim classes' },
+  nature: { phrase: 'Nature & Outdoor Programs', noun: 'nature and outdoor programs' },
+  learn: { phrase: 'Workshops & Learning Programs', noun: 'workshops and learning programs' },
+  camps: { phrase: 'Kids Day Camps', noun: 'day camps' },
+  performances: { phrase: 'Performances & Film Screenings', noun: 'performances and film screenings' },
+  social: { phrase: 'Social Activities & Games', noun: 'social activities and game groups' },
+  youth: { phrase: 'Youth & After-School Programs', noun: 'youth and after-school programs' },
+  philanthropy: { phrase: 'Volunteer Opportunities', noun: 'volunteer opportunities' },
+  accessible: { phrase: 'Adaptive & Accessible Programs', noun: 'adaptive and accessible programs' },
+};
+const classCatSeo = (cat) =>
+  CLASS_CAT_SEO[cat.id] || { phrase: `${cat.label} Classes`, noun: `${cat.label.toLowerCase()} classes and programs` };
 
 const classLi = (c, cfg) => {
   const meta = [c.location, c.borough, c.when].filter(Boolean).join(' · ');
@@ -1448,16 +1471,17 @@ for (const cfg of CITY_CFG) {
     const freeN = items.filter((c) => /free/i.test(c.cost || '')).length;
     const dropIn = items.filter((c) => c.dropIn).length;
     const label = cat.label.toLowerCase();
+    const { phrase, noun } = classCatSeo(cat);
     pages.push({
       kind: 'class-cat',
       cfg,
       path: classCatPath(cfg, cat.id),
       short: `${cat.label} classes`,
       hideFromNav: true,
-      title: `${cat.label} Classes in ${cfg.name} — ${items.length} ${cfg.classSource} programs | ${SITE_NAME}`,
-      description: `${items.length} ${label} classes and programs run by ${cfg.classSource} in ${cfg.name}${freeN ? `, ${freeN} of them free` : ''} — schedules, prices, ages and open spots, refreshed every 6 hours.`,
-      h1: `${cat.label} classes in ${cfg.name}`,
-      intro: `${items.length} ${esc(label)} classes and programs across ${esc(cfg.classSource)} facilities${freeN ? ` — ${freeN} free` : ''}${dropIn ? `, ${dropIn} drop-in (no registration)` : ''}. Prices, ages and remaining spots below; the app has the searchable catalog and live availability.`,
+      title: `${phrase} in ${cfg.name} — ${items.length} ${cfg.classSource} programs | ${SITE_NAME}`,
+      description: `${items.length} ${noun} run by ${cfg.classSource} in ${cfg.name}${freeN ? `, ${freeN} of them free` : ''} — schedules, prices, ages and open spots, refreshed every 6 hours.`,
+      h1: `${phrase} in ${cfg.name}`,
+      intro: `${items.length} ${esc(noun)} across ${esc(cfg.classSource)} facilities${freeN ? ` — ${freeN} free` : ''}${dropIn ? `, ${dropIn} drop-in (no registration)` : ''}. Prices, ages and remaining spots below; the app has the searchable catalog and live availability.`,
       cta: { href: appUrl(cfg, { tab: 'classes' }), label: 'Browse these in the app' },
       body:
         `<ul class="places">${shown.map((c) => classLi(c, cfg)).join('\n')}</ul>` +
