@@ -72,30 +72,6 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
-      "id": "vol-a07Pi00005PqdCTIAZ",
-      "source": "sfrpd-volunteer",
-      "name": "Golden Gate Park Rhododendron Dell",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "GGP Sec 2 Rhododendron Dell",
-      "when": "Wed · 10:00 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 20,
-      "unlimited": false,
-      "start": "2026-12-02",
-      "end": "2027-05-19",
-      "activity": "Horticultural Maintenance",
-      "desc": "Join us for volunteering at the Golden Gate Park Rhododendron Dell every 1st and 3rd Wednesday of the month! Come spend the morning with some light weeding, mulching, or pruning.Please RSVP by selecting group sign-up even when you are not registering as a group. We limit to four people per group sign-up, if you have more than four people, please email us at Recparkvolunteer@sfgov.org. Thank you!",
-      "lat": 37.7699,
-      "lng": -122.46429,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a07Pi00003xn9F3IAI",
       "source": "sfrpd-volunteer",
       "name": "Heron's Head Park Volunteer Workparty",
@@ -118,6 +94,30 @@
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group. You can only sign-up a group of 4. If you have a group size of 5 or more, please email us at recparkvolunteer@sfgov.org.\n\nJoin the San Francisco Recreation and Parks Department, the Port of San Francisco and Golden Gate Bird Alliance in our joint stewardship of Heron's Head Park! Heron's Head Park is home to over 100 species of birds and an off-the grid sustainable learning center. Join us every 1st Wednesday of the month and learn about the EcoCenter and Park's robust ecosystem. Volunteer tasks include non-native invasive plant removal, mulch application, watering and planting (seasonally). Come prepared with closed-toe shoes and dress in layers. No experience necessary.\n\nAll tools and materials provided.  Please wear close-toe shoes, long pants, long-sleeve shirts and bring a water bottle and sun hat. Minimum volunteer age of 6 years old. Children under 12 years old must be accompanied by an adult chaperone. \n\nIf you are a teacher interested in organizing a volunteer workparty for your school group, please submit your request by completing the Group Project Request Form: https://sfrpd.my.salesforce-sites.com/CaseIntakeForm. Alternatively, you may contact the RPD Volunteer Services Office by email at recparkvolunteer@sfgov.org.\n\nMeet at the entrance front porch of the EcoCenter",
       "lat": 37.73832,
       "lng": -122.37481,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a07Pi00005PqdCTIAZ",
+      "source": "sfrpd-volunteer",
+      "name": "Golden Gate Park Rhododendron Dell",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "GGP Sec 2 Rhododendron Dell",
+      "when": "Wed · 10:00 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 20,
+      "unlimited": false,
+      "start": "2026-12-02",
+      "end": "2027-05-19",
+      "activity": "Horticultural Maintenance",
+      "desc": "Join us for volunteering at the Golden Gate Park Rhododendron Dell every 1st and 3rd Wednesday of the month! Come spend the morning with some light weeding, mulching, or pruning.Please RSVP by selecting group sign-up even when you are not registering as a group. We limit to four people per group sign-up, if you have more than four people, please email us at Recparkvolunteer@sfgov.org. Thank you!",
+      "lat": 37.7699,
+      "lng": -122.46429,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -186,27 +186,6 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
-      "id": "vol-a07Pi00006p45j5IAA",
-      "source": "sfrpd-volunteer",
-      "name": "Wreath Making with DeYoung Museum",
-      "category": "philanthropy",
-      "location": "Golden Gate Park",
-      "when": "Thu · 4:00 PM - 8:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 1,
-      "unlimited": false,
-      "start": "2026-12-03",
-      "end": "2026-12-03",
-      "oneDay": true,
-      "instructor": "Recreation Division",
-      "activity": "Community/Special Event",
-      "desc": "Volunteers will prepare materials and assist participant's in making holiday wreaths. Volunteers should enjoy working with people and children.\n\nPlease use the Group Sign-Up link on the right, even if you are a party of one.",
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
       "id": "vol-a07Pi00006p67LLIAY",
       "source": "sfrpd-volunteer",
       "name": "SF Library Bookmobile",
@@ -228,24 +207,24 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
-      "id": "vol-a07Pi00006o4RHuIAM",
+      "id": "vol-a07Pi00006p45j5IAA",
       "source": "sfrpd-volunteer",
-      "name": "Rockwall Climbing Area",
+      "name": "Wreath Making with DeYoung Museum",
       "category": "philanthropy",
       "location": "Golden Gate Park",
-      "when": "Thu · 6:00 PM - 9:00 PM",
+      "when": "Thu · 4:00 PM - 8:00 PM",
       "dropIn": false,
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 6,
+      "spots": 1,
       "unlimited": false,
       "start": "2026-12-03",
       "end": "2026-12-03",
       "oneDay": true,
       "instructor": "Recreation Division",
       "activity": "Community/Special Event",
-      "desc": "Volunteers will help staff with equipping guests with climbing safety gear and coaching and cheering them through their Rockwall experience.\n\nPlease use the Group Sign-Up link on the right, even if you are a party of one.",
+      "desc": "Volunteers will prepare materials and assist participant's in making holiday wreaths. Volunteers should enjoy working with people and children.\n\nPlease use the Group Sign-Up link on the right, even if you are a party of one.",
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -267,6 +246,27 @@
       "instructor": "Recreation Division",
       "activity": "Community/Special Event",
       "desc": "This volunteer will help replenish hot chocolate and cookies and engage with event entertainers. Volunteer must be aware of surrounding and proactively keep area clean and welcoming for all. Volunteers will work alongside staff to clean-up when event is over.\n\nPlease use the Group Sign-Up link on the right, even if you are a party of one.",
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a07Pi00006o4RHuIAM",
+      "source": "sfrpd-volunteer",
+      "name": "Rockwall Climbing Area",
+      "category": "philanthropy",
+      "location": "Golden Gate Park",
+      "when": "Thu · 6:00 PM - 9:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 6,
+      "unlimited": false,
+      "start": "2026-12-03",
+      "end": "2026-12-03",
+      "oneDay": true,
+      "instructor": "Recreation Division",
+      "activity": "Community/Special Event",
+      "desc": "Volunteers will help staff with equipping guests with climbing safety gear and coaching and cheering them through their Rockwall experience.\n\nPlease use the Group Sign-Up link on the right, even if you are a party of one.",
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -292,6 +292,31 @@
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nPlease join the Friends of Lafayette Park for a \"Cleaning and Greening\" workday on the first Saturday of the month. Help to maintain the park and get to know your neighbors. We install new plants, weed, sweep and more. We meet beforehand for coffee and pastries, lively conversation, and then head-out with the SFRPD gardeners to help beautify our park.  Please wear closed-toe shoes, long pants and a long-sleeve shirt. All tools and gloves provided. (NOTE: If the first Saturday of the month is a major holiday, then the workday will happen on the following Saturday.)\n\nMeet at the picnic tables at the south end of the Children's Playground",
       "lat": 37.791378,
       "lng": -122.427006,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a074U00001UJ6W9QAL",
+      "source": "sfrpd-volunteer",
+      "name": "SF Bay Coastal Habitat Restoration",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "Heron's Head Park",
+      "when": "Sat · 10:00 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 15,
+      "unlimited": false,
+      "start": "2026-12-05",
+      "end": "2027-05-15",
+      "instructor": "Friends of Heron's Head Park",
+      "activity": "Horticultural Maintenance",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin us for a monthly habitat restoration volunteer workparty at Heron's Head Park, a coastal site of San Francisco Bay in the SE District. Volunteers will contribute to an ecological project started by community-based organizations in partnership with the Port of San Francisco. Volunteers will assist in the preservation and restoration of a native landscape and bird sanctuary. Tasks will include invasive species removal, landscape maintenance and planting.\n\nAll tools and materials provided.  Please wear close-toe shoes, long pants, long-sleeve shirts and bring a water bottle and sun hat. Minimum volunteer age of 6 years old. Children under 12 years old must be accompanied by an adult chaperone. \n\nIf you are a teacher interested in organizing a volunteer workparty for your school group, please submit your request by completing the Group Project Request Form: https://sfrpd.my.salesforce-sites.com/CaseIntakeForm. Alternatively, you may contact the RPD Volunteer Services Office by email at recparkvolunteer@sfgov.org.\n\nMeet at the entrance front porch of the EcoCenter",
+      "lat": 37.73832,
+      "lng": -122.37481,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -339,31 +364,6 @@
       "end": "2027-05-01",
       "activity": "Horticultural Maintenance",
       "desc": "Please disregard the message that the volunteer shifts are full.\n\nTo sign-up for this volunteer opportunity, please click on the following link to the CA State Parks Foundation:\n\nhttps://volunteer.calparks.org/opportunity/a3tJw000002le8vIAA/candlestick-point-state-recreation-area\n\nOffering panoramic views of the San Francisco Bay, Candlestick Point State Recreation Area is the first park developed to bring state park values into the urban setting and offers various recreational opportunities for visitors. Rabbits, hawks, brown pelicans, and other native wildlife call this place home. During World War II, the United States Navy filled the tidelands to create the nearby Naval Shipyard. Today, the park sits on part of this former landfill and demonstrates how major land changes affect ecologically sensitive areas.\n\nHelp keep the park clean and support ongoing habitat restoration! Participants can choose to pick up micro-trash and debris from the park or remove an invasive species. On select dates, we will also plant native species to help ongoing restoration work! We will provide volunteers with tools and nitrile gloves. We recommend wearing long sleeved shirts and a hat. Ages 10 and older are welcome (minors must be accompanied by an adult and bring a waiver signed by their guardian).\n\nFull opportunity address and directions will be sent to you by e-mail after you sign up.",
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
-      "id": "vol-a074U00001UJ6W9QAL",
-      "source": "sfrpd-volunteer",
-      "name": "SF Bay Coastal Habitat Restoration",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "Heron's Head Park",
-      "when": "Sat · 10:00 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 15,
-      "unlimited": false,
-      "start": "2026-12-05",
-      "end": "2027-05-15",
-      "instructor": "Friends of Heron's Head Park",
-      "activity": "Horticultural Maintenance",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin us for a monthly habitat restoration volunteer workparty at Heron's Head Park, a coastal site of San Francisco Bay in the SE District. Volunteers will contribute to an ecological project started by community-based organizations in partnership with the Port of San Francisco. Volunteers will assist in the preservation and restoration of a native landscape and bird sanctuary. Tasks will include invasive species removal, landscape maintenance and planting.\n\nAll tools and materials provided.  Please wear close-toe shoes, long pants, long-sleeve shirts and bring a water bottle and sun hat. Minimum volunteer age of 6 years old. Children under 12 years old must be accompanied by an adult chaperone. \n\nIf you are a teacher interested in organizing a volunteer workparty for your school group, please submit your request by completing the Group Project Request Form: https://sfrpd.my.salesforce-sites.com/CaseIntakeForm. Alternatively, you may contact the RPD Volunteer Services Office by email at recparkvolunteer@sfgov.org.\n\nMeet at the entrance front porch of the EcoCenter",
-      "lat": 37.73832,
-      "lng": -122.37481,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -429,7 +429,7 @@
       "cost": "Free",
       "ages": "",
       "minAge": 0,
-      "spots": 4,
+      "spots": 3,
       "unlimited": false,
       "start": "2026-12-11",
       "end": "2026-12-11",
@@ -439,31 +439,6 @@
       "desc": "Volunteers will help with a variety of activities listed below. Volunteers should bring happy and positive energy and be comfortable working with large intergenerational crowds. Volunteers should also be prepared for colder weather and dress in layers as it can become cold with the wind, etc.\n\nPlease use the Group Sign-Up button on the right even if you are a party of one.\n\nDescription of volunteer duties:\n\n• Cutting and serving cake\n\n• Heating hot water to make hot coco or hot cider\n\n• Helping Marina Assistants to set up for the event, such as set up of table and chairs, tablecloths, putting forks, napkins out etc.\n\n• Assisting the Marina Assistants to clean up for the event, helping with trash collection, stacking chairs and breaking down tables, putting away extra supplies not used.\n\n• Helping with the Toys for Tots collection barrels making sure trash is not put in the collection barrels\n\n• Help guiding families for the train rides, and or boat rides.\n\n• Helping with loading kids and families on the train\n\n• Help the music band players (older folks) take instruments back to their cars.\n\n• Misc. help with kids in line for seeing Santa.\n\n• Help with taking photos of kids/families with Santa using the family camera or camera phone provided.",
       "lat": 37.806649,
       "lng": -122.436099,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
-      "id": "vol-a074U00001AcPEmQAN",
-      "source": "sfrpd-volunteer",
-      "name": "Legion of Honor Volunteer Project",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "Lincoln Park",
-      "when": "Sat · 9:00 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 14,
-      "unlimited": false,
-      "start": "2026-12-12",
-      "end": "2027-05-08",
-      "instructor": "Legion of Honor Volunteers",
-      "activity": "Horticultural Maintenance",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nVolunteering with the Friends of the Legion of Honor offers a unique opportunity to beautify and maintain the outside landscaping of one of the most visited museums on the West Coast. Volunteer tasks include litter pick-up, weeding, mulching, habitat restoration and occasional planting. Please wear closed-toed shoes, long pants and layers. The event will occur rain or shine. Meet on the stairs of the entrance plaza of the Legion of Honor.\n\nMeet: on the stairs of the entrance plaza of the Legion of Honor",
-      "lat": 37.7841,
-      "lng": -122.4996,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -491,6 +466,31 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
+      "id": "vol-a074U00001AcPEcQAN",
+      "source": "sfrpd-volunteer",
+      "name": "Oak Woodlands Habitat Restoration Volunteer Project",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "Golden Gate Park Oak Woodlands",
+      "when": "Sat · 9:30 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 30,
+      "unlimited": false,
+      "start": "2026-12-12",
+      "end": "2027-05-08",
+      "instructor": "Friends of the Oak Woodlands",
+      "activity": "Habitat Restoration",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin this knowledgeable group of volunteers and San Francisco Recreation and Park Natural Resource Division in restoring Golden Gate Park’s native oak woodlands. Learn about the importance of our oak woodlands, the wildlife they support and meet some of the oldest trees in the city. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Everyone 14 years old and older is invited; anyone under 14 yo must be accompanied by a guardian. Tools and gloves will be provided. Please be punctual.  \n\n(For more information regarding the volunteer project please contact Friends of Oak Woodlands site steward Robert Bakewell at 415-710-9617 or rcbakewell@gmail.com)\n\nmeet at the Horseshoe Courts entrance on East Conservatory Drive\n\nMeet: at the intersection of Arguello Blvd. and Conservatory Drive",
+      "lat": 37.77132,
+      "lng": -122.4655,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
       "id": "vol-a074U00001Pqx90QAB",
       "source": "sfrpd-volunteer",
       "name": "Lakeview Nature Stewards Volunteer Event",
@@ -514,31 +514,6 @@
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the Lakeview Nature stewards and the Natural Resources Gardeners in a habitat restoration volunteer workparty at Lakeview Ashton Park. Tools and gloves provided. Meet at the east end of Shields St. across from 1 Shields St",
       "lat": 37.71932,
       "lng": -122.4576,
-      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
-    },
-    {
-      "id": "vol-a074U00001AcPEcQAN",
-      "source": "sfrpd-volunteer",
-      "name": "Oak Woodlands Habitat Restoration Volunteer Project",
-      "category": "philanthropy",
-      "tags": [
-        "nature"
-      ],
-      "location": "Golden Gate Park Oak Woodlands",
-      "when": "Sat · 9:30 AM - 12:00 PM",
-      "dropIn": false,
-      "cost": "Free",
-      "ages": "",
-      "minAge": 0,
-      "spots": 30,
-      "unlimited": false,
-      "start": "2026-12-12",
-      "end": "2027-05-08",
-      "instructor": "Friends of the Oak Woodlands",
-      "activity": "Habitat Restoration",
-      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin this knowledgeable group of volunteers and San Francisco Recreation and Park Natural Resource Division in restoring Golden Gate Park’s native oak woodlands. Learn about the importance of our oak woodlands, the wildlife they support and meet some of the oldest trees in the city. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Everyone 14 years old and older is invited; anyone under 14 yo must be accompanied by a guardian. Tools and gloves will be provided. Please be punctual.  \n\n(For more information regarding the volunteer project please contact Friends of Oak Woodlands site steward Robert Bakewell at 415-710-9617 or rcbakewell@gmail.com)\n\nmeet at the Horseshoe Courts entrance on East Conservatory Drive\n\nMeet: at the intersection of Arguello Blvd. and Conservatory Drive",
-      "lat": 37.77132,
-      "lng": -122.4655,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -614,6 +589,30 @@
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nVolunteer with the Golden Gate Bird Alliance at the Bison Paddock of Golden Gate Park and help to restore the habitat of the White-crowned sparrow. Lend a hand with weeding and tending a garden of native plants that comprise a critical nesting and feeding area for this sparrow. Please wear appropriate attire: closed-toe shoes, long pants and layers of clothing.\n\nMeet at the middle of the Bison Paddock fence located on John F Kennedy Drive between 36th Avenue and Chain of Lakes Drive East.",
       "lat": 37.7702,
       "lng": -122.4917,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a07Pi00006px4ykIAA",
+      "source": "sfrpd-volunteer",
+      "name": "Park Presidio 14th Avenue Neighbors",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "Park Presidio Blvd",
+      "when": "Sat · 9:00 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 10,
+      "unlimited": false,
+      "start": "2026-12-19",
+      "end": "2026-12-19",
+      "oneDay": true,
+      "instructor": "Griffin Household",
+      "activity": "Horticultural Maintenance",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nJoin the RPD Gardeners and the 14th Avenue Neighbors in a volunteer workparty at Park Presidio Boulevard. Please wear closed-toed shoes, long pants and layers. All supplies, tools, and gloves are provided by RPD. \n\nMeet at Park Presidio and14th Ave.",
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -713,6 +712,31 @@
       "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nExplore Mount Davidson Park. Join the Natural Resource Division enhancing the most diverse native scrub community in the City. This recurring monthly volunteer project is on the 4th Saturday of each month from 9:30-12noon. Mount Davidson is the highest peak in San Francisco offering spectacular views of San Francisco’s skyline, bay, and the surrounding coastal mountains. This park offers habitat for numerous resident and migratory birds, butterflies, and insects - awe inspiring all year. Please wear closed-toed shoes and dress in appropriate clothing for physical work. Everyone 14 years old and older is invited; anyone under 14 yo must be accompanied by a guardian. Tools and gloves will be provided. Please be punctual. \n\nMeet at the gate to the fire road on Dalewood Way",
       "lat": 37.7383,
       "lng": -122.45437,
+      "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
+    },
+    {
+      "id": "vol-a074U00001AcPEmQAN",
+      "source": "sfrpd-volunteer",
+      "name": "Legion of Honor Volunteer Project",
+      "category": "philanthropy",
+      "tags": [
+        "nature"
+      ],
+      "location": "Lincoln Park",
+      "when": "Sat · 9:00 AM - 12:00 PM",
+      "dropIn": false,
+      "cost": "Free",
+      "ages": "",
+      "minAge": 0,
+      "spots": 15,
+      "unlimited": false,
+      "start": "2027-01-09",
+      "end": "2027-05-08",
+      "instructor": "Legion of Honor Volunteers",
+      "activity": "Horticultural Maintenance",
+      "desc": "Please RSVP by selecting 'Group Sign Up' even when you are not registering as a group.\n\nVolunteering with the Friends of the Legion of Honor offers a unique opportunity to beautify and maintain the outside landscaping of one of the most visited museums on the West Coast. Volunteer tasks include litter pick-up, weeding, mulching, habitat restoration and occasional planting. Please wear closed-toed shoes, long pants and layers. The event will occur rain or shine. Meet on the stairs of the entrance plaza of the Legion of Honor.\n\nMeet: on the stairs of the entrance plaza of the Legion of Honor",
+      "lat": 37.7841,
+      "lng": -122.4996,
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     },
     {
@@ -864,5 +888,5 @@
       "url": "https://sfrpd.my.salesforce-sites.com/SFRPDCalendar"
     }
   ],
-  "fetchedAt": "2026-11-24T16:59:09.142Z"
+  "fetchedAt": "2026-11-25T01:56:30.474Z"
 }
