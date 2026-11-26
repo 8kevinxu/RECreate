@@ -5175,6 +5175,11 @@
             "kind": "exercise",
             "start": 870,
             "end": 930
+          },
+          {
+            "kind": "family",
+            "start": 960,
+            "end": 1005
           }
         ],
         [],
@@ -6372,5 +6377,5 @@
     "checked": "2026-11-26",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-11-26T05:29:29.629Z"
+  "fetchedAt": "2026-11-26T17:29:17.674Z"
 }
