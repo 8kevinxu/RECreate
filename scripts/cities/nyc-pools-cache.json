@@ -5051,7 +5051,7 @@
       "desc": "Intermediate pool · 54' x 50' x 12'",
       "season": "Year-round (recreation center members)",
       "seasonal": false,
-      "notice": "Beginning on Monday, November 23 through Wednesday, November 25, 2026, the Men's Locker Rooms at Constance Baker Motley Recreation Center will be closed for installation of new lockers. There will be a single-family use changing room available downstairs that can accommodate patrons during this time. The center will remain open for normal operational hours. Please check in with staff at the front desk for more information regarding changing room accommodations. In observance of Thanksgiving Day, Constance Baker Motley Recreation Center will be closed on Thursday, November 26, 2026. On Wednesday, November 25th, this recreation center will be open at the regularly scheduled time but will close at 5:00 p.m.",
+      "notice": "In observance of Thanksgiving Day, Constance Baker Motley Recreation Center will be closed on Thursday, November 26, 2026. On Wednesday, November 25th, this recreation center will be open at the regularly scheduled time but will close at 5:00 p.m.",
       "programs": [
         "lap",
         "family",
@@ -6369,8 +6369,8 @@
   "season": {
     "open": false,
     "label": "Closed for the season — NYC outdoor pools run late June through Labor Day",
-    "checked": "2026-11-25",
+    "checked": "2026-11-26",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-11-25T17:43:15.731Z"
+  "fetchedAt": "2026-11-26T05:29:29.629Z"
 }
