@@ -3330,7 +3330,7 @@
       "desc": "Intermediate pool · 75' x 30' x 8'",
       "season": "No pool sessions currently published",
       "seasonal": false,
-      "notice": "In observance of Thanksgiving Day, Brownsville Recreation Center will be closed on Thursday, November 26, 2026. On Wednesday, November 25th, this recreation center will be open at the regularly scheduled time but will close at 5:00 p.m. Brownsville Recreation Center is open with limited access due to construction. The Golden Age side of the building is open, while the main side of the building is closed. There will be no access to the indoor pool and gymnasium at this time.",
+      "notice": "Brownsville Recreation Center is open with limited access due to construction. The Golden Age side of the building is open, while the main side of the building is closed. There will be no access to the indoor pool and gymnasium at this time.",
       "programs": [],
       "fees": {
         "effective": "2026-01-01",
@@ -3756,7 +3756,6 @@
       "desc": "Intermediate pool · 75' x 42' x 9'",
       "season": "Year-round (recreation center members)",
       "seasonal": false,
-      "notice": "In observance of Thanksgiving Day, St. John's Recreation Center will be closed on Thursday, November 26, 2026. On Wednesday, November 25th, this recreation center will be open at the regularly scheduled time but will close at 5:00 p.m.",
       "programs": [
         "lap",
         "family",
@@ -4114,7 +4113,6 @@
       "desc": "Intermediate pool · 66' x 26' x 8'",
       "season": "Year-round (recreation center members)",
       "seasonal": false,
-      "notice": "In observance of Thanksgiving Day, Asser Levy Recreation Center will be closed on Thursday, November 26, 2026. On Wednesday, November 25th, this recreation center will be open at the regularly scheduled time but will close at 5:00 p.m.",
       "programs": [
         "other",
         "exercise",
@@ -4358,7 +4356,6 @@
       "desc": "Intermediate pool · 75' x 43' x 10'",
       "season": "Year-round (recreation center members)",
       "seasonal": false,
-      "notice": "In observance of Thanksgiving Day, Chelsea Recreation Center will be closed on Thursday, November 26, 2026. On Wednesday, November 25th, this recreation center will be open at the regularly scheduled time but will close at 5:00 p.m.",
       "programs": [
         "lap",
         "family",
@@ -4728,7 +4725,7 @@
       "desc": "Intermediate pool · 60' x 35' x 8'",
       "season": "Year-round (recreation center members)",
       "seasonal": false,
-      "notice": "On Monday, November 30 through Wednesday, December 2, 2026, the gymnasium and climbing wall room at Gertrude Ederle Recreation Center will be closed for maintenance. The center will remain open for normal operational hours. In observance of Thanksgiving Day, Gertrude Ederle Recreation Center will be closed on Thursday, November 26, 2026. On Wednesday, November 25th, this recreation center will be open at the regularly scheduled time but will close at 5:00 p.m.",
+      "notice": "On Monday, November 30 through Wednesday, December 2, 2026, the gymnasium and climbing wall room at Gertrude Ederle Recreation Center will be closed for maintenance. The center will remain open for normal operational hours.",
       "programs": [
         "lap",
         "other",
@@ -5051,7 +5048,6 @@
       "desc": "Intermediate pool · 54' x 50' x 12'",
       "season": "Year-round (recreation center members)",
       "seasonal": false,
-      "notice": "In observance of Thanksgiving Day, Constance Baker Motley Recreation Center will be closed on Thursday, November 26, 2026. On Wednesday, November 25th, this recreation center will be open at the regularly scheduled time but will close at 5:00 p.m.",
       "programs": [
         "lap",
         "family",
@@ -5262,7 +5258,6 @@
       "desc": "Intermediate pool · 75' x 30' x 9'",
       "season": "Year-round (recreation center members)",
       "seasonal": false,
-      "notice": "In observance of Thanksgiving Day, Roy Wilkins Recreation Center will be closed on Thursday, November 26, 2026. On Wednesday, November 25th, this recreation center will be open at the regularly scheduled time but will close at 5:00 p.m.",
       "programs": [
         "lap",
         "family",
@@ -5570,7 +5565,6 @@
       "desc": "Olympic pool · 164' x 82' x 7.5'",
       "season": "Year-round (recreation center members)",
       "seasonal": false,
-      "notice": "In observance of Thanksgiving Day, Flushing Meadows Corona Park Aquatics Center will be closed on Thursday, November 26, 2026. On Wednesday, November 25th, this recreation center will be open at the regularly scheduled time but will close at 5:00 p.m. Tide Gate Bridge Construction Due to construction on the Tide Gate Bridge, located on Meridian Road within Flushing Meadows Corona Park, vehicular traffic will not be allowed to cross the bridge in either direction. Please follow posted detour signs around Meridian Road and plan for additional travel time. Pedestrian traffic will still be permitted to cross the bridge.",
       "programs": [
         "lap",
         "family",
@@ -6085,7 +6079,6 @@
       "desc": "Intermediate pool",
       "season": "Year-round (recreation center members)",
       "seasonal": false,
-      "notice": "In observance of Thanksgiving Day, Shirley Chisholm Recreation Center will be closed on Thursday, November 26, 2026. On Wednesday, November 25th, this recreation center will be open at the regularly scheduled time but will close at 5:00 p.m.",
       "programs": [
         "lap",
         "lessons",
@@ -6374,8 +6367,8 @@
   "season": {
     "open": false,
     "label": "Closed for the season — NYC outdoor pools run late June through Labor Day",
-    "checked": "2026-11-26",
+    "checked": "2026-11-27",
     "source": "https://www.nycgovparks.org/facilities/outdoor-pools"
   },
-  "fetchedAt": "2026-11-26T17:29:17.674Z"
+  "fetchedAt": "2026-11-27T18:01:36.723Z"
 }
